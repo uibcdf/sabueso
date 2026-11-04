@@ -9,6 +9,7 @@ from pathlib import Path
 
 import pytest
 
+import sabueso
 from sabueso.core.card import Card
 
 
@@ -151,3 +152,114 @@ def test_direct_public_defaults_keep_original_interpretation(originals):
         explorer.view("structures").items()[0].related(), "question"
     ).open()
     assert answer.request["options"]["generation_rule"] == "rcsb_assembly_generation@5"
+
+
+def test_repeated_declared_labels_keep_distinct_positions(originals):
+    card = Card.from_dict(deepcopy(originals["1HTI"]["card"]))
+    source = next(
+        s
+        for s in card.source_assertion_store.store.values()
+        if s["source"]["name"] == "RCSB PDB"
+    )
+    source["asserted_value"]["assembly_generation_inputs"]["assemblies"][0][
+        "pdbx_struct_assembly_gen"
+    ][0]["asym_id_list"] = ["C", "C"]
+    answer = by_role(
+        structure_item(card.explore(), "native").related(), "question"
+    ).open()
+    positions = (
+        by_role(answer.items()[0].related(), "components")
+        .open()
+        .filter("role", equals="component")
+    )
+    assert len(positions.items()) == 2
+    assert [
+        i._entry.value["component_request"]["component_index"]
+        for i in positions.items()
+    ] == [0, 1]
+    assert all("repeated declaration label" in i.label for i in positions.items())
+    assert (
+        positions.items()[0].open().native_payload["source_location"]
+        != positions.items()[1].open().native_payload["source_location"]
+    )
+
+
+def test_conflicting_native_records_are_never_selected_silently(originals):
+    card = Card.from_dict(deepcopy(originals["1HTI"]["card"]))
+    source = next(
+        s
+        for s in card.source_assertion_store.store.values()
+        if s["source"]["name"] == "RCSB PDB"
+    )
+    records = source["asserted_value"]["assembly_component_inputs"][
+        "nonpolymer_entities"
+    ][0]["nonpolymer_entity_instances"]
+    records.append(deepcopy(records[0]))
+    answer = by_role(
+        structure_item(card.explore(), "native").related(), "question"
+    ).open()
+    positions = (
+        by_role(answer.items()[0].related(), "components")
+        .open()
+        .filter("role", equals="component")
+    )
+    component = next(i for i in positions.items() if " · C · " in i.label)
+    assert "Ambiguous native key" in component.label
+    registry = by_role(component.open(), "native_key").open().native_payload
+    assert (
+        len([r for r in registry["references"] if r["role"] == "nonpolymer_instance"])
+        == 2
+    )
+
+
+def test_other_unrequested_structure_keeps_missing_inputs_explicit(originals):
+    explorer = Card.from_dict(deepcopy(originals["1HTI"]["card"])).explore()
+    other = next(
+        i for i in explorer.view("structures").items() if i.label == "pdb:1WYI"
+    )
+    answer = by_role(other.related(), "question").open()
+    assert answer.request["options"]["structure_ref"] == "pdb:1WYI"
+    assert all(i.kind != "assembly_generator" for i in answer.items())
+    assert not any(
+        i._entry.value["role"] == "components"
+        for i in answer.items()[0].related().items()
+    )
+
+
+@pytest.mark.parametrize("saved", [False, True])
+def test_long_descriptors_keep_ambiguous_native_state_visible(
+    originals, saved, tmp_path, monkeypatch
+):
+    card = Card.from_dict(deepcopy(originals["1HTI"]["card"]))
+    source = next(
+        s
+        for s in card.source_assertion_store.store.values()
+        if s["source"]["name"] == "RCSB PDB"
+    )
+    instances = source["asserted_value"]["assembly_component_inputs"][
+        "nonpolymer_entities"
+    ][0]["nonpolymer_entity_instances"]
+    long_code = "X" * 200
+    instances[0]["rcsb_nonpolymer_entity_instance_container_identifiers"]["comp_id"] = (
+        long_code
+    )
+    answer = by_role(
+        structure_item(card.explore(), "native").related(), "question"
+    ).open()
+    positions = by_role(answer.items()[0].related(), "components").open()
+    if saved:
+        path = tmp_path / "long-original.json"
+        positions.save(path)
+        monkeypatch.setattr(Card, "__init__", forbidden)
+        monkeypatch.setattr(Card, "from_dict", forbidden)
+        monkeypatch.setattr(
+            importlib.import_module("sabueso.core.assembly_generation_v5"),
+            "generation",
+            forbidden,
+        )
+        positions = sabueso.read_exploration(path)
+    component = next(i for i in positions.items() if " · C · " in i.label)
+    assert long_code in component.label
+    assert "Ambiguous native key" in component.label
+    assert "Ambiguous native key" in str(positions)
+    assert "Ambiguous native key" in positions._repr_html_()

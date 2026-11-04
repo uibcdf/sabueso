@@ -718,11 +718,65 @@ original_links = original_question.back()
 Human and agent requests above share the same captured result and exact structure
 declaration. `back()` retraces the selected question and then the full original
 links. The saved reading keeps the
-original results, request and navigation in exploration format @6. If you save
+original results, request and navigation in exploration format @8. Earlier @6/@7
+files keep their original rules and requests. If you save
 before opening the question, reopening its link reports `not_saved`; it does not
 compute a new answer. Earlier files keep their original links. Counts describe
 declared combinations, including repeats; physical molecules, contacts and
 biological relevance remain separate scientific questions.
+
+### Open declared components and their original records
+
+Start with a structure retained by your Card. The example selects public TcTIM
+entry `pdb:1SUX`; choose the exact entry you want to review. The question prepares
+the appropriate native interpretation internally, with the same complete request
+available to an agent:
+
+```python
+selected_structure = (
+    explorer.view("structures").filter("structure_ref", equals="pdb:1SUX").items()[0]
+)
+structure_questions = selected_structure.related()
+assembly_answer = (
+    structure_questions.filter("role", equals="question").items()[0].open()
+)
+generators = assembly_answer.filter("kind", equals="assembly_generator").items()
+if generators:
+    assembly_links = generators[0].related()
+    declared_components = (
+        assembly_links.filter("role", equals="components").items()[0].open()
+    )
+    declared_components.table()
+    positions = declared_components.filter("role", equals="component").items()
+    if positions:
+        selected_component = positions[0].open()
+        selected_component.table()
+        original_records = selected_component.filter("role", equals="component_record")
+        original_records.table()
+        if original_records.items():
+            original_record = original_records.items()[0].open()
+            original_record.table()
+        original_sources = selected_component.filter("role", equals="source")
+        original_sources.table()
+        if original_sources.items():
+            original_source = original_sources.items()[0].open()
+            original_source.table()
+```
+
+Each component is an original declared position. Repeated labels stay separate;
+the list shows native keys, polymer/nonpolymer or neighbor context, descriptors
+and unresolved states. Native key states remain visible when a long label is
+abbreviated; full labels and values remain accessible. Open a record or source link
+to inspect its full retained content, then use `back()` to retrace the selection.
+A record being inspectable
+does not establish a resolved identity or a distinct physical molecule. Chemical
+codes do not repair missing identity, and this route does not infer contacts.
+
+If the selected entry has no retained generation input, the answer describes that
+gap and has no generator to open. Another structure's records never fill it. Save
+after opening the destinations you want to keep: saved reading reuses those exact
+destinations; unvisited component links report `not_saved`. Full original inputs
+remain accessible through their typed locations. No provider query is performed.
 
 ## Interpret original instance contacts
 
@@ -1066,7 +1120,9 @@ original_components = sabueso.read_exploration(
 assert original_components.native_payload == component_review.native_payload
 ```
 
-Default questions remain on @4. Saving preserves each interpretation separately,
+Direct `answer("assembly_generation")` and native calls still default to @4.
+The structure-specific question above now prepares explicit @5 internally.
+Saving preserves each interpretation separately,
 including its exact request, uncertainties and original source locations. Reading
 uses frozen original rules; an older file without this interpretation returns
 `not_saved` when asked for it. The agent catalog advertises the rule selector and,

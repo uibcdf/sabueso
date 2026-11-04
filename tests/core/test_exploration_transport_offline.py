@@ -495,7 +495,7 @@ def test_invalid_save_limits_do_not_prepare_or_publish(
 
 @pytest.mark.parametrize("codec", CODECS)
 @pytest.mark.parametrize("root_kind", ("assembly", "structures", "machine"))
-def test_current_formats_five_and_six_keep_exact_original_assembly_requests(
+def test_current_formats_five_and_eight_keep_exact_original_assembly_requests(
     tmp_path, monkeypatch, codec, root_kind
 ):
     import importlib
@@ -522,7 +522,7 @@ def test_current_formats_five_and_six_keep_exact_original_assembly_requests(
     receipt = root.save(path, compression=codec)
     raw = decode(path.read_bytes())[0]
     assert json.loads(raw)["format"] == "sabueso.card_exploration@" + (
-        "6" if root_kind == "structures" else "5"
+        "8" if root_kind == "structures" else "5"
     )
     names = [
         "assembly_generation_v1",

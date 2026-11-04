@@ -1,5 +1,20 @@
 # Sabueso — Decision Log
 
+## Bind component navigation to the original clicked position (2026-11-04, #173/#148)
+
+Use structure-context links @3 and explicit internal native @5 requests for the
+natural assembly question. Direct defaults stay @4. Assembly links @3 and component
+list/detail links @1 expose every original declaration position, uncertainty,
+native/neighbor input record and source without identity by descriptor or label.
+Format @8 verifies these navigation predicates over unchanged original @2 science.
+Only its component list/detail views carry an original-click binding: source link
+location plus complete request. A coherent alternative position in the same list
+cannot replace the recorded click. Saved unvisited destinations report `not_saved`;
+no current producer synthesizes them. Older view flags, identities and @1–@7
+verifiers remain unchanged. Genuine clean-producer @6/@7 files and a pre-verifier
+live navigation capsule provide independent controls. See
+[the design and qualification scope](pending_proposals/card_assembly_component_navigation.md).
+
 ## Preserve original nonpolymer assembly interpretation independently (2026-11-03, #173/#148)
 
 Expose native generation @5 through explicit human/agent options, separate

@@ -162,7 +162,7 @@ def test_saved_question_is_original_or_explicitly_not_saved(
     original = question.open() if followed else None
     path = tmp_path / "structure.json"
     root.save(path)
-    assert json.loads(path.read_text())["format"] == "sabueso.card_exploration@6"
+    assert json.loads(path.read_text())["format"] == "sabueso.card_exploration@8"
     monkeypatch.setattr(Card, "from_dict", forbidden)
     monkeypatch.setattr(Card, "__init__", forbidden)
     monkeypatch.setattr(Card, "assembly_generation", forbidden)
@@ -185,7 +185,7 @@ def test_saved_question_is_original_or_explicitly_not_saved(
         assert answer.back().native_payload == question._view.native_payload
     else:
         assert answer.outcome["status"] == "not_saved"
-    assert loaded.validation["verifier"] == "structure_assembly_navigation_binding@1"
+    assert loaded.validation["verifier"] == "assembly_component_navigation_binding@1"
 
 
 @pytest.mark.parametrize(
@@ -210,7 +210,7 @@ def test_fresh_coherent_question_substitution_is_refused(card, tmp_path, field):
         original._origin,
         "Synthetic substitution",
         source_location=original.native_payload["source_location"],
-        rule="structure_declaration_context_links@2",
+        rule="structure_declaration_context_links@3",
     )
     with pytest.raises(StorageError, match="Original structure field/source/endpoint"):
         forged.save(tmp_path / "forged.json")
@@ -281,7 +281,7 @@ def audit(event,args):
  if event=='open' and isinstance(args[0],str) and 'temp_data' in args[0].replace(chr(92),'/').split('/'):forbidden()
 sys.addaudithook(audit)
 saved=sabueso.read_exploration(sys.argv[1],expected_digest=sys.argv[2])
-assert saved.validation['verifier']=='structure_assembly_navigation_binding@1'
+assert saved.validation['verifier']=='assembly_component_navigation_binding@1'
 links=saved.back().back()
 question=links.filter('role',equals='question').items()[0]
 assert question.open().native_payload==saved.native_payload

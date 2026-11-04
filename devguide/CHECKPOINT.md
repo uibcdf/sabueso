@@ -1,10 +1,26 @@
 # Sabueso — Checkpoint
 
-Last updated: **2026-11-03 (UTC)**, independent nonpolymer assembly reading (#173), CI scratch recovery (#183),
+Last updated: **2026-11-04 (UTC)**, exact structure/component navigation (#173/#148), independent
+nonpolymer assembly reading and CI scratch recovery (#183),
 qualifier-parent receiving (#181) and recovered transport qualification (#178/#167/#112). This is the
 resumption entry point. Earlier source,
 scientific and release receipts remain linked in the technical reports and
 [preceding chronology](archive/CHECKPOINT_before_pause_20261025.md).
+
+The [structure/component navigation](pending_proposals/card_assembly_component_navigation.md)
+connects an exact structure declaration to its assembly question, every original
+component position and original records/sources. Structure-context @3 chooses
+native @5 internally; direct Card/explorer defaults remain @4. Format @8 verifies
+new navigation independently over unchanged @2 scientific results, binding each
+component destination to its actual clicked link and position. Genuine @6/@7 files
+keep their original routes; saved unvisited destinations report `not_saved`.
+Selected local receiving passes 1,250 unique offline cases over 35 files, serial,
+with zero test-group swap and peak owned RSS 629.4 MiB. Three actual guide blocks
+pass on four public controls. Original @6/@7 controls run separately. This is not
+a full local-suite claim; pending earlier CI does not qualify new bytes.
+Physical reconciliation, broad researcher/workload acceptance and paused 0.15.0
+consolidation remain separate. Receipts: #173/#148/#112 and
+`recovered_work/assembly_component_navigation_173_20261104/`.
 
 The [independent nonpolymer reading](pending_proposals/card_saved_assembly.md)
 adds explicit human/agent generation @5 through adapter @2 and original format @7.

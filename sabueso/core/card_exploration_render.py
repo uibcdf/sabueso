@@ -759,11 +759,24 @@ def _parts(view):
                 )
                 continue
             if "component_request" in value:
+                from .card_assembly_component_context_v1 import LIST_RULE, STATES
+
+                state_note = ""
+                if value.get("rule") == LIST_RULE:
+                    request = value["component_request"]
+                    wire = view.explorer.access._objects[request["result_ref"]]
+                    binding = wire["rows"][request["row_key"]]["item"][
+                        "component_bindings"
+                    ][request["component_index"]]
+                    # Read the retained finding; never re-evaluate native science.
+                    state = STATES.get(binding["state"], binding["state"])
+                    if state not in preview(item.label):
+                        state_note = preview(state) + " · "
                 rows.append(
                     (
                         str(index),
                         preview(item.label),
-                        f"{preview(value['availability'])} · {preview(value['component_request']['reason'], 240)}",
+                        f"{preview(value['availability'])} · {state_note}{preview(value['component_request']['reason'], 240)}",
                     )
                 )
                 continue

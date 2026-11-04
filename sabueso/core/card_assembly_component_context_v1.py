@@ -5,15 +5,24 @@ they never calculate new science, construct Cards or import a current catalog.
 """
 
 from copy import deepcopy
+from dataclasses import replace
 
 from ._card_local_navigation_v1 import local_link, source_links
 from .card_assembly_history_v2 import expected_links, restore_result
-from .card_exploration_verification import require
+from .card_exploration_verification import equal, require
 
 ASSEMBLY_RULE = "assembly_generation_links@3"
 LIST_RULE = "assembly_component_list_links@1"
 DETAIL_RULE = "assembly_component_detail_links@1"
 REQUEST_RULE = "assembly_component_request@1"
+FORMAT = "sabueso.card_exploration@8"
+VERIFIER = "assembly_component_navigation_binding@1"
+NAVIGATION_RULES = (
+    "structure_declaration_context_links@3",
+    ASSEMBLY_RULE,
+    LIST_RULE,
+    DETAIL_RULE,
+)
 SCOPE = (
     "Original declared component positions, including repeats. Native polymer/nonpolymer "
     "records, neighbor references, missing identity and conflicts retain their own source "
@@ -297,6 +306,26 @@ def follow(item):
     explorer = item._view.explorer
     link = item._entry.value
     request = link["component_request"]
+    origin = {
+        "rule": "assembly_component_origin@1",
+        "link_location": deepcopy(item._entry.location),
+        "request": deepcopy(request),
+    }
+    if explorer.mode == "saved":
+        for view in list(explorer._session["views"].values()):
+            if (
+                view._saved_state is not None
+                and view._display_request is None
+                and equal(view._component_navigation, origin)
+            ):
+                return replace(view, _explorer=explorer, _origin=item._view)
+        from .card_exploration_storage import not_saved
+
+        return not_saved(
+            explorer,
+            "This exact component destination was not retained; original captured inputs remain inspectable.",
+            item._view,
+        )
     require(
         set(request) == {"rule", "result_ref", "row_key", "component_index", "reason"}
         and request["rule"] == REQUEST_RULE,
@@ -321,4 +350,135 @@ def follow(item):
         payload = detail_payload(
             explorer.access, result, request["row_key"], request["component_index"]
         )
-    return _emit(explorer, payload, item._view, title)
+    base = _emit(explorer, payload, item._view, title)
+    explorer._session["views"].pop(id(base), None)
+    return replace(base, _component_navigation=origin)
+
+
+def register_bundle(bundle):
+    if not any(
+        record["flags"]["_link_panel"]
+        and isinstance(record["native_payload"], dict)
+        and record["native_payload"].get("rule") in NAVIGATION_RULES
+        for record in bundle["views"].values()
+    ):
+        return
+    from .card_exploration_assembly_v2 import ADAPTERS
+
+    bundle["format"] = FORMAT
+    bundle["producer"]["verifier"] = VERIFIER
+    bundle["capabilities"]["scientific_saved_adapters"] = list(ADAPTERS)
+    bundle.setdefault("scientific_results", {})
+
+
+def verify_links(view):
+    """Check original component decisions, typed positions and actual origins."""
+    access, native = view.explorer.access, view.native_payload
+    source = access._resolve(native["source_location"])[1]
+    segments = source["segments"]
+    require(
+        source["kind"] == "result"
+        and len(segments) >= 2
+        and segments[0] == {"type": "Key", "value": "rows"}
+        and segments[1].get("type") == "Key",
+        "Component links have no original assembly anchor.",
+    )
+    ref, key = source["result_ref"], segments[1]["value"]
+    result = _result(access, ref, key)
+    rule = native["rule"]
+    if rule == ASSEMBLY_RULE:
+        require(
+            view._component_navigation is None,
+            "Assembly context has an unexpected component request.",
+        )
+        require(len(segments) == 2, "Assembly links have a different original row.")
+        expected = assembly_payload(access, result, key)
+    elif rule == LIST_RULE:
+        require(
+            segments[2:] == [{"type": "Key", "value": "item"}],
+            "Component list has a different original generator.",
+        )
+        expected = list_payload(access, result, key)
+    else:
+        require(
+            rule == DETAIL_RULE
+            and len(segments) == 5
+            and segments[2:4]
+            == [
+                {"type": "Key", "value": "item"},
+                {"type": "Key", "value": "component_bindings"},
+            ]
+            and segments[4].get("type") == "Index",
+            "Component detail has no original declared position.",
+        )
+        index = segments[4]["value"]
+        _position(result, key, index)
+        expected = detail_payload(access, result, key, index)
+    require(
+        equal(native, expected),
+        "Original component navigation, source support or typed positions differ.",
+    )
+    anchor = view
+    while (
+        anchor._origin is not None
+        and anchor._origin._link_panel
+        and anchor._origin.result_ref == view.result_ref
+    ):
+        anchor = anchor._origin
+    require(anchor._reason == SCOPE, "Original component interpretation scope differs.")
+    origin = anchor._origin
+    if rule == ASSEMBLY_RULE:
+        require(
+            origin is not None
+            and origin._record_panel == "assembly_generation"
+            and origin.result_ref == ref
+            and any(
+                equal(entry.location, result.location("rows", key))
+                for entry in origin._selection._entries
+            ),
+            "Assembly links lost their actual original row.",
+        )
+    else:
+        parent_rule = ASSEMBLY_RULE if rule == LIST_RULE else LIST_RULE
+        parent_location = (
+            result.location("rows", key)
+            if rule == LIST_RULE
+            else result.location("rows", key, "item")
+        )
+        require(
+            origin is not None
+            and origin._link_panel
+            and origin.native_payload.get("rule") == parent_rule
+            and equal(origin.native_payload["source_location"], parent_location),
+            "Component destination lost its actual originating question.",
+        )
+        wanted_index = None if rule == LIST_RULE else index
+        actual = view._component_navigation
+        require(
+            isinstance(actual, dict)
+            and set(actual) == {"rule", "link_location", "request"}
+            and actual["rule"] == "assembly_component_origin@1",
+            "Missing original component request binding.",
+        )
+        selected = [
+            entry
+            for entry in origin._selection._entries
+            if equal(entry.location, actual["link_location"])
+        ]
+        require(
+            len(selected) == 1
+            and equal(actual["request"], selected[0].value.get("component_request")),
+            "Component destination lost its exact original clicked link.",
+        )
+        require(
+            any(
+                entry.value.get("component_request", {}).get("rule") == REQUEST_RULE
+                and entry.value["component_request"]["result_ref"] == ref
+                and entry.value["component_request"]["row_key"] == key
+                and equal(
+                    entry.value["component_request"]["component_index"], wanted_index
+                )
+                for entry in selected
+            ),
+            "Component destination differs from its original requested position.",
+        )

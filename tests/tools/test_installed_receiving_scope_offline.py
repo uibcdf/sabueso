@@ -48,17 +48,23 @@ def test_declared_nonpolymer_reader_and_original_data_run_outside_checkout():
     root = Path(__file__).resolve().parents[2]
     workflow = (root / ".github/workflows/ci.yml").read_text(encoding="utf-8")
     name = "test_card_saved_nonpolymer_assembly_offline.py"
+    component = "test_card_saved_component_navigation_offline.py"
     names = re.findall(r'cp tests/core/(\S+) "\$client_dir/"', workflow)
     assert name in names
+    assert component in names
     command = re.search(r"python -m pytest (.+)", workflow.replace("\\\n", " "))
     arguments = shlex.split(command[1])
     assert name in arguments
+    assert component in arguments
     selected_files = [argument for argument in arguments if argument.endswith(".py")]
     assert len(selected_files) == len(set(selected_files))
     originals = re.findall(r'cp tests/core/data/(\S+) "\$client_dir/data/"', workflow)
     assert {
         "assembly_nonpolymer_live_v2.json.gz",
         "card_exploration_quaternary_v1.json.gz",
+        "assembly_component_navigation_live_v1.json.gz",
+        "card_structure_assembly_saved_v6.json.gz",
+        "card_nonpolymer_navigation_saved_v7.json.gz",
     } <= set(originals)
     # Qualify the declared receiving payload, using the shared editable package.
     # Actual installed-package import/receiving qualification belongs to CI.
@@ -67,6 +73,7 @@ def test_declared_nonpolymer_reader_and_original_data_run_outside_checkout():
     ) as directory:
         stage = Path(directory)
         shutil.copyfile(root / "tests/core" / name, stage / name)
+        shutil.copyfile(root / "tests/core" / component, stage / component)
         (stage / "data").mkdir()
         for original in originals:
             shutil.copyfile(
@@ -84,6 +91,7 @@ def test_declared_nonpolymer_reader_and_original_data_run_outside_checkout():
                 "tmp_path_retention_policy=failed",
                 f"{name}::test_each_genuine_original_preserves_complete_rows_and_native_keys[1HTI]",
                 f"{name}::test_each_genuine_original_preserves_complete_rows_and_native_keys[legacy]",
+                f"{component}::test_original_component_destination_reopens_without_current_producers[position]",
             ],
             cwd=stage,
             env=env,
@@ -93,5 +101,5 @@ def test_declared_nonpolymer_reader_and_original_data_run_outside_checkout():
             timeout=120,
         )
         assert result.returncode == 0, result.stdout + result.stderr
-        assert "2 passed" in result.stdout
+        assert "3 passed" in result.stdout
         assert not (stage / "temp_data").exists()

@@ -10,12 +10,16 @@ controls. The bounded one-off acquisition is not a production client guarantee.
 Transport budgets need their own visible refusal/override, completeness and
 retry/archive contracts. Current native operator-key binding retains all entry
 projections and reports missing/ambiguous references; it does not validate matrices
-or transformed coordinates. Current component-key binding separately identifies
+or transformed coordinates. Default @4 component-key binding separately identifies
 polymer instance records and ligand-neighbor references; the latter do not supply
 full nonpolymer instances. Missing/ambiguous labels remain explicit, and author
-labels never substitute for native keys. Full component/physical-occurrence closure and the new native
-analysis's scientific adapter/original saved reader remain open in #173; source
-declaration tuples do not establish geometry, physical uniqueness or contacts.
+labels never substitute for native keys. Explicit @5 additionally binds coherent
+original nonpolymer instance records; missing context and conflicts stay explicit.
+Human/agent @2 and original @7 reading are implemented, with the following
+[component navigation and original @8 reading](pending_proposals/card_assembly_component_navigation.md).
+Exact-source qualification and full physical-occurrence closure remain separate
+in #173; source declaration tuples do not establish geometry, physical uniqueness
+or contacts.
 
 The [source-observation audit #166](pending_bugs/source_observation_identity.md)
 confirms that refresh preserves separate pinned observations, while the former
@@ -82,6 +86,11 @@ not promise exact old requests. See [the correction](pending_proposals/comparati
   keeps the wire and all checks intact; file-growth and accepted workload budgets
   remain open. Physical serialized repetition never establishes molecular identity
   or licenses dropping original inputs, units, support, uncertainty or history.
+  The component-navigation controls have only 2–12 original positions and repeat
+  1,625 encoded support bytes per component link. Long component lists need their
+  own workload receiving; large-list memory exhaustion is a hypothesis, not an
+  observed control failure. The [navigation report](pending_proposals/card_assembly_component_navigation.md)
+  records the measured small cases and the separate #148 preview-readability review.
 
 - **Ligand overlap coordinate scope ([#163](https://github.com/uibcdf/sabueso/issues/163)):**
   the [correction](pending_bugs/ligand_overlap_coordinate_scope.md) admits original

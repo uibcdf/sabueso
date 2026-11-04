@@ -166,12 +166,10 @@ def test_original_roundtrip_and_navigation_are_inert(
     )
     path = tmp_path / "original.json"
     receipt = root.save(path)
-    assert json.loads(path.read_text())["format"] == "sabueso.card_exploration@7"
+    assert json.loads(path.read_text())["format"] == "sabueso.card_exploration@8"
     inert(monkeypatch)
     restored = sabueso.read_exploration(path, expected_digest=receipt["bundle_digest"])
-    assert (
-        restored.validation["verifier"] == "assembly_generation_exploration_binding@2"
-    )
+    assert restored.validation["verifier"] == "assembly_component_navigation_binding@1"
     assert (
         "rcsb_assembly_generation@5" in restored.validation["verified_scientific_rules"]
     )
@@ -568,7 +566,7 @@ for name, methods in {
 assert not Path("temp_data").exists()
 assert not Path.cwd().is_relative_to(Path(sabueso.__file__).resolve().parents[1])
 view = sabueso.read_exploration(sys.argv[1], expected_digest=sys.argv[2])
-assert view.validation["verifier"] == "assembly_generation_exploration_binding@2"
+assert view.validation["verifier"] == "assembly_component_navigation_binding@1"
 assert [i.cells["declaration_count"].value for i in view.items()] == [2, 4]
 assert view.explorer.answer("assembly_generation", options={"structure_ref":"pdb:2V5B", "generation_rule":"rcsb_assembly_generation@5"}).native_payload == view.native_payload
 assert view.items()[0].explain().native_payload["request"]["structure_ref"] == "pdb:2V5B"
@@ -707,9 +705,7 @@ def test_nested_original_context_navigation_can_be_saved(
     restored = sabueso.read_exploration(path)
     assert restored.native_payload == expected
     assert restored.back().native_payload == nested.back().native_payload
-    assert (
-        restored.validation["verifier"] == "assembly_generation_exploration_binding@2"
-    )
+    assert restored.validation["verifier"] == "assembly_component_navigation_binding@1"
 
 
 def test_inert_setup_restores_first_imported_catalog_in_a_fresh_process():
@@ -911,11 +907,11 @@ def test_new_saved_reading_keeps_original_structure_question_destinations(
     links = explorer.view("structures").items()[0].related()
     question = links.filter("role", equals="question").items()[0]
     original = question.open()
-    assert original.native_payload["rule"] == "rcsb_assembly_generation@4"
+    assert original.native_payload["rule"] == "rcsb_assembly_generation@5"
     new = explorer.answer(TOPIC, options=OPTIONS)
     path = tmp_path / "mixed-navigation.json"
     new.save(path)
-    assert json.loads(path.read_text())["format"] == "sabueso.card_exploration@7"
+    assert json.loads(path.read_text())["format"] == "sabueso.card_exploration@8"
     inert(monkeypatch)
     restored = sabueso.read_exploration(path)
     related = restored.explorer.view("structures").items()[0].related()

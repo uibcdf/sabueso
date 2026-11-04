@@ -3,7 +3,7 @@ summary: Exact structure-to-assembly and declared-component source navigation.
 issue: uibcdf/sabueso#173
 status: open
 opened: 2026-11-04
-verification: planned
+verification: selected_offline_qualification
 area: [human-exploration, agent-access, navigation, persistence]
 ---
 
@@ -47,3 +47,40 @@ Keep actual local/exact-source CI/governance receipts in #173/#148/#112 and
 completion or before 0.15.0. No new source query, dependency, Card schema or shared
 MOLI contract is needed. Full physical reconciliation and broad researcher/workload
 acceptance remain open; 0.15.0 consolidation remains paused.
+
+Manual preview observation: component rows currently repeat the complete original
+request reason alongside a shared uncertainty paragraph. A follow-up #148
+presentation review should test whether shorter summaries improve scanning while
+retaining original meanings, full requests and saved wording. This is a usability
+hypothesis, not measured researcher acceptance; no historical fixture is rewritten.
+
+Workload observation for #167: the genuine list controls contain 2, 3 and 12
+positions and encode to 7,302, 9,548 and 29,573 bytes respectively. Their links
+repeat original support per position (1,625 encoded bytes per link). These are
+small-case observations, not large-list memory/latency acceptance. Include longer
+original-position lists in the broad workload gate, preserving complete source
+membership and visible, consciously overridable admission if a new limit is needed.
+
+A bounded long-descriptor regression reproduced a native ambiguity hidden by the
+120-character label preview. The renderer now reads the already retained binding
+state and includes it when the abbreviated label omits it, in both text and HTML.
+Live and inert saved regressions cover this case; no scientific wire, original
+label, frozen navigation predicate or genuine producer fixture changes.
+
+## Selected qualification
+
+Local receiving passes 1,250 unique offline cases over 35 files, serial through
+pytest-receptor, including 16 current journey/long-label cases, 18 new saved
+cases, two genuine original @6/@7 controls run separately and affected existing
+human/agent/native/context/quantity/argument/transport/persistence/receiving gates.
+All test groups have zero owned swap; peak owned RSS is 629.4 MiB. The original
+75 protected modules, Card behavior, source/protocol fixtures, schemas and
+migration stay unchanged. Three actual public guide blocks pass on four genuine
+controls without acquisition or Card mutation. This is selected local qualification,
+not a full local suite or a researcher-usability/large-workload acceptance claim.
+
+The final committed editable receives a further focused check, followed by an
+unskipped exact-source CI/governance checkpoint. Record its SHA/SDK, all actual
+source/installed lane summaries, full manifests/jobs/steps and codec receiving
+in the owning issues and phase index. Earlier green/pending runs do not qualify
+new navigation bytes. Broad physical/researcher/workload closure remains open.

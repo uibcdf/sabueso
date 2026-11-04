@@ -31,6 +31,14 @@ original grammars without current digesters; unretained requests stay `not_saved
 The default remains @4. See [the native key contract](pending_proposals/assembly_nonpolymer_binding.md)
 and [independent saved reading](pending_proposals/card_saved_assembly.md).
 
+Structure-context policy @3 prepares an exact `structure_ref`/`relationship_id`
+request with explicit @5, without requiring a human to select a rule version.
+Direct omitted exploration/native rules remain @4. Component navigation uses
+internal typed requests over the same retained result, not new public arguments.
+Format @8 alone adds an optional original-click binding to list/detail view flags;
+its index requires a non-boolean integer. Earlier flag shapes and view identities
+remain unchanged. See [the navigation contract](pending_proposals/card_assembly_component_navigation.md).
+
 `Card.assembly_generation` (#173) adds positive non-boolean `operation_budget`
 (default 100,000), or explicit None to disable its receiving ceilings, and strict
 booleans `expand_operations` and `expand_occurrences`. Exact `generation_rule` selects current

@@ -322,6 +322,14 @@ its exact-source receiving before qualification or default adoption.
 Source-bound qualification and full physical reconciliation remain separate from
 closing #148 or resuming 0.15.0 consolidation.
 
+The [structure-to-component continuation](pending_proposals/card_assembly_component_navigation.md)
+now exposes exact native, literal and qualifier declaration routes through ordinary
+questions and component links. Its internal explicit @5 choice leaves direct
+defaults on @4; positions, duplicates, uncertainty and original source records stay
+separate. Original format @8 checks the actual clicked position and original
+navigation without running current producers. Qualify the completed block on its
+own source; this does not finish physical reconciliation or broad acceptance.
+
 On 2026-10-27 the maintainer authorized a short
 [persistence-cost block #167](pending_proposals/card_persistence_cost.md) before
 resuming structural expansion: account for accumulated content and verification

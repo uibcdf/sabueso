@@ -9,6 +9,12 @@ area: [human-exploration, agent-access, scientific-integrity, persistence]
 
 # Original assembly scientific reading
 
+The following [component-navigation continuation](card_assembly_component_navigation.md)
+adds structure links @3, internally explicit native @5 questions, assembly links @3
+and original saved format @8. This document preserves the prior named policies
+and their receiving scope; genuine @6/@7 files keep those original meanings.
+Direct native/explorer defaults remain @4.
+
 `sabueso.card_exploration@5` explicitly registers
 `assembly_generation_exploration_binding@1` for original
 `assembly_generation_exploration@1` results. Later structure navigation uses @6;

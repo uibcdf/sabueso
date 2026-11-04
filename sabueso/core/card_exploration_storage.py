@@ -66,6 +66,9 @@ def admitted_selection(selection):
             if isinstance(original, dict) and original.get("rule") in (
                 "assembly_generation_links@1",
                 "assembly_generation_links@2",
+                "assembly_generation_links@3",
+                "assembly_component_list_links@1",
+                "assembly_component_detail_links@1",
             ):
                 return True
             if location["result_ref"] not in selection._access._metadata_refs:
@@ -268,6 +271,8 @@ def _freeze_view(view, ids):
         }
     selection = view._selection
     flags = {name: deepcopy(getattr(view, name)) for name in _FLAGS}
+    if view._component_navigation is not None:
+        flags["_component_navigation"] = deepcopy(view._component_navigation)
     if (
         selection._scientific is not None
         and view._display_request
@@ -545,6 +550,11 @@ def _prepare(root):
     from .card_exploration_assembly_v2 import register_bundle as register_nonpolymer
 
     register_nonpolymer(bundle, objects, access)
+    from .card_assembly_component_context_v1 import (
+        register_bundle as register_components,
+    )
+
+    register_components(bundle)
     return bundle
 
 
@@ -717,6 +727,11 @@ def _restore_checked(bundle, expected_digest):
         preview_rule(bundle.get("presentation_metadata"))
     if (
         isinstance(bundle, dict)
+        and bundle.get("format") == "sabueso.card_exploration@8"
+    ):
+        from .card_exploration_verification_v8 import verify_bundle, verify_views
+    elif (
+        isinstance(bundle, dict)
         and bundle.get("format") == "sabueso.card_exploration@7"
     ):
         from .card_exploration_verification_v7 import verify_bundle, verify_views
@@ -809,8 +824,9 @@ def _restore_checked(bundle, expected_digest):
                 from .card_assembly_history_v2 import restore_result
 
                 _require(
-                    bundle["format"] == "sabueso.card_exploration@7",
-                    "Nonpolymer assembly results require original format @7.",
+                    bundle["format"]
+                    in ("sabueso.card_exploration@7", "sabueso.card_exploration@8"),
+                    "Nonpolymer assembly results require original format @7 or @8.",
                 )
             else:
                 from .card_assembly_history_v1 import restore_result
@@ -821,8 +837,9 @@ def _restore_checked(bundle, expected_digest):
                         "sabueso.card_exploration@5",
                         "sabueso.card_exploration@6",
                         "sabueso.card_exploration@7",
+                        "sabueso.card_exploration@8",
                     ),
-                    "Assembly results require original format @5, @6 or @7.",
+                    "Assembly results require original format @5, @6, @7 or @8.",
                 )
             scientific_results[ref] = restore_result(ref, wire)
         else:
@@ -833,7 +850,10 @@ def _restore_checked(bundle, expected_digest):
         from .card_exploration_sites import FORMAT as SITE_FORMAT
         from .card_exploration_sites import verify_objects
 
-        if bundle["format"] == "sabueso.card_exploration@7":
+        if bundle["format"] in (
+            "sabueso.card_exploration@7",
+            "sabueso.card_exploration@8",
+        ):
             from .card_exploration_assembly_v2 import (
                 verify_objects as verify_nonpolymer_objects,
             )
@@ -885,8 +905,19 @@ def _restore_checked(bundle, expected_digest):
         visiting.add(key)
         record = bundle["views"][key]
         flags = deepcopy(record["flags"])
+        accepted_flags = set(_FLAGS)
+        if (
+            bundle["format"] == "sabueso.card_exploration@8"
+            and "_component_navigation" in flags
+        ):
+            accepted_flags.add("_component_navigation")
+            _require(
+                isinstance(flags["_component_navigation"], dict),
+                "Original component request requires a retained mapping.",
+            )
         _require(
-            set(flags) == set(_FLAGS), "Missing or unknown saved presentation member."
+            set(flags) == accepted_flags,
+            "Missing or unknown saved presentation member.",
         )
         _require(
             all(
@@ -1041,7 +1072,7 @@ def _restore_checked(bundle, expected_digest):
             )
             session[kind][key] = nodes[ref]
     retained_views = dict(session["views"])
-    if bundle["format"] == "sabueso.card_exploration@7":
+    if bundle["format"] in ("sabueso.card_exploration@7", "sabueso.card_exploration@8"):
         from .card_explanation_request_binding_v2 import (
             verify as verify_explanation_request,
         )
@@ -1064,13 +1095,17 @@ def _restore_checked(bundle, expected_digest):
         "presentation_wording": "recorded",
         "source_authenticity_and_truth": "not_established_by_hashes",
         "scientific_explanation_requests": "scientific_explanation_request_binding@2"
-        if bundle["format"] == "sabueso.card_exploration@7"
+        if bundle["format"]
+        in ("sabueso.card_exploration@7", "sabueso.card_exploration@8")
         else "scientific_explanation_request_binding@1",
     }
     if "scientific_results" in bundle:
         from .card_exploration_science import _verification_report
 
-        if bundle["format"] == "sabueso.card_exploration@7":
+        if bundle["format"] in (
+            "sabueso.card_exploration@7",
+            "sabueso.card_exploration@8",
+        ):
             from .card_exploration_assembly_v2 import (
                 verification_report as _verification_report,
             )
@@ -1083,9 +1118,16 @@ def _restore_checked(bundle, expected_digest):
             )
 
         session["validation"].update(_verification_report(bundle))
-    if bundle["format"] == "sabueso.card_exploration@7":
+    if bundle["format"] in ("sabueso.card_exploration@7", "sabueso.card_exploration@8"):
         session["validation"].update(
             recorded_navigation_decisions="Original assembly_generation_links@2 and earlier original assembly/structure link policies independently verified.",
+        )
+    if bundle["format"] == "sabueso.card_exploration@8":
+        from .card_assembly_component_context_v1 import VERIFIER as COMPONENT_VERIFIER
+
+        session["validation"].update(
+            verifier=COMPONENT_VERIFIER,
+            recorded_navigation_decisions="Original structure question @3/request @2 and declared component list/detail @1 verified against exact original declarations, positions and sources; earlier policies preserved.",
         )
     if bundle["format"] == "sabueso.card_exploration@6":
         from .card_structure_context_v2 import VERIFIER as STRUCTURE_VERIFIER

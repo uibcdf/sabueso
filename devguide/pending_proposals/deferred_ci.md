@@ -9,6 +9,22 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Exact structure and declared-component navigation (2026-11-04, #173/#148)
+
+The [new navigation](card_assembly_component_navigation.md) has three short local
+producer/fixture checkpoints (`b0f1a8a`, `63f3200`, `017bcbf`) before independent
+format @8 receiving. They remain local until the completed block passes selected
+gates. Selected local qualification passes 1,250 unique offline cases /35 files,
+serial through the receptor, with zero test-group swap. Three actual public guide
+blocks pass on four controls. Genuine original @6/@7 files from source `31593fd`/SDK154 and the live
+capsule from `63f3200`/SDK156 must remain immutable. Preserve native @1–@5, original
+adapters/readers and direct @4 defaults. Qualify the final block through an
+unskipped exact-source CI/governance push, including copied installed payloads,
+all lanes/steps/manifests and codec receiving. Retain actual counts and source/SDK
+receipts under `recovered_work/assembly_component_navigation_173_20261104/` and
+#173/#148/#112. Earlier pending runs do not qualify later bytes. Broad physical,
+researcher/workload acceptance and 0.15.0 consolidation remain open/paused.
+
 ### Independent nonpolymer assembly reading (2026-11-03, #173/#148)
 
 The [explicit @5 human/agent and original @7 reader](card_saved_assembly.md)

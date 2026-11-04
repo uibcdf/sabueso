@@ -9,6 +9,12 @@ area: [human-exploration, navigation, saved-reading]
 
 # Structure declaration to assembly question
 
+The following [component-navigation continuation](card_assembly_component_navigation.md)
+adds structure links @3, internally explicit native @5 questions, assembly links @3
+and original saved format @8. This document preserves the prior named policies
+and their receiving scope; genuine @6/@7 files keep those original meanings.
+Direct native/explorer defaults remain @4.
+
 `structure_declaration_context_links@2` retains the original @1 field/source/
 endpoint decisions and adds one explicit assembly-generation question. It accepts
 the exact native inventory item, literal focal `has_structure` relationship or

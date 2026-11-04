@@ -12,6 +12,12 @@ supersedes: []
 
 # Complete Card exploration before 0.15.0
 
+The [exact structure/component route](card_assembly_component_navigation.md)
+now links retained declarations, assembly questions, separate component positions
+and original records/sources. Saved format @8 binds the exact original click;
+older saved routes retain their own policies. This advances structural navigation,
+with physical reconciliation and broad researcher/workload acceptance still open.
+
 ## Maintainer decision and release gate
 
 On 2026-10-22 the maintainer explicitly required **the entire broad exploration

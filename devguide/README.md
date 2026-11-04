@@ -57,6 +57,13 @@ pre-reader producer capsule and frozen receiving predicates. Default @4 and earl
 adapters/readers retain their original meanings; final exact-source qualification
 and broader physical reconciliation remain separate.
 
+The [structure/component navigation](pending_proposals/card_assembly_component_navigation.md)
+connects an exact structure declaration to assembly generators, original declared
+positions and their native records/sources. New structure questions choose @5
+internally; direct defaults remain @4. Independent format @8 binds each saved
+destination to the exact clicked link and original position. Genuine @6/@7 files
+retain their old navigation; wider physical/researcher acceptance stays open.
+
 To resume after a pause, read [CHECKPOINT.md, Resume here](CHECKPOINT.md#resume-here),
 then [ROADMAP.md, Immediate resumption sequence](ROADMAP.md#immediate-resumption-sequence).
 These separate published behavior, accumulated local work, latest qualification

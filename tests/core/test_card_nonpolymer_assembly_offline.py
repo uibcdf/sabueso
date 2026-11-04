@@ -134,14 +134,14 @@ def test_exact_detail_support_and_new_navigation_rule(originals):
     assert detail.native_payload == item._entry.value["item"]
     assert explanation.native_payload["request"]["generation_rule"] == RULE
     assert item.support[0]["rule_names"][0] == RULE
-    assert links.native_payload["rule"] == "assembly_generation_links@2"
+    assert links.native_payload["rule"] == "assembly_generation_links@3"
     assert {r["role"] for r in links.native_payload["links"]} >= {
         "source",
         "original_input",
         "structure_context",
     }
     assert all(
-        r["rule"] == "assembly_generation_links@2"
+        r["rule"] == "assembly_generation_links@3"
         for r in links.native_payload["links"]
     )
     assert "Native keys are matched" in str(detail)

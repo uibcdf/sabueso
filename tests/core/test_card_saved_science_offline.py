@@ -62,7 +62,7 @@ def test_public_original_results_and_saved_topic_closure(bundles, topic, tmp_pat
     view = read_bundle(bundles[topic], tmp_path)
     assert view.explorer.mode == "saved"
     assert view.validation["verifier"] == (
-        "structure_assembly_navigation_binding@1"
+        "assembly_component_navigation_binding@1"
         if topic == "structures"
         else "scientific_exploration_binding@1"
     )

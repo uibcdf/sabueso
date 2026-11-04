@@ -763,6 +763,7 @@ class CardView:
     _saved_state: object = field(default=None, repr=False)
     _display_request: object = field(default=None, repr=False)
     _machine_ref: str | None = field(default=None, repr=False)
+    _component_navigation: dict | None = field(default=None, repr=False)
     _workload: object = field(default=None, repr=False)
 
     def __post_init__(self):
@@ -854,6 +855,11 @@ class CardView:
                 **({"question_catalog": True} if self._question_catalog else {}),
                 **({"field_panel": self._field_panel} if self._field_panel else {}),
                 **({"record_panel": self._record_panel} if self._record_panel else {}),
+                **(
+                    {"component_navigation": self._component_navigation}
+                    if self._component_navigation is not None
+                    else {}
+                ),
             },
         )
 
