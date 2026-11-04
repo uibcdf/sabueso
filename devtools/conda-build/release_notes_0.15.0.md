@@ -12,6 +12,14 @@ is established by this draft.
 
 ## Intended changes since 0.14.0
 
+- Use conservative activity class @4 for new activity and ligand views: classify
+  only intervals wholly within one configured band, and retain single-point
+  inhibition without unsupported potency/dose inference. Readable explanations
+  preserve original support; explicit @3 retains historical interpretation.
+  New packet mapping @15 changes activity interpretation while inheriting @14's
+  other scopes; original stored packets remain inert. Scientific/researcher and
+  exact-candidate acceptance remain separate and pending (#184/#185/#148).
+
 - Add explicit gzip/Zstandard transport for saved human/agent exploration, keeping
   plain JSON defaults and original scientific formats/readers. Strict content-based
   single-frame reading, visible encoded/decoded/window ceilings and positive/None

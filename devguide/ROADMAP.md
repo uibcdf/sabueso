@@ -219,7 +219,7 @@ Status: **done**, **partial** (part delivered, the rest named), **pending**, or
 | Inputs: SMILES, InChI | done | matched by PubChem, never a computed key (`pubchem_structure_lookup`, #93) |
 | Inputs: sequence (FASTA), structure files | partial development | explicit `exact_sequence_candidates@1` accepts raw/FASTA, verifies full archive/current canonical sequences and retains ambiguity, caps, failures and unqueried isoforms. Automatic sequence/structure-file resolution remains pending and needs its own identity rules. |
 | Disease associations of a protein | done | `annotations.disease` (#39) |
-| Ligands with a role (inhibitor…) | changed | a role is a derived class, never asserted (#25): `bioactivity_class@3`, `ligand_deck` |
+| Ligands with a role (inhibitor…) | changed | derived concentration bands use current activity @4 / explicit original @3; a band alone does not establish an inhibitor role. Stated mechanisms remain source knowledge; `ligand_deck` crosses exact supported identities |
 | Deck of inhibitors of a protein | done | `ligand_deck(card)` with derived classes |
 | Local cache / store | done | `KnowledgeStore` (cards); retrieval archive and local mirrors, opt-in (#100, `CACHE_POLICY.md`) |
 

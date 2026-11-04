@@ -115,7 +115,7 @@ def test_public_measurement_groups_and_classes_retain_actual_view_and_source_ver
         if any(m["group"] == group["id"] for m in i["measurements"])
     )
     explained = public_card.explain_bioactivity(item["molecule_ref"])
-    assert explained["rule"]["rule"] == "bioactivity_explanation@1"
+    assert explained["rule"]["rule"] == "bioactivity_explanation@2"
     assert explained["item"]["classes"] == item["classes"]
     assert explained["item"]["class"] == item["class"]
     assert explained["item"]["measurement_count"] == len(explained["groups"])
@@ -222,7 +222,7 @@ def test_activity_only_copy_diagnostic_tracks_final_resolution_and_original_pin(
     assert measurement["diagnostics"]["unresolved_copies"] == expected
     assert answer["measurement_identity"]["unresolved_copies"] == expected
     assert identity["rule"]["rule"] == "measurement_identity@1"
-    assert answer["classification"]["rule"] == "bioactivity_class@3"
+    assert answer["classification"]["rule"] == "bioactivity_class@4"
     (group,) = answer["groups"]
     assert group["class"] == answer["item"]["class"] == "active"
     assert answer["item"]["measurement_count"] == 1
@@ -307,7 +307,7 @@ def test_indirect_filter_and_nondefault_quantity_policy_are_exact():
 @pytest.mark.parametrize(
     "kind", ["range", "single_point", "unknown_units", "not_determined"]
 )
-def test_classification_branches_keep_raw_inputs_and_quantity_boundaries(kind):
+def test_legacy_classification_branches_keep_raw_inputs_and_quantity_boundaries(kind):
     card = synthetic()
     options = {
         "range": dict(
@@ -327,7 +327,9 @@ def test_classification_branches_keep_raw_inputs_and_quantity_boundaries(kind):
         "not_determined": dict(value=None, measurement={"comment": "not determined"}),
     }
     rel = record(card, 1, **options[kind])
-    answer = card.explain_bioactivity(MOLECULE)
+    answer = card.explain_bioactivity(
+        MOLECULE, classification_rule="bioactivity_class@3"
+    )
     (measurement,) = answer["item"]["measurements"]
     assert (
         measurement["basis"]

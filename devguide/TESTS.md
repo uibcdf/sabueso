@@ -86,14 +86,19 @@ Stricter nested glossary interpretation and original-pin acceptance remain #182.
 
 ## Behavior-based gate selection
 
-For explicit `bioactivity_class@4` (#184/#185), run
+For default/explicit `bioactivity_class@4` (#184/#185), run
 `test_bioactivity_class_v4_offline.py`, affected bioactivity/explanation/grouping,
 curation/ligand, argument, quantity and packet cases, and the isolated receiving
-scope test. Check interval boundaries, original @3/default equivalence, no
+scope test. Check interval boundaries, explicit original @3 replay, coherent defaults, no
 single-point dose/potency inference, readable reasons and original Card/support
 isolation. CI and staged installed payloads include the standalone new test file;
 its copied local run qualifies payload independence, not installed-artifact delivery.
-Scientific/default adoption remains separate from these technical checks.
+Check default activity/ligand/explanation/table agreement and @15 full/index
+packets with original @6–@14 routing. The genuine pre-adoption @14 control must
+read inertly and retain its original digest; do not regenerate it. Exercise the
+inherited structure/literature/disease scopes and both current/original public
+journeys. Independent scientific/researcher acceptance remains separate from
+these technical checks.
 
 | Changed behavior | Select these test files / gates |
 | --- | --- |

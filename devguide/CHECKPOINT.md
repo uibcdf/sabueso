@@ -14,14 +14,21 @@ payloads, row membership/order and scientific results stay unchanged. Its select
 local and final source receiving are recorded separately from the owned-state
 checkpoint below; broad scientist acceptance remains open.
 
-Post-audit B1 now adds [explicit conservative activity interpretation](pending_bugs/bioactivity_interpretation.md)
-under `bioactivity_class@4` and explanation @2. Omission remains original @3 while
-default/consumer adoption is reviewed. Local receiving passes 62 independent
-cases, 232 affected integration cases and the isolated copied payload; five
-original function ASTs still equal 0.14.0. Public-input comparisons retain original
-support/Card state and document all changed classifications as policy differences.
-No new explorer panel or scientist acceptance is claimed. Qualify the accumulated
-new source remotely, then continue adoption and #186; 0.15.0 consolidation stays paused.
+The [earlier opt-in source `1290201`](evidence/bioactivity_opt_in_checkpoint_20261104.json)
+is qualified: CI 18/18 and governance 1/1, thirteen actual source/installed summaries,
+full hashes/CRC/steps, twelve codec routes and receiving verified. This also
+recovers B0's component renderer and UTF-8 test correction. Failed `3413559` stays
+failed. The qualified opt-in source retains default @3.
+
+The subsequent [activity adoption](pending_bugs/bioactivity_interpretation.md)
+uses @4 for new activity/ligand views and coherent explanations/tables. Packet
+mapping @15 inherits @14 outside bioactivities; old mappings explicitly retain
+class @3 and original stored packets remain inert. Current integration passes
+338 affected cases, with genuine pre-adoption @14 controls and updated versioned
+public examples. These later changed bytes need their own exact-source checkpoint.
+No rich activity explorer panel or independent scientist acceptance is claimed;
+complete applicable receiving, then continue #186 and B3–B7. Release consolidation
+remains paused, with the full validated "wow" experience required before 0.15.0.
 
 The current [owned-state candidate](pending_proposals/exploration_owned_state.md)
 profiles save/read separately and removes redundant private copies, retaining

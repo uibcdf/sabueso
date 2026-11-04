@@ -89,8 +89,10 @@ def test_every_activity_record_is_a_supported_relationship(resolver):
     assert len(assays) == 13
 
 
-def test_derived_classes_follow_the_stated_rule(resolver):
-    view = _card(resolver, TCTIM).bioactivities()
+def test_legacy_derived_classes_follow_the_original_rule(resolver):
+    view = _card(resolver, TCTIM).bioactivities(
+        classification_rule="bioactivity_class@3"
+    )
     rule = view["classification"]
     assert rule["rule"] == "bioactivity_class@3"
     # Thresholds are recorded as quantities, never as numbers named after a unit (#32).

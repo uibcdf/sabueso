@@ -1,12 +1,13 @@
 # Sabueso — Argument contracts (ArgDigest)
 
-`Card.bioactivities` and `Card.explain_bioactivity` accept exact
-`classification_rule="bioactivity_class@3"` (unchanged default) or explicit
-`"bioactivity_class@4"`. A single new digester owns the selector. Backend checks
+`Card.bioactivities`, `Card.explain_bioactivity`, `Card.ligands`,
+`Card.explain_ligand` and `Card.compare_ligands` accept exact
+`classification_rule="bioactivity_class@4"` (default) or explicit original
+`"bioactivity_class@3"`. One digester owns the selector. Backend checks
 remain active with digestion skipped, before explanation pin capture; @4 also
 requires finite ordered positive concentration thresholds. The
 [interpretation correction](pending_bugs/bioactivity_interpretation.md) records
-the opt-in scope and pending default/consumer adoption. No approximate selector
+the default/consumer adoption and independent acceptance scope. No approximate selector
 or implicit change to historical rules is accepted.
 
 Exploration file transport adds exact `compression` values `none`/`gzip`/`zstd`,

@@ -862,9 +862,12 @@ A Relationship is first-class, traceable knowledge:
     `ci`) and `n` (replicates). As written, it lives in the curated SourceAssertion.
     No database source Sabueso maps states an uncertainty, so today only curated
     measurements have one;
-  - a range is classified by its band when both ends share one, and is `inconclusive`
-    across a threshold (`bioactivity_class@3`). The uncertainty does not change the
-    class. Ranges take no pChEMBL check and no scale comparison.
+  - under explicit original `bioactivity_class@3`, a range is classified by its band
+    when both ends share one and is `inconclusive` across a threshold; uncertainty
+    does not change that original class. Current @4 requires every permitted value
+    to fit one band and leaves uninterpreted uncertainty inconclusive. This is a
+    runtime policy choice, not a change to stored ranges/uncertainty. Ranges take
+    no pChEMBL check and no scale comparison.
 - `Card.to_dict()` writes `quantities`: one PyUnitWizard `QuantityRecordBundle` whose
   entries are columns `"<path template>|<unit>"`. `Card.from_dict()`, and therefore every
   loader, verifies the bundle and checks every node against its column. A change made
@@ -1012,9 +1015,11 @@ They are relationships of the protein:
   the depositor, or `RCSB`, assigned for older entries).
 
 `Card.ligands(deck)` crosses them with a deck of SmallMoleculeCards anchored at the
-InChIKey (`ligand_deck`). A role such as "inhibitor" is a derived activity class
-(`bioactivity_class@3`), never an asserted attribute. The mechanism ChEMBL curates, when
-present, is its `action_type`, kept in the measurement qualifiers.
+InChIKey (`ligand_deck`). Activity classes are derived interpretations (current
+`bioactivity_class@4`, explicit original @3), not SourceAssertions. A concentration
+band alone does not establish an inhibitor/agonist role; any such interpretation
+needs its stated scientific basis. The mechanism ChEMBL curates, when present,
+is its `action_type`, kept as source knowledge in the measurement qualifiers.
 
 ## Clinical Layer (Small Molecules)
 The schema includes a dedicated `clinical` section for:

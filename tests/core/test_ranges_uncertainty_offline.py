@@ -111,9 +111,11 @@ def test_a_chembl_range_keeps_both_ends_normalized_and_sealed(ranged_client):
         Card.from_dict(data)
 
 
-def test_the_view_shows_the_range_and_classifies_it_by_its_band(ranged_client):
+def test_legacy_view_shows_the_range_and_classifies_it_by_its_band(ranged_client):
     card = _tctim(ranged_client)
-    view = card.bioactivities(include_indirect=True)
+    view = card.bioactivities(
+        include_indirect=True, classification_rule="bioactivity_class@3"
+    )
     assert (
         view["classification"]["rule"]
         == BIOACTIVITY_CLASS_RULE

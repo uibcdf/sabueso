@@ -19,11 +19,12 @@ Its [required wow experience](CONTINUATION_PLAN_20261104.md#required-wow-experie
 defines observable criteria for every block and explicit researcher acceptance
 before 0.15.0 consolidation.
 
-The first post-audit scientific implementation is
-[opt-in interval-aware activity interpretation](pending_bugs/bioactivity_interpretation.md)
-(#184/#185), with readable reasons, original @3 compatibility and a bounded
-public-input impact comparison. Default/consumer adoption and full human/agent
-integration remain open; local tests are separate from scientific acceptance.
+The [first opt-in activity source](evidence/bioactivity_opt_in_checkpoint_20261104.json)
+is qualified at `1290201`. The following
+[default/consumer adoption](pending_bugs/bioactivity_interpretation.md) uses
+conservative class @4 and packet mapping @15, preserving explicit @3 and inert
+old packet/example reading. New changed bytes need their own source checkpoint;
+independent scientific/researcher review and rich human/agent integration remain open.
 
 **Pause handoff, 2026-10-25:** [CHECKPOINT](CHECKPOINT.md) is the concise current
 entry point; [its preceding chronology](archive/CHECKPOINT_before_pause_20261025.md)

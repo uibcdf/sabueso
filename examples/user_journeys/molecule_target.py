@@ -18,7 +18,8 @@ from sabueso.tools.db.pdb_ccd import FixtureCCDClient
 from sabueso.tools.db.rcsb import FixtureRCSBClient
 from sabueso.tools.db.unichem import FixtureUniChemClient
 
-FORMAT = "sabueso.molecule_target_example@1"
+FORMAT = "sabueso.molecule_target_example@2"
+READABLE_FORMATS = {"sabueso.molecule_target_example@1", FORMAT}
 TARGET = "P52270"
 MOLECULES = {"bts": "chembl:CHEMBL1161789", "benznidazole": "chembl:CHEMBL110"}
 ANCHORS = {
@@ -252,7 +253,8 @@ def check_explanation_support(value, cards):
 def read_stage(output, stage):
     manifest = read_json(output / f"{stage}.manifest.json")
     require(
-        manifest["format"] == FORMAT and manifest["stage"] == stage, "Wrong manifest"
+        manifest["format"] in READABLE_FORMATS and manifest["stage"] == stage,
+        "Wrong manifest",
     )
     require(manifest["scope"] == SCOPE, "Different declared query")
     roles = {"target", *MOLECULES}

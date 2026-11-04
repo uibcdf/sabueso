@@ -79,7 +79,7 @@ def test_original_target_molecule_assays_clinical_scope_and_citations_survive(bu
     assert assay["relationship_type"] == "D" and assay["confidence_score"] == 9
     assert "glyceraldehyde 3-phosphate" in assay["description"]
     assert bts["mass"]["unit"] == "dalton"
-    assert bts["crossing"]["rule"]["rule"] == "ligand_deck_explanation@2"
+    assert bts["crossing"]["rule"]["rule"] == "ligand_deck_explanation@3"
     assert bts["crossing"]["items"][0]["item"]["records"] == [
         "chembl:CHEMBL1161789",
         "pdb.ligand:BTS",
@@ -91,9 +91,10 @@ def test_original_target_molecule_assays_clinical_scope_and_citations_survive(bu
     )
     benz = report["molecules"]["benznidazole"]
     measured, unstated = benz["activity"]["item"]["measurements"]
-    assert measured["type"] == "Inhibition" and measured["class"] == "inactive"
+    assert measured["type"] == "Inhibition" and measured["class"] == "inconclusive"
     assert measured["normalized"] == {"value": 18, "unit": "percent"}
-    assert measured["test_concentration"] == {"value": 400, "unit": "micromolar"}
+    assert measured["test_concentration_state"] == "not_interpreted"
+    assert "test_concentration" not in measured
     assert unstated["value"] is None and unstated["class"] == "not_determined"
     clinical = benz["clinical"]
     assert clinical["max_phase"] == 4.0 and len(clinical["indications"]) == 4

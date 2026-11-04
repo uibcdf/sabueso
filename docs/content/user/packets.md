@@ -34,7 +34,12 @@ A `KnowledgeQuery` is structured, not free text:
   and PubChem BioAssay.
 
 Anything else is refused, never ignored. What each aspect asks of the sources is fixed
-by a named, versioned mapping. Development uses `packet_aspects@14`: experimental structures use
+by a named, versioned mapping. Development uses `packet_aspects@15`: measured
+bioactivities use conservative class @4, with original quantities, qualifiers,
+support and readable reasons. Unsupported single-point potency/dose inference
+stays uncomputed. Original mappings @6–@14 retain activity class @3, and reading
+a stored packet never updates its interpretation. Different mappings remain
+incomparable through `same_knowledge`. Other aspects inherit @14: experimental structures use
 `experimental_structure_admission@1`, `experimental_structure_coordinates@1`
 and inventory `@3`. Original canonical sequence support and retained experimental
 mapping inputs must admit coordinate comparisons; unknown scope stays uncomputed.

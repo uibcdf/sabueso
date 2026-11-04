@@ -1,0 +1,300 @@
+{
+  "owner": "#184/#185/#148/#112",
+  "review_trigger": "exact-source default adoption and pre-0.15.0 acceptance",
+  "base_source": "129020182555787d3cab58cc110e7a707fc5e553",
+  "state": "local_qualification_pass_hosted_and_independent_acceptance_pending",
+  "default_rule": "bioactivity_class@4",
+  "original_rule": "bioactivity_class@3",
+  "packet_mapping": "packet_aspects@15",
+  "ligand_explanation_rule": "ligand_deck_explanation@3",
+  "online_provider_requests": 0,
+  "selected_cases_by_gate": {
+    "initial_current_policy": 75,
+    "affected_integration": 338,
+    "inherited_packet_aspects": 323,
+    "final_policy_table_quantity_copied_scope": 115
+  },
+  "overlap": "Gates repeat some policy/quantity cases; do not sum them as unique tests. The copied scope repeats the standalone policy file outside the checkout.",
+  "resources": {
+    "focused": {
+      "resource_guard": "owned_rss_available_swap@2",
+      "host_free_mode": "observed_only_not_a_reclaimability_estimate",
+      "exit_code": 0,
+      "elapsed_s": 17.22,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 120537088,
+      "minimum_host_available_bytes": 13026627584,
+      "minimum_host_free_bytes": 909467648,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "owned_scratch_bytes": 2147483648
+      },
+      "test_files": 1,
+      "peak_owned_scratch_bytes": 8967560
+    },
+    "integration": {
+      "resource_guard": "owned_rss_available_swap@2",
+      "host_free_mode": "observed_only_not_a_reclaimability_estimate",
+      "exit_code": 0,
+      "elapsed_s": 468.22,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 546402304,
+      "minimum_host_available_bytes": 11934953472,
+      "minimum_host_free_bytes": 275566592,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "owned_scratch_bytes": 2147483648
+      },
+      "test_files": 14,
+      "peak_owned_scratch_bytes": 474232778
+    },
+    "inherited-packets": {
+      "resource_guard": "owned_rss_available_swap@2",
+      "host_free_mode": "observed_only_not_a_reclaimability_estimate",
+      "exit_code": 0,
+      "elapsed_s": 220.2,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 278843392,
+      "minimum_host_available_bytes": 13679427584,
+      "minimum_host_free_bytes": 1660071936,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "owned_scratch_bytes": 2147483648
+      },
+      "test_files": 8,
+      "peak_owned_scratch_bytes": 488300362
+    },
+    "final-policy": {
+      "resource_guard": "owned_rss_available_swap@2",
+      "host_free_mode": "observed_only_not_a_reclaimability_estimate",
+      "exit_code": 0,
+      "elapsed_s": 28.94,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 321937408,
+      "minimum_host_available_bytes": 14576529408,
+      "minimum_host_free_bytes": 2466562048,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "owned_scratch_bytes": 2147483648
+      },
+      "test_files": 4,
+      "peak_owned_scratch_bytes": 487207651
+    },
+    "legacy-examples": {
+      "resource_guard": "owned_rss_available_swap@2",
+      "host_free_mode": "observed_only_not_a_reclaimability_estimate",
+      "exit_code": 0,
+      "elapsed_s": 48.75,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 237768704,
+      "minimum_host_available_bytes": 13266968576,
+      "minimum_host_free_bytes": 1347428352,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "owned_scratch_bytes": 2147483648
+      },
+      "test_files": 0,
+      "peak_owned_scratch_bytes": 466335288
+    },
+    "integration-sphinx": {
+      "resource_guard": "owned_rss_available_swap@2",
+      "host_free_mode": "observed_only_not_a_reclaimability_estimate",
+      "exit_code": 0,
+      "elapsed_s": 26.83,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 280125440,
+      "minimum_host_available_bytes": 14706147328,
+      "minimum_host_free_bytes": 2552475648,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "owned_scratch_bytes": 2147483648
+      },
+      "test_files": 0,
+      "peak_owned_scratch_bytes": 530127696
+    }
+  },
+  "original_integrity": {
+    "owner": "#184/#185/#112",
+    "review_trigger": "exact-source adoption and historical reading checkpoint",
+    "functions": {
+      "sabueso/core/bioactivities.py": {
+        "original_revision": "0.14.0",
+        "unchanged_function_ASTs": [
+          "_band",
+          "_bounded",
+          "classify_measurement",
+          "single_point_concentration",
+          "bioactivity_derivation"
+        ]
+      },
+      "sabueso/core/bioactivity_class_v4.py": {
+        "original_revision": "129020182555787d3cab58cc110e7a707fc5e553",
+        "unchanged_function_ASTs": [
+          "classification_rule",
+          "thresholds_in_force",
+          "derivation",
+          "classify"
+        ]
+      }
+    },
+    "genuine_control_producer_hashes_match_original_git_objects": true,
+    "historical_verifiers_or_existing_source_fixtures_changed": false,
+    "card_schema_changed": false
+  },
+  "legacy_example_reading": {
+    "owner": "#184/#185/#112",
+    "review_trigger": "adoption/default and historical example acceptance",
+    "scope": "Exact old-source producers and current inert readers in one shared interpreter environment; not installed-artifact qualification or researcher acceptance.",
+    "online_requests": 0,
+    "examples": [
+      {
+        "example": "molecule_target",
+        "original_producer": "129020182555787d3cab58cc110e7a707fc5e553",
+        "original_json_hashes": {
+          "original.traces.json": "dcc9b3d4fdaf812faff3a34aa712fa6b220b7e2f9039e7b92f975215915785c1",
+          "original.report.json": "79c22a59abe19047394f6fdfa76f5a60c8cda653bc4949f9d2b3eb553a81f482",
+          "original.observations.json": "dc796989a35f9b0e1c710ede29c025d17e86f68ec0f6b311548043a5253167f8",
+          "original.packet-attribution.json": "572dcdb532f3ae2fd26db1cf57a10dc2f7d030f53e614d0e0d60bd13d48a8bb5",
+          "original.workflow.json": "4a9756e9e0f5133b5b429925872e9cb822651d1a2cae4f8f607e6fe266f44024",
+          "original.manifest.json": "7f313cfec875c8a878fff01d861d10f368d97ec89dd86ea558a71b34ec2f0663"
+        },
+        "current_reader_exit_code": 0,
+        "scientific_and_source_calls_forbidden": true,
+        "original_json_unchanged": true,
+        "new_reader_exports": [
+          "original.references.csl.json",
+          "original.reader.json"
+        ]
+      },
+      {
+        "example": "protein_comparison",
+        "original_producer": "129020182555787d3cab58cc110e7a707fc5e553",
+        "original_json_hashes": {
+          "original.traces.json": "108ebee9d6c8be492dcd12bdf1c681f2d362db8942beb0af41938a06fcf21556",
+          "original.full.attribution.json": "bd9ed877502da022589fb08a8e43f6d69c24c14e422229f3830f0854fe30051b",
+          "original.index.attribution.json": "58dcbd799036b0f9e5fc60b0b86d4e55a8d65c531bdd29b79f38563529c5c191",
+          "original.report.json": "a3b7c460e05078ffc40538e8faef8d7979c6fdc288b6ddfb4d87ec07a72a1122",
+          "original.observations.json": "f29d1b3dfb2ffe0cff2d2cc93779dcf3989bea83d9233b596898b33c680ad2e9",
+          "original.workflow.json": "c97458ac64608543c7f5d55c00b478bb478b470c9922911a885cc360b184362a",
+          "original.manifest.json": "c8c039768fb16d651cdfd47e577c25fe3f46c0c768a0622c32788d8072b316cd"
+        },
+        "current_reader_exit_code": 0,
+        "scientific_and_source_calls_forbidden": true,
+        "original_json_unchanged": true,
+        "new_reader_exports": [
+          "original.references.csl.json",
+          "original.reader.json"
+        ]
+      }
+    ]
+  },
+  "consumer_impact": {
+    "owner": "#184/#185/#148/#112",
+    "review_trigger": "default and consumer adoption review before 0.15.0",
+    "scope": "Same-input comparison of genuine1290201 example output and current example integration outputs; policy differences, not source errors or prevalence. Exact Card refs coincide before editable SDK refresh; original input values remain unchanged.",
+    "online_requests": 0,
+    "cases": [
+      {
+        "example": "molecule_target",
+        "original_format": "sabueso.molecule_target_example@1",
+        "current_format": "sabueso.molecule_target_example@2",
+        "same_original_card_refs": true,
+        "original_report_sha256": "79c22a59abe19047394f6fdfa76f5a60c8cda653bc4949f9d2b3eb553a81f482",
+        "current_report_sha256": "1e2350d89a8087a2a40f519f27207b63f3e20d7baefd8f809ce5538ea017db9a",
+        "benznidazole_original_class": "inactive",
+        "benznidazole_current_class": "inconclusive",
+        "original_measurement_values_context_unchanged": true
+      },
+      {
+        "example": "protein_comparison",
+        "original_format": "sabueso.protein_comparison_example@2",
+        "current_format": "sabueso.protein_comparison_example@3",
+        "same_original_card_refs": true,
+        "original_report_sha256": "a3b7c460e05078ffc40538e8faef8d7979c6fdc288b6ddfb4d87ec07a72a1122",
+        "current_report_sha256": "0eca16380ded8812f30a32705a4ffecdbcbb44bb1fd60084356ea2b2db6c08ac",
+        "activity_changes": [
+          {
+            "role": "subject",
+            "included_records": 510,
+            "changed_record_classes": 221,
+            "original_rule": "bioactivity_class@3",
+            "current_rule": "bioactivity_class@4"
+          },
+          {
+            "role": "comparator",
+            "included_records": 51,
+            "changed_record_classes": 9,
+            "original_rule": "bioactivity_class@3",
+            "current_rule": "bioactivity_class@4"
+          }
+        ]
+      }
+    ]
+  },
+  "fixture": {
+    "path": "tests/core/data/bioactivity_default_legacy_v1.json.gz",
+    "bytes": 38035,
+    "sha256": "f816d19d582dc0da113627995ffede51ce84b420a8331b1b71543f1e019fbeec",
+    "producer_source": "129020182555787d3cab58cc110e7a707fc5e553",
+    "producer_sdk": "0.14.0+162.g1290201",
+    "basis": "Existing public frozen TcTIM Card plus genuine old full/index packets; original producer module hashes verified against Git."
+  },
+  "cross_component_notice": "https://github.com/uibcdf/moli/issues/22#issuecomment-6640604656",
+  "independent_scientific_human_consumer_acceptance": "pending; code tests and local examples are not acceptance",
+  "initial_unqualified_probes": [
+    "Five old version-label assertions in the first integration run; corrected before final338-case run.",
+    "Legacy harness initially compared old JSON membership with newly created reader export files. Original files were unchanged; final check verifies each original hash and records new exports separately."
+  ],
+  "implementation_sha256": {
+    ".github/workflows/ci.yml": "21eaadde14294006d49aae80df02263db2918f24fa632c272af1299c1ef2652c",
+    ".github/workflows/test_staged_conda_package.yaml": "c302a646391ef68ab28817e67b4504321bb99db62c5bafb4af7cb2a15f09347f",
+    "examples/user_journeys/molecule_target.py": "89d5c1b92bf61f59169290a31954717d8fbe77e38248a98bed25a8e90061dbb8",
+    "examples/user_journeys/protein_comparison.py": "1f6eb46284c6c403293094efcb565c3d86f5756a4716285882ea03fa11236d9b",
+    "sabueso/core/bioactivities.py": "a3ace7afeffe5072035d119c2b82145407b9772bbb7f71e4b0a15e6ed81f401a",
+    "sabueso/core/bioactivity_class_v4.py": "2610942910695f8a7d8cf1b82299b3925e4c4ab9253a1f62595cee1f56406713",
+    "sabueso/core/bioactivity_explanation.py": "ee85bfd0e7089111b76eff4dc2d4fd4667f88a5e22d4c57ddb3e4a77d5124b39",
+    "sabueso/core/card.py": "c55b06abcffdaee376e88dbc435029ca9e6f55f8c64b28c775513e9b36a988b9",
+    "sabueso/core/ligand_explanation.py": "e16c52cceee982b7876c541ff92140a61e0747494005c091055096832fea3bd6",
+    "sabueso/core/ligands.py": "82db97a1a8b1ada4a5ee61a57605434658942716a3a653ddecba6d928b92cf93",
+    "sabueso/core/packet_terms.py": "0774893970a24e56c660d721dd084d594a29f1325e966668dbb903326c5e8da0",
+    "sabueso/core/packets.py": "74eef2997a1f458260e9cfa6686531767f0536a5900fd8982ebf38949002e36e",
+    "sabueso/core/tables.py": "9318daef3a155aa6075542f9daa3a9eb6562cf8183989ffd79fca5ad87723016",
+    "tests/core/test_alphafold_context_offline.py": "348c10cdb0dcf4d4e9681f38f436472f917e0ca579feb9705872d4cce04697db",
+    "tests/core/test_bioactivity_class_v4_offline.py": "f516fb83a59f7d407094f01e2efcb41744c1e14808c512a58d1419e097cbc18f",
+    "tests/core/test_bioactivity_explanation_offline.py": "3c514f705cabe14e56076249af9597c0e0148b000ea1acdfd4e32cd2f2f8abbe",
+    "tests/core/test_chembl_bioactivities_offline.py": "8cb762e30e8368e412c877ed16b5af35a41acf784ffa1e0248b88502d8dd3a7c",
+    "tests/core/test_disease_identity_coverage_offline.py": "61d45700c97e06bc8a5301b2e2f33f838bc176d2f48791f2fc375c6bd485cc6a",
+    "tests/core/test_experimental_coordinates_offline.py": "410f5aeae40098b2e755e73e018f3d2b4b1c984b0f0755da70fd97d954a51579",
+    "tests/core/test_experimental_structure_admission_offline.py": "87cabee0278654e6b68b7e70fa84f1cab07933fd82fe10e691242f8b787784d8",
+    "tests/core/test_knowledge_packets_offline.py": "fb4399476fff9bd0403b112dd7a5cb183071b1ed68aee59f70c0635522e3fad4",
+    "tests/core/test_ligand_deck_offline.py": "cf885e056f203ef95ee0db52ea8dafb6540f27a02d9466e2415fd836c0e0add9",
+    "tests/core/test_ligand_explanation_offline.py": "52b6eb6da7aecf101bb6d532a6940f0f9566179b4652a11cf02cd9dca92abf28",
+    "tests/core/test_ligand_overlap_scope_offline.py": "009c499869e385fc223a188bb2b64ba35fdbae7f5359a085202b4bc57fc19e7f",
+    "tests/core/test_literature_packets_offline.py": "ef884984388312a88b69f1f2287dcd2d2cb99893ad185d94cb8490863aee4682",
+    "tests/core/test_molecule_target_journey_offline.py": "46e45c70b6bdb235f4f2afc3867f5864a4a952d0aca2a29f9dc5a29a1219b827",
+    "tests/core/test_packet_instance_scope_offline.py": "7d44bb25f3a2780b3191d0893b2e6e9403c592be0dfe82ab6c6c05de75c0d066",
+    "tests/core/test_quaternary_interpretation_scope_offline.py": "cfafc81a3b1ddaa044ed5baa0d03f05b7c4f5e8f1352d8921ace4271f4c20bbb",
+    "tests/core/test_ranges_uncertainty_offline.py": "b841a3e2be6f4d4b78b9eabd1cd80b94f05666c21d8e9ddf1f0bcbd3be63cf99",
+    "tests/core/test_uniprot_feature_molecule_identity_offline.py": "e7a25d473dd77b56af23c06f7430a3d06c424bb11a49d5f13e94df1c4657d820",
+    "tests/core/test_user_journeys_offline.py": "3750a4bb8fe5458de9d99da634f19c00c4d1c7c8cc0e3464cc443d03fdc085b0",
+    "tests/tools/test_installed_receiving_scope_offline.py": "e16b89ca6d2167f3f38693da505eb1c93aeecfd0748515a809715a8bfca341a2"
+  }
+}

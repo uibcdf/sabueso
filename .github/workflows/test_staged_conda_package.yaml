@@ -186,6 +186,8 @@ jobs:
           cp "$GITHUB_WORKSPACE/tests/core/test_molecule_knowledge_state_offline.py" "$client_dir/"
           cp "$GITHUB_WORKSPACE/tests/core/test_bioactivity_explanation_offline.py" "$client_dir/"
           cp "$GITHUB_WORKSPACE/tests/core/test_bioactivity_class_v4_offline.py" "$client_dir/"
+          mkdir -p "$client_dir/data"
+          cp "$GITHUB_WORKSPACE/tests/core/data/bioactivity_default_legacy_v1.json.gz" "$client_dir/data/"
           cp "$GITHUB_WORKSPACE/tests/core/test_ligand_explanation_offline.py" "$client_dir/"
           cp "$GITHUB_WORKSPACE/tests/core/test_oligomer_explanation_offline.py" "$client_dir/"
           cp "$GITHUB_WORKSPACE/tests/core/test_rule_literature_extraction_offline.py" "$client_dir/"

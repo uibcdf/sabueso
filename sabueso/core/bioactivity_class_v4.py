@@ -1,4 +1,4 @@
-"""Conservative, opt-in interval interpretation without changing original @3.
+"""Conservative interval interpretation without changing original @3.
 
 Classes describe configured concentration bands, not efficacy or selectivity.
 A class requires the entire permitted interval to occupy one band. Single-point

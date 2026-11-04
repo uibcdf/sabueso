@@ -105,7 +105,7 @@ def test_independent_reader_preserves_original_comparison_support_units_and_cita
         report["proteins"]["subject"]["example_shared_ligand_explanation"]["rule"][
             "rule"
         ]
-        == "ligand_deck_explanation@2"
+        == "ligand_deck_explanation@3"
     )
     observations = load(bundle / "original.observations.json")
     (partial,) = [
@@ -247,7 +247,7 @@ def test_source_residue_context_retains_independent_axes_original_support_and_ru
     bundle,
 ):
     manifest = load(bundle / "original.manifest.json")
-    assert manifest["format"] == "sabueso.protein_comparison_example@2"
+    assert manifest["format"] == "sabueso.protein_comparison_example@3"
     report = load(bundle / "original.report.json")
     for role, positions in (("subject", [96, 168]), ("comparator", [96, 166])):
         context = report["proteins"][role]["residue_context"]

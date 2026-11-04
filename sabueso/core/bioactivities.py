@@ -6,6 +6,10 @@ This module reads them. The activity class of a measurement ("active", "weak", .
 test concentration of a single-point measurement are derived knowledge. They are computed
 here, from the stated rule and thresholds, and never stored as SourceAssertions.
 
+Current Card views default to conservative ``bioactivity_class@4``, implemented
+in ``bioactivity_class_v4``. The functions and descriptor below retain original
+``@3`` for explicit replay; packet mappings through @14 select it explicitly.
+
 Rule ``bioactivity_class@3`` (``@2`` made thresholds and concentrations quantities,
 uibcdf/sabueso#32; ``@3`` classifies ranges, #37):
 
@@ -409,7 +413,7 @@ def bioactivities_view(
     thresholds: Dict[str, Any] | None = None,
     *,
     _support=None,
-    classification_rule="bioactivity_class@3",
+    classification_rule="bioactivity_class@4",
 ) -> Dict[str, Any]:
     """Molecule-centric summary of the card's ``has_bioactivity`` relationships.
 

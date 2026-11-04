@@ -233,11 +233,17 @@ identifiers as its selection basis. Unmatched activity records belong to other
 molecules outside this selection, not failed molecular identities.
 
 BTS has a reported IC50 of 33,000 nM and structural context in 1SUX. Benznidazole
-has an 18% inhibition measurement at 400 micromolar and another record without a
+has an 18% inhibition measurement whose assay text states 400 micromolar and another record without a
 determined value. Their assay descriptions, target assignment, publications,
 source versions, original statements, grouping/classification rules and parameters
-remain inspectable. `weak`, `inactive` and `not_determined` are rule outputs for
-these measurements, not universal activity, binding-site or clinical conclusions.
+remain inspectable. Current molecule example @2 uses conservative activity @4:
+the isolated inhibition stays `inconclusive`, with its percentage and original
+assay text retained; no potency or compound dose is inferred from that text.
+BTS remains `weak` and the unmeasured record `not_determined`. These are scoped
+rule outputs, not universal activity, binding-site or clinical conclusions.
+Original molecule example @1 and protein comparison @1/@2 remain readable without
+recomputing their activity classes; new protein comparison @3 uses current policy
+and packet mapping @15.
 
 ChEMBL also reports four benznidazole indication rows, a maximum clinical phase and
 16 cited NCT ids. The EFO/MONDO/DOID disease references remain separate. Trials are

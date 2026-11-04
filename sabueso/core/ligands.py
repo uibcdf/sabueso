@@ -7,7 +7,7 @@ A ProteinCard refers to molecules by source record: ChEMBL molecules in its
 measured on the protein and in which structures it was observed.
 
 These views only bring together what the cards already hold. Activity classes are the
-derived ones of ``Card.bioactivities()`` (rule ``bioactivity_class@3``).
+derived ones of ``Card.bioactivities()`` under the explicitly selected policy.
 """
 
 from __future__ import annotations
@@ -58,6 +58,7 @@ def ligands_view(
     thresholds: Dict[str, Any] | None = None,
     *,
     counting_rule: str = COUNTING_RULE,
+    classification_rule: str = "bioactivity_class@4",
     _support=None,
 ) -> Dict[str, Any]:
     """Per molecule of ``deck``: its bioactivity on ``card`` and its structures.
@@ -73,7 +74,11 @@ def ligands_view(
     """
     if counting_rule not in {"ligand_measurement_count@1", COUNTING_RULE}:
         raise ValueError(f"Unknown ligand counting rule: {counting_rule!r}")
-    bio = card.bioactivities(include_indirect=include_indirect, thresholds=thresholds)
+    bio = card.bioactivities(
+        include_indirect=include_indirect,
+        thresholds=thresholds,
+        classification_rule=classification_rule,
+    )
     by_molecule = {item["molecule_ref"]: item for item in bio["items"]}
     excluded: Dict[str, int] = {}
     for x in bio["excluded"]:
@@ -225,6 +230,7 @@ def compare_ligands(
     thresholds: Dict[str, Any] | None = None,
     *,
     counting_rule: str = COUNTING_RULE,
+    classification_rule: str = "bioactivity_class@4",
 ) -> Dict[str, Any]:
     """Molecules related to both proteins, side by side, and those related to only one.
 
@@ -233,11 +239,21 @@ def compare_ligands(
     derives nothing new.
     """
     mine_view = ligands_view(
-        card, deck, include_indirect, thresholds, counting_rule=counting_rule
+        card,
+        deck,
+        include_indirect,
+        thresholds,
+        counting_rule=counting_rule,
+        classification_rule=classification_rule,
     )
     mine = {i["molecule_ref"]: i for i in mine_view["items"]}
     view = ligands_view(
-        other, other_deck, include_indirect, thresholds, counting_rule=counting_rule
+        other,
+        other_deck,
+        include_indirect,
+        thresholds,
+        counting_rule=counting_rule,
+        classification_rule=classification_rule,
     )
     theirs = {i["molecule_ref"]: i for i in view["items"]}
 

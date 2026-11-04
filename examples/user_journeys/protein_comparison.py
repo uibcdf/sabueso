@@ -20,8 +20,12 @@ from sabueso.tools.db.pdb_ccd import FixtureCCDClient
 from sabueso.tools.db.rcsb import FixtureRCSBClient
 from sabueso.tools.db.unichem import FixtureUniChemClient
 
-FORMAT = "sabueso.protein_comparison_example@2"
-READABLE_FORMATS = {"sabueso.protein_comparison_example@1", FORMAT}
+FORMAT = "sabueso.protein_comparison_example@3"
+READABLE_FORMATS = {
+    "sabueso.protein_comparison_example@1",
+    "sabueso.protein_comparison_example@2",
+    FORMAT,
+}
 ROLES = {"subject": ("P52270", 5693), "comparator": ("P60174", 9606)}
 ASPECTS = ["identity", "structures", "bioactivities", "literature"]
 STRUCTURES = {"subject": ["1TCD", "1IIG"], "comparator": ["1HTI", "1KLG"]}
@@ -322,7 +326,7 @@ def read_stage(output, stage):
                 item == card.source_assertion_store.get(item_ref.rsplit("#", 1)[1]),
                 "Historical item differs from its card",
             )
-        if manifest["format"] == FORMAT:
+        if manifest["format"] in {"sabueso.protein_comparison_example@2", FORMAT}:
             context = report["proteins"][role]["residue_context"]
             require(
                 context["card_ref"] == ref, "Residue context belongs to another card"

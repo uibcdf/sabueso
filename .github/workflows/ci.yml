@@ -95,6 +95,7 @@ jobs:
           cp tests/core/test_cell_serialization_support_offline.py "$client_dir/"
           mkdir -p "$client_dir/data"
           cp tests/core/data/assembly_nonpolymer_live_v2.json.gz "$client_dir/data/"
+          cp tests/core/data/bioactivity_default_legacy_v1.json.gz "$client_dir/data/"
           cp tests/core/data/card_exploration_quaternary_v1.json.gz "$client_dir/data/"
           cp tests/core/data/assembly_component_navigation_live_v1.json.gz "$client_dir/data/"
           cp tests/core/data/card_structure_assembly_saved_v6.json.gz "$client_dir/data/"

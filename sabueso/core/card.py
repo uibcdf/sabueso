@@ -260,13 +260,13 @@ class Card:
         thresholds: Dict[str, Any] | None = None,
         skip_digestion: bool = False,
         *,
-        classification_rule: str = "bioactivity_class@3",
+        classification_rule: str = "bioactivity_class@4",
     ) -> Dict[str, Any]:
         """Molecule-centric measured activities with an explicit interpretation.
 
-        Opt-in ``bioactivity_class@4`` requires an interval to fit one band and
+        Default ``bioactivity_class@4`` requires an interval to fit one band and
         does not infer potency or compound dose from single-point assay text.
-        Omission retains the original ``@3`` while default adoption is reviewed.
+        Select explicit ``@3`` to replay the original interpretation.
         """
         from .bioactivities import bioactivities_view
 
@@ -298,14 +298,14 @@ class Card:
         thresholds: Dict[str, Any] | None = None,
         skip_digestion: bool = False,
         *,
-        classification_rule: str = "bioactivity_class@3",
+        classification_rule: str = "bioactivity_class@4",
     ) -> Dict[str, Any]:
         """Explain an exact molecule item from ``bioactivities()`` at this card pin.
 
         ``bioactivity_explanation@1`` retains units, thresholds, group voters and
         stored source support. Use the same options as the view being explained.
-        Explicit classification ``@4`` uses explanation ``@2`` and records the
-        conservative policy and readable reasons; omission retains original @1.
+        Default classification ``@4`` uses explanation ``@2`` and records the
+        conservative policy and readable reasons; explicit @3 retains original @1.
         This does not resolve another identifier or explain a ligand deck/site.
         """
         from .bioactivity_explanation import explain_bioactivity
@@ -1101,6 +1101,7 @@ class Card:
         skip_digestion: bool = False,
         *,
         counting_rule: str = "ligand_measurement_count@2",
+        classification_rule: str = "bioactivity_class@4",
     ) -> Dict[str, Any]:
         """This protein crossed with a deck of SmallMoleculeCards (``ligand_deck``).
 
@@ -1111,7 +1112,12 @@ class Card:
         from .ligands import ligands_view
 
         return ligands_view(
-            self, deck, include_indirect, thresholds, counting_rule=counting_rule
+            self,
+            deck,
+            include_indirect,
+            thresholds,
+            counting_rule=counting_rule,
+            classification_rule=classification_rule,
         )
 
     @arg_digest()
@@ -1124,12 +1130,14 @@ class Card:
         skip_digestion: bool = False,
         *,
         counting_rule: str = "ligand_measurement_count@2",
+        classification_rule: str = "bioactivity_class@4",
     ) -> Dict[str, Any]:
         """Explain this protein's crossing with an exact molecule card id in a deck.
 
-        ``ligand_deck_explanation@2`` retains protein/molecule pins, source-stated
+        Default ``ligand_deck_explanation@3`` retains protein/molecule pins, source-stated
         identities, measured classes, structural/site support and deck membership.
         It records exact counted group/record ids and the selected counting rule.
+        Explicit classification @3 retains original ligand explanation @2.
         Duplicate members remain explicit; no identifier resolution or acquisition occurs.
         """
         from .ligand_explanation import explain_ligand
@@ -1141,6 +1149,7 @@ class Card:
             include_indirect,
             thresholds,
             counting_rule=counting_rule,
+            classification_rule=classification_rule,
         )
 
     @arg_digest()
@@ -1154,6 +1163,7 @@ class Card:
         skip_digestion: bool = False,
         *,
         counting_rule: str = "ligand_measurement_count@2",
+        classification_rule: str = "bioactivity_class@4",
     ) -> Dict[str, Any]:
         """Molecules related to this protein and to ``other``, side by side."""
         from .ligands import compare_ligands
@@ -1166,6 +1176,7 @@ class Card:
             include_indirect,
             thresholds,
             counting_rule=counting_rule,
+            classification_rule=classification_rule,
         )
 
     @arg_digest()

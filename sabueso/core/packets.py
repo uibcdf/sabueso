@@ -25,7 +25,7 @@ the Sabueso version that built the cards, so two assemblies of unchanged knowled
 the same ``content_id`` even when the sources were read again (``same_knowledge``).
 
 What each aspect asks the sources for, and which knowledge areas it covers, is fixed by
-the mapping (``packet_aspects@14`` now). It never changes once published: a change is a new
+the mapping (``packet_aspects@15`` now). It never changes once published: a change is a new
 version, and a test pins what each version asks. ``@1`` was published in 0.6.0; ``@2``
 (0.7.0) adds SKEMPI's interface mutations to the ``oligomer`` aspect (#83), and MONDO's
 disease identity and the grouped diseases to ``disease_association`` (#90). ``@3``
@@ -86,7 +86,9 @@ FULL_VIEWS = {
     "biological_context": (),
     "orthology": (),
 }
-ASPECT_MAPPING = "packet_aspects@14"
+ASPECT_MAPPING = "packet_aspects@15"
+# @15 inherits @14 outside bioactivities and selects conservative activity @4.
+# Original mappings through @14 remain explicitly bound to original activity @3.
 #: Aspect mappings a packet can carry; packets of different mappings are not compared.
 #: ``@3`` adds KLIFS and GPCRdb (identity, structures, ligand sites, sequence features),
 #: SAbDab (structures) and the ``orthology`` aspect (OMA), which a query asks for by
@@ -394,6 +396,8 @@ def card_content_id(card: Any) -> str:
 
 
 def _areas(aspect, mapping=ASPECT_MAPPING):
+    if mapping == "packet_aspects@15":
+        return _areas(aspect, "packet_aspects@14")
     original = ASPECTS[aspect]["areas"]
     if aspect == "structures" and mapping in ("packet_aspects@13", "packet_aspects@14"):
         return (
@@ -421,6 +425,8 @@ def _areas(aspect, mapping=ASPECT_MAPPING):
 
 
 def _in_areas(area: str, aspects: Iterable[str], *, mapping=ASPECT_MAPPING) -> bool:
+    if mapping == "packet_aspects@15":
+        return _in_areas(area, aspects, mapping="packet_aspects@14")
     return any(
         (area == prefix or area.startswith(prefix + "."))
         if mapping in ("packet_aspects@12", "packet_aspects@13", "packet_aspects@14")
@@ -470,6 +476,10 @@ def _relationships(card: Any, predicate: str) -> List[Dict[str, Any]]:
 
 
 def _facts(aspect: str, card: Any, *, mapping: str = ASPECT_MAPPING) -> Dict[str, Any]:
+    if mapping == "packet_aspects@15":
+        if aspect == "bioactivities":
+            return card.bioactivities(classification_rule="bioactivity_class@4")
+        return _facts(aspect, card, mapping="packet_aspects@14")
     if aspect == "identity":
         decision = (card.quality.get("entity_resolution") or {}).get("decision") or {}
         return {
@@ -552,7 +562,7 @@ def _facts(aspect: str, card: Any, *, mapping: str = ASPECT_MAPPING) -> Dict[str
             native = card.ligand_sites()
         return {**native, **_fields(card, ["annotations.kinase_pocket"])}
     if aspect == "bioactivities":
-        return card.bioactivities()
+        return card.bioactivities(classification_rule="bioactivity_class@3")
     if aspect == "sequence_features":
         return _positional(card)
     if aspect == "literature":
@@ -631,7 +641,12 @@ def _index(aspect: str, card: Any, *, mapping=ASPECT_MAPPING) -> Dict[str, Any]:
             path in field_areas
             if aspect == "oligomer"
             and mapping
-            in ("packet_aspects@12", "packet_aspects@13", "packet_aspects@14")
+            in (
+                "packet_aspects@12",
+                "packet_aspects@13",
+                "packet_aspects@14",
+                "packet_aspects@15",
+            )
             else path.startswith(tuple(field_areas))
         )
         if path.count(".") != 1 or not matches:
@@ -679,6 +694,13 @@ def full_rules(mapping: str = ASPECT_MAPPING) -> Dict[str, List[str]]:
     """Per aspect, the named rules a full packet's views apply (``FULL_VIEWS``), read
     from the modules that define them, so an index names the rules a reader would get
     by computing the views from the pinned cards."""
+    if mapping == "packet_aspects@15":
+        from .bioactivity_class_v4 import RULE
+
+        rules = full_rules("packet_aspects@14")
+        rules["bioactivities"][0] = RULE
+        return rules
+
     from sabueso.mappings.europepmc import STRUCTURE_MENTION_RULE
 
     from . import (

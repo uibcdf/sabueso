@@ -20,7 +20,7 @@ for item in view["items"][:5]:
     print(item["molecule_ref"], item["class"], item["best_pchembl"], item["classes"])
 print(view["documents"])  # measurements per document: source bias is visible
 print(view["excluded"])  # e.g. assays assigned to the target by homology
-print(view["classification"])  # rule bioactivity_class@3 and its thresholds
+print(view["classification"])  # rule bioactivity_class@4 and its thresholds
 ```
 
 The classes (`active`, `weak`, `inactive`, `inconclusive`, `not_determined`,
@@ -34,8 +34,8 @@ that ChEMBL assigned by homology.
 Each measurement keeps ChEMBL's value and unit as stated (`value`, `units`). It also
 carries `normalized`, a quantity in nanomolar (or percent), or None when ChEMBL's unit
 cannot be normalized. Under the original @3 policy, an interpreted single-point
-test concentration is returned as a quantity (`test_concentration`). The opt-in
-policy below leaves that interpretation uncomputed.
+test concentration is returned as a quantity (`test_concentration`). The current
+default policy leaves that interpretation uncomputed.
 
 Two consistency checks add flags to a measurement. Both rules are listed in
 `view["checks"]`:
@@ -49,9 +49,9 @@ Two consistency checks add flags to a measurement. Both rules are listed in
 
 Neither check corrects a value; they point at the measurements to look at.
 
-## Conservative interpretation (in development)
+## Conservative interpretation (development default)
 
-The explicit `bioactivity_class@4` policy requires every value permitted by a
+The default `bioactivity_class@4` policy requires every value permitted by a
 measurement's relation or closed range to occupy the same configured band.
 For example, with default thresholds, `IC50 >= 100 uM` is inconclusive because
 100 µM is weak while larger values can be inactive. `IC50 > 100 uM` is inactive.
@@ -59,7 +59,7 @@ An upper bound inside the weak band is also inconclusive: it permits active valu
 These classes describe concentration bands, not efficacy or selectivity.
 
 ```python
-conservative = card.bioactivities(classification_rule="bioactivity_class@4")
+conservative = card.bioactivities()
 for item in conservative["items"][:5]:
     for measurement in item["measurements"]:
         print(measurement["class"], measurement["interpretation"])
@@ -72,12 +72,15 @@ is `not_interpreted`, which does not mean the source lacks a stated concentratio
 Uninterpreted uncertainty and approximate qualifiers also remain inconclusive.
 
 Use the same `classification_rule` when calling `explain_bioactivity` for that
-result. Omission retains the original @3 interpretation while default adoption is
-reviewed. The original policy has known censoring and dose-role limitations in
+result. Omission uses @4; explicit `classification_rule="bioactivity_class@3"`
+replays the original interpretation, including the known censoring and dose-role limitations in
 [issue #184](https://github.com/uibcdf/sabueso/issues/184) and
 [issue #185](https://github.com/uibcdf/sabueso/issues/185). Selecting @4 does not
-change the original stored Card or existing ligand/packet defaults. Scientific
-review and the remaining exploration integration are still in progress.
+change the original stored Card. Current ligand views/explanations share @4, and
+new packets use mapping @15. Stored packets keep their original mapping and
+interpretation; loading them does not recompute classes. `single_point_min` is
+explicitly unused by @4. Independent scientific/researcher review and remaining
+rich exploration integration are still in progress.
 
 ## Explain a stored measurement or class (since 0.13.0)
 
@@ -163,7 +166,7 @@ Release 0.12.0 counts source records in `bioactivity.measurements`. To reproduce
 that numeric policy in development, pass
 `counting_rule="ligand_measurement_count@1"` to `ligands`, `compare_ligands` or
 `explain_ligand`. Both policies retain the new `records` field and
-`measurement_counting` metadata. The explanation uses `ligand_deck_explanation@2`
+`measurement_counting` metadata. The current explanation uses `ligand_deck_explanation@3`
 and lists exact counted group/record ids beside the pinned source support.
 Load historical card/deck pins separately; the count policy is explicit and changes
 no stored card, measurement grouping, class voters or attribution.

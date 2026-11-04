@@ -23,9 +23,13 @@ def test_declared_bioactivity_policy_runs_without_checkout_files():
             "python -m pytest " in line and name in line
             for line in workflow.splitlines()
         )
+        assert "data/bioactivity_default_legacy_v1.json.gz" in workflow
     with tempfile.TemporaryDirectory(prefix="sabueso-activity-receiving-") as directory:
         stage = Path(directory)
         shutil.copyfile(root / "tests/core" / name, stage / name)
+        (stage / "data").mkdir()
+        original = "bioactivity_default_legacy_v1.json.gz"
+        shutil.copyfile(root / "tests/core/data" / original, stage / "data" / original)
         env = dict(os.environ, PYTHONPATH=str(stage))
         env.pop("PYTEST_ADDOPTS", None)
         result = subprocess.run(

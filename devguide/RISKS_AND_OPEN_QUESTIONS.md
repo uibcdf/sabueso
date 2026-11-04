@@ -60,8 +60,11 @@ not promise exact old requests. See [the correction](pending_proposals/comparati
   limitation of grouping matching measurements without assay-context constraints.
   Affected classifier/parser functions match the 0.14.0 tagged source; installed
   release impact remains unqualified. New versioned corrections, historical
-  compatibility and an assessment of maintenance delivery are needed. The audit
-  retains the maintainer handoff and owning-issue routes while reporting is paused.
+  compatibility and delivery under the agreed 0.15.0 target are needed. Reports
+  #184/#185/#186 are delivered. Opt-in @4 is qualified at `1290201`; the following
+  [default/consumer adoption](pending_bugs/bioactivity_interpretation.md) has its
+  own validation scope. Independent scientific/researcher acceptance and complete
+  rich exploration remain open; no released fix is claimed.
 
 - **Extended PDB identifiers ([#175](https://github.com/uibcdf/sabueso/issues/175)):**
   public structure receiving and original native assembly admission currently

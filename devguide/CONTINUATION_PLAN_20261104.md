@@ -96,30 +96,35 @@ video projects to this release.
 
 ## Starting state and first actions
 
-Execution update, 2026-11-04: B0 is published at `316224a` with local checks;
-remote recovery is pending. B1 now has an explicit opt-in @4 implementation and
-versioned @2 explanation, with 62 independent cases, 232 affected integration
-cases and isolated copied receiving passing. See
+Execution update, 2026-11-04: accumulated B0/opt-in B1 source `1290201` is
+[qualified](evidence/bioactivity_opt_in_checkpoint_20261104.json): CI 18/18 and
+governance 1/1 with complete source/installed and codec receiving. The next B1
+slice adopts @4 for current activity/ligand answers and tables, with explicit
+original @3, new packet mapping @15 and genuine old @14 reading. Current
+integration passes 338 affected cases; later changed bytes need their own hosted
+qualification. See
 [the scientific scope and public-input comparison](pending_bugs/bioactivity_interpretation.md).
-Default adoption and downstream rollout remain required B1 work; no new rich
-activity panel or scientific/human acceptance is claimed. The next exact-source
+Independent scientific/consumer acceptance and rich activity exploration remain
+open; no scientific/human acceptance is claimed. The next exact-source
 checkpoint receives the accumulated changes, without requiring every intermediate
 development SHA to acquire a separate green matrix.
 
-- Published development source: `34135591642ae378705343449a037f8a4469c968`, SDK
+- Pre-audit development baseline: `34135591642ae378705343449a037f8a4469c968`, SDK
   `0.14.0+160.g3413559`. Its private exploration-copy optimization has local checks;
   its exact-source remote qualification failed. All four Windows source lanes
   failed one new direct-restore test: implicit text decoding changed UTF-8 content
   before digest validation. Explicit UTF-8 passes locally; simulated cp1252
   reproduces the refusal. Production UTF-8 reading is unchanged. Recover on the
-  corrected source; the failed original remains unqualified.
+  corrected source `1290201`, now qualified; the failed original remains unqualified.
 - The component-preview continuation comprises the renderer, two test files
   and associated documentation. Its final selected local gates passed 440 unique
   cases across 13 files. Public same-capture presentation comparisons and
-  warning-fatal Sphinx now pass. The presentation/encoding checkpoint is ready
-  for source publication; exact-source hosted receiving remains pending.
+  warning-fatal Sphinx pass. The presentation/encoding checkpoint is published
+  and included in the qualified `1290201` source.
 - A1/A2 are reproduced scientific defects; A3 is a reproduced known limitation.
-  Owning reports are #184, #185 and #186 respectively; corrections are pending.
+  Owning reports are #184, #185 and #186 respectively. A1/A2 have conservative
+  default/consumer implementation; new hosted and independent acceptance remain
+  pending. A3 correspondence work is next.
   The broader audit contains explicit unassessed areas, not completed validation.
 - Rich activity, clinical, variant/comparative and other nature/shared panels,
   physical assembly reconciliation, broad human acceptance and workload acceptance
@@ -140,7 +145,7 @@ requirements. Detailed historical chronologies do not override this proposed ord
 | Block | Work and owner | Dependency and exit evidence |
 | --- | --- | --- |
 | B0 — Reconcile and preserve | Sabueso #112/#167/#148: inspect exact-source remote verification, protect original evidence and close the small existing component-preview continuation | First; explain the verifier failure from actual logs, verify applicable CI/governance through gh-run-receptor, and record the result for its actual SHA. Compare public previews, run missing docs checks, then commit/qualify that continuation separately from scientific fixes. If it reveals larger work, retain it and advance B1 rather than delaying correctness |
-| B1 — Correct activity interpretation | Sabueso #184/#185, cross-linked to #112 and historical #37 | First opt-in @4 slice and public-input comparison implemented; complete scientific/default review and downstream adoption. Preserve explicit legacy behavior, source data and genuine saved results. Pass independent expected outcomes, native/public/explanation and applicable receiving checks |
+| B1 — Correct activity interpretation | Sabueso #184/#185, cross-linked to #112 and historical #37 | Opt-in source qualified; current default/ligand/table and @15 packet adoption implemented with explicit original replay. Complete its exact-source receiving and independent scientific/consumer review. Preserve source data and genuine saved results; broad activity panels remain B4 work |
 | B2 — Make measurement correspondence scientifically explicit | Sabueso #186, cross-linked to #66/#112 | After B1's semantics are defined; distinguish explicit copies, supported correspondence, conflicting assay/construct context and missing context. Adopt a named policy with scientist-reviewed examples and count/vote consequences before claiming improved grouping or building summary panels on it |
 | B3 — Finish bounded structural journeys | Sabueso #173/#148 and applicable integrity owners | Resume remaining region/site/model/instance/assembly transitions from the existing implementation. State precisely what #173 resolves, what source context remains unknown and which physical calculations belong elsewhere. Qualify coherent native/human/agent/saved routes and independent structural examples; source declaration counts never become unsupported physical claims |
 | B4 — Deliver the activity and literature journey | Sabueso #148/#112, with literature owners | Builds on B1/B2: protein → molecule → group → measurement → assay/document → original support. Add shared literature views and molecule target/activity context with exact identity joins. Review measured versus derived results, assay comparability, conflicts and missing methods; no unsupported mechanistic interpretation |
@@ -312,8 +317,8 @@ milestones, or when a concrete dependency makes one necessary.
 
 1. Inspect the latest source/editable and exact-source remote receipts; qualify the
    accumulated B0/B1 code checkpoint without reclassifying earlier failed runs.
-2. Review explicit @4 semantics and the frozen/rebuilt public-input comparison;
-   complete B1's default/consumer adoption with legacy and saved compatibility.
+2. Verify B1's current default/consumer adoption with its own original controls and
+   hosted receipt; retain independent scientific/researcher review as pending.
 3. Continue #186 measurement correspondence, then B3–B6 with ongoing scientific,
    experience and workload review. The remaining broad panels stay required.
 4. Obtain actual B7 scientist/researcher and consumer acceptance before deciding

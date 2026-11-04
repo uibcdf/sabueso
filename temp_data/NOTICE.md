@@ -25,7 +25,7 @@ wrote it (`sabueso/tools/db/`, `sabueso/resolver/`).
 
 The reviewed recovery file inventory is
 [`devguide/sources/fixture_delivery.json`](../devguide/sources/fixture_delivery.json).
-It records 49 repository-delivery inputs and 37 protected local-only originals,
+It records 71 repository-delivery inputs and 37 protected local-only originals,
 with exact byte identities and file-specific decisions. `.gitignore` protects
 the local input directories; `python tools/fixture_delivery.py --check` rejects
 their inclusion in the Git index and checks the reviewed repository inputs.
@@ -81,6 +81,18 @@ input rights and publication/software grants remain separate. See
 [follow-up 10](../devguide/archive/local_work_2026-07/followup_10_source_integration.md).
 
 ## Contents
+
+`tests/core/data/bioactivity_default_legacy_v1.json.gz` is a derived compatibility
+capture produced on 2026-11-04 with exact Sabueso source
+`129020182555787d3cab58cc110e7a707fc5e553` / SDK `0.14.0+162.g1290201`, before
+default adoption of activity class @4 and packet mapping @15. It contains the
+existing public `schema_0.3.9__P52270.json` Card and genuine full/index
+`packet_aspects@14` outputs with activity class @3. Original module hashes and
+producer identity are embedded; no online access, new source assertion or private
+pilot content is included. This is not a newly published package or a raw provider
+response. Each part retains the source licences declared for the frozen Card below.
+Preserve SHA-256 `f816d19d582dc0da113627995ffede51ce84b420a8331b1b71543f1e019fbeec`;
+do not regenerate it to satisfy a later reader.
 
 | Files | Source | Version / release | Retrieved | Licence |
 | --- | --- | --- | --- | --- |

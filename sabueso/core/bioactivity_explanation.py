@@ -245,7 +245,7 @@ def explain_bioactivity(
     include_indirect=False,
     thresholds=None,
     *,
-    classification_rule="bioactivity_class@3",
+    classification_rule="bioactivity_class@4",
 ):
     from .bioactivity_class_v4 import RULE, thresholds_in_force
     from .bioactivity_class_v4 import classification_rule as validate_rule

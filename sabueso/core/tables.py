@@ -101,6 +101,17 @@ def _bioactivities(view: Dict[str, Any]) -> List[Dict[str, Any]]:
                     "pchembl": m["pchembl"],
                     "class": m["class"],
                     "basis": m["basis"],
+                    **(
+                        {
+                            "classification_rule": view["classification"]["rule"],
+                            "interpretation": m["interpretation"],
+                            "test_concentration_state": m.get(
+                                "test_concentration_state", "not_applicable"
+                            ),
+                        }
+                        if "interpretation" in m
+                        else {}
+                    ),
                     "test_concentration": m.get("test_concentration"),
                     "curated": m["curated"],
                     "source": m["source"],
@@ -126,6 +137,19 @@ def _ligands(view: Dict[str, Any]) -> List[Dict[str, Any]]:
                 "label": item["label"],
                 "label_source": item["label_source"],
                 "class": bio.get("class"),
+                **(
+                    {
+                        "classification_rule": view["classification"]["rule"],
+                        "interpretation": (
+                            "Class summary; inspect measurements, uncertainty and original support. "
+                            "This is not efficacy or selectivity."
+                            if bio
+                            else "No included activity class; inspect the original context."
+                        ),
+                    }
+                    if view["classification"]["rule"] == "bioactivity_class@4"
+                    else {}
+                ),
                 "best_pchembl": bio.get("best_pchembl"),
                 "measurements": bio.get("measurements", 0),
                 "excluded_measurements": item["excluded_measurements"],

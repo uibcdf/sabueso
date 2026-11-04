@@ -1,5 +1,23 @@
 # Sabueso — Decision Log
 
+## Adopt conservative activity defaults with explicit original replay (2026-11-04, #184/#185)
+
+Use existing class @4 for new Card activity/ligand views and matching explanations;
+retain explicit original class @3. This technical default decision follows the
+reproduced interval errors and the choice to abstain when assay prose does not
+establish a compound dose or justify single-point potency inference. It does not
+claim independent scientist/researcher acceptance or experimental comparability.
+Current tables carry the interpretation and uncomputed-dose state. Ligand
+explanation @3 propagates the selected policy; explicit class @3 retains original
+explanation @2. New packet mapping @15 inherits @14 outside bioactivities and
+selects @4 only there; mappings @6–@14 remain explicitly on class @3. Preserve
+inert old stored reading, full/index rule agreement and terms. Molecule example
+@2 and protein comparison @3 declare the changed interpretation while admitting
+their original formats. A genuine @14 control from qualified source `1290201`
+predates adoption. MOLI #22 received provider-change notice; source qualification,
+consumer acceptance and the broad 0.15.0 human/agent gate remain separate. See
+[scope and remaining acceptance](pending_bugs/bioactivity_interpretation.md).
+
 ## Introduce explicit conservative activity interpretation before adoption (2026-11-04, #184/#185)
 
 Implement opt-in `bioactivity_class@4` through the existing Card activity view and

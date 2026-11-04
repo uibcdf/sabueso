@@ -9,6 +9,19 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Conservative default and packet @15 adoption (2026-11-04, #184/#185)
+
+The [adoption](../pending_bugs/bioactivity_interpretation.md) changes new activity,
+ligand and table defaults to existing @4 and uses packet mapping @15, inheriting
+@14 outside bioactivities. Explicit @3 and mappings @6–@14 remain original.
+The genuine pre-adoption control from `1290201` is immutable; current and original
+public examples have distinct declared formats and inert receiving. Qualify this
+completed block with an unskipped exact-source CI/governance push, including full
+source/installed summaries and codec receiving. The preceding
+[qualified opt-in source](../evidence/bioactivity_opt_in_checkpoint_20261104.json)
+has CI 18/18 and governance 1/1 at `1290201`; it does not qualify later changed
+defaults or @15. Independent scientific/researcher and consumer acceptance remain open.
+
 ### Explicit conservative activity policy (2026-11-04, #184/#185)
 
 The [first activity slice](../pending_bugs/bioactivity_interpretation.md) adds

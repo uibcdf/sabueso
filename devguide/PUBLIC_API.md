@@ -1,11 +1,13 @@
 # Sabueso — Public API
 
-Development: `Card.bioactivities(classification_rule="bioactivity_class@4")` and
-`Card.explain_bioactivity(molecule_ref, classification_rule="bioactivity_class@4")`
-opt into conservative interval interpretation and readable reasons. Omission
-retains original @3; new explanations use `bioactivity_explanation@2`, while
-original explanations retain @1. New explorer/saved-scientific/packet routes and
-default adoption are not delivered by this slice. See
+Development: `Card.bioactivities()` and `Card.explain_bioactivity(molecule_ref)`
+default to conservative `bioactivity_class@4` and readable explanation @2.
+`Card.ligands`, `explain_ligand` and `compare_ligands` share this default and exact
+`classification_rule` selector; ligand explanations use @3. Explicit activity
+classification @3 retains original classes and explanation @1 / ligand explanation @2.
+New packets use `packet_aspects@15`; existing mappings @6–@14 retain original @3
+activity interpretation. Rich activity explorer/saved-scientific routes remain
+pending. See
 [the scoped correction](pending_bugs/bioactivity_interpretation.md).
 
 Development quaternary interpretation and original saved reading (#148):

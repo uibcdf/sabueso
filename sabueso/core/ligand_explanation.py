@@ -102,7 +102,14 @@ def explain_ligand(
     thresholds=None,
     *,
     counting_rule=COUNTING_RULE,
+    classification_rule="bioactivity_class@4",
 ):
+    from .bioactivity_class_v4 import RULE, thresholds_in_force
+    from .bioactivity_class_v4 import classification_rule as validate_rule
+
+    classification_rule = validate_rule(classification_rule)
+    if classification_rule == RULE:
+        thresholds_in_force(thresholds)
     support = _Support(card)
     trace = {}
     view = ligands_view(
@@ -111,6 +118,7 @@ def explain_ligand(
         include_indirect,
         thresholds,
         counting_rule=counting_rule,
+        classification_rule=classification_rule,
         _support=trace,
     )
     members = [c for c in deck.cards if c.id == molecule_ref]
@@ -132,7 +140,10 @@ def explain_ligand(
         name = molecular.field("names.canonical_name")
         bioactivities = [
             card.explain_bioactivity(
-                ref, include_indirect=include_indirect, thresholds=thresholds
+                ref,
+                include_indirect=include_indirect,
+                thresholds=thresholds,
+                classification_rule=classification_rule,
             )
             for ref in decision["measured_refs"]
         ]
@@ -170,9 +181,16 @@ def explain_ligand(
     return deepcopy(
         {
             "rule": make_derivation(
-                "ligand_deck_explanation@2",
+                "ligand_deck_explanation@2"
+                if classification_rule == "bioactivity_class@3"
+                else "ligand_deck_explanation@3",
                 inputs=[support.pin, *[c.pinned_ref() for c in members]],
                 parameters={
+                    **(
+                        {"classification_rule": classification_rule}
+                        if classification_rule != "bioactivity_class@3"
+                        else {}
+                    ),
                     "molecule_ref": molecule_ref,
                     "deck_snapshot_id": snapshot,
                     "include_indirect": include_indirect,

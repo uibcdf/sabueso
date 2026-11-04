@@ -310,7 +310,7 @@ def test_crossing_exposes_actual_identity_class_selection_and_quantity_policy():
         "active_max"
     ] == {"value": 1, "unit": "micromolar"}
     assert explained["sites"][0]["item"]["site_class"] == "overlaps_annotated_site"
-    assert answer["rule"]["rule"] == "ligand_deck_explanation@2"
+    assert answer["rule"]["rule"] == "ligand_deck_explanation@3"
     assert before == (card.to_dict(), molecule.to_dict(), deck.meta)
 
 
