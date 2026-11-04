@@ -310,6 +310,18 @@ directions until a bounded use and acceptance criteria are agreed.
 
 ### Immediate resumption sequence
 
+Use the [integrated continuation plan](CONTINUATION_PLAN_20261104.md) as the
+current scheduling entry point following the
+[2026-11-04 global audit](GLOBAL_AUDIT_20261104.md). It combines preserved local
+work and remote qualification reconciliation, A1/A2 corrections, A3 measurement
+correspondence, all broad exploration panels, continuous scientific/resource
+review, and pilot/consumer acceptance before release consolidation. The detailed
+chronology below remains implementation context, not a competing next-task queue.
+The maintainer resumed its implementation and ordinary development publication
+on 2026-11-04; release consolidation remains paused. The approved
+0.15.0 scope and both integrated development routes remain in force; no separate
+maintenance release is scheduled.
+
 The [original nonpolymer input continuation](pending_proposals/rcsb_nonpolymer_inputs.md)
 retains the source identifiers needed for the next #173 reconciliation contract,
 including separate native/author labels and null versus unrequested scope. The

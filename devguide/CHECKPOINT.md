@@ -7,6 +7,13 @@ resumption entry point. Earlier source,
 scientific and release receipts remain linked in the technical reports and
 [preceding chronology](archive/CHECKPOINT_before_pause_20261025.md).
 
+The next [component presentation continuation](pending_proposals/card_assembly_component_navigation.md)
+shows short actions, one shared guide and explicit retained identity/repeated-label
+states in text and HTML, including saved previews. Complete original link wording,
+payloads, row membership/order and scientific results stay unchanged. Its selected
+local and final source receiving are recorded separately from the owned-state
+checkpoint below; broad scientist acceptance remains open.
+
 The current [owned-state candidate](pending_proposals/exploration_owned_state.md)
 profiles save/read separately and removes redundant private copies, retaining
 public/quantity/caller isolation and every frozen verification predicate. Local
@@ -176,6 +183,29 @@ together. Broad researcher acceptance remains open; **0.15.0 consolidation remai
 
 ## Resume here
 
+First read the [integrated continuation plan](CONTINUATION_PLAN_20261104.md) and
+[2026-11-04 global audit](GLOBAL_AUDIT_20261104.md). The proposed order reconciles
+prior qualification and the preserved preview block, corrects A1/A2 activity
+interpretation, reviews A3 measurement correspondence, then completes structural
+and remaining broad panels with continuous scientific, human/agent and workload
+acceptance. The maintainer resumed implementation and ordinary development
+publication on 2026-11-04; release consolidation/publication stay gated and paused.
+The accepted target is 0.15.0, without a separate patch-release workstream.
+The plan's [required wow experience](CONTINUATION_PLAN_20261104.md#required-wow-experience-in-0150)
+is a release acceptance requirement carried through every block: understandable
+scientific guidance, complete access, continuous navigation and explicit researcher
+acceptance must accompany technical delivery before 0.15.0 consolidation.
+The existing component-preview changes remain uncommitted; 440 unique selected
+local cases passed across 13 files. Those checks do not validate the audit findings.
+The owned-state source `3413559` is not qualified: four Windows lanes failed
+the new direct-restore test after implicit non-UTF-8 decoding, with 7,043 passing
+cases each. A bounded cp1252 reproduction confirms the digest mismatch; explicit
+UTF-8 restores correctly. The test-only correction passes all six cases locally.
+Three macOS lanes were cancelled; exact-source recovery is required on the corrected
+head. Public #167 records this result; no failed run is relabelled as successful.
+The preview comparison and warning-fatal Sphinx now pass without source queries;
+broad human acceptance remains open. Audit findings are tracked in #184–#186.
+
 The subsequent [TcTIM literal ligand continuation](pending_proposals/card_ligand_reading.md)
 closes the first observed presentation gap in the annotation → regional structure
 → exact declaration journey: original BTS/SO4 components, instances and contacts
@@ -198,21 +228,22 @@ is [#181](https://github.com/uibcdf/sabueso/issues/181).
 1. Read this checkpoint, [ROADMAP, Immediate resumption sequence](ROADMAP.md#immediate-resumption-sequence),
    then the [complete exploration inventory](pending_proposals/card_exploration_completion_0150.md).
    The original foundational and pilot-driven routes still apply together.
-2. Confirm a clean `main` matching `origin/main` with `git status --short --branch`,
-   `git fetch origin`, and `git rev-list --left-right --count HEAD...origin/main`.
-   Do not overwrite another contributor's later work or apply an old stash.
+2. Inspect `main`, `origin/main` and the preserved working tree with
+   `git status --short --branch`, `git fetch origin`, and
+   `git rev-list --left-right --count HEAD...origin/main`. The local preview and
+   audit/plan changes are expected; do not discard them to force a clean tree.
+   Reconcile other contributors' later work and do not apply an old stash.
 3. Read the [pause receipt](evidence/pause_checkpoint_20261025.json) and its exact
    input/code/check scope. Final push CI/governance results are indexed by source
    SHA in [Actions](https://github.com/uibcdf/sabueso/actions) and the
    [owning coordination issue](https://github.com/uibcdf/sabueso/issues/112).
    Reproduce captures with the [recovery procedure](TESTS.md#recovering-deferred-ci);
    a historical receipt or skipped/cancelled run never qualifies a newer source.
-4. Continue **#148's broad human/agent Card exploration**, starting with the
-   remaining region/site/instance/aggregate/assembly transitions after the
-   coordinate-admission correction. Use the existing named readers, original
-   support, explicit axes/revisions and saved-reading contracts. Then follow
-   the inventory's activity/assay/document/literature, clinical/classification,
-   variant/comparison/association and combined human/agent acceptance order.
+4. Follow the [integrated blocks B0–B8](CONTINUATION_PLAN_20261104.md#execution-order):
+   close the bounded existing work, prioritize A1/A2 and A3, then complete
+   **#148's broad human/agent Card exploration** and combined acceptance.
+   The previous structural/activity/clinical/comparative order below remains
+   technical context; it must not bypass the new scientific prerequisites.
    The current [ligand-parent continuation](pending_proposals/card_ligand_parent_navigation.md)
    now opens an instance's exact retained structure declaration while preserving
    separate object Cards and historical navigation. Its checked intermediate head,

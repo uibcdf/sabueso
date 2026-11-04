@@ -29,7 +29,9 @@ def workload(nature):
     if nature == "protein":
         card = Card.from_dict(
             json.loads(
-                Path("temp_data/frozen_cards/schema_0.3.9__P52270.json").read_text()
+                Path("temp_data/frozen_cards/schema_0.3.9__P52270.json").read_text(
+                    encoding="utf-8"
+                )
             )
         )
         topic = "function"
@@ -111,7 +113,7 @@ def test_resealed_support_edit_still_fails_independent_original_verification(tmp
     _, view = workload("protein")
     path = tmp_path / "original.json"
     view.save(path)
-    bundle = json.loads(path.read_text())
+    bundle = json.loads(path.read_text(encoding="utf-8"))
     node = bundle["views"][bundle["root_navigation_ref"]]
     cell = next(
         cell
@@ -121,7 +123,7 @@ def test_resealed_support_edit_still_fails_independent_original_verification(tmp
     )
     cell["support"] = [{"synthetic": "unsupported source basis"}]
     _seal(bundle)
-    path.write_text(json.dumps(bundle))
+    path.write_text(json.dumps(bundle), encoding="utf-8")
     with pytest.raises(StorageError):
         sabueso.read_exploration(path)
 
@@ -132,7 +134,7 @@ def test_direct_internal_restore_keeps_caller_state_isolated(tmp_path):
     _, view = workload("protein")
     path = tmp_path / "original.json"
     receipt = view.save(path)
-    bundle = json.loads(path.read_text())
+    bundle = json.loads(path.read_text(encoding="utf-8"))
     restored = _restore(bundle, receipt["bundle_digest"])
     expected = restored.rows()
     root = bundle["views"][bundle["root_navigation_ref"]]

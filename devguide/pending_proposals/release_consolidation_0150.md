@@ -8,6 +8,18 @@ authorization or receipt. No version, tag, frozen schema, build, upload or publi
 artifact is changed by this document.
 Published 0.14.0 and schema 0.3.13 remain immutable.
 
+The [post-audit continuation plan](../CONTINUATION_PLAN_20261104.md) integrates
+the newly reproduced scientific defects and independent acceptance with the
+existing exploration scope. Its corrections accumulate toward this same 0.15.0
+target. Planning does not select a candidate or resume release consolidation.
+
+**Required experience:** 0.15.0 must deliver the intended "wow" quality of scientific
+usefulness, comprehension and simple Card navigation. The
+[observable criteria and acceptance route](../CONTINUATION_PLAN_20261104.md#required-wow-experience-in-0150)
+apply throughout implementation. Explicit researcher acceptance under #148 is a
+prerequisite for consolidation, alongside scientific, agent, workload and technical
+gates; implemented panels and passing tests alone do not establish that acceptance.
+
 **Scheduling pause, 2026-10-21:** after the
 [saved-consumer usefulness review](pilot_usefulness_review_20261021.md) and assay
 review preparation, the maintainer introduced the

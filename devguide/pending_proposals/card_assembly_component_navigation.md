@@ -48,11 +48,19 @@ completion or before 0.15.0. No new source query, dependency, Card schema or sha
 MOLI contract is needed. Full physical reconciliation and broad researcher/workload
 acceptance remain open; 0.15.0 consolidation remains paused.
 
-Manual preview observation: component rows currently repeat the complete original
-request reason alongside a shared uncertainty paragraph. A follow-up #148
-presentation review should test whether shorter summaries improve scanning while
-retaining original meanings, full requests and saved wording. This is a usability
-hypothesis, not measured researcher acceptance; no historical fixture is rewritten.
+Manual preview observation: component rows repeated the complete original request
+reason alongside a shared uncertainty paragraph. The following #148 renderer
+continuation now shows short actions with explicit retained identity states and
+one shared orientation. Detail destinations distinguish inspecting the declared
+position/key, reading original input records and reading supporting source records;
+unavailable or ambiguous destinations keep their original status/count display.
+Repeated-label warnings survive abbreviated descriptors;
+saved previews explicitly distinguish retained destinations from `not_saved`.
+Current and saved previews use that presentation, while full original link
+instructions, labels, requests, indices, support and native payloads stay unchanged.
+No saved wording is rewritten in the bundle and no frozen policy changes. This is
+a presentation improvement to review with researchers, not measured usability
+acceptance or physical reconciliation.
 
 Workload observation for #167: the genuine list controls contain 2, 3 and 12
 positions and encode to 7,302, 9,548 and 29,573 bytes respectively. Their links
@@ -84,6 +92,21 @@ unskipped exact-source CI/governance checkpoint. Record its SHA/SDK, all actual
 source/installed lane summaries, full manifests/jobs/steps and codec receiving
 in the owning issues and phase index. Earlier green/pending runs do not qualify
 new navigation bytes. Broad physical/researcher/workload closure remains open.
+
+## Post-audit presentation continuation
+
+Implementation resumed on 2026-11-04. Same-capture comparison on public 1SUX,
+2V5B and 1HTI preserves native/literal rows, Card state, original item identities
+and the exact compact agent page, without acquisition or scientific recalculation
+during rendering. Short actions and one shared guide improve scanability while
+retaining complete original payloads. Character counts describe these displays,
+not a universal size/performance improvement or researcher acceptance.
+Warning-fatal Sphinx passes; the preserved human/receiving gates retain 440 unique
+selected cases across 13 files. Separate six-case receiving passes after explicit
+UTF-8 is added to test I/O, correcting the four Windows failures at `3413559`.
+See the [resumption receipt](../evidence/continuation_resumption_20261104.json).
+The next exact-source hosted checkpoint must qualify the changed renderer and
+corrected tests; the prior failed run remains unqualified.
 
 ## Hosted checkpoint
 

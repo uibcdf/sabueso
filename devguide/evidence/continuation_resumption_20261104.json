@@ -1,0 +1,290 @@
+{
+  "owner": "uibcdf/sabueso#112/#148/#167",
+  "review_trigger": "exact-source code recovery and pre-0.15.0",
+  "baseline_source": "34135591642ae378705343449a037f8a4469c968",
+  "state": "local_checks_pass_hosted_recovery_pending",
+  "source_queries": 0,
+  "prior_remote": [
+    {
+      "id": 41859798631,
+      "head_sha": "34135591642ae378705343449a037f8a4469c968",
+      "status": "completed",
+      "conclusion": "failure",
+      "verified_manifest_members": 6,
+      "log_zip_crc_verified": true,
+      "jobs": [
+        {
+          "id": 126678131863,
+          "name": "Ruff",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 126678132452,
+          "name": "Offline tests (windows-latest, Python 3.14)",
+          "status": "completed",
+          "conclusion": "failure"
+        },
+        {
+          "id": 126678132487,
+          "name": "Offline tests (windows-latest, Python 3.12)",
+          "status": "completed",
+          "conclusion": "failure"
+        },
+        {
+          "id": 126678132520,
+          "name": "Zstandard backport (macos-26, Python 3.11)",
+          "status": "completed",
+          "conclusion": "cancelled"
+        },
+        {
+          "id": 126678132551,
+          "name": "Zstandard backport (macos-26, Python 3.13)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 126678132553,
+          "name": "Ackredit public-package pilot (Python 3.13)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 126678132594,
+          "name": "Offline tests (ubuntu-latest, Python 3.13)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 126678132598,
+          "name": "Ackredit public-package pilot (Python 3.11)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 126678132601,
+          "name": "Ackredit public-package pilot (Python 3.12)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 126678132606,
+          "name": "Ackredit public-package pilot (Python 3.14)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 126678132672,
+          "name": "Zstandard backport (macos-26, Python 3.12)",
+          "status": "completed",
+          "conclusion": "cancelled"
+        },
+        {
+          "id": 126678132758,
+          "name": "Offline tests (windows-latest, Python 3.13)",
+          "status": "completed",
+          "conclusion": "failure"
+        },
+        {
+          "id": 126678132843,
+          "name": "Offline tests (macos-26, Python 3.14)",
+          "status": "completed",
+          "conclusion": "cancelled"
+        },
+        {
+          "id": 126678132860,
+          "name": "Offline tests (ubuntu-latest, Python 3.14)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 126678132879,
+          "name": "Offline tests (ubuntu-latest, Python 3.11)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 126678132886,
+          "name": "Offline tests (ubuntu-latest, Python 3.12)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 126678132936,
+          "name": "Offline tests (windows-latest, Python 3.11)",
+          "status": "completed",
+          "conclusion": "failure"
+        },
+        {
+          "id": 126726089910,
+          "name": "Publish default-branch coverage",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 41859798782,
+      "head_sha": "34135591642ae378705343449a037f8a4469c968",
+      "status": "completed",
+      "conclusion": "success",
+      "verified_manifest_members": 6,
+      "log_zip_crc_verified": true,
+      "jobs": [
+        {
+          "id": 126678133536,
+          "name": "governance",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "encoding_probe": {
+    "owner": "#167/#112",
+    "review_trigger": "exact-source recovery",
+    "utf8_restore": "pass",
+    "cp1252_restore": "refused",
+    "error": "Exploration digest differs from its retained/expected binding.",
+    "source_unchanged": true
+  },
+  "encoding_test_cases": 6,
+  "encoding_resource": {
+    "resource_guard": "owned_rss_available_swap@2",
+    "host_free_mode": "observed_only_not_a_reclaimability_estimate",
+    "exit_code": 0,
+    "elapsed_s": 10.07,
+    "stop_reason": null,
+    "peak_owned_rss_bytes": 152535040,
+    "minimum_host_available_bytes": 15619223552,
+    "minimum_host_free_bytes": 868687872,
+    "peak_owned_swap_bytes": 0,
+    "limits": {
+      "owned_rss_bytes": 1073741824,
+      "host_available_bytes": 4294967296,
+      "owned_swap_bytes": 0,
+      "owned_scratch_bytes": 2147483648
+    },
+    "test_files": 1,
+    "peak_owned_scratch_bytes": 46037383
+  },
+  "preserved_preview_selected_cases": 440,
+  "preserved_preview_selected_files": 13,
+  "same_capture_preview": {
+    "owner": "#148/#173/#112",
+    "review_trigger": "next human exploration review or pre-0.15.0",
+    "scope": "Same-session public fixture presentation comparison only. Character counts are not performance or researcher acceptance.",
+    "baseline_source": "34135591642ae378705343449a037f8a4469c968",
+    "current_renderer_sha256": "17f92eed43e0f9bb9413841ec2788520e50ba82c7059395ce66dc052bbfb28bb",
+    "source_queries": 0,
+    "no_native_evaluation_during_display": true,
+    "cases": [
+      {
+        "public_structure": "1SUX",
+        "declared_positions": 12,
+        "displayed_rows": 10,
+        "before_row_context_characters": 1170,
+        "current_row_context_characters": 520,
+        "complete_text_characters_before": 2914,
+        "complete_text_characters_current": 2419,
+        "original_native_rows_agent_page_and_card_unchanged": true,
+        "first_current_rows": [
+          [
+            "0",
+            "Position 1 \u00b7 A \u00b7 Polymer record \u00b7 Native key matched",
+            "Native key matched \u00b7 available \u00b7 Open exact position"
+          ],
+          [
+            "1",
+            "Position 2 \u00b7 B \u00b7 Polymer record \u00b7 Native key matched",
+            "Native key matched \u00b7 available \u00b7 Open exact position"
+          ],
+          [
+            "2",
+            "Position 3 \u00b7 C \u00b7 Neighbor reference / Nonpolymer record \u00b7 SO4 \u00b7 Native key matched",
+            "Native key matched \u00b7 available \u00b7 Open exact position"
+          ]
+        ]
+      },
+      {
+        "public_structure": "2V5B",
+        "declared_positions": 2,
+        "displayed_rows": 3,
+        "before_row_context_characters": 269,
+        "current_row_context_characters": 145,
+        "complete_text_characters_before": 1324,
+        "complete_text_characters_current": 1355,
+        "original_native_rows_agent_page_and_card_unchanged": true,
+        "first_current_rows": [
+          [
+            "0",
+            "Position 1 \u00b7 A \u00b7 Polymer record \u00b7 Native key matched",
+            "Native key matched \u00b7 available \u00b7 Open exact position"
+          ],
+          [
+            "1",
+            "Position 2 \u00b7 B \u00b7 No retained native match",
+            "No retained native match \u00b7 available \u00b7 Open exact position"
+          ],
+          [
+            "2",
+            "Original generator declaration and retained component input",
+            "available \u00b7 1 captured destinations"
+          ]
+        ]
+      },
+      {
+        "public_structure": "1HTI",
+        "declared_positions": 3,
+        "displayed_rows": 4,
+        "before_row_context_characters": 386,
+        "current_row_context_characters": 191,
+        "complete_text_characters_before": 1542,
+        "complete_text_characters_current": 1502,
+        "original_native_rows_agent_page_and_card_unchanged": true,
+        "first_current_rows": [
+          [
+            "0",
+            "Position 1 \u00b7 A \u00b7 Polymer record \u00b7 Native key matched",
+            "Native key matched \u00b7 available \u00b7 Open exact position"
+          ],
+          [
+            "1",
+            "Position 2 \u00b7 B \u00b7 Polymer record \u00b7 Native key matched",
+            "Native key matched \u00b7 available \u00b7 Open exact position"
+          ],
+          [
+            "2",
+            "Position 3 \u00b7 C \u00b7 Neighbor reference / Nonpolymer record \u00b7 PGA \u00b7 Native key matched",
+            "Native key matched \u00b7 available \u00b7 Open exact position"
+          ]
+        ]
+      }
+    ]
+  },
+  "sphinx_resource": {
+    "resource_guard": "owned_rss_available_swap@2",
+    "host_free_mode": "observed_only_not_a_reclaimability_estimate",
+    "exit_code": 0,
+    "elapsed_s": 25.91,
+    "stop_reason": null,
+    "peak_owned_rss_bytes": 279035904,
+    "minimum_host_available_bytes": 15713497088,
+    "minimum_host_free_bytes": 1013198848,
+    "peak_owned_swap_bytes": 0,
+    "limits": {
+      "owned_rss_bytes": 1073741824,
+      "host_available_bytes": 4294967296,
+      "owned_swap_bytes": 0,
+      "owned_scratch_bytes": 2147483648
+    },
+    "test_files": 0,
+    "peak_owned_scratch_bytes": 43135582
+  },
+  "human_acceptance": "pending; public presentation inspection is not uncoached researcher feedback",
+  "scientific_issues": [
+    184,
+    185,
+    186
+  ]
+}

@@ -99,8 +99,26 @@ def test_live_structure_component_and_source_journey_is_lazy_and_exact(
         i._entry.value["component_request"]["component_index"]
         for i in positions.items()
     ] == list(range(len(expected)))
+    original_links = components.native_payload
+    text, html = str(components), components._repr_html_()
+    assert text.count("Open a position to inspect") == 1
+    assert html.count("Open a position to inspect") == 1
+    assert text.count("Open exact position") == min(len(expected), 10)
+    assert html.count("Open exact position") == min(len(expected), 10)
+    for link in original_links["links"]:
+        if "component_request" in link:
+            assert link["component_request"]["reason"] not in text
+    assert components.native_payload == original_links
     detail = positions.items()[0].open()
     assert detail.back() is positions
+    original_detail = detail.native_payload
+    detail_text, detail_html = str(detail), detail._repr_html_()
+    assert "Inspect declared position" in detail_text
+    assert "Inspect declared position" in detail_html
+    source_links = detail.filter("role", equals="source")
+    assert "Read supporting source record" in str(source_links)
+    assert "Read supporting source record" in source_links._repr_html_()
+    assert detail.native_payload == original_detail
     binding = by_role(detail, "component_binding").open()
     assert binding.native_payload == expected[0]
     source = by_role(detail, "source").open()
@@ -239,7 +257,10 @@ def test_long_descriptors_keep_ambiguous_native_state_visible(
     instances = source["asserted_value"]["assembly_component_inputs"][
         "nonpolymer_entities"
     ][0]["nonpolymer_entity_instances"]
-    long_code = "X" * 200
+    source["asserted_value"]["assembly_generation_inputs"]["assemblies"][0][
+        "pdbx_struct_assembly_gen"
+    ][0]["asym_id_list"] = ["C", "C"]
+    long_code = "<script>" + "X" * 200
     instances[0]["rcsb_nonpolymer_entity_instance_container_identifiers"]["comp_id"] = (
         long_code
     )
@@ -247,6 +268,7 @@ def test_long_descriptors_keep_ambiguous_native_state_visible(
         structure_item(card.explore(), "native").related(), "question"
     ).open()
     positions = by_role(answer.items()[0].related(), "components").open()
+    original_native, original_rows = positions.native_payload, positions.rows()
     if saved:
         path = tmp_path / "long-original.json"
         positions.save(path)
@@ -261,5 +283,16 @@ def test_long_descriptors_keep_ambiguous_native_state_visible(
     component = next(i for i in positions.items() if " · C · " in i.label)
     assert long_code in component.label
     assert "Ambiguous native key" in component.label
-    assert "Ambiguous native key" in str(positions)
-    assert "Ambiguous native key" in positions._repr_html_()
+    text, html = str(positions), positions._repr_html_()
+    assert text.count("Ambiguous native key") == 2
+    assert html.count("Ambiguous native key") == 2
+    assert text.count("Repeated declaration label") == 2
+    assert html.count("Repeated declaration label") == 2
+    assert "<script>" not in html and "&lt;script&gt;" in html
+    assert positions.native_payload == original_native
+    assert positions.rows() == original_rows
+    assert [
+        i._entry.value["component_request"]["component_index"]
+        for i in positions.filter("role", equals="component").items()
+    ] == [0, 1]
+    assert ("an unvisited link reports not_saved" in text) is saved

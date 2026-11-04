@@ -531,6 +531,54 @@ def _structural_support(context):
     return lines
 
 
+def _component_link_preview(view, link):
+    """Short actions over retained findings; full instructions stay in the link."""
+    if (
+        "component_request" not in link
+        and link.get("rule") != "assembly_component_detail_links@1"
+    ):
+        return None
+    from .card_assembly_component_context_v1 import (
+        ASSEMBLY_RULE,
+        DETAIL_RULE,
+        LIST_RULE,
+        STATES,
+    )
+
+    state = []
+    if link.get("rule") == DETAIL_RULE:
+        actions = {
+            "component_binding": "Inspect declared position",
+            "native_key": "Inspect key, gaps and conflicts",
+            "component_record": "Read original input record",
+            "source": "Read supporting source record",
+            "original_declaration": "Read original generator",
+        }
+        action = actions.get(link.get("role"))
+        if (
+            action is None
+            or link["availability"] != "available"
+            or len(link["candidates"]) != 1
+        ):
+            return None
+    elif link.get("rule") == LIST_RULE:
+        request = link["component_request"]
+        wire = view.explorer.access._objects[request["result_ref"]]
+        binding = wire["rows"][request["row_key"]]["item"]["component_bindings"][
+            request["component_index"]
+        ]
+        # These are original findings, not a new native evaluation or identity join.
+        state.append(preview(STATES.get(binding["state"], binding["state"])))
+        if binding.get("repeated"):
+            state.append("Repeated declaration label")
+        action = "Open exact position"
+    elif link.get("rule") == ASSEMBLY_RULE and link.get("role") == "components":
+        action = "Open declared positions"
+    else:
+        action = preview(link["component_request"]["reason"], 240)
+    return " · ".join([*state, preview(link["availability"]), action])
+
+
 def _parts(view):
     opening = _opening(view) if view.title == "Card overview" else []
     if view._explorer.mode == "saved":
@@ -540,6 +588,18 @@ def _parts(view):
         )
     if view.outcome["reason"]:
         opening.append(view.outcome["reason"])
+    if (
+        view._link_panel
+        and view._selected
+        and view._selected[0].value.get("rule") == "assembly_component_list_links@1"
+    ):
+        opening.append(
+            "Open a position to inspect identifiers, gaps/conflicts and original records. Repeated labels stay separate; matched keys do not establish physical copies."
+        )
+        if view.explorer.mode == "saved":
+            opening.append(
+                "Only retained destinations can reopen; an unvisited link reports not_saved."
+            )
     if view.request is not None:
         request = view.request
         opening.append(f"Question: {request['question']}")
@@ -758,25 +818,13 @@ def _parts(view):
                     )
                 )
                 continue
-            if "component_request" in value:
-                from .card_assembly_component_context_v1 import LIST_RULE, STATES
-
-                state_note = ""
-                if value.get("rule") == LIST_RULE:
-                    request = value["component_request"]
-                    wire = view.explorer.access._objects[request["result_ref"]]
-                    binding = wire["rows"][request["row_key"]]["item"][
-                        "component_bindings"
-                    ][request["component_index"]]
-                    # Read the retained finding; never re-evaluate native science.
-                    state = STATES.get(binding["state"], binding["state"])
-                    if state not in preview(item.label):
-                        state_note = preview(state) + " · "
+            component_preview = _component_link_preview(view, value)
+            if component_preview is not None:
                 rows.append(
                     (
                         str(index),
                         preview(item.label),
-                        f"{preview(value['availability'])} · {state_note}{preview(value['component_request']['reason'], 240)}",
+                        component_preview,
                     )
                 )
                 continue

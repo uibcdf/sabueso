@@ -9,6 +9,20 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Post-audit presentation and UTF-8 test recovery (2026-11-04)
+
+The source `3413559` failed all four Windows source lanes in one new direct-restore
+test (7,043 passed /1 failed each); three macOS lanes were cancelled. The test
+decoded UTF-8 JSON using the platform default. An explicit cp1252 reproduction
+fails the retained digest while UTF-8 restores correctly; production decoding and
+historical verification are unchanged. The correction specifies UTF-8 throughout
+that test module. All six cases, the preserved preview continuation's 440 selected
+cases, three public same-capture comparisons and warning-fatal Sphinx pass locally.
+The [receipt](../evidence/continuation_resumption_20261104.json) retains separate
+scopes and verified original failed CI/governance manifests. Qualify the next
+committed source through an unskipped CI/governance push; never relabel the failed
+original or restore its paused success-only comment updater.
+
 ### Private decoded exploration ownership (2026-11-04, #167/#148)
 
 The [owned-state continuation](exploration_owned_state.md) changes mutable storage

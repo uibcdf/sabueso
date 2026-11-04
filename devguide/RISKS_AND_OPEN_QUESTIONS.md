@@ -52,6 +52,17 @@ not promise exact old requests. See [the correction](pending_proposals/comparati
 
 ## Risks
 
+- **Bioactivity interpretation and assay correspondence (2026-11-04 audit):**
+  [A1/A2](GLOBAL_AUDIT_20261104.md#scientific-findings) reproduce unsupported
+  censoring/boundary classes and selection of a substrate concentration as the
+  tested compound dose. These are observed synthetic defects, not speculative
+  risks or a measured prevalence in real data. A3 reproduces the documented
+  limitation of grouping matching measurements without assay-context constraints.
+  Affected classifier/parser functions match the 0.14.0 tagged source; installed
+  release impact remains unqualified. New versioned corrections, historical
+  compatibility and an assessment of maintenance delivery are needed. The audit
+  retains the maintainer handoff and owning-issue routes while reporting is paused.
+
 - **Extended PDB identifiers ([#175](https://github.com/uibcdf/sabueso/issues/175)):**
   public structure receiving and original native assembly admission currently
   require four-character entry IDs. RCSB documents the extended-ID transition;

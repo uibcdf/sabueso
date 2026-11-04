@@ -81,6 +81,14 @@ No browsing operation may acquire new data, refresh a Card or fabricate findings
 
 ## Implementation order
 
+For resumption after the 2026-11-04 audit, the
+[integrated continuation plan](../CONTINUATION_PLAN_20261104.md#execution-order)
+places preserved-work closeout and versioned A1/A2 activity corrections plus A3
+correspondence review before the affected rich activity panels. The broad delivery
+inventory above remains the acceptance scope. The sequence below is its detailed
+feature context; independent scientific, workload and human/agent review now
+accompany each block instead of waiting until the final walkthrough.
+
 1. Finish readable structural support/source orientation and its saved compatibility.
    Include [original source-active-site selection binding](../pending_bugs/dossier_active_site_selection.md)
    (#172): preserved original inputs and coherent native outputs must answer the
@@ -148,6 +156,12 @@ public examples or tests. A missing scientific reader/identity contract requires
 a concrete design and owning issue; it does not authorize an implicit heuristic.
 
 ## Human acceptance and the intended exceptional experience
+
+The intended "wow" experience is required before 0.15.0. Apply the
+[observable criteria in the continuation plan](../CONTINUATION_PLAN_20261104.md#required-wow-experience-in-0150)
+to every implementation slice, then record explicit combined researcher acceptance
+under #148. The final walkthrough validates the experience developed throughout;
+human clarity and decision assistance are reviewed while each route is built.
 
 Researchers with declared Python familiarity must be able to orient themselves,
 find relevant scientific questions, select and compare supported options, inspect

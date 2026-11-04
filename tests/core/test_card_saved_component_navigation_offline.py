@@ -114,7 +114,17 @@ def test_original_component_destination_reopens_without_current_producers(
     restored = sabueso.read_exploration(path, expected_digest=receipt["bundle_digest"])
     assert restored.native_payload == expected
     assert restored.validation["verifier"] == "assembly_component_navigation_binding@1"
-    assert str(restored) and restored._repr_html_()
+    text, html = str(restored), restored._repr_html_()
+    assert text and html
+    if which == "components":
+        assert "Open a position to inspect" in text
+        assert "an unvisited link reports not_saved" in html
+    if which == "position":
+        assert "Inspect declared position" in text
+        assert (
+            "Read supporting source record"
+            in restored.filter("role", equals="source")._repr_html_()
+        )
     # Following the same retained component link reuses its saved destination.
     if which in ("components", "position"):
         reopened = (

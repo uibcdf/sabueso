@@ -772,7 +772,11 @@ if generators:
 Each component is an original declared position. Repeated labels stay separate;
 the list shows native keys, polymer/nonpolymer or neighbor context, descriptors
 and unresolved states. Native key states remain visible when a long label is
-abbreviated; full labels and values remain accessible. Open a record or source link
+abbreviated, as do repeated-declaration warnings. Rows show a short action next to
+the identity state; the shared guide explains what opening a position provides.
+Full labels, original link instructions and values remain accessible through
+`native_payload`; `items()` and `rows()` retain complete membership and order.
+Open a record or source link
 to inspect its full retained content, then use `back()` to retrace the selection.
 A record being inspectable
 does not establish a resolved identity or a distinct physical molecule. Chemical

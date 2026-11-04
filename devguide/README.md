@@ -4,6 +4,21 @@ The developer guide is the repository's memory: what Sabueso is, how it is built
 was decided and why, and what comes next. Start with `CHECKPOINT.md` and `ROADMAP.md`.
 Contributors and agents also read `../AGENTS.md`.
 
+The [2026-11-04 engineering and scientific audit](GLOBAL_AUDIT_20261104.md)
+records the overall assessment, two reproduced bioactivity defects, a known
+measurement-grouping limitation and prioritized scientific/experience improvements.
+Its expanded coverage map distinguishes reviewed and unassessed areas, with an
+impact-assessment protocol, finding closure criteria and independent scientific,
+human/agent and engineering benchmark plans. These plans are not completed validation.
+The [integrated continuation plan](CONTINUATION_PLAN_20261104.md) combines those
+findings with preserved local work, all required broad Card panels, ongoing
+scientific/resource review and private pilot/consumer acceptance. It is the
+current scheduling entry point. The maintainer resumed implementation and ordinary
+development reporting/publication on 2026-11-04; release consolidation stays paused.
+Its [required wow experience](CONTINUATION_PLAN_20261104.md#required-wow-experience-in-0150)
+defines observable criteria for every block and explicit researcher acceptance
+before 0.15.0 consolidation.
+
 **Pause handoff, 2026-10-25:** [CHECKPOINT](CHECKPOINT.md) is the concise current
 entry point; [its preceding chronology](archive/CHECKPOINT_before_pause_20261025.md)
 is historical. Resume the maintainer's broad Card exploration work (#148), with
@@ -63,6 +78,9 @@ positions and their native records/sources. New structure questions choose @5
 internally; direct defaults remain @4. Independent format @8 binds each saved
 destination to the exact clicked link and original position. Genuine @6/@7 files
 retain their old navigation; wider physical/researcher acceptance stays open.
+Component previews now pair retained identity/repetition states with short actions
+and one shared guide; complete original instructions and agent/literal content
+remain unchanged.
 The source `7882f66` is qualified by [CI 18/18 and governance 1/1](evidence/assembly_component_checkpoint_20261104.json),
 including accumulated source/reader/scratch recovery. Later changed runtime bytes
 need their own qualification.
