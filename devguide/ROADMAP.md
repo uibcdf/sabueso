@@ -334,6 +334,10 @@ reconciliation and broad acceptance stay open. The bounded #167/#148
 3/12/48 synthetic repeated positions, original parity and full-session versus
 interactive costs. Profile retained view preparation/verification before changing
 physical storage; no general-scale or researcher acceptance is implied.
+The following [private ownership continuation](pending_proposals/exploration_owned_state.md)
+reduces measured copy work without a logical format or public API change.
+Qualify original bytes, caller isolation and all historical receiving before
+calling the changed runtime complete; physical sharing remains separate work.
 
 On 2026-10-27 the maintainer authorized a short
 [persistence-cost block #167](pending_proposals/card_persistence_cost.md) before

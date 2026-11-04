@@ -1,5 +1,17 @@
 # Sabueso — Decision Log
 
+## Transfer exclusively owned decoded exploration state (2026-11-04, #167/#148)
+
+Keep saved logical formats, historical predicates and all original checks intact.
+The file decoder and private serializer can transfer their newly owned nested
+view state into restoration; direct internal callers retain the defensive-copy
+default. A private Cell recorder can reuse already retained support while public
+values/support and quantity conversion remain defensive. Neither optimization
+merges entities/observations, changes source meaning or discards history. Exact
+same-session wire checks, public/caller isolation, adversarial support rejection
+and controlled measurements qualify this implementation separately from future
+physical sharing. See [the scoped report](pending_proposals/exploration_owned_state.md).
+
 ## Bind component navigation to the original clicked position (2026-11-04, #173/#148)
 
 Use structure-context links @3 and explicit internal native @5 requests for the

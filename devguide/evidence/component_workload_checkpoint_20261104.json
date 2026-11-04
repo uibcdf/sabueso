@@ -1,0 +1,195 @@
+{
+  "source": "de10d00480b6a86efcd12bbf2b9f484589ddfb28",
+  "sdk": "0.14.0+159.gde10d00",
+  "owner": "#167/#148/#112",
+  "scope": "Exact component workload diagnostic/documentation checkpoint; no production runtime changes from7882f66. Later owned-state runtime remains separately under qualification. Not large-workload/researcher/release acceptance.",
+  "runs": {
+    "ci-final": {
+      "id": 41844896241,
+      "url": "https://github.com/uibcdf/sabueso/actions/runs/41844896241",
+      "jobs": 18,
+      "conclusion": "success",
+      "all_steps_verified": true,
+      "full_manifest_members": [
+        {
+          "bytes": 13507,
+          "complete": true,
+          "kind": "github.workflow_run",
+          "path": "run.json",
+          "sha256": "c8e7d85eef03376806e6d3884c4b19b85c7f98881704ee8c0506e77d2965d749"
+        },
+        {
+          "bytes": 475,
+          "complete": true,
+          "kind": "github.workflow",
+          "path": "workflow.json",
+          "sha256": "2695d216eaf6d431fb7cdd5446b889b48c960dbfa8bbe481f7b268ff68ff9879"
+        },
+        {
+          "bytes": 80869,
+          "complete": true,
+          "kind": "github.jobs",
+          "path": "jobs.json",
+          "sha256": "59c56ee9dd136e0c8dab926302219b68a8dd92b87cb032e3148747966b3f943f"
+        },
+        {
+          "bytes": 876,
+          "complete": true,
+          "kind": "github.artifacts",
+          "path": "artifacts.json",
+          "sha256": "b00c3dab6d4fb7b491e2aa353c9c92a2d40714a9c6bddf42f0ba4601f76318d2"
+        },
+        {
+          "bytes": 77814,
+          "complete": true,
+          "kind": "github.check_runs",
+          "path": "checks.json",
+          "sha256": "22a7395a92558507233e37c6e7ebaa32c39b026b3a9859e947a1a519964477ca"
+        },
+        {
+          "bytes": 693089,
+          "complete": true,
+          "kind": "github.logs",
+          "path": "logs.zip",
+          "sha256": "e848fbc30d8f2660c1502e4559d7508e25e4f66c4e046ebb0b3954cf8596721b"
+        }
+      ],
+      "pytest_summaries": [
+        {
+          "log": "1_Offline tests (windows-latest, Python 3.14).txt",
+          "passed": 7038,
+          "summary": "2026-11-04T14:53:52.3334460Z PASS exit=0 | 7038 passed, 10 skipped, 26 deselected | 2517.35s | 9 warnings"
+        },
+        {
+          "log": "2_Ackredit public-package pilot (Python 3.11).txt",
+          "passed": 1583,
+          "summary": "2026-11-04T14:30:33.3056035Z PASS exit=0 | 1583 passed | 802.19s | 4 warnings"
+        },
+        {
+          "log": "3_Ackredit public-package pilot (Python 3.14).txt",
+          "passed": 1583,
+          "summary": "2026-11-04T14:38:52.4366869Z PASS exit=0 | 1583 passed | 791.98s | 4 warnings"
+        },
+        {
+          "log": "4_Offline tests (macos-26, Python 3.14).txt",
+          "passed": 7038,
+          "summary": "2026-11-04T15:05:31.9789400Z PASS exit=0 | 7038 passed, 10 skipped, 26 deselected | 1618.79s | 9 warnings"
+        },
+        {
+          "log": "5_Offline tests (windows-latest, Python 3.12).txt",
+          "passed": 7038,
+          "summary": "2026-11-04T15:01:08.5792152Z PASS exit=0 | 7038 passed, 10 skipped, 26 deselected | 2952.03s | 9 warnings"
+        },
+        {
+          "log": "7_Ackredit public-package pilot (Python 3.13).txt",
+          "passed": 1583,
+          "summary": "2026-11-04T14:28:38.0633728Z PASS exit=0 | 1583 passed | 977.72s | 4 warnings"
+        },
+        {
+          "log": "8_Offline tests (ubuntu-latest, Python 3.14).txt",
+          "passed": 7038,
+          "summary": "2026-11-04T14:47:25.8424433Z PASS exit=0 | 7038 passed, 10 skipped, 26 deselected | 2027.56s | 9 warnings"
+        },
+        {
+          "log": "9_Offline tests (windows-latest, Python 3.11).txt",
+          "passed": 7038,
+          "summary": "2026-11-04T15:03:19.4412238Z PASS exit=0 | 7038 passed, 10 skipped, 26 deselected | 3084.41s | 9 warnings"
+        },
+        {
+          "log": "10_Offline tests (ubuntu-latest, Python 3.11).txt",
+          "passed": 7038,
+          "summary": "2026-11-04T14:39:02.7700208Z PASS exit=0 | 7038 passed, 10 skipped, 26 deselected | 1681.10s | 9 warnings"
+        },
+        {
+          "log": "11_Offline tests (ubuntu-latest, Python 3.12).txt",
+          "passed": 7038,
+          "summary": "2026-11-04T14:47:14.8745230Z PASS exit=0 | 7038 passed, 10 skipped, 26 deselected | 2104.37s | 9 warnings"
+        },
+        {
+          "log": "12_Offline tests (windows-latest, Python 3.13).txt",
+          "passed": 7038,
+          "summary": "2026-11-04T15:03:06.9865216Z PASS exit=0 | 7038 passed, 10 skipped, 26 deselected | 3050.26s | 9 warnings"
+        },
+        {
+          "log": "13_Ackredit public-package pilot (Python 3.12).txt",
+          "passed": 1583,
+          "summary": "2026-11-04T14:24:59.5317899Z PASS exit=0 | 1583 passed | 842.01s | 4 warnings"
+        },
+        {
+          "log": "14_Offline tests (ubuntu-latest, Python 3.13).txt",
+          "passed": 7038,
+          "summary": "2026-11-04T14:45:32.2784786Z PASS exit=0 | 7038 passed, 10 skipped, 26 deselected | 2073.76s | 9 warnings"
+        }
+      ]
+    },
+    "governance-final": {
+      "id": 41844896336,
+      "url": "https://github.com/uibcdf/sabueso/actions/runs/41844896336",
+      "jobs": 1,
+      "conclusion": "success",
+      "all_steps_verified": true,
+      "full_manifest_members": [
+        {
+          "bytes": 13533,
+          "complete": true,
+          "kind": "github.workflow_run",
+          "path": "run.json",
+          "sha256": "f931388d7dc89e5fa05e5d0b84449d0c247f753db52b938b55162ac4f937a1a3"
+        },
+        {
+          "bytes": 529,
+          "complete": true,
+          "kind": "github.workflow",
+          "path": "workflow.json",
+          "sha256": "1ff0197384483022bec8c1c0767e39ba0281dbcb7282700eb85cf7902a07b8fe"
+        },
+        {
+          "bytes": 2914,
+          "complete": true,
+          "kind": "github.jobs",
+          "path": "jobs.json",
+          "sha256": "47ef847d1b24197001e86042533c5a3085b734e753938a131ac498a90a7d8acb"
+        },
+        {
+          "bytes": 42,
+          "complete": true,
+          "kind": "github.artifacts",
+          "path": "artifacts.json",
+          "sha256": "733015529a249a421892ec83190af9d23593d1877609d3653ae94f945a220490"
+        },
+        {
+          "bytes": 4336,
+          "complete": true,
+          "kind": "github.check_runs",
+          "path": "checks.json",
+          "sha256": "ca94fffc658a2ebb4c0db247d1011932fc62ee173c70d8626648a29245eaf2d3"
+        },
+        {
+          "bytes": 9997,
+          "complete": true,
+          "kind": "github.logs",
+          "path": "logs.zip",
+          "sha256": "bde376a7f2c3f4ea7345b98bc6b4b341e97d958121b4f3a611ddf5cf16269ef6"
+        }
+      ],
+      "pytest_summaries": []
+    }
+  },
+  "source_lanes": {
+    "count": 9,
+    "passed_each": 7038,
+    "skipped_each": 10,
+    "deselected_each": 26
+  },
+  "installed_lanes": {
+    "count": 4,
+    "passed_each": 1583
+  },
+  "codec": {
+    "producer_routes": 12,
+    "fresh_frames": 24,
+    "installed_routes": 12,
+    "installed_codec_cases": 36
+  },
+  "public_receipt": "https://github.com/uibcdf/sabueso/issues/167#issuecomment-6634354579"
+}

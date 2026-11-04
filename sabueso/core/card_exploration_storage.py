@@ -165,7 +165,19 @@ def can_save(view):
 
 
 def _cell_record(item, column, cell):
-    detached = cell.to_dict()
+    # Cell construction already captured its support. This transient serializer/
+    # verifier record only reads it; public Cell.support stays a defensive copy.
+    # Keep the independent value copy, including the quantity conversion boundary.
+    detached = (
+        {
+            "value": cell.value,
+            "state": cell.state,
+            "reason": cell.reason,
+            "support": list(cell._support),
+        }
+        if type(cell) is Cell
+        else cell.to_dict()
+    )
     value = detached["value"]
     location = item.payload_location
     context = (
@@ -588,7 +600,7 @@ def save_exploration(
     transport.byte_budget("max_decoded_bytes", max_decoded_bytes)
     codec, backend = transport.encoder(compression)
     bundle = _seal(_prepare(view))
-    _restore(bundle, bundle["bundle_digest"])
+    _restore(bundle, bundle["bundle_digest"], owned=True)
     raw = canonical_json(bundle).encode("utf-8")
     transport._check("max_decoded_bytes", len(raw), max_decoded_bytes)
     destination, temporary = Path(path), None
@@ -666,7 +678,7 @@ def read_exploration(
             )
         bundle = json.loads(raw.decode("utf-8"), object_pairs_hook=_unique)
         del raw  # Original JSON bytes need not survive scientific materialization.
-        view = _restore(bundle, expected_digest)
+        view = _restore(bundle, expected_digest, owned=True)
         view._explorer._session["validation"]["transport"] = receipt
         return view
     except (StorageError, ArgumentError):
@@ -711,16 +723,19 @@ def _explorer(access, session):
     return explorer
 
 
-def _restore(bundle, expected_digest):
+def _restore(bundle, expected_digest, *, owned=False):
     try:
-        return _restore_checked(bundle, expected_digest)
+        return _restore_checked(bundle, expected_digest, owned=owned)
     except StorageError:
         raise
     except Exception as exc:
         raise StorageError(f"Saved exploration validation failed: {exc}") from exc
 
 
-def _restore_checked(bundle, expected_digest):
+def _restore_checked(bundle, expected_digest, *, owned=False):
+    # Only the file decoder and fresh private serializer transfer ownership.
+    # Direct internal callers keep the original defensive state-copy boundary.
+    _require(type(owned) is bool, "Internal bundle ownership requires a boolean.")
     from .card_navigation_preview_v1 import rule as preview_rule
 
     if isinstance(bundle, dict):
@@ -1033,7 +1048,7 @@ def _restore_checked(bundle, expected_digest):
                 record["native_payload"], record.get("native_encoding", "json")
             ),
             _saved_state={
-                **deepcopy(record["state"]),
+                **(record["state"] if owned else deepcopy(record["state"])),
                 "_native_encoding": record.get("native_encoding", "json"),
             },
             **flags,

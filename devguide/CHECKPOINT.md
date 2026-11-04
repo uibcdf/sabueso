@@ -7,6 +7,21 @@ resumption entry point. Earlier source,
 scientific and release receipts remain linked in the technical reports and
 [preceding chronology](archive/CHECKPOINT_before_pause_20261025.md).
 
+The current [owned-state candidate](pending_proposals/exploration_owned_state.md)
+profiles save/read separately and removes redundant private copies, retaining
+public/quantity/caller isolation and every frozen verification predicate. Local
+control/candidate/candidate/control observations show lower cost on the declared
+three-position task; they are not accepted general workload budgets. Selected
+historical/large/copied-installed gates pass 1,041 unique cases /32 files, serial
+through the receptor with zero owned swap. Its own final exact-source checkpoint
+is still required before this changed runtime is qualified. No source query, logical-format,
+Card/schema, native rule, dependency or budget change is introduced.
+
+The preceding diagnostic source `de10d00` /SDK `0.14.0+159.gde10d00` is now
+[qualified](evidence/component_workload_checkpoint_20261104.json): CI 18/18,
+governance 1/1, all thirteen source/installed summaries, full manifests/steps and
+codec receiving verified. That code checkpoint precedes the owned-state change.
+
 The exact development source `7882f66ff6f334c95d584b9164283f9791b547b4`, SDK
 `0.14.0+158.g7882f66`, is now **qualified**: [CI 18/18 and governance 1/1](evidence/assembly_component_checkpoint_20261104.json),
 full manifests/hashes/CRC/all steps, thirteen actual pytest summaries, twelve

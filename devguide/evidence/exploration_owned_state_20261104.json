@@ -1,0 +1,692 @@
+{
+  "format": "exploration_owned_state_observation@1",
+  "owner": "#167/#148/#112",
+  "review_trigger": "next storage change or pre-0.15.0",
+  "baseline_source": "de10d00480b6a86efcd12bbf2b9f484589ddfb28",
+  "baseline_sdk": "0.14.0+159.gde10d00",
+  "candidate_storage_sha256": "b4dc99017b0f406d9432930fcf4e9f1ba3be52724e6bab404d149e571b599dd3",
+  "input": "Same diagnostic task: public1HTI-derived synthetic repeated C positions3. Fresh processes, warm/uncontrolled filesystem and host load. Source queries0. No product budgets raised.",
+  "original_read_input_sha256": "607ebbc55234f9a5de0d01d8f6ba54d38f1b8b7720708506dc1df1b23e669c20",
+  "original_read_input_bytes": 42434469,
+  "serialized_output_bytes": 42434469,
+  "comparison": [
+    {
+      "operation": "read",
+      "order": "control/candidate/candidate/control",
+      "control_mean_wall_s": 8.966420481912792,
+      "candidate_mean_wall_s": 7.733967060456052,
+      "observed_reduction_percent": 13.745211078856544,
+      "samples": [
+        {
+          "sample": "owned-read-control-a",
+          "mode": "control",
+          "wall_s": 8.964494258863851,
+          "cpu_s": 8.964058754,
+          "peak_sampled_rss_bytes": 307392512,
+          "owned_swap_bytes": 0,
+          "control_function_bodies_sha256": "4d6edb1ae5f876c5a7e514cac66dbd1d6661a9cde7c2788d3a858d3ad2d3e607",
+          "loaded_scope_sha256": "4d6edb1ae5f876c5a7e514cac66dbd1d6661a9cde7c2788d3a858d3ad2d3e607"
+        },
+        {
+          "sample": "owned-read-candidate-a",
+          "mode": "candidate",
+          "wall_s": 7.755088769830763,
+          "cpu_s": 7.754481114,
+          "peak_sampled_rss_bytes": 268173312,
+          "owned_swap_bytes": 0,
+          "control_function_bodies_sha256": "4d6edb1ae5f876c5a7e514cac66dbd1d6661a9cde7c2788d3a858d3ad2d3e607",
+          "loaded_scope_sha256": "b4dc99017b0f406d9432930fcf4e9f1ba3be52724e6bab404d149e571b599dd3"
+        },
+        {
+          "sample": "owned-read-candidate-b",
+          "mode": "candidate",
+          "wall_s": 7.7128453510813415,
+          "cpu_s": 7.709252314,
+          "peak_sampled_rss_bytes": 273756160,
+          "owned_swap_bytes": 0,
+          "control_function_bodies_sha256": "4d6edb1ae5f876c5a7e514cac66dbd1d6661a9cde7c2788d3a858d3ad2d3e607",
+          "loaded_scope_sha256": "b4dc99017b0f406d9432930fcf4e9f1ba3be52724e6bab404d149e571b599dd3"
+        },
+        {
+          "sample": "owned-read-control-b",
+          "mode": "control",
+          "wall_s": 8.968346704961732,
+          "cpu_s": 8.967160469,
+          "peak_sampled_rss_bytes": 307359744,
+          "owned_swap_bytes": 0,
+          "control_function_bodies_sha256": "4d6edb1ae5f876c5a7e514cac66dbd1d6661a9cde7c2788d3a858d3ad2d3e607",
+          "loaded_scope_sha256": "4d6edb1ae5f876c5a7e514cac66dbd1d6661a9cde7c2788d3a858d3ad2d3e607"
+        }
+      ]
+    },
+    {
+      "operation": "save",
+      "order": "control/candidate/candidate/control",
+      "control_mean_wall_s": 12.557925088563934,
+      "candidate_mean_wall_s": 10.51505921012722,
+      "observed_reduction_percent": 16.267543117430137,
+      "samples": [
+        {
+          "sample": "save-control-a",
+          "mode": "control",
+          "wall_s": 12.197710186010227,
+          "cpu_s": 11.623469664000002,
+          "peak_sampled_rss_bytes": 286187520,
+          "owned_swap_bytes": 0,
+          "control_function_bodies_sha256": "4d6edb1ae5f876c5a7e514cac66dbd1d6661a9cde7c2788d3a858d3ad2d3e607",
+          "loaded_scope_sha256": "4d6edb1ae5f876c5a7e514cac66dbd1d6661a9cde7c2788d3a858d3ad2d3e607"
+        },
+        {
+          "sample": "save-candidate-a",
+          "mode": "candidate",
+          "wall_s": 10.548182054189965,
+          "cpu_s": 9.989418400999998,
+          "peak_sampled_rss_bytes": 273825792,
+          "owned_swap_bytes": 0,
+          "control_function_bodies_sha256": "4d6edb1ae5f876c5a7e514cac66dbd1d6661a9cde7c2788d3a858d3ad2d3e607",
+          "loaded_scope_sha256": "b4dc99017b0f406d9432930fcf4e9f1ba3be52724e6bab404d149e571b599dd3"
+        },
+        {
+          "sample": "save-candidate-b",
+          "mode": "candidate",
+          "wall_s": 10.481936366064474,
+          "cpu_s": 9.682636800000001,
+          "peak_sampled_rss_bytes": 228343808,
+          "owned_swap_bytes": 0,
+          "control_function_bodies_sha256": "4d6edb1ae5f876c5a7e514cac66dbd1d6661a9cde7c2788d3a858d3ad2d3e607",
+          "loaded_scope_sha256": "b4dc99017b0f406d9432930fcf4e9f1ba3be52724e6bab404d149e571b599dd3"
+        },
+        {
+          "sample": "save-control-b",
+          "mode": "control",
+          "wall_s": 12.918139991117641,
+          "cpu_s": 12.223839021,
+          "peak_sampled_rss_bytes": 286236672,
+          "owned_swap_bytes": 0,
+          "control_function_bodies_sha256": "4d6edb1ae5f876c5a7e514cac66dbd1d6661a9cde7c2788d3a858d3ad2d3e607",
+          "loaded_scope_sha256": "4d6edb1ae5f876c5a7e514cac66dbd1d6661a9cde7c2788d3a858d3ad2d3e607"
+        }
+      ]
+    }
+  ],
+  "profiles": {
+    "produce": {
+      "instrumentation": "cProfile; overhead; cumulative entries overlap and must not be added",
+      "total_profile_s": 27.713896521,
+      "total_calls": 39422418,
+      "top": [
+        {
+          "file": "measure_component_navigation.py",
+          "line": 170,
+          "function": "<lambda>",
+          "primitive_calls": 1,
+          "calls": 1,
+          "self_s": 9.868000000000001e-06,
+          "cumulative_s": 27.751034653
+        },
+        {
+          "file": "decorator.py",
+          "line": 320,
+          "function": "invoke",
+          "primitive_calls": 1,
+          "calls": 17229,
+          "self_s": 0.045208909000000005,
+          "cumulative_s": 27.750965347
+        },
+        {
+          "file": "decorator.py",
+          "line": 474,
+          "function": "wrapper",
+          "primitive_calls": 1,
+          "calls": 322,
+          "self_s": 0.001680585,
+          "cumulative_s": 27.750917765
+        },
+        {
+          "file": "decorator.py",
+          "line": 485,
+          "function": "_run_digestion",
+          "primitive_calls": 1,
+          "calls": 322,
+          "self_s": 0.005343158000000001,
+          "cumulative_s": 27.750896117000003
+        },
+        {
+          "file": "decorator.py",
+          "line": 161,
+          "function": "_invoke",
+          "primitive_calls": 1,
+          "calls": 322,
+          "self_s": 0.000714027,
+          "cumulative_s": 27.750316227000003
+        },
+        {
+          "file": "card_exploration.py",
+          "line": 1350,
+          "function": "save",
+          "primitive_calls": 1,
+          "calls": 1,
+          "self_s": 0.005742917,
+          "cumulative_s": 27.750308864
+        },
+        {
+          "file": "card_exploration_storage.py",
+          "line": 571,
+          "function": "save_exploration",
+          "primitive_calls": 1,
+          "calls": 1,
+          "self_s": 0.0028818420000000003,
+          "cumulative_s": 27.744562044000002
+        },
+        {
+          "file": "card_exploration_storage.py",
+          "line": 714,
+          "function": "_restore",
+          "primitive_calls": 1,
+          "calls": 1,
+          "self_s": 1.9039000000000002e-05,
+          "cumulative_s": 17.22453075
+        },
+        {
+          "file": "card_exploration_storage.py",
+          "line": 723,
+          "function": "_restore_checked",
+          "primitive_calls": 1,
+          "calls": 1,
+          "self_s": 0.002272372,
+          "cumulative_s": 17.224511711
+        },
+        {
+          "file": "copy.py",
+          "line": 110,
+          "function": "deepcopy",
+          "primitive_calls": 150949,
+          "calls": 10785944,
+          "self_s": 5.560206488,
+          "cumulative_s": 15.556833862000001
+        },
+        {
+          "file": "copy.py",
+          "line": 198,
+          "function": "_deepcopy_dict",
+          "primitive_calls": 106075,
+          "calls": 1297276,
+          "self_s": 4.5744107970000005,
+          "cumulative_s": 14.895007182
+        },
+        {
+          "file": "copy.py",
+          "line": 172,
+          "function": "_deepcopy_list",
+          "primitive_calls": 167885,
+          "calls": 729350,
+          "self_s": 1.38025261,
+          "cumulative_s": 13.184336367
+        },
+        {
+          "file": "card_exploration_verification_v8.py",
+          "line": 1030,
+          "function": "verify_views",
+          "primitive_calls": 1,
+          "calls": 1,
+          "self_s": 0.015285797,
+          "cumulative_s": 11.387513868000001
+        },
+        {
+          "file": "card_exploration_storage.py",
+          "line": 379,
+          "function": "_prepare",
+          "primitive_calls": 1,
+          "calls": 1,
+          "self_s": 0.035994757,
+          "cumulative_s": 7.550713809
+        },
+        {
+          "file": "card_exploration_verification_v8.py",
+          "line": 464,
+          "function": "_verify_state",
+          "primitive_calls": 427,
+          "calls": 427,
+          "self_s": 0.167972482,
+          "cumulative_s": 6.940462982000001
+        },
+        {
+          "file": "card_exploration_storage.py",
+          "line": 167,
+          "function": "_cell_record",
+          "primitive_calls": 28071,
+          "calls": 28071,
+          "self_s": 0.08085110000000001,
+          "cumulative_s": 6.223448843000001
+        },
+        {
+          "file": "snapshot.py",
+          "line": 49,
+          "function": "canonical_json",
+          "primitive_calls": 136998,
+          "calls": 136998,
+          "self_s": 0.10884010000000001,
+          "cumulative_s": 5.327090487
+        },
+        {
+          "file": "__init__.py",
+          "line": 185,
+          "function": "dumps",
+          "primitive_calls": 136998,
+          "calls": 136998,
+          "self_s": 0.269117551,
+          "cumulative_s": 5.218250387
+        },
+        {
+          "file": "card_exploration_storage.py",
+          "line": 258,
+          "function": "_freeze_view",
+          "primitive_calls": 430,
+          "calls": 430,
+          "self_s": 0.049597557,
+          "cumulative_s": 4.985209802
+        },
+        {
+          "file": "encoder.py",
+          "line": 185,
+          "function": "encode",
+          "primitive_calls": 136998,
+          "calls": 136998,
+          "self_s": 0.200070209,
+          "cumulative_s": 4.898555416000001
+        },
+        {
+          "file": "encoder.py",
+          "line": 207,
+          "function": "iterencode",
+          "primitive_calls": 90453,
+          "calls": 90453,
+          "self_s": 4.611256925,
+          "cumulative_s": 4.611256925
+        },
+        {
+          "file": "card_exploration.py",
+          "line": 129,
+          "function": "to_dict",
+          "primitive_calls": 28071,
+          "calls": 28071,
+          "self_s": 0.034915827,
+          "cumulative_s": 4.5139094360000005
+        },
+        {
+          "file": "card_exploration.py",
+          "line": 125,
+          "function": "support",
+          "primitive_calls": 28071,
+          "calls": 28071,
+          "self_s": 0.044381263000000004,
+          "cumulative_s": 4.129764761000001
+        },
+        {
+          "file": "card_exploration.py",
+          "line": 1172,
+          "function": "native_payload",
+          "primitive_calls": 3000,
+          "calls": 3000,
+          "self_s": 0.013457669,
+          "cumulative_s": 3.572901357
+        },
+        {
+          "file": "card_exploration_storage.py",
+          "line": 897,
+          "function": "node",
+          "primitive_calls": 430,
+          "calls": 939,
+          "self_s": 0.031972598000000005,
+          "cumulative_s": 3.394851461
+        },
+        {
+          "file": "copy.py",
+          "line": 212,
+          "function": "_keep_alive",
+          "primitive_calls": 2035355,
+          "calls": 2035355,
+          "self_s": 1.343464578,
+          "cumulative_s": 2.009979207
+        }
+      ]
+    },
+    "read": {
+      "instrumentation": "cProfile; overhead; cumulative entries overlap and must not be added",
+      "total_profile_s": 20.871870839000017,
+      "total_calls": 27894128,
+      "top": [
+        {
+          "file": "measure_component_navigation.py",
+          "line": 252,
+          "function": "<lambda>",
+          "primitive_calls": 1,
+          "calls": 1,
+          "self_s": 1.126e-05,
+          "cumulative_s": 20.902617234
+        },
+        {
+          "file": "decorator.py",
+          "line": 320,
+          "function": "invoke",
+          "primitive_calls": 1,
+          "calls": 11454,
+          "self_s": 0.031359077,
+          "cumulative_s": 20.902579388000003
+        },
+        {
+          "file": "decorator.py",
+          "line": 474,
+          "function": "wrapper",
+          "primitive_calls": 1,
+          "calls": 7,
+          "self_s": 7.247300000000001e-05,
+          "cumulative_s": 20.902520037000002
+        },
+        {
+          "file": "decorator.py",
+          "line": 485,
+          "function": "_run_digestion",
+          "primitive_calls": 1,
+          "calls": 7,
+          "self_s": 0.000229757,
+          "cumulative_s": 20.902477829000002
+        },
+        {
+          "file": "decorator.py",
+          "line": 161,
+          "function": "_invoke",
+          "primitive_calls": 1,
+          "calls": 7,
+          "self_s": 3.092e-05,
+          "cumulative_s": 20.901773199
+        },
+        {
+          "file": "card_exploration_storage.py",
+          "line": 630,
+          "function": "read_exploration",
+          "primitive_calls": 1,
+          "calls": 1,
+          "self_s": 0.004955477000000001,
+          "cumulative_s": 20.901763109
+        },
+        {
+          "file": "card_exploration_storage.py",
+          "line": 714,
+          "function": "_restore",
+          "primitive_calls": 1,
+          "calls": 1,
+          "self_s": 1.8990000000000003e-05,
+          "cumulative_s": 19.253073112000003
+        },
+        {
+          "file": "card_exploration_storage.py",
+          "line": 723,
+          "function": "_restore_checked",
+          "primitive_calls": 1,
+          "calls": 1,
+          "self_s": 0.002859378,
+          "cumulative_s": 19.253054122
+        },
+        {
+          "file": "card_exploration_verification_v8.py",
+          "line": 1030,
+          "function": "verify_views",
+          "primitive_calls": 1,
+          "calls": 1,
+          "self_s": 0.017597393,
+          "cumulative_s": 12.078728845
+        },
+        {
+          "file": "copy.py",
+          "line": 110,
+          "function": "deepcopy",
+          "primitive_calls": 84236,
+          "calls": 7836784,
+          "self_s": 4.179466822,
+          "cumulative_s": 11.578675525000001
+        },
+        {
+          "file": "copy.py",
+          "line": 198,
+          "function": "_deepcopy_dict",
+          "primitive_calls": 63643,
+          "calls": 944895,
+          "self_s": 3.3427812950000004,
+          "cumulative_s": 11.192075717
+        },
+        {
+          "file": "copy.py",
+          "line": 172,
+          "function": "_deepcopy_list",
+          "primitive_calls": 112377,
+          "calls": 531135,
+          "self_s": 1.027780911,
+          "cumulative_s": 10.042453154
+        },
+        {
+          "file": "card_exploration_verification_v8.py",
+          "line": 464,
+          "function": "_verify_state",
+          "primitive_calls": 427,
+          "calls": 427,
+          "self_s": 0.179536214,
+          "cumulative_s": 7.114157412000001
+        },
+        {
+          "file": "card_exploration_storage.py",
+          "line": 897,
+          "function": "node",
+          "primitive_calls": 430,
+          "calls": 939,
+          "self_s": 0.041163555000000004,
+          "cumulative_s": 3.58399501
+        },
+        {
+          "file": "card_exploration.py",
+          "line": 1172,
+          "function": "native_payload",
+          "primitive_calls": 2465,
+          "calls": 2465,
+          "self_s": 0.013109552,
+          "cumulative_s": 3.318370101
+        },
+        {
+          "file": "snapshot.py",
+          "line": 49,
+          "function": "canonical_json",
+          "primitive_calls": 127069,
+          "calls": 127069,
+          "self_s": 0.10467292600000001,
+          "cumulative_s": 3.311856102
+        },
+        {
+          "file": "__init__.py",
+          "line": 185,
+          "function": "dumps",
+          "primitive_calls": 127071,
+          "calls": 127071,
+          "self_s": 0.249906869,
+          "cumulative_s": 3.2072307130000004
+        },
+        {
+          "file": "card_exploration_storage.py",
+          "line": 167,
+          "function": "_cell_record",
+          "primitive_calls": 14019,
+          "calls": 14019,
+          "self_s": 0.042087967000000004,
+          "cumulative_s": 3.062158128
+        },
+        {
+          "file": "encoder.py",
+          "line": 185,
+          "function": "encode",
+          "primitive_calls": 127071,
+          "calls": 127071,
+          "self_s": 0.180709424,
+          "cumulative_s": 2.9107259
+        },
+        {
+          "file": "encoder.py",
+          "line": 207,
+          "function": "iterencode",
+          "primitive_calls": 80529,
+          "calls": 80529,
+          "self_s": 2.6482738020000003,
+          "cumulative_s": 2.6482738020000003
+        },
+        {
+          "file": "card_exploration.py",
+          "line": 129,
+          "function": "to_dict",
+          "primitive_calls": 14019,
+          "calls": 14019,
+          "self_s": 0.018463246000000003,
+          "cumulative_s": 2.1973752
+        },
+        {
+          "file": "card_exploration.py",
+          "line": 125,
+          "function": "support",
+          "primitive_calls": 14019,
+          "calls": 14019,
+          "self_s": 0.023624216,
+          "cumulative_s": 1.99700282
+        },
+        {
+          "file": "card_exploration_verification.py",
+          "line": 20,
+          "function": "equal",
+          "primitive_calls": 31112,
+          "calls": 31112,
+          "self_s": 0.039765768,
+          "cumulative_s": 1.86019079
+        },
+        {
+          "file": "card_exploration_verification.py",
+          "line": 1001,
+          "function": "_verify_cell",
+          "primitive_calls": 14019,
+          "calls": 14019,
+          "self_s": 0.030397687000000003,
+          "cumulative_s": 1.756325544
+        },
+        {
+          "file": "copy.py",
+          "line": 212,
+          "function": "_keep_alive",
+          "primitive_calls": 1481609,
+          "calls": 1481609,
+          "self_s": 0.997658263,
+          "cumulative_s": 1.50025297
+        },
+        {
+          "file": "card_exploration_verification_v8.py",
+          "line": 44,
+          "function": "verify_bundle",
+          "primitive_calls": 1,
+          "calls": 1,
+          "self_s": 0.0059033670000000005,
+          "cumulative_s": 1.417398141
+        }
+      ]
+    }
+  },
+  "correctness": "Same-session exact byte/digest equality across four Card natures, public defensive getters, quantity conversion, caller-owned internal restore isolation and resealed support rejection. Historical and broader gates recorded separately.",
+  "limits": "Two samples per version/operation, one synthetic task; no scaling law, generic speedup or researcher/workload/release acceptance. Profiles and unprofiled timings are separate.",
+  "all_owned_swap_bytes": 0,
+  "local_qualification": {
+    "owner": "#167/#148/#112",
+    "review_trigger": "next runtime checkpoint or pre-0.15.0",
+    "scope": "Selected unique cases; not full local suite. Copied-receiving outer cases are included once in integration-receiving.",
+    "selected_passed": 1041,
+    "unique_files": 32,
+    "gates": [
+      {
+        "gate": "focused",
+        "passed": 6,
+        "test_files": 1,
+        "peak_owned_rss_bytes": 155398144,
+        "owned_swap_bytes": 0
+      },
+      {
+        "gate": "new-navigation",
+        "passed": 36,
+        "test_files": 3,
+        "peak_owned_rss_bytes": 539152384,
+        "owned_swap_bytes": 0
+      },
+      {
+        "gate": "integration-current",
+        "passed": 118,
+        "test_files": 4,
+        "peak_owned_rss_bytes": 289501184,
+        "owned_swap_bytes": 0
+      },
+      {
+        "gate": "integration-history",
+        "passed": 462,
+        "test_files": 9,
+        "peak_owned_rss_bytes": 534364160,
+        "owned_swap_bytes": 0
+      },
+      {
+        "gate": "integration-stored",
+        "passed": 141,
+        "test_files": 4,
+        "peak_owned_rss_bytes": 442318848,
+        "owned_swap_bytes": 0
+      },
+      {
+        "gate": "integration-native",
+        "passed": 90,
+        "test_files": 3,
+        "peak_owned_rss_bytes": 850509824,
+        "owned_swap_bytes": 0
+      },
+      {
+        "gate": "integration-receiving",
+        "passed": 188,
+        "test_files": 8,
+        "peak_owned_rss_bytes": 406253568,
+        "owned_swap_bytes": 0
+      }
+    ],
+    "peak_sampled_owned_rss_bytes": 850509824,
+    "owned_swap_bytes": 0,
+    "candidate_storage_sha256": "b4dc99017b0f406d9432930fcf4e9f1ba3be52724e6bab404d149e571b599dd3",
+    "frozen_protocol_modules_unchanged": 78
+  },
+  "qualification_state": "selected_local_qualified_exact_source_ci_pending",
+  "independent_original_receiving": [
+    {
+      "producer_version": "save-control-a",
+      "phase": "read",
+      "exit_code": 0,
+      "owned_swap_bytes": 0,
+      "original_binding_parity": true
+    },
+    {
+      "producer_version": "save-control-a",
+      "phase": "read-agent",
+      "exit_code": 0,
+      "owned_swap_bytes": 0,
+      "original_binding_parity": true
+    },
+    {
+      "producer_version": "save-candidate-a",
+      "phase": "read",
+      "exit_code": 0,
+      "owned_swap_bytes": 0,
+      "original_binding_parity": true
+    },
+    {
+      "producer_version": "save-candidate-a",
+      "phase": "read-agent",
+      "exit_code": 0,
+      "owned_swap_bytes": 0,
+      "original_binding_parity": true
+    }
+  ]
+}

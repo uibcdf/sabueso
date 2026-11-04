@@ -95,6 +95,11 @@ not promise exact old requests. See [the correction](pending_proposals/comparati
   completes 3/12/48 synthetic positions with original parity and zero worker swap;
   full saves/reads remain expensive. This is not large-scale or researcher
   acceptance, a new physical-membership claim or a measured optimization.
+  The [owned-state continuation](pending_proposals/exploration_owned_state.md)
+  removes private copies with unchanged original checks. Its source-specific
+  observations do not define researcher budgets or general scaling. Ownership
+  transfer applies only to exclusively local decoded/prepared bundles; direct
+  callers and public getters keep their defensive boundaries.
 
 - **Ligand overlap coordinate scope ([#163](https://github.com/uibcdf/sabueso/issues/163)):**
   the [correction](pending_bugs/ligand_overlap_coordinate_scope.md) admits original

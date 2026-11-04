@@ -49,13 +49,16 @@ def test_declared_nonpolymer_reader_and_original_data_run_outside_checkout():
     workflow = (root / ".github/workflows/ci.yml").read_text(encoding="utf-8")
     name = "test_card_saved_nonpolymer_assembly_offline.py"
     component = "test_card_saved_component_navigation_offline.py"
+    cell_support = "test_cell_serialization_support_offline.py"
     names = re.findall(r'cp tests/core/(\S+) "\$client_dir/"', workflow)
     assert name in names
     assert component in names
+    assert cell_support in names
     command = re.search(r"python -m pytest (.+)", workflow.replace("\\\n", " "))
     arguments = shlex.split(command[1])
     assert name in arguments
     assert component in arguments
+    assert cell_support in arguments
     selected_files = [argument for argument in arguments if argument.endswith(".py")]
     assert len(selected_files) == len(set(selected_files))
     originals = re.findall(r'cp tests/core/data/(\S+) "\$client_dir/data/"', workflow)
@@ -74,6 +77,7 @@ def test_declared_nonpolymer_reader_and_original_data_run_outside_checkout():
         stage = Path(directory)
         shutil.copyfile(root / "tests/core" / name, stage / name)
         shutil.copyfile(root / "tests/core" / component, stage / component)
+        shutil.copyfile(root / "tests/core" / cell_support, stage / cell_support)
         (stage / "data").mkdir()
         for original in originals:
             shutil.copyfile(
@@ -92,6 +96,7 @@ def test_declared_nonpolymer_reader_and_original_data_run_outside_checkout():
                 f"{name}::test_each_genuine_original_preserves_complete_rows_and_native_keys[1HTI]",
                 f"{name}::test_each_genuine_original_preserves_complete_rows_and_native_keys[legacy]",
                 f"{component}::test_original_component_destination_reopens_without_current_producers[position]",
+                f"{cell_support}::test_owned_support_and_defensive_reference_produce_identical_original_bytes[generic]",
             ],
             cwd=stage,
             env=env,
@@ -101,5 +106,5 @@ def test_declared_nonpolymer_reader_and_original_data_run_outside_checkout():
             timeout=120,
         )
         assert result.returncode == 0, result.stdout + result.stderr
-        assert "3 passed" in result.stdout
+        assert "4 passed" in result.stdout
         assert not (stage / "temp_data").exists()

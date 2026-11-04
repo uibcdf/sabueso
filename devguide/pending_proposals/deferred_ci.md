@@ -9,6 +9,21 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Private decoded exploration ownership (2026-11-04, #167/#148)
+
+The [owned-state continuation](exploration_owned_state.md) changes mutable storage
+construction only: private Cell support reuse and transfer of exclusively owned
+fresh decoded/prepared state. Public values/support and quantities remain defensive;
+direct internal caller restoration still copies state. No scientific/native rule,
+logical format, source fixture, schema, dependency or request limit changes.
+Original verifiers remain byte-identical. Local affected gates, exact wire/public
+isolation/resealed-negative cases and controlled unprofiled comparisons precede
+one unskipped exact-source CI/governance checkpoint. Record its actual SHA/SDK,
+all source/installed summaries and full manifests/jobs/steps/codec receiving under
+`recovered_work/exploration_profile_167_20261104/` and #167/#148/#112. The earlier
+qualified runtime and diagnostic sources do not qualify these changed bytes.
+Broad researcher/workload/physical closure and 0.15.0 remain open/paused.
+
 ### Exact structure and declared-component navigation (2026-11-04, #173/#148)
 
 The [new navigation](card_assembly_component_navigation.md) has three short local

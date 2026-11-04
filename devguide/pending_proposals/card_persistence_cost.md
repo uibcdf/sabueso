@@ -126,6 +126,15 @@ It separates interactive navigation, a complete bounded agent page, human-first
 saving, accumulated explicit agent saving and independent inert reading. It does
 not change the existing cost observations, original contracts or accepted budgets.
 
+## Following private ownership change
+
+The [owned-state continuation](exploration_owned_state.md) separately profiles the
+current component task and removes repeated private support copies and redundant
+copies of decoder-owned view state. It keeps public defensive/quantity boundaries,
+direct-caller state isolation and all frozen predicates. Its unprofiled observations
+have their own control/source/input hashes; the earlier copy reduction above still
+has no demonstrated speedup and is not relabeled by these different-task results.
+
 ## Qualification and resource ownership
 
 Owning gates cover complete original-wire immutability for literal and quantity

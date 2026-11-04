@@ -14,8 +14,8 @@ records reconciled source, inputs, checks and retained resources.
 and [exact original ligand reading](pending_proposals/card_ligand_reading.md)
 prioritize retained questions and destinations while disclosing omissions and
 preserving original item indices, complete agent access and old saved previews
-(#148). [Persistence observations](pending_proposals/card_persistence_cost.md)
-separately record current accumulated-read costs; no latency improvement is claimed.
+(#148). The earlier [persistence observations](pending_proposals/card_persistence_cost.md)
+record accumulated-read costs without establishing a latency improvement.
 The [physical-layout experiment](pending_proposals/card_persistence_layout_experiment.md)
 compares byte-exact sharing with gzip baselines and directs the next bounded
 storage step without changing the public format or discarding support (#167).
@@ -69,6 +69,10 @@ need their own qualification.
 The [component workload study](pending_proposals/component_navigation_workload.md)
 separates complete original-session costs from interactive human/agent delivery;
 its synthetic small-list observations do not close broad workload acceptance.
+The following [owned-state optimization](pending_proposals/exploration_owned_state.md)
+uses separate CPU profiles to remove redundant private copies while preserving
+public isolation, exact original bytes and every historical verifier. Its changed
+runtime needs its own exact-source receiving.
 
 To resume after a pause, read [CHECKPOINT.md, Resume here](CHECKPOINT.md#resume-here),
 then [ROADMAP.md, Immediate resumption sequence](ROADMAP.md#immediate-resumption-sequence).
