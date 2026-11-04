@@ -37,6 +37,12 @@ scientific capsule: exact thresholds and complete support remain in the view and
 its explanation. Rich activity exploration and its scientific saved reader stay
 required B4 work before 0.15.0.
 
+Fresh recomputation of an explicit original rule records the current SDK in its
+derivation producer stamp. Its scientific values, rules, inputs and parameters
+must match the original interpretation; the old stamp is not fabricated. Inert
+stored reading, by contrast, retains the exact original payload and producer stamp.
+The post-editable regression checks these two contracts separately.
+
 The [qualified earlier opt-in source](../evidence/bioactivity_opt_in_checkpoint_20261104.json)
 is `1290201`: CI 18/18, governance 1/1, all thirteen actual source/installed
 summaries, twelve codec producer routes and fresh/installed receiving verified.

@@ -313,12 +313,37 @@ def original_packet_fixture():
 
 @pytest.mark.parametrize("mapping", [f"packet_aspects@{n}" for n in range(6, 15)])
 def test_original_packet_mappings_keep_the_original_activity_rule(mapping):
+    import sabueso
     from sabueso.core.packets import _facts, as_stated, full_rules
 
     original = original_packet_fixture()
     card = Card.from_dict(original["card"])
     actual = as_stated(_facts("bioactivities", card, mapping=mapping))
-    assert actual == original["full"]["facts"]["bioactivities"]["subject"]
+    expected = original["full"]["facts"]["bioactivities"]["subject"]
+    assert actual["classification"]["sabueso_version"] == sabueso.__version__
+    assert expected["classification"]["sabueso_version"] == original["producer"]["sdk"]
+
+    def without_derivation_producer(value):
+        if isinstance(value, dict):
+            derived = {
+                "rule",
+                "inputs",
+                "parameters",
+                "sabueso_version",
+            } <= value.keys()
+            return {
+                key: without_derivation_producer(child)
+                for key, child in value.items()
+                if not (derived and key == "sabueso_version")
+            }
+        if isinstance(value, list):
+            return [without_derivation_producer(child) for child in value]
+        return value
+
+    # Recomputing an original rule records the current SDK as its producer.
+    # Only that derivation stamp may differ; source versions/inputs stay exact.
+    # The separate saved-reader test below requires exact original byte meaning.
+    assert without_derivation_producer(actual) == without_derivation_producer(expected)
     assert full_rules(mapping)["bioactivities"][0] == "bioactivity_class@3"
     assert card.bioactivities()["classification"]["rule"] == RULE
 
