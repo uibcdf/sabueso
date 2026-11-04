@@ -261,12 +261,16 @@ class Card:
         skip_digestion: bool = False,
         *,
         classification_rule: str = "bioactivity_class@4",
+        measurement_rule: str = "measurement_identity@1",
     ) -> Dict[str, Any]:
         """Molecule-centric measured activities with an explicit interpretation.
 
         Default ``bioactivity_class@4`` requires an interval to fit one band and
         does not infer potency or compound dose from single-point assay text.
         Select explicit ``@3`` to replay the original interpretation.
+        Original measurement grouping @1 remains the default. Opt-in
+        ``measurement_rule="measurement_identity@2"`` separates declared copies
+        from possible correspondence and states unknown experimental independence.
         """
         from .bioactivities import bioactivities_view
 
@@ -275,20 +279,29 @@ class Card:
             include_indirect=include_indirect,
             thresholds=thresholds,
             classification_rule=classification_rule,
+            measurement_rule=measurement_rule,
         )
 
     @arg_digest()
     def explain_measurement(
-        self, measurement_ref: str, skip_digestion: bool = False
+        self,
+        measurement_ref: str,
+        skip_digestion: bool = False,
+        *,
+        measurement_rule: str = "measurement_identity@1",
     ) -> Dict[str, Any]:
         """Explain a stored ``REL_`` record's group or an ``MG_`` group at this card pin.
 
         ``measurement_group_explanation@1`` retains the grouping rule, actual joins,
         ambiguity and exact source support. It reads without acquisition or mutation.
+        Opt-in measurement @2 uses explanation @2, with possible correspondence,
+        unresolved-copy context and explicit comparison/counting limits.
         """
         from .bioactivity_explanation import explain_measurement
 
-        return explain_measurement(self, measurement_ref)
+        return explain_measurement(
+            self, measurement_ref, measurement_rule=measurement_rule
+        )
 
     @arg_digest()
     def explain_bioactivity(
@@ -299,8 +312,10 @@ class Card:
         skip_digestion: bool = False,
         *,
         classification_rule: str = "bioactivity_class@4",
+        measurement_rule: str = "measurement_identity@1",
     ) -> Dict[str, Any]:
         """Explain an exact molecule item from ``bioactivities()`` at this card pin.
+        Pass the same classification and measurement policies as the explained view.
 
         ``bioactivity_explanation@1`` retains units, thresholds, group voters and
         stored source support. Use the same options as the view being explained.
@@ -316,6 +331,7 @@ class Card:
             include_indirect,
             thresholds,
             classification_rule=classification_rule,
+            measurement_rule=measurement_rule,
         )
 
     @arg_digest()
@@ -1102,12 +1118,15 @@ class Card:
         *,
         counting_rule: str = "ligand_measurement_count@2",
         classification_rule: str = "bioactivity_class@4",
+        measurement_rule: str = "measurement_identity@1",
     ) -> Dict[str, Any]:
         """This protein crossed with a deck of SmallMoleculeCards (``ligand_deck``).
 
         ``bioactivity.measurements`` counts distinct included groups and ``records``
         counts source records. Explicit ``counting_rule="ligand_measurement_count@1"``
         reproduces the legacy measurement counter; the stored cards stay unchanged.
+        Pass the same ``measurement_rule`` as the activity view; group counts do
+        not establish independent experiments under the opt-in @2 policy.
         """
         from .ligands import ligands_view
 
@@ -1118,6 +1137,7 @@ class Card:
             thresholds,
             counting_rule=counting_rule,
             classification_rule=classification_rule,
+            measurement_rule=measurement_rule,
         )
 
     @arg_digest()
@@ -1131,6 +1151,7 @@ class Card:
         *,
         counting_rule: str = "ligand_measurement_count@2",
         classification_rule: str = "bioactivity_class@4",
+        measurement_rule: str = "measurement_identity@1",
     ) -> Dict[str, Any]:
         """Explain this protein's crossing with an exact molecule card id in a deck.
 
@@ -1150,6 +1171,7 @@ class Card:
             thresholds,
             counting_rule=counting_rule,
             classification_rule=classification_rule,
+            measurement_rule=measurement_rule,
         )
 
     @arg_digest()
@@ -1164,6 +1186,7 @@ class Card:
         *,
         counting_rule: str = "ligand_measurement_count@2",
         classification_rule: str = "bioactivity_class@4",
+        measurement_rule: str = "measurement_identity@1",
     ) -> Dict[str, Any]:
         """Molecules related to this protein and to ``other``, side by side."""
         from .ligands import compare_ligands
@@ -1177,6 +1200,7 @@ class Card:
             thresholds,
             counting_rule=counting_rule,
             classification_rule=classification_rule,
+            measurement_rule=measurement_rule,
         )
 
     @arg_digest()

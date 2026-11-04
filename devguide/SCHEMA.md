@@ -5,6 +5,13 @@ Development comparative execution records (`sabueso.comparative_operation@2`,
 Card fields or schema changes; original scientific values/rules and frozen cards
 remain unchanged. See [scope](pending_proposals/comparative_operations.md).
 
+Opt-in measurement correspondence @2 (#186) is a runtime derived view/explanation,
+not a SourceAssertion or Card schema addition. Original measurement @1 and current
+packet mappings retain their meaning. The bounded #182 explanation correction
+reads identities actually present in the pinned serialized glossary without
+changing glossary reconstruction, Card serialization or pins. See
+[scope and original-input compatibility](pending_proposals/assay_aware_measurement_correspondence.md).
+
 ## Schema Location
 - **Formal schemas, by version** (`schemas/card_schema_<version>.yaml`):
   - Unpublished `0.3.14` optionally retains original RCSB nonpolymer identifiers

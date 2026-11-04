@@ -103,10 +103,13 @@ def explain_ligand(
     *,
     counting_rule=COUNTING_RULE,
     classification_rule="bioactivity_class@4",
+    measurement_rule="measurement_identity@1",
 ):
     from .bioactivity_class_v4 import RULE, thresholds_in_force
     from .bioactivity_class_v4 import classification_rule as validate_rule
+    from .measurement_correspondence import validate_measurement_rule
 
+    measurement_rule = validate_measurement_rule(measurement_rule)
     classification_rule = validate_rule(classification_rule)
     if classification_rule == RULE:
         thresholds_in_force(thresholds)
@@ -119,6 +122,7 @@ def explain_ligand(
         thresholds,
         counting_rule=counting_rule,
         classification_rule=classification_rule,
+        measurement_rule=measurement_rule,
         _support=trace,
     )
     members = [c for c in deck.cards if c.id == molecule_ref]
@@ -144,6 +148,7 @@ def explain_ligand(
                 include_indirect=include_indirect,
                 thresholds=thresholds,
                 classification_rule=classification_rule,
+                measurement_rule=measurement_rule,
             )
             for ref in decision["measured_refs"]
         ]
@@ -181,11 +186,18 @@ def explain_ligand(
     return deepcopy(
         {
             "rule": make_derivation(
-                "ligand_deck_explanation@2"
+                "ligand_deck_explanation@4"
+                if measurement_rule == "measurement_identity@2"
+                else "ligand_deck_explanation@2"
                 if classification_rule == "bioactivity_class@3"
                 else "ligand_deck_explanation@3",
                 inputs=[support.pin, *[c.pinned_ref() for c in members]],
                 parameters={
+                    **(
+                        {"measurement_rule": measurement_rule}
+                        if measurement_rule == "measurement_identity@2"
+                        else {}
+                    ),
                     **(
                         {"classification_rule": classification_rule}
                         if classification_rule != "bioactivity_class@3"

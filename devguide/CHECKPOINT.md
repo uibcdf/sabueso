@@ -37,13 +37,25 @@ No rich activity explorer panel or independent scientist acceptance is claimed;
 complete applicable receiving, then continue #186 and B3–B7. Release consolidation
 remains paused, with the full validated "wow" experience required before 0.15.0.
 
-B2 now has an [original-context inventory and candidate design](pending_proposals/assay_aware_measurement_correspondence.md).
+B2 now has an [original-context inventory and opt-in implementation](pending_proposals/assay_aware_measurement_correspondence.md).
 On two exact retained public example Cards, all 29 accepted @1 statement edges
 lack an assay description on one side. This is missing mapped context, not proof
-of duplication or independence, and not a candidate-policy result. The proposed
-next opt-in slice separates declared copies from possible correspondence and
-unknown experimental independence. Original @1/defaults remain unchanged;
-scientist-reviewed count/vote semantics and candidate implementation are pending.
+of duplication or independence. That inventory remains separate from subsequent
+candidate results. Opt-in measurement @2 now separates declared copies from
+possible correspondence and unknown experimental independence across direct
+activity/ligand answers, explanations and tables. Original @1/defaults remain
+unchanged; current packets explicitly retain @1. Local scientific review includes
+four same-input public comparisons and the actual guide block, preserving original
+records and pins. Six molecule summary bands become inconclusive under the
+candidate's copy-only abstention; these are policy differences for independent
+review, not corrected source measurements. Hosted receiving, default/consumer and
+scientist/researcher acceptance remain pending. Rich activity/saved adapters remain B4.
+
+The public comparison also reproduced an existing explanation `KeyError` under
+both rules: a runtime registered anchor can be an alias inside another serialized
+glossary entry. The bounded #182 prerequisite now enumerates actual indexed
+resolved identities at the pin, preserving aliases and exact serialized reading.
+It changes no glossary engine, source facts or Card pin. Broader #182 work stays open.
 Completed B1 disposable scratch is removed; both genuine original example capsules,
 13 hash-verified original JSON files, logs and active remote captures are retained
 under #184/#185/#148/#112 until their next acceptance/checkpoint review.

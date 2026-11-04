@@ -322,11 +322,12 @@ on 2026-11-04; release consolidation remains paused. The approved
 0.15.0 scope and both integrated development routes remain in force; no separate
 maintenance release is scheduled.
 
-The [B2 correspondence preparation](pending_proposals/assay_aware_measurement_correspondence.md)
-records actual original @1 context coverage and proposes separate declared-copy,
-possible-correspondence and independence states. The inventory is measured;
-candidate implementation, scientist-reviewed counts/votes and deliberate adoption
-remain pending. B1's final source `7667754` has local post-editable receiving and
+The [B2 correspondence candidate](pending_proposals/assay_aware_measurement_correspondence.md)
+records actual original @1 context coverage and implements opt-in @2 with separate
+declared-copy, possible-correspondence and independence states. Four same-input
+public comparisons and the actual user guide block preserve original records/pins.
+Scientist-reviewed counts/votes, hosted receiving and deliberate default/consumer
+adoption remain pending. B1's final source `7667754` has local post-editable receiving and
 awaits its own complete hosted qualification.
 
 The [original nonpolymer input continuation](pending_proposals/rcsb_nonpolymer_inputs.md)

@@ -1,0 +1,394 @@
+{
+  "owner": "#186/#182/#148/#112",
+  "review_trigger": "final source receiving, independent scientific/default/consumer review and B4; before 0.15.0",
+  "base_source": "9e497e1",
+  "state": "local_qualification_pass_hosted_and_independent_acceptance_pending",
+  "candidate_rule": "measurement_identity@2",
+  "default_original_rule": "measurement_identity@1",
+  "current_classification_default": "bioactivity_class@4",
+  "packet_meanings": "Mappings @6 through @15 explicitly retain original measurement @1; no new mapping or saved-scientific explorer is introduced.",
+  "selected_cases_by_gate": {
+    "copies": 99,
+    "integration": 360,
+    "contexts": 218
+  },
+  "overlap": "Gates overlap, and copied scope repeats standalone cases outside the checkout; do not sum these as unique tests.",
+  "resources": {
+    "copies": {
+      "resource_guard": "owned_rss_available_swap@2",
+      "host_free_mode": "observed_only_not_a_reclaimability_estimate",
+      "exit_code": 0,
+      "elapsed_s": 9.03,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 139042816,
+      "minimum_host_available_bytes": 15036751872,
+      "minimum_host_free_bytes": 2365972480,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "owned_scratch_bytes": 2147483648
+      },
+      "test_files": 3,
+      "peak_owned_scratch_bytes": 269685321
+    },
+    "integration": {
+      "resource_guard": "owned_rss_available_swap@2",
+      "host_free_mode": "observed_only_not_a_reclaimability_estimate",
+      "exit_code": 0,
+      "elapsed_s": 325.83,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 604209152,
+      "minimum_host_available_bytes": 14507945984,
+      "minimum_host_free_bytes": 1702154240,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "owned_scratch_bytes": 2147483648
+      },
+      "test_files": 13,
+      "peak_owned_scratch_bytes": 412969035
+    },
+    "contexts": {
+      "resource_guard": "owned_rss_available_swap@2",
+      "host_free_mode": "observed_only_not_a_reclaimability_estimate",
+      "exit_code": 0,
+      "elapsed_s": 142.05,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 531619840,
+      "minimum_host_available_bytes": 14594785280,
+      "minimum_host_free_bytes": 1838653440,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "owned_scratch_bytes": 2147483648
+      },
+      "test_files": 5,
+      "peak_owned_scratch_bytes": 343665757
+    },
+    "public-impact": {
+      "resource_guard": "owned_rss_available_swap@2",
+      "host_free_mode": "observed_only_not_a_reclaimability_estimate",
+      "exit_code": 0,
+      "elapsed_s": 7.53,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 129990656,
+      "minimum_host_available_bytes": 15010197504,
+      "minimum_host_free_bytes": 2318442496,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "owned_scratch_bytes": 2147483648
+      },
+      "test_files": 0,
+      "peak_owned_scratch_bytes": 273927382
+    },
+    "integration-sphinx": {
+      "resource_guard": "owned_rss_available_swap@2",
+      "host_free_mode": "observed_only_not_a_reclaimability_estimate",
+      "exit_code": 0,
+      "elapsed_s": 25.2,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 278872064,
+      "minimum_host_available_bytes": 14940844032,
+      "minimum_host_free_bytes": 2250665984,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "owned_scratch_bytes": 2147483648
+      },
+      "test_files": 0,
+      "peak_owned_scratch_bytes": 309724005
+    }
+  },
+  "public_comparison": {
+    "owner": "#186/#112/#148",
+    "review_trigger": "candidate/default scientific review and B4 activity journey; before 0.15.0",
+    "sdk_at_local_precommit_execution": "0.14.0+165.g9e497e1",
+    "original_example_producer": "129020182555787d3cab58cc110e7a707fc5e553",
+    "original_database_sha256": "6c86d713ebd08b69435434c0b9281c820f842bed2170473ead476c169ea63e7b",
+    "original_database_unchanged": true,
+    "online_requests": 0,
+    "original_rule": "measurement_identity@1",
+    "candidate_rule": "measurement_identity@2",
+    "implementation_sha256": "9dfaea697f297884ccb392811781d74eef969c8d4d91ec4f513555ef787a96bd",
+    "guide_sha256": "963234d5af44bc66cd8bbfe6c7862fa4bac6eeaef9e6895a30a48315a462ccc1",
+    "scope": "Same-input comparison of original and opt-in policy on two exact retained public Cards and two public three-source fixture rebuilds. These are policy differences, not erroneous-source counts or experiment-independence findings.",
+    "original_database_copy_removed": true,
+    "rows": [
+      {
+        "input": "retained-subject",
+        "card_ref": "sabueso:protein:uniprot:P52270@sha256:cd9fbf8f75db54a05537f5fbc131cf1bf3d84875d1703b94aa3d08fc4caf0ddc",
+        "retained_input": "inputs/retained-subject.json",
+        "input_sha256": "328373a95efff582a3c6f34aa8a17b3caf9c33b42308fb53e8fd4398702cc2ff",
+        "input_bytes": 1446853,
+        "retained_records": 510,
+        "included_records": 510,
+        "excluded_records": 0,
+        "original_sum_of_item_group_counts": 494,
+        "original_distinct_included_group_count": 494,
+        "candidate_sum_of_item_group_counts": 510,
+        "candidate_distinct_included_group_count": 510,
+        "candidate_all_record_counting": {
+          "scope": "all_retained_has_bioactivity_relationships",
+          "record_count": 510,
+          "group_count": 510,
+          "resolved_copy_links": 0,
+          "possible_correspondence_count": 15,
+          "independence_status": "not_established",
+          "interpretation": "Retained groups under the selected policy; not a count of independent experiments. Possible correspondence and unresolved copies remain explicit."
+        },
+        "unresolved_copy_reasons": {},
+        "changed_group_assignment_records": 32,
+        "changed_molecule_classes": [],
+        "individual_record_values_units_qualifiers_classes_unchanged": true,
+        "card_unchanged": true,
+        "actual_user_guide_block_passed": true,
+        "count_scope_note": "Sum of per-molecule item group counts can exceed the distinct included group count when one declared-copy family appears in multiple molecule items. Neither count establishes independent experiments.",
+        "independent_scientific_review": "pending"
+      },
+      {
+        "input": "retained-comparator",
+        "card_ref": "sabueso:protein:uniprot:P60174@sha256:da4988d08ebc5516333072dca48481046f2d0220160eda0eb579136894577461",
+        "retained_input": "inputs/retained-comparator.json",
+        "input_sha256": "6f599a4bae5bdc24b71e85128957cdd5bba5e7891a296b78899e3f904dbe35f1",
+        "input_bytes": 505354,
+        "retained_records": 59,
+        "included_records": 51,
+        "excluded_records": 8,
+        "original_sum_of_item_group_counts": 44,
+        "original_distinct_included_group_count": 44,
+        "candidate_sum_of_item_group_counts": 51,
+        "candidate_distinct_included_group_count": 51,
+        "candidate_all_record_counting": {
+          "scope": "all_retained_has_bioactivity_relationships",
+          "record_count": 59,
+          "group_count": 59,
+          "resolved_copy_links": 0,
+          "possible_correspondence_count": 12,
+          "independence_status": "not_established",
+          "interpretation": "Retained groups under the selected policy; not a count of independent experiments. Possible correspondence and unresolved copies remain explicit."
+        },
+        "unresolved_copy_reasons": {},
+        "changed_group_assignment_records": 20,
+        "changed_molecule_classes": [],
+        "individual_record_values_units_qualifiers_classes_unchanged": true,
+        "card_unchanged": true,
+        "actual_user_guide_block_passed": true,
+        "count_scope_note": "Sum of per-molecule item group counts can exceed the distinct included group count when one declared-copy family appears in multiple molecule items. Neither count establishes independent experiments.",
+        "independent_scientific_review": "pending"
+      },
+      {
+        "input": "three-source-P52270",
+        "card_ref": "sabueso:protein:uniprot:P52270@sha256:2f563e45bfe1cff763e465ce23994ff2c8b8a158c9ea82ebccc219cd367afbd4",
+        "retained_input": "inputs/three-source-P52270.json",
+        "input_sha256": "7c910acf730af832c7901a078690cde78abc62b4036402b36618cec2f498dcc1",
+        "input_bytes": 2282145,
+        "retained_records": 1002,
+        "included_records": 1002,
+        "excluded_records": 0,
+        "original_sum_of_item_group_counts": 505,
+        "original_distinct_included_group_count": 501,
+        "candidate_sum_of_item_group_counts": 521,
+        "candidate_distinct_included_group_count": 517,
+        "candidate_all_record_counting": {
+          "scope": "all_retained_has_bioactivity_relationships",
+          "record_count": 1002,
+          "group_count": 517,
+          "resolved_copy_links": 485,
+          "possible_correspondence_count": 15,
+          "independence_status": "not_established",
+          "interpretation": "Retained groups under the selected policy; not a count of independent experiments. Possible correspondence and unresolved copies remain explicit."
+        },
+        "unresolved_copy_reasons": {
+          "molecule_not_resolved_in_named_assay": 7
+        },
+        "changed_group_assignment_records": 47,
+        "changed_molecule_classes": [
+          {
+            "molecule_ref": "pubchem:168270788",
+            "original_class": "weak",
+            "candidate_class": "inconclusive"
+          }
+        ],
+        "individual_record_values_units_qualifiers_classes_unchanged": true,
+        "card_unchanged": true,
+        "actual_user_guide_block_passed": true,
+        "count_scope_note": "Sum of per-molecule item group counts can exceed the distinct included group count when one declared-copy family appears in multiple molecule items. Neither count establishes independent experiments.",
+        "independent_scientific_review": "pending"
+      },
+      {
+        "input": "three-source-P60174",
+        "card_ref": "sabueso:protein:uniprot:P60174@sha256:5d7140a66a5863881b62fd9f9bc74b9774103445fadf7b3352a76a15d9337c2d",
+        "retained_input": "inputs/three-source-P60174.json",
+        "input_sha256": "2dc776cb64540449c7affae663bfa3834009f56ffaf72d0dc64c62b083017dcb",
+        "input_bytes": 476975,
+        "retained_records": 96,
+        "included_records": 88,
+        "excluded_records": 8,
+        "original_sum_of_item_group_counts": 49,
+        "original_distinct_included_group_count": 47,
+        "candidate_sum_of_item_group_counts": 62,
+        "candidate_distinct_included_group_count": 62,
+        "candidate_all_record_counting": {
+          "scope": "all_retained_has_bioactivity_relationships",
+          "record_count": 96,
+          "group_count": 62,
+          "resolved_copy_links": 34,
+          "possible_correspondence_count": 12,
+          "independence_status": "not_established",
+          "interpretation": "Retained groups under the selected policy; not a count of independent experiments. Possible correspondence and unresolved copies remain explicit."
+        },
+        "unresolved_copy_reasons": {
+          "named_original_assay_not_on_card": 3
+        },
+        "changed_group_assignment_records": 35,
+        "changed_molecule_classes": [
+          {
+            "molecule_ref": "chembl:CHEMBL3142429",
+            "original_class": "weak",
+            "candidate_class": "inconclusive"
+          },
+          {
+            "molecule_ref": "pubchem:129627013",
+            "original_class": "weak",
+            "candidate_class": "inconclusive"
+          },
+          {
+            "molecule_ref": "pubchem:137241593",
+            "original_class": "weak",
+            "candidate_class": "inconclusive"
+          },
+          {
+            "molecule_ref": "pubchem:73187903",
+            "original_class": "weak",
+            "candidate_class": "inconclusive"
+          },
+          {
+            "molecule_ref": "chembl:CHEMBL1161997",
+            "original_class": "inactive",
+            "candidate_class": "inconclusive"
+          }
+        ],
+        "individual_record_values_units_qualifiers_classes_unchanged": true,
+        "card_unchanged": true,
+        "actual_user_guide_block_passed": true,
+        "count_scope_note": "Sum of per-molecule item group counts can exceed the distinct included group count when one declared-copy family appears in multiple molecule items. Neither count establishes independent experiments.",
+        "independent_scientific_review": "pending"
+      }
+    ]
+  },
+  "original_integrity": {
+    "owner": "#186/#112/#148",
+    "review_trigger": "final source and original-policy compatibility checkpoint",
+    "original_measurements_module_unchanged_from_base": true,
+    "measurement_module_sha256": "1f346862b87061c42982c0b4221f59f2914acaf9cfb43b711d198c9102b9f99a",
+    "unchanged_functions": {
+      "sabueso/core/measurements.py": {
+        "original_revision": "0.14.0",
+        "unchanged_function_ASTs": [
+          "measurement_groups",
+          "half_unit",
+          "_agree",
+          "_relations_match"
+        ]
+      },
+      "sabueso/core/bioactivities.py": {
+        "original_revision": "0.14.0",
+        "unchanged_function_ASTs": [
+          "_band",
+          "_bounded",
+          "classify_measurement",
+          "single_point_concentration",
+          "bioactivity_derivation"
+        ]
+      },
+      "sabueso/core/bioactivity_class_v4.py": {
+        "original_revision": "1290201",
+        "unchanged_function_ASTs": [
+          "classification_rule",
+          "thresholds_in_force",
+          "derivation",
+          "classify"
+        ]
+      }
+    },
+    "fixture_digest": "f816d19d582dc0da113627995ffede51ce84b420a8331b1b71543f1e019fbeec",
+    "schema_and_existing_source_fixtures_changed": false
+  },
+  "implemented_bounded_prerequisite": "#182: explanation context enumerates actual pinned serialized glossary identity entries; existing alias/identity engine, source values and Card pins are unchanged. Raw runtime-only registrations are not given invented pinned locators.",
+  "retained_failures": {
+    "initial-focused": "Synthetic molecule test omitted mandatory SourceAssertion support; corrected its input.",
+    "duplicate-projection-focused": "Synthetic duplicate activity test reused one relationship id; supplied an explicit separate synthetic projection for selector ambiguity.",
+    "initial-public-impact": "Caught unnecessary missing-endpoint copy restriction and existing original-rule glossary-context KeyError. Both corrected and independently controlled.",
+    "input-export-harness-public-impact": "Diagnostic used an unavailable top-level Card alias; corrected to the existing core import. This is not a library defect."
+  },
+  "experience_review": {
+    "task": "Distinguish declared copies, uncertain correspondence and unknown experimental independence, then inspect the actual pinned support.",
+    "observed": "Actual documented block executes on four public inputs, keeps original Cards/records and explains unassessed scope; source matching and summaries have explicit policies.",
+    "remaining_awkward": "Direct dictionaries and native record selectors remain; rich question discovery, cross-topic activity journey, compact agent adapter and original scientific saved panel are B4 work.",
+    "researcher_feedback": "pending; no independent human task observation or wow acceptance is claimed."
+  },
+  "scientific_review": "pending; six changed molecule summary bands are candidate copy-only abstention differences, not proven source errors.",
+  "installed_receiving": "Standalone new policy is declared/copied in CI and staged scopes; copied local receiving passes in integration. Actual installed-artifact qualification remains separate.",
+  "online_requests": 0,
+  "source_queries": 0,
+  "implementation_and_test_sha256": {
+    ".github/workflows/ci.yml": "f62034e82f2ff0cf940ba069670691fdcaa06c3fc95224d8d2f3578e5dcd90a8",
+    ".github/workflows/test_staged_conda_package.yaml": "11b53e4b43cb30e7f5bdf5cb16be95d3be4fd395f4c62fc738b9a478236b8d70",
+    "sabueso/core/bioactivities.py": "afef2f1c745b1c09c8d2b54e6a9df589e3af93b6bf66269167b079916b1b96f0",
+    "sabueso/core/bioactivity_explanation.py": "fcd814e98e3b59e06bf53df9be4d0b4858a328e028a074b68ca75df8d8014284",
+    "sabueso/core/card.py": "2422b7ab168510a1eac8492919045abd409af2921d7903f86b5c0f81ab40beaf",
+    "sabueso/core/ligand_explanation.py": "35e4d2009fb236dc7126da7ef85c092e11cccf3f7da13837cbf429283224bd83",
+    "sabueso/core/ligands.py": "345e3c7fcfa7b2f26e0b0c83ebc15c95ce5332bf84febe5d8883f1a299d38172",
+    "sabueso/core/packets.py": "7386acdbbb5b72db1cfbd81ed6e77d89e098a7b63da85c0d6d946c8ec4032525",
+    "sabueso/core/tables.py": "f7ed17cd9966d8f689f7ea0758188a8c36ba7a6d6ff043bfc56e76f22d121b2a",
+    "tests/core/test_pubchem_bioassay_offline.py": "74c4d9d7ff2f0273fe38594f26fe8ea2b5859f6332a75a8b61a5dd14b1fa2a66",
+    "tests/tools/test_installed_receiving_scope_offline.py": "0c29488cd8dc97957c3815517cf59e64a3d0ba5bc599d274f5d1c00c04529a05",
+    "sabueso/_private/argdigest/argument/measurement_rule.py": "93a69da1765ca8d829fd3ff62746ef933aa491bb803a55e331acee6020931803",
+    "sabueso/core/measurement_correspondence.py": "9dfaea697f297884ccb392811781d74eef969c8d4d91ec4f513555ef787a96bd",
+    "tests/core/test_measurement_correspondence_offline.py": "7f04decbbac7196f0937e0510a18b6eb75e85ae2a087972f8b761c23fc768a77"
+  },
+  "remote_receiving": "pending on a final unskipped exact-source checkpoint; no older source pass qualifies changed bytes.",
+  "release_consolidation": "paused",
+  "final_documentation_receiving": {
+    "warning_fatal_sphinx": {
+      "resource_guard": "owned_rss_available_swap@2",
+      "host_free_mode": "observed_only_not_a_reclaimability_estimate",
+      "exit_code": 0,
+      "elapsed_s": 3.97,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 183635968,
+      "minimum_host_available_bytes": 14900416512,
+      "minimum_host_free_bytes": 2163392512,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "owned_scratch_bytes": 2147483648
+      },
+      "test_files": 0,
+      "peak_owned_scratch_bytes": 317619937
+    },
+    "markdown_and_python": {
+      "local_targets_anchors": 592,
+      "python_snippets_syntax": 6,
+      "python_311_parsed_files": 12
+    },
+    "ruff_format_files": 1329,
+    "ruff_lint": "passed",
+    "fixture_delivery": "71 reviewed repository inputs; 37 protected local-only originals",
+    "workflow_yaml": "Both installed workflows parse and declare exactly one copy and selection of the standalone policy file.",
+    "governance": "passed"
+  }
+}

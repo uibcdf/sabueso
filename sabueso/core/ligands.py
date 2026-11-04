@@ -21,6 +21,15 @@ from .relationship_store import make_derivation
 COUNTING_RULE = "ligand_measurement_count@2"
 
 
+def _count_scope(counting_rule):
+    basis = (
+        "Distinct included group ids across matched molecule items"
+        if counting_rule == COUNTING_RULE
+        else "Included source records summed across matched molecule items (legacy)"
+    )
+    return basis + "; not a count of independent experiments."
+
+
 def _records(molecule_card: Any) -> Set[str]:
     anchor = (molecule_card.id or "").split(":", 2)[-1]
     return {
@@ -59,6 +68,7 @@ def ligands_view(
     *,
     counting_rule: str = COUNTING_RULE,
     classification_rule: str = "bioactivity_class@4",
+    measurement_rule: str = "measurement_identity@1",
     _support=None,
 ) -> Dict[str, Any]:
     """Per molecule of ``deck``: its bioactivity on ``card`` and its structures.
@@ -78,6 +88,7 @@ def ligands_view(
         include_indirect=include_indirect,
         thresholds=thresholds,
         classification_rule=classification_rule,
+        measurement_rule=measurement_rule,
     )
     by_molecule = {item["molecule_ref"]: item for item in bio["items"]}
     excluded: Dict[str, int] = {}
@@ -147,6 +158,14 @@ def ligands_view(
                     if counting_rule == COUNTING_RULE
                     else sum(len(m["measurements"]) for m in measured),
                     "records": len(record_ids),
+                    **(
+                        {
+                            "measurement_count_scope": _count_scope(counting_rule),
+                            "independence_status": "not_established",
+                        }
+                        if measurement_rule == "measurement_identity@2"
+                        else {}
+                    ),
                 }
                 if best
                 else None,
@@ -216,6 +235,14 @@ def ligands_view(
                 if counting_rule == COUNTING_RULE
                 else "included source records summed across matched molecule items (legacy)",
                 "records": "distinct included source relationship ids across matched molecule items",
+                **(
+                    {
+                        "measurement_count_scope": _count_scope(counting_rule),
+                        "independence_status": "not_established",
+                    }
+                    if measurement_rule == "measurement_identity@2"
+                    else {}
+                ),
             },
         ),
     }
@@ -231,6 +258,7 @@ def compare_ligands(
     *,
     counting_rule: str = COUNTING_RULE,
     classification_rule: str = "bioactivity_class@4",
+    measurement_rule: str = "measurement_identity@1",
 ) -> Dict[str, Any]:
     """Molecules related to both proteins, side by side, and those related to only one.
 
@@ -245,6 +273,7 @@ def compare_ligands(
         thresholds,
         counting_rule=counting_rule,
         classification_rule=classification_rule,
+        measurement_rule=measurement_rule,
     )
     mine = {i["molecule_ref"]: i for i in mine_view["items"]}
     view = ligands_view(
@@ -254,6 +283,7 @@ def compare_ligands(
         thresholds,
         counting_rule=counting_rule,
         classification_rule=classification_rule,
+        measurement_rule=measurement_rule,
     )
     theirs = {i["molecule_ref"]: i for i in view["items"]}
 

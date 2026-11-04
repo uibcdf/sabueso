@@ -70,6 +70,10 @@ not promise exact old requests. See [the correction](pending_proposals/comparati
   edge in two retained public example Cards. This does not establish source-wide
   method absence, duplication or experimental independence. Candidate count/vote
   semantics and independent scientific review remain pending; @1 is unchanged.
+  The implemented opt-in @2 exposes copies, possible correspondence and unknown
+  independence. Four public comparisons preserve all individual records, while
+  six molecule summary bands change under copy-only abstention. These are policy
+  differences needing review, not proof of source errors or independent experiments.
 
 - **Extended PDB identifiers ([#175](https://github.com/uibcdf/sabueso/issues/175)):**
   public structure receiving and original native assembly admission currently

@@ -3,7 +3,7 @@ summary: Separate declared copies, possible measurement correspondence and exper
 issue: uibcdf/sabueso#186
 status: open
 opened: 2026-11-04
-verification: original_policy_inventory_measured_candidate_not_implemented
+verification: locally_checked_hosted_and_independent_acceptance_pending
 area: [bioactivities, scientific-correctness, public-api]
 ---
 
@@ -12,8 +12,87 @@ area: [bioactivities, scientific-correctness, public-api]
 Owner [#186](https://github.com/uibcdf/sabueso/issues/186); coordination #112/#148.
 This is B2 of the [continuation plan](../CONTINUATION_PLAN_20261104.md).
 The [original @1 design](../archive/measurement_identity.md) remains historical
-authority for its own interpretation. This proposal does not change that rule,
-the current default, source assertions, stored Cards or original answers.
+authority for its own interpretation. The first opt-in candidate is implemented
+in development; it changes no original @1 function, current default, source
+assertion, stored Card or original answer. Independent scientific/default and
+consumer acceptance remain pending.
+
+## First opt-in implementation
+
+`measurement_rule="measurement_identity@2"` is available on `Card.bioactivities`,
+`explain_measurement`, `explain_bioactivity`, `ligands`, `explain_ligand` and
+`compare_ligands`, including activity/ligand tables. One ArgDigest digester and
+native preflight checks own the selector. Omission retains original @1. Activity
+classification remains a separate option, default @4.
+
+The candidate accepts only declared-copy identity edges with unique original
+selectors. It retains original discrepancies, unresolved/ambiguous pointers and
+cycles. Exact scalar numeric/publication matches remain possible correspondence;
+range/uncertain/unsupported numeric context is outside that candidate comparison.
+Reported literal context is not a protocol-equivalence or general prose parser.
+Copy-only groups have no original voter and remain inconclusive, preserving each
+record's own class. Counts explicitly state that independence is not established.
+
+New measurement explanation @2, activity explanation @3 and ligand explanation @4
+carry the opt-in interpretation and exact original support. Original selections
+retain their earlier explanation shapes/meanings. Current packet mappings @6–@15
+now explicitly select measurement @1; no new packet mapping or saved explorer is
+introduced by this implementation. Subsequent adoption requires its own versions
+and original-data receiving.
+
+Selected receiving passes 99 cases across the new policy, public PubChem
+copy controls and original measurement tests; 360 affected integration cases,
+including both isolated copied scopes; and 218 shared explanation/original-reader
+cases. Warning-fatal Sphinx passes. These scopes overlap and are not summed as
+unique tests. The [candidate receipt](../evidence/measurement_correspondence_candidate_20261104.json)
+retains resources, original-input hashes, failures/corrections and remaining
+acceptance. Exact-source hosted and independent scientific/researcher/default
+acceptance remain pending. This is locally checked implementation, not a released fix.
+
+### Same-input public comparison and integration findings
+
+The original-input inventory above uses @1 and remains unchanged. Later local
+candidate comparison uses those same two original pins and two three-source public
+fixture rebuilds, with unchanged individual values, qualifiers, units and classes:
+
+| Input | Retained / included / excluded records | Distinct included groups @1 → @2 | Sum of per-molecule group counts @1 → @2 | Changed molecule summary classes |
+| --- | --- | --- | --- | --- |
+| Retained TcTIM | 510 / 510 / 0 | 494 → 510 | 494 → 510 | 0 |
+| Retained HsTIM | 59 / 51 / 8 | 44 → 51 | 44 → 51 | 0 |
+| Three-source TcTIM | 1002 / 1002 / 0 | 501 → 517 | 505 → 521 | 1 |
+| Three-source HsTIM | 96 / 88 / 8 | 47 → 62 | 49 → 62 | 5 |
+
+A copy family can occur in more than one molecule item, so summing item counts
+can exceed the distinct included group count. Neither is an independent-experiment
+count. Of the six changed summary bands, five move weak → inconclusive and one
+inactive → inconclusive under copy-only abstention. Individual source record bands
+remain unchanged. These are candidate-policy differences for scientific review,
+not six proven source errors, new measurements or evidence of inactivity/efficacy.
+
+The candidate resolves 485 declared-copy links in the three-source TcTIM input;
+seven pointers lack a resolved molecule in their named retained assay. HsTIM
+resolves 34 links; three named original assays are not on the Card. These local
+scope statements do not establish absence from an external source. Numeric-only
+candidates are 15 and 12 respectively, with retained methods/independence unknown.
+The actual guide block executes on all four inputs without acquisition.
+
+The complete comparison caught two issues after narrower controls passed. The
+initial candidate unnecessarily required a stated copy endpoint; 471 of its 472
+unresolved TcTIM pointers lacked that field. Some still lack an unambiguous molecule
+selector. A declared named-assay/molecule pointer may
+select a unique retained original without filling in the missing endpoint; several
+eligible originals still remain ambiguous. Independent positive/ambiguous controls
+now cover that distinction.
+
+The same comparison reproduced an existing `KeyError` under @1 and @2 explanation:
+a runtime registered anchor can occur as a record of another indexed entity.
+The bounded #182 prerequisite enumerates resolved entries actually present in the
+serialized glossary at the pin. Aliases and complete indexed context remain
+inspectable; no fictitious locator or raw runtime registration is promoted into
+pinned knowledge. Tests require exact before/after Card serialization explanation,
+unchanged pins and support. `entities.py`, Card serialization, original measurement
+functions and saved verifiers are unchanged. This does not close #182's broader
+typed-glossary/identity versioning work. Original failed diagnostics remain retained.
 
 ## Scientific question
 
@@ -60,12 +139,12 @@ the stricter proposal needs a deliberate new interpretation.
 
 ## Candidate interpretation for independent review
 
-Reserve `measurement_identity@2` for a new explicitly selected policy. Do not
+The candidate implements `measurement_identity@2` as an explicitly selected policy. Do not
 change @1 or a published packet mapping in place. The first candidate should
 abstain from statement-based identity when no source-supported link establishes
 the same measurement; retain the old numeric/publication match as a **possible
 correspondence**, with the exact match inputs and missing/conflicting context.
-This is a proposed technical direction, not an adopted default or scientist
+This is an implemented technical candidate, not an adopted default or scientist
 acceptance. Review its public-input consequences before adoption.
 
 | State | Required basis and consequence |
@@ -188,5 +267,6 @@ calls forbidden while reading. Do not weaken frozen predicates.
 5. Complete coherent consumer/versioned-packet and B4 human/agent/saved adoption;
    keep observed researcher acceptance separate from technical conformance.
 
-No candidate policy, independent scientific acceptance, external source access
-or 0.15.0 consolidation is claimed by this preparatory inventory/design.
+Independent scientific acceptance, new external source access and 0.15.0
+consolidation remain unclaimed; the original inventory and later candidate
+qualification retain separate scopes.

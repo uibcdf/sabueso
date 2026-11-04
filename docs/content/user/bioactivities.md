@@ -4,7 +4,7 @@ Measured bioactivities come from ChEMBL, BindingDB and PubChem BioAssay, and fro
 a curator reads ({doc}`literature_and_curation`).
 
 ChEMBL activity records of a resolved protein become `has_bioactivity` relationships from
-the protein to each tested molecule. Each measurement is one relationship. It keeps
+the protein to each tested molecule. Each source activity record is one relationship. It keeps
 the measured value, the assay (including how ChEMBL assigned it to the target) and the
 document it comes from:
 
@@ -18,7 +18,7 @@ print(card.quality["enrichments"])
 view = card.bioactivities()
 for item in view["items"][:5]:
     print(item["molecule_ref"], item["class"], item["best_pchembl"], item["classes"])
-print(view["documents"])  # measurements per document: source bias is visible
+print(view["documents"])  # included source records per document: source bias is visible
 print(view["excluded"])  # e.g. assays assigned to the target by homology
 print(view["classification"])  # rule bioactivity_class@4 and its thresholds
 ```
@@ -81,6 +81,53 @@ new packets use mapping @15. Stored packets keep their original mapping and
 interpretation; loading them does not recompute classes. `single_point_min` is
 explicitly unused by @4. Independent scientific/researcher review and remaining
 rich exploration integration are still in progress.
+
+## Are these independent results? (opt-in development policy)
+
+Two databases can report the same result, or different experiments with similar
+numbers. The opt-in `measurement_identity@2` policy keeps declared copies together
+when their original can be selected unambiguously. Equal values from one paper
+remain **possible correspondence**; they do not establish one measurement or
+independent experimental confirmation. The original @1 grouping stays the default.
+
+For an already populated protein Card:
+
+```python
+measurement_policy = "measurement_identity@2"
+candidate = card.bioactivities(measurement_rule=measurement_policy)
+correspondence = candidate["measurement_identity"]
+print(correspondence["counting"]["interpretation"])
+print(correspondence["comparison_scope"]["interpretation"])
+for pair in correspondence["possible_correspondences"][:3]:
+    print(pair["interpretation"])
+    print(pair["context"])  # retained fields, missing values and literal differences
+    support = card.explain_measurement(
+        pair["records"][0], measurement_rule=measurement_policy
+    )
+    print(support["diagnostics"]["possible_correspondences"])
+```
+
+Use the same `measurement_rule` in `explain_bioactivity`, `ligands`,
+`explain_ligand`, `compare_ligands` and activity/ligand `table` calls. This selector
+is separate from `classification_rule`, which still controls concentration bands.
+The candidate retains all original values, units, qualifiers and source support.
+`measurement_count` counts retained groups under the selected policy; it does not
+count independent experiments. `independence_status="not_established"` and the
+counting explanation make that limit explicit, including in flat tables.
+
+Missing assay context, equal prose or literal differences do not establish an
+experimental equivalence or contradiction. The candidate does not interpret prose
+or compare complete protocols. Named-assay links with several eligible originals
+remain ambiguous; rounded numeric agreement does not select one. Unresolved copies
+remain visible in `unresolved_copies`. Copy-only groups have no original class vote
+and remain inconclusive, while their individual source measurements/classes stay
+available. This differs explicitly from @1's original copy-only fallback.
+
+Independent scientific/consumer review and default adoption are pending. Current
+packets, including mapping @15, explicitly retain measurement @1. No new packet
+meaning or scientific saved explorer is provided by this opt-in selector; existing
+stored answers retain their own exact interpretations. Activity exploration panels
+remain separate work.
 
 ## Explain a stored measurement or class (since 0.13.0)
 

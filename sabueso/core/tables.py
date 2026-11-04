@@ -117,6 +117,17 @@ def _bioactivities(view: Dict[str, Any]) -> List[Dict[str, Any]]:
                     "source": m["source"],
                     "group": m["group"],
                     "copy": m["copy"],
+                    **(
+                        {
+                            "measurement_rule": view["measurement_identity"]["rule"][
+                                "rule"
+                            ],
+                            "independence_status": item["independence_status"],
+                            "measurement_count_scope": item["measurement_count_scope"],
+                        }
+                        if "independence_status" in item
+                        else {}
+                    ),
                     "target_assignment": m["target_assignment"],
                     "assay": m["assay"],
                     "document": m["document"],
@@ -152,6 +163,22 @@ def _ligands(view: Dict[str, Any]) -> List[Dict[str, Any]]:
                 ),
                 "best_pchembl": bio.get("best_pchembl"),
                 "measurements": bio.get("measurements", 0),
+                **(
+                    {
+                        "measurement_rule": view["measurement_counting"]["parameters"][
+                            "measurement_identity"
+                        ]["rule"],
+                        "independence_status": view["measurement_counting"][
+                            "parameters"
+                        ]["independence_status"],
+                        "measurement_count_scope": view["measurement_counting"][
+                            "parameters"
+                        ]["measurement_count_scope"],
+                    }
+                    if "independence_status"
+                    in view["measurement_counting"]["parameters"]
+                    else {}
+                ),
                 "excluded_measurements": item["excluded_measurements"],
                 "structures": len(item["structures"]),
                 "structures_of_interest": _join(item["structures_of_interest"]),

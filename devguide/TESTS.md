@@ -1,5 +1,16 @@
 # Sabueso — Tests and Quality Gates
 
+For opt-in measurement correspondence @2 (#186), run
+`tests/core/test_measurement_correspondence_offline.py`, public PubChem copy and
+original measurement tests, affected activity/ligand/explanation/table/argument/
+quantity/packet cases, public journeys and the isolated copied receiving test.
+Both CI installed and staged installed scopes must copy/select the new standalone
+module. Verify default @1 and genuine original packet reading separately from
+opt-in answers. Check no inferred independence, unresolved/cyclic/ambiguous copies,
+no numeric tie-break of named-assay originals, exact source support and no vote
+from a copy-only group. The policy candidate is not a saved-explorer implementation
+or independent scientific acceptance.
+
 Select verification by changed behavior and state its scope. Detailed provider
 cases are in [the native test reference](sources/NATIVE_TEST_REFERENCE.md); dated
 receipts remain [archived](archive/consolidation_2026-10-08/TESTS.md). A passing

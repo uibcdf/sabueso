@@ -478,7 +478,10 @@ def _relationships(card: Any, predicate: str) -> List[Dict[str, Any]]:
 def _facts(aspect: str, card: Any, *, mapping: str = ASPECT_MAPPING) -> Dict[str, Any]:
     if mapping == "packet_aspects@15":
         if aspect == "bioactivities":
-            return card.bioactivities(classification_rule="bioactivity_class@4")
+            return card.bioactivities(
+                classification_rule="bioactivity_class@4",
+                measurement_rule="measurement_identity@1",
+            )
         return _facts(aspect, card, mapping="packet_aspects@14")
     if aspect == "identity":
         decision = (card.quality.get("entity_resolution") or {}).get("decision") or {}
@@ -562,7 +565,10 @@ def _facts(aspect: str, card: Any, *, mapping: str = ASPECT_MAPPING) -> Dict[str
             native = card.ligand_sites()
         return {**native, **_fields(card, ["annotations.kinase_pocket"])}
     if aspect == "bioactivities":
-        return card.bioactivities(classification_rule="bioactivity_class@3")
+        return card.bioactivities(
+            classification_rule="bioactivity_class@3",
+            measurement_rule="measurement_identity@1",
+        )
     if aspect == "sequence_features":
         return _positional(card)
     if aspect == "literature":

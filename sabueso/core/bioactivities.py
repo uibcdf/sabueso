@@ -414,6 +414,7 @@ def bioactivities_view(
     *,
     _support=None,
     classification_rule="bioactivity_class@4",
+    measurement_rule="measurement_identity@1",
 ) -> Dict[str, Any]:
     """Molecule-centric summary of the card's ``has_bioactivity`` relationships.
 
@@ -426,8 +427,14 @@ def bioactivities_view(
     """
     from .bioactivity_class_v4 import RULE
     from .bioactivity_class_v4 import classification_rule as validate_rule
-    from .measurements import _molecules, measurement_groups, record_source
+    from .measurement_correspondence import RULE as MEASUREMENT_V2
+    from .measurement_correspondence import (
+        measurement_groups,
+        validate_measurement_rule,
+    )
+    from .measurements import _molecules, record_source
 
+    measurement_rule = validate_measurement_rule(measurement_rule)
     selected_rule = validate_rule(classification_rule)
     classifier = classify_measurement
     classification_derivation = bioactivity_derivation
@@ -444,7 +451,9 @@ def bioactivities_view(
     # One measurement stated by several sources is one group (#66): classes and counts
     # are per measurement, never per record.
     identity_support = {} if _support is not None else None
-    identity = measurement_groups(card, _support=identity_support)
+    identity = measurement_groups(
+        card, measurement_rule=measurement_rule, _support=identity_support
+    )
     record_decisions, group_decisions = [], []
     group_of = identity["group_of"]
     # A molecule another source names differently (bindingdb:…) joins the ChEMBL entry of
@@ -567,6 +576,8 @@ def bioactivities_view(
         classes: Dict[str, int] = {}
         for group_id, members in by_group.items():
             voters = [x for x in members if not x["copy"]] or members
+            if measurement_rule == MEASUREMENT_V2:
+                voters = [x for x in members if not x["copy"]]
             found = {x["class"] for x in voters}
             # Sources of one measurement that classify it differently: inconclusive.
             cls = found.pop() if len(found) == 1 else "inconclusive"
@@ -580,6 +591,8 @@ def bioactivities_view(
                     "class": cls,
                     "basis": "non_copy_records"
                     if any(not x["copy"] for x in members)
+                    else "copies_without_original_vote"
+                    if measurement_rule == MEASUREMENT_V2
                     else "copies_only",
                 }
             )
@@ -607,6 +620,17 @@ def bioactivities_view(
                 and "inactive" in classes,
                 "best_pchembl": max(pchembls) if pchembls else None,
                 "measurement_count": len(by_group),
+                **(
+                    {
+                        "measurement_count_scope": identity["counting"][
+                            "interpretation"
+                        ]
+                        + " Counted per molecule item; a copy family may appear in multiple items.",
+                        "independence_status": "not_established",
+                    }
+                    if measurement_rule == MEASUREMENT_V2
+                    else {}
+                ),
                 "record_count": len(measurements),
                 "sources": sorted({x["source"] for x in measurements}),
                 "documents": sorted(
@@ -639,6 +663,21 @@ def bioactivities_view(
         "classification": classification_derivation(thresholds),
         "checks": consistency_checks(),
         "measurement_identity": {
-            k: identity[k] for k in ("rule", "groups", "ambiguous", "review")
+            k: identity[k]
+            for k in (
+                (
+                    "rule",
+                    "groups",
+                    "ambiguous",
+                    "review",
+                    "unresolved_copies",
+                    "possible_correspondences",
+                    "copy_diagnostics",
+                    "comparison_scope",
+                    "counting",
+                )
+                if measurement_rule == MEASUREMENT_V2
+                else ("rule", "groups", "ambiguous", "review")
+            )
         },
     }

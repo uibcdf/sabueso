@@ -133,8 +133,11 @@ development SHA to acquire a separate green matrix.
 - [B2 preparation](pending_proposals/assay_aware_measurement_correspondence.md)
   now inventories two exact retained public Cards: all 29 accepted @1 statement
   edges lack one mapped assay description. Candidate copy/correspondence/count/vote
-  semantics and independent expected examples are specified for review; no new
-  measurement policy, independence finding or default is implemented by this work.
+  semantics and independent expected examples are specified for review. The later
+  opt-in measurement @2 candidate is now implemented across direct activity/ligand
+  answers, explanations and tables, with four same-input public comparisons and
+  the actual guide block. @1/defaults and packet meanings stay fixed; no independence
+  finding, default adoption or independent scientist/consumer acceptance is claimed.
 - Rich activity, clinical, variant/comparative and other nature/shared panels,
   physical assembly reconciliation, broad human acceptance and workload acceptance
   remain open. Completed structural slices must not be reimplemented from scratch.

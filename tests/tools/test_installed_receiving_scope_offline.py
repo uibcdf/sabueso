@@ -45,6 +45,39 @@ def test_declared_bioactivity_policy_runs_without_checkout_files():
         assert "PASS exit=0" in result.stdout
 
 
+def test_declared_measurement_policy_runs_without_checkout_files():
+    root = Path(__file__).resolve().parents[2]
+    name = "test_measurement_correspondence_offline.py"
+    for workflow_path in (
+        ".github/workflows/ci.yml",
+        ".github/workflows/test_staged_conda_package.yaml",
+    ):
+        workflow = (root / workflow_path).read_text(encoding="utf-8")
+        assert any("cp " in line and name in line for line in workflow.splitlines())
+        assert any(
+            "python -m pytest " in line and name in line
+            for line in workflow.splitlines()
+        )
+    with tempfile.TemporaryDirectory(
+        prefix="sabueso-measurement-receiving-"
+    ) as directory:
+        stage = Path(directory)
+        shutil.copyfile(root / "tests/core" / name, stage / name)
+        env = dict(os.environ, PYTHONPATH=str(stage))
+        env.pop("PYTEST_ADDOPTS", None)
+        result = subprocess.run(
+            [sys.executable, "-m", "pytest", "--receptor=llm", name],
+            cwd=stage,
+            env=env,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            timeout=120,
+        )
+        assert result.returncode == 0, result.stdout + result.stderr
+        assert "PASS exit=0" in result.stdout
+
+
 def test_current_quaternary_packet_case_is_self_contained_in_declared_receiving_scope():
     root = Path(__file__).resolve().parents[2]
     workflow = (root / ".github/workflows/ci.yml").read_text(encoding="utf-8")

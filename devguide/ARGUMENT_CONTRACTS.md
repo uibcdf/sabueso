@@ -1,5 +1,14 @@
 # Sabueso — Argument contracts (ArgDigest)
 
+The opt-in measurement candidate adds `measurement_rule` to `Card.bioactivities`,
+`explain_measurement`, `explain_bioactivity`, `ligands`, `explain_ligand` and
+`compare_ligands` and their applicable table options. It accepts exactly
+`"measurement_identity@1"` (unchanged default) and `"measurement_identity@2"`.
+One digester and native preflight reject unsupported selectors before explanation
+pin capture, including with digestion skipped. It is separate from activity
+`classification_rule` and ligand `counting_rule`. See
+[the scientific candidate and limits](pending_proposals/assay_aware_measurement_correspondence.md).
+
 `Card.bioactivities`, `Card.explain_bioactivity`, `Card.ligands`,
 `Card.explain_ligand` and `Card.compare_ligands` accept exact
 `classification_rule="bioactivity_class@4"` (default) or explicit original

@@ -9,6 +9,24 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Opt-in measurement correspondence and pinned explanation context (2026-11-04, #186/#182)
+
+The [candidate](assay_aware_measurement_correspondence.md) adds explicit measurement
+@2 across direct activity/ligand answers, explanations and tables. Original @1 and
+defaults remain unchanged; mappings @6–@15 explicitly retain @1. The bounded #182
+prerequisite enumerates actual pinned glossary identity entries without changing
+glossary reconstruction or Card serialization/pins. New scientific data are not
+added to Cards or SourceAssertions. No new packet or saved explorer is introduced.
+Local selected gates, four exact public input comparisons, original/copy receiving,
+quantity/argument checks and warning-fatal Sphinx are recorded in the
+[receipt](../evidence/measurement_correspondence_candidate_20261104.json).
+Finish this code block with an unskipped exact-source CI/governance push and full
+source/installed/codec receiving. The older qualified 1290201 or pending 7667754
+cannot qualify these changed bytes. Owner #186/#182/#148/#112; recovery and original
+evidence are retained under `recovered_work/measurement_policy_186_20261104/`.
+Scientific/default/consumer and researcher acceptance stay pending, release
+consolidation paused.
+
 ### Conservative default and packet @15 adoption (2026-11-04, #184/#185)
 
 The [adoption](../pending_bugs/bioactivity_interpretation.md) changes new activity,

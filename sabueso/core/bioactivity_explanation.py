@@ -9,7 +9,9 @@ path or per-request membership is reconstructed or invented.
 from copy import deepcopy
 
 from .bioactivities import CLASS_ORDER, bioactivities_view
-from .measurements import half_unit, measurement_groups
+from .measurement_correspondence import RULE as MEASUREMENT_V2
+from .measurement_correspondence import measurement_groups, validate_measurement_rule
+from .measurements import half_unit
 from .relationship_store import make_derivation
 
 MEASUREMENT_RULE = "measurement_group_explanation@1"
@@ -127,7 +129,10 @@ class _Support:
                     "basis": "stored_identity_record",
                     "source_assertion_membership": "not_recorded",
                 }
-                for key in sorted(self.card.entity_identities)
+                # A registered anchor may be a record of another indexed entity.
+                # Context locators describe the actual serialized glossary at this pin.
+                for key in sorted(entities)
+                if entities[key].get("identity")
             ],
         }
 
@@ -195,10 +200,15 @@ def _joins(identity, trace, selected):
     return rows
 
 
-def explain_measurement(card, measurement_ref):
+def explain_measurement(
+    card, measurement_ref, *, measurement_rule="measurement_identity@1"
+):
+    measurement_rule = validate_measurement_rule(measurement_rule)
     support = _Support(card)
     trace = {}
-    identity = measurement_groups(card, _support=trace)
+    identity = measurement_groups(
+        card, measurement_rule=measurement_rule, _support=trace
+    )
     group = _group(identity, measurement_ref, trace["info"])
     selected = set(group["records"]) if group else set()
     diagnostics = {
@@ -212,14 +222,33 @@ def explain_measurement(card, measurement_ref):
                 | set(row.get("candidates") or [])
             )
         ]
-        for key in ("ambiguous", "unresolved_copies", "review")
+        for key in (
+            (
+                "ambiguous",
+                "unresolved_copies",
+                "review",
+                "possible_correspondences",
+                "copy_diagnostics",
+            )
+            if measurement_rule == MEASUREMENT_V2
+            else ("ambiguous", "unresolved_copies", "review")
+        )
     }
     return deepcopy(
         {
             "rule": make_derivation(
-                MEASUREMENT_RULE,
+                "measurement_group_explanation@2"
+                if measurement_rule == MEASUREMENT_V2
+                else MEASUREMENT_RULE,
                 inputs=[support.pin],
-                parameters={"measurement_ref": measurement_ref},
+                parameters={
+                    "measurement_ref": measurement_ref,
+                    **(
+                        {"measurement_rule": measurement_rule}
+                        if measurement_rule == MEASUREMENT_V2
+                        else {}
+                    ),
+                },
             ),
             "card_ref": support.pin,
             "measurement_ref": measurement_ref,
@@ -233,6 +262,14 @@ def explain_measurement(card, measurement_ref):
             "joins": _joins(identity, trace, selected),
             "records": [support.links[rid] for rid in sorted(selected)],
             "diagnostics": diagnostics,
+            **(
+                {
+                    "counting": identity["counting"],
+                    "comparison_scope": identity["comparison_scope"],
+                }
+                if measurement_rule == MEASUREMENT_V2
+                else {}
+            ),
             "context": support.context(selected),
             "gaps": support.gaps,
         }
@@ -246,10 +283,12 @@ def explain_bioactivity(
     thresholds=None,
     *,
     classification_rule="bioactivity_class@4",
+    measurement_rule="measurement_identity@1",
 ):
     from .bioactivity_class_v4 import RULE, thresholds_in_force
     from .bioactivity_class_v4 import classification_rule as validate_rule
 
+    measurement_rule = validate_measurement_rule(measurement_rule)
     classification_rule = validate_rule(classification_rule)
     if classification_rule == RULE:
         thresholds_in_force(thresholds)
@@ -261,6 +300,7 @@ def explain_bioactivity(
         thresholds,
         _support=trace,
         classification_rule=classification_rule,
+        measurement_rule=measurement_rule,
     )
     item = next((i for i in view["items"] if i["molecule_ref"] == molecule_ref), None)
     selected = {m["relationship_id"] for m in item["measurements"]} if item else set()
@@ -291,11 +331,18 @@ def explain_bioactivity(
     return deepcopy(
         {
             "rule": make_derivation(
-                BIOACTIVITY_RULE
+                "bioactivity_explanation@3"
+                if measurement_rule == MEASUREMENT_V2
+                else BIOACTIVITY_RULE
                 if classification_rule == "bioactivity_class@3"
                 else "bioactivity_explanation@2",
                 inputs=[support.pin],
                 parameters={
+                    **(
+                        {"measurement_rule": measurement_rule}
+                        if measurement_rule == MEASUREMENT_V2
+                        else {}
+                    ),
                     **(
                         {"classification_rule": classification_rule}
                         if classification_rule != "bioactivity_class@3"

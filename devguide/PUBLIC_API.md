@@ -10,6 +10,18 @@ activity interpretation. Rich activity explorer/saved-scientific routes remain
 pending. See
 [the scoped correction](pending_bugs/bioactivity_interpretation.md).
 
+Development opt-in `measurement_rule="measurement_identity@2"` is shared by
+`bioactivities`, `explain_measurement`, `explain_bioactivity`, `ligands`,
+`explain_ligand`, `compare_ligands` and applicable tables. Default/original @1
+remains unchanged. Declared copies require unique original selectors; numeric
+matches stay possible correspondence with explicit missing/literal context and
+unknown experimental independence. Copy-only groups have no original voter.
+New measurement/activity/ligand explanations use @2/@3/@4 for this selection;
+original selections retain their earlier shapes. Packet mappings @6–@15 explicitly
+retain measurement @1. No new saved explorer/packet policy or default scientific
+acceptance is implied. See [the candidate](pending_proposals/assay_aware_measurement_correspondence.md)
+and [user explanation](../docs/content/user/bioactivities.md#are-these-independent-results-opt-in-development-policy).
+
 Development quaternary interpretation and original saved reading (#148):
 `card.explore().answer("quaternary_interpretation")` and `view(...)` expose
 interface classifications and individual interface/family comparisons with

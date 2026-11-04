@@ -1,5 +1,21 @@
 # Sabueso — Decision Log
 
+## Qualify a copy-aware measurement candidate before default adoption (2026-11-04, #186)
+
+Introduce opt-in `measurement_identity@2` across current activity/ligand answers,
+explanations and tables. Use only explicit copy pointers with unique original
+selectors for identity edges; numeric/publication matches remain possible
+correspondence. Missing copy endpoint imposes no endpoint equality, while an
+ambiguous named-assay original is never selected by numeric agreement. Retain
+context and reported differences; copy-only groups have no original class vote.
+State count scopes and unknown independence. Original measurement @1 and all
+current packet meanings/defaults remain unchanged. Four public comparisons and
+original-support tests inform later scientist/default/consumer review; changes
+in six copy-only molecule summaries are policy differences, not proven source
+errors. The #182 explanation prerequisite uses actual serialized glossary entries
+at the pin without changing the glossary, Card serialization or historical
+readers. See [scope and pending acceptance](pending_proposals/assay_aware_measurement_correspondence.md).
+
 ## Adopt conservative activity defaults with explicit original replay (2026-11-04, #184/#185)
 
 Use existing class @4 for new Card activity/ligand views and matching explanations;

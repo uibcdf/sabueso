@@ -12,6 +12,15 @@ is established by this draft.
 
 ## Intended changes since 0.14.0
 
+- Add opt-in measurement correspondence @2 to direct activity/ligand answers,
+  explanations and tables. Declared copies retain unique original selectors;
+  numeric matches stay possible correspondence with explicit context and unknown
+  independence. Counts are not independent-experiment counts, and copy-only groups
+  have no original class vote. Original @1/defaults and packet meanings remain
+  unchanged. Scientific/default and consumer acceptance are pending (#186/#148).
+  A bounded explanation prerequisite reads actual pinned glossary identity entries
+  without changing glossary interpretation, source data or Card pins (#182).
+
 - Use conservative activity class @4 for new activity and ligand views: classify
   only intervals wholly within one configured band, and retain single-point
   inhibition without unsupported potency/dose inference. Readable explanations

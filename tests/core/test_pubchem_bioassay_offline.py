@@ -124,3 +124,44 @@ def test_knowledge_state_and_source_access(resolver):
         "ChEMBL": 10,
         "BindingDB": 1,
     }
+
+
+@pytest.mark.parametrize("accession", ["P52270", "P60174"])
+def test_opt_in_copy_policy_retains_public_depositor_links_and_original_records(
+    resolver, accession
+):
+    card = _card(resolver, accession)
+    before = card.to_dict()
+    original = card.bioactivities()
+    current = card.bioactivities(measurement_rule="measurement_identity@2")
+    identity = current["measurement_identity"]
+    assert identity["groups"] and all(
+        group["basis"] == ["provenance"] for group in identity["groups"]
+    )
+    assert any(
+        set(group["sources"]) == {"ChEMBL", "PubChem BioAssay"}
+        for group in identity["groups"]
+    )
+    assert identity["counting"]["independence_status"] == "not_established"
+    originals = {
+        m["relationship_id"]: m
+        for item in original["items"]
+        for m in item["measurements"]
+    }
+    records = {
+        m["relationship_id"]: m
+        for item in current["items"]
+        for m in item["measurements"]
+    }
+    assert set(records) == set(originals)
+    for rid, measurement in records.items():
+        assert {key: value for key, value in measurement.items() if key != "group"} == {
+            key: value for key, value in originals[rid].items() if key != "group"
+        }
+    by_id = {r["id"]: r for r in card.relationships("has_bioactivity")}
+    for diagnostic in identity["copy_diagnostics"]:
+        copied, source = [by_id[r]["qualifiers"] for r in diagnostic["records"]]
+        assert copied["copy_of"]["source"] == source.get("source", "ChEMBL")
+        if diagnostic["selector"]["basis"].startswith("named_assay"):
+            assert copied["copy_of"]["assay"] == source["assay"]["id"]
+    assert card.bioactivities() == original and card.to_dict() == before
