@@ -288,6 +288,12 @@ No source acquisition, Card schema or new scientific saved format follows.
 
 ## Remaining native reconciliation
 
+The [B3 source-scope review](structural_journey_acceptance_20261104.md) defines
+concrete permitted answers and four public controls before further code. It
+separates declared membership, entry-key binding and physical geometry/contacts.
+The maintainer must disposition the remaining physical task and consumer before
+claiming its completion; current defaults and original rules remain unchanged.
+
 Issue #173 stays open. The [shared live human/agent adapter](card_assembly_exploration.md)
 now presents original source/parent/generator contexts, key bases and declared
 occurrences. [Independent original saved-result reading](card_saved_assembly.md)

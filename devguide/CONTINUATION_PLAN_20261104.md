@@ -186,6 +186,14 @@ Do not relabel already qualified corrections as new bugs or adopt a stricter
 prototype without its original-data compatibility gate. Any still-reproduced
 integrity defect enters the first block that depends on that path.
 
+The [B3 scope review](pending_proposals/structural_journey_acceptance_20261104.md)
+now records that pre-implementation acceptance matrix, four actual public
+source/native/human/agent/saved journeys and six synthetic counterexamples.
+The owner must disposition the undefined "full physical reconciliation" task;
+this review does not silently remove it from the broad inventory or close B3.
+Independent model/fragment/region work can proceed from its existing original
+axis/admission contracts while that decision is pending.
+
 For B3, define source-supported acceptance before further coding. If an additional
 physical reconstruction requires unavailable context or a modeling consumer,
 record that boundary and obtain the relevant owner decision; do not repeatedly

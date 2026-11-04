@@ -34,6 +34,12 @@ now provides opt-in copy-aware selection and explicit excluded-known explanation
 preserving defaults and original records. The maintainer's scientific review is
 explicitly deferred; activity panel completion and wow acceptance remain open.
 
+B3's [source-supported acceptance matrix](structural_journey_acceptance_20261104.md)
+now checks four original public journeys and six synthetic scope counterexamples.
+Full physical reconciliation remains an explicit owner decision with a concrete
+scientific/modeling task, not a silently removed prerequisite. Other structural
+transitions and researcher/workload acceptance stay open.
+
 ## Maintainer decision and release gate
 
 On 2026-10-22 the maintainer explicitly required **the entire broad exploration

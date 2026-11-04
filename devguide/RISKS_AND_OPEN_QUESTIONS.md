@@ -1,5 +1,13 @@
 # Sabueso — Risks and Open Questions
 
+[B3's scope review](pending_proposals/structural_journey_acceptance_20261104.md)
+identifies an unresolved acceptance question: "full physical reconciliation" has
+no independently specified coordinate/uniqueness/contact task or modeling consumer.
+The public controls support declared counts and native keys, with explicit unknown
+physical membership. The maintainer must disposition that additional task before
+#173/B3 closeout; neither technical passing nor a proposed modeling boundary removes
+an accepted 0.15.0 prerequisite.
+
 Original assembly-generation inspection (#173) now has compact native plans and
 visible tuple/declared-occurrence count and identifier-text preflight with deliberate raised/unlimited
 budgets. This does not bound whole-Card capture (#167), source JSON buffering or

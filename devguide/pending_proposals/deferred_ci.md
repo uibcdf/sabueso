@@ -9,6 +9,21 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### B3 source-scope review (2026-11-04, #173/#148/#112)
+
+The [review](structural_journey_acceptance_20261104.md) adds a dated reproduction
+script, public observations and acceptance questions only; no package/native/schema/
+fixture/verifier bytes change. Selected receiving passes 106 cases and the audit
+checks four public human/agent/saved journeys plus six synthetic counterexamples.
+A documentation/research checkpoint may use `[skip ci]` after local links/snippets,
+Python 3.11, lint/format and governance checks. This supplies no new hosted code
+qualification. Runtime source `c5b8af1` retains its own pending exact-source CI
+`41932333464` and governance `41932333524`, with full gh-run-receptor recovery under
+`recovered_work/target_scope_188_20261104/INDEX.json`. The next changed code block
+needs its own unskipped final source checkpoint. Owner #173/#148/#112; receipts and
+cleanup under `recovered_work/structural_scope_173_20261104/`. Assembly-scope,
+scientific/consumer/researcher acceptance and paused 0.15.0 remain open.
+
 ### Copy target-scope prerequisite (2026-11-04, #188/#186)
 
 The [opt-in correction](../pending_bugs/bioactivity_target_scope.md) changes new

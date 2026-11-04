@@ -1,5 +1,12 @@
 # Sabueso — Developer Guide
 
+The [B3 structural acceptance review](pending_proposals/structural_journey_acceptance_20261104.md)
+now distinguishes source-declared membership, native key binding, physical copies
+and assembly-specific contacts using four retained public controls and six
+synthetic counterexamples. Its reproducible audit and selected receiving preserve
+original data/meaning. The maintainer's assembly-scope disposition, other B3
+journeys and independent scientist/researcher acceptance remain open.
+
 The [source-bound target-scope candidate](pending_bugs/bioactivity_target_scope.md) addresses #188's copied-record selection
 bypass with an opt-in, source-supported policy and explicit `outside_scope`
 explanations. The maintainer-owned scientific review is deferred; defaults and

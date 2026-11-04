@@ -1,5 +1,15 @@
 # Sabueso — Checkpoint
 
+B3 now has [source-supported acceptance questions and a four-control review](pending_proposals/structural_journey_acceptance_20261104.md).
+Actual source/native/human/agent/saved journeys and six synthetic counterexamples
+preserve declaration counts, exact native keys, alternative parents and unknown
+physical membership. Selected existing receiving passes 106 cases, serial, with
+zero owned swap. No library/native/schema/fixture/verifier change is introduced.
+The remaining "full physical reconciliation" task needs the maintainer's explicit
+scope/consumer disposition; this preparation does not close #173 or B3. Current
+`c5b8af1` CI/governance qualification remains pending; bioactivity scientific review
+is still maintainer-owned and deferred.
+
 B2 review reproduced [#188](https://github.com/uibcdf/sabueso/issues/188): two
 retained PubChem copies bypass their original ChEMBL indirect-target exclusions.
 The [source-bound target-scope candidate](pending_bugs/bioactivity_target_scope.md) adds opt-in @2 across direct activity/ligand

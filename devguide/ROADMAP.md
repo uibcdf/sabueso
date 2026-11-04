@@ -73,6 +73,12 @@ Nextia Evidence / MOLI ProjectRecord / Recorda acceptance remain open.
 
 ## Current consolidation after recovery (#112)
 
+B3's [source-supported structural review](pending_proposals/structural_journey_acceptance_20261104.md)
+now checks four public native/human/agent/saved journeys and six synthetic scope
+counterexamples. The remaining physical reconciliation task requires an explicit
+maintainer scope/consumer disposition; B3 stays open, with no runtime change or
+independent scientist/researcher acceptance claimed by this preparation.
+
 B2 now includes the [opt-in target-scope correction](pending_bugs/bioactivity_target_scope.md)
 for #188, preserving defaults/history. The maintainer owns and explicitly defers
 review of the [six measurement cases](pending_proposals/measurement_correspondence_review_20261104.md).

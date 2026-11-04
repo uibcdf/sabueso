@@ -1,0 +1,549 @@
+{
+  "owner": "#173/#148/#112",
+  "review_trigger": "maintainer B3 scope decision / exact-source checkpoint / before 0.15.0",
+  "state": "bounded_source_contract_and_technical_review_complete_scope_decision_pending",
+  "runtime_source": "c5b8af1cf9cd66e7536832da731f08e74ce299fa",
+  "script": "check_structural_journey_scope_20261104.py",
+  "script_sha256": "da074663a6e7659248cb28c26f2454f6ae429f068dfbdb6269025afbe4147a09",
+  "molecular_provider_queries": 0,
+  "primary_documentation_review": {
+    "date_utc": "2026-11-04",
+    "scope": "Five public primary-documentation pages only; no molecular record lookup or pilot payload.",
+    "used_definitions": [
+      "https://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Categories/pdbx_struct_assembly_gen.html",
+      "https://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_pdbx_struct_assembly_gen.asym_id_list.html",
+      "https://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_pdbx_struct_assembly_gen.oper_expression.html",
+      "https://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Categories/pdbx_struct_oper_list.html"
+    ],
+    "additional_schema_read": "https://data.rcsb.org/rest/v1/schema/nonpolymer_entity_instance"
+  },
+  "observations": {
+    "format": "sabueso.structural_journey_scope_audit@1",
+    "owner": "#173/#148/#112",
+    "review_trigger": "B3 scientific scope decision and before 0.15.0",
+    "sdk": "0.14.0+167.gc5b8af1",
+    "capsule_sha256": "b37ef7b9ebe68bbe4d46d6ff65a73522b044b0935f0a2e9128104c30e1e5e57d",
+    "original_producer": "7084894ed822dae8df4cb3707036522dd666f2d7",
+    "original_sdk": "0.14.0+152.g7084894",
+    "molecular_provider_queries": 0,
+    "original_capsule_unchanged": true,
+    "public": [
+      {
+        "case": "1HTI",
+        "kind": "retained_public",
+        "card_ref": "sabueso:protein:uniprot:P60174@sha256:7531666bdf36b804f2019a4bc48bb4654613347a4de4c6a2e27c1b7c61fd56af",
+        "original_source_assertion_id": "SA_RCSB PDB_1HTI_ba63cbc85cdd01ce",
+        "original_declarations": [
+          {
+            "assembly_id": "1",
+            "oligomeric_count_as_stated": 2,
+            "original_generators": [
+              {
+                "assembly_id": "1",
+                "asym_id_list": [
+                  "A",
+                  "B",
+                  "C"
+                ],
+                "oper_expression": "1",
+                "ordinal": 1
+              }
+            ],
+            "operator_field_names": [
+              [
+                "id",
+                "name",
+                "symmetry_operation",
+                "type"
+              ]
+            ]
+          }
+        ],
+        "declared_occurrence_count": 3,
+        "declared_count_state": "exact_source_declarations",
+        "declared_count_scope": "Sum across original alternative assembly declarations, never a physical molecule count or a chosen biological assembly.",
+        "delivered_occurrence_row_count": 3,
+        "occurrence_delivery_state": "expanded",
+        "component_key_states": {
+          "resolved": 3
+        },
+        "declared_component_binding_states": {
+          "resolved": 3
+        },
+        "unresolved_declared_labels": [],
+        "retained_neighbor_count": 11,
+        "neighbor_collection_states": [
+          {
+            "state": "retained",
+            "record_count": 11
+          },
+          {
+            "state": "retained_null",
+            "record_count": null
+          }
+        ],
+        "neighbor_count_scope": "Only records in retained list collections; null/missing collections do not establish zero source contacts.",
+        "retained_neighbor_field_names": [
+          "comp_id",
+          "distance",
+          "ligand_asym_id",
+          "ligand_comp_id",
+          "ligand_is_bound",
+          "seq_id"
+        ],
+        "physical_membership": "not_computed",
+        "source_card_unchanged": true,
+        "native_evaluations": 2,
+        "evaluation_scope": "One natural compact question plus one explicit expanded request; human/agent reuse each exact result.",
+        "saved": {
+          "file": "1HTI.json",
+          "result_ref": "XR_a442248aec25b2157dafa9bee6ccfc2a118ebb6030557b46d3e7aec03c966fb9",
+          "options": {
+            "structure_ref": "pdb:1HTI",
+            "relationship_id": null,
+            "expand_operations": false,
+            "expand_occurrences": true,
+            "operation_budget": 100000,
+            "generation_rule": "rcsb_assembly_generation@5"
+          },
+          "delivered_occurrence_row_count": 3,
+          "sha256": "f85d6c055e31ce6f7987e34f322e3409f123146696b7552a73d9ee593ee97e1c"
+        }
+      },
+      {
+        "case": "1SUX",
+        "kind": "retained_public",
+        "card_ref": "sabueso:protein:uniprot:P52270@sha256:f86653621feaf7118f6cc2ba6077c5968d75fb371030695f5b1371e4c9b6f953",
+        "original_source_assertion_id": "SA_RCSB PDB_1SUX_05b1cab35c73d8ce",
+        "original_declarations": [
+          {
+            "assembly_id": "1",
+            "oligomeric_count_as_stated": 2,
+            "original_generators": [
+              {
+                "assembly_id": "1",
+                "asym_id_list": [
+                  "A",
+                  "B",
+                  "C",
+                  "D",
+                  "E",
+                  "F",
+                  "G",
+                  "H",
+                  "I",
+                  "J",
+                  "K",
+                  "L"
+                ],
+                "oper_expression": "1",
+                "ordinal": 1
+              }
+            ],
+            "operator_field_names": [
+              [
+                "id",
+                "name",
+                "symmetry_operation",
+                "type"
+              ]
+            ]
+          }
+        ],
+        "declared_occurrence_count": 12,
+        "declared_count_state": "exact_source_declarations",
+        "declared_count_scope": "Sum across original alternative assembly declarations, never a physical molecule count or a chosen biological assembly.",
+        "delivered_occurrence_row_count": 12,
+        "occurrence_delivery_state": "expanded",
+        "component_key_states": {
+          "resolved": 10
+        },
+        "declared_component_binding_states": {
+          "resolved": 10,
+          "unresolved": 2
+        },
+        "unresolved_declared_labels": [
+          "K",
+          "L"
+        ],
+        "retained_neighbor_count": 24,
+        "neighbor_collection_states": [
+          {
+            "state": "retained",
+            "record_count": 7
+          },
+          {
+            "state": "retained",
+            "record_count": 17
+          }
+        ],
+        "neighbor_count_scope": "Only records in retained list collections; null/missing collections do not establish zero source contacts.",
+        "retained_neighbor_field_names": [
+          "comp_id",
+          "distance",
+          "ligand_asym_id",
+          "ligand_comp_id",
+          "ligand_is_bound",
+          "seq_id"
+        ],
+        "physical_membership": "not_computed",
+        "source_card_unchanged": true,
+        "native_evaluations": 2,
+        "evaluation_scope": "One natural compact question plus one explicit expanded request; human/agent reuse each exact result.",
+        "saved": {
+          "file": "1SUX.json",
+          "result_ref": "XR_8602b820cdf8482e2b9dada6ca98e9a7d0b2c9eb1f22f168b3563bb34d82843d",
+          "options": {
+            "structure_ref": "pdb:1SUX",
+            "relationship_id": null,
+            "expand_operations": false,
+            "expand_occurrences": true,
+            "operation_budget": 100000,
+            "generation_rule": "rcsb_assembly_generation@5"
+          },
+          "delivered_occurrence_row_count": 12,
+          "sha256": "306dd72ac7ee55192807be2c2324c3a01b5c2263cf2c32cb85b72a02ba782406"
+        }
+      },
+      {
+        "case": "2V5B",
+        "kind": "retained_public",
+        "card_ref": "sabueso:protein:uniprot:P52270@sha256:48de41559141ca9b77ceff118b1cb60ecdeac0e2e1593b28ba9551898047d3e0",
+        "original_source_assertion_id": "SA_RCSB PDB_2V5B_132a9a510dc025e2",
+        "original_declarations": [
+          {
+            "assembly_id": "2",
+            "oligomeric_count_as_stated": 1,
+            "original_generators": [
+              {
+                "assembly_id": "2",
+                "asym_id_list": [
+                  "A",
+                  "B"
+                ],
+                "oper_expression": "1",
+                "ordinal": 2
+              }
+            ],
+            "operator_field_names": [
+              [
+                "id",
+                "name",
+                "symmetry_operation",
+                "type"
+              ],
+              [
+                "id",
+                "name",
+                "symmetry_operation",
+                "type"
+              ]
+            ]
+          },
+          {
+            "assembly_id": "1",
+            "oligomeric_count_as_stated": 2,
+            "original_generators": [
+              {
+                "assembly_id": "1",
+                "asym_id_list": [
+                  "A",
+                  "B"
+                ],
+                "oper_expression": "1,2",
+                "ordinal": 1
+              }
+            ],
+            "operator_field_names": [
+              [
+                "id",
+                "name",
+                "symmetry_operation",
+                "type"
+              ],
+              [
+                "id",
+                "name",
+                "symmetry_operation",
+                "type"
+              ]
+            ]
+          }
+        ],
+        "declared_occurrence_count": 6,
+        "declared_count_state": "exact_source_declarations",
+        "declared_count_scope": "Sum across original alternative assembly declarations, never a physical molecule count or a chosen biological assembly.",
+        "delivered_occurrence_row_count": 6,
+        "occurrence_delivery_state": "expanded",
+        "component_key_states": {
+          "resolved": 1
+        },
+        "declared_component_binding_states": {
+          "resolved": 2,
+          "unresolved": 2
+        },
+        "unresolved_declared_labels": [
+          "B"
+        ],
+        "retained_neighbor_count": 0,
+        "neighbor_collection_states": [
+          {
+            "state": "retained_null",
+            "record_count": null
+          }
+        ],
+        "neighbor_count_scope": "Only records in retained list collections; null/missing collections do not establish zero source contacts.",
+        "retained_neighbor_field_names": [],
+        "physical_membership": "not_computed",
+        "source_card_unchanged": true,
+        "native_evaluations": 2,
+        "evaluation_scope": "One natural compact question plus one explicit expanded request; human/agent reuse each exact result.",
+        "saved": {
+          "file": "2V5B.json",
+          "result_ref": "XR_84b5133865713dc1d6dd46667dbc3ceb4cdf372f48e8a9590fbfe12c6415b0bf",
+          "options": {
+            "structure_ref": "pdb:2V5B",
+            "relationship_id": null,
+            "expand_operations": false,
+            "expand_occurrences": true,
+            "operation_budget": 100000,
+            "generation_rule": "rcsb_assembly_generation@5"
+          },
+          "delivered_occurrence_row_count": 6,
+          "sha256": "39b12713096cf9218910bf5c7a4f66a5555e6eb136f79123ad8a36599e63b44c"
+        }
+      },
+      {
+        "case": "legacy",
+        "kind": "retained_public",
+        "card_ref": "sabueso:protein:uniprot:P52270@sha256:6cec9b9304d473cba497318e907962e1eeb45ade419b2bfd8ef0d070a9b51fe5",
+        "original_source_assertion_id": "SA_RCSB PDB_1SUX_1cf8f56d7978f424",
+        "original_declarations": [],
+        "declared_occurrence_count": null,
+        "declared_count_state": "unavailable",
+        "declared_count_scope": "Sum across original alternative assembly declarations, never a physical molecule count or a chosen biological assembly.",
+        "delivered_occurrence_row_count": 0,
+        "occurrence_delivery_state": "incomplete",
+        "component_key_states": {},
+        "declared_component_binding_states": {},
+        "unresolved_declared_labels": [],
+        "retained_neighbor_count": 24,
+        "neighbor_collection_states": [
+          {
+            "state": "retained",
+            "record_count": 17
+          },
+          {
+            "state": "retained",
+            "record_count": 7
+          }
+        ],
+        "neighbor_count_scope": "Only records in retained list collections; null/missing collections do not establish zero source contacts.",
+        "retained_neighbor_field_names": [
+          "comp_id",
+          "distance",
+          "ligand_asym_id",
+          "ligand_comp_id",
+          "ligand_is_bound",
+          "seq_id"
+        ],
+        "physical_membership": "not_computed",
+        "source_card_unchanged": true,
+        "native_evaluations": 2,
+        "evaluation_scope": "One natural compact question plus one explicit expanded request; human/agent reuse each exact result.",
+        "saved": {
+          "file": "legacy.json",
+          "result_ref": "XR_e07a5e7feab49f7394cef530c89f08d000ea977554a69e99dc5c645f35d878b0",
+          "options": {
+            "structure_ref": "pdb:1SUX",
+            "relationship_id": null,
+            "expand_operations": false,
+            "expand_occurrences": true,
+            "operation_budget": 100000,
+            "generation_rule": "rcsb_assembly_generation@5"
+          },
+          "delivered_occurrence_row_count": 0,
+          "sha256": "652819ccf5196ff33f0772dc4a12beacf312cdd82d23fd6be68358499911af83"
+        }
+      }
+    ],
+    "synthetic": [
+      {
+        "case": "repeated_component",
+        "kind": "synthetic_perturbation_not_provider_observation",
+        "card_ref": "sabueso:protein:uniprot:P60174@sha256:860dea939881f6caa2b5fb634ccca7f13117349ea854d8a76c5721ce9f0bc44f",
+        "original_source_assertion_id": "SA_RCSB PDB_1HTI_ba63cbc85cdd01ce",
+        "new_synthetic_source_assertion_id": "SA_RCSB PDB_1HTI_e66218fbded1185f",
+        "status": "passed",
+        "physical_membership": "not_computed"
+      },
+      {
+        "case": "right_to_left_product",
+        "kind": "synthetic_perturbation_not_provider_observation",
+        "card_ref": "sabueso:protein:uniprot:P60174@sha256:55b85242deb4de81aac0a962234a3c3b78dde0a1e41873f7a48e45a82a1d33ed",
+        "original_source_assertion_id": "SA_RCSB PDB_1HTI_ba63cbc85cdd01ce",
+        "new_synthetic_source_assertion_id": "SA_RCSB PDB_1HTI_9519cecfbd726e27",
+        "status": "passed",
+        "physical_membership": "not_computed"
+      },
+      {
+        "case": "missing_operator",
+        "kind": "synthetic_perturbation_not_provider_observation",
+        "card_ref": "sabueso:protein:uniprot:P60174@sha256:ec23547342668e3c6b2bef9254304bdb7de58f35838ad524cdc3870547352d78",
+        "original_source_assertion_id": "SA_RCSB PDB_1HTI_ba63cbc85cdd01ce",
+        "new_synthetic_source_assertion_id": "SA_RCSB PDB_1HTI_66ce10468a0eec16",
+        "status": "passed",
+        "physical_membership": "not_computed"
+      },
+      {
+        "case": "repeated_operator_key",
+        "kind": "synthetic_perturbation_not_provider_observation",
+        "card_ref": "sabueso:protein:uniprot:P60174@sha256:5d079ed6ed0772f51ada7ddcef238eae687997a85122971960be478a067a989c",
+        "original_source_assertion_id": "SA_RCSB PDB_1HTI_ba63cbc85cdd01ce",
+        "new_synthetic_source_assertion_id": "SA_RCSB PDB_1HTI_bb4ab79239a47fba",
+        "status": "passed",
+        "physical_membership": "not_computed"
+      },
+      {
+        "case": "incomplete_nonpolymer_identity",
+        "kind": "synthetic_perturbation_not_provider_observation",
+        "card_ref": "sabueso:protein:uniprot:P60174@sha256:b4e83e272387629e65c1e744b9eeceb675db8133407fbcd16578878ce73b23e8",
+        "original_source_assertion_id": "SA_RCSB PDB_1HTI_ba63cbc85cdd01ce",
+        "new_synthetic_source_assertion_id": "SA_RCSB PDB_1HTI_f45faf93975a5e2a",
+        "status": "passed",
+        "physical_membership": "not_computed"
+      },
+      {
+        "case": "foreign_generator_parent",
+        "kind": "synthetic_perturbation_not_provider_observation",
+        "card_ref": "sabueso:protein:uniprot:P60174@sha256:8f9480a39302aca39d782b14824c3bba55f880cd59b97002e879f3db1587f330",
+        "original_source_assertion_id": "SA_RCSB PDB_1HTI_ba63cbc85cdd01ce",
+        "new_synthetic_source_assertion_id": "SA_RCSB PDB_1HTI_9b67fb10d549e135",
+        "status": "passed",
+        "physical_membership": "not_computed"
+      }
+    ],
+    "independent_saved_reading": "four journeys passed",
+    "review_scope": "Source-contract and technical checks, not independent scientific or uncoached researcher acceptance.",
+    "release_consolidation": "paused"
+  },
+  "selected_pytest": {
+    "passed": 106,
+    "files": 3,
+    "command": "python -m pytest -m \"not online\" --receptor=llm tests/core/test_assembly_nonpolymer_binding_offline.py tests/core/test_card_component_navigation_offline.py tests/core/test_card_model_regions_offline.py",
+    "scope": "Existing selected native/key, component-navigation and original model-question receiving; not a full suite."
+  },
+  "resource_observations": {
+    "scope-audit": {
+      "resource_guard": "owned_rss_available_swap@2",
+      "host_free_mode": "observed_only_not_a_reclaimability_estimate",
+      "exit_code": 0,
+      "elapsed_s": 34.05,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 498225152,
+      "minimum_host_available_bytes": 15285669888,
+      "minimum_host_free_bytes": 1556877312,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "owned_scratch_bytes": 2147483648
+      },
+      "test_files": 0,
+      "peak_owned_scratch_bytes": 210980443,
+      "tmpdir": "/home/liliana/repos@uibcdf/sabueso/recovered_work/structural_scope_173_20261104/tmp-scope-audit"
+    },
+    "receiving": {
+      "resource_guard": "owned_rss_available_swap@2",
+      "host_free_mode": "observed_only_not_a_reclaimability_estimate",
+      "exit_code": 0,
+      "elapsed_s": 46.29,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 324001792,
+      "minimum_host_available_bytes": 15641083904,
+      "minimum_host_free_bytes": 1946431488,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "owned_scratch_bytes": 2147483648
+      },
+      "test_files": 3,
+      "peak_owned_scratch_bytes": 179765693,
+      "tmpdir": "/home/liliana/repos@uibcdf/sabueso/recovered_work/structural_scope_173_20261104/tmp-receiving"
+    }
+  },
+  "unchanged_runtime_sha256": {
+    "sabueso/core/assembly_generation_v1.py": "9f51fe969790c479f0bee79c17cf130efc7426997f0813d8ce4c446f322a8c2d",
+    "sabueso/core/assembly_generation_v2.py": "ae99c3cb67039b783ba7a4ccceea2f321073d47e4d38f09acb42b8a99eb658eb",
+    "sabueso/core/assembly_generation_v3.py": "8a72894bf75e9a2c9f3b5511f21162a987d99c15d5054bced511ed7aa464b286",
+    "sabueso/core/assembly_generation_v4.py": "c49146bd8a2c5f190f17379b495d848e389103aa6c121afee0362489bbdbbc74",
+    "sabueso/core/assembly_generation_v5.py": "86a57db75f0d59c2d3bc5cb87202f8379f627e4cd97d0f2c2f92eebe8e023ebe",
+    "sabueso/core/assembly_operations_v1.py": "61d291d9776a4587386df2d2c75c6ea28e5fdc117b032703f158faa3f79ce365",
+    "sabueso/core/assembly_operator_binding_v1.py": "e565accbbb417a2e95d5d58416106a19adfdea260edf179f5e9e86f0e9c5f789",
+    "sabueso/core/assembly_component_binding_v1.py": "98eebb65eb5a19cb7172bffce4ffebbf76877d6deaccb9f5bb3b0a8b95ccf119",
+    "sabueso/core/assembly_component_binding_v2.py": "7749a62b7bd2c02676f0a67d6ec697271ee8bc1a00c040bcb41577cd2ad09dcf",
+    "sabueso/core/assembly_occurrences_v1.py": "aeb3ede3e9b4f3acbe1b042b79f9c013f7abae88d9c3f127436c7d5fc2b53861",
+    "sabueso/core/card_assembly_exploration_v2.py": "7964322703496b5bbc416af138086f132767f495e8ec7793992d39531cfba734",
+    "sabueso/core/card_assembly_access_v2.py": "cb3439d270ef10d0bc6fa716ea6137615dfa4a7507af721e787ddb499b6f152b",
+    "sabueso/core/card_assembly_history_v2.py": "c8e1679b749398aa589289ff54d92137fa9d0c0aa4fc82b13dc223c39fb9881e",
+    "sabueso/core/card_assembly_component_context_v1.py": "1725b17489e2cdd2f8a12187437ba67863fe874416058de54f2373264a69d325",
+    "sabueso/core/card_model_regions_v1.py": "4eb8bce08414a8ab3650312f29c15f944a74059bc2796d4c4d4ba8288a582041",
+    "sabueso/tools/db/rcsb.py": "b6af2c5580dc1624ff333bfd759829274d3097751308fcf5dc1da9c01a3f55da"
+  },
+  "implementation_changes": "No library, native rule, schema, mapping, fixture, dependency or historical verifier change. New dated reproduction/analysis only.",
+  "harness_corrections": "The draft exporter was corrected for null neighbor collections and the difference between entry registry records and unresolved declared bindings. Missing generation count is unknown, separately from zero delivered rows. Initial harness failure logs are retained; these were not product defects.",
+  "acceptance": {
+    "independent_scientist": "not performed",
+    "uncoached_researcher": "not performed",
+    "scope_disposition": "maintainer decision pending; B3 and #173 stay open",
+    "bioactivity_review": "Maintainer-owned and explicitly deferred; unchanged.",
+    "release_consolidation": "paused"
+  },
+  "owned_local_evidence": "recovered_work/structural_scope_173_20261104/; final four public saved journeys, original hashes, source checks, logs and resources; review at B3 scope disposition or pre-0.15.0.",
+  "cleanup": {
+    "owner": "#173/#148/#112",
+    "review_trigger": "B3 scope disposition / next code checkpoint / before 0.15.0",
+    "removed": [
+      {
+        "path": "initial-audit-export-failure",
+        "bytes": 38371500
+      },
+      {
+        "path": "initial-registry-vs-binding-audit",
+        "bytes": 38371500
+      },
+      {
+        "path": "before-count-label-audit",
+        "bytes": 67118109
+      },
+      {
+        "path": "pytest-receiving",
+        "bytes": 0
+      },
+      {
+        "path": "tmp-receiving",
+        "bytes": 0
+      },
+      {
+        "path": "tmp-scope-audit",
+        "bytes": 0
+      }
+    ],
+    "removed_bytes": 143861109,
+    "retained": "Four final public saved journeys and their independent reader manifest/log, source/fixture hashes, reproduction and resource receipts. Initial draft-export harness failure logs are retained; superseded generated saved outputs and completed pytest scratch are removed. Original capsules, caller outputs and active ancestor CI captures are protected."
+  },
+  "local_documentation_checks": {
+    "ruff_lint": "pass",
+    "ruff_root_format": "1336 files already formatted",
+    "markdown_and_python_311": {
+      "local_targets_anchors": 492,
+      "python_snippets_syntax": 2,
+      "python_311_parsed_files": 1
+    },
+    "moli_governance": "pass",
+    "diff_whitespace": "pass"
+  }
+}

@@ -1,5 +1,14 @@
 # Sabueso — Tests and Quality Gates
 
+The dated [B3 source-scope audit](evidence/check_structural_journey_scope_20261104.py)
+reproduces four genuine public source/native/human/agent/saved journeys and six
+explicitly synthetic counterexamples. Run it with `--output NEW_OWNED_DIRECTORY`;
+it refuses an existing destination and never queries molecular providers. Its
+receipt separates unknown declaration counts from zero delivered rows and null
+contact collections from empty ones. Review alongside native nonpolymer keys,
+component navigation and model-question receiving; this is technical/source-contract
+scope, not independent scientist/researcher acceptance or physical reconstruction.
+
 For opt-in target scope @2 (#188), run
 `test_bioactivity_target_scope_offline.py`, public PubChem copy and measurement
 cases, affected activity/ligand/explanation/table/argument/quantity/packet/public
