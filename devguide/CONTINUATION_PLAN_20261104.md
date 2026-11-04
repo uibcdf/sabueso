@@ -104,6 +104,10 @@ original @3, new packet mapping @15 and genuine old @14 reading. Current
 integration passes 338 affected cases; later changed bytes need their own hosted
 qualification. See
 [the scientific scope and public-input comparison](pending_bugs/bioactivity_interpretation.md).
+Published final source `7667754` passes 77 post-editable cases; its own CI/governance
+are pending complete receiving. Intermediate `7853039` retains its failed
+producer-stamp comparison and premature publication record; current scientific
+recomputation and exact original stored reading are checked separately.
 Independent scientific/consumer acceptance and rich activity exploration remain
 open; no scientific/human acceptance is claimed. The next exact-source
 checkpoint receives the accumulated changes, without requiring every intermediate
@@ -126,6 +130,11 @@ development SHA to acquire a separate green matrix.
   default/consumer implementation; new hosted and independent acceptance remain
   pending. A3 correspondence work is next.
   The broader audit contains explicit unassessed areas, not completed validation.
+- [B2 preparation](pending_proposals/assay_aware_measurement_correspondence.md)
+  now inventories two exact retained public Cards: all 29 accepted @1 statement
+  edges lack one mapped assay description. Candidate copy/correspondence/count/vote
+  semantics and independent expected examples are specified for review; no new
+  measurement policy, independence finding or default is implemented by this work.
 - Rich activity, clinical, variant/comparative and other nature/shared panels,
   physical assembly reconciliation, broad human acceptance and workload acceptance
   remain open. Completed structural slices must not be reimplemented from scratch.

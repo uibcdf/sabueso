@@ -1,0 +1,359 @@
+{
+  "owner": "#186/#112/#148",
+  "review_trigger": "B2 policy design and scientific review; before 0.15.0",
+  "source": "7667754837ec6dc04565f625ca94a3f45ebd24ce",
+  "sdk": "0.14.0+164.g7667754",
+  "online_requests": 0,
+  "scope": "Two retained independently public fixture-built Cards from the genuine 1290201 protein example; current original measurement_identity@1 recomputation, no proposed policy output.",
+  "original_producer": "129020182555787d3cab58cc110e7a707fc5e553",
+  "input_manifest_sha256": "c8c039768fb16d651cdfd47e577c25fe3f46c0c768a0622c32788d8072b316cd",
+  "original_database_sha256": "6c86d713ebd08b69435434c0b9281c820f842bed2170473ead476c169ea63e7b",
+  "original_database_bytes_unchanged": true,
+  "interpretation_limit": "Unpopulated mapped fields are not proof that the provider or original publication lacks methods. Literal prose equality/difference is not an assay-equivalence or conflict judgement. Accepted edges can be redundant; they are not unique groups or independent observations.",
+  "cards": [
+    {
+      "role": "subject",
+      "card_ref": "sabueso:protein:uniprot:P52270@sha256:cd9fbf8f75db54a05537f5fbc131cf1bf3d84875d1703b94aa3d08fc4caf0ddc",
+      "record_count": 510,
+      "group_count_including_singletons": 494,
+      "multirecord_groups": 16,
+      "derived_rule": {
+        "rule": "measurement_identity@1",
+        "inputs": [
+          "has_bioactivity"
+        ],
+        "parameters": {
+          "provenance": "copy_of (source, activity_id)",
+          "statement": [
+            "publication",
+            "molecule (glossary)",
+            "type",
+            "relation",
+            "value at the coarser stated precision"
+          ],
+          "same_source": "never grouped"
+        },
+        "sabueso_version": "0.14.0+164.g7667754"
+      },
+      "mapped_context_counts_by_source": {
+        "ChEMBL": {
+          "records": 493,
+          "description_populated": 493,
+          "organism_populated": 493,
+          "tax_id_populated": 493,
+          "declared_copy_records": 0
+        },
+        "BindingDB": {
+          "records": 17,
+          "declared_copy_records": 0
+        }
+      },
+      "accepted_edge_description_counts": {
+        "statement:missing_on_one": 16
+      },
+      "accepted_edges": [
+        {
+          "records": [
+            "REL_03a76f9366a6909d",
+            "REL_f26eff470d14334f"
+          ],
+          "basis": "statement",
+          "assay_description_state": "missing_on_one"
+        },
+        {
+          "records": [
+            "REL_0d5d30fd81f7fce0",
+            "REL_e0d6cc3412db9758"
+          ],
+          "basis": "statement",
+          "assay_description_state": "missing_on_one"
+        },
+        {
+          "records": [
+            "REL_12a5cb7e1916d426",
+            "REL_df8aac14e71688c9"
+          ],
+          "basis": "statement",
+          "assay_description_state": "missing_on_one"
+        },
+        {
+          "records": [
+            "REL_1900efee06aa1dbb",
+            "REL_25e03cc60b93f61e"
+          ],
+          "basis": "statement",
+          "assay_description_state": "missing_on_one"
+        },
+        {
+          "records": [
+            "REL_2836bd1818558da8",
+            "REL_b928cf78c56d4d63"
+          ],
+          "basis": "statement",
+          "assay_description_state": "missing_on_one"
+        },
+        {
+          "records": [
+            "REL_386732ee09f09e99",
+            "REL_65a1c5763b7e51aa"
+          ],
+          "basis": "statement",
+          "assay_description_state": "missing_on_one"
+        },
+        {
+          "records": [
+            "REL_40802ee6910131c1",
+            "REL_c74a0b2c42cee443"
+          ],
+          "basis": "statement",
+          "assay_description_state": "missing_on_one"
+        },
+        {
+          "records": [
+            "REL_4d9e24fdde5d00dc",
+            "REL_de6b8d98e12c98f3"
+          ],
+          "basis": "statement",
+          "assay_description_state": "missing_on_one"
+        },
+        {
+          "records": [
+            "REL_575c630b8215a516",
+            "REL_6559a92e5564967f"
+          ],
+          "basis": "statement",
+          "assay_description_state": "missing_on_one"
+        },
+        {
+          "records": [
+            "REL_5b5b7b19231f97c7",
+            "REL_95ab48368a0caea0"
+          ],
+          "basis": "statement",
+          "assay_description_state": "missing_on_one"
+        },
+        {
+          "records": [
+            "REL_754fed039c1c57f5",
+            "REL_e0d627683c066801"
+          ],
+          "basis": "statement",
+          "assay_description_state": "missing_on_one"
+        },
+        {
+          "records": [
+            "REL_7dacb80e26fcfb70",
+            "REL_9ec2de14e0526da6"
+          ],
+          "basis": "statement",
+          "assay_description_state": "missing_on_one"
+        },
+        {
+          "records": [
+            "REL_8744e84c09609b72",
+            "REL_ac8961fb78b11b64"
+          ],
+          "basis": "statement",
+          "assay_description_state": "missing_on_one"
+        },
+        {
+          "records": [
+            "REL_9b1d2f1af9c11908",
+            "REL_a52b5acf6ac52ada"
+          ],
+          "basis": "statement",
+          "assay_description_state": "missing_on_one"
+        },
+        {
+          "records": [
+            "REL_c41a278a17b7a87f",
+            "REL_d509b65581d31d94"
+          ],
+          "basis": "statement",
+          "assay_description_state": "missing_on_one"
+        },
+        {
+          "records": [
+            "REL_c4a61a0b99bce7b3",
+            "REL_eb415746a7af929f"
+          ],
+          "basis": "statement",
+          "assay_description_state": "missing_on_one"
+        }
+      ],
+      "independent_experiment_count": "not_established",
+      "scientist_review": "pending"
+    },
+    {
+      "role": "comparator",
+      "card_ref": "sabueso:protein:uniprot:P60174@sha256:da4988d08ebc5516333072dca48481046f2d0220160eda0eb579136894577461",
+      "record_count": 59,
+      "group_count_including_singletons": 46,
+      "multirecord_groups": 13,
+      "derived_rule": {
+        "rule": "measurement_identity@1",
+        "inputs": [
+          "has_bioactivity"
+        ],
+        "parameters": {
+          "provenance": "copy_of (source, activity_id)",
+          "statement": [
+            "publication",
+            "molecule (glossary)",
+            "type",
+            "relation",
+            "value at the coarser stated precision"
+          ],
+          "same_source": "never grouped"
+        },
+        "sabueso_version": "0.14.0+164.g7667754"
+      },
+      "mapped_context_counts_by_source": {
+        "ChEMBL": {
+          "records": 36,
+          "description_populated": 36,
+          "declared_copy_records": 0,
+          "organism_populated": 34,
+          "tax_id_populated": 34
+        },
+        "BindingDB": {
+          "records": 23,
+          "declared_copy_records": 0
+        }
+      },
+      "accepted_edge_description_counts": {
+        "statement:missing_on_one": 13
+      },
+      "accepted_edges": [
+        {
+          "records": [
+            "REL_0905499a732c9c0a",
+            "REL_e1aef1b4c06c458f"
+          ],
+          "basis": "statement",
+          "assay_description_state": "missing_on_one"
+        },
+        {
+          "records": [
+            "REL_0fbbf7a4e769d522",
+            "REL_90e72f9f687bdd1f"
+          ],
+          "basis": "statement",
+          "assay_description_state": "missing_on_one"
+        },
+        {
+          "records": [
+            "REL_28a0d0d1976394ed",
+            "REL_faa0e1c9b5d72ff6"
+          ],
+          "basis": "statement",
+          "assay_description_state": "missing_on_one"
+        },
+        {
+          "records": [
+            "REL_29e9261260bf0d2a",
+            "REL_8625766a5cc99736"
+          ],
+          "basis": "statement",
+          "assay_description_state": "missing_on_one"
+        },
+        {
+          "records": [
+            "REL_415ef2392be3e7a3",
+            "REL_69fa07e50643a686"
+          ],
+          "basis": "statement",
+          "assay_description_state": "missing_on_one"
+        },
+        {
+          "records": [
+            "REL_43102dc7997f5279",
+            "REL_eb5e422ac6cbf9f8"
+          ],
+          "basis": "statement",
+          "assay_description_state": "missing_on_one"
+        },
+        {
+          "records": [
+            "REL_5db0a0df1dd9af2f",
+            "REL_67a9bd287887b83b"
+          ],
+          "basis": "statement",
+          "assay_description_state": "missing_on_one"
+        },
+        {
+          "records": [
+            "REL_5ebb1cdf36bff1d6",
+            "REL_6bad24d3f5b4bf97"
+          ],
+          "basis": "statement",
+          "assay_description_state": "missing_on_one"
+        },
+        {
+          "records": [
+            "REL_6cf88d5b5bbd9125",
+            "REL_6fec4162ebe7dca4"
+          ],
+          "basis": "statement",
+          "assay_description_state": "missing_on_one"
+        },
+        {
+          "records": [
+            "REL_70214f910d78b594",
+            "REL_e12a8c19de08f9a3"
+          ],
+          "basis": "statement",
+          "assay_description_state": "missing_on_one"
+        },
+        {
+          "records": [
+            "REL_8ecc0bf54d04350e",
+            "REL_90c021a9dd2895e8"
+          ],
+          "basis": "statement",
+          "assay_description_state": "missing_on_one"
+        },
+        {
+          "records": [
+            "REL_92ad7ca71e0aee3f",
+            "REL_990980d2ed695203"
+          ],
+          "basis": "statement",
+          "assay_description_state": "missing_on_one"
+        },
+        {
+          "records": [
+            "REL_afc267d31c1adefc",
+            "REL_f52816b7afba7cad"
+          ],
+          "basis": "statement",
+          "assay_description_state": "missing_on_one"
+        }
+      ],
+      "independent_experiment_count": "not_established",
+      "scientist_review": "pending"
+    }
+  ],
+  "resource_observation": {
+    "resource_guard": "owned_rss_available_swap@2",
+    "host_free_mode": "observed_only_not_a_reclaimability_estimate",
+    "exit_code": 0,
+    "elapsed_s": 1.5,
+    "stop_reason": null,
+    "peak_owned_rss_bytes": 94474240,
+    "minimum_host_available_bytes": 14109372416,
+    "minimum_host_free_bytes": 2021613568,
+    "peak_owned_swap_bytes": 0,
+    "limits": {
+      "owned_rss_bytes": 1073741824,
+      "host_available_bytes": 4294967296,
+      "owned_swap_bytes": 0,
+      "owned_scratch_bytes": 2147483648
+    },
+    "operations": 1,
+    "peak_owned_scratch_bytes": 8346
+  },
+  "resource_observation_limit": "Peaks are sampled process-tree observations, not a proved bound; short-lived disposable database-copy storage may occur between samples.",
+  "diagnostic_sha256": "237b7348c9ecbdccfc8f74700890b618b92fa2284be2904e3885133ca0b15681",
+  "state": "original_policy_inventory_measured_candidate_not_implemented"
+}

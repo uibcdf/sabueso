@@ -308,5 +308,45 @@
       "owned_swap_bytes": 0
     },
     "publication": "The7853039 push occurred before this final failure was inspected. It remains unqualified; corrective source needs its own exact-head checkpoint."
+  },
+  "final_source": "7667754837ec6dc04565f625ca94a3f45ebd24ce",
+  "final_sdk": "0.14.0+164.g7667754",
+  "final_postcommit": {
+    "passed": 77,
+    "resource": {
+      "resource_guard": "owned_rss_available_swap@2",
+      "host_free_mode": "observed_only_not_a_reclaimability_estimate",
+      "exit_code": 0,
+      "elapsed_s": 25.43,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 237080576,
+      "minimum_host_available_bytes": 13887397888,
+      "minimum_host_free_bytes": 1432608768,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "owned_scratch_bytes": 2147483648
+      },
+      "test_files": 2,
+      "peak_owned_scratch_bytes": 530308126,
+      "tmpdir": "/home/liliana/repos@uibcdf/sabueso/recovered_work/bioactivity_adoption_184_20261104/tmp-postcommit"
+    },
+    "editable_imports_inside_and_outside": 8,
+    "installed_suite_editable_members": 16,
+    "working_tree_clean_before_publication": true
+  },
+  "hosted_receiving": {
+    "state": "pending",
+    "ci": 41908832887,
+    "governance": 41908832884,
+    "manual_evidence_review_before_claiming_qualification": true
+  },
+  "owned_cleanup": {
+    "removed_disposable_bytes": 393892360,
+    "original_json_hashes_verified_before_cleanup": 13,
+    "retained": "Both genuine original example capsules, success/failure logs and receipts; active remote captures. Owner #184/#185/#148/#112; review at scientific/researcher acceptance or next checkpoint, before 0.15.0.",
+    "failures": []
   }
 }

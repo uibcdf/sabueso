@@ -322,6 +322,13 @@ on 2026-11-04; release consolidation remains paused. The approved
 0.15.0 scope and both integrated development routes remain in force; no separate
 maintenance release is scheduled.
 
+The [B2 correspondence preparation](pending_proposals/assay_aware_measurement_correspondence.md)
+records actual original @1 context coverage and proposes separate declared-copy,
+possible-correspondence and independence states. The inventory is measured;
+candidate implementation, scientist-reviewed counts/votes and deliberate adoption
+remain pending. B1's final source `7667754` has local post-editable receiving and
+awaits its own complete hosted qualification.
+
 The [original nonpolymer input continuation](pending_proposals/rcsb_nonpolymer_inputs.md)
 retains the source identifiers needed for the next #173 reconciliation contract,
 including separate native/author labels and null versus unrequested scope. The

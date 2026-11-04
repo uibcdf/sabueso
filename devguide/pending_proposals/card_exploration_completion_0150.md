@@ -18,6 +18,15 @@ and original records/sources. Saved format @8 binds the exact original click;
 older saved routes retain their own policies. This advances structural navigation,
 with physical reconciliation and broad researcher/workload acceptance still open.
 
+Activity foundations now use conservative class @4 consistently in current direct
+activity/ligand answers, explanations and tables, with mapping @15 and explicit
+original @3 compatibility. Final source `7667754` has local post-editable receiving;
+its complete hosted qualification remains pending. The
+[B2 correspondence preparation](assay_aware_measurement_correspondence.md) records
+original mapped-context limits before a new opt-in grouping policy. These are
+scientific prerequisites, not delivery of a rich activity panel or researcher
+acceptance.
+
 ## Maintainer decision and release gate
 
 On 2026-10-22 the maintainer explicitly required **the entire broad exploration
@@ -58,7 +67,7 @@ human/agent requests, input scope and navigation. Researcher acceptance remains 
 | Protein: sites and molecular contacts | Source functional-site/contact declarations, source-bound canonical overlap with explicit uncomputed scope (#163), a readable comparison question with original source/annotation/contact and separate instance/assembly context links, original instance selection/saved reading, exact instance-to-parent declaration navigation with frozen historical compatibility, RCSB contact-rule/input binding with conservative native identity/axis scope and distinct merged derivation contexts (#156) delivered | Compact exact agent selection now shares comparison results/items and mandatory scope/support. Original saved comparison verification and exact agent requests now delivered under @3; preserve historical unknown basis and complete assembly-aware reconciliation, region/structure transitions and researcher acceptance |
 | Protein: variants and isoform context | Existing tissue/variant/isoform readers; no rich explorer panel | Original genomic/transcript/isoform context, per-tissue unknowns, named rules and scoped support |
 | Protein: comparative context | Existing comparison readers; no rich explorer panel | Explicit supplied-Card comparison, relationship basis and maps where required; no identity merge by similarity |
-| Protein: molecules and measured activities | Existing protein-centered `bioactivities()` and explanations; no rich explorer panel | Molecule/group/measurement/assay/document drill-down with original target assignment, units, qualifiers and comparison limits |
+| Protein: molecules and measured activities | Direct activity/ligand views, explanations and tables consistently select conservative class @4; explicit original @3 and old packet reading retained. Original measurement @1 remains; B2 candidate not implemented. No rich explorer panel | Assay-aware correspondence and molecule/group/measurement/assay/document drill-down with original target assignment, units, qualifiers and comparison limits |
 | Protein: biological associations | Existing stored relationships/readers; no rich explorer panel | Typed disease/pathway/interaction context with exact direction and original support; no invented causality |
 | Molecule: chemical identity | Initial chemistry fields and source identity links delivered | Broad-profile presentation of retained stereochemical/charge/parent context, including absent/ambiguous scope |
 | Molecule: physicochemical properties | Initial fields/methods/units/alternatives delivered | Complete nature-specific presentation and scientific interpretation review; calculated/measured/unknown stay distinct |

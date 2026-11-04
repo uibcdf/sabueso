@@ -65,6 +65,11 @@ not promise exact old requests. See [the correction](pending_proposals/comparati
   [default/consumer adoption](pending_bugs/bioactivity_interpretation.md) has its
   own validation scope. Independent scientific/researcher acceptance and complete
   rich exploration remain open; no released fix is claimed.
+  The [B2 inventory/design](pending_proposals/assay_aware_measurement_correspondence.md)
+  finds missing mapped assay description on one side of every accepted statement
+  edge in two retained public example Cards. This does not establish source-wide
+  method absence, duplication or experimental independence. Candidate count/vote
+  semantics and independent scientific review remain pending; @1 is unchanged.
 
 - **Extended PDB identifiers ([#175](https://github.com/uibcdf/sabueso/issues/175)):**
   public structure receiving and original native assembly admission currently

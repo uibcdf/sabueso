@@ -26,6 +26,11 @@ conservative class @4 and packet mapping @15, preserving explicit @3 and inert
 old packet/example reading. New changed bytes need their own source checkpoint;
 independent scientific/researcher review and rich human/agent integration remain open.
 
+The next [assay-aware correspondence proposal](pending_proposals/assay_aware_measurement_correspondence.md)
+records B2's measured original-input context inventory and proposed separation of
+declared copies, possible correspondence and unknown experimental independence.
+It does not implement or adopt a new measurement rule.
+
 **Pause handoff, 2026-10-25:** [CHECKPOINT](CHECKPOINT.md) is the concise current
 entry point; [its preceding chronology](archive/CHECKPOINT_before_pause_20261025.md)
 is historical. Resume the maintainer's broad Card exploration work (#148), with

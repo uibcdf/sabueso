@@ -118,6 +118,10 @@ calls; thirteen original JSON hashes stay fixed. New reader exports are separate
 The exact same original Card references and reported measurement context are
 retained in old/current example comparisons; derived classes change as declared.
 Hosted qualification of the new source and independent acceptance remain pending.
+The final `7667754` editable passes 77 postcommit cases after producer-stamp
+correction. Its CI run `41908832887` and governance run `41908832884` are being
+received separately; no hosted pass is inferred from local results. The
+intermediate `7853039` failure/premature push is retained in the receipt.
 
 The [local qualification receipt](../evidence/bioactivity_interpretation_20261104.json)
 records 62 independent policy cases, 232 affected integration cases, one isolated

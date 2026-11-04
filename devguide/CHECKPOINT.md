@@ -26,9 +26,27 @@ mapping @15 inherits @14 outside bioactivities; old mappings explicitly retain
 class @3 and original stored packets remain inert. Current integration passes
 338 affected cases, with genuine pre-adoption @14 controls and updated versioned
 public examples. These later changed bytes need their own exact-source checkpoint.
+Final source `7667754` /SDK `0.14.0+164.g7667754` is published and passes
+77 post-editable cases. Its [CI](https://github.com/uibcdf/sabueso/actions/runs/41908832887)
+and [governance](https://github.com/uibcdf/sabueso/actions/runs/41908832884)
+remain pending complete receiving. The intermediate `7853039` post-editable
+producer-stamp comparison failed and was pushed before inspection; its failure
+is retained. The correction distinguishes fresh original-rule recomputation with
+the current SDK stamp from exact inert reading of original stored stamps.
 No rich activity explorer panel or independent scientist acceptance is claimed;
 complete applicable receiving, then continue #186 and B3–B7. Release consolidation
 remains paused, with the full validated "wow" experience required before 0.15.0.
+
+B2 now has an [original-context inventory and candidate design](pending_proposals/assay_aware_measurement_correspondence.md).
+On two exact retained public example Cards, all 29 accepted @1 statement edges
+lack an assay description on one side. This is missing mapped context, not proof
+of duplication or independence, and not a candidate-policy result. The proposed
+next opt-in slice separates declared copies from possible correspondence and
+unknown experimental independence. Original @1/defaults remain unchanged;
+scientist-reviewed count/vote semantics and candidate implementation are pending.
+Completed B1 disposable scratch is removed; both genuine original example capsules,
+13 hash-verified original JSON files, logs and active remote captures are retained
+under #184/#185/#148/#112 until their next acceptance/checkpoint review.
 
 The current [owned-state candidate](pending_proposals/exploration_owned_state.md)
 profiles save/read separately and removes redundant private copies, retaining

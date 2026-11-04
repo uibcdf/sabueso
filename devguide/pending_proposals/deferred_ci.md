@@ -22,6 +22,17 @@ source/installed summaries and codec receiving. The preceding
 has CI 18/18 and governance 1/1 at `1290201`; it does not qualify later changed
 defaults or @15. Independent scientific/researcher and consumer acceptance remain open.
 
+Final source `7667754837ec6dc04565f625ca94a3f45ebd24ce` /SDK
+`0.14.0+164.g7667754` is published unskipped with 77 post-editable cases passing.
+CI `41908832887` and governance `41908832884` are pending full exact-source
+receiving under `recovered_work/bioactivity_adoption_184_20261104/INDEX.json`.
+Intermediate `7853039` keeps its failed producer-stamp comparison and premature
+push record; original stored reading remains exact after the test correction.
+The following documentation/evidence-only B2 preparation may use `[skip ci]`
+after link/snippet/format/lint/governance and receipt checks. It changes no code
+or default and supplies no additional remote qualification; the code recovery
+owner and route remain #184/#185/#148/#112 and those recorded final-source runs.
+
 ### Explicit conservative activity policy (2026-11-04, #184/#185)
 
 The [first activity slice](../pending_bugs/bioactivity_interpretation.md) adds
