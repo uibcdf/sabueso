@@ -14,6 +14,15 @@ payloads, row membership/order and scientific results stay unchanged. Its select
 local and final source receiving are recorded separately from the owned-state
 checkpoint below; broad scientist acceptance remains open.
 
+Post-audit B1 now adds [explicit conservative activity interpretation](pending_bugs/bioactivity_interpretation.md)
+under `bioactivity_class@4` and explanation @2. Omission remains original @3 while
+default/consumer adoption is reviewed. Local receiving passes 62 independent
+cases, 232 affected integration cases and the isolated copied payload; five
+original function ASTs still equal 0.14.0. Public-input comparisons retain original
+support/Card state and document all changed classifications as policy differences.
+No new explorer panel or scientist acceptance is claimed. Qualify the accumulated
+new source remotely, then continue adoption and #186; 0.15.0 consolidation stays paused.
+
 The current [owned-state candidate](pending_proposals/exploration_owned_state.md)
 profiles save/read separately and removes redundant private copies, retaining
 public/quantity/caller isolation and every frozen verification predicate. Local

@@ -86,6 +86,15 @@ Stricter nested glossary interpretation and original-pin acceptance remain #182.
 
 ## Behavior-based gate selection
 
+For explicit `bioactivity_class@4` (#184/#185), run
+`test_bioactivity_class_v4_offline.py`, affected bioactivity/explanation/grouping,
+curation/ligand, argument, quantity and packet cases, and the isolated receiving
+scope test. Check interval boundaries, original @3/default equivalence, no
+single-point dose/potency inference, readable reasons and original Card/support
+isolation. CI and staged installed payloads include the standalone new test file;
+its copied local run qualifies payload independence, not installed-artifact delivery.
+Scientific/default adoption remains separate from these technical checks.
+
 | Changed behavior | Select these test files / gates |
 | --- | --- |
 | Original nonpolymer assembly exploration | `test_card_nonpolymer_assembly_offline.py` and `test_card_saved_nonpolymer_assembly_offline.py`, native @5/key @2 and all affected assembly/context/human/agent/saved/argument/quantity/transport cases; genuine pre-reader public capsule, default/@4 request identity, shared one-capture evaluation, complete original rows/text with explicit saved notice, partial/duplicate/conflicting native context, mixed original structure questions, closed @7 and explanation-request @2 receiving, inert outside-checkout read, atomic deferral, resealing/coherent reidentification, deliberate budgets and stable repeat saving. Preserve original native @1–@5 and saved @1–@6 bytes; unskipped exact-source CI/governance qualifies the completed block (#173/#148/#112) |

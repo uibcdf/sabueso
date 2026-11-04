@@ -19,6 +19,12 @@ Its [required wow experience](CONTINUATION_PLAN_20261104.md#required-wow-experie
 defines observable criteria for every block and explicit researcher acceptance
 before 0.15.0 consolidation.
 
+The first post-audit scientific implementation is
+[opt-in interval-aware activity interpretation](pending_bugs/bioactivity_interpretation.md)
+(#184/#185), with readable reasons, original @3 compatibility and a bounded
+public-input impact comparison. Default/consumer adoption and full human/agent
+integration remain open; local tests are separate from scientific acceptance.
+
 **Pause handoff, 2026-10-25:** [CHECKPOINT](CHECKPOINT.md) is the concise current
 entry point; [its preceding chronology](archive/CHECKPOINT_before_pause_20261025.md)
 is historical. Resume the maintainer's broad Card exploration work (#148), with

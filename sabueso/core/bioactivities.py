@@ -409,6 +409,7 @@ def bioactivities_view(
     thresholds: Dict[str, Any] | None = None,
     *,
     _support=None,
+    classification_rule="bioactivity_class@3",
 ) -> Dict[str, Any]:
     """Molecule-centric summary of the card's ``has_bioactivity`` relationships.
 
@@ -419,7 +420,19 @@ def bioactivities_view(
     Measurements from assays that were not assigned directly to the target are excluded
     unless ``include_indirect``, and they are listed in ``excluded``.
     """
+    from .bioactivity_class_v4 import RULE
+    from .bioactivity_class_v4 import classification_rule as validate_rule
     from .measurements import _molecules, measurement_groups, record_source
+
+    selected_rule = validate_rule(classification_rule)
+    classifier = classify_measurement
+    classification_derivation = bioactivity_derivation
+    if selected_rule == RULE:
+        from .bioactivity_class_v4 import classify, derivation, thresholds_in_force
+
+        thresholds_in_force(thresholds)
+        classifier = classify
+        classification_derivation = derivation
 
     molecules: Dict[str, Dict[str, Any]] = {}
     excluded: List[Dict[str, Any]] = []
@@ -466,7 +479,7 @@ def bioactivities_view(
                 }
             )
             continue
-        derived = classify_measurement(m, assay.get("description"), thresholds)
+        derived = classifier(m, assay.get("description"), thresholds)
         node = _potency_node(m)
         flags = _flags(q)
         ranged = is_range(m)
@@ -619,7 +632,7 @@ def bioactivities_view(
         "scope": {
             "target_assignment": "any" if include_indirect else DIRECT_ASSIGNMENT
         },
-        "classification": bioactivity_derivation(thresholds),
+        "classification": classification_derivation(thresholds),
         "checks": consistency_checks(),
         "measurement_identity": {
             k: identity[k] for k in ("rule", "groups", "ambiguous", "review")

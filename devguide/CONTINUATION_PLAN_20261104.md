@@ -96,6 +96,16 @@ video projects to this release.
 
 ## Starting state and first actions
 
+Execution update, 2026-11-04: B0 is published at `316224a` with local checks;
+remote recovery is pending. B1 now has an explicit opt-in @4 implementation and
+versioned @2 explanation, with 62 independent cases, 232 affected integration
+cases and isolated copied receiving passing. See
+[the scientific scope and public-input comparison](pending_bugs/bioactivity_interpretation.md).
+Default adoption and downstream rollout remain required B1 work; no new rich
+activity panel or scientific/human acceptance is claimed. The next exact-source
+checkpoint receives the accumulated changes, without requiring every intermediate
+development SHA to acquire a separate green matrix.
+
 - Published development source: `34135591642ae378705343449a037f8a4469c968`, SDK
   `0.14.0+160.g3413559`. Its private exploration-copy optimization has local checks;
   its exact-source remote qualification failed. All four Windows source lanes
@@ -130,8 +140,8 @@ requirements. Detailed historical chronologies do not override this proposed ord
 | Block | Work and owner | Dependency and exit evidence |
 | --- | --- | --- |
 | B0 — Reconcile and preserve | Sabueso #112/#167/#148: inspect exact-source remote verification, protect original evidence and close the small existing component-preview continuation | First; explain the verifier failure from actual logs, verify applicable CI/governance through gh-run-receptor, and record the result for its actual SHA. Compare public previews, run missing docs checks, then commit/qualify that continuation separately from scientific fixes. If it reveals larger work, retain it and advance B1 rather than delaying correctness |
-| B1 — Correct activity interpretation | Sabueso A1/A2, new owning bugs cross-linked to #112 and historical #37 | Reproduce original behavior; report; implement new versioned interval-aware classification and defensible concentration-role interpretation. Assess public-corpus and downstream impact; preserve explicit legacy behavior, source data and genuine saved results. Pass independent expected outcomes, native/public/explanation and applicable receiving checks |
-| B2 — Make measurement correspondence scientifically explicit | Sabueso A3, new proposal cross-linked to #66/#112 | After B1's semantics are defined; distinguish explicit copies, supported correspondence, conflicting assay/construct context and missing context. Adopt a named policy with scientist-reviewed examples and count/vote consequences before claiming improved grouping or building summary panels on it |
+| B1 — Correct activity interpretation | Sabueso #184/#185, cross-linked to #112 and historical #37 | First opt-in @4 slice and public-input comparison implemented; complete scientific/default review and downstream adoption. Preserve explicit legacy behavior, source data and genuine saved results. Pass independent expected outcomes, native/public/explanation and applicable receiving checks |
+| B2 — Make measurement correspondence scientifically explicit | Sabueso #186, cross-linked to #66/#112 | After B1's semantics are defined; distinguish explicit copies, supported correspondence, conflicting assay/construct context and missing context. Adopt a named policy with scientist-reviewed examples and count/vote consequences before claiming improved grouping or building summary panels on it |
 | B3 — Finish bounded structural journeys | Sabueso #173/#148 and applicable integrity owners | Resume remaining region/site/model/instance/assembly transitions from the existing implementation. State precisely what #173 resolves, what source context remains unknown and which physical calculations belong elsewhere. Qualify coherent native/human/agent/saved routes and independent structural examples; source declaration counts never become unsupported physical claims |
 | B4 — Deliver the activity and literature journey | Sabueso #148/#112, with literature owners | Builds on B1/B2: protein → molecule → group → measurement → assay/document → original support. Add shared literature views and molecule target/activity context with exact identity joins. Review measured versus derived results, assay comparability, conflicts and missing methods; no unsupported mechanistic interpretation |
 | B5 — Complete molecule, clinical and disease profiles | Sabueso #148 and relevant clinical/identity owners | Reuse existing readers for chemical identity/properties/classes, indications/trials and disease terminology/hierarchy/associations. Distinguish clinical citation from outcome, hierarchy from identity, and prediction from measurement; positive and uncertain public examples plus exact saved/agent access |
@@ -300,12 +310,11 @@ milestones, or when a concrete dependency makes one necessary.
 
 ## Immediate next work session
 
-1. Reconcile the existing remote verifier/receipts and inspect the preserved working
-   tree. Close the small component-preview block if its remaining checks are clean;
-   otherwise retain its exact state and separate its next action.
-2. Deliver the A1/A2 owning reports and A3 proposal, and record the initial independent
-   benchmark cases and public-corpus impact scope.
-3. Implement B1 as the first substantial scientific change, with new explicit
-   semantics, original-rule compatibility and an exact-source checkpoint.
-4. Continue B2, then B3–B6 with the ongoing review/measurement responsibilities;
-   use B7 evidence to decide when release consolidation can resume.
+1. Inspect the latest source/editable and exact-source remote receipts; qualify the
+   accumulated B0/B1 code checkpoint without reclassifying earlier failed runs.
+2. Review explicit @4 semantics and the frozen/rebuilt public-input comparison;
+   complete B1's default/consumer adoption with legacy and saved compatibility.
+3. Continue #186 measurement correspondence, then B3–B6 with ongoing scientific,
+   experience and workload review. The remaining broad panels stay required.
+4. Obtain actual B7 scientist/researcher and consumer acceptance before deciding
+   when release consolidation can resume.

@@ -9,6 +9,19 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Explicit conservative activity policy (2026-11-04, #184/#185)
+
+The [first activity slice](../pending_bugs/bioactivity_interpretation.md) adds
+opt-in class @4 and explanation @2, retaining omitted @3, original classifier/parser
+functions, Card/schema data, historical verifiers and fixtures. Local gates pass
+62 independent cases, 232 affected cases and copied-payload receiving; CI/staged
+installed scopes now include the new standalone file. Its
+[receipt](../evidence/bioactivity_interpretation_20261104.json) records exact file
+hashes, scope, resource checks and public-input comparisons. Qualify the accumulated
+code with one unskipped exact-source checkpoint, including B0's renderer and UTF-8
+test recovery. An intermediate queued/cancelled source is not passing evidence.
+New default/consumer adoption and broad scientific/human acceptance remain open.
+
 ### Post-audit presentation and UTF-8 test recovery (2026-11-04)
 
 The source `3413559` failed all four Windows source lanes in one new direct-restore

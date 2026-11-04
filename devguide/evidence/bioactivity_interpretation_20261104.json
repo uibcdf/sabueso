@@ -1,0 +1,269 @@
+{
+  "owner": "#184/#185/#148/#112",
+  "review_trigger": "scientific/default adoption and exact-source hosted receiving",
+  "implementation_base": "316224a93f70174423ecb6e417ab928516997fd1",
+  "state": "local_qualification_pass_hosted_and_scientific_acceptance_pending",
+  "default_rule": "bioactivity_class@3",
+  "opt_in_rule": "bioactivity_class@4",
+  "new_explanation_rule": "bioactivity_explanation@2",
+  "online_provider_requests": 0,
+  "selected_cases": {
+    "new_policy": 62,
+    "affected_integration": 232,
+    "copied_payload_scope": 1
+  },
+  "copied_payload_note": "Repeated standalone execution of the new-policy file outside the checkout; not installed-artifact qualification.",
+  "original_compatibility": {
+    "owner": "#184/#185/#112",
+    "review_trigger": "new policy and default adoption checkpoint",
+    "original_tag": "0.14.0",
+    "original_functions_unchanged": [
+      "single_point_concentration",
+      "_band",
+      "_bounded",
+      "classify_measurement",
+      "bioactivity_derivation"
+    ],
+    "historical_verifiers_and_fixtures_changed": false,
+    "card_schema_changed": false
+  },
+  "resources": {
+    "focused": {
+      "resource_guard": "owned_rss_available_swap@2",
+      "host_free_mode": "observed_only_not_a_reclaimability_estimate",
+      "exit_code": 0,
+      "elapsed_s": 2.02,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 103718912,
+      "minimum_host_available_bytes": 15720599552,
+      "minimum_host_free_bytes": 897695744,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "owned_scratch_bytes": 2147483648
+      },
+      "test_files": 1,
+      "peak_owned_scratch_bytes": 47807704
+    },
+    "integration": {
+      "resource_guard": "owned_rss_available_swap@2",
+      "host_free_mode": "observed_only_not_a_reclaimability_estimate",
+      "exit_code": 0,
+      "elapsed_s": 166.01,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 255102976,
+      "minimum_host_available_bytes": 15436726272,
+      "minimum_host_free_bytes": 670502912,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "owned_scratch_bytes": 2147483648
+      },
+      "test_files": 9,
+      "peak_owned_scratch_bytes": 2449251
+    },
+    "copied": {
+      "resource_guard": "owned_rss_available_swap@2",
+      "host_free_mode": "observed_only_not_a_reclaimability_estimate",
+      "exit_code": 0,
+      "elapsed_s": 2.01,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 157954048,
+      "minimum_host_available_bytes": 15679868928,
+      "minimum_host_free_bytes": 905359360,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "owned_scratch_bytes": 2147483648
+      },
+      "test_files": 1,
+      "peak_owned_scratch_bytes": 4719847
+    },
+    "impact": {
+      "resource_guard": "owned_rss_available_swap@2",
+      "host_free_mode": "observed_only_not_a_reclaimability_estimate",
+      "exit_code": 0,
+      "elapsed_s": 3.01,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 106758144,
+      "minimum_host_available_bytes": 15554183168,
+      "minimum_host_free_bytes": 779984896,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "owned_scratch_bytes": 2147483648
+      },
+      "test_files": 1,
+      "peak_owned_scratch_bytes": 2080959
+    },
+    "integration-sphinx": {
+      "resource_guard": "owned_rss_available_swap@2",
+      "host_free_mode": "observed_only_not_a_reclaimability_estimate",
+      "exit_code": 0,
+      "elapsed_s": 25.17,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 281489408,
+      "minimum_host_available_bytes": 15433523200,
+      "minimum_host_free_bytes": 625438720,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "owned_scratch_bytes": 2147483648
+      },
+      "test_files": 0,
+      "peak_owned_scratch_bytes": 39070956
+    }
+  },
+  "public_input_comparison": {
+    "owner": "#184/#185/#112",
+    "review_trigger": "scientific/default adoption review before B4/0.15.0",
+    "scope": "Two frozen public Cards plus two explicitly rebuilt public fixture Cards (UniProt/ChEMBL/BindingDB/UniChem). Different historical schemas/coverage; one frozen Card has no activity records. Policy differences are not a count of erroneous source records or a prevalence estimate. No primary-method or researcher acceptance.",
+    "online_provider_requests": 0,
+    "fixture_access": "explicit public fixture replay; original built Card inputs retained with this phase owner/review trigger",
+    "rules": [
+      "bioactivity_class@3",
+      "bioactivity_class@4"
+    ],
+    "cases": [
+      {
+        "public_input": "temp_data/frozen_cards/schema_0.3.9__P52270.json",
+        "input_sha256": "797e77018947dcd5ee606e59fe83df79541c8274a2411466467cc5ffccaf3d0b",
+        "card_ref": "sabueso:protein:uniprot:P52270@sha256:e722cd3d919e053eb1af777e9e8d3818de52adf5f518bf5008a0e067fb21367f",
+        "all_activity_records": 42,
+        "included_records": 42,
+        "excluded_records": 0,
+        "included_types": {
+          "IC50": 21,
+          "Kd": 1,
+          "Inhibition": 20
+        },
+        "original_record_classes": {
+          "active": 9,
+          "weak": 11,
+          "inactive": 9,
+          "inconclusive": 13
+        },
+        "opt_in_record_classes": {
+          "active": 9,
+          "weak": 11,
+          "inactive": 2,
+          "inconclusive": 20
+        },
+        "changed_record_classes": 7,
+        "changed_by_new_basis": {
+          "single_point_context_required": 7
+        },
+        "included_molecule_items": 40,
+        "changed_molecule_classes": 7,
+        "original_values_support_card_and_default_unchanged": true
+      },
+      {
+        "public_input": "temp_data/frozen_cards/schema_0.3.13__P60174.json",
+        "input_sha256": "f44dc762f25f1c280707e083f8718ef5390a98540bcd1fd2a306a7f7de38cd15",
+        "card_ref": "sabueso:protein:uniprot:P60174@sha256:d2144237e13059cb4fd7bfae98b0806012c5181db2fddfe4791c4ab1c389c9b2",
+        "all_activity_records": 0,
+        "included_records": 0,
+        "excluded_records": 0,
+        "included_types": {},
+        "original_record_classes": {},
+        "opt_in_record_classes": {},
+        "changed_record_classes": 0,
+        "changed_by_new_basis": {},
+        "included_molecule_items": 0,
+        "changed_molecule_classes": 0,
+        "original_values_support_card_and_default_unchanged": true
+      },
+      {
+        "public_input": "public-fixture-input-P52270.json",
+        "input_sha256": "6e9e49d4c5c50b2ded7bb8e90eb6b3755430585c7d3cca2e472a469fe323c90f",
+        "card_ref": "sabueso:protein:uniprot:P52270@sha256:0df73d382e84dbf919bad7e86b4ecd7ac1dc23fb8f80590ac7de4a523c664cd0",
+        "all_activity_records": 510,
+        "included_records": 510,
+        "excluded_records": 0,
+        "included_types": {
+          "IC50": 38,
+          "Inhibition": 471,
+          "Kd": 1
+        },
+        "original_record_classes": {
+          "active": 16,
+          "inconclusive": 65,
+          "weak": 41,
+          "inactive": 203,
+          "not_determined": 185
+        },
+        "opt_in_record_classes": {
+          "active": 16,
+          "inconclusive": 286,
+          "weak": 20,
+          "inactive": 3,
+          "not_determined": 185
+        },
+        "changed_record_classes": 221,
+        "changed_by_new_basis": {
+          "single_point_context_required": 221
+        },
+        "included_molecule_items": 256,
+        "changed_molecule_classes": 215,
+        "original_values_support_card_and_default_unchanged": true
+      },
+      {
+        "public_input": "public-fixture-input-P60174.json",
+        "input_sha256": "161e2e3e3ccc67cf4dc8aeb4db8c36ead225d4f7d54afb6a67c5df50143bc308",
+        "card_ref": "sabueso:protein:uniprot:P60174@sha256:6271605d4e78a66594a55c906344124481279b5367e6cfef4e3eb929a9286881",
+        "all_activity_records": 59,
+        "included_records": 51,
+        "excluded_records": 8,
+        "included_types": {
+          "Kd": 4,
+          "ED50": 2,
+          "IC50": 27,
+          "Ki": 8,
+          "Inhibition": 10
+        },
+        "original_record_classes": {
+          "active": 27,
+          "weak": 5,
+          "inactive": 18,
+          "not_determined": 1
+        },
+        "opt_in_record_classes": {
+          "active": 27,
+          "weak": 4,
+          "inconclusive": 9,
+          "inactive": 10,
+          "not_determined": 1
+        },
+        "changed_record_classes": 9,
+        "changed_by_new_basis": {
+          "single_point_context_required": 9
+        },
+        "included_molecule_items": 40,
+        "changed_molecule_classes": 8,
+        "original_values_support_card_and_default_unchanged": true
+      }
+    ]
+  },
+  "scientific_and_human_acceptance": "pending; conservative policy/default adoption and downstream integration remain open",
+  "implementation_sha256": {
+    "sabueso/core/bioactivities.py": "3e3636b11fd303242609223ef70725c1b866ff634c364d966d2671cb739eeec6",
+    "sabueso/core/bioactivity_class_v4.py": "6a1652c4e3a860cbbc362befee02bb6d2944e96b9f6ac83252cefbd82c17304b",
+    "sabueso/core/bioactivity_explanation.py": "15eaf1332287948192bee51776c31a773ba16d63cae1d3ca93f887abea547e14",
+    "sabueso/core/card.py": "1f2ecab4fc78a57a41373a0238977e0017678ec2cec2b9f02ecd88e1a9b00cca",
+    "sabueso/_private/argdigest/argument/classification_rule.py": "a78478e37b6c02510c115429001cdadef8589eb074a93fc16a69413860474bfd",
+    "tests/core/test_bioactivity_class_v4_offline.py": "e1c53f4ec8fc9386d759e96a9b57e94901aaae3782361fbe2efb54399833910b",
+    "tests/tools/test_installed_receiving_scope_offline.py": "9fd91fc478f1e8b2c7bc775345cbfb65466d0e2cbf760be2558a959e41aa2822",
+    ".github/workflows/ci.yml": "1eb37296f72f54d5cae7b00ca4c2c9eaa93c8c042120517381be547c13cab59b",
+    ".github/workflows/test_staged_conda_package.yaml": "9366c86e6c3474444289266b1f064c9eb699257393b2041e7619f37ced084ab0"
+  }
+}

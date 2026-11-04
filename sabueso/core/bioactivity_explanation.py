@@ -239,10 +239,29 @@ def explain_measurement(card, measurement_ref):
     )
 
 
-def explain_bioactivity(card, molecule_ref, include_indirect=False, thresholds=None):
+def explain_bioactivity(
+    card,
+    molecule_ref,
+    include_indirect=False,
+    thresholds=None,
+    *,
+    classification_rule="bioactivity_class@3",
+):
+    from .bioactivity_class_v4 import RULE, thresholds_in_force
+    from .bioactivity_class_v4 import classification_rule as validate_rule
+
+    classification_rule = validate_rule(classification_rule)
+    if classification_rule == RULE:
+        thresholds_in_force(thresholds)
     support = _Support(card)
     trace = {}
-    view = bioactivities_view(card, include_indirect, thresholds, _support=trace)
+    view = bioactivities_view(
+        card,
+        include_indirect,
+        thresholds,
+        _support=trace,
+        classification_rule=classification_rule,
+    )
     item = next((i for i in view["items"] if i["molecule_ref"] == molecule_ref), None)
     selected = {m["relationship_id"] for m in item["measurements"]} if item else set()
     groups = []
@@ -272,9 +291,16 @@ def explain_bioactivity(card, molecule_ref, include_indirect=False, thresholds=N
     return deepcopy(
         {
             "rule": make_derivation(
-                BIOACTIVITY_RULE,
+                BIOACTIVITY_RULE
+                if classification_rule == "bioactivity_class@3"
+                else "bioactivity_explanation@2",
                 inputs=[support.pin],
                 parameters={
+                    **(
+                        {"classification_rule": classification_rule}
+                        if classification_rule != "bioactivity_class@3"
+                        else {}
+                    ),
                     "molecule_ref": molecule_ref,
                     "include_indirect": include_indirect,
                     "thresholds": {

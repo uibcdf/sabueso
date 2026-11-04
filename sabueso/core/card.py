@@ -259,12 +259,22 @@ class Card:
         include_indirect: bool = False,
         thresholds: Dict[str, Any] | None = None,
         skip_digestion: bool = False,
+        *,
+        classification_rule: str = "bioactivity_class@3",
     ) -> Dict[str, Any]:
-        """Molecule-centric view of this card's measured bioactivities."""
+        """Molecule-centric measured activities with an explicit interpretation.
+
+        Opt-in ``bioactivity_class@4`` requires an interval to fit one band and
+        does not infer potency or compound dose from single-point assay text.
+        Omission retains the original ``@3`` while default adoption is reviewed.
+        """
         from .bioactivities import bioactivities_view
 
         return bioactivities_view(
-            self, include_indirect=include_indirect, thresholds=thresholds
+            self,
+            include_indirect=include_indirect,
+            thresholds=thresholds,
+            classification_rule=classification_rule,
         )
 
     @arg_digest()
@@ -287,16 +297,26 @@ class Card:
         include_indirect: bool = False,
         thresholds: Dict[str, Any] | None = None,
         skip_digestion: bool = False,
+        *,
+        classification_rule: str = "bioactivity_class@3",
     ) -> Dict[str, Any]:
         """Explain an exact molecule item from ``bioactivities()`` at this card pin.
 
         ``bioactivity_explanation@1`` retains units, thresholds, group voters and
         stored source support. Use the same options as the view being explained.
+        Explicit classification ``@4`` uses explanation ``@2`` and records the
+        conservative policy and readable reasons; omission retains original @1.
         This does not resolve another identifier or explain a ligand deck/site.
         """
         from .bioactivity_explanation import explain_bioactivity
 
-        return explain_bioactivity(self, molecule_ref, include_indirect, thresholds)
+        return explain_bioactivity(
+            self,
+            molecule_ref,
+            include_indirect,
+            thresholds,
+            classification_rule=classification_rule,
+        )
 
     @arg_digest()
     def add_literature_assertion(

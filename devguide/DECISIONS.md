@@ -1,5 +1,19 @@
 # Sabueso — Decision Log
 
+## Introduce explicit conservative activity interpretation before adoption (2026-11-04, #184/#185)
+
+Implement opt-in `bioactivity_class@4` through the existing Card activity view and
+explanation, preserving the original @3 classifier/parser functions and omitted
+default. Classify a concentration only when every permitted interval value fits
+one configured band; retain uninterpreted uncertainty and qualifiers as inconclusive.
+For single-point inhibition, retain the stated measurement and abstain from potency
+or prose-derived compound-dose inference. Record readable reasons and the selected
+policy under explanation @2; original explanations remain @1. Compare frozen and
+rebuilt public inputs before an explicit default/downstream adoption step. This
+bounded implementation is not scientific acceptance, a new stored schema, a rich
+exploration panel or closure of the underlying bugs. See
+[scope and remaining acceptance](pending_bugs/bioactivity_interpretation.md).
+
 ## Transfer exclusively owned decoded exploration state (2026-11-04, #167/#148)
 
 Keep saved logical formats, historical predicates and all original checks intact.

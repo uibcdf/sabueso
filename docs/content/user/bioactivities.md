@@ -33,8 +33,9 @@ that ChEMBL assigned by homology.
 
 Each measurement keeps ChEMBL's value and unit as stated (`value`, `units`). It also
 carries `normalized`, a quantity in nanomolar (or percent), or None when ChEMBL's unit
-cannot be normalized. The test concentration of a single-point measurement is also
-returned as a quantity (`test_concentration`).
+cannot be normalized. Under the original @3 policy, an interpreted single-point
+test concentration is returned as a quantity (`test_concentration`). The opt-in
+policy below leaves that interpretation uncomputed.
 
 Two consistency checks add flags to a measurement. Both rules are listed in
 `view["checks"]`:
@@ -47,6 +48,36 @@ Two consistency checks add flags to a measurement. Both rules are listed in
   This is the signature of a unit slip.
 
 Neither check corrects a value; they point at the measurements to look at.
+
+## Conservative interpretation (in development)
+
+The explicit `bioactivity_class@4` policy requires every value permitted by a
+measurement's relation or closed range to occupy the same configured band.
+For example, with default thresholds, `IC50 >= 100 uM` is inconclusive because
+100 µM is weak while larger values can be inactive. `IC50 > 100 uM` is inactive.
+An upper bound inside the weak band is also inconclusive: it permits active values.
+These classes describe concentration bands, not efficacy or selectivity.
+
+```python
+conservative = card.bioactivities(classification_rule="bioactivity_class@4")
+for item in conservative["items"][:5]:
+    for measurement in item["measurements"]:
+        print(measurement["class"], measurement["interpretation"])
+```
+
+Single-point inhibition remains inconclusive under this policy. Its original
+percentage, relation and assay support stay available; no potency bound or
+compound concentration is inferred from assay prose. `test_concentration_state`
+is `not_interpreted`, which does not mean the source lacks a stated concentration.
+Uninterpreted uncertainty and approximate qualifiers also remain inconclusive.
+
+Use the same `classification_rule` when calling `explain_bioactivity` for that
+result. Omission retains the original @3 interpretation while default adoption is
+reviewed. The original policy has known censoring and dose-role limitations in
+[issue #184](https://github.com/uibcdf/sabueso/issues/184) and
+[issue #185](https://github.com/uibcdf/sabueso/issues/185). Selecting @4 does not
+change the original stored Card or existing ligand/packet defaults. Scientific
+review and the remaining exploration integration are still in progress.
 
 ## Explain a stored measurement or class (since 0.13.0)
 
