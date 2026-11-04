@@ -1,5 +1,25 @@
 # Historical exploration fixtures
 
+## Original structure question @6 and mixed nonpolymer navigation @7
+
+`card_structure_assembly_saved_v6.json.gz` and
+`card_nonpolymer_navigation_saved_v7.json.gz` retain genuine public 1HTI
+explorations produced by `31593fde5c4b59260394b4587a0cba8942d7884c`, editable SDK
+`0.14.0+154.g31593fd`, before the following component-navigation policy existed.
+The first retains the original structure question and native @4 answer; the second
+also retains the explicit native @5 answer in the same original session. Original
+declaration, source, question, answer and navigation bindings remain complete.
+No new source query or private data; terms remain in `temp_data/NOTICE.md`.
+Gzip packages the original bytes. Never regenerate them to pass a newer reader.
+
+@6 compressed SHA-256: `c7e8d06671a2e5e9ca2d2bb40861081d00f50ab218bf434d0c17645d637d24c1`.
+
+@6 uncompressed SHA-256: `55c87567b602e3775171642935ba9994cd30580db11c207490bd531bf0175f6b`.
+
+@7 compressed SHA-256: `dee76cc4eca064aa743dcded62728462870ad6cae85f9c4ed0a13378ea8e4705`.
+
+@7 uncompressed SHA-256: `5d9b962e76a02c0829fd8ca3aff7cd6e0edd6356c3cadca9c10d39219224aa5d`.
+
 ## Original live nonpolymer assembly adapter
 
 `assembly_nonpolymer_live_v2.json.gz` retains four genuine public live observations
