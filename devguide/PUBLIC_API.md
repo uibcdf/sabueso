@@ -1,5 +1,13 @@
 # Sabueso — Public API
 
+Development generic `CardItem.related()` with multiple distinct source references
+uses [shared complete support](pending_proposals/shared_link_support.md): every
+source destination stays present, while a `retained_link_support@1` membership
+points to its complete original basis through a typed `support_location`. Humans
+keep source opening, original field `explain()` and return navigation; agents can
+read the complete basis directly through Card access. Sessions using this policy
+have independent format @11 reading; previous original formats stay supported.
+
 Development opt-in `target_scope_rule="bioactivity_target_scope@2"` is shared by
 activity/ligand views, explanations, comparisons and their tables. It prevents a
 declared copy from bypassing its retained original's target scope, preserving raw

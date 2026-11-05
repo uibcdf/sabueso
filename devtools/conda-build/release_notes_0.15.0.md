@@ -19,6 +19,13 @@ is established by this draft.
 
 ## Intended changes since 0.14.0
 
+- Share complete original source support across generic related links instead of
+  copying every statement into every source row (#167). Exact source opening,
+  complete field explanations and agent inspection remain available. Independent
+  exploration format @11 preserves the new membership binding alongside original
+  formats @1–@10. The full public titin panel now completes under its original
+  bounded resource control; broader workload/researcher acceptance remains pending.
+
 - Add opt-in measurement correspondence @2 to direct activity/ligand answers,
   explanations and tables. Declared copies retain unique original selectors;
   numeric matches stay possible correspondence with explicit context and unknown

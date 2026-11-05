@@ -4,9 +4,11 @@ The [genuine AlphaFold archive control](pending_proposals/alphafold_archive_frag
 now retains public titin AF-Q8WZ42-F2 and its original UniProt reference. Independent
 native readers verify the 201–1600 reference interval, exact 1,400-residue sequence,
 CRC64 and sequence-version date. This is archive-native receiving, not an API
-record or completed Card intake. Full-panel save preparation exposed a separate
-[bounded memory stop](pending_bugs/large_sequence_panel_save.md) under #167; its
-full workload remains failing while the explicit sequence-only control passes.
+record or completed Card intake. The separate full-panel
+[preparation correction](pending_proposals/shared_link_support.md) under #167
+now completes the whole public Card save under the original 512 MiB guard,
+retaining all original content. Its shared-support format @11 has separate
+historical/mixed/final-source receiving; the original failed receipt is retained.
 B3/scientific/researcher/workload acceptance remains open; B2 review is deferred
 and 0.15.0 consolidation paused.
 

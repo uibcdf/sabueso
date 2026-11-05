@@ -1,5 +1,42 @@
 # Historical exploration fixtures
 
+## Original shared-support exploration @11
+
+`shared_link_support_original_v1.json.gz` is a genuine public save from the first
+working shared-support candidate, actual SDK `0.14.0+179.g0c8e71b`, based on
+`0c8e71b` with the exact candidate runtime file hashes retained in
+[the receiving receipt](../../../devguide/evidence/shared_link_support_20261105.json).
+The initial independent @11 reader already existed: this is not described as a
+pre-reader capsule. Its entirely synthetic control retains two present source
+records, one missing reference, the complete supporting basis and source/return
+navigation. No molecular knowledge, new source query or private data is included.
+Future readers must receive these exact original bytes; never regenerate them
+merely to make a later reader pass. The authored control follows the repository
+MIT licence; gzip is packaging.
+
+Compressed SHA-256: `2f0aa6493cb020407e077fb0ece2992eb0057b5da7a317fcfc4e88a0ce609668`.
+
+Uncompressed SHA-256: `b6986684fe7918b2686e1fb0869b6c1921fc63e5f89977abf2ac09e6ad52bdb8`.
+
+
+## Original format8 before shared support
+
+`card_shared_support_predecessor_v8.json.gz` is a byte-identical copy of the
+retained public TcTIM/1TCD exploration from the structural-context journey,
+producer SDK `0.14.0+171.g0881d8a`. Its source manifest and receipt hashes are
+retained in [the correction receipt](../../../devguide/evidence/shared_link_support_20261105.json).
+It predates shared support and preserves its original component/annotation/region
+navigation, complete captured Card and unknown native states. No source queries,
+private data, separate modeling files or re-created output are included. Existing
+public source terms remain in `temp_data/NOTICE.md` (UniProt/RCSB); gzip packages
+original saved bytes. The original producer's catalogue-check CI failure remains
+separate; reading this exact file does not requalify that source or establish
+scientific/researcher acceptance. Never regenerate it to pass a newer reader.
+
+Compressed SHA-256: `a3933ae6a051827f77a16b6594759ff4fc986bbd8ca89451b6d833b8b77827a6`.
+
+Uncompressed SHA-256: `395d3133905571f48db3a0ccab9a7646fa0905fca4f09c1e5b1411171e551ede`.
+
 ## Original live declared-component navigation
 
 `assembly_component_navigation_live_v1.json.gz` retains genuine public 1SUX,

@@ -70,7 +70,7 @@ python devguide/evidence/check_alphafold_archive_control_20261105.py --output NE
 ## What is qualified, and the next production step
 
 Original public input receiving and the above finite correspondence control are
-now reproducible offline. Four SDK/standard-library tests preserve original bytes,
+now reproducible offline. The four original SDK/standard-library controls preserve original bytes,
 metadata/checksum scope, the explicit API boundary and human/agent/saved access
 to a **sequence-only reference control**. They do not pretend that the archive
 model has entered a Card. The existing API getter still refuses a missing API
@@ -93,8 +93,10 @@ Production intake needs a separate named **native supplied-input contract**:
 
 The full titin sequence panel exposed a separate
 [session-save capacity finding](../pending_bugs/large_sequence_panel_save.md)
-under #167/#148. Its stop is retained; the passing sequence-only reference
-control does not replace that full-workload acceptance. B3 and broad 0.15.0
+under #167/#148. Its original stop is retained. The
+[shared-support correction](shared_link_support.md) now receives the complete
+public panel separately under the same 512 MiB guard; the passing sequence-only
+reference control never substitutes for that workload. B3 and broad 0.15.0
 acceptance remain open; B2 review stays deferred and release consolidation paused.
 
 Originals, local receipts and owned resource measurements remain under
@@ -102,6 +104,6 @@ Originals, local receipts and owned resource measurements remain under
 review at native intake, capacity correction or the next B3 checkpoint.
 
 The [receiving receipt](../evidence/alphafold_archive_control_20261105.json)
-separates the finite source/sequence control from the still-failing full-save
+separates the finite source/sequence control from the originally failing full-save
 workload. Both the complete native files and their literal projection are kept;
 the reviewed-input count does not declare a new public archive getter.

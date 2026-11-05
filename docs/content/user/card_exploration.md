@@ -1623,6 +1623,11 @@ canonical-region answers, knowledge coverage, ligand-site comparisons and contex
 saved. Check `view.capabilities["save"]` for the particular result and retained
 support closure. Complete captured data remains readable through inspection.
 
+Fields with many supporting sources keep every source link while sharing their
+complete supporting basis. Each source row still opens its exact original record;
+use the original field's `explain()` to review all its support. Saving this reading
+preserves both routes and the complete captured Card.
+
 For the molecule property selection above, choose an output path you own:
 
 ```python

@@ -1,0 +1,1100 @@
+{
+  "owner": "#167/#148/#112",
+  "review_trigger": "exact-source receiving / native archive intake / before0.15.0",
+  "base_head": "0c8e71b82b106cf6dac7c0616127c9c02799e14b",
+  "state": "locally_qualified_hosted_receiving_pending",
+  "candidate_runtime_hashes": {
+    "sabueso/core/card_context_navigation.py": "399ebf82711bf42e3f8420a9a04229e052cbae7fe4f6495b05e0a5979b02412f",
+    "sabueso/core/card_context_support_v1.py": "30463fc2f1ac95826204120885167f1a2d8600a44b3eb62099117c27f223c8f8",
+    "sabueso/core/card_exploration_storage.py": "bfb4bfeea7e5de3979465727c0e495549bd9b22c02d9081a828367df4afa039a",
+    "sabueso/core/card_exploration_verification_v11.py": "eebe350c8fde87b9388eb03a10fadf47d5532d9c1d8f75a9b291406b14317917"
+  },
+  "original_input_sha256": "28cb420c5f120679947abde3186939a33e07ea232ae4dbc1300268d871c14dec",
+  "old_failing_control": "public_large_sequence_save_20261105.json",
+  "rules": [
+    "retained_link_support@1",
+    "retained_context_links@7",
+    "sabueso.card_exploration@11",
+    "shared_link_support_binding@1"
+  ],
+  "profile_scope": "Bounded control before candidate changes; profiling overhead is not workload latency. Cumulative entries overlap. Stop happened during related() before any freeze.",
+  "profile": [
+    {
+      "file": "sabueso/core/card_exploration.py",
+      "line": 1350,
+      "function": "save",
+      "primitive_calls": 1,
+      "total_calls": 1,
+      "own_seconds": 1.1658000000000001e-05,
+      "cumulative_seconds": 18.069062922
+    },
+    {
+      "file": "sabueso/core/card_exploration_storage.py",
+      "line": 591,
+      "function": "save_exploration",
+      "primitive_calls": 1,
+      "total_calls": 1,
+      "own_seconds": 9.818e-06,
+      "cumulative_seconds": 18.069048175000002
+    },
+    {
+      "file": "sabueso/core/card_exploration_storage.py",
+      "line": 391,
+      "function": "_prepare",
+      "primitive_calls": 1,
+      "total_calls": 1,
+      "own_seconds": 0.00017202000000000002,
+      "cumulative_seconds": 18.068786322
+    },
+    {
+      "file": "sabueso/core/card_exploration.py",
+      "line": 582,
+      "function": "related",
+      "primitive_calls": 21,
+      "total_calls": 21,
+      "own_seconds": 0.00039008900000000004,
+      "cumulative_seconds": 17.35484774
+    },
+    {
+      "file": "sabueso/core/card_context_navigation.py",
+      "line": 289,
+      "function": "related",
+      "primitive_calls": 21,
+      "total_calls": 21,
+      "own_seconds": 0.0038781960000000004,
+      "cumulative_seconds": 17.348041188
+    },
+    {
+      "file": "stdlib/copy.py",
+      "line": 110,
+      "function": "deepcopy",
+      "primitive_calls": 12902,
+      "total_calls": 11832452,
+      "own_seconds": 5.445480706000001,
+      "cumulative_seconds": 16.074202642
+    },
+    {
+      "file": "sabueso/core/card_context_navigation.py",
+      "line": 181,
+      "function": "_link",
+      "primitive_calls": 852,
+      "total_calls": 852,
+      "own_seconds": 0.028769617,
+      "cumulative_seconds": 9.020456675
+    },
+    {
+      "file": "sabueso/core/card_exploration.py",
+      "line": 1579,
+      "function": "_metadata",
+      "primitive_calls": 41,
+      "total_calls": 41,
+      "own_seconds": 9.206100000000001e-05,
+      "cumulative_seconds": 8.165724936
+    },
+    {
+      "file": "sabueso/core/card_access.py",
+      "line": 442,
+      "function": "_object_location",
+      "primitive_calls": 102,
+      "total_calls": 102,
+      "own_seconds": 0.023270092000000003,
+      "cumulative_seconds": 8.152615231
+    },
+    {
+      "file": "sabueso/core/card_context_navigation.py",
+      "line": 221,
+      "function": "_link_view",
+      "primitive_calls": 20,
+      "total_calls": 20,
+      "own_seconds": 0.00037649900000000003,
+      "cumulative_seconds": 8.102468655000001
+    },
+    {
+      "file": "sabueso/core/card_access.py",
+      "line": 28,
+      "function": "_handle",
+      "primitive_calls": 451,
+      "total_calls": 451,
+      "own_seconds": 0.004961035,
+      "cumulative_seconds": 1.233603315
+    },
+    {
+      "file": "sabueso/core/card_access.py",
+      "line": 455,
+      "function": "_resolve",
+      "primitive_calls": 5781,
+      "total_calls": 5781,
+      "own_seconds": 0.5931111400000001,
+      "cumulative_seconds": 0.9368383480000001
+    }
+  ],
+  "full_candidate_control": {
+    "rule": "public_sequence_save_workload@1",
+    "owner": "#167/#148/#112",
+    "review_trigger": "save preparation correction / before0.15.0 workload acceptance",
+    "source_head": "0c8e71b82b106cf6dac7c0616127c9c02799e14b",
+    "sdk": "0.14.0+179.g0c8e71b",
+    "runtime_storage_sha256": "ce2df7f49f9c0cfa151ac2ba1b218ebad4250afbd5acddebf4838ab8803af369",
+    "input_sha256": "28cb420c5f120679947abde3186939a33e07ea232ae4dbc1300268d871c14dec",
+    "scope": "Full original public UniProt Card, sequence pane and compact length page, followed by same-session gzip save. File-byte defaults unchanged; no acquisition or tracer.",
+    "limits": {
+      "owned_rss_bytes": 536870912,
+      "host_available_bytes": 4294967296,
+      "owned_swap_bytes": 0,
+      "elapsed_s": 60,
+      "owned_scratch_bytes": 134217728
+    },
+    "exit_code": 0,
+    "stop_reason": null,
+    "elapsed_s": 15.369,
+    "peak_owned_rss_bytes": 294588416,
+    "peak_owned_swap_bytes": 0,
+    "minimum_host_available_bytes": 15188258816,
+    "peak_owned_scratch_bytes": 2612544,
+    "outcome": "completed"
+  },
+  "full_candidate_stage_log": [
+    {
+      "step": "map full native reference",
+      "elapsed_s": 0.0128,
+      "rss_bytes": 42586112,
+      "sdk": "0.14.0+179.g0c8e71b",
+      "features": 1317
+    },
+    {
+      "step": "build full Card",
+      "elapsed_s": 0.6709,
+      "rss_bytes": 92876800,
+      "fields": 26,
+      "assertions": 1489,
+      "relationships": 215
+    },
+    {
+      "step": "capture full Card",
+      "elapsed_s": 0.8474,
+      "rss_bytes": 106237952
+    },
+    {
+      "step": "interactive sequence ready",
+      "elapsed_s": 1.1847,
+      "rss_bytes": 118677504,
+      "items": 17,
+      "frame_bytes": 2546
+    },
+    {
+      "step": "enter _prepare",
+      "elapsed_s": 1.1852,
+      "rss_bytes": 118677504
+    },
+    {
+      "step": "leave _prepare",
+      "elapsed_s": 5.449,
+      "rss_bytes": 187023360
+    },
+    {
+      "step": "enter _seal",
+      "elapsed_s": 5.4492,
+      "rss_bytes": 187023360
+    },
+    {
+      "step": "leave _seal",
+      "elapsed_s": 6.7831,
+      "rss_bytes": 221696000
+    },
+    {
+      "step": "enter _restore",
+      "elapsed_s": 6.7833,
+      "rss_bytes": 221696000
+    },
+    {
+      "step": "leave _restore",
+      "elapsed_s": 13.1917,
+      "rss_bytes": 250081280
+    },
+    {
+      "step": "full save completed",
+      "elapsed_s": 14.3814,
+      "rss_bytes": 252362752
+    }
+  ],
+  "gates": {
+    "copied": {
+      "owner": "uibcdf/sabueso#167/#148/#112",
+      "review_trigger": "full public sequence save preparation / #167",
+      "command": [
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-m",
+        "pytest",
+        "test_card_shared_link_support_offline.py",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "-o",
+        "cache_dir=/home/liliana/repos@uibcdf/sabueso/recovered_work/large_sequence_prepare_20261105/pytest-cache",
+        "-o",
+        "tmp_path_retention_policy=failed",
+        "--basetemp",
+        "/home/liliana/repos@uibcdf/sabueso/recovered_work/large_sequence_prepare_20261105/pytest-tmp-copied"
+      ],
+      "cwd": "/tmp/sabueso-shared-receiving-1yxwe00z",
+      "exit_code": 0,
+      "elapsed_s": 7.39,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 179585024,
+      "minimum_host_available_bytes": 15211257856,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "final-admission": {
+      "owner": "uibcdf/sabueso#167/#148/#112",
+      "review_trigger": "full public sequence save preparation / #167",
+      "command": [
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-m",
+        "pytest",
+        "tests/core/test_card_shared_link_support_offline.py",
+        "tests/core/test_card_saved_science_offline.py",
+        "tests/core/test_card_structure_context_offline.py",
+        "tests/core/test_card_structural_support_offline.py",
+        "tests/core/test_alphafold_archive_control_offline.py",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "-o",
+        "cache_dir=recovered_work/large_sequence_prepare_20261105/pytest-cache",
+        "--basetemp=recovered_work/large_sequence_prepare_20261105/pytest-tmp-final-admission"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 175.61,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 514891776,
+      "minimum_host_available_bytes": 14814072832,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 366801375,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "history-assemblies-final": {
+      "owner": "uibcdf/sabueso#167/#148/#112",
+      "review_trigger": "full public sequence save preparation / #167",
+      "command": [
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-m",
+        "pytest",
+        "tests/core/test_card_saved_quaternary_offline.py",
+        "tests/core/test_card_saved_assembly_offline.py",
+        "tests/core/test_card_saved_nonpolymer_assembly_offline.py",
+        "tests/core/test_card_saved_component_navigation_offline.py",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "-o",
+        "cache_dir=recovered_work/large_sequence_prepare_20261105/pytest-cache",
+        "--basetemp=recovered_work/large_sequence_prepare_20261105/pytest-tmp-history-assemblies-final"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 266.95,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 512057344,
+      "minimum_host_available_bytes": 15050780672,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 310763432,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "history-assemblies": {
+      "owner": "uibcdf/sabueso#167/#148/#112",
+      "review_trigger": "full public sequence save preparation / #167",
+      "command": [
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-m",
+        "pytest",
+        "tests/core/test_card_saved_quaternary_offline.py",
+        "tests/core/test_card_saved_assembly_offline.py",
+        "tests/core/test_card_saved_nonpolymer_assembly_offline.py",
+        "tests/core/test_card_saved_component_navigation_offline.py",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "-o",
+        "cache_dir=recovered_work/large_sequence_prepare_20261105/pytest-cache",
+        "--basetemp=recovered_work/large_sequence_prepare_20261105/pytest-tmp-history-assemblies"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 1,
+      "elapsed_s": 220.79,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 555978752,
+      "minimum_host_available_bytes": 15257038848,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 292734895,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "history-literal-science": {
+      "owner": "uibcdf/sabueso#167/#148/#112",
+      "review_trigger": "full public sequence save preparation / #167",
+      "command": [
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-m",
+        "pytest",
+        "tests/core/test_card_saved_exploration_offline.py",
+        "tests/core/test_card_saved_science_offline.py",
+        "tests/core/test_card_saved_sites_offline.py",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "-o",
+        "cache_dir=recovered_work/large_sequence_prepare_20261105/pytest-cache",
+        "--basetemp=recovered_work/large_sequence_prepare_20261105/pytest-tmp-history-literal-science"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 194.92,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 538861568,
+      "minimum_host_available_bytes": 14912839680,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 210996009,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "history-model-transport-final": {
+      "owner": "uibcdf/sabueso#167/#148/#112",
+      "review_trigger": "full public sequence save preparation / #167",
+      "command": [
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-m",
+        "pytest",
+        "tests/core/test_card_model_fragments_offline.py",
+        "tests/core/test_alphafold_range_aliases_offline.py",
+        "tests/core/test_cell_serialization_support_offline.py",
+        "tests/core/test_exploration_transport_offline.py",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "-o",
+        "cache_dir=recovered_work/large_sequence_prepare_20261105/pytest-cache",
+        "--basetemp=recovered_work/large_sequence_prepare_20261105/pytest-tmp-history-model-transport-final"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 157.32,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 549789696,
+      "minimum_host_available_bytes": 14521171968,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 346059760,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "history-model-transport": {
+      "owner": "uibcdf/sabueso#167/#148/#112",
+      "review_trigger": "full public sequence save preparation / #167",
+      "command": [
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-m",
+        "pytest",
+        "tests/core/test_card_model_fragments_offline.py",
+        "tests/core/test_alphafold_range_aliases_offline.py",
+        "tests/core/test_cell_serialization_support_offline.py",
+        "tests/core/test_exploration_transport_offline.py",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "-o",
+        "cache_dir=recovered_work/large_sequence_prepare_20261105/pytest-cache",
+        "--basetemp=recovered_work/large_sequence_prepare_20261105/pytest-tmp-history-model-transport"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 1,
+      "elapsed_s": 141.86,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 548745216,
+      "minimum_host_available_bytes": 15096057856,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 326011643,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "history": {
+      "owner": "uibcdf/sabueso#167/#148/#112",
+      "review_trigger": "full public sequence save preparation / #167",
+      "command": [
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-m",
+        "pytest",
+        "tests/core/test_card_saved_exploration_offline.py",
+        "tests/core/test_card_saved_science_offline.py",
+        "tests/core/test_card_saved_sites_offline.py",
+        "tests/core/test_card_saved_quaternary_offline.py",
+        "tests/core/test_card_saved_assembly_offline.py",
+        "tests/core/test_card_saved_nonpolymer_assembly_offline.py",
+        "tests/core/test_card_saved_component_navigation_offline.py",
+        "tests/core/test_card_model_fragments_offline.py",
+        "tests/core/test_alphafold_range_aliases_offline.py",
+        "tests/core/test_cell_serialization_support_offline.py",
+        "tests/core/test_exploration_transport_offline.py",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "-o",
+        "cache_dir=recovered_work/large_sequence_prepare_20261105/pytest-cache",
+        "--basetemp=recovered_work/large_sequence_prepare_20261105/pytest-tmp-history"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": -15,
+      "elapsed_s": 17.35,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 174395392,
+      "minimum_host_available_bytes": 15484063744,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "history-serial": {
+      "owner": "uibcdf/sabueso#167/#148/#112",
+      "review_trigger": "full public sequence save preparation / #167",
+      "command": [
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-m",
+        "pytest",
+        "tests/core/test_card_saved_exploration_offline.py",
+        "tests/core/test_card_saved_science_offline.py",
+        "tests/core/test_card_saved_sites_offline.py",
+        "tests/core/test_card_saved_quaternary_offline.py",
+        "tests/core/test_card_saved_assembly_offline.py",
+        "tests/core/test_card_saved_nonpolymer_assembly_offline.py",
+        "tests/core/test_card_saved_component_navigation_offline.py",
+        "tests/core/test_card_model_fragments_offline.py",
+        "tests/core/test_alphafold_range_aliases_offline.py",
+        "tests/core/test_cell_serialization_support_offline.py",
+        "tests/core/test_exploration_transport_offline.py",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "-o",
+        "cache_dir=recovered_work/large_sequence_prepare_20261105/pytest-cache",
+        "--basetemp=recovered_work/large_sequence_prepare_20261105/pytest-tmp-history-serial"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": -15,
+      "elapsed_s": 600.25,
+      "stop_reason": "elapsed ceiling",
+      "peak_owned_rss_bytes": 566669312,
+      "minimum_host_available_bytes": 14336286720,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 186821108,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "human-agent-final": {
+      "owner": "uibcdf/sabueso#167/#148/#112",
+      "review_trigger": "full public sequence save preparation / #167",
+      "command": [
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-m",
+        "pytest",
+        "tests/core/test_card_exploration_offline.py",
+        "tests/core/test_card_context_navigation_offline.py",
+        "tests/core/test_card_protein_exploration_offline.py",
+        "tests/core/test_card_nature_exploration_offline.py",
+        "tests/core/test_card_access_offline.py",
+        "tests/core/test_card_agent_selection_offline.py",
+        "tests/core/test_card_cell_support_offline.py",
+        "tests/core/test_card_human_labels_offline.py",
+        "tests/core/test_card_protein_source_offline.py",
+        "tests/core/test_card_annotation_regions_offline.py",
+        "tests/core/test_card_model_regions_offline.py",
+        "tests/core/test_card_structure_context_offline.py",
+        "tests/core/test_card_structure_assembly_navigation_offline.py",
+        "tests/core/test_card_component_navigation_offline.py",
+        "tests/core/test_card_structural_support_offline.py",
+        "tests/core/test_card_quaternary_source_offline.py",
+        "tests/core/test_card_ligand_parent_navigation_offline.py",
+        "tests/core/test_card_ligand_instances_offline.py",
+        "tests/core/test_card_ligand_reading_offline.py",
+        "tests/core/test_quantities_offline.py",
+        "tests/core/test_quantity_checks_offline.py",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "-o",
+        "cache_dir=recovered_work/large_sequence_prepare_20261105/pytest-cache",
+        "--basetemp=recovered_work/large_sequence_prepare_20261105/pytest-tmp-human-agent-final"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 283.06,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 744017920,
+      "minimum_host_available_bytes": 14508752896,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 414116523,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "human-agent": {
+      "owner": "uibcdf/sabueso#167/#148/#112",
+      "review_trigger": "full public sequence save preparation / #167",
+      "command": [
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-m",
+        "pytest",
+        "tests/core/test_card_exploration_offline.py",
+        "tests/core/test_card_context_navigation_offline.py",
+        "tests/core/test_card_protein_exploration_offline.py",
+        "tests/core/test_card_nature_exploration_offline.py",
+        "tests/core/test_card_access_offline.py",
+        "tests/core/test_card_agent_selection_offline.py",
+        "tests/core/test_card_cell_support_offline.py",
+        "tests/core/test_card_human_labels_offline.py",
+        "tests/core/test_card_protein_source_offline.py",
+        "tests/core/test_card_annotation_regions_offline.py",
+        "tests/core/test_card_model_regions_offline.py",
+        "tests/core/test_card_structure_context_offline.py",
+        "tests/core/test_card_structure_assembly_navigation_offline.py",
+        "tests/core/test_card_component_navigation_offline.py",
+        "tests/core/test_card_structural_support_offline.py",
+        "tests/core/test_card_quaternary_source_offline.py",
+        "tests/core/test_card_ligand_parent_navigation_offline.py",
+        "tests/core/test_card_ligand_instances_offline.py",
+        "tests/core/test_card_ligand_reading_offline.py",
+        "tests/core/test_quantities_offline.py",
+        "tests/core/test_quantity_checks_offline.py",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "-o",
+        "cache_dir=recovered_work/large_sequence_prepare_20261105/pytest-cache",
+        "--basetemp=recovered_work/large_sequence_prepare_20261105/pytest-tmp-human-agent"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 1,
+      "elapsed_s": 268.29,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 748425216,
+      "minimum_host_available_bytes": 14223454208,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 414040223,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "metadata-lookalike": {
+      "owner": "uibcdf/sabueso#167/#148/#112",
+      "review_trigger": "full public sequence save preparation / #167",
+      "command": [
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-m",
+        "pytest",
+        "tests/core/test_card_shared_link_support_offline.py::test_literal_adapter_lookalike_cannot_supply_native_source_support",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "-o",
+        "cache_dir=recovered_work/large_sequence_prepare_20261105/pytest-cache",
+        "--basetemp=recovered_work/large_sequence_prepare_20261105/pytest-tmp-metadata-lookalike"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 1,
+      "elapsed_s": 1.33,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 88358912,
+      "minimum_host_available_bytes": 14640025600,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "mixed-final": {
+      "owner": "uibcdf/sabueso#167/#148/#112",
+      "review_trigger": "full public sequence save preparation / #167",
+      "command": [
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-m",
+        "pytest",
+        "tests/core/test_card_shared_link_support_offline.py",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "-o",
+        "cache_dir=recovered_work/large_sequence_prepare_20261105/pytest-cache",
+        "--basetemp=recovered_work/large_sequence_prepare_20261105/pytest-tmp-mixed-final"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 6.0,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 211124224,
+      "minimum_host_available_bytes": 15845048320,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "mixed": {
+      "owner": "uibcdf/sabueso#167/#148/#112",
+      "review_trigger": "full public sequence save preparation / #167",
+      "command": [
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-m",
+        "pytest",
+        "tests/core/test_card_shared_link_support_offline.py",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "-o",
+        "cache_dir=recovered_work/large_sequence_prepare_20261105/pytest-cache",
+        "--basetemp=recovered_work/large_sequence_prepare_20261105/pytest-tmp-mixed"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 1,
+      "elapsed_s": 5.99,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 190750720,
+      "minimum_host_available_bytes": 15786430464,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "native-support-inspection": {
+      "owner": "uibcdf/sabueso#167/#148/#112",
+      "review_trigger": "full public sequence save preparation / #167",
+      "command": [
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "recovered_work/large_sequence_prepare_20261105/inspect_native_support.py"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 1.06,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 85626880,
+      "minimum_host_available_bytes": 15823294464,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "original-capsule": {
+      "owner": "uibcdf/sabueso#167/#148/#112",
+      "review_trigger": "full public sequence save preparation / #167",
+      "command": [
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "recovered_work/large_sequence_prepare_20261105/make_original.py"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 0.8,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 79028224,
+      "minimum_host_available_bytes": 15907119104,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "owning-corrected": {
+      "owner": "uibcdf/sabueso#167/#148/#112",
+      "review_trigger": "full public sequence save preparation / #167",
+      "command": [
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-m",
+        "pytest",
+        "tests/core/test_card_shared_link_support_offline.py",
+        "tests/core/test_alphafold_archive_control_offline.py",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "-o",
+        "cache_dir=recovered_work/large_sequence_prepare_20261105/pytest-cache",
+        "--basetemp=recovered_work/large_sequence_prepare_20261105/pytest-tmp-owning-corrected"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 32.95,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 438263808,
+      "minimum_host_available_bytes": 15094497280,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 8345401,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "owning-final": {
+      "owner": "uibcdf/sabueso#167/#148/#112",
+      "review_trigger": "full public sequence save preparation / #167",
+      "command": [
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-m",
+        "pytest",
+        "tests/core/test_card_shared_link_support_offline.py",
+        "tests/core/test_alphafold_archive_control_offline.py",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "-o",
+        "cache_dir=recovered_work/large_sequence_prepare_20261105/pytest-cache",
+        "--basetemp=recovered_work/large_sequence_prepare_20261105/pytest-tmp-owning-final"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 1,
+      "elapsed_s": 21.91,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 309641216,
+      "minimum_host_available_bytes": 15214161920,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "owning": {
+      "owner": "uibcdf/sabueso#167/#148/#112",
+      "review_trigger": "full public sequence save preparation / #167",
+      "command": [
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-m",
+        "pytest",
+        "tests/core/test_card_shared_link_support_offline.py",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "-o",
+        "cache_dir=recovered_work/large_sequence_prepare_20261105/pytest-cache",
+        "--basetemp=recovered_work/large_sequence_prepare_20261105/pytest-tmp-owning"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 1,
+      "elapsed_s": 2.43,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 101048320,
+      "minimum_host_available_bytes": 15594070016,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "profile-original": {
+      "owner": "uibcdf/sabueso#167/#148/#112",
+      "review_trigger": "full public sequence save preparation / #167",
+      "command": [
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "recovered_work/large_sequence_prepare_20261105/profile_prepare.py"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 143,
+      "elapsed_s": 21.45,
+      "stop_reason": "owned RSS ceiling",
+      "peak_owned_rss_bytes": 540094464,
+      "minimum_host_available_bytes": 15203184640,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "sphinx": {
+      "owner": "uibcdf/sabueso#167/#148/#112",
+      "review_trigger": "full public sequence save preparation / #167",
+      "command": [
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-m",
+        "sphinx",
+        "-W",
+        "--keep-going",
+        "-b",
+        "html",
+        "docs",
+        "recovered_work/large_sequence_prepare_20261105/sphinx-html"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 28.24,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 280215552,
+      "minimum_host_available_bytes": 15127908352,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    }
+  },
+  "initial_test_corrections": "New tests initially expected StorageError instead of the existing ArgumentError and a nonexistent format field in the save receipt. Corrected expectations; public exception/receipt APIs unchanged.",
+  "interrupted_gates": "First history controller was explicitly stopped for serial scheduling; the combined serial gate then hit its600s ceiling before completion. Neither is qualification. Split gates have their own actual receipts.",
+  "protected_original_verifiers": {
+    "sabueso/core/card_exploration_verification.py": "e76d3661e06a99a7d90dbd6a4050367e5934db6f976285578a3b755a8882b094",
+    "sabueso/core/card_exploration_verification_v10.py": "d1dfc806b41265bee9302daac0cf5310a763a7b6c04b62c17b53120596bc4a42",
+    "sabueso/core/card_exploration_verification_v5.py": "16b92743d3d83f73763261c76b5f13cb1b792e644b6ffda00c4e8a746aa77061",
+    "sabueso/core/card_exploration_verification_v6.py": "185ee2f2ff6465f270b71f27af9bae1957417af74da1be9656e17771d1cdf581",
+    "sabueso/core/card_exploration_verification_v7.py": "675fb6e1e4a7f01ee6b02f4884c3ca4621148ff66205fe0977c10d44a8b80fbc",
+    "sabueso/core/card_exploration_verification_v8.py": "fb6ea3cbf23a66e00b03ec6dd47592c529151cbe01e0eed13ad6c30e8cdfe3ed",
+    "sabueso/core/card_exploration_verification_v9.py": "0a75257795cfbeef8d64e4af27009712b8d23fe24f208afe0fd07ad924fe5f06"
+  },
+  "historical_sources_unchanged": true,
+  "card_schema_and_source_originals": "Unchanged; no new provider request, scientific rule/default or quantity encoding.",
+  "fresh_writer_test_update": "Seventeen generic-context/component/model expectations still required fresh writers to emit earlier session verifiers. New shared sessions intentionally emit11; their individual original native policies, genuine8/9/10bytes and all old predicates stay unchanged. A separate regression receives the actual original8file.",
+  "candidate_refinements": "The new ambiguity predicate binds candidate support to its actual parent. One test initially retained a deliberately forged view before trying to save the valid session; moving the negative probe after valid receiving preserves the intended original rejection.",
+  "remaining": [
+    "Exact-source CI/governance and installed receiving",
+    "Native AlphaFold archive supplied-input Card contract",
+    "Broader workload/scientist/researcher/consumer acceptance"
+  ],
+  "b2_review": "maintainer-owned and deferred",
+  "release_consolidation": "paused",
+  "owned_evidence": "recovered_work/large_sequence_prepare_20261105",
+  "original_capsule": {
+    "owner": "#167/#148/#112",
+    "review_trigger": "original format11 receiving / future reader changes",
+    "producer_sdk": "0.14.0+179.g0c8e71b",
+    "source_base": "0c8e71b82b106cf6dac7c0616127c9c02799e14b",
+    "source_state": "candidate with exact file hashes; initial independent reader already present",
+    "scientific_input": "Entirely synthetic source/navigation integrity control; no molecular knowledge claim",
+    "sources": {
+      "sabueso/core/card_context_navigation.py": "399ebf82711bf42e3f8420a9a04229e052cbae7fe4f6495b05e0a5979b02412f",
+      "sabueso/core/card_context_support_v1.py": "2fadd3283b9d1c3604458e1e1d5155edc066356f69d6e827040dc2cd4566619d",
+      "sabueso/core/card_exploration_storage.py": "bfb4bfeea7e5de3979465727c0e495549bd9b22c02d9081a828367df4afa039a",
+      "sabueso/core/card_exploration_verification_v11.py": "eebe350c8fde87b9388eb03a10fadf47d5532d9c1d8f75a9b291406b14317917"
+    },
+    "saved_receipt": {
+      "path": "/home/liliana/repos@uibcdf/sabueso/tests/core/data/shared_link_support_original_v1.json.gz",
+      "bundle_digest": "sha256:bc753609fb982ec4e3f23746628a8680f0d7c38b5325d6f9cad4b980d8254573",
+      "root_view_ref": "XV_6d519c58478a235bb0db68c1bec24a89f8b4232485e345266a3cf87ccf015221",
+      "transport": {
+        "format": "exploration_transport@1",
+        "compression": "gzip",
+        "encoded_bytes": 22573,
+        "decoded_bytes": 387444,
+        "encoded_sha256": "sha256:2f0aa6493cb020407e077fb0ece2992eb0057b5da7a317fcfc4e88a0ce609668",
+        "decoded_sha256": "sha256:b6986684fe7918b2686e1fb0869b6c1921fc63e5f89977abf2ac09e6ad52bdb8",
+        "backend": {
+          "module": "zlib",
+          "version": "1.3.2",
+          "level": 6
+        }
+      }
+    },
+    "compressed_bytes": 22573,
+    "compressed_sha256": "2f0aa6493cb020407e077fb0ece2992eb0057b5da7a317fcfc4e88a0ce609668",
+    "decoded_bytes": 387444,
+    "decoded_sha256": "b6986684fe7918b2686e1fb0869b6c1921fc63e5f89977abf2ac09e6ad52bdb8"
+  },
+  "maintenance_follow_up": "The new independent reader retains1,182lines of inherited original predicates. Review compositional reuse of pinned frozen helpers under#167/#148 without changing older meanings; this is a maintenance cost, not evidence of scientific or receiving failure.",
+  "genuine_format8_original": {
+    "owner": "#167/#148/#173/#112",
+    "review_trigger": "format8 compatibility / future saved-reader changes",
+    "source_path": "recovered_work/structural_journey_173_20261105/final-journey/exploration.json.gz",
+    "target": "tests/core/data/card_shared_support_predecessor_v8.json.gz",
+    "original_producer_sdk": "0.14.0+171.g0881d8a",
+    "original_bundle_digest": "sha256:736fd867789d605e62d45f429494839829310e1371ab0561ade79a959394f598",
+    "compressed_sha256": "a3933ae6a051827f77a16b6594759ff4fc986bbd8ca89451b6d833b8b77827a6",
+    "decoded_sha256": "sha256:395d3133905571f48db3a0ccab9a7646fa0905fca4f09c1e5b1411171e551ede",
+    "original_file_unchanged": true,
+    "scope": "Existing public TcTIM1TCD structural journey only; raw original saved exploration copied without regeneration. Separate modeling files excluded."
+  },
+  "runtime_refinement": {
+    "scope": "A final counterexample reproduced native-support admission from an unverified literal adapter lookalike. The new guard requires the original verified scientific view, result identity and exact focal capture. Earlier broad gates receive the first candidate hashes; final-admission/postcommit/full-final/copied receive the changed final helper. No existing verifier or source bytes changed.",
+    "earlier_runtime_hashes": {
+      "sabueso/core/card_context_navigation.py": "399ebf82711bf42e3f8420a9a04229e052cbae7fe4f6495b05e0a5979b02412f",
+      "sabueso/core/card_context_support_v1.py": "2fadd3283b9d1c3604458e1e1d5155edc066356f69d6e827040dc2cd4566619d",
+      "sabueso/core/card_exploration_storage.py": "bfb4bfeea7e5de3979465727c0e495549bd9b22c02d9081a828367df4afa039a",
+      "sabueso/core/card_exploration_verification_v11.py": "eebe350c8fde87b9388eb03a10fadf47d5532d9c1d8f75a9b291406b14317917"
+    },
+    "final_runtime_hashes": {
+      "sabueso/core/card_context_navigation.py": "399ebf82711bf42e3f8420a9a04229e052cbae7fe4f6495b05e0a5979b02412f",
+      "sabueso/core/card_context_support_v1.py": "30463fc2f1ac95826204120885167f1a2d8600a44b3eb62099117c27f223c8f8",
+      "sabueso/core/card_exploration_storage.py": "bfb4bfeea7e5de3979465727c0e495549bd9b22c02d9081a828367df4afa039a",
+      "sabueso/core/card_exploration_verification_v11.py": "eebe350c8fde87b9388eb03a10fadf47d5532d9c1d8f75a9b291406b14317917"
+    },
+    "reproduced_negative_gate": "metadata-lookalike-resource.json",
+    "final_gate": "final-admission-resource.json"
+  },
+  "static_gates": [
+    {
+      "gate": "ruff",
+      "status": "fulfilled",
+      "exit_code": 0,
+      "output": "All checks passed!\n"
+    },
+    {
+      "gate": "format",
+      "status": "fulfilled",
+      "exit_code": 0,
+      "output": "1360 files already formatted\n"
+    },
+    {
+      "gate": "fixtures",
+      "status": "fulfilled",
+      "exit_code": 0,
+      "output": "OK: 81 reviewed repository inputs; 37 protected local-only originals.\n"
+    },
+    {
+      "gate": "registry",
+      "status": "fulfilled",
+      "exit_code": 0,
+      "output": "OK: source registry, its page, packaged source terms and metadata catalog\n"
+    },
+    {
+      "gate": "governance",
+      "status": "fulfilled",
+      "exit_code": 0,
+      "output": "Local MOLI governance surface is valid.\n"
+    },
+    {
+      "gate": "dependencies",
+      "status": "fulfilled",
+      "exit_code": 0,
+      "output": "OK: development dependency routes agree with pyproject.toml\n"
+    },
+    {
+      "gate": "whitespace",
+      "status": "fulfilled",
+      "exit_code": 0,
+      "output": ""
+    }
+  ],
+  "full_original_transport": {
+    "owner": "#167/#148/#112",
+    "review_trigger": "full-save workload / original-source receiving",
+    "encoded_bytes": 2611589,
+    "encoded_sha256": "79c13c62c5692e9d1280db0810cedc7dedbd4e60bca6ed7e00bf3eb7246df53e",
+    "decoded_bytes": 35573618,
+    "decoded_sha256": "24c152c8e3ad926568100b7094324211420a90bc16e4a5cb9894798459d8cb8d",
+    "default_encoded_decoded_limit_bytes": 67108864,
+    "both_within_original_default": true
+  },
+  "documentation": {
+    "local_targets_anchors": 538,
+    "python_snippets_syntax": 74,
+    "python_311_parsed_files": 11
+  }
+}

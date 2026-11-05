@@ -4,9 +4,11 @@ The [genuine AlphaFold archive control](pending_proposals/alphafold_archive_frag
 now retains public titin AF-Q8WZ42-F2 and its original UniProt reference. Independent
 native readers verify the 201–1600 reference interval, exact 1,400-residue sequence,
 CRC64 and sequence-version date. This is archive-native receiving, not an API
-record or completed Card intake. Full-panel save preparation exposed a separate
-[bounded memory stop](pending_bugs/large_sequence_panel_save.md) under #167; its
-full workload remains failing while the explicit sequence-only control passes.
+record or completed Card intake. The separate full-panel
+[preparation correction](pending_proposals/shared_link_support.md) under #167
+now completes the whole public Card save under the original 512 MiB guard,
+retaining all original content. Its shared-support format @11 has separate
+historical/mixed/final-source receiving; the original failed receipt is retained.
 B3/scientific/researcher/workload acceptance remains open; B2 review is deferred
 and 0.15.0 consolidation paused.
 
@@ -619,7 +621,7 @@ does not replace the maintainer's newer exploration priority.
 | --- | --- |
 | Published package | **0.14.0**, source/tag `78623d0`; its installed OS/Python matrix, public install and Zenodo archive retain their own [immutable receipt](../devtools/conda-build/receipts/sabueso_0.14.0_public_2026-10-09.json) |
 | Published schema | **0.3.13** and earlier schemas/cards/shapes remain immutable |
-| Development schema | **0.3.14**, unpublished, 1,967 recorded paths; coordinate/request scope, contact/model and assembly-generation inputs, derivation applications, native feature/comment identity and explicit annotation-request receipts follow [SCHEMA](SCHEMA.md) and migrations |
+| Development schema | **0.3.14**, unpublished, 1,985 recorded paths; coordinate/request scope, contact/model and assembly-generation inputs, derivation applications, native feature/comment identity and explicit annotation-request receipts follow [SCHEMA](SCHEMA.md) and migrations |
 | Packet history | Development default `packet_aspects@13` scopes experimental declarations and retains unplaced originals; inherited source-bound quaternary interpretation and canonical ligand overlap remain, with original `@12`/earlier projections preserved. New qualification belongs to #169 |
 | Shared contracts | Sabueso records Knowledge/SourceAssertions; MOLI owns shared contracts, Nextia owns Evidence. Similarity is never identity; unknown/unqueried/failed scope remains explicit |
 | Release target | 0.15.0, with the full exploration and human-acceptance gate in the [scope](pending_proposals/release_consolidation_0150.md). The [notes draft](../devtools/conda-build/release_notes_0.15.0.md) is incomplete preparation, not a candidate or release |
@@ -748,7 +750,7 @@ for preceding dated implementation/qualification history, not for next-step orde
 Use Python 3.14 in `molsyssuite@uibcdf_3.14`, editable Sabueso and participating
 local packages, and pytest through the receptor as [TESTS](TESTS.md) specifies.
 Verify imports and editable metadata outside the checkout after synchronization.
-The public input policy has 51 reviewed repository entries and 37 protected
+The public input policy has 81 reviewed repository entries and 37 protected
 local-only originals. Their availability is checkout-specific: a missing original
 is not recovered by Git, and default repository-input tests cannot qualify it.
 Never reconstruct it or infer source absence from that gap.

@@ -282,7 +282,7 @@ def test_saved_fragment_is_inert_and_never_runs_an_unvisited_question(
     link.back().save(path)
     inert(monkeypatch)
     saved = sabueso.read_exploration(path)
-    assert saved.validation["verifier"] == "model_fragment_navigation_binding@1"
+    assert saved.validation["verifier"] == "shared_link_support_binding@1"
     opened = saved.filter("role", equals="question").items()[0].open()
     if visited:
         assert opened.native_payload == expected.native_payload
@@ -486,11 +486,7 @@ def test_fragment_and_declared_component_journey_share_one_saved_session(
         .open()
     )
     assert reopened.native_payload == expected_fragment
-    assert restored.validation["verifier"] == (
-        "model_fragment_navigation_binding@1"
-        if range_names == "legacy"
-        else "model_range_navigation_binding@1"
-    )
+    assert restored.validation["verifier"] == "shared_link_support_binding@1"
 
 
 def test_fragment_reopens_in_an_independent_inert_process(tmp_path):
@@ -515,7 +511,7 @@ links=saved.explorer.answer('predicted_models').items()[0].related()
 link=links.filter('role',equals='question').items()[0]
 assert link._entry.value['model_context']['rule']=='model_fragment_structure_request@1'
 assert link.open().native_payload==saved.native_payload
-assert saved.validation['verifier']=='model_fragment_navigation_binding@1'
+assert saved.validation['verifier']=='shared_link_support_binding@1'
 for source in links.filter('role',equals='source').items():assert source.open().native_payload['source']
 print('PASS independent inert fragment reading')
 """

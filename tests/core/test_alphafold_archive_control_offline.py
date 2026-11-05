@@ -132,8 +132,8 @@ def test_sequence_only_reference_control_keeps_human_agent_saved_scope(
     entry = get_entry("Q8WZ42", client=FixtureUniProtClient(INPUTS / "uniprot"))
     mapping = map_protein(entry["record"], retrieved_at="2026-11-05")
     # Explicit sequence-only reference control. The original source file is
-    # complete; full-annotation session saving has a separate measured #167
-    # workload stop and is not made passing by this scoped scientific control.
+    # complete; full-annotation saving has its own retained #167 failure control
+    # and whole-Card regression. This scoped scientific control cannot qualify it.
     fields = (
         "identifiers.uniprot",
         "sequence.primary",
@@ -176,6 +176,53 @@ def test_sequence_only_reference_control_keeps_human_agent_saved_scope(
     monkeypatch.setattr(Card, "from_dict", forbidden)
     saved = sabueso.read_exploration(path)
     assert saved.native_payload == expected
+    assert saved.explorer.view("predicted_structures").outcome["status"] == "not_saved"
+
+
+def test_complete_public_reference_panel_save_preserves_all_original_content(
+    tmp_path, monkeypatch
+):
+    entry = get_entry("Q8WZ42", client=FixtureUniProtClient(INPUTS / "uniprot"))
+    mapping = map_protein(entry["record"], retrieved_at="2026-11-05")
+    assert len(mapping["fields"]) == 26
+    assert len(mapping["source_assertions"]) == 1489
+    assert len(mapping["relationships"]) == 215
+    card = build_card_from_mapping(
+        mapping,
+        meta={"entity_type": "protein"},
+        card_id="sabueso:protein:uniprot:Q8WZ42",
+        entity_subjects={"uniprot:Q8WZ42"},
+    )
+    before = card.to_dict()
+    sequence = card.explore().view("sequence")
+    domains = next(
+        item
+        for item in sequence.items()
+        if item._entry.key == "features_positional.domains"
+    )
+    original_support = domains.support
+    expected = sequence.native_payload
+    path = tmp_path / "complete-reference.json.gz"
+    receipt = sequence.save(path, compression="gzip")
+    assert (
+        json.loads(gzip.decompress(path.read_bytes()))["format"]
+        == "sabueso.card_exploration@11"
+    )
+    assert card.to_dict() == before
+    import sabueso.core.card_context_support_v1 as shared
+
+    monkeypatch.setattr(shared, "compact_related", forbidden)
+    monkeypatch.setattr(Card, "from_dict", forbidden)
+    saved = sabueso.read_exploration(path, expected_digest=receipt["bundle_digest"])
+    assert saved.native_payload == expected
+    exported = tmp_path / "complete-card.json"
+    saved.explorer.access.export_card(exported)
+    assert json.loads(exported.read_text("utf-8")) == before
+    links = saved.item(domains.item_ref).related()
+    assert len(links.items()) == len(original_support[0]["statements"])
+    member = links.items()[0].support[0]
+    full = saved.explorer.inspect(locator=member["support_location"])
+    assert full.native_payload["support"] == original_support
     assert saved.explorer.view("predicted_structures").outcome["status"] == "not_saved"
 
 

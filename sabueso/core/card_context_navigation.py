@@ -228,6 +228,7 @@ def _link_view(
     status=None,
     rule=RULE,
     reason=None,
+    support_location=None,
 ):
     view = explorer._metadata(
         {
@@ -236,6 +237,11 @@ def _link_view(
             "focal": explorer.access._focal_key,
             "source_location": source_location,
             "links": links,
+            **(
+                {"support_location": support_location}
+                if support_location is not None
+                else {}
+            ),
         },
         title,
         origin,
@@ -268,6 +274,7 @@ def _link_view(
         "structure_declaration_context_links@1",
         "structure_declaration_context_links@2",
         "structure_declaration_context_links@3",
+        "retained_context_links@7",
     ):
         explorer._session["views"].pop(id(view), None)
     return replace(
@@ -362,6 +369,12 @@ def related(item):
         question = model_link(explorer, model_location)
         if question is not None:
             support = question["support"]
+    if question is None:
+        from .card_context_support_v1 import compact_related
+
+        compact = compact_related(item, origin, support)
+        if compact is not None:
+            return compact
     seen = set()
     for basis in support:
         for statement in [

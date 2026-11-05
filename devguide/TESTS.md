@@ -1,13 +1,22 @@
 # Sabueso — Tests and Quality Gates
 
+Shared generic support uses `test_card_shared_link_support_offline.py`: all natures,
+complete original support, missing references, exact destinations, independent
+format @11 reading, semantic/resealed substitutions, visible limits/overrides and
+original frozen receiving. Run with saved formats @1–@10, scientific/model/assembly/
+component history, human/agent/context/support, quantity and transport gates. The
+full public Q8WZ42 save belongs to the archive-control module and the unchanged
+standalone 512 MiB guard. Both installed routes copy/select the generic module
+and its original capsule; no new scientific provider request is required.
+
 `test_alphafold_archive_control_offline.py` uses the genuine public Q8WZ42-F2
 member/header and complete UniProt reference: source-byte/HTTP identity, exact
 reference and model axes, explicit CRC64/MD5 scope, sequence-only human/agent/
 saved reference reading and unchanged API-route refusal. It needs no new parser
 runtime dependency. Run the independent two-reader developer control separately;
-this does not qualify a production archive importer. The full public sequence
-save has a retained #167 preparation stop; never relabel that workload as passing
-because the explicit four-field reference control passes.
+this does not qualify a production archive importer. The complete public sequence panel now has its own save/read/export regression
+and bounded #167 correction receipt. Keep the original failed preparation control
+and the explicitly smaller four-field scientific reference control distinct.
 
 `test_alphafold_range_aliases_offline.py` receives original legacy/modern/agreeing,
 conflicting, invalid and incomplete range pairs, exact derived binding, source

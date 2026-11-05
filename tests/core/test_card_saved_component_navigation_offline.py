@@ -21,6 +21,43 @@ from sabueso.core.card_exploration_storage import _seal
 from sabueso.core.errors import StorageError
 
 
+def test_genuine_format8_original_stays_inert_after_shared_support(monkeypatch):
+    path = Path(__file__).parent / "data/card_shared_support_predecessor_v8.json.gz"
+    raw = path.read_bytes()
+    assert (
+        hashlib.sha256(raw).hexdigest()
+        == "a3933ae6a051827f77a16b6594759ff4fc986bbd8ca89451b6d833b8b77827a6"
+    )
+    decoded = gzip.decompress(raw)
+    assert (
+        hashlib.sha256(decoded).hexdigest()
+        == "395d3133905571f48db3a0ccab9a7646fa0905fca4f09c1e5b1411171e551ede"
+    )
+    del decoded
+    inert(monkeypatch)
+    import sabueso.core.card_context_support_v1 as shared
+
+    monkeypatch.setattr(shared, "compact_related", forbidden)
+    saved = sabueso.read_exploration(
+        path,
+        expected_digest="sha256:736fd867789d605e62d45f429494839829310e1371ab0561ade79a959394f598",
+    )
+    assert saved.validation["verifier"] == "assembly_component_navigation_binding@1"
+    assert saved.context["card_ref"].startswith("sabueso:protein:uniprot:P52270@")
+    components = [
+        view
+        for view in saved._explorer._session["views"].values()
+        if view._link_panel
+        and view.native_payload.get("rule") == "assembly_component_list_links@1"
+    ]
+    assert components
+    assert all(view.items() for view in components)
+    assert (
+        hashlib.sha256(path.read_bytes()).hexdigest()
+        == "a3933ae6a051827f77a16b6594759ff4fc986bbd8ca89451b6d833b8b77827a6"
+    )
+
+
 def forbidden(*a, **k):
     raise AssertionError(
         "No current Card, science, navigation producer or source acquisition"
@@ -109,11 +146,11 @@ def test_original_component_destination_reopens_without_current_producers(
     expected = root.native_payload
     path = tmp_path / "original.json"
     receipt = root.save(path)
-    assert json.loads(path.read_text())["format"] == "sabueso.card_exploration@8"
+    assert json.loads(path.read_text())["format"] == "sabueso.card_exploration@11"
     inert(monkeypatch)
     restored = sabueso.read_exploration(path, expected_digest=receipt["bundle_digest"])
     assert restored.native_payload == expected
-    assert restored.validation["verifier"] == "assembly_component_navigation_binding@1"
+    assert restored.validation["verifier"] == "shared_link_support_binding@1"
     text, html = str(restored), restored._repr_html_()
     assert text and html
     if which == "components":
@@ -196,7 +233,7 @@ def test_repeated_component_saving_preserves_original_request_and_support(
     restored = sabueso.read_exploration(first)
     restored.save(second)
     one, two = json.loads(first.read_text()), json.loads(second.read_text())
-    assert one["format"] == two["format"] == "sabueso.card_exploration@8"
+    assert one["format"] == two["format"] == "sabueso.card_exploration@11"
     assert one["objects"] == two["objects"]
 
     def original_views(bundle):

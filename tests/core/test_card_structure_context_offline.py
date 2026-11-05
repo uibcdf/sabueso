@@ -196,9 +196,13 @@ def test_foreign_subject_and_metadata_lookalike_are_not_native_structure_context
     row = next(iter(card.relationship_store.store.values()))
     row["subject_ref"] = "uniprot:P60174"
     explorer = card.explore()
-    assert (
-        parent_item(explorer).related().native_payload["rule"]
-        == "retained_context_links@2"
+    foreign = parent_item(explorer)
+    links = foreign.related()
+    assert links.native_payload["rule"] == "retained_context_links@7"
+    assert context(explorer, foreign.payload_location) is None
+    assert not any(
+        item._entry.value["role"] in ("structure_context", "chain_context", "question")
+        for item in links.items()
     )
     fake = explorer._metadata(
         {

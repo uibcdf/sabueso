@@ -236,7 +236,7 @@ def test_modern_session_reopens_inertly_with_its_exact_original_meaning(
     assert recovered._entry.value == expected
     assert recovered.open().native_payload == answer.native_payload
     assert recovered.open().outcome == answer.outcome
-    assert saved.validation["verifier"] == "model_range_navigation_binding@1"
+    assert saved.validation["verifier"] == "shared_link_support_binding@1"
 
 
 def test_packet16_admits_new_context_without_reinterpreting_old_mapping():

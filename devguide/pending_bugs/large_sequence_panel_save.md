@@ -1,12 +1,22 @@
 ---
-summary: A genuine public full titin sequence-panel save exceeds the local RSS ceiling during preparation, before compression.
+summary: Shared complete source support removes the reproduced titin save-preparation duplication; qualification remains scoped.
 issue: uibcdf/sabueso#167
-status: reproduced_not_fixed
+status: locally_corrected_hosted_receiving_pending
 opened: 2026-11-05
 area: [exploration-persistence, workload, human-exploration]
 ---
 
 # Full public titin sequence-panel saving
+
+The original failure below is retained unchanged in its receipt. The current
+candidate factors complete support under `retained_link_support@1` and generic
+navigation `retained_context_links@7`, with independent saved format @11. The
+same complete public workload now finishes under the original 512 MiB/60-second
+guard, without changing byte budgets or replacing the full Card with a subset.
+Historical/mixed/copied receiving and final-source qualification are recorded in
+the [correction receipt](../evidence/shared_link_support_20261105.json).
+
+## Original observation
 
 **Observed limitation**, source `7c3ecff`, actual shared editable SDK
 `0.14.0+178.g7c3ecff`: saving a fresh full Q8WZ42 sequence panel crosses the
@@ -36,14 +46,15 @@ therefore not evidence that changing a compressor would correct preparation.
 Default file-size budgets are not an independent RSS guarantee. No budget is
 raised, disabled or silently applied to discard retained content.
 
-The [archive control](../pending_proposals/alphafold_archive_fragment_control.md)+retains this original public input. Its passing four-field sequence-only Card
+The [archive control](../pending_proposals/alphafold_archive_fragment_control.md)
+retains this original public input. Its passing four-field sequence-only Card
 is explicitly a reference-correspondence control; it does **not** make the full
 save workload passing. The complete source record, failed guards, stage logs and
 bounded diagnostic producers remain under
 `recovered_work/alphafold_archive_control_20261105/`, owner #167/#148/#112,
 review at the capacity correction and before 0.15.0 workload acceptance.
 
-Next work: profile bounded preparation, identify repeated materialization and
+The original next step was to profile bounded preparation, identify repeated materialization and
 ownership costs, and correct them while preserving original support, complete
 inspection and frozen file meanings. Retain visible size-limit refusal and
 explicit caller overrides. Recheck the full public case under a declared guard,

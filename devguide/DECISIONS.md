@@ -1,5 +1,25 @@
 # Sabueso — Decision Log
 
+## 2026-11-05 — Share complete support across generic source links (#167/#148)
+
+Generic navigation with multiple distinct original source references retains one
+complete support object under `retained_link_support@1`. The named navigation
+`retained_context_links@7` keeps every original source row, order, missing state
+and destination, referring each row to that complete object. It never merges
+observations, changes source assertions or drops support to fit a budget. Original
+field explanations and source opening remain available to humans; agents can
+inspect the complete typed support destination directly.
+
+Sessions using the new policy have independent exploration format @11 and frozen
+`shared_link_support_binding@1` predicates. Previous navigation, native science,
+formats @1–@10, quantities and source fixtures remain original. The one-reference,
+duplicate-reference and specialized annotation/model paths retain their preceding
+policy. Default transport budgets and explicit deliberate overrides are unchanged.
+See [the contract and receiving scope](pending_proposals/shared_link_support.md).
+This corrects the measured public full-panel preparation duplication; it does not
+accept general performance budgets, native archive Card intake or the broad wow
+experience. B2 review stays deferred and 0.15.0 consolidation paused.
+
 ## 2026-11-05 — Exact original fragment-to-reference questions (#148/#173)
 
 Add `model_fragment_structure_request@1` and `retained_context_links@5` for

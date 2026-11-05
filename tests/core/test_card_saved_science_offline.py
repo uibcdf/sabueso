@@ -51,6 +51,29 @@ def bundles(tmp_path_factory):
     return result
 
 
+def test_verified_native_result_retains_complete_shared_support(
+    card, tmp_path, monkeypatch
+):
+    from sabueso.core.card_context_support_v1 import compact_related
+
+    view = card.explore().view("structures")
+    item = next(row for row in view.items() if row.label == "pdb:1SUX")
+    links = compact_related(item, item.open(), item.support)
+    assert links is not None
+    assert links.native_payload["rule"] == "retained_context_links@7"
+    assert links._origin._selection._scientific.result_ref == item._view.result_ref
+    before = links.native_payload
+    path = tmp_path / "native-shared.json.gz"
+    links.save(path, compression="gzip")
+    monkeypatch.setattr(Card, "from_dict", forbidden)
+    import sabueso.core.card_context_support_v1 as shared
+
+    monkeypatch.setattr(shared, "compact_related", forbidden)
+    saved = sabueso.read_exploration(path)
+    assert saved.native_payload == before
+    assert saved.validation["verifier"] == "shared_link_support_binding@1"
+
+
 def read_bundle(bundle, tmp_path):
     path = tmp_path / "reading.json"
     path.write_text(json.dumps(_seal(deepcopy(bundle))), encoding="utf-8")
