@@ -1,0 +1,62 @@
+{
+  "rule": "public_sequence_save_workload@1",
+  "owner": "#167/#148/#112",
+  "review_trigger": "save preparation correction / before0.15.0 workload acceptance",
+  "source_head": "7c3ecff632de3b0e9ff75536a60dc3d6e32cdf2d",
+  "sdk": "0.14.0+178.g7c3ecff",
+  "runtime_storage_sha256": "e98efef0682d56bf2b7f78cf74ff17bfee42c90ea7b5b854e858bf5a581db2d1",
+  "input_sha256": "28cb420c5f120679947abde3186939a33e07ea232ae4dbc1300268d871c14dec",
+  "scope": "Full original public UniProt Card, sequence pane and compact length page, followed by same-session gzip save. File-byte defaults unchanged; no acquisition or tracer.",
+  "limits": {
+    "owned_rss_bytes": 536870912,
+    "host_available_bytes": 4294967296,
+    "owned_swap_bytes": 0,
+    "elapsed_s": 60,
+    "owned_scratch_bytes": 134217728
+  },
+  "exit_code": -15,
+  "stop_reason": "owned RSS ceiling",
+  "elapsed_s": 7.692,
+  "peak_owned_rss_bytes": 537538560,
+  "peak_owned_swap_bytes": 0,
+  "minimum_host_available_bytes": 16395386880,
+  "peak_owned_scratch_bytes": 523,
+  "outcome": "resource_stop",
+  "worker_stage_log": [
+    {
+      "step": "map full native reference",
+      "elapsed_s": 0.0087,
+      "rss_bytes": 42807296,
+      "sdk": "0.14.0+178.g7c3ecff",
+      "features": 1317
+    },
+    {
+      "step": "build full Card",
+      "elapsed_s": 0.5205,
+      "rss_bytes": 93097984,
+      "fields": 26,
+      "assertions": 1489,
+      "relationships": 215
+    },
+    {
+      "step": "capture full Card",
+      "elapsed_s": 0.6517,
+      "rss_bytes": 106389504
+    },
+    {
+      "step": "interactive sequence ready",
+      "elapsed_s": 0.9413,
+      "rss_bytes": 118865920,
+      "items": 17,
+      "frame_bytes": 2546
+    },
+    {
+      "step": "enter _prepare",
+      "elapsed_s": 0.9417,
+      "rss_bytes": 118865920
+    }
+  ],
+  "observation": "Reproduced current limitation, not a proven regression. Full source saving stopped during_prepare; sequence-only reference control is separate.",
+  "remaining": "Profile and correct bounded preparation before accepting the full workload.",
+  "owned_evidence": "recovered_work/alphafold_archive_control_20261105"
+}

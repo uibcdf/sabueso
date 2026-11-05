@@ -2,7 +2,7 @@
   "format": "sabueso.fixture_delivery@1",
   "reviewed": "2026-10-09",
   "issue": "uibcdf/sabueso#112",
-  "scope": "Reviewed recovery inputs, release compatibility artifacts and bounded public RCSB assembly-generation/nonpolymer-instance captures; earlier fixtures retain their notices. Public 1TCD source/coordinate correspondence inputs (#173) are separately declared.",
+  "scope": "Reviewed recovery inputs, release compatibility artifacts and bounded public RCSB assembly-generation/nonpolymer-instance captures; earlier fixtures retain their notices. Public 1TCD source/coordinate correspondence inputs (#173) are separately declared. Public AlphaFold Q8WZ42-F2 archive-native control and its UniProt reference (#148) are separately declared.",
   "files": [
     {
       "path": "temp_data/3did/3did_dmi_flat.gz",
@@ -1374,6 +1374,66 @@
       "basis": "Public 1TCD RCSB/wwPDB entry revision 1.4; CC0 1.0 factual API/archive data under the official usage policy checked 2026-11-05 UTC. Original wire/request and unchanged bundled coordinate bytes are distinct from decoded entry and authored metadata. Original coordinate download time unknown. Capture observer gap and separate native archive replay are explicit. Credit RCSB PDB and wwPDB; no private inputs.",
       "terms_sha256": "13254f291a1e76f71307d348f3fce8e1ab64171cac6ce5429ab055b0eeabd4b7",
       "decision_reviewed": "2026-11-05"
+    },
+    {
+      "path": "temp_data/alphafold_archive/AF-Q8WZ42-F2-model_v6.cif.gz",
+      "source_id": "alphafold_db",
+      "sha256": "74da31b7a0153ef2c90dc8f60fe07edaa83ba50049bf06e6f4eb113ece1963ef",
+      "bytes": 269404,
+      "delivery": "repository",
+      "recorded_licence": "CC-BY-4.0",
+      "reviewed": "2026-09-29",
+      "statement": "https://alphafold.ebi.ac.uk/faq",
+      "basis": "Public native AlphaFold archive control or original UniProt reference, received2026-11-05; CC BY4.0 reconfirmed on official download/licence pages. Authored capture/transport metadata follows repository MIT; native source rights and attribution remain in temp_data/NOTICE.md. Not a prediction-API record or production archive intake.",
+      "terms_sha256": "be4ffee6144705c92a5df46cef280f1e763f812a28e1c2ca0e9b53dbc09c4c38"
+    },
+    {
+      "path": "temp_data/alphafold_archive/AF-Q8WZ42-F2-model_v6.tar-header.bin",
+      "source_id": "alphafold_db",
+      "sha256": "952033fd3aeb9a15e0ac7a1815f9db53f8f8b9b4141205b6c71058997e1cd83e",
+      "bytes": 512,
+      "delivery": "repository",
+      "recorded_licence": "CC-BY-4.0",
+      "reviewed": "2026-09-29",
+      "statement": "https://alphafold.ebi.ac.uk/faq",
+      "basis": "Public native AlphaFold archive control or original UniProt reference, received2026-11-05; CC BY4.0 reconfirmed on official download/licence pages. Authored capture/transport metadata follows repository MIT; native source rights and attribution remain in temp_data/NOTICE.md. Not a prediction-API record or production archive intake.",
+      "terms_sha256": "be4ffee6144705c92a5df46cef280f1e763f812a28e1c2ca0e9b53dbc09c4c38"
+    },
+    {
+      "path": "temp_data/alphafold_archive/capture.json",
+      "source_id": "alphafold_db",
+      "sha256": "339194e45b548ec6d7e8d16d247559892029e5ca272925a76fe51e494f01635e",
+      "bytes": 17005,
+      "delivery": "repository",
+      "recorded_licence": "CC-BY-4.0",
+      "reviewed": "2026-09-29",
+      "statement": "https://alphafold.ebi.ac.uk/faq",
+      "basis": "Public native AlphaFold archive control or original UniProt reference, received2026-11-05; CC BY4.0 reconfirmed on official download/licence pages. Authored capture/transport metadata follows repository MIT; native source rights and attribution remain in temp_data/NOTICE.md. Not a prediction-API record or production archive intake.",
+      "terms_sha256": "be4ffee6144705c92a5df46cef280f1e763f812a28e1c2ca0e9b53dbc09c4c38"
+    },
+    {
+      "path": "temp_data/alphafold_archive/modelcif_metadata.json",
+      "source_id": "alphafold_db",
+      "sha256": "8283e0b66698babc256aa2a8e6b634201d1bbc2167d8887fabb8bffe9e9da1d4",
+      "bytes": 8495,
+      "delivery": "repository",
+      "recorded_licence": "CC-BY-4.0",
+      "reviewed": "2026-09-29",
+      "statement": "https://alphafold.ebi.ac.uk/faq",
+      "basis": "Public native AlphaFold archive control or original UniProt reference, received2026-11-05; CC BY4.0 reconfirmed on official download/licence pages. Authored capture/transport metadata follows repository MIT; native source rights and attribution remain in temp_data/NOTICE.md. Not a prediction-API record or production archive intake.",
+      "terms_sha256": "be4ffee6144705c92a5df46cef280f1e763f812a28e1c2ca0e9b53dbc09c4c38"
+    },
+    {
+      "path": "temp_data/alphafold_archive/uniprot/Q8WZ42.json",
+      "source_id": "uniprot",
+      "sha256": "28cb420c5f120679947abde3186939a33e07ea232ae4dbc1300268d871c14dec",
+      "bytes": 486890,
+      "delivery": "repository",
+      "recorded_licence": "CC-BY-4.0",
+      "reviewed": "2026-09-29",
+      "statement": "https://rest.uniprot.org/help/license",
+      "basis": "Public native AlphaFold archive control or original UniProt reference, received2026-11-05; CC BY4.0 reconfirmed on official download/licence pages. Authored capture/transport metadata follows repository MIT; native source rights and attribution remain in temp_data/NOTICE.md. Not a prediction-API record or production archive intake.",
+      "terms_sha256": "fe83c65a896bce874060b072a7af779b661d76da4f27c8299bcc62d49ca9a666"
     }
   ],
   "local_qualification_tests": {

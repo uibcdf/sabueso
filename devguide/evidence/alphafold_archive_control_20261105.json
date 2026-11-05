@@ -1,0 +1,123 @@
+{
+  "owner": "#148/#173/#167/#112",
+  "review_trigger": "native archive intake / save preparation correction / B3 review",
+  "baseline_head": "7c3ecff632de3b0e9ff75536a60dc3d6e32cdf2d",
+  "baseline_sdk": "0.14.0+178.g7c3ecff",
+  "scope": "Genuine public source/header receiving and exact source-reference interval control. No production runtime/schema/API/predicate change or API-model synthesis.",
+  "source_receiving": {
+    "requests": 26,
+    "response_bytes": 5149443,
+    "sparse_requests": 19,
+    "sparse_response_bytes": 4595292,
+    "sparse_elapsed_s": 268.22,
+    "archive_total_bytes": 5177506304,
+    "archive_downloaded_in_full": false,
+    "native_fixture_files": 5,
+    "source_terms": "Official AlphaFold download and UniProt licence reconfirm CC BY4.0; authorship/source rights stay separate in NOTICE and the reviewed delivery inventory."
+  },
+  "original_inputs": {
+    "AF-Q8WZ42-F2-model_v6.cif.gz": {
+      "bytes": 269404,
+      "sha256": "74da31b7a0153ef2c90dc8f60fe07edaa83ba50049bf06e6f4eb113ece1963ef"
+    },
+    "AF-Q8WZ42-F2-model_v6.tar-header.bin": {
+      "bytes": 512,
+      "sha256": "952033fd3aeb9a15e0ac7a1815f9db53f8f8b9b4141205b6c71058997e1cd83e"
+    },
+    "modelcif_metadata.json": {
+      "bytes": 8495,
+      "sha256": "8283e0b66698babc256aa2a8e6b634201d1bbc2167d8887fabb8bffe9e9da1d4"
+    },
+    "uniprot/Q8WZ42.json": {
+      "bytes": 486890,
+      "sha256": "28cb420c5f120679947abde3186939a33e07ea232ae4dbc1300268d871c14dec"
+    }
+  },
+  "native_scientific_control": {
+    "rule": "alphafold_archive_fragment_control@1",
+    "owner": "#148/#173/#112",
+    "review_trigger": "archive-native admission / scientific and researcher receiving",
+    "parsers": {
+      "biopython": "1.88",
+      "gemmi": "0.7.5"
+    },
+    "model": "AF-Q8WZ42-F2",
+    "identity_basis": "Original ModelCIF explicitly declares UNP/Q8WZ42; exact source accession, full-reference CRC64 and sequence-version date agree with the retained UniProt record. Sequence equality corroborates an interval, never merges identities.",
+    "reference_interval": [
+      201,
+      1600
+    ],
+    "model_sequence_interval": [
+      1,
+      1400
+    ],
+    "reference_length": 34350,
+    "fragment_length": 1400,
+    "exact_interval_sequence_match": true,
+    "source_reference_crc64": "DEB216410AD560D9",
+    "derived_fragment_crc64": "884CB15CA14DC54F",
+    "derived_fragment_md5": "509b42678e45f12fcf04d77877958e25",
+    "derived_checksums_are_source_assertions": false,
+    "isoform_membership": "not_established; source literal ? retained",
+    "api_record_or_source_md5_generated": false,
+    "coordinate_correspondence": "not_qualified; no coordinate calculation",
+    "new_provider_requests": 0,
+    "card_archive_intake": "pending a separate named native-input contract; this control does not qualify API context @1/@2 or a Card fragment journey",
+    "independent_scientist_researcher_acceptance": "pending",
+    "b2_review": "maintainer-owned and deferred",
+    "release_consolidation": "paused"
+  },
+  "reader_receiving_corrections": [
+    "First parser comparison used Gemmi as_string on CIF ? markers; it maps missing tokens to an empty string. The corrected comparison explicitly preserves native ? and .; both parsers agree.",
+    "First published helper supplied splitlines to MMCIF2Dict. A text stream preserves its documented parsing contract; StringIO correction passes. No source input changed."
+  ],
+  "sdk_receiving": {
+    "owning": "4passed; standard-library/SDK source/header, exact interval and checksum scope, sequence-only human/agent/saved reference, API-boundary guards.",
+    "runtime_importer": "Not introduced; native Card intake and actual archive-model human/agent/saved journeys remain pending.",
+    "full_workload": "Separate failing resource controls remain explicit. Latest published standalone reproducer stops at512MiB in_prepare; not qualified by sequence-only reference receiving.",
+    "final_selected_cases": 61,
+    "final_selected_scope": "4original-archive controls +57registry/delivery/licensing cases pass after regenerating packaged capability counts; earlier59/61 retained the two stale-generated-artifact failures.",
+    "passing_peak_owned_rss_bytes": 188616704,
+    "passing_peak_owned_swap_bytes": 0,
+    "licensing_delivery": "81reviewed repository inputs and37protected local-only originals verified, including local inputs."
+  },
+  "public_progress_update": {
+    "issue": "#148",
+    "url": "https://github.com/uibcdf/sabueso/issues/148#issuecomment-6666757139",
+    "scope": "Maintainer-authorized preceding range-alias block; exact posted body verified. Not an archive receiving or full-save success claim."
+  },
+  "source_code_changes": "None under sabueso/; existing API/native predicates and original saved meanings unchanged.",
+  "remote": {
+    "qualified": false,
+    "scope": "Final committed source needs its own applicable receiving; preceding7c3ecff governance succeeds and CI remains pending."
+  },
+  "b2_scientific_review": "maintainer-owned and deferred",
+  "release_consolidation": "paused",
+  "owned_evidence": "recovered_work/alphafold_archive_control_20261105",
+  "owned_runtime_hashes": {
+    "sabueso/core/card_exploration_storage.py": "e98efef0682d56bf2b7f78cf74ff17bfee42c90ea7b5b854e858bf5a581db2d1",
+    "sabueso/core/card_exploration.py": "b6b0df4a16e1249381f21370f69155af93f63eba5d6828ef7edc6a05a9145b8e",
+    "sabueso/core/predicted_structures.py": "e246aebf0e8078f964b628011c5984c3891534fdf6826da4d68490bd4092951a",
+    "sabueso/mappings/alphafold.py": "7259297838c26e1d248a435be5de3042da2a54f405542ef33c0957d21a616fd7"
+  },
+  "documentation": {
+    "sphinx_warning_fatal": true,
+    "elapsed_s": 24.38,
+    "local_targets_anchors": 438,
+    "changed_python311_parsed": 3
+  },
+  "local_static_checks": [
+    "Ruff lint/format1356files",
+    "source registry/catalog current after regeneration",
+    "81repository/37protectedlocal fixture delivery including local originals",
+    "MOLI governance",
+    "dependency preflight",
+    "git diff whitespace"
+  ],
+  "candidate_control_hashes": {
+    "devguide/evidence/check_alphafold_archive_control_20261105.py": "0132e81e9fd1cb66e9f7d20e81156f7fe9e31ee43e48b0f03600b050a76b0a01",
+    "devguide/evidence/check_large_sequence_save_20261105.py": "b11a9587b0423a676e54770a9f5ab1e05ee330744e4e8c5f4468e5e6f3d6a3a7",
+    "tests/core/test_alphafold_archive_control_offline.py": "a2624294f2cb3b18a33548d82ddb75c8e5f77706c22c8d1205596d57b17ee4dc",
+    "sabueso/resolver/source_catalog.json": "797c4315c90d36ac71f913d9ffd3601ce43dbf7522cc8a6ae05f5e3677c85314"
+  }
+}

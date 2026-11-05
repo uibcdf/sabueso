@@ -1,10 +1,20 @@
 # Sabueso — Roadmap
 
+The [genuine AlphaFold archive control](pending_proposals/alphafold_archive_fragment_control.md)
+now retains public titin AF-Q8WZ42-F2 and its original UniProt reference. Independent
+native readers verify the 201–1600 reference interval, exact 1,400-residue sequence,
+CRC64 and sequence-version date. This is archive-native receiving, not an API
+record or completed Card intake. Full-panel save preparation exposed a separate
+[bounded memory stop](pending_bugs/large_sequence_panel_save.md) under #167; its
+full workload remains failing while the explicit sequence-only control passes.
+B3/scientific/researcher/workload acceptance remains open; B2 review is deferred
+and 0.15.0 consolidation paused.
+
 The [AlphaFold range-alias continuation](pending_proposals/alphafold_range_aliases.md)
 adds context/native @2, explicit agreement/refusal, whole/fragment questions @2,
 independent saved format @10 and packet mapping @16. Original source records,
-@1 meanings and saved formats @1–@9 stay fixed. Genuine public archive fragment
-intake and independent scientific/researcher/workload acceptance remain pending;
+@1 meanings and saved formats @1–@9 stay fixed. The genuine public archive input is now retained; its Card intake and
+independent scientific/researcher/workload acceptance remain pending;
 B2 review stays deferred and 0.15.0 consolidation paused.
 
 Sabueso's work follows two routes, and this roadmap integrates both. Neither replaces the

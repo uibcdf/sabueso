@@ -167,3 +167,15 @@ Python 3.11 parsing of eight changed source/test files, schema/shape **0.3.14** 
 checks pass. The full local suite at the preceding code checkpoint and its
 remote receipt remain historical; this navigation-only block selects its owning
 and broad integration gates under `TESTS.md` and gets a separate exact-source CI.
+
+## Genuine archive-input continuation — 2026-11-05
+
+The [original public archive control](alphafold_archive_fragment_control.md)
+now receives AF-Q8WZ42-F2 and verifies its source-declared 201–1600 reference
+interval and exact sequence against native UniProt. Its reference CRC64 is not
+an API-model MD5. Positive API-shaped fragment fixtures above remain synthetic;
+production native intake and actual human/agent/saved fragment journeys require
+the separate named contract described there. The full public sequence-panel save
+also exposes [the #167 preparation stop](../pending_bugs/large_sequence_panel_save.md).
+Neither original-input receiving nor a passing reduced reference control closes
+B3, full-workload/scientific/researcher acceptance or resumes 0.15.0 consolidation.

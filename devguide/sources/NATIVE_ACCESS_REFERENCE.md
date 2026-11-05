@@ -1026,6 +1026,14 @@ Card, a missing fixture input takes the existing enrichment-failure path and is
 and historical saved scope remain unchanged. See
 [the source-scope correction](../pending_bugs/alphafold_prediction_api_scope.md).
 
+The [genuine archive control](../pending_proposals/alphafold_archive_fragment_control.md)
+retains one original public ModelCIF member/header and its UniProt reference.
+Its independently checked metadata and CRC64/reference correspondence do not
+declare a new native getter or Card enricher: automatic access still uses the
+prediction API. Reviewed input-file counts include this separate offline control,
+not proof that `get_prediction` can read archive formats. No source-model MD5 is
+fabricated and no implicit coordinate/archive fallback is added.
+
 The trace retains native tool/provider, accession/range/checksum and artifact URL
 metadata without copying sequences or downloading coordinates, confidence files or
 MSAs. Listed providers/UniProt were not separately consulted, and a declared

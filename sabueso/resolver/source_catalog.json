@@ -3773,7 +3773,12 @@
      }
     ],
     "recovery_inputs": {
-     "repository": [],
+     "repository": [
+      "temp_data/alphafold_archive/AF-Q8WZ42-F2-model_v6.cif.gz",
+      "temp_data/alphafold_archive/AF-Q8WZ42-F2-model_v6.tar-header.bin",
+      "temp_data/alphafold_archive/capture.json",
+      "temp_data/alphafold_archive/modelcif_metadata.json"
+     ],
      "local_only": []
     },
     "live_health": "not_assessed_by_offline_inventory",
@@ -6622,7 +6627,8 @@
       "temp_data/uniprot_isoforms/P60174-1.fasta",
       "temp_data/uniprot_isoforms/P60174-3.fasta",
       "temp_data/uniprot_isoforms/P60174-4.fasta",
-      "temp_data/uniprot_isoforms/P60174.json"
+      "temp_data/uniprot_isoforms/P60174.json",
+      "temp_data/alphafold_archive/uniprot/Q8WZ42.json"
      ],
      "local_only": []
     },

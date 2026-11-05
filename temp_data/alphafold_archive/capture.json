@@ -1,0 +1,499 @@
+{
+  "format": "sabueso.alphafold_archive_control@1",
+  "owner": "#148/#173/#112",
+  "review_trigger": "archive-native public input admission / B3",
+  "capture_scope": "Original single proteome member received through bounded byte ranges, plus one original public UniProt record. No bulk archive download, generated API record, cloud account or geometry calculation.",
+  "archive": {
+    "owner": "#148/#173/#112",
+    "review_trigger": "bounded sparse archive-native control",
+    "archive_metadata": {
+      "archive_name": "UP000005640_9606_HUMAN_v6.tar",
+      "species": "Homo sapiens",
+      "common_name": "Human",
+      "latin_common_name": false,
+      "reference_proteome": "UP000005640",
+      "num_predicted_structures": 23586,
+      "size_bytes": 5177506304,
+      "type": "proteome"
+    },
+    "archive_url": "https://ftp.ebi.ac.uk/pub/databases/alphafold/v6/UP000005640_9606_HUMAN_v6.tar",
+    "etag": "\"1349a7a00-63d1a396aab80\"",
+    "total_bytes": 5177506304,
+    "first_member": {
+      "name": "AF-A0A024R1R8-F1-model_v6.cif.gz",
+      "size": 16736,
+      "type": "0"
+    },
+    "fetched_bytes": 45068,
+    "scope": "Directory listing plus32KiB range only; archive not downloaded or broadly extracted."
+  },
+  "member_header": {
+    "name": "AF-Q8WZ42-F2-model_v6.cif.gz",
+    "size": 269404,
+    "offset": 3628310528,
+    "header_sha256": "952033fd3aeb9a15e0ac7a1815f9db53f8f8b9b4141205b6c71058997e1cd83e"
+  },
+  "requests": [
+    {
+      "index": 0,
+      "purpose": "locate-original-tar-header",
+      "range": [
+        2588752896,
+        2588883967
+      ],
+      "started_at": "2026-11-05T19:13:45.479266+00:00",
+      "status": 206,
+      "headers": {
+        "Content-Range": "bytes 2588752896-2588883967/5177506304",
+        "Content-Length": "131072",
+        "Content-Encoding": null,
+        "ETag": "\"1349a7a00-63d1a396aab80\"",
+        "Last-Modified": "Sun, 24 Aug 2025 10:51:42 GMT",
+        "Date": "Thu, 05 Nov 2026 19:13:56 GMT"
+      },
+      "bytes": 131072,
+      "sha256": "9b7bd6324ac813e42f43851efa424465e99b619d3c3d96440dfaf15e0e004ebb",
+      "original_path": "sparse-00.bin"
+    },
+    {
+      "index": 1,
+      "purpose": "locate-original-tar-header",
+      "range": [
+        3883295744,
+        3883426815
+      ],
+      "started_at": "2026-11-05T19:13:57.324324+00:00",
+      "status": 206,
+      "headers": {
+        "Content-Range": "bytes 3883295744-3883426815/5177506304",
+        "Content-Length": "131072",
+        "Content-Encoding": null,
+        "ETag": "\"1349a7a00-63d1a396aab80\"",
+        "Last-Modified": "Sun, 24 Aug 2025 10:51:42 GMT",
+        "Date": "Thu, 05 Nov 2026 19:14:08 GMT"
+      },
+      "bytes": 131072,
+      "sha256": "4544cc922776e8fed09b2c7b83430a42f14169f322b450efaf2fda28e46aa3f1",
+      "original_path": "sparse-01.bin"
+    },
+    {
+      "index": 2,
+      "purpose": "locate-original-tar-header",
+      "range": [
+        3236217856,
+        3236348927
+      ],
+      "started_at": "2026-11-05T19:14:08.717700+00:00",
+      "status": 206,
+      "headers": {
+        "Content-Range": "bytes 3236217856-3236348927/5177506304",
+        "Content-Length": "131072",
+        "Content-Encoding": null,
+        "ETag": "\"1349a7a00-63d1a396aab80\"",
+        "Last-Modified": "Sun, 24 Aug 2025 10:51:42 GMT",
+        "Date": "Thu, 05 Nov 2026 19:14:20 GMT"
+      },
+      "bytes": 131072,
+      "sha256": "4f5aea5471d25a2627348ce333ed3432c6d3cd1407854f55af84bc3493d5f55b",
+      "original_path": "sparse-02.bin"
+    },
+    {
+      "index": 3,
+      "purpose": "locate-original-tar-header",
+      "range": [
+        3559956992,
+        3560088063
+      ],
+      "started_at": "2026-11-05T19:14:22.740515+00:00",
+      "status": 206,
+      "headers": {
+        "Content-Range": "bytes 3559956992-3560088063/5177506304",
+        "Content-Length": "131072",
+        "Content-Encoding": null,
+        "ETag": "\"1349a7a00-63d1a396aab80\"",
+        "Last-Modified": "Sun, 24 Aug 2025 10:51:42 GMT",
+        "Date": "Thu, 05 Nov 2026 19:14:36 GMT"
+      },
+      "bytes": 131072,
+      "sha256": "bd37af842152da0794511b68c6208ff09a32a4f09f004db2a38fdcc1ee264c34",
+      "original_path": "sparse-03.bin"
+    },
+    {
+      "index": 4,
+      "purpose": "locate-original-tar-header",
+      "range": [
+        3721794560,
+        3721925631
+      ],
+      "started_at": "2026-11-05T19:14:37.422128+00:00",
+      "status": 206,
+      "headers": {
+        "Content-Range": "bytes 3721794560-3721925631/5177506304",
+        "Content-Length": "131072",
+        "Content-Encoding": null,
+        "ETag": "\"1349a7a00-63d1a396aab80\"",
+        "Last-Modified": "Sun, 24 Aug 2025 10:51:42 GMT",
+        "Date": "Thu, 05 Nov 2026 19:14:47 GMT"
+      },
+      "bytes": 131072,
+      "sha256": "f3cbf633816ff5bd0612e38eb4337fda19b29e6cb77f6720a1c1f12d256b85f7",
+      "original_path": "sparse-04.bin"
+    },
+    {
+      "index": 5,
+      "purpose": "locate-original-tar-header",
+      "range": [
+        3641023488,
+        3641154559
+      ],
+      "started_at": "2026-11-05T19:14:48.423472+00:00",
+      "status": 206,
+      "headers": {
+        "Content-Range": "bytes 3641023488-3641154559/5177506304",
+        "Content-Length": "131072",
+        "Content-Encoding": null,
+        "ETag": "\"1349a7a00-63d1a396aab80\"",
+        "Last-Modified": "Sun, 24 Aug 2025 10:51:42 GMT",
+        "Date": "Thu, 05 Nov 2026 19:14:58 GMT"
+      },
+      "bytes": 131072,
+      "sha256": "aeba73a76867d6703ce882ec183c9ea58138732158e4a00343e0e16665838287",
+      "original_path": "sparse-05.bin"
+    },
+    {
+      "index": 6,
+      "purpose": "expand-header-window",
+      "range": [
+        3641023488,
+        3641547775
+      ],
+      "started_at": "2026-11-05T19:14:59.498667+00:00",
+      "status": 206,
+      "headers": {
+        "Content-Range": "bytes 3641023488-3641547775/5177506304",
+        "Content-Length": "524288",
+        "Content-Encoding": null,
+        "ETag": "\"1349a7a00-63d1a396aab80\"",
+        "Last-Modified": "Sun, 24 Aug 2025 10:51:42 GMT",
+        "Date": "Thu, 05 Nov 2026 19:15:10 GMT"
+      },
+      "bytes": 524288,
+      "sha256": "2fb7c32617eaafb6d0da1b5f68b348018e6fd4e5a21918ef9fd6a4cb59a0ccd4",
+      "original_path": "sparse-06.bin"
+    },
+    {
+      "index": 7,
+      "purpose": "locate-original-tar-header",
+      "range": [
+        3600722944,
+        3600854015
+      ],
+      "started_at": "2026-11-05T19:15:11.563449+00:00",
+      "status": 206,
+      "headers": {
+        "Content-Range": "bytes 3600722944-3600854015/5177506304",
+        "Content-Length": "131072",
+        "Content-Encoding": null,
+        "ETag": "\"1349a7a00-63d1a396aab80\"",
+        "Last-Modified": "Sun, 24 Aug 2025 10:51:42 GMT",
+        "Date": "Thu, 05 Nov 2026 19:15:21 GMT"
+      },
+      "bytes": 131072,
+      "sha256": "c1a888fede4923df3c7be39f343406edc4dfb2e8014b3953e5f0412e671acfc0",
+      "original_path": "sparse-07.bin"
+    },
+    {
+      "index": 8,
+      "purpose": "locate-original-tar-header",
+      "range": [
+        3621157888,
+        3621288959
+      ],
+      "started_at": "2026-11-05T19:15:22.576888+00:00",
+      "status": 206,
+      "headers": {
+        "Content-Range": "bytes 3621157888-3621288959/5177506304",
+        "Content-Length": "131072",
+        "Content-Encoding": null,
+        "ETag": "\"1349a7a00-63d1a396aab80\"",
+        "Last-Modified": "Sun, 24 Aug 2025 10:51:42 GMT",
+        "Date": "Thu, 05 Nov 2026 19:15:32 GMT"
+      },
+      "bytes": 131072,
+      "sha256": "19f858dd8d0feecd9aab60d25b2cc7e47c1771993bc86a1d26be7ae120757298",
+      "original_path": "sparse-08.bin"
+    },
+    {
+      "index": 9,
+      "purpose": "expand-header-window",
+      "range": [
+        3621157888,
+        3621682175
+      ],
+      "started_at": "2026-11-05T19:15:33.404789+00:00",
+      "status": 206,
+      "headers": {
+        "Content-Range": "bytes 3621157888-3621682175/5177506304",
+        "Content-Length": "524288",
+        "Content-Encoding": null,
+        "ETag": "\"1349a7a00-63d1a396aab80\"",
+        "Last-Modified": "Sun, 24 Aug 2025 10:51:42 GMT",
+        "Date": "Thu, 05 Nov 2026 19:15:42 GMT"
+      },
+      "bytes": 524288,
+      "sha256": "8e0f78dde70063a866751f7964428d8af8725083943c176eea1b3885a38491b7",
+      "original_path": "sparse-09.bin"
+    },
+    {
+      "index": 10,
+      "purpose": "locate-original-tar-header",
+      "range": [
+        3631540224,
+        3631671295
+      ],
+      "started_at": "2026-11-05T19:15:44.133643+00:00",
+      "status": 206,
+      "headers": {
+        "Content-Range": "bytes 3631540224-3631671295/5177506304",
+        "Content-Length": "131072",
+        "Content-Encoding": null,
+        "ETag": "\"1349a7a00-63d1a396aab80\"",
+        "Last-Modified": "Sun, 24 Aug 2025 10:51:42 GMT",
+        "Date": "Thu, 05 Nov 2026 19:15:53 GMT"
+      },
+      "bytes": 131072,
+      "sha256": "d5803facf34b6b2af1dcdc8ed16b4db9f4ffbdf9bccf753b989085c3780d3d90",
+      "original_path": "sparse-10.bin"
+    },
+    {
+      "index": 11,
+      "purpose": "locate-original-tar-header",
+      "range": [
+        3626730496,
+        3626861567
+      ],
+      "started_at": "2026-11-05T19:15:54.193638+00:00",
+      "status": 206,
+      "headers": {
+        "Content-Range": "bytes 3626730496-3626861567/5177506304",
+        "Content-Length": "131072",
+        "Content-Encoding": null,
+        "ETag": "\"1349a7a00-63d1a396aab80\"",
+        "Last-Modified": "Sun, 24 Aug 2025 10:51:42 GMT",
+        "Date": "Thu, 05 Nov 2026 19:16:05 GMT"
+      },
+      "bytes": 131072,
+      "sha256": "8fa0b028cc12a3390309df5db0899b838131b993fd9b25d6f4ad7bc00d52066b",
+      "original_path": "sparse-11.bin"
+    },
+    {
+      "index": 12,
+      "purpose": "expand-header-window",
+      "range": [
+        3626730496,
+        3627254783
+      ],
+      "started_at": "2026-11-05T19:16:06.411790+00:00",
+      "status": 206,
+      "headers": {
+        "Content-Range": "bytes 3626730496-3627254783/5177506304",
+        "Content-Length": "524288",
+        "Content-Encoding": null,
+        "ETag": "\"1349a7a00-63d1a396aab80\"",
+        "Last-Modified": "Sun, 24 Aug 2025 10:51:42 GMT",
+        "Date": "Thu, 05 Nov 2026 19:16:18 GMT"
+      },
+      "bytes": 524288,
+      "sha256": "1e95469f3b3093c62a0eef1b61b04dc9c7da93a17adfea940d935aeb86784e16",
+      "original_path": "sparse-12.bin"
+    },
+    {
+      "index": 13,
+      "purpose": "locate-original-tar-header",
+      "range": [
+        3629478400,
+        3629609471
+      ],
+      "started_at": "2026-11-05T19:16:19.908449+00:00",
+      "status": 206,
+      "headers": {
+        "Content-Range": "bytes 3629478400-3629609471/5177506304",
+        "Content-Length": "131072",
+        "Content-Encoding": null,
+        "ETag": "\"1349a7a00-63d1a396aab80\"",
+        "Last-Modified": "Sun, 24 Aug 2025 10:51:42 GMT",
+        "Date": "Thu, 05 Nov 2026 19:16:34 GMT"
+      },
+      "bytes": 131072,
+      "sha256": "42d57801ad16013146565b942d0dba70ea7761530e7995f74caa6f7992b39d98",
+      "original_path": "sparse-13.bin"
+    },
+    {
+      "index": 14,
+      "purpose": "locate-original-tar-header",
+      "range": [
+        3628445184,
+        3628576255
+      ],
+      "started_at": "2026-11-05T19:16:34.998358+00:00",
+      "status": 206,
+      "headers": {
+        "Content-Range": "bytes 3628445184-3628576255/5177506304",
+        "Content-Length": "131072",
+        "Content-Encoding": null,
+        "ETag": "\"1349a7a00-63d1a396aab80\"",
+        "Last-Modified": "Sun, 24 Aug 2025 10:51:42 GMT",
+        "Date": "Thu, 05 Nov 2026 19:16:51 GMT"
+      },
+      "bytes": 131072,
+      "sha256": "162394f77adb16acfe072751495b2021a0f4f50dba8c5f85bf5a7b36729c38cf",
+      "original_path": "sparse-14.bin"
+    },
+    {
+      "index": 15,
+      "purpose": "expand-header-window",
+      "range": [
+        3628445184,
+        3628969471
+      ],
+      "started_at": "2026-11-05T19:16:52.111416+00:00",
+      "status": 206,
+      "headers": {
+        "Content-Range": "bytes 3628445184-3628969471/5177506304",
+        "Content-Length": "524288",
+        "Content-Encoding": null,
+        "ETag": "\"1349a7a00-63d1a396aab80\"",
+        "Last-Modified": "Sun, 24 Aug 2025 10:51:42 GMT",
+        "Date": "Thu, 05 Nov 2026 19:17:09 GMT"
+      },
+      "bytes": 524288,
+      "sha256": "a0474619b39afb2b56d0325ee991f44073948589adecdd3c9ea887c3872d4ea7",
+      "original_path": "sparse-15.bin"
+    },
+    {
+      "index": 16,
+      "purpose": "locate-original-tar-header",
+      "range": [
+        3627975168,
+        3628106239
+      ],
+      "started_at": "2026-11-05T19:17:10.373386+00:00",
+      "status": 206,
+      "headers": {
+        "Content-Range": "bytes 3627975168-3628106239/5177506304",
+        "Content-Length": "131072",
+        "Content-Encoding": null,
+        "ETag": "\"1349a7a00-63d1a396aab80\"",
+        "Last-Modified": "Sun, 24 Aug 2025 10:51:42 GMT",
+        "Date": "Thu, 05 Nov 2026 19:17:28 GMT"
+      },
+      "bytes": 131072,
+      "sha256": "f21f8136c4a97d6619684461fa51f69a7d824675bdf8a26c66b11a19d88fb514",
+      "original_path": "sparse-16.bin"
+    },
+    {
+      "index": 17,
+      "purpose": "expand-header-window",
+      "range": [
+        3627975168,
+        3628499455
+      ],
+      "started_at": "2026-11-05T19:17:30.025797+00:00",
+      "status": 206,
+      "headers": {
+        "Content-Range": "bytes 3627975168-3628499455/5177506304",
+        "Content-Length": "524288",
+        "Content-Encoding": null,
+        "ETag": "\"1349a7a00-63d1a396aab80\"",
+        "Last-Modified": "Sun, 24 Aug 2025 10:51:42 GMT",
+        "Date": "Thu, 05 Nov 2026 19:17:50 GMT"
+      },
+      "bytes": 524288,
+      "sha256": "232ba74f795f55770632c9282b3eb9a8bba857d049e313069ff7489b570697ab",
+      "original_path": "sparse-17.bin"
+    },
+    {
+      "index": 18,
+      "purpose": "exact-original-header-and-member",
+      "range": [
+        3628310528,
+        3628580443
+      ],
+      "started_at": "2026-11-05T19:17:54.376566+00:00",
+      "status": 206,
+      "headers": {
+        "Content-Range": "bytes 3628310528-3628580443/5177506304",
+        "Content-Length": "269916",
+        "Content-Encoding": null,
+        "ETag": "\"1349a7a00-63d1a396aab80\"",
+        "Last-Modified": "Sun, 24 Aug 2025 10:51:42 GMT",
+        "Date": "Thu, 05 Nov 2026 19:18:12 GMT"
+      },
+      "bytes": 269916,
+      "sha256": "8b8fd4a8b5a99242911853b62f9f6ee7e85590c2cd9fdbc87d9404e61c3d063a",
+      "original_path": "sparse-18.bin"
+    }
+  ],
+  "sparse_transfer_bytes": 4595292,
+  "sparse_elapsed_s": 268.22,
+  "reference": {
+    "owner": "#148/#173/#112",
+    "review_trigger": "original canonical reference receiving",
+    "url": "https://rest.uniprot.org/uniprotkb/Q8WZ42.json",
+    "started_at": "2026-11-05T19:20:34.028454+00:00",
+    "method": "GET",
+    "scope": "One public canonical UniProt record named by the received original ModelCIF; no xref traversal, structures queries, accounts or private data.",
+    "status": 200,
+    "final_url": "https://rest.uniprot.org/uniprotkb/Q8WZ42.json",
+    "headers": {
+      "Content-Length": "486890",
+      "Content-Type": "application/json",
+      "Date": "Thu, 05 Nov 2026 19:20:34 GMT",
+      "Last-Modified": null,
+      "ETag": null,
+      "X-UniProt-Release": "2026_04",
+      "X-UniProt-Release-Date": "04-November-2026"
+    },
+    "bytes": 486890,
+    "sha256": "28cb420c5f120679947abde3186939a33e07ea232ae4dbc1300268d871c14dec",
+    "primary_accession": "Q8WZ42",
+    "sequence_length": 34350,
+    "sequence_crc64": "DEB216410AD560D9",
+    "entry_audit": {
+      "firstPublicDate": "2006-06-13",
+      "lastAnnotationUpdateDate": "2026-11-04",
+      "lastSequenceUpdateDate": "2012-04-18",
+      "entryVersion": 223,
+      "sequenceVersion": 4
+    }
+  },
+  "literal_metadata": {
+    "format": "sabueso.modelcif_literal_metadata@1",
+    "extractor": "Biopython MMCIF2Dict1.88; independent Gemmi0.7.5 receiving is recorded separately",
+    "input_sha256": "206ffc9821eaa76a33f7f3afe1b42f5ffd1eeae5b411c299cf8ae910f9964036",
+    "source_nulls": "Literal ? and . preserved; missing/null declarations do not establish isoform membership."
+  },
+  "attribution": {
+    "AlphaFold DB": "Google DeepMind and EMBL-EBI, CC BY4.0; https://alphafold.ebi.ac.uk/download",
+    "UniProt": "UniProt Consortium, CC BY4.0; https://rest.uniprot.org/help/license",
+    "authored_metadata": "Repository MIT; native source values keep their source obligations."
+  },
+  "files": {
+    "AF-Q8WZ42-F2-model_v6.cif.gz": {
+      "bytes": 269404,
+      "sha256": "74da31b7a0153ef2c90dc8f60fe07edaa83ba50049bf06e6f4eb113ece1963ef"
+    },
+    "AF-Q8WZ42-F2-model_v6.tar-header.bin": {
+      "bytes": 512,
+      "sha256": "952033fd3aeb9a15e0ac7a1815f9db53f8f8b9b4141205b6c71058997e1cd83e"
+    },
+    "modelcif_metadata.json": {
+      "bytes": 8495,
+      "sha256": "8283e0b66698babc256aa2a8e6b634201d1bbc2167d8887fabb8bffe9e9da1d4"
+    },
+    "uniprot/Q8WZ42.json": {
+      "bytes": 486890,
+      "sha256": "28cb420c5f120679947abde3186939a33e07ea232ae4dbc1300268d871c14dec"
+    }
+  }
+}

@@ -66,7 +66,9 @@ adds context @2, explicit alias agreement/refusal and separate native/navigation
 saved/packet versions. Original source records and @1 interpretations stay fixed.
 Its own receiving is separate from this preceding API-scope correction.
 
-The genuine partial-model input remains pending. A native archive model or
+The [genuine archive control](../pending_proposals/alphafold_archive_fragment_control.md)
+now retains and independently checks a public partial-model input. Production
+Card intake remains pending. A native archive model or
 BigQuery record is not automatically the prediction-API contract: the
 [original BigQuery schema](https://github.com/google-deepmind/alphafold/blob/main/afdb/README.md)
 defines its checksum as CRC64, whereas this model context uses API MD5.

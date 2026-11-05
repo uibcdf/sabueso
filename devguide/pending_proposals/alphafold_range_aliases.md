@@ -71,7 +71,8 @@ exact-source hosted receiving live in
 `recovered_work/alphafold_range_aliases_20261105/`, owner #148/#173/#112,
 review at the next B3 checkpoint. Technical receiving does not establish
 independent scientific/researcher or whole-session workload acceptance.
-Genuine archive-native public fragment intake remains pending; these synthetic
+A [genuine archive control](alphafold_archive_fragment_control.md) now receives
+the native public input; production Card intake remains pending. These synthetic
 counterexamples do not qualify a deposited partial model. B2's maintainer review
 remains deferred and 0.15.0 release consolidation paused.
 
