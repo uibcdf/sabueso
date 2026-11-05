@@ -9,7 +9,29 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Completed accumulated runtime receiving (2026-11-05, #188/#186)
+
+Source `c5b8af1` /SDK `0.14.0+167.gc5b8af1` now passes
+[full exact-source receiving](../evidence/bioactivity_target_scope_checkpoint_20261105.json):
+CI 18/18 and governance 1/1, thirteen source/installed summaries, all manifest
+hashes/ZIP CRC/job steps, twelve codec routes and 36 installed codec cases.
+This closes the current accumulated code checkpoint's technical recovery. Earlier
+runs are not relabelled; later docs/research-only heads add no runtime qualification.
+Scientific/default, consumer/researcher/workload and paused release gates remain
+open. The next changed code block still needs its own unskipped final-source gates.
+
 ### B3 source-scope review (2026-11-04, #173/#148/#112)
+
+The 2026-11-05 UTC MolSysMT review adds concrete provider capability/limit receipts
+and [molsysmt#563](https://github.com/uibcdf/molsysmt/issues/563), with 62 selected
+provider cases and a separately verified synthetic importer reproducer. Provider
+source, local environments, library runtime and historical inputs remain unchanged.
+The following docs/evidence checkpoint uses the same authorized `[skip ci]` route;
+it does not qualify a modeling bridge or replace provider fix/receiving. Exact
+local head, SDK, checks, report links and cleanup live under
+`recovered_work/molsysmt_capability_review_20261104/INDEX.json` (owner #173/#148/#112;
+review at provider receiving/B3 disposition). Existing runtime checkpoint recovery
+and the next changed code block's unskipped final-source obligation remain below.
 
 The [review](structural_journey_acceptance_20261104.md) adds a dated reproduction
 script, public observations and acceptance questions only; no package/native/schema/
@@ -17,8 +39,8 @@ fixture/verifier bytes change. Selected receiving passes 106 cases and the audit
 checks four public human/agent/saved journeys plus six synthetic counterexamples.
 A documentation/research checkpoint may use `[skip ci]` after local links/snippets,
 Python 3.11, lint/format and governance checks. This supplies no new hosted code
-qualification. Runtime source `c5b8af1` retains its own pending exact-source CI
-`41932333464` and governance `41932333524`, with full gh-run-receptor recovery under
+qualification. Runtime source `c5b8af1` has now completed exact-source CI
+`41932333464` and governance `41932333524`, with full gh-run-receptor qualification under
 `recovered_work/target_scope_188_20261104/INDEX.json`. The next changed code block
 needs its own unskipped final source checkpoint. Owner #173/#148/#112; receipts and
 cleanup under `recovered_work/structural_scope_173_20261104/`. Assembly-scope,

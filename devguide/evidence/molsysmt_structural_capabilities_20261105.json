@@ -1,0 +1,157 @@
+{
+  "owner": "uibcdf/sabueso#173/#148/#112; provider defect uibcdf/molsysmt#563",
+  "review_trigger": "provider fix and Sabueso B3 integration disposition before 0.15.0",
+  "review_date_utc": "2026-11-05",
+  "local_date": "2026-11-04",
+  "provider_source": "71fbe4f46d3c70e4e973c8025f01752a8c9b1084",
+  "provider_sdk": "0.23.0+322.g71fbe4f46",
+  "provider_checkout_before_and_after": "clean; no source/file/cache/environment changes made in MolSysMT",
+  "import_mode": "Shared Python 3.14 editable checkout; module and installed metadata agree. Foreign test package is isolated without adding the checkout root to PYTHONPATH.",
+  "capabilities": {
+    "assembly": "Public build.make_bioassembly supports named or explicit common-chain operation dictionaries, selected structures, proper rotations and unit-bearing translations.",
+    "rigid_transforms": "Public structure.rotate and structure.translate with independent analytic receiving.",
+    "contacts": "Public structure.get_contacts supports explicit atomic endpoints, unit-bearing inclusive thresholds and PBC choice. Group-center semantics differ from minimum atom-distance group contacts; output_indices=group is refused.",
+    "storage": "Validated native operations and length units have H5MSM round-trip tests."
+  },
+  "limits": {
+    "heterogeneous_chain_scopes": "Stored per-operation scopes can persist, but make_bioassembly explicitly raises NotImplementedError when different operations select different chain sets.",
+    "source_generator_loss": "Confirmed importer defect #563; repeated assembly-id generator rows silently overwrite earlier rows. Direct common-chain two-operation building succeeds.",
+    "input_handoff": "Sabueso currently retains symbolic operation identifiers/text, not the numeric matrices/vectors/atomic coordinate inputs required by these calls. Same entry/revision and native label_asym_id/chain_id correspondence must be qualified.",
+    "output_identity": "Generated chain_id values are unique labels; chain_name retains author names and may repeat. Original declaration/component/operation correspondence must remain explicit.",
+    "default_selection": "Select assembly and structure indices deliberately; default None picks the first stored assembly and default structure_indices=0 picks structure zero. Neither is a scientific recommendation.",
+    "contact_scope": "Declare threshold, atom/center semantics, structures, indices and PBC. Even pair output retains a dense boolean map; bounded workload receiving is needed.",
+    "qualification": "62 selected local cases and one synthetic reproducer do not qualify all provider routes, a public installed artifact or a Sabueso modeling bridge."
+  },
+  "selected_cases": 62,
+  "pytest_warnings": "Four expected LegacyH5MSMWarning messages from bundled 0.4 inputs; reading remains supported.",
+  "resource_observations": {
+    "selected": {
+      "resource_guard": "owned_rss_available_swap@2",
+      "host_free_mode": "observed_only_not_a_reclaimability_estimate",
+      "exit_code": 0,
+      "elapsed_s": 12.54,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 304672768,
+      "minimum_host_available_bytes": 15431426048,
+      "minimum_host_free_bytes": 1589944320,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "owned_scratch_bytes": 2147483648
+      },
+      "test_files": 0,
+      "peak_owned_scratch_bytes": 31414,
+      "tmpdir": "/home/liliana/repos@uibcdf/sabueso/recovered_work/molsysmt_capability_review_20261104/tmp-selected"
+    },
+    "generator-reproducer": {
+      "resource_guard": "owned_rss_available_swap@2",
+      "host_free_mode": "observed_only_not_a_reclaimability_estimate",
+      "exit_code": 0,
+      "elapsed_s": 3.62,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 266395648,
+      "minimum_host_available_bytes": 15854542848,
+      "minimum_host_free_bytes": 2026708992,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "owned_scratch_bytes": 2147483648
+      },
+      "test_files": 0,
+      "peak_owned_scratch_bytes": 32939,
+      "tmpdir": "/home/liliana/repos@uibcdf/sabueso/recovered_work/molsysmt_capability_review_20261104/tmp-generator-reproducer"
+    }
+  },
+  "provider_defect": {
+    "owner": "uibcdf/sabueso#173; provider report pending",
+    "review_trigger": "owning MolSysMT provider issue and B3 integration",
+    "kind": "explicitly synthetic assembly metadata over bundled public 1BRS coordinates",
+    "molsysmt_version": "0.23.0+322.g71fbe4f46",
+    "original_file": "molsysmt/data/bcif_gz/1brs.bcif.gz",
+    "original_file_sha256": "aed172bd303f4de89f9458494985064d9ff878279726b2b01b46bb24a4791e82",
+    "original_file_unchanged": true,
+    "molecular_provider_queries": 0,
+    "input_generator_rows": 2,
+    "source_operators": [
+      "1",
+      "99"
+    ],
+    "source_native_chain": "A",
+    "selected_atom_count": 864,
+    "expected_operation_count": 2,
+    "retained_operation_count": 1,
+    "expected_atom_count": 1728,
+    "actual_atom_count": 864,
+    "last_row_translation": {
+      "value": [
+        [
+          0.9999999999999999,
+          0.0,
+          0.0
+        ]
+      ],
+      "unit": "nm"
+    },
+    "analytical_reference_agrees": true,
+    "reversing_generator_order_changes_surviving_operation": true,
+    "interpretation": "The mmCIF converter retains only the last generator row for the same assembly id. The direct common-chain two-operation builder correctly constructs both coordinate copies. This is separate from the documented unsupported heterogeneous per-operation chain sets."
+  },
+  "provider_issue": "https://github.com/uibcdf/molsysmt/issues/563",
+  "source_and_tests_sha256": {
+    "molsysmt/build/make_bioassembly.py": "6044511163a9de7b0641c3fe23883e03ae205acc0dfc9bcd69ccdb1a16f0cb74",
+    "molsysmt/structure/get_contacts.py": "3c95b34287d6ea31690bd914d3c914645916f97c26e913085247a04e35dc9144",
+    "molsysmt/structure/rotate.py": "09972a41ad8b2e7e47ead41fa306b500f0297f576fde045021b2dd72b90ce4db",
+    "molsysmt/structure/translate.py": "3e14eeae9b3c7fdfc89932c3ce858cc4e1f6751f17ee9e4223c537f30d3daa82",
+    "molsysmt/form/mmcif_PdbxContainers_DataContainer/to_molsysmt_MolSys.py": "3f73492821387e81a2a614b05717eee22025da23c19e53b8a143e1ab2a7a992c",
+    "tests/build/make_bioassembly/test_structure_selection.py": "1cf6dd1920a4816d59e198a3b6dc7145a80c25c53759907939980046b7a14ce1",
+    "tests/form/file_h5msm/test_validated_bioassembly.py": "8ac4cea055fcaa4bdd1c84b859c774339124afa4e14a15401ad06483c933cff8",
+    "tests/scientific_truth/structure/test_rigid_transformations.py": "b60d2580b388f56fba7a2b0cbd89b9719f864ca8ac4dcb200315b6cb255633ef",
+    "tests/scientific_truth/structure/test_pair_reductions.py": "dc3ce01a363e68a4eef1116a22783f0f3ccd2ec46d0d2674ef9416b5550ea0f2",
+    "tests/structure/get_contacts/test_get_contacts_from_molsysmt_MolSys.py": "ae2165d1d44c0c5f2ac4ac52d5d8c147a72ca4cca1fdedb3419e7a55aa0f25fc"
+  },
+  "molecular_provider_queries": 0,
+  "private_pilot_reads": 0,
+  "harness_notes": "The initial report exporter was corrected for a list of unit-bearing translations. An initial PYTHONPATH-based test setup shadowed installed metadata with older ignored egg-info; final selected/reproducer gates avoid that path and verify SDK322. Initial logs remain separate from final receiving.",
+  "scope_decision": "Engine availability is now observed. Requirement/scheduling of an integrated geometric journey remains a maintainer decision; no accepted 0.15.0 scope is removed.",
+  "bioactivity_review": "Maintainer-owned and explicitly deferred, unchanged.",
+  "release_consolidation": "paused",
+  "owned_evidence": "recovered_work/molsysmt_capability_review_20261104/; scripts, original hashes, results and initial/final logs retained until provider receiving/B3 disposition.",
+  "cleanup": {
+    "owner": "#173/#148/#112; provider molsysmt#563",
+    "review_trigger": "provider fix/receiving or B3 scope disposition before 0.15.0",
+    "removed": [
+      {
+        "path": "pytest-selected",
+        "bytes": 0
+      },
+      {
+        "path": "pytest-cache",
+        "bytes": 9407
+      },
+      {
+        "path": "tmp-selected",
+        "bytes": 0
+      },
+      {
+        "path": "tmp-generator-reproducer",
+        "bytes": 0
+      }
+    ],
+    "removed_bytes": 9407,
+    "retained": "Exact provider source/test hashes, bundled original-file hash, selected-gate/reproducer scripts and final observations, initial corrected harness logs and resource receipts. Provider checkout/caller data and active ancestor CI captures are protected. No environment was created or altered."
+  },
+  "local_docs_checks": {
+    "ruff_lint_and_root_format": "pass; 1336 files already formatted",
+    "moli_governance": "pass",
+    "markdown": {
+      "local_targets_anchors": 326,
+      "python_snippets_syntax": 0,
+      "python_311_parsed_files": 0
+    },
+    "whitespace": "pass"
+  }
+}

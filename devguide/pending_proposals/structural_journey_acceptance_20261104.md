@@ -33,9 +33,11 @@ binding, affinity or biological relevance. A contact already reported by a provi
 is instead retained source knowledge, including that provider's original scope and
 uncertainty; Sabueso need not recalculate it to make it inspectable.
 
-The proposed engineering owner for the coordinate engine is MOLI's Modeling
-component, MolSysSuite, with its actual library/capability still to be qualified.
-This is not a claim that a current MolSysMT API already completes the task. Sabueso
+MolSysMT already implements the coordinate engine through public
+`build.make_bioassembly()`, `structure.rotate()`, `structure.translate()` and
+`structure.get_contacts()`. The 2026-11-05 UTC review below receives 62 selected
+local cases on its current editable source. General importer coverage, the
+Sabueso handoff and installed-artifact qualification remain distinct. Sabueso
 continues its own deterministic knowledge interpretations, identity admission,
 coverage and scope checks. It may supply original declarations, supported source
 transforms and exact references to a coordinated modeling operation. The application
@@ -129,6 +131,54 @@ receipt records resource observations and exact source/fixture/script identities
 No runtime, source query, native rule, schema, original fixture or frozen reader
 changes are introduced by this preparation.
 
+## Existing MolSysMT capability review — 2026-11-05 UTC
+
+At the maintainer's suggestion, review of clean MolSysMT source
+`71fbe4f46d3c70e4e973c8025f01752a8c9b1084`, SDK `0.23.0+322.g71fbe4f46`,
+confirms existing implementations and 62 passing selected receptor cases. The
+[receipt](../evidence/molsysmt_structural_capabilities_20261105.json) records exact
+source/test hashes, resource scope, warnings and the supported limits. No MolSysMT
+file, environment or source coordinate file is modified; no molecular provider
+request or private pilot is involved.
+
+The [public builder](https://github.com/uibcdf/molsysmt/blob/71fbe4f46d3c70e4e973c8025f01752a8c9b1084/molsysmt/build/make_bioassembly.py)
+accepts stored/named or explicit rotation/translation dictionaries and selected
+structures. The [contact reader](https://github.com/uibcdf/molsysmt/blob/71fbe4f46d3c70e4e973c8025f01752a8c9b1084/molsysmt/structure/get_contacts.py)
+computes contacts under an explicit distance/PBC/endpoint policy. Native operations
+also have tested H5MSM persistence with length units. Building a new geometric
+engine in Sabueso is unnecessary for those supported tasks.
+
+Two limits matter before accepting a general source-to-geometry handoff:
+
+- **Documented builder scope:** different per-operation chain sets are currently
+  refused with `NotImplementedError`; validated storage of such scopes is not
+  evidence that assembly construction supports them.
+- **Confirmed importer defect, [molsysmt#563](https://github.com/uibcdf/molsysmt/issues/563):**
+  the mmCIF converter overwrites earlier generator rows with the same assembly ID.
+  A synthetic two-row/common-chain input should produce two coordinate sets and
+  1,728 atoms, but the parsed named assembly retains only the last operation and
+  864 atoms. Reversing row order changes the survivor. An explicit common-chain
+  dictionary preserves both operations and matches analytical coordinates. This
+  establishes a provider defect, not a failure of the builder's supported direct
+  route or a claim about the deposited 1BRS assembly. The owner issue contains a
+  complete offline reproducer; its fix/receiving remains provider work.
+
+The concrete next engineering task is **bounded reuse and integration**: qualify
+exact entry/revision/native-instance correspondence, numeric source transforms
+and units, explicit assembly/structure selection and a map from generated indices
+to original declaration/operation context. Generated chain IDs and preserved author
+names cannot replace that map. Choose atomic/center/group-reduction semantics and
+PBC deliberately for contacts; pair output still has dense-map memory cost. Retain
+provider-reported contacts separately from newly calculated results. Existing
+Sabueso symbolic inputs alone do not supply admitted atomic coordinates or numeric
+transforms. No new shared wire or invocation contract is adopted by this review.
+
+Engine availability is now observed rather than hypothetical. The required scope
+and pre-0.15.0 delivery of that integrated journey remain pending maintainer
+choices; #173/B3 stay open. Receipt-level tests and a consumer-owned positive route
+are required after the provider defect is fixed or an explicitly qualified input
+route avoids it. No importer repair or workaround is installed in Sabueso here.
+
 ## Proposed exit criteria and remaining work
 
 1. Keep the six questions above distinct in native, human, compact agent and saved
@@ -150,9 +200,10 @@ changes are introduced by this preparation.
 ### Assembly-scope decision needed
 
 The existing inventory repeatedly asks for "full physical reconciliation" without
-an independently specified positive physical task, admitted coordinate inputs,
-uniqueness criterion or owning modeling consumer. The current source-supported
-binding and navigation work is much more precise than that phrase.
+an independently specified positive physical task, admitted coordinate inputs or
+uniqueness criterion. The MolSysMT review identifies the existing geometric
+provider. Its availability resolves the earlier engine-discovery uncertainty;
+the exact consumer handoff and acceptance task remain to be defined.
 
 Recommended disposition for review: Sabueso completes original declared membership,
 source-supported contact scope, input gaps and coherent human/agent/saved access.
@@ -162,9 +213,9 @@ calculation belong to a coordinated MolSysSuite modeling task. This follows the
 existing [MOLI functional boundary](https://github.com/uibcdf/moli/blob/main/architecture_1.0/FUNCTIONAL_VIEW.md),
 not a proposed transfer of Sabueso's semantic ownership.
 
-The maintainer must separately disposition the coordinate-engine responsibility
-and say whether successful receiving of that additional modeling task must also
-block B3/0.15.0, or whether B3's scientific obligation is the complete
+With MolSysMT identified, the maintainer must disposition the concrete integrated
+modeling task and consumer responsibilities, and say whether its successful
+receiving must also block B3/0.15.0, or whether B3's scientific obligation is the complete
 source-supported knowledge route with its explicit limits. If required, identify
 its exact question and consumer acceptance and open/cross-link the owning provider
 work before coding. Neither option permits silently guessing geometry or declaring

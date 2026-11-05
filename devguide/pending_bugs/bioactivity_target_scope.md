@@ -78,6 +78,16 @@ isolated receiving uses the shared editable checkout, while actual installed
 artifact qualification belongs to the hosted lanes. Exact-source receiving and
 independent scientific/consumer acceptance remain distinct requirements.
 
+## Hosted technical checkpoint — 2026-11-05 UTC
+
+Accumulated source `c5b8af1` /SDK `0.14.0+167.gc5b8af1` is
+[qualified](../evidence/bioactivity_target_scope_checkpoint_20261105.json): CI 18/18,
+governance 1/1, nine source lanes each 7,254 cases and four installed lanes each
+1,792, with full hashes/CRC/steps and codec receiving. This is technical source
+receiving, not independent scientific/default/consumer or researcher acceptance.
+The maintainer's scientific review remains deferred; #188 stays open and the
+original target-scope default remains unchanged. Later docs add no runtime change.
+
 ## Experience review and next step
 
 A researcher can now distinguish a retained excluded result from an absent item,

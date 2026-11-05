@@ -1,12 +1,14 @@
 # Sabueso — Risks and Open Questions
 
 [B3's scope review](pending_proposals/structural_journey_acceptance_20261104.md)
-identifies an unresolved acceptance question: "full physical reconciliation" has
-no independently specified coordinate/uniqueness/contact task or modeling consumer.
-The public controls support declared counts and native keys, with explicit unknown
-physical membership. The maintainer must disposition that additional task before
-#173/B3 closeout; neither technical passing nor a proposed modeling boundary removes
-an accepted 0.15.0 prerequisite.
+now identifies existing MolSysMT assembly/contact engines and 62 selected local
+receiving cases. The concrete admitted integration/uniqueness/contact task and its
+pre-0.15.0 obligation remain to be specified; engine availability alone does not
+close that acceptance question. The multi-generator source-importer loss is
+reproduced and owned by [molsysmt#563](https://github.com/uibcdf/molsysmt/issues/563).
+Declared counts/native keys, physical geometry and contact scope retain separate
+meanings. The maintainer must disposition the integration task before #173/B3
+closeout; no accepted prerequisite is silently removed.
 
 Original assembly-generation inspection (#173) now has compact native plans and
 visible tuple/declared-occurrence count and identifier-text preflight with deliberate raised/unlimited

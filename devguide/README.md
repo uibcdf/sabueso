@@ -1,5 +1,22 @@
 # Sabueso — Developer Guide
 
+The accumulated runtime source `c5b8af1` /SDK `0.14.0+167.gc5b8af1` is now
+[qualified](evidence/bioactivity_target_scope_checkpoint_20261105.json): CI 18/18,
+governance 1/1, nine source lanes each 7,254 cases, four installed lanes each
+1,792, thirteen actual summaries, full hashes/CRC/steps and twelve codec routes
+verified. This receives the accumulated opt-in target/correspondence and prior
+activity/context changes at that source. Later documentation does not add runtime
+qualification. Scientific/default and researcher acceptance remain pending;
+the maintainer's review is still deferred, defaults fixed and release paused.
+
+The [MolSysMT review](pending_proposals/structural_journey_acceptance_20261104.md#existing-molsysmt-capability-review--2026-11-05-utc)
+confirms existing assembly/rigid-transform/contact APIs and 62 selected local cases.
+B3 now needs qualified reuse and a source/identity/unit handoff, rather than a new
+geometric engine. A synthetic source-importer loss is reported in
+[molsysmt#563](https://github.com/uibcdf/molsysmt/issues/563); documented heterogeneous
+builder scope remains separate. No provider/library code changes or B3/release
+acceptance are claimed. The integration/release scope decision remains pending.
+
 The [B3 structural acceptance review](pending_proposals/structural_journey_acceptance_20261104.md)
 now distinguishes source-declared membership, native key binding, physical copies
 and assembly-specific contacts using four retained public controls and six

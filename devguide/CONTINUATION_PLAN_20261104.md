@@ -96,6 +96,14 @@ video projects to this release.
 
 ## Starting state and first actions
 
+Latest receiving, 2026-11-05 UTC: accumulated source `c5b8af1` is
+[qualified](evidence/bioactivity_target_scope_checkpoint_20261105.json), CI 18/18
+and governance 1/1 with all thirteen actual summaries, full source/installed
+and codec receiving. This completes the current B1/B2 technical source checkpoint;
+independent scientific/default/consumer and researcher acceptance remain open.
+Earlier source-specific failures/pending runs keep their own status; later docs
+add no changed runtime. The maintainer-owned scientific review stays deferred.
+
 Execution update, 2026-11-04: accumulated B0/opt-in B1 source `1290201` is
 [qualified](evidence/bioactivity_opt_in_checkpoint_20261104.json): CI 18/18 and
 governance 1/1 with complete source/installed and codec receiving. The next B1
@@ -165,7 +173,7 @@ requirements. Detailed historical chronologies do not override this proposed ord
 | Block | Work and owner | Dependency and exit evidence |
 | --- | --- | --- |
 | B0 — Reconcile and preserve | Sabueso #112/#167/#148: inspect exact-source remote verification, protect original evidence and close the small existing component-preview continuation | First; explain the verifier failure from actual logs, verify applicable CI/governance through gh-run-receptor, and record the result for its actual SHA. Compare public previews, run missing docs checks, then commit/qualify that continuation separately from scientific fixes. If it reveals larger work, retain it and advance B1 rather than delaying correctness |
-| B1 — Correct activity interpretation | Sabueso #184/#185, cross-linked to #112 and historical #37 | Opt-in source qualified; current default/ligand/table and @15 packet adoption implemented with explicit original replay. Complete its exact-source receiving and independent scientific/consumer review. Preserve source data and genuine saved results; broad activity panels remain B4 work |
+| B1 — Correct activity interpretation | Sabueso #184/#185, cross-linked to #112 and historical #37 | Opt-in source qualified; current default/ligand/table and @15 packet adoption implemented with explicit original replay. Exact-source technical receiving is qualified at `c5b8af1`; complete independent scientific/consumer review. Preserve source data and genuine saved results; broad activity panels remain B4 work |
 | B2 — Make measurement correspondence scientifically explicit | Sabueso #186, cross-linked to #66/#112 | After B1's semantics are defined; distinguish explicit copies, supported correspondence, conflicting assay/construct context and missing context. Adopt a named policy with scientist-reviewed examples and count/vote consequences before claiming improved grouping or building summary panels on it |
 | B3 — Finish bounded structural journeys | Sabueso #173/#148 and applicable integrity owners | Resume remaining region/site/model/instance/assembly transitions from the existing implementation. State precisely what #173 resolves, what source context remains unknown and which physical calculations belong elsewhere. Qualify coherent native/human/agent/saved routes and independent structural examples; source declaration counts never become unsupported physical claims |
 | B4 — Deliver the activity and literature journey | Sabueso #148/#112, with literature owners | Builds on B1/B2: protein → molecule → group → measurement → assay/document → original support. Add shared literature views and molecule target/activity context with exact identity joins. Review measured versus derived results, assay comparability, conflicts and missing methods; no unsupported mechanistic interpretation |
@@ -193,6 +201,13 @@ The owner must disposition the undefined "full physical reconciliation" task;
 this review does not silently remove it from the broad inventory or close B3.
 Independent model/fragment/region work can proceed from its existing original
 axis/admission contracts while that decision is pending.
+
+The [MolSysMT receiving review](pending_proposals/structural_journey_acceptance_20261104.md#existing-molsysmt-capability-review--2026-11-05-utc)
+now confirms available assembly/contact tools. Reuse them within qualified source,
+identity, unit and workload scope; qualify the source importer through its owner
+[molsysmt#563](https://github.com/uibcdf/molsysmt/issues/563) before accepting affected
+multi-generator input. A documented builder limitation is not a missing engine.
+Integration delivery and the B3 release obligation remain separate owner decisions.
 
 For B3, define source-supported acceptance before further coding. If an additional
 physical reconstruction requires unavailable context or a modeling consumer,

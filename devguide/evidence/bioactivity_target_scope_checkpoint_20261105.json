@@ -1,0 +1,1271 @@
+{
+  "owner": "#188/#186/#148/#112",
+  "review_trigger": "next changed code checkpoint / independent scientific/default review / before 0.15.0",
+  "date_utc": "2026-11-05",
+  "head": "c5b8af1cf9cd66e7536832da731f08e74ce299fa",
+  "sdk": "0.14.0+167.gc5b8af1",
+  "qualified": true,
+  "scope": "Exact source and public repository/installed/codec receiving, including accumulated activity interpretation, opt-in correspondence/target selection and bounded pinned explanation context. Later docs/evidence commits add no library runtime changes.",
+  "source_and_governance": {
+    "head": "c5b8af1cf9cd66e7536832da731f08e74ce299fa",
+    "owner": "#188/#186/#148/#112",
+    "runs": {
+      "ci-final": {
+        "id": 41932333464,
+        "url": "https://github.com/uibcdf/sabueso/actions/runs/41932333464",
+        "conclusion": "success",
+        "jobs": 18,
+        "full_manifest_members_verified": 6,
+        "pytest_summaries": [
+          {
+            "log": "2_Offline tests (windows-latest, Python 3.14).txt",
+            "passed": 7254,
+            "summary": "2026-11-05T00:14:42.2589509Z PASS exit=0 | 7254 passed, 10 skipped, 26 deselected | 2364.14s | 9 warnings"
+          },
+          {
+            "log": "3_Offline tests (ubuntu-latest, Python 3.12).txt",
+            "passed": 7254,
+            "summary": "2026-11-05T00:17:51.2007813Z PASS exit=0 | 7254 passed, 10 skipped, 26 deselected | 2065.04s | 9 warnings"
+          },
+          {
+            "log": "4_Offline tests (ubuntu-latest, Python 3.14).txt",
+            "passed": 7254,
+            "summary": "2026-11-05T00:00:07.9946250Z PASS exit=0 | 7254 passed, 10 skipped, 26 deselected | 1812.01s | 9 warnings"
+          },
+          {
+            "log": "5_Offline tests (windows-latest, Python 3.12).txt",
+            "passed": 7254,
+            "summary": "2026-11-05T00:23:20.0887438Z PASS exit=0 | 7254 passed, 10 skipped, 26 deselected | 3047.88s | 9 warnings"
+          },
+          {
+            "log": "6_Ackredit public-package pilot (Python 3.14).txt",
+            "passed": 1792,
+            "summary": "2026-11-04T23:39:42.2146883Z PASS exit=0 | 1792 passed | 908.57s | 4 warnings"
+          },
+          {
+            "log": "7_Offline tests (windows-latest, Python 3.13).txt",
+            "passed": 7254,
+            "summary": "2026-11-05T00:11:47.8469905Z PASS exit=0 | 7254 passed, 10 skipped, 26 deselected | 2832.28s | 9 warnings"
+          },
+          {
+            "log": "8_Offline tests (macos-26, Python 3.14).txt",
+            "passed": 7254,
+            "summary": "2026-11-05T01:13:51.2342510Z PASS exit=0 | 7254 passed, 10 skipped, 26 deselected | 1548.23s | 9 warnings"
+          },
+          {
+            "log": "9_Offline tests (ubuntu-latest, Python 3.11).txt",
+            "passed": 7254,
+            "summary": "2026-11-04T23:52:37.7690598Z PASS exit=0 | 7254 passed, 10 skipped, 26 deselected | 1973.83s | 9 warnings"
+          },
+          {
+            "log": "10_Ackredit public-package pilot (Python 3.12).txt",
+            "passed": 1792,
+            "summary": "2026-11-04T23:39:47.8913638Z PASS exit=0 | 1792 passed | 915.03s | 4 warnings"
+          },
+          {
+            "log": "12_Offline tests (ubuntu-latest, Python 3.13).txt",
+            "passed": 7254,
+            "summary": "2026-11-04T23:48:48.2406585Z PASS exit=0 | 7254 passed, 10 skipped, 26 deselected | 1924.28s | 9 warnings"
+          },
+          {
+            "log": "14_Ackredit public-package pilot (Python 3.11).txt",
+            "passed": 1792,
+            "summary": "2026-11-04T23:30:41.5288500Z PASS exit=0 | 1792 passed | 841.90s | 4 warnings"
+          },
+          {
+            "log": "16_Offline tests (windows-latest, Python 3.11).txt",
+            "passed": 7254,
+            "summary": "2026-11-05T00:12:27.8818157Z PASS exit=0 | 7254 passed, 10 skipped, 26 deselected | 3080.17s | 9 warnings"
+          },
+          {
+            "log": "17_Ackredit public-package pilot (Python 3.13).txt",
+            "passed": 1792,
+            "summary": "2026-11-04T23:28:31.9608285Z PASS exit=0 | 1792 passed | 717.11s | 4 warnings"
+          }
+        ],
+        "coverage_upload_queued": true,
+        "coverage_processing_percentage": "not inferred from upload status",
+        "jobs_detail": [
+          {
+            "id": 126932079422,
+            "name": "Zstandard backport (macos-26, Python 3.12)",
+            "conclusion": "success",
+            "started_at": "2026-11-05T00:22:19Z",
+            "completed_at": "2026-11-05T00:23:15Z"
+          },
+          {
+            "id": 126932079455,
+            "name": "Offline tests (windows-latest, Python 3.11)",
+            "conclusion": "success",
+            "started_at": "2026-11-04T23:19:29Z",
+            "completed_at": "2026-11-05T00:12:33Z"
+          },
+          {
+            "id": 126932079486,
+            "name": "Offline tests (macos-26, Python 3.14)",
+            "conclusion": "success",
+            "started_at": "2026-11-05T00:47:06Z",
+            "completed_at": "2026-11-05T01:13:58Z"
+          },
+          {
+            "id": 126932079492,
+            "name": "Ackredit public-package pilot (Python 3.13)",
+            "conclusion": "success",
+            "started_at": "2026-11-04T23:16:05Z",
+            "completed_at": "2026-11-04T23:28:34Z"
+          },
+          {
+            "id": 126932079528,
+            "name": "Zstandard backport (macos-26, Python 3.11)",
+            "conclusion": "success",
+            "started_at": "2026-11-05T00:27:33Z",
+            "completed_at": "2026-11-05T00:30:21Z"
+          },
+          {
+            "id": 126932079563,
+            "name": "Ackredit public-package pilot (Python 3.11)",
+            "conclusion": "success",
+            "started_at": "2026-11-04T23:16:05Z",
+            "completed_at": "2026-11-04T23:30:44Z"
+          },
+          {
+            "id": 126932079621,
+            "name": "Offline tests (windows-latest, Python 3.12)",
+            "conclusion": "success",
+            "started_at": "2026-11-04T23:30:47Z",
+            "completed_at": "2026-11-05T00:23:26Z"
+          },
+          {
+            "id": 126932079635,
+            "name": "Zstandard backport (macos-26, Python 3.13)",
+            "conclusion": "success",
+            "started_at": "2026-11-05T00:30:24Z",
+            "completed_at": "2026-11-05T00:31:17Z"
+          },
+          {
+            "id": 126932079646,
+            "name": "Ackredit public-package pilot (Python 3.12)",
+            "conclusion": "success",
+            "started_at": "2026-11-04T23:23:41Z",
+            "completed_at": "2026-11-04T23:39:52Z"
+          },
+          {
+            "id": 126932079649,
+            "name": "Offline tests (ubuntu-latest, Python 3.13)",
+            "conclusion": "success",
+            "started_at": "2026-11-04T23:16:06Z",
+            "completed_at": "2026-11-04T23:48:53Z"
+          },
+          {
+            "id": 126932079673,
+            "name": "Offline tests (ubuntu-latest, Python 3.11)",
+            "conclusion": "success",
+            "started_at": "2026-11-04T23:19:07Z",
+            "completed_at": "2026-11-04T23:52:42Z"
+          },
+          {
+            "id": 126932079687,
+            "name": "Offline tests (windows-latest, Python 3.14)",
+            "conclusion": "success",
+            "started_at": "2026-11-04T23:33:53Z",
+            "completed_at": "2026-11-05T00:14:49Z"
+          },
+          {
+            "id": 126932079698,
+            "name": "Offline tests (windows-latest, Python 3.13)",
+            "conclusion": "success",
+            "started_at": "2026-11-04T23:22:57Z",
+            "completed_at": "2026-11-05T00:11:54Z"
+          },
+          {
+            "id": 126932079730,
+            "name": "Ackredit public-package pilot (Python 3.14)",
+            "conclusion": "success",
+            "started_at": "2026-11-04T23:23:53Z",
+            "completed_at": "2026-11-04T23:39:46Z"
+          },
+          {
+            "id": 126932079858,
+            "name": "Offline tests (ubuntu-latest, Python 3.14)",
+            "conclusion": "success",
+            "started_at": "2026-11-04T23:29:20Z",
+            "completed_at": "2026-11-05T00:00:13Z"
+          },
+          {
+            "id": 126932079871,
+            "name": "Offline tests (ubuntu-latest, Python 3.12)",
+            "conclusion": "success",
+            "started_at": "2026-11-04T23:42:48Z",
+            "completed_at": "2026-11-05T00:17:54Z"
+          },
+          {
+            "id": 126932136824,
+            "name": "Ruff",
+            "conclusion": "success",
+            "started_at": "2026-11-04T23:46:42Z",
+            "completed_at": "2026-11-04T23:46:52Z"
+          },
+          {
+            "id": 126981841618,
+            "name": "Publish default-branch coverage",
+            "conclusion": "success",
+            "started_at": "2026-11-05T01:14:01Z",
+            "completed_at": "2026-11-05T01:14:10Z"
+          }
+        ]
+      },
+      "governance-final": {
+        "id": 41932333524,
+        "url": "https://github.com/uibcdf/sabueso/actions/runs/41932333524",
+        "conclusion": "success",
+        "jobs": 1,
+        "full_manifest_members_verified": 6,
+        "pytest_summaries": [],
+        "coverage_upload_queued": false,
+        "coverage_processing_percentage": "not inferred from upload status",
+        "jobs_detail": [
+          {
+            "id": 126932079157,
+            "name": "governance",
+            "conclusion": "success",
+            "started_at": "2026-11-04T23:18:58Z",
+            "completed_at": "2026-11-04T23:19:04Z"
+          }
+        ]
+      }
+    },
+    "nonterminal_or_unsuccessful_steps": [],
+    "qualified": true
+  },
+  "cross_reader": {
+    "head": "c5b8af1cf9cd66e7536832da731f08e74ce299fa",
+    "owner": "#188/#186/#148/#112",
+    "review_trigger": "production codec adoption",
+    "producer_routes": 12,
+    "fresh_frames_verified": 24,
+    "all_routes_read_native_and_backport_originals": true,
+    "native_cross_reader": true,
+    "rows": [
+      {
+        "log": "2_Offline tests (windows-latest, Python 3.14).txt",
+        "platform": "Windows",
+        "minor": 14,
+        "producer": {
+          "backend": {
+            "distribution_version": null,
+            "integrity": "frame checksum enabled",
+            "module": "compression.zstd",
+            "nb_workers": 0,
+            "version": "1.5.7"
+          },
+          "fixture_sha256": "b649597374069aa5e45105987691159fa674577dfbc2089c715eab52ccac2d0e",
+          "head_sha": "c5b8af1cf9cd66e7536832da731f08e74ce299fa",
+          "platform": "Windows",
+          "python": [
+            3,
+            14,
+            10
+          ],
+          "tool_sha256": "bc2af0d8b4df41b707c4439782983e8df53534267ed1901099af1c44a7477a8a"
+        },
+        "consumer": {
+          "module": "compression.zstd",
+          "version": "1.5.7",
+          "distribution_version": null,
+          "integrity": "frame checksum enabled",
+          "nb_workers": 0
+        },
+        "payloads_verified": 2,
+        "original_byte_exact": true
+      },
+      {
+        "log": "3_Offline tests (ubuntu-latest, Python 3.12).txt",
+        "platform": "Linux",
+        "minor": 12,
+        "producer": {
+          "backend": {
+            "distribution_version": "1.8.0",
+            "integrity": "frame checksum enabled",
+            "module": "backports.zstd",
+            "nb_workers": 0,
+            "version": "1.5.7"
+          },
+          "fixture_sha256": "b649597374069aa5e45105987691159fa674577dfbc2089c715eab52ccac2d0e",
+          "head_sha": "c5b8af1cf9cd66e7536832da731f08e74ce299fa",
+          "platform": "Linux",
+          "python": [
+            3,
+            12,
+            16
+          ],
+          "tool_sha256": "bc2af0d8b4df41b707c4439782983e8df53534267ed1901099af1c44a7477a8a"
+        },
+        "consumer": {
+          "module": "compression.zstd",
+          "version": "1.5.7",
+          "distribution_version": null,
+          "integrity": "frame checksum enabled",
+          "nb_workers": 0
+        },
+        "payloads_verified": 2,
+        "original_byte_exact": true
+      },
+      {
+        "log": "4_Offline tests (ubuntu-latest, Python 3.14).txt",
+        "platform": "Linux",
+        "minor": 14,
+        "producer": {
+          "backend": {
+            "distribution_version": null,
+            "integrity": "frame checksum enabled",
+            "module": "compression.zstd",
+            "nb_workers": 0,
+            "version": "1.5.7"
+          },
+          "fixture_sha256": "b649597374069aa5e45105987691159fa674577dfbc2089c715eab52ccac2d0e",
+          "head_sha": "c5b8af1cf9cd66e7536832da731f08e74ce299fa",
+          "platform": "Linux",
+          "python": [
+            3,
+            14,
+            10
+          ],
+          "tool_sha256": "bc2af0d8b4df41b707c4439782983e8df53534267ed1901099af1c44a7477a8a"
+        },
+        "consumer": {
+          "module": "compression.zstd",
+          "version": "1.5.7",
+          "distribution_version": null,
+          "integrity": "frame checksum enabled",
+          "nb_workers": 0
+        },
+        "payloads_verified": 2,
+        "original_byte_exact": true
+      },
+      {
+        "log": "5_Offline tests (windows-latest, Python 3.12).txt",
+        "platform": "Windows",
+        "minor": 12,
+        "producer": {
+          "backend": {
+            "distribution_version": "1.8.0",
+            "integrity": "frame checksum enabled",
+            "module": "backports.zstd",
+            "nb_workers": 0,
+            "version": "1.5.7"
+          },
+          "fixture_sha256": "b649597374069aa5e45105987691159fa674577dfbc2089c715eab52ccac2d0e",
+          "head_sha": "c5b8af1cf9cd66e7536832da731f08e74ce299fa",
+          "platform": "Windows",
+          "python": [
+            3,
+            12,
+            16
+          ],
+          "tool_sha256": "bc2af0d8b4df41b707c4439782983e8df53534267ed1901099af1c44a7477a8a"
+        },
+        "consumer": {
+          "module": "compression.zstd",
+          "version": "1.5.7",
+          "distribution_version": null,
+          "integrity": "frame checksum enabled",
+          "nb_workers": 0
+        },
+        "payloads_verified": 2,
+        "original_byte_exact": true
+      },
+      {
+        "log": "7_Offline tests (windows-latest, Python 3.13).txt",
+        "platform": "Windows",
+        "minor": 13,
+        "producer": {
+          "backend": {
+            "distribution_version": "1.8.0",
+            "integrity": "frame checksum enabled",
+            "module": "backports.zstd",
+            "nb_workers": 0,
+            "version": "1.5.7"
+          },
+          "fixture_sha256": "b649597374069aa5e45105987691159fa674577dfbc2089c715eab52ccac2d0e",
+          "head_sha": "c5b8af1cf9cd66e7536832da731f08e74ce299fa",
+          "platform": "Windows",
+          "python": [
+            3,
+            13,
+            18
+          ],
+          "tool_sha256": "bc2af0d8b4df41b707c4439782983e8df53534267ed1901099af1c44a7477a8a"
+        },
+        "consumer": {
+          "module": "compression.zstd",
+          "version": "1.5.7",
+          "distribution_version": null,
+          "integrity": "frame checksum enabled",
+          "nb_workers": 0
+        },
+        "payloads_verified": 2,
+        "original_byte_exact": true
+      },
+      {
+        "log": "8_Offline tests (macos-26, Python 3.14).txt",
+        "platform": "Darwin",
+        "minor": 14,
+        "producer": {
+          "backend": {
+            "distribution_version": null,
+            "integrity": "frame checksum enabled",
+            "module": "compression.zstd",
+            "nb_workers": 0,
+            "version": "1.5.7"
+          },
+          "fixture_sha256": "b649597374069aa5e45105987691159fa674577dfbc2089c715eab52ccac2d0e",
+          "head_sha": "c5b8af1cf9cd66e7536832da731f08e74ce299fa",
+          "platform": "Darwin",
+          "python": [
+            3,
+            14,
+            10
+          ],
+          "tool_sha256": "bc2af0d8b4df41b707c4439782983e8df53534267ed1901099af1c44a7477a8a"
+        },
+        "consumer": {
+          "module": "compression.zstd",
+          "version": "1.5.7",
+          "distribution_version": null,
+          "integrity": "frame checksum enabled",
+          "nb_workers": 0
+        },
+        "payloads_verified": 2,
+        "original_byte_exact": true
+      },
+      {
+        "log": "9_Offline tests (ubuntu-latest, Python 3.11).txt",
+        "platform": "Linux",
+        "minor": 11,
+        "producer": {
+          "backend": {
+            "distribution_version": "1.8.0",
+            "integrity": "frame checksum enabled",
+            "module": "backports.zstd",
+            "nb_workers": 0,
+            "version": "1.5.7"
+          },
+          "fixture_sha256": "b649597374069aa5e45105987691159fa674577dfbc2089c715eab52ccac2d0e",
+          "head_sha": "c5b8af1cf9cd66e7536832da731f08e74ce299fa",
+          "platform": "Linux",
+          "python": [
+            3,
+            11,
+            18
+          ],
+          "tool_sha256": "bc2af0d8b4df41b707c4439782983e8df53534267ed1901099af1c44a7477a8a"
+        },
+        "consumer": {
+          "module": "compression.zstd",
+          "version": "1.5.7",
+          "distribution_version": null,
+          "integrity": "frame checksum enabled",
+          "nb_workers": 0
+        },
+        "payloads_verified": 2,
+        "original_byte_exact": true
+      },
+      {
+        "log": "11_Zstandard backport (macos-26, Python 3.13).txt",
+        "platform": "Darwin",
+        "minor": 13,
+        "producer": {
+          "backend": {
+            "distribution_version": "1.8.0",
+            "integrity": "frame checksum enabled",
+            "module": "backports.zstd",
+            "nb_workers": 0,
+            "version": "1.5.7"
+          },
+          "fixture_sha256": "b649597374069aa5e45105987691159fa674577dfbc2089c715eab52ccac2d0e",
+          "head_sha": "c5b8af1cf9cd66e7536832da731f08e74ce299fa",
+          "platform": "Darwin",
+          "python": [
+            3,
+            13,
+            18
+          ],
+          "tool_sha256": "bc2af0d8b4df41b707c4439782983e8df53534267ed1901099af1c44a7477a8a"
+        },
+        "consumer": {
+          "module": "compression.zstd",
+          "version": "1.5.7",
+          "distribution_version": null,
+          "integrity": "frame checksum enabled",
+          "nb_workers": 0
+        },
+        "payloads_verified": 2,
+        "original_byte_exact": true
+      },
+      {
+        "log": "12_Offline tests (ubuntu-latest, Python 3.13).txt",
+        "platform": "Linux",
+        "minor": 13,
+        "producer": {
+          "backend": {
+            "distribution_version": "1.8.0",
+            "integrity": "frame checksum enabled",
+            "module": "backports.zstd",
+            "nb_workers": 0,
+            "version": "1.5.7"
+          },
+          "fixture_sha256": "b649597374069aa5e45105987691159fa674577dfbc2089c715eab52ccac2d0e",
+          "head_sha": "c5b8af1cf9cd66e7536832da731f08e74ce299fa",
+          "platform": "Linux",
+          "python": [
+            3,
+            13,
+            18
+          ],
+          "tool_sha256": "bc2af0d8b4df41b707c4439782983e8df53534267ed1901099af1c44a7477a8a"
+        },
+        "consumer": {
+          "module": "compression.zstd",
+          "version": "1.5.7",
+          "distribution_version": null,
+          "integrity": "frame checksum enabled",
+          "nb_workers": 0
+        },
+        "payloads_verified": 2,
+        "original_byte_exact": true
+      },
+      {
+        "log": "13_Zstandard backport (macos-26, Python 3.11).txt",
+        "platform": "Darwin",
+        "minor": 11,
+        "producer": {
+          "backend": {
+            "distribution_version": "1.8.0",
+            "integrity": "frame checksum enabled",
+            "module": "backports.zstd",
+            "nb_workers": 0,
+            "version": "1.5.7"
+          },
+          "fixture_sha256": "b649597374069aa5e45105987691159fa674577dfbc2089c715eab52ccac2d0e",
+          "head_sha": "c5b8af1cf9cd66e7536832da731f08e74ce299fa",
+          "platform": "Darwin",
+          "python": [
+            3,
+            11,
+            18
+          ],
+          "tool_sha256": "bc2af0d8b4df41b707c4439782983e8df53534267ed1901099af1c44a7477a8a"
+        },
+        "consumer": {
+          "module": "compression.zstd",
+          "version": "1.5.7",
+          "distribution_version": null,
+          "integrity": "frame checksum enabled",
+          "nb_workers": 0
+        },
+        "payloads_verified": 2,
+        "original_byte_exact": true
+      },
+      {
+        "log": "15_Zstandard backport (macos-26, Python 3.12).txt",
+        "platform": "Darwin",
+        "minor": 12,
+        "producer": {
+          "backend": {
+            "distribution_version": "1.8.0",
+            "integrity": "frame checksum enabled",
+            "module": "backports.zstd",
+            "nb_workers": 0,
+            "version": "1.5.7"
+          },
+          "fixture_sha256": "b649597374069aa5e45105987691159fa674577dfbc2089c715eab52ccac2d0e",
+          "head_sha": "c5b8af1cf9cd66e7536832da731f08e74ce299fa",
+          "platform": "Darwin",
+          "python": [
+            3,
+            12,
+            16
+          ],
+          "tool_sha256": "bc2af0d8b4df41b707c4439782983e8df53534267ed1901099af1c44a7477a8a"
+        },
+        "consumer": {
+          "module": "compression.zstd",
+          "version": "1.5.7",
+          "distribution_version": null,
+          "integrity": "frame checksum enabled",
+          "nb_workers": 0
+        },
+        "payloads_verified": 2,
+        "original_byte_exact": true
+      },
+      {
+        "log": "16_Offline tests (windows-latest, Python 3.11).txt",
+        "platform": "Windows",
+        "minor": 11,
+        "producer": {
+          "backend": {
+            "distribution_version": "1.8.0",
+            "integrity": "frame checksum enabled",
+            "module": "backports.zstd",
+            "nb_workers": 0,
+            "version": "1.5.7"
+          },
+          "fixture_sha256": "b649597374069aa5e45105987691159fa674577dfbc2089c715eab52ccac2d0e",
+          "head_sha": "c5b8af1cf9cd66e7536832da731f08e74ce299fa",
+          "platform": "Windows",
+          "python": [
+            3,
+            11,
+            18
+          ],
+          "tool_sha256": "bc2af0d8b4df41b707c4439782983e8df53534267ed1901099af1c44a7477a8a"
+        },
+        "consumer": {
+          "module": "compression.zstd",
+          "version": "1.5.7",
+          "distribution_version": null,
+          "integrity": "frame checksum enabled",
+          "nb_workers": 0
+        },
+        "payloads_verified": 2,
+        "original_byte_exact": true
+      }
+    ]
+  },
+  "installed_transport": {
+    "head": "c5b8af1cf9cd66e7536832da731f08e74ce299fa",
+    "sdk": "0.14.0+167.gc5b8af1",
+    "owner": "#188/#186/#148/#112",
+    "review_trigger": "transport/workload or release admission",
+    "installed_routes": 12,
+    "successful_transport_cases": 36,
+    "rows": [
+      {
+        "log": "2_Offline tests (windows-latest, Python 3.14).txt",
+        "platform": "Windows",
+        "minor": 14,
+        "report": {
+          "installed": true,
+          "sdk": "0.14.0+167.gc5b8af1",
+          "transports": [
+            {
+              "backend": {
+                "level": null,
+                "module": null,
+                "version": null
+              },
+              "compression": "none",
+              "decoded_bytes": 443982,
+              "decoded_sha256": "sha256:27d84404b00b7a336cdf3f1c9c3d8188f9f47e310875e511c6c4595170fd25fd",
+              "encoded_bytes": 443982,
+              "encoded_sha256": "sha256:27d84404b00b7a336cdf3f1c9c3d8188f9f47e310875e511c6c4595170fd25fd",
+              "format": "exploration_transport@1"
+            },
+            {
+              "backend": {
+                "level": 6,
+                "module": "zlib",
+                "version": "1.3.2"
+              },
+              "compression": "gzip",
+              "decoded_bytes": 443982,
+              "decoded_sha256": "sha256:27d84404b00b7a336cdf3f1c9c3d8188f9f47e310875e511c6c4595170fd25fd",
+              "encoded_bytes": 30657,
+              "encoded_sha256": "sha256:5eda1e0b3063d03aaac9faa308d1f5d0fcab759979a600e70433cf5dd58901a1",
+              "format": "exploration_transport@1"
+            },
+            {
+              "backend": {
+                "distribution_version": null,
+                "level": 3,
+                "module": "compression.zstd",
+                "version": "1.5.7"
+              },
+              "compression": "zstd",
+              "decoded_bytes": 443982,
+              "decoded_sha256": "sha256:27d84404b00b7a336cdf3f1c9c3d8188f9f47e310875e511c6c4595170fd25fd",
+              "encoded_bytes": 21105,
+              "encoded_sha256": "sha256:7edb44dad606e71620674385d71d5f313295089d368bddf1a9306207c4779e00",
+              "format": "exploration_transport@1"
+            }
+          ]
+        }
+      },
+      {
+        "log": "3_Offline tests (ubuntu-latest, Python 3.12).txt",
+        "platform": "Linux",
+        "minor": 12,
+        "report": {
+          "installed": true,
+          "sdk": "0.14.0+167.gc5b8af1",
+          "transports": [
+            {
+              "backend": {
+                "level": null,
+                "module": null,
+                "version": null
+              },
+              "compression": "none",
+              "decoded_bytes": 443982,
+              "decoded_sha256": "sha256:d3299b761f592a7f6e06c6c2fa1aa450eb42df45e7868efc28017194121f74d2",
+              "encoded_bytes": 443982,
+              "encoded_sha256": "sha256:d3299b761f592a7f6e06c6c2fa1aa450eb42df45e7868efc28017194121f74d2",
+              "format": "exploration_transport@1"
+            },
+            {
+              "backend": {
+                "level": 6,
+                "module": "zlib",
+                "version": "1.3.2"
+              },
+              "compression": "gzip",
+              "decoded_bytes": 443982,
+              "decoded_sha256": "sha256:d3299b761f592a7f6e06c6c2fa1aa450eb42df45e7868efc28017194121f74d2",
+              "encoded_bytes": 30670,
+              "encoded_sha256": "sha256:82be63baf182a556035b35ba4df5c3a597df8f34510c7e2601c5c30eb8efa657",
+              "format": "exploration_transport@1"
+            },
+            {
+              "backend": {
+                "distribution_version": "1.8.0",
+                "level": 3,
+                "module": "backports.zstd",
+                "version": "1.5.7"
+              },
+              "compression": "zstd",
+              "decoded_bytes": 443982,
+              "decoded_sha256": "sha256:d3299b761f592a7f6e06c6c2fa1aa450eb42df45e7868efc28017194121f74d2",
+              "encoded_bytes": 21058,
+              "encoded_sha256": "sha256:3340454f477264581ad8d294bad1a5bf3f3339bbd547a5d0b8d3403242e09fd3",
+              "format": "exploration_transport@1"
+            }
+          ]
+        }
+      },
+      {
+        "log": "4_Offline tests (ubuntu-latest, Python 3.14).txt",
+        "platform": "Linux",
+        "minor": 14,
+        "report": {
+          "installed": true,
+          "sdk": "0.14.0+167.gc5b8af1",
+          "transports": [
+            {
+              "backend": {
+                "level": null,
+                "module": null,
+                "version": null
+              },
+              "compression": "none",
+              "decoded_bytes": 443982,
+              "decoded_sha256": "sha256:7c325953fce09a00c64f5b99fbcf5d2f86aae0a1f5d57487ea2529558cb49cb7",
+              "encoded_bytes": 443982,
+              "encoded_sha256": "sha256:7c325953fce09a00c64f5b99fbcf5d2f86aae0a1f5d57487ea2529558cb49cb7",
+              "format": "exploration_transport@1"
+            },
+            {
+              "backend": {
+                "level": 6,
+                "module": "zlib",
+                "version": "1.3.2"
+              },
+              "compression": "gzip",
+              "decoded_bytes": 443982,
+              "decoded_sha256": "sha256:7c325953fce09a00c64f5b99fbcf5d2f86aae0a1f5d57487ea2529558cb49cb7",
+              "encoded_bytes": 30641,
+              "encoded_sha256": "sha256:59680833fc3b352c649a040ec4f3df1868762988c9d0195c53f587c4185ea993",
+              "format": "exploration_transport@1"
+            },
+            {
+              "backend": {
+                "distribution_version": null,
+                "level": 3,
+                "module": "compression.zstd",
+                "version": "1.5.7"
+              },
+              "compression": "zstd",
+              "decoded_bytes": 443982,
+              "decoded_sha256": "sha256:7c325953fce09a00c64f5b99fbcf5d2f86aae0a1f5d57487ea2529558cb49cb7",
+              "encoded_bytes": 21073,
+              "encoded_sha256": "sha256:a11814019d88010c840935f818bc360770bdd0a73b9274e5259f955466a66716",
+              "format": "exploration_transport@1"
+            }
+          ]
+        }
+      },
+      {
+        "log": "5_Offline tests (windows-latest, Python 3.12).txt",
+        "platform": "Windows",
+        "minor": 12,
+        "report": {
+          "installed": true,
+          "sdk": "0.14.0+167.gc5b8af1",
+          "transports": [
+            {
+              "backend": {
+                "level": null,
+                "module": null,
+                "version": null
+              },
+              "compression": "none",
+              "decoded_bytes": 443982,
+              "decoded_sha256": "sha256:17c32ae414e54341cc6f2adb2bc9b75c1dff027749ec37477ab520c7b40ea358",
+              "encoded_bytes": 443982,
+              "encoded_sha256": "sha256:17c32ae414e54341cc6f2adb2bc9b75c1dff027749ec37477ab520c7b40ea358",
+              "format": "exploration_transport@1"
+            },
+            {
+              "backend": {
+                "level": 6,
+                "module": "zlib",
+                "version": "1.3.2"
+              },
+              "compression": "gzip",
+              "decoded_bytes": 443982,
+              "decoded_sha256": "sha256:17c32ae414e54341cc6f2adb2bc9b75c1dff027749ec37477ab520c7b40ea358",
+              "encoded_bytes": 30604,
+              "encoded_sha256": "sha256:cec08f4716bbbe444eed830e2891fcdae95dbf2bd499d264f196ea30bae3d1c1",
+              "format": "exploration_transport@1"
+            },
+            {
+              "backend": {
+                "distribution_version": "1.8.0",
+                "level": 3,
+                "module": "backports.zstd",
+                "version": "1.5.7"
+              },
+              "compression": "zstd",
+              "decoded_bytes": 443982,
+              "decoded_sha256": "sha256:17c32ae414e54341cc6f2adb2bc9b75c1dff027749ec37477ab520c7b40ea358",
+              "encoded_bytes": 21089,
+              "encoded_sha256": "sha256:fe5d6e838fd6f01fff9aefdeb7d9489d1845fc93be024f374ab5f23e74d102d3",
+              "format": "exploration_transport@1"
+            }
+          ]
+        }
+      },
+      {
+        "log": "7_Offline tests (windows-latest, Python 3.13).txt",
+        "platform": "Windows",
+        "minor": 13,
+        "report": {
+          "installed": true,
+          "sdk": "0.14.0+167.gc5b8af1",
+          "transports": [
+            {
+              "backend": {
+                "level": null,
+                "module": null,
+                "version": null
+              },
+              "compression": "none",
+              "decoded_bytes": 443982,
+              "decoded_sha256": "sha256:2ae313f834523bcdca89e815fa6175b4e91c6a7b554b4838d5802e7b68454457",
+              "encoded_bytes": 443982,
+              "encoded_sha256": "sha256:2ae313f834523bcdca89e815fa6175b4e91c6a7b554b4838d5802e7b68454457",
+              "format": "exploration_transport@1"
+            },
+            {
+              "backend": {
+                "level": 6,
+                "module": "zlib",
+                "version": "1.3.2"
+              },
+              "compression": "gzip",
+              "decoded_bytes": 443982,
+              "decoded_sha256": "sha256:2ae313f834523bcdca89e815fa6175b4e91c6a7b554b4838d5802e7b68454457",
+              "encoded_bytes": 30615,
+              "encoded_sha256": "sha256:44ce97f24d723591175670d6c8e1953bfd0b472541073d86b2a03beae71aca64",
+              "format": "exploration_transport@1"
+            },
+            {
+              "backend": {
+                "distribution_version": "1.8.0",
+                "level": 3,
+                "module": "backports.zstd",
+                "version": "1.5.7"
+              },
+              "compression": "zstd",
+              "decoded_bytes": 443982,
+              "decoded_sha256": "sha256:2ae313f834523bcdca89e815fa6175b4e91c6a7b554b4838d5802e7b68454457",
+              "encoded_bytes": 21103,
+              "encoded_sha256": "sha256:121b8495e5df689eb66c7b463c05bb98de03f124900a5db99ff4e2c3b004778d",
+              "format": "exploration_transport@1"
+            }
+          ]
+        }
+      },
+      {
+        "log": "8_Offline tests (macos-26, Python 3.14).txt",
+        "platform": "Darwin",
+        "minor": 14,
+        "report": {
+          "installed": true,
+          "sdk": "0.14.0+167.gc5b8af1",
+          "transports": [
+            {
+              "backend": {
+                "level": null,
+                "module": null,
+                "version": null
+              },
+              "compression": "none",
+              "decoded_bytes": 443982,
+              "decoded_sha256": "sha256:701538fd26c309ee9d0a70d1b839f609033a78acd64fa1b6e0995fd10fc28b15",
+              "encoded_bytes": 443982,
+              "encoded_sha256": "sha256:701538fd26c309ee9d0a70d1b839f609033a78acd64fa1b6e0995fd10fc28b15",
+              "format": "exploration_transport@1"
+            },
+            {
+              "backend": {
+                "level": 6,
+                "module": "zlib",
+                "version": "1.3.2"
+              },
+              "compression": "gzip",
+              "decoded_bytes": 443982,
+              "decoded_sha256": "sha256:701538fd26c309ee9d0a70d1b839f609033a78acd64fa1b6e0995fd10fc28b15",
+              "encoded_bytes": 30590,
+              "encoded_sha256": "sha256:0c126cbbe818433260953cf7cd4ab4327406cc1e223da4a96dfd1e6a51b550dc",
+              "format": "exploration_transport@1"
+            },
+            {
+              "backend": {
+                "distribution_version": null,
+                "level": 3,
+                "module": "compression.zstd",
+                "version": "1.5.7"
+              },
+              "compression": "zstd",
+              "decoded_bytes": 443982,
+              "decoded_sha256": "sha256:701538fd26c309ee9d0a70d1b839f609033a78acd64fa1b6e0995fd10fc28b15",
+              "encoded_bytes": 21067,
+              "encoded_sha256": "sha256:79f4ddac2c5f9f5567b44a4a0d945fa6f5dc7484bdd923639f4614404ebc776f",
+              "format": "exploration_transport@1"
+            }
+          ]
+        }
+      },
+      {
+        "log": "9_Offline tests (ubuntu-latest, Python 3.11).txt",
+        "platform": "Linux",
+        "minor": 11,
+        "report": {
+          "installed": true,
+          "sdk": "0.14.0+167.gc5b8af1",
+          "transports": [
+            {
+              "backend": {
+                "level": null,
+                "module": null,
+                "version": null
+              },
+              "compression": "none",
+              "decoded_bytes": 443982,
+              "decoded_sha256": "sha256:88b172cba4fdd4aff704ec74086b1980fdfbec1c9e6cb37e220787fcff7782af",
+              "encoded_bytes": 443982,
+              "encoded_sha256": "sha256:88b172cba4fdd4aff704ec74086b1980fdfbec1c9e6cb37e220787fcff7782af",
+              "format": "exploration_transport@1"
+            },
+            {
+              "backend": {
+                "level": 6,
+                "module": "zlib",
+                "version": "1.3.2"
+              },
+              "compression": "gzip",
+              "decoded_bytes": 443982,
+              "decoded_sha256": "sha256:88b172cba4fdd4aff704ec74086b1980fdfbec1c9e6cb37e220787fcff7782af",
+              "encoded_bytes": 30601,
+              "encoded_sha256": "sha256:319dba250f438647493cdb5ffbbccadf8543271db40523f7e1e15d45dbef7b7c",
+              "format": "exploration_transport@1"
+            },
+            {
+              "backend": {
+                "distribution_version": "1.8.0",
+                "level": 3,
+                "module": "backports.zstd",
+                "version": "1.5.7"
+              },
+              "compression": "zstd",
+              "decoded_bytes": 443982,
+              "decoded_sha256": "sha256:88b172cba4fdd4aff704ec74086b1980fdfbec1c9e6cb37e220787fcff7782af",
+              "encoded_bytes": 21096,
+              "encoded_sha256": "sha256:ac2250a5be203905ad5e2b693b0a387b0c1bc895ad83278d5d5462924858eff9",
+              "format": "exploration_transport@1"
+            }
+          ]
+        }
+      },
+      {
+        "log": "11_Zstandard backport (macos-26, Python 3.13).txt",
+        "platform": "Darwin",
+        "minor": 13,
+        "report": {
+          "installed": true,
+          "sdk": "0.14.0+167.gc5b8af1",
+          "transports": [
+            {
+              "backend": {
+                "level": null,
+                "module": null,
+                "version": null
+              },
+              "compression": "none",
+              "decoded_bytes": 443982,
+              "decoded_sha256": "sha256:fa8414a417f7ddc12c5a0e0daeb4ac3f0acfc3406b50cf801693e46a3d81c3a0",
+              "encoded_bytes": 443982,
+              "encoded_sha256": "sha256:fa8414a417f7ddc12c5a0e0daeb4ac3f0acfc3406b50cf801693e46a3d81c3a0",
+              "format": "exploration_transport@1"
+            },
+            {
+              "backend": {
+                "level": 6,
+                "module": "zlib",
+                "version": "1.3.2"
+              },
+              "compression": "gzip",
+              "decoded_bytes": 443982,
+              "decoded_sha256": "sha256:fa8414a417f7ddc12c5a0e0daeb4ac3f0acfc3406b50cf801693e46a3d81c3a0",
+              "encoded_bytes": 30590,
+              "encoded_sha256": "sha256:18e77c066eda68adb415ac36a4d83ffdaa7a52b4b8dcdc65120c2bb97c3ee384",
+              "format": "exploration_transport@1"
+            },
+            {
+              "backend": {
+                "distribution_version": "1.8.0",
+                "level": 3,
+                "module": "backports.zstd",
+                "version": "1.5.7"
+              },
+              "compression": "zstd",
+              "decoded_bytes": 443982,
+              "decoded_sha256": "sha256:fa8414a417f7ddc12c5a0e0daeb4ac3f0acfc3406b50cf801693e46a3d81c3a0",
+              "encoded_bytes": 21083,
+              "encoded_sha256": "sha256:4a550f777b936fa1a60932b861ea052a40f6237567ddfec3eb652319915077d7",
+              "format": "exploration_transport@1"
+            }
+          ]
+        }
+      },
+      {
+        "log": "12_Offline tests (ubuntu-latest, Python 3.13).txt",
+        "platform": "Linux",
+        "minor": 13,
+        "report": {
+          "installed": true,
+          "sdk": "0.14.0+167.gc5b8af1",
+          "transports": [
+            {
+              "backend": {
+                "level": null,
+                "module": null,
+                "version": null
+              },
+              "compression": "none",
+              "decoded_bytes": 443982,
+              "decoded_sha256": "sha256:d3e5404811905ac280d9e33fae22706c7df5a426802f4f1f56b7314ec614273d",
+              "encoded_bytes": 443982,
+              "encoded_sha256": "sha256:d3e5404811905ac280d9e33fae22706c7df5a426802f4f1f56b7314ec614273d",
+              "format": "exploration_transport@1"
+            },
+            {
+              "backend": {
+                "level": 6,
+                "module": "zlib",
+                "version": "1.3.2"
+              },
+              "compression": "gzip",
+              "decoded_bytes": 443982,
+              "decoded_sha256": "sha256:d3e5404811905ac280d9e33fae22706c7df5a426802f4f1f56b7314ec614273d",
+              "encoded_bytes": 30600,
+              "encoded_sha256": "sha256:977f2f2b804a07a9c7b80aa71b7d0ec78fa9ca458157c40380fbf1e403468dc3",
+              "format": "exploration_transport@1"
+            },
+            {
+              "backend": {
+                "distribution_version": "1.8.0",
+                "level": 3,
+                "module": "backports.zstd",
+                "version": "1.5.7"
+              },
+              "compression": "zstd",
+              "decoded_bytes": 443982,
+              "decoded_sha256": "sha256:d3e5404811905ac280d9e33fae22706c7df5a426802f4f1f56b7314ec614273d",
+              "encoded_bytes": 21106,
+              "encoded_sha256": "sha256:f380a0270f34811ad893238343eee51c937336f04dd65c21597f17195e56f711",
+              "format": "exploration_transport@1"
+            }
+          ]
+        }
+      },
+      {
+        "log": "13_Zstandard backport (macos-26, Python 3.11).txt",
+        "platform": "Darwin",
+        "minor": 11,
+        "report": {
+          "installed": true,
+          "sdk": "0.14.0+167.gc5b8af1",
+          "transports": [
+            {
+              "backend": {
+                "level": null,
+                "module": null,
+                "version": null
+              },
+              "compression": "none",
+              "decoded_bytes": 443982,
+              "decoded_sha256": "sha256:b9b335ee08bd119e9997cb3622a741bcd002d7ac9523af07ad616265735b6fae",
+              "encoded_bytes": 443982,
+              "encoded_sha256": "sha256:b9b335ee08bd119e9997cb3622a741bcd002d7ac9523af07ad616265735b6fae",
+              "format": "exploration_transport@1"
+            },
+            {
+              "backend": {
+                "level": 6,
+                "module": "zlib",
+                "version": "1.3.2"
+              },
+              "compression": "gzip",
+              "decoded_bytes": 443982,
+              "decoded_sha256": "sha256:b9b335ee08bd119e9997cb3622a741bcd002d7ac9523af07ad616265735b6fae",
+              "encoded_bytes": 30596,
+              "encoded_sha256": "sha256:47bb7d577e7b8da02f392b1a83007967996601d83c5be87d8d07c5d69173d08b",
+              "format": "exploration_transport@1"
+            },
+            {
+              "backend": {
+                "distribution_version": "1.8.0",
+                "level": 3,
+                "module": "backports.zstd",
+                "version": "1.5.7"
+              },
+              "compression": "zstd",
+              "decoded_bytes": 443982,
+              "decoded_sha256": "sha256:b9b335ee08bd119e9997cb3622a741bcd002d7ac9523af07ad616265735b6fae",
+              "encoded_bytes": 21057,
+              "encoded_sha256": "sha256:5b2652ef8f3df790cfc7b7da2bdebf277bf69744b466d590051ccfa823fa5f66",
+              "format": "exploration_transport@1"
+            }
+          ]
+        }
+      },
+      {
+        "log": "15_Zstandard backport (macos-26, Python 3.12).txt",
+        "platform": "Darwin",
+        "minor": 12,
+        "report": {
+          "installed": true,
+          "sdk": "0.14.0+167.gc5b8af1",
+          "transports": [
+            {
+              "backend": {
+                "level": null,
+                "module": null,
+                "version": null
+              },
+              "compression": "none",
+              "decoded_bytes": 443982,
+              "decoded_sha256": "sha256:803766bddeebafad30243818ed6f16d1bcd37770bb7fdd34d9ac9b1e1891b52e",
+              "encoded_bytes": 443982,
+              "encoded_sha256": "sha256:803766bddeebafad30243818ed6f16d1bcd37770bb7fdd34d9ac9b1e1891b52e",
+              "format": "exploration_transport@1"
+            },
+            {
+              "backend": {
+                "level": 6,
+                "module": "zlib",
+                "version": "1.3.2"
+              },
+              "compression": "gzip",
+              "decoded_bytes": 443982,
+              "decoded_sha256": "sha256:803766bddeebafad30243818ed6f16d1bcd37770bb7fdd34d9ac9b1e1891b52e",
+              "encoded_bytes": 30661,
+              "encoded_sha256": "sha256:be11f6e8601ad3d3b332047c23d9177db83d62d1d3a7a837e07c9be0ba9e776b",
+              "format": "exploration_transport@1"
+            },
+            {
+              "backend": {
+                "distribution_version": "1.8.0",
+                "level": 3,
+                "module": "backports.zstd",
+                "version": "1.5.7"
+              },
+              "compression": "zstd",
+              "decoded_bytes": 443982,
+              "decoded_sha256": "sha256:803766bddeebafad30243818ed6f16d1bcd37770bb7fdd34d9ac9b1e1891b52e",
+              "encoded_bytes": 21054,
+              "encoded_sha256": "sha256:b4824e24e74cb75a865aa0472d4d985125f70de7e685c0072c849d28aa8aee4a",
+              "format": "exploration_transport@1"
+            }
+          ]
+        }
+      },
+      {
+        "log": "16_Offline tests (windows-latest, Python 3.11).txt",
+        "platform": "Windows",
+        "minor": 11,
+        "report": {
+          "installed": true,
+          "sdk": "0.14.0+167.gc5b8af1",
+          "transports": [
+            {
+              "backend": {
+                "level": null,
+                "module": null,
+                "version": null
+              },
+              "compression": "none",
+              "decoded_bytes": 443982,
+              "decoded_sha256": "sha256:c0ece5155740e908a26d31fffd41dd94192fbd6ec48c3387d2682a6d64142bfc",
+              "encoded_bytes": 443982,
+              "encoded_sha256": "sha256:c0ece5155740e908a26d31fffd41dd94192fbd6ec48c3387d2682a6d64142bfc",
+              "format": "exploration_transport@1"
+            },
+            {
+              "backend": {
+                "level": 6,
+                "module": "zlib",
+                "version": "1.3.2"
+              },
+              "compression": "gzip",
+              "decoded_bytes": 443982,
+              "decoded_sha256": "sha256:c0ece5155740e908a26d31fffd41dd94192fbd6ec48c3387d2682a6d64142bfc",
+              "encoded_bytes": 30640,
+              "encoded_sha256": "sha256:3ada1e2d50a5c751ba29ea669e0b55c1fc1d4784719ffb4d971be674951d40f1",
+              "format": "exploration_transport@1"
+            },
+            {
+              "backend": {
+                "distribution_version": "1.8.0",
+                "level": 3,
+                "module": "backports.zstd",
+                "version": "1.5.7"
+              },
+              "compression": "zstd",
+              "decoded_bytes": 443982,
+              "decoded_sha256": "sha256:c0ece5155740e908a26d31fffd41dd94192fbd6ec48c3387d2682a6d64142bfc",
+              "encoded_bytes": 21096,
+              "encoded_sha256": "sha256:c4621ca48dc4adb05679c6cd4a35d46a22e8a7e601b26d04eab48635bde07ab4",
+              "format": "exploration_transport@1"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "proof_sha256": {
+    "remote/remote-qualified.json": "041faa85c01a1b236a6786af053b5f8966cf8b6011add5d7ab123b651a6f20be",
+    "remote/cross-readers-qualified.json": "b79a02f381c92706a67af0b72244c7427097f8e397c3cc5adbcc98a724a7d03d",
+    "remote/installed-transport-qualified.json": "b6d7efededb4d12fe657d9ce5badba362003d21c215fac0ee5b76c7bc144e136",
+    "verify_remote.log": "279ad8903c07bb66f0143a54ab29c6df58801e74ac987a45b5f94e0e24fc6711",
+    "verify_cross_readers.log": "3ec9616b826cf1234b89155879499db899c73c70cd76bfd2ae496db0062e6000",
+    "verify_installed_transport.log": "73bc217648b8479dba7ca95a260bdd071d30f918f6aca778aad6dd992d52ee29"
+  },
+  "manifests_and_members": "Both full captures verified with member hashes/sizes and log ZIP CRC; every applicable job/step checked by the retained verifier.",
+  "source_fixture_scope": "Nine source lanes each 7254 passed /10 skipped /26 deselected; four installed consumer lanes each 1792 passed. This is not private pilot or complete local-only input qualification.",
+  "scientific_default_review": "Maintainer-owned and explicitly deferred; no acceptance or default change.",
+  "researcher_acceptance": "pending; no wow or broad workload acceptance.",
+  "release_consolidation": "paused",
+  "owned_receiving": "recovered_work/target_scope_188_20261104/; retain captures, genuine original controls and reviewer casebook until next scientific/checkpoint review."
+}

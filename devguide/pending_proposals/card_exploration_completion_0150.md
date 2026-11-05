@@ -20,8 +20,9 @@ with physical reconciliation and broad researcher/workload acceptance still open
 
 Activity foundations now use conservative class @4 consistently in current direct
 activity/ligand answers, explanations and tables, with mapping @15 and explicit
-original @3 compatibility. Final source `7667754` has local post-editable receiving;
-its complete hosted qualification remains pending. The
+original @3 compatibility. Accumulated source `c5b8af1` now has
+[complete hosted technical receiving](../evidence/bioactivity_target_scope_checkpoint_20261105.json);
+independent scientific/default/consumer acceptance remains pending. The
 [B2 correspondence candidate](assay_aware_measurement_correspondence.md) records
 mapped-context limits and implements opt-in @2 with four same-input public
 comparisons and original @1/defaults. Scientific/default and consumer acceptance
