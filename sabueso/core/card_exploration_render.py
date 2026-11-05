@@ -611,6 +611,15 @@ def _parts(view):
         request = view.request
         opening.append(f"Question: {request['question']}")
         if request["question"] == "region_coverage":
+            if (
+                view._origin is not None
+                and view._origin._link_panel
+                and view._origin.native_payload.get("rule")
+                == "retained_context_links@5"
+            ):
+                from .card_model_fragment_regions_v1 import SCOPE
+
+                opening.append(SCOPE)
             options = request["options"]
             region = options["region"]
             opening.append(f"Sequence axis: {preview(options['sequence_ref'])}")
@@ -814,7 +823,8 @@ def _parts(view):
                         "structure_declaration_context_links@3",
                     )
                     else "model_context"
-                    if value.get("rule") == "retained_context_links@4"
+                    if value.get("rule")
+                    in ("retained_context_links@4", "retained_context_links@5")
                     else "annotation_context"
                 )
                 rows.append(

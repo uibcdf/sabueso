@@ -1,5 +1,17 @@
 # Sabueso — Tests and Quality Gates
 
+`test_card_model_fragments_offline.py` receives exact original fragment sequence,
+MD5, accession, inclusive reference interval and unambiguous application binding.
+Run it with the whole-model gate, affected Card access/human/agent/history,
+assembly/component/nonpolymer and explanation gates. Check fresh semantic
+metadata forgeries as well as resealed bundles, a mixed component/fragment
+session, independent inert reading and the genuine SDK174 original capsule.
+CI and staged installed receiving copy/select the standalone module and both
+required capsules; their outside-checkout calls explicitly release passed scratch.
+New format @9 must preserve formats @1–@8 and the native whole-sequence finding.
+The positive fragment cases are explicitly synthetic; they do not qualify a
+deposited partial model, atomic mapping or researcher acceptance.
+
 The public `test_structural_context_journey_offline.py` receives the 1TCD original
 wire/query/hash scope, human/compact agent/component/regional navigation and a
 fresh inert reader. Its focused-view guard labels inventory-wide unknown counts

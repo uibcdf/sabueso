@@ -1,5 +1,17 @@
 # Sabueso — Checkpoint
 
+Current model continuation: the
+[exact fragment question](pending_proposals/card_model_structural_navigation.md#fragment-continuation-acceptance--2026-11-05)
+adds a source-bound interval journey with human/compact-agent/source/back parity
+and independently verified format @9 reading. Whole-model rules, native findings,
+all older verifiers and genuine SDK174 saved decisions remain unchanged. Positive
+fragment inputs are explicitly synthetic; genuine public partial-model receiving
+and scientific/researcher/workload acceptance remain pending. Local and hosted
+qualification are recorded separately in
+[the receipt](evidence/model_fragment_navigation_20261105.json). B2 review remains
+deferred; B3 and the broad 0.15.0 experience remain open, release consolidation
+paused. This does not authorize third-party publication.
+
 Contributor-authority checkpoint: [#187 adoption](evidence/publication_authority_adoption_20261105.json)
 receives current canonical MolI guide `959c6529` and explicit prior permission for
 third-party publication, including comments/remote drafts. The micromamba report

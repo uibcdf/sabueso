@@ -1,5 +1,25 @@
 # Sabueso — Decision Log
 
+## 2026-11-05 — Exact original fragment-to-reference questions (#148/#173)
+
+Add `model_fragment_structure_request@1` and `retained_context_links@5` for
+proper fragments with one exact original source-bound model/application, the
+same original canonical checksum/length selection, explicit focal accession and
+inclusive interval, and an original fragment sequence equal to that canonical
+slice with matching MD5. There is no alignment, guessed offset, inferred
+isoform identity or atomic coordinate mapping. Keep the native whole-sequence
+finding and whole-model request @1 unchanged. Include retained experimental
+fragments explicitly in the new interval question.
+
+Save this navigation in independent exploration format @9 with frozen
+`model_fragment_navigation_binding@1`; retain every preceding verifier and
+genuine original producer file. A missing or incompatible original input never
+becomes a positive decision on reopening. The Card schema is unchanged.
+Synthetic contract qualification, genuine public fragment receiving, scientific
+acceptance and researcher/workload acceptance remain distinct. The public partial
+model input is still pending; an API 404 does not establish source absence.
+See [the bounded design](pending_proposals/card_model_structural_navigation.md#fragment-continuation-acceptance--2026-11-05).
+
 ## 2026-11-05 — Explicit permission before external publication (#187)
 
 The maintainer restates the accepted [MolI #80](https://github.com/uibcdf/moli/issues/80)

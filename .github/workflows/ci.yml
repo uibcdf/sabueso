@@ -93,6 +93,7 @@ jobs:
           cp tests/core/test_card_saved_nonpolymer_assembly_offline.py "$client_dir/"
           cp tests/core/test_card_component_navigation_offline.py "$client_dir/"
           cp tests/core/test_card_saved_component_navigation_offline.py "$client_dir/"
+          cp tests/core/test_card_model_fragments_offline.py "$client_dir/"
           cp tests/core/test_original_structure_navigation_offline.py "$client_dir/"
           cp tests/core/test_cell_serialization_support_offline.py "$client_dir/"
           mkdir -p "$client_dir/data"
@@ -102,6 +103,7 @@ jobs:
           cp tests/core/data/assembly_component_navigation_live_v1.json.gz "$client_dir/data/"
           cp tests/core/data/card_structure_assembly_saved_v6.json.gz "$client_dir/data/"
           cp tests/core/data/card_nonpolymer_navigation_saved_v7.json.gz "$client_dir/data/"
+          cp tests/core/data/model_fragment_navigation_original_v1.json.gz "$client_dir/data/"
           cp tests/core/test_rule_literature_extraction_offline.py "$client_dir/"
           cp tests/core/test_literature_intake_offline.py "$client_dir/"
           cp tests/core/test_article_metadata_offline.py "$client_dir/"
@@ -126,7 +128,7 @@ jobs:
           python -m pytest test_attribution_offline.py test_source_acquisition_offline.py test_rcsb_acquisition_offline.py test_chembl_acquisition_offline.py test_pubchem_acquisition_offline.py test_bindingdb_acquisition_offline.py test_chemical_identity_acquisition_offline.py test_pdbe_kb_acquisition_offline.py test_alphafold_acquisition_offline.py test_interpro_acquisition_offline.py test_disease_explanation_offline.py test_disease_identity_coverage_offline.py test_knowledge_state_explanation_offline.py test_molecule_knowledge_state_offline.py test_bioactivity_explanation_offline.py test_bioactivity_class_v4_offline.py test_measurement_correspondence_offline.py test_bioactivity_target_scope_offline.py test_ligand_explanation_offline.py test_oligomer_explanation_offline.py test_rule_literature_extraction_offline.py test_literature_intake_offline.py test_article_metadata_offline.py test_persisted_pipeline_offline.py \
             test_user_journeys_offline.py test_molecule_target_journey_offline.py test_clinical_bibliography_journey_offline.py test_disease_entities_journey_offline.py test_disease_deck_support_offline.py test_disease_deck_admission_offline.py test_mondo_acquisition_offline.py test_disease_source_acquisition_offline.py test_source_prerequisites_offline.py test_disease_lookup_acquisition_offline.py test_indication_bibliography_offline.py test_clinicaltrials_acquisition_offline.py test_ncbi_taxonomy_acquisition_offline.py test_gtex_acquisition_offline.py test_uniref_acquisition_offline.py test_oma_acquisition_offline.py test_gnomad_acquisition_offline.py test_comparative_operations_offline.py test_comparative_support_journey_offline.py test_scientific_dossier_journey_offline.py test_literature_source_review_journey_offline.py test_comparative_bibliography_offline.py test_comparative_credit_size_offline.py \
             test_card_nonpolymer_assembly_offline.py test_card_saved_nonpolymer_assembly_offline.py \
-            test_card_component_navigation_offline.py test_card_saved_component_navigation_offline.py test_original_structure_navigation_offline.py test_cell_serialization_support_offline.py -m "not online" --receptor=ci -o tmp_path_retention_policy=failed
+            test_card_component_navigation_offline.py test_card_saved_component_navigation_offline.py test_original_structure_navigation_offline.py test_cell_serialization_support_offline.py test_card_model_fragments_offline.py -m "not online" --receptor=ci -o tmp_path_retention_policy=failed
       - name: Run the public offline workflow
         shell: bash -l {0}
         run: |

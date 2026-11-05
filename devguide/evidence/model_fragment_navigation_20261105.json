@@ -1,0 +1,108 @@
+{
+  "owner": "uibcdf/sabueso#148/#173/#112",
+  "review_trigger": "exact-source CI completion / public fragment-source receiving / structural researcher review",
+  "date_utc": "2026-11-05",
+  "baseline_source": "5c847281588bb8b0e62470c31e4d261126716ec7",
+  "baseline_sdk": "0.14.0+174.g5c84728",
+  "scope": "Exact original source fragment-sequence to canonical-reference interval questions; technical synthetic receiving is separate from genuine deposited fragment/scientific/human/workload acceptance.",
+  "rules": {
+    "fragment": "model_fragment_structure_request@1",
+    "navigation": "retained_context_links@5",
+    "saved_format": "sabueso.card_exploration@9",
+    "verifier": "model_fragment_navigation_binding@1"
+  },
+  "unchanged": [
+    "Card schema 0.3.14 / recorded shape",
+    "native whole-sequence sequence_matches finding",
+    "model_structure_request@1 / retained_context_links@4",
+    "all earlier saved predicates and original producer bytes",
+    "dependencies and acquisition mappings"
+  ],
+  "receiving": {
+    "owning": "66 passed across new fragment and existing model modules; plus one disjoint final mixed component/fragment case passed. Initial harness errors and explicit default-budget refusals remain in owned diagnostic receipts.",
+    "broader_integration": "550 passed /472.06s across human/nature/access/context/structures, saved @1\u2013@8/assembly/component/nonpolymer, codec transport, quantities and isolated installed receiving payload. No full-suite claim.",
+    "installed_receiving": "Both hosted installed routes copy/select the new standalone module and its two original capsules. All 40 module cases pass outside the checkout in the shared editable environment via the payload selector; actual built-artifact receiving remains with hosted CI.",
+    "frozen_originals_checked": 26,
+    "remote": {
+      "qualified": false,
+      "state": "Exact-source hosted qualification pending; dispatch and current receiving are recorded in the owning issue and owned INDEX."
+    },
+    "contracts": "205 passed /51.43s: native AlphaFold context/predicted views, complete access, argument contracts, registry and fixture delivery/licensing.",
+    "selected_distinct_pytest_cases": 822,
+    "checks": [
+      "Ruff lint/format:1343 files",
+      "343 Markdown targets/anchors;74 snippet parses;7 changed Python files parse as3.11",
+      "source registry/catalog/source terms",
+      "76 reviewed repository fixture inputs /37 protected local-only originals",
+      "Card shape0.3.14 and schema-field alignment",
+      "MOLI governance",
+      "dependency preflight",
+      "two changed workflow YAML syntax parses",
+      "git diff whitespace"
+    ],
+    "resource_receipts": [
+      "recovered_work/model_fragment_scope_148_20261105/owning-corrected-resource.json",
+      "recovered_work/model_fragment_scope_148_20261105/mixed-final-resource.json",
+      "recovered_work/model_fragment_scope_148_20261105/integration-resource.json",
+      "recovered_work/model_fragment_scope_148_20261105/contracts-resource.json"
+    ],
+    "guide": "Two exact model-guide blocks execute on both genuine public whole-model and explicitly synthetic fragment Cards; no acquisition or Card mutation.",
+    "documentation": "Warning-fatal Sphinx build passed /24.37s; literal changed-guide model examples execute separately."
+  },
+  "original_capsule": {
+    "owner": "#148/#173/#112",
+    "review_trigger": "fragment navigation receiving / pre-0.15.0",
+    "producer": {
+      "head": "5c847281588bb8b0e62470c31e4d261126716ec7",
+      "sdk": "0.14.0+174.g5c84728",
+      "source_hashes": {
+        "sabueso/core/card_model_regions_v1.py": "4eb8bce08414a8ab3650312f29c15f944a74059bc2796d4c4d4ba8288a582041",
+        "sabueso/core/_card_model_scope_v1.py": "4df0cc74c9faa8ae65c94e1fbe1e07e94342ad1f3930785069f152926cc211af",
+        "sabueso/core/card_context_navigation.py": "980c21d7803b30fcd44fd77cd32e09725606e095111ba20c465329d2ec781c80"
+      },
+      "input_scope": "Entirely synthetic poly-M sequences and model records using the existing original AlphaFold mapping contract. Not an actual UniProt sequence or deposited model; no molecular provider request or private pilot."
+    },
+    "path": "tests/core/data/model_fragment_navigation_original_v1.json.gz",
+    "compressed_sha256": "9b5ff5c443c879620dfb2f8e1fd5c487b68a9f7578c82d00c904810d7b9df5e8",
+    "decoded_sha256": "d76878edab397580ac7628a5d3d0219c005fbaa881de0427fc65e54ae19da2e5",
+    "bytes": 1107245,
+    "decoded_bytes": 29849825,
+    "meaning": "Genuine pre-feature saved output on explicitly synthetic inputs; whole ready, fragment unsupported. Never regenerate to satisfy a newer reader."
+  },
+  "public_source_receiving": {
+    "state": "pending",
+    "request": "one bounded read-only AlphaFold prediction Q8WZ42 request; no retries/coordinates/bulk archive",
+    "response": "HTTP 404, two-byte JSON object; source absence not established",
+    "provider_report": "no external publication authorized or attempted by this block"
+  },
+  "experience_review": {
+    "task": "From the source-declared model fragment, inspect retained experimental structures on precisely its original canonical interval, then source or back.",
+    "improvement": "An exact source-bound fragment gets an understandable contextual question sharing the compact-agent region result; original/native unknown whole-sequence scope is still explicit.",
+    "observed": "Text/HTML scope, source/open/back, original historical decisions, inert reading and mixed saved navigation have automated receiving.",
+    "remaining": "Genuine partial-model input, actual scientist walkthrough, agreed workload budgets, isoform/atomic mapping and wider B3 acceptance remain open.",
+    "persistence": "The mixed complete session exceeds the default 64 MiB decoded budget explicitly. Its test uses gzip and an explicit finite 128 MiB decoded budget; this does not raise defaults or resolve existing session-size concerns."
+  },
+  "resources": {
+    "execution": "serial resource-guarded Python3.14 in the existing shared editable workspace through pytest-receptor",
+    "rss_ceiling_bytes": 1073741824,
+    "owned_swap_ceiling_bytes": 0,
+    "host_available_floor_bytes": 4294967296,
+    "gate_elapsed_ceiling_s": 600,
+    "observed_peak_owned_rss_bytes": 936226816,
+    "observed_owned_swap_bytes": 0,
+    "minimum_host_available_bytes": 14708514816
+  },
+  "owned_evidence": "recovered_work/model_fragment_scope_148_20261105/",
+  "limits": "B2 review deferred; B3 and broad human acceptance open; 0.15.0 consolidation paused.",
+  "candidate_runtime_receiving_sha256": {
+    "sabueso/core/card_model_fragment_regions_v1.py": "54882911ad4d2944d67b74cd2e544e4799c530473ce88390618e98dab3ac3022",
+    "sabueso/core/card_exploration_verification_v9.py": "0a75257795cfbeef8d64e4af27009712b8d23fe24f208afe0fd07ad924fe5f06",
+    "sabueso/core/card_context_navigation.py": "2b3843c72d4ab20388d8e8784e914a800b57e7b1e1a4a59cc7cae36c1abc29f1",
+    "sabueso/core/card_exploration_storage.py": "8a57526f6eef6cafb6062d2e2406a708741a5e6e9ad7291b4eb95d9b7a3de90b",
+    "sabueso/core/card_exploration_render.py": "6cb357a3aedfba3700ca1a2a3ed647b7c8cdec05cf265146a76a30311f3d646e",
+    "tests/core/test_card_model_fragments_offline.py": "dddcbf2d25a2227a0643094aa8a5b3d832bc5c9c4340009ee87f2f08fc8b6cf9",
+    "tests/tools/test_installed_receiving_scope_offline.py": "275482ad899e40ea1f2dc4931c8ce27051e94921e597e31f60edf9b8334a2b57",
+    ".github/workflows/ci.yml": "7a13c7cf4d761a44411e74cf4a21d4c1a06148112e7c7426a7b0b3269b696f6c",
+    ".github/workflows/test_staged_conda_package.yaml": "fa0f4878ddf4a8650cf6bb193f91fadbd9b3250b6201dd46126ab4fdd0797d51"
+  }
+}

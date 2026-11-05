@@ -346,7 +346,7 @@ def related(item):
         question = annotation_link(explorer, item.payload_location)
         support = question["support"]
     else:
-        from .card_model_regions_v1 import link as model_link
+        from .card_model_fragment_regions_v1 import link as model_link
 
         question = model_link(explorer, item.payload_location)
         if question is not None:
@@ -489,10 +489,11 @@ def follow(item):
     if link.get("role") == "question" and link.get("rule") in (
         "retained_context_links@3",
         "retained_context_links@4",
+        "retained_context_links@5",
     ):
         key = (
             "model_context"
-            if link["rule"] == "retained_context_links@4"
+            if link["rule"] in ("retained_context_links@4", "retained_context_links@5")
             else "annotation_context"
         )
         basis = link[key]

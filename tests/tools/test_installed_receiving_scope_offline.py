@@ -10,6 +10,57 @@ import tempfile
 from pathlib import Path
 
 
+def test_declared_fragment_navigation_runs_without_checkout_files():
+    root = Path(__file__).resolve().parents[2]
+    name = "test_card_model_fragments_offline.py"
+    originals = (
+        "model_fragment_navigation_original_v1.json.gz",
+        "assembly_nonpolymer_live_v2.json.gz",
+    )
+    for workflow_path in (
+        ".github/workflows/ci.yml",
+        ".github/workflows/test_staged_conda_package.yaml",
+    ):
+        workflow = (root / workflow_path).read_text(encoding="utf-8")
+        assert any("cp " in line and name in line for line in workflow.splitlines())
+        command = re.search(r"python -m pytest (.+)", workflow.replace("\\\n", " "))
+        assert name in shlex.split(command[1])
+        for original in originals:
+            assert f"data/{original}" in workflow
+    # Receiving-payload qualification in the shared editable environment;
+    # installed-artifact import/behavior qualification remains with hosted CI.
+    with tempfile.TemporaryDirectory(prefix="sabueso-fragment-receiving-") as directory:
+        stage = Path(directory)
+        shutil.copyfile(root / "tests/core" / name, stage / name)
+        (stage / "data").mkdir()
+        for original in originals:
+            shutil.copyfile(
+                root / "tests/core/data" / original, stage / "data" / original
+            )
+        env = dict(os.environ, PYTHONPATH=str(stage))
+        env.pop("PYTEST_ADDOPTS", None)
+        result = subprocess.run(
+            [
+                sys.executable,
+                "-m",
+                "pytest",
+                "--receptor=llm",
+                "-o",
+                "tmp_path_retention_policy=failed",
+                name,
+            ],
+            cwd=stage,
+            env=env,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            timeout=240,
+        )
+        assert result.returncode == 0, result.stdout + result.stderr
+        assert "40 passed" in result.stdout
+        assert not (stage / "temp_data").exists()
+
+
 def test_declared_bioactivity_policy_runs_without_checkout_files():
     root = Path(__file__).resolve().parents[2]
     name = "test_bioactivity_class_v4_offline.py"

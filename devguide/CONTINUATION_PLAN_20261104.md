@@ -96,6 +96,16 @@ video projects to this release.
 
 ## Starting state and first actions
 
+Current B3 model continuation: the
+[exact fragment question](pending_proposals/card_model_structural_navigation.md#fragment-continuation-acceptance--2026-11-05)
+adds original-input-bound region navigation and format @9 while preserving the
+whole-model/native/historical meanings. Its
+[receipt](evidence/model_fragment_navigation_20261105.json) separates synthetic
+contract receiving from genuine public partial-model, scientific, human and
+workload acceptance. Complete the public input receiving and remaining structural
+journeys; this slice does not close B3 or resume 0.15.0 consolidation. B2 review
+remains maintainer-owned and deferred.
+
 Current B3 presentation continuation: [component rows](pending_proposals/card_assembly_component_navigation.md#component-row-reading--2026-11-05)
 show a retained state once while preserving complete original/native/agent/saved
 content. Same-capture public comparisons and original saved reading pass; local

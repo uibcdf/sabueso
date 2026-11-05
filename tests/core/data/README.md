@@ -324,3 +324,25 @@ Uncompressed SHA-256: `ca9ca15bca50daff28ae479175a33adf3997c777cfb28adc27d55a556
 Gzip is fixture packaging, not a public reader capability. The original inventory
 @1 / explanation @2 must remain independently readable when newer declaration
 admission and explanation policies are forbidden (#169).
+# Original model-fragment navigation control
+
+`model_fragment_navigation_original_v1.json.gz` preserves genuine pre-feature
+output from clean `5c847281588bb8b0e62470c31e4d261126716ec7`, actual SDK
+`0.14.0+174.g5c84728`, produced on 2026-11-05 before writing the fragment rule or
+format @9. The entire input is synthetic: poly-M canonical/model sequences,
+synthetic original source records and model identifier `AF-SYNTHETIC-F1`. It is
+not a real UniProt sequence, deposited AlphaFold fragment or provider response;
+there is no private/pilot material or source acquisition.
+
+The capsule retains original Cards, source-bound model contexts and complete
+saved explorations for a ready whole model and an unavailable proper fragment.
+The newer reader must keep those original decisions, without backfilling the
+new live fragment interpretation. It records the producer source hashes for
+`card_model_regions_v1.py`, `_card_model_scope_v1.py` and the original contextual
+navigation producer. Gzip packages the original bytes; never regenerate this
+control to make a newer reader pass. This is not a frozen Card schema.
+
+- Compressed bytes: 1,107,245; SHA256
+  `9b5ff5c443c879620dfb2f8e1fd5c487b68a9f7578c82d00c904810d7b9df5e8`.
+- Decoded bytes: 29,849,825; SHA256
+  `d76878edab397580ac7628a5d3d0219c005fbaa881de0427fc65e54ae19da2e5`.

@@ -54,6 +54,78 @@ assertion IDs do not independently identify a historical input observation;
 [#166](https://github.com/uibcdf/sabueso/issues/166) audits that separate provenance
 question. This navigation does not reconstruct unrecorded observation history.
 
+## Fragment continuation acceptance — 2026-11-05
+
+The next bounded question is: **which retained experimental structures describe
+the original canonical interval explicitly modeled by this source fragment?**
+This asks about reference-region knowledge, not observed model atoms, experimental
+equivalence or physical assembly membership. Preserve the whole-model @1 question
+and every original saved predicate.
+
+A new positive fragment route requires all of the following before offering an
+actionable question:
+
+1. Exact focal accession, source-bound original model relationship/application and
+   one unambiguous original model input; no identity by names or equal sequences.
+2. The same selected original canonical length/checksum inputs, with the captured
+   sequence still matching their original MD5 and source-supported reference.
+3. Positive integer inclusive source bounds within that canonical reference,
+   identifying a proper fragment rather than a whole-reference model.
+4. The original source's explicit model sequence, exactly the declared span in
+   length and content, with its MD5 matching the original model checksum. No
+   alignment, trimming, case normalization of sequences or guessed offset.
+5. A named fragment-request rule, explicit original input/support and a compressed
+   interval request. Include retained experimental fragments deliberately, while
+   preserving the native coordinate/completeness and budget checks.
+6. One result shared by human and compact agent requests, source/open/back routes,
+   and independently verified original saved reading in a new format. Genuine
+   older whole/unsupported-fragment files must retain their original decisions.
+
+Unknown or incompatible inputs keep the existing unavailable question. The new
+fragment finding does not replace the native whole-sequence `sequence_matches`
+value or manufacture SourceAssertions. Sequence correspondence and physical
+coordinate correspondence remain distinct.
+
+Public-source receiving is a separate requirement. The existing P52270/P60174
+fixtures contain whole models. A single bounded read of the public Titin example
+`Q8WZ42` on 2026-11-05 receives HTTP 404 from the prediction API; the original
+two-byte response and transport receipt are retained under
+`recovered_work/model_fragment_scope_148_20261105/`, owner #148/#173/#112, review
+at fragment-source acceptance. This is not evidence that AlphaFold lacks Titin
+fragments. The [provider download notes](https://alphafold.ebi.ac.uk/download)
+describe overlapping fragments and archive distribution. Do not substitute a
+constructed API record for a genuine provider response or download an entire
+proteome as an implicit prerequisite. A genuine public partial-model input remains
+needed before claiming that receiving scope complete.
+
+The clean pre-change source `5c847281588bb8b0e62470c31e4d261126716ec7`, SDK174,
+produces genuine original whole/unsupported-fragment controls on explicitly
+synthetic poly-M data before the new route or verifier is written. The capsule
+is a historical implementation control, not a deposited public partial model.
+Technical synthetic acceptance must stay separate from public-source and actual
+scientist/researcher acceptance. B3 and 0.15.0 consolidation remain open/paused.
+
+Technical receiving for this continuation is recorded in
+[the dated receipt](../evidence/model_fragment_navigation_20261105.json):
+**822 distinct selected pytest cases** pass (67 owning/whole-model/mixed cases,
+550 affected integration cases and 205 native/access/argument/registry/fixture
+cases). The isolated receiving selector executes all 40 fragment-module cases
+outside the checkout, using only its two declared capsules and the shared editable
+installation. Both hosted installed routes copy/select those files. This is local
+payload qualification, not an installed-artifact or full-suite claim.
+
+The same two public-guide model blocks execute on a genuine public whole-model
+Card and an explicitly synthetic fragment Card. The original Card and native
+whole-sequence finding stay unchanged. Fresh reading, source/back navigation,
+coherent semantic metadata forgeries, resealed substitutions and true SDK174
+original unavailable decisions are covered. Twenty-six preceding predicate and
+capsule files retain their exact bytes. The mixed complete saved session exceeds
+the default decoded budget explicitly; its regression requests gzip and a finite
+128 MiB decoded budget without changing defaults. Session-size/workload concerns
+remain open. Exact-source hosted qualification has its own pending receipt;
+passing these checks does not supply the missing genuine public partial model or
+independent scientific/researcher acceptance.
+
 ## Historical producer and qualification
 
 The original saved quaternary format @4 capsule from clean `1bfc9e9`, actual SDK

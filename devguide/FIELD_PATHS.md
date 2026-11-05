@@ -1,5 +1,12 @@
 # Sabueso — Canonical Field Paths
 
+The fragment-to-reference exploration rule `model_fragment_structure_request@1`
+reads existing original AlphaFold `asserted_value.model` sequence/range/checksum
+and derivation inputs. Its `model_context.fragment_match` is navigation metadata
+in exploration format @9, not a Card field or SourceAssertion. The native
+`sequence_context` and Card schema/shape are unchanged; see
+[the model design](pending_proposals/card_model_structural_navigation.md#fragment-continuation-acceptance--2026-11-05).
+
 Unpublished schema 0.3.14 optionally retains RCSB nonpolymer entity and instance
 input at `source_assertion_store[].asserted_value.assembly_component_inputs.nonpolymer_entities`
 (#173). This is the original value of the dedicated GraphQL alias

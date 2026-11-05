@@ -297,9 +297,11 @@ duplicates during aggregation now fail before source metadata can be overwritten
 Original reading means the records in the captured snapshot.
 
 The [model-to-reference navigation](pending_proposals/card_model_structural_navigation.md) adds a source-bound question from a verified
-whole-reference predicted model to the existing experimental region inventory,
-with original input links and inert saved reading. Fragment/isoform mappings and
-human/workload acceptance remain open.
+whole-reference predicted model or an exactly source-supported fragment to the
+existing experimental region inventory, with original input links and inert saved
+reading. Fragment sequence correspondence uses its own rule and format @9;
+older saved decisions stay unchanged. Genuine public partial-model receiving,
+isoform/atomic mapping and human/workload acceptance remain open.
 
 The [#165 native quaternary correction](pending_bugs/quaternary_interpretation_scope.md)
 versions source/declaration/coordinate admission and keeps every relevant pair.

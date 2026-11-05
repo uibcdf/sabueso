@@ -445,8 +445,8 @@ coverage or align an isoform. A missing consistent canonical UniProt identity is
 a prerequisite gap; a model list alone does not establish source completeness.
 
 Use the model's contextual question to inspect experimental structures on its
-original reference. A ready question requires a source-supported whole-reference
-model, confirmed checksum and the same retained reference inputs:
+original reference. A ready question uses the same original reference inputs and
+either a confirmed whole-reference model or an exactly supported fragment:
 
 ```python
 if len(models.items()):
@@ -459,11 +459,21 @@ if len(models.items()):
 
 This opens the existing region-coverage inventory over the same capture. It does
 not establish observed atoms in the predicted model, experimental equivalence or
-assembly relevance. A fragment, isoform, changed reference or historical model
-without its original inputs instead explains the missing prerequisite. Inspect
-its original sources before preparing another interpretation. Saved navigation
+assembly relevance. For a fragment, the original source must declare this exact
+entry, canonical interval, fragment sequence and matching MD5. Its sequence must
+equal that reference slice exactly; no alignment or guessed offset is used. The
+question includes retained experimental fragments on that interval and labels
+this as sequence correspondence, separately from observed atoms. The original
+native whole-sequence `sequence_matches` finding remains unchanged.
+
+An unconfirmed fragment, isoform, changed reference or historical model without
+its original inputs instead explains the missing prerequisite. Inspect its
+original sources before preparing another interpretation. Saved navigation
 preserves the original question and result; it never fills a gap by running a
-current model reader.
+current model reader. Older saved fragment questions keep their original
+unavailable decision. New fragment navigation uses exploration format @9; this
+does not change the Card schema. Current positive fragment regression inputs are
+synthetic; receiving a genuine public partial model remains pending.
 
 ## Inspect source sites and contact statements
 
@@ -724,7 +734,8 @@ original_links = original_question.back()
 Human and agent requests above share the same captured result and exact structure
 declaration. `back()` retraces the selected question and then the full original
 links. The saved reading keeps the
-original results, request and navigation in exploration format @8. Earlier @6/@7
+original results, request and navigation in exploration format @8 (or @9 when
+the same session also retains an exact fragment question). Earlier @6/@7
 files keep their original rules and requests. If you save
 before opening the question, reopening its link reports `not_saved`; it does not
 compute a new answer. Earlier files keep their original links. Counts describe
