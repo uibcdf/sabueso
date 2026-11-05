@@ -857,6 +857,12 @@ def _parts(view):
                     for key in RECORD_COLUMNS[view._record_panel]
                 ),
             )
+            if view._record_panel == "coverage":
+                basis = value.get("basis")
+                detail = basis.get("detail") if isinstance(basis, dict) else None
+                record_row += (
+                    "not retained" if detail is None else preview(detail, limit=240),
+                )
             if view._record_panel == "assembly_generation":
                 from .card_assembly_dispatch import presentation
 
@@ -1093,6 +1099,16 @@ def _parts(view):
 
 
 def _headers(view):
+    if view._record_panel == "coverage":
+        return [
+            "Index",
+            "Area",
+            "Source",
+            "State",
+            "Count",
+            "Release",
+            "Source/request scope",
+        ]
     if view._record_panel == "assembly_generation":
         from .card_assembly_dispatch import presentation
 
@@ -1112,11 +1128,7 @@ def _headers(view):
 
         return list(HEADERS)
     if view._record_panel:
-        return (
-            ["Index", "Area", "Source", "State", "Count", "Release"]
-            if view._record_panel == "coverage"
-            else ["Index", "Subject", "Relationship", "Broader term reference", "Basis"]
-        )
+        return ["Index", "Subject", "Relationship", "Broader term reference", "Basis"]
     return (
         [
             "Index",

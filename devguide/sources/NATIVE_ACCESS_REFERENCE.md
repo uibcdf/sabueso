@@ -1015,6 +1015,17 @@ versions remain unknown even when `allVersions` lists historical versions; those
 older models were not queried. Repeated ids keep separate indexed versions. Model,
 sequence and creation dates are not global database versions or experimental revisions.
 
+New events also retain `structural_context.access_scope`: prediction API versus
+fixture, other distributions unqueried and global absence unestablished. A 404
+means that this API record was not found; it does not evaluate proteome-only
+fragments. New not-found enrichment records preserve that explanation and text/
+HTML coverage displays it. Fixture misses describe supplied-input availability.
+Public client error classes and acquisition outcomes stay unchanged. For a new
+Card, a missing fixture input takes the existing enrichment-failure path and is
+`unavailable`; a retained empty fixture list stays distinct. Original requests
+and historical saved scope remain unchanged. See
+[the source-scope correction](../pending_bugs/alphafold_prediction_api_scope.md).
+
 The trace retains native tool/provider, accession/range/checksum and artifact URL
 metadata without copying sequences or downloading coordinates, confidence files or
 MSAs. Listed providers/UniProt were not separately consulted, and a declared

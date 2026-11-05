@@ -164,6 +164,11 @@ def summarize(result, query, fixture, requests, responses):
         },
         "structural_context": {
             "kind": "predicted_models",
+            "access_scope": {
+                "route": "fixture" if fixture else "prediction_api",
+                "other_distributions": "not_queried",
+                "database_wide_absence": "not_established",
+            },
             "model_list_basis": "source_returned_model_list"
             if isinstance(payload, list)
             else "unexpected_response_shape"

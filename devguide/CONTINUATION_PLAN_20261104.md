@@ -96,6 +96,16 @@ video projects to this release.
 
 ## Starting state and first actions
 
+Current source receiving: the
+[AlphaFold API-scope correction](pending_bugs/alphafold_prediction_api_scope.md)
+keeps queried-route absence explicit in diagnostics, new Card/acquisition data and
+human coverage. A real API200 metadata response still co-serves both range-field
+names; genuine archive fragments and modern-only compatibility remain pending.
+The component-row source `913aad1` has complete hosted qualification; subsequent
+fragment/source-scope changes keep independent receipts. The new
+[dataset candidates #189](https://github.com/uibcdf/sabueso/issues/189) are a
+maintainer-requested future queue, not a new prerequisite or dependency adoption.
+
 Current B3 model continuation: the
 [exact fragment question](pending_proposals/card_model_structural_navigation.md#fragment-continuation-acceptance--2026-11-05)
 adds original-input-bound region navigation and format @9 while preserving the

@@ -4,7 +4,7 @@
   "date_utc": "2026-11-05",
   "baseline_source": "2be4358d12a5f38ffccdf0cb85fd36750802a95d",
   "original_sdk": "0.14.0+172.g2be4358",
-  "scope": "Human text/HTML component row presentation only; new source hosted receiving pending.",
+  "scope": "Human text/HTML component row presentation only; exact-source hosted receiving qualified at913aad1. Later changed runtime/scientific/human acceptance remains separate.",
   "change": "Move only the original generated state/repeated-label suffix out of the visible label into the existing summary column, retaining identifiers/descriptors and complete original labels, literal rows/native values/compact agent pages/saved bytes. Long descriptions cannot hide the actual state. No source query/scientific evaluation during display.",
   "unchanged": [
     "source bytes and assertions",
@@ -393,6 +393,32 @@
       },
       "sphinx": "warning-fatal keep-going HTML build passes",
       "whitespace": "pass"
+    },
+    "remote": {
+      "head": "913aad1f3e0129c2a0bf8813695c5ba0ff9e7e86",
+      "sdk": "0.14.0+173.g913aad1",
+      "qualified": true,
+      "ci": {
+        "id": 42050858926,
+        "jobs": 18,
+        "source_passed_each": 7261,
+        "installed_passed_each": 1792,
+        "pytest_summaries": 13
+      },
+      "governance": {
+        "id": 42050858836,
+        "jobs": 1
+      },
+      "full_captures_hashes_steps_archive_crc_verified": true,
+      "codec_producer_routes": 12,
+      "fresh_native_cross_frames": 24,
+      "installed_codec_roundtrips": 36,
+      "receiving_receipt_sha256": {
+        "remote-qualified.json": "512c692469a2d2601284f3e97a81d260c7b5de5a866cf36ced8cefdf353714df",
+        "cross-readers-qualified.json": "c0551267dfe8213fa34c81f698bf051a98c2622d99f189be5c0bae618b157943",
+        "installed-transport-qualified.json": "00565af5069a7287c294d10f450638124282a8845fdcd655743822a2debbb9d5"
+      },
+      "limit": "Qualifies this exact source, not later source changes, the independent scientist/researcher/consumer scope or a release."
     }
   },
   "earlier_ci": {

@@ -73,6 +73,16 @@ Nextia Evidence / MOLI ProjectRecord / Recorda acceptance remain open.
 
 ## Current consolidation after recovery (#112)
 
+The [AlphaFold API-scope correction](pending_bugs/alphafold_prediction_api_scope.md)
+preserves the distinction between an API record miss and whole-database model
+absence, including new Card/acquisition detail and readable coverage. Complete
+archive-fragment intake and modern-only range compatibility remain explicit
+follow-ups. Component-row source `913aad1` now has complete CI/governance receiving
+under its [receipt](evidence/component_row_reading_20261105.json); later changed
+runtime retains separate qualification. The maintainer's
+[dataset-source proposal #189](https://github.com/uibcdf/sabueso/issues/189)
+queues two candidates for future review without expanding 0.15.0 requirements.
+
 The [component-row presentation](pending_proposals/card_assembly_component_navigation.md#component-row-reading--2026-11-05)
 removes duplicate displayed states while preserving original data and compact
 agent access. Public and genuine saved comparisons exercise the same captured

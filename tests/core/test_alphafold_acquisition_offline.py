@@ -215,6 +215,171 @@ def test_http_absence_failures_and_retry_facts_remain_original(monkeypatch, erro
     }
 
 
+def test_missing_api_record_never_claims_absence_from_proteome_archives(monkeypatch):
+    # Synthetic transport for the documented public Titin example. A prediction
+    # API miss says nothing about the provider's separate archive distribution.
+    calls = serve(monkeypatch, error=404)
+    with pytest.raises(RecordNotFoundError) as caught:
+        lookup("Q8WZ42")
+    trace = caught.value.acquisition_trace["records"][0]
+    assert len(calls) == 1 and trace["requests"][0]["status"] == 404
+    assert trace["outcome"] == "not_found"
+    scope = trace["structural_context"]["access_scope"]
+    assert scope["route"] == "prediction_api"
+    assert scope["other_distributions"] == "not_queried"
+    assert scope["database_wide_absence"] == "not_established"
+    assert "prediction API" in str(caught.value)
+    assert "other distribution routes were not checked" in str(caught.value)
+
+
+@pytest.mark.parametrize("payload", [[], {}, None])
+def test_unusable_api_lists_keep_empty_and_unobserved_scope_distinct(
+    monkeypatch, payload
+):
+    calls = serve(monkeypatch, payload=payload)
+    with pytest.raises(RecordNotFoundError) as caught:
+        lookup()
+    trace = caught.value.acquisition_trace["records"][0]
+    assert len(calls) == 1
+    assert trace["outcome"] == ("empty" if isinstance(payload, list) else "unobserved")
+    assert (
+        trace["structural_context"]["access_scope"]["database_wide_absence"]
+        == "not_established"
+    )
+    assert "no usable model list" in str(caught.value)
+    assert "other distribution routes were not checked" in str(caught.value)
+
+
+def test_api_miss_replay_keeps_the_original_request_and_scope(monkeypatch, tmp_path):
+    calls = serve(monkeypatch, error=404)
+    archive = sabueso.RetrievalArchive(tmp_path / "api-missing.db")
+    records = []
+    messages = []
+    for context in (archive.recording(), archive.replaying()):
+        with context, pytest.raises(RecordNotFoundError) as caught:
+            lookup("Q8WZ42")
+        records.append(caught.value.acquisition_trace["records"][0])
+        messages.append(str(caught.value))
+    original, replay = records
+    assert len(calls) == 1 and original["network_attempts"] == 1
+    assert replay["access"] == "replay" and replay["network_attempts"] == 0
+    assert original["outcome"] == replay["outcome"] == "not_found"
+    assert original["structural_context"] == replay["structural_context"]
+    assert (
+        replay["requests"][0]["retrieved_at"] == original["requests"][0]["retrieved_at"]
+    )
+    assert messages[0] == messages[1]
+
+
+def test_missing_fixture_does_not_claim_current_database_or_api_availability(tmp_path):
+    with pytest.raises(RecordNotFoundError) as caught:
+        lookup(client=alphafold.FixtureAlphaFoldClient(tmp_path))
+    trace = caught.value.acquisition_trace["records"][0]
+    assert trace["outcome"] == "unavailable" and trace["network_attempts"] == 0
+    assert trace["structural_context"]["access_scope"]["route"] == "fixture"
+    assert "Database availability was not checked" in str(caught.value)
+
+
+@pytest.mark.parametrize("fixture_present", [False, True])
+def test_new_card_distinguishes_missing_fixture_from_a_retained_empty_list(
+    fixture_present, tmp_path
+):
+    from sabueso._private.smonitor.warnings import EnrichmentFailedWarning
+
+    if fixture_present:
+        (tmp_path / "alphafold").mkdir()
+        (tmp_path / "alphafold/P52270.json").write_text("[]", encoding="utf-8")
+
+    def build():
+        return sabueso.resolve_protein_card(
+            "P52270",
+            EntityResolver(FixtureUniProtClient("temp_data")),
+            predicted_structures=True,
+            alphafold_client=alphafold.FixtureAlphaFoldClient(tmp_path),
+        )[0]
+
+    if fixture_present:
+        card = build()
+    else:
+        with pytest.warns(EnrichmentFailedWarning):
+            card = build()
+    report = next(
+        r for r in card.quality["enrichments"] if r["source"] == "AlphaFold DB"
+    )
+    row = next(
+        r for r in card.knowledge_state()["rows"] if r["source"] == "AlphaFold DB"
+    )
+    assert not card.relationships("has_predicted_structure")
+    if fixture_present:
+        assert report["status"] == "added" and report["count"] == 0
+        assert row["state"] == "not_stated" and row["count"] == 0
+    else:
+        assert report["status"] == "error" and row["state"] == "unavailable"
+        assert row["count"] is None
+        assert "Database availability was not checked" in row["basis"]["detail"]
+
+
+def test_api_miss_detail_survives_card_human_agent_and_inert_saved_reading(
+    monkeypatch, tmp_path
+):
+    # Counterfactual API404 on the existing public P52270 identity fixture, not
+    # an observation that this actual protein lacks a model.
+    calls = serve(monkeypatch, error=404)
+    card, _ = sabueso.resolve_protein_card(
+        "P52270",
+        EntityResolver(FixtureUniProtClient("temp_data")),
+        predicted_structures=True,
+        alphafold_client=alphafold.OnlineAlphaFoldClient(),
+    )
+    record = next(
+        r for r in card.quality["enrichments"] if r["source"] == "AlphaFold DB"
+    )
+    assert record["status"] == "not_found"
+    assert "other distribution routes were not checked" in record["detail"]
+    assert not card.relationships("has_predicted_structure")
+    assert not [
+        r
+        for r in card.source_assertion_store.to_list()
+        if r["source"]["name"] == "AlphaFold DB"
+    ]
+    explorer = card.explore()
+    coverage = explorer.view("coverage").filter("source", equals="AlphaFold DB")
+    item = coverage.items()[0]
+    row = item.open().native_payload
+    assert row["state"] == "not_stated" and row["basis"]["detail"] == record["detail"]
+    agent = explorer.access.read(item.payload_location).page()
+    basis = next(entry for entry in agent["items"] if entry["key"] == "basis")
+    details = explorer.access.read(basis["location"]).page()
+    detail = next(
+        entry["value"] for entry in details["items"] if entry["key"] == "detail"
+    )
+    assert detail == record["detail"]
+    assert "prediction API" in str(coverage)
+    assert "distribution routes" in coverage._repr_html_()
+    path = tmp_path / "api-scope.json.gz"
+    coverage.save(path, compression="gzip")
+
+    def forbidden(*args, **kwargs):
+        raise AssertionError(
+            "Saved source scope cannot rebuild Cards or query a provider"
+        )
+
+    monkeypatch.setattr(Card, "from_dict", forbidden)
+    monkeypatch.setattr(_http, "_urlopen", forbidden)
+    restored = sabueso.read_exploration(path)
+    assert restored.native_payload == coverage.native_payload
+    assert restored.items()[0].open().native_payload == row
+    assert len(calls) == 1
+
+
+def test_public_prediction_content_is_unchanged_by_explicit_distribution_scope():
+    original = json.loads(Path("temp_data/alphafold/P52270.json").read_text())
+    result = lookup(client=alphafold.FixtureAlphaFoldClient("temp_data"))
+    assert result["record"] == original
+    scope = event(result)["structural_context"]["access_scope"]
+    assert scope["route"] == "fixture" and scope["other_distributions"] == "not_queried"
+
+
 def test_evaluated_empty_response_keeps_original_exception_and_replay_time(
     monkeypatch, tmp_path
 ):

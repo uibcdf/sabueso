@@ -1,5 +1,26 @@
 # Sabueso — Checkpoint
 
+Current source-scope continuation: the
+[AlphaFold prediction-API correction](pending_bugs/alphafold_prediction_api_scope.md)
+keeps an API miss separate from global model absence, retains the explanation on
+new enrichment records and exposes it in coverage text/HTML. Original saved gaps,
+native states and model rules remain unchanged. Genuine archive fragment intake
+and modern-only range-field compatibility stay explicit pending work. The
+[receipt](evidence/alphafold_prediction_api_scope_20261105.json) separates current
+public metadata, synthetic offline counterexamples and hosted qualification.
+
+Component-row source `913aad1` is now fully qualified: CI 18/18, governance 1/1,
+nine source lanes each 7,261 and four installed lanes each 1,792, thirteen actual
+summaries and twelve codec routes verified. Its
+[receipt](evidence/component_row_reading_20261105.json) preserves earlier failed
+sources. Later fragment and source-scope changes need their own receiving.
+
+Maintainer-requested future source candidates are recorded in
+[issue #189](https://github.com/uibcdf/sabueso/issues/189) and
+[Data sources discussion #190](https://github.com/uibcdf/sabueso/discussions/190):
+Molecular Dataset Hub and torch-molecule dataset access remain queued, with no
+dependency, dataset or model adoption and no new 0.15.0 prerequisite.
+
 Current model continuation: the
 [exact fragment question](pending_proposals/card_model_structural_navigation.md#fragment-continuation-acceptance--2026-11-05)
 adds a source-bound interval journey with human/compact-agent/source/back parity

@@ -444,6 +444,15 @@ resolution or an inferred ranking. This pane does not calculate current sequence
 coverage or align an isoform. A missing consistent canonical UniProt identity is
 a prerequisite gap; a model list alone does not establish source completeness.
 
+An AlphaFold prediction-API miss means no record was returned by that route.
+Some long human-protein models are distributed separately in proteome archives;
+those are not queried automatically. New coverage records retain this explanation,
+shown in **Source/request scope** in `explorer.view("coverage")`. Open a row for
+its complete original detail. A missing local fixture records unavailable input
+on a newly built Card; an existing empty fixture list remains distinct. Neither
+checks current database availability. Older saved readings keep their original
+scope.
+
 Use the model's contextual question to inspect experimental structures on its
 original reference. A ready question uses the same original reference inputs and
 either a confirmed whole-reference model or an exactly supported fragment:

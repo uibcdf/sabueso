@@ -1,0 +1,103 @@
+{
+  "owner": "#148/#173/#112",
+  "review_trigger": "exact-source hosted receiving / archive-fragment intake / modern-only API compatibility",
+  "date_utc": "2026-11-05",
+  "baseline_source": "8dbfec7badc1c9906cdb4be1e1cf1343ac5cf167",
+  "baseline_sdk": "0.14.0+175.g8dbfec7",
+  "problem": "Prediction-API or missing-fixture records were described as global model absence, and the enricher discarded the not-found detail. Coverage did not display the retained detail.",
+  "change": "Route-scoped messages and acquisition metadata; retain API not-found detail and show original scope in human coverage. New Card missing-fixture inputs take the enrichment-error/unavailable path; retained empty lists remain distinct. Native classification rules and direct client exception classes stay unchanged.",
+  "unchanged": [
+    "exception classes and query/retry behavior",
+    "source model records and assertions",
+    "Card schema0.3.14 / native model and knowledge-state rules",
+    "frozen saved predicates and original capsules",
+    "dependencies, coordinate access and acquisition limits"
+  ],
+  "public_metadata_probe": {
+    "owner": "#148/#173/#112",
+    "review_trigger": "current AlphaFold contract / B3 source receiving",
+    "scope": "one public P52270 metadata request; no retries, coordinates, private data or publication",
+    "maximum_requests": 1,
+    "timeout_s": 30,
+    "maximum_response_bytes": 8388608,
+    "url": "https://alphafold.ebi.ac.uk/api/prediction/P52270",
+    "started_at": "2026-11-05T17:24:52.700524+00:00",
+    "status": 200,
+    "final_url": "https://alphafold.ebi.ac.uk/api/prediction/P52270",
+    "headers": {
+      "Content-Type": "application/json",
+      "Content-Length": "1962",
+      "Date": "Thu, 05 Nov 2026 17:24:52 GMT",
+      "ETag": null,
+      "Last-Modified": null
+    },
+    "bytes": 1962,
+    "sha256": "f4a42682a479b14597601351fa5cec6402ee8287c7edb86f30f1100deb193917",
+    "interpretation": "Transport/source-contract probe, not SDK or scientist qualification."
+  },
+  "current_fixture_comparison": {
+    "decoded_equal": true,
+    "original_fixture_bytes": 2150,
+    "current_original_bytes": 1962,
+    "current_original_sha256": "f4a42682a479b14597601351fa5cec6402ee8287c7edb86f30f1100deb193917",
+    "fixture_bytes_unchanged": true
+  },
+  "public_fragment_receiving": "Still pending. The source documents archive-only long human-protein fragments. A native archive/BigQuery record cannot be fabricated into the API MD5 contract.",
+  "modern_field_compatibility": "Published source rename exists; current response co-serves both pairs. Modern-only range reading remains a separate compatibility prerequisite; no current outage inferred.",
+  "local_receiving": {
+    "owning": "176 passed /52.46s in the final acquisition, coverage/nature, knowledge-state/explanation, enrichment and HTTP-lifetime gate. Earlier81case scope precedes the missing-fixture Card refinement.",
+    "integration": "Earlier292cases pass /101.63s across source acquisition, enrichment, access/human/saved, diagnostics/arguments and original whole-model routes. This overlaps owning scope and precedes the final missing-fixture conversion; do not add counts. Final affected receiving is pending.",
+    "original_reader": "Genuine pre-fix SDK175 saved coverage reopens without Card construction, source inputs or network; its missing detail and original bytes remain unchanged. Current source sections/assertions/relationships/entities equal the original public control. Two synthetic transport calls, zero new provider requests.",
+    "documentation": "Warning-fatal Sphinx passes /28.91s;407local Markdown targets/anchors,74Python snippet parses and5changed Python files parse as3.11.",
+    "registry": "57 source-registry/delivery/licensing cases pass for two queued future candidates under#189; terms/dependency admission unchanged.",
+    "final_integration": "131 passed /228.04s after the final change: source acquisition, original saved exploration, public user journeys and all40model-fragment cases. Two existing intentional failing-UniProt fixture warnings remain explicit.",
+    "final_selected_distinct_cases": 364,
+    "distinct_count_basis": "176 final owning +131 final integration +57 registry/delivery/licensing cases in disjoint modules. Earlier292integration and81owning scopes overlap and are not added.",
+    "frozen_originals_unchanged": 29,
+    "static_checks": [
+      "Ruff lint/format1344files",
+      "407local Markdown targets/anchors",
+      "74Python snippet parses",
+      "5changed Python files parse as3.11",
+      "Card shape0.3.14 / schema alignment",
+      "source registry/catalog and76/37fixture delivery",
+      "MOLI governance",
+      "dependency preflight",
+      "git diff whitespace"
+    ],
+    "fixture_count_refinement": "Missing fixture input keeps an unknown count; a retained empty model list keeps zero. Focused final assertions receive this distinction separately."
+  },
+  "remote": {
+    "qualified": false,
+    "state": "Source-specific hosted receiving will be recorded separately; do not transfer prior qualification."
+  },
+  "experience_review": {
+    "observed": "API query scope is retained instead of dropped; coverage displays that original detail. Agent access retains the complete nested value through bounded literal pages.",
+    "remaining": "Independent scientist/researcher and workload acceptance, archive-native fragment receiving and modern-only compatibility."
+  },
+  "b2_scientific_review": "maintainer-owned and deferred",
+  "release_consolidation": "paused",
+  "owned_evidence": "recovered_work/alphafold_public_contract_20261105/",
+  "candidate_runtime_and_receiving_sha256": {
+    "sabueso/tools/db/alphafold.py": "37eb9f8bf8b68d533d0a87e2657af4a200fb37ba2460c570cd8e1311e41126e0",
+    "sabueso/enrichers/alphafold.py": "b40ba05febe070d59fa3cf174035f71789024d7c640800406a0057d7c5e8f015",
+    "sabueso/core/alphafold_acquisition.py": "2a4691023270cd2891743dab110a98df1b743b1db12f7d642013ebd4a838247d",
+    "sabueso/core/card_exploration_render.py": "2fc1350b3d7a36146f4801975e997dcf973e10eb9e056e6b3b10de36410c976b",
+    "tests/core/test_alphafold_acquisition_offline.py": "a8410eedbc12a9d234a1f2c4a02769a8fbadefc5be4d85174dff3c4b330b5632",
+    "devguide/sources/registry.yaml": "37c032211e61852ac512e408fe36da808991a2e74b7707cbd3c9c5a33c655a54",
+    "sabueso/resolver/source_catalog.json": "dce4e4f74c8e2d3836019ad8b6dc59888d892974407dbf619bec3e75d09b8adf"
+  },
+  "resources": {
+    "execution": "serial Python3.14 pytest-receptor in the existing editable shared workspace",
+    "peak_owned_rss_bytes": 630026240,
+    "peak_owned_swap_bytes": 0,
+    "minimum_host_available_bytes": 13430259712,
+    "limits": {
+      "owned_rss_bytes": 1073741824,
+      "host_available_bytes": 4294967296,
+      "owned_swap_bytes": 0,
+      "elapsed_s": 600,
+      "owned_scratch_bytes": 2147483648
+    }
+  }
+}

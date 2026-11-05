@@ -1,5 +1,15 @@
 # Sabueso — Tests and Quality Gates
 
+AlphaFold distribution-scope receiving uses
+`test_alphafold_acquisition_offline.py`, already copied into both installed
+receiving routes, with source acquisition/lifetime, enrichers, knowledge-state/
+explanation, coverage/nature, literal access, saved exploration and diagnostics.
+Check API404 versus empty/unobserved records and missing fixtures, unchanged
+request/replay facts, original Card/agent/source detail and inert saved reading.
+Preserve older missing detail and all frozen verifiers. Current metadata still
+serving both range-field names does not qualify a future modern-only contract;
+synthetic HTTP misses are not a genuine negative model-availability benchmark.
+
 `test_card_model_fragments_offline.py` receives exact original fragment sequence,
 MD5, accession, inclusive reference interval and unambiguous application binding.
 Run it with the whole-model gate, affected Card access/human/agent/history,

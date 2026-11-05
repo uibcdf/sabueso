@@ -47,8 +47,11 @@ replaces the recorded outcome.
 - **Reported:** a source that could not be consulted (`status: "error"`), a truncated
   result (`truncated: true`), and records left out of a deck because they have no
   standard InChIKey.
-- **Not reported:** `not_found`. "The source holds no record" is an answer, not a
-  failure, and it stays data only.
+- **Not reported:** `not_found`. A record missing from the queried route is an
+  answer, not a failure, and stays data only. For AlphaFold's prediction API,
+  that outcome does not establish absence from separately distributed proteome
+  archives. New Card enrichment records retain this scope and coverage displays
+  the retained detail; no alternate route is queried automatically.
 
 ## Codes
 

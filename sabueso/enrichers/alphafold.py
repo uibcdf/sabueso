@@ -12,7 +12,8 @@ class AlphaFold(Enricher):
     areas = ("relationships.has_predicted_structure",)
     client_option = "alphafold_client"
     stage = "after_chembl"
-    not_found_detail = False
+    # A missing prediction-API record does not establish database-wide absence.
+    not_found_detail = True
 
     def client(self):
         from sabueso.tools.db.alphafold import OnlineAlphaFoldClient
@@ -20,7 +21,18 @@ class AlphaFold(Enricher):
         return OnlineAlphaFoldClient()
 
     def fetch(self, client, request, options):
-        return client.prediction(request.identifier)
+        from sabueso.core.errors import ConnectorError, RecordNotFoundError
+        from sabueso.tools.db.alphafold import FixtureAlphaFoldClient
+
+        try:
+            return client.prediction(request.identifier)
+        except RecordNotFoundError as exc:
+            # This fixture implementation raises not-found only for a missing
+            # local input. Keep its public client exception, but do not record
+            # that input gap as a queried scientific absence on a new Card.
+            if isinstance(client, FixtureAlphaFoldClient):
+                raise ConnectorError(str(exc)) from exc
+            raise
 
     def map(self, context, request, response, options):
         from sabueso.mappings.alphafold import map_predictions

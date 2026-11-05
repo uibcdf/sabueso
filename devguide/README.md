@@ -1,5 +1,18 @@
 # Sabueso — Developer Guide
 
+The [AlphaFold API-scope correction](pending_bugs/alphafold_prediction_api_scope.md)
+clarifies missing-record diagnostics, retains their original request scope on new
+Cards/acquisition events and shows it in coverage. Genuine archive fragments and
+modern-only range compatibility remain pending. [Future dataset candidates](https://github.com/uibcdf/sabueso/issues/189)
+Molecular Dataset Hub and torch-molecule dataset access are queued through
+[Data sources #190](https://github.com/uibcdf/sabueso/discussions/190), without
+dependency adoption or expanding the agreed release scope.
+
+The component-row `913aad1` source has now passed complete hosted receiving:
+CI 18/18 and governance 1/1, with original source/installed summaries and codec
+routes verified in its [receipt](evidence/component_row_reading_20261105.json).
+Qualification does not transfer automatically to later changed runtime.
+
 [Publication-authority adoption](evidence/publication_authority_adoption_20261105.json)
 receives the byte-identical current MolI guide and explicit root actions under
 #187/#80/#75. Any third-party issue/comment/PR/remote draft requires prior scoped

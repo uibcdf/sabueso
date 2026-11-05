@@ -8,11 +8,11 @@ that views about experimental structures never count models. Sabueso never downl
 coordinates: loading structures belongs to MolSysMT.
 
 ``prediction(accession)`` returns ``{accession, retrieved_at, record}``, where
-``record`` is AlphaFold DB's list of models for the accession (one per fragment for
-long proteins). ``OnlineAlphaFoldClient`` queries the AlphaFold DB API;
+``record`` is the prediction API's model list for the accession. Proteome-only
+fragments are not covered by this route. ``OnlineAlphaFoldClient`` queries that API;
 ``FixtureAlphaFoldClient`` reads ``<directory>/alphafold/<accession>.json``. Both raise
-``RecordNotFoundError`` when AlphaFold DB holds no model for the accession, and
-``ConnectorError`` on failures.
+``RecordNotFoundError`` for a missing API/fixture record, without establishing
+database-wide absence, and ``ConnectorError`` on failures.
 """
 
 from __future__ import annotations
@@ -49,7 +49,9 @@ class OnlineAlphaFoldClient:
             exc.close()
             if exc.code == 404:
                 raise RecordNotFoundError(
-                    f"AlphaFold DB has no model for {accession}"
+                    f"AlphaFold prediction API record not found for {accession} "
+                    "(HTTP 404). Proteome archives and other distribution routes "
+                    "were not checked."
                 ) from exc
             raise ConnectorError(
                 f"AlphaFold DB request for {accession} failed: HTTP {exc.code}"
@@ -59,7 +61,10 @@ class OnlineAlphaFoldClient:
                 f"AlphaFold DB request for {accession} failed: {exc}"
             ) from exc
         if not data:
-            raise RecordNotFoundError(f"AlphaFold DB has no model for {accession}")
+            raise RecordNotFoundError(
+                f"AlphaFold prediction API returned no usable model list for {accession}. "
+                "Proteome archives and other distribution routes were not checked."
+            )
         return {"accession": accession, "retrieved_at": retrieval.value, "record": data}
 
 
@@ -82,7 +87,10 @@ class FixtureAlphaFoldClient:
             )
         path = self.directory / "alphafold" / f"{accession}.json"
         if not path.is_file():
-            raise RecordNotFoundError(f"AlphaFold DB has no model for {accession}")
+            raise RecordNotFoundError(
+                f"No AlphaFold fixture record for {accession}. "
+                "Database availability was not checked."
+            )
         record = json.loads(path.read_text(encoding="utf-8"))
         note_response(record)
         return {
