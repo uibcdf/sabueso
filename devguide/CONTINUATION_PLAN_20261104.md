@@ -96,6 +96,16 @@ video projects to this release.
 
 ## Starting state and first actions
 
+Current B3 presentation continuation: [component rows](pending_proposals/card_assembly_component_navigation.md#component-row-reading--2026-11-05)
+show a retained state once while preserving complete original/native/agent/saved
+content. Same-capture public comparisons and original saved reading pass; local
+and exact-source receiving remain separately recorded in the
+[receipt](evidence/component_row_reading_20261105.json). The preceding `2be4358`
+CI has three observed micromamba setup failures, so recovery is not yet qualified.
+Retain that failure and ordinary technical reporting; continue the existing B3
+order after this source checkpoint without claiming human acceptance or resuming
+release consolidation. The B2 maintainer-owned review remains deferred.
+
 Latest B3 continuation, 2026-11-05 UTC: the maintainer accepted the finite
 [public TcTIM correspondence example](pending_proposals/structural_journey_acceptance_20261104.md#public-tctim-correspondence-journey--2026-11-05-utc).
 Fresh revision-matched inputs support annotation → structure → assembly/component/

@@ -1,5 +1,14 @@
 # Sabueso — Developer Guide
 
+The [component-row presentation continuation](pending_proposals/card_assembly_component_navigation.md#component-row-reading--2026-11-05)
+shows each retained binding state once, beside availability and the exact-position
+action. Complete original labels, rows, native findings, agent pages and saved
+bytes stay unchanged. Same-capture public and genuine saved comparisons pass;
+local and hosted receiving retain their own scopes in the
+[receipt](evidence/component_row_reading_20261105.json). The preceding recovery CI
+has three observed micromamba setup failures; it remains unqualified. Broader B3,
+independent researcher acceptance and release consolidation remain open/paused.
+
 Latest continuation, 2026-11-05 UTC: the
 [public TcTIM correspondence journey](pending_proposals/structural_journey_acceptance_20261104.md#public-tctim-correspondence-journey--2026-11-05-utc)
 connects annotation position 96 to revision-matched 1TCD, assembly/components and

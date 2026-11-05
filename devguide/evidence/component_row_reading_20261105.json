@@ -1,0 +1,459 @@
+{
+  "owner": "#148/#173/#112",
+  "review_trigger": "next source checkpoint / structural researcher review",
+  "date_utc": "2026-11-05",
+  "baseline_source": "2be4358d12a5f38ffccdf0cb85fd36750802a95d",
+  "original_sdk": "0.14.0+172.g2be4358",
+  "scope": "Human text/HTML component row presentation only; new source hosted receiving pending.",
+  "change": "Move only the original generated state/repeated-label suffix out of the visible label into the existing summary column, retaining identifiers/descriptors and complete original labels, literal rows/native values/compact agent pages/saved bytes. Long descriptions cannot hide the actual state. No source query/scientific evaluation during display.",
+  "unchanged": [
+    "source bytes and assertions",
+    "Card schema",
+    "native rules/defaults",
+    "navigation predicates",
+    "saved verifiers and original capsules",
+    "public API and limits",
+    "dependencies and workflow configuration"
+  ],
+  "receiving": {
+    "owning": "34 passed; live/saved exact navigation, uncertain/repeated/native keys, long descriptors, HTML escaping, original saved and source/agent parity",
+    "integration": "107 passed across five additional navigation/human/literal/original-history/structure-assembly modules; disjoint from the34owning cases. Total141selected cases across seven files, not a full-suite claim.",
+    "same_capture": {
+      "owner": "#148/#173/#112",
+      "review_trigger": "next structural/human review",
+      "baseline": {
+        "owner": "#148/#173/#112",
+        "review_trigger": "component presentation receiving / next structural checkpoint",
+        "source": "2be4358d12a5f38ffccdf0cb85fd36750802a95d",
+        "sdk": "0.14.0+172.g2be4358",
+        "renderer_sha256": "d47d42c850cc21b7116070acf0b9e9e16a8388bfc59a986398f1b48665c2d668",
+        "available_memory_bytes": 15963189248
+      },
+      "candidate_renderer_sha256": "36308cf17937e21e489087a0bd8e1c2f774a49605bb52bdbd2a2602d2550e375",
+      "source_queries": 0,
+      "same_capture_no_native_evaluation_during_display": true,
+      "genuine_sdk171_saved_bytes_unchanged": true,
+      "cases": [
+        {
+          "case": "1HTI",
+          "mode": "live",
+          "shown_rows": 4,
+          "original_component_items": 3,
+          "before_text_characters": 1472,
+          "after_text_characters": 1409,
+          "before_rows": [
+            [
+              "0",
+              "Position 1 \u00b7 A \u00b7 Polymer record \u00b7 Native key matched",
+              "Native key matched \u00b7 available \u00b7 Open exact position"
+            ],
+            [
+              "1",
+              "Position 2 \u00b7 B \u00b7 Polymer record \u00b7 Native key matched",
+              "Native key matched \u00b7 available \u00b7 Open exact position"
+            ],
+            [
+              "2",
+              "Position 3 \u00b7 C \u00b7 Neighbor reference / Nonpolymer record \u00b7 PGA \u00b7 Native key matched",
+              "Native key matched \u00b7 available \u00b7 Open exact position"
+            ],
+            [
+              "3",
+              "Original generator declaration and retained component input",
+              "available \u00b7 1 captured destinations"
+            ]
+          ],
+          "after_rows": [
+            [
+              "0",
+              "Position 1 \u00b7 A \u00b7 Polymer record",
+              "Native key matched \u00b7 available \u00b7 Open exact position"
+            ],
+            [
+              "1",
+              "Position 2 \u00b7 B \u00b7 Polymer record",
+              "Native key matched \u00b7 available \u00b7 Open exact position"
+            ],
+            [
+              "2",
+              "Position 3 \u00b7 C \u00b7 Neighbor reference / Nonpolymer record \u00b7 PGA",
+              "Native key matched \u00b7 available \u00b7 Open exact position"
+            ],
+            [
+              "3",
+              "Original generator declaration and retained component input",
+              "available \u00b7 1 captured destinations"
+            ]
+          ],
+          "unchanged_native_rows_labels_agent_page": true,
+          "native_sha256": "290bb96977c5c1b62d60399fad5de65eeeafa3642391a627ea028e8f64e30553",
+          "rows_sha256": "291b6ba093350a0026f562211af2f80c20691bdc04d6861c6a3a4ef261fe0146",
+          "agent_page_sha256": "177046348d6c9f7c2318f302851a8f936646d22f227bf356b3cdc947eee19d20",
+          "both_table_and_summary": true
+        },
+        {
+          "case": "1SUX",
+          "mode": "live",
+          "shown_rows": 10,
+          "original_component_items": 12,
+          "before_text_characters": 2377,
+          "after_text_characters": 2167,
+          "before_rows": [
+            [
+              "0",
+              "Position 1 \u00b7 A \u00b7 Polymer record \u00b7 Native key matched",
+              "Native key matched \u00b7 available \u00b7 Open exact position"
+            ],
+            [
+              "1",
+              "Position 2 \u00b7 B \u00b7 Polymer record \u00b7 Native key matched",
+              "Native key matched \u00b7 available \u00b7 Open exact position"
+            ],
+            [
+              "2",
+              "Position 3 \u00b7 C \u00b7 Neighbor reference / Nonpolymer record \u00b7 SO4 \u00b7 Native key matched",
+              "Native key matched \u00b7 available \u00b7 Open exact position"
+            ],
+            [
+              "3",
+              "Position 4 \u00b7 D \u00b7 Neighbor reference / Nonpolymer record \u00b7 SO4 \u00b7 Native key matched",
+              "Native key matched \u00b7 available \u00b7 Open exact position"
+            ],
+            [
+              "4",
+              "Position 5 \u00b7 E \u00b7 Neighbor reference / Nonpolymer record \u00b7 SO4 \u00b7 Native key matched",
+              "Native key matched \u00b7 available \u00b7 Open exact position"
+            ],
+            [
+              "5",
+              "Position 6 \u00b7 F \u00b7 Neighbor reference / Nonpolymer record \u00b7 SO4 \u00b7 Native key matched",
+              "Native key matched \u00b7 available \u00b7 Open exact position"
+            ],
+            [
+              "6",
+              "Position 7 \u00b7 G \u00b7 Neighbor reference / Nonpolymer record \u00b7 SO4 \u00b7 Native key matched",
+              "Native key matched \u00b7 available \u00b7 Open exact position"
+            ],
+            [
+              "7",
+              "Position 8 \u00b7 H \u00b7 Neighbor reference / Nonpolymer record \u00b7 SO4 \u00b7 Native key matched",
+              "Native key matched \u00b7 available \u00b7 Open exact position"
+            ],
+            [
+              "8",
+              "Position 9 \u00b7 I \u00b7 Neighbor reference / Nonpolymer record \u00b7 SO4 \u00b7 Native key matched",
+              "Native key matched \u00b7 available \u00b7 Open exact position"
+            ],
+            [
+              "9",
+              "Position 10 \u00b7 J \u00b7 Neighbor reference / Nonpolymer record \u00b7 BTS \u00b7 Native key matched",
+              "Native key matched \u00b7 available \u00b7 Open exact position"
+            ]
+          ],
+          "after_rows": [
+            [
+              "0",
+              "Position 1 \u00b7 A \u00b7 Polymer record",
+              "Native key matched \u00b7 available \u00b7 Open exact position"
+            ],
+            [
+              "1",
+              "Position 2 \u00b7 B \u00b7 Polymer record",
+              "Native key matched \u00b7 available \u00b7 Open exact position"
+            ],
+            [
+              "2",
+              "Position 3 \u00b7 C \u00b7 Neighbor reference / Nonpolymer record \u00b7 SO4",
+              "Native key matched \u00b7 available \u00b7 Open exact position"
+            ],
+            [
+              "3",
+              "Position 4 \u00b7 D \u00b7 Neighbor reference / Nonpolymer record \u00b7 SO4",
+              "Native key matched \u00b7 available \u00b7 Open exact position"
+            ],
+            [
+              "4",
+              "Position 5 \u00b7 E \u00b7 Neighbor reference / Nonpolymer record \u00b7 SO4",
+              "Native key matched \u00b7 available \u00b7 Open exact position"
+            ],
+            [
+              "5",
+              "Position 6 \u00b7 F \u00b7 Neighbor reference / Nonpolymer record \u00b7 SO4",
+              "Native key matched \u00b7 available \u00b7 Open exact position"
+            ],
+            [
+              "6",
+              "Position 7 \u00b7 G \u00b7 Neighbor reference / Nonpolymer record \u00b7 SO4",
+              "Native key matched \u00b7 available \u00b7 Open exact position"
+            ],
+            [
+              "7",
+              "Position 8 \u00b7 H \u00b7 Neighbor reference / Nonpolymer record \u00b7 SO4",
+              "Native key matched \u00b7 available \u00b7 Open exact position"
+            ],
+            [
+              "8",
+              "Position 9 \u00b7 I \u00b7 Neighbor reference / Nonpolymer record \u00b7 SO4",
+              "Native key matched \u00b7 available \u00b7 Open exact position"
+            ],
+            [
+              "9",
+              "Position 10 \u00b7 J \u00b7 Neighbor reference / Nonpolymer record \u00b7 BTS",
+              "Native key matched \u00b7 available \u00b7 Open exact position"
+            ]
+          ],
+          "unchanged_native_rows_labels_agent_page": true,
+          "native_sha256": "5122515b897c9e8046390e74f4e38fc3f7f5a8a3f79ec229eb056e615ae58036",
+          "rows_sha256": "6c14beb53440483efb47ef18e6616a0e8f6ead77af66f245032a8de3ea696b03",
+          "agent_page_sha256": "4dcdef4f30588495907b8f966832fce30ca564f642ab6ef39423ca1ec49b4f04",
+          "both_table_and_summary": true
+        },
+        {
+          "case": "2V5B",
+          "mode": "live",
+          "shown_rows": 3,
+          "original_component_items": 2,
+          "before_text_characters": 1327,
+          "after_text_characters": 1279,
+          "before_rows": [
+            [
+              "0",
+              "Position 1 \u00b7 A \u00b7 Polymer record \u00b7 Native key matched",
+              "Native key matched \u00b7 available \u00b7 Open exact position"
+            ],
+            [
+              "1",
+              "Position 2 \u00b7 B \u00b7 No retained native match",
+              "No retained native match \u00b7 available \u00b7 Open exact position"
+            ],
+            [
+              "2",
+              "Original generator declaration and retained component input",
+              "available \u00b7 1 captured destinations"
+            ]
+          ],
+          "after_rows": [
+            [
+              "0",
+              "Position 1 \u00b7 A \u00b7 Polymer record",
+              "Native key matched \u00b7 available \u00b7 Open exact position"
+            ],
+            [
+              "1",
+              "Position 2 \u00b7 B",
+              "No retained native match \u00b7 available \u00b7 Open exact position"
+            ],
+            [
+              "2",
+              "Original generator declaration and retained component input",
+              "available \u00b7 1 captured destinations"
+            ]
+          ],
+          "unchanged_native_rows_labels_agent_page": true,
+          "native_sha256": "4c619202a785ad633aad7fafe04db69a987308a5a99a66966176cfafc22eda54",
+          "rows_sha256": "8aaccdebd8c578e2fb8e9e6369787cb2ac0a72ed4927cdbb00b553bb0a74b77e",
+          "agent_page_sha256": "871a126efdb9291c3c3bb56d9191f73240fe8bc55797e30c67576c2b25f6854e",
+          "both_table_and_summary": true
+        },
+        {
+          "case": "1TCD-original-SDK171",
+          "mode": "saved",
+          "shown_rows": 5,
+          "original_component_items": 4,
+          "before_text_characters": 1708,
+          "after_text_characters": 1612,
+          "before_rows": [
+            [
+              "0",
+              "Position 1 \u00b7 A \u00b7 Polymer record \u00b7 Native key matched",
+              "Native key matched \u00b7 available \u00b7 Open exact position"
+            ],
+            [
+              "1",
+              "Position 2 \u00b7 B \u00b7 Polymer record \u00b7 Native key matched",
+              "Native key matched \u00b7 available \u00b7 Open exact position"
+            ],
+            [
+              "2",
+              "Position 3 \u00b7 C \u00b7 No retained native match",
+              "No retained native match \u00b7 available \u00b7 Open exact position"
+            ],
+            [
+              "3",
+              "Position 4 \u00b7 D \u00b7 No retained native match",
+              "No retained native match \u00b7 available \u00b7 Open exact position"
+            ],
+            [
+              "4",
+              "Original generator declaration and retained component input",
+              "available \u00b7 1 captured destinations"
+            ]
+          ],
+          "after_rows": [
+            [
+              "0",
+              "Position 1 \u00b7 A \u00b7 Polymer record",
+              "Native key matched \u00b7 available \u00b7 Open exact position"
+            ],
+            [
+              "1",
+              "Position 2 \u00b7 B \u00b7 Polymer record",
+              "Native key matched \u00b7 available \u00b7 Open exact position"
+            ],
+            [
+              "2",
+              "Position 3 \u00b7 C",
+              "No retained native match \u00b7 available \u00b7 Open exact position"
+            ],
+            [
+              "3",
+              "Position 4 \u00b7 D",
+              "No retained native match \u00b7 available \u00b7 Open exact position"
+            ],
+            [
+              "4",
+              "Original generator declaration and retained component input",
+              "available \u00b7 1 captured destinations"
+            ]
+          ],
+          "unchanged_native_rows_labels_agent_page": true,
+          "native_sha256": "f2e067ab2680f99a15b74fd50794f93f25ef714b8d42ac023322e3128c9f9768",
+          "rows_sha256": "19adf2ce4db3f4d0dba35e2264e8e42b326eb6442cf5d55db7e1ae603f2cd685",
+          "agent_page_sha256": "7affce7f30870806206bb8b4aa0958637dbb1c8a43ef830797eddcfbf471997b",
+          "both_table_and_summary": true
+        }
+      ],
+      "scope": "Technical/public same-capture text+HTML table+summary comparison; character counts do not establish usability or general performance acceptance."
+    },
+    "harness_history": "Initial same-capture script passed the three live controls then failed locally by calling page() on a saved CardView; corrected to use the exact retained access.select() request. Failure log retained; this was not a library failure.",
+    "resources": {
+      "component-owning": {
+        "elapsed_s": 226.27,
+        "peak_owned_rss_bytes": 543313920,
+        "minimum_host_available_bytes": 15019778048,
+        "peak_owned_swap_bytes": 0,
+        "limits": {
+          "owned_rss_bytes": 1073741824,
+          "host_available_bytes": 4294967296,
+          "owned_swap_bytes": 0,
+          "elapsed_s": 600,
+          "owned_scratch_bytes": 2147483648
+        }
+      },
+      "public-comparison-corrected": {
+        "elapsed_s": 8.8,
+        "peak_owned_rss_bytes": 301375488,
+        "minimum_host_available_bytes": 14987030528,
+        "peak_owned_swap_bytes": 0,
+        "limits": {
+          "owned_rss_bytes": 1073741824,
+          "host_available_bytes": 4294967296,
+          "owned_swap_bytes": 0,
+          "elapsed_s": 600,
+          "owned_scratch_bytes": 2147483648
+        }
+      },
+      "navigation-integration": {
+        "elapsed_s": 65.88,
+        "peak_owned_rss_bytes": 410034176,
+        "minimum_host_available_bytes": 14925643776,
+        "peak_owned_swap_bytes": 0,
+        "limits": {
+          "owned_rss_bytes": 1073741824,
+          "host_available_bytes": 4294967296,
+          "owned_swap_bytes": 0,
+          "elapsed_s": 600,
+          "owned_scratch_bytes": 2147483648
+        }
+      },
+      "sphinx": {
+        "elapsed_s": 27.4,
+        "peak_owned_rss_bytes": 274857984,
+        "minimum_host_available_bytes": 14859157504,
+        "peak_owned_swap_bytes": 0,
+        "limits": {
+          "owned_rss_bytes": 1073741824,
+          "host_available_bytes": 4294967296,
+          "owned_swap_bytes": 0,
+          "elapsed_s": 600,
+          "owned_scratch_bytes": 2147483648
+        }
+      }
+    },
+    "checks": {
+      "root_ruff_check": "pass",
+      "root_ruff_format": "1340files formatted",
+      "source_registry": "pass, catalog/current generation agree",
+      "fixture_delivery": "76reviewed public,37protected local originals",
+      "governance": "pass",
+      "docs": {
+        "local_targets_anchors": 373,
+        "python_snippets_syntax": 0,
+        "python_311_parsed_files": 2
+      },
+      "sphinx": "warning-fatal keep-going HTML build passes",
+      "whitespace": "pass"
+    }
+  },
+  "earlier_ci": {
+    "head": "2be4358d12a5f38ffccdf0cb85fd36750802a95d",
+    "run": 42047120046,
+    "state": "in progress, three observed setup failures; unqualified",
+    "observed_error": "setup-micromamba v3.2.1 cannot find binary for2.10.0-0 onlinux-64/osx-arm64 in two inspected jobs, then cleanup JSON parse error. Current release metadata contains assets; transient lookup is a hypothesis, not an established root cause.",
+    "provider_report": "GitHub integration403 for mamba-org/setup-micromamba; maintainer handoff in#112, devguide/pending_bugs/micromamba_binary_lookup.md. No external provider issue created.",
+    "diagnostic_report": "https://github.com/uibcdf/gh-run-receptor/issues/81#issuecomment-6661075657"
+  },
+  "experience_review": {
+    "observed": "Actual rows no longer duplicate the binding state in label and summary; supported and unresolved states remain visible in text/HTML/table/summary, with original source/detail routes.",
+    "not_claimed": "Uncoached researcher usefulness, latency improvement, broad B3 or wow acceptance. Character counts describe these four displays only."
+  },
+  "scientific_review": "B2 maintainer-owned review explicitly deferred; no scientific/default adoption.",
+  "release_consolidation": "paused",
+  "owned_evidence": "recovered_work/component_row_reading_148_20261105/; retain control/candidate before-after displays, genuine saved session and gate/CI logs through next checkpoint/researcher review.",
+  "frozen_modules_unchanged": {
+    "sabueso/core/assembly_generation_v1.py": "9f51fe969790c479f0bee79c17cf130efc7426997f0813d8ce4c446f322a8c2d",
+    "sabueso/core/assembly_generation_v2.py": "ae99c3cb67039b783ba7a4ccceea2f321073d47e4d38f09acb42b8a99eb658eb",
+    "sabueso/core/assembly_generation_v3.py": "8a72894bf75e9a2c9f3b5511f21162a987d99c15d5054bced511ed7aa464b286",
+    "sabueso/core/assembly_generation_v4.py": "c49146bd8a2c5f190f17379b495d848e389103aa6c121afee0362489bbdbbc74",
+    "sabueso/core/assembly_generation_v5.py": "86a57db75f0d59c2d3bc5cb87202f8379f627e4cd97d0f2c2f92eebe8e023ebe",
+    "sabueso/core/card_assembly_component_context_v1.py": "1725b17489e2cdd2f8a12187437ba67863fe874416058de54f2373264a69d325",
+    "sabueso/core/card_exploration_verification.py": "e76d3661e06a99a7d90dbd6a4050367e5934db6f976285578a3b755a8882b094",
+    "sabueso/core/card_exploration_verification_v5.py": "16b92743d3d83f73763261c76b5f13cb1b792e644b6ffda00c4e8a746aa77061",
+    "sabueso/core/card_exploration_verification_v6.py": "185ee2f2ff6465f270b71f27af9bae1957417af74da1be9656e17771d1cdf581",
+    "sabueso/core/card_exploration_verification_v7.py": "675fb6e1e4a7f01ee6b02f4884c3ca4621148ff66205fe0977c10d44a8b80fbc",
+    "sabueso/core/card_exploration_verification_v8.py": "fb6ea3cbf23a66e00b03ec6dd47592c529151cbe01e0eed13ad6c30e8cdfe3ed"
+  },
+  "cleanup": {
+    "owner": "#148/#173/#112",
+    "review_trigger": "CI completion / next structural researcher review",
+    "removed": [
+      {
+        "path": "pytest-tmp",
+        "bytes": 0,
+        "files": 0
+      },
+      {
+        "path": "pytest-tmp-integration",
+        "bytes": 0,
+        "files": 0
+      },
+      {
+        "path": "pytest-cache",
+        "bytes": 18555,
+        "files": 5
+      },
+      {
+        "path": "sphinx-html",
+        "bytes": 43270193,
+        "files": 455
+      },
+      {
+        "path": "tmp",
+        "bytes": 0,
+        "files": 0
+      }
+    ],
+    "removed_bytes": 43288748,
+    "retained": "Original control renderer, before-after text/HTML for all four public cases, comparison/failed harness and gate/resource logs, inspected CI setup failures and provider handoff. Genuine original SDK171 session in preceding phase, active recovery CI/caches, shared environment, all sibling/caller outputs protected."
+  }
+}

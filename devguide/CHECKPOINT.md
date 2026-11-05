@@ -1,5 +1,15 @@
 # Sabueso — Checkpoint
 
+Latest component presentation: the
+[row-reading continuation](pending_proposals/card_assembly_component_navigation.md#component-row-reading--2026-11-05)
+places the retained state once beside availability/action, preserving full
+original labels, native/literal/agent data and saved bytes. Same-capture public
+controls and the genuine SDK171 saved journey pass; owning/integration and hosted
+receiving are separate in its [receipt](evidence/component_row_reading_20261105.json).
+The preceding `2be4358` recovery run has three observed micromamba setup failures
+before tests; it is not qualified. Keep original failed source `0881d8a`, deferred
+B2 review, broad B3/human acceptance and paused 0.15.0 distinct.
+
 Latest local continuation, 2026-11-05 UTC: the
 [public TcTIM correspondence journey](pending_proposals/structural_journey_acceptance_20261104.md#public-tctim-correspondence-journey--2026-11-05-utc)
 connects annotation position 96 to revision-matched 1TCD, assembly/components and

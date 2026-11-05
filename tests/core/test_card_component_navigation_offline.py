@@ -105,6 +105,10 @@ def test_live_structure_component_and_source_journey_is_lazy_and_exact(
     assert html.count("Open a position to inspect") == 1
     assert text.count("Open exact position") == min(len(expected), 10)
     assert html.count("Open exact position") == min(len(expected), 10)
+    assert "Native key matched: Native key matched" not in text
+    assert "Native key matched: Native key matched" not in html
+    assert "No retained native match: No retained native match" not in text
+    assert "No retained native match: No retained native match" not in html
     for link in original_links["links"]:
         if "component_request" in link:
             assert link["component_request"]["reason"] not in text

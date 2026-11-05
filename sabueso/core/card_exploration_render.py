@@ -545,7 +545,7 @@ def _component_link_preview(view, link):
         STATES,
     )
 
-    state = []
+    label, state = link["label"], []
     if link.get("rule") == DETAIL_RULE:
         actions = {
             "component_binding": "Inspect declared position",
@@ -568,15 +568,22 @@ def _component_link_preview(view, link):
             request["component_index"]
         ]
         # These are original findings, not a new native evaluation or identity join.
-        state.append(preview(STATES.get(binding["state"], binding["state"])))
+        status = STATES.get(binding["state"], binding["state"])
+        state.append(preview(status))
+        suffix = f" · {status}"
         if binding.get("repeated"):
             state.append("Repeated declaration label")
+            suffix += " · repeated declaration label"
+        # Move only the original generated suffix into the state column. Keep
+        # descriptors literal, even if they contain words resembling a state.
+        if label.endswith(suffix):
+            label = label[: -len(suffix)]
         action = "Open exact position"
     elif link.get("rule") == ASSEMBLY_RULE and link.get("role") == "components":
         action = "Open declared positions"
     else:
         action = preview(link["component_request"]["reason"], 240)
-    return " · ".join([*state, preview(link["availability"]), action])
+    return preview(label), " · ".join([*state, preview(link["availability"]), action])
 
 
 def _parts(view):
@@ -820,13 +827,7 @@ def _parts(view):
                 continue
             component_preview = _component_link_preview(view, value)
             if component_preview is not None:
-                rows.append(
-                    (
-                        str(index),
-                        preview(item.label),
-                        component_preview,
-                    )
-                )
+                rows.append((str(index), *component_preview))
                 continue
             rows.append(
                 (

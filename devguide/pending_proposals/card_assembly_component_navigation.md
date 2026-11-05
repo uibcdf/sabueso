@@ -3,7 +3,7 @@ summary: Exact structure-to-assembly and declared-component source navigation.
 issue: uibcdf/sabueso#173
 status: open
 opened: 2026-11-04
-verification: exact_source_qualified
+verification: source_specific_receipts_in_owning_issues
 area: [human-exploration, agent-access, navigation, persistence]
 ---
 
@@ -118,3 +118,31 @@ lanes each pass 1,583. Twelve codec producer routes, 24 fresh cross-read frames 
 36 installed codec cases qualify the exact source. The final editable also passes
 41 focused cases. #183 scratch recovery is closed; large-workload and researcher
 acceptance, physical reconciliation and paused 0.15.0 remain separate.
+
+## Component row reading — 2026-11-05
+
+Actual public walkthroughs exposed a second presentation repetition: a position's
+generated binding state appeared in both its visible label and its summary.
+The renderer now places that state once in the summary column, alongside the
+existing availability and exact-position action:
+
+```text
+Before: Position 1 · A · Polymer record · Native key matched: Native key matched · available · Open exact position
+After:  Position 1 · A · Polymer record: Native key matched · available · Open exact position
+```
+
+Only the exact generated state/repeated-label suffix moves out of the displayed
+label. Source descriptors stay literal, including any words resembling a state.
+The summary always retains the complete bounded state and repeated-label warning,
+even when a long descriptor is abbreviated. Complete original `item.label`,
+`rows()`, native payloads, indices, requests, support and compact agent pages stay
+unchanged. Text and HTML, table and summary, and live and original saved views
+share the presentation. No scientific interpretation or frozen predicate changes.
+
+The [local receipt](../evidence/component_row_reading_20261105.json) separates
+owning/integration checks and a same-capture public comparison from hosted and
+researcher acceptance. Original 1HTI/1SUX/2V5B controls and the genuine SDK171
+saved 1TCD session retain their source/scientific/agent data, with no native
+evaluation during rendering. No source is queried and original saved bytes remain
+unchanged. Public before/after inspection is technical experience review; actual
+researcher feedback and broad B3/wow acceptance remain open.

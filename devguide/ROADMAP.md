@@ -73,6 +73,14 @@ Nextia Evidence / MOLI ProjectRecord / Recorda acceptance remain open.
 
 ## Current consolidation after recovery (#112)
 
+The [component-row presentation](pending_proposals/card_assembly_component_navigation.md#component-row-reading--2026-11-05)
+removes duplicate displayed states while preserving original data and compact
+agent access. Public and genuine saved comparisons exercise the same captured
+findings without new science. Local/hosted receiving and broader researcher
+acceptance stay separate; the earlier recovery has three observed micromamba
+setup failures and remains unqualified. The
+[receipt](evidence/component_row_reading_20261105.json) owns this bounded slice.
+
 B3's accepted [public TcTIM continuation](pending_proposals/structural_journey_acceptance_20261104.md#public-tctim-correspondence-journey--2026-11-05-utc)
 demonstrates revision/native correspondence, human/agent/saved navigation and a
 separate optional coordinate calculation retaining all 276 pairs. Historical gaps
