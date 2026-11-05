@@ -1,5 +1,19 @@
 # Sabueso — Checkpoint
 
+Latest local continuation, 2026-11-05 UTC: the
+[public TcTIM correspondence journey](pending_proposals/structural_journey_acceptance_20261104.md#public-tctim-correspondence-journey--2026-11-05-utc)
+connects annotation position 96 to revision-matched 1TCD, assembly/components and
+original sources through human/agent/saved access. Optional construction verifies
+native, author and reference axes and records all 276 calculated C-alpha pairs
+separately; Card/source assertions stay unchanged. One gzip session preserves the
+visited routes; fresh reading needs no MolSysMT, fixtures, rebuilding or network.
+The renderer now identifies full-inventory warnings in a focused structure view.
+Selected receiving passes 183 affected cases, then 66 final focused cases; with
+MolSysMT forbidden, 7 pass and 21 explicit modeling cases skip. Final exact-source
+hosted qualification remains pending. B3, generic production handoff, independent
+scientific/researcher/consumer acceptance and paused 0.15.0 remain open. Earlier
+checkpoints below retain their original inputs, scope and qualification.
+
 The accumulated runtime source `c5b8af1` /SDK `0.14.0+167.gc5b8af1` is now
 [qualified](evidence/bioactivity_target_scope_checkpoint_20261105.json): CI 18/18,
 governance 1/1, nine source lanes each 7,254 cases, four installed lanes each

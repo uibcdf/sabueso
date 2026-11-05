@@ -96,6 +96,18 @@ video projects to this release.
 
 ## Starting state and first actions
 
+Latest B3 continuation, 2026-11-05 UTC: the maintainer accepted the finite
+[public TcTIM correspondence example](pending_proposals/structural_journey_acceptance_20261104.md#public-tctim-correspondence-journey--2026-11-05-utc).
+Fresh revision-matched inputs support annotation → structure → assembly/component/
+source navigation, exact human/agent/saved parity and a separate optional MolSysMT
+calculation with complete atomic/reference correspondence and all selected pairs.
+Original historical gaps and unknown Card component keys are preserved. Local
+affected/final receiving and absent-provider reading pass; exact-source hosted
+qualification remains pending. Continue other B3 journeys and explicit generic
+consumer/scientific scope after this checkpoint. This does not adopt a modeling
+API, close B3, resume release consolidation or accept the human experience.
+The B2 maintainer-owned scientific review remains deferred.
+
 Latest receiving, 2026-11-05 UTC: accumulated source `c5b8af1` is
 [qualified](evidence/bioactivity_target_scope_checkpoint_20261105.json), CI 18/18
 and governance 1/1 with all thirteen actual summaries, full source/installed

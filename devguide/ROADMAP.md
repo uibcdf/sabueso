@@ -73,6 +73,16 @@ Nextia Evidence / MOLI ProjectRecord / Recorda acceptance remain open.
 
 ## Current consolidation after recovery (#112)
 
+B3's accepted [public TcTIM continuation](pending_proposals/structural_journey_acceptance_20261104.md#public-tctim-correspondence-journey--2026-11-05-utc)
+demonstrates revision/native correspondence, human/agent/saved navigation and a
+separate optional coordinate calculation retaining all 276 pairs. Historical gaps
+stay unknown; focused warnings identify full-inventory scope. Selected local and
+absent-provider receiving pass; exact-source hosted receiving is pending. This
+finite control advances B3 without adopting a generic production bridge,
+physical-copy uniqueness rule or shared protocol. Other B3 transitions and
+scientist/researcher/consumer/workload acceptance remain open. The following
+preceding review retains its narrower preparation scope.
+
 B3's [source-supported structural review](pending_proposals/structural_journey_acceptance_20261104.md)
 now checks four public native/human/agent/saved journeys and six synthetic scope
 counterexamples. The remaining physical reconciliation task requires an explicit

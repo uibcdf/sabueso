@@ -1,5 +1,18 @@
 # Sabueso — Developer Guide
 
+Latest continuation, 2026-11-05 UTC: the
+[public TcTIM correspondence journey](pending_proposals/structural_journey_acceptance_20261104.md#public-tctim-correspondence-journey--2026-11-05-utc)
+connects annotation position 96 to revision-matched 1TCD, assembly/components and
+original sources through human/agent/saved access. Optional construction records
+all 276 calculated C-alpha pairs separately, with native/author/reference axes and
+units; historical gaps remain unknown. One gzip session preserves visited routes,
+and reading needs no MolSysMT. Selected receiving passes 183 affected cases and
+66 final focused cases; absent-provider receiving passes 7 and explicitly skips
+21 modeling cases. Exact-source hosted qualification is pending. This finite
+example advances B3; generic production handoff and independent scientific/human/
+consumer acceptance remain open. The following earlier checkpoints retain their
+own original scope and qualification.
+
 The accumulated runtime source `c5b8af1` /SDK `0.14.0+167.gc5b8af1` is now
 [qualified](evidence/bioactivity_target_scope_checkpoint_20261105.json): CI 18/18,
 governance 1/1, nine source lanes each 7,254 cases, four installed lanes each

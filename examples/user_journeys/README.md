@@ -7,6 +7,54 @@ checkout; its local validation is separate from published-package qualification.
 
 ## Human Card exploration
 
+### TcTIM structure, source context and an explicit modeling control
+
+```bash
+python examples/user_journeys/structural_context.py produce --fixtures temp_data --output /tmp/sabueso-structural-context
+python examples/user_journeys/structural_context.py read --output /tmp/sabueso-structural-context
+```
+
+Choose a new output directory. The example follows the original UniProt annotation
+at position 96, selects the exact 1TCD structure, opens its assembly question and
+visits the original component records. Compact agent access shares the human
+result. One gzip file retains the whole visited session; reopening it restores
+these routes without querying sources or rebuilding the Card. Other structures
+listed by UniProt have no new RCSB receiving in this example.
+
+The separate, optional modeling command requires the qualified MolSysMT source
+described in the [B3 record](../../devguide/pending_proposals/structural_journey_acceptance_20261104.md#public-tctim-correspondence-journey--2026-11-05-utc):
+
+```bash
+python examples/user_journeys/structural_context.py model --output /tmp/sabueso-structural-context --coordinates temp_data/rcsb_structural_context/coordinates/1tcd.bcif.gz
+python examples/user_journeys/structural_context.py read --output /tmp/sabueso-structural-context
+```
+
+Before construction, the consumer checks the original entry/revision, generator,
+operation, entity/instance IDs, source-declared sequence and numbering axes, model
+and alternate-location scope. This bounded control accepts the retained 1TCD
+identity operation. Its source-declared alignment maps entity position 94 to
+UniProt position 96. Missing historical revisions and incompatible inputs are
+refused before invoking the builder.
+
+RCSB and the coordinate file both declare entry revision 1.4 (2024-05-22).
+The Card resolves polymer A/B but retains C/D as unresolved keys; the coordinate
+file explicitly identifies C/D as water. Both source scopes remain visible.
+The calculation records 3,983 atoms and 276 C-alpha A/B pairs within an inclusive
+1 nm cutoff, without periodic images, atom-group centers or group reduction.
+An independent squared-distance calculation checks the producer's result.
+These distances do not establish binding or biological interface relevance.
+
+The original Card and saved knowledge stay unchanged. The file, complete contact-pair list, atom/operation
+correspondence and calculation log remain separate, with their original producer,
+units, input hashes and scope. Pair indices are zero-based generated-atom indices;
+UniProt positions are one-based. The reader checks these example-local file bindings
+and shows the recorded result without recalculating; it is not a general geometric
+result verifier or a shared MolI interchange contract. Native saved Card science
+retains its existing independent verification. This one-model control does not
+qualify fragments, isoforms, heterogeneous assemblies or physical-copy uniqueness.
+
+### Protein, molecule and disease orientation
+
 The development `card.explore()` API has a small, offline walkthrough for public
 TcTIM, benznidazole and MONDO:0014221:
 

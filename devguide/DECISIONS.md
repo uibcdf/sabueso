@@ -1,5 +1,23 @@
 # Sabueso — Decision Log
 
+## 2026-11-05 — Qualify one explicit TcTIM structural consumer journey (#173/#148)
+
+The maintainer accepts the proposed continuation: prepare a compatible public
+Card/coordinate case, verify molecular correspondence, and exercise human, compact
+agent and original saved navigation. Use 1TCD with original entry revision,
+generator/operation and entity/reference axes; preserve the historical Card and
+its unknown revision. Reuse Sabueso's existing knowledge readers and MolSysMT's
+public construction/contact APIs in an explicit modeling consumer example.
+
+The example-local `public_tctim_coordinate_correspondence@1` admits only its
+one-model identity-operation control. Calculations stay outside SourceAssertions
+and Card values. The coordinate file may supply water/entity context absent from
+the retained Card query, with its own basis. This accepts the finite technical
+task, not a generic modeling API, shared wire contract, source-contact join,
+physical-copy uniqueness criterion or completion of broad B3/release acceptance.
+The [structural record](pending_proposals/structural_journey_acceptance_20261104.md#public-tctim-correspondence-journey--2026-11-05-utc)
+owns receiving and remaining work. B2 scientific review stays explicitly deferred.
+
 ## 2026-11-04 — Defer scientific review; preserve opt-in target scope (#186/#188)
 
 The maintainer will conduct the six-case scientific review and explicitly leaves

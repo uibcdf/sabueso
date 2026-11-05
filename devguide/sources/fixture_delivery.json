@@ -2,7 +2,7 @@
   "format": "sabueso.fixture_delivery@1",
   "reviewed": "2026-10-09",
   "issue": "uibcdf/sabueso#112",
-  "scope": "Reviewed recovery inputs, release compatibility artifacts and bounded public RCSB assembly-generation/nonpolymer-instance captures; earlier fixtures retain their notices.",
+  "scope": "Reviewed recovery inputs, release compatibility artifacts and bounded public RCSB assembly-generation/nonpolymer-instance captures; earlier fixtures retain their notices. Public 1TCD source/coordinate correspondence inputs (#173) are separately declared.",
   "files": [
     {
       "path": "temp_data/3did/3did_dmi_flat.gz",
@@ -1309,6 +1309,71 @@
       "basis": "Public RCSB/wwPDB factual test controls under verified CC0 API terms; exact wire, decoded entry and authored capture metadata are distinguished in temp_data/NOTICE.md and capture.json (#173). Not private/pilot data.",
       "terms_sha256": "13254f291a1e76f71307d348f3fce8e1ab64171cac6ce5429ab055b0eeabd4b7",
       "decision_reviewed": "2026-11-03"
+    },
+    {
+      "path": "temp_data/rcsb_structural_context/capture.json",
+      "source_id": "rcsb_pdb",
+      "sha256": "8b428ed12f99d02db5b8d9577d094d8622789b8997386871d3bff1dc619ceec0",
+      "bytes": 3193,
+      "delivery": "repository",
+      "recorded_licence": "CC0-1.0",
+      "reviewed": "2026-09-29",
+      "statement": "https://www.rcsb.org/pages/usage-policy",
+      "basis": "Public 1TCD RCSB/wwPDB entry revision 1.4; CC0 1.0 factual API/archive data under the official usage policy checked 2026-11-05 UTC. Original wire/request and unchanged bundled coordinate bytes are distinct from decoded entry and authored metadata. Original coordinate download time unknown. Capture observer gap and separate native archive replay are explicit. Credit RCSB PDB and wwPDB; no private inputs.",
+      "terms_sha256": "13254f291a1e76f71307d348f3fce8e1ab64171cac6ce5429ab055b0eeabd4b7",
+      "decision_reviewed": "2026-11-05"
+    },
+    {
+      "path": "temp_data/rcsb_structural_context/coordinates/1tcd.bcif.gz",
+      "source_id": "rcsb_pdb",
+      "sha256": "6f15f9412a97e38ffb01e0aec8ffa6016ac5d1ddf50042e0129583caf65be125",
+      "bytes": 70169,
+      "delivery": "repository",
+      "recorded_licence": "CC0-1.0",
+      "reviewed": "2026-09-29",
+      "statement": "https://www.rcsb.org/pages/usage-policy",
+      "basis": "Public 1TCD RCSB/wwPDB entry revision 1.4; CC0 1.0 factual API/archive data under the official usage policy checked 2026-11-05 UTC. Original wire/request and unchanged bundled coordinate bytes are distinct from decoded entry and authored metadata. Original coordinate download time unknown. Capture observer gap and separate native archive replay are explicit. Credit RCSB PDB and wwPDB; no private inputs.",
+      "terms_sha256": "13254f291a1e76f71307d348f3fce8e1ab64171cac6ce5429ab055b0eeabd4b7",
+      "decision_reviewed": "2026-11-05"
+    },
+    {
+      "path": "temp_data/rcsb_structural_context/rcsb/1TCD.json",
+      "source_id": "rcsb_pdb",
+      "sha256": "0a02f6cf552d646e01fda40b1685bd342ff7c51fd0dd53c0596aaf4688e73fd7",
+      "bytes": 46654,
+      "delivery": "repository",
+      "recorded_licence": "CC0-1.0",
+      "reviewed": "2026-09-29",
+      "statement": "https://www.rcsb.org/pages/usage-policy",
+      "basis": "Public 1TCD RCSB/wwPDB entry revision 1.4; CC0 1.0 factual API/archive data under the official usage policy checked 2026-11-05 UTC. Original wire/request and unchanged bundled coordinate bytes are distinct from decoded entry and authored metadata. Original coordinate download time unknown. Capture observer gap and separate native archive replay are explicit. Credit RCSB PDB and wwPDB; no private inputs.",
+      "terms_sha256": "13254f291a1e76f71307d348f3fce8e1ab64171cac6ce5429ab055b0eeabd4b7",
+      "decision_reviewed": "2026-11-05"
+    },
+    {
+      "path": "temp_data/rcsb_structural_context/wire/1TCD.graphql.json",
+      "source_id": "rcsb_pdb",
+      "sha256": "4b2e24aacd19a95b9547b6310d6088ae7f4650666b7a9f823e0645395792923c",
+      "bytes": 17414,
+      "delivery": "repository",
+      "recorded_licence": "CC0-1.0",
+      "reviewed": "2026-09-29",
+      "statement": "https://www.rcsb.org/pages/usage-policy",
+      "basis": "Public 1TCD RCSB/wwPDB entry revision 1.4; CC0 1.0 factual API/archive data under the official usage policy checked 2026-11-05 UTC. Original wire/request and unchanged bundled coordinate bytes are distinct from decoded entry and authored metadata. Original coordinate download time unknown. Capture observer gap and separate native archive replay are explicit. Credit RCSB PDB and wwPDB; no private inputs.",
+      "terms_sha256": "13254f291a1e76f71307d348f3fce8e1ab64171cac6ce5429ab055b0eeabd4b7",
+      "decision_reviewed": "2026-11-05"
+    },
+    {
+      "path": "temp_data/rcsb_structural_context/wire/1TCD.request.json",
+      "source_id": "rcsb_pdb",
+      "sha256": "cf1e3e7f9f0db9b9758267a61d34956c22d5646f8e0d6ff02905bd9ac01e8b12",
+      "bytes": 2592,
+      "delivery": "repository",
+      "recorded_licence": "CC0-1.0",
+      "reviewed": "2026-09-29",
+      "statement": "https://www.rcsb.org/pages/usage-policy",
+      "basis": "Public 1TCD RCSB/wwPDB entry revision 1.4; CC0 1.0 factual API/archive data under the official usage policy checked 2026-11-05 UTC. Original wire/request and unchanged bundled coordinate bytes are distinct from decoded entry and authored metadata. Original coordinate download time unknown. Capture observer gap and separate native archive replay are explicit. Credit RCSB PDB and wwPDB; no private inputs.",
+      "terms_sha256": "13254f291a1e76f71307d348f3fce8e1ab64171cac6ce5429ab055b0eeabd4b7",
+      "decision_reviewed": "2026-11-05"
     }
   ],
   "local_qualification_tests": {

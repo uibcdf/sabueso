@@ -1,5 +1,20 @@
 # Sabueso — Risks and Open Questions
 
+The accepted [finite public 1TCD example](pending_proposals/structural_journey_acceptance_20261104.md#public-tctim-correspondence-journey--2026-11-05-utc)
+now checks matching revisions and native/author/reference axes before an optional
+identity-operation construction and declared atomic contact calculation. All
+pairs remain separate from source knowledge. This does not qualify a generic
+production bridge or independent scientific acceptance. Historical gaps remain
+unjoined; coordinate water declarations do not backfill unresolved Card keys.
+Structure/reference release synchronization stays `not_stated`. The earlier B3
+scope review below still governs broader integration/uniqueness/contact work.
+
+The example's naive five-save/five-read gate hit its 1 GiB RSS ceiling. A single
+gzip session with shared reading passes within that ceiling and zero owned swap.
+This measured example workload is distinct from the HTTP buffering risk in #174.
+The multi-generator importer fix is submitted as
+[MolSysMT PR #566](https://github.com/uibcdf/molsysmt/pull/566), pending owner review.
+
 [B3's scope review](pending_proposals/structural_journey_acceptance_20261104.md)
 now identifies existing MolSysMT assembly/contact engines and 62 selected local
 receiving cases. The concrete admitted integration/uniqueness/contact task and its

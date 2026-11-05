@@ -1,0 +1,78 @@
+{
+  "owner": "uibcdf/sabueso#173/#148/#112",
+  "review_trigger": "public structural journey receiving / B3 closeout",
+  "source": "RCSB PDB / wwPDB",
+  "terms": "CC0 1.0; https://www.rcsb.org/pages/usage-policy (checked 2026-11-05 UTC)",
+  "entry": "1TCD",
+  "record_revision": {
+    "deposit_date": "1998-01-29T00:00:00Z",
+    "initial_release_date": "1999-01-13T00:00:00Z",
+    "major_revision": 1,
+    "minor_revision": 4,
+    "revision_date": "2024-05-22T00:00:00Z"
+  },
+  "wire_receipt": {
+    "status": 200,
+    "url": "https://data.rcsb.org/graphql",
+    "headers": {
+      "Date": "Thu, 05 Nov 2026 02:34:43 GMT",
+      "Content-Type": "application/json",
+      "ETag": null,
+      "Last-Modified": null
+    },
+    "bytes": 17414,
+    "sha256": "4b2e24aacd19a95b9547b6310d6088ae7f4650666b7a9f823e0645395792923c",
+    "complete_within_budget": true,
+    "retrieved_at": "2026-11-05T02:34:43.272081+00:00"
+  },
+  "query_sha256": "04974107f0bb299541bfac366f5531085184c8591b5d346cee83aa692aa311e5",
+  "acquisition_scope": {
+    "new_network_attempts": 2,
+    "complete_responses_retained": 1,
+    "initial_instrumentation_failure": "First logging attempt assumed a .url attribute on the SDK buffered Answer; no original response bytes retained for that attempt.",
+    "observer_gap": "Custom capture method used identifier rather than pdb_id; its acquisition summary is unobserved. Retained raw wire/request and real transport receipt are verified independently; native archive replay receiving is separate."
+  },
+  "coordinate_input": {
+    "provenance": "Unchanged public bundled MolSysMT coordinate fixture at source 71fbe4f46d3c70e4e973c8025f01752a8c9b1084; original network retrieval time unknown. Local copy 2026-11-05 UTC; not a new download.",
+    "source_path": "molsysmt/data/bcif_gz/1tcd.bcif.gz"
+  },
+  "files": {
+    "coordinates/1tcd.bcif.gz": {
+      "bytes": 70169,
+      "sha256": "6f15f9412a97e38ffb01e0aec8ffa6016ac5d1ddf50042e0129583caf65be125",
+      "representation": "original bytes"
+    },
+    "rcsb/1TCD.json": {
+      "bytes": 46654,
+      "sha256": "0a02f6cf552d646e01fda40b1685bd342ff7c51fd0dd53c0596aaf4688e73fd7",
+      "representation": "decoded data.entry re-encoded as JSON"
+    },
+    "wire/1TCD.graphql.json": {
+      "bytes": 17414,
+      "sha256": "4b2e24aacd19a95b9547b6310d6088ae7f4650666b7a9f823e0645395792923c",
+      "representation": "original bytes"
+    },
+    "wire/1TCD.request.json": {
+      "bytes": 2592,
+      "sha256": "cf1e3e7f9f0db9b9758267a61d34956c22d5646f8e0d6ff02905bd9ac01e8b12",
+      "representation": "original bytes"
+    }
+  },
+  "native_archive_receiving": {
+    "outcome": "received",
+    "access": "replay",
+    "network_attempts": 0,
+    "source_version": {
+      "value": {
+        "major_revision": 1,
+        "minor_revision": 4,
+        "revision_date": "2024-05-22T00:00:00Z"
+      },
+      "basis": "entry_revision"
+    },
+    "retrieved_at": "2026-11-05T02:34:43.272081+00:00",
+    "bibliography_gaps": [],
+    "provider_status": "available",
+    "scope": "Subsequent native get_entry replay of the retained original wire bytes, with sockets forbidden; separate from the custom original capture observer gap."
+  }
+}

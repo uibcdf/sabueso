@@ -1,0 +1,298 @@
+{
+  "owner": "uibcdf/sabueso#173/#148/#112",
+  "review_trigger": "next structural checkpoint / B3 closeout",
+  "date_utc": "2026-11-05",
+  "kind": "bounded public structural correspondence example; local technical receiving",
+  "source_base": "f6c75c9ba0118d0b89f59e11c7a66e1721625ad4",
+  "original_local_producer_sdk": "0.14.0+170.gf6c75c9",
+  "example": "examples/user_journeys/structural_context.py",
+  "example_sha256": "53430dbfdf4bd05f373e9e4271217e13ebb100d5005da715324341144cd04664",
+  "inputs": "temp_data/rcsb_structural_context/capture.json",
+  "acquisition": {
+    "new_network_attempts": 2,
+    "complete_responses_retained": 1,
+    "entry": "1TCD",
+    "revision": "1.4, 2024-05-22",
+    "observer": "Original custom observer unobserved due to capture callback signature error. Exact original wire/request/transport receipt retained independently. Later native archive replay received exact bytes with original time, no bibliography gaps and zero network attempts. Neither failed trace was relabeled.",
+    "coordinate_download_time": "unknown; unchanged bundled public bytes, not a new download"
+  },
+  "correspondence": {
+    "criteria": "public_tctim_coordinate_correspondence@1",
+    "scope": "One original Card, 1TCD revision and ordered single generator, identity operation, source model1 / native index0. Exact source identities, native entities/instances, polymer sequence, native/author/reference axes, atom pointers, unique atom IDs and no alternate locations.",
+    "entity_position": 94,
+    "reference_position": 96,
+    "reference": "uniprot:P52270",
+    "card_components": "A/B polymer keys resolve; C/D remain unresolved. Coordinate source independently declares C/D water.",
+    "structure_reference_revision_relationship": "not_stated",
+    "counterexamples": "15 synthetic identity/revision/generator/operator/sequence/reference/atom/model/alternate/author-axis changes refused; real historical revision gap refused without backfill."
+  },
+  "calculation": {
+    "provider": "MolSysMT local source 71fbe4f46d3c70e4e973c8025f01752a8c9b1084, SDK0.23.0+322.g71fbe4f46",
+    "generated_atoms": 3983,
+    "endpoints": "atomic C-alpha source chains A and B, 248 by249",
+    "criterion": {
+      "threshold": {
+        "value": 1.0,
+        "unit": "nm"
+      },
+      "inclusive": true,
+      "pbc": false,
+      "group_or_center_reduction": false
+    },
+    "all_pairs_retained": 276,
+    "independent_squared_distance_formula_matches": true,
+    "non_default_unit_policy": "angstrom",
+    "zero_based_generated_indices": true,
+    "new_source_assertions": 0,
+    "card_unchanged": true,
+    "biological_interface_or_binding_conclusion": false
+  },
+  "saved": {
+    "format": "one full gzip exploration session, exact compact agent root and all visited human routes",
+    "original_encoded_bytes": 1235528,
+    "original_decoded_bytes": 36904857,
+    "fresh_original_read_without": [
+      "Card construction",
+      "source access",
+      "fixtures",
+      "MolSysMT import",
+      "current geometric calculation"
+    ],
+    "separate_calculation_log": "Example-local file/context/criterion binding, not a generic independently frozen geometry verifier or authentication mechanism."
+  },
+  "library_change": "Three human renderer strings label inventory-wide exclusions/unknown numbering. No native payload/selection/rule/default/Card schema/source query/dependency change.",
+  "local_gates": {
+    "affected_scope": "183 passed across seven files before later example-only input/log/correspondence refinements; library strings unchanged thereafter.",
+    "final_focused": "66 passed: final owning28, fixture delivery and human labels; overlapping selected scope.",
+    "absent_molsysmt": "7 passed, 21 explicit optional modeling cases skipped in same shared environment with import blocked.",
+    "fixture_licensing": "4 passed",
+    "fixture_delivery": "76 reviewed repository inputs; 37 protected local-only originals",
+    "ruff": "check and root format pass,1339 files",
+    "sphinx": "warnings fatal, keep-going, passed; expected new HTML section inspected",
+    "governance": "pass",
+    "docs": {
+      "local_targets_anchors": 518,
+      "python_snippets_syntax": 3,
+      "python_311_parsed_files": 3
+    },
+    "whitespace": "pass"
+  },
+  "resources": {
+    "journey-tests": {
+      "exit_code": -15,
+      "elapsed_s": 104.75,
+      "stop_reason": "owned RSS ceiling",
+      "peak_owned_rss_bytes": 1122476032,
+      "minimum_host_available_bytes": 14679175168,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      }
+    },
+    "journey-produce-single": {
+      "exit_code": 0,
+      "elapsed_s": 12.57,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 236965888,
+      "minimum_host_available_bytes": 15113953280,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      }
+    },
+    "journey-read-single": {
+      "exit_code": 0,
+      "elapsed_s": 8.3,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 236478464,
+      "minimum_host_available_bytes": 14464000000,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      }
+    },
+    "journey-final-tests": {
+      "exit_code": 0,
+      "elapsed_s": 373.75,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 718655488,
+      "minimum_host_available_bytes": 14390784000,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      }
+    },
+    "final-correspondence": {
+      "exit_code": 0,
+      "elapsed_s": 54.59,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 696078336,
+      "minimum_host_available_bytes": 14829506560,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      }
+    },
+    "no-provider": {
+      "exit_code": 0,
+      "elapsed_s": 24.14,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 501792768,
+      "minimum_host_available_bytes": 14900072448,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      }
+    },
+    "fixture-licensing": {
+      "exit_code": 0,
+      "elapsed_s": 1.0,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 50319360,
+      "minimum_host_available_bytes": 15544557568,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      }
+    },
+    "sphinx": {
+      "exit_code": 0,
+      "elapsed_s": 25.39,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 274722816,
+      "minimum_host_available_bytes": 14489128960,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      }
+    }
+  },
+  "cleanup": {
+    "owner": "uibcdf/sabueso#173/#148/#112",
+    "review_trigger": "next structural checkpoint / B3 closeout",
+    "removed": [
+      {
+        "path": "journey",
+        "bytes": 184559813,
+        "files": 7,
+        "file_index_sha256": "db50ecf1621aefb8ef90df6fb89effa8d5983b5682172034ba0930a189e0d0f9"
+      },
+      {
+        "path": "pytest-tmp",
+        "bytes": 184560173,
+        "files": 7,
+        "file_index_sha256": "1e823850b2c375ef2df0dd56bb52c05ae23550f53c36687d37a2d00e096a9da4"
+      },
+      {
+        "path": "pytest-tmp-complete",
+        "bytes": 4022825,
+        "files": 10,
+        "file_index_sha256": "c6a7e54c05f5bb05f70e1b0d1c55fddfa9f303d788c8f8c96981387577a62e75"
+      },
+      {
+        "path": "pytest-tmp-complete-corrected",
+        "bytes": 1476363,
+        "files": 3,
+        "file_index_sha256": "5f265a483946a4be6dd4ab9e645e0ac487bf5aa077894b5bd43bc2c18dfc4339"
+      },
+      {
+        "path": "pytest-tmp-correspondence-final",
+        "bytes": 4498063,
+        "files": 10,
+        "file_index_sha256": "cd3530ff53089b486d94af4fbf5caad11ea730e7049ba5760148dd977d75485a"
+      },
+      {
+        "path": "pytest-tmp-final",
+        "bytes": 1476512,
+        "files": 3,
+        "file_index_sha256": "e2568a48a280465c20a40fd8d10d8da90a425925191fbb1c33ae6f726a2298aa"
+      },
+      {
+        "path": "pytest-tmp-input-final",
+        "bytes": 1476679,
+        "files": 3,
+        "file_index_sha256": "5f596e3fde6622c02204f456f008192ac905fe999de7a90171941d2acee56456"
+      },
+      {
+        "path": "pytest-tmp-recorded-final",
+        "bytes": 4022934,
+        "files": 10,
+        "file_index_sha256": "b886db31d93308a9e876f2c3af791fabbe0d61f4e50d06a6c522f0d95f9702f2"
+      },
+      {
+        "path": "pytest-tmp-single",
+        "bytes": 1476335,
+        "files": 3,
+        "file_index_sha256": "db2e12f45292728b19a4ebcd6688f065009534c032ca858d9f16af7e3a0ee398"
+      },
+      {
+        "path": "pytest-tmp-no-provider",
+        "bytes": 1476568,
+        "files": 3,
+        "file_index_sha256": "fa7de9cc095da5ee88f63fe20c27d29104034bb27edc00bd367250e51735f83c"
+      },
+      {
+        "path": "pytest-cache",
+        "bytes": 31894,
+        "files": 6,
+        "file_index_sha256": "66a456e2e7196d756af2b3727b68ce382bcb2cbaf1122ab7f3c3f257f6451df1"
+      },
+      {
+        "path": "sphinx-html",
+        "bytes": 43270109,
+        "files": 455,
+        "file_index_sha256": "0e2dc6ce26314b4ef813346b0403038ced835af1aa4cf203a60c1c593b54baf8"
+      },
+      {
+        "path": "tmp",
+        "bytes": 0,
+        "files": 0,
+        "file_index_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      }
+    ],
+    "removed_bytes": 432348268,
+    "retained": "Original raw wire/request/transport capture and separate native archive replay; original SDK170 journey-single session and separate calculation; all stopped/failed/passing logs and resource receipts. Retain until next structural acceptance/checkpoint review. Provider PR worktree remains owner-review evidence; no sibling checkout, shared cache, active session or caller output removed."
+  },
+  "experience_review": {
+    "improved": "One public annotation-to-structure-to-components/source task with exact compact parity and reusable original saved reading; focused unknown counts now disclose inventory scope.",
+    "observed_cost": "Naive five-save/five-read gate hit owned1GiB RSS stop. One session/shared original reading passes with zero owned swap. This is separate from HTTP buffering risk174.",
+    "remaining": "Development script requires orchestration and deliberately supports only one identity-operation control. General consumer API, other B3 transitions, researcher/workload and independent scientific acceptance stay open."
+  },
+  "hosted": "Final source CI/governance pending; this receipt is selected local receiving, not full hosted or installed modeling qualification.",
+  "provider_pr": "https://github.com/uibcdf/molsysmt/pull/566; owner receiving pending, not merged. This single-generator example does not require the repeated-generator fix.",
+  "environment": "Same shared Python3.14 environment; original MolSysMT71f editable preserved, no new environment, all17 sibling dispositions preserved.",
+  "scientific_review": "B2 maintainer-owned six-case review remains explicitly deferred; no default adoption.",
+  "release": "0.15.0 consolidation paused; B3/broad wow acceptance not complete."
+}

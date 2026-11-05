@@ -748,7 +748,7 @@ def _parts(view):
             "Inventory sequence coverage does not establish coordinate completeness."
         )
         opening.append(
-            f"{len(scientific.wire['exclusions'])} scientific exclusions; inspect exclusions for original reasons."
+            f"Full captured inventory: {len(scientific.wire['exclusions'])} scientific exclusions; inspect exclusions for original reasons."
         )
         if scientific.wire["context"].get("explanation_rule") in (
             "structure_inventory_explanation@3",
@@ -759,7 +759,7 @@ def _parts(view):
             )
             if unplaced:
                 opening.append(
-                    f"{unplaced} retained declarations cannot be assigned to this protein; inspect exclusions for their reasons and original source support."
+                    f"Full captured inventory: {unplaced} retained declarations cannot be assigned to this protein; inspect exclusions for their reasons and original source support."
                 )
         if (
             scientific.wire["context"].get("explanation_rule")
@@ -771,7 +771,7 @@ def _parts(view):
             )
             if unknown:
                 opening.append(
-                    f"{unknown} declarations lack verified original residue numbering; regional completeness and sequence comparisons remain unknown. Open an item and explain() for its reason and original source links."
+                    f"Full captured inventory: {unknown} declarations lack verified original residue numbering; their regional completeness and sequence comparisons remain unknown. Open an item and explain() for its reason and original source links."
                 )
         for row in scientific.wire["coverage"].get("rows", [])[:4]:
             opening.append(

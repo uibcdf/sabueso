@@ -236,6 +236,82 @@ operation correspondence, then exercise the agreed integrated consumer route.
 B2 scientific review remains deferred; #173/B3 and the release scope/acceptance
 decision remain open.
 
+## Public TcTIM correspondence journey — 2026-11-05 UTC
+
+The [local technical receipt](../evidence/public_structural_correspondence_20261105.json)
+records original inputs, selected scopes, stopped/passing resource observations,
+the experience review and owned cleanup. Exact-source hosted receiving is separate.
+
+The maintainer accepts execution of the proposed bounded end-to-end continuation.
+The public [example](../../examples/user_journeys/structural_context.py) now uses a
+newly captured RCSB 1TCD entry and an unchanged bundled public BinaryCIF. Both
+declare revision 1.4, 2024-05-22. The exact request/wire and decoded entry, original
+coordinate file and hashes are separate in
+[`rcsb_structural_context`](../../temp_data/rcsb_structural_context/capture.json).
+The [fixture notice](../../temp_data/NOTICE.md) and reviewed delivery inventory
+record CC0 data terms and the coordinate input's unknown original download time.
+Historical Card/source inputs are unchanged. Current UniProt input is the existing
+public fixture, not a new query or an assertion of synchronized source releases.
+
+Two network attempts were made for 1TCD only; one complete 17,414-byte response
+is retained. The initial logging attempt assumed a `.url` on the SDK's buffered
+Answer. The custom capture callback also misnamed `pdb_id`, so its detached
+summary is honestly `unobserved`, not a passing built-in acquisition receipt.
+Raw wire/request and actual transport facts are independently retained. Subsequent
+native `get_entry` archive replay receives those exact bytes with original time,
+entry revision, available bibliography and zero new network attempts, with sockets
+forbidden. These observations remain separate; no failed trace is rewritten.
+
+Example-local `public_tctim_coordinate_correspondence@1` checks the exact original
+Card pin, source/relationship identities, entry revision, ordered generator and
+identity operation before construction. Original `struct_asym`/entity/atomic
+pointers, declared UniProt accession, polymer sequence and reference-alignment
+axes agree; author labels alone never create identity. Atom/model/alternate-location
+and native-conversion correspondence are checked explicitly. Entity position 94
+maps to UniProt position 96 through the source's declared offset. The existing
+`experimental_structure_coordinates@1` still reports the independent
+structure/reference revision relationship as `not_stated`.
+
+The researcher follows the ordinary annotation question, selects 1TCD, then opens
+the assembly/component/source paths. A/B resolve as polymer keys in the Card;
+C/D remain unresolved there. The coordinate source separately declares C/D water.
+Its construction/contact calculation retains all pairs and their original atom/
+reference correspondence, with 3,983 atoms and a `(1,248,249)` atomic
+C-alpha A/B map with 276 true entries under an inclusive 1 nm cutoff, without PBC,
+centers or group reduction. An independent formula checks the result. The original
+Card and source assertions are unchanged; these contacts are not source-reported
+assembly contacts, binding findings or a biological interface conclusion.
+
+One explicitly gzip-encoded saved session preserves all visited human routes and
+the exact compact agent request. The reader reuses that captured session rather
+than independently loading it for every view. Fresh reading forbids Card rebuilding,
+fixtures and network access and imports no MolSysMT, including when showing the
+separate retained calculation log. The log's file/hash binding is example-local;
+it does not establish a general independent geometric-result verifier.
+
+The initial five-save/five-read example gate exceeded the declared 1 GiB owned-RSS
+ceiling and was terminated with zero owned swap. It is not qualification. A
+single-session implementation passes the first 19 owning cases within the same
+limits. The affected source/navigation/historical/coordinate gate subsequently
+passes 183 cases, about 685 MiB peak owned RSS, zero owned swap. Final pair-list
+completeness, source author-axis and original-log receiving pass 66 final focused
+cases, about 664 MiB peak owned RSS and zero owned swap. With MolSysMT deliberately
+unavailable in the same shared environment, seven knowledge/reading cases pass
+and 21 modeling cases explicitly skip. Exact-source CI is recorded separately;
+these counts are overlapping selected scopes, not an additive full-suite claim.
+Counterfactuals deliberately change identity, revision, sequence, numbering,
+operation, component pointers, models, alternate locations and atom IDs; these
+remain synthetic, and are refused before assembly construction. The actual
+historical revision gap also stays uncomputed.
+
+The walkthrough exposed a presentation ambiguity: opening a comparable 1TCD item
+still showed unknown counts from six other structure declarations. The renderer
+now labels those notices as applying to the full captured inventory; the selected
+row's scientific status and all retained payloads remain unchanged. B3's broader
+model/fragment/site transitions, generic production handoff, workload/scientist/
+researcher/consumer acceptance and release scope remain open. No shared protocol
+or new Card schema/default is adopted.
+
 ## Proposed exit criteria and remaining work
 
 1. Keep the six questions above distinct in native, human, compact agent and saved

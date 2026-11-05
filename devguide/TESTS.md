@@ -1,5 +1,18 @@
 # Sabueso — Tests and Quality Gates
 
+The public `test_structural_context_journey_offline.py` receives the 1TCD original
+wire/query/hash scope, human/compact agent/component/regional navigation and a
+fresh inert reader. Its focused-view guard labels inventory-wide unknown counts
+without changing the selected structure's scientific status. Optional MolSysMT
+cases qualify the explicit one-model identity-operation consumer, original
+entity/reference axes, units, analytical coordinates/contacts and incompatible
+inputs. An environment without MolSysMT skips those consumer cases explicitly;
+it does not certify geometry. The shared development environment runs them all,
+serially through pytest-receptor. The example saves and loads one complete session
+once; independent whole-session files must not be held for each human view.
+See [the example](../examples/user_journeys/structural_context.py) and
+[scope/receiving](pending_proposals/structural_journey_acceptance_20261104.md#public-tctim-correspondence-journey--2026-11-05-utc).
+
 The [bounded provider/control experiment](evidence/check_molsysmt_structural_control_20261105.py)
 requires the exact MolSysMT PR #566 source editable in the existing shared
 workspace; pass `--output NEW_DIRECTORY`. It checks pinned public 1TCD inputs,

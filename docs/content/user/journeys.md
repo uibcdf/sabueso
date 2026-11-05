@@ -119,6 +119,32 @@ travel beside `knowledge.db`; retain the complete output directory. Hash checks
 detect inconsistency, not authenticity or reuse permission. Inspect {doc}`terms`
 and {doc}`source_coverage` before reusing or redistributing knowledge.
 
+## Explore one structure and its modeling inputs
+
+The development `examples/user_journeys/structural_context.py` follows TcTIM's
+original position-96 annotation to 1TCD, its assembly declarations, components and
+source records. Human and compact agent access share the same result. A single
+saved session preserves the visited routes for independent offline reading.
+
+```bash
+python examples/user_journeys/structural_context.py produce --fixtures temp_data --output /tmp/sabueso-structural-context
+python examples/user_journeys/structural_context.py read --output /tmp/sabueso-structural-context
+```
+
+Its optional `model` command uses MolSysMT and an explicitly
+supplied coordinate file. It first verifies the original entry revision,
+entity/instance identifiers, generator, operation and declared numbering axes.
+The public input contains two protein chains and two water components. The Card
+keeps its original unresolved component keys; the coordinate file supplies its
+own water declarations separately. Historical missing revisions stay unknown.
+
+The bounded calculation retains every selected C-alpha contact pair, its atomic/
+reference correspondence, original inputs and unit-bearing criterion. The Card
+stays unchanged. Reading the saved session and separate calculation log does not
+rebuild the Card, fetch sources or repeat geometry. This development example is
+a one-model identity-operation control, with explicit scientific and receiving
+limits in the [walkthrough](https://github.com/uibcdf/sabueso/tree/main/examples/user_journeys#tctim-structure-source-context-and-an-explicit-modeling-control).
+
 ## Structure, assay and located-literature dossier
 
 The development checkout also supplies a public TcTIM/HsTIM review dossier:
