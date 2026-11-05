@@ -1,0 +1,363 @@
+{
+  "owner": "uibcdf/sabueso#173/#148/#112; provider uibcdf/molsysmt#563/#565",
+  "review_trigger": "provider PR receiving, admitted source-input control and before B3/0.15.0 closeout",
+  "date_utc": "2026-11-05",
+  "provider": {
+    "base": "5ccad1d8a2537b24e52474bd95103cc94700cba1",
+    "head": "3635c90acc9ca2453479f5dcdf1b361f84c5bf4f",
+    "sdk": "0.23.0+416.g3635c90ac",
+    "pr": "https://github.com/uibcdf/molsysmt/pull/566",
+    "state": "open, mergeable; owner review pending",
+    "scope": "Preserve all supported repeated assembly generator rows, source order, duplicates and chain scopes; refuse empty/unsupported factors. Existing heterogeneous builder refusal remains.",
+    "new_regression_cases": 9,
+    "original_failing_controls": 7,
+    "neighboring_selected_passed": 467,
+    "deselected_live_case": 1,
+    "warnings": "Four expected LegacyH5MSMWarning messages from supported 0.4 inputs.",
+    "test_classification_issue": "https://github.com/uibcdf/molsysmt/issues/565",
+    "receiving_identity": "467-case run before final docstring/prose/import-order changes; nine final regression cases pass at committed head with matching actual module and installed editable metadata.",
+    "quality_gates": [
+      "Whole-package Ruff",
+      "Changed-file format",
+      "246 public docstring validation",
+      "Devguide validator",
+      "Generated indexes",
+      "156-notebook course structure",
+      "Unchanged notebook executable cells/outputs/metadata",
+      "Whitespace"
+    ],
+    "hosted": "Five workflow classes observed passing; smoke/full matrix still pending. Not merged and no hosted/full-suite qualification claimed.",
+    "hosted_snapshot": {
+      "assessment": "PENDING",
+      "evidence_sufficient": true,
+      "sources": [
+        {
+          "run_id": 41952069582,
+          "url": "https://github.com/uibcdf/molsysmt/actions/runs/41952069582",
+          "head_sha": "3635c90acc9ca2453479f5dcdf1b361f84c5bf4f",
+          "run_attempt": 1,
+          "status": "completed",
+          "conclusion": "success",
+          "assessment": "PASS",
+          "jobs": {
+            "counts": {
+              "success": 1
+            },
+            "total": 1
+          },
+          "workflow": ".github/workflows/benchmarks.yml"
+        },
+        {
+          "run_id": 41952070234,
+          "url": "https://github.com/uibcdf/molsysmt/actions/runs/41952070234",
+          "head_sha": "3635c90acc9ca2453479f5dcdf1b361f84c5bf4f",
+          "run_attempt": 1,
+          "status": "completed",
+          "conclusion": "success",
+          "assessment": "PASS",
+          "jobs": {
+            "counts": {
+              "success": 1
+            },
+            "total": 1
+          },
+          "workflow": ".github/workflows/check-conda-publication.yml"
+        },
+        {
+          "run_id": 41952069756,
+          "url": "https://github.com/uibcdf/molsysmt/actions/runs/41952069756",
+          "head_sha": "3635c90acc9ca2453479f5dcdf1b361f84c5bf4f",
+          "run_attempt": 1,
+          "status": "completed",
+          "conclusion": "success",
+          "assessment": "PASS",
+          "jobs": {
+            "counts": {
+              "success": 1
+            },
+            "total": 1
+          },
+          "workflow": ".github/workflows/ci-devguide.yaml"
+        },
+        {
+          "run_id": 41952069798,
+          "url": "https://github.com/uibcdf/molsysmt/actions/runs/41952069798",
+          "head_sha": "3635c90acc9ca2453479f5dcdf1b361f84c5bf4f",
+          "run_attempt": 1,
+          "status": "queued",
+          "conclusion": null,
+          "assessment": "PENDING",
+          "jobs": {
+            "counts": {
+              "in_progress": 4,
+              "queued": 4,
+              "success": 1
+            },
+            "total": 9
+          },
+          "workflow": ".github/workflows/ci-full.yaml"
+        },
+        {
+          "run_id": 41952069791,
+          "url": "https://github.com/uibcdf/molsysmt/actions/runs/41952069791",
+          "head_sha": "3635c90acc9ca2453479f5dcdf1b361f84c5bf4f",
+          "run_attempt": 1,
+          "status": "in_progress",
+          "conclusion": null,
+          "assessment": "PENDING",
+          "jobs": {
+            "counts": {
+              "in_progress": 1
+            },
+            "total": 1
+          },
+          "workflow": ".github/workflows/ci-smoke.yaml"
+        },
+        {
+          "run_id": 41952070082,
+          "url": "https://github.com/uibcdf/molsysmt/actions/runs/41952070082",
+          "head_sha": "3635c90acc9ca2453479f5dcdf1b361f84c5bf4f",
+          "run_attempt": 1,
+          "status": "completed",
+          "conclusion": "success",
+          "assessment": "PASS",
+          "jobs": {
+            "counts": {
+              "success": 1
+            },
+            "total": 1
+          },
+          "workflow": ".github/workflows/molsyssuite-policy.yml"
+        },
+        {
+          "run_id": 41952069737,
+          "url": "https://github.com/uibcdf/molsysmt/actions/runs/41952069737",
+          "head_sha": "3635c90acc9ca2453479f5dcdf1b361f84c5bf4f",
+          "run_attempt": 1,
+          "status": "completed",
+          "conclusion": "success",
+          "assessment": "PASS",
+          "jobs": {
+            "counts": {
+              "success": 1
+            },
+            "total": 1
+          },
+          "workflow": ".github/workflows/ruff.yaml"
+        }
+      ]
+    }
+  },
+  "public_control": {
+    "owner": "uibcdf/sabueso#173/#148; provider uibcdf/molsysmt#563/PR566",
+    "review_trigger": "provider receiving and admitted structural input contract before B3 closeout",
+    "kind": "public single-source modeling control plus unqualified cross-source join refusal",
+    "provider_sha": "3635c90acc9ca2453479f5dcdf1b361f84c5bf4f",
+    "provider_sdk": "0.23.0+416.g3635c90ac",
+    "sabueso_sdk": "0.14.0+169.g10c0d59",
+    "coordinate_file": "molsysmt/data/bcif_gz/1tcd.bcif.gz",
+    "coordinate_sha256": "6f15f9412a97e38ffb01e0aec8ffa6016ac5d1ddf50042e0129583caf65be125",
+    "coordinate_revision": {
+      "ordinal": 5,
+      "data_content_type": "Structure model",
+      "major_revision": 1,
+      "minor_revision": 4,
+      "revision_date": "2024-05-22"
+    },
+    "entry": "1TCD",
+    "generator_rows": [
+      {
+        "assembly_id": "1",
+        "oper_expression": "1",
+        "asym_id_list": "A,B,C,D"
+      }
+    ],
+    "atomic_input": {
+      "structure_index": 0,
+      "model_id": "1",
+      "alternate_location": "none present"
+    },
+    "generated_atom_count": 3983,
+    "atom_correspondence_sha256": "6b3681a47be23a45c2a8b351339d20685bf0340c3e91e45b28915925ebbeb0ff",
+    "analytical_coordinates_match": true,
+    "non_default_unit_policy": "angstrom",
+    "contact_method": {
+      "provider": "molsysmt.structure.get_contacts",
+      "endpoint_semantics": "atomic C-alpha positions on source chains A and B; no group reduction or center",
+      "threshold": {
+        "value": 1.0,
+        "unit": "nm"
+      },
+      "inclusive": true,
+      "pbc": false,
+      "structure_indices": [
+        0
+      ],
+      "dense_shape": [
+        1,
+        248,
+        249
+      ],
+      "true_count": 276,
+      "independent_squared_distance_formula_matches": true
+    },
+    "knowledge_fixture": "temp_data/rcsb/1TCD.json",
+    "knowledge_sha256": "70744826ccce0fb19d3247e2af425fdec6339b0b737473504dce1b5a41172805",
+    "human_agent_same_result": true,
+    "saved_knowledge_same_payload": true,
+    "fresh_saved_reader_without_geometry_card_or_sources": true,
+    "card_unchanged": true,
+    "cross_source_correspondence": "not_admitted",
+    "refusal_reasons": [
+      "The retained RCSB fixture has no structure revision identity.",
+      "The retained RCSB fixture has no generator or numeric transform inputs.",
+      "Shared entry/assembly/native labels alone cannot qualify an operation-level join."
+    ],
+    "source_assertions_created_from_calculations": 0,
+    "calculated_contacts_joined_to_card": 0,
+    "molecular_provider_queries": 0,
+    "private_pilot_inputs": 0,
+    "scope": "One deposited public assembly, one model and atomic C-alpha contact criterion. No unique-copy inference, ligand-contact join, general bridge, shared protocol, researcher acceptance or B3/release completion."
+  },
+  "control_script_sha256": "4b69ed0c55a81eec253c2531af0e12bbe160f228611bbe3407b5d3262b530c42",
+  "resources": {
+    "install-provider": {
+      "exit_code": 0,
+      "elapsed_s": 42.92,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 698744832,
+      "minimum_host_available_bytes": 15004536832,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      }
+    },
+    "provider-selected-final": {
+      "exit_code": 0,
+      "elapsed_s": 48.77,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 396972032,
+      "minimum_host_available_bytes": 15451000832,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      }
+    },
+    "provider-committed": {
+      "exit_code": 0,
+      "elapsed_s": 5.53,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 295374848,
+      "minimum_host_available_bytes": 15652306944,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      }
+    },
+    "public-control-received": {
+      "exit_code": 0,
+      "elapsed_s": 4.53,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 363843584,
+      "minimum_host_available_bytes": 14489882624,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      }
+    },
+    "restore-provider-final": {
+      "exit_code": 0,
+      "elapsed_s": 5.43,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 126300160,
+      "minimum_host_available_bytes": 14563790848,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      }
+    }
+  },
+  "environment": {
+    "new_environments_created": 0,
+    "shared_python": "3.14",
+    "molsysmt_restored_sdk": "0.23.0+322.g71fbe4f46",
+    "restored_source": "71fbe4f46d3c70e4e973c8025f01752a8c9b1084",
+    "suite_editable_metadata_paths_verified": 16,
+    "participating_actual_imports_outside_checkout": "MolSysMT and Sabueso module/installed versions agree; no temporary provider checkout remains active.",
+    "actual_imports_outside_verified": 4
+  },
+  "workspace": "The 17 existing suite checkouts were inspected after fetch. The original MolSysMT main remains clean and 93 commits behind the refreshed remote. Concurrent SMonitor/DockingMT head and PharmacophoreMT worktree changes were observed and preserved; this task did not edit them.",
+  "production": "No Sabueso library code, schema, source query, native rule, default or Card payload changed. No consumer workaround or shared wire/invocation contract adopted.",
+  "scientific_review": "B2 review remains maintainer-owned and explicitly deferred. B3, independent scientist/researcher/consumer/workload acceptance and integrated production access remain open.",
+  "release_consolidation": "paused",
+  "next": "Receive provider PR/CI, then qualify admitted coordinate/revision/generator inputs and an explicit consumer correspondence before joining geometry to a Card. Current RCSB acquisition already requests revision fields; the old TcTIM fixture lacks them. Numeric transforms/atomic coordinates and a generic operation-level handoff remain separate missing inputs.",
+  "owned_evidence": "recovered_work/molsysmt_563_fix_20261105/; PR worktree retained only until provider receiving and reproducibility review.",
+  "local_docs_checks": {
+    "ruff": "pass",
+    "format": "1337 files formatted",
+    "moli_governance": "pass",
+    "markdown_and_python311": {
+      "local_targets_anchors": 244,
+      "python_snippets_syntax": 0,
+      "python_311_parsed_files": 1
+    },
+    "whitespace": "pass"
+  },
+  "documentation_checkpoint": "Intermediate documentation/experiment publication may use [skip ci] after the local gates and executed public control. Owner #173/#112; the next changed Sabueso runtime checkpoint needs unskipped exact-source gates before B3 closeout. Provider PR #566 has no skip marker and its full CI remains active.",
+  "cleanup": {
+    "owner": "uibcdf/sabueso#173/#148/#112; provider uibcdf/molsysmt#563",
+    "review_trigger": "provider PR receiving / next structural checkpoint / B3 closeout",
+    "removed": [
+      {
+        "path": "public-control",
+        "bytes": 1382417
+      },
+      {
+        "path": "public-control-final",
+        "bytes": 1382555
+      },
+      {
+        "path": "public-control-units",
+        "bytes": 1382555
+      },
+      {
+        "path": "pytest-tmp",
+        "bytes": 1421991
+      },
+      {
+        "path": "pytest-cache",
+        "bytes": 54351
+      },
+      {
+        "path": "matplotlib",
+        "bytes": 1324147
+      },
+      {
+        "path": "tmp",
+        "bytes": 0
+      }
+    ],
+    "removed_bytes": 6948016,
+    "retained": "Final public-control-received saved knowledge/correspondence/receipt/fresh-reader proof; original failing controls, selected/committed gate and install/restore logs, event streams, resource receipts and CI snapshot. PR worktree kept for review/reproduction until provider receiving; shared Rust cache, all sibling/caller data and active remote CI protected."
+  }
+}

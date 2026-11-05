@@ -9,13 +9,14 @@ activity/context changes at that source. Later documentation does not add runtim
 qualification. Scientific/default and researcher acceptance remain pending;
 the maintainer's review is still deferred, defaults fixed and release paused.
 
-The [MolSysMT review](pending_proposals/structural_journey_acceptance_20261104.md#existing-molsysmt-capability-review--2026-11-05-utc)
-confirms existing assembly/rigid-transform/contact APIs and 62 selected local cases.
-B3 now needs qualified reuse and a source/identity/unit handoff, rather than a new
-geometric engine. A synthetic source-importer loss is reported in
-[molsysmt#563](https://github.com/uibcdf/molsysmt/issues/563); documented heterogeneous
-builder scope remains separate. No provider/library code changes or B3/release
-acceptance are claimed. The integration/release scope decision remains pending.
+The [provider correction and public coordinate control](pending_proposals/structural_journey_acceptance_20261104.md#provider-correction-and-public-coordinate-control--2026-11-05-utc)
+deliver [MolSysMT PR #566](https://github.com/uibcdf/molsysmt/pull/566), nine final
+regressions and 467 neighboring cases. A pinned 1TCD assembly builds 3,983 atoms
+and reproduces an explicit C-alpha contact criterion. The old Card lacks the
+revision/generator inputs needed to join that calculation; its human/agent/saved
+knowledge stays unchanged. The PR still needs provider receiving. No Sabueso
+runtime, production geometry API or shared protocol changes; B3/release scope and
+scientific/researcher/consumer acceptance remain open.
 
 The [B3 structural acceptance review](pending_proposals/structural_journey_acceptance_20261104.md)
 now distinguishes source-declared membership, native key binding, physical copies

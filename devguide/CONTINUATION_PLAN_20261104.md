@@ -209,6 +209,16 @@ identity, unit and workload scope; qualify the source importer through its owner
 multi-generator input. A documented builder limitation is not a missing engine.
 Integration delivery and the B3 release obligation remain separate owner decisions.
 
+The [provider correction and bounded public control](pending_proposals/structural_journey_acceptance_20261104.md#provider-correction-and-public-coordinate-control--2026-11-05-utc)
+now deliver MolSysMT PR #566, nine final regressions and 467 neighboring cases.
+A pinned 1TCD coordinate file builds 3,983 atoms and reproduces 276 C-alpha
+contacts under an explicit criterion. This establishes a bounded provider route,
+not an admitted link to the old Card: its retained RCSB input lacks revision and
+generator data. Current acquisition already asks for revisions. Receive the PR
+and qualify exact coordinate/source/operation correspondence next; preserve the
+separate knowledge/calculation results and coherent human/agent/saved access.
+No shared protocol, production geometry API or B3/release acceptance is adopted.
+
 For B3, define source-supported acceptance before further coding. If an additional
 physical reconstruction requires unavailable context or a modeling consumer,
 record that boundary and obtain the relevant owner decision; do not repeatedly

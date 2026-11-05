@@ -1,5 +1,18 @@
 # Sabueso — Tests and Quality Gates
 
+The [bounded provider/control experiment](evidence/check_molsysmt_structural_control_20261105.py)
+requires the exact MolSysMT PR #566 source editable in the existing shared
+workspace; pass `--output NEW_DIRECTORY`. It checks pinned public 1TCD inputs,
+source atom/operation correspondence, unit-preserving assembly construction and
+an explicit atomic contact criterion. It refuses to qualify the old Card's
+missing revision/generator correspondence, and verifies human/agent/saved
+knowledge parity, including a fresh inert reader. It never makes a molecular
+provider request or installs a production bridge. Restore participating editable
+sources after temporary provider receiving. See the
+[dated receipt](evidence/molsysmt_generator_fix_and_public_control_20261105.json);
+this manual experiment is not a new mandatory Sabueso runtime dependency or a
+substitute for provider/full/installed acceptance.
+
 The dated [B3 source-scope audit](evidence/check_structural_journey_scope_20261104.py)
 reproduces four genuine public source/native/human/agent/saved journeys and six
 explicitly synthetic counterexamples. Run it with `--output NEW_OWNED_DIRECTORY`;

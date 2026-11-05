@@ -179,6 +179,63 @@ choices; #173/B3 stay open. Receipt-level tests and a consumer-owned positive ro
 are required after the provider defect is fixed or an explicitly qualified input
 route avoids it. No importer repair or workaround is installed in Sabueso here.
 
+## Provider correction and public coordinate control — 2026-11-05 UTC
+
+The subsequent authorized phase delivers the correction in
+[MolSysMT PR #566](https://github.com/uibcdf/molsysmt/pull/566), based on refreshed
+`5ccad1d8a` and committed as `3635c90ac`. It preserves every supported generator row,
+operation order, duplicate and chain scope. Empty/unsupported factors fail explicitly.
+The existing heterogeneous builder refusal remains. Nine final regressions pass
+at the committed provider source; 467 neighboring cases pass with four expected
+legacy-format warnings. An unmarked live download found in that run is reported
+in [molsysmt#565](https://github.com/uibcdf/molsysmt/issues/565) and correctly marked
+as network-dependent without changing its online assertions. The PR remains open;
+focused local receiving does not establish complete hosted or installed qualification.
+The [dated receipt](../evidence/molsysmt_generator_fix_and_public_control_20261105.json)
+preserves exact scope and resources.
+
+The [reproduction script](../evidence/check_molsysmt_structural_control_20261105.py)
+uses one bundled public 1TCD BinaryCIF with its own original entry/revision,
+generator, numeric transform and atomic IDs. Run it with the exact PR checkout
+editable in the shared environment and `--output NEW_DIRECTORY`; the original
+file is unchanged and sockets are forbidden. Select assembly `1`, structure index
+`0` / source model `1`, without alternate locations. Under a non-default angstrom
+unit policy, it verifies all 3,983 generated coordinates against the original
+operator and retains an explicit original atom/chain/generator/operation map.
+This entry has one identity operation; the provider's synthetic two-operation
+regressions independently check nontrivial copying and source order.
+
+On that deposited assembly, atomic C-alpha endpoints on source chains A and B
+give a `(1, 248, 249)` dense contact map with 276 true entries under an inclusive
+1 nm threshold, without periodic images, group reduction or centers. An independent
+squared-distance formula agrees. This is an explicit geometric criterion, not
+evidence of binding, a biological interface assignment or an activity inference.
+Declared solvent chains also belong to the source assembly; the four declared
+chains do not mean four protein subunits.
+
+The old TcTIM RCSB fixture does not retain revision or generator inputs. Therefore
+the experiment **does not admit a cross-source operation/contact join**. Current
+RCSB acquisition already requests revisions; the limitation here belongs to the
+retained historical input. Numeric matrices/vectors and atomic coordinates remain
+additional modeling inputs. Shared PDB/assembly/native labels alone are insufficient
+to qualify the old Card against this coordinate revision.
+
+The Card's original human and agent answers share one result, retain
+`physical_membership="not_computed"`, and save/reopen unchanged. A fresh process
+reads the saved answer with Card reconstruction, fixtures and network access
+forbidden, without importing MolSysMT. Calculated contacts remain a separate
+experiment; none becomes a SourceAssertion, a source contact or a Card value.
+This is a bounded modeling control plus an explicit refusal to claim an unqualified
+join, not a production bridge or generic human/agent modeling API.
+
+No second environment is created. The shared provider editable is restored to
+the original main checkout after receiving. The owned PR worktree is retained
+for owner review/reproduction. Concurrent sibling changes are preserved. Next:
+receive the provider correction, admit an exact source/revision/coordinate and
+operation correspondence, then exercise the agreed integrated consumer route.
+B2 scientific review remains deferred; #173/B3 and the release scope/acceptance
+decision remain open.
+
 ## Proposed exit criteria and remaining work
 
 1. Keep the six questions above distinct in native, human, compact agent and saved
