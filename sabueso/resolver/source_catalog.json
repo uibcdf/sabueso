@@ -6076,7 +6076,12 @@
       "temp_data/rcsb_nonpolymer_instances/wire/1SUX.graphql.json",
       "temp_data/rcsb_nonpolymer_instances/wire/1SUX.request.json",
       "temp_data/rcsb_nonpolymer_instances/wire/2V5B.graphql.json",
-      "temp_data/rcsb_nonpolymer_instances/wire/2V5B.request.json"
+      "temp_data/rcsb_nonpolymer_instances/wire/2V5B.request.json",
+      "temp_data/rcsb_structural_context/capture.json",
+      "temp_data/rcsb_structural_context/coordinates/1tcd.bcif.gz",
+      "temp_data/rcsb_structural_context/rcsb/1TCD.json",
+      "temp_data/rcsb_structural_context/wire/1TCD.graphql.json",
+      "temp_data/rcsb_structural_context/wire/1TCD.request.json"
      ],
      "local_only": []
     },

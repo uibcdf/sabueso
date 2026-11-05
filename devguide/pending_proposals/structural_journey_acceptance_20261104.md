@@ -314,6 +314,27 @@ or new Card schema/default is adopted.
 
 ## Proposed exit criteria and remaining work
 
+### Generated catalog recovery — 2026-11-05 UTC
+
+The first journey checkpoint `0881d8a` fails exact-source CI: all nine source lanes
+report two failures in `test_source_registry_offline.py`, with 7,259 cases passing
+per lane. The five added reviewed files were present in the delivery inventory,
+but the packaged source catalog and capability page had not been regenerated.
+The RCSB capability count consequently remained 20 instead of 25. All four
+installed consumer lanes pass 1,792 cases each, all three codec-backport jobs and
+Ruff pass, and governance passes; none of this qualifies the failed source.
+Coverage publication separately fails to find the artifact after failed tests.
+
+`tools/source_registry.py --write` updates exactly those two generated outputs.
+The library scientific code, source query, Card schema, rules, saved readers and
+original source bytes are unchanged. Registry/delivery/licensing receiving now
+passes 57 cases serially with zero owned swap. The fixture-delivery gate guidance
+now identifies its existing dependency on catalog/capability generation. Retain
+the [failure and local recovery receipt](../evidence/structural_catalog_recovery_20261105.json);
+new exact-source hosted receiving is still required.
+
+### Remaining exit criteria
+
 1. Keep the six questions above distinct in native, human, compact agent and saved
    answers. Include every consequential qualifier, source alternative and unknown.
 2. Preserve exact entry/revision, assertion and generator/component/operation scope.

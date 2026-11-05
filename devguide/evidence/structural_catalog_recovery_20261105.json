@@ -1,0 +1,273 @@
+{
+  "owner": "#173/#148/#112",
+  "review_trigger": "recovery-source CI and before B3/0.15.0 closeout",
+  "date_utc": "2026-11-05",
+  "failed_head": "0881d8aa1dae4a4fe4d13d912bf0ccde27c496de",
+  "failed_source_qualified": false,
+  "failed_receiving": {
+    "owner": "#173/#148/#112",
+    "review_trigger": "recovery-source receiving / B3 closeout",
+    "head": "0881d8aa1dae4a4fe4d13d912bf0ccde27c496de",
+    "qualified": false,
+    "runs": {
+      "ci-final": {
+        "id": 41962680329,
+        "url": "https://github.com/uibcdf/sabueso/actions/runs/41962680329",
+        "conclusion": "failure",
+        "jobs": 18,
+        "all_manifest_hashes_sizes_crc_verified": true,
+        "failed_jobs": [
+          {
+            "name": "Offline tests (windows-latest, Python 3.13)",
+            "failed_steps": [
+              "Run repository-input offline tests"
+            ]
+          },
+          {
+            "name": "Offline tests (windows-latest, Python 3.12)",
+            "failed_steps": [
+              "Run repository-input offline tests"
+            ]
+          },
+          {
+            "name": "Offline tests (ubuntu-latest, Python 3.14)",
+            "failed_steps": [
+              "Run repository-input offline tests"
+            ]
+          },
+          {
+            "name": "Offline tests (windows-latest, Python 3.11)",
+            "failed_steps": [
+              "Run repository-input offline tests"
+            ]
+          },
+          {
+            "name": "Offline tests (ubuntu-latest, Python 3.13)",
+            "failed_steps": [
+              "Run repository-input offline tests"
+            ]
+          },
+          {
+            "name": "Offline tests (ubuntu-latest, Python 3.11)",
+            "failed_steps": [
+              "Run repository-input offline tests"
+            ]
+          },
+          {
+            "name": "Offline tests (windows-latest, Python 3.14)",
+            "failed_steps": [
+              "Run repository-input offline tests"
+            ]
+          },
+          {
+            "name": "Offline tests (macos-26, Python 3.14)",
+            "failed_steps": [
+              "Run repository-input offline tests"
+            ]
+          },
+          {
+            "name": "Offline tests (ubuntu-latest, Python 3.12)",
+            "failed_steps": [
+              "Run repository-input offline tests"
+            ]
+          },
+          {
+            "name": "Publish default-branch coverage",
+            "failed_steps": [
+              "Run actions/download-artifact@v4"
+            ]
+          }
+        ],
+        "pytest_summaries": [
+          {
+            "log": "1_Offline tests (macos-26, Python 3.14).txt",
+            "summary": "2026-11-05T04:33:26.1970600Z FAIL exit=1 | 2 failed, 7259 passed, 31 skipped, 26 deselected | 1511.61s | 9 warnings | 2 root causes",
+            "scope": "source",
+            "passed": 7259,
+            "failed": 2
+          },
+          {
+            "log": "2_Ackredit public-package pilot (Python 3.13).txt",
+            "summary": "2026-11-05T04:05:51.5660984Z PASS exit=0 | 1792 passed | 572.26s | 4 warnings",
+            "scope": "installed consumer",
+            "passed": 1792,
+            "failed": 0
+          },
+          {
+            "log": "3_Offline tests (ubuntu-latest, Python 3.11).txt",
+            "summary": "2026-11-05T04:34:33.4130810Z FAIL exit=1 | 2 failed, 7259 passed, 31 skipped, 26 deselected | 2117.65s | 9 warnings | 2 root causes",
+            "scope": "source",
+            "passed": 7259,
+            "failed": 2
+          },
+          {
+            "log": "4_Offline tests (ubuntu-latest, Python 3.12).txt",
+            "summary": "2026-11-05T04:30:58.4113710Z FAIL exit=1 | 2 failed, 7259 passed, 31 skipped, 26 deselected | 1920.03s | 9 warnings | 2 root causes",
+            "scope": "source",
+            "passed": 7259,
+            "failed": 2
+          },
+          {
+            "log": "5_Offline tests (windows-latest, Python 3.14).txt",
+            "summary": "2026-11-05T04:43:09.2224470Z FAIL exit=1 | 2 failed, 7259 passed, 31 skipped, 26 deselected | 2131.70s | 9 warnings | 2 root causes",
+            "scope": "source",
+            "passed": 7259,
+            "failed": 2
+          },
+          {
+            "log": "7_Offline tests (ubuntu-latest, Python 3.14).txt",
+            "summary": "2026-11-05T04:17:38.8056054Z FAIL exit=1 | 2 failed, 7259 passed, 31 skipped, 26 deselected | 1820.94s | 9 warnings | 2 root causes",
+            "scope": "source",
+            "passed": 7259,
+            "failed": 2
+          },
+          {
+            "log": "8_Offline tests (windows-latest, Python 3.11).txt",
+            "summary": "2026-11-05T04:31:32.8601474Z FAIL exit=1 | 2 failed, 7259 passed, 31 skipped, 26 deselected | 3051.34s | 9 warnings | 2 root causes",
+            "scope": "source",
+            "passed": 7259,
+            "failed": 2
+          },
+          {
+            "log": "9_Offline tests (windows-latest, Python 3.13).txt",
+            "summary": "2026-11-05T04:23:17.6800223Z FAIL exit=1 | 2 failed, 7259 passed, 31 skipped, 26 deselected | 1943.76s | 9 warnings | 2 root causes",
+            "scope": "source",
+            "passed": 7259,
+            "failed": 2
+          },
+          {
+            "log": "11_Ackredit public-package pilot (Python 3.12).txt",
+            "summary": "2026-11-05T03:58:13.2218252Z PASS exit=0 | 1792 passed | 1034.95s | 4 warnings",
+            "scope": "installed consumer",
+            "passed": 1792,
+            "failed": 0
+          },
+          {
+            "log": "12_Offline tests (windows-latest, Python 3.12).txt",
+            "summary": "2026-11-05T04:40:44.2660302Z FAIL exit=1 | 2 failed, 7259 passed, 31 skipped, 26 deselected | 3477.28s | 9 warnings | 2 root causes",
+            "scope": "source",
+            "passed": 7259,
+            "failed": 2
+          },
+          {
+            "log": "13_Ackredit public-package pilot (Python 3.14).txt",
+            "summary": "2026-11-05T03:55:42.9664746Z PASS exit=0 | 1792 passed | 935.92s | 4 warnings",
+            "scope": "installed consumer",
+            "passed": 1792,
+            "failed": 0
+          },
+          {
+            "log": "15_Offline tests (ubuntu-latest, Python 3.13).txt",
+            "summary": "2026-11-05T04:06:21.6921312Z FAIL exit=1 | 2 failed, 7259 passed, 31 skipped, 26 deselected | 1239.03s | 10 warnings | 2 root causes",
+            "scope": "source",
+            "passed": 7259,
+            "failed": 2
+          },
+          {
+            "log": "17_Ackredit public-package pilot (Python 3.11).txt",
+            "summary": "2026-11-05T03:49:30.3473814Z PASS exit=0 | 1792 passed | 683.41s | 4 warnings",
+            "scope": "installed consumer",
+            "passed": 1792,
+            "failed": 0
+          }
+        ]
+      },
+      "governance-final": {
+        "id": 41962680336,
+        "url": "https://github.com/uibcdf/sabueso/actions/runs/41962680336",
+        "conclusion": "success",
+        "jobs": 1,
+        "all_manifest_hashes_sizes_crc_verified": true,
+        "failed_jobs": [],
+        "pytest_summaries": []
+      }
+    }
+  },
+  "cause": "Five new reviewed public fixture files were added to fixture_delivery.json without regenerating the packaged source catalog and capability page. Both generation checks fail in every source lane. This was an omitted local generated-output gate, not a molecular-source or modeling failure.",
+  "coverage": "Publication fails with missing coverage-xml artifact after source-test failure; it is not a passing or zero-coverage result.",
+  "correction": {
+    "generator": "python tools/source_registry.py --write",
+    "changed_generated_files": [
+      "sabueso/resolver/source_catalog.json",
+      "docs/content/user/source_capabilities.md"
+    ],
+    "rcsb_reviewed_file_count": {
+      "before": 20,
+      "after": 25
+    },
+    "scope": "Exactly five public input paths and corresponding file count. No scientific code, source query, source assertion, Card schema, native rule, default, saved reader, dependency or original fixture change."
+  },
+  "local_receiving": {
+    "registry_delivery_licensing": "57 passed through pytest-receptor, serial Python3.14, existing shared editable environment",
+    "resource": {
+      "owner": "uibcdf/sabueso#173/#148/#112",
+      "review_trigger": "bounded public structural journey receiving / before B3 closeout",
+      "exit_code": 0,
+      "elapsed_s": 6.29,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 120324096,
+      "minimum_host_available_bytes": 15695863808,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      }
+    },
+    "source_registry_check": "pass",
+    "fixture_delivery_check": "76 reviewed public repository inputs;37 protected local-only originals",
+    "governance": "pass",
+    "other_final_gates": {
+      "ruff_check": "pass",
+      "ruff_format": "1339 files formatted",
+      "markdown": {
+        "local_targets_anchors": 389,
+        "python_snippets_syntax": 0,
+        "python_311_parsed_files": 0
+      },
+      "whitespace": "pass"
+    },
+    "sphinx": {
+      "command": "python -m sphinx -W --keep-going -b html docs OWNED_OUTPUT",
+      "exit_code": 0,
+      "elapsed_s": 25.64,
+      "rendered_rcsb_count": "25 / 0, HTML inspected"
+    }
+  },
+  "experience": "Restores agreement between the packaged source catalog, the user capability table and the actual reviewed files. No additional scientific feature or researcher acceptance claimed.",
+  "hosted_recovery": "New exact-source CI/governance required; pending. Original0881d8a remains failed.",
+  "scientific_review": "B2 maintainer review remains deferred. B3 and independent scientist/researcher/consumer/workload acceptance remain open.",
+  "release_consolidation": "paused",
+  "owned_receipts": "recovered_work/structural_catalog_recovery_20261105/; retain failed source captures and recovery logs until recovery-source and B3 review.",
+  "cleanup": {
+    "owner": "#173/#148/#112",
+    "review_trigger": "recovery CI / B3 closeout",
+    "removed": [
+      {
+        "path": "sphinx-html",
+        "files": 455,
+        "bytes": 43270249
+      },
+      {
+        "path": "pytest-tmp",
+        "files": 0,
+        "bytes": 0
+      },
+      {
+        "path": "pytest-cache",
+        "files": 5,
+        "bytes": 7050
+      },
+      {
+        "path": "tmp",
+        "files": 0,
+        "bytes": 0
+      }
+    ],
+    "removed_bytes": 43277299,
+    "retained": "Full failed-source captures, actual summary proof, original positive sessions in the preceding phase and recovery gate/resource logs. Retain through recovery-source and B3 review; shared caches, sibling worktrees, active CI and caller outputs protected."
+  }
+}

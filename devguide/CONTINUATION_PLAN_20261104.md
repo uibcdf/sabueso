@@ -103,7 +103,10 @@ source navigation, exact human/agent/saved parity and a separate optional MolSys
 calculation with complete atomic/reference correspondence and all selected pairs.
 Original historical gaps and unknown Card component keys are preserved. Local
 affected/final receiving and absent-provider reading pass; exact-source hosted
-qualification remains pending. Continue other B3 journeys and explicit generic
+qualification failed at `0881d8a` on two stale generated catalog/capability checks.
+The [recovery](evidence/structural_catalog_recovery_20261105.json) regenerates both
+outputs; 57 local registry/delivery/licensing cases pass, and recovery-source
+hosted qualification is pending. Continue other B3 journeys and explicit generic
 consumer/scientific scope after this checkpoint. This does not adopt a modeling
 API, close B3, resume release consolidation or accept the human experience.
 The B2 maintainer-owned scientific review remains deferred.

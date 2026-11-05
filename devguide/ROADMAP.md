@@ -77,7 +77,9 @@ B3's accepted [public TcTIM continuation](pending_proposals/structural_journey_a
 demonstrates revision/native correspondence, human/agent/saved navigation and a
 separate optional coordinate calculation retaining all 276 pairs. Historical gaps
 stay unknown; focused warnings identify full-inventory scope. Selected local and
-absent-provider receiving pass; exact-source hosted receiving is pending. This
+absent-provider receiving pass; initial `0881d8a` source CI failed two stale
+generated metadata checks. The [catalog recovery](evidence/structural_catalog_recovery_20261105.json)
+regenerates both outputs; recovery-source hosted receiving is pending. This
 finite control advances B3 without adopting a generic production bridge,
 physical-copy uniqueness rule or shared protocol. Other B3 transitions and
 scientist/researcher/consumer/workload acceptance remain open. The following

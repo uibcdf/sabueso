@@ -8,7 +8,9 @@ all 276 calculated C-alpha pairs separately, with native/author/reference axes a
 units; historical gaps remain unknown. One gzip session preserves visited routes,
 and reading needs no MolSysMT. Selected receiving passes 183 affected cases and
 66 final focused cases; absent-provider receiving passes 7 and explicitly skips
-21 modeling cases. Exact-source hosted qualification is pending. This finite
+21 modeling cases. Initial hosted source `0881d8a` failed two generated metadata
+checks in all nine source lanes. The [catalog recovery](evidence/structural_catalog_recovery_20261105.json)
+regenerates the stale outputs; recovery-source hosted qualification is pending. This finite
 example advances B3; generic production handoff and independent scientific/human/
 consumer acceptance remain open. The following earlier checkpoints retain their
 own original scope and qualification.

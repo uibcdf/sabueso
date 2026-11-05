@@ -10,7 +10,11 @@ visited routes; fresh reading needs no MolSysMT, fixtures, rebuilding or network
 The renderer now identifies full-inventory warnings in a focused structure view.
 Selected receiving passes 183 affected cases, then 66 final focused cases; with
 MolSysMT forbidden, 7 pass and 21 explicit modeling cases skip. Final exact-source
-hosted qualification remains pending. B3, generic production handoff, independent
+hosted qualification failed at `0881d8a`: two generated catalog/capability checks
+failed in all nine source lanes; four installed lanes and governance passed.
+The [catalog recovery](evidence/structural_catalog_recovery_20261105.json)
+regenerates the two stale outputs and passes 57 local registry/delivery/licensing
+cases. Recovery-source CI remains pending. B3, generic production handoff, independent
 scientific/researcher/consumer acceptance and paused 0.15.0 remain open. Earlier
 checkpoints below retain their original inputs, scope and qualification.
 
