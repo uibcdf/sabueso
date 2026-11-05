@@ -11,6 +11,18 @@ Deliver an accepted report through an observable issue/update or explain the
 private route or maintainer handoff. Follow
 `MOLI_GUIDE.md#reporting-bugs-and-proposals` and its linked human-facing policy.
 
+Before any publication in third-party repositories, including issues, comments,
+pull requests and remote drafts, obtain prior explicit permission from Diego
+Prada Gracia or Liliana Marisol Moreno Vargas for the destination, action and
+concrete material. Prepare a reviewable local/internal draft first. Without that
+permission, retain the finding internally for human handoff. Generic reporting
+duties, credentials, autonomy and internal push authority do not grant external
+publication authority. Existing permission persists only within its explicit
+scope; do not bypass this boundary through another tool, account, agent, fork or
+automation. Internal UIBCDF work retains its own authorization requirements.
+Follow `MOLI_GUIDE.md#external-issue-and-pull-request-authority` (MolI #80,
+Sabueso #187).
+
 
 This repository is directly governed by the MOLI platform for shared cross-component contracts.
 
@@ -136,6 +148,13 @@ commit messages, issues, pull requests, release notes and documentation.
     macOS and Windows;
   - then the GitHub release, promotion to the public channel, a clean public install,
     and the Zenodo archive.
+- After every new Sabueso release, including source-only releases, and every new
+  package publication, create or update the release-specific notice in
+  `uibcdf/moli`. Record exact version, source/tag, actual package coordinates and
+  digest where applicable, public verification and limits, and follow-up owners.
+  Update the same notice for later build/publication events. Follow
+  `MOLI_GUIDE.md#release-and-package-publication-notices`; this does not authorize
+  a release or dependency adoption.
 - Before creating or editing a public GitHub Release, check that its visible title
   is exactly the canonical `X.Y.Z` version and matches the tag and package version.
   Put descriptions in the release notes. Follow

@@ -6,6 +6,18 @@ the repository's dynamic `versioningit` configuration remains unchanged.
 The build workflow accepts either a reviewed direct release or an immutable
 staging candidate, as selected in `release_plan.toml`.
 
+After every new release, including a source-only release, and each actual package
+publication, create or update one release-specific notice in `uibcdf/moli`.
+Use the [central template](https://github.com/uibcdf/moli/blob/main/devguide/templates/release_publication_notice.md)
+and [notice policy](../../MOLI_GUIDE.md#release-and-package-publication-notices):
+record exact version, immutable source/tag/release URL, actual channel/file/build/
+digest when a package exists, verified public installation or explicit pending
+scope, ecosystem impact and receiving owners. Later package builds/publication
+events update that same notice. Keep source-only and pending-package states
+explicit. This post-event notice preserves the existing release authorization,
+candidate gates and advance provider-impact notice; it does not authorize a
+publication, replace qualification or establish consumer adoption.
+
 Before creating or editing a public GitHub Release, check that its visible
 title (`name`) is exactly the canonical `X.Y.Z` version and equals its tag
 and package version. Use `gh release create X.Y.Z --title X.Y.Z` or set the API

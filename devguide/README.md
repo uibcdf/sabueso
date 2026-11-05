@@ -1,5 +1,12 @@
 # Sabueso — Developer Guide
 
+[Publication-authority adoption](evidence/publication_authority_adoption_20261105.json)
+receives the byte-identical current MolI guide and explicit root actions under
+#187/#80/#75. Any third-party issue/comment/PR/remote draft requires prior scoped
+human permission; the micromamba report stays internal and unauthorized for
+external delivery. Existing internal authority remains scoped. This instruction
+delivery does not qualify runtime, publish a package or accept a scientific task.
+
 The [component-row presentation continuation](pending_proposals/card_assembly_component_navigation.md#component-row-reading--2026-11-05)
 shows each retained binding state once, beside availability and the exact-position
 action. Complete original labels, rows, native findings, agent pages and saved

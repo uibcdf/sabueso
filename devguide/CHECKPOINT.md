@@ -1,5 +1,13 @@
 # Sabueso — Checkpoint
 
+Contributor-authority checkpoint: [#187 adoption](evidence/publication_authority_adoption_20261105.json)
+receives current canonical MolI guide `959c6529` and explicit prior permission for
+third-party publication, including comments/remote drafts. The micromamba report
+stays internal; no external delivery is authorized. Root/release documentation
+also carries the accepted release-specific central notice action. These are
+instruction/documentation changes; model/region work, scientific review and the
+last runtime source's own CI retain their separate scopes.
+
 Latest component presentation: the
 [row-reading continuation](pending_proposals/card_assembly_component_navigation.md#component-row-reading--2026-11-05)
 places the retained state once beside availability/action, preserving full

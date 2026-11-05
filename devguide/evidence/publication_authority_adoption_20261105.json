@@ -1,0 +1,60 @@
+{
+  "owner": "#187;MolI#75/#80",
+  "review_trigger": "next central adoption review / next actual publication",
+  "canonical_source": "959c6529f4c7cca652d1b8d31b7fffe9648384e0",
+  "canonical_guide_sha256": "262dc66dfd4e553ca1513907cecad81d2ead731238d36dab2b16d943a832d875",
+  "same_as_current_remote_main": true,
+  "targeted_component": "uibcdf/sabueso",
+  "governance_core": "pass, exact-source check_repository.py CLI",
+  "public_claims_and_registration": "pass, exact-source check_component_guides.py public-claims function and canonical registry Python capability check",
+  "global_other_component_adoption": "not assessed or changed",
+  "tool_hashes": {
+    "canonical_tools/check_component_guides.py": "3a4b59062e7f6c3f5c2c186afdd8648851acf787a1de5a8311068732c16b0e6d",
+    "canonical_tools/check_repository.py": "dc660920b2c10d9fff5c06e4ef7c12e928e5f6cb17ad195215f21773df140049"
+  },
+  "runtime_changes": false,
+  "source_queries": 0,
+  "third_party_publications": 0,
+  "external_permission": "Required before any issue/comment/PR/remote-draft publication; current micromamba report remains internal and unauthorized for external delivery.",
+  "date_utc": "2026-11-05",
+  "kind": "accepted contributor-instruction delivery, not scientific/runtime qualification",
+  "scope": "MolI#80 external-publication boundary and MolI#75 release/package notice root/local-closeout action under Sabueso#187",
+  "canonical_guide_blob": "d38a52f71f7c12889d779e5437accbe27bf1fcf0",
+  "canonical_checked_remote": "main content matches the pinned accepted guide959c6529 at time of adoption",
+  "root_review": {
+    "all_preexisting_instructions_preserved": true,
+    "added_external_action": "Prior explicit permission from Diego Prada Gracia or Liliana Marisol Moreno Vargas for destination/action/concrete material, covering third-party issues/comments/PRs/remote drafts; scoped existing permission persists; no bypass via tool/account/agent/fork/automation.",
+    "internal_scope": "Existing internal ownership and authorization rules remain; UIBCDF membership is not blanket write authority.",
+    "added_release_action": "After every new release, source-only included, or actual package publication, create/update the release-specific central MolI notice with exact source/version/file/build/digest/public evidence/limits/owners."
+  },
+  "release_route": "devtools/conda-build/README.md now routes each actual release/package event to the central policy/template, preserving current gates, separate advance impact notice and paused consolidation. No release/package event performed.",
+  "incident_disposition": "The attempted micromamba issue was rejected and no external issue was created, but the attempt should have waited for human review. Explicit publication authority, not connector capability, is the governing boundary. The report remains internal and external delivery is not authorized.",
+  "central_tracking": {
+    "MolI80": "https://github.com/uibcdf/moli/issues/80#issuecomment-6662196679",
+    "Sabueso187": "https://github.com/uibcdf/sabueso/issues/187#issuecomment-6662198326",
+    "MolSysSuite159": "Existing member delivery, not changed by this component task."
+  },
+  "native_checks": "Exact-source central core CLI and targeted public-claim/registration functions passed; same current canonical guide bytes/hash verified. This is targeted Sabueso receiving, not a global component audit.",
+  "pytest": "Not selected: no runtime/test/schema/source behavior changed.",
+  "last_runtime_source": "913aad1f3e0129c2a0bf8813695c5ba0ff9e7e86",
+  "last_runtime_receiving": "Earlier source CI/governance and preserved scientific/presentation scopes remain separate; no new qualification from this instruction-only commit.",
+  "publication_route": "Documentation-only main checkpoint may use[skip ci] after applicable native/local doc checks. No code gate is deferred by these changed docs; exact runtime CI remains owned by#148/#173/#112 and the next changed-code checkpoint must be unskipped before closeout.",
+  "owned_resources": "recovered_work/publication_authority_187_20261105/ retains exact published guide/registry/checker inputs, hashes and local check receipts; owner#187, review at central adoption return or next publication review. Sibling checkouts, shared environment, active runtime CI and original knowledge capsules untouched.",
+  "final_local_checks": {
+    "root_ruff": "pass",
+    "root_format": "1340files formatted",
+    "markdown": {
+      "local_targets_anchors": 300,
+      "python_snippets_syntax": 0,
+      "python_311_parsed_files": 0
+    },
+    "whitespace": "pass",
+    "local_moli_governance": "pass"
+  },
+  "runtime_test_workflow_tree_unchanged": true,
+  "changed_instruction_hashes": {
+    "AGENTS.md": "7c2b2734d634442647bed157d8c1a611b7b03af03c85cfd1c14bd9bbe42fa914",
+    "MOLI_GUIDE.md": "262dc66dfd4e553ca1513907cecad81d2ead731238d36dab2b16d943a832d875",
+    "devtools/conda-build/README.md": "6ba987a2cf7c74d072187373f20abbfb2035bdca7670587942e16e4c5565fcf5"
+  }
+}

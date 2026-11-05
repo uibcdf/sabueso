@@ -34,11 +34,21 @@ packages, a broken solver or a generally absent release are not established.
 
 ## Provider handoff
 
+**External publication is not authorized.** The maintainer explicitly requires
+prior approval of the destination, action and concrete material before any
+third-party publication, including comments and remote drafts. This applies
+regardless of credential availability. The attempted issue should have awaited
+that approval; the API rejection is not a substitute for the human permission.
+Keep this report internal for review or a human-owned submission decision.
+See [MolI #80](https://github.com/uibcdf/moli/issues/80) and
+[Sabueso #187](https://github.com/uibcdf/sabueso/issues/187).
+
 An attempted report in `mamba-org/setup-micromamba` was rejected with GitHub API
 403, `Resource not accessible by integration`; no provider issue was created.
-The Sabueso #112 maintainer handoff must carry these public links and ask the
-provider to review bounded lookup recovery/diagnostics and cleanup after failed
-setup. No provider source, local environment or workflow pin is changed here.
+The Sabueso #112 handoff retains these public links and a proposed request to
+review bounded lookup recovery/diagnostics and cleanup after failed setup.
+External delivery awaits explicit permission or the human's submission decision.
+No provider source, local environment or workflow pin is changed here.
 Review actual retry/new-source results before treating the blocker as recovered.
 
 The compact receptor reported only the later cleanup error. That independently

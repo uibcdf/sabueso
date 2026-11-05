@@ -1,5 +1,23 @@
 # Sabueso — Decision Log
 
+## 2026-11-05 — Explicit permission before external publication (#187)
+
+The maintainer restates the accepted [MolI #80](https://github.com/uibcdf/moli/issues/80)
+boundary: agents must obtain prior explicit permission from Diego Prada Gracia
+or Liliana Marisol Moreno Vargas before publishing to third-party repositories,
+covering issues, comments, pull requests and remote drafts. Prepare the destination,
+action and concrete material for review; without permission keep an internal
+finding/human handoff. Generic reporting duties, available credentials and
+internal development authority do not authorize external disclosure or a bypass
+through another account/tool/agent/fork. Existing scoped permissions persist.
+
+The failed micromamba issue-creation attempt created no external issue, but should
+have awaited review. [#187](https://github.com/uibcdf/sabueso/issues/187) receives
+the exact canonical guide and the lasting root action, together with the existing
+central release-notice action. Scope and executed delivery checks are recorded in
+[the adoption receipt](evidence/publication_authority_adoption_20261105.json).
+This changes contributor guidance, not scientific runtime or release readiness.
+
 ## 2026-11-05 — Qualify one explicit TcTIM structural consumer journey (#173/#148)
 
 The maintainer accepts the proposed continuation: prepare a compatible public
