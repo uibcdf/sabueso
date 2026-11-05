@@ -9,7 +9,7 @@ repository's GitHub Discussions; triage adds it here as *queued*.
 See [source capabilities](source_capabilities.md) for declared access, mapping,
 card contributions and recovered input scope; adoption is not complete integration.
 
-Summary: in use 83, evaluating 11, deferred 37, retired 3, out of scope 13.
+Summary: in use 83, evaluating 11, queued 2, deferred 37, retired 3, out of scope 13.
 
 ## In use
 
@@ -143,6 +143,13 @@ activates all providers or asks for unrequested records and links.
 | [ModelArchive](https://modelarchive.org/) | Macromolecular structures, models and dynamics | Open repository of computational macromolecular models with mmCIF metadata. | under review | 2026-09-25 |
 | [ProThermDB](https://web.iitm.ac.in/bioinfo2/prothermdb/) | Macromolecular structures, models and dynamics | Experimental protein stability data (ΔΔG, Tm) for point mutations. | under review | 2026-09-25 |
 | [DGIdb](https://dgidb.org/) | Target validation, genetics and functional networks | Aggregated drug–gene interactions and druggability categories. | under review | 2026-09-25 |
+
+## Queued for review
+
+| Resource | Category | What it would bring | State | Since |
+| --- | --- | --- | --- | --- |
+| [Molecular Dataset Hub](https://liugangcode.github.io/molecular-dataset-hub/) | Benchmarks, open challenges and open-science consortia | Catalogue of small-molecule and polymer datasets, original studies/data hosts, per-dataset rights and quality metadata. | Preliminary fit review is positive for source discovery and bounded scientific controls; no dataset or client is adopted. Original row identity, qualifiers, units, methods, redistribution lineage and quality assessments need review. The advertised GitHub repository returned 404 while the website was readable; reproducible metadata release access remains unqualified. Future task #189, not a new 0.15.0 prerequisite. | 2026-11-05 |
+| [torch-molecule (dataset access)](https://github.com/liugangcode/torch-molecule) | Benchmarks, open challenges and open-science consortia | Dataset metadata and table-access interface accompanying Molecular Dataset Hub; predictive/generative engines are outside Sabueso's Knowledge role. | Source inspected at e3466e386c18d449d6e6889446f1109551714efc without installation, model execution or dataset download. The ML loader can mask censored labels, strip their comparator when returning numeric bounds, filter evaluation rows and derive SMILES from grouping keys. Lossless intake and identity require original-table/lineage review. PyTorch/PyG/RDKit dependencies are not adopted; detailed qualification remains future task #189. | 2026-11-05 |
 
 ## Deferred
 

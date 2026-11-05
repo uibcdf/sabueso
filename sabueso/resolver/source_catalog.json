@@ -2050,6 +2050,23 @@
    ]
   },
   {
+   "id": "molecular_dataset_hub",
+   "name": "Molecular Dataset Hub",
+   "url": "https://liugangcode.github.io/molecular-dataset-hub/",
+   "category": "benchmarks",
+   "status": "queued",
+   "since": "2026-11-05",
+   "description": "Catalogue of small-molecule and polymer datasets, original studies/data hosts, per-dataset rights and quality metadata.",
+   "proposed_by": "Maintainer request during pre-0.15.0 continuation (2026-11-05)",
+   "access": "Public catalogue and linked dataset metadata; original, redistributed, gated and link-only artifacts need separate native qualification.",
+   "licence": "Dataset-specific upstream terms; catalogue availability does not grant data redistribution rights.",
+   "note": "Preliminary fit review is positive for source discovery and bounded scientific controls; no dataset or client is adopted. Original row identity, qualifiers, units, methods, redistribution lineage and quality assessments need review. The advertised GitHub repository returned 404 while the website was readable; reproducible metadata release access remains unqualified. Future task #189, not a new 0.15.0 prerequisite.",
+   "links": [
+    "https://github.com/uibcdf/sabueso/discussions/190",
+    "https://github.com/uibcdf/sabueso/issues/189"
+   ]
+  },
+  {
    "id": "monarch",
    "name": "Monarch Initiative",
    "url": "https://monarchinitiative.org/",
@@ -3347,6 +3364,24 @@
    "reason": "Removed with the per-database card tools.",
    "links": [
     "#21"
+   ]
+  },
+  {
+   "id": "torch_molecule_datasets",
+   "name": "torch-molecule (dataset access)",
+   "url": "https://github.com/liugangcode/torch-molecule",
+   "category": "benchmarks",
+   "status": "queued",
+   "since": "2026-11-05",
+   "description": "Dataset metadata and table-access interface accompanying Molecular Dataset Hub; predictive/generative engines are outside Sabueso's Knowledge role.",
+   "proposed_by": "Maintainer request during pre-0.15.0 continuation (2026-11-05)",
+   "access": "Public source/documentation and Hugging Face dataset access; review direct metadata/native tables before considering an optional library dependency.",
+   "licence": "Software declares MIT; every dataset and contributing source retains its own access, attribution and redistribution terms.",
+   "note": "Source inspected at e3466e386c18d449d6e6889446f1109551714efc without installation, model execution or dataset download. The ML loader can mask censored labels, strip their comparator when returning numeric bounds, filter evaluation rows and derive SMILES from grouping keys. Lossless intake and identity require original-table/lineage review. PyTorch/PyG/RDKit dependencies are not adopted; detailed qualification remains future task #189.",
+   "links": [
+    "https://liugangcode.github.io/torch-molecule/dataset.html",
+    "https://github.com/uibcdf/sabueso/discussions/190",
+    "https://github.com/uibcdf/sabueso/issues/189"
    ]
   },
   {
@@ -5310,6 +5345,20 @@
     "live_health": "not_assessed_by_offline_inventory",
     "consumer_acceptance": "not_assessed_by_offline_inventory"
    },
+   "molecular_dataset_hub": {
+    "adoption_status": "queued",
+    "via": null,
+    "get_functions": [],
+    "mapping_functions": [],
+    "client_classes": [],
+    "declared_enrichers": [],
+    "recovery_inputs": {
+     "repository": [],
+     "local_only": []
+    },
+    "live_health": "not_assessed_by_offline_inventory",
+    "consumer_acceptance": "not_assessed_by_offline_inventory"
+   },
    "monarch": {
     "adoption_status": "in_use",
     "via": null,
@@ -6455,6 +6504,20 @@
     "live_health": "not_assessed_by_offline_inventory",
     "consumer_acceptance": "not_assessed_by_offline_inventory"
    },
+   "torch_molecule_datasets": {
+    "adoption_status": "queued",
+    "via": null,
+    "get_functions": [],
+    "mapping_functions": [],
+    "client_classes": [],
+    "declared_enrichers": [],
+    "recovery_inputs": {
+     "repository": [],
+     "local_only": []
+    },
+    "live_health": "not_assessed_by_offline_inventory",
+    "consumer_acceptance": "not_assessed_by_offline_inventory"
+   },
    "tox21_toxcast": {
     "adoption_status": "evaluating",
     "via": null,
@@ -6876,7 +6939,10 @@
     "evaluating": [
      "target2035_sgc"
     ],
-    "queued": [],
+    "queued": [
+     "molecular_dataset_hub",
+     "torch_molecule_datasets"
+    ],
     "deferred": [
      "asap_discovery",
      "fragalysis",
