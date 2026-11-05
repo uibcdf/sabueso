@@ -6,6 +6,17 @@ These field scopes do not change frozen cards or authorize automatic card intake
 
 # Source-specific mapping notes
 
+Native AlphaFold ModelCIF metadata enters a Card only through an explicitly
+supplied single-file client, never through an implicit prediction-API/archive
+fallback. `alphafold_modelcif_declaration@1` names the derived projection of
+explicit AlphaFoldDB/UNP, entity/reference/alignment declarations. Literal raw
+tokens, scalar/loop membership and unknowns remain in the supporting assertion;
+file/extraction identity stays separate. CRC64 belongs to the reference sequence,
+not a computed model MD5. Distribution/software version is not model revision.
+Ambiguous/inconsistent declarations remain unselected, canonical/coordinate
+correspondence unevaluated. Existing API contexts and frozen cards are unchanged.
+See [the contract](../pending_proposals/alphafold_archive_fragment_control.md#native-metadata-intake-continuation--2026-11-05).
+
 Development Interactome3D keeps independent native archived protein structure/
 model occurrences outside frozen card schema 0.3.12. Exact accession selection
 retains rank pairs, original PDB/chain case, blank/whitespace chains, sequence

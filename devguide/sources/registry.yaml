@@ -1218,7 +1218,7 @@ resources:
     description: Predicted structural models with per-residue confidence (pLDDT) and PAE.
     since: 2026-09-25
     reason: Structural representation of proteins without experimental structures, kept apart from experimental ones.
-    access: REST API
+    access: REST API; explicit supplied single-model plain/gzip ModelCIF metadata, with no implicit archive/API fallback.
     licence: CC BY 4.0
     terms:
       source_names: ["AlphaFold DB"]
@@ -1226,8 +1226,8 @@ resources:
       attribution: "AlphaFold Protein Structure Database, DeepMind and EMBL-EBI (https://alphafold.ebi.ac.uk/), CC BY 4.0"
       statement: https://alphafold.ebi.ac.uk/faq
       reviewed: 2026-09-29
-    module: [sabueso.tools.db.alphafold]
-    links: ["#57"]
+    module: [sabueso.tools.db.alphafold, sabueso.mappings.alphafold, sabueso.tools.db.alphafold_modelcif, sabueso.mappings.alphafold_modelcif_v1]
+    links: ["#57", "#148"]
   - id: gene_ontology
     name: Gene Ontology annotations
     url: https://geneontology.org/

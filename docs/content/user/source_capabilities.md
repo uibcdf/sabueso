@@ -22,7 +22,7 @@ function/class names and file scopes under `source_capability_inventory@1`.
 | [3did](https://3did.irbbarcelona.org/) | 1 / 1 | none declared | 0 / 1 |
 | [AAindex](https://www.genome.jp/aaindex/) | 1 / 1 | none declared | 0 / 0 |
 | [AlphaFill](https://alphafill.eu/) | 1 / 2 | none declared | 1 / 0 |
-| [AlphaFold DB](https://alphafold.ebi.ac.uk/) | 1 / 0 | `predicted_structures` | 4 / 0 |
+| [AlphaFold DB](https://alphafold.ebi.ac.uk/) | 2 / 2 | `predicted_structures` | 4 / 0 |
 | [AlphaMissense](https://github.com/google-deepmind/alphamissense) | 1 / 1 | none declared | 2 / 0 |
 | [AmyPro](https://amypro.net/) | 1 / 2 | none declared | 0 / 1 |
 | [APPRIS](https://appris.bioinfo.cnio.es/) | 1 / 1 | none declared | 1 / 0 |

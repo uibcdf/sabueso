@@ -107,6 +107,13 @@ class FixtureAlphaFoldClient:
 @capture_acquisitions
 def get_prediction(identifier: str, client: Any = None, skip_digestion: bool = False):
     """The predicted structural models of a UniProt protein (AlphaFold DB)."""
+    if getattr(client, "native_format", None) is not None:
+        from sabueso.core.errors import ArgumentError
+
+        raise ArgumentError(
+            "Use alphafold_modelcif.get_modelcif_metadata for explicit native files; this getter accepts prediction-API records.",
+            argument="client",
+        )
     response = online(client, OnlineAlphaFoldClient).prediction(identifier)
     models = response.get("record") or []
     versions = sorted(

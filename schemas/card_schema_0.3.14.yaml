@@ -2,8 +2,20 @@ schema:
   name: sabueso-card
   version: 0.3.14
   created_at: 2026-02-10
-  updated_at: 2026-11-03
+  updated_at: 2026-11-05
   note: |
+    Optional native AlphaFold ModelCIF intake (#148) preserves all original
+    non-atom-site metadata tokens at asserted_value.modelcif_metadata. Separate
+    source_metadata.input_contract, native_extraction and snapshot_receipt retain
+    extraction scope, excluded atom-site tables and original encoded/decoded byte
+    identities; the supplied file is not a new online acquisition or API record.
+    has_predicted_structure.qualifiers.native_modelcif is a derived declaration
+    projection under alphafold_modelcif_declaration@1, never a SourceAssertion.
+    Native CRC64 names the reference sequence, not an API model MD5. Distribution
+    and software versions do not supply the model revision. Literal alternatives
+    stay retained and unselected; canonical/coordinate correspondence is not
+    evaluated. Existing API contexts and historical rules remain unchanged;
+    migration never backfills the new optional native inputs or findings.
     0.3.14 optionally retains original RCSB nonpolymer entity/instance identifiers
     (#173) at SourceAssertion asserted_value.assembly_component_inputs.nonpolymer_entities.
     The dedicated GraphQL alias assembly_nonpolymer_entities supplies this array;

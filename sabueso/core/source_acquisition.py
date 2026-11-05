@@ -497,7 +497,9 @@ def _credit(record):
         )
     if record["source"] == "AlphaFold DB":
         record["bibliography_gaps"].append(
-            "model_specific_method_and_provider_citations_not_returned"
+            "native_citation_columns_not_normalized;referenced_publications_not_queried"
+            if record["operation"] == "modelcif_prediction"
+            else "model_specific_method_and_provider_citations_not_returned"
         )
     if record["source"] == "InterPro":
         record["bibliography_gaps"].append(

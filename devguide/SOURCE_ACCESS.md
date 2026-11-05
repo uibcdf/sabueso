@@ -1,5 +1,13 @@
 # Source access (uibcdf/sabueso#49)
 
+The [native AlphaFold continuation](pending_proposals/alphafold_archive_fragment_control.md#native-metadata-intake-continuation--2026-11-05)
+adds explicit single-file ModelCIF metadata access and Card contribution under
+separate contracts. It requires a supplied file client, checks source binding
+before I/O, records full file/extraction identity and visibly refuses byte-budget
+overruns. Native reference CRC64 and model/reference axes never become API model
+MD5 or evaluated canonical correspondence. Optional Gemmi is requested only for
+file parsing; retained Card metadata and saved reading remain independent.
+
 The common acquisition, validation and card-contribution contract. Provider-specific
 protocols, native fields and qualification limits are maintained in the
 [native access reference](sources/NATIVE_ACCESS_REFERENCE.md),

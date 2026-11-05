@@ -1007,7 +1007,18 @@ card/refresh pins and saved-reader behavior remain unchanged. See
 `tests/core/test_pdbe_kb_acquisition_offline.py`, also copied unchanged into installed
 public-provider and future staged gates.
 
-AlphaFold DB's `prediction` event retains each native model-list index and both
+The separate `modelcif_prediction` event receives an explicitly supplied native
+ModelCIF file. It retains complete original encoded/decoded byte identities,
+extraction identity, named excluded atom-site tables and caller-declared terms;
+it does not claim online source access or other models/distributions. Literal
+native citation columns stay in the record, with unnormalized bibliography and
+unqueried publications stated explicitly. Model revision remains unknown when
+unstated; source/reference identity is checked independently of filename and
+API fields. Optional Gemmi is requested only for parsing, and the getter has
+explicit byte budgets/overrides. See the
+[native Card intake contract](../pending_proposals/alphafold_archive_fragment_control.md#native-metadata-intake-continuation--2026-11-05).
+
+AlphaFold DB's existing `prediction` event retains each native model-list index and both
 `entryId`/`modelEntityId` forms; its reference choice names the existing mapping's
 basis, without inventing equivalence between different identifiers. Native
 `latestVersion`, including zero when stated, is retained per record. Missing latest

@@ -36,18 +36,27 @@ class AlphaFold(Enricher):
 
     def map(self, context, request, response, options):
         from sabueso.mappings.alphafold import map_predictions
-
-        mapped = map_predictions(
-            response,
-            context.anchor,
-            response.get("retrieved_at", ""),
-            sequence_md5=(context.entry.get("sequence") or {}).get("md5"),
-            input_assertions=[
-                row
-                for mapping in context.mappings
-                for row in mapping.get("source_assertions", [])
-            ],
+        from sabueso.mappings.alphafold_modelcif_v1 import (
+            FORMAT,
+            map_modelcif_predictions,
         )
+
+        if isinstance(response, dict) and response.get("native_format") == FORMAT:
+            mapped = map_modelcif_predictions(
+                response, context.anchor, response.get("retrieved_at", "")
+            )
+        else:
+            mapped = map_predictions(
+                response,
+                context.anchor,
+                response.get("retrieved_at", ""),
+                sequence_md5=(context.entry.get("sequence") or {}).get("md5"),
+                input_assertions=[
+                    row
+                    for mapping in context.mappings
+                    for row in mapping.get("source_assertions", [])
+                ],
+            )
         versions = sorted(
             {r["qualifiers"]["model_version"] for r in mapped["relationships"]} - {None}
         )

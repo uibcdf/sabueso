@@ -162,6 +162,14 @@ def test_capabilities_distinguish_native_access_from_declared_card_contribution(
     assert rows["mobidb"]["mapping_functions"]
     assert rows["mobidb"]["declared_enrichers"] == []
     assert rows["clinvar"]["declared_enrichers"]
+    assert (
+        "sabueso.tools.db.alphafold_modelcif.get_modelcif_metadata"
+        in rows["alphafold_db"]["get_functions"]
+    )
+    assert set(rows["alphafold_db"]["mapping_functions"]) == {
+        "sabueso.mappings.alphafold.map_predictions",
+        "sabueso.mappings.alphafold_modelcif_v1.map_modelcif_predictions",
+    }
     assert rows["asd"]["adoption_status"] == "deferred"
     assert rows["asd"]["get_functions"] == []
     assert all(

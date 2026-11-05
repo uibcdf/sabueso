@@ -357,8 +357,14 @@ def related(item):
         from .card_model_regions_v1 import model_path
 
         model_location = item.payload_location
+        native = None
         if model_path(explorer, model_location):
             row, _ = explorer.access._resolve(model_location)
+            from sabueso.mappings.alphafold_modelcif_v1 import bound_declaration
+
+            from .card_exploration_history import _HistoricalInput
+
+            native = bound_declaration(_HistoricalInput(explorer.access._focal), row)
             context = (row.get("qualifiers") or {}).get("sequence_context")
             if (
                 isinstance(context, dict)
@@ -366,7 +372,8 @@ def related(item):
             ):
                 from .card_model_fragment_regions_v2 import link as model_link
 
-        question = model_link(explorer, model_location)
+        # Literal native declarations are not API model correspondence inputs.
+        question = None if native is not None else model_link(explorer, model_location)
         if question is not None:
             support = question["support"]
     if question is None:

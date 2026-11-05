@@ -46,6 +46,24 @@ MIGRATION_RULE = "card_migration@1"
 SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
     "0.3.14": [
         {
+            "path": "relationships.has_predicted_structure.native_modelcif",
+            "filled_by": "predicted_structures",
+            "explicit_only": True,
+            "entity_types": ("protein",),
+        },
+        {
+            "path": "source_assertion_store[].asserted_value.modelcif_metadata",
+            "filled_by": "predicted_structures",
+            "explicit_only": True,
+            "entity_types": ("protein",),
+        },
+        {
+            "path": "source_assertion_store[].source_metadata.native_extraction",
+            "filled_by": "predicted_structures",
+            "explicit_only": True,
+            "entity_types": ("protein",),
+        },
+        {
             "path": "source_assertion_store[].asserted_value.assembly_component_inputs",
             "filled_by": "structures",
             "explicit_only": True,

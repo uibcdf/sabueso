@@ -1,5 +1,17 @@
 # Sabueso — Card Schema Notes
 
+Unpublished 0.3.14 adds optional native AlphaFold ModelCIF metadata (#148).
+`asserted_value.modelcif_metadata` preserves literal columns and scalar/loop
+membership, with original file/extraction receipts in `source_metadata`.
+`has_predicted_structure.qualifiers.native_modelcif` records the derived
+`alphafold_modelcif_declaration@1` output, including explicit identity basis,
+reference/model intervals, reference CRC64/date, unresolved alternatives and
+unevaluated canonical/coordinate correspondence. It is not API `model` JSON or
+a SourceAssertion; filename distribution is not model revision. Historical
+Cards/rules are not backfilled. Shape generation uses optional Gemmi to read
+the original public ModelCIF; Card loading and saved reading do not need it.
+See the [native contract](pending_proposals/alphafold_archive_fragment_control.md#native-metadata-intake-continuation--2026-11-05).
+
 AlphaFold range-alias context @2 retains optional `sequence_context.range_basis`
 inside the existing derived qualifier (#148). It records original pairs, presence,
 types and agreement/refusal without changing SourceAssertions or published

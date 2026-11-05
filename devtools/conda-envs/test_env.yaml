@@ -12,6 +12,7 @@ dependencies:
   - depdigest >=0.11.0
   - ackredit >=0.9.0
   - pandas >=2   # optional; exercised by the table tests (#46)
+  - gemmi >=0.7.5  # optional; explicit native ModelCIF metadata and parser controls
   - pip
   - setuptools >=68
   - versioningit ~=3.0

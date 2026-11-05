@@ -1,5 +1,23 @@
 # Sabueso — Decision Log
 
+## 2026-11-05 — Explicit native AlphaFold metadata intake (#148)
+
+Use an optional established CIF reader (Gemmi >=0.7.5, through DepDigest) for one
+explicitly supplied plain/gzip model file, with whole-document validation and
+visible encoded/decoded budgets and overrides. Keep native tokens/membership,
+original file identity and excluded atom-site table scope; never manufacture a
+prediction-API record or silently download another distribution. Existing API
+clients/getters and native supplied-file access remain separate contracts.
+
+`alphafold_modelcif_declaration@1` is a source-bound derived summary, with all
+native metadata retained as its original support. Identity comes from explicit
+AlphaFoldDB/UNP reference declarations, not filename or sequence similarity.
+Reference CRC64, reference/model axes, software and distribution versions stay
+distinct. Unknowns and alternatives remain unselected. Native canonical sequence
+correspondence and a dedicated scientific navigation question are future named
+rules; current API context/question rules and saved verifiers stay fixed.
+See [the contract](pending_proposals/alphafold_archive_fragment_control.md#native-metadata-intake-continuation--2026-11-05).
+
 ## 2026-11-05 — Share complete support across generic source links (#167/#148)
 
 Generic navigation with multiple distinct original source references retains one

@@ -1,5 +1,16 @@
 # Sabueso — Canonical Field Paths
 
+Optional native AlphaFold ModelCIF intake in unpublished 0.3.14 retains source
+tokens at `source_assertion_store[].asserted_value.modelcif_metadata` (#148).
+Separate `source_metadata.input_contract`, `native_extraction` and
+`snapshot_receipt` retain extraction scope/parser and original file identity.
+`relationships.has_predicted_structure.native_modelcif` is the derived
+`alphafold_modelcif_declaration@1` summary, never a new source-authored field.
+It retains explicit identity/axis/checksum scope and unevaluated correspondence;
+the source's literal alternatives remain accessible. Existing field paths and
+API-derived contexts are unchanged. See the
+[native contract](pending_proposals/alphafold_archive_fragment_control.md#native-metadata-intake-continuation--2026-11-05).
+
 The optional derived `relationships.has_predicted_structure.sequence_context.range_basis`
 records original AlphaFold range aliases under context @2 (#148): `state`,
 `declarations` (original fields, present endpoints, values and per-pair state),

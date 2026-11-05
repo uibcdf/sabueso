@@ -132,6 +132,7 @@ jobs:
             uibcdf::ackredit=0.9.0=py_0
             pytest>=8
             nbformat>=5
+            gemmi>=0.7.5
             uibcdf::pytest-receptor=1.2.0
       - name: Verify installed artifact and smoke test outside the source checkout
         shell: bash -l {0}
@@ -189,6 +190,7 @@ jobs:
           cp "$GITHUB_WORKSPACE/tests/core/test_measurement_correspondence_offline.py" "$client_dir/"
           cp "$GITHUB_WORKSPACE/tests/core/test_bioactivity_target_scope_offline.py" "$client_dir/"
           cp "$GITHUB_WORKSPACE/tests/core/test_card_model_fragments_offline.py" "$client_dir/"
+          cp "$GITHUB_WORKSPACE/tests/core/test_alphafold_modelcif_intake_offline.py" "$client_dir/"
           cp "$GITHUB_WORKSPACE/tests/core/test_alphafold_range_aliases_offline.py" "$client_dir/"
           cp "$GITHUB_WORKSPACE/tests/core/test_card_shared_link_support_offline.py" "$client_dir/"
           mkdir -p "$client_dir/data"
@@ -233,7 +235,7 @@ jobs:
           cp "$GITHUB_WORKSPACE/examples/user_journeys/disease_entities.py" "$client_dir/examples/user_journeys/"
           cp -R "$GITHUB_WORKSPACE/temp_data" "$client_dir/temp_data"
           cd "$client_dir"
-          python -m pytest test_attribution_offline.py test_source_acquisition_offline.py test_rcsb_acquisition_offline.py test_chembl_acquisition_offline.py test_pubchem_acquisition_offline.py test_bindingdb_acquisition_offline.py test_chemical_identity_acquisition_offline.py test_pdbe_kb_acquisition_offline.py test_alphafold_acquisition_offline.py test_interpro_acquisition_offline.py test_disease_explanation_offline.py test_knowledge_state_explanation_offline.py test_molecule_knowledge_state_offline.py test_bioactivity_explanation_offline.py test_bioactivity_class_v4_offline.py test_measurement_correspondence_offline.py test_bioactivity_target_scope_offline.py test_ligand_explanation_offline.py test_oligomer_explanation_offline.py test_rule_literature_extraction_offline.py test_literature_intake_offline.py test_article_metadata_offline.py test_persisted_pipeline_offline.py \
+          python -m pytest test_attribution_offline.py test_source_acquisition_offline.py test_rcsb_acquisition_offline.py test_chembl_acquisition_offline.py test_pubchem_acquisition_offline.py test_bindingdb_acquisition_offline.py test_chemical_identity_acquisition_offline.py test_pdbe_kb_acquisition_offline.py test_alphafold_acquisition_offline.py test_alphafold_modelcif_intake_offline.py test_interpro_acquisition_offline.py test_disease_explanation_offline.py test_knowledge_state_explanation_offline.py test_molecule_knowledge_state_offline.py test_bioactivity_explanation_offline.py test_bioactivity_class_v4_offline.py test_measurement_correspondence_offline.py test_bioactivity_target_scope_offline.py test_ligand_explanation_offline.py test_oligomer_explanation_offline.py test_rule_literature_extraction_offline.py test_literature_intake_offline.py test_article_metadata_offline.py test_persisted_pipeline_offline.py \
             test_user_journeys_offline.py test_molecule_target_journey_offline.py test_clinical_bibliography_journey_offline.py test_disease_entities_journey_offline.py test_disease_deck_support_offline.py test_disease_deck_admission_offline.py test_mondo_acquisition_offline.py test_disease_source_acquisition_offline.py test_disease_lookup_acquisition_offline.py test_indication_bibliography_offline.py test_clinicaltrials_acquisition_offline.py \
             test_ncbi_taxonomy_acquisition_offline.py \
             test_residue_knowledge_offline.py test_residue_tracks_offline.py test_residue_composition_offline.py test_hk2_test_system_offline.py test_uniprot_isoforms_offline.py test_uniparc_offline.py test_sequence_candidates_offline.py test_source_snapshot_offline.py test_card_notebook_offline.py test_card_model_fragments_offline.py test_alphafold_range_aliases_offline.py test_card_shared_link_support_offline.py -m "not online" --receptor=ci -o tmp_path_retention_policy=failed

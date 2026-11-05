@@ -1,12 +1,87 @@
 ---
 summary: Preserve and independently check a genuine public AlphaFold archive fragment without pretending it is an API response.
 issue: uibcdf/sabueso#148
-status: original_input_received_native_intake_pending
+status: native_metadata_intake_local_receiving
 opened: 2026-11-05
 area: [predicted-structures, source-contracts, structural-exploration]
 ---
 
 # A genuine public archive fragment
+
+## Native metadata intake continuation — 2026-11-05
+
+The production supplied-file route now places the real model in a Card without
+inventing a prediction-API record. `alphafold_modelcif_metadata@1` retains all
+210 original non-atom-site columns, including literal quoting, multiline values,
+unknown tags and `?`/`.` tokens, with scalar/loop membership. The original input
+and its encoded/decoded SHA-256, sizes, compression, caller-declared source
+terms and parser version remain in a separate receipt. Excluded atom table
+categories (`_atom_site`, `_atom_site_anisotrop`) are identified by tags and row
+counts. This is one supplied file, not a database-wide or online observation.
+
+Gemmi >=0.7.5 is an optional parser, requested through DepDigest only when a file
+is parsed. Ordinary API access, mapping retained metadata, Card loading and
+independent saved reading do not import it. The complete CIF document must parse
+as one block before any metadata is returned; malformed later loops, duplicate
+tags and save frames are refused. Scalar/loop boundaries and unknown tokens are
+retained rather than reconstructed as provider API JSON. This is not a general
+coordinate import, TAR extractor, automatic downloader or multi-model reader.
+
+`get_modelcif_metadata(identifier, client=...)` requires an explicit
+`FixtureAlphaFoldModelCIFClient` or `SnapshotAlphaFoldModelCIFClient`. Snapshot
+source/kind/query/revision binding is checked before file I/O. Encoded and decoded
+file limits default separately to 64 MiB; refusal is explicit, with no partial
+metadata. Callers can deliberately increase each limit or pass `None`. These byte
+limits do not promise a parser/Python-object memory ceiling. Missing local files
+remain unavailable input; malformed native records remain connector failures.
+The API getter rejects a native client before calling it, directing the caller
+to the separate getter. Neither route silently falls back to the other.
+
+The existing declared AlphaFold enricher accepts this explicitly supplied client:
+
+```python
+from sabueso.tools.db.alphafold_modelcif import FixtureAlphaFoldModelCIFClient
+
+card, report = sabueso.resolve(
+    "Q8WZ42",
+    resolver=explicit_reference_resolver,
+    predicted_structures=True,
+    alphafold_client=FixtureAlphaFoldModelCIFClient(
+        "AF-Q8WZ42-F2-model_v6.cif.gz",
+        retrieved_at="2026-11-05",
+        expected_sha256="74da31b7a0153ef2c90dc8f60fe07edaa83ba50049bf06e6f4eb113ece1963ef",
+    ),
+)
+model = card.explore().answer("predicted_models").items()[0]
+declaration = model.open()
+sources = model.related().filter("role", equals="source")
+```
+
+`alphafold_modelcif_declaration@1` projects the source's explicit AlphaFoldDB
+identifier, UNP accession, entity/reference/alignment declarations, reference
+CRC64/date, generation software and stated global pLDDT. It is a **derived
+declaration summary**, bound to its original SourceAssertion and recorded output.
+All literal columns remain at `asserted_value.modelcif_metadata`; extraction/file
+receipts live in `source_metadata`. Alternative rows are not silently selected.
+Inconsistent intervals leave the projected range unresolved while retaining both
+source declarations. The raw isoform `?` is not an isoform assignment.
+
+The filename's distribution `v6` never supplies `model_version`, and native
+reference CRC64 never becomes a model MD5. Human model/source/back navigation,
+targeted agent access and saved literal reading retain the same values. A native
+declaration does not enter the old API model-question rules: canonical sequence
+agreement, focal coverage, structural correspondence and coordinate/assembly
+mapping remain **not evaluated**. Existing native/API context rules, packets and
+saved formats/verifiers are unchanged. The dedicated native correspondence
+question, independent scientific/researcher acceptance and broad B3 workload
+acceptance remain next steps; this slice does not close #148/#173 or release 0.15.0.
+
+The [receiving receipt](../evidence/alphafold_modelcif_intake_20261105.json)
+distinguishes selected local, final-source and hosted qualification. Original
+archive receiving below remains a separate historical scope. No new source
+query or third-party publication was needed for this continuation.
+
+## Original archive control
 
 The human-proteome version 6 archive contains **AF-Q8WZ42-F2**, a titin fragment.
 The retained original ModelCIF declares reference accession Q8WZ42, reference
@@ -60,14 +135,16 @@ checks the original header/member/reference hashes and every retained native tag
 through existing Biopython and Gemmi readers independently, retaining literal CIF
 `?` and `.` markers. It independently computes the full-reference CRC64, verifies
 the stated MD5 against the full UniProt sequence and checks the exact interval.
-Its named finding is `alphafold_archive_fragment_control@1`. These developer
-dependencies are not new Sabueso runtime dependencies.
+Its named finding is `alphafold_archive_fragment_control@1`. This independent
+control uses both developer readers; only the later explicit production file
+route requests optional Gemmi. Neither is a mandatory runtime dependency or
+needed for saved reading.
 
 ```bash
 python devguide/evidence/check_alphafold_archive_control_20261105.py --output NEW_DIRECTORY
 ```
 
-## What is qualified, and the next production step
+## Original control qualification and production follow-up
 
 Original public input receiving and the above finite correspondence control are
 now reproducible offline. The four original SDK/standard-library controls preserve original bytes,
@@ -76,7 +153,9 @@ to a **sequence-only reference control**. They do not pretend that the archive
 model has entered a Card. The existing API getter still refuses a missing API
 fixture instead of silently reading the archive or claiming global model absence.
 
-Production intake needs a separate named **native supplied-input contract**:
+The original control proposed the following production follow-up. The metadata
+intake above implements the explicit input and literal Card access; the separate
+native correspondence/question work in steps 2–4 remains open:
 
 1. Preserve the original metadata, transport/file identity and source support;
    use a qualified file/metadata reader without adding an implicit coordinate

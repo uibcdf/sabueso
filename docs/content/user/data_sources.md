@@ -65,7 +65,7 @@ Summary: in use 83, evaluating 11, queued 2, deferred 37, retired 3, out of scop
 | [PubChem (compounds)](https://pubchem.ncbi.nlm.nih.gov/) | Chemical space, synthesis, ADMET and safety | PUG REST (compounds by CID; structure lookups by SMILES or InChI, | US public domain (NLM policy); depositor terms may apply | 2026-02-07 |
 | [UniChem](https://www.ebi.ac.uk/unichem/) | Chemical space, synthesis, ADMET and safety | REST API | No restrictions of its own; the linked resources' rights apply | 2026-09-23 |
 | [STRING](https://string-db.org/) | Protein–protein interactions and structural modulation | REST API | CC BY 4.0 | 2026-02-07 |
-| [AlphaFold DB](https://alphafold.ebi.ac.uk/) | Macromolecular structures, models and dynamics | REST API | CC BY 4.0 | 2026-09-25 |
+| [AlphaFold DB](https://alphafold.ebi.ac.uk/) | Macromolecular structures, models and dynamics | REST API; explicit supplied single-model plain/gzip ModelCIF metadata, with no implicit archive/API fallback. | CC BY 4.0 | 2026-09-25 |
 | [Gene Ontology annotations](https://geneontology.org/) | Targets, sequence and basic pharmacology | via UniProt cross-references | CC BY 4.0 | 2026-09-23 |
 | [IntAct](https://www.ebi.ac.uk/intact/) | Protein–protein interactions and structural modulation | REST PSICQUIC single-page query; also via UniProt | CC BY 4.0 | 2026-09-23 |
 | [Rhea](https://www.rhea-db.org/) | Targets, sequence and basic pharmacology | via UniProt | CC BY 4.0 | 2026-09-23 |

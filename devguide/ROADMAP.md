@@ -3,8 +3,9 @@
 The [genuine AlphaFold archive control](pending_proposals/alphafold_archive_fragment_control.md)
 now retains public titin AF-Q8WZ42-F2 and its original UniProt reference. Independent
 native readers verify the 201–1600 reference interval, exact 1,400-residue sequence,
-CRC64 and sequence-version date. This is archive-native receiving, not an API
-record or completed Card intake. The separate full-panel
+CRC64 and sequence-version date. The explicit native metadata intake now places this real model in a Card, with
+literal human/targeted-agent/source/saved access. This does not fabricate an API
+record or evaluate native canonical/coordinate correspondence. The separate full-panel
 [preparation correction](pending_proposals/shared_link_support.md) under #167
 now completes the whole public Card save under the original 512 MiB guard,
 retaining all original content. Its shared-support format @11 has separate
@@ -15,8 +16,9 @@ and 0.15.0 consolidation paused.
 The [AlphaFold range-alias continuation](pending_proposals/alphafold_range_aliases.md)
 adds context/native @2, explicit agreement/refusal, whole/fragment questions @2,
 independent saved format @10 and packet mapping @16. Original source records,
-@1 meanings and saved formats @1–@9 stay fixed. The genuine public archive input is now retained; its Card intake and
-independent scientific/researcher/workload acceptance remain pending;
+@1 meanings and saved formats @1–@9 stay fixed. The genuine public archive input now has explicit native metadata Card intake;
+its correspondence question and independent scientific/researcher/workload
+acceptance remain pending;
 B2 review stays deferred and 0.15.0 consolidation paused.
 
 Sabueso's work follows two routes, and this roadmap integrates both. Neither replaces the
@@ -94,8 +96,8 @@ Nextia Evidence / MOLI ProjectRecord / Recorda acceptance remain open.
 
 The [AlphaFold API-scope correction](pending_bugs/alphafold_prediction_api_scope.md)
 preserves the distinction between an API record miss and whole-database model
-absence, including new Card/acquisition detail and readable coverage. Complete
-archive-fragment intake remains pending; modern-only range compatibility
+absence, including new Card/acquisition detail and readable coverage. Literal native archive-fragment Card intake is implemented; native
+correspondence/question and independent acceptance remain pending; modern-only range compatibility
 has its own separately versioned receiving scope. Component-row source `913aad1` now has complete CI/governance receiving
 under its [receipt](evidence/component_row_reading_20261105.json); later changed
 runtime retains separate qualification. The maintainer's

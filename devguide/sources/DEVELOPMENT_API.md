@@ -530,6 +530,16 @@ and unknown scientific revisions stay explicit.
   `sabueso.mappings.aaindex.map_index(envelope)` produces separately supported
   amino-acid-type reference assertions, not positional facts or protein enrichment.
   Native missing values, references and unit/version/terms gaps remain explicit.
+- `sabueso.tools.db.alphafold_modelcif.get_modelcif_metadata(identifier, client=...)`
+  reads original plain/gzip single-model metadata through an explicit supplied
+  file client. The separate native envelope preserves raw column tokens and
+  original file/extraction identity; it never invents API model JSON or silently
+  falls back to a network request. The existing declared AlphaFold enricher can
+  place it in a Card via `predicted_structures=True, alphafold_client=...`.
+  Optional Gemmi is needed only for file parsing. Native reference CRC64 and
+  model/reference intervals remain distinct; canonical correspondence and the
+  native scientific question remain unevaluated. See the
+  [native contract](../pending_proposals/alphafold_archive_fragment_control.md#native-metadata-intake-continuation--2026-11-05).
 - `sabueso.tools.source_snapshot.load_source_snapshot(path, *, source_metadata,
   file_format=None, expected_sha256=None, records_key=None)` reads explicit
   JSON/JSONL/NDJSON/CSV/TSV files or literal UTF-8 HTML/TXT, including gzip, into

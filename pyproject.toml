@@ -33,6 +33,7 @@ classifiers = [
 [project.optional-dependencies]
 # Optional at runtime, checked by DepDigest when a function needs it (#46).
 dataframe = ["pandas>=2"]
+modelcif = ["gemmi>=0.7.5"]
 compression = ["backports.zstd>=1.8.0; python_version < '3.14'"]
 test = [
   "pytest>=8",

@@ -121,7 +121,7 @@
    "description": "Predicted structural models with per-residue confidence (pLDDT) and PAE.",
    "since": "2026-09-25",
    "reason": "Structural representation of proteins without experimental structures, kept apart from experimental ones.",
-   "access": "REST API",
+   "access": "REST API; explicit supplied single-model plain/gzip ModelCIF metadata, with no implicit archive/API fallback.",
    "licence": "CC BY 4.0",
    "terms": {
     "source_names": [
@@ -133,10 +133,14 @@
     "reviewed": "2026-09-29"
    },
    "module": [
-    "sabueso.tools.db.alphafold"
+    "sabueso.tools.db.alphafold",
+    "sabueso.mappings.alphafold",
+    "sabueso.tools.db.alphafold_modelcif",
+    "sabueso.mappings.alphafold_modelcif_v1"
    ],
    "links": [
-    "#57"
+    "#57",
+    "#148"
    ]
   },
   {
@@ -3756,12 +3760,18 @@
     "adoption_status": "in_use",
     "via": null,
     "get_functions": [
-     "sabueso.tools.db.alphafold.get_prediction"
+     "sabueso.tools.db.alphafold.get_prediction",
+     "sabueso.tools.db.alphafold_modelcif.get_modelcif_metadata"
     ],
-    "mapping_functions": [],
+    "mapping_functions": [
+     "sabueso.mappings.alphafold.map_predictions",
+     "sabueso.mappings.alphafold_modelcif_v1.map_modelcif_predictions"
+    ],
     "client_classes": [
      "sabueso.tools.db.alphafold.FixtureAlphaFoldClient",
-     "sabueso.tools.db.alphafold.OnlineAlphaFoldClient"
+     "sabueso.tools.db.alphafold.OnlineAlphaFoldClient",
+     "sabueso.tools.db.alphafold_modelcif.FixtureAlphaFoldModelCIFClient",
+     "sabueso.tools.db.alphafold_modelcif.SnapshotAlphaFoldModelCIFClient"
     ],
     "declared_enrichers": [
      {

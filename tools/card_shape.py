@@ -460,9 +460,39 @@ def fixture_cards() -> List[dict]:
         ),
         structures=["2V5B"],
     )
+    # Actual public native model, distinct from the prediction-API fixtures.
+    # Shape generation uses the optional ModelCIF parser; Card reading does not.
+    from sabueso.mappings.alphafold_modelcif_v1 import map_modelcif_predictions
+    from sabueso.tools.db.alphafold_modelcif import (
+        FixtureAlphaFoldModelCIFClient,
+        get_modelcif_metadata,
+    )
+
+    native_inputs = ROOT / "temp_data" / "alphafold_archive"
+    native_response = get_modelcif_metadata(
+        "Q8WZ42",
+        client=FixtureAlphaFoldModelCIFClient(
+            native_inputs / "AF-Q8WZ42-F2-model_v6.cif.gz",
+            retrieved_at="2026-11-05",
+        ),
+    )
+    # Only this new input's shape; unrelated titin annotations are not schema
+    # changes introduced by native model intake. Full Card integration has its
+    # own actual-reference regression in the owning source module.
+    native_model = build_card_from_mapping(
+        map_modelcif_predictions(native_response, "Q8WZ42", "2026-11-05"),
+        meta={"entity_type": "protein"},
+    )
     return [
         c.to_dict()
-        for c in (*cards, bounded, parameterized, native_scope, native_assembly)
+        for c in (
+            *cards,
+            bounded,
+            parameterized,
+            native_scope,
+            native_assembly,
+            native_model,
+        )
     ]
 
 

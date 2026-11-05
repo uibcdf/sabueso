@@ -30,6 +30,7 @@ requirements:
     - ackredit >=0.9.0   # published portable attribution contract (#108)
   run_constrained:
     - pandas >=2   # optional: sabueso.to_dataframe (#46)
+    - gemmi >=0.7.5   # optional: explicitly supplied native ModelCIF metadata (#148)
 
 test:
   imports:
