@@ -614,8 +614,19 @@ def _parts(view):
             if (
                 view._origin is not None
                 and view._origin._link_panel
-                and view._origin.native_payload.get("rule")
-                == "retained_context_links@5"
+                and (
+                    view._origin.native_payload.get("rule")
+                    == "retained_context_links@5"
+                    or (
+                        view._origin.native_payload.get("rule")
+                        == "retained_context_links@6"
+                        and any(
+                            row.get("model_context", {}).get("rule")
+                            == "model_fragment_structure_request@2"
+                            for row in view._origin.native_payload.get("links", [])
+                        )
+                    )
+                )
             ):
                 from .card_model_fragment_regions_v1 import SCOPE
 
@@ -824,7 +835,11 @@ def _parts(view):
                     )
                     else "model_context"
                     if value.get("rule")
-                    in ("retained_context_links@4", "retained_context_links@5")
+                    in (
+                        "retained_context_links@4",
+                        "retained_context_links@5",
+                        "retained_context_links@6",
+                    )
                     else "annotation_context"
                 )
                 rows.append(

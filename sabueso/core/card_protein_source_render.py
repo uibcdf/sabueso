@@ -69,6 +69,8 @@ def relationship(topic, row):
             if value is None:
                 return "unknown"
             if key == "range" and isinstance(value, list):
+                if value == [None, None]:
+                    return "not established; inspect the original interval declarations"
                 return "–".join(preview(v, 40) for v in value[:2]) + (
                     " (unexpected range shape; inspect original)"
                     if len(value) != 2
@@ -106,6 +108,10 @@ def relationship(topic, row):
             reasons = context.get("reasons")
             if isinstance(reasons, list) and reasons:
                 labels = {
+                    "model_range_conflicting_aliases": "the source states conflicting sequence intervals; none is selected",
+                    "model_range_incomplete": "a stated sequence interval is incomplete; no other alias substitutes for it",
+                    "model_range_invalid": "a stated sequence interval is invalid; no other alias substitutes for it",
+                    "model_range_not_stated": "the source did not state a complete sequence interval",
                     "source_stated_isoform": "the model refers to a source-stated isoform",
                     "different_accession_unclassified": "a different accession does not establish an isoform",
                     "model_accession_not_stated": "the model accession was not stated",

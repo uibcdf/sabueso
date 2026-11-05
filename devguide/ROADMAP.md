@@ -1,5 +1,12 @@
 # Sabueso — Roadmap
 
+The [AlphaFold range-alias continuation](pending_proposals/alphafold_range_aliases.md)
+adds context/native @2, explicit agreement/refusal, whole/fragment questions @2,
+independent saved format @10 and packet mapping @16. Original source records,
+@1 meanings and saved formats @1–@9 stay fixed. Genuine public archive fragment
+intake and independent scientific/researcher/workload acceptance remain pending;
+B2 review stays deferred and 0.15.0 consolidation paused.
+
 Sabueso's work follows two routes, and this roadmap integrates both. Neither replaces the
 other.
 
@@ -76,8 +83,8 @@ Nextia Evidence / MOLI ProjectRecord / Recorda acceptance remain open.
 The [AlphaFold API-scope correction](pending_bugs/alphafold_prediction_api_scope.md)
 preserves the distinction between an API record miss and whole-database model
 absence, including new Card/acquisition detail and readable coverage. Complete
-archive-fragment intake and modern-only range compatibility remain explicit
-follow-ups. Component-row source `913aad1` now has complete CI/governance receiving
+archive-fragment intake remains pending; modern-only range compatibility
+has its own separately versioned receiving scope. Component-row source `913aad1` now has complete CI/governance receiving
 under its [receipt](evidence/component_row_reading_20261105.json); later changed
 runtime retains separate qualification. The maintainer's
 [dataset-source proposal #189](https://github.com/uibcdf/sabueso/issues/189)

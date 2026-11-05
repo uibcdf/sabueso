@@ -85,6 +85,12 @@ SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
             "entity_types": ("protein",),
         },
         {
+            "path": "relationships.has_predicted_structure.sequence_context.range_basis",
+            "filled_by": "predicted_structures",
+            "explicit_only": True,
+            "entity_types": ("protein",),
+        },
+        {
             "path": "relationship_store[].derivation_applications",
             "filled_by": "refresh",
             "explicit_only": True,
@@ -550,7 +556,10 @@ def _has(data: Dict[str, Any], path: str) -> bool:
             and isinstance(row["source_metadata"]["uniprot_feature"].get("type"), str)
             for row in relevant
         )
-    if path == "relationships.has_predicted_structure.sequence_context":
+    if path in (
+        "relationships.has_predicted_structure.sequence_context",
+        "relationships.has_predicted_structure.sequence_context.range_basis",
+    ):
         from types import SimpleNamespace
 
         from .predicted_structures import bound_context
@@ -559,10 +568,18 @@ def _has(data: Dict[str, Any], path: str) -> bool:
             row["id"]: row for row in data.get("source_assertion_store") or []
         }
         reader = SimpleNamespace(source_assertion_store=assertions)
-        return all(
-            bound_context(reader, row, allow_alternatives=True) is not None
+        contexts = [
+            bound_context(reader, row, allow_alternatives=True)
             for row in data.get("relationship_store") or []
             if row.get("predicate") == "has_predicted_structure"
+        ]
+        return all(
+            context is not None
+            and (
+                path.endswith("sequence_context")
+                or isinstance(context.get("range_basis"), dict)
+            )
+            for context in contexts
         )
     if path == "relationships.has_structure.derivation":
         assertions = {

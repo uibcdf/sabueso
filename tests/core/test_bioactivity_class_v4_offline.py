@@ -377,7 +377,7 @@ def test_genuine_old_packet_reading_is_inert_and_new_packets_declare_new_science
         ),
         card,
     )
-    assert current.to_dict()["aspect_mapping"] == "packet_aspects@15"
+    assert current.to_dict()["aspect_mapping"] == "packet_aspects@16"
     assert current.same_knowledge(old) is None
     activity = current.facts["bioactivities"]["subject"]
     if detail == "full":

@@ -25,7 +25,7 @@ the Sabueso version that built the cards, so two assemblies of unchanged knowled
 the same ``content_id`` even when the sources were read again (``same_knowledge``).
 
 What each aspect asks the sources for, and which knowledge areas it covers, is fixed by
-the mapping (``packet_aspects@15`` now). It never changes once published: a change is a new
+the mapping (``packet_aspects@16`` now). It never changes once published: a change is a new
 version, and a test pins what each version asks. ``@1`` was published in 0.6.0; ``@2``
 (0.7.0) adds SKEMPI's interface mutations to the ``oligomer`` aspect (#83), and MONDO's
 disease identity and the grouped diseases to ``disease_association`` (#90). ``@3``
@@ -86,7 +86,8 @@ FULL_VIEWS = {
     "biological_context": (),
     "orthology": (),
 }
-ASPECT_MAPPING = "packet_aspects@15"
+ASPECT_MAPPING = "packet_aspects@16"
+# @16 admits original AlphaFold range-alias context @2; earlier mappings retain @1.
 # @15 inherits @14 outside bioactivities and selects conservative activity @4.
 # Original mappings through @14 remain explicitly bound to original activity @3.
 #: Aspect mappings a packet can carry; packets of different mappings are not compared.
@@ -396,6 +397,8 @@ def card_content_id(card: Any) -> str:
 
 
 def _areas(aspect, mapping=ASPECT_MAPPING):
+    if mapping == "packet_aspects@16":
+        return _areas(aspect, "packet_aspects@15")
     if mapping == "packet_aspects@15":
         return _areas(aspect, "packet_aspects@14")
     original = ASPECTS[aspect]["areas"]
@@ -425,6 +428,8 @@ def _areas(aspect, mapping=ASPECT_MAPPING):
 
 
 def _in_areas(area: str, aspects: Iterable[str], *, mapping=ASPECT_MAPPING) -> bool:
+    if mapping == "packet_aspects@16":
+        return _in_areas(area, aspects, mapping="packet_aspects@15")
     if mapping == "packet_aspects@15":
         return _in_areas(area, aspects, mapping="packet_aspects@14")
     return any(
@@ -476,6 +481,11 @@ def _relationships(card: Any, predicate: str) -> List[Dict[str, Any]]:
 
 
 def _facts(aspect: str, card: Any, *, mapping: str = ASPECT_MAPPING) -> Dict[str, Any]:
+    if mapping == "packet_aspects@16":
+        facts = _facts(aspect, card, mapping="packet_aspects@15")
+        if aspect == "structures":
+            facts["predicted"] = card.predicted_structures()
+        return facts
     if mapping == "packet_aspects@15":
         if aspect == "bioactivities":
             return card.bioactivities(
@@ -505,7 +515,9 @@ def _facts(aspect: str, card: Any, *, mapping: str = ASPECT_MAPPING) -> Dict[str
 
             predicted = predicted_structures_view(card)
         else:
-            predicted = card.predicted_structures()
+            from .predicted_structures import predicted_structures_view
+
+            predicted = predicted_structures_view(card, include_range_aliases=False)
         if mapping == "packet_aspects@14":
             experimental = card.structures()
         elif mapping == "packet_aspects@13":
@@ -654,6 +666,7 @@ def _index(aspect: str, card: Any, *, mapping=ASPECT_MAPPING) -> Dict[str, Any]:
                 "packet_aspects@13",
                 "packet_aspects@14",
                 "packet_aspects@15",
+                "packet_aspects@16",
             )
             else path.startswith(tuple(field_areas))
         )
@@ -702,6 +715,16 @@ def full_rules(mapping: str = ASPECT_MAPPING) -> Dict[str, List[str]]:
     """Per aspect, the named rules a full packet's views apply (``FULL_VIEWS``), read
     from the modules that define them, so an index names the rules a reader would get
     by computing the views from the pinned cards."""
+    if mapping == "packet_aspects@16":
+        from sabueso.mappings.alphafold_context_v2 import RULE as CONTEXT_RULE
+
+        from .predicted_structures import RANGE_RULE
+
+        rules = full_rules("packet_aspects@15")
+        rules["structures"] = sorted(
+            set([*rules["structures"], CONTEXT_RULE, RANGE_RULE])
+        )
+        return rules
     if mapping == "packet_aspects@15":
         from .bioactivity_class_v4 import RULE
 

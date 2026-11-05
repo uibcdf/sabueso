@@ -13,7 +13,8 @@ default to conservative `bioactivity_class@4` and readable explanation @2.
 `Card.ligands`, `explain_ligand` and `compare_ligands` share this default and exact
 `classification_rule` selector; ligand explanations use @3. Explicit activity
 classification @3 retains original classes and explanation @1 / ligand explanation @2.
-New packets use `packet_aspects@15`; existing mappings @6–@14 retain original @3
+New packets use `packet_aspects@16`, adding original AlphaFold range-alias
+context @2 with explicit agreement/refusal; existing mappings @6–@14 retain original @3
 activity interpretation. Rich activity explorer/saved-scientific routes remain
 pending. See
 [the scoped correction](pending_bugs/bioactivity_interpretation.md).

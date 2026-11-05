@@ -21,6 +21,7 @@ SUPPORTED_MAPPINGS = {
     "packet_aspects@13",
     "packet_aspects@14",
     "packet_aspects@15",
+    "packet_aspects@16",
 }
 
 

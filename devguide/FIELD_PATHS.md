@@ -1,5 +1,12 @@
 # Sabueso — Canonical Field Paths
 
+The optional derived `relationships.has_predicted_structure.sequence_context.range_basis`
+records original AlphaFold range aliases under context @2 (#148): `state`,
+`declarations` (original fields, present endpoints, values and per-pair state),
+`resolved_range` and `supporting_fields`. It adds no source-authored biological
+field and never backfills old contexts. See
+[the original-alias contract](pending_proposals/alphafold_range_aliases.md).
+
 The fragment-to-reference exploration rule `model_fragment_structure_request@1`
 reads existing original AlphaFold `asserted_value.model` sequence/range/checksum
 and derivation inputs. Its `model_context.fragment_match` is navigation metadata

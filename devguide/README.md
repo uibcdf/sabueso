@@ -1,9 +1,16 @@
 # Sabueso — Developer Guide
 
+The [AlphaFold range-alias continuation](pending_proposals/alphafold_range_aliases.md)
+adds context/native @2, explicit agreement/refusal, whole/fragment questions @2,
+independent saved format @10 and packet mapping @16. Original source records,
+@1 meanings and saved formats @1–@9 stay fixed. Genuine public archive fragment
+intake and independent scientific/researcher/workload acceptance remain pending;
+B2 review stays deferred and 0.15.0 consolidation paused.
+
 The [AlphaFold API-scope correction](pending_bugs/alphafold_prediction_api_scope.md)
 clarifies missing-record diagnostics, retains their original request scope on new
-Cards/acquisition events and shows it in coverage. Genuine archive fragments and
-modern-only range compatibility remain pending. [Future dataset candidates](https://github.com/uibcdf/sabueso/issues/189)
+Cards/acquisition events and shows it in coverage. Genuine archive fragments remain pending; range-alias compatibility has its own
+separately versioned continuation. [Future dataset candidates](https://github.com/uibcdf/sabueso/issues/189)
 Molecular Dataset Hub and torch-molecule dataset access are queued through
 [Data sources #190](https://github.com/uibcdf/sabueso/discussions/190), without
 dependency adoption or expanding the agreed release scope.

@@ -2038,10 +2038,11 @@ class CardExplorer:
                             derivation = (
                                 app.get("derivation") if isinstance(app, dict) else None
                             )
-                            if (
-                                not isinstance(derivation, dict)
-                                or derivation.get("rule")
-                                != "alphafold_sequence_context@1"
+                            if not isinstance(derivation, dict) or derivation.get(
+                                "rule"
+                            ) not in (
+                                "alphafold_sequence_context@1",
+                                "alphafold_sequence_context@2",
                             ):
                                 continue
                             declared = derivation.get("inputs")

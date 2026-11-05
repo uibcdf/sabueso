@@ -2,9 +2,9 @@
 
 from copy import deepcopy
 
+from sabueso.mappings import alphafold_context_v1, alphafold_context_v2
 from sabueso.mappings.alphafold_context_v1 import (
     QUALIFIER_PATHS,
-    interpret,
     original_inputs,
 )
 from sabueso.mappings.alphafold_context_v1 import RULE as CONTEXT_RULE
@@ -12,9 +12,12 @@ from sabueso.mappings.alphafold_context_v1 import RULE as CONTEXT_RULE
 from .snapshot import canonical_json
 
 RULE = "predicted_structure_scope@1"
+RANGE_RULE = "predicted_structure_scope@2"
 
 
-def bound_context(card, relationship, *, allow_alternatives=False):
+def bound_context(
+    card, relationship, *, allow_alternatives=False, include_range_aliases=True
+):
     """Replay only the actual stored inputs; never use present sequence fields."""
     q = relationship.get("qualifiers")
     if not isinstance(q, dict):
@@ -22,6 +25,16 @@ def bound_context(card, relationship, *, allow_alternatives=False):
     context = q.get("sequence_context")
     if not isinstance(context, dict):
         return None
+    interpreter = (
+        alphafold_context_v2
+        if include_range_aliases and context.get("rule") == alphafold_context_v2.RULE
+        else alphafold_context_v1
+        if context.get("rule") == CONTEXT_RULE
+        else None
+    )
+    if interpreter is None:
+        return None
+    paths = interpreter.QUALIFIER_PATHS
     if relationship.get("qualifier_conflicts") is not None and not isinstance(
         relationship["qualifier_conflicts"], dict
     ):
@@ -30,7 +43,7 @@ def bound_context(card, relationship, *, allow_alternatives=False):
     if (
         not allow_alternatives
         and isinstance(alternatives, dict)
-        and any(key in alternatives for key in QUALIFIER_PATHS)
+        and any(key in alternatives for key in paths)
     ):
         # Different original contexts are not silently replaced by the first one.
         # They may be scientifically compatible; this slice does not establish
@@ -48,11 +61,12 @@ def bound_context(card, relationship, *, allow_alternatives=False):
         if not isinstance(derivation, dict):
             continue
         params = derivation.get("parameters") or {}
-        if not isinstance(params, dict) or derivation.get("rule") != CONTEXT_RULE:
+        if not isinstance(params, dict) or derivation.get("rule") != interpreter.RULE:
             continue
-        if params.get("qualifier_paths") != QUALIFIER_PATHS or params.get(
-            "model_input_path"
-        ) != ["asserted_value", "model"]:
+        if params.get("qualifier_paths") != paths or params.get("model_input_path") != [
+            "asserted_value",
+            "model",
+        ]:
             continue
         focal = params.get("focal_accession")
         if (
@@ -63,9 +77,9 @@ def bound_context(card, relationship, *, allow_alternatives=False):
         recorded = application.get("qualifiers") or {}
         if not isinstance(recorded, dict):
             continue
-        if canonical_json(
-            {key: recorded.get(key) for key in QUALIFIER_PATHS}
-        ) != canonical_json({key: q.get(key) for key in QUALIFIER_PATHS}):
+        if canonical_json({key: recorded.get(key) for key in paths}) != canonical_json(
+            {key: q.get(key) for key in paths}
+        ):
             continue
         refs = params.get("focal_input_assertion_ids")
         inputs = derivation.get("inputs")
@@ -100,7 +114,7 @@ def bound_context(card, relationship, *, allow_alternatives=False):
                 binding == "supplied_argument" and refs
             ):
                 continue
-            replay = interpret(
+            replay = interpreter.interpret(
                 value["model"],
                 focal,
                 params.get("sequence_md5_argument"),
@@ -113,11 +127,11 @@ def bound_context(card, relationship, *, allow_alternatives=False):
     return None
 
 
-def predicted_structures_view(card):
+def predicted_structures_view(card, *, include_range_aliases=True):
     items = []
     for rel in card.relationships(predicate="has_predicted_structure"):
         q = rel.get("qualifiers") if isinstance(rel.get("qualifiers"), dict) else {}
-        context = bound_context(card, rel)
+        context = bound_context(card, rel, include_range_aliases=include_range_aliases)
         supported = context is not None
         alternatives = rel.get("qualifier_conflicts") or {}
         multiple = isinstance(alternatives, dict) and any(
@@ -156,7 +170,11 @@ def predicted_structures_view(card):
             else "original_basis_not_established",
             "qualifier_conflicts": deepcopy(alternatives),
             "sequence_context": context,
-            "rule": RULE,
+            "rule": RANGE_RULE
+            if include_range_aliases
+            and isinstance(q.get("sequence_context"), dict)
+            and q["sequence_context"].get("rule") == alphafold_context_v2.RULE
+            else RULE,
             "relationship_id": rel["id"],
             "source_assertion_ids": list(rel.get("source_assertion_ids") or []),
         }

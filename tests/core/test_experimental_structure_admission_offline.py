@@ -266,7 +266,7 @@ def test_human_agent_region_and_packet_share_admission_and_originals(card, tmp_p
             sabueso.KnowledgeQuery("P52270", aspects=["structures"], detail=detail),
             card,
         )
-        assert packet.to_dict()["aspect_mapping"] == "packet_aspects@15"
+        assert packet.to_dict()["aspect_mapping"] == "packet_aspects@16"
         if detail == "full":
             native = packet.facts["structures"]["subject"]["experimental"]
             assert len(native["items"]) == 1

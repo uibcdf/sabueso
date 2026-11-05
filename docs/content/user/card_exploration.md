@@ -1,5 +1,11 @@
 # Explore a Card
 
+Predicted-model exploration accepts AlphaFold's `sequenceStart`/`sequenceEnd`
+and legacy `uniprotStart`/`uniprotEnd`. When both are present they must agree;
+conflicting, invalid or incomplete intervals remain visible and do not establish
+coverage or a structural question. Inspect the model and its support to see every
+original declaration. Saved reading keeps its original answer and uncertainty.
+
 **Development API:** this page describes the development checkout, after 0.14.0.
 The released 0.14.0 package does not provide `card.explore()` yet. This first
 version offers readable inspection, distinct protein/molecule/disease routes and

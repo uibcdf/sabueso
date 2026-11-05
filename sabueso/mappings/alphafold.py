@@ -23,7 +23,8 @@ from typing import Any, Dict, List
 from sabueso.core.relationship_store import make_derivation, make_relationship
 from sabueso.core.source_assertion_store import make_source_assertion
 
-from .alphafold_context_v1 import QUALIFIER_PATHS, RULE, interpret, original_inputs
+from . import alphafold_context_v1, alphafold_context_v2
+from .alphafold_context_v1 import original_inputs
 
 SOURCE = "AlphaFold DB"
 
@@ -54,7 +55,14 @@ def map_predictions(
         if model.get("latestVersion") is not None:
             assertion["source"]["version"] = str(model["latestVersion"])
         source_assertions.append(assertion)
-        context = interpret(model, accession, sequence_md5, input_assertions)
+        interpreter = (
+            alphafold_context_v2
+            if any(key in model for key in ("sequenceStart", "sequenceEnd"))
+            else alphafold_context_v1
+        )
+        context = interpreter.interpret(
+            model, accession, sequence_md5, input_assertions
+        )
         inputs = original_inputs(input_assertions, accession)
         isoform = (
             context["model_accession"]
@@ -77,17 +85,17 @@ def map_predictions(
                         "low": model.get("fractionPlddtLow"),
                         "very_low": model.get("fractionPlddtVeryLow"),
                     },
-                    "range": [model.get("uniprotStart"), model.get("uniprotEnd")],
+                    "range": context["model_range"],
                     "isoform": isoform,
                     "sequence_matches": context["sequence_matches"],
                     "sequence_context": context,
                 },
                 source_assertion_ids=[assertion["id"]],
                 derivation=make_derivation(
-                    RULE,
+                    interpreter.RULE,
                     inputs=[assertion["id"], *sorted({r["id"] for r in inputs})],
                     parameters={
-                        "qualifier_paths": QUALIFIER_PATHS,
+                        "qualifier_paths": interpreter.QUALIFIER_PATHS,
                         "model_input_path": ["asserted_value", "model"],
                         "focal_accession": accession,
                         "sequence_md5_argument": sequence_md5,

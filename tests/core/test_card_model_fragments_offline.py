@@ -385,8 +385,9 @@ def test_resealed_bundle_cannot_replace_a_fragment_request(tmp_path):
         sabueso.read_exploration(path)
 
 
+@pytest.mark.parametrize("range_names", ["legacy", "modern"])
 def test_fragment_and_declared_component_journey_share_one_saved_session(
-    tmp_path, monkeypatch
+    tmp_path, monkeypatch, range_names
 ):
     # Original public 1HTI Card plus an explicitly synthetic model declaration.
     # This is mixed-format receiving, not a deposited model of that protein.
@@ -413,8 +414,11 @@ def test_fragment_and_declared_component_journey_share_one_saved_session(
                     "uniprotAccession": accession,
                     "sequence": sequence[4:90],
                     "sequenceChecksum": md5(sequence[4:90]),
-                    "uniprotStart": 5,
-                    "uniprotEnd": 90,
+                    **(
+                        {"uniprotStart": 5, "uniprotEnd": 90}
+                        if range_names == "legacy"
+                        else {"sequenceStart": 5, "sequenceEnd": 90}
+                    ),
                     "latestVersion": 6,
                 }
             ]
@@ -482,7 +486,11 @@ def test_fragment_and_declared_component_journey_share_one_saved_session(
         .open()
     )
     assert reopened.native_payload == expected_fragment
-    assert restored.validation["verifier"] == "model_fragment_navigation_binding@1"
+    assert restored.validation["verifier"] == (
+        "model_fragment_navigation_binding@1"
+        if range_names == "legacy"
+        else "model_range_navigation_binding@1"
+    )
 
 
 def test_fragment_reopens_in_an_independent_inert_process(tmp_path):

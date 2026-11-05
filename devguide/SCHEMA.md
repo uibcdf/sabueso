@@ -1,5 +1,12 @@
 # Sabueso — Card Schema Notes
 
+AlphaFold range-alias context @2 retains optional `sequence_context.range_basis`
+inside the existing derived qualifier (#148). It records original pairs, presence,
+types and agreement/refusal without changing SourceAssertions or published
+contexts. New range derivations include `range` in their qualifier scope;
+historical contexts are not backfilled. See the
+[versioned compatibility contract](pending_proposals/alphafold_range_aliases.md).
+
 Development comparative execution records (`sabueso.comparative_operation@2`,
 #108) are application-owned sidecars in `AttributionRun.operations`. They add no
 Card fields or schema changes; original scientific values/rules and frozen cards
@@ -61,7 +68,7 @@ changing glossary reconstruction, Card serialization or pins. See
     under observation rule @1. Scoped UniProt text comments also retain the complete native
     comment/text index as asserted value and text as normalized value, keeping
     distinct native products separate. Historical missing contexts are never
-    backfilled. The shape has 1,967 paths, including explicitly synthetic optional
+    backfilled. The shape, including range-alias context @2, has 1,985 paths, including explicitly synthetic optional
     molecule coverage for all 17 mapped feature fields.
     #160 extends optional `source_metadata.uniprot_feature` and stated sequence
     revision to every mapped UniProt positional type. Modifiers and unknown

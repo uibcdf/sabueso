@@ -1,0 +1,161 @@
+{
+  "owner": "#148/#173/#112",
+  "review_trigger": "exact-source hosted receiving / genuine archive fragment intake",
+  "baseline_head": "83aba09d9abc592936fcd24f67e0db9e4ae3500f",
+  "baseline_sdk": "0.14.0+177.g83aba09",
+  "scope": "Original range-alias context @2; native scope @2; whole/fragment requests @2; navigation @6; saved format10; packet mapping16.",
+  "original_source_records": "Five same-input synthetic comparisons preserve original assertions exactly; one genuine public full-model fixture co-serves aliases. Modern-only/disagreement/partial-model positives are synthetic; no observed current API outage or new provider-record request.",
+  "historical_preservation": {
+    "unchanged_frozen_predicates_and_capsules": 31,
+    "original_sdk177_sessions": "Two genuine pre-edit plain-JSON results wrapped losslessly as gzip; original decoded bytes and meanings unchanged.",
+    "new_original_producer": "A synthetic format10 producer capsule predates the independent reader; no molecular database qualification inferred.",
+    "capsules": [
+      {
+        "path": "tests/core/data/model_range_alias_disagreeing_legacy_v1.json.gz",
+        "bytes": 188454,
+        "sha256": "d9249aeed86027f828d89875e61c002032d4756ba30e17d82a791a4b5ebab176",
+        "decoded_bytes": 5649083,
+        "decoded_sha256": "ed5e9a4c1fa015c2e11db5fa94e38d0f115737775023e9613c5d22f265041eb1",
+        "synthetic": true,
+        "storage": "lossless gzip wrapping; original decoded JSON unchanged"
+      },
+      {
+        "path": "tests/core/data/model_range_alias_modern_only_legacy_v1.json.gz",
+        "bytes": 188615,
+        "sha256": "21e1838ac16c1820be4dc84e6b265c58860e980178d8164459bffcf2df334a81",
+        "decoded_bytes": 5684012,
+        "decoded_sha256": "2784986e792211502e1ffb1e29447ff7a96360af533aa886f059cd9029063522",
+        "synthetic": true,
+        "storage": "lossless gzip wrapping; original decoded JSON unchanged"
+      },
+      {
+        "path": "tests/core/data/model_range_alias_navigation_original_v1.json.gz",
+        "bytes": 211364,
+        "sha256": "197f9bec30fe2179b25967b7667f26b1d4c13282b5fa086a0f4a7b7398b43d44",
+        "decoded_bytes": 7078038,
+        "decoded_sha256": "af80314bd5949b0ddc616f601cb274e1b3ef3a784fe5ed19c9f1c898e186becd",
+        "synthetic": true,
+        "storage": "lossless gzip wrapping; original decoded JSON unchanged"
+      }
+    ]
+  },
+  "selected_receiving": {
+    "distinct_current_cases": 863,
+    "count_basis": "Exact collection of the selected union; not a full local suite or one clean combined execution.",
+    "owning_recovery": "Initial190cases:182pass,7stale current packet-version expectations and1missing-fixture state expectation corrected. Corrected132cases:130pass; two controls had plain JSON despite an internal .gz filename. Final33owning cases pass; copied final receiving repeats all33 after lossless gzip wrapping.",
+    "retained_legacy_navigation": "Original40fragment and27whole-model cases passed in the initial owning gate. New modern-fragment/component mixed case passes in the final human-history gate; the unchanged legacy mixed computation remains qualified by its original route.",
+    "packet_schema_recovery": "422/423pass; only expected unpublished-shape drift. Write records18additive paths (1985total); the exact failing shape predicate passes in final human-history receiving.",
+    "human_history": "237pass, including the recovered shape predicate, new mixed assembly/component/fragment session and copied receiving payload. One existing declared STRING-cut warning remains explicit.",
+    "installed_payload": "The standalone module and all three capsules pass outside the checkout in the same editable shared environment. Hosted installed-artifact qualification remains pending.",
+    "receipts": {
+      "owning-context": {
+        "exit_code": 1,
+        "elapsed_s": 220.79,
+        "resource_receipt_sha256": "0e6b44b4974f911395c12579e4f99dc5b741407b845cd31cc96023b70f567099"
+      },
+      "corrected-context": {
+        "exit_code": 1,
+        "elapsed_s": 136.78,
+        "resource_receipt_sha256": "94e4a352134a710cf81efe1723d449bd78820ef019526ede759173ab0d1d0c19"
+      },
+      "owning-final": {
+        "exit_code": 0,
+        "elapsed_s": 19.62,
+        "resource_receipt_sha256": "2ccd5a4c923ff534e9bcc16926100efe050bad7dfee7ef376e6dd166658ad821"
+      },
+      "packets-schema": {
+        "exit_code": 1,
+        "elapsed_s": 293.0,
+        "resource_receipt_sha256": "67d2f66dc46aef6043350b384a5c3f7deaa3fc075019daee91119d2929e70e98"
+      },
+      "human-history": {
+        "exit_code": 0,
+        "elapsed_s": 262.11,
+        "resource_receipt_sha256": "b8b6b203c0f1c220cb1b465fefbd20f08c41c6bde3e81c8d66defbfb1f420432"
+      },
+      "copied-final": {
+        "exit_code": 0,
+        "elapsed_s": 19.32,
+        "resource_receipt_sha256": "3c81c5fc01649fb94c7052551db0a370e9b0cffb58435d2d2238f3ae14ea84d1"
+      },
+      "same-inputs": {
+        "exit_code": 0,
+        "elapsed_s": 0.8,
+        "resource_receipt_sha256": "3f7d888e6ebda3bb1b1c921292e164754053ebc6ed11f444540ad55142a66f15"
+      }
+    },
+    "final_original_integrity": "Two final decoded-original hash and inert reading assertions pass after lossless wrapping; original decoded bytes match the pre-edit producer receipts."
+  },
+  "experience_review": {
+    "observed": "The same API exposes supported modern-only intervals, names original alias fields and plainly explains conflicts/invalid/incomplete scope. Human/compact-agent region answers and inert saved/back/source routes agree; older unknown and recorded answers remain original.",
+    "remaining": "Independent scientist/researcher acceptance, real public archive-native partial-model intake and whole-session workload acceptance."
+  },
+  "schema": "Unpublished0.3.14 adds optional derived range_basis and explicit-only migration disclosure; published schemas are unchanged.",
+  "resources": {
+    "peak_owned_rss_bytes": 643493888,
+    "peak_owned_swap_bytes": 0,
+    "limits": {
+      "owned_rss_bytes": 1073741824,
+      "host_available_bytes": 4294967296,
+      "owned_swap_bytes": 0,
+      "elapsed_s": 600,
+      "owned_scratch_bytes": 2147483648
+    },
+    "execution": "serial resource-guarded Python3.14 pytest-receptor; shared editable workspace"
+  },
+  "environment_observation": "Two read-only tool starts failed in sandbox mount setup with EDQUOT at/tmp/.git. Host/tmp had3.1GiB free and777262free inodes; cause unestablished. Reviewed launches outside that failing sandbox continued; no unrelated resources/processes changed.",
+  "b2_scientific_review": "maintainer-owned and deferred",
+  "release_consolidation": "paused",
+  "remote": {
+    "qualified": false,
+    "state": "new final SHA requires its own unskipped CI/governance and gh-run-receptor receiving"
+  },
+  "owned_evidence": "recovered_work/alphafold_range_aliases_20261105",
+  "candidate_file_sha256": {
+    "sabueso/core/_card_model_scope_v2.py": "4aefa99d974ad6840fdf1bb6da417a3ce9a1b34a57dbbea2a097dab83f3a5eb2",
+    "sabueso/core/card_context_navigation.py": "ee6dbe042425678ab16a707cd0db054ebf92489d2454694cb65d623b2411ab68",
+    "sabueso/core/card_exploration.py": "b6b0df4a16e1249381f21370f69155af93f63eba5d6828ef7edc6a05a9145b8e",
+    "sabueso/core/card_exploration_render.py": "a79fc7898d0e8305a7be237fd30bc3b714cb84caa0d06cabdd977c5daa52141a",
+    "sabueso/core/card_exploration_storage.py": "e98efef0682d56bf2b7f78cf74ff17bfee42c90ea7b5b854e858bf5a581db2d1",
+    "sabueso/core/card_exploration_verification_v10.py": "d1dfc806b41265bee9302daac0cf5310a763a7b6c04b62c17b53120596bc4a42",
+    "sabueso/core/card_model_fragment_regions_v2.py": "c7f5ecd942e4cb713c0debc2fd7f5229290a16c729625acdb2630e19c5d79b1b",
+    "sabueso/core/card_model_regions_v2.py": "854259b2c075e87726ef173ce464f5ea6495feaae50151dcd4d24f21bd084109",
+    "sabueso/core/card_protein_source_render.py": "2a4898afa88bf9765b0edc96b2f0220cac344c1c09c4151e9aa2476f01ec1f64",
+    "sabueso/core/migration.py": "d7c078fd4f4e596ea109e3918e1dc0f3c233e6d0b1ccde0bee2fc501fe738765",
+    "sabueso/core/packet_terms.py": "0590651e637680854db417be0fe010dbd829e63e89be7aaf829c605706ac3246",
+    "sabueso/core/packets.py": "e4a356a5045378f0e8261406d27905e4fe369be9c27c2c14e729472ec0746568",
+    "sabueso/core/predicted_structures.py": "e246aebf0e8078f964b628011c5984c3891534fdf6826da4d68490bd4092951a",
+    "sabueso/mappings/alphafold.py": "7259297838c26e1d248a435be5de3042da2a54f405542ef33c0957d21a616fd7",
+    "sabueso/mappings/alphafold_context_v2.py": "9faa192cd768bfc54dcb70445a5a6e435446c521213c4846d08d0f207fcf9256",
+    "tests/core/test_alphafold_context_offline.py": "1c3c9b13c397505fb85a8f28fd2bcc4f0a3a389c8c2f2464d68ae170d39c505e",
+    "tests/core/test_alphafold_range_aliases_offline.py": "3ff5e3208c6d9c7974d7cc39a50e525b7babfc08aa210120844529eb729303bf",
+    "tests/core/test_bioactivity_class_v4_offline.py": "bdb01e0446333e8244f8779708f3936511fed8e6f2313621e78d31ac779f4e06",
+    "tests/core/test_card_model_fragments_offline.py": "eab2ea0eeec814c610302a2f60c607b1498fccf783127c0d2106598bef5bdf8c",
+    "tests/core/test_disease_identity_coverage_offline.py": "be38d8d394c41682784f8cb493dd3c4fc218d119841bda3075e5d959fe789660",
+    "tests/core/test_experimental_coordinates_offline.py": "14e739315ccc500aeeba53c1eb5e1f5b48c5bc268ab22a8db0aa8b6cf1c0c4fa",
+    "tests/core/test_experimental_structure_admission_offline.py": "8333ca757dfda663681a2d01f5aed372117ece09d7702c6d99f2747783c44024",
+    "tests/core/test_knowledge_packets_offline.py": "9c408c14d0ae20ce55613d0a90c78c1e17b45f89321a2632370711236d2e9d7c",
+    "tests/core/test_ligand_overlap_scope_offline.py": "d60be05cdbc7767a09d9f702c858d4fe5c3a912f9fd7fc90b2b4b3bc56469117",
+    "tests/core/test_literature_packets_offline.py": "29402d2aa4c74e1f5ea4f8537f985ea0f0b0b5d021ab8a94f03c51ed82c3c87e",
+    "tests/core/test_packet_instance_scope_offline.py": "8efff96fba4cd92cd647ccc8ab0d1ee2dcc242a78ca95099f88742a8df913073",
+    "tests/core/test_predicted_structures_offline.py": "baaf39ecf09c3763bd72efdc621754e24f6b886c54f00e486e2c09e4d05b16c8",
+    "tests/core/test_quaternary_interpretation_scope_offline.py": "349b3de4445c5f84672fd7c324572287d5f167a429d8ea1224c040d2a149e74a",
+    "tests/core/test_uniprot_feature_molecule_identity_offline.py": "9ff0ebea506833e7e5efae7437c9c7ddf246f8ab3a8a2624a3fa0fee482fae3a",
+    "tests/tools/test_installed_receiving_scope_offline.py": "bb6da7149796a662c06138d13befee2204a98d58737739b6b57e518a687019ec"
+  },
+  "documentation": {
+    "sphinx_warning_fatal": true,
+    "sphinx_elapsed_s": 28.06,
+    "local_targets_anchors": 453,
+    "python_snippets_syntax": 90,
+    "python311_parsed_files": 30
+  },
+  "static_checks": [
+    "Ruff lint/format1351files",
+    "schema/FIELD_PATHS alignment",
+    "source registry/catalog/terms",
+    "MOLI governance",
+    "development dependency preflight",
+    "git diff whitespace"
+  ]
+}

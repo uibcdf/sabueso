@@ -77,6 +77,12 @@ def test_absent_and_failed_models_are_states(resolver, tmp_path):
         ]
         return row["state"]
 
+    with pytest.warns(EnrichmentFailedWarning):
+        missing_input = _card(resolver, FixtureAlphaFoldClient(tmp_path))
+    assert missing_input.predicted_structures() == {"items": []}
+    assert state(missing_input) == "unavailable"
+    (tmp_path / "alphafold").mkdir()
+    (tmp_path / "alphafold/P52270.json").write_text("[]", encoding="utf-8")
     absent = _card(resolver, FixtureAlphaFoldClient(tmp_path))
     assert absent.predicted_structures() == {"items": []}
     assert state(absent) == "not_stated"

@@ -1,5 +1,15 @@
 # Sabueso — Tests and Quality Gates
 
+`test_alphafold_range_aliases_offline.py` receives original legacy/modern/agreeing,
+conflicting, invalid and incomplete range pairs, exact derived binding, source
+preservation, human/compact-agent/back navigation and inert format @10. Include
+original SDK177 sessions and the pre-reader format10 capsule; reidentified and
+resealed semantic substitutions must fail. Run with AlphaFold/native/packet/terms,
+migration/schema, whole/fragment/assembly/history and affected argument/quantity
+gates. Both installed routes copy/select this standalone module and all three
+capsules. Original contexts @1, formats @1–@9 and packet mappings through @15 keep
+their own interpretations. Positive partial models remain explicitly synthetic.
+
 AlphaFold distribution-scope receiving uses
 `test_alphafold_acquisition_offline.py`, already copied into both installed
 receiving routes, with source acquisition/lifetime, enrichers, knowledge-state/

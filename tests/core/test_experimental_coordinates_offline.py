@@ -437,7 +437,7 @@ def test_packet_full_index_terms_include_exact_coordinate_dependencies(
             sabueso.KnowledgeQuery("P52270", aspects=["structures"], detail=detail),
             card,
         )
-        assert packet.to_dict()["aspect_mapping"] == "packet_aspects@15"
+        assert packet.to_dict()["aspect_mapping"] == "packet_aspects@16"
         rules = full_rules()["structures"]
         assert {
             "structure_state@3",

@@ -34,7 +34,10 @@ A `KnowledgeQuery` is structured, not free text:
   and PubChem BioAssay.
 
 Anything else is refused, never ignored. What each aspect asks of the sources is fixed
-by a named, versioned mapping. Development uses `packet_aspects@15`: measured
+by a named, versioned mapping. Development uses `packet_aspects@16`: predicted
+model context accepts the source's old and new sequence-range names, retaining
+agreement, conflicts and invalid/incomplete declarations. Earlier mappings retain
+their original model-context policy. Measured
 bioactivities use conservative class @4, with original quantities, qualifiers,
 support and readable reasons. Unsupported single-point potency/dose inference
 stays uncomputed. Original mappings @6–@14 retain activity class @3, and reading
@@ -61,6 +64,9 @@ through `annotated_site_source_support@1`. Indexes declare these rules. Original
 `@10`, `@8`/`@9` and `@6`/`@7` site projections stay frozen for historical reading
 and terms; they are never silently reclassified. See
 [sites and interfaces](sites_and_interfaces.md) for comparison limits.
+Mapping `@16` also admits AlphaFold range-alias context @2 and native scope @2,
+with original field names, explicit agreement and refusal on incomplete/invalid
+or conflicting intervals. Original mappings through `@15` retain their own policy.
 The inherited `@9` predicted models carry original MD5/identity/reference scope under
 `alphafold_sequence_context@1` and `predicted_structure_scope@1`. Missing,
 historical, partial or foreign context does not establish reference coverage;

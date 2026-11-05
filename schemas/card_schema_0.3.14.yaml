@@ -60,6 +60,12 @@ schema:
     inputs. Existing SourceAssertions, frozen cards and published schemas stay
     unchanged. The human annotation_structure_request@1 and navigation @3 rules
     live outside the Card; old recorded locations are not native-scope verification.
+    0.3.14 also permits optional sequence_context.range_basis under
+    alphafold_sequence_context@2 (#148): original range alias pairs, endpoint
+    presence, values/types, agreement/refusal, resolved_range and supporting_fields.
+    The derived qualifier scope includes range. Original models and @1 contexts
+    remain unchanged; migration never invents range aliases. Native scope@2,
+    packet_aspects@16 and exploration@10 are separately versioned readers.
     0.3.14 adds optional has_predicted_structure.qualifiers.sequence_context and
     scoped derivation alphafold_sequence_context@1 (#148). The original model stays
     unchanged in its AlphaFold assertion. Original UniProt checksum/length/isoform

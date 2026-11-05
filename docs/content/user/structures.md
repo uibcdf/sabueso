@@ -292,9 +292,13 @@ protein, and `card.predicted_structures()` lists them:
 - the isoform only where UniProt explicitly states that membership. A different
   accession alone does not establish an isoform.
 
-In development, `predicted_structure_scope@1` verifies the stored
-`alphafold_sequence_context@1` inputs instead of using present Card fields as a
-substitute. Coverage refers to the **original whole-reference input** and is
+In development, predicted-structure scope @1/@2 verifies the corresponding stored
+AlphaFold sequence context instead of using present Card fields as a substitute.
+New context @2 accepts `sequenceStart`/`sequenceEnd` and the legacy
+`uniprotStart`/`uniprotEnd`: coexisting pairs must agree, and invalid or incomplete
+pairs cannot silently fall back to another alias. The complete `range_basis`
+retains each original declaration. Legacy-only models and historical @1 contexts
+keep their original interpretation. Coverage refers to the **original whole-reference input** and is
 computed only for a source-declared focal accession, supported matching MD5 and
 valid whole-sequence range/length. It describes the declared sequence span, not
 observed atoms or experimental equivalence. Partial fragments, missing/conflicting

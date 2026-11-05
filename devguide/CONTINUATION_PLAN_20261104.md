@@ -1,5 +1,12 @@
 # Sabueso — Integrated continuation plan after the audit
 
+The [AlphaFold range-alias continuation](pending_proposals/alphafold_range_aliases.md)
+adds context/native @2, explicit agreement/refusal, whole/fragment questions @2,
+independent saved format @10 and packet mapping @16. Original source records,
+@1 meanings and saved formats @1–@9 stay fixed. Genuine public archive fragment
+intake and independent scientific/researcher/workload acceptance remain pending;
+B2 review stays deferred and 0.15.0 consolidation paused.
+
 Kind: living work plan. Prepared 2026-11-04 at the maintainer's request.
 Coordination: [#112](https://github.com/uibcdf/sabueso/issues/112).
 Implementation owners remain with each component and feature issue.
@@ -100,7 +107,8 @@ Current source receiving: the
 [AlphaFold API-scope correction](pending_bugs/alphafold_prediction_api_scope.md)
 keeps queried-route absence explicit in diagnostics, new Card/acquisition data and
 human coverage. A real API200 metadata response still co-serves both range-field
-names; genuine archive fragments and modern-only compatibility remain pending.
+names; genuine archive fragments remain pending and modern-only compatibility now
+has its own separately versioned continuation.
 The component-row source `913aad1` has complete hosted qualification; subsequent
 fragment/source-scope changes keep independent receipts. The new
 [dataset candidates #189](https://github.com/uibcdf/sabueso/issues/189) are a

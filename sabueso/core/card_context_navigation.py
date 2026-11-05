@@ -347,8 +347,19 @@ def related(item):
         support = question["support"]
     else:
         from .card_model_fragment_regions_v1 import link as model_link
+        from .card_model_regions_v1 import model_path
 
-        question = model_link(explorer, item.payload_location)
+        model_location = item.payload_location
+        if model_path(explorer, model_location):
+            row, _ = explorer.access._resolve(model_location)
+            context = (row.get("qualifiers") or {}).get("sequence_context")
+            if (
+                isinstance(context, dict)
+                and context.get("rule") == "alphafold_sequence_context@2"
+            ):
+                from .card_model_fragment_regions_v2 import link as model_link
+
+        question = model_link(explorer, model_location)
         if question is not None:
             support = question["support"]
     seen = set()
@@ -490,10 +501,16 @@ def follow(item):
         "retained_context_links@3",
         "retained_context_links@4",
         "retained_context_links@5",
+        "retained_context_links@6",
     ):
         key = (
             "model_context"
-            if link["rule"] in ("retained_context_links@4", "retained_context_links@5")
+            if link["rule"]
+            in (
+                "retained_context_links@4",
+                "retained_context_links@5",
+                "retained_context_links@6",
+            )
             else "annotation_context"
         )
         basis = link[key]

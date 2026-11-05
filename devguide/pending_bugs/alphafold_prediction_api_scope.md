@@ -61,9 +61,10 @@ The source currently co-serves `uniprotStart`/`uniprotEnd` and
 `sequenceStart`/`sequenceEnd`. Its
 [published deprecation notice](https://www.ebi.ac.uk/pdbe/news/breaking-changes-afdb-predictions-api)
 announces the latter names, but a current outage from that rename is **not**
-observed. A modern-only range record is a separate compatibility prerequisite;
-the current range interpreter still uses the old names. Do not silently rewrite
-source records or the original versioned model rules to implement it.
+observed. The [range-alias continuation](../pending_proposals/alphafold_range_aliases.md)
+adds context @2, explicit alias agreement/refusal and separate native/navigation/
+saved/packet versions. Original source records and @1 interpretations stay fixed.
+Its own receiving is separate from this preceding API-scope correction.
 
 The genuine partial-model input remains pending. A native archive model or
 BigQuery record is not automatically the prediction-API contract: the
