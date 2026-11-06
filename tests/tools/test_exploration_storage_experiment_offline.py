@@ -231,12 +231,44 @@ def test_cli_invalid_limits_fail_before_accessing_input(tmp_path, value):
     assert exc.value.code == 2 and not output.exists()
 
 
-def test_public_reader_does_not_admit_experimental_layout(tmp_path):
+def test_public_reader_does_not_admit_experimental_layout(tmp_path, monkeypatch):
     import sabueso
+    from sabueso.core import card_display_filter_v2
     from sabueso.core.errors import StorageError
 
+    def forbidden(*args, **kwargs):
+        pytest.fail("An experimental format must not reach display validation")
+
+    monkeypatch.setattr(card_display_filter_v2, "validate_records", forbidden)
     source = tmp_path / "unsupported.json"
     source.write_bytes(layout.encode(layout.pack(original())))
+    with pytest.raises(StorageError, match="Unsupported exploration format"):
+        sabueso.read_exploration(source)
+
+
+@pytest.mark.parametrize(
+    "value",
+    [
+        None,
+        [],
+        {"format": []},
+        {"format": {}},
+        {"format": "sabueso.card_exploration@999", "views": {"unrecognized": {}}},
+    ],
+)
+def test_public_reader_rejects_unknown_format_before_display_validation(
+    tmp_path, monkeypatch, value
+):
+    import sabueso
+    from sabueso.core import card_display_filter_v2
+    from sabueso.core.errors import StorageError
+
+    def forbidden(*args, **kwargs):
+        pytest.fail("An unknown format must not reach display validation")
+
+    monkeypatch.setattr(card_display_filter_v2, "validate_records", forbidden)
+    source = tmp_path / "unsupported.json"
+    source.write_bytes(layout.encode(value))
     with pytest.raises(StorageError, match="Unsupported exploration format"):
         sabueso.read_exploration(source)
 

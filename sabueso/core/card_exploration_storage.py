@@ -796,8 +796,8 @@ def _restore(
     from .card_display_filter_v2 import FORMAT as FILTER_FORMAT
     from .card_display_filter_v2 import RULE as FILTER_RULE
     from .card_display_filter_v2 import unwrap, validate_records, verification
+    from .card_exploration_shared_values_v1 import BASE_FORMATS, measure, unpack
     from .card_exploration_shared_values_v1 import FORMAT as SHARED_FORMAT
-    from .card_exploration_shared_values_v1 import measure, unpack
 
     _require(type(owned) is bool, "Internal bundle ownership requires a boolean.")
     transport.byte_budget("max_logical_bytes", max_logical_bytes)
@@ -829,6 +829,15 @@ def _restore(
             max_logical_bytes,
         )
     try:
+        _require(
+            isinstance(bundle, dict)
+            and type(bundle.get("format")) is str
+            and (
+                bundle["format"] in BASE_FORMATS
+                or bundle["format"] == "sabueso.card_exploration@15"
+            ),
+            "Unsupported exploration format.",
+        )
         if bundle.get("format") == "sabueso.card_exploration@15":
             from .card_exploration_chemical import validate_filters
 

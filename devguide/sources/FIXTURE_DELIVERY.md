@@ -21,8 +21,12 @@ decisions, not source-wide grants.
 
 ```bash
 python tools/fixture_delivery.py --check
-python -m pytest -n 12 -m "not online" --receptor=llm
+python -m pytest -m "not online" --receptor=llm
 ```
+
+These commands name the complete public scope. Choose workers, the serial
+remainder and owned limits through the
+[current workstation profile](../TESTS.md#current-workstation-profile).
 
 The gate checks input identities, source-term changes and the Git index. A forced
 addition of local-only files fails; an unreviewed new fixture also fails.
@@ -48,8 +52,13 @@ Use the existing editable `molsyssuite@uibcdf_3.14` environment:
 
 ```bash
 python tools/fixture_delivery.py --check --local-inputs
-python -m pytest -n 12 -m "not online" --receptor=llm --local-source-inputs
+python -m pytest -m "not online" --receptor=llm --local-source-inputs
 ```
+
+Use the [current checkpoint partition](../TESTS.md#current-checkpoint-partition)
+when composing a public checkpoint with marked native-input receiving. Retain
+the exact selections and their union; the composed result is not two independent
+full-suite executions.
 
 The explicit option verifies every required local original's digest before
 collection, includes the 25 native modules and runs the ten mixed native cases.

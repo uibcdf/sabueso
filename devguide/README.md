@@ -17,7 +17,7 @@ anything: the remote repository does not contain the whole local state.
 | --- | --- |
 | What does Sabueso do, and why? | [VISION](VISION.md), [ARCHITECTURE](ARCHITECTURE.md), [DATA_FLOW](DATA_FLOW.md), [GLOSSARY](GLOSSARY.md) |
 | What is published, what is local, and what is next? | [CHECKPOINT](CHECKPOINT.md) |
-| In what order do we work? | [Integrated continuation plan](CONTINUATION_PLAN_20261104.md#execution-order) |
+| In what order do we work? | [Current destination actions](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions) and [integrated B0–B8 plan](CONTINUATION_PLAN_20261104.md#execution-order) |
 | What must the complete Card experience deliver? | [Broad exploration inventory](pending_proposals/card_exploration_completion_0150.md) and [observable wow criteria](CONTINUATION_PLAN_20261104.md#required-wow-experience-in-0150) |
 | What are the long-term goals and dependencies? | [ROADMAP](ROADMAP.md) |
 | What decisions explain the design? | [DECISIONS](DECISIONS.md), the owning issue and its feature analysis; use the [onboarding history map](ONBOARDING.md#how-the-project-reached-this-point) rather than reading the full log sequentially |
@@ -33,12 +33,19 @@ release gate. Candidate selection, schema freezing, staging and publication rema
 paused; this documentation update does not authorize them.
 
 The chemical saved-reading block now has a committed, locally validated
-[checkpoint](evidence/chemical_saved_checkpoint_20261106.json). The next machine
-must receive its environment/imports and exact source before further development. Scientific measurement review is
-maintainer-owned and explicitly deferred; structural scope decisions, remaining
-rich profiles and combined researcher/consumer acceptance remain open. Exact
-source, test and transfer details belong to [CHECKPOINT](CHECKPOINT.md), not this
-index. Historical green receipts do not qualify a changed working tree.
+[checkpoint](evidence/chemical_saved_checkpoint_20261106.json). Destination
+restoration, environment/import checks and complete local offline receiving are
+complete. The [corrected destination checkpoint](evidence/destination_checkpoint_20261106.json)
+records 9,276 distinct passed cases and B3's 28-case finite MolSysMT gate. The
+[destination review](evidence/destination_review_20261106.json)
+and [current action plan](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions)
+preserve the original failures and current follow-up. Corrected-source hosted
+qualification and broader acceptance remain separate. Scientific measurement
+review is maintainer-owned and explicitly deferred; remaining structural/rich profiles and
+combined researcher/consumer acceptance remain open. Exact current state belongs
+to [CHECKPOINT](CHECKPOINT.md); execution budgets belong to the
+[current workstation profile](TESTS.md#current-workstation-profile). Historical
+green receipts do not qualify a changed working tree.
 
 ## Design
 

@@ -3,7 +3,7 @@ summary: Filter retained scalar cells without promoting an uncomputed scientific
 issue: uibcdf/sabueso#191
 status: implemented_candidate_receiving
 opened: 2026-11-06
-verification: 685 distinct selected cases, full public control and local quality gates pass; exact-source receiving pending
+verification: 13 focused regressions and a composed 9276-case destination offline checkpoint pass; exact-source hosted and installed qualification remain pending
 area: [human-exploration, history, public-api]
 ---
 
@@ -93,3 +93,36 @@ Source/full/installed-artifact qualification
 and scientific/researcher acceptance remain separate. Correcting this bug does
 not close B3, decide assembly modeling scope, adopt the deferred B2 scientific
 policy or resume 0.15.0 consolidation.
+
+## Destination checkpoint correction — 2026-11-06
+
+The destination follow-up corrects seven stale test expectations: six regional
+missing/foreign-scope cases and one anonymous-structure case expected unavailable
+no-row filtering to return an unchanged view. The accepted current contract instead
+requires explicit `ArgumentError`. Updated assertions retain the original outcome,
+native result, request, empty membership and caller Card, with the unscoped
+scientific reader forbidden. Current filter semantics and the genuine legacy
+no-op verification remain unchanged.
+
+The eighth reproduced CI failure was a separate format-dispatch diagnostic. The
+mutable saved-reader orchestration now admits only logical formats @1–@12 and @15
+after the existing physical-envelope/shared-value and logical-budget checks, and
+before display-record validation. Unsupported experimental, non-object or typed
+unknown formats refuse as unsupported rather than reaching missing display flags.
+Canaries forbid that display validation, and five added typed/unknown cases join
+the eight corrected regressions: **13 focused cases pass**. No frozen verifier,
+original producer control, Card schema, exploration format, scientific rule or
+default is changed by this follow-up.
+
+The [composed destination checkpoint](../evidence/destination_checkpoint_20261106.json)
+passes **9,276 unique offline cases**: 7,723 public-scope passes plus 1,553 native
+local-input passes. The public scope records ten local-input skips and 26 online
+deselections; the native partition supplies its declared additional receiving.
+The public parallel partition retains 13 intentionally exercised diagnostic
+warnings. Focused, historical and nested copied-consumer repetitions are not added
+to the unique complete-checkpoint total. The original 685-case receipt and earlier
+failed/stopped observations above keep their own dates, inputs and limits.
+
+This completes the declared local destination checkpoint scope. Exact-source
+hosted/installed qualification and independent scientific/researcher acceptance
+remain separate; the current source is not qualified by an older green hosted run.

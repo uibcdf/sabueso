@@ -58,7 +58,7 @@ Read [VISION](VISION.md), [ARCHITECTURE](ARCHITECTURE.md),
 | Human and agent exploration design | Human access is intuitive and explanatory; agent access is compact, structured and economical while reaching the same retained knowledge. The [complete design inventory](pending_proposals/card_exploration_completion_0150.md) is required before 0.15.0 |
 | 2026-11-04 audit | Correctness findings about bioactivity and measurement context took priority over more panels. The [audit](GLOBAL_AUDIT_20261104.md) is dated evidence; the [continuation plan](CONTINUATION_PLAN_20261104.md) owns the current response |
 | Current continuation | Conservative activity interpretation has an earlier technically qualified checkpoint; B2 scientific/default review remains explicitly deferred. Structural journeys and independent chemical native/live/saved work advance the broad plan without closing human/scientific acceptance |
-| Current machine move | The original dirty state is preserved in local code/documentation commits; unpushed history and ignored evidence require more than a remote clone. The [handoff](WORKSTATION_HANDOFF_20261106.md) and manifest distinguish the initial capture from the committed checkpoint |
+| Current machine move | Destination restoration and selected receiving are complete. The [handoff](WORKSTATION_HANDOFF_20261106.md) and original manifest preserve source-machine facts; the [destination review](evidence/destination_review_20261106.json) and [current checkpoint](CHECKPOINT.md) own the received state and remaining qualification |
 
 Use [DECISIONS](DECISIONS.md) to trace a particular rule or issue, not as a required
 sequential reading assignment. Current feature analyses link the original decision,
@@ -132,9 +132,11 @@ values without a dedicated rich panel. See [PUBLIC_API](PUBLIC_API.md) and
    and applicable code/test contracts. If resuming the existing workspace, verify
    its transferred state before fetching, installing or overwriting anything.
 2. Work in Python 3.14 with participating local checkouts editable. Follow the
-   handoff's suite base plus Sabueso test/docs overlays and verify import/version
-   paths inside and outside the checkout. Dependency or profile adoption is not
-   supplied by a historical environment receipt.
+   [current workstation profile](TESTS.md#current-workstation-profile) and verify
+   import/version paths inside and outside the checkout. The handoff preserves
+   the suite-base and Sabueso-overlay bootstrap procedure for a new environment;
+   completed receiving does not require repeating restoration. Dependency or
+   profile adoption is not supplied by a historical environment receipt.
 3. Use a bounded public input or clearly labelled synthetic counterexample.
    Change scientific meaning only through an explicit named policy/version and
    its original-data compatibility requirements. Keep a source statement distinct
@@ -157,8 +159,15 @@ values without a dedicated rich panel. See [PUBLIC_API](PUBLIC_API.md) and
 The [B0–B8 table](CONTINUATION_PLAN_20261104.md#execution-order) and
 [broad inventory](pending_proposals/card_exploration_completion_0150.md) define the
 full target. The corrected chemical reader now has a [705-case local checkpoint](evidence/chemical_saved_checkpoint_20261106.json).
-The first destination task is its 95-case environment/import receiving and
-exact-final-source hosted recovery before another new adapter.
+That source-machine record remains unchanged. Destination environment/import
+receiving and the corrected complete local offline checkpoint now pass:
+[9,276 distinct cases](evidence/destination_checkpoint_20261106.json), including
+all 28 cases of the accepted finite MolSysMT journey. Nested copied-consumer and
+repeated cases are not additional distinct coverage. The
+[current action plan](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions)
+continues with corrected-source hosted qualification, using the measured
+destination resources. Complete local passing gates do not establish
+a passing full hosted matrix.
 
 After that checkpoint, B3–B6 and their scientific dependencies still include
 remaining structural, activity/literature, molecule/clinical/disease and

@@ -1,5 +1,5 @@
 ---
-summary: B3 source-supported structural questions, observed public journeys and the remaining assembly-scope decision.
+summary: B3 source-supported structural questions, observed public journeys and the accepted bounded MolSysMT integration requirement.
 issue: uibcdf/sabueso#173
 status: open
 opened: 2026-11-04
@@ -12,10 +12,13 @@ area: [scientific-review, structural-context, human-exploration, agent-access]
 Owner [#173](https://github.com/uibcdf/sabueso/issues/173), experience #148,
 coordination #112. The [continuation plan](../CONTINUATION_PLAN_20261104.md#execution-order)
 requires a defined scientific question and source-supported acceptance before
-further reconciliation code. This report supplies that preparation and actual
-public observations. **It does not close B3, redefine its accepted release scope,
-or establish independent scientist/researcher acceptance.** The maintainer's
-separate six-case bioactivity review remains explicitly deferred.
+further reconciliation code. This report preserves that preparation and dated
+public observations, followed by the
+[accepted bounded scope](#accepted-assembly-scope--2026-11-06) selected by the
+maintainer on 2026-11-06. **Scope disposition does not close B3, qualify its source
+or establish independent scientist/researcher acceptance.** Earlier dated sections
+retain their original receiving/decision limits. The maintainer's separate six-case
+bioactivity review remains explicitly deferred.
 
 ## What geometric reconstruction and calculated contacts mean
 
@@ -44,10 +47,12 @@ transforms and exact references to a coordinated modeling operation. The applica
 can expose one coherent journey while preserving separate knowledge support and
 calculation provenance. No shared invocation or result schema is adopted here.
 
-**Technical ownership and release delivery are different decisions.** A MolSysSuite
-implementation can still be required as an integrated pre-0.15.0 capability. Its
-proposed owner does not implicitly postpone it. Both the concrete task/consumer
-and its release-blocking status need disposition before B3 can be closed.
+**Technical ownership and release delivery are different decisions.** The
+maintainer's [2026-11-06 decision](../DECISIONS.md#2026-11-06--require-bounded-molsysmt-interoperability-for-b3)
+requires the finite positive/uncertain MolSysMT integration before B3/0.15.0.
+Its modeling owner remains MolSysMT; Sabueso's source-supported knowledge and
+limits retain their ownership. Passing destination receiving and the remaining
+scientific/researcher gates are still required.
 
 ## Questions and permitted answers
 
@@ -57,7 +62,7 @@ and its release-blocking status need disposition before B3 can be closed.
 | Which original record does this component name? | Explicit coherent native entry/entity/instance identifiers in that same source context | Polymer/nonpolymer record, neighbor-only reference, ambiguity or unknown; author labels and chemical codes do not fill missing identity |
 | How many declarations does the generator describe? | Component-list positions and supported operation tuples, with source order and exact factors | Declaration counts, including repeated positions; these are not counts of unique physical molecules or protein subunits |
 | Which contact belongs to which assembly occurrence? | Source-stated contact/instance/assembly/operation scope, consistent entry/revision and compatible residue axes | A source-supported join only when those bases exist; a shared PDB ID, author chain label or residue number is insufficient |
-| What physical copies and transformed contacts exist? | An agreed modeling task with admitted coordinates, transforms, units, model/alternate-location and symmetry scope | A modeling result with its own provenance and acceptance, separate from retained knowledge; no such calculation is delivered here |
+| What physical copies and transformed contacts exist? | The accepted bounded modeling task with admitted coordinates, transforms, units, model/alternate-location and symmetry scope | A separately attributed modeling result from the finite public candidate; its 28-case destination technical gate passes below, while independent acceptance remains pending. This does not establish general physical-copy uniqueness |
 | What does an experimental structure say about this model or region? | Exact original model/reference identity, source-supported sequence axis, range and checksum/context admission | Existing whole-reference question where admitted; fragments, isoforms, missing mappings and unobserved atoms remain distinct and explicit |
 
 The [wwPDB generator category](https://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Categories/pdbx_struct_assembly_gen.html)
@@ -352,34 +357,63 @@ presentation correction, not independent acceptance or B3 closure.
 4. Complete the other B3 model/fragment/region/site transitions with their own
    source-supported axes and original saved/agent parity. This audit does not deliver
    fragment mapping, model-selection advice or complete broad structural profiles.
-5. **Obtain the maintainer's assembly-scope disposition below.** Do not reinterpret
-   this proposal as permission to remove a pre-0.15.0 prerequisite.
+5. **Receive the accepted bounded MolSysMT integration below.** Its positive and
+   uncertain cases are a B3/pre-0.15.0 gate alongside the other structural routes;
+   general physical-copy reconciliation is not implicitly required.
 6. Qualify subsequent changed runtime at its own exact source, and obtain scientific,
    consumer, workload and actual researcher acceptance under the existing plan.
 
-### Assembly-scope decision needed
+<a id="assembly-scope-decision-needed"></a>
 
-The existing inventory repeatedly asks for "full physical reconciliation" without
-an independently specified positive physical task, admitted coordinate inputs or
-uniqueness criterion. The MolSysMT review identifies the existing geometric
-provider. Its availability resolves the earlier engine-discovery uncertainty;
-the exact consumer handoff and acceptance task remain to be defined.
+### Accepted assembly scope — 2026-11-06
 
-Recommended disposition for review: Sabueso completes original declared membership,
-source-supported contact scope, input gaps and coherent human/agent/saved access.
-It preserves source-stated transforms if required by an accepted knowledge task.
-Coordinate reconstruction, physical-copy deduplication and transformed-contact
-calculation belong to a coordinated MolSysSuite modeling task. This follows the
-existing [MOLI functional boundary](https://github.com/uibcdf/moli/blob/main/architecture_1.0/FUNCTIONAL_VIEW.md),
-not a proposed transfer of Sabueso's semantic ownership.
+The maintainer selects **a bounded integrated MolSysMT test with positive and
+uncertain cases** as a required B3/pre-0.15.0 gate. The
+[decision record](../DECISIONS.md#2026-11-06--require-bounded-molsysmt-interoperability-for-b3)
+replaces the earlier undefined "full physical reconciliation" requirement with the
+finite candidate below. This is an explicit scope disposition, not receipt of a
+passing integrated result or permission to omit the remaining structural gates.
 
-With MolSysMT identified, the maintainer must disposition the concrete integrated
-modeling task and consumer responsibilities, and say whether its successful
-receiving must also block B3/0.15.0, or whether B3's scientific obligation is the complete
-source-supported knowledge route with its explicit limits. If required, identify
-its exact question and consumer acceptance and open/cross-link the owning provider
-work before coding. Neither option permits silently guessing geometry or declaring
-unknown contact membership resolved. **Decision pending; #173 and B3 stay open.**
+1. **Positive public route:** receive the existing revision-matched TcTIM/1TCD
+   integration. Verify the retained source/entry revision, generator and operation,
+   component identity, admitted coordinates and atom/reference axes before geometry.
+   Preserve the full 3,983-atom result and all 276 true C-alpha A/B pairs under the
+   inclusive 1 nm criterion, without PBC, centers or group reduction. The independent
+   analytical comparison and exact original correspondence remain part of receiving.
+2. **Uncertain and incompatible routes:** the legacy Card whose retained revision/
+   generator correspondence is missing stays unknown and refuses geometry. Foreign
+   or ambiguous coordinate/source contexts refuse before the optional geometry
+   route. Fresh metadata must not be used to fill an old Card's missing basis.
+3. **Knowledge/calculation continuity:** the original Card and SourceAssertions
+   remain unchanged. Human, compact-agent and independently saved knowledge routes
+   preserve original support and uncertainty; the calculation and its provenance
+   remain separate. Saved knowledge reading still works without MolSysMT and does
+   not rerun geometry, rebuild Cards or acquire sources. The example-local retained
+   calculation log does not become a general geometric-result verifier.
+
+MolSysMT owns coordinate construction and contact calculation; Sabueso retains
+source knowledge, supported correspondence, declarations and explicit limits.
+General physical-copy deduplication/reconciliation remains separately scoped and
+is not an implicit 0.15.0 prerequisite. Source-declared multiplicity, coincident
+coordinates, author labels or equal residue numbers never establish physical
+identity. The existing
+[MolI functional boundary](https://github.com/uibcdf/moli/blob/main/architecture_1.0/FUNCTIONAL_VIEW.md)
+is preserved; no shared invocation/result schema, new Card schema or scientific
+default is adopted by this disposition.
+
+At decision time, the destination 28-case structural journey gate had not run.
+The subsequent destination execution passes **all 28 cases**, with MolSysMT
+available: the positive public route, independent analytical comparison,
+uncertain/incompatible refusals and original knowledge/agent/saved continuity.
+There are no skipped cases, warnings or owned swap; this serial module takes
+83.81 s with 417,316,864 bytes peak owned-tree RSS. The
+[destination checkpoint](../evidence/destination_checkpoint_20261106.json)
+binds the tested Sabueso working-tree hashes, installed editable MolSysMT
+`9e1f1b1ad8bf09446374ab6f04ca7208e2717936` and exact receptor/resource records.
+Provider PR #566 is merged and its merge commit is an ancestor of that checkout.
+**The accepted finite technical gate passes; B3, independent scientific/researcher
+acceptance and #173/#148/#112 follow-up remain open.** Release consolidation
+remains paused.
 
 ## Experience review
 
@@ -392,7 +426,7 @@ three or twelve component declarations.
 Still unaccepted: users have not performed these tasks uncoached. The distinction
 between protein subunits, component positions, alternative assemblies and physical
 copies requires explicit scientific wording and user review. Broad model/fragment
-transitions, contact reconciliation and whole-session workload budgets remain open.
-Review the count/identity questions above with a scientist and a researcher; do not
-predict satisfaction from a passing script or add navigation indefinitely without
-resolving its scientific scope.
+transitions and independent whole-session workload acceptance remain open.
+Review the count/identity questions and technically received finite task with a
+scientist and a researcher. Passing a script does not establish their acceptance;
+keep the agreed task finite while completing the remaining structural routes.

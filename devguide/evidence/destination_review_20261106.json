@@ -1,0 +1,353 @@
+{
+  "format": "sabueso.destination_devguide_review@1",
+  "captured_at_utc": "2026-11-06T21:20:35.059321+00:00",
+  "owner": [
+    "uibcdf/sabueso#112",
+    "uibcdf/sabueso#148",
+    "uibcdf/sabueso#167"
+  ],
+  "runtime_source_head": "0e4d7d4a80e3a32437acea25204bef80b185f981",
+  "review_scope": "Developer-guide truth, accepted continuation dependencies, source-CI failure reproduction and destination resource calibration; planned follow-up without implementation fixes.",
+  "migration": {
+    "status": "restored_and_scoped_destination_received",
+    "restored_payload_files": 10654,
+    "protected_originals": 37,
+    "initial_final_source_cases_passed": 95,
+    "copied_outer_cases_passed": 2,
+    "archives_and_auxiliary_directory": "Removed under the later explicit maintainer request after independent full-payload SHA256 verification.",
+    "editable_receptor_source": "../pytest-receptor-1.2.0",
+    "editable_sabueso_version": "0.14.0+197.g0e4d7d4",
+    "original_receipts": "recovered_work/destination_receiving_20261106",
+    "source_machine_705_case_receipt": "Historical, unchanged; not rerun or relabelled."
+  },
+  "host": {
+    "captured_at_utc": "2026-11-06T21:07:54.502523+00:00",
+    "allowed_logical_cpus": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+    ],
+    "distinct_topology_cores": 20,
+    "memory_total_bytes": 64978444288,
+    "memory_available_bytes": 54142779392,
+    "memory_total_gib": 60.516,
+    "memory_available_gib": 50.424,
+    "cgroup_ancestry": [
+      {
+        "path": "/sys/fs/cgroup/user.slice/user-2000.slice/session-54.scope",
+        "values": {
+          "cpu.max": "max 100000",
+          "memory.max": "max",
+          "memory.high": "max"
+        }
+      },
+      {
+        "path": "/sys/fs/cgroup/user.slice/user-2000.slice",
+        "values": {
+          "cpu.max": "max 100000",
+          "memory.max": "max",
+          "memory.high": "max"
+        }
+      },
+      {
+        "path": "/sys/fs/cgroup/user.slice",
+        "values": {
+          "cpu.max": "max 100000",
+          "memory.max": "max",
+          "memory.high": "max",
+          "cpuset.cpus.effective": "0-19"
+        }
+      },
+      {
+        "path": "/sys/fs/cgroup",
+        "values": {
+          "cpuset.cpus.effective": "0-19"
+        }
+      }
+    ]
+  },
+  "current_ci_observation": {
+    "observed_at_utc": "2026-11-06 21:12:15 UTC",
+    "ci_run": "https://github.com/uibcdf/sabueso/actions/runs/42273750809",
+    "ci_job_conclusions": {
+      "queued": 4,
+      "success": 5,
+      "failure": 8
+    },
+    "ci_passing": false,
+    "governance_run": "https://github.com/uibcdf/sabueso/actions/runs/42273750742",
+    "governance": "passed",
+    "scope": "First-page latest-attempt jobs from connector; observed queued jobs are not passing evidence; exact run/source binding was verified in retained migration receiving."
+  },
+  "local_ci_reproduction": {
+    "command": [
+      "nice",
+      "-n",
+      "10",
+      "taskset",
+      "-c",
+      "0",
+      "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+      "-B",
+      "-m",
+      "pytest",
+      "--receptor=llm",
+      "--receptor-events=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/devguide_review_20261106/ci-reproduction/events.jsonl",
+      "-m",
+      "not online",
+      "-W",
+      "error:unclosed database:ResourceWarning",
+      "-W",
+      "error::pytest.PytestUnraisableExceptionWarning",
+      "--basetemp=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/devguide_review_20261106/ci-reproduction/pytest-scratch",
+      "tests/core/test_card_protein_exploration_offline.py::test_missing_or_foreign_scope_never_runs_reader",
+      "tests/core/test_card_structures_exploration_offline.py::test_empty_unsupported_and_missing_identity_have_distinct_outcomes",
+      "tests/tools/test_exploration_storage_experiment_offline.py::test_public_reader_does_not_admit_experimental_layout"
+    ],
+    "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+    "resource_receipt": "recovered_work/devguide_review_20261106/ci-reproduction/ci-eight-resource.json",
+    "resource_receipt_sha256": "fdf665fb3f41d4de9a76dc4e3bcb43e8d6596e85a9c2dbeeb9e013a428b88213",
+    "log_path": "recovered_work/devguide_review_20261106/ci-reproduction/ci-eight.log",
+    "log_sha256": "b2be6566cd0bdb0bea2ea8480ef7eab93cfec75618f2c1a41b6ac2eec78e93c9",
+    "artifact_path": "recovered_work/devguide_review_20261106/ci-reproduction/events.jsonl",
+    "artifact_sha256": "50e020e09f6047a92d8859eb40cd3b611f58e47977e27955d93f7020aeaaf411",
+    "counts": {
+      "collected": 8,
+      "deselected": 0,
+      "errors": 0,
+      "executed": 8,
+      "failed": 8,
+      "not_executed": 0,
+      "passed": 0,
+      "reruns": 0,
+      "skipped": 0,
+      "subtests": {},
+      "warnings": 0,
+      "xfailed": 0,
+      "xpassed": 0
+    },
+    "exit_code": 1,
+    "pytest_duration_s": 1.982742211999721,
+    "supervised_duration_s": 3.02,
+    "peak_owned_rss_bytes": 115122176,
+    "peak_owned_swap_bytes": 0,
+    "minimum_host_available_bytes": 54071992320,
+    "peak_owned_scratch_bytes": 64707,
+    "limits": {
+      "owned_rss_bytes": 536870912,
+      "host_available_bytes": 6442450944,
+      "owned_swap_bytes": 0,
+      "cpu_affinity_count": 1,
+      "nice": 10,
+      "elapsed_s": 600,
+      "owned_scratch_bytes": 2147483648
+    },
+    "artifact_complete": true,
+    "artifact_integrity": {
+      "algorithm": "sha256",
+      "digest": "92721f4c076c1a40fe1aa6fb937429a6ccad5da7d51584ea422a4aee5a3de6a2",
+      "records": 27
+    },
+    "groups": [
+      {
+        "cases": 7,
+        "observation": "Old tests expect filtering unavailable no-row views to preserve outcome; current #191 contract explicitly refuses that request.",
+        "next_action": "Correct stale expectations after verifying no unscoped reader call and original historical-control compatibility."
+      },
+      {
+        "cases": 1,
+        "observation": "Experimental layout is refused with a different StorageError diagnostic.",
+        "next_action": "Review format dispatch before display-record validation and preserve experimental/public-format separation."
+      }
+    ],
+    "supervisor_metadata_note": "Copied serial supervisor retains its former chemical review-trigger label; actual selection and purpose are the explicitly recorded eight-failure CI reproduction."
+  },
+  "parallel_calibration": {
+    "command": [
+      "nice",
+      "-n",
+      "10",
+      "taskset",
+      "-c",
+      "0,1,2,3,4,5,6,7",
+      "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+      "-B",
+      "-m",
+      "pytest",
+      "-n",
+      "8",
+      "--dist=load",
+      "--receptor=llm",
+      "--receptor-events=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/devguide_review_20261106/parallel-calibration/events.jsonl",
+      "-m",
+      "not online",
+      "-W",
+      "error:unclosed database:ResourceWarning",
+      "-W",
+      "error::pytest.PytestUnraisableExceptionWarning",
+      "--basetemp=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/devguide_review_20261106/parallel-calibration/pytest-scratch",
+      "tests/core/test_card_saved_chemical_offline.py",
+      "tests/core/test_card_chemical_exploration_offline.py",
+      "tests/core/test_chemical_classification_offline.py"
+    ],
+    "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+    "resource_receipt": "recovered_work/devguide_review_20261106/parallel-calibration/chemical95-eight-resource.json",
+    "resource_receipt_sha256": "1f44d720cea617cdc2f91e5508a2dae62c8ba60e123b00ac4a8e5bb09e23ae88",
+    "log_path": "recovered_work/devguide_review_20261106/parallel-calibration/chemical95-eight.log",
+    "log_sha256": "80b7a5ebb81664e8da6b3173d55683ddfcaec3ee61993fceaf55434b942d21a6",
+    "artifact_path": "recovered_work/devguide_review_20261106/parallel-calibration/events.jsonl",
+    "artifact_sha256": "87ee9e63c80eb817b4efea5246c78f0d481b19716113a93c2d652d652d2aa0c8",
+    "counts": {
+      "collected": 95,
+      "deselected": 0,
+      "errors": 0,
+      "executed": 95,
+      "failed": 0,
+      "not_executed": 0,
+      "passed": 95,
+      "reruns": 0,
+      "skipped": 0,
+      "subtests": {},
+      "warnings": 0,
+      "xfailed": 0,
+      "xpassed": 0
+    },
+    "exit_code": 0,
+    "pytest_duration_s": 23.57008155999938,
+    "supervised_duration_s": 24.51,
+    "peak_owned_rss_bytes": 1087242240,
+    "peak_owned_swap_bytes": 0,
+    "minimum_host_available_bytes": 52819902464,
+    "peak_owned_scratch_bytes": 26090334,
+    "limits": {
+      "owned_rss_bytes": 8589934592,
+      "host_available_bytes": 17179869184,
+      "owned_swap_bytes": 0,
+      "cpu_affinity_count": 8,
+      "nice": 10,
+      "elapsed_s": 600,
+      "owned_scratch_bytes": 4294967296
+    },
+    "artifact_complete": true,
+    "artifact_integrity": {
+      "algorithm": "sha256",
+      "digest": "f35fd70f1949fad855318d69a242ce95782526f0cb4f347c1e47fb43e27aa14a",
+      "records": 286
+    },
+    "workers": 8,
+    "distribution": "load",
+    "serial_pytest_duration_s": 60.4160925509932,
+    "observed_duration_ratio": 2.563,
+    "limits_of_comparison": "Warm, nonrandomized measurements of the same95 cases and scientific/receptor source tags. The receptor checkout path relocated after the serial run. Not a general performance guarantee or a complete-suite/historical-workload qualification."
+  },
+  "next_actions": [
+    {
+      "order": 1,
+      "work": "Repair the eight reproducible contract/diagnostic regressions, then qualify the current code checkpoint.",
+      "owners": [
+        "#148",
+        "#191",
+        "#112"
+      ]
+    },
+    {
+      "order": 2,
+      "work": "Run complete public and local-original offline scopes with reviewed parallel/serial partitioning, then exact-source hosted gates.",
+      "owners": [
+        "#112",
+        "#167"
+      ]
+    },
+    {
+      "order": 3,
+      "work": "Disposition finite B3 structural/modeling scope and complete remaining transitions/acceptance without redoing delivered TcTIM/control work.",
+      "owners": [
+        "#173",
+        "#148"
+      ]
+    },
+    {
+      "order": 4,
+      "work": "Deliver B4 activity/assay/document/literature journey and B5 molecule-target/clinical/disease profiles using existing scientific readers.",
+      "owners": [
+        "#148",
+        "#112"
+      ]
+    },
+    {
+      "order": 5,
+      "work": "Deliver B6 variant/isoform/tissue/comparison and association profiles.",
+      "owners": [
+        "#148"
+      ]
+    },
+    {
+      "order": 6,
+      "work": "Obtain B7 scientist/researcher/agent/workload and actual-consumer acceptance across completed public journeys.",
+      "owners": [
+        "#148",
+        "#112"
+      ]
+    }
+  ],
+  "boundaries": [
+    "B2 six-case scientific/default review stays explicitly deferred; opt-in engineering at c5b8af1 is not reopened.",
+    "B3 physical reconciliation/modeling delivery remains an owner decision; no silent release-scope deferral.",
+    "B8 candidate selection/schema freeze/staging/publication remains paused.",
+    "No scientific provider requests, private pilot review, dependency adoption or full installed-artifact qualification occurs in this task.",
+    "Full MolSysSuite profile receiving remains incomplete for missing/noninstalled siblings; scoped Sabueso receiving does not certify it.",
+    "Source/transfer manifests, original controls, dated audits and old receipts remain unchanged despite later guide updates."
+  ],
+  "sampled_source_hashes": [
+    {
+      "path": "sabueso/core/card_exploration.py",
+      "sha256": "30d70592eae67aab8ce93a3a1248c1199c06cbdc475f8722190a6f710a8290b1"
+    },
+    {
+      "path": "sabueso/core/card_exploration_storage.py",
+      "sha256": "ebc224e418741c7e60300c1b7946c1ee4b8a71d8158e6a6428ca871391dec0df"
+    },
+    {
+      "path": "tests/core/test_card_protein_exploration_offline.py",
+      "sha256": "ca96155b106b7a10d2a638936848c8fe0b37312bc69b64b48938d3f7e1bd6b25"
+    },
+    {
+      "path": "tests/core/test_card_structures_exploration_offline.py",
+      "sha256": "d4d17125caa53fb03f5b157c060ac23294178d9bed309d709eef5bbcf5be22f8"
+    },
+    {
+      "path": "tests/tools/test_exploration_storage_experiment_offline.py",
+      "sha256": "c9481f10f1aafa91d3e0d35a9c3ab072efe099204ba4f48b6a5364bb946f88d3"
+    },
+    {
+      "path": "tests/core/test_card_saved_chemical_offline.py",
+      "sha256": "3d91ad467d336c8ebf9cde92a54bb92f4d1feef38d287b797ab748d90c85e186"
+    },
+    {
+      "path": "tests/core/test_card_chemical_exploration_offline.py",
+      "sha256": "b09262f32bbd160fd776ec659b31862ee01b00d2a514ee4fe80436caff3757c1"
+    },
+    {
+      "path": "tests/core/test_chemical_classification_offline.py",
+      "sha256": "b670f4e817437b7b91e01142eda1d8c88b4c9f418986fd550f3dfe79a0ab9efe"
+    }
+  ],
+  "local_receipt_directory": "recovered_work/devguide_review_20261106"
+}

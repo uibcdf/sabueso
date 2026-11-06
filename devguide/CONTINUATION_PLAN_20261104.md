@@ -1,10 +1,11 @@
 # Sabueso — Integrated continuation plan after the audit
 
-Current workstation transfer: use the
-[2026-11-06 handoff](WORKSTATION_HANDOFF_20261106.md) to preserve source, working
-changes, original controls and local evidence. Re-establish the environment and
-finish the pending chemical receiving checkpoint; this does not replace the
-integrated blocks or accept the broad 0.15.0 experience.
+The [2026-11-06 handoff](WORKSTATION_HANDOFF_20261106.md) preserves the completed
+workstation transfer. Environment restoration and the corrected complete local
+offline checkpoint now pass; the
+[destination actions](#destination-review-and-next-actions) own current follow-up.
+These technical outcomes do not replace the integrated blocks or accept the
+broad 0.15.0 experience.
 
 The [genuine AlphaFold archive control](pending_proposals/alphafold_archive_fragment_control.md)
 now retains public titin AF-Q8WZ42-F2 and its original UniProt reference. Independent
@@ -125,6 +126,9 @@ video projects to this release.
 
 ## Starting state and first actions
 
+The [destination review and next actions](#destination-review-and-next-actions)
+below supersede completed migration/bootstrap steps in earlier dated entries.
+
 Current B5 continuation: the [chemical classification profile](pending_proposals/chemical_classification_exploration.md)
 now shares a captured source-bound native result between readable molecule
 classes/roles and compact typed agent selection. Original sources, exact member
@@ -132,8 +136,9 @@ positions, direct/inherited/unknown basis and back navigation remain explicit.
 Genuine SDK192 native bytes and original retained molecule catalogues are preserved.
 Independent original chemical saving now has a [committed local checkpoint](evidence/chemical_saved_checkpoint_20261106.json)
 under semantic @15 and sharing @16: 705 selected cases and public whole-session
-receiving pass. Finish destination environment, exact-final-source hosted and
-independent scientific/researcher qualification. This does not close B5, substitute
+receiving pass. Destination environment and 95-case/copied-consumer receiving now
+pass; complete exact-final-source hosted and independent scientific/researcher
+qualification. This does not close B5, substitute
 for researcher/scientific acceptance, adopt B2 defaults or resume release
 consolidation. Continue the entire broad design and remaining B3/B4/B6/B7 work.
 
@@ -267,9 +272,70 @@ supply direct-only scope over an indirect or unresolved original. Scientific,
 default and consumer adoption remain pending. Do not block independent B3 work
 on reviewer availability, and do not build B4 summaries as accepted science yet.
 
+## Destination review and next actions
+
+The maintainer requested this review after completing restoration on 2026-11-06.
+The [dated receipt](evidence/destination_review_20261106.json) separates completed
+transfer/selected receiving, reproducible current failures, measured resources
+and remaining product acceptance. The original audit, 705-case source-machine
+receipt and transfer manifest remain unchanged historical records.
+
+| Order | Next work | Completion evidence |
+| --- | --- | --- |
+| 1 — Restore a reliable code checkpoint (#148/#191/#112) | Corrected: seven stale no-row expectations now check the accepted #191 refusal and unchanged original state; unknown logical formats refuse before display inspection. Original frozen reading stays unchanged | All eight reproduced cases plus five new controls pass; the [corrected checkpoint](evidence/destination_checkpoint_20261106.json) binds source/test hashes |
+| 2 — Complete current technical qualification (#112/#167) | Complete local receiving passes: public 7,723 passed/10 expected skips, plus every 1,553 local-marked case, with exact union 9,276 distinct passed. Reconcile corrected-source hosted source/installed/codec/governance outcomes through the authorized route | Exact selection and resources are retained; local receiving is composed, not two independent full-suite executions. Hosted qualification remains pending; no failing, queued or older result is promoted to success |
+| 3 — Finish B3 after its finite interoperability gate (#173/#148) | The accepted bounded positive/uncertain MolSysMT journey passes all 28 destination cases. Continue remaining structural transitions from the existing matrix and obtain independent acceptance | Finite original axes/support, analytical geometry and human/agent/saved continuity pass; broader structural/scientific/researcher/workload acceptance remains open. Do not restart engine discovery or generalize this into unspecified physical-copy reconciliation |
+| 4 — Deliver complete B4 and B5 journeys (#148/#112) | Build protein → molecule → group/measurement → assay/document → source support, then molecule-target/clinical and disease association profiles using existing readers and explicit supplied identity context | Each slice has a positive public example, applicable missing/conflicting/unqueried cases, understandable human navigation, compact-agent parity and independent inert saved reading |
+| 5 — Deliver B6 profiles (#148) | Add variant/isoform/tissue, supplied-Card comparison and typed association journeys | Explicit reference/genomic/transcript/tissue scope, supported correspondence and positive/uncertain cases; no similarity-based identity merge |
+| 6 — Accept B7 across the delivered slices (#148/#112) | Obtain scientist, uncoached researcher, agent, representative workload and actual-consumer results throughout the work, then review the combined protein/molecule/disease experience | Recorded task outcomes, interpretation/navigation failures and fixes; source/software/human/consumer acceptance remain distinct |
+
+Order 1 and complete local receiving are done; order 2 still needs corrected-source
+hosted qualification. They do not reopen source-qualified B1/B2 engineering.
+The six-case B2 scientific/default review stays explicitly
+deferred and maintainer-owned. B4 can expose exact original records and current
+policies while that review is pending; it cannot claim acceptance of new grouping
+defaults. Independent B3/B5 work is not blocked by an unavailable reviewer.
+
+The current host has 20 exposed physical cores and 60.516 GiB RAM. Eight-worker
+calibration passes the same 95 chemical cases in 23.57 s, versus an earlier
+60.42 s serial observation, with about 1.013 GiB peak owned-tree RSS and no owned
+swap. This is a warm, nonrandomized selected-cohort observation. Adopt the
+[current workstation profiles](TESTS.md#current-workstation-profile) for reviewed
+selections; measure broader batches before increasing to 12 or 16 workers.
+Historical workload controls retain their original budgets and meanings.
+
+The next bounded implementation candidate is B4's public TcTIM activity journey:
+`P52270` → BTS (`CHEMBL1161789`) → retained activity `24815542`
+(`IC50 = 33000 nM`) → assay `CHEMBL5138431` → document `CHEMBL5137001` →
+original support, paired with inconclusive/missing-value controls. Reuse existing
+activity, measurement, assay and literature readers; keep measurement/target-scope
+@1 defaults and the opt-in @2 review separate. The current fixture contains the
+record, while the older frozen Card does not: do not backfill that historical
+Card. The [document-support grain](RISKS_AND_OPEN_QUESTIONS.md#risks) needs honest
+presentation before claiming independent document-object lineage. No additional
+structural algorithm is implied by the remaining B3 acceptance work.
+
+The maintainer has selected the
+[bounded positive/uncertain MolSysMT integration](pending_proposals/structural_journey_acceptance_20261104.md#accepted-assembly-scope--2026-11-06)
+as a B3/pre-0.15.0 gate. This resolves the release-scope decision, and all 28
+destination cases subsequently pass with MolSysMT available. Remaining B3
+transitions and scientific/researcher acceptance remain separate.
+
+Finish the corrected source's hosted checkpoint; postpone another codec
+experiment, unrestricted source expansion or a new framework unless a delivered
+journey demonstrates its need. Documentation CI is a useful later #112 improvement;
+the local warning-fatal docs gate remains in force. Existing #182 identity/glossary
+scope enters the first affected path, without reopening qualified #180/#181 work.
+
+B8 remains paused until accepted broad scope, preceding gates and explicit
+maintainer resumption. Deck navigation #153, viewer/export #154, videos #155 and
+other future directions retain their separate scope and priority.
+
 ## Execution order
 
-The block table is the current scheduling entry point. The
+The block table defines the stable B0–B8 dependencies. The dated
+[destination actions](#destination-review-and-next-actions) own the immediate
+execution order. The
 [broad exploration inventory](pending_proposals/card_exploration_completion_0150.md)
 continues to own panel completeness, and the audit owns its findings and evidence
 requirements. Detailed historical chronologies do not override this proposed order.
@@ -301,25 +367,27 @@ integrity defect enters the first block that depends on that path.
 The [B3 scope review](pending_proposals/structural_journey_acceptance_20261104.md)
 now records that pre-implementation acceptance matrix, four actual public
 source/native/human/agent/saved journeys and six synthetic counterexamples.
-The owner must disposition the undefined "full physical reconciliation" task;
-this review does not silently remove it from the broad inventory or close B3.
-Independent model/fragment/region work can proceed from its existing original
-axis/admission contracts while that decision is pending.
+The maintainer has now dispositioned the former undefined physical-reconciliation
+requirement as the accepted bounded MolSysMT gate linked above. Its positive and
+uncertain cases remain required; the scope decision does not close B3. Continue
+independent model/fragment/region work from its original axis/admission contracts.
 
 The [MolSysMT receiving review](pending_proposals/structural_journey_acceptance_20261104.md#existing-molsysmt-capability-review--2026-11-05-utc)
 now confirms available assembly/contact tools. Reuse them within qualified source,
 identity, unit and workload scope; qualify the source importer through its owner
 [molsysmt#563](https://github.com/uibcdf/molsysmt/issues/563) before accepting affected
 multi-generator input. A documented builder limitation is not a missing engine.
-Integration delivery and the B3 release obligation remain separate owner decisions.
+Integration delivery and the accepted bounded B3 gate retain their own receiving;
+the earlier provider review alone cannot establish them.
 
 The [provider correction and bounded public control](pending_proposals/structural_journey_acceptance_20261104.md#provider-correction-and-public-coordinate-control--2026-11-05-utc)
 now deliver MolSysMT PR #566, nine final regressions and 467 neighboring cases.
 A pinned 1TCD coordinate file builds 3,983 atoms and reproduces 276 C-alpha
 contacts under an explicit criterion. This establishes a bounded provider route,
 not an admitted link to the old Card: its retained RCSB input lacks revision and
-generator data. Current acquisition already asks for revisions. Receive the PR
-and qualify exact coordinate/source/operation correspondence next; preserve the
+generator data. Current acquisition already asks for revisions. PR #566 was
+merged on 2026-11-05; receive the current consumer's exact coordinate/source/
+operation correspondence, preserving the
 separate knowledge/calculation results and coherent human/agent/saved access.
 No shared protocol, production geometry API or B3/release acceptance is adopted.
 
@@ -384,12 +452,14 @@ and deliberate override. Check encoded/decoded buffering and resource lifetime;
 do not infer memory bounds from compressed size or a ten-row preview.
 
 Select checks through [TESTS](TESTS.md). Use the shared editable Python 3.14
-environment and pytest-receptor; inspect CI through gh-run-receptor. Under current
-resource conditions run heavy gates serially with the retained guards (owned group
-RSS at most 1 GiB, host MemAvailable at least 4 GiB, zero owned swap and at most
-2 GiB phase scratch). Reassess guards for an explicitly justified larger task;
-the earlier use of twelve cores is not a standing instruction to start twelve
-memory-heavy workers. Do not provision an extra development environment merely
+environment and pytest-receptor; inspect CI through gh-run-receptor, using
+authoritative GitHub facts for missing details. The former 1 GiB/4 GiB and later migration
+512 MiB/6 GiB guards retain their dated control scopes. The destination's
+[measured profile](TESTS.md#current-workstation-profile) now permits bounded
+eight-worker batches; large historical and independent workload controls remain
+separate serial selections until their own resource receiving. More available
+cores do not by themselves qualify a wider selection or timing comparison.
+Do not provision an extra development environment merely
 for isolation; installed-artifact environments are used when qualification needs them.
 
 Maintain owned evidence with its issue and review trigger. Remove disposable
@@ -511,24 +581,15 @@ milestones, or when a concrete dependency makes one necessary.
 
 ## Immediate next work session
 
-1. Follow the [workstation handoff](WORKSTATION_HANDOFF_20261106.md) first.
-   Preserve the committed @15/@16 checkpoint and ignored evidence; verify
-   destination hashes/editables and run the95-case chemical gate as destination
-   receiving. The 705-case local source checkpoint already passes; exact-final-source
-   hosted and independent acceptance remain separate. Inspect current source/editable metadata and exact-source remote receipts.
-   Earlier qualified B1/B2 technical work remains qualified for its own source;
-   later native changes keep their own receiving.
-2. Receive #167's completed local full-session correction at its exact remote
-   source; do not reimplement it or substitute smaller controls. Continue the
-   implemented regional source orientation and versioned #191 filter correction.
-   Receive their exact source and genuine earlier membership compatibility before
-   accepting that B3 task.
-3. Continue B3 acceptance and the required B4–B6 rich panels with ongoing human,
-   agent and workload review. The maintainer-owned B2 scientific review stays
-   explicitly deferred; no default adoption follows from more technical tests.
-   Independent B5 work now has a [chemical-classification native/live profile](pending_proposals/chemical_classification_exploration.md)
-   and a committed, locally verified independent saved reader. Finish destination/hosted
-   qualification and scientific/researcher acceptance; neither a native reader
-   nor a passing technical slice completes the whole molecule profile.
-4. Obtain actual B7 scientist, uncoached researcher, private pilot and consumer
-   acceptance before deciding when B8 release consolidation can resume.
+1. Preserve the corrected complete local checkpoint and qualify its exact source
+   remotely through [the current action plan](#destination-review-and-next-actions).
+   Completed correction, migration and local receiving are not a new queue.
+2. Preserve
+   genuine #167/#191 controls and their earlier membership; do not reimplement
+   completed persistence/filter work or substitute smaller historical controls.
+3. Continue remaining B3 routes after its passing 28-case finite MolSysMT gate,
+   and start the coherent B4/B5 journeys, then B6.
+   Use the broad inventory as the completion checklist and obtain human/scientific/
+   agent/workload feedback throughout. B2 review remains explicitly deferred.
+4. Obtain actual combined B7 and consumer acceptance before any decision to resume
+   B8. This plan does not authorize a release, schema freeze or staging.

@@ -16,24 +16,28 @@ identity-operation construction and declared atomic contact calculation. All
 pairs remain separate from source knowledge. This does not qualify a generic
 production bridge or independent scientific acceptance. Historical gaps remain
 unjoined; coordinate water declarations do not backfill unresolved Card keys.
-Structure/reference release synchronization stays `not_stated`. The earlier B3
-scope review below still governs broader integration/uniqueness/contact work.
+Structure/reference release synchronization stays `not_stated`. The accepted
+bounded B3 gate below does not qualify broader uniqueness/contact work.
 
 The example's naive five-save/five-read gate hit its 1 GiB RSS ceiling. A single
 gzip session with shared reading passes within that ceiling and zero owned swap.
 This measured example workload is distinct from the HTTP buffering risk in #174.
-The multi-generator importer fix is submitted as
-[MolSysMT PR #566](https://github.com/uibcdf/molsysmt/pull/566), pending owner review.
+The multi-generator importer fix was merged through
+[MolSysMT PR #566](https://github.com/uibcdf/molsysmt/pull/566) on 2026-11-05.
+Provider integration delivery and current Sabueso consumer receiving remain
+distinct from installed-artifact or independent scientific acceptance.
 
-[B3's scope review](pending_proposals/structural_journey_acceptance_20261104.md)
-now identifies existing MolSysMT assembly/contact engines and 62 selected local
-receiving cases. The concrete admitted integration/uniqueness/contact task and its
-pre-0.15.0 obligation remain to be specified; engine availability alone does not
-close that acceptance question. The multi-generator source-importer loss is
-reproduced and owned by [molsysmt#563](https://github.com/uibcdf/molsysmt/issues/563).
-Declared counts/native keys, physical geometry and contact scope retain separate
-meanings. The maintainer must disposition the integration task before #173/B3
-closeout; no accepted prerequisite is silently removed.
+[B3's accepted bounded scope](pending_proposals/structural_journey_acceptance_20261104.md#accepted-assembly-scope--2026-11-06)
+requires positive and uncertain MolSysMT interoperability before B3/0.15.0.
+The maintainer selected that finite gate explicitly; all 28 destination cases
+subsequently pass with the actual MolSysMT calculation. Independent
+scientific/researcher acceptance remains separate. General physical-copy
+deduplication/reconciliation is separately scoped. Engine availability alone
+does not establish the required receiving. The historical multi-generator
+source-importer loss remains provider-owned in
+[molsysmt#563](https://github.com/uibcdf/molsysmt/issues/563), with its own source
+and delivery evidence. Declared counts/native keys, physical geometry and contact
+scope retain separate meanings; the decision does not close #173/B3.
 
 Original assembly-generation inspection (#173) now has compact native plans and
 visible tuple/declared-occurrence count and identifier-text preflight with deliberate raised/unlimited
@@ -86,6 +90,17 @@ parameters and unsupported selectors remain explicit limits; new acquisitions do
 not promise exact old requests. See [the correction](pending_proposals/comparative_tissue_scope.md).
 
 ## Risks
+
+- **ChEMBL document support grain before B4 (#108/#148, observed in code):**
+  `mappings/chembl.py` projects title, DOI and PubMed from the returned document
+  into relationship citation qualifiers. Its SourceAssertions retain the activity
+  and assay records, without a separate original document-object assertion.
+  This is an observed lineage limit, not a demonstrated incorrect citation or
+  a new runtime failure. The first rich activity/document panel must label the
+  retained citation context honestly; review whether original document-level
+  support needs its own additive capture before promising finer lineage.
+  Maintainer handoff: update #108/#148 with this observation when reporting is
+  authorized; no new scientific rule or document assertion is invented here.
 
 - **Copied target-scope bypass (#188, reproduced):** declared copies can be mapped
   direct while their retained originals are excluded as indirect. The
@@ -249,9 +264,10 @@ not promise exact old requests. See [the correction](pending_proposals/comparati
   [separate original execution records](pending_proposals/comparative_operations.md).
   Selected input-field support is not row-level mapping or source-request lineage;
   original record labels are not independently verified database releases. Plain
-  views, explanations and saved readers remain inert. Local qualification passes;
-  development is published through `c7916cf` with `[skip ci]`, and remote
-  qualification is [deferred](pending_proposals/deferred_ci.md).
+  views, explanations and saved readers remain inert. The `c7916cf` development
+  checkpoint used `[skip ci]` with deferred remote qualification; the
+  [receiving history](pending_proposals/deferred_ci.md) records subsequent
+  accumulated source qualification separately.
   Full bibliography, other result scopes and installed/human acceptance remain separate.
   The [persisted comparison example](pending_proposals/comparative_journey_attribution.md)
   retains original result/support/credit with independent reading and exports.
@@ -264,11 +280,16 @@ not promise exact old requests. See [the correction](pending_proposals/comparati
 
 - **Deferred development CI** (#112): local Python 3.14 editable tests do not
   qualify supported remote OS/minors, installed public-Ackredit lanes or coverage
-  publication. The [recorded block](pending_proposals/deferred_ci.md) remains
-  unqualified remotely until all applicable CI and governance jobs pass for its
-  exact final SHA. Manual dispatch alone or an older green run is insufficient;
-  use the [documented recovery route](TESTS.md#recovering-deferred-ci) before
-  closing qualification work or admitting a release candidate.
+  publication. The [recorded accumulated checkpoint](pending_proposals/deferred_ci.md)
+  at `c5b8af1` completed its exact-source technical receiving. That does not
+  qualify the later transferred source `0e4d7d4`, whose failures remain historical.
+  The [corrected destination candidate](evidence/destination_checkpoint_20261106.json)
+  passes 9,276 distinct composed local cases; its hosted matrix remains pending. Follow
+  [CHECKPOINT](CHECKPOINT.md) and the
+  [current action plan](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions).
+  Manual dispatch alone or an older green run is insufficient; use the
+  [documented recovery route](TESTS.md#recovering-deferred-ci) before closing
+  qualification work or admitting a release candidate.
 
 - **Upstream prerequisite classification**
   ([#142](https://github.com/uibcdf/sabueso/issues/142),
@@ -416,9 +437,12 @@ not promise exact old requests. See [the correction](pending_proposals/comparati
   pin the qualified public file/hash. The public-dependency blocker is resolved.
   Independent receiving tests on all four Linux minors pass with the planned public
   core pins. The current editable satisfies the published minimum; Ackredit #81
-  records the earlier mismatch and receiving confirmation. The latest shared
-  environment check has unrelated
-  Amber/preparation dependency conflicts; see `CHECKPOINT.md`, Resume here.
+  records the earlier mismatch and receiving confirmation. An earlier shared
+  environment check recorded unrelated Amber/preparation dependency conflicts;
+  this is not the current destination closure result. Destination `pip check`
+  passes. Full shared-profile source/runtime receiving still has participating
+  checkout/installation gaps; see [CHECKPOINT](CHECKPOINT.md) and the
+  [destination review](evidence/destination_review_20261106.json).
   Published 0.13.0 adapters observe packet composition and built-in UniProt,
   Europe PMC, RCSB, ChEMBL, PubChem/BioAssay, BindingDB, CCD, UniChem, PDBe-KB,
   AlphaFold DB and InterPro operations within their declared boundaries.
@@ -592,11 +616,15 @@ not promise exact old requests. See [the correction](pending_proposals/comparati
     (uibcdf/smonitor#23). Sabueso's frame count then double-skipped, and warnings
     pointed into pytest.
   - Main requires SMonitor >= 0.17.0 and counts accordingly.
-  - Published Sabueso 0.4.0 declares `smonitor>=0.16.0`, so a fresh install gets 0.17.0
-    and attributes its warnings to the wrong line. This is cosmetic: messages, records
-    and results are unchanged. The next release fixes it.
-  - Lower bounds alone do not protect a published release from such changes. Upper
-    bounds, or a release test against the newest support libraries, would.
+  - Historical Sabueso 0.4.0 declares `smonitor>=0.16.0`; its observed installation
+    with SMonitor 0.17.0 attributes warnings to the wrong line. This is cosmetic:
+    messages, records and results are unchanged. The old artifact remains fixed;
+    the current floor reflects the correction.
+  - Compatibility monitoring against current public providers is needed. General
+    requirements use an evidenced `provider>=X`; a ceiling or exclusion needs a
+    concrete incompatibility, owning issue and reassessment/removal condition.
+    A minor version change alone does not justify a cap. Follow the
+    [runtime dependency rule](../MOLI_GUIDE.md#moli-engineering-baseline).
 - **RCSB answers can change from day to day.** On 2026-09-26, RCSB failed server-side
   on the per-chain data of some entries (1KLG, 2V5B, 1KLU), intermittently. Entries
   are now kept as `partial` (#74). Two runs a day apart can still differ in what they
@@ -803,14 +831,17 @@ Answered since the first list (2026-01):
   limitation for reproducibility, and the matching explanation flags its gap.
   Missing original numbering cannot be reconstructed from equal numbers or names.
 
-- **Clinical registry scope and delivery** (#108/#127/#128): development observation
-  and explicit native references are implemented, with local false-absence,
-  continuation and duplicate-integrity fixes. The registry timestamp is reported
+- **Clinical registry scope and delivery** (#108/#127/#128): the bounded source
+  observation, explicit native references, false-absence, continuation and
+  duplicate-integrity corrections are delivered in qualified 0.14.0, as recorded
+  in the [clinical checkpoint](pending_proposals/clinical_registry_checkpoint.md).
+  The registry timestamp is reported
   independently of pages, so coherent per-page revision is unknown. Linked references
   can be incomplete, retracted or permission-restricted; declared links do not prove
   access, article rights or efficacy. Explicit Europe PMC metadata preserves complete
   returned personal/collective authors. Wider clinical semantics and bibliography
-  across other providers remain pending; these fixes need a delivery checkpoint.
+  across other providers remain pending; later integrated journeys retain their
+  own source and acceptance receipts.
 
 ## Portable exploration storage and historical reader scope (#148, 2026-10-22)
 

@@ -18,6 +18,14 @@ candidate on a scientist's behalf. The
 [continuation plan](../CONTINUATION_PLAN_20261104.md#scientific-review-and-impact)
 requires actual review before deliberate default adoption.
 
+Engineering status, received on 2026-11-05: opt-in measurement correspondence @2
+and copy-aware target scope @2 are implemented and technically qualified in
+`c5b8af1`; see the
+[exact-source checkpoint](../evidence/bioactivity_target_scope_checkpoint_20261105.json).
+The six cases below retain their original inputs and policy comparison. Passing
+software gates does not supply the deliberately deferred scientist response or
+authorize adopting either policy as the default.
+
 ## Question and retained inputs
 
 Can a researcher interpret these retained records as direct activity on the focal
@@ -64,12 +72,14 @@ title, an accession match, a scalar or a database name.
 
 ## Consequential finding: direct-only selection needs correction
 
-Cases 2 and 6 reproduce [#188](https://github.com/uibcdf/sabueso/issues/188).
-With `include_indirect=False`, original H records are excluded while their declared
-copies bypass that exclusion through the PubChem mapping's D value. Grouping policy
-changes alone do not correct which records enter the answer. A conservative
-versioned target-scope policy is needed before adopting the candidate/default or
-building a rich summary on this output.
+Cases 2 and 6 reproduce the original/default target-scope limitation in
+[#188](https://github.com/uibcdf/sabueso/issues/188). With `include_indirect=False`,
+original H records are excluded while their declared copies bypass that exclusion
+through the PubChem mapping's D value. Grouping policy changes alone do not
+correct which records enter the answer. The technically qualified opt-in
+target-scope @2 now requires the resolved original's scope and exposes unresolved
+or disagreeing context; original @1/default behavior remains reproducible.
+Scientific/default adoption and acceptance of rich summaries remain pending.
 
 Case 2's original states Ki = 15000 nM, while its copy states 15 µM without the
 relation. Case 6's original states Ki > 1000000 nM and records rabbit assay context;
@@ -117,8 +127,11 @@ scientific review and uncoached researcher usability acceptance are separate.
 ## Delivery boundary
 
 Default adoption remains pending. Existing rules, source data, Card pins and
-stored answers are retained. The #188 correction needs its own independent
-positive/conflicting/unresolved cases, public-input impact and exact-source gates.
+stored answers are retained. The opt-in #188 correction has its own
+positive/conflicting/unresolved cases, public-input impact and exact-source
+technical receiving at `c5b8af1`. These establish retained selection consistency;
+they do not establish experimental target identity or independent scientific
+acceptance. The reviewer response above remains required.
 The activity explorer, economical agent access and original saved scientific
 activity reading remain B4 work; this casebook does not implement those panels
 or establish the required 0.15.0 human wow acceptance.

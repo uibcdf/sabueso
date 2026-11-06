@@ -4,7 +4,10 @@ This page owns long-term objectives, their dependency structure and the integrat
 of foundational and pilot-driven work. [CHECKPOINT](CHECKPOINT.md) owns current
 source/qualification; the [continuation plan](CONTINUATION_PLAN_20261104.md#execution-order)
 owns the active B0–B8 schedule. New contributors start with [ONBOARDING](ONBOARDING.md).
-The [workstation handoff](WORKSTATION_HANDOFF_20261106.md) owns the current transfer.
+The [workstation handoff](WORKSTATION_HANDOFF_20261106.md) preserves the transfer
+procedure and source-machine facts; the
+[destination action plan](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions)
+owns the immediate received-workspace sequence.
 
 ## How the two routes are integrated
 
@@ -39,18 +42,22 @@ scientific/human/agent journeys.
 
 ### Immediate resumption sequence
 
-First verify the [handoff](WORKSTATION_HANDOFF_20261106.md) and the
-[committed chemical checkpoint](evidence/chemical_saved_checkpoint_20261106.json),
-then complete destination environment and exact-final-source hosted receiving.
-The source machine passed 705 selected local cases and public whole-session
-controls; broader scientific/human acceptance remains open. Follow the plan without
-restarting completed correctness work or claiming its deferred scientific review.
+Destination restoration, environment/import checks and the
+[corrected complete local checkpoint](evidence/destination_checkpoint_20261106.json)
+are complete: 9,276 distinct cases pass. Follow the
+[current destination actions](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions)
+to finish corrected-source hosted qualification before expanding rich panels. The original
+[chemical checkpoint](evidence/chemical_saved_checkpoint_20261106.json) keeps its
+source-machine scope; broader scientific/human acceptance remains open. The
+[workstation profile](TESTS.md#current-workstation-profile) owns measured execution
+budgets. Do not restart completed correctness work or claim its deferred
+scientific review.
 
 | Route | Present obligation |
 | --- | --- |
 | B0/B1 | Preserve qualified earlier preview/conservative activity corrections and their source receipts; scientific/consumer acceptance remains separate |
 | B2 | Obtain the explicitly deferred scientist review of opt-in measurement/copy-aware scope before any default adoption; original defaults/history stay fixed |
-| B3 | Complete remaining structural journeys, bounded physical-scope/modeling disposition and independent receiving/acceptance |
+| B3 | The accepted bounded positive/uncertain MolSysMT integration passes all 28 destination cases; complete remaining structural journeys and independent scientific/researcher/workload acceptance |
 | B4–B6 | Finish the entire required activity/literature, molecule/clinical/disease, variant/isoform/comparative/association profile inventory |
 | B7 | Demonstrate complete researcher orientation, useful questions, understandable depth, continuous navigation, scoped decision assistance and reproducible work; accept scientist/agent/workload/private-consumer routes independently |
 | B8 | Consolidate only after those obligations and explicit maintainer resumption; never interpret migration or a partial test pass as release authority |

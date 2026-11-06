@@ -15,8 +15,17 @@ supersedes: []
 The [exact structure/component route](card_assembly_component_navigation.md)
 now links retained declarations, assembly questions, separate component positions
 and original records/sources. Saved format @8 binds the exact original click;
-older saved routes retain their own policies. This advances structural navigation,
-with physical reconciliation and broad researcher/workload acceptance still open.
+older saved routes retain their own policies. The accepted bounded MolSysMT
+integration now passes its destination technical gate; the remaining structural
+routes and independent scientific/researcher/workload acceptance stay open.
+
+The [destination checkpoint](../evidence/destination_checkpoint_20261106.json)
+receives all **28 structural journey cases** with MolSysMT available, no skips,
+warnings or owned swap: 83.81 s and 417,316,864 bytes peak owned-tree RSS. The finite
+revision-matched 1TCD identity-operation route retains 3,983 atoms, all 276 C-alpha
+A/B pairs under the inclusive 1 nm criterion, uncertain/incompatible refusals and
+unchanged original knowledge/agent/saved reading. This local result does not
+establish general physical-copy reconciliation, independent acceptance or B3 closure.
 
 Activity foundations now use conservative class @4 consistently in current direct
 activity/ligand answers, explanations and tables, with mapping @15 and explicit
@@ -37,8 +46,10 @@ explicitly deferred; activity panel completion and wow acceptance remain open.
 
 B3's [source-supported acceptance matrix](structural_journey_acceptance_20261104.md)
 now checks four original public journeys and six synthetic scope counterexamples.
-Full physical reconciliation remains an explicit owner decision with a concrete
-scientific/modeling task, not a silently removed prerequisite. The current
+The maintainer's [2026-11-06 scope decision](structural_journey_acceptance_20261104.md#accepted-assembly-scope--2026-11-06)
+requires finite positive/uncertain MolSysMT interoperability receiving before
+B3/0.15.0. General physical-copy deduplication/reconciliation is separately scoped,
+not an implicit release requirement. The current
 [regional orientation](card_region_orientation.md) separates original spans from
 coordinate status; the [versioned filter correction #191](../pending_bugs/retained_display_filter.md)
 now selects retained cells without changing scientific uncertainty, with genuine
@@ -60,6 +71,16 @@ candidate selection, staging, publication and release consolidation remain pause
 No human usability, full implementation or release qualification is claimed by
 this decision. #148 owns local exploration delivery; #112 owns release coordination.
 
+On 2026-11-06 the maintainer resolves B3's modeling scope as the bounded integrated
+MolSysMT test described in the
+[decision record](../DECISIONS.md#2026-11-06--require-bounded-molsysmt-interoperability-for-b3).
+The existing revision-matched public TcTIM/1TCD route is its positive control;
+legacy missing-revision and foreign/ambiguous coordinate contexts supply the
+uncertain/refusal cases. Its 28-case destination technical receiving now passes.
+The remaining structural routes, exact-source hosted/installed qualification and
+independent scientific/researcher/workload acceptance are still required. Neither
+the scope decision nor this technical gate accepts B3 or resumes B8.
+
 ## Broad profile delivery inventory
 
 Each row needs a scientific presentation and supported navigation, not merely a
@@ -80,9 +101,9 @@ human/agent requests, input scope and navigation. Researcher acceptance remains 
 | --- | --- | --- |
 | Protein: function | Initial fields/question delivered | Finish broad-profile integration and researcher review of original function/organism/sequence scope |
 | Protein: sequence and annotated regions | Original sequence/feature source panel, individual annotations with exact item support, native scope/modifiers/revision retention (#160), complete native feature identity before normalization (#162), and explicit annotation-to-region structural questions with original input links and saved reading delivered | Complete broader sequence/structure transitions, compound/other-provider scope and derived sequence context with explicit numbering; preserve historical unknowns |
-| Protein: experimental structures | Initial adapter, selection, saved reading and readable original support/source orientation delivered; original subunit/assembly/interface source pane adds individual assembly detail; exact experimental/literal structure-to-ligand/assembly/chain/numbering destinations preserve original source scope; #168 exact explanation scope and #169 declaration admission qualified; live assembly-generation rows, detail, original context and typed human/agent selection delivered | Original assembly-result saved reading now preserves exact requests/navigation in @5; exact structure-to-assembly questions and original @6 navigation are delivered. Original coordinate/reference admission (#170) and fixed original source-selection binding (#172) have separate qualified receipts; focused regional chain reading now presents original gaps and exact numbering routes. Complete #173's generation/operation-bound native assembly reconciliation, broader cross-topic transitions and scientist acceptance |
+| Protein: experimental structures | Initial adapter, selection, saved reading and readable original support/source orientation delivered; original subunit/assembly/interface source pane adds individual assembly detail; exact experimental/literal structure-to-ligand/assembly/chain/numbering destinations preserve original source scope; #168 exact explanation scope and #169 declaration admission qualified; live assembly-generation rows, detail, original context and typed human/agent selection delivered; #173's bounded positive/uncertain MolSysMT integration passes all 28 destination cases | Original assembly-result saved reading now preserves exact requests/navigation in @5; exact structure-to-assembly questions and original @6 navigation are delivered. Original coordinate/reference admission (#170) and fixed original source-selection binding (#172) have separate qualified receipts; focused regional chain reading now presents original gaps and exact numbering routes. Complete broader cross-topic transitions, exact-source hosted/installed qualification and independent scientist/researcher acceptance while preserving the finite integration's scope |
 | Protein: predicted models | API whole/fragment and range-alias questions; genuine native metadata Card intake, original sequence/CRC64 reference finding and [native interval question](card_native_model_navigation.md); current selection guards, human/compact-agent/source/back parity and independent saved formats through @12 | Complete exact-source receiving, independent scientific/researcher and representative workload acceptance; preserve historical unknowns, missing dates and explicit absence of atomic/experimental equivalence |
-| Protein: sites and molecular contacts | Source functional-site/contact declarations, source-bound canonical overlap with explicit uncomputed scope (#163), a readable comparison question with original source/annotation/contact and separate instance/assembly context links, original instance selection/saved reading, exact instance-to-parent declaration navigation with frozen historical compatibility, RCSB contact-rule/input binding with conservative native identity/axis scope and distinct merged derivation contexts (#156) delivered | Compact exact agent selection now shares comparison results/items and mandatory scope/support. Original saved comparison verification and exact agent requests now delivered under @3; preserve historical unknown basis and complete assembly-aware reconciliation, region/structure transitions and researcher acceptance |
+| Protein: sites and molecular contacts | Source functional-site/contact declarations, source-bound canonical overlap with explicit uncomputed scope (#163), a readable comparison question with original source/annotation/contact and separate instance/assembly context links, original instance selection/saved reading, exact instance-to-parent declaration navigation with frozen historical compatibility, RCSB contact-rule/input binding with conservative native identity/axis scope and distinct merged derivation contexts (#156) delivered; bounded positive/uncertain MolSysMT integration received locally | Compact exact agent selection now shares comparison results/items and mandatory scope/support. Original saved comparison verification and exact agent requests now delivered under @3; preserve historical unknown basis and the finite integration's limits, complete source-qualified assembly/contact context, region/structure transitions and independent researcher acceptance |
 | Protein: variants and isoform context | Existing tissue/variant/isoform readers; no rich explorer panel | Original genomic/transcript/isoform context, per-tissue unknowns, named rules and scoped support |
 | Protein: comparative context | Existing comparison readers; no rich explorer panel | Explicit supplied-Card comparison, relationship basis and maps where required; no identity merge by similarity |
 | Protein: molecules and measured activities | Direct activity/ligand views, explanations and tables consistently select conservative class @4; explicit original @3 and old packet reading retained. Measurement @2 is opt-in; original @1 stays default and explicit in packets. No rich explorer panel | Scientific/default acceptance of correspondence and molecule/group/measurement/assay/document drill-down with original target assignment, units, qualifiers and comparison limits |
@@ -140,8 +161,11 @@ accompany each block instead of waiting until the final walkthrough.
    from ligand-neighbor references and retaining missing/ambiguous labels.
    Compact occurrence plans and deliberate preflighted expansion retain declared
    component/operation combinations and original contexts without physical identity
-   inference. Explicit `@1`–`@3` preserve the earlier interpretations. Full component/physical-instance
-   reconciliation remains open. The [shared live assembly adapter](card_assembly_exploration.md)
+   inference. Explicit `@1`–`@3` preserve the earlier interpretations. Source
+   component/operation scope stays explicit; the accepted bounded MolSysMT
+   integration now passes its 28 positive/uncertain destination cases. Remaining
+   structural routes and independent acceptance are still required before B3 closes.
+   The [shared live assembly adapter](card_assembly_exploration.md)
    now supplies readable rows/detail, exact original context/source navigation and
    compact typed agent selection from one captured native @4 result per request.
    Factored counts stay distinct from unknown scalars. The
@@ -150,8 +174,9 @@ accompany each block instead of waiting until the final walkthrough.
    admission and unchanged older scientific predicates. The
    [exact structure-to-assembly question](card_structure_assembly_navigation.md)
    now connects inventory/relationship/qualifier items lazily, with original @6
-   saved navigation and unchanged earlier policies. Full reconciliation remains
-   [#173](https://github.com/uibcdf/sabueso/issues/173) work;
+   saved navigation and unchanged earlier policies. The finite
+   [#173 integration gate](structural_journey_acceptance_20261104.md#accepted-assembly-scope--2026-11-06)
+   is received locally within its declared scope;
    composition and equal local labels cannot substitute for that contract.
    The [nonpolymer source continuation](rcsb_nonpolymer_inputs.md) now retains
    native entity/instance identifiers and separate author labels under a dedicated
@@ -161,8 +186,9 @@ accompany each block instead of waiting until the final walkthrough.
    [independent original reader](card_saved_assembly.md) supplies explicit @5
    human/agent exploration and @7 saving over a genuine pre-reader producer.
    Default @4 and older interpretations stay unchanged; complete exact-source
-   receiving before qualification or default adoption. Full physical
-   reconciliation remains pending.
+   hosted/installed receiving before broader qualification or default adoption.
+   The bounded positive/uncertain MolSysMT gate passes locally; remaining
+   source-supported structural transitions and independent acceptance remain pending.
 3. Complete activity/assay/document and shared literature journeys, then molecule
    target context and clinical/classification views with explicit identity joins.
 4. Complete variants/isoforms/comparisons and biological/disease associations with

@@ -5,6 +5,14 @@ Current working-state checkpoint: **2026-11-06**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+Destination restoration and complete local offline receiving are complete. The
+[destination review](evidence/destination_review_20261106.json) records the new
+workstation, reproduced CI failures and parallel calibration; the subsequent
+[corrected checkpoint](evidence/destination_checkpoint_20261106.json) records
+their repair and 9,276 distinct passing local cases. Continue from the
+[current action plan](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions),
+not the original transfer checklist.
+
 ## Published and development state
 
 | Scope | Current state and evidence |
@@ -13,11 +21,11 @@ This page owns current state; dated receipt histories are linked below.
 | Published schema | **0.3.13**; published versions, shapes and frozen Cards remain immutable |
 | Development schema | **0.3.14**, unpublished, 1,985 recorded paths; see [SCHEMA](SCHEMA.md), migrations and the shape gate |
 | Packet mapping | Current development default **`packet_aspects@16`**, as declared in `sabueso/core/packets.py`; original mappings retain their own meanings. Packet mapping, Card schema and exploration file format are separate versions |
-| Code checkpoint | `0f197e56b95f5f361cb16778457f652832d05f28` (`0f197e5`) commits the locally validated runtime/tests; the documentation closeout follows separately. Read final HEAD/SDK/clean status from the external closeout receipt rather than a self-referencing in-tree SHA |
-| Producer labels | Original clean SDK `0.14.0+193.g03bdb2c` controls stay fixed. Refresh/verify the final committed checkout SDK inside/outside and record it in `recovered_work/clean_checkpoint_20261106/final-closeout.json` |
+| Code checkpoint | The corrected destination candidate passes the complete public and composed local-original offline scopes; its [receipt](evidence/destination_checkpoint_20261106.json) binds exact working-tree source/test hashes against transferred parent `0e4d7d4a80e3a32437acea25204bef80b185f981`. Exact corrected-source hosted qualification remains pending. `0f197e5` retains the earlier chemical checkpoint |
+| Producer labels | The full local checkpoint ran with imported/distribution/generated label `0.14.0+197.g0e4d7d4` and changed source bound separately by hashes; that label is not a clean producer claim for the correction. Stale source-root egg-info remains preserved outside the import path. Original SDK192/SDK193 controls retain their original labels |
 | Saved reading checkpoint | Chemical semantic @15 and sharing @16 are committed with 705 selected local cases plus independent whole-session receiving; exact-final-source hosted, artifact, scientist and researcher acceptance remain separate |
-| Machine migration | Authorized upstream publication uses `main`; the private ZIP carries necessary non-Git inputs/evidence and verified restoration instructions. Follow the [private package route](WORKSTATION_HANDOFF_20261106.md#private-migration-package) and external `recovered_work/migration_20261106/transfer-state.json` for actual remote/archive status |
-| Installed codec qualification | Run `42269421773` exposed missing optional `backports.zstd` provisioning in older-Python public-Ackredit lanes. Source/staged/consumer qualification now shares the pinned backend route; the final corrected-head hosted outcome is recorded externally. Native scientific rules and transport assertions are unchanged |
+| Machine migration | All 10,654 declared payload files were restored and independently hash-verified, including 37 protected originals. Both ZIPs and auxiliary staging were removed at the maintainer's request. Retained manifests/receipts remain local; the active released receptor checkout is now `../pytest-receptor-1.2.0` |
+| Installed codec qualification | The correction in `0e4d7d4` passes its inspected codec-provisioning/installed steps. Full CI still has eight failed Ubuntu/Windows jobs and four queued macOS jobs at review time; governance passed. The original failed run `42269421773` remains failed history |
 | Release target | **0.15.0**, the full agreed exploration design and validated human experience; [consolidation](pending_proposals/release_consolidation_0150.md) remains paused. No release/tag/freeze/staging is authorized |
 
 ## Latest implementation and qualification
@@ -54,25 +62,58 @@ preserve the original stopped/failing and narrower receiving scopes. Do not rewr
 those observations as success. Independent scientist/researcher/consumer and
 exact-final-source hosted qualification remain open.
 
+<a id="destination-receiving-and-current-regressions"></a>
+
+## Destination receiving and corrected regressions
+
+The final destination gate passes **95 chemical cases plus two outer copied
+consumers**. Their nested 38/27-case runs and an initial repeated 95-case run are
+not additional distinct cases. Pip closure, original fixture delivery (81 public
+plus 37 protected), registry, schema, governance and C/Rust toolchain checks pass.
+Full shared-suite receiving remains incomplete for missing/noninstalled siblings;
+this does not invalidate the declared Sabueso scope or certify the whole suite.
+
+The review reproduced **eight failures** locally in 1.98 s: seven older no-row
+filter expectations contradicted the explicit current #191 refusal contract, and
+one experimental-layout refusal reached display validation before reporting its
+unsupported format. The correction retains explicit no-row refusal and adds
+logical-format admission after wrapper decoding/resource checks, before display
+inspection. The old eight cases and five new malformed/unknown-format controls
+pass. Frozen verifiers, scientific rules, original source inputs and schema stay
+unchanged. The [review receipt](evidence/destination_review_20261106.json)
+preserves the failures; the
+[new checkpoint receipt](evidence/destination_checkpoint_20261106.json) owns the
+subsequent result.
+
+The complete public scope has **7,723 passed and 10 expected local-input skips**.
+The local-original increment has **1,553 passed**, including those ten cases;
+exact node accounting establishes **9,276 distinct passed** for the composed
+local scope. This is not two independent full-suite executions. All 26 online
+cases remain deselected, and nested copied-consumer cases are not added again.
+The public parallel phase reports 13 warnings from intentional acquisition
+failure/truncation controls; the other phases report none. All phases stay within
+their declared resource limits with zero owned swap. B3's actual MolSysMT journey
+passes all 28 cases, including positive, uncertain and incompatible contexts;
+independent scientist/researcher acceptance remains open.
+
+The workstation exposes 20 physical cores and 60.516 GiB RAM, without an observed
+cgroup CPU/RAM quota. Eight-worker calibration passes the same 95 chemical cases
+in 23.57 s at about 1.013 GiB peak owned-tree RSS and zero owned swap. The earlier
+serial observation is 60.42 s; this warm, nonrandomized comparison does not
+qualify every workload. Use the [current profiles](TESTS.md#current-workstation-profile).
+
 ## Resume here
 
-1. Clone published upstream `main`, compare its source with the external migration
-   transfer record and restore the [private package](WORKSTATION_HANDOFF_20261106.md#private-migration-package).
-   Full-checkout/verified-bundle history remains a fallback. Compare original
-   source/evidence hashes; older local-only closeout receipts retain their dates.
-2. Recreate the Python 3.14 development environment, apply Sabueso's test/docs
-   tooling and verify editable import/version paths inside and outside the checkout.
-   Original SDK193 controls remain fixed; do not inherit producer metadata/caches.
-3. Run the 95-case source gate as **destination environment receiving** and apply
-   additional historical/copied/adjacent checks according to TESTS and any changed
-   source/environment. The source machine's 705-case local receipt is complete for
-   its declared scope, not a destination or installed-artifact qualification.
-4. Recover the exact-final-source hosted CI/governance checkpoint through the
-   authorized unskipped push/manual route and gh-run-receptor. A clean local Git
-   checkpoint is not a green hosted matrix or release acceptance.
-5. Continue the [integrated B0–B8 plan](CONTINUATION_PLAN_20261104.md#execution-order)
-   and [broad panel inventory](pending_proposals/card_exploration_completion_0150.md).
-   Do not substitute the chemical slice for the accepted full objective.
+1. Preserve the corrected source/test hashes and complete local checkpoint above.
+   Keep the original failed review and historical scientific controls unchanged.
+2. Complete the corrected source's hosted CI/governance through the applicable
+   authorized route. Earlier passing receipts, local calibration and queued jobs
+   do not establish a green exact-source matrix or installed-artifact acceptance.
+3. Continue B3's remaining structural transitions and independent acceptance from
+   its passing finite MolSysMT gate, then implement the B4–B6
+   journeys in the [current plan](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions).
+   The broad inventory and scientist/researcher gates remain required; B2 review
+   is still explicitly deferred and B8 publication remains paused.
 
 ## Open work and boundaries
 
@@ -80,7 +121,7 @@ exact-final-source hosted qualification remain open.
 | --- | --- |
 | B0/B1 | Preview and conservative activity corrections are in technically qualified earlier checkpoints, including accumulated `c5b8af1`; independent scientific/consumer acceptance remains separate |
 | B2 | Opt-in measurement correspondence @2 and copy-aware target scope @2 exist; original @1 defaults remain. The maintainer's [six-case scientific review](pending_proposals/measurement_correspondence_review_20261104.md) is explicitly deferred; no default adoption follows from more tests |
-| B3 | Structural/source/region/model/component routes are advanced. Finish applicable exact-source and independent acceptance; [physical reconciliation scope and modeling handoff](pending_proposals/structural_journey_acceptance_20261104.md) still need owner/scientist disposition |
+| B3 | The accepted [bounded positive/uncertain MolSysMT gate](pending_proposals/structural_journey_acceptance_20261104.md#accepted-assembly-scope--2026-11-06) passes all 28 destination cases. Remaining structural transitions and independent scientific/researcher/workload acceptance stay open |
 | B4 | Rich activity/group/measurement/assay/document and shared literature journeys remain required, respecting B1/B2 semantics |
 | B5 | Continue from the local chemical checkpoint to independent acceptance and the remaining molecule, clinical and disease profiles, positive/uncertain public tasks and human/agent/saved parity |
 | B6 | Rich variant/isoform/tissue/comparative and association profiles remain required with exact supplied identity/axis/source context |
@@ -89,17 +130,22 @@ exact-final-source hosted qualification remain open.
 
 ## Inputs, environment and retained resources
 
-The [handoff manifest](evidence/workstation_handoff_20261106.json) records source,
-original controls, protected input hashes and participating checkout identities.
+The [historical handoff manifest](evidence/workstation_handoff_20261106.json)
+records the transferred source, original controls, protected input hashes and
+participating checkout identities. Its documentation hashes describe the original
+snapshot; later guide edits do not authorize regenerating that proof.
 The fixture inventory currently declares 81 repository inputs and 37 local-only
 originals; the originals are private transfer material under their existing terms.
 Keep private pilots and external-report drafts within their disclosure authority.
 
 All Sabueso/participating installed workspace packages use local editable sources
 in compatible Python 3.14 development. Installed-artifact qualification is separate.
-The handoff covers administrative clones, required tooling overlays, old absolute
-paths/native caches and the stale Git worktree registration; inspect before repair.
-Clean only owned disposable output after actual jobs terminate.
+Current destination/cleanup evidence is retained under
+`recovered_work/destination_receiving_20261106/`; this review's probes and logs are
+under `recovered_work/devguide_review_20261106/`. Corrected complete receiving is
+under `recovered_work/checkpoint_recovery_20261106/`, owned by #112/#148/#191
+with a retention note. Historical paths/session IDs are not current jobs. Clean only
+owned disposable output after actual jobs terminate.
 
 ## History and evidence
 

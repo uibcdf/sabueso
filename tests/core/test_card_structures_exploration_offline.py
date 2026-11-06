@@ -260,11 +260,31 @@ def test_options_are_normalized_distinct_and_exclusions_are_scientific(card):
     assert _pick(b).open().native_payload["coverage_class"] == "fragment_or_peptide"
 
 
-def test_empty_unsupported_and_missing_identity_have_distinct_outcomes():
-    anonymous = Card(meta={"entity_type": "protein"}).explore()
+def test_empty_unsupported_and_missing_identity_have_distinct_outcomes(monkeypatch):
+    import sabueso.core.structures as readers
+
+    anonymous_card = Card(meta={"entity_type": "protein"})
+    original = anonymous_card.to_dict()
+    anonymous = anonymous_card.explore()
     missing = anonymous.view("structures")
     assert missing.outcome["status"] == "missing_prerequisite"
-    assert missing.filter("label", equals="x").outcome == missing.outcome
+    assert not missing.items()
+    outcome, native, request = missing.outcome, missing.native_payload, missing.request
+    with monkeypatch.context() as unscoped:
+        unscoped.setattr(
+            readers,
+            "structure_inventory",
+            lambda *a, **k: pytest.fail("Unscoped reader"),
+        )
+        with pytest.raises(
+            ArgumentError, match="status=missing_prerequisite and no retained rows"
+        ):
+            missing.filter("label", equals="x")
+    assert missing.outcome == outcome
+    assert missing.native_payload == native
+    assert missing.request == request
+    assert not missing.items()
+    assert anonymous_card.to_dict() == original
     generic = Card().explore()
     unsupported = generic.view("structures")
     assert unsupported.outcome["status"] == "not_applicable"

@@ -1,5 +1,29 @@
 # Sabueso — Decision Log
 
+## 2026-11-06 — Require bounded MolSysMT interoperability for B3
+
+The maintainer selects a bounded integrated MolSysMT test with positive and
+uncertain public cases as a required B3/pre-0.15.0 interoperability gate. Use the
+existing revision-matched public TcTIM/1TCD journey: verify the exact source,
+entry revision, operation, component and atom/reference correspondence; receive
+3,983 atoms and all 276 C-alpha A/B contact pairs under the explicit inclusive
+1 nm criterion. Preserve the original Card and SourceAssertions, and keep human,
+compact-agent and saved knowledge reading continuous with the separate calculation.
+
+The legacy missing-revision context remains unknown and refuses geometry. Foreign
+or ambiguous coordinate contexts refuse before the optional geometry route.
+MolSysMT owns coordinate construction and contact calculation; Sabueso owns
+retained knowledge, admitted correspondence, support and explicit limits. General
+physical-copy deduplication/reconciliation is separately scoped work, not an
+implicit requirement for 0.15.0. This finite gate remains required alongside the
+remaining structural routes and scientific/researcher acceptance.
+
+At this decision, destination receiving of the 28-case structural journey has not
+yet run; record its actual result separately. Scope selection does not qualify
+the source, accept B3 or resume release consolidation. Owners: #173/#148/#112.
+See [the bounded acceptance contract](pending_proposals/structural_journey_acceptance_20261104.md#accepted-assembly-scope--2026-11-06)
+and [the broad inventory](pending_proposals/card_exploration_completion_0150.md).
+
 ## 2026-11-06 — Independently receive original chemical exploration
 
 The chemical saved-reading candidate uses explicit semantic format @15 and a

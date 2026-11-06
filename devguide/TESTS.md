@@ -1,10 +1,12 @@
 # Sabueso — Tests and Quality Gates
 
-For the current workstation move, the
+For the completed workstation move, the
 [handoff](WORKSTATION_HANDOFF_20261106.md) records source/control identities,
 previous versus corrected candidate results, destination environment checks and
-the exact pending receiving queue. Recreate editable routes and resource guards
-at the new paths; do not inherit a passing test claim from the source machine.
+the original receiving queue. Current destination outcomes and next actions are
+in [CHECKPOINT](CHECKPOINT.md); use the
+[current workstation profile](#current-workstation-profile) for new selections.
+Old source-machine receipts do not qualify later code or different workloads.
 
 Chemical classification uses `test_chemical_classification_offline.py`: public
 vincristine/PGA inputs, exact field/subject/identity/observation binding, competing
@@ -201,6 +203,105 @@ cases are in [the native test reference](sources/NATIVE_TEST_REFERENCE.md); date
 receipts remain [archived](archive/consolidation_2026-10-08/TESTS.md). A passing
 source test does not complete a scientific journey, consumer contract or release.
 
+## Current workstation profile
+
+The [2026-11-06 destination assessment](evidence/destination_review_20261106.json)
+observes 20 exposed physical cores and 60.516 GiB total RAM, about 50 GiB available
+at calibration, and no observed CPU/RAM cgroup quota. Keep the actual available
+RAM and other active work in the decision; total RAM alone is not a job budget.
+
+| Selection | Execution and resource scope | Receiving state |
+| --- | --- | --- |
+| Reviewed ordinary parallel batch | Eight workers, affinity to eight allowed CPUs, native/numerical threads one, nice 10; owned descendant-tree RSS ceiling 8 GiB, host available reserve 16 GiB, zero owned swap, 600 s and 4 GiB owned scratch | The 95 chemical native/live/saved cases pass in 23.57 s, about 1.013 GiB peak owned RSS and zero warnings/swap |
+| Complete public/local-original checkpoint | Use the explicit partition below: eight workers and eight CPUs for the parallel remainder, 8 GiB owned-tree RSS, 16 GiB host reserve, native threads one, zero owned swap, 4 GiB scratch and 1,800 s. Run each serial module separately with one CPU, 2 GiB owned-tree RSS, the same reserve/thread/swap/scratch limits and 600 s; the outer installed-receiving module allows 1,800 s | Retain complete collection accounting and actual outcomes in the checkpoint receipt; the selected calibration does not qualify the whole suite |
+| Large historical capsules and independent workload controls | Run separately and serially, retaining the original control's recorded budgets and public override assertions | Original source receipts stay fixed; receive new selections before claiming comparable resource results |
+| Wider concurrency | Consider 12, then 16 workers only after a representative broader batch measures acceptable RSS, host headroom, scratch and outcomes | Proposed, not measured by this review; no automatic `-n auto`/20-worker default |
+
+The same 95 cases previously took 60.42 s serially. The observations are warm and
+nonrandomized; the released receptor source is identical but its installed checkout
+path moved between runs. Report both time and process-tree RSS. This is not a
+general speed guarantee or scientific/human/installed-artifact acceptance.
+
+Use a destination-owned supervisor with the declared stop conditions and a fresh
+receipt name. Count xdist workers and nested copied-reader subprocesses together.
+Clear inherited `PYTEST_ADDOPTS`, cap native thread pools at one and inspect the
+command's exit plus complete receptor artifact. Failed/stopped runs remain evidence
+of that outcome; never compensate by silently omitting cases or changing product
+encoded/decoded/logical budgets.
+
+The bounded eight-worker selection actually received is:
+
+```bash
+python -m pytest -n 8 --dist=load --receptor=llm -m "not online" \
+  -W "error:unclosed database:ResourceWarning" \
+  -W error::pytest.PytestUnraisableExceptionWarning \
+  tests/core/test_card_saved_chemical_offline.py \
+  tests/core/test_card_chemical_exploration_offline.py \
+  tests/core/test_chemical_classification_offline.py
+```
+
+The command shows the selection; the resource supervisor remains required for
+the stated profile. No automatic heavy-test marker or xdist scheduling group is
+implemented. In particular, review the large original controls in
+`test_card_cell_support_offline.py`/`test_card_regional_reading_offline.py`, the
+saved-science/quaternary/site modules, whole-session experiments and copied-consumer
+subprocess gates before placing a complete suite into one parallel batch. Record
+the parallel/serial split and verify that its union covers the selected full scope.
+For independent timing comparisons, keep the workload isolated and preserve its
+original controls. The old migration 512 MiB/6 GiB and earlier 1 GiB/4 GiB guards
+remain historical scoped controls, not current universal worker/RAM defaults.
+
+### Current checkpoint partition
+
+The current full checkpoint separates these ten modules into individual serial
+gates. Their original capsules, module caches, nested readers or optional modeling
+consumer need explicit process-tree accounting:
+
+```text
+tests/core/test_card_cell_support_offline.py
+tests/core/test_card_regional_reading_offline.py
+tests/core/test_original_structure_navigation_offline.py
+tests/core/test_card_saved_component_navigation_offline.py
+tests/core/test_card_model_fragments_offline.py
+tests/core/test_card_saved_science_offline.py
+tests/core/test_card_saved_quaternary_offline.py
+tests/core/test_card_saved_sites_offline.py
+tests/core/test_structural_context_journey_offline.py
+tests/tools/test_installed_receiving_scope_offline.py
+```
+
+The parallel remainder uses normal discovery from the repository root, adding
+one `--ignore=PATH` for each listed module and `-n 8 --dist=load`. This preserves
+the root `conftest.py` exclusion of local-only modules before import. Do not
+replace discovery with an explicit list of every native module. No automatic
+heavy-test marker or scheduler is assumed.
+
+The 2 GiB serial-module ceiling is this checkpoint's regression envelope. It does
+not qualify the original standalone 512 MiB efficiency controls under a larger
+budget. Preserve and receive each such control at its recorded limits before
+claiming comparable efficiency. Native/numerical threads stay at one in every
+phase, and all nested subprocesses count against their parent's owned tree.
+
+The composed route executes the complete public scope using that parallel/serial
+partition, followed by the marked native-input increment:
+
+```bash
+python -m pytest --local-source-inputs -m "not online and local_source_inputs" \
+  --receptor=llm
+```
+
+Apply the declared supervisor, warning filters and a fresh owned scratch path to
+each actual command. Retain both full collections: public and
+`--local-source-inputs`, with the same source, environment and offline selection.
+Verify that parallel and serial public node-ID sets are disjoint and cover the
+full public set. Verify that the public set union the marked increment equals
+the full local-original collection. The ten marked native cases selected but
+skipped publicly overlap the increment; keep their public skips in that receipt
+and use the increment's actual outcomes in the composed local result. Never count
+them twice or add repeated public/nested consumer cases as distinct coverage.
+This is a composed local checkpoint, not two independent complete suite runs.
+Actual outcomes and any stopped phases retain their own scope in the receipt.
+
 ## Running the tests
 
 Use Python 3.14 in the existing editable `molsyssuite@uibcdf_3.14` environment.
@@ -215,16 +316,17 @@ an old generated `*.egg-info` there can shadow a correctly installed editable
 generated metadata before qualifying producer labels; do not rewrite old saved
 labels silently. The #148 scientific-capsule receipt records this concrete repair.
 
-Public/repository-input offline suite:
+Public/repository-input offline suite, stating the complete scope without imposing
+an unreviewed parallel schedule:
 
 ```bash
-python -m pytest -n 12 -m "not online" --receptor=llm
+python -m pytest -m "not online" --receptor=llm
 ```
 
 Full local suite including verified unshared native originals:
 
 ```bash
-python -m pytest -n 12 -m "not online" --receptor=llm --local-source-inputs
+python -m pytest -m "not online" --receptor=llm --local-source-inputs
 ```
 
 The default excludes 25 native-only modules before import and explicitly skips
@@ -238,6 +340,10 @@ For a smaller changed scope, append its individual test paths. A private pilot
 execution, an online test and a public fixture replay are different acceptance
 routes. Run online tests only for an authorized concrete source/use scope; a
 fixture does not establish current live availability.
+
+Choose workers and owned resource limits through the
+[current profile](#current-workstation-profile). A reviewed parallel subset may
+add `-n 8 --dist=load`; run its large historical/workload remainder separately.
 
 Pytest releases successful per-case `tmp_path` scratch after its last use through
 `tmp_path_retention_policy=failed`; failed-call scratch remains available for
@@ -305,6 +411,7 @@ these technical checks.
 | Private exploration state ownership | `test_cell_serialization_support_offline.py`, affected human/agent/original-reader/quantity/transport/persistence gates, genuine old large originals and copied installed receiving. Verify same-session exact byte/digest equivalence with public defensive reference serialization for four natures, nested public mutation isolation, unchanged quantities/literal lookalikes, default caller-owned private restore isolation and resealed support rejection. Preserve frozen predicates and all original checks; separate profiles from unprofiled control/candidate comparisons. No timing thresholds. New cases enter installed CI; use unskipped exact-source receiving (#167/#148/#112) |
 | Large historical exploration admission | The frozen-original cases in `test_card_cell_support_offline.py` and `test_card_regional_reading_offline.py` first assert visible default refusal, then pass explicit encoded/decoded budgets equal to the verified 89,849,893-byte original. Stream gzip copying/hash checks and retain the frozen scientific prohibitions; do not raise production defaults or regenerate the fixture to pass CI. Run these memory-heavy gates serially under an owned resource supervisor, separately if host headroom requires (#178/#167) |
 | Public exploration file transport | `test_exploration_transport_offline.py` plus all affected saved/human/access/agent/navigation, argument/diagnostic/quantity and dependency cases. Exact original JSON, genuine historical producers, real quantities/support, inert outside-checkout read, resealing, strict single-frame/checksum/expansion and visible positive/None limits, optional backend absence, no unintended imports, atomic no-clobber/replace failures and cleanup. All twelve CI routes additionally smoke the installed API outside the checkout; old Python uses pinned public Conda backports.zstd 1.8.0. New runtime needs its own unskipped exact-source full receptor qualification; #179 also checks inert assembly setup in a fresh module-import process and before the agent catalog test (#178/#167) |
+| Saved logical-format admission | `tests/tools/test_exploration_storage_experiment_offline.py`, affected saved literal/scientific/history/shared/filter/chemical, transport, argument and quantity gates, and copied consumers. Admit logical formats @1–@12 and @15 only after recognized wrappers and resource budgets are handled, before inspecting display records. Refuse unknown/experimental or malformed format declarations with the explicit unsupported-format diagnostic. Keep all frozen kernels, genuine original controls and accepted wrapper meanings unchanged; a recognized but malformed historical payload still reaches its original verifier (#148/#112) |
 | Zstandard backend qualification | `tests/tools/test_zstd_backend_offline.py` plus comparison/storage/dependency-preflight cases; actual native 3.14 or pinned backport 1.8.0 on 3.11–3.13, genuine native/backport frames, exact typed original bytes, truncation/checksum/trailing/concatenation/expansion refusal and strict report membership. CI emits twelve OS/Python reports (three additional macOS ARM64 receiving jobs); cross-read all fresh reports with source/tool/backend identity after full exact-head receptor checks. The 18-job CI retains thirteen pytest lanes. No package dependency or public transport adoption (#178) |
 | Compressor comparison methodology | `tests/tools/test_compressor_comparison_offline.py`, experimental storage and accounting cases; actual available-backend byte reconstruction, unavailable status without fallback/zero metrics, strict visible budgets, fresh-worker input binding, seeded complete repeats, duplicate settings, mixed hash/backend/RSS refusal and caller-output preservation. Codec timing excludes original scientific receiving; measure that separately with an inert reader. Linux peaks use VmHWM since exec; record unmeasured/platform-specific alternatives explicitly (#178) |
 | Experimental storage representation | `tests/tools/test_exploration_storage_experiment_offline.py` and `test_exploration_storage_observation_offline.py`; exact typed occurrence reconstruction, literal reference lookalikes, genuine capsule/inert original receiving, unsupported-format refusal, resealed part/scaffold changes, pre-expansion/input refusal, positive/None overrides and preserved caller outputs. Run the engineering CLI over original public readings with an owned memory supervisor; byte equality is separate from original scientific verification and timings are not budgets (#167) |
@@ -471,7 +578,7 @@ path selection does not replace `ruff format --check .`.
 ruff format --check .
 ruff check .
 python tools/fixture_delivery.py --check
-python -m pytest -n 12 -m "not online" --receptor=llm
+python -m pytest -m "not online" --receptor=llm
 python tools/card_shape.py
 python tools/source_registry.py --check
 python tools/validate_schema.py
@@ -517,8 +624,9 @@ The maintainer-approved direct-push policy also permits `[skip ci]` on intermedi
 tested code when no immediate remote gate is needed. Run the applicable local
 checks first; a full offline checkpoint can cover several short commits while
 its code, inputs, environment and scope remain applicable. Repeat affected tests
-when subsequent changes invalidate that result. Use twelve pytest-receptor workers
-for routine local pytest. Passing Linux editable tests does not qualify the other
+when subsequent changes invalidate that result. Select workers using the
+[current host profile](#current-workstation-profile), preserving the complete
+scope and separate historical/workload controls. Passing Linux editable tests does not qualify the other
 supported OS/minors or the installed public dependency route.
 
 Record every deferred code block's actual head SHA, changed/tested scope, missing

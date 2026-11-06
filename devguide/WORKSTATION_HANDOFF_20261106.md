@@ -1,6 +1,29 @@
 # Development workstation handoff — 2026-11-06
 
 Owner: Sabueso #112/#148. This is the current migration/resumption entry point.
+
+**Destination update, 2026-11-06:** restoration, editable receiving and the
+95-case/two-consumer destination scope are complete. Independent verification
+matched all 10,654 original payload files. The maintainer subsequently requested
+removal of both ZIPs and auxiliary staging; retained originals and manifests remain
+local. The released receptor checkout was moved to `../pytest-receptor-1.2.0`
+and its editable installation reverified. Subsequent corrected complete receiving
+passes [9,276 distinct local cases](evidence/destination_checkpoint_20261106.json),
+including the accepted 28-case finite MolSysMT gate. Corrected-source hosted and
+independent scientific/researcher acceptance remain separate. Continue from
+[CHECKPOINT](CHECKPOINT.md) and the
+[current action plan](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions).
+
+The package paths, bootstrap commands and resource guards below preserve the
+original transfer route and its dated evidence. They do not require repeating
+completed work or deleting retained originals. The original manifest hashes the
+transferred guide snapshot; later maintained guide changes must not be made to
+look original by regenerating that manifest. Recover the recorded source when
+reproducing its documentation checks. New resource selections follow the
+[destination assessment](TESTS.md#current-workstation-profile), not an inherited
+universal one-CPU ceiling. See the
+[review receipt](evidence/destination_review_20261106.json) for current scope.
+
 For a conceptual introduction first read [ONBOARDING](ONBOARDING.md); this handoff
 then preserves the existing workspace rather than replacing that introduction.
 Read it before the older checkpoint chronology, then follow the
@@ -367,7 +390,7 @@ The saved chemical block is a prerequisite, not the whole 0.15.0 objective:
 | Block | Remaining obligation |
 | --- | --- |
 | B2 | The maintainer will perform scientific measurement-correspondence review and explicitly left it pending. Keep opt-in policy and defaults separate; additional tests do not authorize default adoption |
-| B3 | Finish bounded structural journeys, exact-source qualification and explicit owner/scientist disposition of physical reconciliation, modeling boundaries and remaining source uncertainty |
+| B3 | Finish remaining structural journeys and exact-source hosted qualification; the later accepted bounded positive/uncertain MolSysMT gate passes all 28 destination cases, while scientific/researcher/workload acceptance remains separate |
 | B4 | Complete activity/assay/document and shared literature journeys with source-qualified identity and scientific context, respecting B1/B2 prerequisites |
 | B5 | Finish molecule properties/targets/clinical context and disease terminology/hierarchy/associations, alongside chemical classification; complete human/agent/saved parity and positive/uncertain public examples |
 | B6 | Deliver variant/isoform/tissue/comparative and retained-association profiles with explicit supplied context, axes, identity and support |

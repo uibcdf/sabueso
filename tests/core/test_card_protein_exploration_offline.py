@@ -154,6 +154,7 @@ def test_explicit_region_question_reuses_native_result_and_machine_selection(
 def test_missing_or_foreign_scope_never_runs_reader(card, monkeypatch, options, status):
     import sabueso.core.structures as readers
 
+    original = card.to_dict()
     monkeypatch.setattr(
         readers, "structure_inventory", lambda *a, **k: pytest.fail("Unscoped reader")
     )
@@ -162,7 +163,13 @@ def test_missing_or_foreign_scope_never_runs_reader(card, monkeypatch, options, 
     assert result.outcome["status"] == status
     assert not result.items()
     assert result.coverage["classification"] == "not_evaluated"
-    assert result.filter("label", equals="anything").outcome == result.outcome
+    outcome, native, request = result.outcome, result.native_payload, result.request
+    with pytest.raises(ArgumentError, match=f"status={status} and no retained rows"):
+        result.filter("label", equals="anything")
+    assert result.outcome == outcome
+    assert result.native_payload == native
+    assert result.request == request
+    assert not result.items()
     assert result.native_payload["options"] == result.request["options"]
     if options:
         assert result.result_ref != explorer.answer("region_coverage").result_ref
@@ -170,6 +177,7 @@ def test_missing_or_foreign_scope_never_runs_reader(card, monkeypatch, options, 
         explorer.questions().items()[1].open().outcome["status"]
         == "missing_prerequisite"
     )
+    assert card.to_dict() == original
 
 
 @pytest.mark.parametrize("mutation", ["identity", "sequence", "length", "conflict"])
