@@ -36,7 +36,10 @@ The chemical saved-reading block now has a committed, locally validated
 [checkpoint](evidence/chemical_saved_checkpoint_20261106.json). Destination
 restoration, environment/import checks and complete local offline receiving are
 complete. The [corrected destination checkpoint](evidence/destination_checkpoint_20261106.json)
-records 9,276 distinct passed cases and B3's 28-case finite MolSysMT gate. The
+records the `7ec81ce` baseline's 9,276 distinct passed cases and B3's 28-case
+finite MolSysMT gate. Its later Windows
+[test-fixture UTF-8 correction](evidence/windows_chemical_fixture_recovery_20261106.json)
+has scoped local receiving; exact follow-up hosted qualification remains open. The
 [destination review](evidence/destination_review_20261106.json)
 and [current action plan](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions)
 preserve the original failures and current follow-up. Corrected-source hosted

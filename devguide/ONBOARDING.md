@@ -161,9 +161,11 @@ The [B0–B8 table](CONTINUATION_PLAN_20261104.md#execution-order) and
 full target. The corrected chemical reader now has a [705-case local checkpoint](evidence/chemical_saved_checkpoint_20261106.json).
 That source-machine record remains unchanged. Destination environment/import
 receiving and the corrected complete local offline checkpoint now pass:
-[9,276 distinct cases](evidence/destination_checkpoint_20261106.json), including
+[9,276 distinct cases at the `7ec81ce` baseline](evidence/destination_checkpoint_20261106.json), including
 all 28 cases of the accepted finite MolSysMT journey. Nested copied-consumer and
-repeated cases are not additional distinct coverage. The
+repeated cases are not additional distinct coverage. The later
+[Windows test-helper correction](evidence/windows_chemical_fixture_recovery_20261106.json)
+has narrower receiving and leaves the library unchanged. The
 [current action plan](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions)
 continues with corrected-source hosted qualification, using the measured
 destination resources. Complete local passing gates do not establish

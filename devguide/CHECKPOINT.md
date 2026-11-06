@@ -5,11 +5,15 @@ Current working-state checkpoint: **2026-11-06**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
-Destination restoration and complete local offline receiving are complete. The
+Destination restoration and complete local offline baseline receiving are complete. The
 [destination review](evidence/destination_review_20261106.json) records the new
 workstation, reproduced CI failures and parallel calibration; the subsequent
 [corrected checkpoint](evidence/destination_checkpoint_20261106.json) records
-their repair and 9,276 distinct passing local cases. Continue from the
+their repair and 9,276 distinct passing local cases at the source blobs committed
+as `7ec81ce`. Its hosted receiving subsequently exposed a Windows-only test
+fixture encoding error; the
+[UTF-8 follow-up](evidence/windows_chemical_fixture_recovery_20261106.json)
+has targeted local receiving and still needs its own hosted result. Continue from the
 [current action plan](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions),
 not the original transfer checklist.
 
@@ -21,11 +25,11 @@ not the original transfer checklist.
 | Published schema | **0.3.13**; published versions, shapes and frozen Cards remain immutable |
 | Development schema | **0.3.14**, unpublished, 1,985 recorded paths; see [SCHEMA](SCHEMA.md), migrations and the shape gate |
 | Packet mapping | Current development default **`packet_aspects@16`**, as declared in `sabueso/core/packets.py`; original mappings retain their own meanings. Packet mapping, Card schema and exploration file format are separate versions |
-| Code checkpoint | The corrected destination candidate passes the complete public and composed local-original offline scopes; its [receipt](evidence/destination_checkpoint_20261106.json) binds exact working-tree source/test hashes against transferred parent `0e4d7d4a80e3a32437acea25204bef80b185f981`. Exact corrected-source hosted qualification remains pending. `0f197e5` retains the earlier chemical checkpoint |
+| Code checkpoint | `7ec81ce` commits the complete public/composed local baseline: 9,276 distinct passed, with [exact hashes](evidence/destination_checkpoint_20261106.json) against transferred parent `0e4d7d4a80e3a32437acea25204bef80b185f981`. The later UTF-8 correction changes three test-helper I/O calls only; runtime, schema and original controls remain identical. Its own hosted qualification remains pending |
 | Producer labels | The full local checkpoint ran with imported/distribution/generated label `0.14.0+197.g0e4d7d4` and changed source bound separately by hashes; that label is not a clean producer claim for the correction. Stale source-root egg-info remains preserved outside the import path. Original SDK192/SDK193 controls retain their original labels |
 | Saved reading checkpoint | Chemical semantic @15 and sharing @16 are committed with 705 selected local cases plus independent whole-session receiving; exact-final-source hosted, artifact, scientist and researcher acceptance remain separate |
 | Machine migration | All 10,654 declared payload files were restored and independently hash-verified, including 37 protected originals. Both ZIPs and auxiliary staging were removed at the maintainer's request. Retained manifests/receipts remain local; the active released receptor checkout is now `../pytest-receptor-1.2.0` |
-| Installed codec qualification | The correction in `0e4d7d4` passes its inspected codec-provisioning/installed steps. Full CI still has eight failed Ubuntu/Windows jobs and four queued macOS jobs at review time; governance passed. The original failed run `42269421773` remains failed history |
+| Hosted receiving | For `7ec81ce`, governance, Ruff, all four Linux source lanes and all four installed public-Ackredit lanes pass. The first captured Windows source lane fails four tests from one implicit-encoding helper defect; macOS jobs remain queued. The follow-up does not relabel this source as qualified. Original `0e4d7d4` and earlier failed runs retain their own receipts |
 | Release target | **0.15.0**, the full agreed exploration design and validated human experience; [consolidation](pending_proposals/release_consolidation_0150.md) remains paused. No release/tag/freeze/staging is authorized |
 
 ## Latest implementation and qualification
@@ -106,7 +110,7 @@ qualify every workload. Use the [current profiles](TESTS.md#current-workstation-
 
 1. Preserve the corrected source/test hashes and complete local checkpoint above.
    Keep the original failed review and historical scientific controls unchanged.
-2. Complete the corrected source's hosted CI/governance through the applicable
+2. Complete the UTF-8 test follow-up's hosted CI/governance through the applicable
    authorized route. Earlier passing receipts, local calibration and queued jobs
    do not establish a green exact-source matrix or installed-artifact acceptance.
 3. Continue B3's remaining structural transitions and independent acceptance from
@@ -114,6 +118,21 @@ qualify every workload. Use the [current profiles](TESTS.md#current-workstation-
    journeys in the [current plan](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions).
    The broad inventory and scientist/researcher gates remain required; B2 review
    is still explicitly deferred and B8 publication remains paused.
+
+### Windows test-fixture follow-up — 2026-11-06
+
+CI `42304034292` at `7ec81ce` reveals three chemical original-reader cases that
+write unescaped Unicode through the Windows CP1252 default; the copied-payload
+outer case consequently fails too. The runtime reader already uses UTF-8.
+Explicit UTF-8 on two test writes and one test read preserves the original
+capsule bytes, values and all scientific assertions. A bounded CP1252 pathlib
+reproduction fails the same three cases before the correction; all **27 owning
+cases pass** afterwards, and the **one isolated copied gate passes** with its
+nested 27 cases. Nested counts are not added to distinct totals. Ruff passes.
+The [follow-up receipt](evidence/windows_chemical_fixture_recovery_20261106.json)
+records this narrower scope, not a new complete-suite run or Windows OS emulation.
+The library source remains byte-identical to the 9,276-case baseline; a new
+exact-source Windows/hosted checkpoint is still required.
 
 ## Open work and boundaries
 

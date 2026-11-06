@@ -44,7 +44,9 @@ scientific/human/agent journeys.
 
 Destination restoration, environment/import checks and the
 [corrected complete local checkpoint](evidence/destination_checkpoint_20261106.json)
-are complete: 9,276 distinct cases pass. Follow the
+are complete at the `7ec81ce` baseline: 9,276 distinct cases pass. The subsequent
+[Windows test-helper correction](evidence/windows_chemical_fixture_recovery_20261106.json)
+has targeted receiving and needs its own exact-source hosted result. Follow the
 [current destination actions](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions)
 to finish corrected-source hosted qualification before expanding rich panels. The original
 [chemical checkpoint](evidence/chemical_saved_checkpoint_20261106.json) keeps its

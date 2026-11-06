@@ -1,0 +1,333 @@
+{
+ "format": "sabueso.windows-chemical-fixture-recovery@1",
+ "captured_at_utc": "2026-11-06T23:16:14.646150+00:00",
+ "owner": [
+  "uibcdf/sabueso#148",
+  "uibcdf/sabueso#112"
+ ],
+ "status": "targeted_local_recovery_passed_remote_corrected_sha_pending",
+ "parent_head": "7ec81ce32289e878d4eb69482783360287ed8783",
+ "source": {
+  "manifest": {
+   "path": "recovered_work/checkpoint_recovery_20261106/candidate1-source.json",
+   "bytes": 124305,
+   "sha256": "03d94eb81140a079d427a52515f6a1fdc937d34de6463d3f368fad83a857a968"
+  },
+  "verified_files": 1065,
+  "unchanged_files": 1064,
+  "unchanged_runtime_and_capsules": true,
+  "runtime_manifest_binding_sha256": "1044021f21383835ecc67be86c955b05c177e5f1950fda6a6a0db62a8ecf9cd1",
+  "test": {
+   "path": "tests/core/test_card_chemical_exploration_offline.py",
+   "before_sha256": "b09262f32bbd160fd776ec659b31862ee01b00d2a514ee4fe80436caff3757c1",
+   "after_sha256": "be290ac3c65a3108b9da925bc0ce157d23ab10f9de70a4151b3fff97bffba691",
+   "changes": [
+    {
+     "function": "test_chemical_save_capabilities_and_raw_export_remain_explicit",
+     "call": "read_text",
+     "encoding": "utf-8"
+    },
+    {
+     "function": "test_original_session_reads_in_fresh_process_without_live_engines",
+     "call": "write_text",
+     "encoding": "utf-8"
+    },
+    {
+     "function": "test_genuine_sdk192_saved_molecule_keeps_original_menu_and_science",
+     "call": "write_text",
+     "encoding": "utf-8"
+    }
+   ]
+  },
+  "constructor_sha256": "9cfaa33787b4be68aa0046de732dce65cb13fc4ee2cb2326b91010f9f184f036"
+ },
+ "observed_windows_failure": {
+  "run_id": 42304034292,
+  "job_id": 128188741701,
+  "job": "Offline tests (windows-latest, Python 3.11)",
+  "conclusion": "failure",
+  "counts": {
+   "failed": 4,
+   "passed": 7698,
+   "skipped": 31,
+   "deselected": 26,
+   "warnings": 9
+  },
+  "pytest_seconds": 2437.62,
+  "groups": {
+   "UnicodeEncodeError": 3,
+   "derived_copied_AssertionError": 1
+  },
+  "manifest": {
+   "path": "recovered_work/checkpoint_recovery_20261106/hosted/failed-windows311/manifest.json",
+   "bytes": 1789,
+   "sha256": "5e9e4132aad04c25ce29903a35f5692ab62552bb14bd72176fd6b292e146af3b"
+  },
+  "log": {
+   "path": "recovered_work/checkpoint_recovery_20261106/hosted/failed-windows311/job-128188741701.log",
+   "bytes": 76870,
+   "sha256": "c030781aa05dd56953d4302baf013f889dec1e68e52a261c720285849111fcaa"
+  }
+ },
+ "local_receiving": {
+  "before": {
+   "name": "encoding-before",
+   "counts": {
+    "executed": 3,
+    "passed": 0,
+    "failed": 3,
+    "warnings": 0
+   },
+   "selection_sha256": "bcb7591a445f80efa392e0fb323d095f24a17cd7e561201be675e5e0d9e81539",
+   "pytest_seconds": 0.9735319550090935,
+   "resources": {
+    "elapsed_s": 2.01,
+    "peak_owned_rss_bytes": 111824896,
+    "minimum_host_available_bytes": 43736301568,
+    "peak_owned_swap_bytes": 0,
+    "peak_owned_scratch_bytes": 23641
+   },
+   "command": {
+    "record": "recovered_work/checkpoint_recovery_20261106/encoding-before/cp1252-before-resource.json",
+    "field": "command",
+    "sha256": "080ae56b1eca5e233e29eba1e5d1ea0d20343b811b08e59eea5fa3a96e12fb00"
+   },
+   "artifact_integrity": {
+    "algorithm": "sha256",
+    "digest": "9550415b7d481a9687a21c60f3d33bb5d3df17fc73cadf08e107482a40ba0e85",
+    "records": 11
+   },
+   "files": {
+    "resource": {
+     "path": "recovered_work/checkpoint_recovery_20261106/encoding-before/cp1252-before-resource.json",
+     "bytes": 1700,
+     "sha256": "ba53ceb64690b0c527fc02292797628ed5bbcec4c5cd6c253969551d59819138"
+    },
+    "events": {
+     "path": "recovered_work/checkpoint_recovery_20261106/encoding-before/events.jsonl",
+     "bytes": 15269,
+     "sha256": "719e585ede4f9175e84502a79c7f7e3c6d7ecd7a10ee836d49b24d76518651c5"
+    },
+    "scope": {
+     "path": "recovered_work/checkpoint_recovery_20261106/encoding-before/scope-controller.json",
+     "bytes": 1442,
+     "sha256": "54bee20d1c8e86d884a887912244d188c04b9d933c1d5d7e1282f8ef152ab5cb"
+    },
+    "log": {
+     "path": "recovered_work/checkpoint_recovery_20261106/encoding-before/cp1252-before.log",
+     "bytes": 1106,
+     "sha256": "4d304881a099806a5d6d3dc69db911a112f9acadde55580e379c7cc4d1ac469a"
+    }
+   },
+   "failures": {
+    "type": "builtins.UnicodeEncodeError",
+    "count": 3,
+    "message_sha256_groups": {
+     "e2fd21b6728f91f4c48bff8da6c6a531e60e5fd66b200483cc3af0b67bc3387a": 2,
+     "1fb6ad3678e3c19cb51d8099c8733c18da368cf493586736f49bbbc5268f792f": 1
+    }
+   }
+  },
+  "after": {
+   "name": "encoding-after",
+   "counts": {
+    "executed": 27,
+    "passed": 27,
+    "failed": 0,
+    "warnings": 0
+   },
+   "selection_sha256": "970b9800e48b31737e912425d5742af06797bed6e8cebc5d1d8326aa7de9096a",
+   "pytest_seconds": 23.322578392995638,
+   "resources": {
+    "elapsed_s": 24.42,
+    "peak_owned_rss_bytes": 253992960,
+    "minimum_host_available_bytes": 44630831104,
+    "peak_owned_swap_bytes": 0,
+    "peak_owned_scratch_bytes": 26002971
+   },
+   "command": {
+    "record": "recovered_work/checkpoint_recovery_20261106/encoding-after/cp1252-after-resource.json",
+    "field": "command",
+    "sha256": "60cd18155a311104542119b07939a8f033830a3e3d7a6d918087066cf006119e"
+   },
+   "artifact_integrity": {
+    "algorithm": "sha256",
+    "digest": "6654ed6202b4ef3eed2de628d59a57253bd1029d275f46eb464b4e18ef6477eb",
+    "records": 82
+   },
+   "files": {
+    "resource": {
+     "path": "recovered_work/checkpoint_recovery_20261106/encoding-after/cp1252-after-resource.json",
+     "bytes": 1360,
+     "sha256": "637be9487780e7d0c9f735f24c11762e34dc1c6c9a1f6c46798e36d17b7b2ab5"
+    },
+    "events": {
+     "path": "recovered_work/checkpoint_recovery_20261106/encoding-after/events.jsonl",
+     "bytes": 33996,
+     "sha256": "c640adce01b8dcf5cb48246548099ee61dbc636c134bf6d465c2dfa739bcbc76"
+    },
+    "scope": {
+     "path": "recovered_work/checkpoint_recovery_20261106/encoding-after/scope-controller.json",
+     "bytes": 11105,
+     "sha256": "eae736e7b3f7e224c1cf20318a25ed35a396e9b9b0f462557758027fd7176009"
+    },
+    "log": {
+     "path": "recovered_work/checkpoint_recovery_20261106/encoding-after/cp1252-after.log",
+     "bytes": 59,
+     "sha256": "af2b5dff98a5b1a81bf4ef9a95a50850b57baa4bc9984b578179a35c3cd6edf1"
+    }
+   }
+  },
+  "copied_outer": {
+   "name": "encoding-copied",
+   "counts": {
+    "executed": 1,
+    "passed": 1,
+    "failed": 0,
+    "warnings": 0
+   },
+   "selection_sha256": "1383a3e96896e131f70683de053ac8fa4f76340c4a060045ad28a075a2fcf47e",
+   "pytest_seconds": 30.48338535700168,
+   "resources": {
+    "elapsed_s": 31.28,
+    "peak_owned_rss_bytes": 309055488,
+    "minimum_host_available_bytes": 44918390784,
+    "peak_owned_swap_bytes": 0,
+    "peak_owned_scratch_bytes": 26166482
+   },
+   "command": {
+    "record": "recovered_work/checkpoint_recovery_20261106/encoding-copied/copied-resource.json",
+    "field": "command",
+    "sha256": "c511593f5f786fd6cc7199b46cdaeff635a69d986918b708c2a744113bc77d26"
+   },
+   "artifact_integrity": {
+    "algorithm": "sha256",
+    "digest": "59ae665558361992b1e09c0237c3cf7857d6a5f93e7daa9d0bbea4f29c9f8d47",
+    "records": 4
+   },
+   "files": {
+    "resource": {
+     "path": "recovered_work/checkpoint_recovery_20261106/encoding-copied/copied-resource.json",
+     "bytes": 1401,
+     "sha256": "83c95612de6415f651ddcaa21ec95c5bab8c7dd07c478a75a847d13742633e70"
+    },
+    "events": {
+     "path": "recovered_work/checkpoint_recovery_20261106/encoding-copied/events.jsonl",
+     "bytes": 2549,
+     "sha256": "1298dcca40106dc68e988b6c53cfe6d2c0e5ab1d6cb691e6094689cdb58a6f8c"
+    },
+    "scope": {
+     "path": "recovered_work/checkpoint_recovery_20261106/encoding-copied/scope-controller.json",
+     "bytes": 627,
+     "sha256": "279805330d3f550e93978be45c8f193d8dcbdbd575b204e20342abc51066f934"
+    },
+    "log": {
+     "path": "recovered_work/checkpoint_recovery_20261106/encoding-copied/copied.log",
+     "bytes": 33,
+     "sha256": "fdd8ce3a9b16b4fdff60071387583b1b5e2879e8614380bbb6cd2af757dd7c7a"
+    }
+   }
+  },
+  "before_three_subset_of_after_27": true,
+  "copied_nested_27": "Asserted by the unchanged successful outer helper; overlap, not additional distinct cases or a separately retained child event stream.",
+  "envelope": {
+   "owned_rss_bytes": 2147483648,
+   "host_available_bytes": 17179869184,
+   "owned_swap_bytes": 0,
+   "cpu_affinity_count": 1,
+   "nice": 10,
+   "elapsed_s": 600,
+   "owned_scratch_bytes": 4294967296
+  },
+  "cp1252_plugin": {
+   "path": "recovered_work/checkpoint_recovery_20261106/windows_text_default.py",
+   "bytes": 652,
+   "sha256": "9867af779c2e09bfa0ceeb0970e29623dab2c63d5785bfaefa78175bb4ba2340"
+  }
+ },
+ "quality": [
+  {
+   "gate": "encoding-ruff-format",
+   "command": [
+    "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+    "-B",
+    "-m",
+    "ruff",
+    "format",
+    "--check",
+    "tests/core/test_card_chemical_exploration_offline.py"
+   ],
+   "exit_code": 0,
+   "seconds": 0.07,
+   "record": {
+    "path": "recovered_work/checkpoint_recovery_20261106/encoding-ruff-format.json",
+    "bytes": 583,
+    "sha256": "174e416f3359a77bb203acb82747daa454100bd2b25db286a28541e872d0c400"
+   },
+   "log": {
+    "path": "recovered_work/checkpoint_recovery_20261106/encoding-ruff-format.log",
+    "bytes": 25,
+    "sha256": "fd2299c9f1c6dc869070883e281051bfe93aacf66c1a3b0069f45b4aa410ca50"
+   }
+  },
+  {
+   "gate": "encoding-ruff-check",
+   "command": [
+    "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+    "-B",
+    "-m",
+    "ruff",
+    "check",
+    "tests/core/test_card_chemical_exploration_offline.py"
+   ],
+   "exit_code": 0,
+   "seconds": 0.07,
+   "record": {
+    "path": "recovered_work/checkpoint_recovery_20261106/encoding-ruff-check.json",
+    "bytes": 566,
+    "sha256": "c05dbe0762cab8f6b19750389aa2f9d3409afabdab1e6a9189097ee6e610f318"
+   },
+   "log": {
+    "path": "recovered_work/checkpoint_recovery_20261106/encoding-ruff-check.log",
+    "bytes": 19,
+    "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+   }
+  },
+  {
+   "gate": "encoding-diff-check",
+   "command": [
+    "git",
+    "diff",
+    "--check"
+   ],
+   "exit_code": 0,
+   "seconds": 0.01,
+   "record": {
+    "path": "recovered_work/checkpoint_recovery_20261106/encoding-diff-check.json",
+    "bytes": 417,
+    "sha256": "11a27cea1bee4c5247821b551b1b1ff45c3036342a9f29edceb8e2d05a9426de"
+   },
+   "log": {
+    "path": "recovered_work/checkpoint_recovery_20261106/encoding-diff-check.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+   }
+  }
+ ],
+ "historical_full_checkpoint": {
+  "receipt": {
+   "path": "devguide/evidence/destination_checkpoint_20261106.json",
+   "bytes": 79891,
+   "sha256": "39405df958f359424d763102c82baa1c404095273def9f4941cb9f3e31ad80f6"
+  },
+  "distinct_passed": 9276,
+  "scope": "Unchanged library binding preserves the earlier receipt as historical qualification of its source/test snapshot. This test-only follow-up is not a new full-suite execution."
+ },
+ "limits": [
+  "CP1252 plugin changes default pathlib text I/O only in the root pytest process; it does not emulate Windows OS or patch the copied child process.",
+  "Original public capsules and all runtime bytes match parent 7ec81ce and candidate1 source hashes; only three test I/O calls add explicit UTF-8.",
+  "Successful source Linux and installed-provider lanes at 7ec81ce cover that earlier snapshot, not this follow-up test diff.",
+  "Corrected exact-SHA hosted Windows receiving remains pending; no all-platform or full-CI success, new full-suite qualification, release, package or scientific acceptance is claimed.",
+  "Documentation validation follows receipt generation and is intentionally not included here. Commands are referenced by field and SHA-256 in retained ignored resource records; no raw protected inputs are published."
+ ]
+}

@@ -322,7 +322,9 @@ def test_chemical_save_capabilities_and_raw_export_remain_explicit(card, tmp_pat
         )
     explorer.access.export_card(tmp_path / "original-card.json")
     assert (
-        json.loads((tmp_path / "original-card.json").read_text())["sections"]
+        json.loads((tmp_path / "original-card.json").read_text(encoding="utf-8"))[
+            "sections"
+        ]
         == card.to_dict()["sections"]
     )
 
@@ -349,7 +351,10 @@ def test_original_session_reads_in_fresh_process_without_live_engines(
     originals, tmp_path
 ):
     path = tmp_path / "original.json"
-    path.write_text(canonical_json(originals["cases"]["pga"]["saved_original"]))
+    path.write_text(
+        canonical_json(originals["cases"]["pga"]["saved_original"]),
+        encoding="utf-8",
+    )
     script = """
 import socket, sys
 import sabueso
@@ -396,7 +401,7 @@ def test_genuine_sdk192_saved_molecule_keeps_original_menu_and_science(
     monkeypatch.setattr(adapter, "interpret", forbidden)
     original = originals["cases"][case]
     path = tmp_path / "original.json"
-    path.write_text(canonical_json(original["saved_original"]))
+    path.write_text(canonical_json(original["saved_original"]), encoding="utf-8")
     saved = read_exploration(path)
     assert "classification" not in saved.explorer.capabilities["question_keys"]
     # Original retained catalogues keep their original rows/text. A fresh saved
