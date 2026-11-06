@@ -1,6 +1,7 @@
 # Sabueso — Architecture
 
-What Sabueso is built of, after release 0.12.0 and the current development slices.
+What Sabueso is built of in release 0.14.0 and the explicitly labelled development
+slices.
 `DATA_FLOW.md` follows one resolution
 through these parts; `PUBLIC_API.md` lists the public surface.
 
@@ -137,6 +138,32 @@ do not implement project routing, EventLedger persistence or strict commit polic
   knowledge between entities. Examples: `has_structure`, `has_bioactivity`,
   `interacts_with`, `classified_in`, `has_interface_with`, `engages`.
 
+## Development exploration and saved reading
+
+The unpublished exploration layer connects stored Cards and native scientific
+views to human and agent reading. `Card.access()` creates a detached, validated
+capture of the Card and explicitly supplied related Cards. `Card.explore()` uses
+the same capture model for readable navigation; `explorer.access` exposes machine
+reading of that explorer's capture. Literal access reads retained content, while
+scientific adapters apply named rules to captured inputs. These operations do not
+fetch sources or change the caller's Cards. Topic coverage and qualification remain
+incomplete; [PUBLIC_API.md](PUBLIC_API.md) and [CHECKPOINT.md](CHECKPOINT.md) record
+their current scope.
+
+Saving a supported view or machine selection retains its original results,
+requests, support and navigation. `sabueso.read_exploration(...)` verifies and
+reads those records independently, without rebuilding Cards or calling current
+scientific engines. An unretained optional scientific request returns `not_saved`;
+a fresh interpretation requires an explicit new local exploration. See the
+[saved-reading contract](pending_proposals/card_saved_exploration.md).
+
+Card schema versions describe stored knowledge fields. Scientific `name@N` rules
+describe interpretations; saved semantic formats describe retained results and
+their original verification. A physical sharing representation or compression
+codec describes storage separately. Changing that representation does not select
+a new scientific rule or replace the original semantic checks; see the
+[shared-representation contract](pending_proposals/shared_view_state_persistence.md).
+
 ## Ops and tools
 
 - **Ops** are methods on Card and Deck with consistent semantics: compare, filter, sort,
@@ -154,9 +181,13 @@ do not implement project routing, EventLedger persistence or strict commit polic
 - **Knowledge, not project Evidence.** `SourceAssertion ≠ Evidence ≠ Provenance`. Nextia
   may cite Sabueso SourceAssertions as the basis of its own Evidence; Sabueso never
   creates Evidence.
-- **Asserted and derived knowledge are different.** Derived knowledge names its rule, and
-  is recomputed, not stored as an assertion. A ligand's role (inhibitor…) is a derived
-  class, never asserted (#25).
+- **Asserted and derived knowledge are different.** A source-stated mechanism or
+  chemical role remains knowledge with its original identity, context and support.
+  Derived concentration classes name their rule and are never stored as
+  SourceAssertions. A concentration band alone does not establish an inhibitor
+  role, efficacy or selectivity. Development `bioactivity_class@4` preserves
+  uncertainty within the permitted concentration interval; explicit `@3` retains
+  the original interpretation. See the [activity contract](pending_bugs/bioactivity_interpretation.md).
 - **Identity is never merged by similarity.** Two entries are one entity only when a
   source states it. Sequence similarity, a shared name or an equal residue number
   proves nothing; each is reported with its basis, for review.

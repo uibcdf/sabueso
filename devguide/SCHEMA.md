@@ -196,7 +196,9 @@ membership/ranking rules live in deck metadata. No card field, predicate, migrat
 step or schema version is added; published 0.3.12 remains frozen. Deck metadata and
 source-data values are not new card field paths. See `STORAGE_LAYOUT.md` for pins.
 
-Cards are **nested** to preserve hierarchy and order. Each card type (protein, peptide, small molecule) inherits from a shared base.
+Cards are **nested** to preserve hierarchy and order. Protein, small-molecule and
+disease cards share the same base; disease cards are anchored at MONDO. `peptide`
+remains a schema type without a peptide source or view yet.
 
 ## Field Path Contract (Approved)
 Canonical field paths use **dot‑separated notation**.

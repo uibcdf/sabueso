@@ -3,7 +3,7 @@ summary: Separate declared copies, possible measurement correspondence and exper
 issue: uibcdf/sabueso#186
 status: open
 opened: 2026-11-04
-verification: locally_checked_hosted_and_independent_acceptance_pending
+verification: source_qualified_independent_acceptance_pending
 area: [bioactivities, scientific-correctness, public-api]
 ---
 
@@ -26,7 +26,17 @@ in development; it changes no original @1 function, current default, source
 assertion, stored Card or original answer. Independent scientific/default and
 consumer acceptance remain pending.
 
-## First opt-in implementation
+Current technical receiving: accumulated source `c5b8af1` is
+[qualified](../evidence/bioactivity_target_scope_checkpoint_20261105.json), with
+CI 18/18, governance 1/1 and complete source/installed and codec receiving. This
+includes the opt-in correspondence and target-scope work alongside B1's activity
+changes. Earlier local receipts retain their own dates and scopes; they do not
+leave that accumulated source's hosted qualification pending. Independent
+scientific/default, consumer and researcher acceptance remain open. The
+maintainer-owned scientific review is still explicitly deferred; this technical
+checkpoint does not adopt a new default or close B2.
+
+## First opt-in implementation and original local receipt — 2026-11-04
 
 `measurement_rule="measurement_identity@2"` is available on `Card.bioactivities`,
 `explain_measurement`, `explain_bioactivity`, `ligands`, `explain_ligand` and
@@ -44,19 +54,21 @@ record's own class. Counts explicitly state that independence is not established
 
 New measurement explanation @2, activity explanation @3 and ligand explanation @4
 carry the opt-in interpretation and exact original support. Original selections
-retain their earlier explanation shapes/meanings. Current packet mappings @6–@15
-now explicitly select measurement @1; no new packet mapping or saved explorer is
-introduced by this implementation. Subsequent adoption requires its own versions
-and original-data receiving.
+retain their earlier explanation shapes/meanings. At this checkpoint, packet
+mappings @6–@15 explicitly selected measurement @1; no new packet mapping or saved
+explorer was introduced by this implementation. Subsequent adoption requires its
+own versions and original-data receiving.
 
-Selected receiving passes 99 cases across the new policy, public PubChem
+The original local receiving passed 99 cases across the new policy, public PubChem
 copy controls and original measurement tests; 360 affected integration cases,
 including both isolated copied scopes; and 218 shared explanation/original-reader
-cases. Warning-fatal Sphinx passes. These scopes overlap and are not summed as
+cases. Warning-fatal Sphinx passed. These scopes overlap and are not summed as
 unique tests. The [candidate receipt](../evidence/measurement_correspondence_candidate_20261104.json)
 retains resources, original-input hashes, failures/corrections and remaining
-acceptance. Exact-source hosted and independent scientific/researcher/default
-acceptance remain pending. This is locally checked implementation, not a released fix.
+acceptance at that checkpoint. Hosted receiving was pending for that initial
+local candidate; use the accumulated-source status above for current technical
+qualification. Independent scientific/researcher/default and consumer acceptance
+remain pending. No released fix is claimed.
 
 ### Same-input public comparison and integration findings
 
@@ -257,24 +269,31 @@ a stand-in or an older green CI run does not provide it.
 First qualify an opt-in candidate with explicit original @1. Then compare actual
 count/vote/class effects on frozen public inputs, obtain independent scientific
 review and record the default/consumer decision. New packet/example meanings need
-their own versions and genuine old controls. Current mapping @15 still uses
-original measurement @1; it must not inherit a later default silently. New saved
+their own versions and genuine old controls. Mappings @15 and current development
+@16 explicitly retain original measurement @1; neither may inherit a later
+default silently. New saved
 readers require original data predating their verification, with scientific/source
 calls forbidden while reading. Do not weaken frozen predicates.
 
-## Next implementation and acceptance steps
+## Remaining review and adoption steps
 
-1. Finish B1's exact-source receiving; retain its independent acceptance state.
-2. Turn the matrix into independently specified positive/uncertain/conflicting
-   controls and review precise selector/count/vote semantics. Implement a bounded
-   opt-in candidate without changing @1 or current defaults.
-3. Measure old/candidate answers on the same public inputs, including declared
-   copies, actual downstream consumers and warning/resource/installed gates.
-4. Obtain scientist feedback and explicitly adopt or revise the policy. Unknown
+1. Preserve the qualified B1/B2 `c5b8af1` checkpoint and original local receipts.
+   Later changed runtime requires its own receiving; do not reimplement the opt-in
+   candidate or repeat completed qualification as the next B2 task.
+2. Keep the six-case dossier, independent expected outcomes and same-input public
+   comparisons available for review of selector/count/vote semantics. Record new
+   findings and actual downstream effects separately from experimental validation.
+3. Obtain and record the maintainer-owned scientific review when it resumes; it
+   remains explicitly deferred. Preserve @1/defaults and original answers while
+   independent work in the continuation plan proceeds.
+4. After that review, explicitly adopt or revise the policy. Unknown
    primary methods block only their positive equivalence claim, not conservative
    uncertainty reporting or unrelated plan work.
-5. Complete coherent consumer/versioned-packet and B4 human/agent/saved adoption;
-   keep observed researcher acceptance separate from technical conformance.
+5. Qualify any subsequent consumer/versioned-packet and B4 human/agent/saved
+   adoption with original-data compatibility, actual consumer receiving and
+   applicable warning/resource/installed gates. Keep observed researcher acceptance
+   separate from technical conformance; B4 summaries are not accepted science
+   while their dependent scientific/default decisions remain open.
 
 Independent scientific acceptance, new external source access and 0.15.0
 consolidation remain unclaimed; the original inventory and later candidate

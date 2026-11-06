@@ -1,0 +1,112 @@
+{
+  "kind": "devguide_onboarding_consolidation",
+  "date_utc": "2026-11-06T17:03:19.700721+00:00",
+  "owner": "uibcdf/sabueso#112/#148",
+  "scope": "Documentation, navigation, migration integrity and an offline contributor walkthrough; not full scientific/installed/human acceptance or release qualification.",
+  "source_head": "03bdb2c005857ac14c86f586bf4807d78f4ea783",
+  "runtime_payload_unchanged": true,
+  "entry_pages": {
+    "README_lines": 106,
+    "CHECKPOINT_lines": 106,
+    "ROADMAP_lines": 180,
+    "onboarding": "devguide/ONBOARDING.md"
+  },
+  "preserved_entry_history": [
+    {
+      "path": "devguide/archive/README_before_onboarding_20261106.md",
+      "original_sha256": "b078859804d337f4796b58124dcd63cfbfe46df42a51a06d74eb71ed086a45c0",
+      "archived_sha256": "bba89555b8e58bd41812acdecc84dec37a8a750d679184c68ef2f2f235ef7ef1"
+    },
+    {
+      "path": "devguide/archive/CHECKPOINT_before_onboarding_20261106.md",
+      "original_sha256": "bf019c7fa13125d7327d3654b7dc40ffca2718bbdc397afe5e732ebc17251731",
+      "archived_sha256": "5e067d579eec47bd3e51bbf4d1402c8c7034cb9c0cf4cddd91be1d98461b8f87"
+    },
+    {
+      "path": "devguide/archive/ROADMAP_before_onboarding_20261106.md",
+      "original_sha256": "d5458a85ab07cd4b258f1c5df72629183badf4a76363d5026e8ce7aee48763da",
+      "archived_sha256": "6993b719aba78b9f1cb2c6096b382de92db63fa8fa95c254a8ca4d761dd5ad5b"
+    }
+  ],
+  "corrected_documentation_findings": [
+    "Chronology displaced onboarding and exposed multiple competing current/latest/next queues; concise entry pages now route context, exact current state, scheduling, inventory and history separately.",
+    "CHECKPOINT packet_aspects@13 was stale; current implementation and contract declare@16.",
+    "Architecture/glossary taught source-stated inhibitor roles as never asserted; corrected source knowledge versus derived concentration classes without changing science.",
+    "Disease/MONDO was missing from glossary/data-flow/schema overview; documentation now covers implemented natures and ambiguity without claiming peptide sources exist.",
+    "B2 and design proposals retained original implement/hosted-pending instructions after accumulated c5b8af1 qualification; dated milestones now remain history and deferred scientific/default review stays open.",
+    "Fixture delivery prose said76 repository inputs while inventory declares81; current counts and source control description corrected.",
+    "Migration bootstrap omitted Sabueso docs/test overlays and administrative clones; handoff now declares those prerequisites and source/import receiving boundaries.",
+    "Migration hashes omitted some dirty guide files and destination checker skipped docs/receipt hashes; complete changed-documentation scope is regenerated separately from unchanged source controls.",
+    "Stale source Git worktree registration and older sibling MolI guide observed; preserved for owner review, not automatically pruned or used to downgrade accepted policy."
+  ],
+  "validation": {
+    "owner": "uibcdf/sabueso#112/#148",
+    "active_guide_documents_checked": 161,
+    "archived_entry_documents_checked": 3,
+    "local_links_and_anchors_checked": 1486,
+    "missing_targets_or_anchors": [],
+    "offline_public_walkthrough_executed": true,
+    "attempted_network_queries": 0,
+    "captured_card_unchanged": true,
+    "full_scientific_qualification": false
+  },
+  "gates": {
+    "guide-ready": {
+      "resource_path": "recovered_work/onboarding_20261106/guide-ready-resource.json",
+      "resource_sha256": "07e4cf74f5717846aeb62e9ce2524df9da1a048fc97ceaa51052c83067a0c379",
+      "log_path": "recovered_work/onboarding_20261106/guide-ready.log",
+      "log_sha256": "55a2e7e03c9d3e88bf3ed067e2c95bcfaa5e6b8a062eda4b5d6798c0446509f9",
+      "exit_code": 0
+    },
+    "ruff-format-reviewed": {
+      "resource_path": "recovered_work/onboarding_20261106/ruff-format-reviewed-resource.json",
+      "resource_sha256": "b9c40c123952cd1f0f97073d3a8a0dbe49d05c028e11ac5ba7bde7bb5ffeb305",
+      "log_path": "recovered_work/onboarding_20261106/ruff-format-reviewed.log",
+      "log_sha256": "74a23b8ca81da5b6b3726f6c046e7525291cc4135941523c726cffee2255906d",
+      "exit_code": 0
+    },
+    "ruff-check": {
+      "resource_path": "recovered_work/onboarding_20261106/ruff-check-resource.json",
+      "resource_sha256": "a3cf52e76aa28ed5380bca812cda7d7add05d3f5f64103a6c8172d496534a585",
+      "log_path": "recovered_work/onboarding_20261106/ruff-check.log",
+      "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "exit_code": 0
+    },
+    "fixture-delivery": {
+      "resource_path": "recovered_work/onboarding_20261106/fixture-delivery-resource.json",
+      "resource_sha256": "d3a66dd98c06e99e0f4316248b1b53c82228face8332064720302ad68019a449",
+      "log_path": "recovered_work/onboarding_20261106/fixture-delivery.log",
+      "log_sha256": "9ad96d946f6576fb6d3b1345692b114247c3d077abceacb41d9e581b36678025",
+      "exit_code": 0
+    },
+    "bootstrap-example": {
+      "resource_path": "recovered_work/onboarding_20261106/bootstrap-example-resource.json",
+      "resource_sha256": "bd5d4e8936f716a5be43c1f6dbf7f8420509483ac442e511d5318e89ec39215a",
+      "log_path": "recovered_work/onboarding_20261106/bootstrap-example.log",
+      "log_sha256": "5f3943b3ce8ad722c7c34d8fc46d72aba91bc45a7f30d9322596be4a0aa4e120",
+      "exit_code": 0
+    },
+    "transfer-example": {
+      "resource_path": "recovered_work/onboarding_20261106/transfer-example-resource.json",
+      "resource_sha256": "6aa87b7779941472bffb4f252bc17992ebc8b6bbc7f90baccd7b8af441f238a6",
+      "log_path": "recovered_work/onboarding_20261106/transfer-example.log",
+      "log_sha256": "f34c306b2a0d9a1336d1c3d47e6bdfd90fc269bba988abd03d7ca67e5c01a2d1",
+      "exit_code": 0
+    }
+  },
+  "known_followups": [
+    "Card.access source docstring still says saved exploration pending; recorded in DOCS_GAPS under148 for correction with the pending code checkpoint, runtime untouched here.",
+    "Destination solver/toolchain/editable/installed and scientific receiving remain unperformed; handoff instructions and source-machine receipts do not establish them.",
+    "Full B2-B7 scientific/default/scope/researcher/agent/workload/consumer acceptance remains incomplete;0.15 consolidation/publication paused."
+  ],
+  "reporting": "Coherent local documentation review under112/148; no public issue/comment sent. Existing source-specific draft permissions remain scoped and pending.",
+  "temporary_resources": "Owned tmp removed after all actual validation handles terminated. Useful scripts, archive hashes, scoped logs and receipts retained under112/148 until destination transfer review; source controls, shared environments, peer working states and stale worktree registration untouched.",
+  "bootstrap_example": {
+    "destination_overlay_generation_executed_in_owned_scratch": true,
+    "canonical_dependencies_unchanged": true,
+    "bounded_channels_verified": true,
+    "conda_solver_or_installation_executed": false
+  },
+  "cross_review": "Three focused independent reviews: newcomer/scientific terminology, handoff/bootstrap/integrity, and plan/acceptance continuity. Final readers confirmed scope and flagged the two remaining backlog rows and bounded-channel copies, now addressed.",
+  "transfer_example_verified": true
+}

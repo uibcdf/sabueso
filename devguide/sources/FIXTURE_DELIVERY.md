@@ -1,17 +1,15 @@
 # Reviewed recovery fixture delivery
 
-The [file inventory](fixture_delivery.json) records the exact 86 recovery inputs,
-the derived 0.14.0 schema compatibility card (#134), and the CC BY 4.0
-open-article XML for located source review (#92), plus ten public assembly-capture
-files for three RCSB entries, ten separate nonpolymer-instance capture files
-and five public 1TCD source/coordinate-context files (#173). Each records its
-source, digest, size, terms and delivery decision (#112/#95).
+The [file inventory](fixture_delivery.json) records reviewed recovery inputs,
+release compatibility Cards, located-source article controls and public RCSB
+assembly/nonpolymer/coordinate and AlphaFold archive-native controls. Every entry
+records its source, digest, size, terms and delivery decision (#112/#95).
 Existing committed fixtures retain their source-specific notice. This inventory
 records file decisions; the [source registry](registry.yaml) remains authoritative
 for source adoption and terms. No access route or software/article licence grants
 unrecorded data rights.
 
-There are **76 repository-delivery inputs** under the recorded declarations and
+There are **81 repository-delivery inputs** under the recorded declarations and
 file-specific obligations in [the fixture notice](../../temp_data/NOTICE.md), and
 **37 local-only originals** in protected directories. Unknown, conditional or
 explicitly unshared scopes remain local. The original DisProt response also

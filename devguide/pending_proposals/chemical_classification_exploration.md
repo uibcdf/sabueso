@@ -1,9 +1,9 @@
 ---
 summary: Source-bound classes and roles as the scientific foundation of the required rich molecule profile.
 issue: uibcdf/sabueso#148
-status: live_human_agent_implemented_saved_reading_pending
+status: locally_verified_code_checkpoint_hosted_pending
 opened: 2026-11-06
-verification: selected local receiving; independent original saved reading and acceptance remain pending
+verification: 705 selected local cases and public whole-session receiving at0f197e5; hosted/scientific/researcher acceptance pending
 area: [chemical-context, scientific-views, human-exploration, release]
 ---
 
@@ -107,20 +107,113 @@ support, alternatives and stored conflicts remain reachable. Text and HTML prese
 the same meaning. Original whole-field sources do not become independently acquired
 per-item lineage or reconstructed ontology traversal.
 
-## Required continuation
+## Independent original saved-reading candidate
 
-Independent original chemical-profile saved reading is **not implemented yet**.
-Human and agent `capabilities["save"]` are false; save refuses before creating a
-file. The opening and machine descriptor explain the limitation and raw Card export.
-Original saved molecule sessions retain their earlier rows and scientific meanings;
-a new saved catalogue may show this new route explicitly `not_saved`, never execute
-it. This temporary development boundary does not complete the required panel or B5.
+The explicit semantic format `sabueso.card_exploration@15` now adds original
+chemical result, human/agent request, row/flag/support and display bindings.
+The separate sharing representation @16 carries this semantic format while
+keeping earlier @13/@14 representations and every @1–@12 semantic verifier
+unchanged. Earlier supported scientific views retain their own frozen predicates;
+the new @15 verifier includes those original predicates and adds chemical dispatch.
+No Card is constructed, no current chemical scientific engine or profile catalogue
+runs, and expected frozen findings verify retained output rather than replace it.
 
-Capture a genuine producer chemical adapter session, add an explicit independently
-verified saved format with mixed-nature navigation, and preserve every frozen
-historical verifier/codec. Qualify copied installed receiving, genuine historical
-controls, representative measured workloads and independent researcher/scientific
-acceptance. All broad-profile requirements before0.15.0 remain in force.
+The genuine clean SDK193 live capsule predates this saved reader. Its original
+native/wire/row inputs are authoritative controls, including the original member
+order. Mapping iteration after canonical JSON sorting cannot reorder those members.
+Original lookup handles are resolved against their retained locations; a fresh
+reader's nonce never substitutes for original request identity. Live/saved display
+mode may differ explicitly while original science, focal identity and context stay
+fixed. False/null category states, retained uncertainties, typed selections and
+whole-field support grain remain unchanged.
+
+Saving now retains already executed chemical agent requests in the same session,
+without issuing new queries or materializing a new scientific topic. Exact saved
+queries return their retained selections; unvisited projections/filters report
+`not_saved`. Filtered/focused/root and source navigation remain inspectable, and
+repeat saving preserves original science. Focused detail keeps its original
+member payload through summary/table/sort/filter operations, including an empty
+display selection. Human and agent origins can reuse the same source links: the
+only admitted human chemical question has empty scientific options, and original
+request context remains recorded. Positive/None byte-budget overrides
+remain explicit; no silent truncation or larger default budget is introduced.
+
+The first selected controls exercise plain/gzip/Zstandard, explicit @16 receiving,
+fresh-process reading with Card/current engines/catalogues forbidden, and resealed
+changes to source statements, rules, role flags, order, membership and scope.
+These are development observations. Full mixed-nature, copied installed, wider
+historical, representative workload and exact-source qualification remain required
+before declaring this panel complete. Scientific/researcher acceptance and the
+entire broad 0.15.0 design remain open; no release is authorized.
+
+## Current receiving checkpoint
+
+Code checkpoint `0f197e5` now commits the unchanged candidate runtime/test blobs.
+The [local receiving receipt](../evidence/chemical_saved_checkpoint_20261106.json)
+records 95 chemical, 428 adjacent, 123 historical, 57 metadata and 2 isolated
+outer cases: **705 distinct selected cases**. It also records shape/registry/
+schema/governance/Ruff and warning-fatal Sphinx plus two whole public molecule
+save/read/resave controls with 114 source/context routes, default transport limits,
+zero source queries and frozen-current-engine-independent reading.
+
+Agent cell parity compares original typed targets, payload hashes, values,
+states/reasons and support; raw page lookup tokens follow their session-local
+lifecycle. The initial raw-token workload assertion was an incorrect test oracle,
+not a library defect. Earlier failing/stopped receipts remain historical.
+Hosted exact-final-source, installed-artifact and independent scientist/researcher
+acceptance remain pending; broad B3–B7 and paused B8 are unchanged.
+
+### Historical precommit receiving
+
+The [literal metadata routing correction](../pending_bugs/chemical_literal_metadata_routing.md)
+now has a reproduced false-context regression and ownership-based dispatch.
+All ten adapter/type controls and a separate hostile scientific-manifest claim
+pass with minimal synthetic Cards under the 128 MiB focused guard. Three further
+related/back controls reproduce and correct the literal item-link discriminator;
+the combined14-case gate passes. This is not a replacement for public-input
+scientific qualification.
+
+The [saved candidate receipt](../evidence/chemical_saved_candidate_20261106.json)
+preserves81 earlier native/live/saved cases and428 adjacent navigation/argument/
+quantity/literal cases,509 distinct cases before the namespace correction.
+Current-source receiving passes the14 focused controls and57 separate registry/
+licensing/delivery cases and the delivery/registry/schema/governance tools.
+An initial final Ruff rerun deferred at the128MiB preflight. Both complete root
+Ruff gates subsequently pass under a stricter32MiB static-tool cap and unchanged
+6GiB reserve. Earlier copied consumers must receive the final38-case saved module
+again. The latest complete95-case source attempt again deferred before launch:
+6673874944 available bytes are below the6GiB reserve plus512MiB preflight.
+The123-case historical run stopped at the unchanged6GiB host-available reserve;
+the bounded watch timed out without launching a test, and the current full source
+gate deferred before launch. None is passing qualification. Split historical
+modules and complete applicable public, mixed, copied and workload gates when
+headroom returns; do not raise resource limits. The source remains an uncommitted
+development candidate, with no release or complete-panel claim.
+
+Resource resumption: complete source/history/copied/shape/docs/workload receiving
+when host available RAM safely meets each original guard, keeping one low-priority
+CPU and zero owned swap. The repeated reserve blocker has recurred across at least
+three goal continuations; no active monitor or gate remains. All broad B3–B7 and
+maintainer-deferred B2 requirements remain in force. Do not interpret the resource
+block as implementation completion or authority to commit an unqualified block.
+
+## Experience review during receiving
+
+Observed: the classification opening distinguishes chemical membership from
+source-stated roles, explains direct/inherited labels and preserves important
+unknowns through a filtered result. Original member, source, field and identity
+links give the researcher distinct next actions and a way back. The namespace
+regressions correct interrupted save/navigation rather than merely adjusting
+wording. These are developer observations, not uncoached researcher acceptance.
+
+Remaining friction: the conflict/support wording still refers the human to
+`native_payload`, despite the retained field-context link. The field-context
+destination also remains a literal inspection. It is a hypothesis that this
+slows a researcher unfamiliar with Card internals; evaluate a clearer direct
+conflict/alternative route in the whole-molecule walkthrough. The complete
+profile must let the researcher inspect consequential alternatives without
+requiring internal field paths. Do not declare the exceptional experience from
+the current passing tests or source controls alone.
 
 ## Adjacent integrity correction
 

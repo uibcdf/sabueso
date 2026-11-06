@@ -1,13 +1,27 @@
 # Sabueso — Public API
 
+This document records the public surface of release 0.14.0 and explicitly labelled
+future development additions. Anything not listed here, or not exported by `sabueso`, is internal.
+Tools, views, stores and source access check their arguments through ArgDigest.
+Plain accessors (`get`, `set`, `sort`…) do not, and fail loudly on wrong types
+(`ARGUMENT_CONTRACTS.md` lists which is which). The user guide (`docs/`) shows how
+to use them. Development entries do not establish public delivery, automatic card
+enrichment or live-service qualification.
+
+For contributor context and current qualification, read [ONBOARDING](ONBOARDING.md)
+and [CHECKPOINT](CHECKPOINT.md). The development additions below do not establish
+published delivery; the [entry-point reference](#entry-point) follows them.
+
 Development small-molecule `Card.explore().answer("classification")` (also
 `view("classification")`) presents source-bound chemical classes and roles,
 direct/inherited/unknown assignments, original support and back navigation.
 The same capture supports `explorer.access.select("chemical_classification")`
 with typed boolean/null category filters, projection, exact members, ordering
 and bounded pages. It does not infer target activity or therapeutic effect.
-Chemical-profile saving remains unavailable pending independent original reading;
-raw Card export and earlier original saved sessions remain supported.
+Chemical-profile saving now has an explicit original-reading candidate @15, with
+separate shared representation @16, now [locally verified at `0f197e5`](evidence/chemical_saved_checkpoint_20261106.json).
+Earlier original sessions remain supported; exact-final-source hosted, installed
+and scientific/researcher acceptance remain separate and open.
 See [the contract and walkthrough](pending_proposals/chemical_classification_exploration.md).
 
 Development generic `CardItem.related()` with multiple distinct source references
@@ -73,14 +87,6 @@ processing uses `rows()` / bounded literal reads over typed locations; a named
 compact scientific selector is not implemented by this source pane. See the
 [scope](pending_proposals/card_quaternary_source_exploration.md) and
 [public examples](../docs/content/user/card_exploration.md#explore-subunits-assemblies-and-interfaces).
-
-This document records the public surface of release 0.14.0 and explicitly labelled
-future development additions. Anything not listed here, or not exported by `sabueso`, is internal.
-Tools, views, stores and source access check their arguments through ArgDigest.
-Plain accessors (`get`, `set`, `sort`…) do not, and fail loudly on wrong types
-(`ARGUMENT_CONTRACTS.md` lists which is which). The user guide (`docs/`) shows how
-to use them. Development entries do not establish public delivery, automatic card
-enrichment or live-service qualification.
 
 Predicted-model items now offer `related()` navigation to experimental structures
 on their source-bound original whole reference, with checksum/input admission,

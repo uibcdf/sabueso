@@ -1,0 +1,3652 @@
+{
+  "owner": "uibcdf/sabueso#112/#148",
+  "date_utc": "2026-11-06T17:57:33.729197+00:00",
+  "status": "locally_validated_committed_code_checkpoint_hosted_pending",
+  "code_source": "0f197e56b95f5f361cb16778457f652832d05f28",
+  "original_candidate_baseline": "03bdb2c005857ac14c86f586bf4807d78f4ea783",
+  "tested_runtime_and_workflow_blobs_match_code_commit": true,
+  "payload_files": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "bytes": 19197,
+      "sha256": "423096ddf63f33eee723066073fb9a542a1a8d8b8e5af2d5536c059f8fcb62e1"
+    },
+    {
+      "path": ".github/workflows/test_staged_conda_package.yaml",
+      "bytes": 16780,
+      "sha256": "32cdd42299bc7d480903127b868292f1e54e176a773d3a67f71eb2a24d470ad7"
+    },
+    {
+      "path": "sabueso/core/card_access.py",
+      "bytes": 46222,
+      "sha256": "a3c263c6e9e502b447c47ef810f452d43a45c96879877119c0814f06c14007da"
+    },
+    {
+      "path": "sabueso/core/card_chemical_access.py",
+      "bytes": 2294,
+      "sha256": "c5c5b7cb1c42e4da3678ea6626e1a390e304b553bc7f7d16f97ff6fd56b6a8f0"
+    },
+    {
+      "path": "sabueso/core/card_exploration.py",
+      "bytes": 85996,
+      "sha256": "30d70592eae67aab8ce93a3a1248c1199c06cbdc475f8722190a6f710a8290b1"
+    },
+    {
+      "path": "sabueso/core/card_exploration_render.py",
+      "bytes": 55579,
+      "sha256": "ef5b4245e28882f15dfce93c3b67f4d6f4861321e95005900584d6ab51192a56"
+    },
+    {
+      "path": "sabueso/core/card_exploration_storage.py",
+      "bytes": 69305,
+      "sha256": "ebc224e418741c7e60300c1b7946c1ee4b8a71d8158e6a6428ca871391dec0df"
+    },
+    {
+      "path": "tests/core/data/README.md",
+      "bytes": 24214,
+      "sha256": "d8b1bc94fd08859bdfbc2b8285682edc9868b67877b544bcf9e55c3fac6b45dd"
+    },
+    {
+      "path": "tests/core/test_card_chemical_exploration_offline.py",
+      "bytes": 16407,
+      "sha256": "b09262f32bbd160fd776ec659b31862ee01b00d2a514ee4fe80436caff3757c1"
+    },
+    {
+      "path": "tests/tools/test_installed_receiving_scope_offline.py",
+      "bytes": 23169,
+      "sha256": "12bf56267489a11898c020dfa62e2e99c1b07e72c0cd10930b147e02a744d19a"
+    },
+    {
+      "path": "sabueso/core/card_chemical_history_v1.py",
+      "bytes": 10852,
+      "sha256": "b7fe1fb24d006f7dcdda62107b660dd4a6ded70d2889da6258455157d5b3e466"
+    },
+    {
+      "path": "sabueso/core/card_chemical_presentation_v1.py",
+      "bytes": 9936,
+      "sha256": "55b62a4c0823b27e0c82d64b83dadd70d0e91c68260dc62e11020ace6ce9e323"
+    },
+    {
+      "path": "sabueso/core/card_exploration_chemical.py",
+      "bytes": 26260,
+      "sha256": "9dec3d43a4e872d988def415bfdb29ca31cad7dc37ac190d13e2627287bbb4b8"
+    },
+    {
+      "path": "sabueso/core/card_exploration_shared_values_v2.py",
+      "bytes": 15765,
+      "sha256": "0fbf2d0cf14f4fb498e21edb9b8eea432e2f99a2afebac288444ff5480ca08bd"
+    },
+    {
+      "path": "sabueso/core/card_exploration_verification_v15.py",
+      "bytes": 57120,
+      "sha256": "d83b67276874e7abcd1e5c30c4693f02bcb26558bfd3467bef307c35865690e5"
+    },
+    {
+      "path": "tests/core/data/chemical_live_v1.json.gz",
+      "bytes": 105974,
+      "sha256": "1e0a9a01da5c1d1118a115b12b3393dd886a3e447cda4a49e58cd8c514ff9ac1"
+    },
+    {
+      "path": "tests/core/test_card_saved_chemical_offline.py",
+      "bytes": 16992,
+      "sha256": "3d91ad467d336c8ebf9cde92a54bb92f4d1feef38d287b797ab748d90c85e186"
+    }
+  ],
+  "original_control": "tests/core/data/chemical_live_v1.json.gz",
+  "original_control_sdk": "0.14.0+193.g03bdb2c",
+  "local_selected_cases": {
+    "chemical_native_live_saved": 95,
+    "navigation_argument_quantity_literal_neighbors": 428,
+    "historical_science": 41,
+    "historical_quaternary": 41,
+    "historical_sites": 41,
+    "isolated_outer_consumers": 2,
+    "registry_licensing_delivery": 57,
+    "distinct_total": 705,
+    "nested_saved_and_live": [
+      38,
+      27
+    ],
+    "counting_basis": "Disjoint selected modules; nested, repeated, workload and later committed-SDK cases are not added."
+  },
+  "checks": {
+    "source-chemical": {
+      "resource_path": "recovered_work/clean_checkpoint_20261106/source-chemical-resource.json",
+      "resource_sha256": "044ae0b5ddf5a0df3296d810d30dc643b746dd77ae44366c7dd2c1e8a24e2530",
+      "log_path": "recovered_work/clean_checkpoint_20261106/source-chemical.log",
+      "log_sha256": "51b695988f543181340e31f023a7aacb0dff63247d9e0a9c38f8a3af4cf47bed",
+      "exit_code": 0,
+      "peak_owned_rss_bytes": 292700160,
+      "minimum_host_available_bytes": 25199644672,
+      "peak_owned_swap_bytes": 0
+    },
+    "navigation-neighbors": {
+      "resource_path": "recovered_work/clean_checkpoint_20261106/navigation-neighbors-resource.json",
+      "resource_sha256": "8bb02f8cc1e48410d906ccebb60fea27224fd053997f32889f2e6716b75a3847",
+      "log_path": "recovered_work/clean_checkpoint_20261106/navigation-neighbors.log",
+      "log_sha256": "e25fe33b4a4c7451155a386ce13b19ddd6b4b049150bb4ba60a20ac793feb98f",
+      "exit_code": 0,
+      "peak_owned_rss_bytes": 345198592,
+      "minimum_host_available_bytes": 25121062912,
+      "peak_owned_swap_bytes": 0
+    },
+    "historical-science": {
+      "resource_path": "recovered_work/clean_checkpoint_20261106/historical-science-resource.json",
+      "resource_sha256": "afa85c0840d13371d3393cf0d556d35b3d78624eca10a66f2287e2997814dea1",
+      "log_path": "recovered_work/clean_checkpoint_20261106/historical-science.log",
+      "log_sha256": "4c35d61fe1f239d606286c04fda1197839189c47efb69a26b42116d1a0782c47",
+      "exit_code": 0,
+      "peak_owned_rss_bytes": 430661632,
+      "minimum_host_available_bytes": 24876060672,
+      "peak_owned_swap_bytes": 0
+    },
+    "historical-quaternary": {
+      "resource_path": "recovered_work/clean_checkpoint_20261106/historical-quaternary-resource.json",
+      "resource_sha256": "8537cfbec0aa1d9e926e86e88191095e7163f94a5144c1e0ba44a5278dddebd1",
+      "log_path": "recovered_work/clean_checkpoint_20261106/historical-quaternary.log",
+      "log_sha256": "0ef7ac030086ca19ef3fbaa3138a5e5a43f23d362f63e8970979a8104bf7cea0",
+      "exit_code": 0,
+      "peak_owned_rss_bytes": 378888192,
+      "minimum_host_available_bytes": 25117069312,
+      "peak_owned_swap_bytes": 0
+    },
+    "historical-sites": {
+      "resource_path": "recovered_work/clean_checkpoint_20261106/historical-sites-resource.json",
+      "resource_sha256": "199a701376fedcc0c7f909944b9e332306b6da851d606e10fd78c77ad9f171c2",
+      "log_path": "recovered_work/clean_checkpoint_20261106/historical-sites.log",
+      "log_sha256": "4e214f171d4f8f9bed7ddfd3a51202e1e92f488c14705cf8f608202b7e8794cd",
+      "exit_code": 0,
+      "peak_owned_rss_bytes": 258314240,
+      "minimum_host_available_bytes": 25143996416,
+      "peak_owned_swap_bytes": 0
+    },
+    "copied-saved": {
+      "resource_path": "recovered_work/clean_checkpoint_20261106/copied-saved-resource.json",
+      "resource_sha256": "6eb1f44602db898f006b73f8f23f2f75988efd39647b94c4f1014d6ad6c4e37b",
+      "log_path": "recovered_work/clean_checkpoint_20261106/copied-saved.log",
+      "log_sha256": "000ee447b1a1d968fa1b553a9481f0c79bc4f94755bef346189f9a433af76d33",
+      "exit_code": 0,
+      "peak_owned_rss_bytes": 302084096,
+      "minimum_host_available_bytes": 25157967872,
+      "peak_owned_swap_bytes": 0
+    },
+    "copied-live": {
+      "resource_path": "recovered_work/clean_checkpoint_20261106/copied-live-resource.json",
+      "resource_sha256": "809b805f1942ae514d3b7f881c45636bb24149c5412a99b77be5439760488e54",
+      "log_path": "recovered_work/clean_checkpoint_20261106/copied-live.log",
+      "log_sha256": "a66833898cbeef28e44cb2f177a4f912c4973c29a2fc2009e43fec8c0104aa9b",
+      "exit_code": 0,
+      "peak_owned_rss_bytes": 336265216,
+      "minimum_host_available_bytes": 25041743872,
+      "peak_owned_swap_bytes": 0
+    },
+    "metadata-cases": {
+      "resource_path": "recovered_work/clean_checkpoint_20261106/metadata-cases-resource.json",
+      "resource_sha256": "ac0d938041baae06952fea7aa5b26348fd33fe424f0bc3a2e162aca9edd306a3",
+      "log_path": "recovered_work/clean_checkpoint_20261106/metadata-cases.log",
+      "log_sha256": "db60dd6e02245954d12f4a5ca5f7ed4783c1dd1ba9b89c4dac49033f8a6a09f9",
+      "exit_code": 0,
+      "peak_owned_rss_bytes": 127426560,
+      "minimum_host_available_bytes": 25210507264,
+      "peak_owned_swap_bytes": 0
+    },
+    "shape": {
+      "resource_path": "recovered_work/clean_checkpoint_20261106/shape-resource.json",
+      "resource_sha256": "7b0abbd11aab0be44446474ebc7aeba8b45843c656ce9285d6d0a22dbfaff5a4",
+      "log_path": "recovered_work/clean_checkpoint_20261106/shape.log",
+      "log_sha256": "a586fb32e30ce3bed964fcb5b6786391981cd887887ec9c24af6101e2ad47c3d",
+      "exit_code": 0,
+      "peak_owned_rss_bytes": 167636992,
+      "minimum_host_available_bytes": 24935403520,
+      "peak_owned_swap_bytes": 0
+    },
+    "fixture-delivery": {
+      "resource_path": "recovered_work/clean_checkpoint_20261106/fixture-delivery-resource.json",
+      "resource_sha256": "aafb9f1639b4ce944590dbf876dccead09539b7cdad505e6bd5873c04973b3c5",
+      "log_path": "recovered_work/clean_checkpoint_20261106/fixture-delivery.log",
+      "log_sha256": "9ad96d946f6576fb6d3b1345692b114247c3d077abceacb41d9e581b36678025",
+      "exit_code": 0,
+      "peak_owned_rss_bytes": 26509312,
+      "minimum_host_available_bytes": 25074458624,
+      "peak_owned_swap_bytes": 0
+    },
+    "registry": {
+      "resource_path": "recovered_work/clean_checkpoint_20261106/registry-resource.json",
+      "resource_sha256": "5526887ee5ca2e5023a78754598e5286ad38d51b46b599d037e6e2c89df97fb4",
+      "log_path": "recovered_work/clean_checkpoint_20261106/registry.log",
+      "log_sha256": "b1e9864eba59e768c6cff53728ba3e9b1c4a42ca34a3fa53f8b1345c19224f5d",
+      "exit_code": 0,
+      "peak_owned_rss_bytes": 47022080,
+      "minimum_host_available_bytes": 25065267200,
+      "peak_owned_swap_bytes": 0
+    },
+    "schema": {
+      "resource_path": "recovered_work/clean_checkpoint_20261106/schema-resource.json",
+      "resource_sha256": "491e8e3c41e55e240e5213f67b6889b7dd6d6a99ab29d5bb95c8f36a8a9ad6f8",
+      "log_path": "recovered_work/clean_checkpoint_20261106/schema.log",
+      "log_sha256": "af91b092c8481bd46354a571078e5816312ed8a3c8847ae0a52d3dd63fb81e8f",
+      "exit_code": 0,
+      "peak_owned_rss_bytes": 36159488,
+      "minimum_host_available_bytes": 25076404224,
+      "peak_owned_swap_bytes": 0
+    },
+    "governance": {
+      "resource_path": "recovered_work/clean_checkpoint_20261106/governance-resource.json",
+      "resource_sha256": "6dec7518921099cc701e89fd1c9952f8e8ee5d522f31a949db81fe43c297e8a2",
+      "log_path": "recovered_work/clean_checkpoint_20261106/governance.log",
+      "log_sha256": "5a06edc554fa450ac8fdafc3b04ca285ecaf5c6d2bb754b0867ff1f2bdf5af9d",
+      "exit_code": 0,
+      "peak_owned_rss_bytes": 1134592,
+      "minimum_host_available_bytes": 25075818496,
+      "peak_owned_swap_bytes": 0
+    },
+    "ruff-check": {
+      "resource_path": "recovered_work/clean_checkpoint_20261106/ruff-check-resource.json",
+      "resource_sha256": "78ceb6ddcae82ec786d0f614a798e4b29bb769fa9a30afcba0d5f99f2ed0a718",
+      "log_path": "recovered_work/clean_checkpoint_20261106/ruff-check.log",
+      "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "exit_code": 0,
+      "peak_owned_rss_bytes": 1036288,
+      "minimum_host_available_bytes": 25065504768,
+      "peak_owned_swap_bytes": 0
+    },
+    "ruff-format": {
+      "resource_path": "recovered_work/clean_checkpoint_20261106/ruff-format-resource.json",
+      "resource_sha256": "130303279f7cfdd697019720c3da60b05e03235cc27bf7626b3693258d08c41c",
+      "log_path": "recovered_work/clean_checkpoint_20261106/ruff-format.log",
+      "log_sha256": "74a23b8ca81da5b6b3726f6c046e7525291cc4135941523c726cffee2255906d",
+      "exit_code": 0,
+      "peak_owned_rss_bytes": 851968,
+      "minimum_host_available_bytes": 25069592576,
+      "peak_owned_swap_bytes": 0
+    },
+    "sphinx": {
+      "resource_path": "recovered_work/clean_checkpoint_20261106/sphinx-resource.json",
+      "resource_sha256": "79eb978b9a118a87a13d9f0bfbe6aa8d62779ce699708f3f65cdb4866ed90168",
+      "log_path": "recovered_work/clean_checkpoint_20261106/sphinx.log",
+      "log_sha256": "dc9731fc39acc8e6223abfab7f47e639b8f2894424d94ff03076edea624ee1ce",
+      "exit_code": 0,
+      "peak_owned_rss_bytes": 276406272,
+      "minimum_host_available_bytes": 24889745408,
+      "peak_owned_swap_bytes": 0
+    },
+    "public-workload-produce-resolved": {
+      "resource_path": "recovered_work/clean_checkpoint_20261106/public-workload-produce-resolved-resource.json",
+      "resource_sha256": "716853eedbf90e9050b6a181a40a89725cd589561cd842e17e1f6e9610c298e4",
+      "log_path": "recovered_work/clean_checkpoint_20261106/public-workload-produce-resolved.log",
+      "log_sha256": "77458d99e9f081fa1a51edb1204e1621b6ff84045a73526a8a84a7fc533f43bd",
+      "exit_code": 0,
+      "peak_owned_rss_bytes": 230170624,
+      "minimum_host_available_bytes": 24972734464,
+      "peak_owned_swap_bytes": 0
+    },
+    "public-workload-independent-lifecycle": {
+      "resource_path": "recovered_work/clean_checkpoint_20261106/public-workload-independent-lifecycle-resource.json",
+      "resource_sha256": "4febe31c7e2f116049e2b16377c7316141d99736cfba7b05ee7c660d9c961f59",
+      "log_path": "recovered_work/clean_checkpoint_20261106/public-workload-independent-lifecycle.log",
+      "log_sha256": "64408402f8cdebac4ede86b7555bbd31fe9fd6c09cf3d9d27c6a3e46323bee6a",
+      "exit_code": 0,
+      "peak_owned_rss_bytes": 293580800,
+      "minimum_host_available_bytes": 24443981824,
+      "peak_owned_swap_bytes": 0
+    }
+  },
+  "public_saved_workload": {
+    "producer": {
+      "owner": "#112/#148",
+      "scope": "Full existing public molecule class/role sessions; technical resource control, not independent researcher/scientific acceptance",
+      "sdk": "0.14.0+193.g03bdb2c",
+      "source_queries": 0,
+      "default_transport_limits": true,
+      "cases": [
+        {
+          "case": "pga",
+          "native_sha256": "237ca11cfe359407abd74d023dcfe0840e8ac5ffc68b17c3fc43f366d729cc0f",
+          "rows_sha256": "5ac01eb7bf0ecffc7f45ea735ee0e033d7da827c85dc8d2e24624e11d478ea97",
+          "item_order": [
+            "XI_b97aab2ad68243c769d2d3e0d6cc5947ad100f3ccb441b6e9438c501260a7a9f",
+            "XI_4cb7a0389d736970f3bcaa716ae4b40ed0ba68739f9665b4dcf8893b6990e38e",
+            "XI_0b11eae2807cf49b9365db3d523d16867ab178212e116f73d84be91437b84b22",
+            "XI_485ad1dece4792e7ccfd6b1134b830e88e70ad3a9be67def3f4818eac1ca9108"
+          ],
+          "source_routes": 24,
+          "requests": [
+            {
+              "fields": [
+                "term_ref",
+                "assignment"
+              ],
+              "where": null,
+              "selection_ref": "XA_9a202911f0df97494e3e14a889af75705d7830d3b81ef8ade45e4a21be1d2304",
+              "count": 4,
+              "page_cells": [
+                {
+                  "term_ref": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "CHEBI:36952",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "term_ref"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:4db4a5cd4eda933495c0e59efea7223ef696d696c371e3a1b392eb1de127b35b",
+                    "value_included": true,
+                    "value_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_32793ffca17d75f89b80fe55cbed76361475777a5a5ea9081025b3dab566c3c5"
+                    },
+                    "interpretation_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_22db5826a8b558a7121bde30ac39f6c7b92fd03af7ecd01b2ec7b86e752fd9d1"
+                    }
+                  },
+                  "assignment": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "class_membership",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "assignment"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:4db4a5cd4eda933495c0e59efea7223ef696d696c371e3a1b392eb1de127b35b",
+                    "value_included": true,
+                    "value_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_9c035f1cd9f6dd674d0064565e3ad196ada663ee0894214f7faa45d151d66153"
+                    },
+                    "interpretation_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_22db5826a8b558a7121bde30ac39f6c7b92fd03af7ecd01b2ec7b86e752fd9d1"
+                    }
+                  }
+                },
+                {
+                  "term_ref": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "CHEBI:39141",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "term_ref"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:a9f18c1f13150f4def1ecdd12160b83537ac6c7b7906b3bffaf25160f653f48b",
+                    "value_included": true,
+                    "value_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_8234acec77d1338b40b6d62d512c45a25c5eb0ed29014b5f1647b54cb94c4c5e"
+                    },
+                    "interpretation_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_6d5971b22bc34b09af3c779420af5c86e4668c0efecc51836cbad1f2a19ea876"
+                    }
+                  },
+                  "assignment": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "inherited",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "assignment"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:a9f18c1f13150f4def1ecdd12160b83537ac6c7b7906b3bffaf25160f653f48b",
+                    "value_included": true,
+                    "value_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_e9e99c5d6e9fab6f666c8108b3e225a8db0c371115a684c0dd9d52964c4f2b5f"
+                    },
+                    "interpretation_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_6d5971b22bc34b09af3c779420af5c86e4668c0efecc51836cbad1f2a19ea876"
+                    }
+                  }
+                },
+                {
+                  "term_ref": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "CHEBI:75771",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "term_ref"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:99cb9ad5d3175e3c728ca10a299473c9e545e4253afa93a9bda5c9dea53610c1",
+                    "value_included": true,
+                    "value_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_1741637180874e91fd4cb8cf660e54a4d714073361cffca30085f35c04be172a"
+                    },
+                    "interpretation_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_adcf79fc34a0febd1faf19f719250f3aed85647a676254e4ff84376bdbde76a9"
+                    }
+                  },
+                  "assignment": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "direct",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "assignment"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:99cb9ad5d3175e3c728ca10a299473c9e545e4253afa93a9bda5c9dea53610c1",
+                    "value_included": true,
+                    "value_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_cc5d7634208ee626e7da8a68b29fd5f7e2d3fccb76a38bd7c9468843c47c1b39"
+                    },
+                    "interpretation_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_adcf79fc34a0febd1faf19f719250f3aed85647a676254e4ff84376bdbde76a9"
+                    }
+                  }
+                },
+                {
+                  "term_ref": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "CHEBI:76971",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "term_ref"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:7d8e2f9ace625f3f19c674114559ce1c85d0c0d88984e0feee1e524add70799d",
+                    "value_included": true,
+                    "value_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_633c179bf4100c77425247788aae08dfd7bd0055446d8f21015e38f0cb8610c4"
+                    },
+                    "interpretation_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_c6b8e5c3953d4a8b416c4b41e5dffd5f336d32fbc3de37e73ee222d6308b268f"
+                    }
+                  },
+                  "assignment": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "direct",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "assignment"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:7d8e2f9ace625f3f19c674114559ce1c85d0c0d88984e0feee1e524add70799d",
+                    "value_included": true,
+                    "value_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_7e42e2a8d5c2e20906416058bcc252320c53cd6986ad0dc82c875a013f8c1978"
+                    },
+                    "interpretation_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_c6b8e5c3953d4a8b416c4b41e5dffd5f336d32fbc3de37e73ee222d6308b268f"
+                    }
+                  }
+                }
+              ],
+              "resolved_page_cells": [
+                {
+                  "term_ref": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "CHEBI:36952",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "term_ref"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:4db4a5cd4eda933495c0e59efea7223ef696d696c371e3a1b392eb1de127b35b",
+                    "value_included": true,
+                    "value_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_d9a6a78225abed799355cf81379071795c03f7781279d7a99c3443808a5f638c",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:4db4a5cd4eda933495c0e59efea7223ef696d696c371e3a1b392eb1de127b35b"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "term_ref"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "cb7fe07bed7ebd46e34c958a149f99a0aea55a30183191f81fdf459bfb90eeda"
+                    },
+                    "interpretation_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_d9a6a78225abed799355cf81379071795c03f7781279d7a99c3443808a5f638c",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:4db4a5cd4eda933495c0e59efea7223ef696d696c371e3a1b392eb1de127b35b"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "interpretation"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "08e2fab0bb672e51ee4b886dc9c8c17e423489150f851e60483efe8b14987289"
+                    }
+                  },
+                  "assignment": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "class_membership",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "assignment"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:4db4a5cd4eda933495c0e59efea7223ef696d696c371e3a1b392eb1de127b35b",
+                    "value_included": true,
+                    "value_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_d9a6a78225abed799355cf81379071795c03f7781279d7a99c3443808a5f638c",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:4db4a5cd4eda933495c0e59efea7223ef696d696c371e3a1b392eb1de127b35b"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "assignment"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "83d898fb7c576899495b5ac1e511655dfad9475bd86e42811d2739379a7b95e1"
+                    },
+                    "interpretation_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_d9a6a78225abed799355cf81379071795c03f7781279d7a99c3443808a5f638c",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:4db4a5cd4eda933495c0e59efea7223ef696d696c371e3a1b392eb1de127b35b"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "interpretation"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "08e2fab0bb672e51ee4b886dc9c8c17e423489150f851e60483efe8b14987289"
+                    }
+                  }
+                },
+                {
+                  "term_ref": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "CHEBI:39141",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "term_ref"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:a9f18c1f13150f4def1ecdd12160b83537ac6c7b7906b3bffaf25160f653f48b",
+                    "value_included": true,
+                    "value_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_d9a6a78225abed799355cf81379071795c03f7781279d7a99c3443808a5f638c",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:a9f18c1f13150f4def1ecdd12160b83537ac6c7b7906b3bffaf25160f653f48b"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "term_ref"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "aab12585ec80a5b81ef917348a33657f9dd1742a08e5b6d868e046445fdf23c3"
+                    },
+                    "interpretation_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_d9a6a78225abed799355cf81379071795c03f7781279d7a99c3443808a5f638c",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:a9f18c1f13150f4def1ecdd12160b83537ac6c7b7906b3bffaf25160f653f48b"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "interpretation"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "f7f12650b3c005093808a4235cb9806c40e8324f0691cb4cac3c5cb2caac61f1"
+                    }
+                  },
+                  "assignment": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "inherited",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "assignment"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:a9f18c1f13150f4def1ecdd12160b83537ac6c7b7906b3bffaf25160f653f48b",
+                    "value_included": true,
+                    "value_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_d9a6a78225abed799355cf81379071795c03f7781279d7a99c3443808a5f638c",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:a9f18c1f13150f4def1ecdd12160b83537ac6c7b7906b3bffaf25160f653f48b"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "assignment"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "970c145e2f689ee0997790238ff5a92e201ed1373a306635202d3483bc129871"
+                    },
+                    "interpretation_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_d9a6a78225abed799355cf81379071795c03f7781279d7a99c3443808a5f638c",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:a9f18c1f13150f4def1ecdd12160b83537ac6c7b7906b3bffaf25160f653f48b"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "interpretation"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "f7f12650b3c005093808a4235cb9806c40e8324f0691cb4cac3c5cb2caac61f1"
+                    }
+                  }
+                },
+                {
+                  "term_ref": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "CHEBI:75771",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "term_ref"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:99cb9ad5d3175e3c728ca10a299473c9e545e4253afa93a9bda5c9dea53610c1",
+                    "value_included": true,
+                    "value_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_d9a6a78225abed799355cf81379071795c03f7781279d7a99c3443808a5f638c",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:99cb9ad5d3175e3c728ca10a299473c9e545e4253afa93a9bda5c9dea53610c1"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "term_ref"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "c53f09afdac0bd127eb88f8c7baaf7b43181108ee1f5c7c0ef61434b6dc07dd1"
+                    },
+                    "interpretation_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_d9a6a78225abed799355cf81379071795c03f7781279d7a99c3443808a5f638c",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:99cb9ad5d3175e3c728ca10a299473c9e545e4253afa93a9bda5c9dea53610c1"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "interpretation"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "1642788ea87a7c43635d0c1627077c33657caa0ac26d31cc0e6c5afcba504a33"
+                    }
+                  },
+                  "assignment": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "direct",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "assignment"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:99cb9ad5d3175e3c728ca10a299473c9e545e4253afa93a9bda5c9dea53610c1",
+                    "value_included": true,
+                    "value_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_d9a6a78225abed799355cf81379071795c03f7781279d7a99c3443808a5f638c",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:99cb9ad5d3175e3c728ca10a299473c9e545e4253afa93a9bda5c9dea53610c1"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "assignment"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "e095a134d1ac99d543b61895fe3aa0281367b29099ec19c390697397830b729a"
+                    },
+                    "interpretation_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_d9a6a78225abed799355cf81379071795c03f7781279d7a99c3443808a5f638c",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:99cb9ad5d3175e3c728ca10a299473c9e545e4253afa93a9bda5c9dea53610c1"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "interpretation"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "1642788ea87a7c43635d0c1627077c33657caa0ac26d31cc0e6c5afcba504a33"
+                    }
+                  }
+                },
+                {
+                  "term_ref": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "CHEBI:76971",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "term_ref"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:7d8e2f9ace625f3f19c674114559ce1c85d0c0d88984e0feee1e524add70799d",
+                    "value_included": true,
+                    "value_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_d9a6a78225abed799355cf81379071795c03f7781279d7a99c3443808a5f638c",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:7d8e2f9ace625f3f19c674114559ce1c85d0c0d88984e0feee1e524add70799d"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "term_ref"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "77aedcb6a55489e983f2f7868064bf4e33c4bd1a4d7bb89c2776548cda580143"
+                    },
+                    "interpretation_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_d9a6a78225abed799355cf81379071795c03f7781279d7a99c3443808a5f638c",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:7d8e2f9ace625f3f19c674114559ce1c85d0c0d88984e0feee1e524add70799d"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "interpretation"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "1642788ea87a7c43635d0c1627077c33657caa0ac26d31cc0e6c5afcba504a33"
+                    }
+                  },
+                  "assignment": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "direct",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "assignment"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:7d8e2f9ace625f3f19c674114559ce1c85d0c0d88984e0feee1e524add70799d",
+                    "value_included": true,
+                    "value_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_d9a6a78225abed799355cf81379071795c03f7781279d7a99c3443808a5f638c",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:7d8e2f9ace625f3f19c674114559ce1c85d0c0d88984e0feee1e524add70799d"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "assignment"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "e095a134d1ac99d543b61895fe3aa0281367b29099ec19c390697397830b729a"
+                    },
+                    "interpretation_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_d9a6a78225abed799355cf81379071795c03f7781279d7a99c3443808a5f638c",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:7d8e2f9ace625f3f19c674114559ce1c85d0c0d88984e0feee1e524add70799d"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "interpretation"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "1642788ea87a7c43635d0c1627077c33657caa0ac26d31cc0e6c5afcba504a33"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "fields": [
+                "term_ref"
+              ],
+              "where": {
+                "application": true
+              },
+              "selection_ref": "XA_bd78a11d5212d5d40803ced44bf4cb659820d9a95b6941e6685a0fabb8489fbb",
+              "count": 0,
+              "page_cells": [],
+              "resolved_page_cells": []
+            }
+          ],
+          "path": "recovered_work/clean_checkpoint_20261106/pga-whole-session-resolved-v2.json.gz",
+          "file_bytes": 551474,
+          "bundle_digest": "sha256:7bb3567126fe6ef67b5e2b70d0a0e6aefa65d49c2ba85f41e9b567de9258917c",
+          "card_unchanged": true,
+          "elapsed_s": 4.941437907000363
+        },
+        {
+          "case": "vincristine",
+          "native_sha256": "2a1b9c74ee57d525551484785fc5c3496cd698066391a2fd85664526b406fa07",
+          "rows_sha256": "ba17820e97ad93cc9cb30c02031e9ad5bc900d35ccc9d01776fa6d6bb5649aaa",
+          "item_order": [
+            "XI_c6a851161f46cb48299c21b6ed3cb33439513f6239d4b266cf0c490e716a95d2",
+            "XI_bc9e69c1bf5b1d8667098c70eb59bb80d8f50daa92495e2d928b4c4c997749f0",
+            "XI_00ed2bd3415f59c79252665d5cb7cf2f1bd7ba08c0a838d00acfce45c095e784",
+            "XI_4e61c46aaa2f6821529da26254f6da233747e855ca78d40db90849fd9927b4ad",
+            "XI_f3482fc508a960bf29cec72a2b54da9d354c37c801b2ec1d37652df64db6936b",
+            "XI_86149c68ea284173a4790c5f834023a789fe7ac231ce864d63406179ebe1a261",
+            "XI_4156c1515b1fc5c8c13395f92553e80641a12d86feef829b4ee6a2bf8d164602",
+            "XI_e30cbb14b33baec7e5e2a26f42697039e623fecc42e3277bc520ebe3d1a976dc",
+            "XI_ab8be6d58bf136f9dbe3718e133e25349f691b795ade3f549a6c0a9bd9512036",
+            "XI_425df5f749b6800c61e0b834428e664692fd188336d131d88f4e704a739d916a",
+            "XI_6308e49e6ccd6bbdd656255850a257fb76b862a22cf5fb317859a3235b6efff1",
+            "XI_965afe8ea3f16943dd021bf1299033cfe53d25d48b13ac24a40868425cd0d06c",
+            "XI_83266e6de529f4ba3bf01f37f71014c51a5d554d80dfaf12f376252fcf2b61cd",
+            "XI_3641fa89550daf37095958e82665f56c3cfaa508aa6184e94185a9f3e1f7d2c1",
+            "XI_11f48088dd8534cc90e79e1133218157efdac9c186c7c0715d2e7ad1a7e4a734"
+          ],
+          "source_routes": 90,
+          "requests": [
+            {
+              "fields": [
+                "term_ref",
+                "assignment"
+              ],
+              "where": null,
+              "selection_ref": "XA_1efcae5106e75c14ed1a7c342de1ce86932b0200cfd00bc76888e985a6a4df5b",
+              "count": 15,
+              "page_cells": [
+                {
+                  "term_ref": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "CHEBI:24079",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "term_ref"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:f475a133e29cbe1b627216ae4281349ee451484c51b36808fef41a32008c8ce0",
+                    "value_included": true,
+                    "value_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_dacfb290345b92694b753359f9a4fc68c423122461d1f948c57b2cc34b8c2012"
+                    },
+                    "interpretation_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_d324f4bee027677fdda80555bc74d338e78eda80fcea1248bb40f9168dd4626d"
+                    }
+                  },
+                  "assignment": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "class_membership",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "assignment"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:f475a133e29cbe1b627216ae4281349ee451484c51b36808fef41a32008c8ce0",
+                    "value_included": true,
+                    "value_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_93ab117d20a8a64d7b6730bdbdde56452159716b2cf8ce399aa464cae534ec3a"
+                    },
+                    "interpretation_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_d324f4bee027677fdda80555bc74d338e78eda80fcea1248bb40f9168dd4626d"
+                    }
+                  }
+                },
+                {
+                  "term_ref": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "CHEBI:25248",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "term_ref"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:e12ab2610a0ad09a468d3a855d6076c0e665898e5abaf1193fc011aff59d6fff",
+                    "value_included": true,
+                    "value_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_f476956f014f2f80bc6525a4845be3ea26030c92a931e02ba0f8659e9aa9f860"
+                    },
+                    "interpretation_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_1f6bb5671fc8c06f93694e667d4e520491c4e055b9f7303e8982335aee3173b9"
+                    }
+                  },
+                  "assignment": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "class_membership",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "assignment"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:e12ab2610a0ad09a468d3a855d6076c0e665898e5abaf1193fc011aff59d6fff",
+                    "value_included": true,
+                    "value_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_21115431ee9e2a372ddccdd1aac19c38acdec499681b92e2257e726c97dc0cba"
+                    },
+                    "interpretation_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_1f6bb5671fc8c06f93694e667d4e520491c4e055b9f7303e8982335aee3173b9"
+                    }
+                  }
+                },
+                {
+                  "term_ref": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "CHEBI:26878",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "term_ref"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:02f44c86da640bc15eb5000926b9873f53a20a9cf9061e1bf64b0492db1f034a",
+                    "value_included": true,
+                    "value_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_f36c69b0d2a9ea4f61117459a22005c6ce1265f3e68d156e4366e41aba98770a"
+                    },
+                    "interpretation_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_19e4540b15b275032c86d41c1ca5935046eca4890d8ed50ed24920bdf3cabb15"
+                    }
+                  },
+                  "assignment": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "class_membership",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "assignment"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:02f44c86da640bc15eb5000926b9873f53a20a9cf9061e1bf64b0492db1f034a",
+                    "value_included": true,
+                    "value_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_abc1e89008f26dcc154e0c15317d4f60d0d8fd580ea13d1416aa95ecb2d60723"
+                    },
+                    "interpretation_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_19e4540b15b275032c86d41c1ca5935046eca4890d8ed50ed24920bdf3cabb15"
+                    }
+                  }
+                },
+                {
+                  "term_ref": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "CHEBI:27288",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "term_ref"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:12f1d1b657982db092eefc91f587335cfccd9b6112f969d11eb4ff859f8b428b",
+                    "value_included": true,
+                    "value_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_ae7d83e5a694880c92719b7dbf0eeb3bc4ba5c9820a6c4ae48e48dbb8200c059"
+                    },
+                    "interpretation_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_c3cc456bb5333be0e99bc11f80530d94a6c32dcfc158b88a5c3ade1508e53513"
+                    }
+                  },
+                  "assignment": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "class_membership",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "assignment"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:12f1d1b657982db092eefc91f587335cfccd9b6112f969d11eb4ff859f8b428b",
+                    "value_included": true,
+                    "value_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_f27dc2fb3784ae9f4117591790e7c727379db0ebf3332ae97e5805312d28b405"
+                    },
+                    "interpretation_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_c3cc456bb5333be0e99bc11f80530d94a6c32dcfc158b88a5c3ade1508e53513"
+                    }
+                  }
+                },
+                {
+                  "term_ref": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "CHEBI:38163",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "term_ref"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:c2288dd5fe5999c3282343507c72becfc50235b0b8a42b12c052e233f69837a5",
+                    "value_included": true,
+                    "value_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_3f135a5da34e3001bf82ed30ac214e236ad26be42ffbbf01a8fa08dbbc2bd467"
+                    },
+                    "interpretation_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_e0141adc2addc7c22cc63945df9ac11b2121687452ed18aec415099ae719b284"
+                    }
+                  },
+                  "assignment": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "class_membership",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "assignment"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:c2288dd5fe5999c3282343507c72becfc50235b0b8a42b12c052e233f69837a5",
+                    "value_included": true,
+                    "value_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_8374e7cf46a575c3970aa4fc62e1e8d887d90eadc4f73514bde2ec985c5c92d9"
+                    },
+                    "interpretation_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_e0141adc2addc7c22cc63945df9ac11b2121687452ed18aec415099ae719b284"
+                    }
+                  }
+                },
+                {
+                  "term_ref": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "CHEBI:38164",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "term_ref"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:54645e52b57d6c5b9ef2a995fc822890fd0cf25e706baa1ff15d21077d3ba7e3",
+                    "value_included": true,
+                    "value_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_cf1d24e5f66d8c77cc31dfee626fe94d5d504efe05e670d4bf982a0f39f6ce89"
+                    },
+                    "interpretation_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_5c927e0b4188307fa2685c4dd3890f9886a535630b80e3c46e279b16a52d555b"
+                    }
+                  },
+                  "assignment": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "class_membership",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "assignment"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:54645e52b57d6c5b9ef2a995fc822890fd0cf25e706baa1ff15d21077d3ba7e3",
+                    "value_included": true,
+                    "value_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_4c2b41b1d79eab7c04e79c123a73911f75f755a372a05751de738ea3c09b6f38"
+                    },
+                    "interpretation_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_5c927e0b4188307fa2685c4dd3890f9886a535630b80e3c46e279b16a52d555b"
+                    }
+                  }
+                },
+                {
+                  "term_ref": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "CHEBI:47622",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "term_ref"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:983d930238956084dc09d71a688d6af0e402559310d1550df1336675ab9935c2",
+                    "value_included": true,
+                    "value_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_88bbb697a3fb5104b22778a07ede424a0b17315ad80a3530520385dac4d85258"
+                    },
+                    "interpretation_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_1c0e577d397cfd683db09cd4dbc34f6ba0c83c86afee09ede8f97aeb6103dd26"
+                    }
+                  },
+                  "assignment": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "class_membership",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "assignment"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:983d930238956084dc09d71a688d6af0e402559310d1550df1336675ab9935c2",
+                    "value_included": true,
+                    "value_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_6256138b0fd5c35975e2bd72804fc93e46ec54c256a0a48786876de009d951c8"
+                    },
+                    "interpretation_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_1c0e577d397cfd683db09cd4dbc34f6ba0c83c86afee09ede8f97aeb6103dd26"
+                    }
+                  }
+                },
+                {
+                  "term_ref": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "CHEBI:50996",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "term_ref"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:547bf6856e0be34bb04f0487a54560cd854089aad9411c87b65463151bec291f",
+                    "value_included": true,
+                    "value_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_81055a7bd8f3da43768bb3706db0a4acc4f5e022811dbfbb0dab347f9b9d5b9b"
+                    },
+                    "interpretation_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_4ba2083587aa718e20f5594bb8b75144080ae48d0c7471c8db70cf48e6d10276"
+                    }
+                  },
+                  "assignment": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "class_membership",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "assignment"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:547bf6856e0be34bb04f0487a54560cd854089aad9411c87b65463151bec291f",
+                    "value_included": true,
+                    "value_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_f952803cd8cecb18e2b4da6b727d86ac36a932a6662442e9b41228841c1a424e"
+                    },
+                    "interpretation_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_4ba2083587aa718e20f5594bb8b75144080ae48d0c7471c8db70cf48e6d10276"
+                    }
+                  }
+                },
+                {
+                  "term_ref": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "CHEBI:23888",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "term_ref"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:8c796cde47a7d2469a60d40ef5a56761989df231f7f5ea688ef163be367c77c1",
+                    "value_included": true,
+                    "value_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_655d14b845edf112a3d6f8e96186f0dd67805255bbd24427c6fe822f2314e3af"
+                    },
+                    "interpretation_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_3838bb4069a9a8fbb73aa6e47853176b1484c2c97bfb42dc6d244c298c16f9b2"
+                    }
+                  },
+                  "assignment": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "direct",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "assignment"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:8c796cde47a7d2469a60d40ef5a56761989df231f7f5ea688ef163be367c77c1",
+                    "value_included": true,
+                    "value_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_0f3ccc742c317308c285e95d86deb3fdc0f411b2d153820b0e0d7cde73105fa2"
+                    },
+                    "interpretation_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_3838bb4069a9a8fbb73aa6e47853176b1484c2c97bfb42dc6d244c298c16f9b2"
+                    }
+                  }
+                },
+                {
+                  "term_ref": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "CHEBI:25212",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "term_ref"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:1463af7772498bc25e210366cdf29c753774eee73bd9378d58bfc85e8392ace4",
+                    "value_included": true,
+                    "value_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_277fe463d44c4603269988406a057b675b8481bb8efc86bb15d13853b208ed04"
+                    },
+                    "interpretation_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_ae89246595066200650307eaeaae23fe2338c6457c6d2ec45f3cf2695e6208dd"
+                    }
+                  },
+                  "assignment": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "inherited",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "assignment"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:1463af7772498bc25e210366cdf29c753774eee73bd9378d58bfc85e8392ace4",
+                    "value_included": true,
+                    "value_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_aa16c7864033f5ab07dd405c34107c1cfea568edacf48e5ada435937df25dacf"
+                    },
+                    "interpretation_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_ae89246595066200650307eaeaae23fe2338c6457c6d2ec45f3cf2695e6208dd"
+                    }
+                  }
+                },
+                {
+                  "term_ref": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "CHEBI:35610",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "term_ref"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:17ee1910ed3b3727cd1c7353e4fef5a6d7c9f10632d0bd5de93df3ae15ea370e",
+                    "value_included": true,
+                    "value_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_62e93a3748236613bb02f21fb11b197fc37f371db1dff24684a422180bd150a6"
+                    },
+                    "interpretation_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_873d58cc02a2f146fa8cb990dbb10bb833b179ae2882a191e2e8fbabd98dd282"
+                    }
+                  },
+                  "assignment": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "direct",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "assignment"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:17ee1910ed3b3727cd1c7353e4fef5a6d7c9f10632d0bd5de93df3ae15ea370e",
+                    "value_included": true,
+                    "value_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_c986745be16cdd11fed205191351602b099ef6d7d034300461bda66d505e7ac2"
+                    },
+                    "interpretation_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_873d58cc02a2f146fa8cb990dbb10bb833b179ae2882a191e2e8fbabd98dd282"
+                    }
+                  }
+                },
+                {
+                  "term_ref": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "CHEBI:39142",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "term_ref"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:6fa1d167ccc99245b88c3af953dd2cb130748201a690bc0d435624c5970b4f60",
+                    "value_included": true,
+                    "value_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_810453a8d9f5fab7173956b58eb6481cf2fa1f466faa49d0e107b93ca3236f6a"
+                    },
+                    "interpretation_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_b970fc21e52dc49c93854640f462c7b1dbad11d1ffd2c02c67dee2a402fc7727"
+                    }
+                  },
+                  "assignment": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "inherited",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "assignment"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:6fa1d167ccc99245b88c3af953dd2cb130748201a690bc0d435624c5970b4f60",
+                    "value_included": true,
+                    "value_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_b6d131a0c7312a4d57c28291250467babe20f2ce21ce86a8af2307dcd81743ac"
+                    },
+                    "interpretation_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_b970fc21e52dc49c93854640f462c7b1dbad11d1ffd2c02c67dee2a402fc7727"
+                    }
+                  }
+                },
+                {
+                  "term_ref": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "CHEBI:60832",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "term_ref"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:c405e979a8a1a65c0623335d48430f3f6e75f726c4974d41ed4ef9ce52d398a0",
+                    "value_included": true,
+                    "value_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_f7fffdb90364482b9a17e76fd806dc64b67d6a517651a24c102e5844be03eddc"
+                    },
+                    "interpretation_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_4c5f3533f3db76d754879d10a6d54dd6548898f07ed1eab97845ee508c17bd15"
+                    }
+                  },
+                  "assignment": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "direct",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "assignment"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:c405e979a8a1a65c0623335d48430f3f6e75f726c4974d41ed4ef9ce52d398a0",
+                    "value_included": true,
+                    "value_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_b53dbcfbbac137bd71aedcda6e0b44eb127a6ee01c179095423cf408a306f17a"
+                    },
+                    "interpretation_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_4c5f3533f3db76d754879d10a6d54dd6548898f07ed1eab97845ee508c17bd15"
+                    }
+                  }
+                },
+                {
+                  "term_ref": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "CHEBI:61951",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "term_ref"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:45a9ea8219cd410cef139f8cfdd53fe14189875f236b0f4e8492b7630b4430d7",
+                    "value_included": true,
+                    "value_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_0376faa459e10b41d1d24ed108def98f0eae4a4faa11bbfb87ddfb783c1a9d05"
+                    },
+                    "interpretation_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_eeb1c471795ef24901db9a2d0783d9a6e6b7a135315d3777b648b3186123a9a7"
+                    }
+                  },
+                  "assignment": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "direct",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "assignment"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:45a9ea8219cd410cef139f8cfdd53fe14189875f236b0f4e8492b7630b4430d7",
+                    "value_included": true,
+                    "value_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_43e9f7edc0678a27ae9b2d9f8f3631c626441909a1b6e91c357178a1093431d5"
+                    },
+                    "interpretation_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_eeb1c471795ef24901db9a2d0783d9a6e6b7a135315d3777b648b3186123a9a7"
+                    }
+                  }
+                },
+                {
+                  "term_ref": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "CHEBI:76924",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "term_ref"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:f884af10828d48e812d0b7800c4e61b4992be9e0cff3b64cb8ad0710f16c9144",
+                    "value_included": true,
+                    "value_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_f9ac3d312ddd1a8a83a098fff2bed9f38c29767804d9208c7861fdafab9f9cdf"
+                    },
+                    "interpretation_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_b1d0a74d41566170861c39757936bf4789654d52f23322527d5315ce905680e5"
+                    }
+                  },
+                  "assignment": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "direct",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "assignment"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:f884af10828d48e812d0b7800c4e61b4992be9e0cff3b64cb8ad0710f16c9144",
+                    "value_included": true,
+                    "value_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_cbe048ccd4222750f181b10dae297c717f176ce4edc2cd53fbf084fcf6134b33"
+                    },
+                    "interpretation_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_b1d0a74d41566170861c39757936bf4789654d52f23322527d5315ce905680e5"
+                    }
+                  }
+                }
+              ],
+              "resolved_page_cells": [
+                {
+                  "term_ref": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "CHEBI:24079",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "term_ref"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:f475a133e29cbe1b627216ae4281349ee451484c51b36808fef41a32008c8ce0",
+                    "value_included": true,
+                    "value_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:f475a133e29cbe1b627216ae4281349ee451484c51b36808fef41a32008c8ce0"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "term_ref"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "952e7870ce7b172b32c5c3a742b462b1ba6a645cadc2b63872b495d16e893f51"
+                    },
+                    "interpretation_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:f475a133e29cbe1b627216ae4281349ee451484c51b36808fef41a32008c8ce0"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "interpretation"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "8561b7423fe8e9690aa63d2ddf42980aa08eda82906b0057d3205f2f1841fc8b"
+                    }
+                  },
+                  "assignment": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "class_membership",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "assignment"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:f475a133e29cbe1b627216ae4281349ee451484c51b36808fef41a32008c8ce0",
+                    "value_included": true,
+                    "value_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:f475a133e29cbe1b627216ae4281349ee451484c51b36808fef41a32008c8ce0"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "assignment"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "83d898fb7c576899495b5ac1e511655dfad9475bd86e42811d2739379a7b95e1"
+                    },
+                    "interpretation_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:f475a133e29cbe1b627216ae4281349ee451484c51b36808fef41a32008c8ce0"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "interpretation"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "8561b7423fe8e9690aa63d2ddf42980aa08eda82906b0057d3205f2f1841fc8b"
+                    }
+                  }
+                },
+                {
+                  "term_ref": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "CHEBI:25248",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "term_ref"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:e12ab2610a0ad09a468d3a855d6076c0e665898e5abaf1193fc011aff59d6fff",
+                    "value_included": true,
+                    "value_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:e12ab2610a0ad09a468d3a855d6076c0e665898e5abaf1193fc011aff59d6fff"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "term_ref"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "d1352f73d2c5944cddbaba5bfe51f5c0a996f9fab8e8d23ee22d42d6fc1fbb72"
+                    },
+                    "interpretation_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:e12ab2610a0ad09a468d3a855d6076c0e665898e5abaf1193fc011aff59d6fff"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "interpretation"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "8561b7423fe8e9690aa63d2ddf42980aa08eda82906b0057d3205f2f1841fc8b"
+                    }
+                  },
+                  "assignment": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "class_membership",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "assignment"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:e12ab2610a0ad09a468d3a855d6076c0e665898e5abaf1193fc011aff59d6fff",
+                    "value_included": true,
+                    "value_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:e12ab2610a0ad09a468d3a855d6076c0e665898e5abaf1193fc011aff59d6fff"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "assignment"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "83d898fb7c576899495b5ac1e511655dfad9475bd86e42811d2739379a7b95e1"
+                    },
+                    "interpretation_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:e12ab2610a0ad09a468d3a855d6076c0e665898e5abaf1193fc011aff59d6fff"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "interpretation"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "8561b7423fe8e9690aa63d2ddf42980aa08eda82906b0057d3205f2f1841fc8b"
+                    }
+                  }
+                },
+                {
+                  "term_ref": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "CHEBI:26878",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "term_ref"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:02f44c86da640bc15eb5000926b9873f53a20a9cf9061e1bf64b0492db1f034a",
+                    "value_included": true,
+                    "value_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:02f44c86da640bc15eb5000926b9873f53a20a9cf9061e1bf64b0492db1f034a"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "term_ref"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "f93729abcd4472a3b16048e16ca12a39b51ba38e9489c247fa8747ae4a28bc10"
+                    },
+                    "interpretation_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:02f44c86da640bc15eb5000926b9873f53a20a9cf9061e1bf64b0492db1f034a"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "interpretation"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "8561b7423fe8e9690aa63d2ddf42980aa08eda82906b0057d3205f2f1841fc8b"
+                    }
+                  },
+                  "assignment": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "class_membership",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "assignment"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:02f44c86da640bc15eb5000926b9873f53a20a9cf9061e1bf64b0492db1f034a",
+                    "value_included": true,
+                    "value_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:02f44c86da640bc15eb5000926b9873f53a20a9cf9061e1bf64b0492db1f034a"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "assignment"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "83d898fb7c576899495b5ac1e511655dfad9475bd86e42811d2739379a7b95e1"
+                    },
+                    "interpretation_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:02f44c86da640bc15eb5000926b9873f53a20a9cf9061e1bf64b0492db1f034a"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "interpretation"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "8561b7423fe8e9690aa63d2ddf42980aa08eda82906b0057d3205f2f1841fc8b"
+                    }
+                  }
+                },
+                {
+                  "term_ref": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "CHEBI:27288",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "term_ref"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:12f1d1b657982db092eefc91f587335cfccd9b6112f969d11eb4ff859f8b428b",
+                    "value_included": true,
+                    "value_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:12f1d1b657982db092eefc91f587335cfccd9b6112f969d11eb4ff859f8b428b"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "term_ref"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "a98988d79c5d1e1fdb2bf4024d57100e54db6043693ca4d1ba0ab6f27520228c"
+                    },
+                    "interpretation_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:12f1d1b657982db092eefc91f587335cfccd9b6112f969d11eb4ff859f8b428b"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "interpretation"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "8561b7423fe8e9690aa63d2ddf42980aa08eda82906b0057d3205f2f1841fc8b"
+                    }
+                  },
+                  "assignment": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "class_membership",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "assignment"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:12f1d1b657982db092eefc91f587335cfccd9b6112f969d11eb4ff859f8b428b",
+                    "value_included": true,
+                    "value_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:12f1d1b657982db092eefc91f587335cfccd9b6112f969d11eb4ff859f8b428b"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "assignment"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "83d898fb7c576899495b5ac1e511655dfad9475bd86e42811d2739379a7b95e1"
+                    },
+                    "interpretation_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:12f1d1b657982db092eefc91f587335cfccd9b6112f969d11eb4ff859f8b428b"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "interpretation"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "8561b7423fe8e9690aa63d2ddf42980aa08eda82906b0057d3205f2f1841fc8b"
+                    }
+                  }
+                },
+                {
+                  "term_ref": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "CHEBI:38163",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "term_ref"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:c2288dd5fe5999c3282343507c72becfc50235b0b8a42b12c052e233f69837a5",
+                    "value_included": true,
+                    "value_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:c2288dd5fe5999c3282343507c72becfc50235b0b8a42b12c052e233f69837a5"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "term_ref"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "b9f249a4602bf86467577bdf9c818c1bc49d289cb9e41e648502608325d9e1ee"
+                    },
+                    "interpretation_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:c2288dd5fe5999c3282343507c72becfc50235b0b8a42b12c052e233f69837a5"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "interpretation"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "8561b7423fe8e9690aa63d2ddf42980aa08eda82906b0057d3205f2f1841fc8b"
+                    }
+                  },
+                  "assignment": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "class_membership",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "assignment"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:c2288dd5fe5999c3282343507c72becfc50235b0b8a42b12c052e233f69837a5",
+                    "value_included": true,
+                    "value_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:c2288dd5fe5999c3282343507c72becfc50235b0b8a42b12c052e233f69837a5"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "assignment"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "83d898fb7c576899495b5ac1e511655dfad9475bd86e42811d2739379a7b95e1"
+                    },
+                    "interpretation_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:c2288dd5fe5999c3282343507c72becfc50235b0b8a42b12c052e233f69837a5"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "interpretation"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "8561b7423fe8e9690aa63d2ddf42980aa08eda82906b0057d3205f2f1841fc8b"
+                    }
+                  }
+                },
+                {
+                  "term_ref": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "CHEBI:38164",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "term_ref"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:54645e52b57d6c5b9ef2a995fc822890fd0cf25e706baa1ff15d21077d3ba7e3",
+                    "value_included": true,
+                    "value_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:54645e52b57d6c5b9ef2a995fc822890fd0cf25e706baa1ff15d21077d3ba7e3"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "term_ref"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "926a4825a14db3a468b13a404b12eabc16ae2e08fd19ad5575ed2fc1799d7443"
+                    },
+                    "interpretation_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:54645e52b57d6c5b9ef2a995fc822890fd0cf25e706baa1ff15d21077d3ba7e3"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "interpretation"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "8561b7423fe8e9690aa63d2ddf42980aa08eda82906b0057d3205f2f1841fc8b"
+                    }
+                  },
+                  "assignment": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "class_membership",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "assignment"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:54645e52b57d6c5b9ef2a995fc822890fd0cf25e706baa1ff15d21077d3ba7e3",
+                    "value_included": true,
+                    "value_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:54645e52b57d6c5b9ef2a995fc822890fd0cf25e706baa1ff15d21077d3ba7e3"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "assignment"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "83d898fb7c576899495b5ac1e511655dfad9475bd86e42811d2739379a7b95e1"
+                    },
+                    "interpretation_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:54645e52b57d6c5b9ef2a995fc822890fd0cf25e706baa1ff15d21077d3ba7e3"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "interpretation"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "8561b7423fe8e9690aa63d2ddf42980aa08eda82906b0057d3205f2f1841fc8b"
+                    }
+                  }
+                },
+                {
+                  "term_ref": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "CHEBI:47622",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "term_ref"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:983d930238956084dc09d71a688d6af0e402559310d1550df1336675ab9935c2",
+                    "value_included": true,
+                    "value_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:983d930238956084dc09d71a688d6af0e402559310d1550df1336675ab9935c2"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "term_ref"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "ef1d61b73dd4ffccee3c1a45a5ff626c8dc1f276bce870b2fd2e52021967d0ba"
+                    },
+                    "interpretation_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:983d930238956084dc09d71a688d6af0e402559310d1550df1336675ab9935c2"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "interpretation"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "8561b7423fe8e9690aa63d2ddf42980aa08eda82906b0057d3205f2f1841fc8b"
+                    }
+                  },
+                  "assignment": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "class_membership",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "assignment"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:983d930238956084dc09d71a688d6af0e402559310d1550df1336675ab9935c2",
+                    "value_included": true,
+                    "value_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:983d930238956084dc09d71a688d6af0e402559310d1550df1336675ab9935c2"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "assignment"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "83d898fb7c576899495b5ac1e511655dfad9475bd86e42811d2739379a7b95e1"
+                    },
+                    "interpretation_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:983d930238956084dc09d71a688d6af0e402559310d1550df1336675ab9935c2"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "interpretation"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "8561b7423fe8e9690aa63d2ddf42980aa08eda82906b0057d3205f2f1841fc8b"
+                    }
+                  }
+                },
+                {
+                  "term_ref": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "CHEBI:50996",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "term_ref"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:547bf6856e0be34bb04f0487a54560cd854089aad9411c87b65463151bec291f",
+                    "value_included": true,
+                    "value_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:547bf6856e0be34bb04f0487a54560cd854089aad9411c87b65463151bec291f"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "term_ref"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "84657a4aad94bb6c64b58e7d7660d998a71b44f33ecec8c1b43a3e8476599dda"
+                    },
+                    "interpretation_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:547bf6856e0be34bb04f0487a54560cd854089aad9411c87b65463151bec291f"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "interpretation"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "8561b7423fe8e9690aa63d2ddf42980aa08eda82906b0057d3205f2f1841fc8b"
+                    }
+                  },
+                  "assignment": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "class_membership",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "assignment"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:547bf6856e0be34bb04f0487a54560cd854089aad9411c87b65463151bec291f",
+                    "value_included": true,
+                    "value_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:547bf6856e0be34bb04f0487a54560cd854089aad9411c87b65463151bec291f"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "assignment"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "83d898fb7c576899495b5ac1e511655dfad9475bd86e42811d2739379a7b95e1"
+                    },
+                    "interpretation_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:547bf6856e0be34bb04f0487a54560cd854089aad9411c87b65463151bec291f"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "interpretation"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "8561b7423fe8e9690aa63d2ddf42980aa08eda82906b0057d3205f2f1841fc8b"
+                    }
+                  }
+                },
+                {
+                  "term_ref": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "CHEBI:23888",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "term_ref"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:8c796cde47a7d2469a60d40ef5a56761989df231f7f5ea688ef163be367c77c1",
+                    "value_included": true,
+                    "value_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:8c796cde47a7d2469a60d40ef5a56761989df231f7f5ea688ef163be367c77c1"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "term_ref"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "e0f5a658f82218e2341bd4c633141f60b479ed8824bbcb93c058b61455278c8e"
+                    },
+                    "interpretation_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:8c796cde47a7d2469a60d40ef5a56761989df231f7f5ea688ef163be367c77c1"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "interpretation"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "5c9a98007b09183aa1c3939a895eb0e40dd1689d5d822dffbe8d29d6f68de172"
+                    }
+                  },
+                  "assignment": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "direct",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "assignment"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:8c796cde47a7d2469a60d40ef5a56761989df231f7f5ea688ef163be367c77c1",
+                    "value_included": true,
+                    "value_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:8c796cde47a7d2469a60d40ef5a56761989df231f7f5ea688ef163be367c77c1"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "assignment"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "e095a134d1ac99d543b61895fe3aa0281367b29099ec19c390697397830b729a"
+                    },
+                    "interpretation_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:8c796cde47a7d2469a60d40ef5a56761989df231f7f5ea688ef163be367c77c1"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "interpretation"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "5c9a98007b09183aa1c3939a895eb0e40dd1689d5d822dffbe8d29d6f68de172"
+                    }
+                  }
+                },
+                {
+                  "term_ref": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "CHEBI:25212",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "term_ref"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:1463af7772498bc25e210366cdf29c753774eee73bd9378d58bfc85e8392ace4",
+                    "value_included": true,
+                    "value_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:1463af7772498bc25e210366cdf29c753774eee73bd9378d58bfc85e8392ace4"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "term_ref"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "49e59698ebd5c950a1eb447ef114f6f728d296ad9635b715b671a5b6e74bd9e6"
+                    },
+                    "interpretation_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:1463af7772498bc25e210366cdf29c753774eee73bd9378d58bfc85e8392ace4"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "interpretation"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "c350549576730c0fbb68618b50c3c297448f840a69d466d5b62a3666d59207b0"
+                    }
+                  },
+                  "assignment": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "inherited",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "assignment"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:1463af7772498bc25e210366cdf29c753774eee73bd9378d58bfc85e8392ace4",
+                    "value_included": true,
+                    "value_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:1463af7772498bc25e210366cdf29c753774eee73bd9378d58bfc85e8392ace4"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "assignment"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "970c145e2f689ee0997790238ff5a92e201ed1373a306635202d3483bc129871"
+                    },
+                    "interpretation_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:1463af7772498bc25e210366cdf29c753774eee73bd9378d58bfc85e8392ace4"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "interpretation"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "c350549576730c0fbb68618b50c3c297448f840a69d466d5b62a3666d59207b0"
+                    }
+                  }
+                },
+                {
+                  "term_ref": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "CHEBI:35610",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "term_ref"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:17ee1910ed3b3727cd1c7353e4fef5a6d7c9f10632d0bd5de93df3ae15ea370e",
+                    "value_included": true,
+                    "value_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:17ee1910ed3b3727cd1c7353e4fef5a6d7c9f10632d0bd5de93df3ae15ea370e"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "term_ref"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "83af0dc83786ccdb41bd4d93011bce68e75f36b1986cf4884ad8d83c057c47d3"
+                    },
+                    "interpretation_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:17ee1910ed3b3727cd1c7353e4fef5a6d7c9f10632d0bd5de93df3ae15ea370e"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "interpretation"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "5c9a98007b09183aa1c3939a895eb0e40dd1689d5d822dffbe8d29d6f68de172"
+                    }
+                  },
+                  "assignment": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "direct",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "assignment"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:17ee1910ed3b3727cd1c7353e4fef5a6d7c9f10632d0bd5de93df3ae15ea370e",
+                    "value_included": true,
+                    "value_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:17ee1910ed3b3727cd1c7353e4fef5a6d7c9f10632d0bd5de93df3ae15ea370e"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "assignment"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "e095a134d1ac99d543b61895fe3aa0281367b29099ec19c390697397830b729a"
+                    },
+                    "interpretation_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:17ee1910ed3b3727cd1c7353e4fef5a6d7c9f10632d0bd5de93df3ae15ea370e"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "interpretation"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "5c9a98007b09183aa1c3939a895eb0e40dd1689d5d822dffbe8d29d6f68de172"
+                    }
+                  }
+                },
+                {
+                  "term_ref": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "CHEBI:39142",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "term_ref"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:6fa1d167ccc99245b88c3af953dd2cb130748201a690bc0d435624c5970b4f60",
+                    "value_included": true,
+                    "value_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:6fa1d167ccc99245b88c3af953dd2cb130748201a690bc0d435624c5970b4f60"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "term_ref"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "22d5c923fa8719ab47cad050a17cb53a05b7df889e40c0ef4bec32650f8f1bed"
+                    },
+                    "interpretation_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:6fa1d167ccc99245b88c3af953dd2cb130748201a690bc0d435624c5970b4f60"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "interpretation"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "c350549576730c0fbb68618b50c3c297448f840a69d466d5b62a3666d59207b0"
+                    }
+                  },
+                  "assignment": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "inherited",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "assignment"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:6fa1d167ccc99245b88c3af953dd2cb130748201a690bc0d435624c5970b4f60",
+                    "value_included": true,
+                    "value_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:6fa1d167ccc99245b88c3af953dd2cb130748201a690bc0d435624c5970b4f60"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "assignment"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "970c145e2f689ee0997790238ff5a92e201ed1373a306635202d3483bc129871"
+                    },
+                    "interpretation_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:6fa1d167ccc99245b88c3af953dd2cb130748201a690bc0d435624c5970b4f60"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "interpretation"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "c350549576730c0fbb68618b50c3c297448f840a69d466d5b62a3666d59207b0"
+                    }
+                  }
+                },
+                {
+                  "term_ref": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "CHEBI:60832",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "term_ref"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:c405e979a8a1a65c0623335d48430f3f6e75f726c4974d41ed4ef9ce52d398a0",
+                    "value_included": true,
+                    "value_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:c405e979a8a1a65c0623335d48430f3f6e75f726c4974d41ed4ef9ce52d398a0"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "term_ref"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "2c96af66510b4ac25b88ad6371e829291ed9cbf9f8bf1b985108a34c2e9c05bc"
+                    },
+                    "interpretation_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:c405e979a8a1a65c0623335d48430f3f6e75f726c4974d41ed4ef9ce52d398a0"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "interpretation"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "5c9a98007b09183aa1c3939a895eb0e40dd1689d5d822dffbe8d29d6f68de172"
+                    }
+                  },
+                  "assignment": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "direct",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "assignment"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:c405e979a8a1a65c0623335d48430f3f6e75f726c4974d41ed4ef9ce52d398a0",
+                    "value_included": true,
+                    "value_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:c405e979a8a1a65c0623335d48430f3f6e75f726c4974d41ed4ef9ce52d398a0"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "assignment"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "e095a134d1ac99d543b61895fe3aa0281367b29099ec19c390697397830b729a"
+                    },
+                    "interpretation_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:c405e979a8a1a65c0623335d48430f3f6e75f726c4974d41ed4ef9ce52d398a0"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "interpretation"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "5c9a98007b09183aa1c3939a895eb0e40dd1689d5d822dffbe8d29d6f68de172"
+                    }
+                  }
+                },
+                {
+                  "term_ref": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "CHEBI:61951",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "term_ref"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:45a9ea8219cd410cef139f8cfdd53fe14189875f236b0f4e8492b7630b4430d7",
+                    "value_included": true,
+                    "value_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:45a9ea8219cd410cef139f8cfdd53fe14189875f236b0f4e8492b7630b4430d7"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "term_ref"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "bfe8a99ef741f69ef4cb8ecc04d0958cdb51c2f1d605f9b3b59c796a83546cbe"
+                    },
+                    "interpretation_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:45a9ea8219cd410cef139f8cfdd53fe14189875f236b0f4e8492b7630b4430d7"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "interpretation"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "5c9a98007b09183aa1c3939a895eb0e40dd1689d5d822dffbe8d29d6f68de172"
+                    }
+                  },
+                  "assignment": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "direct",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "assignment"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:45a9ea8219cd410cef139f8cfdd53fe14189875f236b0f4e8492b7630b4430d7",
+                    "value_included": true,
+                    "value_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:45a9ea8219cd410cef139f8cfdd53fe14189875f236b0f4e8492b7630b4430d7"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "assignment"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "e095a134d1ac99d543b61895fe3aa0281367b29099ec19c390697397830b729a"
+                    },
+                    "interpretation_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:45a9ea8219cd410cef139f8cfdd53fe14189875f236b0f4e8492b7630b4430d7"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "interpretation"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "5c9a98007b09183aa1c3939a895eb0e40dd1689d5d822dffbe8d29d6f68de172"
+                    }
+                  }
+                },
+                {
+                  "term_ref": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "CHEBI:76924",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "term_ref"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:f884af10828d48e812d0b7800c4e61b4992be9e0cff3b64cb8ad0710f16c9144",
+                    "value_included": true,
+                    "value_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:f884af10828d48e812d0b7800c4e61b4992be9e0cff3b64cb8ad0710f16c9144"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "term_ref"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "6c3458001e85e98846662055ac5f945d82e0787ad08f3dade42fb4dfc308af0c"
+                    },
+                    "interpretation_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:f884af10828d48e812d0b7800c4e61b4992be9e0cff3b64cb8ad0710f16c9144"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "interpretation"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "5c9a98007b09183aa1c3939a895eb0e40dd1689d5d822dffbe8d29d6f68de172"
+                    }
+                  },
+                  "assignment": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "direct",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "assignment"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:f884af10828d48e812d0b7800c4e61b4992be9e0cff3b64cb8ad0710f16c9144",
+                    "value_included": true,
+                    "value_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:f884af10828d48e812d0b7800c4e61b4992be9e0cff3b64cb8ad0710f16c9144"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "assignment"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "e095a134d1ac99d543b61895fe3aa0281367b29099ec19c390697397830b729a"
+                    },
+                    "interpretation_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:f884af10828d48e812d0b7800c4e61b4992be9e0cff3b64cb8ad0710f16c9144"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "interpretation"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "5c9a98007b09183aa1c3939a895eb0e40dd1689d5d822dffbe8d29d6f68de172"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "fields": [
+                "term_ref"
+              ],
+              "where": {
+                "application": true
+              },
+              "selection_ref": "XA_3f277286fe9c2f8837eaae515f2986e32965414a71381124b32d2a259c5dc964",
+              "count": 2,
+              "page_cells": [
+                {
+                  "term_ref": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "CHEBI:23888",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "term_ref"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:8c796cde47a7d2469a60d40ef5a56761989df231f7f5ea688ef163be367c77c1",
+                    "value_included": true,
+                    "value_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_655d14b845edf112a3d6f8e96186f0dd67805255bbd24427c6fe822f2314e3af"
+                    },
+                    "interpretation_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_3838bb4069a9a8fbb73aa6e47853176b1484c2c97bfb42dc6d244c298c16f9b2"
+                    }
+                  }
+                },
+                {
+                  "term_ref": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "CHEBI:35610",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "term_ref"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:17ee1910ed3b3727cd1c7353e4fef5a6d7c9f10632d0bd5de93df3ae15ea370e",
+                    "value_included": true,
+                    "value_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_62e93a3748236613bb02f21fb11b197fc37f371db1dff24684a422180bd150a6"
+                    },
+                    "interpretation_location": {
+                      "format": "card_access_location@1",
+                      "kind": "lookup",
+                      "location_ref": "XL_873d58cc02a2f146fa8cb990dbb10bb833b179ae2882a191e2e8fbabd98dd282"
+                    }
+                  }
+                }
+              ],
+              "resolved_page_cells": [
+                {
+                  "term_ref": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "CHEBI:23888",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "term_ref"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:8c796cde47a7d2469a60d40ef5a56761989df231f7f5ea688ef163be367c77c1",
+                    "value_included": true,
+                    "value_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:8c796cde47a7d2469a60d40ef5a56761989df231f7f5ea688ef163be367c77c1"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "term_ref"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "e0f5a658f82218e2341bd4c633141f60b479ed8824bbcb93c058b61455278c8e"
+                    },
+                    "interpretation_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:8c796cde47a7d2469a60d40ef5a56761989df231f7f5ea688ef163be367c77c1"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "interpretation"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "5c9a98007b09183aa1c3939a895eb0e40dd1689d5d822dffbe8d29d6f68de172"
+                    }
+                  }
+                },
+                {
+                  "term_ref": {
+                    "state": "present",
+                    "reason": null,
+                    "value": "CHEBI:35610",
+                    "field": {
+                      "adapter": "chemical_classification_exploration@1",
+                      "column": "term_ref"
+                    },
+                    "support_basis": "source_bound_chemical_classification",
+                    "support_ref": "sha256:17ee1910ed3b3727cd1c7353e4fef5a6d7c9f10632d0bd5de93df3ae15ea370e",
+                    "value_included": true,
+                    "value_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:17ee1910ed3b3727cd1c7353e4fef5a6d7c9f10632d0bd5de93df3ae15ea370e"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "term_ref"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "83af0dc83786ccdb41bd4d93011bce68e75f36b1986cf4884ad8d83c057c47d3"
+                    },
+                    "interpretation_location": {
+                      "original_typed_location": {
+                        "format": "card_access_location@1",
+                        "kind": "result",
+                        "result_ref": "XR_326ee4b36397b1ac6c7ae399dd1ff3d0e1f7b6643f59dcba387128c2eae7d1eb",
+                        "segments": [
+                          {
+                            "type": "Key",
+                            "value": "rows"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "sha256:17ee1910ed3b3727cd1c7353e4fef5a6d7c9f10632d0bd5de93df3ae15ea370e"
+                          },
+                          {
+                            "type": "Key",
+                            "value": "interpretation"
+                          }
+                        ]
+                      },
+                      "original_node_sha256": "5c9a98007b09183aa1c3939a895eb0e40dd1689d5d822dffbe8d29d6f68de172"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "path": "recovered_work/clean_checkpoint_20261106/vincristine-whole-session-resolved-v2.json.gz",
+          "file_bytes": 4378851,
+          "bundle_digest": "sha256:a5c73e3397c87ac2faf12c9760b181cd498f989cbf939c862e01d61060b6e64b",
+          "card_unchanged": true,
+          "elapsed_s": 19.23798280400024
+        }
+      ]
+    },
+    "independent_reader": [
+      {
+        "case": "pga",
+        "read_resave_originals_equal": true,
+        "fresh_cells_match_original_typed_targets_and_payloads": true,
+        "session_token_lifecycle": {
+          "retained_tokens_resolve": 0,
+          "unretained_tokens_rejected": 16
+        },
+        "current_engines_card_catalogues_forbidden": true,
+        "elapsed_s": 12.861144299999978
+      },
+      {
+        "case": "vincristine",
+        "read_resave_originals_equal": true,
+        "fresh_cells_match_original_typed_targets_and_payloads": true,
+        "session_token_lifecycle": {
+          "retained_tokens_resolve": 0,
+          "unretained_tokens_rejected": 64
+        },
+        "current_engines_card_catalogues_forbidden": true,
+        "elapsed_s": 34.125832502000776
+      }
+    ],
+    "scope": "Technical whole-session public controls, default transport limits, no source query or independent scientist/researcher/latency acceptance. Current Card construction/native engines/catalogues forbidden in independent read/resave."
+  },
+  "oracle_review": {
+    "initial_failures": [
+      "public-workload-independent",
+      "public-workload-cell-diagnostic",
+      "public-workload-independent-resolved"
+    ],
+    "finding": "Initial scratch assertions incorrectly required raw XL page-token equality/portability. Contract makes those tokens session-local; only serialized navigation closure is retained. Corrected workload compares producer full typed destinations plus node hashes and all other cell fields, verifies original query/selection/member/row science, and rejects unretained old tokens without fallback. No library code changed for this diagnostic.",
+    "contract": "devguide/pending_proposals/card_agent_access_v1_contract.md",
+    "source_pruning": "sabueso/core/card_exploration_storage.py:_objects_for"
+  },
+  "producer_metadata_scope": "Original SDK193 producer controls remain immutable. This precommit receiving identifies source by the exact17 committed blobs; a clean final documentation-HEAD SDK/import check and its95-case receiving will be recorded outside the tree after the final documentation commit, avoiding self-referential hashes.",
+  "pending": [
+    "Exact-final-source hosted CI/governance through gh-run-receptor after authorized push/manual recovery",
+    "Destination environment/import/runtime receiving and independently required installed-artifact/release gates",
+    "Broad B2-B7 scientific/default/researcher/consumer/private-pilot/workload acceptance; no0.15 publication authorized"
+  ],
+  "no_release_or_source_queries": true
+}

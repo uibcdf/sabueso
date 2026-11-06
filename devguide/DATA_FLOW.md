@@ -4,9 +4,10 @@ One resolution, end to end: `sabueso.resolve(query, **options)`.
 
 ## 1. Route
 - The query is an identifier (UniProt accession, `pdb:`, `pubchem:`, `chembl:`,
-  `pdb.ligand:`, `inchikey:`) or an `EntityQuery` (name and organism).
-- Its namespace decides the card tool: protein or small molecule. `entity_type`
-  overrides it.
+  `pdb.ligand:`, `inchikey:`, `mondo:` or a disease terminology MONDO maps) or an
+  `EntityQuery`. [PUBLIC_API.md](PUBLIC_API.md) lists the supported forms.
+- Its namespace decides the card tool: protein, small molecule or MONDO-anchored
+  disease. `entity_type` explicitly selects the supported route.
 - A named `profile` (e.g. `structural_baseline@1`) expands into options. Options passed
   explicitly override it.
 - The route and the profile are recorded in `resolution.decision`.
@@ -26,6 +27,13 @@ One resolution, end to end: `sabueso.resolve(query, **options)`.
   - The card is anchored at the standard InChIKey.
   - Records of ChEMBL, the PDB CCD, PubChem and UniChem join it only through stated
     identities.
+- **Disease.**
+  - The card is anchored at a MONDO term. An external terminology identifier resolves
+    only through MONDO's stated equivalence (`mondo_equivalence@1`), with its release
+    and identity basis recorded.
+  - A name or hierarchy relationship does not establish equivalence. An identifier
+    without stated equivalence stays unresolved; obsolete MONDO terms report stated
+    replacement candidates without choosing one automatically.
 - The decision is kept as `quality.entity_resolution`: sources asked, rules applied,
   alternatives and identity links.
 - An ambiguous result has no card. `ambiguity_deck(resolution)` turns its candidates into
@@ -38,9 +46,10 @@ One resolution, end to end: `sabueso.resolve(query, **options)`.
   - interfaces, ligand and family sites;
   - predicted models; taxonomy;
   - bioactivities (ChEMBL, BindingDB, PubChem BioAssay);
-  - STRING partners.
-- Each outcome is recorded in `quality.enrichments`, whether `added`, `not_found` or
-  `error`. A truncated result says so.
+  - STRING partners;
+  - disease definitions, terminology identity and hierarchy from MONDO.
+- Each requested enrichment's outcome is recorded in `quality.enrichments`, whether
+  `added`, `not_found` or `error`. A truncated result says so.
 - Mappings turn each record into field values, relationships, and one SourceAssertion
   per asserted value. The SourceAssertion carries the source, its release, the record,
   the retrieval date and source metadata such as ECO evidence.
@@ -72,6 +81,11 @@ One resolution, end to end: `sabueso.resolve(query, **options)`.
   rules, stored inputs and supporting statements; all cards and items are pinned.
 - `card.table(view)` gives flat rows. `sabueso.to_dataframe(rows)` gives a DataFrame,
   with quantities kept.
+- Development `Card.access()` captures retained knowledge for machine reading;
+  `Card.explore()` provides human navigation and `explorer.access` over the same
+  explorer capture. Named scientific adapters read captured inputs without source
+  acquisition. Source-stated roles and mechanisms keep their original support;
+  derived concentration classes alone do not establish inhibitor roles.
 
 ## 7. Store and cite
 - `KnowledgeStore.save(card)` stores a revision and returns its pinned reference
@@ -80,6 +94,12 @@ One resolution, end to end: `sabueso.resolve(query, **options)`.
 - Decks are saved and pinned the same way (`sabueso:deck:<name>@sha256:…`).
 - A card of an older schema is converted by `sabueso.migrate_card`, which records its
   gaps. `sabueso.refresh_card` rebuilds it from its sources.
+- Development exploration saving retains supported original views, machine
+  requests, support and navigation. `sabueso.read_exploration(...)` verifies and
+  reads them independently without Card rebuilding, acquisition or current
+  scientific recomputation. Unretained optional scientific requests return
+  `not_saved`. The [exploration architecture](ARCHITECTURE.md#development-exploration-and-saved-reading)
+  distinguishes scientific rules, saved semantic formats and physical storage.
 
 ## Invariants
 

@@ -12,6 +12,14 @@ supersedes: []
 
 # Human exploration of Card
 
+Current status: the [completion inventory](card_exploration_completion_0150.md)
+owns delivered and missing broad panels, and the
+[integrated continuation plan](../CONTINUATION_PLAN_20261104.md#execution-order)
+owns the current B0–B8 sequence. The original design and pre-implementation steps
+below retain their review context; they are not today's implementation queue.
+Initial and subsequent adapters are implemented, while broad delivery and explicit
+scientific/researcher acceptance remain open. Release consolidation stays paused.
+
 ## Purpose and decision status
 
 A researcher should be able to open a Card, understand what it knows about a
@@ -428,6 +436,9 @@ claiming excellence from test counts or an attractive notebook alone. This docum
 records inspected capabilities and intended acceptance, **not measured usability**.
 
 ## Delivery sequence and open decisions
+
+This is the original design sequence. Use the current-status pointers above for
+completed implementation and remaining work; researcher acceptance is still required.
 
 1. **Design inventory:** map current retained content, existing APIs and user tasks;
    identify reuse and real gaps. Deliver the complete-access matrix and concrete

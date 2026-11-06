@@ -1,5 +1,18 @@
 # Sabueso — Decision Log
 
+## 2026-11-06 — Independently receive original chemical exploration
+
+The chemical saved-reading candidate uses explicit semantic format @15 and a
+separate shared representation @16. Earlier @1–@14 readers retain their original
+predicates. Freeze the original native/wire inputs separately from current Card
+factories, mappings and question catalogues; expected values verify retained
+output rather than replace it. Preserve source field/member grain, native row
+order, false/null categories, unknown science and executed targeted requests.
+Original source/input routes, repeat saving and mixed contexts need their own
+receiving. Local engineering checks do not accept the scientific policy or human
+experience and do not authorize0.15.0 publication. See
+[the maintained contract](pending_proposals/chemical_classification_exploration.md).
+
 ## 2026-11-06 — Share original chemical classification across human and agent access
 
 The small-molecule `classification` topic/question and machine

@@ -1,289 +1,73 @@
 # Sabueso — Roadmap
 
-Current B5 work: [chemical classification](pending_proposals/chemical_classification_exploration.md)
-now has a shared source-bound native/human/compact-agent reading, original
-source/open/back navigation and typed class/role selection. Independent original
-chemical-profile saved reading and scientific/researcher acceptance remain required.
-B2 review stays deferred, B3 remains open and 0.15.0 publication is not authorized.
-
-The [regional source orientation](pending_proposals/card_region_orientation.md)
-now separates original declared spans from admitted coordinate results and displays
-compact exact requests. The public original SDK185 session preserves all64 rows
-and exact Card/wire/agent data under inert reading. The
-[versioned filter correction #191](pending_bugs/retained_display_filter.md) now
-selects retained scalar cells while preserving scientific uncertainty and genuine
-earlier membership. Its format @14 explicitly separates the new display policy
-from original scientific records. The subsequent [display-scope correction](pending_bugs/structural_display_scope.md)
-keeps model limitations and filter guidance visible through chained presentation.
-Exact-source and broader B3 receiving remain separate; scientific/researcher
-acceptance is not implied.
-
-The [genuine AlphaFold archive control](pending_proposals/alphafold_archive_fragment_control.md)
-now retains public titin AF-Q8WZ42-F2 and its original UniProt reference. Independent
-native readers verify the 201–1600 reference interval, exact 1,400-residue sequence,
-CRC64 and sequence-version date. The explicit native metadata intake now places this real model in a Card, with
-literal human/targeted-agent/source/saved access. This does not fabricate an API
-record. A separate original-reference finding now checks native sequence/CRC64
-against coherent original UniProt inputs. Its
-[native interval question](pending_proposals/card_native_model_navigation.md)
-now prepares retained experimental-region reading with current selection guards
-and independent format @12 reading; date agreement and atomic/experimental
-correspondence remain unknown. Scientific/researcher acceptance remains open. The separate full-panel
-[preparation correction](pending_proposals/shared_link_support.md) under #167
-now completes the whole public Card save under the original 512 MiB guard,
-retaining all original content. Its shared-support format @11 has separate
-historical/mixed/final-source receiving; the original failed receipt is retained.
-The native question returns64 retained inventory items on the full public Card.
-At SDK183 its complete save exceeded the original memory/decoded budgets through
-repeated view states. The [shared-value candidate](pending_proposals/shared_view_state_persistence.md)
-now preserves original semantic verifiers with a separate bounded representation;
-the complete 64-item save/read/resave now passes locally under #167, using
-360 MiB peak owned RSS, one low-priority CPU and zero owned swap. Default physical
-limits remain 64 MiB. All 1,042 selected local cases pass, including the isolated receiving payload.
-Committed-SDK receiving also passes; all 19 local editable routes are verified
-inside and outside the checkout. Exact-source hosted qualification remains pending. Small saved controls and the earlier metadata-only512MiB success
-remain separate scopes.
-B3/scientific/researcher/workload acceptance remains open; B2 review is deferred
-and 0.15.0 consolidation paused.
-
-The [AlphaFold range-alias continuation](pending_proposals/alphafold_range_aliases.md)
-adds context/native @2, explicit agreement/refusal, whole/fragment questions @2,
-independent saved format @10 and packet mapping @16. Original source records,
-@1 meanings and saved formats @1–@9 stay fixed. The genuine public archive input now has explicit native metadata Card intake;
-its separate original-reference finding and dedicated interval question are
-implemented; independent scientific/researcher/workload acceptance remains pending;
-B2 review stays deferred and 0.15.0 consolidation paused.
-
-Sabueso's work follows two routes, and this roadmap integrates both. Neither replaces the
-other.
-
-1. **The foundational plan** (2026-01 → 2026-09-23). The original design:
-   - the vision, architecture and use cases;
-   - a roadmap in phases (`archive/ROADMAP_original_2026-01.md`) and a source plan
-     (`archive/SOURCES_original_plan.md`);
-   - the long-term directions written on 2026-09-23 (`SCIENTIFIC_POTENTIAL.md`,
-     `archive/future_direction_2026-09-23.md`).
-2. **The pilot-driven route** (since 2026-09-23). Real discovery programs, the MOLI
-   vertical pilots, pull platform development: a pilot needs something, Sabueso builds
-   the smallest useful slice, and real use shows what is missing. Pilots are private.
-   Their needs enter this public repository phrased generically, with public test
-   systems (TcTIM, HsTIM and HK2, public data only).
-
-The pilot route decided the *order* of the work since 2026-09-23, not its *scope*. The
-objectives of the foundational plan stay objectives. This document tracks each one's
-status, so that none is lost because a pilot has not asked for it yet.
+This page owns long-term objectives, their dependency structure and the integration
+of foundational and pilot-driven work. [CHECKPOINT](CHECKPOINT.md) owns current
+source/qualification; the [continuation plan](CONTINUATION_PLAN_20261104.md#execution-order)
+owns the active B0–B8 schedule. New contributors start with [ONBOARDING](ONBOARDING.md).
+The [workstation handoff](WORKSTATION_HANDOFF_20261106.md) owns the current transfer.
 
 ## How the two routes are integrated
 
-- **A pilot blocker comes first.** When a pilot cannot advance without Sabueso, that
-  work goes first, in its smallest useful form.
-- **Foundations are not postponed until they are expensive.** Some objectives get
-  costlier the longer they wait: identity, references, schema, stores, query
-  interfaces. They are scheduled before a pilot forces them, when the design they
-  constrain is being built.
-- **Every slice is built toward the foundational design.** A pilot-driven slice uses the
-  general model (relationships, SourceAssertions, named derivation rules, pinned
-  references), never a pilot-shaped shortcut. The pilot is its acceptance test, not its
-  boundary.
-- **Each release is reviewed against both routes.** Its notes and `CHECKPOINT.md` say
-  what it advanced in each. When this table is out of date, updating it is part of the
-  release.
-- **Maintainers may schedule a foundational objective on its own.** The pilots do not
-  own the plan.
+1. **Foundational route.** The original vision, phases, sources and use cases remain
+   tracked below. Identity, support, references, schemas, persistence and query
+   contracts cannot wait until a pilot forces an expensive repair.
+2. **Pilot-driven route.** Real MOLI projects determine useful implementation order
+   and provide acceptance tasks. Private scientific questions stay private; public
+   contracts, issues and examples express generic needs with public test systems.
+
+A pilot blocker has priority, but its smallest useful slice uses the general
+knowledge model. A pilot chooses order, not the boundary of Sabueso's scientific
+purpose. Each release reviews both routes. A bounded delivered feature is not proof
+of complete source coverage, live health, consumer usefulness or human acceptance.
 
 ## Latest release: 0.14.0 (#134)
 
-Published 2026-10-09 from qualified `78623d0`: exact-SHA CI/governance,
-independently verified staging, all twelve installed OS/Python lanes, exact-file
-promotion, clean public installation and identical-tag Zenodo archival pass.
-Each installed lane passes 1,277 receiving cases, one intentional local-only input
-exclusion and the public workflow. Complete receipt:
-`devtools/conda-build/receipts/sabueso_0.14.0_public_2026-10-09.json`.
-
-The release consolidates bounded native/supplied-file access, source-sequence and
-residue support, notebook reports and public HK2, independent protein/molecule/
-disease journeys, clinical bibliography and conservative source-state/taxonomy
-integrity. Schema 0.3.13 is frozen. It advances foundational identity/support/
-reference integrity and bounded consumer-oriented acceptance together. Native
-access remains separate from card contribution and current live health. Full
-private consumer routes (#132), broader #108/#91/#92 and
-consumer-owned MOLI/Nextia/Recorda acceptance remain open; the next development
-order continues below. SQLite lifetime (#133) is corrected and exact-SHA CI
-qualified on post-release main; the published 0.14.0 artifact remains unchanged.
-
-## Preceding release: 0.13.0 (#121)
-
-Published 2026-10-05 from qualified `7e78d07`, with unchanged `py_0` promotion,
-clean public installation and an identical-tag Zenodo archive. All 12 installed
-OS/minor lanes pass 613 receiving cases and the public workflow; receipt:
-`devtools/conda-build/receipts/sabueso_0.13.0_public_2026-10-05.json`.
-
-The release adds eight source families to required acquisition observation, original
-literal extraction/article bibliography, pinned derived explanations, versioned
-integrity corrections and an independent persisted application exercise. It advances
-foundational identity/support/schema/reference integrity and receiving-pipeline
-traceability. Schema 0.3.12 is frozen. Broader #108/#91/#92 and consumer-owned
-Nextia Evidence / MOLI ProjectRecord / Recorda acceptance remain open.
+Published on 2026-10-09 from `78623d0`, schema 0.3.13. Exact source, staging,
+installed OS/Python gates, public clean installation and Zenodo archival are in
+[the immutable receipt](../devtools/conda-build/receipts/sabueso_0.14.0_public_2026-10-09.json).
+That artifact remains fixed. Current development targets **0.15.0**, schema 0.3.14;
+no candidate selection, freeze, staging or publication is authorized yet.
 
 ## Current consolidation after recovery (#112)
 
-The [AlphaFold API-scope correction](pending_bugs/alphafold_prediction_api_scope.md)
-preserves the distinction between an API record miss and whole-database model
-absence, including new Card/acquisition detail and readable coverage. Literal native archive-fragment Card intake, original-reference finding and dedicated
-interval question are implemented; independent acceptance remains pending;
-modern-only range compatibility
-has its own separately versioned receiving scope. Component-row source `913aad1` now has complete CI/governance receiving
-under its [receipt](evidence/component_row_reading_20261105.json); later changed
-runtime retains separate qualification. The maintainer's
-[dataset-source proposal #189](https://github.com/uibcdf/sabueso/issues/189)
-queues two candidates for future review without expanding 0.15.0 requirements.
+The stash recovery is historical: accepted material became maintained code,
+contracts and public controls; deferred provider needs retain explicit reopening
+conditions. Do not resume indiscriminate recovery or treat old prototypes as a new
+architecture. The audit and accepted broad Card exploration requirements now guide
+consolidation. Preserve provenance and existing meanings while completing coherent
+scientific/human/agent journeys.
 
-The [component-row presentation](pending_proposals/card_assembly_component_navigation.md#component-row-reading--2026-11-05)
-removes duplicate displayed states while preserving original data and compact
-agent access. Public and genuine saved comparisons exercise the same captured
-findings without new science. Local/hosted receiving and broader researcher
-acceptance stay separate; the earlier recovery has three observed micromamba
-setup failures and remains unqualified. The
-[receipt](evidence/component_row_reading_20261105.json) owns this bounded slice.
+### Immediate resumption sequence
 
-B3's accepted [public TcTIM continuation](pending_proposals/structural_journey_acceptance_20261104.md#public-tctim-correspondence-journey--2026-11-05-utc)
-demonstrates revision/native correspondence, human/agent/saved navigation and a
-separate optional coordinate calculation retaining all 276 pairs. Historical gaps
-stay unknown; focused warnings identify full-inventory scope. Selected local and
-absent-provider receiving pass; initial `0881d8a` source CI failed two stale
-generated metadata checks. The [catalog recovery](evidence/structural_catalog_recovery_20261105.json)
-regenerates both outputs; recovery-source hosted receiving is pending. This
-finite control advances B3 without adopting a generic production bridge,
-physical-copy uniqueness rule or shared protocol. Other B3 transitions and
-scientist/researcher/consumer/workload acceptance remain open. The following
-preceding review retains its narrower preparation scope.
+First verify the [handoff](WORKSTATION_HANDOFF_20261106.md) and the
+[committed chemical checkpoint](evidence/chemical_saved_checkpoint_20261106.json),
+then complete destination environment and exact-final-source hosted receiving.
+The source machine passed 705 selected local cases and public whole-session
+controls; broader scientific/human acceptance remains open. Follow the plan without
+restarting completed correctness work or claiming its deferred scientific review.
 
-B3's [source-supported structural review](pending_proposals/structural_journey_acceptance_20261104.md)
-now checks four public native/human/agent/saved journeys and six synthetic scope
-counterexamples. The remaining physical reconciliation task requires an explicit
-maintainer scope/consumer disposition; B3 stays open, with no runtime change or
-independent scientist/researcher acceptance claimed by this preparation.
+| Route | Present obligation |
+| --- | --- |
+| B0/B1 | Preserve qualified earlier preview/conservative activity corrections and their source receipts; scientific/consumer acceptance remains separate |
+| B2 | Obtain the explicitly deferred scientist review of opt-in measurement/copy-aware scope before any default adoption; original defaults/history stay fixed |
+| B3 | Complete remaining structural journeys, bounded physical-scope/modeling disposition and independent receiving/acceptance |
+| B4–B6 | Finish the entire required activity/literature, molecule/clinical/disease, variant/isoform/comparative/association profile inventory |
+| B7 | Demonstrate complete researcher orientation, useful questions, understandable depth, continuous navigation, scoped decision assistance and reproducible work; accept scientist/agent/workload/private-consumer routes independently |
+| B8 | Consolidate only after those obligations and explicit maintainer resumption; never interpret migration or a partial test pass as release authority |
 
-B2 now includes the [opt-in target-scope correction](pending_bugs/bioactivity_target_scope.md)
-for #188, preserving defaults/history. The maintainer owns and explicitly defers
-review of the [six measurement cases](pending_proposals/measurement_correspondence_review_20261104.md).
-Independent B3 work may proceed; no scientific/default or wow acceptance is implied.
-
-**Maintainer clarification, 2026-10-22:** finish the entire broad Card exploration
-design and validated human experience before 0.15.0. The
-[completion inventory](pending_proposals/card_exploration_completion_0150.md)
-sets the required panel/shared scope and order. The initial A–D milestone is not
-sufficient for release; consolidation remains paused while implementation continues.
-
-Approved by the maintainer on 2026-10-08, following the
-[global audit](pending_proposals/post_recovery_global_audit.md). Consolidate fixture
-delivery and current guidance, expose source maturity, then integrate selected
-recovered capabilities into the approved journeys and parallel consumer acceptance.
-This serves both routes; it does not replace their objectives or make provider
-count a scientific acceptance criterion. Current state: [CHECKPOINT.md](CHECKPOINT.md).
-Detailed recovery chronology is [archived](archive/consolidation_2026-10-08/ROADMAP.md).
-The local consolidation is implemented and verified in the
-[consolidation report](pending_proposals/post_recovery_consolidation.md): protected
-inputs, scoped full suites, structured guides, generated capability inventory,
-protein residue context, measured costs and a ready MOLI documentation PR.
-Public code delivery and real shared consumer-contract acceptance remain separate.
-
-## Previous release: 0.12.0 (#110)
-
-Published 2026-10-04 from qualified `7739317`, with unchanged `py_1` promotion,
-clean public installation and an identical-tag Zenodo archive. The 12 installed
-OS/minor lanes each pass 56 integration cases and the public three-packet workflow;
-receipt: `devtools/conda-build/receipts/sabueso_0.12.0_public_2026-10-04.json`.
-The superseded preliminary `py_0` archive/receipt remain immutable.
-
-This release combines located literature and supported structural mention context,
-literature explanations, pinned packet terms, required Ackredit attribution and
-UniProt/Europe PMC/RCSB acquisition traces. RCSB retains native entry revisions,
-primary citations, reuse, empty answers and per-entry failures with every fallback.
-It advances foundational support/terms/reference integrity and the pilot-driven
-need to retain original source access and per-result/workflow references.
-Schema 0.3.11 is frozen; original runtime JSON stays beside scientific payloads.
-
-Other sources/custom clients, further result types, incomplete bibliography and
-MOLI ProjectRecord/Recorda integration remain open in #108/#36. Traceability remains
-mandatory. The next slices follow observed use and the foundational objectives below.
-
-## Delivered so far (0.1.0 → 0.14.0)
-
-- **Foundations.**
-  - Card, Deck, `SourceAssertionStore` and `RelationshipStore`.
-  - The FieldResolver with selection rules, and the EntityResolver.
-  - Mappings, conflict and knowledge-state reporting.
-  - Physical quantities (PyUnitWizard) and argument contracts (ArgDigest).
-  - Diagnostics (SMonitor).
-- **Storage and references.**
-  - Content-addressed card and deck snapshots, and pinned references.
-  - The `KnowledgeStore` and the `CurationStore`.
-  - Honest migration and refresh of stored cards.
-- **Release route.** Staged conda releases:
-  - a dependency-contract preflight;
-  - inspection of the exact artifact;
-  - immutable coordinates, and a recorded public poststate (#76–#78).
-- **Sources in use.**
-  - UniProt, RCSB PDB, PDB CCD, PDBe-KB, InterPro, AlphaFold DB.
-  - ChEMBL, BindingDB, PubChem and PubChem BioAssay, UniChem.
-  - STRING, IntAct (through UniProt), NCBI Taxonomy, NCBI Gene.
-  - Since 0.6.0: PHI-base, DISEASES, Open Targets, Orphanet, Reactome, ClinVar, gnomAD,
-    ChEMBL indications and ClinicalTrials.gov (#81–#83).
-  - Since 0.7.0: SKEMPI 2.0 (#83), MONDO and MedGen (#90), Europe PMC (#92).
-  - Since 0.8.0: ChEBI, KLIFS, GPCRdb, SAbDab, OMA, OPM and PDBTM segments through RCSB
-    (#83), and gnomAD's pext (#102).
-  - Since 0.9.0: UniRef clusters, through UniProt (#103).
-  - Since 0.10.0: GTEx's tissue terms (#102).
-  - The registry, `sources/registry.yaml`, is the index.
-- **Knowledge views, each with a named rule:**
-  - structures and the structural inventory; predicted models;
-  - oligomer and interfaces; ligand sites;
-  - bioactivities, with one measurement across sources; ligands;
-  - literature and claims; knowledge states;
-  - card comparison; identity audit; unique names.
-- **Curation.** Literature assertions, bioactivities, engagements, relationships and
-  typed claims, compared with the sources, never given priority. Since 0.6.0, the
-  biological context of a target (#60).
-- **Since 0.6.0.**
-  - Variants placed only through stated transcripts and isoform maps (#83, #85).
-  - Knowledge packets, a prototype (#71).
-  - Declared enrichers with shared network, release-cache and key services (#86).
-- **Since 0.7.0.**
-  - Diseases as entities, anchored at MONDO; a protein's diseases grouped; a
-    disease's targets and drugs (#90).
-  - What may be done with the knowledge, and terms profiles (#29, #94).
-  - Scientific operations: expand, explain, as of (#91).
-  - Molecules given as SMILES or InChI, through PubChem's stated match (#93).
-  - How each statement entered, and text-mined literature mentions (#92).
-- **Since 0.8.0.**
-  - Variants checked against gnomAD's consequence on the canonical transcript; the
-    tissues of each variant and isoform (#85, #102).
-  - Kinase pockets, GPCR numbering, antibody complexes and orthologs (#83).
-  - What was downloaded (a retrieval archive), local mirrors, offline work (#100).
-  - Knowledge store format 2, `knowledge_packet@2` and `packet_aspects@3` (#88, #99).
-- **Since 0.9.0.**
-  - A reference entry and its genome-strain entry related through their UniRef
-    clusters, never merged; the positions where two equal-length sequences differ
-    (#103, verified in the pilot that asked for it).
-  - Unreadable answers and server errors asked again, and every retry recorded on the
-    card (`quality.retries`, #97).
-  - Validation runs from scratch, with what the sources answered recorded, never
-    reused (#100).
-- **Since 0.10.0.**
-  - Tissues as GTEx's UBERON and EFO terms; isoforms whose exons are unknown say why
-    (`isoform_exon_usage@2`, #102).
-  - A knowledge packet as an index by reference, with the guarantees agreed in
-    uibcdf/moli#22 (`packet_index@1`, #88); `packet_aspects@5`.
-- **Since 0.11.0.**
-  - Pinned explanations of structural inventory items and all group members
-    (`structure_inventory_explanation@1`, #91), without fetching or selecting.
-  - Located accession annotations for explicit articles at source access (#92),
-    and a public hypothetical review rehearsal that preserves historical support.
-  - Curation export preserves extraction acquisition (#105); existing source
-    identifiers with spaces are readable by their pins (#104).
+The [broad exploration inventory](pending_proposals/card_exploration_completion_0150.md)
+remains the panel-completeness checklist. The full human design and observed wow
+experience are required **before 0.15.0**, not deferred extensions. Deck navigation,
+interactive viewers/document exports and presentation videos have their separate
+future proposals; they do not silently expand or replace the agreed release gate.
 
 ## Status of the foundational plan
+
+The tables retain original goals so they are not lost when a pilot has not requested
+them. Here `done` means the named bounded capability was delivered; it does not
+close the broad 0.15.0 experience or external consumer contract. Source-specific
+current status/terms belong to the registry and feature contracts.
+
 
 Status: **done**, **partial** (part delivered, the rest named), **pending**, or
 **changed** (replaced by a decision, which is cited).
@@ -316,7 +100,7 @@ Status: **done**, **partial** (part delivered, the rest named), **pending**, or
 | Inputs: sequence (FASTA), structure files | partial development | explicit `exact_sequence_candidates@1` accepts raw/FASTA, verifies full archive/current canonical sequences and retains ambiguity, caps, failures and unqueried isoforms. Automatic sequence/structure-file resolution remains pending and needs its own identity rules. |
 | Disease associations of a protein | done | `annotations.disease` (#39) |
 | Ligands with a role (inhibitor…) | changed | derived concentration bands use current activity @4 / explicit original @3; a band alone does not establish an inhibitor role. Stated mechanisms remain source knowledge; `ligand_deck` crosses exact supported identities |
-| Deck of inhibitors of a protein | done | `ligand_deck(card)` with derived classes |
+| Deck of measured/related molecules for a protein | delivered bounded capability | `ligand_deck(card)` crosses supported identities. An inhibitor-only selection additionally needs an explicit source-qualified scientific criterion; concentration bands alone do not establish mechanism |
 | Local cache / store | done | `KnowledgeStore` (cards); retrieval archive and local mirrors, opt-in (#100, `CACHE_POLICY.md`) |
 
 ### Use cases (`USE_CASES.md`)
@@ -349,7 +133,7 @@ Status: **done**, **partial** (part delivered, the rest named), **pending**, or
 | Temporal knowledge | partial | snapshots, revisions, source releases; the store's `as_of` and `changed_since` (#91); no source asked as of a past release |
 | Knowledge from Nextia not imported automatically | done (as a boundary) | promotion of derived knowledge open in uibcdf/moli#17 |
 | Literature as a knowledge source | partial | human curation and literature views; literal rule extraction/intake and explicit article metadata since 0.13.0 (#92); broader extraction/validation pending |
-| KnowledgeQuery (semantic queries over sources) | partial | prototype released in 0.6.0 (#71): a protein subject, a fixed aspect mapping (`packet_aspects@5` since 0.10.0; published @6 adds literature mentions and their index/unknowns); contract in uibcdf/moli#22 |
+| KnowledgeQuery (semantic queries over sources) | partial | prototype released in 0.6.0 (#71): a protein subject, versioned aspect mappings (published @6 includes literature mentions/index/unknowns; current development default @16 retains separately versioned later context); contract in uibcdf/moli#22 |
 | Knowledge packets (entities, facts, conflicts, unknowns) | partial | prototype released in 0.6.0 (#71): pinned, stored, with a content-equivalence id; since 0.10.0, an index level by reference for size (#88), accepted in uibcdf/moli#22, which closes with a consumer test |
 | Unknowns as first-class output | done | `knowledge_state()` (#56) |
 | Two levels of access (semantic and raw) | done | `resolve` and views; `tools.db.*.get_*` |
@@ -358,875 +142,43 @@ Status: **done**, **partial** (part delivered, the rest named), **pending**, or
 
 ## Pilot-driven work
 
-Delivered for the first pilot's knowledge baseline and structural inventory:
-
-- organism relations and identity hygiene (#54, #55, #67, #69);
-- knowledge states (#56);
-- versioned decks and card comparison (#58, #59);
-- predicted structures (#57) and curated engagement (#61);
-- measurements across sources (#66, #68);
-- migration (#51) and claims (#43);
-- names, the structural inventory and its grouping (#70);
-- what the first live run of the baseline found: the authors' oligomer (#72), author
-  numbering (#73), partial source answers (#74), the measurement review (#75);
-- the integrity of pinned item reads (#79), a case of the reference contract
-  (uibcdf/moli#3);
-- the comparative context: orthologs (OMA, #83), the tissues of variants and isoforms
-  (#102), and a reference entry related to the genome-strain entry proteome-based
-  sources use (#103);
-- steadier live runs: unreadable answers and server errors retried and recorded (#97);
-  runs from scratch, with what the sources answered recorded (#100).
-
-Open, pilot-related:
-- #53, the reference form (waits on uibcdf/moli#3);
-- #60, biological context: step 1 (curated fields) released in 0.6.0; step 2
-  (VEuPathDB) blocked on access and terms (#84);
-- #30, ligand proximity to sites (deferred);
-- correspondence of regions across proteins. This one belongs to MolSysMT; Sabueso takes
-  its residue maps (`residue_map`, `residue_maps`).
-
-## Design review after 0.12.0
-
-The maintainer-requested [implementation review](pending_proposals/design_implementation_review.md)
-(#112, 2026-10-04) compares original phases, conceptual schema, architecture, scientific
-potential and use cases against code/tests. The foundations are implemented; complete
-runtime coverage, broader literature extraction, derived explanations, consumer acceptance,
-peptides/suppliers and much of the clinical layer remain partial or pending. Illustrative
-graph/query APIs are directions, not implied delivery obligations. The review retains
-the earlier slice sequence; the approved next roadmap below sets the current order
-across both routes. #101 remains postponed.
-
-## Next roadmap after 0.13.0
-
-Approved by the maintainer on 2026-10-05 after reviewing the original architecture,
-MOLI's Knowledge role and Sabueso's promise to independent scientific users (#112).
-This is the next development order. The capability status below remains the record
-of what exists and what is incomplete; illustrative long-term APIs remain design
-directions until a bounded use and acceptance criteria are agreed.
-
-### Immediate resumption sequence
-
-Use the [integrated continuation plan](CONTINUATION_PLAN_20261104.md) as the
-current scheduling entry point following the
-[2026-11-04 global audit](GLOBAL_AUDIT_20261104.md). It combines preserved local
-work and remote qualification reconciliation, A1/A2 corrections, A3 measurement
-correspondence, all broad exploration panels, continuous scientific/resource
-review, and pilot/consumer acceptance before release consolidation. The detailed
-chronology below remains implementation context, not a competing next-task queue.
-The maintainer resumed its implementation and ordinary development publication
-on 2026-11-04; release consolidation remains paused. The approved
-0.15.0 scope and both integrated development routes remain in force; no separate
-maintenance release is scheduled.
-
-The [B2 correspondence candidate](pending_proposals/assay_aware_measurement_correspondence.md)
-records actual original @1 context coverage and implements opt-in @2 with separate
-declared-copy, possible-correspondence and independence states. Four same-input
-public comparisons and the actual user guide block preserve original records/pins.
-Scientist-reviewed counts/votes, hosted receiving and deliberate default/consumer
-adoption remain pending. B1's final source `7667754` has local post-editable receiving and
-awaits its own complete hosted qualification.
-
-The [original nonpolymer input continuation](pending_proposals/rcsb_nonpolymer_inputs.md)
-retains the source identifiers needed for the next #173 reconciliation contract,
-including separate native/author labels and null versus unrequested scope. The
-[opt-in native @5 continuation](pending_proposals/assembly_nonpolymer_binding.md)
-now uses that original basis under component-key @2. The following
-[independent original reader](pending_proposals/card_saved_assembly.md) adds explicit
-human/agent @5 requests and @7 saving over frozen original predicates and a genuine
-pre-reader capsule. Default @4 and old adapters/readers stay unchanged. Exact source `7882f66`
-receives this implementation; further default adoption is a separate decision.
-Source-bound qualification and full physical reconciliation remain separate from
-closing #148 or resuming 0.15.0 consolidation.
-
-The [structure-to-component continuation](pending_proposals/card_assembly_component_navigation.md)
-now exposes exact native, literal and qualifier declaration routes through ordinary
-questions and component links. Its internal explicit @5 choice leaves direct
-defaults on @4; positions, duplicates, uncertainty and original source records stay
-separate. Original format @8 checks the actual clicked position and original
-navigation without running current producers. Exact source `7882f66` is
-[qualified](evidence/assembly_component_checkpoint_20261104.json); physical
-reconciliation and broad acceptance stay open. The bounded #167/#148
-[component workload](pending_proposals/component_navigation_workload.md) now measures
-3/12/48 synthetic repeated positions, original parity and full-session versus
-interactive costs. Profile retained view preparation/verification before changing
-physical storage; no general-scale or researcher acceptance is implied.
-The following [private ownership continuation](pending_proposals/exploration_owned_state.md)
-reduces measured copy work without a logical format or public API change.
-Qualify original bytes, caller isolation and all historical receiving before
-calling the changed runtime complete; physical sharing remains separate work.
-
-On 2026-10-27 the maintainer authorized a short
-[persistence-cost block #167](pending_proposals/card_persistence_cost.md) before
-resuming structural expansion: account for accumulated content and verification
-cost, preserve original history/support and remove proven redundant work. Keep
-this bounded; continue the approved fragment/region and broader structural order
-after it. The full workload/human-acceptance gate remains required before 0.15.0.
-
-The [native quaternary correction #165](pending_bugs/quaternary_interpretation_scope.md)
-precedes exposing computed findings through #148: all declarations/pairs, original
-source identity and exact coordinate admission, explicit uncertainty, preserved
-historical rules and versioned full/index support. The
-[live human/agent adapter](pending_proposals/card_quaternary_interpretation.md)
-now shares that science with exact support and bounded selection. Complete its
-researcher/workload acceptance and remaining structural transitions; its
-[original scientific saved reader](pending_proposals/card_saved_quaternary.md)
-now preserves supported human/agent requests and original findings.
-The [model-to-reference navigation](pending_proposals/card_model_structural_navigation.md) adds a whole-reference model question
-over the existing captured experimental inventory. Fragment correspondence,
-broader transitions and researcher/workload acceptance remain separate work.
-
-The [quaternary source continuation](pending_proposals/card_quaternary_source_exploration.md)
-delivers original subunit, assembly and interface detail, local structure/source
-navigation and independent saved reading. Complete broader
-region/model/assembly transitions
-within the sequence below; source presentation alone does not close that work.
-
-The [structure-context continuation](pending_proposals/card_structure_context_navigation.md)
-now opens exact original ligand, assembly, chain and numbering declarations from
-experimental items or literal parent context. The [relationship-scope correction](pending_bugs/structure_relationship_scope.md)
-(#168) now gives exact experimental explanations, explicit reference-only ambiguity
-and individually scoped exclusions/group support under named @2, retaining frozen
-@1 reading. Read its source-bound code/remote receipts in the owning issues, then resume scientific
-region/site/model/assembly transitions and combined researcher acceptance.
-The intervening [native admission correction](pending_bugs/experimental_structure_admission.md)
-(#169) uses declaration admission @1, inventory @2 and
-explanation @3, with unplaced originals, packet @13 and unchanged original saved
-reading. Verify the exact source qualification recorded in its owning issue
-before expanding those scientific routes. Referential declaration admission does not
-replace original coordinate/sequence-axis prerequisites or researcher acceptance.
-The [#170 original coordinate/reference scope](pending_bugs/experimental_structure_coordinates.md)
-uses coordinate @1, state/inventory @3, explanation @4 and packet @14. Its
-source-bound qualification and the later [#172 original question binding](pending_bugs/dossier_active_site_selection.md)
-are recorded in their owning issues. Keep those meanings while expanding the
-broader transitions above; #169 is independently qualified at `5b9de48`.
-
-The subsequent [regional chain reading](pending_proposals/card_regional_reading.md)
-adds readable original per-chain coordinate gaps, complete chains and numbering
-locations to focused structural regions. Its optional presentation preserves
-scientific wires and compact machine frames. Assembly-aware membership still
-requires [#173](https://github.com/uibcdf/sabueso/issues/173)'s native reconciliation
-contract; composition alone is insufficient. Fresh RCSB acquisition now preserves
-[original generator/operator declarations](pending_proposals/rcsb_assembly_generation.md),
-including parent/order/revision context and literal human/agent saved inspection.
-`Card.assembly_generation()` now parses supported operation expressions compactly
-and expands tuples only after explicit all-request preflight, with positive/None
-budget overrides and exact source locations. Current `rcsb_assembly_generation@4`
-binds exact entry-scoped operator/component keys, retains all original references
-and distinguishes polymer instance records, ligand-neighbor-only references and
-unresolved/ambiguous labels. Compact occurrence plans keep exact factors and
-original source/parent/generator context; explicit occurrence expansion preflights
-the whole request's count and repeated-identifier text. Explicit `@1`–`@3` retain
-the earlier interpretations.
-The [live assembly adapter](pending_proposals/card_assembly_exploration.md) now
-shares these findings between readable human navigation and compact agent
-selection, with exact requests and original source/context links. Its
-[original saved reader](pending_proposals/card_saved_assembly.md) preserves those
-findings, exact options/selections and navigation under exploration @5, with
-shared #176 explanation-request admission and unchanged prior scientific verifiers.
-The [structure-to-assembly navigation](pending_proposals/card_structure_assembly_navigation.md) adds a lazy question from an exact
-inventory/relationship/qualifier item, with exact human/agent options and original
-@6 navigation. Earlier files retain their original policies.
-Full component/physical-occurrence closure and operation-aware contacts remain pending;
-no physical membership is inferred from the new inputs.
-Source-bound qualification remains in #148/#112, separate from human acceptance.
-
-The shared [navigation preview policy](pending_proposals/card_navigation_preview.md)
-now prioritizes questions/destinations in bounded link displays, reports all
-category omissions and preserves original full-list indices and saved policies.
-This addresses technical discoverability; uncoached broad-profile acceptance and
-the [measured persistence work](pending_proposals/card_persistence_cost.md) remain open.
-The [physical-layout study](pending_proposals/card_persistence_layout_experiment.md)
-now compares exact shared parts with gzip originals across five public readings.
-It directs optional bounded original-byte compression before any new shared public
-format; verification cost and workload acceptance remain open. Keep this bounded
-before returning to the approved broader exploration routes.
-The [compressor comparison](pending_proposals/card_compressor_comparison.md)
-(#178) now broadens gzip to Zstandard/XZ, with repeated size/time/RSS measurements
-and original receiving. Keep codec choice provisional until supported-Python
-backends are qualified; compression does not remove original verification cost.
-The [backend continuation](pending_proposals/zstd_backend_qualification.md) adds
-genuine native/backport fixtures and twelve OS/Python probe routes. Verify the
-unskipped exact-head CI/governance and cross-read all fresh reports before
-production adoption, recovering the preceding experimental-helper CI scope.
-That helper debt is recovered at `1fdb771`; the next
-[public transport](pending_proposals/exploration_file_transport.md) preserves plain
-JSON defaults, adds explicit gzip/Zstandard and visible strict receiving budgets.
-Its new runtime/optional integration requires separate installed and exact-source
-qualification before admission, then return to the broader exploration route.
-The [actual public API measurements](pending_proposals/public_transport_workload.md)
-now complete the bounded five-reading local study: 45 saves/45 fresh reads retain
-all original content/history and substantially reduce files; full-read latency
-remains similar. Fix the two historical large-fixture calls exposed by CI through
-explicit exact-size budgets and streamed preparation, then qualify a new unskipped
-source. Keep the defaults/scientific readers intact and resume the broader route;
-large-workload and human acceptance remain separate.
-
-Development target, confirmed by the maintainer on 2026-10-24: accumulate all
-ongoing implementations and corrections for **0.15.0**. The earlier proposal to
-evaluate an AlphaFold-only 0.14.1 patch/backport is superseded. Complete the full
-exploration design and validated human experience before resuming candidate
-selection, schema freezing, staging or publication. See the
-[release scope](pending_proposals/release_consolidation_0150.md).
-
-Scheduling boundary, 2026-10-21: the
-[saved-consumer usefulness review](pending_proposals/pilot_usefulness_review_20261021.md)
-checks retained results and prepares the primary-method review queue. The
-maintainer's separate matter is now the
-[human exploration API design](pending_proposals/card_human_exploration_api.md)
-(#148): simple progressive access, complete retained-content inspection and
-source-grounded decision assistance. The
-[detailed proposal](pending_proposals/card_exploration_detailed_design.md) specifies
-distinct protein, small-molecule and disease experiences with common navigation
-guarantees. The [v1 contract](pending_proposals/card_exploration_v1_contract.md)
-resolves all five review findings at design level, maps initial readers/fields and
-records source-verified public paper walkthroughs. Review the concrete contracts,
-then implement the authorized bounded slices A–D and qualify technical/human use;
-the [machine-access contract](pending_proposals/card_agent_access_v1_contract.md)
-adds compact selection/projection, bounded pages and literal access through the
-same captured results/readers. Implement it within those shared slices, preserving
-source support and separating response-size tests from execution-cost measurement.
-The [initial literal slice](pending_proposals/card_access_literal.md) implements
-capture, discovery/read, bounded pages/cursors and raw export. Continue slice A's
-human inspection/discovery through the [delivered generic facade](pending_proposals/card_exploration_literal.md),
-with the [shared structural adapter](pending_proposals/card_structures_exploration.md)
-now providing the first native scientific route B. The maintainer's next priority
-is the human end-to-end experience. The [first protein journey](pending_proposals/card_protein_exploration.md)
-now adds a useful opening, retained function fields, two explicit scientific
-questions and direct original-source/return navigation. The
-[initial molecule/disease and coverage continuation](pending_proposals/card_nature_exploration.md)
-now adds distinct chemical/ontology journeys and original source-state explanations.
-The [contextual navigation continuation](pending_proposals/card_context_navigation.md)
-now adds retained links and explicit cross-Card transitions C, including missing
-context, source support and revision choices. The
-[first portable saved-reading slice](pending_proposals/card_saved_exploration.md)
-now delivers literal/field persistence and recorded context navigation D. The
-[scientific continuation](pending_proposals/card_saved_science.md) now retains
-structures, region answers and coverage through historical verifiers/closures.
-The [structural agent selection](pending_proposals/card_agent_selection.md)
-adds typed filtering, exact membership and scalar ordering with original saved
-requests and inspectable exclusions. The [cell-support continuation](pending_proposals/card_cell_support.md)
-delivers structural per-cell identity/support, atomic typed deferral and one bounded
-public cost observation. Broader scientific topic conformance, complete profiles
-and researcher acceptance remain open and are now required before 0.15.0.
-The [human support/ontology continuation](pending_proposals/card_human_support_labels.md)
-now refines source-role/method/unit previews, synonym wording and broader-term
-basis without changing scientific cells or original saved labels. Continue
-researcher walkthroughs for initial routes now and the combined broad experience
-after delivery; static panels do not establish human acceptance.
-The selected-method preview's malformed-reference gap is now corrected with
-whole-declaration validation and explicit unknown/partial support; continue the
-first-version researcher route rather than reopening that resolved gap.
-The [bounded first-version audit](pending_proposals/card_exploration_v1_closeout.md)
-remains an initial milestone. The maintainer's subsequent explicit requirement
-includes the entire broad design before 0.15.0; follow the
-[completion inventory](pending_proposals/card_exploration_completion_0150.md).
-Readable structural support is implemented; the
-[protein source-context continuation](pending_proposals/card_protein_source_exploration.md)
-now presents original sequence/annotation, model and site/contact declarations,
-including original structure-local ligand-instance selection and saved reading.
-The [RCSB contact correction](pending_proposals/card_contact_mapping_integrity.md)
-now retains scoped contact rules/original inputs and conservative identity/axis
-interpretation. The [derivation correction](pending_proposals/relationship_derivation_applications.md)
-preserves distinct merged applications (#156) without reconstructing lost legacy
-execution associations. The [AlphaFold continuation](pending_proposals/card_alphafold_context.md)
-now binds original MD5/identity/reference scope and leaves partial/unbound context
-uncomputed, with original-input links and historical readers. The
-[individual annotation continuation](pending_proposals/card_annotation_regions.md)
-now adds exact item support and explicit region questions from retained native
-UniProt scope (#160), with new navigation @3 and unchanged @1/@2 historical reading.
-Saved related operations are bound to the actual originating item (#161).
-The [native feature identity correction](pending_bugs/uniprot_feature_identity.md)
-keeps complete source features distinct before normalization (#162); original
-native contexts no longer overwrite one another merely because Card values match.
-Stored historical losses remain unknown and fresh source IDs change explicitly.
-Packet mapping @10 declares native site support; @8/@9 site projections are frozen.
-The [coordinate-scope correction](pending_bugs/ligand_overlap_coordinate_scope.md)
-(#163) now admits source-bound canonical inputs before overlap @3, retaining
-unknown/foreign/fuzzy/conflicting inputs as uncomputed and partial positives as
-explicit. Packet @11 freezes @10's exact previous reader. Qualify this bounded
-scientific prerequisite before broader aggregate/assembly integration; equal
-residue numbers alone do not establish a shared axis.
-The [readable comparison pane](pending_proposals/card_ligand_site_comparisons.md)
-now presents these native findings with original input links and separate retained
-instance/assembly contexts. Its [specialized agent selector](pending_proposals/card_ligand_site_agent_selection.md)
-now shares original result/item identities, typed textual selection and mandatory
-scope/support. Versioned source membership shares exact store paths, retaining all
-original source IDs/states and complete interpretation with measured public byte
-savings. Its [original saved reader](pending_proposals/card_saved_ligand_site_comparisons.md)
-now verifies the frozen comparison, source closure, exact agent request and
-originating navigation under explicit format @3. The broader route remains open. Assembly-specific reconciliation
-and broader region/model transitions remain open.
-Historical missing native scope remains unverified. Finish derived/cross-topic/
-assembly integration, then activity/clinical/literature, comparative and
-association routes, shared saved/agent qualification and combined researcher
-acceptance. The public executable journey prepares the initial review without
-claiming uncoached usability. Release consolidation remains paused. Retain the
-development order below for later resumption; candidate selection, schema freezing,
-staging and publication have not started.
-
-Current state: [CHECKPOINT.md, Resume here](CHECKPOINT.md#resume-here).
-
-Separately requested future proposals: [Deck human/agent exploration #153](https://github.com/uibcdf/sabueso/issues/153),
-[document export / interactive viewer #154](https://github.com/uibcdf/sabueso/issues/154)
-and [optional AI-assisted video presentations #155](https://github.com/uibcdf/sabueso/issues/155).
-They are recorded backlog evaluations; opening them does not independently add
-Deck/viewer/video delivery to the current 0.15.0 Card-exploration scope.
-Detailed acceptance: [global audit](pending_proposals/post_recovery_global_audit.md),
-[journey audit](pending_proposals/independent_user_journeys.md) and
-[clinical checkpoint](pending_proposals/clinical_registry_checkpoint.md).
-
-The five-step recovery consolidation is locally verified; do not restart native
-provider triage or repeat the archived chronology. Resume with:
-
-1. **Public code checkpoint qualified.** The recovered `dc46424` checkpoint and
-   taxonomy follow-up `a05e0a3` each pass 15/15 exact-SHA CI jobs and governance.
-   The [publication receipt](pending_proposals/post_recovery_public_checkpoint.md)
-   and [follow-up receipt](pending_proposals/taxonomy_followup_checkpoint.json)
-   retain their own input scopes and qualification. Preserve the reviewed delivery
-   boundary: now 51 repository inputs, including the release compatibility card
-   and a natively licensed open-article XML,
-   and 37 protected originals. Installed-artifact/release gates remain separate.
-2. **Continue bounded real consumer use.** Revalidate the applicable
-   private MOLI Python/Jupyter workflows under
-   [#132](https://github.com/uibcdf/sabueso/issues/132). Keep the pilot checkout
-   read-only and all original content/results in a private workspace. Check
-   scientific usefulness, support/unknowns/units, saved readers/reacquisition and
-   measured cost; expose only generic component findings publicly. Prior pilot
-   receipts and public fixtures do not qualify the recovered checkpoint.
-   The [bounded development exercise](pending_proposals/private_consumer_revalidation.md)
-   now passes 14 original cells, exact saved-result reading and original-answer
-   replay. The exercised NCBI Taxonomy acquisition-operation gap (#108) is now
-   implemented, rechecked with live/original-answer scope and qualified by exact-SHA
-   CI. Extend the original routes with explicit source scope. Full profile/
-   packet acquisition and overall #132 acceptance remain open; missing historical
-   stores cannot be reconstructed from current cards.
-   Fourteen additional original cards/inventory cells pass with explicit
-   repository-fixture client injection and zero network attempts. Keep that
-   orchestration result separate from the earlier live/local scope: it does not
-   qualify full profile acquisition, native answers or source absence. The
-   post-release SQLite lifetime fix (#133) passes eight regressions and the
-   5,602-case local-original suite. Code `5bbede0` passes 15/15 exact-SHA CI and
-   governance; Linux Python 3.14 has only six intentional fixture warnings, with
-   no unclosed SQLite group. #133 is complete. Neither slice changes the published
-   0.14.0 artifact.
-   The subsequent GTEx prerequisite correction (#135) keeps absent tissue keys or
-   ambiguous/missing release inputs `not_queried` before constructing a source
-   client. Its 113 selected and 5,605 full local-original tests pass; code `b28f8d3`
-   passes 15/15 exact-SHA CI and governance, recorded in the
-   [technical receipt](pending_proposals/gtex_prerequisite_checkpoint.json).
-   Historical reports and the published artifact stay fixed.
-   The public registry's shared-source terms collision (#136) is corrected:
-   UniRef explicitly shares the `uniprot` resource's terms, whose provider-level
-   attribution applies to either route. Export and registry gates reject unintended
-   collisions or policy differences independently of row order. The 125 selected
-   and 5,627 full local-original cases pass; code `e0b80b2` passes 15/15 exact-SHA
-   CI and governance, recorded in the
-   [technical receipt](pending_proposals/shared_source_terms_checkpoint.json).
-   Historical reports and the published artifact stay fixed.
-   Retain biological source identity, frozen fixture bytes and saved reports.
-   Subsequent bounded native-answer scopes add comparative context with exact-build
-   replay and inert readers. Their payloads/results remain private; passing editable
-   SDK routes does not qualify the installed environment or human usefulness.
-   Continue with targeted inspection, pinned explanations and operation coverage.
-   Public synthetic response guards (#137) keep malformed comparative-source
-   envelopes and unanswered consequence aliases separate from explicit absence.
-   Code `09cf912` passes 15/15 exact-SHA CI and governance; its
-   [receipt](pending_proposals/comparative_response_contracts_checkpoint.json)
-   retains public/local input scopes and shared editable-environment verification.
-3. **Advance the next bounded scientific slice.** Source-active-site residue context
-   and selected composition are now in protein example `@2`, with original `@1`
-   readers preserved. Continue the approved molecule/activity and disease/entity
-   acceptance. The bounded [clinical bibliography journey](pending_proposals/clinical_bibliography_journey.md)
-   (#108/#112) now declares one source-cited NCT and three PMID selections,
-   saves original per-result/workflow sidecars and reports all unqueried links.
-   Its clinical-only reacquisition preserves the original molecule `@1` and disease
-   `@1`–`@5` reports. Code `2d294d8` passes 6,326 local-original cases and
-   exact-source CI 15/15 plus governance; retain its own source qualification.
-   Continue with explicit missing coverage and real consumer-owned
-   scientific acceptance; metadata linkage alone does not establish clinical efficacy.
-4. **Coordinate consumer-owned acceptance.** Review MOLI PR #65's evidence correction
-   and perform the smallest ready exercise when Nextia's persistent slice exists.
-   Shared references (#53/MOLI #3), packets (#71/MOLI #22) and recording
-   (#108/MOLI #36) keep their respective owners. Extend the recorded bounded
-   time/memory/storage measurements before optimizing larger workloads.
-
-Keep guide/registry/capability freshness and fixture protection as normal gates for
-each next slice, rather than separate provider-count milestones.
-
-After these bounded slices, choose one explicit non-protein query/explanation
-(#71/#91) or finer use-term filter (#29) before implementation. Filtering produces
-a separate declared view/deck with kept/excluded support; it never deletes original
-knowledge silently. Continue peptide scoping and foundational work below.
-Qualify public code checkpoints and exact CI before staged release work; earlier
-`74c8c3d` CI and local receipts do not qualify new recovery changes.
-
-### 1. Complete three independent-user journeys
-
-Define and demonstrate these end-to-end journeys through the existing public SDK
-first. Record missing behavior before adding a connector or changing an API.
-
-| Journey | Scientific question and expected output | Acceptance |
-| --- | --- | --- |
-| Protein and comparator | What is known about each protein, where do sources disagree, and which structures, ligands and measurements can be compared? | Resolve and audit identities; inspect supported values, alternatives, conflicts and unknowns; compare within stated identity/numbering scope; save both states and read their exact support later. |
-| Molecule and activities | What do sources state about a molecule, its measured activities and reported clinical context? | Resolve the molecule; retain measurement types, units, assay context, source-supported identity and clinical coverage limits; inspect original statements and citations; save and reopen the result. |
-| Disease and related entities | Which targets and drugs do sources associate with a disease, and on what basis? | Resolve a MONDO-anchored disease; build target/drug decks; retain relationship support, grouping rules, ungrouped identity paths and conflicts; save and inspect exact historical items. |
-
-Each journey needs a runnable public example and user-guide instructions that do
-not require knowledge of provider endpoints or MOLI internals. Explain source
-coverage, limits, terms and partial/unavailable outcomes. Preserve original runtime
-JSON beside saved scientific objects, with per-result/workflow citations and explicit
-observation gaps. An independent saved reader must recover the cited state without
-source access; reacquisition must leave those historical references meaningful.
-
-Refresh the showcase and add a dedicated small-molecule page, user-facing source
-coverage tables and examples for comparative/source-specific views where used.
-Track the journey audit in #112 and [DOCS_GAPS.md](DOCS_GAPS.md); use #71, #91,
-#108 and the relevant source issues for implementation gaps. The SDK is the current
-entry point; evaluate a CLI only when a journey demonstrates a need.
-
-Development progress (2026-10-05, #112): the protein/comparator journey is implemented
-in `examples/user_journeys/protein_comparison.py`, with separate producer, reader
-and reacquisition processes, exact support for both proteins, original reports,
-unit-preserving serialization and original runtime/bibliography records. Its scope
-is explicit public fixture subsets, without positional alignment or a claim of
-current online availability. The user guide now covers this journey, small-molecule
-cards and source coverage for the three workflows. The molecule/declared-target
-journey now preserves BTS/benznidazole identity, assay measurements and ChEMBL
-clinical indications, with a selected molecular deck, target-context packet,
-original reports/attribution, separate saved readers and fixture reacquisition.
-Other targets and cited clinical studies are explicitly unqueried. Its source-state
-counting defect is corrected locally in #122 under `knowledge_state@5` and
-`knowledge_state_explanation@2`, with unknown/native counts, missing subsets and
-separate clinical areas. Published delivery remains pending; broader molecular
-queries and integration of observed clinical bibliography remain #71/#108. The disease journey now has a
-bounded producer, independent saved reader and reacquisition example preserving
-MONDO/card support, original target/drug membership metadata, disease-group
-explanations and partial runtime attribution. Development disease rules `@2` now
-preserve exact native membership, original MONDO input and member identity pins,
-including excluded/unbuilt candidates, with portable support and atomic saves (#91).
-MONDO term/equivalence observation is implemented locally with original index/file
-origins, versions, reuse and bibliography. Complete acceptance remains open:
-Open Targets/Orphanet and disease-deck build observation are also implemented locally
-(#108/#124), including page/file receipts and exact input/result pins.
-DISEASES/ClinVar/MedGen observation is also implemented locally (#108/#125).
-Conservative `disease_deck_admission@1` is also implemented locally (#29): exact
-embedded context must allow the use; all raw member statements are checked, and
-excluded member identity pins become explicit historical references. Unknown or
-restricted shared context refuses the operation; finer filtering by terms of use
-remains pending. Native ChEMBL indication pointers now contribute to workflow
-attribution, retaining exact row/page/query occurrences and explicit unfetched-target
-and metadata gaps (#108). Development ClinicalTrials.gov observation and explicit
-registry-reference/Europe PMC bibliography are implemented (#127/#128); broader
-underlying study bibliography remains pending.
-Non-protein packets remain
-#71 work; see
-[the journey audit](pending_proposals/independent_user_journeys.md) for concrete
-query/observation gaps. The broader live showcase refresh remains open.
-
-### 2. Extend queries, explanations and required traceability
-
-Use the journey gaps to define a small catalog of precise scientific queries.
-Examples to scope include ligands with specified measurements, structures that
-represent a requested region, and drugs associated with a disease. Agree identity,
-context, constraints, selection, completeness and result support before choosing
-public method names.
-
-- **Queries (#71).** Extend beyond the current protein/comparator and fixed aspects
-  toward molecule, disease and collection questions in bounded slices. Source
-  routing and normalized output belong to Sabueso. Every slice declares its
-  supported constraints and reports unsupported requests explicitly; full/index
-  results retain exact authoritative references, conflicts, unknowns and terms.
-- **Explanations (#91).** Extend the named-rule/pinned-support readers to the derived
-  results those journeys expose. Show inputs, parameters, exclusions, alternatives
-  and partial support. Historical reads must not acquire data or silently change
-  rules. General joins, ranking and graph navigation need separate scientific scopes.
-  Development `explain_sequence_differences`, `explain_variant_tissue_usage` and
-  `explain_isoform_tissue_usage` now retain exact pins, selected/alternative support,
-  actual region choices and weighted intersections, tissue terms and original
-  source-version labels. The independent public comparative-support journey keeps
-  original reports after reacquisition without re-derivation. Historical genomic
-  scope/overlap assumptions remain explicitly selectable. Development correction
-  #138 introduces matching genomic scopes, union coverage, per-tissue missingness
-  and explanation `@2`; [its scope](pending_proposals/comparative_tissue_scope.md)
-  separates new and historical rules. Comparative operation observation remains #108.
-  Code `3bc1c53` qualifies the #138 correction with 5,819 local-original cases and
-  15/15 exact-SHA CI jobs; [its source receipt](pending_proposals/comparative_tissue_scope_checkpoint.json)
-  retains public/local scopes and explicit legacy reproduction. Development #139
-  now restores declared-source scope and saved arguments, reporting historical
-  missing parameters, overrides and unsupported selectors. Code `ff32cb6` passes
-  5,896 local-original cases and 15/15 exact-SHA CI; [qualification](pending_proposals/refresh_request_scope.md)
-  retains its [source receipt](pending_proposals/refresh_request_scope_checkpoint.json).
-  Continue with comparative operation/bibliography observation in #108.
-  The [development GTEx slice](pending_proposals/gtex_observation.md) observes
-  existing tissue requests, requested-label/revision distinctions and original
-  portable credit; 5,930 local-original cases and 15/15 exact-SHA CI pass at
-  `2b5db53`, with [its source receipt](pending_proposals/gtex_observation_checkpoint.json).
-  [Development UniRef observation](pending_proposals/uniref_observation.md) follows
-  with per-page releases, limits and partial failures under source `UniProt`;
-  code `c6cb0e3` passes 5,963 local-original cases and 15/15 exact-SHA CI;
-  [its source receipt](pending_proposals/uniref_observation_checkpoint.json) retains
-  public/local/installed compatibility scopes. The [pagination correction #140](archive/uniref_pagination.md) is
-  source-qualified at `3a47490`: 21 new cases, 5,984 local-original cases and 15/15
-  exact-source CI; [its receipt](archive/uniref_pagination_checkpoint.json) retains
-  the public/installed compatibility scopes. The [OMA slice](pending_proposals/oma_observation.md)
-  is source-qualified at `593ba76`: 47 new cases, 6,031 local-original cases and
-  15/15 exact-source CI; [its receipt](pending_proposals/oma_observation_checkpoint.json)
-  retains public/installed compatibility and original-answer replay scope.
-  The [gnomAD slice](pending_proposals/gnomad_observation.md) is source-qualified
-  at `682e226`, including unqueried gene prerequisites (#141): 54 new cases,
-  6,085 local-original tests and 15/15 exact-source CI;
-  [its receipt](pending_proposals/gnomad_observation_checkpoint.json) retains
-  public/installed compatibility and original-answer replay scope.
-  [Open Targets prerequisite #142](archive/open_targets_prerequisite.md) is
-  source-qualified at `94ad9eb`: seven new cases, 6,092 local-original tests and
-  15/15 exact-source CI; [its receipt](archive/open_targets_prerequisite_checkpoint.json)
-  preserves public/installed compatibility scope. The
-  [six-source prerequisite correction #143](archive/source_prerequisites.md) is
-  source-qualified at `c45af44`: 51 new cases, 6,143 local-original tests and 15/15
-  exact-source CI; [its receipt](archive/source_prerequisites_checkpoint.json)
-  preserves public/installed compatibility and exact historical/corrected pins.
-  [Versioned disease identity coverage #144](archive/disease_identity_coverage.md)
-  is source-qualified at `cf5900d`: 39 new cases, 6,182 local-original tests and
-  15/15 exact-source CI; [its receipt](archive/disease_identity_coverage_checkpoint.json)
-  preserves grouping/explanation @3, coverage @1, packet mapping @7, historical
-  selectors/pins and unknown request scope. Next: derived comparative operations
-  and complete bibliography #108.
-  [Comparative operation observation](pending_proposals/comparative_operations.md)
-  is locally verified at `31b6255` for three explicit-context Card views;
-  original algorithms, source pins and scientific result payloads stay fixed.
-  Complete bibliography and broader result/consumer scope remain #108/#132 work.
-  The [deferred block](pending_proposals/deferred_ci.md) is recovered at `25f6163`,
-  with CI 15/15 and governance 1/1. Subsequent source changes need their own
-  [exact-head recovery](TESTS.md#recovering-deferred-ci).
-  [Persisted comparative journey attribution](pending_proposals/comparative_journey_attribution.md)
-  implements example `@3` results/explanations, original source/comparative/workflow
-  records and inert historical reader/export. Local selected checks pass;
-  publication and remote qualification pass at `25f6163`. Next: bounded consumer
-  revalidation #132. The
-  [verified bibliography slice](pending_proposals/comparative_bibliography.md) adds
-  source descriptions and scoped pext method credit with 278 selected passes;
-  actual entry publications, native revisions and broader bibliography remain gaps.
-  All 6,262 local-original offline cases pass. The
-  [block receipt](pending_proposals/comparative_block_checkpoint.json) verifies
-  final CI 15/15 and governance 1/1 on the exact published source SHA.
-  These integrity corrections affect users of published 0.14.0. Propose one
-  substantial follow-up release now that #144 is qualified, batching the source fixes
-  through the existing candidate CI, staging and installed-package gates. This
-  proposal does not authorize publication or replace consumer acceptance #132.
-- **Traceability (#108).** Extend observed source/client/operation coverage along
-  these exercised paths, including reuse, versions with their actual basis, retries,
-  empty answers, caps, partial returns and failures. Keep bibliography and missing
-  citations explicit. Scientific support, observed execution and terms retain
-  distinct meanings; coverage cannot be inferred from a returned card alone.
-- **History and scale (#100/#98/#88).** Measure large journeys and make limits and
-  truncation inspectable. Scope coherent replay, historical source access and export
-  guarantees separately from local store history. Preserve pins and original
-  receipts; local `as_of` is a stored-state date, not a historical database query.
-
-Acceptance for each slice includes a public scientific example, meaningful
-regressions, saved historical support after refresh/reacquisition, explicit coverage
-and user documentation. New packet mappings/rules are versioned; published cards,
-schemas and historical packets retain their meaning.
-
-Published receiving correction: [compact comparative credit](pending_proposals/comparative_credit_compaction.md)
-emits component operation `@2` with a versioned/hash-bound input-scope reference,
-retaining every original pin/assertion and historical `@1` context. Four new
-regressions, 172 selected and all 6,266 local-original cases pass. This later
-source is qualified at `792bd0d`: [CI 15/15 and governance 1/1](pending_proposals/comparative_credit_compaction_checkpoint.json).
-MOLI owns the separate [Recorda receiving PR #67](https://github.com/uibcdf/moli/pull/67)
-and shared acceptance (#36); 19 public receiving cases and applicable governance pass
-with this producer, and the PR is ready for owner review. Next:
-[question-by-question usefulness review](pending_proposals/consumer_scientific_acceptance.md),
-using the [public scientific dossier](pending_proposals/scientific_dossier.md)
-for explicit structural/assay criteria and located-mention scope. Its sixteen new
-cases and full 6,282 local-original suite pass;
-[source CI 15/15 and governance 1/1](pending_proposals/scientific_dossier_checkpoint.json)
-qualify `6e35c1d`. Human interpretation and [substantial installed delivery](pending_proposals/release_consolidation_0150.md)
-retain separate acceptance.
-
-The [bounded usefulness review](pending_proposals/scientific_usefulness_review.md)
-keeps the saved inputs unchanged and fixes readable native assay/target/document
-context in dossier `@2` under `stored_assay_context_review@1`, retaining original
-`@1` results and rendering. Twenty selected and all 6,286 local-original cases
-pass; [source CI 15/15 and governance 1/1](pending_proposals/scientific_usefulness_checkpoint.json)
-qualify `1bd8c05`, with full captures/member hashes and every test summary verified. Next: actual
-activity-linked primary protocol review, scientist review and accepted installed delivery.
-The [located primary-source review](pending_proposals/located_source_review.md)
-prepares two structural readings with original text/identity/support and a pinned
-baseline card. Corrected `@2` keeps agent drafts outside curated knowledge and
-refuses the initial `@1` provenance route; scientist acceptance remains pending.
-[Exact-source CI 15/15 and governance 1/1](pending_proposals/located_source_review_checkpoint.json)
-qualify `4e513da`; fourteen new, 234 selected and all 6,300 local-original cases
-pass. The native assay-parameter audit found
-incomplete protocols; those gaps remain open.
-The subsequent [primary assay-method access review](pending_proposals/primary_assay_methods_review.md)
-verifies all three shared document identities and inventories 497 stored rows
-across twelve assays. No complete primary methods were obtained; the institutional
-PDF is a library notice. Obtain authorized originals before reviewing actual
-protocols. This research evidence changes no SDK behavior, source fixture,
-scientific card or earlier qualified receipt.
-The [criterion-integrity correction #146](archive/scientific_dossier_criterion_integrity.md)
-closes a demonstrated saved-reader gap: coherent changes to criterion records
-must be refused even when regenerated Markdown and file hashes agree. The
-original criterion rules and genuine historical reports retain their meaning;
-25 focused and all 6,305 local-original cases pass. The
-[exact-source receipt](archive/scientific_dossier_criterion_integrity_checkpoint.json)
-qualifies `fe69ec5` with CI 15/15 and governance 1/1; all capture hashes and
-thirteen test summaries are independently verified.
-
-The [2026-10-20 review packet](pending_proposals/scientific_review_packet_20261020.md)
-turns those questions into a scientist worksheet and selects the complete nine
-saved records for `CHEMBL1156043` as the first protocol case. Existing public
-producers/readers and 34 selected tests pass in the current editable environment;
-this closes preparation, while human review and authorized primary methods remain
-pending. The subsequent [clinical/reference journey](pending_proposals/clinical_reference_journey.md)
-implements example `@6` with explicit NCT/PMID scope, original sidecars and inert
-readers; 234 selected tests pass and genuine historical `@5` reacquisition keeps
-its old query scope. Those counts describe the 2026-10-20 local source, not the
-later exploration implementation. Workload measures and broader demonstrated
-clinical needs remain part of the maintainer's full exploration-before-0.15.0
-acceptance; they do not supersede the current immediate resumption sequence.
-Local execution does not establish installed delivery or scientific acceptance.
-
-### 3. Scope peptides as the next scientific expansion
-
-Prioritize the original peptide-card promise after the journey and contract work
-above. Begin with identity and a bounded scientific use, before adding a source.
-Define sequence, modifications, termini/cyclization and source-stated cross-references;
-distinguish a peptide from a protein fragment, construct or isoform. Establish how
-supplier products and availability relate to the scientific entity without merging
-them by name or sequence similarity.
-
-Then select a source whose access and terms fit that use, implement its client,
-mapping/enricher and peptide views, and demonstrate a public save/read/cite journey.
-Commercial availability must state the provider, product/context and observation
-date; missing availability is not proof that a peptide cannot be obtained. Scope
-CPPsite/eMolecules/ChemSpider against the actual question rather than adopting all
-three automatically. #112/#83/#95 coordinate the initial scope; open a focused
-owner issue before peptide implementation starts.
-
-The clinical layer, isoform sequences/additional transcript coverage and broader
-literature extraction remain objectives in the capability backlog below. Select
-their next slices from a stated need. DrugBank still needs a terms/access decision;
-local-mirror work #101 remains postponed until the maintainer reschedules it.
-
-### 4. Close consumer contracts in parallel
-
-- **Nextia and Context Assembly (#53/#71, MOLI #3/#22).** Receive actual consumer
-  acceptance: persist an index, read an exact historical item, create consumer-owned
-  Evidence with an explicit interpretation, and retain its original citation after
-  new acquisition. `examples/persisted_pipeline/` already exercises Sabueso's public
-  application side; it does not replace a persistent Nextia consumer test.
-- **Platform recording (#108, MOLI #36/#18).** Agree correlation, persistence,
-  availability and failure policy with the owners of ProjectRecord/Recorda. Sabueso
-  supplies knowledge support and observed use; MOLI owns their platform composition.
-- **Modeling exchanges.** Agree adapters with MolSysMT, TopoMT, PharmacophoreMT and
-  MolSysViewer for entity references, source-supported residue/construct mappings,
-  features and ligand decks. Preserve units, numbering, versions and support across
-  exchanges. MOLI owns the Sabueso-to-MolSysSuite boundary; MolSysSuite governs its
-  internal member contracts. Modeling and calculation remain with their owners.
-  [Reviewed legacy projection requirements](archive/local_work_2026-07/consumer_projection_requirements.md)
-  retain concrete receiving cases for owner review, without an accepted exchange
-  schema or new exporter claim.
-
-These are coordination tasks, not consumer implementations to add inside Sabueso.
-Keep consumer acceptance separate from standalone journey acceptance.
-
-### Decisions to close before broadening the API
-
-| Decision | Questions to settle | Tracking / owner |
-| --- | --- | --- |
-| Scientific query catalog | Which questions and entity/collection types are supported? What context, constraints and coverage make a response meaningful? | Sabueso #71/#112; shared packet meaning in MOLI #22 |
-| Entity and representation scope | Identity for modified peptides, isoforms, constructs, FASTA/structure-file inputs; whether structure-level cards are needed; EFO identity without a MONDO anchor | Sabueso #112/#20/#96; modeling exchanges with their owners |
-| Reproducibility and export | Distinguish stored state, source release, downloaded response and execution; decide reference-only versus self-contained exports, retention and missing-target outcomes | Sabueso #100/#53; shared references/retention in MOLI #3 and retrieval boundary in MOLI #33 |
-| Literature validation | Rights of supplied fragments; extraction/validation, correction and retraction; trace a statement to its actual source location and retain extraction method/version | Sabueso #92/#29; project-to-knowledge promotion in MOLI #17 |
-| Public contract stability | Guarantees for queries, explanations, terms, references and export; version/deprecation policy and historical readers for each new slice | Sabueso #112 and feature issues; shared commitments in MOLI |
-
-Model-generated interpretations do not automatically become SourceAssertions.
-Extracted statements need support in the external source; project conclusions need
-an explicit curation/promotion boundary. See
-[RISKS_AND_OPEN_QUESTIONS.md](RISKS_AND_OPEN_QUESTIONS.md) for the outstanding decisions
-and [DECISIONS.md](DECISIONS.md) for adoption of this order.
-
-This roadmap schedules work, not a release date or a frozen new API. Revisit the
-order against both routes at each release and when real use exposes a blocker.
+Private vertical pilots are read-only acceptance context. Their needs are translated
+into generic source, identity, selection, support, uncertainty, cost and navigation
+contracts, using public TcTIM/HsTIM/HK2 examples. Never import project conclusions
+as knowledge or publish pilot hypotheses/strategies. Real consumer receiving is
+owned by the consumer; a stand-in cannot close Nextia, MOLI/Recorda or modeling
+contracts. See the [coordination route](CONTINUATION_PLAN_20261104.md#vertical-pilots-and-cross-component-coordination).
 
 ## Capability backlog and dependencies
 
-The following entries retain the progress and remaining work from the foundational
-review begun on 2026-09-29. Their numbering groups capabilities; the next development
-order is the approved roadmap above.
+| Direction | Remaining scope / owning reference |
+| --- | --- |
+| Rich Card knowledge access | Complete the required nature-specific inventory, human/agent/saved parity, whole-session costs and actual researcher acceptance (#148/#112) |
+| KnowledgeQuery/packets and temporal knowledge | Broader semantic query coverage, source-supported historical scope and real consumer acceptance (#71/#91, MOLI shared contracts) |
+| Literature and clinical knowledge | Source-qualified methods/claims/locators, rights and broader clinical/ADMET/pharmacovigilance context; preserve citation versus outcome and extraction versus reviewed curation (#92/#81) |
+| Acquisition observation and bibliography (#108) | Complete remaining source/operation observation and resource/method bibliography with explicit gaps; actual MOLI/Recorda composition and consumer acceptance remain separate |
+| Admissibility and terms (#29) | Historical packet-scope terms adapters, finer admissibility and the shared terms vocabulary; original support/rights must survive filtering and consumer exchange |
+| Sources and mirrors | Registry-owned evaluations/deferred triggers, explicit terms/access and current source health; postponed mirrors and unlicensed inputs are not implied new work (#83/#95/#101) |
+| Peptides | Define the scientific/identity/source scope before a source implementation; schema enumeration alone is not delivered peptide science |
+| Interoperability | Actual model/annotation/ligand-deck receiving by MolSysSuite consumers; source knowledge, calculated geometry, Nextia Evidence and provenance retain distinct ownership |
+| Future exploration products | Deck navigation, export/interactive visual inspection and assisted video presentation remain separately scheduled proposals; reuse Card semantics and keep publication authority explicit |
 
-1. **The disease as an entity (#90).** Released in 0.7.0: disease cards anchored at
-   MONDO, a protein's diseases grouped through stated identity and MONDO's hierarchy,
-   and a disease's targets and drugs. Open: EFO terms MONDO does not map (#96).
-2. **What may be done with the knowledge (#29).** Released in 0.7.0: `Card.terms`,
-   `Deck.terms`, `Deck.admissible`, depositor terms per PubChem assay, and terms
-   profiles (#94). Released in 0.12.0: read-time
-   `KnowledgePacket.terms(use, store)` for `packet_aspects@6`, with pinned support,
-   separate bibliography/fragment terms and full/index parity. Next: historical
-   scope adapters as use asks, and the shared vocabulary with MOLI.
-3. **Scientific operations (#91).** Released in 0.7.0: `expand` (relationships into decks),
-   `explain` (a deck member and a card's SourceAssertions), and the store's `as_of` and
-   `changed_since`. Released in 0.11.0: an inventory item through
-   `Deck.explain(card_id, structure_ref=..., ...)`, with the pinned relationship and
-   SourceAssertion support of every group member (`structure_inventory_explanation@1`).
-   Released in 0.12.0: `Card.explain_literature(publication_ref)`
-   traces stored publication links and both legs of structural mention context,
-   preserving alternatives and recorded unlinked requests (`literature_explanation@1`).
-   Released in 0.13.0 `Card.explain_disease(disease_ref)` now explains MONDO disease
-   groups with pinned association/selected-annotation support, identity/hierarchy
-   steps, stored alternatives and whole-card ungrouped context. Versioned
-   `disease_grouping@2`/`disease_group_explanation@2` (#115) retain all identity
-   paths and leave conflicting or unfinished branches ungrouped. Explicit `@1`
-   selection preserves historical behavior without replacing stored cards.
-   Released in 0.13.0 `Card.explain_knowledge_state` now traces exact classification
-   inputs, selected/alternative scientific support, coverage and request reports
-   at original pins (`knowledge_state_explanation@1`). Missing support is partial;
-   absence and missing queries never become negative assertions. #116 retains
-   multiple original UniProt versions without changing the working state rule.
-   Released in 0.13.0 measurement-group and molecule bioactivity-class explanations now
-   retain actual joins, precision, copy/voter decisions, original quantities and
-   exact pinned source support. Whole-card candidate/glossary context remains
-   explicit. Released in 0.13.0 `Card.explain_ligand_site` and `Card.explain_ligand` now
-   trace actual annotated overlap and protein/molecule crossing support at distinct
-   card pins, with native deck snapshot/membership context. Duplicate members,
-   absence/numbering/instance limits and original source conflicts remain explicit.
-   Released in 0.13.0 `Card.explain_oligomer()` now retains actual partner/agreement rules,
-   source assembly alternatives, exact family members, original support and
-   historical pins under `oligomer_explanation@2`. The #120 correction defaults to
-   agreement `@2`, computing only confirmed UniProt/1-based comparisons; unknown,
-   incompatible or conflicted inputs keep explicit reasons and uncomputed sets.
-   Explicit agreement `@1` reproduces the legacy view/explanation at historical
-   pins. Readers remain inert; stored cards and packet source scope stay fixed.
-   Other derived explanations remain open. The #118 correction counts distinct
-   included groups across matched molecule items (`ligand_measurement_count@2`),
-   retaining explicit source-record counts, selected rules and exact counted ids
-   under `ligand_deck_explanation@2`. Explicit `@1` preserves the published numeric
-   counter; scientific grouping/classes, stored cards and historical pins stay fixed.
-   Missing activity-only copy diagnostics are corrected in #117.
-4. **Literature beyond manual curation (#92).**
-   - Released in 0.7.0: how each statement entered (`acquisition`: database, curation, rule
-     extraction, model extraction, validation).
-   - Released in 0.7.0: Europe PMC's text-mined accession mentions (`mentioned_in`). Its gene
-     and protein annotations were reviewed and set aside: they ground names without
-     the organism.
-   - Released in 0.11.0: source access to located accession annotations for
-     explicit articles (`get_annotations`), with provider, section and quote
-     fragments. A public P60174 mention in a figure verifies the route. These
-     fragments are not complete sentences. Released in 0.12.0:
-     explicit UniProt accession intake into cards, with native article ids,
-     per-occurrence locations and SourceAssertions, terms and refresh through the
-     recorded article requests (schema 0.3.11). Supported PDB mentions are now
-     derived `structure_mentioned_in` context through source-stated `has_structure`
-     links, retaining both statements and separating them from direct UniProt
-     mentions. Public 2JK2/Methods verifies it; unsupported 7QON remains unlinked.
-     Released in 0.13.0: Sabueso runs `literal_uniprot_mention@1` on identified supplied
-     fragments, returning detached per-occurrence SourceAssertions, supported
-     relationships and original Ackredit attribution. It requires an explicit
-     namespace/official URL; no names, bare accessions or biological findings.
-     Explicit intake/replay is implemented for this literal rule through
-     `Card.add_literature_extraction` and `ExtractionStore`: original support and
-     supplied receipts survive reuse, storage and refresh without human relabeling.
-     Payload-only refresh reports the missing original runtime sidecar. New scientific
-     intake metadata uses published schema 0.3.12; 0.3.11 stays fixed.
-     Explicit article metadata/declared terms are now implemented through
-     `europepmc.get_article` and `article_metadata_binding@1`: source-stated identity,
-     native authors/bibliography/licence, alternatives, original access/support and
-     citations survive stored replay, refresh and pinned packet reads. Service
-     version is not article revision; no abstract or full text is projected.
-     Next: supplied-fragment rights, broader statement rules and validation; unknown
-     fragment terms cannot bypass a source-admissibility profile.
-     Literature packet coverage is published in `packet_aspects@6`
-     (#71): both mention areas are indexed and their unknowns reported; automatic
-     acquisition asks bibliography only, without guessing article ids.
-   - Included in 0.11.0: a public review draft and hypothetical curation rehearsal
-     (`examples/literature_curation/`), preserving outcomes and historical support on
-     rebuild. The draft awaits human review; #105 prevents extraction provenance from
-     being replaced with human curation during export/replay.
-5. **Continuing, in parallel when a need or a slot appears:**
-   - sources of wave 2 (#83), complete, orthology through OMA instead of Ensembl:
-     ChEBI, KLIFS, GPCRdb, SAbDab, OMA and membrane segments through RCSB
-     in use; the Chemical Probes Portal, SureChEMBL, OPM's own API, ESM Atlas and
-     Ensembl deferred with their reasons; #85 closed through gnomAD's canonical transcript
-     (follow-up #102). iPPI-DB, VEuPathDB and TDR Targets wait on #84;
-   - isoforms and variants by tissue (#102): done in 0.10.0 (gnomAD's pext,
-     `pext_at_variant@1`, `isoform_exon_usage@2`, tissues as GTEx's UBERON and EFO
-     terms). Isoforms without a stated transcript stay without exons (Sabueso does not
-     align); exons from Ensembl for the few transcripts gnomAD lacks, when a use needs
-     them;
-   - local mirrors in real work (#101): ChEMBL as a mirror, and builds from cached
-     sources; postponed by the maintainers on 2026-10-01;
-   - knowledge packets: real use decides their aspects (#71); an index level by
-     reference since 0.10.0 (`packet_index@1`, #88), accepted in uibcdf/moli#22;
-   - the clinical layer: adverse events (openFDA), after a terms review; isoform
-     sequences (#80);
-   - peptide cards: scope them before any source (use case 5, CPPsite).
-6. **Contracts with other MOLI components**, raised in uibcdf/moli when those
-   components are ready:
-   - the reference form (uibcdf/moli#3, #53) and knowledge packets (uibcdf/moli#22);
-   - exchange with TopoMT (positions, interface mutations), MolSysViewer (features to
-     show) and PharmacophoreMT (ligand decks). Use cases 3, 4 and 7 are partial for
-     want of these.
-   - required Ackredit attribution for knowledge pipelines (#108, moli#36): the
-     automatic packet-composition adapter and public offline workflow are
-     implemented against the accepted portable contract assigned to Ackredit's
-     published 0.9.0 provider (ackredit#75). Traceability is mandatory: the first
-     source-acquisition slice records built-in UniProt/Europe PMC/RCSB access, including
-     fixture/reuse/replay, empty answers, failure and original response identities,
-     automatically on cards, resolutions and one-call packets. The public pilot
-     saves those detached traces and credits completed access in the workflow.
-     Released in 0.13.0 adds ChEMBL bioactivities, assay activities, molecules
-     and indication operations: pagination/chunks, source totals/caps, original
-     document citations, retries and received-page subsets remain observable even
-     when the original exception escapes. Client-reported cached releases are
-     explicitly not per-page release proof.
-     Released in 0.13.0 also covers PubChem compound properties, structure
-     matches and BioAssay target queries, including native per-assay revisions,
-     caps/batches, PubMed pointers, declarative depositors, rejected inputs and
-     received subsets on later failure. Unstated global versions remain unknown;
-     assay summaries do not prove versions of every row or compound property.
-     BindingDB REST/fixture/mirror affinity queries are also observed, retaining
-     queries/cutoff bases, totals/caps/order, DOI/PubMed forms, declared origins and
-     mirror manifests/releases, including empty and failed queries. REST versions
-     remain unknown. The source-local #114 fix recognizes documented empty-string
-     absence while malformed responses remain failed, retaining wire/archive identity.
-     Released in 0.13.0 CCD batches and UniChem InChIKey/source-id
-     lookups now retain query/response identities, reuse, retry/empty/failure outcomes
-     and completed subsets. Linked databases stay declarative; versions stay unknown.
-     Molecular resolution and ligand decks keep detached input/result pins and
-     original resource-description citations without changing stored card/deck science.
-     PDBe-KB ligand-site/interface aggregates also retain separate queries,
-     native structural reference forms, archive reuse, empty answers and failures.
-     Versions and missing underlying citations stay unknown; listed providers and
-     structures do not become additional direct access.
-     AlphaFold DB model queries retain original per-record ids/versions,
-     tool/provider/URL declarations, archive reuse, empty lists and failures.
-     Model versions do not become database releases or experimental revisions;
-     generation and coordinate download are not executed by this access.
-     InterPro family-site residue queries retain native signatures, locations,
-     header/fixture releases, archive reuse and distinct empty/unavailable/failure
-     outcomes. Empty answers cannot establish accession existence. Member-database
-     declarations do not claim direct access, alignment or InterProScan execution;
-     missing site/signature citations and release versions remain explicit.
-     Other sources/custom clients, further result types and complete resource
-     bibliography remain coverage work with explicit gaps in the published 0.13.0
-     scope (#108). Ackredit 0.9.0 is publicly qualified on Python 3.11–3.14;
-     its published minimum and exact public pins replace the source overlay and
-     release blocker. Sabueso's own exact `py_1` archive passes all installed
-     OS/minor gates, public installation and archival under #110. The provider interpreter contract is delivered under
-     ackredit#80, without metadata overrides. The provider corrected explicit
-     author-object BibTeX rendering in ackredit#78; the pinned candidate includes it.
-     Knowledge support, runtime use and terms retain
-     their separate meanings; scientific payloads are unchanged.
-     MOLI owns ProjectRecord composition and future Recorda routing; the local trace
-     is a receiving experiment, not an implemented platform provenance contract.
-     Released in 0.13.0 `examples/persisted_pipeline/` exercises separate producer, reader
-     and reuse processes: full/index packets, exact historical item reads, original
-     extraction/article support and workflow credit survive reacquisition.
-     Missing/changed/misbound sidecars and inconsistent workflow context are refused.
-     Consumer-owned Nextia interpretation and shared Recorda/ProjectRecord acceptance
-     remain with their owners.
+The [earlier detailed backlog](archive/ROADMAP_before_onboarding_20261106.md#capability-backlog-and-dependencies)
+preserves every previous capability/owner reference and dated progress record.
+Use current contracts/registry/continuation to determine the next action; do not
+reimplement an item solely because an older paragraph said it was pending.
 
-Each is proposed as an issue before work starts, and the order is revisited at each
-release.
+<a id="next-roadmap-after-0130"></a>
+
+## Historical roadmap context
+
+Older links to the post-0.13.0 roadmap land here. That order is historical;
+use the [immediate resumption sequence](#immediate-resumption-sequence) and
+integrated continuation plan for today's work.
+
+The [full previous roadmap](archive/ROADMAP_before_onboarding_20261106.md) preserves
+release histories, feature-by-feature receipts, the old post-0.13.0 order and its
+later continuations. [Original phase plan](archive/ROADMAP_original_2026-01.md),
+[source plan](archive/SOURCES_original_plan.md), [DECISIONS](DECISIONS.md) and the
+[audit](GLOBAL_AUDIT_20261104.md) explain how objectives evolved. Their dated next
+steps are historical; the integrated continuation plan is the current schedule.

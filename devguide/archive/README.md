@@ -17,6 +17,13 @@ Their objectives are not dropped: `devguide/ROADMAP.md` tracks the status of eac
 
 ## Superseded working documents
 
+- [README_before_onboarding_20261106.md](README_before_onboarding_20261106.md),
+  [CHECKPOINT_before_onboarding_20261106.md](CHECKPOINT_before_onboarding_20261106.md)
+  and [ROADMAP_before_onboarding_20261106.md](ROADMAP_before_onboarding_20261106.md):
+  complete entry-page chronologies preserved during newcomer/onboarding
+  consolidation. Current entry pages and [ONBOARDING](../ONBOARDING.md) replace
+  their navigation; original dated results and long-term objectives are retained.
+
 - [CHECKPOINT_before_pause_20261025.md](CHECKPOINT_before_pause_20261025.md): full
   pre-pause chronology at upstream `680c6a1`, including dated qualification and
   pending-source statements. The shorter current checkpoint owns resumption;

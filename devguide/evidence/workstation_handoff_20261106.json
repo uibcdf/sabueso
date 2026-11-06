@@ -1,0 +1,2345 @@
+{
+  "format": "sabueso.workstation_handoff@1",
+  "owner": "uibcdf/sabueso#112/#148",
+  "captured_at_utc": "2026-11-06T18:06:17.054564+00:00",
+  "scope": "Committed code checkpoint and migration integrity; original dirty capture retained separately. Actual final documentation HEAD, clean status, refreshed editable SDK and bundle verification are recorded externally after the documentation commit. Not destination, hosted, installed-artifact or independent scientific/researcher qualification.",
+  "sabueso": {
+    "branch": "main",
+    "committed_code_source": "0f197e56b95f5f361cb16778457f652832d05f28",
+    "local_origin_main_ref": "d54b39aef7731e9e5dc1ea73f794f2221eee8d60",
+    "remote_not_fetched_for_this_task": true,
+    "original_control_sdk": "0.14.0+193.g03bdb2c",
+    "documentation_closeout": "Separate local commit; actual containing HEAD/status/SDK are recorded outside Git to avoid a self-referencing commit hash.",
+    "final_closeout_record": "recovered_work/clean_checkpoint_20261106/final-closeout.json",
+    "publication_performed": false
+  },
+  "payload_scope": "The original17 code/test/workflow payload files are committed byte-for-byte at committed_code_source. All changed guide files except this manifest are separately hash-declared; preserve the documentation commit and ignored material too.",
+  "payload_files": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "bytes": 19197,
+      "sha256": "423096ddf63f33eee723066073fb9a542a1a8d8b8e5af2d5536c059f8fcb62e1"
+    },
+    {
+      "path": ".github/workflows/test_staged_conda_package.yaml",
+      "bytes": 16780,
+      "sha256": "32cdd42299bc7d480903127b868292f1e54e176a773d3a67f71eb2a24d470ad7"
+    },
+    {
+      "path": "sabueso/core/card_access.py",
+      "bytes": 46222,
+      "sha256": "a3c263c6e9e502b447c47ef810f452d43a45c96879877119c0814f06c14007da"
+    },
+    {
+      "path": "sabueso/core/card_chemical_access.py",
+      "bytes": 2294,
+      "sha256": "c5c5b7cb1c42e4da3678ea6626e1a390e304b553bc7f7d16f97ff6fd56b6a8f0"
+    },
+    {
+      "path": "sabueso/core/card_exploration.py",
+      "bytes": 85996,
+      "sha256": "30d70592eae67aab8ce93a3a1248c1199c06cbdc475f8722190a6f710a8290b1"
+    },
+    {
+      "path": "sabueso/core/card_exploration_render.py",
+      "bytes": 55579,
+      "sha256": "ef5b4245e28882f15dfce93c3b67f4d6f4861321e95005900584d6ab51192a56"
+    },
+    {
+      "path": "sabueso/core/card_exploration_storage.py",
+      "bytes": 69305,
+      "sha256": "ebc224e418741c7e60300c1b7946c1ee4b8a71d8158e6a6428ca871391dec0df"
+    },
+    {
+      "path": "tests/core/data/README.md",
+      "bytes": 24214,
+      "sha256": "d8b1bc94fd08859bdfbc2b8285682edc9868b67877b544bcf9e55c3fac6b45dd"
+    },
+    {
+      "path": "tests/core/test_card_chemical_exploration_offline.py",
+      "bytes": 16407,
+      "sha256": "b09262f32bbd160fd776ec659b31862ee01b00d2a514ee4fe80436caff3757c1"
+    },
+    {
+      "path": "tests/tools/test_installed_receiving_scope_offline.py",
+      "bytes": 23169,
+      "sha256": "12bf56267489a11898c020dfa62e2e99c1b07e72c0cd10930b147e02a744d19a"
+    },
+    {
+      "path": "sabueso/core/card_chemical_history_v1.py",
+      "bytes": 10852,
+      "sha256": "b7fe1fb24d006f7dcdda62107b660dd4a6ded70d2889da6258455157d5b3e466"
+    },
+    {
+      "path": "sabueso/core/card_chemical_presentation_v1.py",
+      "bytes": 9936,
+      "sha256": "55b62a4c0823b27e0c82d64b83dadd70d0e91c68260dc62e11020ace6ce9e323"
+    },
+    {
+      "path": "sabueso/core/card_exploration_chemical.py",
+      "bytes": 26260,
+      "sha256": "9dec3d43a4e872d988def415bfdb29ca31cad7dc37ac190d13e2627287bbb4b8"
+    },
+    {
+      "path": "sabueso/core/card_exploration_shared_values_v2.py",
+      "bytes": 15765,
+      "sha256": "0fbf2d0cf14f4fb498e21edb9b8eea432e2f99a2afebac288444ff5480ca08bd"
+    },
+    {
+      "path": "sabueso/core/card_exploration_verification_v15.py",
+      "bytes": 57120,
+      "sha256": "d83b67276874e7abcd1e5c30c4693f02bcb26558bfd3467bef307c35865690e5"
+    },
+    {
+      "path": "tests/core/data/chemical_live_v1.json.gz",
+      "bytes": 105974,
+      "sha256": "1e0a9a01da5c1d1118a115b12b3393dd886a3e447cda4a49e58cd8c514ff9ac1"
+    },
+    {
+      "path": "tests/core/test_card_saved_chemical_offline.py",
+      "bytes": 16992,
+      "sha256": "3d91ad467d336c8ebf9cde92a54bb92f4d1feef38d287b797ab748d90c85e186"
+    }
+  ],
+  "original_live_control": {
+    "path": "tests/core/data/chemical_live_v1.json.gz",
+    "bytes": 105974,
+    "sha256": "1e0a9a01da5c1d1118a115b12b3393dd886a3e447cda4a49e58cd8c514ff9ac1"
+  },
+  "unchanged_originals_rechecked": 101,
+  "retained_evidence_scope": "All regular files in the three active chemical evidence directories; not a complete archive of the remaining approximately10GiB recovered_work history. Preserve other owner-retained useful evidence separately.",
+  "retained_evidence_directories": [
+    "recovered_work/chemical_saved_20261106",
+    "recovered_work/chemical_profile_20261106",
+    "recovered_work/chemical_classification_20261106"
+  ],
+  "retained_evidence_files": [
+    {
+      "path": "recovered_work/chemical_saved_20261106/RETENTION.md",
+      "bytes": 2697,
+      "sha256": "84fdbc30c86a913b2fc60fe52975a239938c4a1ff382e53ef4ee9b33861c8a77"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/checkpoint.json",
+      "bytes": 256,
+      "sha256": "44a89d4141f31b79d19b71944e3144c45011be909b22367f9c3468a38bf79861"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/chemical-and-isolated-resource.json",
+      "bytes": 1339,
+      "sha256": "1328d382cea9eaf15b254e4d4b0d602e1fb66768ea094fbaa72f46dc218a39ce"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/chemical-and-isolated.log",
+      "bytes": 157,
+      "sha256": "b674e47e716f1f05d8e6b00228b76906abc71813a9e2fedf0e45e76be2a53e40"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/chemical-combined-resource.json",
+      "bytes": 1075,
+      "sha256": "7e58918f9f4f3e28d7ea41d27c3e4935a8f06754050ce5c39c1af7d6c01ba04e"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/chemical-combined.log",
+      "bytes": 1098,
+      "sha256": "860996241e7ca7a0fc597ea0ae8f453782e79a9d2d43fb0269f041cbed20b895"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/chemical-live-saved-final-resource.json",
+      "bytes": 1075,
+      "sha256": "0d577b5565521cd2864ec242187b75330405de6aa2b814c33d1c92b5decc1566"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/chemical-live-saved-final.log",
+      "bytes": 131,
+      "sha256": "8dce03dfe91dc165fa92fa230895c317b90c6193449a1739a845b86af297d1e9"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/chemical-mixed-focused-resource.json",
+      "bytes": 1016,
+      "sha256": "e154675fc31393034465cacf1fce80d4a5925c9412b7345796e2d71c37ff4c4b"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/chemical-mixed-focused.log",
+      "bytes": 32,
+      "sha256": "c445ddba1122f35d25b3efdf5f8e57e0a9f20a0aba62f3664b5bde2d421d286f"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/chemical-mixed-resource.json",
+      "bytes": 950,
+      "sha256": "406742e48bf73efa9fe4006d5293ff34390a4dce143504b6a2c70d954c970190"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/chemical-mixed.log",
+      "bytes": 506,
+      "sha256": "8f7eb0649975ec24bd5da133b246bed9904ed2a56841a74ce9b216b6f87b5d1e"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/chemical-saved-first-resource.json",
+      "bytes": 950,
+      "sha256": "5035e526194335e22e228b46363a1cbfde5f7c3ca7ef75d732152ef7a388e85f"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/chemical-saved-first.log",
+      "bytes": 4265,
+      "sha256": "fbb5b6bb287c9b03625712c0bbbf3ebad61ea19ca97125825d672edd3874c4fc"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/chemical-saved-second-resource.json",
+      "bytes": 950,
+      "sha256": "d030708ff178da9316abd464235923b5a34da51565b9b3b6b2d29244cf22defe"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/chemical-saved-second.log",
+      "bytes": 83,
+      "sha256": "c2a7db65198f9b9eea5a9b751a11786d6708f063763e7873d325b6a679c0fc35"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/delivery-metadata-corrected-resource.json",
+      "bytes": 1054,
+      "sha256": "71c0a67aac2a691fad727950fcf6c8bd84c6a7bb4d45ad815f979a1a129c6138"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/delivery-metadata-corrected.log",
+      "bytes": 33,
+      "sha256": "44ffbf2fddfdbe00e283ca091f4249fa653d21aab01ea1a9ed78576c4c25e7e5"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/delivery-metadata-current-resource.json",
+      "bytes": 1054,
+      "sha256": "6f68371827fdb44d252b7a7f6e129da0ef7df3c4da6957822811f51aee3412f8"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/delivery-metadata-current.log",
+      "bytes": 110,
+      "sha256": "8b353d96fc45323e56b59ffe01343943db4445865a2ddf1733ef77917c345e57"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/exclusion-before-resource.json",
+      "bytes": 1015,
+      "sha256": "a1601fd0a13e2cf1f3e788764168b4a5d9c145163c69fdc745ce11d011336b05"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/exclusion-before.log",
+      "bytes": 383,
+      "sha256": "0c8fd1980213545eaac9460460c85390f53fb86d00f383b4de5d8af41bb0a15d"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/fixture-delivery-current-resource.json",
+      "bytes": 874,
+      "sha256": "ddb4d84dc00ea18dbcf0b4e9fc68c6f17e4dded906870bc74ed6596a2d2cca72"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/fixture-delivery-current.log",
+      "bytes": 70,
+      "sha256": "9ad96d946f6576fb6d3b1345692b114247c3d077abceacb41d9e581b36678025"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/format-lookalike-regression-resource.json",
+      "bytes": 901,
+      "sha256": "a976170b2d8cb955b0cfcb94cb9c599ab72c51593d961eb8c57f4780cbc5ea6d"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/format-lookalike-regression.log",
+      "bytes": 19,
+      "sha256": "413a709001976657cb743636fd34e48fc41d8d302d665460d3f874b3313da127"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/governance-current-resource.json",
+      "bytes": 859,
+      "sha256": "c9b3f8b4017119a77f8712ee40389354f4ebe275240062d98ba9080eb9b3e9fc"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/governance-current.log",
+      "bytes": 40,
+      "sha256": "5a06edc554fa450ac8fdafc3b04ca285ecaf5c6d2bb754b0867ff1f2bdf5af9d"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/historical-science-resource.json",
+      "bytes": 1088,
+      "sha256": "d75e5ae3fb53db3bdf978456b39244333cc2b759c7010b8d89d16854428067c7"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/historical-science.log",
+      "bytes": 52,
+      "sha256": "3d450df0a124fe92928006230029c53a2fe3aa1a24f6ff0230355d71b840d3fa"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/initial-roundtrip-resource.json",
+      "bytes": 875,
+      "sha256": "57de04e8c8ce1370b87be77627a3d86edc3daf8159a2d67f50bf57a502f0eb14"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/initial-roundtrip.log",
+      "bytes": 2474,
+      "sha256": "e939599c8caaf276e15f56951644ff1d7d9c44bc325230a93304a7d6dec5fb5c"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/issue148-draft.md",
+      "bytes": 2800,
+      "sha256": "f931e7dda7711a45781a87304ebe360fd6e4bc992e3b7b96edbea3b1a323357d"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/literal-context-after-dispatch-resource.json",
+      "bytes": 1018,
+      "sha256": "1599d907970befc59e8ca2865081de3044449bea311df6a71494f71710f3c8bc"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/literal-context-after-dispatch.log",
+      "bytes": 33,
+      "sha256": "e5d4a48a24e22f019c4dede0bad2898427b9a739d14b546b451a5fb076c04050"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/literal-context-matrix-resource.json",
+      "bytes": 1035,
+      "sha256": "7b3111a9307333b5a5fdcfb4923cd44efbb3d9e52953ac1651001cc5c2915656"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/literal-context-matrix.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/literal-context-minimal-resource.json",
+      "bytes": 1018,
+      "sha256": "c8270dab34515b751293bdacf433e6fef730ce519e19ecb948913a39ad2d554d"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/literal-context-minimal.log",
+      "bytes": 2435,
+      "sha256": "8e44e5c5fec8251d50e131b7fa1d83108bad7b501f24b13c3ab894e0c4e2b4be"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/literal-context-trace-resource.json",
+      "bytes": 1070,
+      "sha256": "cab8e9d77f5fa1d87138393c08b3650894243f3857111c8e69cd41f95fb48610"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/literal-context-trace.log",
+      "bytes": 255,
+      "sha256": "6cadbed2b3c3274f2069dc071aa4d5f50494d95efdb6124491bd9a9dfa1e7083"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/literal-false-after-2-resource.json",
+      "bytes": 743,
+      "sha256": "1bcf2c83f710a4b4e1e99096589d40ecf221ee164c312aa9080f04f0a9b50b9f"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/literal-false-after-resource.json",
+      "bytes": 1049,
+      "sha256": "ffdaa8b4529ecbc88d1df4d4975877a47dba10a613cb807498b34c7785d04406"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/literal-false-after.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/literal-false-before-resource.json",
+      "bytes": 1025,
+      "sha256": "064efb2665389beaea39fa67fba9e94a78b89072bf1216751a2a798cd4b2d12b"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/literal-false-before.log",
+      "bytes": 837,
+      "sha256": "c9e7ee9b15fbc20a653ae151d38d1c71bbd2127e71fd7f023d2e6d950642a13c"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/literal-links-after-resource.json",
+      "bytes": 1012,
+      "sha256": "453da6a5e3fa7b9bb89773809cac4d747c04389076eeee32bfcf358f8c8ca8e2"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/literal-links-after.log",
+      "bytes": 837,
+      "sha256": "75f81decc0cfbf18d987c692e08a2e50d13ed0ca82ea4a260730119784960de9"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/literal-links-final-resource.json",
+      "bytes": 1012,
+      "sha256": "fc0c085b95268c61665256e586a8ee6ddd56f207b92ae95009a5bf7bdea8d028"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/literal-links-final.log",
+      "bytes": 32,
+      "sha256": "7038c7ee489da13152dde6ae5b7e816bb99e60e1c516fe5eebe87b19503b27e4"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/literal-links-trace-receiving-resource.json",
+      "bytes": 895,
+      "sha256": "81a8488c8d3ba9c9107c6469d312c88f98e9a32d718c1a02b00256f865ff9c80"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/literal-links-trace-receiving.log",
+      "bytes": 2811,
+      "sha256": "e0abe731338657a997f0e48eed4e14cb600285becc08a1499bf0746d56546927"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/literal-links-trace-resource.json",
+      "bytes": 614,
+      "sha256": "9ab56173e4f02826653813076d8ca97d7698cb8b7f1363f4082471427cb288ee"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/literal-lookalike-focused-resource.json",
+      "bytes": 1018,
+      "sha256": "19d6c2563f177b3b1fc270b95611c58fe1fc5f42c3d6cd90abdaf8532f880ffc"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/literal-lookalike-focused.log",
+      "bytes": 32,
+      "sha256": "32eec8fe26b9c177eb16aee82c7382029b56a816f173d3a7fa01873bc32efa41"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/literal-manifest-control-resource.json",
+      "bytes": 1012,
+      "sha256": "a96be791f3dbd048603777f1efe2336036a02386ae8e24d74448dd4bbccefec9"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/literal-manifest-control.log",
+      "bytes": 32,
+      "sha256": "00d90fe1092d0cd6226c72d9124caade028e79838e2c4b55721ef816181c21c2"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/literal-metadata-final-resource.json",
+      "bytes": 1241,
+      "sha256": "af7d6206ee9deea9640460a8f1c316114a4dd865a61c2d913760b6b6076a988e"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/literal-metadata-final.log",
+      "bytes": 33,
+      "sha256": "eaa2b9fbec23273c0da4bcd12ed81ad240501cc0b15204fe021c5ae218cc941b"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/literal-trace-resource.json",
+      "bytes": 889,
+      "sha256": "fa4087871d636dad362157873d31547ec71d590e61a03d5ba437c47f44bee937"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/literal-trace.log",
+      "bytes": 2395,
+      "sha256": "3a51adedd09aa284ceb3ba920628184e91bca7b1e43b78ee3826dbbbeab4d6f1"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/literal_links_trace.py",
+      "bytes": 663,
+      "sha256": "7b04c3f627eeced80a2a0612cf56f3f62d3c39e26955678619173bbefefdf145"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/literal_trace.py",
+      "bytes": 747,
+      "sha256": "5c8e006ab3228c8549f660032cb05147cb2b346e2dc67904d8fb8459e6b06a69"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/navigation-neighbors-resource.json",
+      "bytes": 1503,
+      "sha256": "8b930629c8285c6ad1802cf322456aac8a22bc0b49068e07ca347192f6c45224"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/navigation-neighbors.log",
+      "bytes": 117,
+      "sha256": "aa7968d81ec6eb285d78d6896ed5255c4d60facb0432031b41a39c15e8f7bf9c"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/pga.json",
+      "bytes": 1405040,
+      "sha256": "dc4873d19c1b630a23ac482825718c14b3cc0d2b1792e87580a15f981e6c579f"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/probe.py",
+      "bytes": 1181,
+      "sha256": "8b8ac02033ba2ada6149b8858191756c64365cadbec8407f2fe5992e9fbe04cb"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/receiving-watch.json",
+      "bytes": 400,
+      "sha256": "1893f4d758e30254361bc56f55e8348c5d21be0f5085a71e31e7be38c1d5d0de"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/roundtrip-2-resource.json",
+      "bytes": 875,
+      "sha256": "4cd554f21127fff3b31cdcefcb4fafa4a76b41c1cfe90af3749233fd86e00be9"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/roundtrip-2.log",
+      "bytes": 2465,
+      "sha256": "0013e781054234bdf34813c1177bdc54c9ffe2c4e4f2ff7693bb237d5597baad"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/roundtrip-3-resource.json",
+      "bytes": 875,
+      "sha256": "a0c4089e2c1060d4166076fdee50491d993191ade1b2a6e1f003c7cb7c78f4e4"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/roundtrip-3.log",
+      "bytes": 4292,
+      "sha256": "96285550872bdae1cd028e2c72c4378e61c3cb0aa0011a81a58a22aae6812f95"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/roundtrip-4-resource.json",
+      "bytes": 875,
+      "sha256": "6c31b07611fca667041fc0be3041e974befc371967a71e2317e3e79ad0f177d9"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/roundtrip-4.log",
+      "bytes": 4147,
+      "sha256": "15e9cfaacbfdba6ff1e726f102428e94937745da5b5971af90c003c4817e6b46"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/roundtrip-5-resource.json",
+      "bytes": 875,
+      "sha256": "634fc5343b38ed9b0f74e981cbf858c53f66c58df9e69f17c13483c775e7f2e9"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/roundtrip-5.log",
+      "bytes": 4755,
+      "sha256": "3b6f938b9f515ad0474ef0af2805cf72d4283b44366d99670559c6ea82fce67b"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/roundtrip-context-resource.json",
+      "bytes": 875,
+      "sha256": "ebe532d43a74571e02f50c872dee799667717d75d08214c36defe667e5b8a428"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/roundtrip-context.log",
+      "bytes": 4140,
+      "sha256": "e98b28c8f17ac7a4b859ffcbf41252925d324127b33c9d3ef6003961ea248c39"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/roundtrip-exact-context-resource.json",
+      "bytes": 875,
+      "sha256": "1c424dd200a2ecf23943df219abb55e6f268301e90793076e586fa425f963a96"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/roundtrip-exact-context.log",
+      "bytes": 6001,
+      "sha256": "a12b11f2673769ce99c0edb713ea11f774269fd12d483ca36704fbf5707264bc"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/ruff-check-current-resource.json",
+      "bytes": 855,
+      "sha256": "ceafa151fd2a973a6645b2b48e57c9ae3098b3fc652df7307c4d7cab8af3964b"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/ruff-check-current.log",
+      "bytes": 19,
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/ruff-check-resource.json",
+      "bytes": 575,
+      "sha256": "bb06f2893944ecd2f6b5b6be7e7ada38bb114e8f3bb3c8a580747b01bcb1d271"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/ruff-check-resume-resource.json",
+      "bytes": 855,
+      "sha256": "fd526615e0ad1a202338e77d71a1792d64eac6b6c89591ce6079c28baaebc200"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/ruff-check-resume.log",
+      "bytes": 19,
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/ruff-check-static-final-resource.json",
+      "bytes": 854,
+      "sha256": "9d44b0745ac63123d27bf64ec59a066f6221019705a1552c0e269dfc820c058e"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/ruff-check-static-final.log",
+      "bytes": 19,
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/ruff-format-current-resource.json",
+      "bytes": 871,
+      "sha256": "43f0a75608a7da486ad330bd4325554a5339e6eee2b864f260a2b2c99bc1d1f1"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/ruff-format-current.log",
+      "bytes": 29,
+      "sha256": "a52d4bbe898a7eab3d8ce1e2d5b7bdbd583fb620a87a3e48f38595cca26fa9da"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/ruff-format-literal-final-resource.json",
+      "bytes": 591,
+      "sha256": "779728063cef4521504745ee568965859fd6015ab4a9ef439071ca4d095584b6"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/ruff-format-resource.json",
+      "bytes": 591,
+      "sha256": "27a371ddc4e22ec812e0e8dfdb983e4e046a50eb38497702f783aa0595734056"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/ruff-format-resume-resource.json",
+      "bytes": 871,
+      "sha256": "2699249d17d05102be1790c39aca519d7b64145b4fa2a39242d745eba797300a"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/ruff-format-resume.log",
+      "bytes": 1057,
+      "sha256": "635112200a8dfe7fe305951c55bfa14bf15666691f8b6bf774ef8a2b87ee4435"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/ruff-format-resumed-final-resource.json",
+      "bytes": 591,
+      "sha256": "9e0ef33fc5c924fc18872c460412799f8e568e55101d0e2e1514a226e564d8f2"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/ruff-format-static-final-resource.json",
+      "bytes": 870,
+      "sha256": "c16a58551f90087f1850c3a0352fe8a53f6a4e107afb2c0618414b0e3fd0fe42"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/ruff-format-static-final.log",
+      "bytes": 29,
+      "sha256": "a52d4bbe898a7eab3d8ce1e2d5b7bdbd583fb620a87a3e48f38595cca26fa9da"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/ruff-literal-check-resource.json",
+      "bytes": 575,
+      "sha256": "a2276c6a70cb9ffee71ca7a54c2f4eb13bfd80758268e52398afcfebd5f41dfb"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/ruff-literal-format-resource.json",
+      "bytes": 958,
+      "sha256": "7ea7a610fa9d9c8abf6babc2a5bad701c2020c6dffee21100df08ee8fb4a3655"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/ruff-literal-format.log",
+      "bytes": 42,
+      "sha256": "10869b88a75066aa23546ef1f95fcd4678c3fb92a56ed46ef91688052b67976a"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/run_bounded.py",
+      "bytes": 4917,
+      "sha256": "88856f4074d1a891737feee72b3d3fe3d14390b16817bda337bd3cd3f47a9a50"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/run_light.py",
+      "bytes": 4926,
+      "sha256": "1ec4562ea8c309be65f4319ac09bcc2afbb59e964315792dcc43d1946c3fa176"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/run_static.py",
+      "bytes": 4923,
+      "sha256": "89feeb73f5c0a0183c4a923a3c3d4a6905b27d833191fa5cc7377e506fcbc634"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/schema-current-resource.json",
+      "bytes": 858,
+      "sha256": "c995358a26ca8b1a1e506c352d818ac6703ba0b0539411a0c91982a655ba4df4"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/schema-current.log",
+      "bytes": 39,
+      "sha256": "af91b092c8481bd46354a571078e5816312ed8a3c8847ae0a52d3dd63fb81e8f"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/source-chemical-final-resource.json",
+      "bytes": 1074,
+      "sha256": "c680668bdc9ccd928927f91169aab45398f66fa8463b1b3909b6da38b6da62c6"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/source-chemical-final.log",
+      "bytes": 155,
+      "sha256": "7d2baa0237b7412ab6193bd4593c6663af3073bb9ffe77c694e8370848eb481b"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/source-chemical-literal-final-resource.json",
+      "bytes": 788,
+      "sha256": "67ee523f49eacfd8dc332d81fa8b3961eecdaa1725a02f02804925f317679cba"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/source-chemical-resumed-final-resource.json",
+      "bytes": 788,
+      "sha256": "4f2d24866f67a227704a35dac6da174f033ad080f19326d6516ddc9ce7f58463"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/source-final-2-resource.json",
+      "bytes": 1074,
+      "sha256": "5cefcd0a277446dd8027b9685bd2fb242baad801ac94b8ace7cd795770e14f0d"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/source-final-2.log",
+      "bytes": 155,
+      "sha256": "0c7b1d1c685935e8c368dd97b1e340fee6eb628e842b0c30dbdcfd8ca1293125"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/source-final-resource.json",
+      "bytes": 1074,
+      "sha256": "e80b53a336bcb6d6c7300b4685bbf71e53a6706131d462650dd582c614cf59d9"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/source-final.log",
+      "bytes": 2116,
+      "sha256": "ecfea0a7debe20e182ed0e7a362194e54495779ac901964797f0b61fe80d84ab"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/source-registry-current-resource.json",
+      "bytes": 873,
+      "sha256": "0a06eb0da512e69128e46d118d6966c3873a5c80ada53de76f38495ca360b714"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/source-registry-current.log",
+      "bytes": 74,
+      "sha256": "b1e9864eba59e768c6cff53728ba3e9b1c4a42ca34a3fa53f8b1345c19224f5d"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/unchanged-originals.json",
+      "bytes": 16275,
+      "sha256": "0e7accc543aea05ba7c86191a1c4ff428a250fa97a9f5831148c0b0ee493b13c"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/update_receipt.py",
+      "bytes": 4738,
+      "sha256": "e8fe58d96f8ce5e50a5455d3162e540cc7ba8663550ccf7a63a9bc7c5da8883f"
+    },
+    {
+      "path": "recovered_work/chemical_saved_20261106/wait_for_receiving.py",
+      "bytes": 2905,
+      "sha256": "a2fcafea5f49940358565d8d5da8645b109245a826f62505a08533b20ab4756b"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/RETENTION.md",
+      "bytes": 1315,
+      "sha256": "374a41e290e0ac670b4b6cc3ab5d2c8568c3669ea8c8309f871303b2b3c8d381"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/before-presentation-pga-human.html",
+      "bytes": 1920,
+      "sha256": "cccea344ec19fe0002cbd845522a51ddc82eb75b5b2f6835e2500f5d82ce9163"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/before-presentation-pga-human.txt",
+      "bytes": 1544,
+      "sha256": "b2b8f88af3bc330be421e5e763d12815c6f509728d886bfea51366e41072aa5f"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/before-presentation-vincristine-human.html",
+      "bytes": 2940,
+      "sha256": "ac57a5bdd8d1f9665bdc356fb8521d1a2f391e26af32597a743dafc44475d486"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/before-presentation-vincristine-human.txt",
+      "bytes": 2318,
+      "sha256": "ab52e4dde7fc28c90a89442759a42901682bf453ce4fe74f460c0d1407d0f39b"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/before-presentation-walkthrough.json",
+      "bytes": 2116,
+      "sha256": "ccc4a941d1b1bb3ffc9a09b69fdb723186d28b76790d24be8b1626070e792168"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/build_receipt.py",
+      "bytes": 4263,
+      "sha256": "c9428c8737e60feb2cc492bce4cccaf06ce0d857b778561a8f0af8a44ad66f21"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/capture_live.py",
+      "bytes": 3337,
+      "sha256": "cb73d80816c51abf9ebcb874e36cca02799e0dacb3c111c7f3239efeaf9c49d8"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/capture_original.py",
+      "bytes": 2398,
+      "sha256": "acaf73d8ed41bf6ab03311bd57b5b65bb4203f02f4c7de03330fa0f110eb59a7"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/card-shape-resource.json",
+      "bytes": 848,
+      "sha256": "3041fd3c9d1fd4915e8bb90342154a6af58c201c78729104fbcdefd5a070394a"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/card-shape.log",
+      "bytes": 1274,
+      "sha256": "a586fb32e30ce3bed964fcb5b6786391981cd887887ec9c24af6101e2ad47c3d"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/chemical-copied-final-resource.json",
+      "bytes": 1254,
+      "sha256": "a26309b3b22c0c15038fbaea56e188f98f7b4eebc06f172329ae823517899139"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/chemical-copied-final.log",
+      "bytes": 35,
+      "sha256": "2a99d37b67d617b29c674dfd59772cc93fbd0f5e7c75b903ce749676f2b18859"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/chemical-exploration-resource.json",
+      "bytes": 1013,
+      "sha256": "0305f65afb0b44a12be31a1426d342aaad620f48e6f4fe70eff9c2235dd34255"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/chemical-exploration.log",
+      "bytes": 2949,
+      "sha256": "9bad6723fb64c310380b5baf961f6f7756f6678aeae80cc2e2a5d57183f222fc"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/chemical-focused-2-resource.json",
+      "bytes": 955,
+      "sha256": "fa2c4273a3d048cf3d5f709ce3c320d69569a39b73ffc874aa820d6e8bed08c5"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/chemical-focused-2.log",
+      "bytes": 526,
+      "sha256": "db55d8294297077f6c25012774f5885e5be66f531cf6f23febcbe280ef59ce61"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/chemical-focused-3-resource.json",
+      "bytes": 1013,
+      "sha256": "680871947b293862e20e5615989e832cb8103d17ca003dc52a90d3822902716e"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/chemical-focused-3.log",
+      "bytes": 33,
+      "sha256": "e29c668328dc7d7137b7b17fe6dfa7e89e32800c665dab7b8d9acd5306c967ba"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/chemical-profile-final-resource.json",
+      "bytes": 1150,
+      "sha256": "3d6b5761900a115a968af0f7677b4d50d7a3c74f98010bdafb5ec06366918562"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/chemical-profile-final.log",
+      "bytes": 34,
+      "sha256": "51161b19e3a8ebecb9f0d2283a0f12043a3bdba5d9784b32ce7666d22e7f04f5"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/chemical_live_v1.json.gz",
+      "bytes": 105974,
+      "sha256": "1e0a9a01da5c1d1118a115b12b3393dd886a3e447cda4a49e58cd8c514ff9ac1"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/chemical_native_sdk192.json.gz",
+      "bytes": 173611,
+      "sha256": "d5977cd011813b8baac493a88553b9a2750c59ae0e0f5c411a2daa9735ce2291"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/committed-chemical-receiving-resource.json",
+      "bytes": 1150,
+      "sha256": "4ecd7a8d414162788fc89a665bdcd54c99ddbf904e7d22303f0dfb6fccd1cf3e"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/committed-chemical-receiving.log",
+      "bytes": 33,
+      "sha256": "46698508ba4e026f6990e8f2c1cc215a2574e40f91c9693f265ebd51d149b5ea"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/editable-refresh-resource.json",
+      "bytes": 928,
+      "sha256": "daed8c3fa99cd5d8b03327398060308a0c3c24ebf44b7bbbdd0ce8b2d2cbb734"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/editable-refresh.log",
+      "bytes": 1204,
+      "sha256": "3a52957cea0b5e89f2e7c7ef6a8456be07cbcc513be2acc2c2a452997c1cf6a5"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/editables-inside-resource.json",
+      "bytes": 928,
+      "sha256": "3261294402dd068733edb9e22dec86c67f5f8bc1566a94ca3b13d013e3d4bf2e"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/editables-inside.json",
+      "bytes": 7331,
+      "sha256": "bc7f5895e9e4e0c7fc7e3a1e8d58bb874f5aa525ef4350b46fa9a7a4c5e5d819"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/editables-inside.log",
+      "bytes": 123,
+      "sha256": "223e5e1766852aed8beee1a056764d6e4e1dfb8895935a6607c74d5634eb2d8d"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/editables-outside-resource.json",
+      "bytes": 934,
+      "sha256": "585f32cd65bbe7914273334c8219547939fb8ec5caca0b7136958075308f4f77"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/editables-outside.json",
+      "bytes": 7301,
+      "sha256": "499ee383c21aba9ab70f035fb4e177f8b0cf26346a4ba3556620503e64dad1dd"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/editables-outside.log",
+      "bytes": 93,
+      "sha256": "a87b26e8287874f27fa1794944b1b9b2f73ae78901166f7866ac45e66f5c2ce1"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/final-local-receiving.json",
+      "bytes": 2889,
+      "sha256": "b3f2854d50ff4fef98957fea10c1555f81f7bf9ff3f10930f388379b86bc06c9"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/fixture-delivery-resource.json",
+      "bytes": 867,
+      "sha256": "552885a48c7fb2724f57819cb145575eded35fb47a56eed98266d6f7ba770548"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/fixture-delivery.log",
+      "bytes": 70,
+      "sha256": "9ad96d946f6576fb6d3b1345692b114247c3d077abceacb41d9e581b36678025"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/genuine-live-producer-resource.json",
+      "bytes": 885,
+      "sha256": "81bcbd7e76dadffef32d2aa6dcaa6afe384402c8b96a6d74241203ded3e1d0c4"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/genuine-live-producer.log",
+      "bytes": 1422,
+      "sha256": "19051b52923b6c799ad33410cac7f3387e038cb850ef52ee46d869777c9015d9"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/genuine-producer-resource.json",
+      "bytes": 888,
+      "sha256": "397b371fde62473026a5e04505f44be6a2bbdd7be2dc6fbee0e89ce9543af0af"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/genuine-producer.log",
+      "bytes": 431,
+      "sha256": "b01df669ddc6a013274f9e88adb066bb10117af0fa7e578309ec9b24fd339a66"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/goal-progress.md",
+      "bytes": 1121,
+      "sha256": "3e1dbab305eab60abc558e44046e779b2ba8de9db5f70bc8fd5c048a799c4211"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/governance-resource.json",
+      "bytes": 853,
+      "sha256": "ff69f8023a8c0c025b39fb29a347446d2323c0236726d936b6c9f35209380389"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/governance.log",
+      "bytes": 40,
+      "sha256": "5a06edc554fa450ac8fdafc3b04ca285ecaf5c6d2bb754b0867ff1f2bdf5af9d"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/historical-verifier-hashes.json",
+      "bytes": 16162,
+      "sha256": "6931013b8dd7b0c64fe01ff23f3d7337f0e911eb1e921e3e776285c5200e19a8"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/issue148-followup-draft.md",
+      "bytes": 1285,
+      "sha256": "78cb90abc76d59a2e77c87c3ff28d7d429bd184c48acd169a67320a58f016c79"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/jupyter_execute/content/showcase/knowledge_baseline.ipynb",
+      "bytes": 44211,
+      "sha256": "8ca232384ca1d2f2020e68c7d37aecf61aa8d5a7cb52314f5571b8e7b1834dda"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/live-producer-manifest.json",
+      "bytes": 1518,
+      "sha256": "0df95bfde584c6647a0f579c74eebbf905d14ba0c97515bc17a79144d4313c9a"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/metadata-delivery-resource.json",
+      "bytes": 1095,
+      "sha256": "5df810184802c78f44aeb3808d8c12e140aadbe94e9461b8b81b8adb5571826d"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/metadata-delivery.log",
+      "bytes": 33,
+      "sha256": "58d3f625315a669fab2ecf31fa0e7495b060e2c4429333030cc28dd910cc2bda"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/navigation-final-resource.json",
+      "bytes": 1504,
+      "sha256": "13c7f7af08b9cbbe2b0de786e4694bfd1edd8fa827a5704e253ad025553cc51c"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/navigation-final.log",
+      "bytes": 117,
+      "sha256": "2ca438f0dc12372229ed27b50fb1b7572f8fab449566df915df0e9e68103bffe"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/navigation-neighbors-2-resource.json",
+      "bytes": 1504,
+      "sha256": "0fc8facd7c8dd2a997668cbb46a69d670973b2fea11cf9f63aa8c79a89569c56"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/navigation-neighbors-2.log",
+      "bytes": 955,
+      "sha256": "72edcd7d09f64d4dfa0cb100f4fc62f08bcd953f79a1a4924fa679226a437781"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/navigation-neighbors-resource.json",
+      "bytes": 1500,
+      "sha256": "bd74bac808daef61808df4ec8e32537c218941b73d843b8c1e58d42a08c172cd"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/navigation-neighbors.log",
+      "bytes": 115,
+      "sha256": "71fde17e2eb2db5d179407bc29ab44e338afd176c25fa81c1a4a25d00991d9ed"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/pga-human.html",
+      "bytes": 1986,
+      "sha256": "b0cafcc16185ae2a84019acced8733394819daa3259ff00ad37f1ac510572a6e"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/pga-human.txt",
+      "bytes": 1580,
+      "sha256": "b42c4f1ff640ce1405e2ea4567ad5a5319791032de7ffbc10d40d02fd1e8936e"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/pga-original.json",
+      "bytes": 1468971,
+      "sha256": "f9716fafe45fcba3534fcae86691dbe6439e8cb04bb55fee2f3126b8290e54ba"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/public-walkthrough-final-resource.json",
+      "bytes": 883,
+      "sha256": "8045c44c0f4725734e928649caf10bc944724030fbc5f08331d6b3076a6ac81e"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/public-walkthrough-final.log",
+      "bytes": 1875,
+      "sha256": "2659b12c3dacef2d856fde60ff4533958bced20e997a1bff3a62fc7abfaee790"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/public-walkthrough-resource.json",
+      "bytes": 883,
+      "sha256": "d4b54adaa36a0b9bf9a7e9c99d01b12f29deef4430ebb964675bc555810412ea"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/public-walkthrough.log",
+      "bytes": 1786,
+      "sha256": "dad17859582e73cf96a6bf2ef760e8696c4255f1cff5956c25259471e8880c34"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/ruff-check-resource.json",
+      "bytes": 849,
+      "sha256": "c22819b8210987ac0214850d4eea7e9a71bf41722685c52610e3b0fd84a68eec"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/ruff-check.log",
+      "bytes": 19,
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/ruff-format-evidence-resource.json",
+      "bytes": 865,
+      "sha256": "39eace31445c2aa62e5ae9c31078f4c164f35e552eadf342b622cbb643d7d2cd"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/ruff-format-evidence.log",
+      "bytes": 29,
+      "sha256": "b4dece27c49e16a6c20b91566c89120fea623b2516e34f7d07ce6093f7eaf0da"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/ruff-format-final-resource.json",
+      "bytes": 865,
+      "sha256": "86dcab5e63a3382412e600758331aff55fd230b447f4b2aa2145ae7ea859ff98"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/ruff-format-final.log",
+      "bytes": 29,
+      "sha256": "b4dece27c49e16a6c20b91566c89120fea623b2516e34f7d07ce6093f7eaf0da"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/ruff-format-resource.json",
+      "bytes": 864,
+      "sha256": "c1ccf3443621aaef23b0ccc3a70a0e5eaa0a529e2b86433b1ed25698735a1da0"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/ruff-format.log",
+      "bytes": 876,
+      "sha256": "b7cbb8af70d4268331a4b5d9b65de9be4558dc922ed66332c679fa1d8d9219d5"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/run_bounded.py",
+      "bytes": 4917,
+      "sha256": "88856f4074d1a891737feee72b3d3fe3d14390b16817bda337bd3cd3f47a9a50"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/schema-resource.json",
+      "bytes": 851,
+      "sha256": "560ba18000ed27fb52de55604c739208dd3e2ea6a54a33d397dda16fc566c067"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/schema.log",
+      "bytes": 39,
+      "sha256": "af91b092c8481bd46354a571078e5816312ed8a3c8847ae0a52d3dd63fb81e8f"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/source-registry-resource.json",
+      "bytes": 867,
+      "sha256": "7ad6cfe439b5e0cbe66a372090b99bf954bfaf1fc0c54e760f1973b0f844ba5e"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/source-registry.log",
+      "bytes": 74,
+      "sha256": "b1e9864eba59e768c6cff53728ba3e9b1c4a42ca34a3fa53f8b1345c19224f5d"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/sphinx-resource.json",
+      "bytes": 962,
+      "sha256": "2759ed2757da35bf8476d2b5bf1b565fd8875c4fa1b70e176a751606e7ea2c0c"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/sphinx.log",
+      "bytes": 23339,
+      "sha256": "edf4f9f99db0ae8ab373ad5a6dae380758dc9fdc8ab33f1fe14046a6dde4113d"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/structural-historical-resource.json",
+      "bytes": 1064,
+      "sha256": "96f8ccca0a39becca301d2b7ee05ae85a1dd9f69a058148d9ee89b43a78554fc"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/structural-historical.log",
+      "bytes": 168,
+      "sha256": "a0598a9301beeb25cdb90b39cad1866ac82f3f6438741c7eea8aac8124f5622d"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/verify_editables.py",
+      "bytes": 2169,
+      "sha256": "970aacadf8a0b9117022ab6e7e2e7f9c4814f28f657ef89e4ccbc86ada77558d"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/vincristine-human.html",
+      "bytes": 2839,
+      "sha256": "894e8e3e5eaf9855357919d9ff875a273057d1fd41bc8219a06fbbb62110b628"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/vincristine-human.txt",
+      "bytes": 2187,
+      "sha256": "84f487a0a62e5003b36be593661a48d0c86aa05e79800201493693a977fe0164"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/vincristine-original.json",
+      "bytes": 1471404,
+      "sha256": "8b0d902067c4a376f6452f708b3a76f4cc2e8b148f47fdc3599b8d5446e5907e"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/walkthrough.json",
+      "bytes": 2207,
+      "sha256": "a07b2aba05379362a89c7394a63a54d8253466e0ea5d1d12845864d904141fc7"
+    },
+    {
+      "path": "recovered_work/chemical_profile_20261106/walkthrough.py",
+      "bytes": 2941,
+      "sha256": "b31cafe6857d51adb02916986a73e16dbec89e1e43a73c412f653f457ad0f065"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/RETENTION.md",
+      "bytes": 882,
+      "sha256": "0904c07d4fa6a409e5a0af31de426aa64df3d97ad8b71a5827bc8e7193de7b98"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/build_receipt.py",
+      "bytes": 4017,
+      "sha256": "751e1629c6c77808353d6dec4f868e4716761220302cd4911921d7637c628c92"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/card-shape-resource.json",
+      "bytes": 871,
+      "sha256": "48a7ad4c06d297099b75123b0ce9a0aee48adda4ff075d9a9d2d8ad09884fb80"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/card-shape-standard-resource.json",
+      "bytes": 854,
+      "sha256": "916967442b45094a429f685ddad897246f13f7f572f36cef55c50c206bf16ca7"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/card-shape-standard.log",
+      "bytes": 1274,
+      "sha256": "a586fb32e30ce3bed964fcb5b6786391981cd887887ec9c24af6101e2ad47c3d"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/card-shape.log",
+      "bytes": 963,
+      "sha256": "76b4e7b69125fc998287bfe433035b9eb8dfdb7b62d2e02a281b2000b76c097d"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/classification-and-isolation-resource.json",
+      "bytes": 1266,
+      "sha256": "812bf496cceba13b4a56d5eda6f670a61b814a7fbc1ad703b120db153980c10a"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/classification-and-isolation.log",
+      "bytes": 35,
+      "sha256": "300574a72c4a2d7ecd44e93e7927027449151353db5a314e6e122180afb8420f"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/classification-native-resource.json",
+      "bytes": 968,
+      "sha256": "a13efa12d128f9508e91e78cde84e62b71ea4d1c5e5318087104d8edd73c4af8"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/classification-native-v2-resource.json",
+      "bytes": 968,
+      "sha256": "af5e66fe136721fa8350ed32da5e244582c9eac4387c0c031a41b57b1968cbd6"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/classification-native-v2.log",
+      "bytes": 518,
+      "sha256": "1fe1f645da4724cce41e8fff84ed3f4be5c9e0d43fd64e27ce9562cb9ea05971"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/classification-native-v3-resource.json",
+      "bytes": 968,
+      "sha256": "f187860e2b2d1292422b31691820161563ffc062c218b004fa99621a4c1f34c0"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/classification-native-v3.log",
+      "bytes": 33,
+      "sha256": "4984aa0e9e04cd35fdf54f606a1a4b75aad1e4dc8b560a4969ba206ef406011a"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/classification-native-v4-resource.json",
+      "bytes": 968,
+      "sha256": "35a5b111ff0f416f301f6485243ca153f9bb4420be52f53eed79d0482577e681"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/classification-native-v4.log",
+      "bytes": 33,
+      "sha256": "a99414607422d146c7bce5073f39108a204efc907e8fd46a8ed32457a2a2b789"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/classification-native.log",
+      "bytes": 743,
+      "sha256": "dfb4ecba01229e04eda0c2909940fdf7cf443c966d18bbc7f79f05dac28e731c"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/committed-native-receiving-resource.json",
+      "bytes": 1101,
+      "sha256": "5b2ead419596b95f103996cd3fe0f8c12a3af1645b9e1c56146b292b606b5663"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/committed-native-receiving.log",
+      "bytes": 33,
+      "sha256": "e8e39f59b8f1bc12bc48d7565dda04fcc4403aba0e7a154eb062e01d45f9392c"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/editable-refresh-resource.json",
+      "bytes": 933,
+      "sha256": "89f57f23b4e0f9090343e745ed82f1b6247974f38988f352a4c9a02e0ba196be"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/editable-refresh.log",
+      "bytes": 1211,
+      "sha256": "ea304d3173d26b4d5cd05467803ab231e9210a3ab0641703b8ae8cc9d5661114"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/editables-final-inside.json",
+      "bytes": 7336,
+      "sha256": "7ec348cd98e68db135d95f9a47ecde9a718bd74f8fd2d3bd21ad3447db41003c"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/editables-final-outside.json",
+      "bytes": 7306,
+      "sha256": "ea4e872aa13af1c6713e6ddfc9e68022d6bcfc6748972063f21b755fd6e5adf2"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/editables-inside-resource.json",
+      "bytes": 942,
+      "sha256": "1173d68cf02ca011d8d63a0cd4aa060543b141a615f1c42bf223c48e8ba2ae3e"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/editables-inside.json",
+      "bytes": 7336,
+      "sha256": "21ecb1f469ce608d3c528fb5453dc737382769a091fd739ebbe219b27c28d0ce"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/editables-inside.log",
+      "bytes": 123,
+      "sha256": "572f4a4070d3f66e99d2f4af8945c6b957335c272bd2914c6e64e3bd7f608506"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/editables-outside-resource.json",
+      "bytes": 948,
+      "sha256": "3759b64f727bee1c78252b8e005c7638794e54488a324ea9e9593284f07b9755"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/editables-outside.json",
+      "bytes": 7306,
+      "sha256": "132684d1851e3da72c1a0599f1da7c4b10c1f7d4b2f557acb7ef6cda5197b1f0"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/editables-outside.log",
+      "bytes": 93,
+      "sha256": "429ae5100312a449a6fe46e565b36ba8e9e1a8f74454f05cfa142cb4e8d06da4"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/field-integration-resource.json",
+      "bytes": 891,
+      "sha256": "702076abc7bb832c8eda21cfe8cb8c5817dcc03ef6b95850650d5ee2db64e629"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/field-integration-v2-resource.json",
+      "bytes": 1239,
+      "sha256": "aecd29ab6855171a3cefff22851d549b6b70117813b036c86b7fe23f0136dd4e"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/field-integration-v2.log",
+      "bytes": 139,
+      "sha256": "e3d3954ef5c25f30549f66e620bb337ef5610fc712277227b539365448bcf560"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/field-isolation-before-resource.json",
+      "bytes": 987,
+      "sha256": "1e0e47452534e7fb1b6334d3280376c9f056fd03dbd2306d1267cc0c8134a2a1"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/field-isolation-before.log",
+      "bytes": 1668,
+      "sha256": "bd8d1269681e0eb2a3e52691cc8d2737dbe821df222f251c603bd76de9293249"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/final-ci-initial/artifacts.json",
+      "bytes": 42,
+      "sha256": "733015529a249a421892ec83190af9d23593d1877609d3653ae94f945a220490"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/final-ci-initial/checks.json",
+      "bytes": 73060,
+      "sha256": "749b3ceb57386524e0d5de915e99aadb192b57ee29c8c6a4885c37a31d4c121c"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/final-ci-initial/jobs.json",
+      "bytes": 17448,
+      "sha256": "f1cd3a2b56360c6ad849d8a472712afa856e20afc06fbb38b2262dcadd94cd13"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/final-ci-initial/manifest.json",
+      "bytes": 1591,
+      "sha256": "39eb1beb41a1a758090035ac7a1dbc30d51e1028a930d2552275da2ed3926950"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/final-ci-initial/run.json",
+      "bytes": 12908,
+      "sha256": "7d324c3f284f7f6ed7ee1de420468975fd114544809042bc0e3e2e8490cbc5e3"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/final-ci-initial/workflow.json",
+      "bytes": 475,
+      "sha256": "2695d216eaf6d431fb7cdd5446b889b48c960dbfa8bbe481f7b268ff68ff9879"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/final-ci-initial-resource.json",
+      "bytes": 1161,
+      "sha256": "6ddb60c89ee907e60e52156a01b4cc0e34b8425db350cfb9c5d20637ddc195bc"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/final-ci-initial.log",
+      "bytes": 473,
+      "sha256": "4e334ac7675ec0ff2a2c27b0d15fe0642e681f8019551fd4c13fce8ed442b8be"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/final-committed-receiving-resource.json",
+      "bytes": 1101,
+      "sha256": "26ecba6734271d71d1aba77aa7e9e13a92a05a31425a2023e3a8a330e1775a80"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/final-committed-receiving.log",
+      "bytes": 33,
+      "sha256": "0fddca77da3304608cd741864aa414474ba194ba610e596d3dc6d6c9c56b43ca"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/final-editable-refresh-resource.json",
+      "bytes": 934,
+      "sha256": "b9b03a07c1caffb0334dd912265e8401a77cdca24e7d9c57662a7f04d44f62f0"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/final-editable-refresh.log",
+      "bytes": 1211,
+      "sha256": "a240b93f452d4fcae11fad3b193bd01852ea46d183745607c5eec7febefe6e54"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/final-editables-inside-resource.json",
+      "bytes": 947,
+      "sha256": "e4aad9b29d89722f36b2fd1ce27387fd02dc5cd53520795daee86266ce294801"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/final-editables-inside.log",
+      "bytes": 123,
+      "sha256": "58a946391c9fc7afd2fc6ba06ff69fdb007c54fdd016f1ee9eba452ac9bd7a4e"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/final-editables-outside-resource.json",
+      "bytes": 954,
+      "sha256": "68065c02d8fcb804fd6c348c770bee378ba84acb0445402424c0c5d38c971345"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/final-editables-outside.log",
+      "bytes": 93,
+      "sha256": "b92046361b91c3f502351a972f9d5fae16c803f3ac81a877cb9b628f0212b428"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/final-format-resource.json",
+      "bytes": 871,
+      "sha256": "afbcc9c0e314bd20be4a3d02eccb6364cc9fe55628a43593780e15ae24f2afe4"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/final-format.log",
+      "bytes": 29,
+      "sha256": "82149c9257b5f2bd91fe31d47ea2750c778d35dd06a3356c1a628ecf69648948"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/final-governance-initial/artifacts.json",
+      "bytes": 42,
+      "sha256": "733015529a249a421892ec83190af9d23593d1877609d3653ae94f945a220490"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/final-governance-initial/checks.json",
+      "bytes": 4310,
+      "sha256": "c2b22f6effd52e0f04c2f33caab5dff9bf483aa75a7fbb89118a7be36558fd87"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/final-governance-initial/jobs.json",
+      "bytes": 1047,
+      "sha256": "9eb30b50530fcd6ead5f996f3fd26696e3048f1aa513605542107b3fb8807855"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/final-governance-initial/manifest.json",
+      "bytes": 1589,
+      "sha256": "791c5c57f5360c7ffc4b21a03f3ebcb68f0b5a56b774028461bda098b5c520fd"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/final-governance-initial/run.json",
+      "bytes": 12934,
+      "sha256": "bddffa68fedc4b96eae15bbcf8b25db9ac652ee0aefb0b18fa4ed097412ed148"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/final-governance-initial/workflow.json",
+      "bytes": 529,
+      "sha256": "1ff0197384483022bec8c1c0767e39ba0281dbcb7282700eb85cf7902a07b8fe"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/final-governance-initial-resource.json",
+      "bytes": 1174,
+      "sha256": "220b10d7673ae26f39f90efb902e87669c3f84e62b72660e4a35de98e016f09b"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/final-governance-initial.log",
+      "bytes": 406,
+      "sha256": "c545890ef26de08527f55d04d32500deccc14fc5475f5b8cb4af100b63072c20"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/final-local-receiving.json",
+      "bytes": 2471,
+      "sha256": "705bb7b659ffd309784b6c3b35e1a8efdbca2d1d5a435a47761c7d20c60fb1c1"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/final-native-receiving-resource.json",
+      "bytes": 1101,
+      "sha256": "feb79882f811b63123a46140000226f9c35fb957b71c06bd70a1072f2e0ff617"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/final-native-receiving.log",
+      "bytes": 33,
+      "sha256": "8b9fa38982fee373ad41ff2ae80598121e24a7ab1426c8b58a3a96c3b4577113"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/final-source.json",
+      "bytes": 248,
+      "sha256": "3cbfdc8c0a557334ed207fe8cfa8652f7ac54257cc96e1871af14915da5f5c67"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/fixture-delivery-resource.json",
+      "bytes": 874,
+      "sha256": "583da60979b91d344b069e6bf2dde41609243018a2d7a4f5dec8837b79b68b2c"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/fixture-delivery.log",
+      "bytes": 70,
+      "sha256": "9ad96d946f6576fb6d3b1345692b114247c3d077abceacb41d9e581b36678025"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/goal-progress.md",
+      "bytes": 2214,
+      "sha256": "d1580e8352c59e9ac79f4d505f44bb738ea404d8249465da044088d7878563ae"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/governance-resource.json",
+      "bytes": 859,
+      "sha256": "dcb7ff7e2836601554125de50c0eb687f59b8e8c667bda8856314d96008ae977"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/governance.log",
+      "bytes": 40,
+      "sha256": "5a06edc554fa450ac8fdafc3b04ca285ecaf5c6d2bb754b0867ff1f2bdf5af9d"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/issue148-draft.md",
+      "bytes": 1763,
+      "sha256": "c9591cc720df9e1ca82a5dce0de16e6232d55702422b620b4acc254116feafa2"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/issue166-draft.md",
+      "bytes": 2183,
+      "sha256": "bf4e6661438640d146a3dac91118b5a787691a3b0a51094d6f711e24f43f3057"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/jupyter_execute/content/showcase/knowledge_baseline.ipynb",
+      "bytes": 44211,
+      "sha256": "8ca232384ca1d2f2020e68c7d37aecf61aa8d5a7cb52314f5571b8e7b1834dda"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/original-capture-compatibility-resource.json",
+      "bytes": 976,
+      "sha256": "9279e51b989c52fd7ce3318efaeaf816b3e2bc1b360eeb5f96254f0d7b7c8a5c"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/original-capture-compatibility.log",
+      "bytes": 133,
+      "sha256": "14d7af6913b2be172d9c7b7678141d18e4d532c73c2428227f1ef51514d911f8"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/receiving-isolated-final-resource.json",
+      "bytes": 1043,
+      "sha256": "fbc56ff19d375a2b71245e2e70cf306bf2885e84addb1e309d2e8c30eecf4e15"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/receiving-isolated-final.log",
+      "bytes": 32,
+      "sha256": "16fe4689d2eede3fc7ea51b55f533dda97d5a2510d6101c1686b940299d2f82b"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/receiving-isolated-resource.json",
+      "bytes": 1043,
+      "sha256": "3dc49b4bb742cb6c691db0a46411cfbf92a80cba0e7d49a7cc6ca23e78bd23aa"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/receiving-isolated.log",
+      "bytes": 32,
+      "sha256": "54ed18e0b204dbd6e77353573e8a86ccb154fc01c742a1a6fa3e43513fe73f57"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/reporting-authorization.md",
+      "bytes": 743,
+      "sha256": "e9706bac3b05f39badb0b42d6a1a7fb37b9a2b398cfe7a24cfe0c1d0f81d8b24"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/ruff-format-final-resource.json",
+      "bytes": 871,
+      "sha256": "b71959c4464468c16c5a7a6149a729a2122b5db0989a36473211c07d4f672e5a"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/ruff-format-final.log",
+      "bytes": 29,
+      "sha256": "82149c9257b5f2bd91fe31d47ea2750c778d35dd06a3356c1a628ecf69648948"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/ruff-format-resource.json",
+      "bytes": 871,
+      "sha256": "d9fbaeb2ba8c7515faae655e3f7ecf2299b476cfb2c9b9270f8dcc0278865f4e"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/ruff-format.log",
+      "bytes": 29,
+      "sha256": "82149c9257b5f2bd91fe31d47ea2750c778d35dd06a3356c1a628ecf69648948"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/ruff-lint-final-resource.json",
+      "bytes": 855,
+      "sha256": "81de2953999926403ae90d9fbb78502e253f27861cb92c7cf52617ad085bef3b"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/ruff-lint-final.log",
+      "bytes": 19,
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/ruff-lint-resource.json",
+      "bytes": 855,
+      "sha256": "be4e12745a4f4a29a1dacefe31b419a4b6420b7fdf4b8a2c549191af13377e44"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/ruff-lint.log",
+      "bytes": 19,
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/run_bounded.py",
+      "bytes": 4923,
+      "sha256": "67d1a497a406071c3ea0ceac4350650d2fb6a4bbf13b7aa377d088d6e07cf665"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/run_light.py",
+      "bytes": 4923,
+      "sha256": "1dfadd1f8137213614fd269a8a98a1b1560c67794a9d870ad306572f01fbf072"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/source-registry-resource.json",
+      "bytes": 873,
+      "sha256": "678e244fdbb6181c538444199358be610795e097663e0fcd3ac365771678557c"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/source-registry.log",
+      "bytes": 74,
+      "sha256": "b1e9864eba59e768c6cff53728ba3e9b1c4a42ca34a3fa53f8b1345c19224f5d"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/sphinx-resource.json",
+      "bytes": 976,
+      "sha256": "4a91d01812138b5ad3303f0e7415a534a7e2313a7da5e67dfb266afe08402c24"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/sphinx.log",
+      "bytes": 23381,
+      "sha256": "e1839fe2942348bba1766a04865d623bb086989f92e78062864ddfa7bf735898"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/typed-observation-receiving-resource.json",
+      "bytes": 1101,
+      "sha256": "7a937c9fd9e5111352755be7887e8e11b7ebfa687fd955b960e90166a77ac358"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/typed-observation-receiving.log",
+      "bytes": 33,
+      "sha256": "0b46b4b4339cb3f6d51387ccfccbb90090321e27b806888169bbcaa551b2e3a4"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/typed-ruff-resource.json",
+      "bytes": 855,
+      "sha256": "e3730e2d90595355279cb7f930b7afbdc078e3f422fce4538a47a0b6e9d32033"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/typed-ruff.log",
+      "bytes": 19,
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "path": "recovered_work/chemical_classification_20261106/verify_editables.py",
+      "bytes": 2181,
+      "sha256": "3e63c90167873f9e2bcf2df74bb99f0b75ce737724afff0e80e00546d8bbd97c"
+    }
+  ],
+  "retained_evidence_bytes": 5257480,
+  "local_only_inputs": {
+    "inventory": "devguide/sources/fixture_delivery.json",
+    "inventory_sha256": "2987c1215d80c215caa1d9b50f988b452a4a546ce6d198475c500be055ab0959",
+    "count": 37,
+    "bytes": 28766656,
+    "all_present_and_original_hashes_verified": true,
+    "private_transfer_only_under_existing_terms": true
+  },
+  "participating_checkout_scope": "Current read-only Git metadata for the19 previously recorded editable routes. Historical distribution versions are not current imported/runtime checks or automatic profile-adoption authority; preserve dirty source separately.",
+  "participating_checkouts": [
+    {
+      "name": "ackredit",
+      "workspace_relative_checkout": "ackredit",
+      "recorded_sdk193_distribution_version": "0.12.0+11.g74f865d",
+      "head": "74f865d7eca1f5386235885d4ea001e53b5b822d",
+      "branch": "main",
+      "dirty": false
+    },
+    {
+      "name": "argdigest",
+      "workspace_relative_checkout": "argdigest",
+      "recorded_sdk193_distribution_version": "0.17.0+5.gcd9c4f3",
+      "head": "7e09e974c36bcf5cace99a7b898d0f5f7a9d3ff2",
+      "branch": "main",
+      "dirty": false
+    },
+    {
+      "name": "depdigest",
+      "workspace_relative_checkout": "depdigest",
+      "recorded_sdk193_distribution_version": "0.15.1+8.g0884f0c",
+      "head": "0884f0cc1dd60b79ed01930e68d80c87e51744c9",
+      "branch": "main",
+      "dirty": false
+    },
+    {
+      "name": "dockingmt",
+      "workspace_relative_checkout": "dockingmt",
+      "recorded_sdk193_distribution_version": "0.0.0+264.gd1435ff",
+      "head": "2fda6238e6b1cb3742f5d30b8ed3af699f9ed748",
+      "branch": "main",
+      "dirty": false
+    },
+    {
+      "name": "elastnetmt",
+      "workspace_relative_checkout": "elastnetmt",
+      "recorded_sdk193_distribution_version": "0.1.0",
+      "head": "f643829f9eca62fdc38678164a336f4ec1bc04dd",
+      "branch": "main",
+      "dirty": false
+    },
+    {
+      "name": "gh-run-receptor",
+      "workspace_relative_checkout": "gh-run-receptor",
+      "recorded_sdk193_distribution_version": "1.3.0+5.g319c52c",
+      "head": "319c52cee8686c98d053e2fb7ca2b333468b88a0",
+      "branch": "main",
+      "dirty": false
+    },
+    {
+      "name": "lindelint",
+      "workspace_relative_checkout": "lindelint",
+      "recorded_sdk193_distribution_version": "0.2.0",
+      "head": "1d418e2f7a2d43ba4131afa73873bc55b64d010c",
+      "branch": "main",
+      "dirty": false
+    },
+    {
+      "name": "molsysmt",
+      "workspace_relative_checkout": "molsysmt",
+      "recorded_sdk193_distribution_version": "0.23.0+322.g71fbe4f46",
+      "head": "71fbe4f46d3c70e4e973c8025f01752a8c9b1084",
+      "branch": "main",
+      "dirty": false
+    },
+    {
+      "name": "molsysviewer",
+      "workspace_relative_checkout": "molsysviewer",
+      "recorded_sdk193_distribution_version": "0.24.0+188.g73a6f388",
+      "head": "73a6f388e09146650349dfe83564ae318ba20298",
+      "branch": "main",
+      "dirty": false
+    },
+    {
+      "name": "opencastp",
+      "workspace_relative_checkout": "opencastp",
+      "recorded_sdk193_distribution_version": "0.1.0+141.gaef7c6c",
+      "head": "aef7c6ccd9008f630ed3ac0fa6716bd92b0664c6",
+      "branch": "main",
+      "dirty": false
+    },
+    {
+      "name": "peptidemt",
+      "workspace_relative_checkout": "peptidemt",
+      "recorded_sdk193_distribution_version": "0.1.0+104.gb872f32",
+      "head": "1f8c444e4619499cae8ad9970122c5f40adf6127",
+      "branch": "main",
+      "dirty": true
+    },
+    {
+      "name": "pharmacophoremt",
+      "workspace_relative_checkout": "pharmacophoremt",
+      "recorded_sdk193_distribution_version": "0.4.0+29.g8e83a64",
+      "head": "0925d97a7d9d219cb8caabfc1dba0ce1bee66b7f",
+      "branch": "main",
+      "dirty": false
+    },
+    {
+      "name": "praxis",
+      "workspace_relative_checkout": "praxis",
+      "recorded_sdk193_distribution_version": "0.1.1",
+      "head": "17e1856fa45a50b26097b19be28accb7ab88f689",
+      "branch": "main",
+      "dirty": false
+    },
+    {
+      "name": "pytest-receptor",
+      "workspace_relative_checkout": "pytest-receptor",
+      "recorded_sdk193_distribution_version": "1.2.2+2.gb9676f8",
+      "head": "b9676f87d317e52ae9121f2e95c2b2c325ad2044",
+      "branch": "main",
+      "dirty": false
+    },
+    {
+      "name": "pyunitwizard",
+      "workspace_relative_checkout": "pyunitwizard",
+      "recorded_sdk193_distribution_version": "0.29.0+4.g9d74f0e",
+      "head": "9d74f0e1e911d78c1906948e74ce8da93935557d",
+      "branch": "main",
+      "dirty": false
+    },
+    {
+      "name": "recorda",
+      "workspace_relative_checkout": "recorda",
+      "recorded_sdk193_distribution_version": "0.3.3",
+      "head": "ff52fa5d8628d796f413b833c8abe73907990cf9",
+      "branch": "main",
+      "dirty": false
+    },
+    {
+      "name": "sabueso",
+      "workspace_relative_checkout": "sabueso",
+      "recorded_sdk193_distribution_version": "0.14.0+193.g03bdb2c",
+      "head": "03bdb2c005857ac14c86f586bf4807d78f4ea783",
+      "branch": "main",
+      "dirty": true
+    },
+    {
+      "name": "smonitor",
+      "workspace_relative_checkout": "smonitor",
+      "recorded_sdk193_distribution_version": "0.22.0+16.gccdcace",
+      "head": "ccdcace55ba5caf431b4a6a6904d8d18173114a3",
+      "branch": "main",
+      "dirty": false
+    },
+    {
+      "name": "topomt",
+      "workspace_relative_checkout": "topomt",
+      "recorded_sdk193_distribution_version": "0.5.0+324.g5f6239f.dirty",
+      "head": "f3ffa90acbcfced831e397e0a75e510924ca9204",
+      "branch": "work/fpocket-handoff-101",
+      "dirty": true
+    }
+  ],
+  "first_handoff_host_observation": {
+    "mem_available_bytes": 31019978752,
+    "swap_free_bytes": 8589930496,
+    "scope": "First /proc/meminfo sample during this documentation task; prior resource blocker is historical, and no scientific gate was rerun."
+  },
+  "receiving_scope": {
+    "current_local_code_source": "0f197e56b95f5f361cb16778457f652832d05f28",
+    "current_source_checkpoint": {
+      "path": "devguide/evidence/chemical_saved_checkpoint_20261106.json",
+      "bytes": 173541,
+      "sha256": "8eb5dc5ebdec608dc3a522b94b20a5fdfdd59f1de48f2942f3081d36bc4d2855"
+    },
+    "selected_cases": {
+      "chemical_native_live_saved": 95,
+      "navigation_argument_quantity_literal_neighbors": 428,
+      "historical_science": 41,
+      "historical_quaternary": 41,
+      "historical_sites": 41,
+      "isolated_outer_consumers": 2,
+      "registry_licensing_delivery": 57,
+      "distinct_total": 705,
+      "nested_saved_and_live": [
+        38,
+        27
+      ],
+      "counting_basis": "Disjoint selected modules; nested, repeated, workload and later committed-SDK cases are not added."
+    },
+    "public_whole_session_routes": 114,
+    "code_gates": "Local selected source/historical/adjacent/copied cases, metadata/static/schema/shape/governance/Sphinx and independent public whole-session receiving pass within their receipts.",
+    "final_committed_sdk_recheck": "Recorded externally after the documentation commit; repeated95 cases are not added to705 distinct cases.",
+    "hosted_installed_scientist_researcher_consumer_acceptance": "Separate/open; local passing checks do not close broad B2-B7 acceptance."
+  },
+  "first_next_action": "Verify transferred committed history, external final closeout, hashes and ignored material; recreate/receive destination Python3.14 editable paths and run95 chemical cases as destination environment receiving, then applicable neighboring/historical/copied gates for changed scope. Recover exact-final-source hosted CI/governance through its authorized route.",
+  "release_boundary": "No0.15.0 publication, staging, tag, schema freeze or package promotion authorized. Broad B2-B7 obligations and independent human/scientific/consumer acceptance remain incomplete.",
+  "documentation_receiving": {
+    "owner": "uibcdf/sabueso#112/#148",
+    "scope": "Final consolidated guide links/anchors and offline contributor walkthrough; root static/Sphinx/fixture/source checks are in the separate local source checkpoint. Earlier review snapshots remain historical.",
+    "checks": {
+      "guide-final": {
+        "resource_path": "recovered_work/clean_checkpoint_20261106/guide-final-resource.json",
+        "resource_sha256": "97a0462a4866925b0eeebde43d60e84cbf73e71c28dedc161cd3860a89f49481",
+        "log_path": "recovered_work/clean_checkpoint_20261106/guide-final.log",
+        "log_sha256": "9cc6e18ace91d60bf5a55a0133258ec5b823d25890d270fac9c5b28233f88b2b",
+        "exit_code": 0
+      }
+    },
+    "guide_results": {
+      "owner": "uibcdf/sabueso#112/#148",
+      "active_guide_documents_checked": 161,
+      "archived_entry_documents_checked": 3,
+      "local_links_and_anchors_checked": 1495,
+      "missing_targets_or_anchors": [],
+      "offline_public_walkthrough_executed": true,
+      "attempted_network_queries": 0,
+      "captured_card_unchanged": true,
+      "full_scientific_qualification": false
+    },
+    "destination_solver_or_bootstrap_run": false
+  },
+  "documentation_files": [
+    {
+      "path": "devguide/ARCHITECTURE.md",
+      "bytes": 14038,
+      "sha256": "0f5f075f0d2ebade5aec764eec479c17227fa722d47ef8852286741c4316744a"
+    },
+    {
+      "path": "devguide/CHECKPOINT.md",
+      "bytes": 9292,
+      "sha256": "8607b88e8fc37b50a8610183245e7a9619d4cfae68d84ea917ea25b849d89e75"
+    },
+    {
+      "path": "devguide/CONTINUATION_PLAN_20261104.md",
+      "bytes": 40213,
+      "sha256": "d8f0c965590bd7f7d2ce820fbe6c2a307f257703366e1bfaf619bcb83973ee3e"
+    },
+    {
+      "path": "devguide/DATA_FLOW.md",
+      "bytes": 6187,
+      "sha256": "b69565b2dfee7b5fb85e092bd4d81e58f86f66636833e5694ed4606cc8655927"
+    },
+    {
+      "path": "devguide/DECISIONS.md",
+      "bytes": 337798,
+      "sha256": "090f48b3d47bea0837db6ab11e4deacba9b67af448bca4ccd6e38b8dace1ba29"
+    },
+    {
+      "path": "devguide/DOCS_GAPS.md",
+      "bytes": 5991,
+      "sha256": "67aa598903ea466a82a889dc10f4d2fae9cd64e876a0217114eae6078e5f373e"
+    },
+    {
+      "path": "devguide/GLOSSARY.md",
+      "bytes": 8186,
+      "sha256": "1935d41dcc315ff55674b624b683e981bf15825ffc0726ebb39b9892b4b1caae"
+    },
+    {
+      "path": "devguide/ONBOARDING.md",
+      "bytes": 11638,
+      "sha256": "f2746eb894ab2205380ae46d26dfe2f8244f9bbd72b591a4499fba41fb78afb0"
+    },
+    {
+      "path": "devguide/PUBLIC_API.md",
+      "bytes": 53027,
+      "sha256": "5029c092f0bc9e849d45364726c752b7dd7d7acab902217a36a6c1ed118beb35"
+    },
+    {
+      "path": "devguide/README.md",
+      "bytes": 8662,
+      "sha256": "73d22d8e78b433772ed960dc609e3bb456c9a6334c2d1f33b91fa5f3a18ab14b"
+    },
+    {
+      "path": "devguide/ROADMAP.md",
+      "bytes": 14942,
+      "sha256": "d2d2de774ab55d32857c3fc13e3a6cad250a86214237d459e7a8e534ef8310d8"
+    },
+    {
+      "path": "devguide/SCHEMA.md",
+      "bytes": 73372,
+      "sha256": "c45168db08e823136ed556cc17e71a8d84ec8bb139f7030d97381466b2e472f5"
+    },
+    {
+      "path": "devguide/TESTS.md",
+      "bytes": 74750,
+      "sha256": "91728c6a9af0dae5baa6e135e9eb2c41614717d60f65377d792b7a453c9255ec"
+    },
+    {
+      "path": "devguide/WORKSTATION_HANDOFF_20261106.md",
+      "bytes": 25154,
+      "sha256": "04780f274500ba14fa1796dafc9b2111bdeaaea1e4269b26db4eec95a2a351a7"
+    },
+    {
+      "path": "devguide/archive/CHECKPOINT_before_onboarding_20261106.md",
+      "bytes": 63453,
+      "sha256": "5e067d579eec47bd3e51bbf4d1402c8c7034cb9c0cf4cddd91be1d98461b8f87"
+    },
+    {
+      "path": "devguide/archive/README.md",
+      "bytes": 4944,
+      "sha256": "eaee009d83c3eb64bb16da5b78fe0fe00eb27b71ab55d4ebcf13ea3c7b75acf1"
+    },
+    {
+      "path": "devguide/archive/README_before_onboarding_20261106.md",
+      "bytes": 55559,
+      "sha256": "bba89555b8e58bd41812acdecc84dec37a8a750d679184c68ef2f2f235ef7ef1"
+    },
+    {
+      "path": "devguide/archive/ROADMAP_before_onboarding_20261106.md",
+      "bytes": 91971,
+      "sha256": "6993b719aba78b9f1cb2c6096b382de92db63fa8fa95c254a8ca4d761dd5ad5b"
+    },
+    {
+      "path": "devguide/evidence/chemical_saved_candidate_20261106.json",
+      "bytes": 61856,
+      "sha256": "59b651707d8905558dcc4435f985d25695f95b0b25ba8a6226797c8f714dfb33"
+    },
+    {
+      "path": "devguide/evidence/chemical_saved_checkpoint_20261106.json",
+      "bytes": 173541,
+      "sha256": "8eb5dc5ebdec608dc3a522b94b20a5fdfdd59f1de48f2942f3081d36bc4d2855"
+    },
+    {
+      "path": "devguide/evidence/onboarding_review_20261106.json",
+      "bytes": 7359,
+      "sha256": "4832d45626d24d6c84eb25cfdb8c88241fcdb9b49eccfea8cde8009c7354832b"
+    },
+    {
+      "path": "devguide/pending_bugs/chemical_literal_metadata_routing.md",
+      "bytes": 3759,
+      "sha256": "96975537e67617cd97da3f6bd116affc36139c5325af0a350a2c749f5567bfdc"
+    },
+    {
+      "path": "devguide/pending_proposals/assay_aware_measurement_correspondence.md",
+      "bytes": 20294,
+      "sha256": "8091f2ab372034fa43a9c5e188ac9803e8442fd7c093926ef1a3d7e4498562a3"
+    },
+    {
+      "path": "devguide/pending_proposals/card_exploration_completion_0150.md",
+      "bytes": 20975,
+      "sha256": "47cbc8e7f45c0fef4888f122d16dabcc1ebf84089f5f47f206ef21190e03657c"
+    },
+    {
+      "path": "devguide/pending_proposals/card_exploration_detailed_design.md",
+      "bytes": 38838,
+      "sha256": "692d451aee0d63ff098d7e35b844d7dbc51de7dd0cd165037ebd904d2d715f55"
+    },
+    {
+      "path": "devguide/pending_proposals/card_human_exploration_api.md",
+      "bytes": 33182,
+      "sha256": "f13881a8b72d4b5b7ead4d419ff19406e93a9ede611d9226873843acacee61ea"
+    },
+    {
+      "path": "devguide/pending_proposals/chemical_classification_exploration.md",
+      "bytes": 14431,
+      "sha256": "8c79c556ec959dfa431b9732736e12a70234333d68ed80cafa39e4169e5b5ebf"
+    },
+    {
+      "path": "devguide/sources/FIXTURE_DELIVERY.md",
+      "bytes": 3877,
+      "sha256": "6cb5c3de68e2d6b5f969a8ad418f9cc42a8139a584ef4c6c9b6130e6076eb81e"
+    }
+  ],
+  "initial_capture_at_utc": "2026-11-06T16:32:20.847064+00:00",
+  "documentation_revision": "committed-source-and-onboarding-closeout-20261106",
+  "initial_documentation_receiving": {
+    "owner": "uibcdf/sabueso#112/#148",
+    "scope": "Documentation links, example bytes, root static gates and fixture-delivery integrity only; no scientific tests or destination runtime receiving.",
+    "checks": {
+      "ruff-format-final": {
+        "resource_path": "recovered_work/workstation_handoff_20261106/ruff-format-final-resource.json",
+        "resource_sha256": "ebb63b0dc5345f580abd3dd383c63972161147496e70ef5ed5a90b42f90eb9f8",
+        "log_path": "recovered_work/workstation_handoff_20261106/ruff-format-final.log",
+        "log_sha256": "ff3143ddccca90ee051bc08b30de9ad009e366645931ab2b5e8f1eef3a41ab00",
+        "exit_code": 0
+      },
+      "ruff-check": {
+        "resource_path": "recovered_work/workstation_handoff_20261106/ruff-check-resource.json",
+        "resource_sha256": "b8f42bacbf8acc93981a8bb8c791c1fd696811d6a45607f3a3304137cfa8cf63",
+        "log_path": "recovered_work/workstation_handoff_20261106/ruff-check.log",
+        "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+        "exit_code": 0
+      },
+      "handoff-content": {
+        "resource_path": "recovered_work/workstation_handoff_20261106/handoff-content-resource.json",
+        "resource_sha256": "65cc7b7b5ad6e43128e05d38bcc2773a14303f7acad18a7e6afecffee6a6dddf",
+        "log_path": "recovered_work/workstation_handoff_20261106/handoff-content.log",
+        "log_sha256": "9396a46dba48c7c930735fc288817d29b9a8f270d29c02ed3441485e4e70b9d3",
+        "exit_code": 0
+      },
+      "fixture-delivery": {
+        "resource_path": "recovered_work/workstation_handoff_20261106/fixture-delivery-resource.json",
+        "resource_sha256": "ec2d4a116c1cf1ac22d92d7260c43906b28187a8dc79a320e576edde7afe93c2",
+        "log_path": "recovered_work/workstation_handoff_20261106/fixture-delivery.log",
+        "log_sha256": "9ad96d946f6576fb6d3b1345692b114247c3d077abceacb41d9e581b36678025",
+        "exit_code": 0
+      }
+    },
+    "scientific_suite_run": false,
+    "commit_or_push_performed": false
+  },
+  "administrative_checkouts": [
+    {
+      "workspace_relative_checkout": "molsyssuite",
+      "head": "b9852d973e96613a68cab7278491ff647bfd0b7d",
+      "branch": "main",
+      "dirty": false,
+      "critical_files": [
+        {
+          "path": "suite.toml",
+          "bytes": 187520,
+          "sha256": "06b538730eca2c7ea10dcb02987f66ec658b907c1a0747e9deca9c5665a15c5b"
+        },
+        {
+          "path": "devtools/conda-envs/molsyssuite-dev-py314.yaml",
+          "bytes": 1251,
+          "sha256": "ad1af9a324c37fa9a062130389a93d0010d95d9d1601a658bee96b445f2146d3"
+        },
+        {
+          "path": "devtools/scripts/development_environment.py",
+          "bytes": 20284,
+          "sha256": "94d16fc8837042c00bec0d8aaff424082cabb5a0ee8f24a97f9192aad15a048b"
+        }
+      ]
+    },
+    {
+      "workspace_relative_checkout": "moli",
+      "head": "d6c85a79b412cbdf58d867312d5ec5200160499b",
+      "branch": "main",
+      "dirty": false,
+      "critical_files": [
+        {
+          "path": "moli.toml",
+          "bytes": 9929,
+          "sha256": "0a8f39c726d4e03281811bb91a18a4bba83e649f523fab91292a24b0775ff76d"
+        },
+        {
+          "path": "MOLI_GUIDE.md",
+          "bytes": 24474,
+          "sha256": "12104363c7fd0cc4ca99e4a3d3b77fe85e9a44e3ab49e88936900df3efac2a3c"
+        }
+      ]
+    }
+  ],
+  "accepted_governance_guide": {
+    "adopted_source": "959c6529f4c7cca652d1b8d31b7fffe9648384e0",
+    "local_sha256": "262dc66dfd4e553ca1513907cecad81d2ead731238d36dab2b16d943a832d875",
+    "sibling_guide_differs": true,
+    "disposition": "Preserve accepted local guide; reconcile older administrative clone through owner rather than downgrading local policy. No canonical fetch/update performed."
+  },
+  "retained_documentation_evidence_directories": [
+    "recovered_work/workstation_handoff_20261106",
+    "recovered_work/onboarding_20261106",
+    "recovered_work/clean_checkpoint_20261106"
+  ],
+  "documentation_scope": "All29 guide changes in this closeout except this manifest are hash-declared as28 documents. Preserve the containing commit and separate transfer-container/bundle digest; original dirty capture is historical. Peer dirty working bytes and other retained ignored history require their own owner-preserved transfer.",
+  "original_capture": {
+    "captured_at_utc": "2026-11-06T17:09:17.942496+00:00",
+    "scope": "Transfer integrity and current Git/source metadata only; not migration completion, scientific qualification or new editable import verification.",
+    "sabueso": {
+      "branch": "main",
+      "head": "03bdb2c005857ac14c86f586bf4807d78f4ea783",
+      "local_origin_main_ref": "d54b39aef7731e9e5dc1ea73f794f2221eee8d60",
+      "ahead": 1,
+      "behind": 0,
+      "remote_not_fetched_for_this_task": true,
+      "last_clean_verified_sdk": "0.14.0+193.g03bdb2c",
+      "dirty_candidate": true
+    },
+    "working_changes_at_capture": [
+      {
+        "status": " M",
+        "path": ".github/workflows/ci.yml"
+      },
+      {
+        "status": " M",
+        "path": ".github/workflows/test_staged_conda_package.yaml"
+      },
+      {
+        "status": " M",
+        "path": "devguide/ARCHITECTURE.md"
+      },
+      {
+        "status": " M",
+        "path": "devguide/CHECKPOINT.md"
+      },
+      {
+        "status": " M",
+        "path": "devguide/CONTINUATION_PLAN_20261104.md"
+      },
+      {
+        "status": " M",
+        "path": "devguide/DATA_FLOW.md"
+      },
+      {
+        "status": " M",
+        "path": "devguide/DECISIONS.md"
+      },
+      {
+        "status": " M",
+        "path": "devguide/DOCS_GAPS.md"
+      },
+      {
+        "status": " M",
+        "path": "devguide/GLOSSARY.md"
+      },
+      {
+        "status": " M",
+        "path": "devguide/PUBLIC_API.md"
+      },
+      {
+        "status": " M",
+        "path": "devguide/README.md"
+      },
+      {
+        "status": " M",
+        "path": "devguide/ROADMAP.md"
+      },
+      {
+        "status": " M",
+        "path": "devguide/SCHEMA.md"
+      },
+      {
+        "status": " M",
+        "path": "devguide/TESTS.md"
+      },
+      {
+        "status": " M",
+        "path": "devguide/archive/README.md"
+      },
+      {
+        "status": " M",
+        "path": "devguide/pending_proposals/assay_aware_measurement_correspondence.md"
+      },
+      {
+        "status": " M",
+        "path": "devguide/pending_proposals/card_exploration_completion_0150.md"
+      },
+      {
+        "status": " M",
+        "path": "devguide/pending_proposals/card_exploration_detailed_design.md"
+      },
+      {
+        "status": " M",
+        "path": "devguide/pending_proposals/card_human_exploration_api.md"
+      },
+      {
+        "status": " M",
+        "path": "devguide/pending_proposals/chemical_classification_exploration.md"
+      },
+      {
+        "status": " M",
+        "path": "devguide/sources/FIXTURE_DELIVERY.md"
+      },
+      {
+        "status": " M",
+        "path": "sabueso/core/card_access.py"
+      },
+      {
+        "status": " M",
+        "path": "sabueso/core/card_chemical_access.py"
+      },
+      {
+        "status": " M",
+        "path": "sabueso/core/card_exploration.py"
+      },
+      {
+        "status": " M",
+        "path": "sabueso/core/card_exploration_render.py"
+      },
+      {
+        "status": " M",
+        "path": "sabueso/core/card_exploration_storage.py"
+      },
+      {
+        "status": " M",
+        "path": "tests/core/data/README.md"
+      },
+      {
+        "status": " M",
+        "path": "tests/core/test_card_chemical_exploration_offline.py"
+      },
+      {
+        "status": " M",
+        "path": "tests/tools/test_installed_receiving_scope_offline.py"
+      },
+      {
+        "status": "??",
+        "path": "devguide/ONBOARDING.md"
+      },
+      {
+        "status": "??",
+        "path": "devguide/WORKSTATION_HANDOFF_20261106.md"
+      },
+      {
+        "status": "??",
+        "path": "devguide/archive/CHECKPOINT_before_onboarding_20261106.md"
+      },
+      {
+        "status": "??",
+        "path": "devguide/archive/README_before_onboarding_20261106.md"
+      },
+      {
+        "status": "??",
+        "path": "devguide/archive/ROADMAP_before_onboarding_20261106.md"
+      },
+      {
+        "status": "??",
+        "path": "devguide/evidence/chemical_saved_candidate_20261106.json"
+      },
+      {
+        "status": "??",
+        "path": "devguide/evidence/onboarding_review_20261106.json"
+      },
+      {
+        "status": "??",
+        "path": "devguide/evidence/workstation_handoff_20261106.json"
+      },
+      {
+        "status": "??",
+        "path": "devguide/pending_bugs/chemical_literal_metadata_routing.md"
+      },
+      {
+        "status": "??",
+        "path": "sabueso/core/card_chemical_history_v1.py"
+      },
+      {
+        "status": "??",
+        "path": "sabueso/core/card_chemical_presentation_v1.py"
+      },
+      {
+        "status": "??",
+        "path": "sabueso/core/card_exploration_chemical.py"
+      },
+      {
+        "status": "??",
+        "path": "sabueso/core/card_exploration_shared_values_v2.py"
+      },
+      {
+        "status": "??",
+        "path": "sabueso/core/card_exploration_verification_v15.py"
+      },
+      {
+        "status": "??",
+        "path": "tests/core/data/chemical_live_v1.json.gz"
+      },
+      {
+        "status": "??",
+        "path": "tests/core/test_card_saved_chemical_offline.py"
+      }
+    ],
+    "payload_scope": "All changed non-devguide files at capture, including binary/untracked controls. Handoff documentation/manifest are not self-hashed; copy the complete devguide and Git working state too.",
+    "receiving_scope": {
+      "earlier_candidate_distinct_cases": 509,
+      "corrected_focused_cases": 14,
+      "independent_registry_licensing_delivery_cases": 57,
+      "corrected_complete_chemical_gate_pending": {
+        "saved": 38,
+        "live": 27,
+        "native": 30,
+        "total": 95
+      },
+      "historical_123_case_combined_attempt": "stopped at host reserve; not a pass",
+      "current_full_code_qualification": "pending"
+    },
+    "first_next_action": "Verify transfer and recreate/verify Python3.14 editables at destination paths; run the complete95-case source gate under the original scientific guard, then remaining historical/adjacent/copied/workload checks.",
+    "handoff_cleanup": {
+      "active_owned_processes": false,
+      "owned_documentation_tmp": "removed after all actual handles terminated",
+      "other_working_state": "Runtime payload, original source evidence, administrative/peer working trees and stale Git registration untouched; no environment solve/install, commit, push or release.",
+      "owned_onboarding_tmp": "Removed after final documentation/example/static gates terminated; useful review evidence retained with owner and transfer-review trigger."
+    }
+  },
+  "precloseout_documentation_receiving": {
+    "owner": "uibcdf/sabueso#112/#148",
+    "scope": "Complete guide link/anchor review, public offline contributor example, bounded-channel overlay generation, root static gates and fixture integrity; not a Conda solver/install or full scientific/installed/human acceptance.",
+    "checks": {
+      "guide-ready": {
+        "resource_path": "recovered_work/onboarding_20261106/guide-ready-resource.json",
+        "resource_sha256": "07e4cf74f5717846aeb62e9ce2524df9da1a048fc97ceaa51052c83067a0c379",
+        "log_path": "recovered_work/onboarding_20261106/guide-ready.log",
+        "log_sha256": "55a2e7e03c9d3e88bf3ed067e2c95bcfaa5e6b8a062eda4b5d6798c0446509f9",
+        "exit_code": 0
+      },
+      "ruff-format-reviewed": {
+        "resource_path": "recovered_work/onboarding_20261106/ruff-format-reviewed-resource.json",
+        "resource_sha256": "b9c40c123952cd1f0f97073d3a8a0dbe49d05c028e11ac5ba7bde7bb5ffeb305",
+        "log_path": "recovered_work/onboarding_20261106/ruff-format-reviewed.log",
+        "log_sha256": "74a23b8ca81da5b6b3726f6c046e7525291cc4135941523c726cffee2255906d",
+        "exit_code": 0
+      },
+      "ruff-check": {
+        "resource_path": "recovered_work/onboarding_20261106/ruff-check-resource.json",
+        "resource_sha256": "a3cf52e76aa28ed5380bca812cda7d7add05d3f5f64103a6c8172d496534a585",
+        "log_path": "recovered_work/onboarding_20261106/ruff-check.log",
+        "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+        "exit_code": 0
+      },
+      "fixture-delivery": {
+        "resource_path": "recovered_work/onboarding_20261106/fixture-delivery-resource.json",
+        "resource_sha256": "d3a66dd98c06e99e0f4316248b1b53c82228face8332064720302ad68019a449",
+        "log_path": "recovered_work/onboarding_20261106/fixture-delivery.log",
+        "log_sha256": "9ad96d946f6576fb6d3b1345692b114247c3d077abceacb41d9e581b36678025",
+        "exit_code": 0
+      },
+      "bootstrap-example": {
+        "resource_path": "recovered_work/onboarding_20261106/bootstrap-example-resource.json",
+        "resource_sha256": "bd5d4e8936f716a5be43c1f6dbf7f8420509483ac442e511d5318e89ec39215a",
+        "log_path": "recovered_work/onboarding_20261106/bootstrap-example.log",
+        "log_sha256": "5f3943b3ce8ad722c7c34d8fc46d72aba91bc45a7f30d9322596be4a0aa4e120",
+        "exit_code": 0
+      },
+      "transfer-example": {
+        "resource_path": "recovered_work/onboarding_20261106/transfer-example-resource.json",
+        "resource_sha256": "6aa87b7779941472bffb4f252bc17992ebc8b6bbc7f90baccd7b8af441f238a6",
+        "log_path": "recovered_work/onboarding_20261106/transfer-example.log",
+        "log_sha256": "f34c306b2a0d9a1336d1c3d47e6bdfd90fc269bba988abd03d7ca67e5c01a2d1",
+        "exit_code": 0
+      }
+    },
+    "scientific_suite_run": false,
+    "commit_or_push_performed": false
+  },
+  "closeout_resources": {
+    "owner": "uibcdf/sabueso#112/#148",
+    "review_trigger": "Verify destination transfer/receiving before retention cleanup; broader source/scientific acceptance remains open.",
+    "planned_git_bundle": "recovered_work/clean_checkpoint_20261106/sabueso-local-migration.bundle",
+    "bundle_status": "Verify actual creation, digest and prerequisites in the external final-closeout record; a named path is not a bundle verification.",
+    "cleanup": "Remove only owned disposable tmp/docs after actual jobs terminate; retain original299 evidence files, controls, logs and workload/metadata receiving. Actual final cleanup/status is external."
+  }
+}

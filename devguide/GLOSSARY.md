@@ -2,10 +2,10 @@
 
 ## Knowledge
 
-- **Card**: a structured, nested object that represents one molecular entity (protein,
-  peptide or small molecule). Its resolved values are linked to the SourceAssertions
-  that support them. It has a stable `meta.card_id`, e.g.
-  `sabueso:protein:uniprot:P52270`.
+- **Card**: a structured, nested object that represents one entity: a protein, small
+  molecule or MONDO-anchored disease. Peptides have a schema type, without a peptide
+  source or view yet. Resolved values are linked to the SourceAssertions that support
+  them. A Card has a stable `meta.card_id`, e.g. `sabueso:protein:uniprot:P52270`.
 - **SourceAssertion**: a record of what an external source (or a curated publication)
   asserts about an entity or property: value, field, source record, release and
   retrieval. It is stored in the card's `source_assertion_store`.
@@ -18,8 +18,17 @@
   subject card's `relationship_store`.
 - **Derived knowledge**: what a view computes from stored knowledge, such as a class, a
   group, a state or an identity finding. It carries the named, versioned rule that
-  produced it (e.g. `bioactivity_class@3`, `structure_state@2`), and is never stored as
+  produced it (e.g. `bioactivity_class@4`, `structure_state@2`), and is never stored as
   a SourceAssertion.
+- **Concentration class**: a derived policy band over the retained measurement and
+  its qualifier, units and thresholds. Development `bioactivity_class@4` admits a
+  band only when the whole permitted concentration interval fits it; explicit `@3`
+  retains the original interpretation. A band alone does not establish an inhibitor
+  role, efficacy or selectivity. See the [activity contract](pending_bugs/bioactivity_interpretation.md).
+- **Source-stated role or mechanism**: what an identified source states about a
+  molecule in its declared context, retained with its supporting SourceAssertions.
+  Chemical class/role membership does not establish activity against a particular
+  target or a therapeutic effect.
 - **Knowledge state**: per area and source, whether a card knows something (`known`),
   sources disagree (`conflicting`), the source was asked and states nothing
   (`not_stated`), it was not asked (`not_queried`), it failed (`unavailable`), or it
@@ -50,7 +59,7 @@
   (`protein_identity_audit@1`): `possibly_same_as` (for review), `same_gene`,
   `distinct_genes`. Nothing is merged.
 - **Anchor**: the identifier a card is built on, such as a UniProt accession or a
-  standard InChIKey.
+  standard InChIKey for a molecule, or a MONDO identifier for a disease.
 - **Ambiguous input**: a query that matches several plausible entities. The resolution
   returns `ambiguous` with its candidates, and `ambiguity_deck(resolution)` turns them
   into a Deck.
@@ -61,8 +70,9 @@
   comparing and auditing. It records the membership basis of each card, the exclusions,
   and the operations that derived it.
 - **Ligand deck**: the small-molecule cards of the ligands and measured molecules of a
-  protein (`ligand_deck(card)`). A ligand's role (inhibitor…) is a derived class, never
-  asserted.
+  protein (`ligand_deck(card)`). Membership and derived concentration classes retain
+  their stated bases; they do not make every member an inhibitor. Source-stated
+  mechanisms remain separate knowledge.
 
 ## Storage and references
 
@@ -85,6 +95,12 @@
   their snapshot ids differ.
 - **KnowledgeStore**: Sabueso's native SQLite store of cards, decks and their revisions.
 - **CurationStore**: a JSONL store of curated statements that survive rebuilds.
+- **Saved exploration** *(development)*: retained human views and machine requests
+  over detached Card captures, with original results, support and navigation.
+  Independent reading verifies the recorded result without current scientific
+  recomputation or source access. Its semantic format and physical representation
+  are separate from the Card schema and scientific rule versions; see
+  [the architecture](ARCHITECTURE.md#development-exploration-and-saved-reading).
 - **Migration**: converting a card of an older schema, recording what it lacks
   (`migrate_card`); a **refresh** rebuilds it from its sources (`refresh_card`).
 
@@ -104,6 +120,10 @@
   `structural_baseline@1`.
 - **View**: a card or deck method that returns knowledge derived on demand; `table(view)`
   gives it as flat rows.
+- **Capture** *(development)*: the detached, validated Card state used by
+  `Card.access()` and `Card.explore()`. `explorer.access` exposes the same explorer
+  capture for machine reading. Here `live` means local active exploration, not a
+  source refresh; saved reading retains the original capture.
 - **Clinical layer** *(partly built, #81)*: indications (ChEMBL) and the trials they cite
   (ClinicalTrials.gov), shown by `Card.clinical()`. Planned: a section for pharmacology,
   ADMET, clinical trials and

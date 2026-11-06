@@ -12,6 +12,14 @@ supersedes: []
 
 # Card exploration: detailed design proposal
 
+Current status: the [completion inventory](card_exploration_completion_0150.md)
+owns each panel's delivered scope and remaining acceptance, and the
+[integrated continuation plan](../CONTINUATION_PLAN_20261104.md#execution-order)
+owns current implementation order. This original proposal preserves the design
+and its pre-implementation review; pending language below is not a current claim
+that every described mechanism is unimplemented. Broad panels and independent
+scientific/researcher acceptance remain open, with release consolidation paused.
+
 ## Scope and recommendation
 
 This is the first detailed proposal under the
@@ -518,12 +526,14 @@ distinct nature profiles; scientific options owned by topic adapters; complete
 literal fallback; captured snapshot context; explicit supplied related Cards;
 and self-contained inert saved results. Retain existing APIs and scientific rules.
 
-The v1 contract now selects the vocabulary/return behavior, maps the initial
-adapters, specifies saved/cross-Card behavior and provides public paper walkthroughs
+The v1 design selected the vocabulary/return behavior, mapped the initial
+adapters, specified saved/cross-Card behavior and provided public paper walkthroughs
 with [verified input facts](card_exploration_design_inputs.json). Interactive
-implementation, conformance/integrity tests, cost measurements and researcher
-validation remain open. The domain catalogs here are broader design targets,
-not a claim that every specialized adapter already exists.
+implementation, conformance/integrity tests and cost measurements have since
+progressed through separately scoped receipts in the completion inventory.
+Researcher validation and broad-profile acceptance remain open. The domain
+catalogs here are broader design targets, not a claim that every specialized
+adapter already exists.
 
 This detailed proposal resolves the direction of the nature-specific design for
 review; it does not close #148 or human acceptance. Keep foundational development,

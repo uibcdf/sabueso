@@ -1,5 +1,11 @@
 # Sabueso — Integrated continuation plan after the audit
 
+Current workstation transfer: use the
+[2026-11-06 handoff](WORKSTATION_HANDOFF_20261106.md) to preserve source, working
+changes, original controls and local evidence. Re-establish the environment and
+finish the pending chemical receiving checkpoint; this does not replace the
+integrated blocks or accept the broad 0.15.0 experience.
+
 The [genuine AlphaFold archive control](pending_proposals/alphafold_archive_fragment_control.md)
 now retains public titin AF-Q8WZ42-F2 and its original UniProt reference. Independent
 native readers verify the 201–1600 reference interval, exact 1,400-residue sequence,
@@ -124,8 +130,10 @@ now shares a captured source-bound native result between readable molecule
 classes/roles and compact typed agent selection. Original sources, exact member
 positions, direct/inherited/unknown basis and back navigation remain explicit.
 Genuine SDK192 native bytes and original retained molecule catalogues are preserved.
-Independent original chemical-profile saved reading remains the next required
-implementation; live save refuses explicitly. This does not close B5, substitute
+Independent original chemical saving now has a [committed local checkpoint](evidence/chemical_saved_checkpoint_20261106.json)
+under semantic @15 and sharing @16: 705 selected cases and public whole-session
+receiving pass. Finish destination environment, exact-final-source hosted and
+independent scientific/researcher qualification. This does not close B5, substitute
 for researcher/scientific acceptance, adopt B2 defaults or resume release
 consolidation. Continue the entire broad design and remaining B3/B4/B6/B7 work.
 
@@ -177,38 +185,49 @@ consumer/scientific scope after this checkpoint. This does not adopt a modeling
 API, close B3, resume release consolidation or accept the human experience.
 The B2 maintainer-owned scientific review remains deferred.
 
-Latest receiving, 2026-11-05 UTC: accumulated source `c5b8af1` is
+### Current B0/B1/B2 technical receiving
+
+Accumulated source `c5b8af1`, received on 2026-11-05 UTC, is
 [qualified](evidence/bioactivity_target_scope_checkpoint_20261105.json), CI 18/18
 and governance 1/1 with all thirteen actual summaries, full source/installed
 and codec receiving. This completes the current B1/B2 technical source checkpoint;
 independent scientific/default/consumer and researcher acceptance remain open.
 Earlier source-specific failures/pending runs keep their own status; later docs
 add no changed runtime. The maintainer-owned scientific review stays deferred.
+The remaining B1/B2 work is independent scientific/default, consumer and researcher
+acceptance, followed by any explicitly adopted changes and their qualification.
+Completed implementation and accumulated-source receiving are not a new task
+queue. Independent B3–B6 work continues within its own scientific dependencies.
 
-Execution update, 2026-11-04: accumulated B0/opt-in B1 source `1290201` is
+### Dated B0/B1/B2 milestones — 2026-11-04
+
+The following milestones preserve their original source and receipt scopes. Their
+then-pending technical work was subsequently included in qualified `c5b8af1`;
+failed or unqualified intermediate sources retain their own original status.
+
+Accumulated B0/opt-in B1 source `1290201` is
 [qualified](evidence/bioactivity_opt_in_checkpoint_20261104.json): CI 18/18 and
-governance 1/1 with complete source/installed and codec receiving. The next B1
-slice adopts @4 for current activity/ligand answers and tables, with explicit
-original @3, new packet mapping @15 and genuine old @14 reading. Current
-integration passes 338 affected cases; later changed bytes need their own hosted
-qualification. See
+governance 1/1 with complete source/installed and codec receiving. The subsequent
+B1 slice adopted @4 for current activity/ligand answers and tables, with explicit
+original @3, new packet mapping @15 and genuine old @14 reading. Its local
+integration passed 338 affected cases. See
 [the scientific scope and public-input comparison](pending_bugs/bioactivity_interpretation.md).
-Published final source `7667754` passes 77 post-editable cases; its own CI/governance
-are pending complete receiving. Intermediate `7853039` retains its failed
-producer-stamp comparison and premature publication record; current scientific
+Published source `7667754` passed 77 post-editable cases; its own CI/governance
+were pending complete receiving at that checkpoint. Intermediate `7853039` retains
+its failed producer-stamp comparison and premature publication record; scientific
 recomputation and exact original stored reading are checked separately.
 Independent scientific/consumer acceptance and rich activity exploration remain
-open; no scientific/human acceptance is claimed. The next exact-source
-checkpoint receives the accumulated changes, without requiring every intermediate
-development SHA to acquire a separate green matrix.
+open; no scientific/human acceptance is claimed. The accumulated changes later
+received complete technical qualification at `c5b8af1`, without requiring every
+intermediate development SHA to acquire a separate green matrix.
 
 - Pre-audit development baseline: `34135591642ae378705343449a037f8a4469c968`, SDK
   `0.14.0+160.g3413559`. Its private exploration-copy optimization has local checks;
   its exact-source remote qualification failed. All four Windows source lanes
   failed one new direct-restore test: implicit text decoding changed UTF-8 content
   before digest validation. Explicit UTF-8 passes locally; simulated cp1252
-  reproduces the refusal. Production UTF-8 reading is unchanged. Recover on the
-  corrected source `1290201`, now qualified; the failed original remains unqualified.
+  reproduces the refusal. Production UTF-8 reading is unchanged. Recovery on the
+  corrected source `1290201` is qualified; the failed original remains unqualified.
 - The component-preview continuation comprises the renderer, two test files
   and associated documentation. Its final selected local gates passed 440 unique
   cases across 13 files. Public same-capture presentation comparisons and
@@ -216,8 +235,10 @@ development SHA to acquire a separate green matrix.
   and included in the qualified `1290201` source.
 - A1/A2 are reproduced scientific defects; A3 is a reproduced known limitation.
   Owning reports are #184, #185 and #186 respectively. A1/A2 have conservative
-  default/consumer implementation; new hosted and independent acceptance remain
-  pending. A3 correspondence work is next.
+  default/consumer implementation, now technically received in `c5b8af1`;
+  independent acceptance remains pending. A3's opt-in implementation and technical
+  receiving are complete for that accumulated source; its scientific/default
+  review remains explicitly deferred.
   The broader audit contains explicit unassessed areas, not completed validation.
 - [B2 preparation](pending_proposals/assay_aware_measurement_correspondence.md)
   now inventories two exact retained public Cards: all 29 accepted @1 statement
@@ -230,6 +251,8 @@ development SHA to acquire a separate green matrix.
 - Rich activity, clinical, variant/comparative and other nature/shared panels,
   physical assembly reconciliation, broad human acceptance and workload acceptance
   remain open. Completed structural slices must not be reimplemented from scratch.
+
+### Current review and resumption boundaries
 
 On resumption, inspect the actual branch, working tree, editable imports and
 owned receipts before acting. Preserve existing work and original fixtures; do
@@ -253,9 +276,9 @@ requirements. Detailed historical chronologies do not override this proposed ord
 
 | Block | Work and owner | Dependency and exit evidence |
 | --- | --- | --- |
-| B0 — Reconcile and preserve | Sabueso #112/#167/#148: inspect exact-source remote verification, protect original evidence and close the small existing component-preview continuation | First; explain the verifier failure from actual logs, verify applicable CI/governance through gh-run-receptor, and record the result for its actual SHA. Compare public previews, run missing docs checks, then commit/qualify that continuation separately from scientific fixes. If it reveals larger work, retain it and advance B1 rather than delaying correctness |
+| B0 — Reconcile and preserve | Sabueso #112/#167/#148: inspect exact-source remote verification, protect original evidence and close the small existing component-preview continuation | The bounded preview/encoding closeout is included in qualified `1290201`; retain the failed original source and its receipts. Preserve/reconcile the current checkout and receiving queue through the workstation handoff. Do not reopen completed B0 work or delay independent correctness work for unrelated queue latency |
 | B1 — Correct activity interpretation | Sabueso #184/#185, cross-linked to #112 and historical #37 | Opt-in source qualified; current default/ligand/table and @15 packet adoption implemented with explicit original replay. Exact-source technical receiving is qualified at `c5b8af1`; complete independent scientific/consumer review. Preserve source data and genuine saved results; broad activity panels remain B4 work |
-| B2 — Make measurement correspondence scientifically explicit | Sabueso #186, cross-linked to #66/#112 | After B1's semantics are defined; distinguish explicit copies, supported correspondence, conflicting assay/construct context and missing context. Adopt a named policy with scientist-reviewed examples and count/vote consequences before claiming improved grouping or building summary panels on it |
+| B2 — Make measurement correspondence scientifically explicit | Sabueso #186, cross-linked to #66/#112 | Opt-in measurement @2 and target-scope @2 are technically qualified in `c5b8af1`; original @1/defaults remain. The six-case scientific/default review is maintainer-owned and explicitly deferred. Review copies, supported correspondence, conflicting assay/construct context, missing context and count/vote consequences before explicit adoption or claims of accepted grouping/summary science |
 | B3 — Finish bounded structural journeys | Sabueso #173/#148 and applicable integrity owners | Resume remaining region/site/model/instance/assembly transitions from the existing implementation. State precisely what #173 resolves, what source context remains unknown and which physical calculations belong elsewhere. Qualify coherent native/human/agent/saved routes and independent structural examples; source declaration counts never become unsupported physical claims |
 | B4 — Deliver the activity and literature journey | Sabueso #148/#112, with literature owners | Builds on B1/B2: protein → molecule → group → measurement → assay/document → original support. Add shared literature views and molecule target/activity context with exact identity joins. Review measured versus derived results, assay comparability, conflicts and missing methods; no unsupported mechanistic interpretation |
 | B5 — Complete molecule, clinical and disease profiles | Sabueso #148 and relevant clinical/identity owners | Reuse existing readers for chemical identity/properties/classes, indications/trials and disease terminology/hierarchy/associations. Distinguish clinical citation from outcome, hierarchy from identity, and prediction from measurement; positive and uncertain public examples plus exact saved/agent access |
@@ -488,7 +511,11 @@ milestones, or when a concrete dependency makes one necessary.
 
 ## Immediate next work session
 
-1. Inspect current source/editable metadata and exact-source remote receipts.
+1. Follow the [workstation handoff](WORKSTATION_HANDOFF_20261106.md) first.
+   Preserve the committed @15/@16 checkpoint and ignored evidence; verify
+   destination hashes/editables and run the95-case chemical gate as destination
+   receiving. The 705-case local source checkpoint already passes; exact-final-source
+   hosted and independent acceptance remain separate. Inspect current source/editable metadata and exact-source remote receipts.
    Earlier qualified B1/B2 technical work remains qualified for its own source;
    later native changes keep their own receiving.
 2. Receive #167's completed local full-session correction at its exact remote
@@ -499,8 +526,9 @@ milestones, or when a concrete dependency makes one necessary.
 3. Continue B3 acceptance and the required B4–B6 rich panels with ongoing human,
    agent and workload review. The maintainer-owned B2 scientific review stays
    explicitly deferred; no default adoption follows from more technical tests.
-   Independent B5 work now has a [chemical-classification native foundation](pending_proposals/chemical_classification_exploration.md),
-   with source/selection ownership receiving. Its rich human/targeted-agent/saved
-   classification panel is still required; do not count the reader as panel completion.
+   Independent B5 work now has a [chemical-classification native/live profile](pending_proposals/chemical_classification_exploration.md)
+   and a committed, locally verified independent saved reader. Finish destination/hosted
+   qualification and scientific/researcher acceptance; neither a native reader
+   nor a passing technical slice completes the whole molecule profile.
 4. Obtain actual B7 scientist, uncoached researcher, private pilot and consumer
    acceptance before deciding when B8 release consolidation can resume.

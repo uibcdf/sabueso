@@ -3,6 +3,10 @@
 What the user guide (`docs/`) lacks. The initial list (2026-01) was reviewed on
 2026-09-26; delivery status was reconciled against qualified 0.14.0 on 2026-10-09.
 What is covered is noted below; historical checkpoints retain their original scope.
+For current development delivery and acceptance, use the
+[broad Card inventory](pending_proposals/card_exploration_completion_0150.md),
+[PUBLIC_API](PUBLIC_API.md) and [CHECKPOINT](CHECKPOINT.md). The older journey
+catalogue below is not a competing development queue.
 
 ## Covered
 
@@ -44,14 +48,24 @@ What is covered is noted below; historical checkpoints retain their original sco
   inspectability of retained Card content. The
   [design plan](pending_proposals/card_human_exploration_api.md) (#148) specifies
   progressive access, a generic inspector fallback and researcher walkthroughs.
-  New names/types are provisional; do not document them as delivered APIs.
+  Initial captured human/agent APIs and multiple independent saved readers are
+  implemented in development; complete rich panels and observed researcher
+  acceptance remain open. Document each API at its actual delivery/qualification
+  scope rather than treating every original proposal name as still provisional.
 
-The [approved roadmap after 0.13.0](ROADMAP.md#next-roadmap-after-0130) schedules
+- **Known source docstring follow-up (#148):** `Card.access` still says saved
+  exploration is pending, although supported independent readers exist. The
+  current public API/feature contracts describe their actual scope. Correct that
+  docstring during the pending code checkpoint with its applicable receiving;
+  this guide consolidation does not change the candidate's runtime bytes.
+
+The earlier [post-0.13.0 roadmap](ROADMAP.md#next-roadmap-after-0130) organized
 documentation around three independent-user journeys: protein/comparator,
 molecule/activities and disease/related entities. Each needs a public runnable
 example, supported-source/limit/terms explanations, original runtime sidecar
 preservation and an independent saved reader. Review closure under #112 alongside
-the implementation issues; consumer-owned MOLI contracts remain separate.
+the implementation issues; consumer-owned MOLI contracts remain separate. The
+integrated continuation plan now owns the current order and broader 0.15.0 scope.
 
 - **The showcase notebook** was run on 0.3.0. It lacks:
   - the identity audit with NCBI Gene;
