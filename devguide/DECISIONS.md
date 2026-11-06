@@ -1,5 +1,20 @@
 # Sabueso — Decision Log
 
+## 2026-11-05 — Separate native original-reference findings (#148)
+
+New native enrichments retain `alphafold_modelcif_reference_context@1` in a
+separate `native_reference_context` qualifier/application. Compare the original
+explicit entity/reference interval and CRC64 to exactly supplied original focal
+UniProt sequence/length/checksum statements, preserving coherent revisions and
+all support. Do not choose alternatives, infer identity/isoforms from sequence,
+repair monomers/numbering, use selected current values as original inputs or
+reconstruct a missing source date from a developer fixture. Computed checksums
+remain derived. Generic source support includes the new named application's
+inputs without asserting that sequence statements declare a model relationship.
+Declaration@1, historical Cards/verifiers and default whole-model API meanings
+stay fixed. A dedicated scientific question and current-selection admission
+remain separate work; see [the contract](pending_proposals/alphafold_archive_fragment_control.md#native-original-reference-context--2026-11-05).
+
 ## 2026-11-05 — Explicit native AlphaFold metadata intake (#148)
 
 Use an optional established CIF reader (Gemmi >=0.7.5, through DepDigest) for one

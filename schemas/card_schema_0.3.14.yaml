@@ -4,6 +4,16 @@ schema:
   created_at: 2026-02-10
   updated_at: 2026-11-05
   note: |
+    Optional native_reference_context on has_predicted_structure (#148) records
+    alphafold_modelcif_reference_context@1 as a separate original-output derivation.
+    Its original focal UniProt sequence/length/checksum assertion IDs, coherent
+    entry/sequence revisions, derived checksums, explicit entity positions and
+    interval comparison never replace original metadata or declaration@1. Native
+    CRC64 refers to the reference, not the model. Date agreement remains unknown
+    when the original focal date is not retained. Whole-model/experimental/atomic
+    equivalence and isoform membership are not inferred. Historical Cards are
+    never backfilled; literal source support includes the named new derivation's
+    original inputs, independently of the native model declaration's support.
     Optional native AlphaFold ModelCIF intake (#148) preserves all original
     non-atom-site metadata tokens at asserted_value.modelcif_metadata. Separate
     source_metadata.input_contract, native_extraction and snapshot_receipt retain

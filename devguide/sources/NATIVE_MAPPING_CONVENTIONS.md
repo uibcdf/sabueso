@@ -13,8 +13,13 @@ explicit AlphaFoldDB/UNP, entity/reference/alignment declarations. Literal raw
 tokens, scalar/loop membership and unknowns remain in the supporting assertion;
 file/extraction identity stays separate. CRC64 belongs to the reference sequence,
 not a computed model MD5. Distribution/software version is not model revision.
-Ambiguous/inconsistent declarations remain unselected, canonical/coordinate
-correspondence unevaluated. Existing API contexts and frozen cards are unchanged.
+Ambiguous/inconsistent declarations remain unselected. The original declaration
+projection leaves correspondence unevaluated. New enrichments separately retain
+`alphafold_modelcif_reference_context@1` over coherent original focal sequence/
+length/checksum assertions. Exact entity positions, standard monomers and native
+reference declarations qualify only an original sequence interval; calculated
+checksums are derived, dates can remain unknown, and atoms/experiments/isoforms
+are not inferred. Existing API contexts and frozen cards are unchanged.
 See [the contract](../pending_proposals/alphafold_archive_fragment_control.md#native-metadata-intake-continuation--2026-11-05).
 
 Development Interactome3D keeps independent native archived protein structure/

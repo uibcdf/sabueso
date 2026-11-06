@@ -5,7 +5,9 @@ now retains public titin AF-Q8WZ42-F2 and its original UniProt reference. Indepe
 native readers verify the 201–1600 reference interval, exact 1,400-residue sequence,
 CRC64 and sequence-version date. The explicit native metadata intake now places this real model in a Card, with
 literal human/targeted-agent/source/saved access. This does not fabricate an API
-record or evaluate native canonical/coordinate correspondence. The separate full-panel
+record. A separate original-reference finding now checks native sequence/CRC64
+against coherent original UniProt inputs; the scientific question, date agreement
+and atomic/experimental correspondence remain open. The separate full-panel
 [preparation correction](pending_proposals/shared_link_support.md) under #167
 now completes the whole public Card save under the original 512 MiB guard,
 retaining all original content. Its shared-support format @11 has separate
@@ -17,7 +19,8 @@ The [AlphaFold range-alias continuation](pending_proposals/alphafold_range_alias
 adds context/native @2, explicit agreement/refusal, whole/fragment questions @2,
 independent saved format @10 and packet mapping @16. Original source records,
 @1 meanings and saved formats @1–@9 stay fixed. The genuine public archive input now has explicit native metadata Card intake;
-its correspondence question and independent scientific/researcher/workload
+its separate original-reference finding is implemented; the dedicated scientific
+question and independent scientific/researcher/workload
 acceptance remain pending;
 B2 review stays deferred and 0.15.0 consolidation paused.
 
@@ -25,8 +28,8 @@ Current source-scope continuation: the
 [AlphaFold prediction-API correction](pending_bugs/alphafold_prediction_api_scope.md)
 keeps an API miss separate from global model absence, retains the explanation on
 new enrichment records and exposes it in coverage text/HTML. Original saved gaps,
-native states and model rules remain unchanged. Genuine archive metadata intake is implemented; its scientific correspondence
-question remains pending; modern-only range compatibility
+native states and model rules remain unchanged. Genuine archive metadata intake is implemented; its separate source-reference finding is implemented; its dedicated
+scientific question remains pending; modern-only range compatibility
 continues under its own separately versioned receiving scope. The
 [receipt](evidence/alphafold_prediction_api_scope_20261105.json) separates current
 public metadata, synthetic offline counterexamples and hosted qualification.

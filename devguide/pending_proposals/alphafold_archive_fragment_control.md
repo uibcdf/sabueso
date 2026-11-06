@@ -1,12 +1,79 @@
 ---
 summary: Preserve and independently check a genuine public AlphaFold archive fragment without pretending it is an API response.
 issue: uibcdf/sabueso#148
-status: native_metadata_intake_local_receiving
+status: native_reference_context_local_receiving
 opened: 2026-11-05
 area: [predicted-structures, source-contracts, structural-exploration]
 ---
 
 # A genuine public archive fragment
+
+## Native original-reference context — 2026-11-05
+
+New native enrichments additionally retain
+`has_predicted_structure.qualifiers.native_reference_context`, under the separate
+`alphafold_modelcif_reference_context@1` derivation. Its input IDs refer to the
+original native model assertion and the original focal UniProt sequence, length
+and checksum assertions. Exactly one coherent entry/sequence revision is required;
+different sources, foreign entries, missing inputs and alternatives cannot be
+replaced by the current selected Card values or a developer fixture.
+
+The public AF-Q8WZ42-F2 control now has a reproducible `comparable_interval`
+finding: its 1,400-residue entity sequence equals original Q8WZ42 residues
+201–1600, and its stated full-reference CRC64 agrees with both the original
+UniProt checksum and an independent calculation. The original UniProt MD5 is
+also checked against that original sequence. Calculated checksums remain derived
+values, never new SourceAssertions or a provider-stated native model MD5.
+Reference and entity intervals stay separate; the whole-model API match and
+coverage views retain their original unknown native scope.
+
+Interpretation requires unambiguous standard amino acids, agreement of native
+canonical/raw sequence strings, and explicit complete entity positions and
+monomers. Position order comes from `_entity_poly_seq.num`, not loop ordinal.
+Modified/heterogeneous/unknown monomers, duplicate/missing positions, partial
+entity alignments and incompatible declarations remain unsupported. Source
+reference sequence/bounds must agree where additionally stated. Valid checksum
+or sequence mismatches remain mismatches, with cause/age unestablished. Missing
+reference CRC64 can coexist with an exact interval comparison but cannot qualify
+the complete source-reference finding. Unrelated confidence does not select or
+veto a sequence finding. Isoform membership is never inferred from equality.
+
+The canonical source assertions retain entry version 223 and sequence version 4,
+but not the original UniProt sequence-update date. Consequently the native
+2012-04-18 date is retained, while `reference_date_equal` is **unknown**. This
+slice does not silently recover that missing Card input from the separately
+retained file or equate dates with numeric sequence revisions. Date retention is
+a source-context follow-up under #148, not a claimed comparison or new query.
+
+The declaration projection and its original-output application stay intact;
+the new finding has its own application and full original input list. Generic
+human inspection, targeted agent reading, source opening and saved literal
+reading expose that same retained context. The generic support adapter expands
+the new named derivation's input assertions separately from the model declaration
+support, preserving existing API support rules and original payloads. Mapping and
+binding need no Gemmi, source file, network or current sequence selection.
+
+Old Cards and genuine SDK 181 saved metadata captures gain no finding on load.
+Independent saved reading preserves the original stored output without executing
+this interpreter or calculating checksums. Literal saved integrity does not
+certify scientific truth. Existing formats/verifiers and native/API/declaration
+rules stay unchanged. The dedicated human scientific question and experimental
+structure request, current-selection admission, broader scientific/researcher/
+workload acceptance and B3 remain open. B2 remains deferred and 0.15.0
+consolidation paused. No molecular calculation or new source query is introduced.
+
+Scientific field semantics come from the ModelCIF definitions of
+[canonical polymer sequence](https://mmcif.wwpdb.org/dictionaries/mmcif_ma.dic/Items/_entity_poly.pdbx_seq_one_letter_code_can.html),
+[entity sequence position](https://mmcif.wwpdb.org/dictionaries/mmcif_ma.dic/Items/_struct_ref_seq.seq_align_beg.html),
+[reference CRC64](https://mmcif.wwpdb.org/dictionaries/mmcif_ma.dic/Items/_ma_target_ref_db_details.seq_db_sequence_checksum.html)
+and [reference sequence start](https://mmcif.wwpdb.org/dictionaries/mmcif_ma.dic/Items/_struct_ref.pdbx_align_begin.html).
+Only retained sequence-token quoting and ASCII layout are decoded under the
+[CIF1 syntax](https://www.iucr.org/what-we-do/digital-standards/cif/cif1/file-syntax);
+the original file parser/metadata format is unchanged. An independent local
+Biopython/Gemmi control receives the new CRC and token predicates separately.
+
+Local, exact-source, copied-payload and hosted scopes are recorded separately in
+[the reference-context receipt](../evidence/alphafold_modelcif_reference_20261105.json).
 
 ## Native metadata intake continuation — 2026-11-05
 
@@ -68,12 +135,13 @@ source declarations. The raw isoform `?` is not an isoform assignment.
 
 The filename's distribution `v6` never supplies `model_version`, and native
 reference CRC64 never becomes a model MD5. Human model/source/back navigation,
-targeted agent access and saved literal reading retain the same values. A native
-declaration does not enter the old API model-question rules: canonical sequence
-agreement, focal coverage, structural correspondence and coordinate/assembly
-mapping remain **not evaluated**. Existing native/API context rules, packets and
-saved formats/verifiers are unchanged. The dedicated native correspondence
-question, independent scientific/researcher acceptance and broad B3 workload
+targeted agent access and saved literal reading retain the same values. The
+declaration itself does not evaluate canonical correspondence or enter old API
+model-question rules. The later separate reference finding above checks only its
+own exact original-input sequence interval. Focal model coverage, structural and
+coordinate/assembly mapping remain uncomputed. Existing native/API context rules,
+packets and saved formats/verifiers are unchanged. The dedicated native question,
+independent scientific/researcher acceptance and broad B3 workload
 acceptance remain next steps; this slice does not close #148/#173 or release 0.15.0.
 
 The [receiving receipt](../evidence/alphafold_modelcif_intake_20261105.json)

@@ -1,5 +1,15 @@
 # Sabueso — Card Schema Notes
 
+Unpublished 0.3.14 optionally adds `native_reference_context` on
+`has_predicted_structure`, under `alphafold_modelcif_reference_context@1` (#148).
+It retains original focal assertion IDs, coherent source revisions, derived
+checksums and interval comparisons separately from declaration@1. Literal
+generic support includes all inputs of the new named derivation; it never turns
+sequence assertions into assertions of the model relationship. Date agreement,
+atomic/experimental equivalence and isoform membership remain unestablished.
+Historical Cards are not backfilled, and API/packet/default whole-model meanings
+stay fixed. See the [reference context](pending_proposals/alphafold_archive_fragment_control.md#native-original-reference-context--2026-11-05).
+
 Unpublished 0.3.14 adds optional native AlphaFold ModelCIF metadata (#148).
 `asserted_value.modelcif_metadata` preserves literal columns and scalar/loop
 membership, with original file/extraction receipts in `source_metadata`.

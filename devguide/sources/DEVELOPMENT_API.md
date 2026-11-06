@@ -537,8 +537,9 @@ and unknown scientific revisions stay explicit.
   falls back to a network request. The existing declared AlphaFold enricher can
   place it in a Card via `predicted_structures=True, alphafold_client=...`.
   Optional Gemmi is needed only for file parsing. Native reference CRC64 and
-  model/reference intervals remain distinct; canonical correspondence and the
-  native scientific question remain unevaluated. See the
+  model/reference intervals remain distinct. New enrichments separately retain
+  the original-input `native_reference_context` finding; the native scientific
+  question, date agreement and atomic/experimental correspondence remain open. See the
   [native contract](../pending_proposals/alphafold_archive_fragment_control.md#native-metadata-intake-continuation--2026-11-05).
 - `sabueso.tools.source_snapshot.load_source_snapshot(path, *, source_metadata,
   file_format=None, expected_sha256=None, records_key=None)` reads explicit

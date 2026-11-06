@@ -169,6 +169,7 @@ def test_capabilities_distinguish_native_access_from_declared_card_contribution(
     assert set(rows["alphafold_db"]["mapping_functions"]) == {
         "sabueso.mappings.alphafold.map_predictions",
         "sabueso.mappings.alphafold_modelcif_v1.map_modelcif_predictions",
+        "sabueso.mappings.alphafold_modelcif_reference_v1.map_modelcif_reference_context",
     }
     assert rows["asd"]["adoption_status"] == "deferred"
     assert rows["asd"]["get_functions"] == []

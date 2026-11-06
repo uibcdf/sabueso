@@ -1,5 +1,15 @@
 # Sabueso — Risks and Open Questions
 
+Native reference context (#148): the current original focal UniProt sequence
+assertions retain entry/sequence versions and checksums but omit the sequence
+update date. The new interval finding therefore leaves date agreement unknown,
+even when the separately retained source file exposes it. Before using dates to
+assess reference revision/age, add explicit original date support and a separately
+versioned comparison; never substitute a developer fixture or infer age from a
+checksum mismatch. The dedicated scientific question/current-selection admission
+and independent scientist/researcher acceptance also remain open. See the
+[native reference scope](pending_proposals/alphafold_archive_fragment_control.md#native-original-reference-context--2026-11-05).
+
 The accepted [finite public 1TCD example](pending_proposals/structural_journey_acceptance_20261104.md#public-tctim-correspondence-journey--2026-11-05-utc)
 now checks matching revisions and native/author/reference axes before an optional
 identity-operation construction and declared atomic contact calculation. All

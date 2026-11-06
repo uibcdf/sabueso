@@ -136,7 +136,8 @@
     "sabueso.tools.db.alphafold",
     "sabueso.mappings.alphafold",
     "sabueso.tools.db.alphafold_modelcif",
-    "sabueso.mappings.alphafold_modelcif_v1"
+    "sabueso.mappings.alphafold_modelcif_v1",
+    "sabueso.mappings.alphafold_modelcif_reference_v1"
    ],
    "links": [
     "#57",
@@ -3765,6 +3766,7 @@
     ],
     "mapping_functions": [
      "sabueso.mappings.alphafold.map_predictions",
+     "sabueso.mappings.alphafold_modelcif_reference_v1.map_modelcif_reference_context",
      "sabueso.mappings.alphafold_modelcif_v1.map_modelcif_predictions"
     ],
     "client_classes": [

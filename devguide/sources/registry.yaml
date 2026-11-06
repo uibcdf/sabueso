@@ -1226,7 +1226,7 @@ resources:
       attribution: "AlphaFold Protein Structure Database, DeepMind and EMBL-EBI (https://alphafold.ebi.ac.uk/), CC BY 4.0"
       statement: https://alphafold.ebi.ac.uk/faq
       reviewed: 2026-09-29
-    module: [sabueso.tools.db.alphafold, sabueso.mappings.alphafold, sabueso.tools.db.alphafold_modelcif, sabueso.mappings.alphafold_modelcif_v1]
+    module: [sabueso.tools.db.alphafold, sabueso.mappings.alphafold, sabueso.tools.db.alphafold_modelcif, sabueso.mappings.alphafold_modelcif_v1, sabueso.mappings.alphafold_modelcif_reference_v1]
     links: ["#57", "#148"]
   - id: gene_ontology
     name: Gene Ontology annotations

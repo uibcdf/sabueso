@@ -4,9 +4,11 @@ The [native AlphaFold continuation](pending_proposals/alphafold_archive_fragment
 adds explicit single-file ModelCIF metadata access and Card contribution under
 separate contracts. It requires a supplied file client, checks source binding
 before I/O, records full file/extraction identity and visibly refuses byte-budget
-overruns. Native reference CRC64 and model/reference axes never become API model
-MD5 or evaluated canonical correspondence. Optional Gemmi is requested only for
-file parsing; retained Card metadata and saved reading remain independent.
+overruns. The getter keeps native reference CRC64 and model/reference axes apart
+from API model MD5. New enrichments separately retain an original-input interval
+finding under `alphafold_modelcif_reference_context@1`, with unknown date agreement
+and uncomputed atomic/experimental correspondence. Optional Gemmi is requested
+only for file parsing; retained metadata and saved reading remain independent.
 
 The common acquisition, validation and card-contribution contract. Provider-specific
 protocols, native fields and qualification limits are maintained in the

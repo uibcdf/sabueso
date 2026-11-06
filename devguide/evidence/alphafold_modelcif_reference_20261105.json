@@ -1,0 +1,316 @@
+{
+  "owner": "#148/#173/#112",
+  "review_trigger": "native scientific question / source-date retention / B3 / before0.15.0",
+  "baseline_head": "ccd16fd3cc3a225dee3805ffcb534d85309b91d4",
+  "scope": "New native enrichments record a separately named original-input sequence/reference interval finding. No old rule/SourceAssertion rewrite, current-selection admission, scientific question, atomic/experimental equivalence, identity-by-sequence or new molecular source query.",
+  "rule": "alphafold_modelcif_reference_context@1",
+  "card_qualifier": "native_reference_context",
+  "schema": "additive unpublished0.3.14;2129paths",
+  "scientific_receiving": {
+    "actual_public_model": "AF-Q8WZ42-F2",
+    "reference": "UniProt Q8WZ42 entry223 sequence4",
+    "reference_interval": [
+      201,
+      1600
+    ],
+    "entity_sequence_interval": [
+      1,
+      1400
+    ],
+    "exact_interval_equal": true,
+    "reference_crc64": "DEB216410AD560D9",
+    "reference_checksums_independently_checked": true,
+    "reference_date_comparison": null,
+    "date_limitation": "Original focal sequence-update date is not retained in these source assertions; never substituted from a fixture.",
+    "source_support": "One original model declaration plus three original focal sequence/length/checksum derivation inputs. These remain distinct.",
+    "independent": {
+      "owner": "#148/#173/#112",
+      "review_trigger": "native reference scientific question / B3",
+      "independent_crc_vectors": 105,
+      "gemmi_token_vectors": 6,
+      "unsupported_sequence_tokens": 8,
+      "biopython": "1.88",
+      "gemmi": "0.7.5",
+      "genuine_sdk181_original_sha256": "e9516f808f6490ad6c81495c987403d410c84362388c0c020769fec1c488bc99",
+      "historical_context_backfilled": false,
+      "new_source_queries": 0
+    }
+  },
+  "local_receiving": {
+    "distinct_related_cases": 683,
+    "latest_candidate_native_registry": 128,
+    "copied_native_cases": 87,
+    "native_reference_cases": 51,
+    "note": "Counts are deduplicated across recorded scopes:87 native +84 history +119 API/archive +165 human/agent/quantity +228 contracts/schema. Later native edge/binding refinements are received in the final128-case gate; no full final-source suite or scientist acceptance is claimed.",
+    "gates": {
+      "final-native-registry": {
+        "owner": "uibcdf/sabueso#148/#173/#112",
+        "review_trigger": "native original-reference correspondence / #148",
+        "command": [
+          "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-m",
+          "pytest",
+          "tests/core/test_alphafold_modelcif_reference_offline.py",
+          "tests/core/test_alphafold_modelcif_intake_offline.py",
+          "tests/core/test_source_registry_offline.py",
+          "-m",
+          "not online",
+          "--receptor=llm"
+        ],
+        "cwd": "/home/liliana/repos@uibcdf/sabueso",
+        "exit_code": 0,
+        "elapsed_s": 51.62,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 378011648,
+        "minimum_host_available_bytes": 7912062976,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 1228187,
+        "limits": {
+          "owned_rss_bytes": 1073741824,
+          "host_available_bytes": 4294967296,
+          "owned_swap_bytes": 0,
+          "elapsed_s": 600,
+          "owned_scratch_bytes": 2147483648
+        },
+        "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+      },
+      "context-history": {
+        "owner": "uibcdf/sabueso#148/#173/#112",
+        "review_trigger": "native AlphaFold ModelCIF intake / #148",
+        "command": [
+          "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-m",
+          "pytest",
+          "tests/core/test_card_context_navigation_offline.py",
+          "tests/core/test_card_shared_link_support_offline.py",
+          "tests/core/test_card_model_fragments_offline.py",
+          "-m",
+          "not online",
+          "--receptor=llm"
+        ],
+        "cwd": "/home/liliana/repos@uibcdf/sabueso",
+        "exit_code": 0,
+        "elapsed_s": 84.49,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 562028544,
+        "minimum_host_available_bytes": 9345908736,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 11668,
+        "limits": {
+          "owned_rss_bytes": 1073741824,
+          "host_available_bytes": 4294967296,
+          "owned_swap_bytes": 0,
+          "elapsed_s": 600,
+          "owned_scratch_bytes": 2147483648
+        },
+        "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+      },
+      "source-api-history": {
+        "owner": "uibcdf/sabueso#148/#173/#112",
+        "review_trigger": "native AlphaFold ModelCIF intake / #148",
+        "command": [
+          "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-m",
+          "pytest",
+          "tests/core/test_alphafold_context_offline.py",
+          "tests/core/test_alphafold_range_aliases_offline.py",
+          "tests/core/test_alphafold_acquisition_offline.py",
+          "tests/core/test_alphafold_archive_control_offline.py",
+          "-m",
+          "not online",
+          "--receptor=llm"
+        ],
+        "cwd": "/home/liliana/repos@uibcdf/sabueso",
+        "exit_code": 0,
+        "elapsed_s": 116.43,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 456323072,
+        "minimum_host_available_bytes": 8057917440,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 261931,
+        "limits": {
+          "owned_rss_bytes": 1073741824,
+          "host_available_bytes": 4294967296,
+          "owned_swap_bytes": 0,
+          "elapsed_s": 600,
+          "owned_scratch_bytes": 2147483648
+        },
+        "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+      },
+      "human-agent-quantity": {
+        "owner": "uibcdf/sabueso#148/#173/#112",
+        "review_trigger": "native AlphaFold ModelCIF intake / #148",
+        "command": [
+          "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-m",
+          "pytest",
+          "tests/core/test_card_access_offline.py",
+          "tests/core/test_card_protein_exploration_offline.py",
+          "tests/core/test_card_human_labels_offline.py",
+          "tests/core/test_quantities_offline.py",
+          "tests/core/test_quantity_checks_offline.py",
+          "-m",
+          "not online",
+          "--receptor=llm"
+        ],
+        "cwd": "/home/liliana/repos@uibcdf/sabueso",
+        "exit_code": 0,
+        "elapsed_s": 26.65,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 232677376,
+        "minimum_host_available_bytes": 9257197568,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 0,
+        "limits": {
+          "owned_rss_bytes": 1073741824,
+          "host_available_bytes": 4294967296,
+          "owned_swap_bytes": 0,
+          "elapsed_s": 600,
+          "owned_scratch_bytes": 2147483648
+        },
+        "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+      },
+      "contracts-schema": {
+        "owner": "uibcdf/sabueso#148/#173/#112",
+        "review_trigger": "native AlphaFold ModelCIF intake / #148",
+        "command": [
+          "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-m",
+          "pytest",
+          "tests/core/test_card_schema_policy_offline.py",
+          "tests/core/test_migration_offline.py",
+          "tests/core/test_enrichers_offline.py",
+          "tests/core/test_knowledge_state_offline.py",
+          "tests/core/test_argument_contracts_offline.py",
+          "tests/core/test_source_registry_offline.py",
+          "tests/core/test_fixture_delivery_offline.py",
+          "tests/core/test_fixture_licensing_offline.py",
+          "tests/tools/test_dependency_preflight_offline.py",
+          "tests/core/test_staged_conda_install_offline.py",
+          "-m",
+          "not online",
+          "--receptor=llm"
+        ],
+        "cwd": "/home/liliana/repos@uibcdf/sabueso",
+        "exit_code": 0,
+        "elapsed_s": 48.04,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 237010944,
+        "minimum_host_available_bytes": 9079975936,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 15725,
+        "limits": {
+          "owned_rss_bytes": 1073741824,
+          "host_available_bytes": 4294967296,
+          "owned_swap_bytes": 0,
+          "elapsed_s": 600,
+          "owned_scratch_bytes": 2147483648
+        },
+        "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+      },
+      "copied-final": {
+        "owner": "uibcdf/sabueso#148/#173/#112",
+        "review_trigger": "native original-reference correspondence / #148",
+        "command": [
+          "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-m",
+          "pytest",
+          "test_alphafold_modelcif_reference_offline.py",
+          "test_alphafold_modelcif_intake_offline.py",
+          "-m",
+          "not online",
+          "--receptor=llm",
+          "-o",
+          "tmp_path_retention_policy=failed"
+        ],
+        "cwd": "/tmp/sabueso-native-context-20261105-dtxkx3q3",
+        "exit_code": 0,
+        "elapsed_s": 30.95,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 371642368,
+        "minimum_host_available_bytes": 8186314752,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 35025,
+        "limits": {
+          "owned_rss_bytes": 1073741824,
+          "host_available_bytes": 4294967296,
+          "owned_swap_bytes": 0,
+          "elapsed_s": 600,
+          "owned_scratch_bytes": 2147483648
+        },
+        "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+      },
+      "independent-readers": {
+        "owner": "uibcdf/sabueso#148/#173/#112",
+        "review_trigger": "native AlphaFold ModelCIF intake / #148",
+        "command": [
+          "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "recovered_work/alphafold_modelcif_context_20261105/independent.py"
+        ],
+        "cwd": "/home/liliana/repos@uibcdf/sabueso",
+        "exit_code": 0,
+        "elapsed_s": 3.27,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 143552512,
+        "minimum_host_available_bytes": 9516781568,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 0,
+        "limits": {
+          "owned_rss_bytes": 1073741824,
+          "host_available_bytes": 4294967296,
+          "owned_swap_bytes": 0,
+          "elapsed_s": 600,
+          "owned_scratch_bytes": 2147483648
+        },
+        "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+      }
+    }
+  },
+  "checks": {
+    "ruff_format": "passed",
+    "ruff_lint": "passed",
+    "source_registry": "passed",
+    "schema_paths": "passed",
+    "shape": "2129 paths",
+    "fixture_delivery": "passed;81repository/37protectedlocal originals unchanged",
+    "dependency_preflight": "passed",
+    "moli_governance": "passed"
+  },
+  "runtime_sha256": {
+    "sabueso/mappings/alphafold_modelcif_reference_v1.py": "674554492e2ad3594c1dadb0da214a1986569164767d5357b49b3217f1a01dbb",
+    "sabueso/enrichers/alphafold.py": "55882f564868b1845cdcdb0496db4f210822c45af9fa6da6975e1f31999281e9",
+    "sabueso/core/card_exploration.py": "601291062b5dac27e47b15f9348bcedbd4d8fe00517b1a1f1efddfe83c088b10",
+    "sabueso/core/migration.py": "2df5f175861da55a51eaf3378faa095640cbcaaf9dc2309d6ea9b1bb735b9f41"
+  },
+  "unchanged_original_predicates_and_packets": {
+    "sabueso/core/card_exploration_verification.py": "e76d3661e06a99a7d90dbd6a4050367e5934db6f976285578a3b755a8882b094",
+    "sabueso/core/card_exploration_verification_v11.py": "eebe350c8fde87b9388eb03a10fadf47d5532d9c1d8f75a9b291406b14317917",
+    "sabueso/core/card_exploration_verification_v7.py": "675fb6e1e4a7f01ee6b02f4884c3ca4621148ff66205fe0977c10d44a8b80fbc",
+    "sabueso/core/card_exploration_verification_v8.py": "fb6ea3cbf23a66e00b03ec6dd47592c529151cbe01e0eed13ad6c30e8cdfe3ed",
+    "sabueso/core/card_exploration_verification_v6.py": "185ee2f2ff6465f270b71f27af9bae1957417af74da1be9656e17771d1cdf581",
+    "sabueso/core/card_exploration_verification_v5.py": "16b92743d3d83f73763261c76b5f13cb1b792e644b6ffda00c4e8a746aa77061",
+    "sabueso/core/card_exploration_verification_v10.py": "d1dfc806b41265bee9302daac0cf5310a763a7b6c04b62c17b53120596bc4a42",
+    "sabueso/core/card_exploration_verification_v9.py": "0a75257795cfbeef8d64e4af27009712b8d23fe24f208afe0fd07ad924fe5f06",
+    "sabueso/mappings/alphafold_modelcif_v1.py": "e9f86a2b2b7e60513d9bc3f66530a9143a20aa21c553e25ea897e19879a7bbdc",
+    "sabueso/core/packets.py": "e4a356a5045378f0e8261406d27905e4fe369be9c27c2c14e729472ec0746568"
+  },
+  "remote": {
+    "state": "pending exact final committed SHA; qualification not claimed",
+    "baseline_ci": 42130720623,
+    "baseline_governance": 42130720727,
+    "baseline_scope": "SDK181 publication succeeded by SSH with no credential/scope change; receiving is independent of this new source"
+  },
+  "retention": {
+    "path": "recovered_work/alphafold_modelcif_context_20261105",
+    "owner": "#148/#173/#112",
+    "review_trigger": "next native scientific question / B3",
+    "keep": "source/resource/failure receipts, independent original receiving, final exact-source control and genuine saved artifact, public issue receipts and active CI captures",
+    "cleanup": "remove owned copied payload, completed pytest scratch and caches after final use; protect old active receivers and original inputs"
+  },
+  "open": [
+    "Dedicated native scientific question and current selected-reference admission",
+    "Original focal UniProt sequence-update date retention and separately versioned date comparison",
+    "Independent scientific/researcher/workload acceptance; B3 stays open",
+    "Maintainer B2 review deferred;0.15.0 consolidation paused"
+  ]
+}

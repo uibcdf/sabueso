@@ -2026,8 +2026,21 @@ class CardExplorer:
                     if (
                         node.get("predicate") == "has_predicted_structure"
                         and isinstance(node.get("qualifiers"), dict)
-                        and isinstance(
-                            (node.get("qualifiers") or {}).get("sequence_context"), dict
+                        and (
+                            isinstance(
+                                (node.get("qualifiers") or {}).get("sequence_context"),
+                                dict,
+                            )
+                            or (
+                                isinstance(
+                                    node["qualifiers"].get("native_reference_context"),
+                                    dict,
+                                )
+                                and node["qualifiers"]["native_reference_context"].get(
+                                    "rule"
+                                )
+                                == "alphafold_modelcif_reference_context@1"
+                            )
                         )
                     ):
                         applications = node.get("derivation_applications")
@@ -2043,6 +2056,7 @@ class CardExplorer:
                             ) not in (
                                 "alphafold_sequence_context@1",
                                 "alphafold_sequence_context@2",
+                                "alphafold_modelcif_reference_context@1",
                             ):
                                 continue
                             declared = derivation.get("inputs")

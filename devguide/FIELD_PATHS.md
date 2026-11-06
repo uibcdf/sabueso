@@ -1,5 +1,14 @@
 # Sabueso — Canonical Field Paths
 
+Unpublished 0.3.14 adds optional derived
+`relationships.has_predicted_structure.native_reference_context` (#148).
+Its `alphafold_modelcif_reference_context@1` output retains original input IDs,
+source revisions, checksums and explicit interval comparisons, with states and
+unknowns. The separate original-output application carries its complete support.
+It adds no source-authored field, does not replace `native_modelcif` or old API
+contexts, and is never backfilled. See the
+[native reference contract](pending_proposals/alphafold_archive_fragment_control.md#native-original-reference-context--2026-11-05).
+
 Optional native AlphaFold ModelCIF intake in unpublished 0.3.14 retains source
 tokens at `source_assertion_store[].asserted_value.modelcif_metadata` (#148).
 Separate `source_metadata.input_contract`, `native_extraction` and

@@ -1,5 +1,16 @@
 # Sabueso — Tests and Quality Gates
 
+Native source-reference context uses `test_alphafold_modelcif_reference_offline.py`
+with intake/archive/API, literal/context/shared support, argument/registry,
+migration/schema and enrichment/knowledge-state cases. Check actual original
+checksums and intervals, explicit position keys, coherent original revisions,
+unknown dates, unsupported monomers/alternatives, mismatch versus missing,
+separate source/declaration/finding scope, original-input replay, human/targeted
+agent/source parity and independent saved reading with parser/interpreter/checksum
+calculation forbidden. Receive genuine SDK181 metadata history separately. Both
+installed routes copy/select the standalone module; no new scientific question,
+experimental/atomic mapping or independent researcher acceptance is implied.
+
 Shared generic support uses `test_card_shared_link_support_offline.py`: all natures,
 complete original support, missing references, exact destinations, independent
 format @11 reading, semantic/resealed substitutions, visible limits/overrides and
