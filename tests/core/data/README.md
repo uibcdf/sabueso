@@ -1,5 +1,27 @@
 # Historical exploration fixtures
 
+## Original native chemical reading and molecule sessions (SDK192)
+
+`chemical_native_sdk192.json.gz` was captured from clean source
+`d54b39aef7731e9e5dc1ea73f794f2221eee8d60`, actual editable SDK
+`0.14.0+192.gd54b39a`, before adding the chemical classification human/agent
+adapter. It retains complete public vincristine (CHEBI:28445) and
+2-phosphoglycolic acid (CHEBI:17150) Cards, native readings and original format
+@1 molecule sessions/menus. The frozen input is `temp_data/chebi/compounds.json`
+(SHA-256 `a18aef085c243fa0f95e9df27de345c3e5e19524e41de8d2b42f814d8cae82bd`),
+ChEBI/EMBL-EBI, retrieved 2026-09-30, CC BY 4.0; see
+[the original source notice](../../../temp_data/NOTICE.md). Sabueso's authored
+serialization follows MIT; gzip packages the original bytes. No new source
+queries, private pilot material, ontology traversal or source-authenticity claim.
+Never regenerate this control to pass a newer reader. Native v1 output must be
+canonical-byte-identical; earlier retained catalogues keep their original rows,
+while a newly requested saved catalogue can mark newer routes `not_saved`.
+This does not provide saved reading for the new chemical adapter.
+
+Compressed SHA-256: `d5977cd011813b8baac493a88553b9a2750c59ae0e0f5c411a2daa9735ce2291`.
+
+Uncompressed SHA-256: `f9f2bd63b008e3677e2884bcf3167f2bd063a4811421b830246a453fc6286832`.
+
 ## Original shared-support exploration @11
 
 `shared_link_support_original_v1.json.gz` is a genuine public save from the first

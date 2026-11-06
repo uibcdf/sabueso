@@ -7,7 +7,11 @@ duplicates, original alternatives and caller isolation. Both installed workflows
 copy/select it; the isolated receiving gate copies only its public ChEBI input.
 The field/source ownership fix also needs aggregation/resolution, source observation,
 quantity, Card creation/refresh/migration and affected historical reading checks.
-Neither the native reader nor passing tests accepts the required rich human panel.
+The live human/agent adapter additionally uses
+`test_card_chemical_exploration_offline.py` and its genuine SDK192 capsule, copied
+by both installed routes. The isolated gate runs with only that capsule; fresh
+original reading forbids current engines and Card construction. Independent
+original chemical saving and scientific/researcher acceptance remain required.
 
 Structural display continuity uses the retained-filter, native-model, API-fragment
 and range-alias navigation modules. Check text/HTML limitations after chained
@@ -280,6 +284,7 @@ these technical checks.
 
 | Changed behavior | Select these test files / gates |
 | --- | --- |
+| Chemical classification live profile | `test_card_chemical_exploration_offline.py`, native classification, human/nature/access/navigation/selection, saved historical, argument/quantity and copied installed scope gates. Preserve genuine SDK192 canonical native bytes and original retained menus, source-stated identity/whole-field support, direct/inherited/unknown assignments, typed false/null versus zero, duplicate positions, source/open/back parity, cache isolation, scope after filtering/projection, explicit bounded deferral and save refusal. Independently version new chemical saving before declaring this panel complete (#148/#112) |
 | Original nonpolymer assembly exploration | `test_card_nonpolymer_assembly_offline.py` and `test_card_saved_nonpolymer_assembly_offline.py`, native @5/key @2 and all affected assembly/context/human/agent/saved/argument/quantity/transport cases; genuine pre-reader public capsule, default/@4 request identity, shared one-capture evaluation, complete original rows/text with explicit saved notice, partial/duplicate/conflicting native context, mixed original structure questions, closed @7 and explanation-request @2 receiving, inert outside-checkout read, atomic deferral, resealing/coherent reidentification, deliberate budgets and stable repeat saving. Preserve original native @1–@5 and saved @1–@6 bytes; unskipped exact-source CI/governance qualifies the completed block (#173/#148/#112) |
 | Structure and declared-component navigation | `test_card_component_navigation_offline.py`, `test_card_saved_component_navigation_offline.py`, `test_original_structure_navigation_offline.py`, and affected structure/context/human/agent/assembly/saved/transport/argument/quantity/copied-receiving gates. Check exact native/literal/qualifier parents, shared explicit @5 result with unchanged direct @4 defaults, repeated positions and uncertain records, original source/open/back, exact clicked-link binding, coherent sibling substitutions, fresh inert reading, repeat saving and `not_saved` for unvisited destinations. Genuine clean-producer live navigation and saved @6/@7 fixtures predate the new verifier; never regenerate them. Format @8 freezes new navigation over unchanged @2 scientific wire. Run original large saved controls separately under the resource guard; qualify unskipped exact-source CI/governance (#173/#148/#112) |
 | Component navigation workload diagnostic | Run `devtools/measure_component_navigation.py produce`, `read` and `read-agent` in separate serial resource-guarded processes. Check immutable seed/capsule hashes, complete ordered repeated positions, original root/scientific/source/record parity, exact shared result, bounded complete page and explicit machine-save versus `not_saved` behavior. Record plain human-first versus accumulated agent export separately; no timing thresholds, cold-cache claims or product-limit overrides. Retain receipts, then remove owned synthetic exports (#167/#148) |

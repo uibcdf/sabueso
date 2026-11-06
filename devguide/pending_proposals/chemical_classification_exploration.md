@@ -1,9 +1,9 @@
 ---
 summary: Source-bound classes and roles as the scientific foundation of the required rich molecule profile.
 issue: uibcdf/sabueso#148
-status: native_foundation_implemented
+status: live_human_agent_implemented_saved_reading_pending
 opened: 2026-11-06
-verification: selected local receiving; rich human/agent/saved profile remains pending
+verification: selected local receiving; independent original saved reading and acceptance remain pending
 area: [chemical-context, scientific-views, human-exploration, release]
 ---
 
@@ -12,8 +12,9 @@ area: [chemical-context, scientific-views, human-exploration, release]
 This is B5 work in the [continuation plan](../CONTINUATION_PLAN_20261104.md),
 supporting the [required molecule classification panel](card_exploration_detailed_design.md#scientific-topics-and-questions).
 `Card.chemical_classification()` now supplies a detached native reading under
-`chemical_classification_context@1`. It is a scientific prerequisite, not delivery
-or acceptance of the full human panel. All broad-profile requirements before
+`chemical_classification_context@1`. The live human and compact-agent
+classification adapter now shares that exact capture. Independent original saved reading, whole-profile qualification and
+researcher acceptance remain required. All broad-profile requirements before
 0.15.0 remain in force; the release is not authorized.
 
 ## Scientific question and original basis
@@ -61,16 +62,65 @@ from an explicitly retained empty list. Original nodes, malformed containers,
 unrecognized terms and flags stay readable. The result covers retained fields;
 it does not establish source-wide completeness or absence.
 
+## Live human and agent journey
+
+For a captured small-molecule Card:
+
+```python
+explorer = molecule.explore()
+classes = explorer.answer("classification")  # Also explorer.view("classification")
+direct = classes.filter("assignment", equals="direct")
+item = direct.items()[0]  # Inspect items() before choosing when context is unknown.
+item.open()  # Original value, assignment, admitted category flags.
+item.explain()  # Original field and explicit identity statements.
+item.related()  # Source, original member/field, identity and quality routes.
+item.open().back()  # The exact selected view.
+
+selected = explorer.access.select(
+    "chemical_classification",
+    fields=["term_ref", "assignment", "application"],
+    where={"application": True},
+    order_by={"column": "label"},
+)
+page = selected.page()
+```
+
+The nature-specific human key `classification` retains disease semantics on disease
+Cards. Its molecule label is Chemical classes and source-stated roles. The machine
+key is `chemical_classification`, adapter `chemical_classification_exploration@1`.
+Only opening that topic/question materializes the frozen native v1 kernel; human
+and agent requests within one exploration reuse it. No Card or current mapping is
+constructed from the capture. Genuine SDK192 public readings match canonical bytes.
+
+Each original selected member position stays separate, including duplicates.
+Direct, inherited, unstated and unknown assignments are distinct. False role-category
+flags stay false; null means not stated or not admitted, including flags inapplicable
+to class rows. Typed flag filtering accepts booleans/null and rejects zero/text.
+Projection never drops the mandatory interpretation and source-membership routes.
+Exact item membership, missing-last stable order, bounded pages/cursors and atomic
+value/scope/support deferral retain complete inspection destinations.
+
+The readable opening states the original field and interpretation states and the
+limits of the knowledge. Unknown/partial science stays visible through empty display
+selections. Item detail preserves original malformed values; source/identity/field
+support, alternatives and stored conflicts remain reachable. Text and HTML preserve
+the same meaning. Original whole-field sources do not become independently acquired
+per-item lineage or reconstructed ontology traversal.
+
 ## Required continuation
 
-Integrate the native reading into the nature-specific classification topic with
-readable classes/roles, direct/inherited/unknown basis, exact source/open/back
-routes and compact targeted agent access. Add independent original saved reading
-with an explicit version boundary as required; do not broaden an old frozen
-profile verifier. Keep old molecule/disease menus and scientific meanings intact.
-Qualify copied installed receiving, genuine historical controls, mixed nature
-navigation, measured workloads and independent researcher/scientific acceptance.
-The native method alone does not complete this panel or B5.
+Independent original chemical-profile saved reading is **not implemented yet**.
+Human and agent `capabilities["save"]` are false; save refuses before creating a
+file. The opening and machine descriptor explain the limitation and raw Card export.
+Original saved molecule sessions retain their earlier rows and scientific meanings;
+a new saved catalogue may show this new route explicitly `not_saved`, never execute
+it. This temporary development boundary does not complete the required panel or B5.
+
+Capture a genuine producer chemical adapter session, add an explicit independently
+verified saved format with mixed-nature navigation, and preserve every frozen
+historical verifier/codec. Qualify copied installed receiving, genuine historical
+controls, representative measured workloads and independent researcher/scientific
+acceptance. All broad-profile requirements before0.15.0 remain in force.
 
 ## Adjacent integrity correction
 
@@ -79,7 +129,12 @@ The selected field now owns a separate value and support-ID list. Explicit Card
 and source edits remain possible, but neither silently rewrites the other. Initial
 serialized values, units, schemas and original saved verifier meanings are unchanged.
 
-The [receiving record](../evidence/chemical_classification_20261106.json) retains
-actual passing/stopped checks. B2 scientific review stays maintainer-deferred;
+The [native receiving record](../evidence/chemical_classification_20261106.json) retains
+its original passing/stopped checks. The
+[live-profile receiving record](../evidence/chemical_profile_live_20261106.json)
+records668 distinct selected cases, the isolated27-case capsule consumer, actual
+public task measurements and unchanged historical kernels/verifiers/storage.
+These are engineering observations, not independent scientific/researcher or
+representative-workload acceptance. B2 scientific review stays maintainer-deferred;
 B3 scope/acceptance and B4/B6/B7 work remain pending. No default measurement
 policy, schema freeze, candidate selection or 0.15.0 publication follows.

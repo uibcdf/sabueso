@@ -1,0 +1,1349 @@
+{
+  "owner": "uibcdf/sabueso#148/#112",
+  "review_trigger": "independent original chemical saved reading, broad B5 and before0.15.0 acceptance",
+  "baseline": "d54b39aef7731e9e5dc1ea73f794f2221eee8d60",
+  "scope": "Live source-bound molecule classification through human/compact-agent exploration; independent original chemical saving remains required.",
+  "rules": {
+    "native": "chemical_classification_context@1",
+    "adapter": "chemical_classification_exploration@1",
+    "selection": "chemical_classification_selection@1",
+    "links": "chemical_classification_links@1"
+  },
+  "original_producer": {
+    "path": "/home/liliana/repos@uibcdf/sabueso/recovered_work/chemical_profile_20261106/chemical_native_sdk192.json.gz",
+    "encoded_bytes": 173611,
+    "sha256": "d5977cd011813b8baac493a88553b9a2750c59ae0e0f5c411a2daa9735ce2291",
+    "producer": {
+      "sdk": "0.14.0+192.gd54b39a",
+      "source": "d54b39aef7731e9e5dc1ea73f794f2221eee8d60",
+      "fixture_sha256": "a18aef085c243fa0f95e9df27de345c3e5e19524e41de8d2b42f814d8cae82bd",
+      "new_source_queries": 0
+    }
+  },
+  "case_counts": {
+    "chemical-profile-final": 58,
+    "navigation-final": 428,
+    "structural-historical": 123,
+    "metadata-delivery": 59
+  },
+  "distinct_selected_cases": 668,
+  "counting_basis": "Disjoint final modules plus one outer isolated receiving case; its27 nested copied cases and preliminary/repeated runs are not added again.",
+  "runtime_hashes": {
+    "card_chemical_access.py": "7918a2135e87ec25d3421702028ead343585bef97a0031a243a2c9b53cddfcb3",
+    "card_chemical_exploration.py": "24b2437c2d2c42b16d45a659367d7d145b361f4c031fe2b3d98e907f25e73985",
+    "card_chemical_selection_v1.py": "b4c4feea65f0f9b18999155abafbf4718bf3c006effd6f427effac63ecd67554",
+    "chemical_classification_v1.py": "621280812c2432d4c24b20c021f921ab70f16f69d7e109cddab937d2be7e2ad7",
+    "chemical_classification.py": "24eaf6fb7cc22b2e32769a094fe40a176d36ec89103097a319dbc251de0bb72a",
+    "card_access.py": "6d66cab8d0090ebb8a6524d110bc6d5b16dfb8ece6b61e007dead15a17c44437",
+    "card_exploration.py": "b8887b595e80903608186502a5e89b70feb228e4ee350d385a5e3de3b6f7d50e",
+    "card_exploration_profiles.py": "8789916a2027d9cf12eb4d67b5113fd995bf78f07decb1cc501573e82e33a387",
+    "card_context_navigation.py": "4b10dc5fd319fc3f7ad3604e1c5473946bffd21865be9b479798806474934813",
+    "card_exploration_render.py": "3f9ce769a14e280f825e263b213075408d5099e49560097cac60349bcdb9e6e5"
+  },
+  "original_verifiers_codecs": {
+    "baseline": "d54b39aef7731e9e5dc1ea73f794f2221eee8d60",
+    "byte_identical": true,
+    "scope": "Existing versioned kernels, historical modules, semantic verifiers, shared/filter codecs and storage boundary; this change does not declare every existing module immutable forever.",
+    "files": [
+      {
+        "path": "sabueso/core/_assembly_history_v1/__init__.py",
+        "sha256": "8ef9017ab1eb525f60072a1d5601f8c76cfa763b60f5747756a868fed2367f46"
+      },
+      {
+        "path": "sabueso/core/_assembly_history_v1/assembly_component_binding_v1.py",
+        "sha256": "5831ac5f50e5b8783f3fae5b76b5b199502243a12bb05a1b0021dad534670b63"
+      },
+      {
+        "path": "sabueso/core/_assembly_history_v1/assembly_generation_v1.py",
+        "sha256": "2b915a6602e98ee8f9580de62d91751df5b54760a481ba8347c6f38945b0b0ca"
+      },
+      {
+        "path": "sabueso/core/_assembly_history_v1/assembly_generation_v2.py",
+        "sha256": "e2ea5505dc84f6c82a865067c2a0efca5f510f6fc213790fac5ed0bba657ff26"
+      },
+      {
+        "path": "sabueso/core/_assembly_history_v1/assembly_generation_v3.py",
+        "sha256": "736add6f00bc816ca421b068a9ebaf8a841708189b535be364ba95758cffe601"
+      },
+      {
+        "path": "sabueso/core/_assembly_history_v1/assembly_generation_v4.py",
+        "sha256": "af290d7cfa05c60709d63c1ea1107b69773ceabc2bdbd6fe62b190912bc4b43a"
+      },
+      {
+        "path": "sabueso/core/_assembly_history_v1/assembly_occurrences_v1.py",
+        "sha256": "25d24a565c8a526729107380e5229cab15005fb88f65e1ad5f6f1fda9008a823"
+      },
+      {
+        "path": "sabueso/core/_assembly_history_v1/assembly_operations_v1.py",
+        "sha256": "5271afb89688ada59924f5a835ab760aedd1d3fc670f31b8a3c0745c47d18737"
+      },
+      {
+        "path": "sabueso/core/_assembly_history_v1/assembly_operator_binding_v1.py",
+        "sha256": "2458bfcb5f7cd5696ca0e318f760e1af0caf978af5f9aec41e00767ad6fb3b53"
+      },
+      {
+        "path": "sabueso/core/_assembly_history_v1/assembly_requests.py",
+        "sha256": "af27f998fda332db6d547f76b3cdaaf5d95a881f0f4207bee9b047d3ec5f1395"
+      },
+      {
+        "path": "sabueso/core/_assembly_history_v2/__init__.py",
+        "sha256": "0a930a2475b2e1e537a490d4fb28b5b6c8d70513a91ee49247a0d55413a598bc"
+      },
+      {
+        "path": "sabueso/core/_assembly_history_v2/assembly_component_binding_v2.py",
+        "sha256": "97f85031551ef0d4aae87ac2c993c404f83e050a52797c18f4a400b02b7fec06"
+      },
+      {
+        "path": "sabueso/core/_assembly_history_v2/assembly_generation_v5.py",
+        "sha256": "4af9edec28cf18dac3472bb8e0fa8fcdd8f32cb6dc9c2ffc977309d5d59ebf2a"
+      },
+      {
+        "path": "sabueso/core/_card_ligand_site_native_v1.py",
+        "sha256": "d160b64df4ffa1aeb24b6b252fad527bfce2044e7868be44a7b4ede7abdc41d9"
+      },
+      {
+        "path": "sabueso/core/_card_ligand_site_scope_v1.py",
+        "sha256": "b387f2d29ec48ac3f55dc5481c2f32d3966c257edcc2138f1333d72f391f7b23"
+      },
+      {
+        "path": "sabueso/core/_card_local_navigation_v1.py",
+        "sha256": "7dd53e72c2ad22591e029be8327eb327b52f93ab26022d5bbc74cdd4f15cec22"
+      },
+      {
+        "path": "sabueso/core/_card_model_scope_v1.py",
+        "sha256": "4df0cc74c9faa8ae65c94e1fbe1e07e94342ad1f3930785069f152926cc211af"
+      },
+      {
+        "path": "sabueso/core/_card_model_scope_v2.py",
+        "sha256": "4aefa99d974ad6840fdf1bb6da417a3ce9a1b34a57dbbea2a097dab83f3a5eb2"
+      },
+      {
+        "path": "sabueso/core/_card_modelcif_input_v1.py",
+        "sha256": "15ec442dc9f95a52cd15f7606c6272b618aa44a0f219165c4c37f76de5a78ee6"
+      },
+      {
+        "path": "sabueso/core/_card_modelcif_reference_v1.py",
+        "sha256": "1a6c1f171042dfb050944a95a69a6302e3b5cccace80a8ec5e3e1ec208137432"
+      },
+      {
+        "path": "sabueso/core/_card_quaternary_explanation_v1.py",
+        "sha256": "009e1846b13b985d156c7592fd6725265150a4795d5131b4dd6eb04547188b59"
+      },
+      {
+        "path": "sabueso/core/_card_quaternary_native_v1.py",
+        "sha256": "f1df02d70fae53e6314192c092e33a1bf976a6f488756d45be18bbdfa3170b22"
+      },
+      {
+        "path": "sabueso/core/_ligand_sites_legacy_v1.py",
+        "sha256": "f4f4983783bdbf090e42951d7924f3d831f3820ccf41d4ffc4b8b5e9d355837e"
+      },
+      {
+        "path": "sabueso/core/_ligand_sites_legacy_v2.py",
+        "sha256": "5d26f9df59510213f0c30d5e52bc874778cf61f2b676c447152986df86e68ca4"
+      },
+      {
+        "path": "sabueso/core/_ligand_sites_legacy_v3.py",
+        "sha256": "dde65977c18cae3433641b3ddc7e8a1cd418d5956349e9d8655ede79d39e7fba"
+      },
+      {
+        "path": "sabueso/core/_oligomer_explanation_legacy_v2.py",
+        "sha256": "e463c0c4466698fd0f065966085436e20feec469137cddf52b1a951b6716686d"
+      },
+      {
+        "path": "sabueso/core/_oligomer_legacy_v2.py",
+        "sha256": "a306c9609f605684c5eebbf9b69be613edd4cf264f59e50ce8128957accdc1ae"
+      },
+      {
+        "path": "sabueso/core/_predicted_structures_legacy_v1.py",
+        "sha256": "a8087780740fe04d70c45b02108796a22c226db5bcd488ddc5d57225930a7f2a"
+      },
+      {
+        "path": "sabueso/core/_source_active_site_selection_v1.py",
+        "sha256": "7318c0fba7c8f658ff55025b212c049abb769a7b1dc4a130cc51c9db44a306ba"
+      },
+      {
+        "path": "sabueso/core/assembly_component_binding_v1.py",
+        "sha256": "98eebb65eb5a19cb7172bffce4ffebbf76877d6deaccb9f5bb3b0a8b95ccf119"
+      },
+      {
+        "path": "sabueso/core/assembly_component_binding_v2.py",
+        "sha256": "7749a62b7bd2c02676f0a67d6ec697271ee8bc1a00c040bcb41577cd2ad09dcf"
+      },
+      {
+        "path": "sabueso/core/assembly_generation_v1.py",
+        "sha256": "9f51fe969790c479f0bee79c17cf130efc7426997f0813d8ce4c446f322a8c2d"
+      },
+      {
+        "path": "sabueso/core/assembly_generation_v2.py",
+        "sha256": "ae99c3cb67039b783ba7a4ccceea2f321073d47e4d38f09acb42b8a99eb658eb"
+      },
+      {
+        "path": "sabueso/core/assembly_generation_v3.py",
+        "sha256": "8a72894bf75e9a2c9f3b5511f21162a987d99c15d5054bced511ed7aa464b286"
+      },
+      {
+        "path": "sabueso/core/assembly_generation_v4.py",
+        "sha256": "c49146bd8a2c5f190f17379b495d848e389103aa6c121afee0362489bbdbbc74"
+      },
+      {
+        "path": "sabueso/core/assembly_generation_v5.py",
+        "sha256": "86a57db75f0d59c2d3bc5cb87202f8379f627e4cd97d0f2c2f92eebe8e023ebe"
+      },
+      {
+        "path": "sabueso/core/assembly_occurrences_v1.py",
+        "sha256": "aeb3ede3e9b4f3acbe1b042b79f9c013f7abae88d9c3f127436c7d5fc2b53861"
+      },
+      {
+        "path": "sabueso/core/assembly_operations_v1.py",
+        "sha256": "61d291d9776a4587386df2d2c75c6ea28e5fdc117b032703f158faa3f79ce365"
+      },
+      {
+        "path": "sabueso/core/assembly_operator_binding_v1.py",
+        "sha256": "e565accbbb417a2e95d5d58416106a19adfdea260edf179f5e9e86f0e9c5f789"
+      },
+      {
+        "path": "sabueso/core/bioactivity_class_v4.py",
+        "sha256": "2610942910695f8a7d8cf1b82299b3925e4c4ab9253a1f62595cee1f56406713"
+      },
+      {
+        "path": "sabueso/core/card_annotation_regions_v1.py",
+        "sha256": "8000f53a2eb35de4ce4b9ebbbf7caca2a4886de26f8906f86687bc678cb84db7"
+      },
+      {
+        "path": "sabueso/core/card_assembly_access_v2.py",
+        "sha256": "cb3439d270ef10d0bc6fa716ea6137615dfa4a7507af721e787ddb499b6f152b"
+      },
+      {
+        "path": "sabueso/core/card_assembly_component_context_v1.py",
+        "sha256": "1725b17489e2cdd2f8a12187437ba67863fe874416058de54f2373264a69d325"
+      },
+      {
+        "path": "sabueso/core/card_assembly_exploration_v2.py",
+        "sha256": "7964322703496b5bbc416af138086f132767f495e8ec7793992d39531cfba734"
+      },
+      {
+        "path": "sabueso/core/card_assembly_history_v1.py",
+        "sha256": "ac45b1d9424b291d8828a02dc8e9c5ecad203ff5014e9b8701bbb160cb1e359b"
+      },
+      {
+        "path": "sabueso/core/card_assembly_history_v2.py",
+        "sha256": "c8e1679b749398aa589289ff54d92137fa9d0c0aa4fc82b13dc223c39fb9881e"
+      },
+      {
+        "path": "sabueso/core/card_assembly_selection_v1.py",
+        "sha256": "64ff99ef700ceac8a31267b1ef6bbd85fcc0f08d895a57f54d01b48e30b0a5a9"
+      },
+      {
+        "path": "sabueso/core/card_context_support_v1.py",
+        "sha256": "30463fc2f1ac95826204120885167f1a2d8600a44b3eb62099117c27f223c8f8"
+      },
+      {
+        "path": "sabueso/core/card_display_filter_v2.py",
+        "sha256": "88194542df1d47101c217400a6f1a9077d7c01c7725a5be98594fe61bac10c5f"
+      },
+      {
+        "path": "sabueso/core/card_explanation_request_binding_v1.py",
+        "sha256": "5d94012459e0827a5263a5d0d897a623b3e7e96be3cbbe79843e3e97563a24d7"
+      },
+      {
+        "path": "sabueso/core/card_explanation_request_binding_v2.py",
+        "sha256": "77d7fb41ac56770fd3e21ddffdac9b637ad5745910a5a7e9479d347f566db7c5"
+      },
+      {
+        "path": "sabueso/core/card_exploration_adapter_v1.py",
+        "sha256": "1fceea655072a14f0d5204374ca79ffba1c4a9fa7f9333cbd03418d05f528544"
+      },
+      {
+        "path": "sabueso/core/card_exploration_assembly.py",
+        "sha256": "a6c0c5b6623e6e6192800e9f9471f707c05b14858b0916e3a09273aafe76adc1"
+      },
+      {
+        "path": "sabueso/core/card_exploration_assembly_v2.py",
+        "sha256": "12ae2c96f68b17a03b7f1bbad2e934980be578a08b833e65b5fc0bc6e9e17c62"
+      },
+      {
+        "path": "sabueso/core/card_exploration_coverage_v1.py",
+        "sha256": "b8735b043509f1f54f8b9402a57725942925fb180e7df2510d8c409c207e78d5"
+      },
+      {
+        "path": "sabueso/core/card_exploration_history.py",
+        "sha256": "fb1e8de9604244e8d3360883ecec7d521ae121d7288c9eab83d1ed1d7c45b3dc"
+      },
+      {
+        "path": "sabueso/core/card_exploration_quaternary.py",
+        "sha256": "2131cc2f2c8ea45b7879bec561718dec35794e673d9a6e406cd86c007bce73bd"
+      },
+      {
+        "path": "sabueso/core/card_exploration_science.py",
+        "sha256": "1532922120554eec6c1b24b60e55d9c19e142c01770433a5f9870efa35390400"
+      },
+      {
+        "path": "sabueso/core/card_exploration_shared_values_v1.py",
+        "sha256": "f6ed7834d2ca55185c0c25f05579e04947c49e3122914f749abd6b9dc0ade72c"
+      },
+      {
+        "path": "sabueso/core/card_exploration_sites.py",
+        "sha256": "70a14ad8e9f9090c6c6be0de23a1a67af5076e665ad896f8b54af302d49f12cf"
+      },
+      {
+        "path": "sabueso/core/card_exploration_storage.py",
+        "sha256": "6df7ffb080d58ccbb94f199a9de73251a76cac0651c17a6ca8172213df6ab8ce"
+      },
+      {
+        "path": "sabueso/core/card_exploration_structure_v1.py",
+        "sha256": "229053ffa397bf5e1bb651ad15833ebcff1a6597a25c70e7a37de13e6009c606"
+      },
+      {
+        "path": "sabueso/core/card_exploration_verification.py",
+        "sha256": "e76d3661e06a99a7d90dbd6a4050367e5934db6f976285578a3b755a8882b094"
+      },
+      {
+        "path": "sabueso/core/card_exploration_verification_v10.py",
+        "sha256": "d1dfc806b41265bee9302daac0cf5310a763a7b6c04b62c17b53120596bc4a42"
+      },
+      {
+        "path": "sabueso/core/card_exploration_verification_v11.py",
+        "sha256": "eebe350c8fde87b9388eb03a10fadf47d5532d9c1d8f75a9b291406b14317917"
+      },
+      {
+        "path": "sabueso/core/card_exploration_verification_v12.py",
+        "sha256": "e4894568460ea1c7d0bdef37c9eeb6624b151bc46cb47f4b2412b7240cb73cd8"
+      },
+      {
+        "path": "sabueso/core/card_exploration_verification_v5.py",
+        "sha256": "16b92743d3d83f73763261c76b5f13cb1b792e644b6ffda00c4e8a746aa77061"
+      },
+      {
+        "path": "sabueso/core/card_exploration_verification_v6.py",
+        "sha256": "185ee2f2ff6465f270b71f27af9bae1957417af74da1be9656e17771d1cdf581"
+      },
+      {
+        "path": "sabueso/core/card_exploration_verification_v7.py",
+        "sha256": "675fb6e1e4a7f01ee6b02f4884c3ca4621148ff66205fe0977c10d44a8b80fbc"
+      },
+      {
+        "path": "sabueso/core/card_exploration_verification_v8.py",
+        "sha256": "fb6ea3cbf23a66e00b03ec6dd47592c529151cbe01e0eed13ad6c30e8cdfe3ed"
+      },
+      {
+        "path": "sabueso/core/card_exploration_verification_v9.py",
+        "sha256": "0a75257795cfbeef8d64e4af27009712b8d23fe24f208afe0fd07ad924fe5f06"
+      },
+      {
+        "path": "sabueso/core/card_ligand_instance_navigation_v1.py",
+        "sha256": "22559907067a2978c995cee6689ecd8dd1038be049d9ee3dd07c7b15b7964851"
+      },
+      {
+        "path": "sabueso/core/card_ligand_instances_v1.py",
+        "sha256": "f978d6727db907f37d92f2ee35626bd34c2437bd01566d5e65f1b60e27ec1c0e"
+      },
+      {
+        "path": "sabueso/core/card_ligand_reading_v1.py",
+        "sha256": "24769e184bbb9ae847a2355d1930b118de32fecb98dbef4e8a6b290bd38bcda4"
+      },
+      {
+        "path": "sabueso/core/card_ligand_site_history_v1.py",
+        "sha256": "5e9a632c85290da61473b8877fe23f961a0b1d229113bcdb28b967e5eba5b966"
+      },
+      {
+        "path": "sabueso/core/card_ligand_site_selection_v1.py",
+        "sha256": "687c7fa9540a1d946338ff9bee71830915e8969719bb93f4b9c24821d148ec0e"
+      },
+      {
+        "path": "sabueso/core/card_model_fragment_regions_v1.py",
+        "sha256": "54882911ad4d2944d67b74cd2e544e4799c530473ce88390618e98dab3ac3022"
+      },
+      {
+        "path": "sabueso/core/card_model_fragment_regions_v2.py",
+        "sha256": "c7f5ecd942e4cb713c0debc2fd7f5229290a16c729625acdb2630e19c5d79b1b"
+      },
+      {
+        "path": "sabueso/core/card_model_regions_v1.py",
+        "sha256": "4eb8bce08414a8ab3650312f29c15f944a74059bc2796d4c4d4ba8288a582041"
+      },
+      {
+        "path": "sabueso/core/card_model_regions_v2.py",
+        "sha256": "854259b2c075e87726ef173ce464f5ea6495feaae50151dcd4d24f21bd084109"
+      },
+      {
+        "path": "sabueso/core/card_modelcif_regions_v1.py",
+        "sha256": "eabc2559432f039c4b27e4b36dd7241c6c77c6ae35f8af54b9c1fafdb3c72722"
+      },
+      {
+        "path": "sabueso/core/card_navigation_preview_v1.py",
+        "sha256": "932fc50246f8f58b9574231e8a5cbcaa5aee3c2165236c09ea6b4788da71984e"
+      },
+      {
+        "path": "sabueso/core/card_protein_source_v1.py",
+        "sha256": "cadcd55b72a55f21c4c73411047aa581c3875aa3174e040307dc5285d3853877"
+      },
+      {
+        "path": "sabueso/core/card_quaternary_history_v1.py",
+        "sha256": "f6a06eedd4063e5ba1f52bfc09607b6a728d0c3fcb22d5fa88aa582339d7b1c9"
+      },
+      {
+        "path": "sabueso/core/card_quaternary_selection_v1.py",
+        "sha256": "df96f743a78da97371f314103f5023315d41fb867de5b3d90169ac95109ee6db"
+      },
+      {
+        "path": "sabueso/core/card_quaternary_source_v1.py",
+        "sha256": "018a6e135260e5d17d9a9ba4baa3952b1198330de53c6248993b09dfa0fba255"
+      },
+      {
+        "path": "sabueso/core/card_structure_context_v1.py",
+        "sha256": "43051280b0ab7ad4572f153e56ce7b13b7bd110780a847b9d25f222fc56e56f1"
+      },
+      {
+        "path": "sabueso/core/card_structure_context_v2.py",
+        "sha256": "df2d2106a16efc5deb203bd0f4edc6b5ab8a8114aaeb0c524726f848b5aeab0a"
+      },
+      {
+        "path": "sabueso/core/card_structure_context_v3.py",
+        "sha256": "ac79a1ccf9d011a00525879c48e273812807f4b8395d730e8b4e548146d380c1"
+      },
+      {
+        "path": "sabueso/core/card_structure_history_v2.py",
+        "sha256": "b0a3a381a899fca79f95f8663391becab92378ff3b0d8a3081f91c5c91d8364b"
+      },
+      {
+        "path": "sabueso/core/card_structure_history_v3.py",
+        "sha256": "354d4ae5dd3882789fb7c5b0726343c1175653a96ae4dbbbfa4d30f513c03243"
+      },
+      {
+        "path": "sabueso/core/card_structure_history_v4.py",
+        "sha256": "273aec0a3ba0e569b64608f02dd49287328521fb24fd0dfc9788017d4171e810"
+      },
+      {
+        "path": "sabueso/core/card_structure_reading_v1.py",
+        "sha256": "d9d85cd83470ab0f4fc2ed84893fc46de1473b643d6b922fd17c113409bde183"
+      },
+      {
+        "path": "sabueso/core/card_structure_selection_v1.py",
+        "sha256": "68732d1b39f772967d3592502a5bd9261cd92ec16da90d114ca86d8e2b30fae0"
+      },
+      {
+        "path": "sabueso/core/experimental_coordinates_v1.py",
+        "sha256": "351164a15dd5440eaaefbb485b0582d563e63e56c0b9e4db079c6734dcea4f49"
+      },
+      {
+        "path": "sabueso/core/experimental_projection_v1.py",
+        "sha256": "01911960cf3a97804b19a9c4b5fdf291faeb28c3ce749d755e37008d1fb5297d"
+      },
+      {
+        "path": "sabueso/core/experimental_structure_admission_v1.py",
+        "sha256": "b5006f4b90fb6d274b86554bf65afe607534dd32e46c289a9f7df53c173e1c14"
+      },
+      {
+        "path": "sabueso/core/structure_explanation_scope_v2.py",
+        "sha256": "dca7071ce0ebc31dd2bb7775c2e48aa432f748371cbad0ab56dd4d3f01c090b6"
+      },
+      {
+        "path": "sabueso/core/structure_explanation_scope_v3.py",
+        "sha256": "d5340b13f662cdcbdb509ce53dce1b063e669909aabfb63e168ceb371c1ea760"
+      },
+      {
+        "path": "sabueso/core/structure_explanation_scope_v4.py",
+        "sha256": "373261854abb99ede91ec293caa2364cf12ca16d791d1c347b28431339e8b784"
+      }
+    ]
+  },
+  "selected_gates": [
+    "chemical-profile-final",
+    "navigation-final",
+    "structural-historical",
+    "ruff-format-final",
+    "ruff-check",
+    "card-shape",
+    "source-registry",
+    "fixture-delivery",
+    "schema",
+    "governance",
+    "sphinx",
+    "metadata-delivery",
+    "public-walkthrough-final"
+  ],
+  "recorded_runs": {
+    "card-shape": {
+      "owner": "uibcdf/sabueso#148/#173/#112",
+      "review_trigger": "chemical profile integration / B5",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "tools/card_shape.py"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 6.03,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 167821312,
+      "minimum_host_available_bytes": 8532094976,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "chemical-copied-final": {
+      "owner": "uibcdf/sabueso#148/#173/#112",
+      "review_trigger": "chemical profile integration / B5",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-m",
+        "pytest",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "tests/core/test_card_chemical_exploration_offline.py",
+        "tests/core/test_chemical_classification_offline.py",
+        "tests/tools/test_installed_receiving_scope_offline.py::test_declared_chemical_exploration_runs_with_only_original_public_capsule",
+        "tests/core/test_card_access_offline.py",
+        "tests/core/test_card_nature_exploration_offline.py"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 16.36,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 312082432,
+      "minimum_host_available_bytes": 6666137600,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "chemical-exploration": {
+      "owner": "uibcdf/sabueso#148/#173/#112",
+      "review_trigger": "chemical profile integration / B5",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-m",
+        "pytest",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "tests/core/test_card_chemical_exploration_offline.py",
+        "tests/core/test_chemical_classification_offline.py"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 1,
+      "elapsed_s": 4.02,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 130916352,
+      "minimum_host_available_bytes": 8505626624,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "chemical-focused-2": {
+      "owner": "uibcdf/sabueso#148/#173/#112",
+      "review_trigger": "chemical profile integration / B5",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-m",
+        "pytest",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "tests/core/test_card_chemical_exploration_offline.py"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 1,
+      "elapsed_s": 3.77,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 133996544,
+      "minimum_host_available_bytes": 8551272448,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "chemical-focused-3": {
+      "owner": "uibcdf/sabueso#148/#173/#112",
+      "review_trigger": "chemical profile integration / B5",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-m",
+        "pytest",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "tests/core/test_card_chemical_exploration_offline.py",
+        "tests/core/test_chemical_classification_offline.py"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 4.02,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 123355136,
+      "minimum_host_available_bytes": 8116748288,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "chemical-profile-final": {
+      "owner": "uibcdf/sabueso#148/#173/#112",
+      "review_trigger": "chemical profile integration / B5",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-m",
+        "pytest",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "tests/core/test_card_chemical_exploration_offline.py",
+        "tests/core/test_chemical_classification_offline.py",
+        "tests/tools/test_installed_receiving_scope_offline.py::test_declared_chemical_exploration_runs_with_only_original_public_capsule"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 11.57,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 311119872,
+      "minimum_host_available_bytes": 6930685952,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "fixture-delivery": {
+      "owner": "uibcdf/sabueso#148/#173/#112",
+      "review_trigger": "chemical profile integration / B5",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "tools/fixture_delivery.py",
+        "--check"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 0.5,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 25567232,
+      "minimum_host_available_bytes": 8608460800,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "genuine-producer": {
+      "owner": "uibcdf/sabueso#148/#173/#112",
+      "review_trigger": "chemical profile integration / B5",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "recovered_work/chemical_profile_20261106/capture_original.py"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 2.51,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 89391104,
+      "minimum_host_available_bytes": 8641126400,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "governance": {
+      "owner": "uibcdf/sabueso#148/#173/#112",
+      "review_trigger": "chemical profile integration / B5",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "devtools/moli_governance.py"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 0.25,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 950272,
+      "minimum_host_available_bytes": 8655855616,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "metadata-delivery": {
+      "owner": "uibcdf/sabueso#148/#173/#112",
+      "review_trigger": "chemical profile integration / B5",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-m",
+        "pytest",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "tests/core/test_fixture_delivery_offline.py",
+        "tests/core/test_fixture_licensing_offline.py",
+        "tests/core/test_source_registry_offline.py",
+        "tests/core/test_package_data_offline.py"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 6.54,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 111579136,
+      "minimum_host_available_bytes": 8456634368,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "navigation-final": {
+      "owner": "uibcdf/sabueso#148/#173/#112",
+      "review_trigger": "chemical profile integration / B5",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-m",
+        "pytest",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "tests/core/test_card_nature_exploration_offline.py",
+        "tests/core/test_card_exploration_offline.py",
+        "tests/core/test_card_access_offline.py",
+        "tests/core/test_card_context_navigation_offline.py",
+        "tests/core/test_card_agent_selection_offline.py",
+        "tests/core/test_argument_contracts_offline.py",
+        "tests/core/test_quantity_checks_offline.py",
+        "tests/core/test_card_saved_exploration_offline.py",
+        "tests/core/test_card_human_labels_offline.py",
+        "tests/core/test_card_quaternary_interpretation_offline.py",
+        "tests/core/test_card_retained_filter_offline.py"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 297.71,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 323981312,
+      "minimum_host_available_bytes": 6881738752,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 23038178,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "navigation-neighbors-2": {
+      "owner": "uibcdf/sabueso#148/#173/#112",
+      "review_trigger": "chemical profile integration / B5",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-m",
+        "pytest",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "tests/core/test_card_nature_exploration_offline.py",
+        "tests/core/test_card_exploration_offline.py",
+        "tests/core/test_card_access_offline.py",
+        "tests/core/test_card_context_navigation_offline.py",
+        "tests/core/test_card_agent_selection_offline.py",
+        "tests/core/test_argument_contracts_offline.py",
+        "tests/core/test_quantity_checks_offline.py",
+        "tests/core/test_card_saved_exploration_offline.py",
+        "tests/core/test_card_human_labels_offline.py",
+        "tests/core/test_card_quaternary_interpretation_offline.py",
+        "tests/core/test_card_retained_filter_offline.py"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 1,
+      "elapsed_s": 306.01,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 366358528,
+      "minimum_host_available_bytes": 8018440192,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 17977610,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "navigation-neighbors": {
+      "owner": "uibcdf/sabueso#148/#173/#112",
+      "review_trigger": "chemical profile integration / B5",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-m",
+        "pytest",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "tests/core/test_card_nature_exploration_offline.py",
+        "tests/core/test_card_human_exploration_offline.py",
+        "tests/core/test_card_access_offline.py",
+        "tests/core/test_card_context_navigation_offline.py",
+        "tests/core/test_card_agent_selection_offline.py",
+        "tests/core/test_argument_contracts_offline.py",
+        "tests/core/test_quantity_checks_offline.py",
+        "tests/core/test_card_saved_exploration_offline.py",
+        "tests/core/test_card_human_labels_offline.py",
+        "tests/core/test_card_quaternary_interpretation_offline.py",
+        "tests/core/test_card_retained_filter_offline.py"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 4,
+      "elapsed_s": 0.76,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 53428224,
+      "minimum_host_available_bytes": 8813154304,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "public-walkthrough-final": {
+      "owner": "uibcdf/sabueso#148/#173/#112",
+      "review_trigger": "chemical profile integration / B5",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "recovered_work/chemical_profile_20261106/walkthrough.py"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 0.75,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 77787136,
+      "minimum_host_available_bytes": 8687177728,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "public-walkthrough": {
+      "owner": "uibcdf/sabueso#148/#173/#112",
+      "review_trigger": "chemical profile integration / B5",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "recovered_work/chemical_profile_20261106/walkthrough.py"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 0.75,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 77651968,
+      "minimum_host_available_bytes": 8466976768,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "ruff-check": {
+      "owner": "uibcdf/sabueso#148/#173/#112",
+      "review_trigger": "chemical profile integration / B5",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/home/liliana/Myopt/miniconda3/pkgs/ruff-0.16.5-hdfdb5ae_0/python-scripts/ruff",
+        "check",
+        "."
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 0.25,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 1085440,
+      "minimum_host_available_bytes": 8772345856,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "ruff-format-final": {
+      "owner": "uibcdf/sabueso#148/#173/#112",
+      "review_trigger": "chemical profile integration / B5",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/home/liliana/Myopt/miniconda3/pkgs/ruff-0.16.5-hdfdb5ae_0/python-scripts/ruff",
+        "format",
+        "--check",
+        "."
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 0.25,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 1101824,
+      "minimum_host_available_bytes": 8780427264,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "ruff-format": {
+      "owner": "uibcdf/sabueso#148/#173/#112",
+      "review_trigger": "chemical profile integration / B5",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/home/liliana/Myopt/miniconda3/pkgs/ruff-0.16.5-hdfdb5ae_0/python-scripts/ruff",
+        "format",
+        "--check",
+        "."
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 1,
+      "elapsed_s": 0.25,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 991232,
+      "minimum_host_available_bytes": 8703188992,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "schema": {
+      "owner": "uibcdf/sabueso#148/#173/#112",
+      "review_trigger": "chemical profile integration / B5",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "tools/validate_schema.py"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 0.5,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 32411648,
+      "minimum_host_available_bytes": 8758099968,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "source-registry": {
+      "owner": "uibcdf/sabueso#148/#173/#112",
+      "review_trigger": "chemical profile integration / B5",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "tools/source_registry.py",
+        "--check"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 1.51,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 47702016,
+      "minimum_host_available_bytes": 8583241728,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "sphinx": {
+      "owner": "uibcdf/sabueso#148/#173/#112",
+      "review_trigger": "chemical profile integration / B5",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-m",
+        "sphinx",
+        "-W",
+        "--keep-going",
+        "-b",
+        "html",
+        "docs",
+        "recovered_work/chemical_profile_20261106/docs"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 26.9,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 276709376,
+      "minimum_host_available_bytes": 8405688320,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "structural-historical": {
+      "owner": "uibcdf/sabueso#148/#173/#112",
+      "review_trigger": "chemical profile integration / B5",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-m",
+        "pytest",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "tests/core/test_card_saved_science_offline.py",
+        "tests/core/test_card_saved_quaternary_offline.py",
+        "tests/core/test_card_saved_sites_offline.py"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 271.16,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 437481472,
+      "minimum_host_available_bytes": 7214542848,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 64324413,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    }
+  },
+  "public_walkthrough": {
+    "owner": "#148/#112",
+    "review_trigger": "B5 saved profile and independent researcher/scientific acceptance",
+    "sdk": "0.14.0+192.gd54b39a",
+    "source_scope": "Working-tree observation before committed receiving, based on d54b39a",
+    "new_source_queries": 0,
+    "acceptance": "technical walkthrough only; no independent researcher/scientific/latency acceptance",
+    "cases": [
+      {
+        "case": "pga",
+        "card_pin": "sabueso:small_molecule:inchikey:ASCFNMCAHFUBCO-UHFFFAOYSA-N@sha256:bdecf451112f02f0cf89a6ec79ee1308ee49453f577fc368fe396f7b662a3c72",
+        "topic_labels": [
+          "Chemical classes and source-stated roles"
+        ],
+        "native_sha256": "237ca11cfe359407abd74d023dcfe0840e8ac5ffc68b17c3fc43f366d729cc0f",
+        "native_rows": 4,
+        "direct_roles": 2,
+        "application_selected": 0,
+        "agent_page_encoded_bytes": 1304,
+        "text_bytes": 1580,
+        "html_bytes": 1986,
+        "durations_s": {
+          "capture_opening": 0.005413964856415987,
+          "classification_and_render": 0.027588099939748645,
+          "selected_source_back_journey": 0.013484021183103323,
+          "targeted_agent": 0.001092962920665741
+        },
+        "card_unchanged": true,
+        "original_native_equal": true,
+        "human_save": false,
+        "agent_save": false
+      },
+      {
+        "case": "vincristine",
+        "card_pin": "sabueso:small_molecule:inchikey:OGWKCGZFUXNPDA-XQKSVPLYSA-N@sha256:623b6978f28ab430cf9534634fe9110b7c36b5e8ca88fa09d8788b08dc4a3c08",
+        "topic_labels": [
+          "Chemical classes and source-stated roles"
+        ],
+        "native_sha256": "2a1b9c74ee57d525551484785fc5c3496cd698066391a2fd85664526b406fa07",
+        "native_rows": 15,
+        "direct_roles": 5,
+        "application_selected": 2,
+        "agent_page_encoded_bytes": 8426,
+        "text_bytes": 2187,
+        "html_bytes": 2839,
+        "durations_s": {
+          "capture_opening": 0.0017360749188810587,
+          "classification_and_render": 0.004403890110552311,
+          "selected_source_back_journey": 0.012663709931075573,
+          "targeted_agent": 0.0022141849622130394
+        },
+        "card_unchanged": true,
+        "original_native_equal": true,
+        "human_save": false,
+        "agent_save": false
+      }
+    ]
+  },
+  "experience_review": {
+    "observed": "Public drug-oriented and biochemical molecule journeys share exact native rows, typed category selection, original source/identity/field destinations and return navigation. Opening names the molecule and scientific question, with concise support states.",
+    "remaining_awkwardness": "Chemical profile saving is explicitly unavailable; alternatives/conflicts currently use original field/native inspection rather than a dedicated comparison presentation. No independent researcher feedback or accepted workload budget.",
+    "next": "Capture genuine clean live adapter producer; independently version/verify original chemical saving with mixed sessions and immutable older readers, then scientific/researcher and representative-workload acceptance."
+  },
+  "remaining": [
+    "Independent original chemical-profile saved reading and installed/historical/mixed qualification",
+    "Molecule activity/clinical, disease and all other broad B3/B4/B5/B6/B7 acceptance requirements",
+    "B2 scientist review explicitly maintainer-deferred; B3 scope/acceptance open",
+    "Exact-source hosted qualification and eventual staged candidate gates; release remains unauthorized"
+  ],
+  "authorization": "No0.15.0 release, tag, schema freeze, staging, package or measurement-default adoption. Pending issue166/148 reports remain internal without an alternate public route.",
+  "goal_status": "active; concrete progress, not completion or a blocked goal"
+}

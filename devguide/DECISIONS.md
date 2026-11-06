@@ -1,5 +1,18 @@
 # Sabueso — Decision Log
 
+## 2026-11-06 — Share original chemical classification across human and agent access
+
+The small-molecule `classification` topic/question and machine
+`chemical_classification` selection share one captured native v1 result. Freeze
+the original interpretation independently of current identity mappings; preserve
+disease terminology, exact original member positions, typed role flags and
+whole-field support grain. No class/role implies target activity or therapeutic
+effect. Live original source/field/identity routes and return trails are delivered;
+chemical-profile saving is explicitly unavailable until independent original saved
+reading exists. Earlier stored readers/semantics remain unchanged; this is partial
+B5 implementation, not panel/researcher acceptance or release authority. See
+[the maintained contract](pending_proposals/chemical_classification_exploration.md).
+
 ## 2026-11-06 — Separate selected values from source records; prepare chemical context
 
 Field construction owns a detached value and support list. Explicit mutable Card

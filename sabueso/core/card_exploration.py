@@ -151,6 +151,8 @@ class CardItem:
 
     @property
     def kind(self):
+        if self._view._record_panel == "chemical_classification":
+            return self._entry.value["kind"]
         if self._view._record_panel == "assembly_generation":
             return self._entry.value["kind"]
         if self._view._record_panel == "quaternary_interpretation":
@@ -259,6 +261,10 @@ class CardItem:
 
     @property
     def support(self):
+        if self._view._record_panel == "chemical_classification":
+            from .card_chemical_exploration import support
+
+            return support(self)
         if self._view._record_panel == "assembly_generation":
             from .card_assembly_dispatch import presentation
 
@@ -542,6 +548,7 @@ class CardItem:
                 return self._view._explorer._answer(self._entry.key, {}, self._view)
             return self._view._explorer._topic(self._entry.key, self._view)
         if self._view._record_panel in (
+            "chemical_classification",
             "ligand_site_comparisons",
             "quaternary_interpretation",
             "assembly_generation",
@@ -556,6 +563,8 @@ class CardItem:
                 if self._view._record_panel == "assembly_generation"
                 else f"Quaternary finding · {self.label}"
                 if self._view._record_panel == "quaternary_interpretation"
+                else f"Chemical class or role · {self.label}"
+                if self._view._record_panel == "chemical_classification"
                 else f"Ligand contact comparison · {self.label}",
                 presentation="detail",
             )
@@ -606,6 +615,10 @@ class CardItem:
         return result
 
     def _live_explain(self):
+        if self._view._record_panel == "chemical_classification":
+            from .card_chemical_exploration import explain
+
+            return explain(self)
         if self._view._record_panel == "assembly_generation":
             from .card_assembly_dispatch import presentation
 
@@ -960,6 +973,7 @@ class CardView:
                 filter=self.schema["columns"], sort=self.schema["columns"]
             )
             capabilities["scientific_adapter"] = self._record_panel in (
+                "chemical_classification",
                 "coverage",
                 "ligand_site_comparisons",
                 "quaternary_interpretation",
@@ -991,6 +1005,15 @@ class CardView:
     def schema(self):
         if self._saved_state is not None:
             return deepcopy(self._saved_state["schema"])
+        if self._record_panel == "chemical_classification":
+            from .card_chemical_selection_v1 import COLUMNS
+
+            return {
+                "kind": "chemical_classification",
+                "grain": "one retained original field-member position, including duplicates",
+                "columns": list(COLUMNS),
+                "presentations": ["summary", "table", "detail"],
+            }
         if self._record_panel == "assembly_generation":
             from .card_assembly_selection_v1 import COLUMNS
 
@@ -1221,6 +1244,10 @@ class CardView:
     def filter(self, column, *, equals, skip_digestion=False):
         """Select exact declared cells without changing the scientific result."""
         self._check_column(column)
+        if self._record_panel == "chemical_classification":
+            from .card_chemical_exploration import display_filter
+
+            return display_filter(self, column, equals)
         from .card_display_filter_v2 import RULE, legacy_verification
 
         legacy = legacy_verification()
@@ -1558,11 +1585,18 @@ class CardExplorer:
                 "Original stored quality records; source knowledge coverage is not evaluated.",
             )
             if key == "coverage" and not self._nature_topics
+            else (
+                "Chemical classes and source-stated roles",
+                "Retained classes, direct/inherited roles and original source support; no therapeutic inference.",
+            )
+            if key == "classification" and self.profile == "small_molecule"
             else _TOPICS[key]
             for key in keys
         }
 
     def _topic_label(self, topic):
+        if topic == "classification" and self.profile == "small_molecule":
+            return self._topics[topic][0]
         return (
             "Coverage and quality records"
             if topic == "coverage" and not self._nature_topics
@@ -1692,6 +1726,10 @@ class CardExplorer:
         if topic == "classification":
             if options not in (None, {}):
                 raise ArgumentError("classification has no scientific options.")
+            if self.profile == "small_molecule":
+                from .card_chemical_exploration import view
+
+                return view(self, origin)
             return self._classification(origin)
         if topic == "coverage" and self._nature_topics:
             if options not in (None, {}):

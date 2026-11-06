@@ -294,6 +294,10 @@ def _link_view(
 
 
 def related(item):
+    if item._view._record_panel == "chemical_classification":
+        from .card_chemical_exploration import links
+
+        return links(item)
     if item._view._record_panel == "assembly_generation":
         from .card_assembly_dispatch import presentation
 

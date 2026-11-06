@@ -66,7 +66,7 @@ NATURE_TOPICS = {
         "quaternary_interpretation",
         "assembly_generation",
     ),
-    "small_molecule": ("chemistry", "properties"),
+    "small_molecule": ("chemistry", "properties", "classification"),
     "disease": ("definition", "classification", "identity"),
 }
 
@@ -87,6 +87,11 @@ QUESTIONS = {
             "What properties are retained, and on what source basis?",
             "properties",
             "Stored values, units, source methods and original alternatives.",
+        ),
+        "classification": _question(
+            "Which chemical classes and source-stated roles are retained?",
+            "classification",
+            "Original chemical classes, direct/inherited roles and exact source support; no target activity or therapeutic inference.",
         ),
     },
     "disease": {
@@ -212,6 +217,15 @@ def field_entries(explorer, topic):
 
 
 RECORD_COLUMNS = {
+    "chemical_classification": (
+        "term_ref",
+        "assignment",
+        "state",
+        "reason",
+        "biological_role",
+        "chemical_role",
+        "application",
+    ),
     "assembly_generation": (
         "structure_ref",
         "assembly_id",
@@ -244,6 +258,7 @@ RECORD_COLUMNS = {
 
 def record_label(panel, row):
     if panel in (
+        "chemical_classification",
         "ligand_site_comparisons",
         "quaternary_interpretation",
         "assembly_generation",

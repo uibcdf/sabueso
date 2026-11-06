@@ -93,6 +93,8 @@ def test_complete_literal_reconstruction(nature):
             "assembly_generation",
         ]
         if nature == "protein"
+        else ["chemical_classification"]
+        if nature == "small_molecule"
         else []
     )
 

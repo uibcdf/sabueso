@@ -398,6 +398,8 @@ class CardAccess:
                 "assembly_generation",
             ]
             if self.profile == "protein"
+            else ["chemical_classification"]
+            if self.profile == "small_molecule"
             else []
         )
         retained = {
@@ -664,6 +666,10 @@ class CardAccess:
                     "description": "Complete stored Card content; scientific topics have separate descriptors.",
                 }
             }
+            if self.profile == "small_molecule" and self.mode == "live":
+                from .card_chemical_access import descriptor as chemical_descriptor
+
+                data["chemical_classification"] = chemical_descriptor()
             if self.profile == "protein":
                 if self.mode == "live":
                     from .card_scientific_access import descriptor
@@ -817,11 +823,29 @@ class CardAccess:
             "ligand_site_comparisons",
             "quaternary_interpretation",
             "assembly_generation",
+            "chemical_classification",
         ):
             raise ArgumentError(
-                "Scientific selection supports structures, ligand_site_comparisons, quaternary_interpretation and assembly_generation."
+                "Scientific selection supports structures, ligand_site_comparisons, quaternary_interpretation, assembly_generation and chemical_classification."
             )
-        if topic == "assembly_generation":
+        if topic == "chemical_classification":
+            if self.mode == "saved":
+                raise ArgumentError(
+                    "Chemical classification selection was not retained in this saved exploration; start a new live exploration explicitly."
+                )
+            from .card_chemical_access import materialize, options_for_chemical
+            from .card_chemical_selection_v1 import (
+                active,
+                evaluate,
+                normalize,
+                projection,
+                selection_ref,
+            )
+
+            options, fields = options_for_chemical(options), projection(fields)
+            query = normalize(where, item_refs, order_by)
+            result = materialize(self)
+        elif topic == "assembly_generation":
             if self.mode == "saved":
                 from .card_assembly_dispatch import saved_selection
 
@@ -1018,6 +1042,7 @@ class CardAccess:
                 "quaternary_exploration@1",
                 "assembly_generation_exploration@1",
                 "assembly_generation_exploration@2",
+                "chemical_classification_exploration@1",
             ):
                 return selection._scientific.frame(self, selection, entry)
             from .card_structure_page import complete_frame
@@ -1062,6 +1087,10 @@ class CardAccess:
         return frame
 
     def _defer(self, item):
+        if item.get("adapter") == "chemical_classification_exploration@1":
+            from .card_chemical_access import defer_frame
+
+            return defer_frame(item)
         if item.get("adapter") in (
             "assembly_generation_exploration@1",
             "assembly_generation_exploration@2",

@@ -695,7 +695,12 @@ def _parts(view):
             )
     if view.request is not None:
         request = view.request
-        opening.append(f"Question: {request['question']}")
+        question_label = (
+            view._explorer._questions[request["question"]]["label"]
+            if view._record_panel == "chemical_classification"
+            else request["question"]
+        )
+        opening.append(f"Question: {question_label}")
         if request["question"] == "region_coverage":
             original = view
             for original in _presentation_ancestors(view, include_details=True):
@@ -756,6 +761,10 @@ def _parts(view):
             "Open an item for its complete original context; explain() shows the basis and related() opens input/source destinations. Save this exploration to preserve its original findings, requests and navigation."
         )
         opening.extend(detail_lines(view, preview))
+    if view._record_panel == "chemical_classification":
+        from .card_chemical_exploration import opening as chemical_opening
+
+        opening.extend(chemical_opening(view, preview))
     if view._record_panel == "quaternary_interpretation":
         if view._explorer.mode == "saved":
             from .card_quaternary_history_v1 import SCOPE
@@ -982,6 +991,10 @@ def _parts(view):
                 from .card_assembly_dispatch import presentation
 
                 display_row = presentation(view).display_row
+
+                record_row = display_row(item, index, preview)
+            if view._record_panel == "chemical_classification":
+                from .card_chemical_exploration import display_row
 
                 record_row = display_row(item, index, preview)
             if view._record_panel == "quaternary_interpretation":
@@ -1214,6 +1227,10 @@ def _parts(view):
 
 
 def _headers(view):
+    if view._record_panel == "chemical_classification":
+        from .card_chemical_exploration import HEADERS
+
+        return list(HEADERS)
     if view._record_panel == "coverage":
         return [
             "Index",

@@ -1,5 +1,15 @@
 # Sabueso — Public API
 
+Development small-molecule `Card.explore().answer("classification")` (also
+`view("classification")`) presents source-bound chemical classes and roles,
+direct/inherited/unknown assignments, original support and back navigation.
+The same capture supports `explorer.access.select("chemical_classification")`
+with typed boolean/null category filters, projection, exact members, ordering
+and bounded pages. It does not infer target activity or therapeutic effect.
+Chemical-profile saving remains unavailable pending independent original reading;
+raw Card export and earlier original saved sessions remain supported.
+See [the contract and walkthrough](pending_proposals/chemical_classification_exploration.md).
+
 Development generic `CardItem.related()` with multiple distinct source references
 uses [shared complete support](pending_proposals/shared_link_support.md): every
 source destination stays present, while a `retained_link_support@1` membership

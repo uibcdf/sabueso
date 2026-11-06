@@ -1,8 +1,9 @@
 # Sabueso — Developer Guide
 
 Current B5 work: [chemical classification](pending_proposals/chemical_classification_exploration.md)
-now has a source-bound native reader and a field/source ownership correction.
-The rich classification panel and independent acceptance remain required.
+now has a shared source-bound native/human/compact-agent reading, original
+source/open/back navigation and typed class/role selection. Independent original
+chemical-profile saved reading and scientific/researcher acceptance remain required.
 B2 review stays deferred, B3 remains open and 0.15.0 publication is not authorized.
 
 The [regional source orientation](pending_proposals/card_region_orientation.md)

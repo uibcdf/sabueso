@@ -119,6 +119,17 @@ video projects to this release.
 
 ## Starting state and first actions
 
+Current B5 continuation: the [chemical classification profile](pending_proposals/chemical_classification_exploration.md)
+now shares a captured source-bound native result between readable molecule
+classes/roles and compact typed agent selection. Original sources, exact member
+positions, direct/inherited/unknown basis and back navigation remain explicit.
+Genuine SDK192 native bytes and original retained molecule catalogues are preserved.
+Independent original chemical-profile saved reading remains the next required
+implementation; live save refuses explicitly. This does not close B5, substitute
+for researcher/scientific acceptance, adopt B2 defaults or resume release
+consolidation. Continue the entire broad design and remaining B3/B4/B6/B7 work.
+
+
 Current source receiving: the
 [AlphaFold API-scope correction](pending_bugs/alphafold_prediction_api_scope.md)
 keeps queried-route absence explicit in diagnostics, new Card/acquisition data and

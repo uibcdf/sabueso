@@ -393,8 +393,8 @@ def test_coverage_source_states_and_unknown_counts_are_not_reclassified(
         ),
         (
             "small_molecule",
-            {"chemistry", "properties"},
-            {"chemical_identity", "property_context"},
+            {"chemistry", "properties", "classification"},
+            {"chemical_identity", "property_context", "classification"},
         ),
         (
             "disease",
