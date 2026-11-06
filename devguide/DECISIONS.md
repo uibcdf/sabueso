@@ -1,5 +1,24 @@
 # Sabueso — Decision Log
 
+## 2026-11-06 — Filter retained cells without changing scientific availability (#191)
+
+Use `retained_cell_filter@2` for exact display equality over readable retained
+rows whose scientific result is unavailable. Preserve the underlying status,
+reason, native result, original support and quantities, including on zero matches.
+Refuse unavailable projections explicitly when no readable rows or supported
+assembly adapter exist. Keep ordinary filtering and machine scientific selection
+unchanged.
+
+Record new operations in an explicit exploration envelope @14 with
+`retained_cell_filter_binding@1`. Its payload retains its original semantic and
+shared-storage representation; a payload containing new display semantics is not
+a standalone old-format file. Verify genuine old operations under their original
+display policy, including recorded no-op membership. Never infer lost caller
+intent, regenerate the clean SDK187 capsule, modify frozen scientific verifiers
+@1–@12 or revise shared codec @13. This is not a Card schema or scientific-rule
+change. See [the contract and receiving scope](pending_bugs/retained_display_filter.md).
+B3 scientific/human acceptance and broader workload qualification remain open.
+
 ## 2026-11-05 — Separate native original-reference findings (#148)
 
 New native enrichments retain `alphafold_modelcif_reference_context@1` in a

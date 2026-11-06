@@ -85,8 +85,9 @@ save remains a different passing workload.
 
 The [regional orientation](card_region_orientation.md) shows original declared
 spans separately from unverified coordinates. All64 inventory rows remain unknown
-for coordinate completeness. The separate [filter no-op #191](https://github.com/uibcdf/sabueso/issues/191)
-must be corrected before accepting the full human journey.
+for coordinate completeness. The [versioned #191 correction](../pending_bugs/retained_display_filter.md)
+now selects retained cells without promoting that scientific status; its original
+membership and exact-source receiving remain separate acceptance gates.
 
 Exact-source hosted qualification, independent scientific/researcher and broader
 workload acceptance remain separate. B3 is open, B2 scientific review remains

@@ -1,5 +1,16 @@
 # Sabueso — Tests and Quality Gates
 
+Retained filtering uses `test_card_retained_filter_offline.py`: live/saved exact
+and quantity equality, no-match/chained selections with scientific uncertainty,
+duplicate labels, explicit unavailable-view refusal, genuine SDK187 no-op reading,
+new outer @14 and shared @13 payloads, inert resave, context reset and freshly
+rehashed policy/membership/status substitutions. Both installed routes copy/select
+the module and original capsule; the dedicated isolated payload gate runs without
+checkout fixtures. Run affected human/nature/navigation, saved scientific/native/
+assembly, agent, argument, quantity, shared-value and transport checks. Keep every
+original verifier and shared codec @13 unchanged; the complete public 64-item
+filtered save/read/resave remains a separate bounded workload.
+
 Regional source orientation uses `test_card_region_orientation_offline.py`:
 exact compact requests, literal original declared spans, null/empty/conflicting/
 malformed and bounded escaped previews, positive original coordinates, unchanged

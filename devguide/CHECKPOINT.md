@@ -3,10 +3,12 @@
 The [regional source orientation](pending_proposals/card_region_orientation.md)
 now separates original declared spans from admitted coordinate results and displays
 compact exact requests. The public original SDK185 session preserves all64 rows
-and exact Card/wire/agent data under inert reading. A separate reproduced
-[display-filter no-op #191](https://github.com/uibcdf/sabueso/issues/191) blocks
-acceptance of the full human journey; correcting it with original-history
-compatibility is the next bounded B3 task. Broader receiving remains separate.
+and exact Card/wire/agent data under inert reading. The
+[versioned filter correction #191](pending_bugs/retained_display_filter.md) now
+selects retained scalar cells while preserving scientific uncertainty and genuine
+earlier membership. Its format @14 explicitly separates the new display policy
+from original scientific records. Exact-source and broader B3 receiving remain
+separate; scientific/researcher acceptance is not implied.
 
 The [genuine AlphaFold archive control](pending_proposals/alphafold_archive_fragment_control.md)
 now retains public titin AF-Q8WZ42-F2 and its original UniProt reference. Independent

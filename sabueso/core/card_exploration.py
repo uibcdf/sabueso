@@ -1221,9 +1221,16 @@ class CardView:
     def filter(self, column, *, equals, skip_digestion=False):
         """Select exact declared cells without changing the scientific result."""
         self._check_column(column)
+        from .card_display_filter_v2 import RULE, legacy_verification
+
+        legacy = legacy_verification()
         if self._record_panel == "assembly_generation":
             from .card_assembly_dispatch import presentation
 
+            if not legacy and self._status not in ("ok", "empty"):
+                raise ArgumentError(
+                    f"Display filtering is unavailable for this assembly view with status={self._status}; inspect its retained items and original scope."
+                )
             return presentation(self).display_filter(self, column, equals)
         scientific = (
             self._selection._scientific is not None
@@ -1248,10 +1255,17 @@ class CardView:
                 )
         elif not isinstance(equals, str):
             raise ArgumentError("This column requires string equality.")
-        if self._status not in ("ok", "empty") and not (
+        unavailable = self._status not in ("ok", "empty") and not (
             self._link_panel and self._status == "ambiguous"
-        ):
-            return replace(self, _origin=self)
+        )
+        retained_filter = unavailable and not legacy
+        if unavailable:
+            if legacy:
+                return replace(self, _origin=self)
+            if not self._selection._entries:
+                raise ArgumentError(
+                    f"Cannot filter a view with status={self._status} and no retained rows; inspect its outcome and original scope."
+                )
         if (
             self._record_panel
             in ("ligand_site_comparisons", "quaternary_interpretation")
@@ -1279,14 +1293,21 @@ class CardView:
             self,
             _selected=entries,
             _origin=self,
-            _status=("ambiguous" if self._status == "ambiguous" else "ok")
+            _status=self._status
+            if retained_filter
+            else ("ambiguous" if self._status == "ambiguous" else "ok")
             if entries
             else "empty",
-            _reason=None if entries else "No items match this display selection.",
+            _reason=self._reason
+            if retained_filter
+            else None
+            if entries
+            else "No items match this display selection.",
             _display_request={
                 "operation": "filter",
                 "column": column,
                 "equals": deepcopy(equals),
+                **({"filter_policy": RULE} if retained_filter else {}),
             },
         )
 

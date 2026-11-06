@@ -591,3 +591,16 @@ Google DeepMind/EMBL-EBI and the UniProt Consortium; authored wrapper/test mater
 follows repository MIT. The capsule is an explicitly labelled archived-writer
 replay, not a pre-reader artifact. It uses a deliberately reduced Card and is not
 a whole-Card workload benchmark; original upstream responses remain unchanged.
+
+`tests/core/data/display_filter_noop_sdk187.json.gz` is an actual clean SDK187
+saved exploration captured before the #191 display-filter correction (2026-11-06
+UTC; source `6bdac1ff328b5cf327ac873f33f13977ae3d00a8`). It uses the existing public
+frozen TcTIM Card `schema_0.3.9__P52270.json`, whose input SHA256 is
+`797e77018947dcd5ee606e59fe83df79541c8274a2411466467cc5ffccaf3d0b`.
+Retained AlphaFold DB, BindingDB, ChEMBL, InterPro, NCBI Taxonomy, PDBe-KB,
+RCSB PDB and UniProt data retain the source-specific licences and attributions
+declared above; authored wrapper/test material follows repository MIT. No new
+provider request or private input is included. The original file preserves the
+actual seven-row no-op membership and missing display operation; it must not be
+regenerated under the corrected filter. Its gzip SHA256 is
+`d806c3802dbfab562f1951baa62fef3aa9f9c9f5bb58ad27d97d165401d54225`.

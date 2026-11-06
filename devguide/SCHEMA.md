@@ -1,5 +1,10 @@
 # Sabueso — Card Schema Notes
 
+Retained display filtering (#191) adds exploration envelope @14 and an explicit
+display policy; it changes no Card field, scientific classification or source
+assertion. Original Card schema 0.3.14 and saved scientific formats stay fixed.
+See [the display/history boundary](pending_bugs/retained_display_filter.md).
+
 Unpublished 0.3.14 optionally adds `native_reference_context` on
 `has_predicted_structure`, under `alphafold_modelcif_reference_context@1` (#148).
 It retains original focal assertion IDs, coherent source revisions, derived

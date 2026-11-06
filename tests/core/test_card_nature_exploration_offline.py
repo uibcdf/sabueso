@@ -412,7 +412,9 @@ def test_profiles_advertise_only_their_own_routes_and_missing_identity_is_explic
     missing = explorer.view("coverage")
     assert missing.outcome["status"] == "missing_prerequisite" and not missing.items()
     assert missing.coverage["classification"] == "not_evaluated"
-    assert missing.filter("source", equals="anything").outcome == missing.outcome
+    with pytest.raises(ArgumentError, match="no retained rows"):
+        missing.filter("source", equals="anything")
+    assert missing.outcome["status"] == "missing_prerequisite"
     if nature == "disease":
         assert (
             explorer.view("classification").outcome["status"] == "missing_prerequisite"

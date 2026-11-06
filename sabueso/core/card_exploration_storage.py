@@ -615,11 +615,19 @@ def save_exploration(
     transport.byte_budget("max_decoded_bytes", max_decoded_bytes)
     transport.byte_budget("max_logical_bytes", max_logical_bytes)
     codec, backend = transport.encoder(compression)
+    from .card_display_filter_v2 import needed, wrap
     from .card_exploration_shared_values_v1 import pack, sealed_size
 
-    prepared = pack(_prepare(view), max_logical_bytes)
+    logical = _prepare(view)
+    retained_filter = needed(logical)
+    prepared = pack(logical, max_logical_bytes)
+    del logical  # Shared packing need not retain the expanded private view states.
     transport._check("max_decoded_bytes", sealed_size(prepared), max_decoded_bytes)
     bundle = _seal(prepared)
+    if retained_filter:
+        outer = wrap(bundle)
+        transport._check("max_decoded_bytes", sealed_size(outer), max_decoded_bytes)
+        bundle = _seal(outer)
     _restore(
         bundle,
         bundle["bundle_digest"],
@@ -765,11 +773,18 @@ def _restore(
     max_logical_bytes=268435456,
     component_limit=67108864,
 ):
+    from .card_display_filter_v2 import FORMAT as FILTER_FORMAT
+    from .card_display_filter_v2 import RULE as FILTER_RULE
+    from .card_display_filter_v2 import unwrap, validate_records, verification
     from .card_exploration_shared_values_v1 import FORMAT as SHARED_FORMAT
     from .card_exploration_shared_values_v1 import measure, unpack
 
     _require(type(owned) is bool, "Internal bundle ownership requires a boolean.")
     transport.byte_budget("max_logical_bytes", max_logical_bytes)
+    filter_report = None
+    if isinstance(bundle, dict) and bundle.get("format") == FILTER_FORMAT:
+        bundle, filter_report = unwrap(bundle, expected_digest)
+        expected_digest = bundle.get("bundle_digest")
     representation = None
     if isinstance(bundle, dict) and bundle.get("format") == SHARED_FORMAT:
         bundle, representation = unpack(
@@ -787,9 +802,14 @@ def _restore(
             max_logical_bytes,
         )
     try:
-        return _restore_checked(
-            bundle, expected_digest, owned=owned, representation=representation
-        )
+        validate_records(bundle, filter_report is not None)
+        with verification(FILTER_RULE if filter_report is not None else None):
+            view = _restore_checked(
+                bundle, expected_digest, owned=owned, representation=representation
+            )
+        if filter_report is not None:
+            view._explorer._session["validation"].update(filter_report)
+        return view
     except StorageError:
         raise
     except Exception as exc:

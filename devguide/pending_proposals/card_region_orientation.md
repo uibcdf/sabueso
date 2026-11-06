@@ -53,7 +53,8 @@ silently preserves all rows when their scientific view is `not_computed`.
 The public TcTIM example returns seven rows after requesting only 1SUX; the public
 Q8WZ42 example keeps all 64. This slice does not change filtering or claim to repair
 that defect. Existing `items()` and exact original inspection remain available.
-Correct display filtering with its original-history compatibility gate is the next
-bounded B3 task. Preserve scientific uncertainty and genuine earlier membership;
-never silently reinterpret old display operations. B3, human acceptance, the
-assembly-scope decision and the paused 0.15.0 consolidation remain open.
+The [subsequent versioned correction](../pending_bugs/retained_display_filter.md)
+now implements filtering of retained cells with unchanged scientific uncertainty
+and genuine earlier membership. Its receiving remains separate from this original
+presentation slice. B3, human acceptance, the assembly-scope decision and the
+paused 0.15.0 consolidation remain open.

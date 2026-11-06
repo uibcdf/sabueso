@@ -653,6 +653,13 @@ def _parts(view):
         )
     if view.outcome["reason"]:
         opening.append(view.outcome["reason"])
+    from .card_display_filter_v2 import marked
+
+    if marked(view._display_request):
+        opening.append(
+            f"Display filter: {len(view._selected)} matching retained items. "
+            f"Underlying scientific status remains {preview(view.outcome['status'])}."
+        )
     if (
         view._link_panel
         and view._selected

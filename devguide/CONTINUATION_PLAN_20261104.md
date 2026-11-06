@@ -482,8 +482,9 @@ milestones, or when a concrete dependency makes one necessary.
    later native changes keep their own receiving.
 2. Receive #167's completed local full-session correction at its exact remote
    source; do not reimplement it or substitute smaller controls. Continue the
-   implemented regional source orientation and correct display-filter no-op #191
-   with genuine earlier membership compatibility before accepting that B3 task.
+   implemented regional source orientation and versioned #191 filter correction.
+   Receive their exact source and genuine earlier membership compatibility before
+   accepting that B3 task.
 3. Continue B3 acceptance and the required B4–B6 rich panels with ongoing human,
    agent and workload review. The maintainer-owned B2 scientific review stays
    explicitly deferred; no default adoption follows from more technical tests.

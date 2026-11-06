@@ -401,10 +401,11 @@ def test_unhashable_topic_with_skipped_digestion_is_an_argument_error():
 
 def test_display_selection_cannot_relabel_an_unsupported_operation():
     view = _card().explore().questions()
-    selected = view.filter("label", equals="anything")
-    assert selected.outcome == view.outcome
-    assert selected.back() is view
-    assert selected.sort("label").outcome == view.outcome
+    original = view.outcome
+    with pytest.raises(ArgumentError, match="no retained rows"):
+        view.filter("label", equals="anything")
+    assert view.outcome == original
+    assert view.sort("label").outcome == original
 
 
 def test_unrecognized_retained_name_and_quality_shapes_remain_inspectable():

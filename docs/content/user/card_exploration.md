@@ -279,15 +279,15 @@ regional = explorer.answer(
     "region_coverage",
     options={"sequence_ref": "uniprot:P52270", "region": [96, 168]},
 )
-matching = [item for item in regional.items() if item.label == "pdb:1SUX"]
-if len(matching) == 1:
-    structure = matching[0]
+selected = regional.filter("structure_ref", equals="pdb:1SUX")
+if len(selected.items()) == 1:
+    structure = selected.items()[0]
     detail = structure.open()
     detail  # readable coordinate scope and per-chain gaps
     original_region = detail.regional_reading
     for chain in original_region["chains"]:
         print(chain["chain"], chain["missing_count"])
-    assert detail.back() is regional
+    assert detail.back() is selected
 ```
 
 Use your Card's actual canonical accession and positions for another protein.
@@ -298,11 +298,18 @@ readable while coordinate completeness is unknown. Original spans and alternativ
 remain available through source inspection; long previews explicitly report their
 total and omissions.
 
-Known issue [#191](https://github.com/uibcdf/sabueso/issues/191): `filter()` currently
-ignores a selection when a view's scientific status is `not_computed`, even when
-it retains readable rows. Until corrected, inspect the complete `items()` sequence
-as above and handle multiple matching declarations explicitly. The scientific
-status and coordinate uncertainty still apply to the selected item.
+`filter()` selects matching retained cells even when the scientific result is
+`not_computed`. It keeps that status and reason: selecting a declaration does not
+validate its coordinates. Zero displayed matches leave the complete underlying
+result and its uncertainty intact; equal labels can still yield multiple distinct
+declarations. An unavailable view without retained rows refuses the filter
+explicitly. Use `back()` to return to the preceding selection.
+
+Saving a filter under this new policy records an explicit format boundary.
+Original files keep their recorded selection, including older no-op behavior;
+reading never guesses the original caller's unrecorded intent. A new filter on
+reopened data is a separate operation. Native values and compact agent frames
+remain unchanged.
 
 `regional_reading` summarizes the **original native result**, under named
 presentation policy `structure_region_reading@1`. It is available on a focused

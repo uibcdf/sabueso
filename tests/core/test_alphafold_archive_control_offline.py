@@ -204,10 +204,13 @@ def test_complete_public_reference_panel_save_preserves_all_original_content(
     expected = sequence.native_payload
     path = tmp_path / "complete-reference.json.gz"
     receipt = sequence.save(path, compression="gzip")
-    assert (
-        json.loads(gzip.decompress(path.read_bytes()))["format"]
-        == "sabueso.card_exploration@11"
-    )
+    packet = json.loads(gzip.decompress(path.read_bytes()))
+    if packet["format"] == "sabueso.card_exploration@13":
+        from sabueso.core.card_exploration_shared_values_v1 import unpack
+
+        packet, report = unpack(packet, receipt["bundle_digest"])
+        assert report["logical_format"] == "sabueso.card_exploration@11"
+    assert packet["format"] == "sabueso.card_exploration@11"
     assert card.to_dict() == before
     import sabueso.core.card_context_support_v1 as shared
 

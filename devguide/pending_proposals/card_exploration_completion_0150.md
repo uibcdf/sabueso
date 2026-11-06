@@ -40,8 +40,9 @@ now checks four original public journeys and six synthetic scope counterexamples
 Full physical reconciliation remains an explicit owner decision with a concrete
 scientific/modeling task, not a silently removed prerequisite. The current
 [regional orientation](card_region_orientation.md) separates original spans from
-coordinate status; [filter no-op #191](https://github.com/uibcdf/sabueso/issues/191)
-remains a reproduced human-navigation blocker requiring original-history receiving. Other structural
+coordinate status; the [versioned filter correction #191](../pending_bugs/retained_display_filter.md)
+now selects retained cells without changing scientific uncertainty, with genuine
+old membership preserved. Exact-source receiving remains separate. Other structural
 transitions and researcher/workload acceptance stay open.
 
 ## Maintainer decision and release gate
