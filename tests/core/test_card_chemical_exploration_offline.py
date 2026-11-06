@@ -14,7 +14,7 @@ import pytest
 from sabueso.core.card import Card
 from sabueso.core.card_capture import _Capture
 from sabueso.core.chemical_classification_v1 import interpret
-from sabueso.core.errors import ArgumentError, StorageError
+from sabueso.core.errors import ArgumentError
 from sabueso.core.snapshot import canonical_json
 
 ORIGINAL = Path(__file__).parent / "data/chemical_native_sdk192.json.gz"
@@ -92,7 +92,7 @@ def test_public_human_question_and_agent_rows_share_original_science(originals, 
     assert "not target-specific activity" in str(human)
     assert "Molecule:" in str(human) and original["native"]["focal_ref"] in str(human)
     assert "Which chemical classes and source-stated roles are retained?" in str(human)
-    assert "Saving this chemical profile is not available yet" in str(human)
+    assert "Saving preserves the original chemical interpretation" in str(human)
     assert "CHEBI:" in human._repr_html_()
     agent = explorer.access.select(
         "chemical_classification", fields=["term_ref", "assignment", "application"]
@@ -304,17 +304,22 @@ def test_large_label_is_explicitly_deferred_with_scope_and_source_destinations(c
     assert next_page["items"][0]["item_ref"] != frame["item_ref"]
 
 
-def test_chemical_save_is_explicitly_refused_without_writing_and_literal_export_remains(
-    card, tmp_path
-):
+def test_chemical_save_capabilities_and_raw_export_remain_explicit(card, tmp_path):
+    from sabueso import read_exploration
+
     explorer = card.explore()
     view = explorer.view("classification")
     selection = explorer.access.select("chemical_classification")
-    assert not view.capabilities["save"] and not selection.capabilities["save"]
-    for query in (view, selection, view.items()[0].open(), view.items()[0].related()):
-        with pytest.raises(StorageError):
-            query.save(tmp_path / "unsupported.json")
-        assert not (tmp_path / "unsupported.json").exists()
+    assert view.capabilities["save"] and selection.capabilities["save"]
+    for index, query in enumerate(
+        (view, selection, view.items()[0].open(), view.items()[0].related())
+    ):
+        path = tmp_path / f"supported-{index}.json"
+        query.save(path)
+        saved = read_exploration(path)
+        assert saved.native_payload == (
+            view.native_payload if query is selection else query.native_payload
+        )
     explorer.access.export_card(tmp_path / "original-card.json")
     assert (
         json.loads((tmp_path / "original-card.json").read_text())["sections"]
@@ -334,7 +339,10 @@ def test_independent_literal_save_after_chemical_visit_remains_supported(
     chemistry.save(path)
     original = read_exploration(path)
     assert original.native_payload == chemistry.native_payload
-    assert original.explorer.view("classification").outcome["status"] == "not_saved"
+    assert (
+        original.explorer.view("classification").native_payload
+        == card.chemical_classification()
+    )
 
 
 def test_original_session_reads_in_fresh_process_without_live_engines(
@@ -406,5 +414,9 @@ def test_genuine_sdk192_saved_molecule_keeps_original_menu_and_science(
             assert all("classification" not in view.native_payload for view in retained)
     assert "not_saved" in str(saved.explorer.topics())
     assert saved.explorer.view("classification").outcome["status"] == "not_saved"
-    with pytest.raises(ArgumentError):
-        saved.explorer.access.select("chemical_classification")
+    assert (
+        saved.explorer.access.select("chemical_classification").page()["outcome"][
+            "status"
+        ]
+        == "not_saved"
+    )

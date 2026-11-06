@@ -696,7 +696,7 @@ def _parts(view):
     if view.request is not None:
         request = view.request
         question_label = (
-            view._explorer._questions[request["question"]]["label"]
+            "Which chemical classes and source-stated roles are retained?"
             if view._record_panel == "chemical_classification"
             else request["question"]
         )
@@ -762,7 +762,7 @@ def _parts(view):
         )
         opening.extend(detail_lines(view, preview))
     if view._record_panel == "chemical_classification":
-        from .card_chemical_exploration import opening as chemical_opening
+        from .card_chemical_presentation_v1 import opening as chemical_opening
 
         opening.extend(chemical_opening(view, preview))
     if view._record_panel == "quaternary_interpretation":
@@ -994,7 +994,7 @@ def _parts(view):
 
                 record_row = display_row(item, index, preview)
             if view._record_panel == "chemical_classification":
-                from .card_chemical_exploration import display_row
+                from .card_chemical_presentation_v1 import display_row
 
                 record_row = display_row(item, index, preview)
             if view._record_panel == "quaternary_interpretation":
@@ -1228,7 +1228,7 @@ def _parts(view):
 
 def _headers(view):
     if view._record_panel == "chemical_classification":
-        from .card_chemical_exploration import HEADERS
+        from .card_chemical_presentation_v1 import HEADERS
 
         return list(HEADERS)
     if view._record_panel == "coverage":

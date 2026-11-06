@@ -666,10 +666,27 @@ class CardAccess:
                     "description": "Complete stored Card content; scientific topics have separate descriptors.",
                 }
             }
-            if self.profile == "small_molecule" and self.mode == "live":
-                from .card_chemical_access import descriptor as chemical_descriptor
+            if self.profile == "small_molecule":
+                if self.mode == "saved":
+                    from .card_chemical_history_v1 import (
+                        descriptor as chemical_descriptor,
+                    )
+                else:
+                    from .card_chemical_access import descriptor as chemical_descriptor
 
                 data["chemical_classification"] = chemical_descriptor()
+                data["chemical_classification"]["save"] = True
+                data["chemical_classification"].pop("save_reason", None)
+                data["chemical_classification"]["availability"] = (
+                    "retained"
+                    if self.mode == "live"
+                    or "chemical_classification"
+                    in self.capabilities["scientific_topics"]
+                    else "not_saved"
+                )
+                data["chemical_classification"]["selection_availability"] = (
+                    "retained_requests_only" if self.mode == "saved" else "live"
+                )
             if self.profile == "protein":
                 if self.mode == "live":
                     from .card_scientific_access import descriptor
@@ -830,8 +847,10 @@ class CardAccess:
             )
         if topic == "chemical_classification":
             if self.mode == "saved":
-                raise ArgumentError(
-                    "Chemical classification selection was not retained in this saved exploration; start a new live exploration explicitly."
+                from .card_exploration_chemical import saved_selection
+
+                return saved_selection(
+                    self, fields, options, where, item_refs, order_by
                 )
             from .card_chemical_access import materialize, options_for_chemical
             from .card_chemical_selection_v1 import (
@@ -1088,7 +1107,7 @@ class CardAccess:
 
     def _defer(self, item):
         if item.get("adapter") == "chemical_classification_exploration@1":
-            from .card_chemical_access import defer_frame
+            from .card_chemical_history_v1 import defer_frame
 
             return defer_frame(item)
         if item.get("adapter") in (

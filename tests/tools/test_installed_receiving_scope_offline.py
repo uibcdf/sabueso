@@ -10,6 +10,43 @@ import tempfile
 from pathlib import Path
 
 
+def test_declared_saved_chemical_runs_with_only_original_live_capsule():
+    root = Path(__file__).resolve().parents[2]
+    name = "test_card_saved_chemical_offline.py"
+    original = "chemical_live_v1.json.gz"
+    for workflow_path in (
+        ".github/workflows/ci.yml",
+        ".github/workflows/test_staged_conda_package.yaml",
+    ):
+        workflow = (root / workflow_path).read_text(encoding="utf-8")
+        assert (
+            sum("cp " in line and name in line for line in workflow.splitlines()) == 1
+        )
+        command = re.search(r"python -m pytest (.+)", workflow.replace("\\\n", " "))
+        assert shlex.split(command[1]).count(name) == 1
+        assert f"data/{original}" in workflow
+    with tempfile.TemporaryDirectory(
+        prefix="sabueso-chemical-exploration-"
+    ) as directory:
+        stage = Path(directory)
+        shutil.copyfile(root / "tests/core" / name, stage / name)
+        (stage / "data").mkdir()
+        shutil.copyfile(root / "tests/core/data" / original, stage / "data" / original)
+        env = dict(os.environ, PYTHONPATH=str(stage))
+        env.pop("PYTEST_ADDOPTS", None)
+        result = subprocess.run(
+            [sys.executable, "-m", "pytest", "--receptor=llm", name],
+            cwd=stage,
+            env=env,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            timeout=120,
+        )
+        assert result.returncode == 0, result.stdout + result.stderr
+        assert "38 passed" in result.stdout and "PASS exit=0" in result.stdout
+
+
 def test_declared_chemical_exploration_runs_with_only_original_public_capsule():
     root = Path(__file__).resolve().parents[2]
     name = "test_card_chemical_exploration_offline.py"

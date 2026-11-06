@@ -1186,6 +1186,9 @@ class CardView:
     @property
     def exclusions(self):
         """Original excluded/unplaced declarations, separate from display filtering."""
+        if self._record_panel == "chemical_classification":
+            # Every retained chemical member is kept, including unsupported ones.
+            return []
         return (
             deepcopy(self._selection._scientific.wire["exclusions"])
             if self._selection._scientific is not None
@@ -1245,7 +1248,7 @@ class CardView:
         """Select exact declared cells without changing the scientific result."""
         self._check_column(column)
         if self._record_panel == "chemical_classification":
-            from .card_chemical_exploration import display_filter
+            from .card_chemical_presentation_v1 import display_filter
 
             return display_filter(self, column, equals)
         from .card_display_filter_v2 import RULE, legacy_verification
@@ -1532,12 +1535,16 @@ class CardExplorer:
                 for view in views
                 if view._record_panel
                 in (
+                    "chemical_classification",
                     "classification",
                     "coverage",
                     "ligand_site_comparisons",
                     "quaternary_interpretation",
                 )
             )
+            if "chemical_classification" in topics:
+                topics.remove("chemical_classification")
+                topics.add("classification")
             from .card_structure_selection_v1 import original
 
             if any(

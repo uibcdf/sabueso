@@ -1,5 +1,22 @@
 # Historical exploration fixtures
 
+## Original live chemical adapter before saved reading
+
+`chemical_live_v1.json.gz` is a genuine clean SDK `0.14.0+193.g03bdb2c` capture
+from `03bdb2c005857ac14c86f586bf4807d78f4ea783`, produced before the independent
+chemical saved reader existed. It preserves full public vincristine/PGA Cards,
+original native/wire/typed rows, source and identity routes, human presentation
+and targeted agent observations. The original live adapter explicitly lacked
+saving; this is a live observation capsule, not a saved exploration bundle.
+The existing ChEBI/EMBL-EBI source terms remain CC BY 4.0, retrieval 2026-09-30;
+see [the source notice](../../../temp_data/NOTICE.md). No new source query or
+private data; Sabueso-authored serialization is MIT and gzip is packaging.
+Never regenerate these original bytes to pass a newer reader.
+
+Compressed SHA-256: `1e0a9a01da5c1d1118a115b12b3393dd886a3e447cda4a49e58cd8c514ff9ac1`.
+
+Uncompressed SHA-256: `05196085392c7a6752058d9fa1a086afae724cc5c2c254b273ed2223b41925a2`.
+
 ## Original native chemical reading and molecule sessions (SDK192)
 
 `chemical_native_sdk192.json.gz` was captured from clean source
