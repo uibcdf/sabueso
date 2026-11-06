@@ -1,5 +1,10 @@
 # Sabueso — Checkpoint
 
+Current B5 work: [chemical classification](pending_proposals/chemical_classification_exploration.md)
+now has a source-bound native reader and a field/source ownership correction.
+The rich classification panel and independent acceptance remain required.
+B2 review stays deferred, B3 remains open and 0.15.0 publication is not authorized.
+
 The [regional source orientation](pending_proposals/card_region_orientation.md)
 now separates original declared spans from admitted coordinate results and displays
 compact exact requests. The public original SDK185 session preserves all64 rows

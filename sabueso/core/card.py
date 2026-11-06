@@ -681,6 +681,16 @@ class Card:
 
         return clinical_view(self)
 
+    def chemical_classification(self) -> Dict[str, Any]:
+        """Original chemical classes and direct/inherited roles with source support.
+
+        Returns a detached native reading. Source roles do not establish target
+        activity, mechanism or therapeutic effect; missing context stays unknown.
+        """
+        from .chemical_classification import chemical_classification
+
+        return chemical_classification(self)
+
     @arg_digest()
     def explain(
         self, source_assertion_ids: Any, skip_digestion: bool = False

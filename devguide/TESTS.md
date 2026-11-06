@@ -1,5 +1,14 @@
 # Sabueso — Tests and Quality Gates
 
+Chemical classification uses `test_chemical_classification_offline.py`: public
+vincristine/PGA inputs, exact field/subject/identity/observation binding, competing
+anchors, changed normalized values, missing support, literal boolean states,
+duplicates, original alternatives and caller isolation. Both installed workflows
+copy/select it; the isolated receiving gate copies only its public ChEBI input.
+The field/source ownership fix also needs aggregation/resolution, source observation,
+quantity, Card creation/refresh/migration and affected historical reading checks.
+Neither the native reader nor passing tests accepts the required rich human panel.
+
 Structural display continuity uses the retained-filter, native-model, API-fragment
 and range-alias navigation modules. Check text/HTML limitations after chained
 filter/table/sort/summary and focused detail, positive and zero selections, inert

@@ -1,5 +1,16 @@
 # Sabueso — Decision Log
 
+## 2026-11-06 — Separate selected values from source records; prepare chemical context
+
+Field construction owns a detached value and support list. Explicit mutable Card
+edits and explicit source edits remain possible independently; neither silently
+rewrites the other. Initial serialized values, units and schemas are unchanged.
+The source-bound `chemical_classification_context@1` reads retained ChEBI-mapped
+class/role statements with explicit observation/identity limits. Its native API
+does not complete the required rich molecule classification profile or adopt
+measurement defaults. See [the scientific contract](pending_proposals/chemical_classification_exploration.md)
+and [ownership defect](pending_bugs/selected_value_source_alias.md).
+
 ## 2026-11-06 — Preserve question scope through presentation (#148/#173)
 
 Recover original model limitations through recorded display operations within one

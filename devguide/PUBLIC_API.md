@@ -427,6 +427,11 @@ not promise card enrichment, live availability or public-package delivery.
     the rule, original input pins and counting bases (per side for comparisons);
   - `literature()` and `claims(topic=None)`;
   - `clinical()` (molecules: indications and trials, #81);
+  - Development `chemical_classification()` reads source-bound chemical classes
+    and direct/inherited roles with original field membership, source observations,
+    identity basis, conflicts and explicit unknowns (`chemical_classification_context@1`).
+    Its [rich molecule-profile continuation](pending_proposals/chemical_classification_exploration.md)
+    remains required; this native reader is not the complete human panel;
   - `knowledge_state()`;
   - `acquisition()` (how the card's statements entered: database, curation,
     extraction, #92);

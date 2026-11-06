@@ -10,6 +10,44 @@ import tempfile
 from pathlib import Path
 
 
+def test_declared_chemical_classification_runs_with_only_its_public_input():
+    root = Path(__file__).resolve().parents[2]
+    name = "test_chemical_classification_offline.py"
+    for workflow_path in (
+        ".github/workflows/ci.yml",
+        ".github/workflows/test_staged_conda_package.yaml",
+    ):
+        workflow = (root / workflow_path).read_text(encoding="utf-8")
+        assert (
+            sum("cp " in line and name in line for line in workflow.splitlines()) == 1
+        )
+        command = re.search(r"python -m pytest (.+)", workflow.replace("\\\n", " "))
+        assert shlex.split(command[1]).count(name) == 1
+    with tempfile.TemporaryDirectory(
+        prefix="sabueso-chemical-classification-"
+    ) as directory:
+        stage = Path(directory)
+        shutil.copyfile(root / "tests/core" / name, stage / name)
+        (stage / "temp_data/chebi").mkdir(parents=True)
+        shutil.copyfile(
+            root / "temp_data/chebi/compounds.json",
+            stage / "temp_data/chebi/compounds.json",
+        )
+        env = dict(os.environ, PYTHONPATH=str(stage))
+        env.pop("PYTEST_ADDOPTS", None)
+        result = subprocess.run(
+            [sys.executable, "-m", "pytest", "--receptor=llm", name],
+            cwd=stage,
+            env=env,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            timeout=120,
+        )
+        assert result.returncode == 0, result.stdout + result.stderr
+        assert "29 passed" in result.stdout and "PASS exit=0" in result.stdout
+
+
 def test_declared_retained_filter_runs_without_checkout_files():
     root = Path(__file__).resolve().parents[2]
     name = "test_card_retained_filter_offline.py"

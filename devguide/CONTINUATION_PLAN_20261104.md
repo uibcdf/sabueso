@@ -488,5 +488,8 @@ milestones, or when a concrete dependency makes one necessary.
 3. Continue B3 acceptance and the required B4–B6 rich panels with ongoing human,
    agent and workload review. The maintainer-owned B2 scientific review stays
    explicitly deferred; no default adoption follows from more technical tests.
+   Independent B5 work now has a [chemical-classification native foundation](pending_proposals/chemical_classification_exploration.md),
+   with source/selection ownership receiving. Its rich human/targeted-agent/saved
+   classification panel is still required; do not count the reader as panel completion.
 4. Obtain actual B7 scientist, uncoached researcher, private pilot and consumer
    acceptance before deciding when B8 release consolidation can resume.

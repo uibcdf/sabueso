@@ -17,6 +17,7 @@ explicit target unit (uibcdf/moli#11).
 
 from __future__ import annotations
 
+from copy import deepcopy
 from functools import lru_cache
 from typing import Any, Dict, Iterator, List, Mapping, Optional, Tuple
 
@@ -151,10 +152,14 @@ def quantity_node(value: Any, unit: str) -> Optional[Dict[str, Any]]:
 def field_node(
     field_path: str, value: Any, source_assertion_ids: List[str]
 ) -> Dict[str, Any]:
-    """A section field node; fields with a negotiated unit carry it."""
+    """A detached section value/support list; negotiated quantity units stay explicit.
+
+    A selected mutable value must not alias the original SourceAssertion or the
+    caller's mapping. Explicit field and source edits remain independent states.
+    """
     node: Dict[str, Any] = {
-        "value": value,
-        "source_assertion_ids": source_assertion_ids,
+        "value": deepcopy(value),
+        "source_assertion_ids": deepcopy(source_assertion_ids),
     }
     unit = FIELD_UNITS.get(field_path)
     if (
