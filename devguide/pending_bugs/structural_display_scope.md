@@ -65,8 +65,11 @@ before/after observations and bounded resources. Tests cover native and original
 modern-alias API fragments, live/saved positive and zero-match filters, complete
 native/request parity, back navigation and a direct-question counterexample.
 
-Owning work is #148, with #173/#191/#112 coordination. Its issue update is prepared
-locally for maintainer handoff while the prior public-comment authorization remains
-pending; no public report has been posted. Scientific/researcher/workload acceptance,
+Owning work is #148, with #173/#191/#112 coordination. The maintainer-authorized
+[owning update](https://github.com/uibcdf/sabueso/issues/148#issuecomment-6678353796)
+now records the correction and actual local receiving. The preceding filter and
+CI recovery are reported in [#191](https://github.com/uibcdf/sabueso/issues/191#issuecomment-6678348141)
+and [#167](https://github.com/uibcdf/sabueso/issues/167#issuecomment-6678351360).
+Scientific/researcher/workload acceptance,
 the B3 assembly-scope decision and exact-source hosted qualification stay separate.
 B2 scientific review remains maintainer-deferred and 0.15.0 consolidation paused.
