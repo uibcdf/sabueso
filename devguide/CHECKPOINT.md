@@ -17,6 +17,7 @@ This page owns current state; dated receipt histories are linked below.
 | Producer labels | Original clean SDK `0.14.0+193.g03bdb2c` controls stay fixed. Refresh/verify the final committed checkout SDK inside/outside and record it in `recovered_work/clean_checkpoint_20261106/final-closeout.json` |
 | Saved reading checkpoint | Chemical semantic @15 and sharing @16 are committed with 705 selected local cases plus independent whole-session receiving; exact-final-source hosted, artifact, scientist and researcher acceptance remain separate |
 | Machine migration | Authorized upstream publication uses `main`; the private ZIP carries necessary non-Git inputs/evidence and verified restoration instructions. Follow the [private package route](WORKSTATION_HANDOFF_20261106.md#private-migration-package) and external `recovered_work/migration_20261106/transfer-state.json` for actual remote/archive status |
+| Installed codec qualification | Run `42269421773` exposed missing optional `backports.zstd` provisioning in older-Python public-Ackredit lanes. Source/staged/consumer qualification now shares the pinned backend route; the final corrected-head hosted outcome is recorded externally. Native scientific rules and transport assertions are unchanged |
 | Release target | **0.15.0**, the full agreed exploration design and validated human experience; [consolidation](pending_proposals/release_consolidation_0150.md) remains paused. No release/tag/freeze/staging is authorized |
 
 ## Latest implementation and qualification

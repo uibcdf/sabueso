@@ -27,6 +27,14 @@ Generated caches, old environment/version stamps and Git metadata are excluded.
 The package is confidential transfer material; never attach it to a public issue,
 Git repository, release or documentation artifact.
 
+The ZIP snapshot's required commit may precede the final upstream checkpoint:
+the restorer accepts its descendants on `main`. The later correction provisions
+the optional older-Python Zstandard test backend in installed CI/staged receiving;
+it changes no molecular data, native scientific rule or production reader.
+Preserve the archive's original source-state and producer labels. The external
+transfer record owns the final upstream SHA and hosted outcome; queued, failed
+or cancelled runs are not passing qualification.
+
 Clone upstream `main`, verify the private ZIP checksum, and follow its bundled
 instructions. The restorer validates every payload hash, rejects unsafe paths and
 tracked destinations, accepts identical existing files and refuses to overwrite
@@ -56,9 +64,12 @@ documentation commit's own SHA in its contents. After that commit, the external
 clean status, ahead count and fresh editable SDK/import receiving. Inspect that
 record and `git status` before migration; the local commit history is not a push.
 
-The unchanged source payload has 17 code/test/configuration files and 299 original
-chemical evidence files. All changed guide files except the manifest itself are
-hash-declared. Dirty peer-checkout states are observations at capture time; preserve
+The original chemical checkpoint has 17 code/test/configuration files and 299
+original chemical evidence files. The later CI correction updates two receiving
+workflows and their provisioning regression; its current payload hashes are
+separate from the immutable code-checkpoint receipt. Scientific runtime and
+original controls remain unchanged. All changed guide files except the manifest
+itself are hash-declared. Dirty peer-checkout states are observations at capture time; preserve
 any current local work independently. The manifest is a transfer integrity aid,
 not full scientific, installed-artifact or release qualification.
 

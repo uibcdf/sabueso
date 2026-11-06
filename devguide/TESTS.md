@@ -452,6 +452,15 @@ receipt. Unknown permission never becomes permission through a successful test.
 
 ## Local checks and CI checkpoints
 
+Saved chemical reading also exercises optional Zstandard transport. On Python
+3.11–3.13, source, public-Ackredit and staged installed receiving provision the
+same pinned `backports.zstd=1.8.0` qualification backend; Python 3.14 uses its
+native backend. In staged receiving, verify the clean installed artifact before
+adding the codec-test backend. This provisioning does not make Zstandard a
+mandatory runtime dependency or permit skipping its scientific assertions. The
+migration checkpoint exposed the previously missing installed-lane provisioning
+in run `42269421773`; retained failure logs and corrected-head CI remain separate.
+
 Run each applicable gate separately and read its result:
 
 Use the Ruff version pinned in `pyproject.toml` and CI. Run its format gate at

@@ -45,6 +45,12 @@ jobs:
         run: |
           cd "$RUNNER_TEMP"
           python -c "import ackredit,sabueso; assert 'site-packages' in ackredit.__file__, ackredit.__file__; assert 'site-packages' in sabueso.__file__, sabueso.__file__; assert callable(ackredit.capture)"
+      - name: Install pinned older-Python Zstandard qualification backend
+        # Codec-test provisioning only; the backend remains an optional runtime dependency.
+        if: matrix.python-version != '3.14'
+        shell: bash -l {0}
+        run: |
+          micromamba install --yes -n test -c uibcdf -c conda-forge "python=${{ matrix.python-version }}" backports.zstd=1.8.0
       - name: Exercise the installed required provider and consumer
         shell: bash -l {0}
         run: |

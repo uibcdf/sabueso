@@ -152,6 +152,12 @@ jobs:
           python "$checker" installed --prefix "$CONDA_PREFIX" \
             --sha256 "$EXPECTED_SHA256" --version "$CANDIDATE_VERSION" \
             --build-number "$BUILD_NUMBER" --python-version "$PYTHON_VERSION"
+      - name: Install pinned older-Python Zstandard qualification backend
+        # Preserve clean-artifact verification before adding this codec-test backend.
+        if: matrix.python != '3.14'
+        shell: bash -l {0}
+        run: |
+          micromamba install --yes -n candidate -c uibcdf -c conda-forge "python=${{ matrix.python }}" backports.zstd=1.8.0
       - name: Exercise required attribution and source traceability on the installed file
         shell: bash -l {0}
         run: |

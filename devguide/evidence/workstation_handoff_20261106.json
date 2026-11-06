@@ -1,7 +1,7 @@
 {
   "format": "sabueso.workstation_handoff@1",
   "owner": "uibcdf/sabueso#112/#148",
-  "captured_at_utc": "2026-11-06T18:06:17.054564+00:00",
+  "captured_at_utc": "2026-11-06T18:46:25.614667+00:00",
   "scope": "Committed code checkpoint and migration integrity; original dirty capture retained separately. Actual final documentation HEAD, clean status, refreshed editable SDK and bundle verification are recorded externally after the documentation commit. Not destination, hosted, installed-artifact or independent scientific/researcher qualification.",
   "sabueso": {
     "branch": "main",
@@ -13,17 +13,17 @@
     "final_closeout_record": "recovered_work/clean_checkpoint_20261106/final-closeout.json",
     "publication_performed": false
   },
-  "payload_scope": "The original17 code/test/workflow payload files are committed byte-for-byte at committed_code_source. All changed guide files except this manifest are separately hash-declared; preserve the documentation commit and ignored material too.",
+  "payload_scope": "Current17 source/test/workflow paths. Scientific runtime and original controls remain byte-identical to code0f197e5; the two receiving workflows and their provisioning regression now include the older-Python optional-Zstandard CI correction. Immutable17-file hashes at code0f197e5 remain in code_checkpoint_payload_files and the original code receipt.",
   "payload_files": [
     {
       "path": ".github/workflows/ci.yml",
-      "bytes": 19197,
-      "sha256": "423096ddf63f33eee723066073fb9a542a1a8d8b8e5af2d5536c059f8fcb62e1"
+      "bytes": 19576,
+      "sha256": "fabd5b2e099819421804f1c251109aac3e59af34679b539381dd5cd1cd4020e0"
     },
     {
       "path": ".github/workflows/test_staged_conda_package.yaml",
-      "bytes": 16780,
-      "sha256": "32cdd42299bc7d480903127b868292f1e54e176a773d3a67f71eb2a24d470ad7"
+      "bytes": 17142,
+      "sha256": "0fceb4265e2494c3a3e10ca56e55d6db0bf963d53ddd1f957e8620a769492b78"
     },
     {
       "path": "sabueso/core/card_access.py",
@@ -62,8 +62,8 @@
     },
     {
       "path": "tests/tools/test_installed_receiving_scope_offline.py",
-      "bytes": 23169,
-      "sha256": "12bf56267489a11898c020dfa62e2e99c1b07e72c0cd10930b147e02a744d19a"
+      "bytes": 24678,
+      "sha256": "1f720b39bd3ca599971fc2a5377546f1dd7f0414fd7022877da01ee9acb237c0"
     },
     {
       "path": "sabueso/core/card_chemical_history_v1.py",
@@ -1841,8 +1841,8 @@
     },
     {
       "path": "devguide/CHECKPOINT.md",
-      "bytes": 9687,
-      "sha256": "38f592b7b95bb46361a479e615ea3eb1bdae5d8ed469c60ccc9022caf736297d"
+      "bytes": 10036,
+      "sha256": "de1e07230673523048ebd05d19bd9519a95cb34162e55eaee8a521a424ab020a"
     },
     {
       "path": "devguide/CONTINUATION_PLAN_20261104.md",
@@ -1896,13 +1896,13 @@
     },
     {
       "path": "devguide/TESTS.md",
-      "bytes": 74750,
-      "sha256": "91728c6a9af0dae5baa6e135e9eb2c41614717d60f65377d792b7a453c9255ec"
+      "bytes": 75387,
+      "sha256": "3bc23740a2ff26cb7277a41102002c034fcbdfac4360424cb11b486b7cb0a12c"
     },
     {
       "path": "devguide/WORKSTATION_HANDOFF_20261106.md",
-      "bytes": 26826,
-      "sha256": "8dbc07f6b606babae1570ecd0d4d5fa42ef6d0e4d10951074d63b7f4247d33ab"
+      "bytes": 27588,
+      "sha256": "b5fa3d3b0bde6e2cd21eadf5cd29f3f208669455f7167e0b0b26fb2666d08fd2"
     },
     {
       "path": "devguide/archive/CHECKPOINT_before_onboarding_20261106.md",
@@ -1976,7 +1976,7 @@
     }
   ],
   "initial_capture_at_utc": "2026-11-06T16:32:20.847064+00:00",
-  "documentation_revision": "upstream-main-and-private-migration-package-20261106",
+  "documentation_revision": "upstream-migration-with-installed-codec-provisioning-correction-20261106",
   "initial_documentation_receiving": {
     "owner": "uibcdf/sabueso#112/#148",
     "scope": "Documentation links, example bytes, root static gates and fixture-delivery integrity only; no scientific tests or destination runtime receiving.",
@@ -2365,6 +2365,157 @@
         "exit_code": 0
       }
     },
-    "historical_local_closeout": "recovered_work/clean_checkpoint_20261106/final-closeout.json"
-  }
+    "historical_local_closeout": "recovered_work/clean_checkpoint_20261106/final-closeout.json",
+    "post_push_ci_correction": {
+      "owning_issues": [
+        "uibcdf/sabueso#112",
+        "uibcdf/sabueso#148"
+      ],
+      "observed_run": 42269421773,
+      "observed_failing_jobs": [
+        128069804166,
+        128069804278
+      ],
+      "observation": "Python3.11/3.12 public-Ackredit receiving each passed2212 cases and failed the single optional-Zstandard saved chemical case because backports.zstd was absent. No scientific assertion was weakened.",
+      "correction": "Provision pinned backports.zstd1.8.0 on Python<3.14 in public-Ackredit and staged receiving; clean artifact/import verification precedes codec provisioning. No mandatory runtime dependency or native3.14 behavior change.",
+      "changed_payload_paths": [
+        ".github/workflows/ci.yml",
+        ".github/workflows/test_staged_conda_package.yaml",
+        "tests/tools/test_installed_receiving_scope_offline.py"
+      ],
+      "checks": {
+        "ci-backend-contract-final": {
+          "resource_path": "recovered_work/migration_20261106/ci-backend-contract-final-resource.json",
+          "resource_sha256": "906abd9a663934f2a76b8ceda4f87fcc0198608f954a3d224a0369c7d4e41055",
+          "log_path": "recovered_work/migration_20261106/ci-backend-contract-final.log",
+          "log_sha256": "92a838c1b71f6745e9ba89bfa07cc35a687340f59779a947f02ab9b5ea1c89f1",
+          "exit_code": 0
+        },
+        "ci-backend-copied-saved": {
+          "resource_path": "recovered_work/migration_20261106/ci-backend-copied-saved-resource.json",
+          "resource_sha256": "4c06124f87ba9bc2b0a1b9b894c2239df1e771c0577429c6b51657cf7fb6f242",
+          "log_path": "recovered_work/migration_20261106/ci-backend-copied-saved.log",
+          "log_sha256": "873436307e0dd9b1c9ce7af060c68871db36df3281e8ae028486a00d03961502",
+          "exit_code": 0
+        },
+        "ci-backend-ruff-format": {
+          "resource_path": "recovered_work/migration_20261106/ci-backend-ruff-format-resource.json",
+          "resource_sha256": "7a4d9ec40f761074be599f77161ea76e4d759cb37485281ee409ea4a181195eb",
+          "log_path": "recovered_work/migration_20261106/ci-backend-ruff-format.log",
+          "log_sha256": "74a23b8ca81da5b6b3726f6c046e7525291cc4135941523c726cffee2255906d",
+          "exit_code": 0
+        },
+        "ci-backend-ruff-check": {
+          "resource_path": "recovered_work/migration_20261106/ci-backend-ruff-check-resource.json",
+          "resource_sha256": "ebfb08e80fa7a3300424cb90170aa0050b8e1f6c5673bfc18aaf80f5e5fd88fe",
+          "log_path": "recovered_work/migration_20261106/ci-backend-ruff-check.log",
+          "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+          "exit_code": 0
+        },
+        "ci-backend-guide": {
+          "resource_path": "recovered_work/migration_20261106/ci-backend-guide-resource.json",
+          "resource_sha256": "191c3d3aac315378cb469cae73542c119226794e16daf013c841846cc027d432",
+          "log_path": "recovered_work/migration_20261106/ci-backend-guide.log",
+          "log_sha256": "a0ceff4aa5e50a3a65d808de4ad9b0dbc1f8670aaa3df11ff449d4f7a399e68a",
+          "exit_code": 0
+        },
+        "ci-backend-governance": {
+          "resource_path": "recovered_work/migration_20261106/ci-backend-governance-resource.json",
+          "resource_sha256": "e0b84c6bc24c4a0917261e1b7cde5153c5b07ca658d846ec874bcb5f4c13bd85",
+          "log_path": "recovered_work/migration_20261106/ci-backend-governance.log",
+          "log_sha256": "5a06edc554fa450ac8fdafc3b04ca285ecaf5c6d2bb754b0867ff1f2bdf5af9d",
+          "exit_code": 0
+        }
+      },
+      "hosted_status": "Original failed run superseded/cancelled; unskipped corrected-source push and exact-head hosted receiving recorded externally. Not a passing matrix claim.",
+      "archive_compatibility": "Existing ZIP keeps its original source-state and producer labels. Its required source is an ancestor of the corrected main; raw inputs/evidence and production scientific modules are unchanged."
+    }
+  },
+  "code_checkpoint_payload_files": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "bytes": 19197,
+      "sha256": "423096ddf63f33eee723066073fb9a542a1a8d8b8e5af2d5536c059f8fcb62e1"
+    },
+    {
+      "path": ".github/workflows/test_staged_conda_package.yaml",
+      "bytes": 16780,
+      "sha256": "32cdd42299bc7d480903127b868292f1e54e176a773d3a67f71eb2a24d470ad7"
+    },
+    {
+      "path": "sabueso/core/card_access.py",
+      "bytes": 46222,
+      "sha256": "a3c263c6e9e502b447c47ef810f452d43a45c96879877119c0814f06c14007da"
+    },
+    {
+      "path": "sabueso/core/card_chemical_access.py",
+      "bytes": 2294,
+      "sha256": "c5c5b7cb1c42e4da3678ea6626e1a390e304b553bc7f7d16f97ff6fd56b6a8f0"
+    },
+    {
+      "path": "sabueso/core/card_exploration.py",
+      "bytes": 85996,
+      "sha256": "30d70592eae67aab8ce93a3a1248c1199c06cbdc475f8722190a6f710a8290b1"
+    },
+    {
+      "path": "sabueso/core/card_exploration_render.py",
+      "bytes": 55579,
+      "sha256": "ef5b4245e28882f15dfce93c3b67f4d6f4861321e95005900584d6ab51192a56"
+    },
+    {
+      "path": "sabueso/core/card_exploration_storage.py",
+      "bytes": 69305,
+      "sha256": "ebc224e418741c7e60300c1b7946c1ee4b8a71d8158e6a6428ca871391dec0df"
+    },
+    {
+      "path": "tests/core/data/README.md",
+      "bytes": 24214,
+      "sha256": "d8b1bc94fd08859bdfbc2b8285682edc9868b67877b544bcf9e55c3fac6b45dd"
+    },
+    {
+      "path": "tests/core/test_card_chemical_exploration_offline.py",
+      "bytes": 16407,
+      "sha256": "b09262f32bbd160fd776ec659b31862ee01b00d2a514ee4fe80436caff3757c1"
+    },
+    {
+      "path": "tests/tools/test_installed_receiving_scope_offline.py",
+      "bytes": 23169,
+      "sha256": "12bf56267489a11898c020dfa62e2e99c1b07e72c0cd10930b147e02a744d19a"
+    },
+    {
+      "path": "sabueso/core/card_chemical_history_v1.py",
+      "bytes": 10852,
+      "sha256": "b7fe1fb24d006f7dcdda62107b660dd4a6ded70d2889da6258455157d5b3e466"
+    },
+    {
+      "path": "sabueso/core/card_chemical_presentation_v1.py",
+      "bytes": 9936,
+      "sha256": "55b62a4c0823b27e0c82d64b83dadd70d0e91c68260dc62e11020ace6ce9e323"
+    },
+    {
+      "path": "sabueso/core/card_exploration_chemical.py",
+      "bytes": 26260,
+      "sha256": "9dec3d43a4e872d988def415bfdb29ca31cad7dc37ac190d13e2627287bbb4b8"
+    },
+    {
+      "path": "sabueso/core/card_exploration_shared_values_v2.py",
+      "bytes": 15765,
+      "sha256": "0fbf2d0cf14f4fb498e21edb9b8eea432e2f99a2afebac288444ff5480ca08bd"
+    },
+    {
+      "path": "sabueso/core/card_exploration_verification_v15.py",
+      "bytes": 57120,
+      "sha256": "d83b67276874e7abcd1e5c30c4693f02bcb26558bfd3467bef307c35865690e5"
+    },
+    {
+      "path": "tests/core/data/chemical_live_v1.json.gz",
+      "bytes": 105974,
+      "sha256": "1e0a9a01da5c1d1118a115b12b3393dd886a3e447cda4a49e58cd8c514ff9ac1"
+    },
+    {
+      "path": "tests/core/test_card_saved_chemical_offline.py",
+      "bytes": 16992,
+      "sha256": "3d91ad467d336c8ebf9cde92a54bb92f4d1feef38d287b797ab748d90c85e186"
+    }
+  ]
 }

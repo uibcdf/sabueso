@@ -10,6 +10,41 @@ import tempfile
 from pathlib import Path
 
 
+def test_installed_chemical_receiving_provisions_older_python_zstd():
+    root = Path(__file__).resolve().parents[2]
+    for workflow_path, job, environment, python_key in (
+        (".github/workflows/ci.yml", "ackredit-pilot", "test", "python-version"),
+        (
+            ".github/workflows/test_staged_conda_package.yaml",
+            "install",
+            "candidate",
+            "python",
+        ),
+    ):
+        workflow = (root / workflow_path).read_text(encoding="utf-8")
+        section = re.search(
+            rf"(?ms)^  {re.escape(job)}:\n(.*?)(?=^  [a-zA-Z0-9_-]+:\n|\Z)",
+            workflow,
+        )
+        assert section is not None
+        steps = re.split(r"(?m)^      - ", section[1])
+        backend = [step for step in steps if "backports.zstd=1.8.0" in step]
+        assert len(backend) == 1
+        assert f"if: matrix.{python_key} != '3.14'" in backend[0]
+        assert (
+            f"micromamba install --yes -n {environment} -c uibcdf -c conda-forge "
+            f'"python=${{{{ matrix.{python_key} }}}}" backports.zstd=1.8.0'
+        ) in backend[0]
+        assert section[1].index(backend[0]) < section[1].index("python -m pytest")
+        clean_verification = (
+            'python "$checker" installed'
+            if job == "install"
+            else "Verify installed imports outside both checkouts"
+        )
+        assert section[1].index(clean_verification) < section[1].index(backend[0])
+        assert "test_card_saved_chemical_offline.py" in section[1]
+
+
 def test_declared_saved_chemical_runs_with_only_original_live_capsule():
     root = Path(__file__).resolve().parents[2]
     name = "test_card_saved_chemical_offline.py"
