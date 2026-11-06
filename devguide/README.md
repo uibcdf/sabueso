@@ -15,10 +15,14 @@ correspondence remain unknown. Scientific/researcher acceptance remains open. Th
 now completes the whole public Card save under the original 512 MiB guard,
 retaining all original content. Its shared-support format @11 has separate
 historical/mixed/final-source receiving; the original failed receipt is retained.
-The native question now returns64 retained experimental items on the full public
-Card, but its complete session save exceeds the original memory/decoded budgets
-through repeated view states; [#167 follow-up](pending_proposals/shared_link_support.md#native-scientific-session-state-repetition--2026-11-05)
-is required. Small saved controls and the earlier metadata-only512MiB success
+The native question returns64 retained inventory items on the full public Card.
+At SDK183 its complete save exceeded the original memory/decoded budgets through
+repeated view states. The [shared-value candidate](pending_proposals/shared_view_state_persistence.md)
+now preserves original semantic verifiers with a separate bounded representation;
+the complete 64-item save/read/resave now passes locally under #167, using
+350 MiB peak owned RSS, one low-priority CPU and zero owned swap. Default physical
+limits remain 64 MiB. All 1,042 selected local cases pass, including the isolated receiving payload.
+Final SDK receiving and exact-source hosted qualification remain separate gates. Small saved controls and the earlier metadata-only512MiB success
 remain separate scopes.
 B3/scientific/researcher/workload acceptance remains open; B2 review is deferred
 and 0.15.0 consolidation paused.

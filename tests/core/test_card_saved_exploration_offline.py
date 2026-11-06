@@ -505,7 +505,12 @@ def test_literal_scientific_projection_retains_verifiable_original_context(tmp_p
     # literal projection never drops their original input/support context.
     supported = explorer.view("function")
     saved, path, _ = reopen(supported, tmp_path)
-    objects = json.loads(path.read_text(encoding="utf-8"))["objects"]
+    bundle = json.loads(path.read_text(encoding="utf-8"))
+    if bundle["format"] == "sabueso.card_exploration@13":
+        from sabueso.core.card_exploration_shared_values_v1 import unpack
+
+        bundle, _ = unpack(bundle)
+    objects = bundle["objects"]
     assert any(
         value.get("adapter") == "knowledge_coverage_exploration@1"
         for value in objects.values()

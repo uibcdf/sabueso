@@ -602,6 +602,7 @@ def save_exploration(
     compression="none",
     max_encoded_bytes=transport.BYTE_LIMIT,
     max_decoded_bytes=transport.BYTE_LIMIT,
+    max_logical_bytes=268435456,
 ):
     if (
         not isinstance(path, (str, os.PathLike))
@@ -612,9 +613,20 @@ def save_exploration(
     transport.compression_option(compression)
     transport.byte_budget("max_encoded_bytes", max_encoded_bytes)
     transport.byte_budget("max_decoded_bytes", max_decoded_bytes)
+    transport.byte_budget("max_logical_bytes", max_logical_bytes)
     codec, backend = transport.encoder(compression)
-    bundle = _seal(_prepare(view))
-    _restore(bundle, bundle["bundle_digest"], owned=True)
+    from .card_exploration_shared_values_v1 import pack, sealed_size
+
+    prepared = pack(_prepare(view), max_logical_bytes)
+    transport._check("max_decoded_bytes", sealed_size(prepared), max_decoded_bytes)
+    bundle = _seal(prepared)
+    _restore(
+        bundle,
+        bundle["bundle_digest"],
+        owned=True,
+        max_logical_bytes=max_logical_bytes,
+        component_limit=max_decoded_bytes,
+    )
     raw = canonical_json(bundle).encode("utf-8")
     transport._check("max_decoded_bytes", len(raw), max_decoded_bytes)
     destination, temporary = Path(path), None
@@ -662,6 +674,7 @@ def read_exploration(
     max_encoded_bytes=transport.BYTE_LIMIT,
     max_decoded_bytes=transport.BYTE_LIMIT,
     max_window_bytes=transport.WINDOW_LIMIT,
+    max_logical_bytes=268435456,
 ):
     """Validate original saved views without rerunning current scientific readers."""
     if not isinstance(path, (str, os.PathLike)) or not str(path):
@@ -675,6 +688,7 @@ def read_exploration(
         ("max_encoded_bytes", max_encoded_bytes),
         ("max_decoded_bytes", max_decoded_bytes),
         ("max_window_bytes", max_window_bytes),
+        ("max_logical_bytes", max_logical_bytes),
     ):
         transport.byte_budget(name, value)
     try:
@@ -692,7 +706,13 @@ def read_exploration(
             )
         bundle = json.loads(raw.decode("utf-8"), object_pairs_hook=_unique)
         del raw  # Original JSON bytes need not survive scientific materialization.
-        view = _restore(bundle, expected_digest, owned=True)
+        view = _restore(
+            bundle,
+            expected_digest,
+            owned=True,
+            max_logical_bytes=max_logical_bytes,
+            component_limit=max_decoded_bytes,
+        )
         view._explorer._session["validation"]["transport"] = receipt
         return view
     except (StorageError, ArgumentError):
@@ -737,16 +757,46 @@ def _explorer(access, session):
     return explorer
 
 
-def _restore(bundle, expected_digest, *, owned=False):
+def _restore(
+    bundle,
+    expected_digest,
+    *,
+    owned=False,
+    max_logical_bytes=268435456,
+    component_limit=67108864,
+):
+    from .card_exploration_shared_values_v1 import FORMAT as SHARED_FORMAT
+    from .card_exploration_shared_values_v1 import measure, unpack
+
+    _require(type(owned) is bool, "Internal bundle ownership requires a boolean.")
+    transport.byte_budget("max_logical_bytes", max_logical_bytes)
+    representation = None
+    if isinstance(bundle, dict) and bundle.get("format") == SHARED_FORMAT:
+        bundle, representation = unpack(
+            bundle,
+            expected_digest,
+            limit=max_logical_bytes,
+            component_limit=component_limit,
+        )
+        owned = (
+            True  # Decoded containers are private, including for caller-owned packets.
+        )
+    elif isinstance(bundle, dict):
+        measure(
+            {k: v for k, v in bundle.items() if k not in ("digests", "bundle_digest")},
+            max_logical_bytes,
+        )
     try:
-        return _restore_checked(bundle, expected_digest, owned=owned)
+        return _restore_checked(
+            bundle, expected_digest, owned=owned, representation=representation
+        )
     except StorageError:
         raise
     except Exception as exc:
         raise StorageError(f"Saved exploration validation failed: {exc}") from exc
 
 
-def _restore_checked(bundle, expected_digest, *, owned=False):
+def _restore_checked(bundle, expected_digest, *, owned=False, representation=None):
     # Only the file decoder and fresh private serializer transfer ownership.
     # Direct internal callers keep the original defensive state-copy boundary.
     _require(type(owned) is bool, "Internal bundle ownership requires a boolean.")
@@ -797,7 +847,12 @@ def _restore_checked(bundle, expected_digest, *, owned=False):
     else:
         from .card_exploration_verification import verify_bundle, verify_views
 
-    verify_bundle(bundle, expected_digest)
+    if representation is None:
+        verify_bundle(bundle, expected_digest)
+    else:
+        from .card_exploration_shared_values_v1 import verify_header
+
+        verify_header(bundle, verify_bundle)
     from .card import CARD_SCHEMA_VERSION
     from .quantities import verify
     from .schema_version import check_card_schema
@@ -1100,6 +1155,8 @@ def _restore_checked(bundle, expected_digest, *, owned=False):
                 "assembly_generation_exploration@1",
                 "assembly_generation_exploration@2",
             )
+            else record["native_payload"]
+            if owned and record.get("native_encoding", "json") == "json"
             else _decode(
                 record["native_payload"], record.get("native_encoding", "json")
             ),
@@ -1278,6 +1335,8 @@ def _restore_checked(bundle, expected_digest, *, owned=False):
     _require(
         root.view_ref == bundle["root_view_ref"], "Saved root view binding differs."
     )
+    if representation is not None:
+        session["validation"].update(representation)
     return root
 
 
@@ -1513,6 +1572,9 @@ def save_selection(selection, path, overwrite, **transport_options):
     transport.compression_option(transport_options.get("compression", "none"))
     for name in ("max_encoded_bytes", "max_decoded_bytes"):
         transport.byte_budget(name, transport_options.get(name, transport.BYTE_LIMIT))
+    transport.byte_budget(
+        "max_logical_bytes", transport_options.get("max_logical_bytes", 268435456)
+    )
     _require(
         can_save_selection(selection),
         "Scientific selection persistence requires an unsupported historical verifier.",

@@ -406,10 +406,16 @@ the sequence continues. Retain a named owner and next review trigger for each wa
 
 The native interval journey now returns64 retained experimental items on the
 original public Q8WZ42 Card. Its complete session save exposes repeated display
-state and fails the original memory/decoded budgets. Continue
+state and failed the original SDK183 memory/decoded budgets. Continue
 [#167's measured scientific-session persistence correction](pending_proposals/shared_link_support.md#native-scientific-session-state-repetition--2026-11-05)
 with explicit resource bounds and preserved earlier meanings before accepting the
-full B3 journey. Query correctness, small saved controls, metadata-only persistence
+full B3 journey. The [shared-value candidate](pending_proposals/shared_view_state_persistence.md)
+now passes local complete 64-item save/read/resave at 350 MiB peak owned RSS, one CPU
+and zero owned swap, with unchanged physical defaults. All 1,042 selected local cases now pass, including
+old scientific/nature and copied-consumer compatibility. Final SDK receiving and
+hosted qualification remain separate pending gates.
+Query correctness, small
+saved controls, metadata-only persistence
 and complete-session workload acceptance remain distinct. Do not raise global
 limits or drop content to obtain a passing measurement.
 

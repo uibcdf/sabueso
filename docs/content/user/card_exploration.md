@@ -1658,6 +1658,14 @@ reports encoded/decoded sizes and hashes; your original `bundle_digest` retains
 its meaning. Compression preserves all retained content and still performs the
 original scientific verification.
 
+Large explorations automatically share repeated stored values while preserving
+every view, row, source and return path. This can reduce both file size and
+temporary memory during saving; it does not merge molecular entities. Reading
+and saving also accept `max_logical_bytes` (256 MiB by default), which counts
+the complete JSON content with every repeated occurrence. If this limit is
+exceeded, the error explains how to increase it explicitly or deliberately pass
+`max_logical_bytes=None`. No content is silently dropped.
+
 Save and read default to 64 MiB each for `max_encoded_bytes` and
 `max_decoded_bytes`, including plain JSON. If a reading exceeds a ceiling, the
 error names the limit: pass a larger positive integer or deliberately use None.

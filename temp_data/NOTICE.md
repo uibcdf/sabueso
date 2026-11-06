@@ -581,3 +581,13 @@ noncommercial and share-alike conditions apply and no endorsement is implied.
 Original provider bytes are unchanged; parser projections are Sabueso's extraction.
 Independent contributing-source rights remain separate. No scripts execute and no
 linked content is acquired. The REST API's earlier failures remain independent.
+
+The derived compatibility fixture
+`tests/core/data/shared_values_v12_writer_replay.json.gz` replays the archived
+Sabueso SDK184 writer against five complete retained public statements from the
+AlphaFold Q8WZ42-F2 / UniProt Q8WZ42 inputs above (2026-11-06 UTC; no new source
+query). AlphaFold and UniProt data retain their CC BY 4.0 terms and credit to
+Google DeepMind/EMBL-EBI and the UniProt Consortium; authored wrapper/test material
+follows repository MIT. The capsule is an explicitly labelled archived-writer
+replay, not a pre-reader artifact. It uses a deliberately reduced Card and is not
+a whole-Card workload benchmark; original upstream responses remain unchanged.

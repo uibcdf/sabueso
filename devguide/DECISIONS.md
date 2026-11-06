@@ -4910,3 +4910,18 @@ CI/governance before adoption or completed-code qualification, or recover the
 native checkpoint earlier if the reader is deferred. No source/schema/dependency/
 packaging/migration or shared integration gate is waived; prior source-capture
 CI retains its own active receiving. See [the ledger](pending_proposals/deferred_ci.md).
+
+
+## 2026-11-06 — Shared saved-value candidate (#167)
+
+Use a separately versioned exact JSON representation for large repeated saved
+view state, with original formats/verifiers@1–@12 left unchanged. Preserve source
+and scientific identities, all occurrences, units, complete access and original
+navigation. Reuse frozen header predicates through their bounded navigation-marker
+projection and run complete original per-view predicates afterwards. Add an
+explicit overridable logical-work budget; keep existing physical transport and
+single-component bounds. This is the implementation choice for the
+[shared-state candidate](pending_proposals/shared_view_state_persistence.md), not
+scientific, researcher or release acceptance. Its full 64-item workload now
+passes the bounded local save/read/resave control; wider compatibility and
+hosted qualification remain separate requirements.

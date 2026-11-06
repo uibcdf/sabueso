@@ -125,6 +125,7 @@ class AccessSelection:
         compression="none",
         max_encoded_bytes=67108864,
         max_decoded_bytes=67108864,
+        max_logical_bytes=268435456,
         skip_digestion=False,
     ):
         """Persist a supported machine selection through the shared exploration bundle."""
@@ -137,6 +138,7 @@ class AccessSelection:
             compression=compression,
             max_encoded_bytes=max_encoded_bytes,
             max_decoded_bytes=max_decoded_bytes,
+            max_logical_bytes=max_logical_bytes,
         )
 
     @arg_digest()

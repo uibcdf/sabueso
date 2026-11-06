@@ -1356,6 +1356,7 @@ class CardView:
         compression="none",
         max_encoded_bytes=67108864,
         max_decoded_bytes=67108864,
+        max_logical_bytes=268435456,
         skip_digestion=False,
     ):
         """Save supported retained views and their original captured context atomically."""
@@ -1368,6 +1369,7 @@ class CardView:
             compression=compression,
             max_encoded_bytes=max_encoded_bytes,
             max_decoded_bytes=max_decoded_bytes,
+            max_logical_bytes=max_logical_bytes,
         )
 
     def summary(self):

@@ -418,6 +418,10 @@ def test_mixed_topics_use_their_original_verifiers_and_repeated_save_stays_bound
         p = tmp_path / f"again{index}.json"
         saved.save(p)
         data = json.loads(p.read_text(encoding="utf-8"))
+        if data["format"] == "sabueso.card_exploration@13":
+            from sabueso.core.card_exploration_shared_values_v1 import unpack
+
+            data, _ = unpack(data)
         count = (len(data["views"]), len(data["objects"]))
         if previous is not None:
             assert count == previous

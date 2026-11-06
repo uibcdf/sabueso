@@ -1,5 +1,16 @@
 # Sabueso — Tests and Quality Gates
 
+Shared saved values use `test_exploration_shared_values_offline.py`: canonical
+scalar/UTF-8/quantity fidelity, exact logical work accounting, repeated occurrences
+without identity merging, malformed/orphan/cyclic references, visible budgets and
+explicit overrides, fresh Merkle hashes with invalid original display bindings,
+all-nature human/agent save/read/resave and private/public copy boundaries. Include
+the explicitly labelled SDK184 writer-replay capsule (not a pre-reader artifact).
+Both installed routes copy/select the gate and capsule. Run affected old literal/
+scientific/assembly/native/context/quantity/argument gates; preserve all frozen
+verifiers@1–@12. The actual complete64-item public Card workload needs its own
+512MiB receiving with default transport limits; small cases are not a substitute.
+
 Native model navigation uses `test_card_modelcif_navigation_offline.py` with
 native intake/reference, API whole/fragment/range-alias, shared support, structural
 history and human/agent/argument/quantity gates. Check genuine public Q8WZ42's

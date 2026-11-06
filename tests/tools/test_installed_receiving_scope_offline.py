@@ -10,6 +10,58 @@ import tempfile
 from pathlib import Path
 
 
+def test_declared_shared_values_run_without_checkout_files():
+    root = Path(__file__).resolve().parents[2]
+    name = "test_exploration_shared_values_offline.py"
+    original = "shared_values_v12_writer_replay.json.gz"
+    for workflow_path in (
+        ".github/workflows/ci.yml",
+        ".github/workflows/test_staged_conda_package.yaml",
+    ):
+        workflow = (root / workflow_path).read_text(encoding="utf-8")
+        assert (
+            sum("cp " in line and name in line for line in workflow.splitlines()) == 1
+        )
+        command = re.search(r"python -m pytest (.+)", workflow.replace("\\\n", " "))
+        assert shlex.split(command[1]).count(name) == 1
+        assert (
+            sum(
+                "cp " in line and f"data/{original}" in line
+                for line in workflow.splitlines()
+            )
+            == 1
+        )
+    with tempfile.TemporaryDirectory(
+        prefix="sabueso-shared-values-receiving-"
+    ) as directory:
+        stage = Path(directory)
+        shutil.copyfile(root / "tests/core" / name, stage / name)
+        (stage / "data").mkdir()
+        shutil.copyfile(root / "tests/core/data" / original, stage / "data" / original)
+        env = dict(os.environ, PYTHONPATH=str(stage))
+        env.pop("PYTEST_ADDOPTS", None)
+        result = subprocess.run(
+            [
+                sys.executable,
+                "-m",
+                "pytest",
+                "--receptor=llm",
+                "-o",
+                "tmp_path_retention_policy=failed",
+                name,
+            ],
+            cwd=stage,
+            env=env,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            timeout=120,
+        )
+        assert result.returncode == 0, result.stdout + result.stderr
+        assert "56 passed" in result.stdout and "PASS exit=0" in result.stdout
+        assert not (stage / "temp_data").exists()
+
+
 def test_declared_range_alias_reader_and_originals_run_without_checkout_files():
     root = Path(__file__).resolve().parents[2]
     name = "test_alphafold_range_aliases_offline.py"

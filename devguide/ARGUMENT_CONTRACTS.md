@@ -34,6 +34,13 @@ and read-only `max_window_bytes` (8 MiB; powers of two at least 1024). None
 disables the corresponding host ceiling; a None window selects the backend
 maximum. Digestion-skipped calls retain the same guards before file/codec work.
 See [the transport contract](pending_proposals/exploration_file_transport.md).
+Shared saved-value representation adds `max_logical_bytes` (256 MiB default) to
+human/agent saving and shared reading. Positive non-boolean integers and explicit
+None follow the same budget contract, including digestion-skipped calls. Reuse
+counts toward logical work; physical decoded limits still bound non-view metadata
+and each complete view. Refusal explains the exact override. See
+[the shared-state contract](pending_proposals/shared_view_state_persistence.md).
+
 
 The live `assembly_generation` exploration topic reuses existing `options`,
 `fields`, `where`, `item_refs`, `order_by` and scalar display arguments. Its options
