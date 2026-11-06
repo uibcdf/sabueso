@@ -631,6 +631,15 @@ def _parts(view):
                 from .card_model_fragment_regions_v1 import SCOPE
 
                 opening.append(SCOPE)
+            if (
+                view._origin is not None
+                and view._origin._link_panel
+                and view._origin.native_payload.get("rule")
+                == "retained_context_links@8"
+            ):
+                for row in view._origin.native_payload.get("links", []):
+                    if row.get("role") == "question":
+                        opening.append(row["model_context"]["reason"])
             options = request["options"]
             region = options["region"]
             opening.append(f"Sequence axis: {preview(options['sequence_ref'])}")
@@ -839,6 +848,7 @@ def _parts(view):
                         "retained_context_links@4",
                         "retained_context_links@5",
                         "retained_context_links@6",
+                        "retained_context_links@8",
                     )
                     else "annotation_context"
                 )

@@ -1,5 +1,14 @@
 # Sabueso — Tests and Quality Gates
 
+Native model navigation uses `test_card_modelcif_navigation_offline.py` with
+native intake/reference, API whole/fragment/range-alias, shared support, structural
+history and human/agent/argument/quantity gates. Check genuine public Q8WZ42's
+201–1600 interval, original and current selection binding, unknown date agreement,
+visible refusal, source/back parity, unvisited `not_saved`, cold parser/mapper-free
+format @12 and resealed semantic substitutions. Original formats @1–@11 and
+native declaration/context rules remain fixed. Both installed routes copy/select
+the standalone module. No new Card schema, source query or atomic mapping.
+
 Native source-reference context uses `test_alphafold_modelcif_reference_offline.py`
 with intake/archive/API, literal/context/shared support, argument/registry,
 migration/schema and enrichment/knowledge-state cases. Check actual original
@@ -8,8 +17,8 @@ unknown dates, unsupported monomers/alternatives, mismatch versus missing,
 separate source/declaration/finding scope, original-input replay, human/targeted
 agent/source parity and independent saved reading with parser/interpreter/checksum
 calculation forbidden. Receive genuine SDK181 metadata history separately. Both
-installed routes copy/select the standalone module; no new scientific question,
-experimental/atomic mapping or independent researcher acceptance is implied.
+installed routes copy/select the standalone module; this context-only rule does
+not itself provide a scientific question, atomic mapping or researcher acceptance.
 
 Shared generic support uses `test_card_shared_link_support_offline.py`: all natures,
 complete original support, missing references, exact destinations, independent

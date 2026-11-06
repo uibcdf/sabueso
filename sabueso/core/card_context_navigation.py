@@ -355,16 +355,11 @@ def related(item):
     else:
         from .card_model_fragment_regions_v1 import link as model_link
         from .card_model_regions_v1 import model_path
+        from .card_modelcif_regions_v1 import link as native_model_link
 
         model_location = item.payload_location
-        native = None
         if model_path(explorer, model_location):
             row, _ = explorer.access._resolve(model_location)
-            from sabueso.mappings.alphafold_modelcif_v1 import bound_declaration
-
-            from .card_exploration_history import _HistoricalInput
-
-            native = bound_declaration(_HistoricalInput(explorer.access._focal), row)
             context = (row.get("qualifiers") or {}).get("sequence_context")
             if (
                 isinstance(context, dict)
@@ -372,8 +367,10 @@ def related(item):
             ):
                 from .card_model_fragment_regions_v2 import link as model_link
 
-        # Literal native declarations are not API model correspondence inputs.
-        question = None if native is not None else model_link(explorer, model_location)
+        # Native declarations retain their own original reference predicates.
+        question = native_model_link(explorer, model_location)
+        if question is None:
+            question = model_link(explorer, model_location)
         if question is not None:
             support = question["support"]
     if question is None:
@@ -522,6 +519,7 @@ def follow(item):
         "retained_context_links@4",
         "retained_context_links@5",
         "retained_context_links@6",
+        "retained_context_links@8",
     ):
         key = (
             "model_context"
@@ -530,6 +528,7 @@ def follow(item):
                 "retained_context_links@4",
                 "retained_context_links@5",
                 "retained_context_links@6",
+                "retained_context_links@8",
             )
             else "annotation_context"
         )

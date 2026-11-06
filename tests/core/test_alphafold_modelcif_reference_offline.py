@@ -444,13 +444,18 @@ def test_real_card_human_targeted_agent_and_inert_saved_context(tmp_path):
         == "comparable_interval"
     )
     sources = model.related().filter("role", equals="source")
-    assert len(sources.items()) == 4
+    assert len(sources.items()) == 5
     for item in sources.items():
         assert item.open().native_payload["source"]["name"] in (
             "AlphaFold DB",
             "UniProt",
         )
-    assert not model.related().filter("role", equals="question").items()
+    (question,) = model.related().filter("role", equals="question").items()
+    assert (
+        question._entry.value["model_context"]["rule"]
+        == "native_model_structure_request@1"
+    )
+    assert question._entry.value["model_context"]["state"] == "ready"
     path = tmp_path / "native-context.json.gz"
     finding_view.save(path, compression="gzip")
     assert card.to_dict() == before
@@ -490,5 +495,5 @@ def test_stored_binding_uses_original_sources_not_current_selected_values(
     expected = bound_context(card, relationship)
     card.sections["sequence"]["primary"]["value"] = "another_selected_sequence"
     assert bound_context(card, relationship) == expected
-    # A future scientific request must separately bind the current selection;
+    # The separate scientific request must bind the current selection;
     # this retained finding makes only an original-input interval claim.

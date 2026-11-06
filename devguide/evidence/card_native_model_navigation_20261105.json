@@ -1,0 +1,240 @@
+{
+  "owner": "uibcdf/sabueso#148/#173/#112",
+  "review_trigger": "exact-source qualification / native structural acceptance / before0.15.0",
+  "baseline_head": "a03bdbd28ac58de8c0de368233fc4a86515323ae",
+  "scope": "New native_model_structure_request@1 / retained_context_links@8 and independent original format@12. Current selection plus frozen SDK182 original-source predicates; no Card/schema, API question, older verifier, original finding or SourceAssertion rewrite.",
+  "scientific_control": {
+    "actual_public_model": "AF-Q8WZ42-F2",
+    "reference": "UniProt Q8WZ42 entry223 sequence4",
+    "reference_interval": [
+      201,
+      1600
+    ],
+    "entity_sequence_interval": [
+      1,
+      1400
+    ],
+    "reference_date_agreement": null,
+    "source_routes": 5,
+    "new_source_queries": 0,
+    "atomic_or_experimental_equivalence": "not_established",
+    "whole_native_and_API_controls": "explicitly synthetic; not genuine deposited models"
+  },
+  "local_receiving": {
+    "distinct_related_passing_cases": 579,
+    "new_navigation_cases": 31,
+    "original_native_cases": 87,
+    "older_API_history_context_cases": 144,
+    "human_agent_history_quantity_argument_cases": 317,
+    "gates": {
+      "final-native": {
+        "owner": "uibcdf/sabueso#148/#173/#112",
+        "review_trigger": "native original-reference navigation / #148",
+        "command": [
+          "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-m",
+          "pytest",
+          "tests/core/test_card_modelcif_navigation_offline.py",
+          "tests/core/test_alphafold_modelcif_intake_offline.py",
+          "tests/core/test_alphafold_modelcif_reference_offline.py",
+          "-x",
+          "-m",
+          "not online",
+          "--receptor=llm"
+        ],
+        "cwd": "/home/liliana/repos@uibcdf/sabueso",
+        "exit_code": 0,
+        "elapsed_s": 71.68,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 431611904,
+        "minimum_host_available_bytes": 8831614976,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 5685051,
+        "limits": {
+          "owned_rss_bytes": 1073741824,
+          "host_available_bytes": 4294967296,
+          "owned_swap_bytes": 0,
+          "elapsed_s": 600,
+          "owned_scratch_bytes": 2147483648
+        },
+        "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+      },
+      "added-semantic-controls-v2": {
+        "owner": "uibcdf/sabueso#148/#173/#112",
+        "review_trigger": "native original-reference navigation / #148",
+        "command": [
+          "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-m",
+          "pytest",
+          "tests/core/test_card_modelcif_navigation_offline.py",
+          "-k",
+          "replacement or fresh_metadata",
+          "-m",
+          "not online",
+          "--receptor=llm"
+        ],
+        "cwd": "/home/liliana/repos@uibcdf/sabueso",
+        "exit_code": 0,
+        "elapsed_s": 3.52,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 137527296,
+        "minimum_host_available_bytes": 9361588224,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 0,
+        "limits": {
+          "owned_rss_bytes": 1073741824,
+          "host_available_bytes": 4294967296,
+          "owned_swap_bytes": 0,
+          "elapsed_s": 600,
+          "owned_scratch_bytes": 2147483648
+        },
+        "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+      },
+      "mixed-assembly-v3": {
+        "owner": "uibcdf/sabueso#148/#173/#112",
+        "review_trigger": "native original-reference navigation / #148",
+        "command": [
+          "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-m",
+          "pytest",
+          "tests/core/test_card_modelcif_navigation_offline.py",
+          "-k",
+          "mixed_nonpolymer",
+          "-m",
+          "not online",
+          "--receptor=llm"
+        ],
+        "cwd": "/home/liliana/repos@uibcdf/sabueso",
+        "exit_code": 0,
+        "elapsed_s": 9.81,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 211374080,
+        "minimum_host_available_bytes": 8864768000,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 0,
+        "limits": {
+          "owned_rss_bytes": 1073741824,
+          "host_available_bytes": 4294967296,
+          "owned_swap_bytes": 0,
+          "elapsed_s": 600,
+          "owned_scratch_bytes": 2147483648
+        },
+        "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+      },
+      "human-agent-history": {
+        "owner": "uibcdf/sabueso#148/#173/#112",
+        "review_trigger": "native original-reference navigation / #148",
+        "command": [
+          "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-m",
+          "pytest",
+          "tests/core/test_card_exploration_offline.py",
+          "tests/core/test_card_access_offline.py",
+          "tests/core/test_card_human_labels_offline.py",
+          "tests/core/test_card_nature_exploration_offline.py",
+          "tests/core/test_card_saved_exploration_offline.py",
+          "tests/core/test_card_saved_science_offline.py",
+          "tests/core/test_quantity_checks_offline.py",
+          "tests/core/test_argument_contracts_offline.py",
+          "-m",
+          "not online",
+          "--receptor=llm"
+        ],
+        "cwd": "/home/liliana/repos@uibcdf/sabueso",
+        "exit_code": 0,
+        "elapsed_s": 209.98,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 523603968,
+        "minimum_host_available_bytes": 8374358016,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 67651985,
+        "limits": {
+          "owned_rss_bytes": 1073741824,
+          "host_available_bytes": 4294967296,
+          "owned_swap_bytes": 0,
+          "elapsed_s": 600,
+          "owned_scratch_bytes": 2147483648
+        },
+        "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+      }
+    },
+    "deduplication_note": "109 final native/navigation cases plus8 additional semantic and1 mixed assembly case establish118 distinct native cases;144 older cases passed in the prior231-case scope. Its one outdated native source-count expectation was corrected and passed in final-native. No repeated counts or full-final-suite claim."
+  },
+  "integration_regression": "The mixed nonpolymer session exposed three old-format literals in the new@12 verifier. Only the new verifier was corrected; mixed assembly/current-mapper-forbidden receiving now passes.",
+  "frozen_predicates": [
+    {
+      "frozen": "sabueso/core/_card_modelcif_input_v1.py",
+      "functions": 7,
+      "original": "sabueso/mappings/alphafold_modelcif_v1.py",
+      "sha256": "15ec442dc9f95a52cd15f7606c6272b618aa44a0f219165c4c37f76de5a78ee6"
+    },
+    {
+      "frozen": "sabueso/core/_card_modelcif_reference_v1.py",
+      "functions": 7,
+      "original": "sabueso/mappings/alphafold_modelcif_reference_v1.py",
+      "sha256": "1a6c1f171042dfb050944a95a69a6302e3b5cccace80a8ec5e3e1ec208137432"
+    }
+  ],
+  "unchanged_original_verifiers": [
+    {
+      "path": "sabueso/core/card_exploration_verification.py",
+      "sha256": "e76d3661e06a99a7d90dbd6a4050367e5934db6f976285578a3b755a8882b094"
+    },
+    {
+      "path": "sabueso/core/card_exploration_verification_v10.py",
+      "sha256": "d1dfc806b41265bee9302daac0cf5310a763a7b6c04b62c17b53120596bc4a42"
+    },
+    {
+      "path": "sabueso/core/card_exploration_verification_v11.py",
+      "sha256": "eebe350c8fde87b9388eb03a10fadf47d5532d9c1d8f75a9b291406b14317917"
+    },
+    {
+      "path": "sabueso/core/card_exploration_verification_v5.py",
+      "sha256": "16b92743d3d83f73763261c76b5f13cb1b792e644b6ffda00c4e8a746aa77061"
+    },
+    {
+      "path": "sabueso/core/card_exploration_verification_v6.py",
+      "sha256": "185ee2f2ff6465f270b71f27af9bae1957417af74da1be9656e17771d1cdf581"
+    },
+    {
+      "path": "sabueso/core/card_exploration_verification_v7.py",
+      "sha256": "675fb6e1e4a7f01ee6b02f4884c3ca4621148ff66205fe0977c10d44a8b80fbc"
+    },
+    {
+      "path": "sabueso/core/card_exploration_verification_v8.py",
+      "sha256": "fb6ea3cbf23a66e00b03ec6dd47592c529151cbe01e0eed13ad6c30e8cdfe3ed"
+    },
+    {
+      "path": "sabueso/core/card_exploration_verification_v9.py",
+      "sha256": "0a75257795cfbeef8d64e4af27009712b8d23fe24f208afe0fd07ad924fe5f06"
+    }
+  ],
+  "static_gates": {
+    "ruff_format": "1371 files pass",
+    "ruff_check": "pass",
+    "source_registry": "pass",
+    "fixture_delivery": "81 reviewed inputs;37 protected originals unchanged",
+    "development_dependency_preflight": "pass",
+    "card_schema": "unchanged unpublished0.3.14;2129 paths"
+  },
+  "installed_receiving": "Both CI and staged routes copy/select the standalone navigation module; its existing original nonpolymer capsule is already copied. Current copied-payload and hosted qualification remain separate from clean installed release-artifact acceptance.",
+  "final_source_receiving": {
+    "state": "pending final commit / same-code editable refresh / full-Card native journey / exact-source CI-governance",
+    "owner": "#148/#112",
+    "local_route": "recovered_work/alphafold_modelcif_navigation_20261105",
+    "public_route": "https://github.com/uibcdf/sabueso/issues/148"
+  },
+  "progress_estimate": {
+    "as_of": "2026-11-05",
+    "completed_percent": [
+      60,
+      65
+    ],
+    "remaining_percent": [
+      35,
+      40
+    ],
+    "basis": "Approximate engineering judgment across the complete agreed broad Card scope, audit work, acceptance and release qualification. Not a measured or time forecast score; Deck/viewer/video excluded."
+  },
+  "remaining": "B2 maintainer scientific review deferred; B3/scientific/researcher/agent/workload/private-pilot acceptance open; B4-B6 rich panels and B7 integration remain; B8 consolidation paused."
+}

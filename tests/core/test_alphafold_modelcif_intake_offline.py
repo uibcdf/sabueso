@@ -289,7 +289,11 @@ def test_real_native_card_human_agent_source_and_inert_saved_reading(tmp_path, n
     (item,) = explorer.answer("predicted_models").items()
     assert "AF-Q8WZ42-F2" in item.label
     links = item.related()
-    assert not links.filter("role", equals="question").items()
+    (question,) = links.filter("role", equals="question").items()
+    assert (
+        question._entry.value["model_context"]["rule"]
+        == "native_model_structure_request@1"
+    )
     assert links.filter("role", equals="source").items()
     sources = links.filter("role", equals="source")
     source = sources.items()[0].open()

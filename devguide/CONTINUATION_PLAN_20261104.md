@@ -3,8 +3,11 @@
 The [genuine AlphaFold archive control](pending_proposals/alphafold_archive_fragment_control.md)
 now retains public titin AF-Q8WZ42-F2 and its original UniProt reference. Independent
 native readers verify the 201–1600 reference interval, exact 1,400-residue sequence,
-CRC64 and sequence-version date. This is archive-native receiving, not an API
-record or completed Card intake. The separate full-panel
+CRC64 and sequence-version date. Explicit native metadata Card intake and its
+separate original-reference finding are implemented. The
+[native interval question](pending_proposals/card_native_model_navigation.md)
+connects that finding to retained experimental-region reading without creating
+an API record or claiming atomic/experimental equivalence. The separate full-panel
 [preparation correction](pending_proposals/shared_link_support.md) under #167
 now completes the whole public Card save under the original 512 MiB guard,
 retaining all original content. Its shared-support format @11 has separate
@@ -15,8 +18,9 @@ and 0.15.0 consolidation paused.
 The [AlphaFold range-alias continuation](pending_proposals/alphafold_range_aliases.md)
 adds context/native @2, explicit agreement/refusal, whole/fragment questions @2,
 independent saved format @10 and packet mapping @16. Original source records,
-@1 meanings and saved formats @1–@9 stay fixed. The genuine public archive input is now retained; its Card intake and
-independent scientific/researcher/workload acceptance remain pending;
+@1 meanings and saved formats @1–@9 stay fixed. The genuine public archive input now has native Card intake, an original-reference
+finding and a dedicated interval question; independent scientific/researcher/workload
+acceptance remains pending;
 B2 review stays deferred and 0.15.0 consolidation paused.
 
 Kind: living work plan. Prepared 2026-11-04 at the maintainer's request.
@@ -119,7 +123,8 @@ Current source receiving: the
 [AlphaFold API-scope correction](pending_bugs/alphafold_prediction_api_scope.md)
 keeps queried-route absence explicit in diagnostics, new Card/acquisition data and
 human coverage. A real API200 metadata response still co-serves both range-field
-names; genuine archive fragments remain pending and modern-only compatibility now
+names; genuine archive metadata/reference/interval navigation now has its own
+separate receiving, and modern-only compatibility now
 has its own separately versioned continuation.
 The component-row source `913aad1` has complete hosted qualification; subsequent
 fragment/source-scope changes keep independent receipts. The new
@@ -396,6 +401,28 @@ must be rechecked for their actual current state. MolSysSuite owns modeling and
 geometric work. A ready producer does not establish a consumer's accepted use.
 External review/access blocks only the dependent task, while independent work in
 the sequence continues. Retain a named owner and next review trigger for each wait.
+
+## Planning estimate — 2026-11-05
+
+At the maintainer's request, the current engineering estimate is **60–65% of the
+complete agreed 0.15.0 scope implemented/progressed**, with **35–40% remaining**.
+This is an approximate judgment across the blocks, not a measured completion
+score, elapsed-time forecast or release admission criterion. Confidence is
+limited by unfinished broad panels and the corrections that independent review
+may require. Do not count tests, commits or small structural slices as equal
+units of release progress.
+
+Common human/agent/literal/support/history foundations are substantially advanced;
+B3 structural journeys are advanced but open. The main remaining implementation
+is B4–B6's rich activity/literature, molecule/clinical/disease and variant/comparative/
+association integration. B1/B2 scientific acceptance, B7's combined researcher,
+agent, workload and private pilot acceptance, and B8's candidate/installed/release
+qualification remain separate unfinished work. The maintainer-owned B2 review is
+still deferred. Deck navigation, a visual application and video generation remain
+separately scheduled projects, outside this denominator.
+
+Revise this estimate when a broad block reaches an acceptance checkpoint or its
+scope changes; retain concrete delivery/acceptance states in the inventory below.
 
 ## Completion ledger and release boundary
 

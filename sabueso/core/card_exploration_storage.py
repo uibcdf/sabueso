@@ -578,6 +578,9 @@ def _prepare(root):
     from .card_context_support_v1 import register_bundle as register_shared_support
 
     register_shared_support(bundle)
+    from .card_modelcif_regions_v1 import register_bundle as register_native_models
+
+    register_native_models(bundle)
     return bundle
 
 
@@ -753,6 +756,11 @@ def _restore_checked(bundle, expected_digest, *, owned=False):
         preview_rule(bundle.get("presentation_metadata"))
     if (
         isinstance(bundle, dict)
+        and bundle.get("format") == "sabueso.card_exploration@12"
+    ):
+        from .card_exploration_verification_v12 import verify_bundle, verify_views
+    elif (
+        isinstance(bundle, dict)
         and bundle.get("format") == "sabueso.card_exploration@11"
     ):
         from .card_exploration_verification_v11 import verify_bundle, verify_views
@@ -872,8 +880,9 @@ def _restore_checked(bundle, expected_digest, *, owned=False):
                         "sabueso.card_exploration@9",
                         "sabueso.card_exploration@10",
                         "sabueso.card_exploration@11",
+                        "sabueso.card_exploration@12",
                     ),
-                    "Nonpolymer assembly results require original format @7, @8, @9, @10 or @11.",
+                    "Nonpolymer assembly results require original format @7, @8, @9, @10 or @11 or @12.",
                 )
             else:
                 from .card_assembly_history_v1 import restore_result
@@ -888,8 +897,9 @@ def _restore_checked(bundle, expected_digest, *, owned=False):
                         "sabueso.card_exploration@9",
                         "sabueso.card_exploration@10",
                         "sabueso.card_exploration@11",
+                        "sabueso.card_exploration@12",
                     ),
-                    "Assembly results require original format @5, @6, @7, @8, @9, @10 or @11.",
+                    "Assembly results require original format @5, @6, @7, @8, @9, @10 or @11 or @12.",
                 )
             scientific_results[ref] = restore_result(ref, wire)
         else:
@@ -906,6 +916,7 @@ def _restore_checked(bundle, expected_digest, *, owned=False):
             "sabueso.card_exploration@9",
             "sabueso.card_exploration@10",
             "sabueso.card_exploration@11",
+            "sabueso.card_exploration@12",
         ):
             from .card_exploration_assembly_v2 import (
                 verify_objects as verify_nonpolymer_objects,
@@ -966,6 +977,7 @@ def _restore_checked(bundle, expected_digest, *, owned=False):
                 "sabueso.card_exploration@9",
                 "sabueso.card_exploration@10",
                 "sabueso.card_exploration@11",
+                "sabueso.card_exploration@12",
             )
             and "_component_navigation" in flags
         ):
@@ -1137,6 +1149,7 @@ def _restore_checked(bundle, expected_digest, *, owned=False):
         "sabueso.card_exploration@9",
         "sabueso.card_exploration@10",
         "sabueso.card_exploration@11",
+        "sabueso.card_exploration@12",
     ):
         from .card_explanation_request_binding_v2 import (
             verify as verify_explanation_request,
@@ -1167,6 +1180,7 @@ def _restore_checked(bundle, expected_digest, *, owned=False):
             "sabueso.card_exploration@9",
             "sabueso.card_exploration@10",
             "sabueso.card_exploration@11",
+            "sabueso.card_exploration@12",
         )
         else "scientific_explanation_request_binding@1",
     }
@@ -1179,6 +1193,7 @@ def _restore_checked(bundle, expected_digest, *, owned=False):
             "sabueso.card_exploration@9",
             "sabueso.card_exploration@10",
             "sabueso.card_exploration@11",
+            "sabueso.card_exploration@12",
         ):
             from .card_exploration_assembly_v2 import (
                 verification_report as _verification_report,
@@ -1198,6 +1213,7 @@ def _restore_checked(bundle, expected_digest, *, owned=False):
         "sabueso.card_exploration@9",
         "sabueso.card_exploration@10",
         "sabueso.card_exploration@11",
+        "sabueso.card_exploration@12",
     ):
         session["validation"].update(
             recorded_navigation_decisions="Original assembly_generation_links@2 and earlier original assembly/structure link policies independently verified.",
@@ -1208,6 +1224,13 @@ def _restore_checked(bundle, expected_digest, *, owned=False):
         session["validation"].update(
             verifier=COMPONENT_VERIFIER,
             recorded_navigation_decisions="Original structure question @3/request @2 and declared component list/detail @1 verified against exact original declarations, positions and sources; earlier policies preserved.",
+        )
+    if bundle["format"] == "sabueso.card_exploration@12":
+        from .card_modelcif_regions_v1 import VERIFIER as NATIVE_VERIFIER
+
+        session["validation"].update(
+            verifier=NATIVE_VERIFIER,
+            recorded_navigation_decisions="Original native reference context @1, exact sequence interval request @1 and navigation @8 independently verified; earlier navigation bindings preserved. No atomic mapping or source truth is established.",
         )
     if bundle["format"] == "sabueso.card_exploration@11":
         from .card_context_support_v1 import VERIFIER as SUPPORT_VERIFIER
