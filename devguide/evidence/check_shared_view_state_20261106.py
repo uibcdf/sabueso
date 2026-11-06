@@ -22,7 +22,9 @@ import sys
 from pathlib import Path
 
 CARD_SHA256 = "995fd68dd95a672af065fc1f6081e0c6e06e088873bdccef6bcdf7e6c1e569e2"
-WIRE_SHA256 = "d8f419db3baac1ad5f9a7fcb8da1b91ce1644530b9923386f595aabbe83d9350"
+BASELINE_SDK184_WIRE_SHA256 = (
+    "d8f419db3baac1ad5f9a7fcb8da1b91ce1644530b9923386f595aabbe83d9350"
+)
 RESULT_REF = "XR_0ce5e2d583b0dbf47570a84416f8f0453018c10eea6fda8a48ad7867ddfdbc63"
 
 
@@ -75,15 +77,21 @@ def write(arguments):
     assert "date agreement remains unknown" in str(answer)
     assert "experimental equivalence" in answer._repr_html_()
     assert len(answer.items()) == 64
+    # Fresh results record their actual SDK on generated rule metadata. Keep
+    # those values intact; the cold reader must preserve this producer's exact
+    # wire, rather than require another SDK's byte-level producer labels.
+    wire_sha256 = hashlib.sha256(
+        canonical_json(answer._selection._scientific.wire).encode()
+    ).hexdigest()
+    path = arguments.output / "native-shared.json.gz"
+    receipt = answer.save(path, compression="gzip")
+    assert card.to_dict() == before
     assert (
         hashlib.sha256(
             canonical_json(answer._selection._scientific.wire).encode()
         ).hexdigest()
-        == WIRE_SHA256
+        == wire_sha256
     )
-    path = arguments.output / "native-shared.json.gz"
-    receipt = answer.save(path, compression="gzip")
-    assert card.to_dict() == before
     result = {
         "owner": "uibcdf/sabueso#167/#148/#112",
         "review_trigger": "final code checkpoint / B3 full-workload acceptance",
@@ -101,7 +109,8 @@ def write(arguments):
         "new_source_queries": 0,
         "card_unchanged": True,
         "result_ref": RESULT_REF,
-        "original_native_wire_sha256": WIRE_SHA256,
+        "original_native_wire_sha256": wire_sha256,
+        "baseline_sdk184_wire_sha256": BASELINE_SDK184_WIRE_SHA256,
         "saved_bytes": path.stat().st_size,
         "saved_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
         "save_transport": receipt["transport"],
@@ -128,6 +137,7 @@ def read(arguments):
     Card.from_dict = forbidden
     Card.__init__ = forbidden
     original = json.loads((arguments.output / "writer.json").read_text())
+    wire_sha256 = original["original_native_wire_sha256"]
     saved = sabueso.read_exploration(
         arguments.output / "native-shared.json.gz",
         expected_digest=original["bundle_digest"],
@@ -152,7 +162,7 @@ def read(arguments):
         hashlib.sha256(
             canonical_json(saved._selection._scientific.wire).encode()
         ).hexdigest()
-        == WIRE_SHA256
+        == wire_sha256
     )
     links = saved.explorer.answer("predicted_models").items()[0].related()
     question = links.filter("role", equals="question").items()[0]
@@ -168,7 +178,7 @@ def read(arguments):
         hashlib.sha256(
             canonical_json(restored._selection._scientific.wire).encode()
         ).hexdigest()
-        == WIRE_SHA256
+        == wire_sha256
     )
     result = {
         "sdk": version,

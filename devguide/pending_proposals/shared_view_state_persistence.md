@@ -3,7 +3,7 @@ summary: Share exact saved JSON components while retaining original scientific a
 issue: uibcdf/sabueso#167
 status: implemented_candidate_receiving_pending
 opened: 2026-11-06
-verification: full64-item local receiving and1042 distinct cases pass; committed-SDK reproduction and hosted qualification pending
+verification: full64-item local receiving and1042 distinct cases pass; committed-SDK reproduction passes; hosted qualification pending
 area: [exploration-persistence, human-exploration, agent-access]
 ---
 
@@ -93,13 +93,13 @@ Both installed routes copy/select the standalone gate and replay capsule.
 The [technical receipt](../evidence/shared_view_state_20261106.json) records actual
 receiving and resource conditions. The complete 64-item save/read/resave journey
 now passes locally: 225,817,382 logical bytes become 15,549,478 physical JSON
-bytes and a 5,337,106-byte gzip file, with 366,686,208 peak owned RSS bytes,
+bytes and a 5,335,470-byte gzip file, with 377,487,360 peak owned RSS bytes,
 one low-priority CPU and zero owned swap. All 1,490 source assertions, 215
 relationships, original wire/result identities and five source routes remain.
 The cold reader forbids current native mapping, parsing, Card reconstruction
-and network access. Default physical limits remain 64 MiB. This candidate's
-SDK label precedes the new implementation commit; it is not a pre-reader capture
-or final-source qualification.
+and network access. Default physical limits remain 64 MiB. The committed-runtime SDK185 control also verifies the exact complete captured
+Card hash. Earlier SDK184 working-tree controls remain separately labelled; none
+is a pre-reader capture or hosted qualification.
 
 The first candidate exceeded the original 512 MiB writer ceiling. A bounded
 encoder memo and single node serialization corrected that peak. A second run
@@ -116,8 +116,15 @@ supervisor. Keep complete Card content and original quantities/sources; the
 smaller controls cannot substitute for that measurement. All 1,042 distinct local
 cases pass, including historical/scientific/human/agent/quantity/argument gates,
 fixture/registry/package checks and the isolated copied 56-case receiving payload.
-Nested and repeated cases are not added to that count. Final committed-SDK
-reproduction and exact-source hosted qualification remain pending.
+Nested and repeated cases are not added to that count. Committed-SDK
+reproduction passes, and all 19 local editable import/metadata routes are verified
+inside and outside the checkout. Exact-source hosted qualification remains pending.
+
+The first committed-SDK control fixed a raw wire digest from SDK184 and therefore
+rejected fresh SDK185 generated-rule producer labels. Exhaustive comparison found
+713 differences, all those labels, with no other content change. The corrected
+control captures each producer's exact full wire digest and requires unchanged
+saving, cold reading and resaving; no source or producer field is rewritten.
 Use one CPU, low priority and host-memory reserve; defer a gate when the concurrent
 machine workload leaves insufficient room.
 

@@ -2,7 +2,7 @@
   "owner": "uibcdf/sabueso#167/#148/#112",
   "review_trigger": "remaining compatibility gates / exact64-item save-read-resave / before0.15.0",
   "baseline": "ee782e8a9da6d2834e1d2dc849430ad4e8846f16",
-  "status": "local implementation and1042 distinct selected cases pass; full public working-tree control passes; exact committed-SDK reproduction and hosted receiving pending",
+  "status": "local implementation,1042 distinct selected cases and exact committed-runtime SDK185 full public control pass; final hosted receiving pending",
   "scope": "Exact shared JSON storage@13 with original semantic formats/verifiers@1-@12, visible logical-work budget and unchanged physical transport defaults. No Card schema, scientific rule, SourceAssertion, data-source query or identity merger.",
   "logical_rule": "shared_exploration_values@1",
   "representation_verifier": "shared_exploration_values_binding@1",
@@ -893,6 +893,114 @@
         "owned_scratch_bytes": 2147483648
       },
       "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "committed-full-control": {
+      "owner": "uibcdf/sabueso#148/#173/#112",
+      "review_trigger": "shared view-state persistence / #167",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "devguide/evidence/check_shared_view_state_20261106.py",
+        "--card",
+        "recovered_work/alphafold_modelcif_context_20261105/final-intake/card.json",
+        "--output",
+        "recovered_work/shared_view_state_20261106/committed-full",
+        "--expected-sdk",
+        "0.14.0+185.gaedea97"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 1,
+      "elapsed_s": 2.27,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 157065216,
+      "minimum_host_available_bytes": 9369284608,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "wire-diagnosis": {
+      "owner": "uibcdf/sabueso#148/#173/#112",
+      "review_trigger": "shared view-state persistence / #167",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "recovered_work/shared_view_state_20261106/diagnose_wire.py"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 4.78,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 243200000,
+      "minimum_host_available_bytes": 9518071808,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "committed-full-corrected": {
+      "owner": "uibcdf/sabueso#148/#173/#112",
+      "review_trigger": "shared view-state persistence / #167",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "devguide/evidence/check_shared_view_state_20261106.py",
+        "--card",
+        "recovered_work/alphafold_modelcif_context_20261105/final-intake/card.json",
+        "--output",
+        "recovered_work/shared_view_state_20261106/committed-full-corrected",
+        "--expected-sdk",
+        "0.14.0+185.gaedea97"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 120.38,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 377487360,
+      "minimum_host_available_bytes": 9181315072,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 89987588,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
     }
   },
   "latest_recorded_small_gate": {
@@ -954,9 +1062,9 @@
   "source_schema": "unchanged0.3.14 and2129 paths",
   "baseline_full_workload": "SDK183/92bdc1d:64 retained inventory items,1490 assertions,215relationships; query about124MiB; save fails512MiB guard/default64MiB decoded limit;213815942 view-record bytes. Original failure preserved under existing #167 report.",
   "remaining": [
-    "Run the durable full-Card offline reproduction against the committed SDK; verify editable metadata inside/outside the checkout.",
+    "Refresh metadata after the final receipt/control-only commit and verify its final code checkpoint. Runtime/source hashes remain those received at aedea97.",
     "Publish an unskipped final source and inspect exact-head CI/governance; pending hosted runs are not qualification.",
-    "Retain full scientific/researcher/workload acceptance and broad0.15.0 panels as separate open work."
+    "Complete separate scientific/researcher/workload acceptance and the broad0.15.0 plan; B2 maintainer review remains deferred."
   ],
   "resource_disposition": "Full512MiB gates require6GiB host reserve plus512MiB preflight headroom, one CPU, nice10 and zero owned swap. Small128MiB gates preserve6GiB; they defer before launch when reserve is unavailable. No resident monitor or additional environment.",
   "release": "B2 scientist review deferred; B3/scientific/researcher/workload acceptance open; broad panels required;0.15.0 consolidation paused.",
@@ -1110,5 +1218,458 @@
     "sabueso/core/card_exploration.py": "2a9b1902270b182e4f6cd0a54bb12250072dd67e909dbdfbbb79765b97906dcf",
     "sabueso/core/card_exploration_shared_values_v1.py": "f6ed7834d2ca55185c0c25f05579e04947c49e3122914f749abd6b9dc0ade72c",
     "sabueso/core/card_exploration_storage.py": "169ac731afcc4337506598f2f20a3e60372e520c061e9bf2efc450d0f8082be7"
+  },
+  "committed_sdk_full_workload": {
+    "owner": "uibcdf/sabueso#167/#148/#112",
+    "review_trigger": "final code checkpoint / B3 full-workload acceptance",
+    "sdk": "0.14.0+185.gaedea97",
+    "control_sha256": "07e93ae60172e154aaf6632f4fa86e09bd34be85ab5441ecc9c0e277a6142dcc",
+    "input_card_sha256": "995fd68dd95a672af065fc1f6081e0c6e06e088873bdccef6bcdf7e6c1e569e2",
+    "captured_card_sha256": "40aa6cb6a226add3fa280fed065902bd2118eec16b90892d549299a670d39f30",
+    "source_assertions": 1490,
+    "relationships": 215,
+    "retained_inventory_items": 64,
+    "reference_interval": [
+      201,
+      1600
+    ],
+    "original_source_routes": 5,
+    "new_source_queries": 0,
+    "card_unchanged": true,
+    "result_ref": "XR_0ce5e2d583b0dbf47570a84416f8f0453018c10eea6fda8a48ad7867ddfdbc63",
+    "original_native_wire_sha256": "4aff984e82b58d8e05d029b561bcb61579d7f29966393be19195c575dc06db14",
+    "baseline_sdk184_wire_sha256": "d8f419db3baac1ad5f9a7fcb8da1b91ce1644530b9923386f595aabbe83d9350",
+    "saved_bytes": 5335470,
+    "saved_sha256": "e4187798afe6b85915b9d3917686d389fcfd965a4f4beee6ca9dbede3583e412",
+    "save_transport": {
+      "format": "exploration_transport@1",
+      "compression": "gzip",
+      "encoded_bytes": 5335470,
+      "decoded_bytes": 15549478,
+      "encoded_sha256": "sha256:e4187798afe6b85915b9d3917686d389fcfd965a4f4beee6ca9dbede3583e412",
+      "decoded_sha256": "sha256:2c6b88e62344cf2e380a34f5676e6ce3535b59355ed25f979ffb8210be28adc1",
+      "backend": {
+        "module": "zlib",
+        "version": "1.3.2",
+        "level": 6
+      }
+    },
+    "bundle_digest": "sha256:ed16f533bf41bfed1d48e6211552879a762adccc2dd56d72e7923b55067519dd",
+    "cold": {
+      "sdk": "0.14.0+185.gaedea97",
+      "validation": {
+        "verifier": "native_model_navigation_binding@1",
+        "integrity": "verified",
+        "independent_expected_digest": true,
+        "bindings": "original captured snapshots, retained literal/scientific values, units, support, requests and display membership",
+        "recorded_navigation_decisions": "Original native reference context @1, exact sequence interval request @1 and navigation @8 independently verified; earlier navigation bindings preserved. No atomic mapping or source truth is established.",
+        "scientific_classifications": "historical_consistency_verified",
+        "presentation_wording": "recorded",
+        "source_authenticity_and_truth": "not_established_by_hashes",
+        "scientific_explanation_requests": "scientific_explanation_request_binding@2",
+        "verified_scientific_rules": [
+          "experimental_structure_admission@1",
+          "experimental_structure_coordinates@1",
+          "knowledge_state@5",
+          "structure_coverage_class@1",
+          "structure_inventory@3",
+          "structure_inventory_explanation@4",
+          "structure_state@3"
+        ],
+        "verified_selection_policies": [],
+        "explanations": "retained original explanations checked at their original scope",
+        "historical_catalog": "frozen initial exploration v1 source/area declarations",
+        "representation_verifier": "shared_exploration_values_binding@1",
+        "representation_rule": "shared_exploration_values@1",
+        "storage_format": "sabueso.card_exploration@13",
+        "logical_format": "sabueso.card_exploration@12",
+        "logical_bytes": 225817382,
+        "shared_values": 39508,
+        "physical_bundle_digest": "sha256:ed16f533bf41bfed1d48e6211552879a762adccc2dd56d72e7923b55067519dd",
+        "transport": {
+          "format": "exploration_transport@1",
+          "compression": "gzip",
+          "encoded_bytes": 5335470,
+          "decoded_bytes": 15549478,
+          "encoded_sha256": "sha256:e4187798afe6b85915b9d3917686d389fcfd965a4f4beee6ca9dbede3583e412",
+          "decoded_sha256": "sha256:2c6b88e62344cf2e380a34f5676e6ce3535b59355ed25f979ffb8210be28adc1",
+          "backend": {
+            "module": "zlib",
+            "version": "1.3.2"
+          },
+          "limits": {
+            "max_encoded_bytes": 67108864,
+            "max_decoded_bytes": 67108864,
+            "max_window_bytes": 8388608
+          }
+        }
+      },
+      "result_ref": "XR_0ce5e2d583b0dbf47570a84416f8f0453018c10eea6fda8a48ad7867ddfdbc63",
+      "resave_transport": {
+        "format": "exploration_transport@1",
+        "compression": "gzip",
+        "encoded_bytes": 5339347,
+        "decoded_bytes": 15556516,
+        "encoded_sha256": "sha256:c2d7db8a62ad7466d53fb5aaed423ec4367d840a0ca9f95b2725d87dcd4b7d2f",
+        "decoded_sha256": "sha256:e356044849750be688bb9666635b1baaf650eeaa98d871f9b06bfbc1e0b65f37",
+        "backend": {
+          "module": "zlib",
+          "version": "1.3.2",
+          "level": 6
+        }
+      }
+    },
+    "process_topology": "successive independent writer and cold receiver; supervisor includes orchestrator and each active child",
+    "runtime_source": "aedea97231c4c78bd14f111923fc1c1195a872bd",
+    "control_disposition": "Control corrected after that commit; runtime files byte-identical. Final publication includes the corrected control and this receipt."
+  },
+  "harness_correction": {
+    "observation": "First committed-SDK control incorrectly required SDK184 complete-wire digest from a fresh SDK185 result. Result identity stayed fixed; exhaustive leaf comparison found713 differences, all actual generated-rule SDK labels184\u2192185. No other value/type/key/list-length change.",
+    "correction": "Capture the fresh producer actual full wire digest, assert saving does not change it, and require cold read/resave to preserve it exactly. Never rewrite producer metadata or source records.",
+    "scope": "Control-only correction; all runtime/scientific/frozen verifier files unchanged."
+  },
+  "editable_receiving": {
+    "sdk": "0.14.0+185.gaedea97",
+    "source_routes": [
+      {
+        "name": "ackredit",
+        "version": "0.12.0+11.g74f865d",
+        "source": "/home/liliana/repos@uibcdf/ackredit",
+        "modules": [
+          {
+            "name": "ackredit",
+            "origins": [
+              "/home/liliana/repos@uibcdf/ackredit/ackredit/__init__.py"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "argdigest",
+        "version": "0.17.0+5.gcd9c4f3",
+        "source": "/home/liliana/repos@uibcdf/argdigest",
+        "modules": [
+          {
+            "name": "argdigest",
+            "origins": [
+              "/home/liliana/repos@uibcdf/argdigest/argdigest/__init__.py"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "depdigest",
+        "version": "0.15.1+8.g0884f0c",
+        "source": "/home/liliana/repos@uibcdf/depdigest",
+        "modules": [
+          {
+            "name": "depdigest",
+            "origins": [
+              "/home/liliana/repos@uibcdf/depdigest/depdigest/__init__.py"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "dockingmt",
+        "version": "0.0.0+264.gd1435ff",
+        "source": "/home/liliana/repos@uibcdf/dockingmt",
+        "modules": [
+          {
+            "name": "dockingmt",
+            "origins": [
+              "/home/liliana/repos@uibcdf/dockingmt/dockingmt/__init__.py"
+            ]
+          },
+          {
+            "name": "molsysviewer_dockingmt",
+            "origins": [
+              "/home/liliana/repos@uibcdf/dockingmt/molsysviewer_dockingmt/__init__.py"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "elastnetmt",
+        "version": "0.1.0",
+        "source": "/home/liliana/repos@uibcdf/elastnetmt",
+        "modules": [
+          {
+            "name": "elastnetmt",
+            "origins": [
+              "/home/liliana/repos@uibcdf/elastnetmt/elastnetmt/__init__.py"
+            ]
+          },
+          {
+            "name": "molsysviewer_elastnetmt",
+            "origins": [
+              "/home/liliana/repos@uibcdf/elastnetmt/molsysviewer_elastnetmt/__init__.py"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "gh-run-receptor",
+        "version": "1.3.0+5.g319c52c",
+        "source": "/home/liliana/repos@uibcdf/gh-run-receptor",
+        "modules": [
+          {
+            "name": "gh_run_receptor",
+            "origins": [
+              "/home/liliana/repos@uibcdf/gh-run-receptor/gh_run_receptor/__init__.py"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "lindelint",
+        "version": "0.2.0",
+        "source": "/home/liliana/repos@uibcdf/lindelint",
+        "modules": [
+          {
+            "name": "lindelint",
+            "origins": [
+              "/home/liliana/repos@uibcdf/lindelint/lindelint/__init__.py"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "molsysmt",
+        "version": "0.23.0+322.g71fbe4f46",
+        "source": "/home/liliana/repos@uibcdf/molsysmt",
+        "modules": [
+          {
+            "name": "molsysmt",
+            "origins": [
+              "/home/liliana/repos@uibcdf/molsysmt/molsysmt/__init__.py"
+            ]
+          },
+          {
+            "name": "molsysviewer_molsysmt",
+            "origins": [
+              "/home/liliana/repos@uibcdf/molsysmt/molsysviewer_molsysmt/__init__.py"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "molsysviewer",
+        "version": "0.24.0+188.g73a6f388",
+        "source": "/home/liliana/repos@uibcdf/molsysviewer",
+        "modules": [
+          {
+            "name": "molsysviewer",
+            "origins": [
+              "/home/liliana/repos@uibcdf/molsysviewer/molsysviewer/__init__.py"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "opencastp",
+        "version": "0.1.0+141.gaef7c6c",
+        "source": "/home/liliana/repos@uibcdf/opencastp",
+        "modules": [
+          {
+            "name": "opencastp",
+            "origins": [
+              "/home/liliana/repos@uibcdf/opencastp/src/opencastp/__init__.py"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "peptidemt",
+        "version": "0.1.0+104.gb872f32",
+        "source": "/home/liliana/repos@uibcdf/peptidemt",
+        "modules": [
+          {
+            "name": "peptidemt",
+            "origins": [
+              "/home/liliana/repos@uibcdf/peptidemt/src/peptidemt/__init__.py"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "pharmacophoremt",
+        "version": "0.4.0+29.g8e83a64",
+        "source": "/home/liliana/repos@uibcdf/pharmacophoremt",
+        "modules": [
+          {
+            "name": "molsysviewer_pharmacophoremt",
+            "origins": [
+              "/home/liliana/repos@uibcdf/pharmacophoremt/molsysviewer_pharmacophoremt/__init__.py"
+            ]
+          },
+          {
+            "name": "pharmacophoremt",
+            "origins": [
+              "/home/liliana/repos@uibcdf/pharmacophoremt/pharmacophoremt/__init__.py"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "praxis",
+        "version": "0.1.1",
+        "source": "/home/liliana/repos@uibcdf/praxis",
+        "modules": [
+          {
+            "name": "praxis",
+            "origins": [
+              "/home/liliana/repos@uibcdf/praxis/src/praxis/__init__.py"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "pytest-receptor",
+        "version": "1.2.2+2.gb9676f8",
+        "source": "/home/liliana/repos@uibcdf/pytest-receptor",
+        "modules": [
+          {
+            "name": "pytest_receptor",
+            "origins": [
+              "/home/liliana/repos@uibcdf/pytest-receptor/pytest_receptor/__init__.py"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "pyunitwizard",
+        "version": "0.29.0+4.g9d74f0e",
+        "source": "/home/liliana/repos@uibcdf/pyunitwizard",
+        "modules": [
+          {
+            "name": "pyunitwizard",
+            "origins": [
+              "/home/liliana/repos@uibcdf/pyunitwizard/pyunitwizard/__init__.py"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "recorda",
+        "version": "0.3.3",
+        "source": "/home/liliana/repos@uibcdf/recorda",
+        "modules": [
+          {
+            "name": "recorda",
+            "origins": [
+              "/home/liliana/repos@uibcdf/recorda/src/recorda/__init__.py"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "sabueso",
+        "version": "0.14.0+185.gaedea97",
+        "source": "/home/liliana/repos@uibcdf/sabueso",
+        "modules": [
+          {
+            "name": "sabueso",
+            "origins": [
+              "/home/liliana/repos@uibcdf/sabueso/sabueso/__init__.py"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "smonitor",
+        "version": "0.22.0+16.gccdcace",
+        "source": "/home/liliana/repos@uibcdf/smonitor",
+        "modules": [
+          {
+            "name": "smonitor",
+            "origins": [
+              "/home/liliana/repos@uibcdf/smonitor/smonitor/__init__.py"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "topomt",
+        "version": "0.5.0+324.g5f6239f.dirty",
+        "source": "/home/liliana/repos@uibcdf/topomt",
+        "modules": [
+          {
+            "name": "molsysviewer_topomt",
+            "origins": [
+              "/home/liliana/repos@uibcdf/topomt/molsysviewer_topomt/__init__.py"
+            ]
+          },
+          {
+            "name": "topomt",
+            "origins": [
+              "/home/liliana/repos@uibcdf/topomt/topomt/__init__.py"
+            ]
+          }
+        ]
+      }
+    ],
+    "checked_contexts": [
+      {
+        "cwd": "/home/liliana/repos@uibcdf/sabueso",
+        "sdk_distribution_agree": true,
+        "editable_count": 19
+      },
+      {
+        "cwd": "/tmp",
+        "sdk_distribution_agree": true,
+        "editable_count": 19
+      }
+    ]
+  },
+  "editable_receiving_observation": {
+    "outside_stderr": "Three Failed to create stream fd: Operation not permitted diagnostics; process exit0, SDK and all19 routes verified.",
+    "origin": "not established; no such failure in full outside-checkout cold scientific receiving",
+    "owner": "#167 technical receiving",
+    "review_trigger": "next minimal isolated shared-environment import probe; do not infer a scientific failure"
+  },
+  "cleanup": {
+    "owner": "#167/#148/#112",
+    "review_trigger": "hosted receiving / B3 review",
+    "removed_owned_disposable_paths": [
+      {
+        "path": "candidate-full",
+        "bytes": 0
+      },
+      {
+        "path": "candidate-full-v2",
+        "bytes": 5336174
+      },
+      {
+        "path": "candidate-serial",
+        "bytes": 10682170
+      },
+      {
+        "path": "committed-full",
+        "bytes": 0
+      },
+      {
+        "path": "tmp",
+        "bytes": 67837958
+      },
+      {
+        "path": "full_control.py",
+        "bytes": 6847
+      },
+      {
+        "path": "full_serial_control.py",
+        "bytes": 1346
+      },
+      {
+        "path": "diagnose_wire.py",
+        "bytes": 1726
+      },
+      {
+        "path": "capture_original.py",
+        "bytes": 1582
+      }
+    ],
+    "removed_bytes": 83867803,
+    "retained": "Correct SDK185 full saved/resaved outputs, logs/resources, editable probes and archived-writer replay source; see RETENTION.md. Original inputs and other active receivers/worktrees untouched."
   }
 }

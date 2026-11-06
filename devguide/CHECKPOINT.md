@@ -20,9 +20,10 @@ At SDK183 its complete save exceeded the original memory/decoded budgets through
 repeated view states. The [shared-value candidate](pending_proposals/shared_view_state_persistence.md)
 now preserves original semantic verifiers with a separate bounded representation;
 the complete 64-item save/read/resave now passes locally under #167, using
-350 MiB peak owned RSS, one low-priority CPU and zero owned swap. Default physical
+360 MiB peak owned RSS, one low-priority CPU and zero owned swap. Default physical
 limits remain 64 MiB. All 1,042 selected local cases pass, including the isolated receiving payload.
-Final SDK receiving and exact-source hosted qualification remain separate gates. Small saved controls and the earlier metadata-only512MiB success
+Committed-SDK receiving also passes; all 19 local editable routes are verified
+inside and outside the checkout. Exact-source hosted qualification remains pending. Small saved controls and the earlier metadata-only512MiB success
 remain separate scopes.
 B3/scientific/researcher/workload acceptance remains open; B2 review is deferred
 and 0.15.0 consolidation paused.
