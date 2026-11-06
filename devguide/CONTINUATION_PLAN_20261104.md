@@ -402,6 +402,17 @@ geometric work. A ready producer does not establish a consumer's accepted use.
 External review/access blocks only the dependent task, while independent work in
 the sequence continues. Retain a named owner and next review trigger for each wait.
 
+## Immediate next bounded correction
+
+The native interval journey now returns64 retained experimental items on the
+original public Q8WZ42 Card. Its complete session save exposes repeated display
+state and fails the original memory/decoded budgets. Continue
+[#167's measured scientific-session persistence correction](pending_proposals/shared_link_support.md#native-scientific-session-state-repetition--2026-11-05)
+with explicit resource bounds and preserved earlier meanings before accepting the
+full B3 journey. Query correctness, small saved controls, metadata-only persistence
+and complete-session workload acceptance remain distinct. Do not raise global
+limits or drop content to obtain a passing measurement.
+
 ## Planning estimate — 2026-11-05
 
 At the maintainer's request, the current engineering estimate is **60–65% of the
@@ -460,11 +471,14 @@ milestones, or when a concrete dependency makes one necessary.
 
 ## Immediate next work session
 
-1. Inspect the latest source/editable and exact-source remote receipts; qualify the
-   accumulated B0/B1 code checkpoint without reclassifying earlier failed runs.
-2. Verify B1's current default/consumer adoption with its own original controls and
-   hosted receipt; retain independent scientific/researcher review as pending.
-3. Continue #186 measurement correspondence, then B3–B6 with ongoing scientific,
-   experience and workload review. The remaining broad panels stay required.
-4. Obtain actual B7 scientist/researcher and consumer acceptance before deciding
-   when release consolidation can resume.
+1. Inspect current source/editable metadata and exact-source remote receipts.
+   Earlier qualified B1/B2 technical work remains qualified for its own source;
+   later native changes keep their own receiving.
+2. Correct #167's measured64-item scientific-session persistence expansion, with
+   complete original content, visible limits and bounded preparation/write/read
+   receiving. Do not substitute the smaller passing saved controls.
+3. Continue B3 acceptance and the required B4–B6 rich panels with ongoing human,
+   agent and workload review. The maintainer-owned B2 scientific review stays
+   explicitly deferred; no default adoption follows from more technical tests.
+4. Obtain actual B7 scientist, uncoached researcher, private pilot and consumer
+   acceptance before deciding when B8 release consolidation can resume.

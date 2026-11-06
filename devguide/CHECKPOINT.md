@@ -15,6 +15,11 @@ correspondence remain unknown. Scientific/researcher acceptance remains open. Th
 now completes the whole public Card save under the original 512 MiB guard,
 retaining all original content. Its shared-support format @11 has separate
 historical/mixed/final-source receiving; the original failed receipt is retained.
+The native question now returns64 retained experimental items on the full public
+Card, but its complete session save exceeds the original memory/decoded budgets
+through repeated view states; [#167 follow-up](pending_proposals/shared_link_support.md#native-scientific-session-state-repetition--2026-11-05)
+is required. Small saved controls and the earlier metadata-only512MiB success
+remain separate scopes.
 B3/scientific/researcher/workload acceptance remains open; B2 review is deferred
 and 0.15.0 consolidation paused.
 

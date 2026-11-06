@@ -83,3 +83,28 @@ at final-source receiving and 0.15.0 workload acceptance. Clean completed owned
 scratch after its last use. Broader #167 workloads and actual researcher
 acceptance remain open. Native AlphaFold archive Card intake still needs its
 own supplied-input contract; B2 review is deferred and release consolidation paused.
+
+
+## Native scientific session state repetition — 2026-11-05
+
+The [native interval question](card_native_model_navigation.md) exposes a different
+representative workload on the original public Q8WZ42 Card. SourceSDK183
+`92bdc1d` correctly returns64 retained experimental items for201–1600; query/render
+RSS is130,289,664bytes. Complete persistence fails its512MiB guard before any file
+or cold reader. A separately bounded1GiB diagnosis reaches the existing explicit
+64MiB decoded-byte refusal, peak939,761,664bytes, zero owned swap. The override is
+shown correctly; it was not used. Do not increase defaults to conceal this cost.
+
+Measured preparation holds213,815,942bytes in view records and9,421,317bytes in
+objects. Repeated display state is the observed expansion; old-history reading is
+not its cause. The metadata-only original complete-Card save and small native saved
+controls remain separate passing workloads. Retain the failed receipts and the
+[public technical record](../evidence/card_native_model_navigation_20261105.json).
+
+Next: reduce repeated per-view presentation state while preserving complete
+original results, source support, selection, navigation and units. Review the
+persistence/version boundary explicitly, keep older formats/verifiers fixed and
+receive genuine previous captures. Repeat this exact64-item journey with agreed
+preparation/write/cold-read budgets before B3/workload/human acceptance. This is
+#167 work, cross-linked to#148/#112; no new compression or source acquisition is
+needed to establish the problem.

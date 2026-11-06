@@ -21,7 +21,7 @@
     "whole_native_and_API_controls": "explicitly synthetic; not genuine deposited models"
   },
   "local_receiving": {
-    "distinct_related_passing_cases": 579,
+    "distinct_related_passing_cases": 620,
     "new_navigation_cases": 31,
     "original_native_cases": 87,
     "older_API_history_context_cases": 144,
@@ -156,9 +156,71 @@
           "owned_scratch_bytes": 2147483648
         },
         "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+      },
+      "copied-public": {
+        "owner": "uibcdf/sabueso#148/#173/#112",
+        "review_trigger": "native original-reference navigation / #148",
+        "command": [
+          "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-m",
+          "pytest",
+          "test_card_modelcif_navigation_offline.py",
+          "-m",
+          "not online",
+          "--receptor=llm"
+        ],
+        "cwd": "/home/liliana/repos@uibcdf/sabueso/recovered_work/alphafold_modelcif_navigation_20261105/public-client",
+        "exit_code": 0,
+        "elapsed_s": 45.52,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 303464448,
+        "minimum_host_available_bytes": 9155121152,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 922559,
+        "limits": {
+          "owned_rss_bytes": 1073741824,
+          "host_available_bytes": 4294967296,
+          "owned_swap_bytes": 0,
+          "elapsed_s": 600,
+          "owned_scratch_bytes": 2147483648
+        },
+        "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+      },
+      "final-source-native-registry": {
+        "owner": "uibcdf/sabueso#148/#173/#112",
+        "review_trigger": "native original-reference navigation / #148",
+        "command": [
+          "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-m",
+          "pytest",
+          "tests/core/test_alphafold_modelcif_intake_offline.py",
+          "tests/core/test_alphafold_modelcif_reference_offline.py",
+          "tests/core/test_source_registry_offline.py",
+          "-m",
+          "not online",
+          "--receptor=llm"
+        ],
+        "cwd": "/home/liliana/repos@uibcdf/sabueso",
+        "exit_code": 0,
+        "elapsed_s": 35.22,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 444813312,
+        "minimum_host_available_bytes": 8903086080,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 2236896,
+        "limits": {
+          "owned_rss_bytes": 1073741824,
+          "host_available_bytes": 4294967296,
+          "owned_swap_bytes": 0,
+          "elapsed_s": 600,
+          "owned_scratch_bytes": 2147483648
+        },
+        "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
       }
     },
-    "deduplication_note": "109 final native/navigation cases plus8 additional semantic and1 mixed assembly case establish118 distinct native cases;144 older cases passed in the prior231-case scope. Its one outdated native source-count expectation was corrected and passed in final-native. No repeated counts or full-final-suite claim."
+    "deduplication_note": "109 final native/navigation cases plus8 additional semantic and1 mixed assembly case establish118 distinct native cases;144 older cases passed in the prior231-case scope. Its one outdated native source-count expectation was corrected and passed in final-native. No repeated counts or full-final-suite claim.",
+    "final_code_native_registry_cases": 128,
+    "copied_standalone_public_cases": 31
   },
   "integration_regression": "The mixed nonpolymer session exposed three old-format literals in the new@12 verifier. Only the new verifier was corrected; mixed assembly/current-mapper-forbidden receiving now passes.",
   "frozen_predicates": [
@@ -219,7 +281,7 @@
   },
   "installed_receiving": "Both CI and staged routes copy/select the standalone navigation module; its existing original nonpolymer capsule is already copied. Current copied-payload and hosted qualification remain separate from clean installed release-artifact acceptance.",
   "final_source_receiving": {
-    "state": "pending final commit / same-code editable refresh / full-Card native journey / exact-source CI-governance",
+    "state": "Code committed and same-code editableSDK183 metadata verified inside/outside;159 final-code native/registry/copied cases pass. Exact-source CI/governance and final documentation-head receiving remain pending; full-Card workload is explicitly not accepted.",
     "owner": "#148/#112",
     "local_route": "recovered_work/alphafold_modelcif_navigation_20261105",
     "public_route": "https://github.com/uibcdf/sabueso/issues/148"
@@ -236,5 +298,240 @@
     ],
     "basis": "Approximate engineering judgment across the complete agreed broad Card scope, audit work, acceptance and release qualification. Not a measured or time forecast score; Deck/viewer/video excluded."
   },
-  "remaining": "B2 maintainer scientific review deferred; B3/scientific/researcher/agent/workload/private-pilot acceptance open; B4-B6 rich panels and B7 integration remain; B8 consolidation paused."
+  "remaining": "B2 maintainer scientific review deferred; B3/scientific/researcher/agent/workload/private-pilot acceptance open; B4-B6 rich panels and B7 integration remain; B8 consolidation paused.",
+  "full_card_workload": {
+    "owner": "uibcdf/sabueso#167, cross-linked #148/#112",
+    "review_trigger": "next bounded persistence correction / B3 / before0.15.0",
+    "measured_source": "92bdc1d353dfc7946110cadba21c74c183b13042",
+    "sdk": "0.14.0+183.g92bdc1d",
+    "input_card_sha256": "995fd68dd95a672af065fc1f6081e0c6e06e088873bdccef6bcdf7e6c1e569e2",
+    "genuine_retained_experimental_items": 64,
+    "query_and_render_rss_bytes": 130289664,
+    "full_session_save": "not_accepted; original512MiB guard stops preparation; diagnostic1GiB run reaches explicit64MiB decoded-limit refusal without override or file",
+    "small_saved_controls": "31 standalone cases pass; not a complete-Card workload substitute",
+    "failed_original_guard": {
+      "owner": "uibcdf/sabueso#148/#173/#112",
+      "review_trigger": "native original-reference navigation / #148",
+      "command": [
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "recovered_work/alphafold_modelcif_navigation_20261105/final_control.py"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": -15,
+      "elapsed_s": 10.12,
+      "stop_reason": "owned RSS ceiling",
+      "peak_owned_rss_bytes": 543444992,
+      "minimum_host_available_bytes": 9048690688,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "elapsed_s": 60,
+        "owned_scratch_bytes": 134217728
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "diagnostic_bounded_guard": {
+      "owner": "uibcdf/sabueso#148/#173/#112",
+      "review_trigger": "native original-reference navigation / #148",
+      "command": [
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "recovered_work/alphafold_modelcif_navigation_20261105/final_control.py",
+        "diagnostic-navigation-1g"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 1,
+      "elapsed_s": 45.27,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 939761664,
+      "minimum_host_available_bytes": 8546095104,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 940229,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "preparation_diagnosis": {
+      "items": 64,
+      "members": {
+        "format": 29,
+        "producer": 169,
+        "root_view_ref": 69,
+        "root_navigation_ref": 5,
+        "cards": 2348252,
+        "inputs": 106,
+        "objects": 9421317,
+        "locations": 104268,
+        "views": 213815942,
+        "navigation": 49370,
+        "capabilities": 225,
+        "presentation_metadata": 32,
+        "scientific_results": 114
+      },
+      "largest": {
+        "producer": [
+          [
+            113,
+            "scope",
+            null
+          ],
+          [
+            35,
+            "verifier",
+            null
+          ],
+          [
+            21,
+            "sabueso_version",
+            null
+          ]
+        ],
+        "cards": [
+          [
+            2348252,
+            "sabueso:protein:uniprot:Q8WZ42@sha256:bfd18c08820f41508b93d258fad0f12f62ed19f22d39d9247e31b62e8c4da01b",
+            null
+          ]
+        ],
+        "objects": [
+          [
+            6484429,
+            "XR_0ce5e2d583b0dbf47570a84416f8f0453018c10eea6fda8a48ad7867ddfdbc63",
+            null
+          ],
+          [
+            62432,
+            "XR_8603746d367fd735cafce7930aad73a20012e3610ec3d9881380214ec4ef20c2",
+            null
+          ],
+          [
+            36589,
+            "XR_ff8698253a386a9c9d91c704f17570bbf40621627d88ebdb36db5c1e69178c6c",
+            null
+          ],
+          [
+            36589,
+            "XR_fddc387f0bc68d9c522da8bf23340035686daf7d19f639770d6f56f5c97a607f",
+            null
+          ],
+          [
+            36589,
+            "XR_f97dd3ffa7d5cd082fd3cbf8d9caefc4d8788e51f3c1dadb227b9142408dc93a",
+            null
+          ]
+        ],
+        "locations": [
+          [
+            429,
+            "XL_411184c161aabfbcb9da0055a4ecb2308c660b2ad227df5d7445f3ad0c5bfdbd",
+            null
+          ],
+          [
+            428,
+            "XL_e0bb66c1aa64741720dc016f967fe1410f32b7593a248939e89c08060f713c18",
+            null
+          ],
+          [
+            426,
+            "XL_55b637c705032aac8af2ead59ab4d35141f6fcfa0f83cd4ce2fa30ab54ca4e4a",
+            null
+          ],
+          [
+            425,
+            "XL_c0d2023bec6cd99b00cf9c5ebfe5711b59f536e9e2d844c709f2dbe03bfa499a",
+            null
+          ],
+          [
+            425,
+            "XL_347293a53a4b8ff7bcca1776cbd41d826f31dcdaed8d676244bec1ba8b1c7a4b",
+            null
+          ]
+        ],
+        "views": [
+          [
+            2645249,
+            "N15",
+            null
+          ],
+          [
+            2638921,
+            "N14",
+            null
+          ],
+          [
+            2467905,
+            "N523",
+            null
+          ],
+          [
+            2467898,
+            "N539",
+            null
+          ],
+          [
+            2467858,
+            "N627",
+            null
+          ]
+        ],
+        "navigation": [
+          [
+            24685,
+            "links",
+            null
+          ],
+          [
+            24685,
+            "explanations",
+            null
+          ]
+        ],
+        "capabilities": [
+          [
+            189,
+            "scientific_saved_adapters",
+            null
+          ],
+          [
+            32,
+            "source_coverage",
+            null
+          ],
+          [
+            4,
+            "root_machine_selection_ref",
+            null
+          ]
+        ],
+        "presentation_metadata": [
+          [
+            32,
+            "navigation_preview",
+            null
+          ]
+        ],
+        "scientific_results": [
+          [
+            114,
+            "XR_0ce5e2d583b0dbf47570a84416f8f0453018c10eea6fda8a48ad7867ddfdbc63",
+            null
+          ]
+        ]
+      }
+    },
+    "interpretation": "Observed repetition is concentrated in retained view states (213815942bytes), not native source objects (9421317bytes); no old-history reader was reached before refusal. The earlier metadata-only full-Card save remains a different passing workload.",
+    "next": "Factor repeated presentation state in a separately reviewed persistence policy; preserve complete results, original source closure and all earlier saved meanings. Recheck this exact64-item journey under explicit agreed resource/latency bounds. No global limit increase or data truncation."
+  },
+  "environment_observation": {
+    "owner": "#112 existing environment investigation",
+    "observation": "Outside-checkout editable probe passed but emitted3 stream-fd Operation not permitted diagnostics. Cause/owning component unknown; no library attribution.",
+    "review_trigger": "repeat outside-checkout environment probe / environment diagnostics review"
+  }
 }

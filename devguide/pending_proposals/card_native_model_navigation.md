@@ -70,6 +70,17 @@ separate from the smaller five-statement control.
 
 Local receipts and resource bounds are recorded in
 [the receiving record](../evidence/card_native_model_navigation_20261105.json).
+The full public Card answers the native question with **64 retained experimental
+items**, with query/render RSS about124MiB. Its complete session save is **not
+accepted**: the original512MiB guard stops preparation; a separate bounded1GiB
+diagnosis reaches the visible64MiB decoded-limit refusal. Preparation retains
+213,815,942 bytes in repeated view states versus9,421,317 bytes in source/result
+objects. No override, truncation, completed file or old-history read is claimed.
+The small31-case standalone saved controls remain a distinct passing scope.
+Continue the [#167 persistence correction](shared_link_support.md#native-scientific-session-state-repetition--2026-11-05)
+before accepting this whole journey. The earlier metadata-only whole-Card512MiB
+save remains a different passing workload.
+
 Exact-source hosted qualification, independent scientific/researcher and broader
 workload acceptance remain separate. B3 is open, B2 scientific review remains
 maintainer-owned and deferred, and 0.15.0 consolidation stays paused.
