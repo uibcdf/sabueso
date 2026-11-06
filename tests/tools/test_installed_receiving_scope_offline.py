@@ -45,7 +45,7 @@ def test_declared_chemical_classification_runs_with_only_its_public_input():
             timeout=120,
         )
         assert result.returncode == 0, result.stdout + result.stderr
-        assert "29 passed" in result.stdout and "PASS exit=0" in result.stdout
+        assert "30 passed" in result.stdout and "PASS exit=0" in result.stdout
 
 
 def test_declared_retained_filter_runs_without_checkout_files():

@@ -339,3 +339,16 @@ def test_field_edits_and_source_edits_do_not_rewrite_each_other(card, edited):
     first = next(r for r in result["rows"] if r["kind"] == "role")
     assert first["assignment"] == "unknown"
     assert not first["source_memberships"]
+
+
+def test_observation_context_does_not_coerce_false_to_zero(card):
+    source = original_role(card)
+    source["source_metadata"]["synthetic_context_flag"] = False
+    for assertion in card.source_assertion_store.store.values():
+        if assertion["field_path"] == "relationships.same_as":
+            assertion["source_metadata"]["synthetic_context_flag"] = 0
+    result = card.chemical_classification()
+    assert result["identity_bindings"][source["id"]]["state"] == "unknown"
+    assert all(
+        r["assignment"] == "unknown" for r in result["rows"] if r["kind"] == "role"
+    )

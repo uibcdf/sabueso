@@ -29,6 +29,8 @@ InChIKey Card anchor must not contradict its selected InChIKey. A ChEBI source
 statement requires its explicit original ChEBI subject/record identity and a
 source-supported `same_as` link to that focal anchor. The link and field statement
 must carry the same retained source/version, retrieval and source metadata.
+Observation comparison uses typed canonical JSON: false and zero are not the same
+retained metadata. An absent or unrecognized retrieval token stays unavailable.
 This checks consistency of retained observation metadata, not source authenticity
 or an independently retained original provider response. The role booleans are
 the retained ChEBI mapping's statements; this reader does not reconstruct an

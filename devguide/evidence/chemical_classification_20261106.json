@@ -9,10 +9,11 @@
     "Card_refresh_migration_human_identity_with_native": 242,
     "overlapping_native_cases": 29,
     "isolated_container": 1,
-    "original_saved_cases": 49
+    "original_saved_cases": 49,
+    "additional_typed_observation_case": 1
   },
-  "distinct_selected_cases": 405,
-  "counting_basis": "29 native cases overlap the two principal scopes; copied nested cases and preliminary repeats are not added.",
+  "distinct_selected_cases": 406,
+  "counting_basis": "29 native cases overlap the two principal scopes; the final typed-observation counterexample adds one distinct case. The30 copied nested cases and preliminary repeats are not added again.",
   "recorded_runs": {
     "card-shape": {
       "owner": "uibcdf/sabueso#148/#173/#112",
@@ -265,6 +266,151 @@
       "peak_owned_scratch_bytes": 0,
       "limits": {
         "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "committed-native-receiving": {
+      "owner": "uibcdf/sabueso#148/#173/#112",
+      "review_trigger": "chemical classification foundation / B5",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-m",
+        "pytest",
+        "tests/core/test_chemical_classification_offline.py",
+        "tests/tools/test_installed_receiving_scope_offline.py::test_declared_chemical_classification_runs_with_only_its_public_input",
+        "-x",
+        "-m",
+        "not online",
+        "--receptor=llm"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 2.52,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 182542336,
+      "minimum_host_available_bytes": 8448892928,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "editable-refresh": {
+      "owner": "uibcdf/sabueso#148/#173/#112",
+      "review_trigger": "chemical classification foundation / B5",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "--no-build-isolation",
+        "--no-deps",
+        "--editable",
+        "."
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 3.8,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 93663232,
+      "minimum_host_available_bytes": 8622743552,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "editables-inside": {
+      "owner": "uibcdf/sabueso#148/#173/#112",
+      "review_trigger": "chemical classification foundation / B5",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "recovered_work/chemical_classification_20261106/verify_editables.py",
+        "0.14.0+191.gdd467dc",
+        "inside"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 1.01,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 39120896,
+      "minimum_host_available_bytes": 8674938880,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 134217728,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "editables-outside": {
+      "owner": "uibcdf/sabueso#148/#173/#112",
+      "review_trigger": "chemical classification foundation / B5",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "/home/liliana/repos@uibcdf/sabueso/recovered_work/chemical_classification_20261106/verify_editables.py",
+        "0.14.0+191.gdd467dc",
+        "outside"
+      ],
+      "cwd": "/tmp",
+      "exit_code": 0,
+      "elapsed_s": 1.01,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 39059456,
+      "minimum_host_available_bytes": 8674938880,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 134217728,
         "host_available_bytes": 6442450944,
         "owned_swap_bytes": 0,
         "cpu_affinity_count": 1,
@@ -808,6 +954,78 @@
         "owned_scratch_bytes": 2147483648
       },
       "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "typed-observation-receiving": {
+      "owner": "uibcdf/sabueso#148/#173/#112",
+      "review_trigger": "chemical classification foundation / B5",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-m",
+        "pytest",
+        "tests/core/test_chemical_classification_offline.py",
+        "tests/tools/test_installed_receiving_scope_offline.py::test_declared_chemical_classification_runs_with_only_its_public_input",
+        "-x",
+        "-m",
+        "not online",
+        "--receptor=llm"
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 2.26,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 182816768,
+      "minimum_host_available_bytes": 8537706496,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
+    },
+    "typed-ruff": {
+      "owner": "uibcdf/sabueso#148/#173/#112",
+      "review_trigger": "chemical classification foundation / B5",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/home/liliana/Myopt/miniconda3/pkgs/ruff-0.16.5-hdfdb5ae_0/python-scripts/ruff",
+        "check",
+        "."
+      ],
+      "cwd": "/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 0.25,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 1077248,
+      "minimum_host_available_bytes": 8850354176,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 134217728,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/home/liliana/repos@uibcdf/molsysmt/rust/target"
     }
   },
   "unchanged_frozen_verifiers_and_shared_codec": [
@@ -854,7 +1072,7 @@
   ],
   "candidate_runtime_sha256": {
     "sabueso/core/card.py": "88a142f2c95f735d54f0559730f915014df543f75a283f638f3a155fb12405eb",
-    "sabueso/core/chemical_classification.py": "dad0e78cc59bfb66c3c70ca55e50f9f953354b373e03152f2e4395e95468e229",
+    "sabueso/core/chemical_classification.py": "c8ce8c2f2abfc09357d6ee5b6f7852dd887c5c0c7969697b2c0898529d4ab8d7",
     "sabueso/core/quantities.py": "62a6f39f0f51e68bfa2d5dcc5e67564b00be8d30ea55a472c08cfe25c9a8110a"
   },
   "source_input": {

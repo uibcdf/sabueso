@@ -28,9 +28,12 @@ def _refs(value):
 
 
 def _observation(statement):
-    return {
-        key: statement.get(key) for key in ("source", "retrieved_at", "source_metadata")
-    }
+    return canonical_json(
+        {
+            key: statement.get(key)
+            for key in ("source", "retrieved_at", "source_metadata")
+        }
+    )
 
 
 def _subject(statement):
@@ -49,10 +52,14 @@ def _subject(statement):
 def _identity(statement, focal, relationships, assertions):
     subject = _subject(statement)
     candidates, targets = [], set()
-    if subject is None or not statement.get("retrieved_at"):
+    if (
+        subject is None
+        or not isinstance(statement.get("retrieved_at"), str)
+        or not statement["retrieved_at"]
+    ):
         return {
             "state": "unknown",
-            "basis": "original_subject_or_observation_not_retained",
+            "basis": "original_subject_or_observation_unavailable",
             "relationships": [],
         }
     for relationship in relationships:
