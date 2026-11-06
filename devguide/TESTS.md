@@ -1,5 +1,12 @@
 # Sabueso — Tests and Quality Gates
 
+Structural display continuity uses the retained-filter, native-model, API-fragment
+and range-alias navigation modules. Check text/HTML limitations after chained
+filter/table/sort/summary and focused detail, positive and zero selections, inert
+saved reading and a separate equal-options question. No scope may cross a result
+or request boundary. Keep stored/native/agent values and original verifiers fixed;
+receive the complete original 64-item public session separately under 512 MiB.
+
 Retained filtering uses `test_card_retained_filter_offline.py`: live/saved exact
 and quantity equality, no-match/chained selections with scientific uncertainty,
 duplicate labels, explicit unavailable-view refusal, genuine SDK187 no-op reading,

@@ -195,6 +195,10 @@ def test_modern_fragment_retains_exact_field_support_agent_and_back_navigation()
     assert basis["fragment_match"]["reference_interval"] == [5, 90]
     assert basis["fragment_match"]["coordinate_correspondence"] == "not_established"
     answer = link.open()
+    derived = answer.table().filter("structure_ref", equals="pdb:NOT_RETAINED")
+    assert "sequence correspondence, not observed atoms" in str(derived)
+    assert "Retained experimental fragments are included" in derived._repr_html_()
+    assert derived.native_payload == answer.native_payload
     agent = link._view.explorer.access.select(
         "structures",
         fields=["structure_ref"],

@@ -335,6 +335,12 @@ new exact-source hosted receiving is still required.
 
 ### Remaining exit criteria
 
+The [structural display correction](../pending_bugs/structural_display_scope.md)
+keeps original native-model and API-fragment limitations visible through chained
+display operations and focused detail, alongside retained-filter scope. Original
+source/result/agent and saved semantics remain unchanged. This is a local
+presentation correction, not independent acceptance or B3 closure.
+
 1. Keep the six questions above distinct in native, human, compact agent and saved
    answers. Include every consequential qualifier, source alternative and unknown.
 2. Preserve exact entry/revision, assertion and generator/component/operation scope.

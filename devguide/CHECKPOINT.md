@@ -7,8 +7,10 @@ and exact Card/wire/agent data under inert reading. The
 [versioned filter correction #191](pending_bugs/retained_display_filter.md) now
 selects retained scalar cells while preserving scientific uncertainty and genuine
 earlier membership. Its format @14 explicitly separates the new display policy
-from original scientific records. Exact-source and broader B3 receiving remain
-separate; scientific/researcher acceptance is not implied.
+from original scientific records. The subsequent [display-scope correction](pending_bugs/structural_display_scope.md)
+keeps model limitations and filter guidance visible through chained presentation.
+Exact-source and broader B3 receiving remain separate; scientific/researcher
+acceptance is not implied.
 
 The [genuine AlphaFold archive control](pending_proposals/alphafold_archive_fragment_control.md)
 now retains public titin AF-Q8WZ42-F2 and its original UniProt reference. Independent

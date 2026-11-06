@@ -311,6 +311,13 @@ reading never guesses the original caller's unrecorded intent. A new filter on
 reopened data is a separate operation. Native values and compact agent frames
 remain unchanged.
 
+When a structural question comes from a model, its original sequence/reference
+limitations remain visible after filtering, sorting or switching between summary
+and table. The same limitations apply when opening a structure from that answer.
+The retained-filter explanation stays visible through display changes; an empty
+selection still does not settle the scientific question. Opening another question
+or source keeps that destination's own scope.
+
 `regional_reading` summarizes the **original native result**, under named
 presentation policy `structure_region_reading@1`. It is available on a focused
 regional structure detail; elsewhere it is `None`. Every chain's full recorded

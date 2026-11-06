@@ -1,5 +1,14 @@
 # Sabueso — Decision Log
 
+## 2026-11-06 — Preserve question scope through presentation (#148/#173)
+
+Recover original model limitations through recorded display operations within one
+result and exact request, including focused structural detail. Keep filter guidance
+through display operations, using the current selected count; a detail is not a
+new filter result. Never search other cached results or attach a model origin to
+an independent equal-options question. This corrects text/HTML without changing
+stored/native/agent semantics. See [the reproduction and receiving scope](pending_bugs/structural_display_scope.md).
+
 ## 2026-11-06 — Filter retained cells without changing scientific availability (#191)
 
 Use `retained_cell_filter@2` for exact display equality over readable retained

@@ -644,6 +644,27 @@ def _component_link_preview(view, link):
     return preview(label), " · ".join([*state, preview(link["availability"]), action])
 
 
+def _presentation_ancestors(view, *, include_details=False):
+    """Follow only presentation steps within one original result and request."""
+    while True:
+        yield view
+        operation = view._display_request
+        display = isinstance(operation, dict) and operation.get("operation") in (
+            "filter",
+            "sort",
+            "presentation",
+        )
+        previous = view._origin
+        if (
+            previous is None
+            or not (display or (include_details and view._focus is not None))
+            or previous.result_ref != view.result_ref
+            or previous._request != view._request
+        ):
+            return
+        view = previous
+
+
 def _parts(view):
     opening = _opening(view) if view.title == "Card overview" else []
     if view._explorer.mode == "saved":
@@ -655,7 +676,7 @@ def _parts(view):
         opening.append(view.outcome["reason"])
     from .card_display_filter_v2 import marked
 
-    if marked(view._display_request):
+    if any(marked(parent._display_request) for parent in _presentation_ancestors(view)):
         opening.append(
             f"Display filter: {len(view._selected)} matching retained items. "
             f"Underlying scientific status remains {preview(view.outcome['status'])}."
@@ -676,19 +697,23 @@ def _parts(view):
         request = view.request
         opening.append(f"Question: {request['question']}")
         if request["question"] == "region_coverage":
+            original = view
+            for original in _presentation_ancestors(view, include_details=True):
+                pass
+            question_origin = original._origin
             if (
-                view._origin is not None
-                and view._origin._link_panel
+                question_origin is not None
+                and question_origin._link_panel
                 and (
-                    view._origin.native_payload.get("rule")
+                    question_origin.native_payload.get("rule")
                     == "retained_context_links@5"
                     or (
-                        view._origin.native_payload.get("rule")
+                        question_origin.native_payload.get("rule")
                         == "retained_context_links@6"
                         and any(
                             row.get("model_context", {}).get("rule")
                             == "model_fragment_structure_request@2"
-                            for row in view._origin.native_payload.get("links", [])
+                            for row in question_origin.native_payload.get("links", [])
                         )
                     )
                 )
@@ -697,12 +722,12 @@ def _parts(view):
 
                 opening.append(SCOPE)
             if (
-                view._origin is not None
-                and view._origin._link_panel
-                and view._origin.native_payload.get("rule")
+                question_origin is not None
+                and question_origin._link_panel
+                and question_origin.native_payload.get("rule")
                 == "retained_context_links@8"
             ):
-                for row in view._origin.native_payload.get("links", []):
+                for row in question_origin.native_payload.get("links", []):
                     if row.get("role") == "question":
                         opening.append(row["model_context"]["reason"])
             options = request["options"]

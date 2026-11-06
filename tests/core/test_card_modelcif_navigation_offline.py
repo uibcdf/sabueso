@@ -143,6 +143,36 @@ def test_real_native_interval_has_human_agent_source_and_back_parity(original):
     assert card.to_dict() == before
 
 
+def test_native_scope_survives_display_steps_and_inert_saved_reading(
+    original, tmp_path, monkeypatch
+):
+    card = Card.from_dict(original)
+    link = question(card)
+    answer = link.open()
+    native, request = answer.native_payload, answer.request
+    table = answer.table()
+    filtered = table.filter("structure_ref", equals="pdb:NOT_RETAINED")
+    ordered = filtered.sort("structure_ref")
+    summary = ordered.summary()
+    for derived in (table, filtered, ordered, summary):
+        assert "date agreement remains unknown" in str(derived)
+        assert "experimental equivalence" in derived._repr_html_()
+        assert derived.request == request and derived.native_payload == native
+        assert derived.result_ref == answer.result_ref
+    assert table.back() is answer and filtered.back() is table
+    # Equal options alone do not make another question originate from this model.
+    direct = card.explore().answer("region_coverage", options=request["options"])
+    assert "date agreement remains unknown" not in str(direct)
+    assert "matching retained items" not in str(direct)
+    path = tmp_path / "native-scope.json.gz"
+    summary.save(path, compression="gzip")
+    inert(monkeypatch)
+    saved = sabueso.read_exploration(path)
+    assert "date agreement remains unknown" in str(saved)
+    assert "experimental equivalence" in saved._repr_html_()
+    assert saved.native_payload == native and saved.request == request
+
+
 @pytest.mark.parametrize(
     "change",
     [

@@ -89,6 +89,36 @@ def test_empty_and_chained_display_selection_never_become_negative_science(view)
     assert again.back().back().back() is selected
 
 
+@pytest.mark.parametrize("empty", [False, True])
+def test_filter_scope_survives_presentation_and_inert_reading(
+    view, empty, tmp_path, monkeypatch
+):
+    selected = view.filter(
+        "structure_ref", equals="pdb:ABSENT" if empty else "pdb:1SUX"
+    )
+    table = selected.table()
+    ordered = table.sort("structure_ref")
+    summary = ordered.summary()
+    expected = f"{0 if empty else 1} matching retained items"
+    for derived in (table, ordered, summary):
+        assert expected in str(derived) and expected in derived._repr_html_()
+        assert derived.outcome == view.outcome
+        assert derived.result_ref == view.result_ref
+        assert derived.native_payload == view.native_payload
+    if not empty:
+        detail = summary.items()[0].open()
+        assert "matching retained items" not in str(detail)
+        assert detail.back() is summary
+    path = tmp_path / "presentation.json.gz"
+    summary.save(path, compression="gzip")
+    monkeypatch.setattr(Card, "from_dict", forbidden)
+    monkeypatch.setattr(Card, "__init__", forbidden)
+    saved = sabueso.read_exploration(path)
+    assert expected in str(saved) and expected in saved._repr_html_()
+    assert saved.outcome == view.outcome
+    assert len(saved.items()) == (0 if empty else 1)
+
+
 def test_quantity_filter_uses_original_units_without_accepting_coordinates(view):
     selected = view.filter("resolution", equals=puw.quantity(0.2, "nanometer"))
     assert {item.label for item in selected.items()} == {

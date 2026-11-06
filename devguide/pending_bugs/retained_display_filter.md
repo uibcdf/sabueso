@@ -77,8 +77,10 @@ The [technical receipt](../evidence/retained_display_filter_20261106.json) recor
 685 distinct selected cases, the complete public 64-item filtered
 save/independent cold-read/resave control and actual resource conditions. The
 control preserves all 1,490 SourceAssertions and 215 relationships, with about
-327 MiB peak owned RSS, one low-priority CPU and zero owned swap. The copied
-31-case module needs no checkout fixtures. Original scientific/history receiving,
+327 MiB peak owned RSS, one low-priority CPU and zero owned swap. That original
+31-case copied checkpoint needs no checkout fixtures; the subsequent
+[display-scope continuation](structural_display_scope.md) extends it to 35 cases.
+Original scientific/history receiving,
 Ruff, warning-fatal Sphinx, fixture/registry and local governance gates pass.
 
 Prior-source CI `42163618832` has the same observed flat-format test expectation

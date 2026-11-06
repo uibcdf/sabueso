@@ -150,6 +150,14 @@ def test_exact_fragment_shares_agent_result_and_keeps_native_whole_scope_unknown
     assert answer.back() is link.back()
     assert "sequence correspondence, not observed atoms" in str(answer)
     assert "Retained experimental fragments are included" in answer._repr_html_()
+    native = answer.native_payload
+    for derived in (
+        answer.table(),
+        answer.filter("structure_ref", equals="pdb:NOT_RETAINED").sort("structure_ref"),
+    ):
+        assert "sequence correspondence, not observed atoms" in str(derived)
+        assert "Retained experimental fragments are included" in derived._repr_html_()
+        assert derived.native_payload == native
     assert "fragment's reference region" in str(links.table())
     for source in links.filter("role", equals="source").items():
         assert source.open().native_payload["source"]["name"] in (

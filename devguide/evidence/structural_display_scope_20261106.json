@@ -1,0 +1,539 @@
+{
+  "owner": "uibcdf/sabueso#148/#173/#112; related #191",
+  "review_trigger": "exact-source receiving, B3 scientific/researcher acceptance and before0.15.0",
+  "baseline": "df44e1e08040ad190ecf38e368451d7bf76d8384",
+  "status": "Renderer correction:399 distinct selected cases, complete original public session, Ruff, warning-fatal Sphinx and local governance pass. Exact committed-source/hosted scope separate.",
+  "scope": "Original model/date/fragment limitations and retained-filter guidance through same-result/same-request presentation steps. Focused structural details retain question limitations without becoming a new filter selection.",
+  "unchanged": "Scientific/native/agent results, sources, quantities, selection/order, return paths, stored flags/formats and Card schema. No acquisition or new scientific rule.",
+  "before": {
+    "owner": "#148/#173/#112",
+    "sdk": "0.14.0+188.gdf44e1e",
+    "wire_sha256": "4aff984e82b58d8e05d029b561bcb61579d7f29966393be19195c575dc06db14",
+    "original_card_sha256": "40aa6cb6a226add3fa280fed065902bd2118eec16b90892d549299a670d39f30",
+    "original_card_and_scientific_request_result_unchanged": true,
+    "provider_queries": 0,
+    "observations": {
+      "original": {
+        "selected_items": 64,
+        "underlying_items": 64,
+        "scientific_status": "not_computed",
+        "native_date_uncertainty_visible": true,
+        "native_experimental_scope_visible": true,
+        "retained_filter_scope_visible": false,
+        "text_sha256": "6c38e2b93ebd4f30a5b92565f15a339668ec79fae23e05e3b4c70ac19931e788"
+      },
+      "filter": {
+        "selected_items": 1,
+        "underlying_items": 64,
+        "scientific_status": "not_computed",
+        "native_date_uncertainty_visible": false,
+        "native_experimental_scope_visible": false,
+        "retained_filter_scope_visible": true,
+        "text_sha256": "949c35b36857e232c29bf8fd9f789058f825c2d22c78dcbc9e9492b5eb8ddcb4"
+      },
+      "table": {
+        "selected_items": 1,
+        "underlying_items": 64,
+        "scientific_status": "not_computed",
+        "native_date_uncertainty_visible": false,
+        "native_experimental_scope_visible": false,
+        "retained_filter_scope_visible": false,
+        "text_sha256": "8d10adb77a386ad6ac41712049bdedc593ac3b47b12733c74df6a89c2bcaa004"
+      },
+      "sort": {
+        "selected_items": 1,
+        "underlying_items": 64,
+        "scientific_status": "not_computed",
+        "native_date_uncertainty_visible": false,
+        "native_experimental_scope_visible": false,
+        "retained_filter_scope_visible": false,
+        "text_sha256": "8d10adb77a386ad6ac41712049bdedc593ac3b47b12733c74df6a89c2bcaa004"
+      },
+      "summary": {
+        "selected_items": 1,
+        "underlying_items": 64,
+        "scientific_status": "not_computed",
+        "native_date_uncertainty_visible": false,
+        "native_experimental_scope_visible": false,
+        "retained_filter_scope_visible": false,
+        "text_sha256": "3b3dcdfed99c770589f3a1382f74fac0cfebc8f3cf8d694857814108baf3d818"
+      }
+    }
+  },
+  "after": {
+    "owner": "#148/#173/#112",
+    "sdk": "0.14.0+188.gdf44e1e",
+    "wire_sha256": "4aff984e82b58d8e05d029b561bcb61579d7f29966393be19195c575dc06db14",
+    "original_card_sha256": "40aa6cb6a226add3fa280fed065902bd2118eec16b90892d549299a670d39f30",
+    "original_card_and_scientific_request_result_unchanged": true,
+    "provider_queries": 0,
+    "agent_page_unchanged": true,
+    "observations": {
+      "original": {
+        "selected_items": 64,
+        "underlying_items": 64,
+        "scientific_status": "not_computed",
+        "native_date_uncertainty_visible": true,
+        "native_experimental_scope_visible": true,
+        "retained_filter_scope_visible": false,
+        "text_sha256": "6c38e2b93ebd4f30a5b92565f15a339668ec79fae23e05e3b4c70ac19931e788"
+      },
+      "filter": {
+        "selected_items": 1,
+        "underlying_items": 64,
+        "scientific_status": "not_computed",
+        "native_date_uncertainty_visible": true,
+        "native_experimental_scope_visible": true,
+        "retained_filter_scope_visible": true,
+        "text_sha256": "b181588da73371dc1b8948906d457ea390b2509032b333bc7d6f44d750076cb9"
+      },
+      "table": {
+        "selected_items": 1,
+        "underlying_items": 64,
+        "scientific_status": "not_computed",
+        "native_date_uncertainty_visible": true,
+        "native_experimental_scope_visible": true,
+        "retained_filter_scope_visible": true,
+        "text_sha256": "2f2470cbadf1a931edd9d00d35bf9723b2d6afacdd83aba9217336d97693f7bf"
+      },
+      "sort": {
+        "selected_items": 1,
+        "underlying_items": 64,
+        "scientific_status": "not_computed",
+        "native_date_uncertainty_visible": true,
+        "native_experimental_scope_visible": true,
+        "retained_filter_scope_visible": true,
+        "text_sha256": "2f2470cbadf1a931edd9d00d35bf9723b2d6afacdd83aba9217336d97693f7bf"
+      },
+      "summary": {
+        "selected_items": 1,
+        "underlying_items": 64,
+        "scientific_status": "not_computed",
+        "native_date_uncertainty_visible": true,
+        "native_experimental_scope_visible": true,
+        "retained_filter_scope_visible": true,
+        "text_sha256": "b181588da73371dc1b8948906d457ea390b2509032b333bc7d6f44d750076cb9"
+      },
+      "detail": {
+        "selected_items": 1,
+        "underlying_items": 64,
+        "scientific_status": "not_computed",
+        "native_date_uncertainty_visible": true,
+        "native_experimental_scope_visible": true,
+        "retained_filter_scope_visible": false,
+        "text_sha256": "4db77db2956c7e6a41b78c544975f9a8cd51ad7ab6a1680df8b91a39e521772d"
+      }
+    }
+  },
+  "before_scope": "Actual clean SDK188 observation before changing the renderer; original outputs retained. The probe was subsequently extended with separate output routing, detail and agent-page assertions.",
+  "recorded_runs": {
+    "copied-receiving": {
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-m",
+        "pytest",
+        "tests/tools/test_installed_receiving_scope_offline.py::test_declared_retained_filter_runs_without_checkout_files",
+        "-x",
+        "-m",
+        "not online",
+        "--receptor=llm"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 183.63,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 353550336,
+      "minimum_host_available_bytes": 7772184576,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      }
+    },
+    "corrected-public-session": {
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "recovered_work/structural_route_review_20261106/probe.py"
+      ],
+      "exit_code": 1,
+      "elapsed_s": 22.2,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 211861504,
+      "minimum_host_available_bytes": 7941259264,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      }
+    },
+    "corrected-public-session-v2": {
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "recovered_work/structural_route_review_20261106/probe.py"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 22.14,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 211791872,
+      "minimum_host_available_bytes": 7585333248,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      }
+    },
+    "focused-scope": {
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-m",
+        "pytest",
+        "tests/core/test_card_retained_filter_offline.py::test_filter_scope_survives_presentation_and_inert_reading",
+        "tests/core/test_card_modelcif_navigation_offline.py::test_native_scope_survives_display_steps_and_inert_saved_reading",
+        "tests/core/test_card_model_fragments_offline.py::test_exact_fragment_shares_agent_result_and_keeps_native_whole_scope_unknown",
+        "tests/core/test_alphafold_range_aliases_offline.py::test_modern_fragment_retains_exact_field_support_agent_and_back_navigation",
+        "-x",
+        "-m",
+        "not online",
+        "--receptor=llm"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 36.92,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 264409088,
+      "minimum_host_available_bytes": 8557469696,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      }
+    },
+    "governance": {
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "devtools/moli_governance.py"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 0.25,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 1138688,
+      "minimum_host_available_bytes": 8073482240,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      }
+    },
+    "human-agent-quantity": {
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-m",
+        "pytest",
+        "tests/core/test_card_exploration_offline.py",
+        "tests/core/test_card_nature_exploration_offline.py",
+        "tests/core/test_card_navigation_preview_offline.py",
+        "tests/core/test_card_agent_selection_offline.py",
+        "tests/core/test_argument_contracts_offline.py",
+        "tests/core/test_quantity_checks_offline.py",
+        "-x",
+        "-m",
+        "not online",
+        "--receptor=llm"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 39.73,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 284217344,
+      "minimum_host_available_bytes": 8159645696,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      }
+    },
+    "original-scope-probe": {
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "recovered_work/structural_route_review_20261106/probe.py"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 19.61,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 211623936,
+      "minimum_host_available_bytes": 8631885824,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      }
+    },
+    "ruff-format": {
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/home/liliana/Myopt/miniconda3/pkgs/ruff-0.16.5-hdfdb5ae_0/python-scripts/ruff",
+        "format",
+        "--check",
+        "."
+      ],
+      "exit_code": 0,
+      "elapsed_s": 0.5,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 17723392,
+      "minimum_host_available_bytes": 8204394496,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      }
+    },
+    "ruff-lint": {
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/home/liliana/Myopt/miniconda3/pkgs/ruff-0.16.5-hdfdb5ae_0/python-scripts/ruff",
+        "check",
+        "."
+      ],
+      "exit_code": 0,
+      "elapsed_s": 0.25,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 856064,
+      "minimum_host_available_bytes": 8341364736,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      }
+    },
+    "scope-and-navigation": {
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-m",
+        "pytest",
+        "tests/core/test_card_retained_filter_offline.py",
+        "tests/core/test_card_modelcif_navigation_offline.py",
+        "tests/core/test_card_model_fragments_offline.py",
+        "tests/core/test_alphafold_range_aliases_offline.py",
+        "tests/core/test_card_region_orientation_offline.py",
+        "tests/core/test_card_component_navigation_offline.py",
+        "-x",
+        "-m",
+        "not online",
+        "--receptor=llm"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 356.47,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 379408384,
+      "minimum_host_available_bytes": 7985971200,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      }
+    },
+    "sphinx": {
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/home/liliana/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-m",
+        "sphinx",
+        "-W",
+        "--keep-going",
+        "-b",
+        "html",
+        "docs",
+        "recovered_work/structural_route_review_20261106/docs"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 30.7,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 276938752,
+      "minimum_host_available_bytes": 7484149760,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      }
+    }
+  },
+  "probe_recovery": "The first corrected-session script assumed a focused detail native_payload was the full inventory and raised KeyError. It was corrected to inspect the complete underlying scientific inventory; corrected-public-session-v2 passes under unchanged limits. This was a script assumption, not a failing Sabueso test.",
+  "selected_distinct_cases": 399,
+  "case_count_scope": "171 structural cases plus227 other human/agent/argument/quantity cases and one outer isolated receiving test. Seven focused cases and35 nested copied cases overlap those sets and are not added.",
+  "frozen_science_storage": {
+    "owner": "#148/#173/#112",
+    "baseline": "df44e1e08040ad190ecf38e368451d7bf76d8384",
+    "only_runtime_change": "sabueso/core/card_exploration_render.py",
+    "unchanged_frozen_verifiers_and_shared_codec": [
+      {
+        "path": "sabueso/core/card_exploration_verification.py",
+        "sha256": "e76d3661e06a99a7d90dbd6a4050367e5934db6f976285578a3b755a8882b094"
+      },
+      {
+        "path": "sabueso/core/card_exploration_verification_v10.py",
+        "sha256": "d1dfc806b41265bee9302daac0cf5310a763a7b6c04b62c17b53120596bc4a42"
+      },
+      {
+        "path": "sabueso/core/card_exploration_verification_v11.py",
+        "sha256": "eebe350c8fde87b9388eb03a10fadf47d5532d9c1d8f75a9b291406b14317917"
+      },
+      {
+        "path": "sabueso/core/card_exploration_verification_v12.py",
+        "sha256": "e4894568460ea1c7d0bdef37c9eeb6624b151bc46cb47f4b2412b7240cb73cd8"
+      },
+      {
+        "path": "sabueso/core/card_exploration_verification_v5.py",
+        "sha256": "16b92743d3d83f73763261c76b5f13cb1b792e644b6ffda00c4e8a746aa77061"
+      },
+      {
+        "path": "sabueso/core/card_exploration_verification_v6.py",
+        "sha256": "185ee2f2ff6465f270b71f27af9bae1957417af74da1be9656e17771d1cdf581"
+      },
+      {
+        "path": "sabueso/core/card_exploration_verification_v7.py",
+        "sha256": "675fb6e1e4a7f01ee6b02f4884c3ca4621148ff66205fe0977c10d44a8b80fbc"
+      },
+      {
+        "path": "sabueso/core/card_exploration_verification_v8.py",
+        "sha256": "fb6ea3cbf23a66e00b03ec6dd47592c529151cbe01e0eed13ad6c30e8cdfe3ed"
+      },
+      {
+        "path": "sabueso/core/card_exploration_verification_v9.py",
+        "sha256": "0a75257795cfbeef8d64e4af27009712b8d23fe24f208afe0fd07ad924fe5f06"
+      },
+      {
+        "path": "sabueso/core/card_exploration_shared_values_v1.py",
+        "sha256": "f6ed7834d2ca55185c0c25f05579e04947c49e3122914f749abd6b9dc0ade72c"
+      }
+    ]
+  },
+  "renderer_candidate_sha256": "6c8105de8acd55b129fcd1eb74b9df417061d37bf48b464e34870581b3eb9504",
+  "reproduction_script_sha256": "f4fb78f6f0e4232bbb61886031a771e6007f15dfa3eda87ca763a460a3747edc",
+  "boundaries": [
+    "Independent equal-options question has no inferred model origin",
+    "Source/different-result/different-request routes do not inherit preceding scope",
+    "Missing/unrecorded historical intent is not reconstructed"
+  ],
+  "publication": "Local/internal handoff only while scoped public permission remains pending. No issue comment, remote push, release or package publication in this block.",
+  "remaining": [
+    "Exact committed-source and hosted qualification",
+    "Independent scientist/researcher/workload acceptance",
+    "B3 assembly-scope disposition; B2 review remains maintainer-deferred;0.15.0 consolidation paused"
+  ],
+  "retention": "Owned phase recovered_work/structural_route_review_20261106/RETENTION.md. Preserve original SDK185/187/188 artifacts and meaningful logs; remove only completed owned disposable scratch."
+}

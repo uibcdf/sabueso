@@ -50,7 +50,7 @@ def test_declared_retained_filter_runs_without_checkout_files():
             timeout=420,
         )
         assert result.returncode == 0, result.stdout + result.stderr
-        assert "31 passed" in result.stdout and "PASS exit=0" in result.stdout
+        assert "35 passed" in result.stdout and "PASS exit=0" in result.stdout
         assert not (stage / "temp_data").exists()
 
 
