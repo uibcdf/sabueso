@@ -38,7 +38,10 @@ explicitly deferred; activity panel completion and wow acceptance remain open.
 B3's [source-supported acceptance matrix](structural_journey_acceptance_20261104.md)
 now checks four original public journeys and six synthetic scope counterexamples.
 Full physical reconciliation remains an explicit owner decision with a concrete
-scientific/modeling task, not a silently removed prerequisite. Other structural
+scientific/modeling task, not a silently removed prerequisite. The current
+[regional orientation](card_region_orientation.md) separates original spans from
+coordinate status; [filter no-op #191](https://github.com/uibcdf/sabueso/issues/191)
+remains a reproduced human-navigation blocker requiring original-history receiving. Other structural
 transitions and researcher/workload acceptance stay open.
 
 ## Maintainer decision and release gate

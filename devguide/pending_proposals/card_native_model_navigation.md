@@ -71,15 +71,22 @@ separate from the smaller five-statement control.
 Local receipts and resource bounds are recorded in
 [the receiving record](../evidence/card_native_model_navigation_20261105.json).
 The full public Card answers the native question with **64 retained experimental
-items**, with query/render RSS about124MiB. Its complete session save is **not
-accepted**: the original512MiB guard stops preparation; a separate bounded1GiB
-diagnosis reaches the visible64MiB decoded-limit refusal. Preparation retains
+items**, with query/render RSS about124MiB. The SDK183 complete save failed:
+the original512MiB guard stopped preparation; a separate bounded1GiB
+diagnosis reached the visible64MiB decoded-limit refusal. Preparation retained
 213,815,942 bytes in repeated view states versus9,421,317 bytes in source/result
-objects. No override, truncation, completed file or old-history read is claimed.
+objects. That failed original produced no complete file and used no override.
 The small31-case standalone saved controls remain a distinct passing scope.
-Continue the [#167 persistence correction](shared_link_support.md#native-scientific-session-state-repetition--2026-11-05)
-before accepting this whole journey. The earlier metadata-only whole-Card512MiB
+The [#167 shared-value correction](shared_view_state_persistence.md) now passes
+the complete save/read/resave locally within512MiB, with unchanged physical
+defaults and exact original Card/wire preservation. Hosted receiving remains
+separate. The earlier metadata-only whole-Card512MiB
 save remains a different passing workload.
+
+The [regional orientation](card_region_orientation.md) shows original declared
+spans separately from unverified coordinates. All64 inventory rows remain unknown
+for coordinate completeness. The separate [filter no-op #191](https://github.com/uibcdf/sabueso/issues/191)
+must be corrected before accepting the full human journey.
 
 Exact-source hosted qualification, independent scientific/researcher and broader
 workload acceptance remain separate. B3 is open, B2 scientific review remains

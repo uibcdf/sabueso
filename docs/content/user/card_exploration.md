@@ -279,18 +279,31 @@ regional = explorer.answer(
     "region_coverage",
     options={"sequence_ref": "uniprot:P52270", "region": [96, 168]},
 )
-selected_structure = regional.filter("structure_ref", equals="pdb:1SUX")
-if len(selected_structure.items()):
-    structure = selected_structure.items()[0]
+matching = [item for item in regional.items() if item.label == "pdb:1SUX"]
+if len(matching) == 1:
+    structure = matching[0]
     detail = structure.open()
     detail  # readable coordinate scope and per-chain gaps
     original_region = detail.regional_reading
     for chain in original_region["chains"]:
         print(chain["chain"], chain["missing_count"])
-    assert detail.back() is selected_structure
+    assert detail.back() is regional
 ```
 
 Use your Card's actual canonical accession and positions for another protein.
+Contiguous requests display as compact intervals. The regional table separates
+**Declared ranges**, read from the original relationship, from **Requested region**,
+which describes the retained coordinate result. A source-declared span can remain
+readable while coordinate completeness is unknown. Original spans and alternatives
+remain available through source inspection; long previews explicitly report their
+total and omissions.
+
+Known issue [#191](https://github.com/uibcdf/sabueso/issues/191): `filter()` currently
+ignores a selection when a view's scientific status is `not_computed`, even when
+it retains readable rows. Until corrected, inspect the complete `items()` sequence
+as above and handle multiple matching declarations explicitly. The scientific
+status and coordinate uncertainty still apply to the selected item.
+
 `regional_reading` summarizes the **original native result**, under named
 presentation policy `structure_region_reading@1`. It is available on a focused
 regional structure detail; elsewhere it is `None`. Every chain's full recorded

@@ -337,6 +337,64 @@ def _region_text(native):
     )
 
 
+def _requested_positions(region):
+    """Format already normalized positions; inspect only a bounded prefix.
+
+    Sorted uniqueness belongs to request validation. A contiguous normalized
+    request can therefore use its endpoints without scanning a large list.
+    """
+    count = len(region)
+    if region[-1] - region[0] + 1 == count:
+        text = str(region[0]) if count == 1 else f"{region[0]}–{region[-1]}"
+    else:
+        prefix = region[:12]
+        spans = []
+        begin = end = prefix[0]
+        for position in prefix[1:]:
+            if position == end + 1:
+                end = position
+            else:
+                spans.append(str(begin) if begin == end else f"{begin}–{end}")
+                begin = end = position
+        spans.append(str(begin) if begin == end else f"{begin}–{end}")
+        text = ", ".join(spans) + (" …" if count > len(prefix) else "")
+    return f"{text} ({count} {'position' if count == 1 else 'positions'})"
+
+
+def _declared_ranges(view, item):
+    """Show literal retained spans, never infer coordinate/reference agreement."""
+    support = view._selection._scientific.wire["support"].get(item._entry.key, {})
+    location = support.get("relationship_location")
+    if location is None:
+        return "original declaration not retained"
+    relationship, _ = view.explorer.access._resolve(location)
+    conflicts = relationship.get("qualifier_conflicts") or {}
+    if isinstance(conflicts, dict) and "ranges" in conflicts:
+        return "conflicting declarations; inspect explain()"
+    ranges = (relationship.get("qualifiers") or {}).get("ranges")
+    if ranges is None:
+        return "not retained"
+    if not isinstance(ranges, list):
+        return "retained value: " + preview(ranges, 80)
+    if not ranges:
+        return "empty retained list"
+    spans = []
+    for pair in ranges[:4]:
+        if (
+            isinstance(pair, (list, tuple))
+            and len(pair) == 2
+            and all(type(value) is int for value in pair)
+        ):
+            spans.append(str(pair[0]) if pair[0] == pair[1] else f"{pair[0]}–{pair[1]}")
+        else:
+            spans.append("retained value: " + preview(pair, 24))
+    return preview(
+        (f"{len(ranges)} retained ranges; " if len(ranges) > 4 else "")
+        + ", ".join(spans)
+        + (" …" if len(ranges) > 4 else "")
+    )
+
+
 def _coordinate_reason(reason):
     if reason == "original_polymer_inputs_unavailable":
         return "the original experimental mapping inputs were not retained"
@@ -644,10 +702,10 @@ def _parts(view):
             region = options["region"]
             opening.append(f"Sequence axis: {preview(options['sequence_ref'])}")
             if region:
+                opening.append("Positions: " + _requested_positions(region))
                 opening.append(
-                    "Positions: "
-                    + ", ".join(str(p) for p in region[:12])
-                    + (f" … ({len(region)} total)" if len(region) > 12 else "")
+                    "Declared ranges retain source statements. Regional coordinate "
+                    "completeness requires the original mapping inputs and is shown separately."
                 )
     if view._record_panel == "coverage" and view.explorer._coverage_result.native:
         opening.append(
@@ -978,7 +1036,7 @@ def _parts(view):
                     else preview(native["coverage_class"]),
                 )
                 + (
-                    (_region_text(native),)
+                    (_declared_ranges(view, item), _region_text(native))
                     if view.request and view.request["question"] == "region_coverage"
                     else ()
                 )
@@ -1165,7 +1223,7 @@ def _headers(view):
             "Coverage class",
         ]
         + (
-            ["Requested region"]
+            ["Declared ranges", "Requested region"]
             if view.request and view.request["question"] == "region_coverage"
             else []
         )
@@ -1187,7 +1245,7 @@ def _summary_row(row, view):
         return f"{row[0]}. {row[1]}: {row[2]}"
     return (
         f"{row[0]}. {row[1]}: {row[2]} · {row[3]} · chains {row[4]} · sequence coverage {row[5]} · {row[6]}"
-        + (f" · {row[7]}" if len(row) == 8 else "")
+        + (f" · declared ranges {row[7]} · {row[8]}" if len(row) == 9 else "")
     )
 
 

@@ -1,0 +1,257 @@
+{
+  "owner": "uibcdf/sabueso#148/#173/#112",
+  "review_trigger": "B3 source/scientist/researcher acceptance; #191 filter correction; exact-source receiving",
+  "baseline": "4a5667a91557cd5e917ce9a80de6e30ad8011d8a",
+  "status": "implemented;394 distinct selected cases, copied payload, inert original full-session receiving, warning-fatal Sphinx, Ruff and local governance pass; final committed SDK/hosted receiving pending",
+  "scope": "Human display only: normalized request compaction and exact original relationship ranges. Scientific requests, native results, machine frames, source assertions, schema and original saved verifiers are unchanged.",
+  "renderer_sha256": "9b9df4dc8c35ffed1e2ce13d3de79b97720b3e96fb2579c60e33dcc6666b3e31",
+  "public_original_receiving": {
+    "owner": "uibcdf/sabueso#148/#173/#112",
+    "review_trigger": "B3 scientific/researcher acceptance and exact-source receiving",
+    "reader_sdk": "0.14.0+186.g4a5667a",
+    "producer_sdk": "0.14.0+185.gaedea97",
+    "reader_source": "working-tree orientation candidate unless final commit separately bound",
+    "renderer_sha256": "9b9df4dc8c35ffed1e2ce13d3de79b97720b3e96fb2579c60e33dcc6666b3e31",
+    "complete_source_assertions": 1490,
+    "complete_relationships": 215,
+    "inventory_items": 64,
+    "source_declared_ranges_retained": 64,
+    "original_coordinate_completeness_unknown": 64,
+    "focused_source": "pdb:6FWX",
+    "focused_literal_range": [
+      1,
+      243
+    ],
+    "source_route": "inspect exact original relationship",
+    "known_filter_noop": "#191; not claimed corrected",
+    "native_and_machine_frame_unchanged": true,
+    "original_wire_sha256": "4aff984e82b58d8e05d029b561bcb61579d7f29966393be19195c575dc06db14",
+    "captured_card_sha256": "40aa6cb6a226add3fa280fed065902bd2118eec16b90892d549299a670d39f30",
+    "current_engines_factories_and_network_forbidden": true,
+    "new_source_queries": 0,
+    "scientific_acceptance": "not claimed; declarations do not establish coordinate coverage or atomic/experimental equivalence"
+  },
+  "recorded_runs": {
+    "orientation": {
+      "exit_code": 1,
+      "elapsed_s": 2.26,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 118054912,
+      "minimum_host_available_bytes": 9297682432,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      }
+    },
+    "orientation-v2": {
+      "exit_code": 1,
+      "elapsed_s": 2.01,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 113643520,
+      "minimum_host_available_bytes": 9301987328,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      }
+    },
+    "orientation-v3": {
+      "exit_code": 1,
+      "elapsed_s": 2.77,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 117350400,
+      "minimum_host_available_bytes": 8866725888,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      }
+    },
+    "orientation-v4": {
+      "exit_code": 0,
+      "elapsed_s": 9.81,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 187424768,
+      "minimum_host_available_bytes": 9371217920,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      }
+    },
+    "public-historical": {
+      "exit_code": 1,
+      "elapsed_s": 19.1,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 211337216,
+      "minimum_host_available_bytes": 9189040128,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      }
+    },
+    "public-historical-v2": {
+      "exit_code": 0,
+      "elapsed_s": 20.36,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 211288064,
+      "minimum_host_available_bytes": 9015939072,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      }
+    },
+    "affected-views": {
+      "exit_code": 0,
+      "elapsed_s": 224.52,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 336814080,
+      "minimum_host_available_bytes": 8899883008,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      }
+    },
+    "installed-payload": {
+      "exit_code": 0,
+      "elapsed_s": 11.58,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 233517056,
+      "minimum_host_available_bytes": 9218936832,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      }
+    },
+    "docs": {
+      "exit_code": 0,
+      "elapsed_s": 38.7,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 275574784,
+      "minimum_host_available_bytes": 9225445376,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      }
+    },
+    "governance": {
+      "exit_code": 0,
+      "elapsed_s": 0.25,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 1081344,
+      "minimum_host_available_bytes": 9263861760,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 536870912,
+        "host_available_bytes": 6442450944,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      }
+    }
+  },
+  "failed_assumptions": [
+    "First two test attempts expected unadmitted source spans in native.ranges. Coordinate admission intentionally masks those values. The display now follows the already bound original relationship_location.",
+    "The synthetic conflict assertion likewise had to inspect original support rather than the scientifically masked output.",
+    "The first full-session control expected a display filter to select6FWX; it instead reproduced the existing noncomputed filter no-op, now separately reported as #191."
+  ],
+  "known_defect": {
+    "url": "https://github.com/uibcdf/sabueso/issues/191",
+    "repro": "Public frozen P52270 regional answer: not_computed,7 rows; equality filter for1SUX leaves7 and records no display operation. Original full Q8WZ42 session likewise leaves64.",
+    "disposition": "Next bounded B3 correction with original-history compatibility; not corrected or accepted in this presentation slice."
+  },
+  "test_scope": {
+    "new_standalone_cases": 14,
+    "source_capsule": "tests/core/data/assembly_nonpolymer_live_v2.json.gz",
+    "synthetic_cases": "Explicit changed qualifiers only; no genuine provider observation claimed.",
+    "copied_receiving": "pass;1 source test runs all14 presentation cases outside the checkout; nested cases not added",
+    "large_original89MiB": "Not selected for this bounded presentation gate; the independent complete SDK18564-item session passes separately.",
+    "distinct_selected_passed": 394,
+    "affected_views_passed": 379,
+    "known_large_case_deselected": 1
+  },
+  "prior_source_hosted": {
+    "sha": "4a5667a91557cd5e917ce9a80de6e30ad8011d8a",
+    "ci_run": 42158175143,
+    "ci": "pending; own exact-source receiving still open",
+    "governance_run": 42158175169,
+    "governance": "success,1/1 job,full receptor capture",
+    "not_qualification_for_later_changes": true
+  },
+  "release": "B3 and #191 remain open; independent scientific/researcher acceptance not claimed; assembly-scope disposition pending; B2 maintainer review deferred;0.15.0 consolidation paused.",
+  "local_gates": {
+    "pytest_distinct": 394,
+    "ruff_format_root": "1378 files formatted",
+    "ruff_check": "pass",
+    "sphinx_warnings_fatal": "pass;38.7s,275574784bytes peak owned RSS",
+    "local_governance": "pass"
+  },
+  "cleanup": {
+    "owner": "#148/#173/#112",
+    "review_trigger": "#191 correction and B3 human/source review",
+    "removed_owned_disposable": [
+      {
+        "path": "recovered_work/native_region_acceptance_20261106/tmp",
+        "bytes": 0
+      },
+      {
+        "path": "recovered_work/native_region_acceptance_20261106/docs",
+        "bytes": 43419154
+      }
+    ],
+    "retained": "Public before/after previews, resource/receiving logs and original-session control for review. Original SDK185 outputs and other active resources are untouched."
+  }
+}

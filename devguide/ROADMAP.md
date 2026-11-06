@@ -1,5 +1,13 @@
 # Sabueso — Roadmap
 
+The [regional source orientation](pending_proposals/card_region_orientation.md)
+now separates original declared spans from admitted coordinate results and displays
+compact exact requests. The public original SDK185 session preserves all64 rows
+and exact Card/wire/agent data under inert reading. A separate reproduced
+[display-filter no-op #191](https://github.com/uibcdf/sabueso/issues/191) blocks
+acceptance of the full human journey; correcting it with original-history
+compatibility is the next bounded B3 task. Broader receiving remains separate.
+
 The [genuine AlphaFold archive control](pending_proposals/alphafold_archive_fragment_control.md)
 now retains public titin AF-Q8WZ42-F2 and its original UniProt reference. Independent
 native readers verify the 201–1600 reference interval, exact 1,400-residue sequence,

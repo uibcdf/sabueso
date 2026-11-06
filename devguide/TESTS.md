@@ -1,5 +1,18 @@
 # Sabueso — Tests and Quality Gates
 
+Regional source orientation uses `test_card_region_orientation_offline.py`:
+exact compact requests, literal original declared spans, null/empty/conflicting/
+malformed and bounded escaped previews, positive original coordinates, unchanged
+native/machine data and inert saved/resaved reading. The spans come from the exact
+captured relationship, independently of coordinate admission. Both installed
+routes copy/select the standalone module and reuse the original assembly capsule;
+the dedicated copied-payload gate runs without checkout fixtures. Include affected
+regional/native/API/fragment/annotation, human/nature/navigation/agent, argument
+and quantity gates. Keep the explicit large historical 89 MiB workload separate
+when resource headroom does not allow it. The genuine full SDK185 public session
+has its own inert orientation check; no scientific or researcher acceptance and
+no repair of the separate `not_computed` filtering defect #191 is implied.
+
 Shared saved values use `test_exploration_shared_values_offline.py`: canonical
 scalar/UTF-8/quantity fidelity, exact logical work accounting, repeated occurrences
 without identity merging, malformed/orphan/cyclic references, visible budgets and
