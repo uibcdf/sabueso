@@ -9,6 +9,32 @@ Read it before the older checkpoint chronology, then follow the
 The full human/agent design and validated exceptional researcher experience remain
 required before 0.15.0. **Do not publish 0.15.0, freeze its schema or start staging.**
 
+## Private migration package
+
+The maintainer has authorized publishing the pending Sabueso commits to upstream
+`main` and creating a private ZIP for the non-Git workstation material. Continue
+on **`main`** at the destination; migration needs no special development branch.
+Verify actual upstream equality, archive SHA-256 and receiving outcomes in
+`recovered_work/migration_20261106/transfer-state.json`. This external record is
+written after publication; the preceding clean-checkpoint receipt is history.
+
+The private package is
+`recovered_work/migration_20261106/sabueso-migration-private-20261106.zip`, with an
+adjacent `.sha256` file. Its root contains `RESTORE.md`, `restore.py` and a complete
+`MANIFEST.json`. It preserves the 37 declared local-only originals and retained
+development evidence, including failed/stopped receipts and original controls.
+Generated caches, old environment/version stamps and Git metadata are excluded.
+The package is confidential transfer material; never attach it to a public issue,
+Git repository, release or documentation artifact.
+
+Clone upstream `main`, verify the private ZIP checksum, and follow its bundled
+instructions. The restorer validates every payload hash, rejects unsafe paths and
+tracked destinations, accepts identical existing files and refuses to overwrite
+different content. Recreate the compatible environment and repeat destination
+receiving afterwards. Sibling repositories, their unpushed/dirty source and private
+pilot checkouts need their own owner-controlled transfer; this archive does not
+back up other repositories or copy credentials or the old Conda environment.
+
 ## Exact state to preserve
 
 The original pre-closeout capture had local `main` at
@@ -50,12 +76,14 @@ See the [chemical contract](pending_proposals/chemical_classification_exploratio
 
 ## Transfer more than a remote clone
 
-A fresh **remote** clone still misses local commits until they are pushed, and
-Git never carries ignored evidence/protected originals. Preserve committed history
-through a private full-checkout transfer or the verified incremental bundle at
-`recovered_work/clean_checkpoint_20261106/sabueso-local-migration.bundle` once the
-closeout receipt confirms its creation and verification. A bundle records its
-prerequisite source; compare it with the destination history before importing.
+A fresh remote clone obtains the migration commits after their authorized push;
+compare upstream `main` against the external transfer record before continuing.
+Git never carries ignored evidence/protected originals. The earlier private
+full-checkout transfer route and verified incremental backup bundle at
+`recovered_work/clean_checkpoint_20261106/sabueso-local-migration.bundle` remain
+fallback options, with creation/verification recorded in the original closeout.
+A bundle records its prerequisite source; compare it with destination history
+before importing.
 Never reset later remote work to install a migration snapshot.
 
 No push or release is implied by a clean local tree. Preserve the ignored materials
@@ -92,7 +120,7 @@ print("Declared candidate, documentation and evidence files match the snapshot."
 
 | Material | Transfer / destination check |
 | --- | --- |
-| Committed Git history | Transfer local `main` through full `.git/` history or the verified bundle; code/docs that were dirty at initial capture are now closed by commits. Compare refs, final clean status and hashes before reconciling later remote work |
+| Committed Git history | Clone published upstream `main` and compare it with the external transfer receipt. Full history/the verified bundle remain fallback backups; initial dirty code/docs are now committed |
 | `devguide/` | Include the documentation closeout commit, current/initial receipts, analyses and updated plans; the original dirty snapshot is historical, not a patch to reapply |
 | `recovered_work/chemical_saved_20261106/` | Retain original/stopped/passing logs, resource receipts, hash controls, candidate exports, useful probes, `RETENTION.md` and the pending #148 report draft |
 | `recovered_work/chemical_profile_20261106/` | Retain original SDK192/SDK193 captures and producer manifest, clean-SDK receiving, public walkthroughs and inside/outside editable-route receipts |

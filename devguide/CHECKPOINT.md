@@ -16,6 +16,7 @@ This page owns current state; dated receipt histories are linked below.
 | Code checkpoint | `0f197e56b95f5f361cb16778457f652832d05f28` (`0f197e5`) commits the locally validated runtime/tests; the documentation closeout follows separately. Read final HEAD/SDK/clean status from the external closeout receipt rather than a self-referencing in-tree SHA |
 | Producer labels | Original clean SDK `0.14.0+193.g03bdb2c` controls stay fixed. Refresh/verify the final committed checkout SDK inside/outside and record it in `recovered_work/clean_checkpoint_20261106/final-closeout.json` |
 | Saved reading checkpoint | Chemical semantic @15 and sharing @16 are committed with 705 selected local cases plus independent whole-session receiving; exact-final-source hosted, artifact, scientist and researcher acceptance remain separate |
+| Machine migration | Authorized upstream publication uses `main`; the private ZIP carries necessary non-Git inputs/evidence and verified restoration instructions. Follow the [private package route](WORKSTATION_HANDOFF_20261106.md#private-migration-package) and external `recovered_work/migration_20261106/transfer-state.json` for actual remote/archive status |
 | Release target | **0.15.0**, the full agreed exploration design and validated human experience; [consolidation](pending_proposals/release_consolidation_0150.md) remains paused. No release/tag/freeze/staging is authorized |
 
 ## Latest implementation and qualification
@@ -54,10 +55,10 @@ exact-final-source hosted qualification remain open.
 
 ## Resume here
 
-1. Obtain the committed Git history (full checkout or verified local bundle) and
-   [ignored/private handoff material](WORKSTATION_HANDOFF_20261106.md). If local
-   commits have not been pushed, a fresh remote clone still misses them. Compare
-   the final external closeout HEAD/status and original source/evidence hashes.
+1. Clone published upstream `main`, compare its source with the external migration
+   transfer record and restore the [private package](WORKSTATION_HANDOFF_20261106.md#private-migration-package).
+   Full-checkout/verified-bundle history remains a fallback. Compare original
+   source/evidence hashes; older local-only closeout receipts retain their dates.
 2. Recreate the Python 3.14 development environment, apply Sabueso's test/docs
    tooling and verify editable import/version paths inside and outside the checkout.
    Original SDK193 controls remain fixed; do not inherit producer metadata/caches.

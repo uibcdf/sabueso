@@ -1841,8 +1841,8 @@
     },
     {
       "path": "devguide/CHECKPOINT.md",
-      "bytes": 9292,
-      "sha256": "8607b88e8fc37b50a8610183245e7a9619d4cfae68d84ea917ea25b849d89e75"
+      "bytes": 9687,
+      "sha256": "38f592b7b95bb46361a479e615ea3eb1bdae5d8ed469c60ccc9022caf736297d"
     },
     {
       "path": "devguide/CONTINUATION_PLAN_20261104.md",
@@ -1901,8 +1901,8 @@
     },
     {
       "path": "devguide/WORKSTATION_HANDOFF_20261106.md",
-      "bytes": 25154,
-      "sha256": "04780f274500ba14fa1796dafc9b2111bdeaaea1e4269b26db4eec95a2a351a7"
+      "bytes": 26826,
+      "sha256": "8dbc07f6b606babae1570ecd0d4d5fa42ef6d0e4d10951074d63b7f4247d33ab"
     },
     {
       "path": "devguide/archive/CHECKPOINT_before_onboarding_20261106.md",
@@ -1976,7 +1976,7 @@
     }
   ],
   "initial_capture_at_utc": "2026-11-06T16:32:20.847064+00:00",
-  "documentation_revision": "committed-source-and-onboarding-closeout-20261106",
+  "documentation_revision": "upstream-main-and-private-migration-package-20261106",
   "initial_documentation_receiving": {
     "owner": "uibcdf/sabueso#112/#148",
     "scope": "Documentation links, example bytes, root static gates and fixture-delivery integrity only; no scientific tests or destination runtime receiving.",
@@ -2341,5 +2341,30 @@
     "planned_git_bundle": "recovered_work/clean_checkpoint_20261106/sabueso-local-migration.bundle",
     "bundle_status": "Verify actual creation, digest and prerequisites in the external final-closeout record; a named path is not a bundle verification.",
     "cleanup": "Remove only owned disposable tmp/docs after actual jobs terminate; retain original299 evidence files, controls, logs and workload/metadata receiving. Actual final cleanup/status is external."
+  },
+  "migration_publication": {
+    "owner": "uibcdf/sabueso#112/#148",
+    "authorized_at_utc": "2026-11-06T18:17:39.647271+00:00",
+    "destination": "uibcdf/sabueso main",
+    "action": "Publish already-reviewed local commits and private migration instructions; prepare non-Git private ZIP for the new workstation. No release or package publication.",
+    "actual_results_record": "recovered_work/migration_20261106/transfer-state.json",
+    "archive": "recovered_work/migration_20261106/sabueso-migration-private-20261106.zip",
+    "checks": {
+      "guide-migration": {
+        "resource_path": "recovered_work/migration_20261106/guide-migration-resource.json",
+        "resource_sha256": "82fe9d74fa323fe4719abeab9641684ae9851f1c43cb3b8e6b376609a6590151",
+        "log_path": "recovered_work/migration_20261106/guide-migration.log",
+        "log_sha256": "a0ceff4aa5e50a3a65d808de4ad9b0dbc1f8670aaa3df11ff449d4f7a399e68a",
+        "exit_code": 0
+      },
+      "ruff-format-migration": {
+        "resource_path": "recovered_work/migration_20261106/ruff-format-migration-resource.json",
+        "resource_sha256": "6065c0700b6809fb9d90297de3bcb9a6152af2c929382964d8a4ab39b1148089",
+        "log_path": "recovered_work/migration_20261106/ruff-format-migration.log",
+        "log_sha256": "74a23b8ca81da5b6b3726f6c046e7525291cc4135941523c726cffee2255906d",
+        "exit_code": 0
+      }
+    },
+    "historical_local_closeout": "recovered_work/clean_checkpoint_20261106/final-closeout.json"
   }
 }
