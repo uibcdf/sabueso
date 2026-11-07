@@ -59,6 +59,7 @@ def admitted_selection(selection):
             "assembly_generation_exploration@1",
             "assembly_generation_exploration@2",
             "chemical_classification_exploration@1",
+            "bioactivity_exploration@1",
         )
     try:
         node, location = selection._access._resolve(selection._target["location"])
@@ -82,6 +83,7 @@ def admitted_selection(selection):
                     "assembly_generation_exploration@1",
                     "assembly_generation_exploration@2",
                     "chemical_classification_exploration@1",
+                    "bioactivity_exploration@1",
                 )
             node = selection._access._objects[location["result_ref"]]
             if isinstance(node, dict):
@@ -204,7 +206,21 @@ def _cell_record(item, column, cell):
             "record": {"manifest": {"unit": "angstrom"}},
         }
     if (
-        (column == "value" or column == "resolution")
+        column == "measurement"
+        and item._view._selection._scientific is not None
+        and item._view._selection._scientific.wire.get("context", {}).get("adapter")
+        == "bioactivity_exploration@1"
+        and value is not None
+    ):
+        from .card_bioactivity_selection_v1 import QUANTITY_FIELD
+
+        node = item._view._selection._scientific.value(item._entry.key, column)
+        context = {
+            "field": QUANTITY_FIELD,
+            "record": {"manifest": {"unit": node["unit"]}},
+        }
+    if (
+        column in ("value", "resolution", "measurement")
         and context is not None
         and value is not None
     ):
@@ -304,6 +320,37 @@ def _freeze_view(view, ids):
     from .card_exploration_chemical import is_result as is_chemical_result
 
     chemical = is_chemical_result(selection._scientific)
+    bioactivity = (
+        selection._scientific is not None
+        and selection._scientific.wire.get("context", {}).get("adapter")
+        == "bioactivity_exploration@1"
+    )
+    operation = flags["_display_request"]
+    if (
+        bioactivity
+        and isinstance(operation, dict)
+        and operation.get("operation") == "filter"
+        and operation.get("column") == "measurement"
+        and operation.get("equals") is not None
+    ):
+        from pyunitwizard import QuantityRecord
+
+        from .card_bioactivity_selection_v1 import QUANTITY_FIELD, quantity_node
+        from .quantities import to_quantity
+
+        node = quantity_node(operation["equals"])
+        operation.update(
+            equals=QuantityRecord.from_quantity(
+                to_quantity(node), field=QUANTITY_FIELD, unit=node["unit"]
+            ).to_dict(),
+            equals_encoding="quantity_record",
+            equals_field=QUANTITY_FIELD,
+            equals_unit=node["unit"],
+        )
+    encoding = "json" if chemical or bioactivity else _encoding(view)
+    native = (
+        view.native_payload if chemical or bioactivity else _encode_view_payload(view)
+    )
     record = {
         "view_ref": view.view_ref,
         "focal": view._explorer.access._focal_key,
@@ -336,16 +383,14 @@ def _freeze_view(view, ids):
             "schema": view.schema,
             "coverage": view.coverage,
         },
-        "native_payload": view.native_payload
-        if chemical
-        else _encode_view_payload(view),
+        "native_payload": native,
     }
     if view._selection._scientific is not None:
         record["selection"]["scientific_result_ref"] = (
             view._selection._scientific.result_ref
         )
-    if not chemical and _encoding(view) != "json":
-        record["native_encoding"] = _encoding(view)
+    if encoding != "json":
+        record["native_encoding"] = encoding
     return record
 
 
@@ -380,6 +425,7 @@ def _objects_for(access, records):
                                     "assembly_generation_exploration@1",
                                     "assembly_generation_exploration@2",
                                     "chemical_classification_exploration@1",
+                                    "bioactivity_exploration@1",
                                 )
                             ),
                             "This view needs a scientific result whose historical verifier is not yet supported.",
@@ -398,15 +444,6 @@ def _objects_for(access, records):
 
 def _prepare(root):
     _require(
-        not any(
-            view._selection._scientific is not None
-            and view._selection._scientific.wire.get("context", {}).get("adapter")
-            == "bioactivity_exploration@1"
-            for view in required_views(root)
-        ),
-        "Independent saved bioactivity reading is not implemented yet; export the original Card or inspect a supported literal view.",
-    )
-    _require(
         admitted_view(root),
         "Saving derived structures/coverage or their originating trail requires a historical verifier not yet implemented. Save a supported literal/field view or inspect capabilities.",
     )
@@ -419,6 +456,11 @@ def _prepare(root):
         from .card_exploration_chemical import retain_machine_views
 
         retain_machine_views(root)
+        from .card_exploration_bioactivity import (
+            retain_machine_views as retain_bioactivity,
+        )
+
+        retain_bioactivity(root)
     automatic = session.setdefault("automatic_support_views", set())
     primary = [
         view
@@ -605,6 +647,9 @@ def _prepare(root):
     from .card_exploration_chemical import register_bundle as register_chemical
 
     register_chemical(bundle, objects, access)
+    from .card_exploration_bioactivity import register_bundle as register_bioactivity
+
+    register_bioactivity(bundle, objects, access)
     return bundle
 
 
@@ -643,7 +688,11 @@ def save_exploration(
     from .card_exploration_shared_values_v1 import pack, sealed_size
 
     logical = _prepare(view)
-    if logical["format"] == "sabueso.card_exploration@15":
+    if logical["format"] == "sabueso.card_exploration@17":
+        from .card_exploration_shared_values_v3 import pack
+
+        retained_filter = False
+    elif logical["format"] == "sabueso.card_exploration@15":
         from .card_exploration_shared_values_v2 import pack
 
         retained_filter = False  # @15 explicitly owns chemical and retained filters.
@@ -822,6 +871,13 @@ def _restore(
         from .card_exploration_shared_values_v2 import unpack
 
         SHARED_FORMAT = "sabueso.card_exploration@16"
+    if (
+        isinstance(bundle, dict)
+        and bundle.get("format") == "sabueso.card_exploration@18"
+    ):
+        from .card_exploration_shared_values_v3 import unpack
+
+        SHARED_FORMAT = "sabueso.card_exploration@18"
     if isinstance(bundle, dict) and bundle.get("format") == SHARED_FORMAT:
         bundle, representation = unpack(
             bundle,
@@ -844,10 +900,15 @@ def _restore(
             and (
                 bundle["format"] in BASE_FORMATS
                 or bundle["format"] == "sabueso.card_exploration@15"
+                or bundle["format"] == "sabueso.card_exploration@17"
             ),
             "Unsupported exploration format.",
         )
-        if bundle.get("format") == "sabueso.card_exploration@15":
+        if bundle.get("format") == "sabueso.card_exploration@17":
+            from .card_exploration_bioactivity import validate_filters
+
+            retained_filters = validate_filters(bundle)
+        elif bundle.get("format") == "sabueso.card_exploration@15":
             from .card_exploration_chemical import validate_filters
 
             retained_filters = validate_filters(bundle)
@@ -876,6 +937,11 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
     if isinstance(bundle, dict):
         preview_rule(bundle.get("presentation_metadata"))
     if (
+        isinstance(bundle, dict)
+        and bundle.get("format") == "sabueso.card_exploration@17"
+    ):
+        from .card_exploration_verification_v17 import verify_bundle, verify_views
+    elif (
         isinstance(bundle, dict)
         and bundle.get("format") == "sabueso.card_exploration@15"
     ):
@@ -927,6 +993,9 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
         verify_bundle(bundle, expected_digest)
     else:
         from .card_exploration_shared_values_v1 import verify_header
+
+        if bundle["format"] == "sabueso.card_exploration@17":
+            from .card_exploration_shared_values_v3 import verify_header
 
         verify_header(bundle, verify_bundle)
     from .card import CARD_SCHEMA_VERSION
@@ -996,18 +1065,28 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
         )
         wire = accesses[record["focal"]]._objects[ref]
         adapter = wire.get("context", {}).get("adapter")
-        if adapter == "chemical_classification_exploration@1":
+        if adapter == "bioactivity_exploration@1":
+            from .card_bioactivity_history_v1 import restore_result
+
+            _require(
+                bundle["format"] == "sabueso.card_exploration@17",
+                "Bioactivity results require explicit format @17.",
+            )
+            scientific_results[ref] = restore_result(ref, wire)
+        elif adapter == "chemical_classification_exploration@1":
             from .card_chemical_history_v1 import restore_result
 
             _require(
-                bundle["format"] == "sabueso.card_exploration@15",
-                "Chemical results require explicit format @15.",
+                bundle["format"]
+                in ("sabueso.card_exploration@15", "sabueso.card_exploration@17"),
+                "Chemical results require explicit format @15 or @17.",
             )
             scientific_results[ref] = restore_result(ref, wire)
         elif adapter in (
             "assembly_generation_exploration@1",
             "assembly_generation_exploration@2",
             "chemical_classification_exploration@1",
+            "bioactivity_exploration@1",
         ):
             if adapter == "assembly_generation_exploration@2":
                 from .card_assembly_history_v2 import restore_result
@@ -1022,6 +1101,7 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
                         "sabueso.card_exploration@11",
                         "sabueso.card_exploration@12",
                         "sabueso.card_exploration@15",
+                        "sabueso.card_exploration@17",
                     ),
                     "Nonpolymer assembly results require original format @7, @8, @9, @10 or @11 or @12.",
                 )
@@ -1040,6 +1120,7 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
                         "sabueso.card_exploration@11",
                         "sabueso.card_exploration@12",
                         "sabueso.card_exploration@15",
+                        "sabueso.card_exploration@17",
                     ),
                     "Assembly results require original format @5, @6, @7, @8, @9, @10 or @11 or @12.",
                 )
@@ -1052,7 +1133,11 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
         from .card_exploration_sites import FORMAT as SITE_FORMAT
         from .card_exploration_sites import verify_objects
 
-        if bundle["format"] == "sabueso.card_exploration@15":
+        if bundle["format"] == "sabueso.card_exploration@17":
+            from .card_exploration_bioactivity import verify_objects
+
+            verify_objects(bundle, accesses)
+        elif bundle["format"] == "sabueso.card_exploration@15":
             from .card_exploration_chemical import verify_objects
 
             verify_objects(bundle, accesses)
@@ -1064,6 +1149,7 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
             "sabueso.card_exploration@11",
             "sabueso.card_exploration@12",
             "sabueso.card_exploration@15",
+            "sabueso.card_exploration@17",
         ):
             from .card_exploration_assembly_v2 import (
                 verify_objects as verify_nonpolymer_objects,
@@ -1098,6 +1184,7 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
             "assembly_generation_exploration@1",
             "assembly_generation_exploration@2",
             "chemical_classification_exploration@1",
+            "bioactivity_exploration@1",
         ):
             access = accesses[bundle["scientific_results"][ref]["focal"]]
             for entry in result.entries:
@@ -1127,6 +1214,7 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
                 "sabueso.card_exploration@11",
                 "sabueso.card_exploration@12",
                 "sabueso.card_exploration@15",
+                "sabueso.card_exploration@17",
             )
             and "_component_navigation" in flags
         ):
@@ -1189,20 +1277,37 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
         )
         operation = flags["_display_request"]
         if isinstance(operation, dict) and "equals_encoding" in operation:
+            bioactivity_quantity = (
+                bundle["format"] == "sabueso.card_exploration@17"
+                and flags["_record_panel"] == "bioactivities"
+                and operation.get("column") == "measurement"
+            )
             _require(
                 scientific_ref is not None
                 and operation["operation"] == "filter"
-                and operation["column"] == "resolution"
+                and (operation["column"] == "resolution" or bioactivity_quantity)
                 and operation.pop("equals_encoding") == "quantity_record",
                 "Unknown saved display quantity encoding.",
             )
             from pyunitwizard import QuantityRecord
 
+            if bioactivity_quantity:
+                from .card_bioactivity_selection_v1 import QUANTITY_FIELD
+
+                _require(
+                    operation.pop("equals_field", None) == QUANTITY_FIELD,
+                    "Foreign bioactivity equality quantity field.",
+                )
+                field, unit = QUANTITY_FIELD, operation.pop("equals_unit", None)
+                _require(
+                    isinstance(unit, str) and bool(unit),
+                    "Missing original bioactivity equality unit.",
+                )
+            else:
+                field, unit = "relationships.has_structure.resolution", "angstrom"
             operation["equals"] = QuantityRecord.from_dict(
                 operation["equals"]
-            ).to_quantity(
-                field="relationships.has_structure.resolution", unit="angstrom"
-            )
+            ).to_quantity(field=field, unit=unit)
         selection = AccessSelection(
             explorer.access,
             spec["result_ref"],
@@ -1249,6 +1354,7 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
                 "assembly_generation_exploration@1",
                 "assembly_generation_exploration@2",
                 "chemical_classification_exploration@1",
+                "bioactivity_exploration@1",
             )
             else record["native_payload"]
             if owned and record.get("native_encoding", "json") == "json"
@@ -1272,6 +1378,7 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
                     "assembly_generation_exploration@1",
                     "assembly_generation_exploration@2",
                     "chemical_classification_exploration@1",
+                    "bioactivity_exploration@1",
                 )
                 else selection._entries
             )
@@ -1304,6 +1411,7 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
         "sabueso.card_exploration@11",
         "sabueso.card_exploration@12",
         "sabueso.card_exploration@15",
+        "sabueso.card_exploration@17",
     ):
         from .card_explanation_request_binding_v2 import (
             verify as verify_explanation_request,
@@ -1314,7 +1422,27 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
         )
 
     for view in nodes.values():
-        if bundle["format"] == "sabueso.card_exploration@15":
+        if bundle["format"] == "sabueso.card_exploration@17":
+            from .card_exploration_bioactivity import (
+                is_context as bioactivity_context,
+            )
+            from .card_exploration_bioactivity import (
+                is_explanation as bioactivity_explanation,
+            )
+            from .card_exploration_bioactivity import (
+                is_view as bioactivity_view,
+            )
+
+            if (
+                bioactivity_view(view)
+                or bioactivity_explanation(view)
+                or bioactivity_context(view)
+            ):
+                continue  # The original @17 predicates own these exact requests.
+        if bundle["format"] in (
+            "sabueso.card_exploration@15",
+            "sabueso.card_exploration@17",
+        ):
             _, target = view._explorer.access._resolve(
                 view._selection._target["location"]
             )
@@ -1347,13 +1475,18 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
             "sabueso.card_exploration@11",
             "sabueso.card_exploration@12",
             "sabueso.card_exploration@15",
+            "sabueso.card_exploration@17",
         )
         else "scientific_explanation_request_binding@1",
     }
     if "scientific_results" in bundle:
         from .card_exploration_science import _verification_report
 
-        if bundle["format"] == "sabueso.card_exploration@15":
+        if bundle["format"] == "sabueso.card_exploration@17":
+            from .card_exploration_bioactivity import (
+                verification_report as _verification_report,
+            )
+        elif bundle["format"] == "sabueso.card_exploration@15":
             from .card_exploration_chemical import (
                 verification_report as _verification_report,
             )
@@ -1365,6 +1498,7 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
             "sabueso.card_exploration@11",
             "sabueso.card_exploration@12",
             "sabueso.card_exploration@15",
+            "sabueso.card_exploration@17",
         ):
             from .card_exploration_assembly_v2 import (
                 verification_report as _verification_report,
@@ -1475,9 +1609,13 @@ def saved_item_operation(item, kind):
             "ligand_site_comparisons",
             "quaternary_interpretation",
             "assembly_generation",
+            "bioactivities",
         )
         else item._view,
         _display_request=None,
+        _request=item._view.request
+        if item._view._record_panel == "bioactivities"
+        else view._request,
     )
 
 
@@ -1505,6 +1643,10 @@ def saved_topic(explorer, topic, origin, options):
         options is not None and not isinstance(options, dict)
     ):
         raise ArgumentError("Use a declared topic key and options mapping or None.")
+    if topic == "bioactivities":
+        from .card_exploration_bioactivity import saved_topic as bioactivity_saved_topic
+
+        return bioactivity_saved_topic(explorer, origin, options)
     if topic in ("content", "sources", "quality") or (
         topic == "coverage" and not explorer._nature_topics
     ):
@@ -1581,6 +1723,37 @@ def saved_topic(explorer, topic, origin, options):
 
 
 def saved_answer(explorer, question, options, origin):
+    if question == "measured_molecules" and explorer.profile == "protein":
+        from .card_bioactivity_history_v1 import options_for_bioactivities
+
+        options = options_for_bioactivities(options)
+        request = {
+            "question": question,
+            "topic": "bioactivities",
+            "options": options,
+        }
+        for view in explorer._session["views"].values():
+            if (
+                view._saved_state is not None
+                and view._record_panel == "bioactivities"
+                and view._selection._scientific is not None
+                and view._selection._scientific.options == options
+                and view._explorer.access._focal_key == explorer.access._focal_key
+                and view.request == request
+                and view._display_request is None
+                and view._selected == view._selection._entries
+                and view.presentation != "detail"
+            ):
+                return replace(
+                    view,
+                    _explorer=explorer,
+                    _origin=explorer._origin if origin is None else origin,
+                )
+        return not_saved(
+            explorer,
+            "This bioactivity question and its effective options were not retained.",
+            origin,
+        )
     if (
         not isinstance(question, str)
         or (
@@ -1638,6 +1811,7 @@ def saved_answer(explorer, question, options, origin):
                         "classification",
                         "ligand_site_comparisons",
                         "quaternary_interpretation",
+                        "bioactivities",
                     )
                     and view._record_panel
                     == (
@@ -1673,7 +1847,7 @@ def saved_answer(explorer, question, options, origin):
         ):
             raise ArgumentError("include_fragments must be True or False.")
         digest_region(options.get("region"))
-    elif options:
+    elif options and question != "measured_molecules":
         raise ArgumentError("This question has no scientific options.")
     return not_saved(
         explorer,
@@ -1728,7 +1902,19 @@ def save_selection(selection, path, overwrite, **transport_options):
     flags = {}
     from .card_exploration_chemical import is_result as is_chemical_result
 
-    if is_chemical_result(selection._scientific):
+    if (
+        selection._scientific is not None
+        and selection._scientific.wire.get("context", {}).get("adapter")
+        == "bioactivity_exploration@1"
+    ):
+        flags = {
+            "_record_panel": "bioactivities",
+            "_native_override": selection._scientific.wire["native_payload"],
+            "_context_override": selection._scientific.wire["context"],
+            "_status": selection._scientific.wire["outcome"]["status"],
+            "_reason": selection._scientific.wire["outcome"]["reason"],
+        }
+    elif is_chemical_result(selection._scientific):
         flags = {
             "_record_panel": "chemical_classification",
             "_native_override": selection._scientific.wire["native_payload"],

@@ -318,12 +318,26 @@ structural algorithm is implied by the remaining B3 acceptance work.
 The live adapter preserves the complete 493-record fixture, exact native policies
 and human/agent focus. Its benznidazole control opens the complete 459-link
 publication context separately from the molecule's two records. Independent
-original saving is the next technical step: first retain a clean live-adapter
-capture, then implement a separately versioned inert verifier and receive the
-full workload. B4 continues while already dispatched corrected-source CI is
-observed; queued remote runners do not justify substituting an older green SHA.
+original saving now has a clean SDK200 capture and a separately versioned inert
+verifier. Its full workload and historical compatibility pass the selected
+[1,109-case local checkpoint](evidence/bioactivity_saved_checkpoint_20261106.json),
+separate from independent researcher/scientific acceptance and the rest of B4.
+Previously dispatched corrected-source CI retains
+its own scope; queued remote runners do not justify substituting an older green SHA.
 Small local commits carry `[skip ci]` at the maintainer's request, with applicable
 local gates and an explicit recovery checkpoint for deferred remote receiving.
+
+After this saved-reader checkpoint, the next bounded B4 implementation is a
+shared publication catalog over the existing `Card.literature()` and
+`Card.explain_literature()` readers. Preserve distinct citations, ECO support,
+mentions, curated assertions and measurements, with publication → original
+relationship/SourceAssertion/locator → return navigation. Public TcTIM and HsTIM
+inputs, the complete 459-link B4 publication and explicit partial/absent/unqueried/
+failed controls provide the finite cohort. #148 owns human/agent/saved continuity;
+#108 owns bibliography and source lineage. Acquire no articles or metadata for
+this slice and invent no document SourceAssertion. Fix and capture a clean live
+producer before implementing its next independent original reader; keep @1–@18
+fixed and scientific/researcher acceptance separate.
 
 The maintainer has selected the
 [bounded positive/uncertain MolSysMT integration](pending_proposals/structural_journey_acceptance_20261104.md#accepted-assembly-scope--2026-11-06)

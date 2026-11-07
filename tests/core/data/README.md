@@ -422,3 +422,52 @@ control to make a newer reader pass. This is not a frozen Card schema.
   `9b5ff5c443c879620dfb2f8e1fd5c487b68a9f7578c82d00c904810d7b9df5e8`.
 - Decoded bytes: 29,849,825; SHA256
   `d76878edab397580ac7628a5d3d0219c005fbaa881de0427fc65e54ae19da2e5`.
+
+## Original live bioactivity projection before saved reading
+
+`bioactivity_live_v1.json.gz` packages a reviewed projection of the genuine live
+capture from clean source `2eb611463c0f8ab990039ec017833f5b33ae2711`, SDK
+`0.14.0+200.g2eb6114`, recorded on 2026-11-07 UTC before an independent bioactivity
+saved reader existed. Its original manifest SHA-256 is
+`509ee7369f5a0cf53d5d40e872db33a19a5f2e075588e677dbfca7010f670ab6`.
+The original explicitly did not support saving. This capsule is a projection of
+original live values, not an original admitted saved bundle, a frozen Card schema,
+or a substitute for the complete capture.
+
+Only the previously reviewed public UniProt P52270 and ChEMBL CHEMBL5834 inputs
+contribute source knowledge. Their original bytes and licences remain identified
+in the embedded manifest and original `temp_data/NOTICE.md`: UniProt Consortium,
+CC BY 4.0; ChEMBL/EMBL-EBI, CC BY-SA 3.0. Authored capture/packaging material follows
+the repository MIT licence. No private/pilot input, new acquisition, article
+reading or scientific recalculation is included.
+
+The projection retains the exact original Card, nine scientific result wires,
+two complete publication wrappers, all sixteen machine request records and their
+thirteen page streams, all 104 recorded view/navigation records, and original
+human text/HTML. This includes all 493 source activities, the full 459-link
+publication context, BTS and benznidazole drill-down, original source/assay/citation
+support, explicit 33-micromolar thresholds and opt-in measurement/target-scope @2.
+JSON primitives, quantities, source metadata, order lists and requests are retained
+without a global version-field rewrite.
+
+The fixture uses lossless content-addressed sharing of canonical JSON values,
+with explicit literal/reference wrappers. This is fixture packaging, not a public
+reader format. Its declared projection omits 1,020 unselected duplicate item-cell
+records, generic access objects, caches/cursor tables, and the capture script.
+Complete source files and indices/digests identify those omissions. The untouched
+745,483,187-byte / 157-member original remains under the ignored
+`b4-live-original-capture/original3` receiving directory, owned by #148 for the next
+B4 scientific/reader checkpoint. Never regenerate the original to pass a reader.
+
+Packaging imported only the standard library, verified all original member
+hashes, and made no scientific calls. Gzip uses `mtime=0`.
+
+The complete current regression session has 709,616,078 logical bytes before
+sharing. It explicitly permits 1 GiB logical work and 128 MiB encoded/decoded
+transport; the normal 256 MiB logical refusal is tested separately. Capsule
+packaging size is not the logical cost of saving or reading that session.
+
+- Compressed bytes: 5,179,456; SHA-256
+  `65a6108769ba1f178a8c13be0096689ba783ade038bb90382895450c93ad38f0`.
+- Decoded bytes: 20,525,099; SHA-256
+  `2aed16cd0884049cca506e7831cf4897d7a149f92dd812959c6c1c9e92a0c7f0`.

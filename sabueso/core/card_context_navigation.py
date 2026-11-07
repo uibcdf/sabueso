@@ -497,7 +497,10 @@ def _destination(explorer, candidate, origin, title="Referenced source record"):
 def follow(item):
     explorer, link = item._view._explorer, item._entry.value
     if link.get("rule") == "bioactivity_context_links@1":
-        from .card_bioactivity_exploration import follow as follow_bioactivity
+        if explorer.mode == "saved":
+            from .card_exploration_bioactivity import follow as follow_bioactivity
+        else:
+            from .card_bioactivity_exploration import follow as follow_bioactivity
 
         return follow_bioactivity(item)
     if link.get("rule") in (

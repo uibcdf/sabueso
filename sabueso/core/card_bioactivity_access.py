@@ -72,8 +72,7 @@ def descriptor():
             "format": SUPPORT_FORMAT,
             "record_location": "Append Record(id) to source_store_location only for a present member.",
         },
-        "save": False,
-        "save_reason": "Independent original bioactivity-adapter saved reading is not implemented; raw Card export remains available.",
+        "save": True,
     }
 
 

@@ -1,0 +1,1297 @@
+{
+  "schema": "sabueso.b4-saved-checkpoint@1",
+  "owner": "uibcdf/sabueso#148/#112",
+  "scope": "Composed local affected checkpoint; exact distinct node-ID union, not two full runs or a full repository checkpoint.",
+  "source": {
+    "proofs": [
+      {
+        "path": "recovered_work/checkpoint_recovery_20261106/b4-saved-tested-source-1.json",
+        "bytes": 126391,
+        "sha256": "863a4a471e5a72a440e8074736e0310e8a49d7f96f7913c1a5f8f89b52eaaba8"
+      },
+      {
+        "path": "recovered_work/checkpoint_recovery_20261106/b4-saved-tested-source-2.json",
+        "bytes": 126391,
+        "sha256": "d8b9ded51e9cf9ba7f30a9ae16a470dc15c01648e8cf360713495afd766efc54"
+      }
+    ],
+    "verified_files": 1101,
+    "current_map_sha256": "18d1933ee57f326032a3e08b45a4c9e0728a3986896c294502c3d8c3b88a13b5",
+    "proof_delta": {
+      "tests/core/test_card_saved_bioactivity_offline.py": {
+        "before": "1ade59ef4445b072247060bc370ec3fa79a3d6329f118420bf332fb98d0566db",
+        "after": "26b720d776da24d0269b012c8937282e79d5c847e8213183d3a3a02922822ee9",
+        "reverse_edit_verified": true
+      },
+      "tests/tools/test_installed_receiving_scope_offline.py": {
+        "before": "f83cf3a7eb914996d1af743537f4ffd18e7f7e9c0b01ebafab3e8fb15302f67e",
+        "after": "72a5778a1def67b510cf1f3c14ea13a0de5b71273d8ebbea5a55e1595111b8f3",
+        "reverse_edit_verified": true
+      }
+    },
+    "production_and_other_participating_tests_byte_unchanged": true,
+    "delta_scope": "Only comments and child timeouts 240\u2192600 s / 600\u21921800 s; neither changed module participates in the earlier 881/198 cases.",
+    "git_head_at_receiving": "2eb611463c0f8ab990039ec017833f5b33ae2711"
+  },
+  "counts": {
+    "collected": 1109,
+    "deselected": 0,
+    "errors": 0,
+    "executed": 1109,
+    "failed": 0,
+    "not_executed": 0,
+    "passed": 1109,
+    "reruns": 0,
+    "skipped": 0,
+    "warnings": 0,
+    "xfailed": 0,
+    "xpassed": 0
+  },
+  "distinct_nodeids": 1109,
+  "selection_sha256": "dcbf7e4dd7f1964756118ed4cabdcd8ad14d420c4a72078cc69bbaae2788dccf",
+  "pairwise_disjoint": true,
+  "phases": [
+    {
+      "directory": "b4-historical-parallel-2",
+      "source_proof": 1,
+      "run_source_attribution": "Coordinator launch/freeze attribution; no per-process source snapshot was retained",
+      "exit_code": 0,
+      "resource_stop_reason": null,
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0,1,2,3,4,5,6,7",
+        "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "tests/core/test_card_bioactivity_exploration_offline.py",
+        "tests/core/test_card_access_offline.py",
+        "tests/core/test_card_exploration_offline.py",
+        "tests/core/test_card_protein_exploration_offline.py",
+        "tests/core/test_card_nature_exploration_offline.py",
+        "tests/core/test_card_human_labels_offline.py",
+        "tests/core/test_card_context_navigation_offline.py",
+        "tests/core/test_argument_contracts_offline.py",
+        "tests/core/test_quantities_offline.py",
+        "tests/core/test_bioactivity_explanation_offline.py",
+        "tests/core/test_bioactivity_class_v4_offline.py",
+        "tests/core/test_measurement_correspondence_offline.py",
+        "tests/core/test_bioactivity_target_scope_offline.py",
+        "tests/core/test_measurement_identity_offline.py",
+        "tests/core/test_card_saved_exploration_offline.py",
+        "tests/core/test_card_saved_assembly_offline.py",
+        "tests/core/test_card_saved_nonpolymer_assembly_offline.py",
+        "tests/core/test_card_saved_chemical_offline.py",
+        "tests/core/test_card_agent_selection_offline.py",
+        "tests/core/test_card_retained_filter_offline.py",
+        "-n",
+        "8",
+        "--dist=load",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "--receptor-events=recovered_work/checkpoint_recovery_20261106/b4-historical-parallel-2/events.jsonl",
+        "-p",
+        "checkpoint_scope",
+        "--basetemp=recovered_work/checkpoint_recovery_20261106/b4-historical-parallel-2/pytest-scratch",
+        "-W",
+        "error:unclosed database:ResourceWarning",
+        "-W",
+        "error::pytest.PytestUnraisableExceptionWarning"
+      ],
+      "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+      "counts": {
+        "collected": 881,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 881,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 881,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "selection_sha256": "b6c3ba38cd5737fb5da492701e846d3f5bbc6daa5e841504797fe54a9a6c94c9",
+      "artifact_integrity": {
+        "algorithm": "sha256",
+        "digest": "2e009e894b5ef4f9423633d73d70dc447351d939236ddb48e370ec9e6765c248",
+        "records": 2668
+      },
+      "artifact_stream_complete": true,
+      "execution_complete": true,
+      "pytest_duration_s": 88.44137794701965,
+      "resources": {
+        "elapsed_s": 89.42,
+        "peak_owned_rss_bytes": 2052419584,
+        "minimum_host_available_bytes": 48380092416,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 57603926,
+        "limits": {
+          "owned_rss_bytes": 8589934592,
+          "host_available_bytes": 17179869184,
+          "owned_swap_bytes": 0,
+          "cpu_affinity_count": 8,
+          "nice": 10,
+          "elapsed_s": 1800,
+          "owned_scratch_bytes": 4294967296
+        }
+      },
+      "files": {
+        "resource": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-parallel-2/historical-resource.json",
+          "bytes": 2618,
+          "sha256": "2568f24525d6aa95fa75a3fa116b05bc871c9322cf8575555e575e1d3ed240d7"
+        },
+        "artifact": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-parallel-2/events.jsonl",
+          "bytes": 1114142,
+          "sha256": "828f2e3814928a7f70a7546517527f4d734f19b65243d480079ba668a27d2fb1"
+        },
+        "log": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-parallel-2/historical.log",
+          "bytes": 89,
+          "sha256": "3081986ce7233d0f81a976bed3abb191a8741a3063ced5ae7fb18225def37402"
+        },
+        "scope": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-parallel-2/scope-controller.json",
+          "bytes": 349462,
+          "sha256": "d2894b2679c9cf8477ca974c193a49232739e046933a2a12f963e8a15caac6a2"
+        },
+        "workers": [
+          {
+            "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-parallel-2/scope-gw0.json",
+            "bytes": 126671,
+            "sha256": "b5398ed02a5df15d333c4b1de07c9307f72c92e4b92d10270fc6ad0c41df3569"
+          },
+          {
+            "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-parallel-2/scope-gw1.json",
+            "bytes": 130331,
+            "sha256": "d563884b532a5248d0120be4afb11b01b2d55bcf44017446d5e3aff1bc12da86"
+          },
+          {
+            "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-parallel-2/scope-gw2.json",
+            "bytes": 149679,
+            "sha256": "3f42725dd36691389b0f7647fa4902da815e887018ee620b47307de1f25f7b20"
+          },
+          {
+            "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-parallel-2/scope-gw3.json",
+            "bytes": 138273,
+            "sha256": "07f8291d6c9649ca6608cf33a82513e666095322fa3bc583e61f6d7425de40ac"
+          },
+          {
+            "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-parallel-2/scope-gw4.json",
+            "bytes": 159107,
+            "sha256": "1d9b182500b8f3cb9522d86bd15c6511c684e071a35b1c44fc591967dd94d208"
+          },
+          {
+            "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-parallel-2/scope-gw5.json",
+            "bytes": 128449,
+            "sha256": "f3867476557cea4ea1b95434aea5b03e6daa0c81766a015c4d188eca68f302f2"
+          },
+          {
+            "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-parallel-2/scope-gw6.json",
+            "bytes": 172089,
+            "sha256": "7ce8f5c6c3838868c12a935ca1839480c8b2224decc5ca74e862e95b0d4c2c59"
+          },
+          {
+            "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-parallel-2/scope-gw7.json",
+            "bytes": 140637,
+            "sha256": "ec4d5abb2872223e7be7c2491d8f9b976376fbd011cf9a2d34c93a745948f845"
+          }
+        ],
+        "guard": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-parallel-2/run_bounded.py",
+          "bytes": 5835,
+          "sha256": "28fd42234551e5824f95f95f69029a3834b0ce6f763a0362c84ddf95d7f1a7b4"
+        }
+      }
+    },
+    {
+      "directory": "b4-historical-science-final-1",
+      "source_proof": 1,
+      "run_source_attribution": "Matching retained before/after file-map snapshots",
+      "exit_code": 0,
+      "resource_stop_reason": null,
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "8",
+        "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "tests/core/test_card_saved_science_offline.py",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "--receptor-events=recovered_work/checkpoint_recovery_20261106/b4-historical-science-final-1/events.jsonl",
+        "-p",
+        "checkpoint_scope",
+        "--basetemp=recovered_work/checkpoint_recovery_20261106/b4-historical-science-final-1/pytest-scratch"
+      ],
+      "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+      "counts": {
+        "collected": 41,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 41,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 41,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "selection_sha256": "f371ec2f62c3455c2e2bcc43514e5f9c0593af98bfd0c34e31b9174dd3b9f1bb",
+      "artifact_integrity": {
+        "algorithm": "sha256",
+        "digest": "5e1477c22975ed1841b74a4daacefc206f498b2f5fcd752a02fcd3181a229d7e",
+        "records": 124
+      },
+      "artifact_stream_complete": true,
+      "execution_complete": true,
+      "pytest_duration_s": 142.1457996009849,
+      "resources": {
+        "elapsed_s": 143.29,
+        "peak_owned_rss_bytes": 405319680,
+        "minimum_host_available_bytes": 49589043200,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 38353823,
+        "limits": {
+          "owned_rss_bytes": 2147483648,
+          "host_available_bytes": 17179869184,
+          "owned_swap_bytes": 0,
+          "cpu_affinity_count": 1,
+          "nice": 10,
+          "elapsed_s": 600,
+          "owned_scratch_bytes": 4294967296
+        }
+      },
+      "files": {
+        "resource": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-science-final-1/original-resource.json",
+          "bytes": 1399,
+          "sha256": "12b6d970ce928e3fc53070558c38c55ac14c470d2bf99e1e3450caee822775cc"
+        },
+        "artifact": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-science-final-1/events.jsonl",
+          "bytes": 49730,
+          "sha256": "bdb99edda1b3d42d9cf5932b4d7b9887189ea88dba1aa2ff83b0011768a24f4d"
+        },
+        "log": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-science-final-1/original.log",
+          "bytes": 158,
+          "sha256": "2a25300dbd0a5720f24e8aabcb637a21ad1226f7faf34f648f4efe951533912d"
+        },
+        "scope": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-science-final-1/scope-controller.json",
+          "bytes": 15526,
+          "sha256": "e322a137596af5a0789942e5d6db5b037b682e0bef509766450d77ab3aa72ad9"
+        },
+        "guard": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-science-final-1/run_bounded.py",
+          "bytes": 5878,
+          "sha256": "49d5cad0c3164cd268055c6d604ed160ce880a4da703b15af14aaa46097322be"
+        },
+        "source_before": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-science-final-1/source-before.json",
+          "bytes": 128982,
+          "sha256": "0293a87c868c9bf010f4d670f0469105f125ba361a4ddd1ce8f04f6b7bc2139c"
+        },
+        "source_after": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-science-final-1/source-after.json",
+          "bytes": 129040,
+          "sha256": "7d9d857b001eb10dca6393697d143c9e072722eca69998b0fa77d829500a2d1d"
+        }
+      }
+    },
+    {
+      "directory": "b4-historical-sites-final-1",
+      "source_proof": 1,
+      "run_source_attribution": "Matching retained before/after file-map snapshots",
+      "exit_code": 0,
+      "resource_stop_reason": null,
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "9",
+        "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "tests/core/test_card_saved_sites_offline.py",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "--receptor-events=recovered_work/checkpoint_recovery_20261106/b4-historical-sites-final-1/events.jsonl",
+        "-p",
+        "checkpoint_scope",
+        "--basetemp=recovered_work/checkpoint_recovery_20261106/b4-historical-sites-final-1/pytest-scratch"
+      ],
+      "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+      "counts": {
+        "collected": 41,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 41,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 41,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "selection_sha256": "985857618f73a2af2a4093f18b78bf4d3d75625711544003937ee57ed96e317a",
+      "artifact_integrity": {
+        "algorithm": "sha256",
+        "digest": "bf21a9a404457d0b2444c5b3d33342d33eb21558af785946099af5f49cd8dc6b",
+        "records": 124
+      },
+      "artifact_stream_complete": true,
+      "execution_complete": true,
+      "pytest_duration_s": 39.06302242600941,
+      "resources": {
+        "elapsed_s": 40.04,
+        "peak_owned_rss_bytes": 231063552,
+        "minimum_host_available_bytes": 49589043200,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 18784593,
+        "limits": {
+          "owned_rss_bytes": 2147483648,
+          "host_available_bytes": 17179869184,
+          "owned_swap_bytes": 0,
+          "cpu_affinity_count": 1,
+          "nice": 10,
+          "elapsed_s": 600,
+          "owned_scratch_bytes": 4294967296
+        }
+      },
+      "files": {
+        "resource": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-sites-final-1/original-resource.json",
+          "bytes": 1390,
+          "sha256": "7ff13da22e89712696082f135827e33ae3891e5c640911e80ec702fff5c6295b"
+        },
+        "artifact": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-sites-final-1/events.jsonl",
+          "bytes": 51406,
+          "sha256": "e185511fdf216f0e5fe7abf22781dcd974acd64825e8bf37718fb19318a6b0e8"
+        },
+        "log": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-sites-final-1/original.log",
+          "bytes": 83,
+          "sha256": "c7f5dd923c7f1b9b37f4cc86f29e76a8bbdd6ee7dae5176ca675d5483c52248e"
+        },
+        "scope": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-sites-final-1/scope-controller.json",
+          "bytes": 17137,
+          "sha256": "88bbec096f3be212b787fc38d60d922c59cc1fc22782ffb7c8b2cfc1954f2363"
+        },
+        "guard": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-sites-final-1/run_bounded.py",
+          "bytes": 5878,
+          "sha256": "0ab2f4908c561fd4c626a5e6c135d885766706282f34f0392243ebda3e2c4745"
+        },
+        "source_before": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-sites-final-1/source-before.json",
+          "bytes": 128982,
+          "sha256": "0293a87c868c9bf010f4d670f0469105f125ba361a4ddd1ce8f04f6b7bc2139c"
+        },
+        "source_after": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-sites-final-1/source-after.json",
+          "bytes": 129040,
+          "sha256": "7d9d857b001eb10dca6393697d143c9e072722eca69998b0fa77d829500a2d1d"
+        }
+      }
+    },
+    {
+      "directory": "b4-historical-quaternary-final-1",
+      "source_proof": 1,
+      "run_source_attribution": "Matching retained before/after file-map snapshots",
+      "exit_code": 0,
+      "resource_stop_reason": null,
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "10",
+        "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "tests/core/test_card_saved_quaternary_offline.py",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "--receptor-events=recovered_work/checkpoint_recovery_20261106/b4-historical-quaternary-final-1/events.jsonl",
+        "-p",
+        "checkpoint_scope",
+        "--basetemp=recovered_work/checkpoint_recovery_20261106/b4-historical-quaternary-final-1/pytest-scratch"
+      ],
+      "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+      "counts": {
+        "collected": 41,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 41,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 41,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "selection_sha256": "c47b8ae9d0564ca1ece770017e04629bf586ba7df7d6608a8993b35e271f332c",
+      "artifact_integrity": {
+        "algorithm": "sha256",
+        "digest": "fe70eec31aa1b9ece294347578361bce6c6f15f6314f599d12476aa6e3e73c3c",
+        "records": 124
+      },
+      "artifact_stream_complete": true,
+      "execution_complete": true,
+      "pytest_duration_s": 98.81287714699283,
+      "resources": {
+        "elapsed_s": 99.91,
+        "peak_owned_rss_bytes": 342507520,
+        "minimum_host_available_bytes": 49592397824,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 43323936,
+        "limits": {
+          "owned_rss_bytes": 2147483648,
+          "host_available_bytes": 17179869184,
+          "owned_swap_bytes": 0,
+          "cpu_affinity_count": 1,
+          "nice": 10,
+          "elapsed_s": 600,
+          "owned_scratch_bytes": 4294967296
+        }
+      },
+      "files": {
+        "resource": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-quaternary-final-1/original-resource.json",
+          "bytes": 1411,
+          "sha256": "96b5f74906e67f6bb626b16a05bee35b28e6321a75cd9c889769b3ad747a8503"
+        },
+        "artifact": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-quaternary-final-1/events.jsonl",
+          "bytes": 51413,
+          "sha256": "8245b9bb5c80b05410f534da5e5b95e2b03fe7acf35ad7365cb2e12d2e032772"
+        },
+        "log": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-quaternary-final-1/original.log",
+          "bytes": 83,
+          "sha256": "98fab35bbe4886c4904c8a80ca2883b9ca1661c2aea1acf8d604e41b5b078ce2"
+        },
+        "scope": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-quaternary-final-1/scope-controller.json",
+          "bytes": 17170,
+          "sha256": "753b58622988259eb433957acb039a1bd35a434f6bfff0246316d081ead95a15"
+        },
+        "guard": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-quaternary-final-1/run_bounded.py",
+          "bytes": 5881,
+          "sha256": "e86b0da666d2ad6a1f6995dd02f73f86112f69af6836053979062579238f8563"
+        },
+        "source_before": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-quaternary-final-1/source-before.json",
+          "bytes": 128982,
+          "sha256": "0293a87c868c9bf010f4d670f0469105f125ba361a4ddd1ce8f04f6b7bc2139c"
+        },
+        "source_after": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-quaternary-final-1/source-after.json",
+          "bytes": 129040,
+          "sha256": "7d9d857b001eb10dca6393697d143c9e072722eca69998b0fa77d829500a2d1d"
+        }
+      }
+    },
+    {
+      "directory": "b4-historical-components-final-1",
+      "source_proof": 1,
+      "run_source_attribution": "Matching retained before/after file-map snapshots",
+      "exit_code": 0,
+      "resource_stop_reason": null,
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "11",
+        "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "tests/core/test_card_saved_component_navigation_offline.py",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "--receptor-events=recovered_work/checkpoint_recovery_20261106/b4-historical-components-final-1/events.jsonl",
+        "-p",
+        "checkpoint_scope",
+        "--basetemp=recovered_work/checkpoint_recovery_20261106/b4-historical-components-final-1/pytest-scratch"
+      ],
+      "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+      "counts": {
+        "collected": 19,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 19,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 19,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "selection_sha256": "e7b01bd8666238c77dfe2a8341744c8197547c95fda1779f473b2cd38ce2506d",
+      "artifact_integrity": {
+        "algorithm": "sha256",
+        "digest": "faf1dae1bdc53916f0bbf4996116fb0483f65382ad759d1d78ecd43b1318c444",
+        "records": 58
+      },
+      "artifact_stream_complete": true,
+      "execution_complete": true,
+      "pytest_duration_s": 195.71452202199725,
+      "resources": {
+        "elapsed_s": 196.79,
+        "peak_owned_rss_bytes": 406040576,
+        "minimum_host_available_bytes": 49592397824,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 21953395,
+        "limits": {
+          "owned_rss_bytes": 2147483648,
+          "host_available_bytes": 17179869184,
+          "owned_swap_bytes": 0,
+          "cpu_affinity_count": 1,
+          "nice": 10,
+          "elapsed_s": 600,
+          "owned_scratch_bytes": 4294967296
+        }
+      },
+      "files": {
+        "resource": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-components-final-1/original-resource.json",
+          "bytes": 1422,
+          "sha256": "a7286322bf258cde26f5525c976bcd363405400879530b717b88dad82637b2e1"
+        },
+        "artifact": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-components-final-1/events.jsonl",
+          "bytes": 24984,
+          "sha256": "1bcd26627449d456cda829b29855aefdceba02fe2a9f670cc9f64c4bd58a4d78"
+        },
+        "log": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-components-final-1/original.log",
+          "bytes": 157,
+          "sha256": "266b9498515ed6d443ebaf8b9648201626d48ba6d12e48727c77995b6392863b"
+        },
+        "scope": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-components-final-1/scope-controller.json",
+          "bytes": 8556,
+          "sha256": "dbdf2dcd3f6c064ef8e722d7ec9d4bcbbad5b28362d3e581cfdc32b916238a61"
+        },
+        "guard": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-components-final-1/run_bounded.py",
+          "bytes": 5881,
+          "sha256": "738b525a02dce5e891c3ab77a7b0c1111f4b7a913d1e6cc462f9b1612daca85b"
+        },
+        "source_before": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-components-final-1/source-before.json",
+          "bytes": 128982,
+          "sha256": "0293a87c868c9bf010f4d670f0469105f125ba361a4ddd1ce8f04f6b7bc2139c"
+        },
+        "source_after": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-components-final-1/source-after.json",
+          "bytes": 129040,
+          "sha256": "7d9d857b001eb10dca6393697d143c9e072722eca69998b0fa77d829500a2d1d"
+        }
+      }
+    },
+    {
+      "directory": "b4-historical-shared-values-final-1",
+      "source_proof": 1,
+      "run_source_attribution": "Matching retained before/after file-map snapshots",
+      "exit_code": 0,
+      "resource_stop_reason": null,
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "12",
+        "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "--receptor=llm",
+        "--receptor-events=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b4-historical-shared-values-final-1/events.jsonl",
+        "-p",
+        "checkpoint_scope",
+        "-W",
+        "error:unclosed database:ResourceWarning",
+        "-W",
+        "error::pytest.PytestUnraisableExceptionWarning",
+        "--basetemp=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b4-historical-shared-values-final-1/pytest-scratch",
+        "-m",
+        "not online",
+        "tests/core/test_exploration_shared_values_offline.py"
+      ],
+      "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+      "counts": {
+        "collected": 56,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 56,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 56,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "selection_sha256": "cd43dad5be3ef4fe466d3edef9c6e4c0e51dad0a954273b4d80cd1d55b182fc2",
+      "artifact_integrity": {
+        "algorithm": "sha256",
+        "digest": "bbfc5a1547eaeeaf0629048424faa18347bd0ebf5a4910e0fe2bba4a77cf656e",
+        "records": 169
+      },
+      "artifact_stream_complete": true,
+      "execution_complete": true,
+      "pytest_duration_s": 12.185316888993839,
+      "resources": {
+        "elapsed_s": 13.34,
+        "peak_owned_rss_bytes": 149958656,
+        "minimum_host_available_bytes": 50067173376,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 456073,
+        "limits": {
+          "owned_rss_bytes": 2147483648,
+          "host_available_bytes": 17179869184,
+          "owned_swap_bytes": 0,
+          "cpu_affinity_count": 1,
+          "nice": 10,
+          "elapsed_s": 600,
+          "owned_scratch_bytes": 4294967296
+        }
+      },
+      "files": {
+        "resource": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-shared-values-final-1/shared-values-resource.json",
+          "bytes": 1684,
+          "sha256": "28a3566c79d4835f7f22ac3d663e65dc23d4dab0cfe8dc546f942549f7bfb837"
+        },
+        "artifact": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-shared-values-final-1/events.jsonl",
+          "bytes": 69548,
+          "sha256": "14098fe1086d47a5f646d088d9a5f931d4bd1df1d4e2447b9519bb33dde16c29"
+        },
+        "log": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-shared-values-final-1/shared-values.log",
+          "bytes": 34,
+          "sha256": "cba32ccf582cc236516d57e2f136bd5fbef8a6fd2779e0c41f9dc7b50c5268e0"
+        },
+        "scope": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-shared-values-final-1/scope-controller.json",
+          "bytes": 22714,
+          "sha256": "966b1e6783d5c6dc0036a57faba2afa692ea381ae3f8d6bcca45fe10e2700b94"
+        },
+        "guard": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-shared-values-final-1/run_bounded.py",
+          "bytes": 5946,
+          "sha256": "346fc123f6e9fa1af308ec53fc20f7c901b709582c1ef368154c5a7d9442c67a"
+        },
+        "source_before": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-shared-values-final-1/source-before.json",
+          "bytes": 128982,
+          "sha256": "0293a87c868c9bf010f4d670f0469105f125ba361a4ddd1ce8f04f6b7bc2139c"
+        },
+        "source_after": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-shared-values-final-1/source-after.json",
+          "bytes": 129040,
+          "sha256": "7d9d857b001eb10dca6393697d143c9e072722eca69998b0fa77d829500a2d1d"
+        }
+      }
+    },
+    {
+      "directory": "b4-saved-gates-6",
+      "source_proof": 2,
+      "run_source_attribution": "Coordinator launch/freeze attribution; no per-process source snapshot was retained",
+      "exit_code": 0,
+      "resource_stop_reason": null,
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "16",
+        "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "tests/core/test_card_saved_bioactivity_offline.py",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "--receptor-events=recovered_work/checkpoint_recovery_20261106/b4-saved-gates-6/events.jsonl",
+        "-p",
+        "checkpoint_scope",
+        "--basetemp=recovered_work/checkpoint_recovery_20261106/b4-saved-gates-6/pytest-scratch",
+        "-W",
+        "error:unclosed database:ResourceWarning",
+        "-W",
+        "error::pytest.PytestUnraisableExceptionWarning"
+      ],
+      "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+      "counts": {
+        "collected": 29,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 29,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 29,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "selection_sha256": "6cbba75165b864d1977f96dbfb2e5cd0bc08c83a652681a967d162f3290df961",
+      "artifact_integrity": {
+        "algorithm": "sha256",
+        "digest": "af076d03afb59771c9cf8eaae579d04531d5889906d0809865b580c55b82d0ea",
+        "records": 89
+      },
+      "artifact_stream_complete": true,
+      "execution_complete": true,
+      "pytest_duration_s": 841.072359637008,
+      "resources": {
+        "elapsed_s": 843.7,
+        "peak_owned_rss_bytes": 2950713344,
+        "minimum_host_available_bytes": 46200139776,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 152045602,
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "owned_swap_bytes": 0,
+          "cpu_affinity_count": 1,
+          "nice": 10,
+          "elapsed_s": 1800,
+          "owned_scratch_bytes": 4294967296
+        }
+      },
+      "files": {
+        "resource": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-saved-gates-6/bioactivity-resource.json",
+          "bytes": 1488,
+          "sha256": "fded10ef68fbb845f8493bc9200538f41504bc71a89a54cae5d37cdaf509c52f"
+        },
+        "artifact": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-saved-gates-6/events.jsonl",
+          "bytes": 37504,
+          "sha256": "0f5b107087f77e62d4655ce000c0e17432c28dae7266625f649ef877f9bb441d"
+        },
+        "log": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-saved-gates-6/bioactivity.log",
+          "bytes": 160,
+          "sha256": "78bce60f9242da58417fae0f653a53544c98c39a5771a7dc258dea546a526c6c"
+        },
+        "scope": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-saved-gates-6/scope-controller.json",
+          "bytes": 11746,
+          "sha256": "44b0043e31ffc7b9e7ac7dd5849b935a2387d14631f303acb4de90769affc9f9"
+        },
+        "guard": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-saved-gates-6/run_bounded.py",
+          "bytes": 5803,
+          "sha256": "8a5ac6786eb9bd6aea6555622f2a73892a63da8ff3fd845cc341e12434994017"
+        }
+      }
+    },
+    {
+      "directory": "b4-saved-copied-1",
+      "source_proof": 2,
+      "run_source_attribution": "Coordinator launch/freeze attribution; no per-process source snapshot was retained",
+      "exit_code": 0,
+      "resource_stop_reason": null,
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "17",
+        "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "tests/tools/test_installed_receiving_scope_offline.py::test_declared_saved_bioactivity_runs_with_only_original_public_projection",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "--receptor-events=recovered_work/checkpoint_recovery_20261106/b4-saved-copied-1/events.jsonl",
+        "-p",
+        "checkpoint_scope",
+        "--basetemp=recovered_work/checkpoint_recovery_20261106/b4-saved-copied-1/pytest-scratch",
+        "-W",
+        "error:unclosed database:ResourceWarning",
+        "-W",
+        "error::pytest.PytestUnraisableExceptionWarning"
+      ],
+      "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+      "counts": {
+        "collected": 1,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 1,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 1,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "selection_sha256": "9a6bb2b0e9a681b43a5fb75f27b29e47a72f5a0cd70b7a06d671961c42622a53",
+      "artifact_integrity": {
+        "algorithm": "sha256",
+        "digest": "308da6f596103d5df6c6054d71686f207471687aaf5f34508a811c9636622c59",
+        "records": 4
+      },
+      "artifact_stream_complete": true,
+      "execution_complete": true,
+      "pytest_duration_s": 840.7090202500112,
+      "resources": {
+        "elapsed_s": 841.64,
+        "peak_owned_rss_bytes": 2980777984,
+        "minimum_host_available_bytes": 46207102976,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 152021679,
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "owned_swap_bytes": 0,
+          "cpu_affinity_count": 1,
+          "nice": 10,
+          "elapsed_s": 2400,
+          "owned_scratch_bytes": 4294967296
+        }
+      },
+      "files": {
+        "resource": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-saved-copied-1/copied-resource.json",
+          "bytes": 1571,
+          "sha256": "c6adac31c819505d8295173c8f8c3fa4991391c1bcfaf91ef8b092bbcb154c47"
+        },
+        "artifact": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-saved-copied-1/events.jsonl",
+          "bytes": 2672,
+          "sha256": "d2c5a0d6b69226c9eb3bd983413879225259d6c20647822d4a856500037d2bc4"
+        },
+        "log": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-saved-copied-1/copied.log",
+          "bytes": 34,
+          "sha256": "24ee3541b1da178f8ba53b5612030856f16134cf75ef4e7b14c4f1ff80f6f49c"
+        },
+        "scope": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-saved-copied-1/scope-controller.json",
+          "bytes": 627,
+          "sha256": "edb0a2f7f7af78a66d5777ffaf69cdf5f4d336c839927e188257b139c5c4d1f1"
+        },
+        "guard": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-saved-copied-1/run_bounded.py",
+          "bytes": 5803,
+          "sha256": "6c61e021c9c670ea7ecb8647d5cd519b8019589ee76c00048d923dc7aafdee5e"
+        }
+      }
+    }
+  ],
+  "repeated_receiving": {
+    "copied_live": {
+      "directory": "b4-copied-live-4",
+      "source_proof": 1,
+      "run_source_attribution": "Matching retained before/after file-map snapshots",
+      "exit_code": 0,
+      "resource_stop_reason": null,
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "14",
+        "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "test_card_bioactivity_exploration_offline.py",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "--receptor-events=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b4-copied-live-4/events.jsonl",
+        "-p",
+        "b4_copied_scope",
+        "--basetemp=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b4-copied-live-4/pytest-scratch"
+      ],
+      "cwd": "/tmp/sabueso-b4-live-copy-20261107-003",
+      "counts": {
+        "collected": 40,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 40,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 40,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "selection_sha256": "9ec977c1945a936f4febe84ff99b72f04e8a128d0bb4186a88bec2771de9e235",
+      "artifact_integrity": {
+        "algorithm": "sha256",
+        "digest": "2d2b2a6ff92984e5282e1c68c783dc996e1354db5fcdcb1024d5d683de02529a",
+        "records": 127
+      },
+      "artifact_stream_complete": true,
+      "execution_complete": true,
+      "pytest_duration_s": 52.054443497996544,
+      "resources": {
+        "elapsed_s": 53.35,
+        "peak_owned_rss_bytes": 266915840,
+        "minimum_host_available_bytes": 50092318720,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 19304827,
+        "limits": {
+          "owned_rss_bytes": 2147483648,
+          "host_available_bytes": 17179869184,
+          "owned_swap_bytes": 0,
+          "cpu_affinity_count": 1,
+          "nice": 10,
+          "elapsed_s": 600,
+          "owned_scratch_bytes": 4294967296,
+          "cpu_affinity": [
+            14
+          ]
+        }
+      },
+      "files": {
+        "resource": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-copied-live-4/copied-resource.json",
+          "bytes": 1480,
+          "sha256": "c582f76877a04fa67b3aa11ab65ebae6b60e5cf3d933872b6aaee2ecba6e103d"
+        },
+        "artifact": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-copied-live-4/events.jsonl",
+          "bytes": 55599,
+          "sha256": "621c3f58138672d24ceedfe0842caca164c828e5f87c0c35668cd7b799503e38"
+        },
+        "log": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-copied-live-4/copied.log",
+          "bytes": 83,
+          "sha256": "bb83cc872c25a274b3e096139a5c53a63b88575722023210880e3563932f59cb"
+        },
+        "scope": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-copied-live-4/scope-controller.json",
+          "bytes": 15351,
+          "sha256": "ae75cc2b159e569a716e9a05c89f1bb92687a22a2c2ba23be6a5fda2cc49ca46"
+        },
+        "source_before": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-copied-live-4/source-before.json",
+          "bytes": 126391,
+          "sha256": "863a4a471e5a72a440e8074736e0310e8a49d7f96f7913c1a5f8f89b52eaaba8"
+        },
+        "source_after": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-copied-live-4/source-after.json",
+          "bytes": 126391,
+          "sha256": "863a4a471e5a72a440e8074736e0310e8a49d7f96f7913c1a5f8f89b52eaaba8"
+        },
+        "verification": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-copied-live-4/verification-and-cleanup.json",
+          "bytes": 3348,
+          "sha256": "fa2456b74d67f969ed4b59f09ba6aed511d5fc5be6275a94874e868fe249fb43"
+        }
+      }
+    },
+    "earlier_strict_live_and_saved": {
+      "directory": "b4-saved-gates-5",
+      "source_proof": 1,
+      "run_source_attribution": "Coordinator launch/freeze attribution; no per-process source snapshot was retained",
+      "exit_code": 0,
+      "resource_stop_reason": null,
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "13",
+        "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "tests/core/test_card_bioactivity_exploration_offline.py",
+        "tests/core/test_card_saved_bioactivity_offline.py",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "--receptor-events=recovered_work/checkpoint_recovery_20261106/b4-saved-gates-5/events.jsonl",
+        "-p",
+        "checkpoint_scope",
+        "--basetemp=recovered_work/checkpoint_recovery_20261106/b4-saved-gates-5/pytest-scratch",
+        "-W",
+        "error:unclosed database:ResourceWarning",
+        "-W",
+        "error::pytest.PytestUnraisableExceptionWarning"
+      ],
+      "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+      "counts": {
+        "collected": 69,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 69,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 69,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "selection_sha256": "e6dce7c8308e3f5cc3f980aa74184558c645527fddd77195e3ce4312c3e05965",
+      "artifact_integrity": {
+        "algorithm": "sha256",
+        "digest": "36f4465063ed141cee8b9136040c5bf139387982c262db7b882a6a64e432c756",
+        "records": 215
+      },
+      "artifact_stream_complete": true,
+      "execution_complete": true,
+      "pytest_duration_s": 877.7921671709919,
+      "resources": {
+        "elapsed_s": 880.47,
+        "peak_owned_rss_bytes": 2944389120,
+        "minimum_host_available_bytes": 46204252160,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 152101412,
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "owned_swap_bytes": 0,
+          "cpu_affinity_count": 1,
+          "nice": 10,
+          "elapsed_s": 900,
+          "owned_scratch_bytes": 4294967296
+        }
+      },
+      "files": {
+        "resource": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-saved-gates-5/bioactivity-resource.json",
+          "bytes": 1551,
+          "sha256": "975c4dc96ed561e2968a6a183eec4987b353972ebc9155f491392d6797aa5577"
+        },
+        "artifact": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-saved-gates-5/events.jsonl",
+          "bytes": 93393,
+          "sha256": "6c2b6ba374232fdf6a7e3305d426d9bd3ced4d7d55ad6e004f27ac732fae5518"
+        },
+        "log": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-saved-gates-5/bioactivity.log",
+          "bytes": 110,
+          "sha256": "8fcaf986f9e7c1004aa083b2e04d122a35b7f1766ef2f3682a167723e493ce8d"
+        },
+        "scope": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-saved-gates-5/scope-controller.json",
+          "bytes": 28208,
+          "sha256": "5045571d079d500b5c70bb01f6cab2ddeb7b920ae906d4c198f52084ca6eb538"
+        }
+      }
+    },
+    "earlier_strict_child_timeout": {
+      "seconds": 240,
+      "basis": "Coordinator confirmed the passing child used the original deadline; the proof-1 source hash is reconstructed independently."
+    },
+    "added_distinct": 0,
+    "nested_saved_child": {
+      "asserted_pass_count": 29,
+      "added_distinct": 0,
+      "evidence": "Passing outer test asserts child 29 passed/PASS exit0 under the hashed source; no independent child artifact is claimed."
+    }
+  },
+  "original": {
+    "manifest": {
+      "path": "recovered_work/checkpoint_recovery_20261106/b4-live-original-capture/original3/manifest.json",
+      "bytes": 32440,
+      "sha256": "509ee7369f5a0cf53d5d40e872db33a19a5f2e075588e677dbfca7010f670ab6"
+    },
+    "integrity_receipt": {
+      "path": "recovered_work/checkpoint_recovery_20261106/b4-saved-original-integrity-1.json",
+      "bytes": 256,
+      "sha256": "42557756eee91f3a832e94fb6d9db8c32ddb70b15d71c3239d01b793c7e04627"
+    },
+    "verified_members": 157,
+    "verified_bytes": 745483187,
+    "producer_version": "0.14.0+200.g2eb6114",
+    "source_head": "2eb611463c0f8ab990039ec017833f5b33ae2711",
+    "source_records": 493,
+    "publication_links": 459,
+    "machine_requests": 16,
+    "source_acquisitions": 0,
+    "network_attempts": 0,
+    "scope": "Genuine original3 predates the saved reader; full original retained under #148, public projection does not replace it."
+  },
+  "full_saved_workload": {
+    "declared_full_workload_limits": {
+      "max_encoded_bytes": 134217728,
+      "max_decoded_bytes": 134217728,
+      "max_logical_bytes": 1073741824
+    },
+    "logical_bytes": 709616078,
+    "logical_size_probe": {
+      "path": "recovered_work/checkpoint_recovery_20261106/b4-saved-profile-2/profile.log",
+      "bytes": 101,
+      "sha256": "eb0ed26cf18c5dcbb782314341255af1eef965da63a5a9723bbd0223182589b9"
+    },
+    "ordinary_default_logical_bytes": 268435456,
+    "scope": "Explicit whole-workload limits; not a change to ordinary defaults or original 512MiB standalone efficiency qualification.",
+    "child_timeout_seconds": 600,
+    "copied_module_timeout_seconds": 1800,
+    "retained_physical_files": [
+      {
+        "file": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-saved-gates-6/pytest-scratch/saved-bioactivity0/session.json",
+          "bytes": 73115684,
+          "sha256": "21bcc02abdf8b844f1f57dc4d3cd58c6c479953c239dd726ff7e3cd2238e6c4b"
+        },
+        "encoded_bytes": 73115684,
+        "header": {
+          "format": "sabueso.card_exploration@18",
+          "representation": "shared_exploration_values@3",
+          "logical_bytes": 709616078
+        },
+        "primary_composed_phase": true,
+        "independently_qualified": true,
+        "note": "Physical file observation; its named passing phase is recorded separately."
+      }
+    ]
+  },
+  "projection": {
+    "path": "tests/core/data/bioactivity_live_v1.json.gz",
+    "bytes": 5179456,
+    "sha256": "65a6108769ba1f178a8c13be0096689ba783ade038bb90382895450c93ad38f0"
+  },
+  "limits": [
+    "Old incomplete attempts are excluded from qualification.",
+    "Host local editable source; copied receiving is not installed-artifact qualification.",
+    "Commit/version metadata follow-up and remote CI on the final committed SHA remain separate.",
+    "No release or publication qualification; historical formats/kernels remain frozen.",
+    "Owned public scratch retained for next B4/#148 review; no cleanup by this generator."
+  ],
+  "runtime_producer_label_at_local_receiving": "0.14.0+200.g2eb6114; changed implementation is bound by the source hashes, not a clean producer claim",
+  "ci": {
+    "state": "deferred_intermediate_development",
+    "commit_marker": "[skip ci]",
+    "owner": [
+      "uibcdf/sabueso#148",
+      "uibcdf/sabueso#112"
+    ],
+    "recovery": "Batch the exact-head CI and governance checkpoint through the authorized route in devguide/TESTS.md; no new matrix per small commit.",
+    "actual_published_head": "Recorded after commit/push in the ignored postcommit receipt and maintainer handoff."
+  },
+  "independent_scientific_researcher_acceptance": "pending",
+  "release": "0.15.0 remains paused; no tag/freeze/staging/publication",
+  "additional_local_checks": {
+    "b4-static-fixture-delivery-1": {
+      "exit_code": 0,
+      "receipt_sha256": "0b2cc02b30f2a3490e19b0ec6b39fc7c8c5fabe86cb7588f5a94d531bcc94b45"
+    },
+    "b4-static-source-registry-1": {
+      "exit_code": 0,
+      "receipt_sha256": "84daac049ba87a2942f8fae56a61cd4cd6f687715c4114c7977fbd0efbb1b675"
+    },
+    "b4-static-card-shape-1": {
+      "exit_code": 0,
+      "receipt_sha256": "c0a5257e33e6e0f859911dde5d26bc16f4d55a7e96d0ed9cc2df148422f6bf22"
+    },
+    "b4-static-validate-schema-1": {
+      "exit_code": 0,
+      "receipt_sha256": "ead46252775571cf580409f43768ae0135ae348fca826e2e1a4c9c90c0025ac9"
+    },
+    "b4-static-moli-governance-1": {
+      "exit_code": 0,
+      "receipt_sha256": "aa383e3ff6f17cd3e65bb1f05635fd9a20892eaa664c6443589109ab552f8df0"
+    },
+    "b4-static-dependency-preflight-1": {
+      "exit_code": 0,
+      "receipt_sha256": "58f2d43148645c5552c1d5b8b6dd9090329f1522ac757131494f7636b8cbfd97"
+    },
+    "b4-saved-ruff-format-1": {
+      "exit_code": 0,
+      "receipt_sha256": "333307e107ef6ee6ad6fbdfffe6dc67d66d2be37a3dae7e29b3f49965d7cf7d4"
+    },
+    "b4-saved-ruff-check-1": {
+      "exit_code": 0,
+      "receipt_sha256": "53702a489c23268576be86a4614adc3d971bb0a1baf53029b79d9cd83b9ea53a"
+    },
+    "b4-saved-ast311-1": {
+      "exit_code": 0,
+      "receipt_sha256": "503efcc29211adc27358885443285590309ee3a8b77c7fd6dbcbee669e09fdcf"
+    },
+    "b4-saved-sphinx-1": {
+      "exit_code": 0,
+      "receipt_sha256": "3041156c6a8a0ffa1e650507dd33c2ed21c2546177c85f1526ae94f3dd0cbceb"
+    },
+    "b4-saved-timeout-ruff-format-1": {
+      "exit_code": 0,
+      "receipt_sha256": "b25c0a9de92043655da3f85044f3e4d0b0540be28f35bbd07ed6cd4416267df4"
+    },
+    "b4-saved-timeout-ruff-check-1": {
+      "exit_code": 0,
+      "receipt_sha256": "31c9cb17277928a1eec7b85c8913d0487abefc613a0dcd51ba445a9e3652e691"
+    },
+    "b4-saved-timeout-ast311-1": {
+      "exit_code": 0,
+      "receipt_sha256": "298b729d252ee34e2cff69b6ebbd2e303768dbc725f9887a117a1ebed1d91c25"
+    }
+  },
+  "wheel_inspection_limits": "Isolated source export 0.0.0+unknown only checks inclusion and byte fidelity of 18 frozen and five B4 modules; not installed-artifact or version qualification."
+}

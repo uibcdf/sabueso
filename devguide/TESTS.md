@@ -34,12 +34,63 @@ the complete public 493-record TcTIM fixture, molecule/group/source-record and
 assay/citation/source navigation, the publication's complete 459-link context,
 shared exact requests, detached capture, typed quantity selection, bounded paging,
 explicit indirect/copy controls, source-state distinctions, identity refusal,
-retained uncertainty, escaped presentation and explicit unsupported saving.
+retained uncertainty, escaped presentation and separate original-save admission.
 Both installed routes copy/select it. Include affected protein/nature/human/access,
 context, quantity, argument and original saved-reading gates. Current activity,
 measurement and target-scope policies are reused; no new scientific defaults or
 source mappings are introduced. Live passing does not qualify original saving,
 independent human/scientific acceptance or the remaining B4 literature profiles.
+The copied LIVE receiving in
+`recovered_work/checkpoint_recovery_20261106/b4-copied-live-4/` passes all 40 cases
+in 52.05 s, including hidden-record open/explain/related/resave. It qualifies the
+copied public payload against the editable checkout; checkpoint-wide and
+installed-artifact receiving remain separate.
+
+Independent activity saving uses `test_card_saved_bioactivity_offline.py` and the
+genuine SDK200 pre-reader projection `data/bioactivity_live_v1.json.gz`, copied by
+both installed workflows. Its **29-case receiving scope** covers all nine original
+scientific wires, the three molecule/group/source-record grains, exact retained
+human and machine requests, quantities, source-state distinctions, unknown versus
+grain-inapplicable values, original support/back navigation and the publication's
+complete 459-link context. Include a fresh process with Card construction, current
+engines, scientific digesters and source clients forbidden, unvisited `not_saved`
+requests, repeated saving, transport variants and resealed scientific/request/
+membership/quantity/source/citation substitutions. Semantic @17 and shared @18
+have their own independent bindings; all prior formats and original controls stay
+fixed. See the [activity contract](pending_proposals/card_bioactivity_exploration.md#independent-original-saved-reading)
+and [capsule provenance](../tests/core/data/README.md#original-live-bioactivity-projection-before-saved-reading).
+
+The complete retained public session measures **709,616,078 logical JSON bytes**;
+its qualification uses an explicit **1 GiB logical budget** and **128 MiB encoded
+and decoded transport budgets**. Keep the default logical limit at 256 MiB and
+test visible default refusal separately. Logical expansion, physical sharing,
+transport bytes and process RSS are different limits. This module and its outer
+copied consumer pass local receiving under the separate resource profiles below.
+The earlier combined live/saved attempt in
+`recovered_work/checkpoint_recovery_20261106/b4-saved-gates-4/` failed in original
+cell-state binding. Preserve that failed receipt alongside the fresh passing
+receiving of the correction.
+
+The timing reassessment records approximately 330 s for a complete save and 80 s
+for a complete read. New receiving allows 600 s for the fresh read/resave
+subprocess and 1,800 s for the copied-test subprocess, supervised within the
+separate profiles below. Only elapsed allowances change: source, data and 4 GiB
+RSS limits stay fixed. The 29-case source run in `b4-saved-gates-6/` (CPU 16) and
+outer copied run in `b4-saved-copied-1/` (CPU 17) both pass: 29 cases in 841.07 s
+(843.70 s supervised), and one outer case in 840.71 s (841.64 s supervised),
+respectively. Peak owned-tree RSS is 2,950,713,344 and 2,980,777,984 bytes, with
+zero warnings or swap. The outer case asserts its copied child's 29 passes;
+those repeated cases add no distinct cases to the composed checkpoint.
+
+The earlier 69-case `b4-saved-gates-5/` also passes in 877.79 s (880.47 s
+supervised), with 2,944,389,120 bytes peak owned-tree RSS and zero warnings or
+swap, under its original 900 s supervisor and 240 s fresh-process timeout.
+Preserve those original controls. The final local affected
+[receipt](evidence/bioactivity_saved_checkpoint_20261106.json) verifies 1,109
+distinct passing cases: 881 parallel, 198 serial historical, 29 saved bioactivity
+and one outer copied consumer. Its scope is this composed selection; standalone
+historical efficiency controls, exact-final-source hosted and installed-artifact
+receiving, and independent scientific/researcher acceptance remain open.
 
 Structural display continuity uses the retained-filter, native-model, API-fragment
 and range-alias navigation modules. Check text/HTML limitations after chained
@@ -225,7 +276,9 @@ RAM and other active work in the decision; total RAM alone is not a job budget.
 | Selection | Execution and resource scope | Receiving state |
 | --- | --- | --- |
 | Reviewed ordinary parallel batch | Eight workers, affinity to eight allowed CPUs, native/numerical threads one, nice 10; owned descendant-tree RSS ceiling 8 GiB, host available reserve 16 GiB, zero owned swap, 600 s and 4 GiB owned scratch | The 95 chemical native/live/saved cases pass in 23.57 s, about 1.013 GiB peak owned RSS and zero warnings/swap |
-| Complete public/local-original checkpoint | Use the explicit partition below: eight workers and eight CPUs for the parallel remainder, 8 GiB owned-tree RSS, 16 GiB host reserve, native threads one, zero owned swap, 4 GiB scratch and 1,800 s. Run each serial module separately with one CPU, 2 GiB owned-tree RSS, the same reserve/thread/swap/scratch limits and 600 s; the outer installed-receiving module allows 1,800 s | Retain complete collection accounting and actual outcomes in the checkpoint receipt; the selected calibration does not qualify the whole suite |
+| Complete public/local-original checkpoint | Use the explicit partition below: eight workers and eight CPUs for the parallel remainder, 8 GiB owned-tree RSS, 16 GiB host reserve, native threads one, zero owned swap, 4 GiB scratch and 1,800 s. Run ordinary serial modules separately with one CPU, 2 GiB owned-tree RSS, the same reserve/thread/swap/scratch limits and 600 s; apply the B4 exceptions below to saved bioactivity and its outer copied receiving | Retain complete collection accounting and actual outcomes in the checkpoint receipt; the selected calibration does not qualify the whole suite |
+| Complete saved-bioactivity module | Separate serial gate: one CPU (16 for the received selection), 4 GiB owned-tree RSS, 1,800 s, 16 GiB host reserve, native threads one, zero owned swap and 4 GiB scratch. The fresh read/resave subprocess allows 600 s. The full case explicitly allows 1 GiB logical and 128 MiB encoded/decoded bytes; product defaults stay fixed | Local receiving passes all 29 cases in 841.07 s; 843.70 s supervised, 2,950,713,344 bytes peak owned-tree RSS and zero warnings/swap |
+| Outer copied saved-bioactivity consumer | Separate serial outer gate: one CPU (17 for the received selection), 4 GiB owned-tree RSS and 2,400 s, with the same host reserve/thread/swap/scratch limits; its copied-test subprocess allows 1,800 s. Count the parent and all nested readers together | Local receiving passes one outer case in 840.71 s and asserts its child's 29 passes; 841.64 s supervised, 2,980,777,984 bytes peak owned-tree RSS and zero warnings/swap |
 | Large historical capsules and independent workload controls | Run separately and serially, retaining the original control's recorded budgets and public override assertions | Original source receipts stay fixed; receive new selections before claiming comparable resource results |
 | Wider concurrency | Consider 12, then 16 workers only after a representative broader batch measures acceptable RSS, host headroom, scratch and outcomes | Proposed, not measured by this review; no automatic `-n auto`/20-worker default |
 
@@ -265,7 +318,7 @@ remain historical scoped controls, not current universal worker/RAM defaults.
 
 ### Current checkpoint partition
 
-The current full checkpoint separates these ten modules into individual serial
+The current full checkpoint separates the following modules into individual serial
 gates. Their original capsules, module caches, nested readers or optional modeling
 consumer need explicit process-tree accounting:
 
@@ -278,6 +331,7 @@ tests/core/test_card_model_fragments_offline.py
 tests/core/test_card_saved_science_offline.py
 tests/core/test_card_saved_quaternary_offline.py
 tests/core/test_card_saved_sites_offline.py
+tests/core/test_card_saved_bioactivity_offline.py
 tests/core/test_structural_context_journey_offline.py
 tests/tools/test_installed_receiving_scope_offline.py
 ```
@@ -288,11 +342,15 @@ the root `conftest.py` exclusion of local-only modules before import. Do not
 replace discovery with an explicit list of every native module. No automatic
 heavy-test marker or scheduler is assumed.
 
-The 2 GiB serial-module ceiling is this checkpoint's regression envelope. It does
-not qualify the original standalone 512 MiB efficiency controls under a larger
-budget. Preserve and receive each such control at its recorded limits before
-claiming comparable efficiency. Native/numerical threads stay at one in every
-phase, and all nested subprocesses count against their parent's owned tree.
+The ordinary 2 GiB/600 s serial-module envelope has two explicit B4
+exceptions: `test_card_saved_bioactivity_offline.py` uses 4 GiB/1,800 s, and
+`test_installed_receiving_scope_offline.py` allows 4 GiB/2,400 s for the outer tree
+containing its copied saved-bioactivity child. Both selections pass local
+receiving; retain the actual resource result for each invocation. Neither
+exception qualifies the original standalone 512 MiB efficiency controls under a
+larger budget. Preserve and receive each such control at its recorded limits
+before claiming comparable efficiency. Native/numerical threads stay at one in
+every phase, and all nested subprocesses count against their parent's owned tree.
 
 The composed route executes the complete public scope using that parallel/serial
 partition, followed by the marked native-input increment:
@@ -417,6 +475,7 @@ these technical checks.
 | Changed behavior | Select these test files / gates |
 | --- | --- |
 | Chemical classification live profile | `test_card_chemical_exploration_offline.py`, native classification, human/nature/access/navigation/selection, saved historical, argument/quantity and copied installed scope gates. Preserve genuine SDK192 canonical native bytes and original retained menus, source-stated identity/whole-field support, direct/inherited/unknown assignments, typed false/null versus zero, duplicate positions, source/open/back parity, cache isolation, scope after filtering/projection, explicit bounded deferral, original @15/shared @16 saving, exact requests and preserved older sessions. Run `test_card_saved_chemical_offline.py` and its isolated original SDK193 capsule gate before declaring this panel complete (#148/#112) |
+| Original bioactivity saved reading | `test_card_saved_bioactivity_offline.py` defines 29 cases over the genuine SDK200 projection: nine original wires, three grains, finite exact requests, quantity and source-state distinctions, full publication context, support/back closure, fresh inert reading, resealed tampering and repeat saving. Run live bioactivity, affected human/agent/quantity/argument/history/transport cases and the copied installed consumer. Keep semantic @17/shared @18 separate from frozen older bindings. The complete 709,616,078-byte logical case uses explicit 1 GiB logical and 128 MiB transport limits. Its local 29-case module and outer copied consumer pass under the separate 4 GiB/1,800 s serial and 4 GiB/2,400 s outer-tree profiles above; hosted and installed-artifact qualification remain open (#148/#112) |
 | Original nonpolymer assembly exploration | `test_card_nonpolymer_assembly_offline.py` and `test_card_saved_nonpolymer_assembly_offline.py`, native @5/key @2 and all affected assembly/context/human/agent/saved/argument/quantity/transport cases; genuine pre-reader public capsule, default/@4 request identity, shared one-capture evaluation, complete original rows/text with explicit saved notice, partial/duplicate/conflicting native context, mixed original structure questions, closed @7 and explanation-request @2 receiving, inert outside-checkout read, atomic deferral, resealing/coherent reidentification, deliberate budgets and stable repeat saving. Preserve original native @1–@5 and saved @1–@6 bytes; unskipped exact-source CI/governance qualifies the completed block (#173/#148/#112) |
 | Structure and declared-component navigation | `test_card_component_navigation_offline.py`, `test_card_saved_component_navigation_offline.py`, `test_original_structure_navigation_offline.py`, and affected structure/context/human/agent/assembly/saved/transport/argument/quantity/copied-receiving gates. Check exact native/literal/qualifier parents, shared explicit @5 result with unchanged direct @4 defaults, repeated positions and uncertain records, original source/open/back, exact clicked-link binding, coherent sibling substitutions, fresh inert reading, repeat saving and `not_saved` for unvisited destinations. Genuine clean-producer live navigation and saved @6/@7 fixtures predate the new verifier; never regenerate them. Format @8 freezes new navigation over unchanged @2 scientific wire. Run original large saved controls separately under the resource guard; qualify unskipped exact-source CI/governance (#173/#148/#112) |
 | Component navigation workload diagnostic | Run `devtools/measure_component_navigation.py produce`, `read` and `read-agent` in separate serial resource-guarded processes. Check immutable seed/capsule hashes, complete ordered repeated positions, original root/scientific/source/record parity, exact shared result, bounded complete page and explicit machine-save versus `not_saved` behavior. Record plain human-first versus accumulated agent export separately; no timing thresholds, cold-cache claims or product-limit overrides. Retain receipts, then remove owned synthetic exports (#167/#148) |

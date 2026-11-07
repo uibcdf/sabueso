@@ -328,6 +328,7 @@ class CardItem:
             values = {
                 column: result.value(self._entry.key, column) for column in COLUMNS
             }
+            support = tuple(self.support)
             return MappingProxyType(
                 {
                     column: Cell(
@@ -336,7 +337,7 @@ class CardItem:
                         else deepcopy(value),
                         state=result.cell_state(self._entry.key, column),
                         reason=result.cell_reason(self._entry.key, column),
-                        _support=tuple(self.support),
+                        _support=support,
                     )
                     for column, value in values.items()
                 }
@@ -579,7 +580,10 @@ class CardItem:
                 return self._view._explorer._answer(self._entry.key, {}, self._view)
             return self._view._explorer._topic(self._entry.key, self._view)
         if self._view._record_panel == "bioactivities":
-            from .card_bioactivity_exploration import open_item
+            if self._view._explorer.mode == "saved":
+                from .card_exploration_bioactivity import open_item
+            else:
+                from .card_bioactivity_exploration import open_item
 
             return open_item(self)
         if self._view._record_panel in (
@@ -1297,7 +1301,10 @@ class CardView:
         """Select exact declared cells without changing the scientific result."""
         self._check_column(column)
         if self._record_panel == "bioactivities":
-            from .card_bioactivity_exploration import display_filter
+            if self._explorer.mode == "saved":
+                from .card_exploration_bioactivity import display_filter
+            else:
+                from .card_bioactivity_exploration import display_filter
 
             return display_filter(self, column, equals)
         if self._record_panel == "chemical_classification":
@@ -1403,7 +1410,10 @@ class CardView:
         if unit is not None and (not isinstance(unit, str) or not unit.strip()):
             raise ArgumentError("unit requires a nonempty unit name or None.")
         if self._record_panel == "bioactivities":
-            from .card_bioactivity_exploration import display_sort
+            if self._explorer.mode == "saved":
+                from .card_exploration_bioactivity import display_sort
+            else:
+                from .card_bioactivity_exploration import display_sort
 
             return display_sort(self, column, descending, unit)
         if self._selection._scientific is not None and self._explorer.mode == "saved":

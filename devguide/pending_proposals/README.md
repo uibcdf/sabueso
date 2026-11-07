@@ -22,7 +22,8 @@ development queue.
   (#108, moli#36): required automatic runtime attribution; public provider adopted; broader acquisition/bibliography and record integration remain open.
 - [Protein activity and literature exploration](card_bioactivity_exploration.md)
   (#148/#112/#108): live molecule/group/source-record navigation and exact
-  publication context; independent original saving and broader acceptance pending.
+  publication context; original saved reading implemented, current receiving and
+  broader acceptance recorded in its contract and checkpoint.
 - [Original design and implementation review](design_implementation_review.md)
   (#112): dated foundation/implementation evidence, scientific gaps and
   consumer-owned acceptance. Its original post-0.13.0 order is historical;

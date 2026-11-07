@@ -707,12 +707,61 @@ def test_labels_and_source_text_are_escaped_in_html(card):
     assert card.to_dict() == before
 
 
-def test_live_bioactivity_saving_remains_explicitly_unsupported(card, tmp_path):
+def test_live_bioactivity_saving_uses_independent_saved_handshake(card, tmp_path):
+    before = card.to_dict()
     explorer = card.explore()
-    selected = explorer.access.select(TOPIC)
-    assert not selected.capabilities["save"]
-    for index, query in enumerate((selected, explorer.view(TOPIC))):
-        path = tmp_path / f"not-yet-supported-{index}.json"
-        with pytest.raises((ArgumentError, StorageError)):
-            query.save(path)
-        assert not path.exists()
+    options = {"molecule_ref": BTS}
+    human = explorer.view(TOPIC, options=options)
+    records = human.items()[0].open()
+    record_ref = records.items()[0].item_ref
+    hidden = records.filter("relationship_id", equals="synthetic:absent")
+    assert not hidden.items()
+    explicit = hidden.item(record_ref)
+    detail = explicit.open()
+    explicit.explain()
+    explicit.related()
+    selected = explorer.access.select(TOPIC, options=options)
+    assert selected.count == 1
+    assert human.capabilities["save"] and selected.capabilities["save"]
+    path = tmp_path / "bts-groups.json"
+    receipt = selected.save(path)
+    saved = sabueso.read_exploration(path, expected_digest=receipt["bundle_digest"])
+    assert saved.capabilities["save"]
+    assert saved.native_payload == human.native_payload
+    reopened_records = saved.items()[0].open()
+    reopened_hidden = reopened_records.filter(
+        "relationship_id", equals="synthetic:absent"
+    )
+    reopened = reopened_hidden.item(record_ref)
+    assert reopened.open().native_payload == detail.native_payload
+    assert reopened.related().back().view_ref == reopened_hidden.view_ref
+    again = tmp_path / "hidden-record.json"
+    reopened.open().save(again)
+    assert sabueso.read_exploration(again).native_payload == detail.native_payload
+    restored = saved.explorer.access.select(TOPIC, options=options)
+    assert restored.capabilities["save"]
+    assert restored.result_ref == selected.result_ref == human.result_ref
+    assert restored.selection_ref == selected.selection_ref
+
+    def semantic_frame(access, value):
+        if isinstance(value, dict):
+            if (
+                set(value) == {"format", "kind", "location_ref"}
+                and value["format"] == "card_access_location@1"
+                and value["kind"] == "lookup"
+            ):
+                _, location = access._resolve(value)
+                # Session-owned lookup handles differ; their exact targets must read.
+                access.read(value).page(limit=1)
+                return location
+            return {key: semantic_frame(access, item) for key, item in value.items()}
+        if isinstance(value, list):
+            return [semantic_frame(access, item) for item in value]
+        return value
+
+    assert semantic_frame(
+        saved.explorer.access, restored.page()["items"]
+    ) == semantic_frame(explorer.access, selected.page()["items"])
+    with pytest.raises(StorageError):
+        sabueso.read_exploration(path, expected_digest="sha256:" + "0" * 64)
+    assert card.to_dict() == before

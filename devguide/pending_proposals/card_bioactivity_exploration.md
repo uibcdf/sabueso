@@ -73,21 +73,120 @@ Single-point inhibition does not establish potency or an inferred test dose.
 Unrequested, failed, scoped-empty and incomplete source outcomes remain distinct.
 Foreign or ambiguous focal identity refuses unscoped interpretation.
 
-## Delivery and acceptance
+## Independent original saved reading
 
-The initial implementation is live only. Human and machine saving refuse
-explicitly; raw Card export remains available. Independent original reading needs
-its own versioned binder and genuine live-adapter capture made before its reader
-is implemented. Existing saved formats and frozen scientific meanings stay fixed.
+The independent reader and its complete retained public saved journey pass local
+technical receiving. The semantic format
+`sabueso.card_exploration@17` uses `bioactivity_exploration_binding@1` to bind
+the original captured input, native answer, focused molecule/group/record
+membership, quantities, support, human navigation and exact machine request.
+The separate physical representation `sabueso.card_exploration@18` uses
+`shared_exploration_values@3` and `shared_exploration_values_binding@3` for
+logical format @17. Sharing changes storage, never identity, list occurrences or
+scientific meaning. Formats @1–@16 and their frozen verifier/codec meanings remain
+unchanged; the older shared codecs do not acquire new admitted formats.
+
+Original reading uses immutable SDK200 predicates and an inert captured-input
+shim. It does not construct a Card, call current scientific engines, scientific
+option digesters or source clients, generate acquisition/attribution, or replace an
+original answer with a newly generated one. Expected findings are private
+consistency checks against retained knowledge, not a claim of source authenticity
+or independent scientific truth. Supported original policies include classes
+@3/@4 and measurement/target-scope @1/@2; the live defaults and deferred B2 review
+remain unchanged.
+
+Saving retains already executed human and agent requests and their required
+support/navigation closure. Reading can return only an exact retained request,
+including its scientific options, focus, projection, predicates, membership and
+ordering. An unvisited topic, focus or machine request reports `not_saved` rather
+than running a current reader. A later explicit new exploration remains separate.
+Repeated saving preserves original native producer labels even when the writer's
+version is newer. Only declared generated-rule metadata paths supply those labels;
+source records with similarly named version fields remain ordinary original data.
+
+### Genuine pre-reader control
+
+The clean source `2eb611463c0f8ab990039ec017833f5b33ae2711`, SDK
+`0.14.0+200.g2eb6114`, produced a genuine live-adapter capture on 2026-11-07 UTC
+before the independent reader existed. Its manifest SHA-256 is
+`509ee7369f5a0cf53d5d40e872db33a19a5f2e075588e677dbfca7010f670ab6`.
+The retained original has 157 members totalling 745,483,187 bytes, including all
+493 activity records, exact requests, three row grains and the complete 459-link
+publication context. It records zero network attempts and source acquisitions.
+It is an unsealed live control, not a retrospectively produced saved-format file.
+
+The repository fixture `tests/core/data/bioactivity_live_v1.json.gz` is a documented
+projection of that control, not a regeneration. It preserves the original Card,
+all nine scientific wires, native outputs, executed requests and selected human
+records. The complete original remains unchanged at
+`recovered_work/checkpoint_recovery_20261106/b4-live-original-capture/original3/`;
+its bounded capture receipt is `capture3-resource.json` in the parent directory.
+See the [fixture provenance](../../tests/core/data/README.md#original-live-bioactivity-projection-before-saved-reading)
+for exact projection hashes and omissions.
+
+A separate bounded frozen-predicate check verifies all nine original wire/result
+identities and both publication wrappers, including their 9 and 459 links, with
+Card construction, current native engines and networking forbidden. Its receipt
+is `recovered_work/checkpoint_recovery_20261106/b4-frozen-original-gate-1/original-resource.json`.
+This finite original-consistency check is separate from the complete local
+save/read/resave receiving recorded below.
+
+### Complete-session resource scope
+
+The full public root plus retained machine/source/navigation closure measures
+**709,616,078 logical JSON bytes**. The size-only diagnostic is retained in
+`recovered_work/checkpoint_recovery_20261106/b4-saved-profile-2/profile.log`,
+`phases.jsonl` and `profile-resource.json`. It prepared 2,478 views and 2,212
+retained objects and wrote no saved result. Its successful size measurement is
+not a save/read gate or a benchmark. The preceding profile-1 attempt exceeded
+the explicit 512 MiB logical budget and remains a failed attempt.
+
+Complete-session qualification therefore needs an explicit
+`max_logical_bytes=1024**3` (1 GiB), alongside the case's explicit 128 MiB encoded
+and decoded transport limits. The **256 MiB default logical limit remains
+unchanged**. The expanded logical workload, shared physical storage, transport
+bytes and process RSS are different quantities; compression does not waive the
+logical-work limit. Default-budget refusal must occur without returning a partial
+result. The 1 GiB allowance is a bounded test/workload selection; the successful
+complete journey has separate receiving below and leaves the global default fixed.
+
+## Delivery and acceptance
 
 `test_card_bioactivity_exploration_offline.py` covers complete public input and
 separately labelled synthetic uncertainty/copy/indirect controls. Both installed
-receiving routes copy and select it. Technical results belong to the exact source
+receiving routes copy and select it. The earlier live technical results belong to
+the exact source
 [receipt](../evidence/bioactivity_live_checkpoint_20261106.json): 1,023 distinct
 selected cases pass, including all 40 owning cases and original historical
 reading, plus a separate repeat of the 40 owning cases from a copied public
-payload outside the checkout. This is local editable receiving, not installed
-artifact or complete-suite qualification. Full B4, independent scientist
-and uncoached researcher acceptance, representative saved workloads, other shared
-literature profiles and broader molecule/clinical/disease routes remain open.
+payload outside the checkout. These earlier receipts cover local editable live
+receiving; original saved reading has the separate results below.
+
+`test_card_saved_bioactivity_offline.py` adds the original-control, independent
+fresh-process, exact-request, quantity, hostile/resealed substitution, full
+publication, transport and repeated-save receiving scope. The final local affected
+[receipt](../evidence/bioactivity_saved_checkpoint_20261106.json) records 1,109
+distinct passing cases: 881 parallel affected cases, 198 serial historical cases,
+all 29 saved-bioactivity cases, and one outer copied consumer. All phases have zero
+warnings, skipped cases and owned swap. The copied consumer asserts its child's
+29 passes; repeated live/strict/copy cases add no distinct cases to that total.
+This is a composed affected checkpoint against the editable workspace.
+
+The full 29-case module passes in 841.07 s (843.70 s supervised), with
+2,950,713,344 bytes peak owned-tree RSS, under its one-CPU/4 GiB/1,800 s guard.
+The outer copied consumer passes in 840.71 s (841.64 s supervised), with
+2,980,777,984 bytes peak owned-tree RSS, under its one-CPU/4 GiB/2,400 s guard.
+The fresh read/resave timeout is 600 s and the copied-test timeout is 1,800 s;
+these receive the observed approximately 330 s full save and 80 s full read.
+The earlier combined live/saved 69-case control also passes in 877.79 s
+(880.47 s supervised), with 2,944,389,120 bytes peak owned-tree RSS, under its
+original 900 s guard and 240 s fresh-process timeout. Preserve that original
+successful control and the earlier failed attempts as their actual outcomes.
+
+Standalone historical efficiency controls retain their original budgets and
+remain open. Exact-final-source hosted and installed-artifact qualification,
+independent scientist and uncoached researcher acceptance remain separate.
+
+Full B4, other shared literature profiles and broader molecule/clinical/disease
+routes remain open.
 No release, schema freezing or publication is authorized by this slice.

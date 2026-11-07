@@ -340,7 +340,7 @@ class CardAccess:
                     registry_entries = (
                         rebound._scientific.entries
                         if rebound._scientific.wire["context"]["adapter"]
-                        == "ligand_site_exploration@1"
+                        in ("ligand_site_exploration@1", "bioactivity_exploration@1")
                         else rebound._entries
                     )
                     for entry in registry_entries:
@@ -695,6 +695,15 @@ class CardAccess:
                     )
 
                     data["bioactivities"] = bioactivity_descriptor()
+                else:
+                    from .card_bioactivity_history_v1 import (
+                        descriptor as bioactivity_descriptor,
+                    )
+
+                    data["bioactivities"] = {
+                        **bioactivity_descriptor(),
+                        "availability": "retained_requests_only",
+                    }
                 if self.mode == "live":
                     from .card_scientific_access import descriptor
 
@@ -855,8 +864,10 @@ class CardAccess:
             )
         if topic == "bioactivities":
             if self.mode == "saved":
-                raise ArgumentError(
-                    "This saved session has no retained bioactivity adapter request."
+                from .card_exploration_bioactivity import saved_selection
+
+                return saved_selection(
+                    self, fields, options, where, item_refs, order_by
                 )
             from .card_bioactivity_access import materialize, options_for_bioactivities
             from .card_bioactivity_selection_v1 import (
@@ -1139,7 +1150,10 @@ class CardAccess:
 
     def _defer(self, item):
         if item.get("adapter") == "bioactivity_exploration@1":
-            from .card_bioactivity_access import defer_frame
+            if self.mode == "saved":
+                from .card_bioactivity_history_v1 import defer_frame
+            else:
+                from .card_bioactivity_access import defer_frame
 
             return defer_frame(item)
         if item.get("adapter") == "chemical_classification_exploration@1":

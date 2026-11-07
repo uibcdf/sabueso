@@ -49,8 +49,10 @@ New packets use `packet_aspects@16`, adding original AlphaFold range-alias
 context @2 with explicit agreement/refusal; existing mappings @6–@14 retain original @3
 activity interpretation. The development [live activity explorer](pending_proposals/card_bioactivity_exploration.md)
 now shares molecule, group and original source-record results with compact agent
-selection and complete publication context. Independent original saved reading
-and the broader activity/literature experience remain pending. See
+selection and complete publication context. Original saved reading is implemented
+with separate frozen predicates and exact retained requests; its selected local
+receiving passes and is recorded in the checkpoint. Broader activity/literature and independent
+scientific/researcher acceptance remain pending. See
 [the scoped correction](pending_bugs/bioactivity_interpretation.md).
 
 Development opt-in `measurement_rule="measurement_identity@2"` is shared by

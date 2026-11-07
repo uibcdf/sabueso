@@ -52,8 +52,10 @@ green receipts do not qualify a changed working tree.
 
 The [live protein activity journey](pending_proposals/card_bioactivity_exploration.md)
 connects molecules, native groups, original activity records and exact retained
-assay/citation/publication support. Independent original saving is its next
-technical gate; the broader B4 and human/scientific acceptance remain open.
+assay/citation/publication support. Its separately versioned original saved reader
+passes its selected 1,109-case local checkpoint after a clean SDK200 live capture;
+the [saved receipt](evidence/bioactivity_saved_checkpoint_20261106.json) owns the
+scope and limits. The broader B4 and human/scientific acceptance remain open.
 
 ## Design
 

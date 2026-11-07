@@ -9,6 +9,23 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Current intermediate activity reader (2026-11-06, #148/#112)
+
+The clean live checkpoint `2eb611463c0f8ab990039ec017833f5b33ae2711`
+was pushed with `[skip ci]`; no Actions run was created for that head. Its genuine
+SDK200 live control precedes the independent original reader. The subsequent
+[saved-reader receipt](../evidence/bioactivity_saved_checkpoint_20261106.json)
+owns the changed source hashes, actual selected local outcomes and remaining
+receiving, without reusing older hosted results as current qualification.
+
+The maintainer reconfirmed `[skip ci]` for intermediate commits. Batch remote
+CI/governance at a later substantial checkpoint through the authorized exact-head
+recovery route; do not dispatch a new matrix for each small change. Record the
+actual published head and post-install metadata in the local postcommit receipt
+and owning #148/#112 handoff. The source/installed OS/Python matrix, independent
+scientific/researcher acceptance and release gates remain open. This block does
+not authorize publication of third-party reports or a release.
+
 ### Completed accumulated runtime receiving (2026-11-05, #188/#186)
 
 Source `c5b8af1` /SDK `0.14.0+167.gc5b8af1` now passes

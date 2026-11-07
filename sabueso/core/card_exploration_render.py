@@ -768,7 +768,7 @@ def _parts(view):
 
         opening.extend(chemical_opening(view, preview))
     if view._record_panel == "bioactivities":
-        from .card_bioactivity_presentation_v1 import opening as bioactivity_opening
+        from .card_bioactivity_presentation_v2 import opening as bioactivity_opening
 
         opening.extend(bioactivity_opening(view, preview))
     if view.context.get("adapter") == "bioactivity_context_links@1":

@@ -603,3 +603,60 @@ def test_declared_nonpolymer_reader_and_original_data_run_outside_checkout():
         assert result.returncode == 0, result.stdout + result.stderr
         assert "4 passed" in result.stdout
         assert not (stage / "temp_data").exists()
+
+
+def test_declared_saved_bioactivity_runs_with_only_original_public_projection():
+    """One outer case receives 29 overlapping child cases, not 29 extra cases."""
+    root = Path(__file__).resolve().parents[2]
+    name = "test_card_saved_bioactivity_offline.py"
+    original = "bioactivity_live_v1.json.gz"
+    for workflow_path in (
+        ".github/workflows/ci.yml",
+        ".github/workflows/test_staged_conda_package.yaml",
+    ):
+        workflow = (root / workflow_path).read_text(encoding="utf-8")
+        assert (
+            sum("cp " in line and name in line for line in workflow.splitlines()) == 1
+        )
+        command = re.search(r"python -m pytest (.+)", workflow.replace("\\\n", " "))
+        assert shlex.split(command[1]).count(name) == 1
+        assert (
+            sum(
+                "cp " in line and f"data/{original}" in line
+                for line in workflow.splitlines()
+            )
+            == 1
+        )
+    outside_parent = None if sys.platform == "win32" else "/tmp"
+    with tempfile.TemporaryDirectory(
+        prefix="sabueso-saved-bioactivity-", dir=outside_parent
+    ) as directory:
+        stage = Path(directory)
+        assert not stage.resolve().is_relative_to(root.resolve())
+        shutil.copyfile(root / "tests/core" / name, stage / name)
+        (stage / "data").mkdir()
+        shutil.copyfile(root / "tests/core/data" / original, stage / "data" / original)
+        env = dict(os.environ, PYTHONPATH=str(stage))
+        env.pop("PYTEST_ADDOPTS", None)
+        result = subprocess.run(
+            [
+                sys.executable,
+                "-m",
+                "pytest",
+                "--receptor=llm",
+                "-o",
+                "tmp_path_retention_policy=failed",
+                name,
+            ],
+            cwd=stage,
+            env=env,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            # Receive the complete retained workload, including the independent
+            # child's read/resave; the measured full save alone exceeds 300 s.
+            timeout=1800,
+        )
+        assert result.returncode == 0, result.stdout + result.stderr
+        assert "29 passed" in result.stdout and "PASS exit=0" in result.stdout
+        assert not (stage / "temp_data").exists()
