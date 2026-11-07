@@ -56,11 +56,16 @@ the [saved receipt](evidence/bioactivity_saved_checkpoint_20261106.json) owns th
 scope and limits. The broader B4 and human/scientific acceptance remain open.
 
 The [shared literature catalog](pending_proposals/card_literature_exploration.md)
-is the current B4 LIVE increment: four new modules and their dispatch wiring
+has its B4 LIVE producer committed: four new modules and their dispatch wiring
 across Card natures pass the selected
 [1,202-case local checkpoint](evidence/literature_live_checkpoint_20261107.json).
-Commit the clean live producer, then capture its genuine original
-before implementing independent saved reading. Older formats stay fixed.
+The clean producer is committed as `1145ea3` / SDK202 and its
+[genuine original](evidence/literature_live_original_20261107.json) was captured
+and independently hash-verified before reader implementation. Independent saved
+reading passes the [9,466-case full local checkpoint](evidence/literature_saved_checkpoint_20261107.json)
+and copied receiving. New @19/@20 saves also bind SDK202 activity bibliography;
+older formats and their resaves stay fixed. Hosted/artifact/human acceptance
+remains separate; continue molecule-target/context and the broader profiles.
 
 ## Design
 

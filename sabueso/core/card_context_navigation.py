@@ -501,12 +501,17 @@ def _destination(explorer, candidate, origin, title="Referenced source record"):
 def follow(item):
     explorer, link = item._view._explorer, item._entry.value
     if link.get("rule") == "literature_context_links@1":
-        from .card_literature_exploration import follow as follow_literature
+        if explorer.mode == "saved":
+            from .card_exploration_literature import follow as follow_literature
+        else:
+            from .card_literature_exploration import follow as follow_literature
 
         return follow_literature(item)
     if link.get("rule") == "bioactivity_context_links@1":
         if explorer.mode == "saved":
-            from .card_exploration_bioactivity import follow as follow_bioactivity
+            from .card_bioactivity_dispatch import binding
+
+            follow_bioactivity = binding(explorer.access).follow
         else:
             from .card_bioactivity_exploration import follow as follow_bioactivity
 

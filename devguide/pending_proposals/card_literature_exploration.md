@@ -10,8 +10,16 @@ the [continuation plan](../CONTINUATION_PLAN_20261104.md).
 Implementation resumed from committed checkpoint `276160a` at the maintainer's
 request. The live adapter, human navigation and regression cohort pass the
 [1,202-case selected local checkpoint](../evidence/literature_live_checkpoint_20261107.json).
-No original literature saved
-reader is implemented or qualified. Original formats @1–@18 remain fixed.
+The LIVE producer is committed and pushed at `1145ea3` / SDK202, with coherent
+editable metadata and 47 passing post-commit controls. Its
+[genuine original](../evidence/literature_live_original_20261107.json) was captured
+before independent reader implementation and all declared members were verified.
+The reader is implemented and its
+[selected checkpoint](../evidence/literature_saved_selected_checkpoint_20261107.json)
+passes with explicit per-phase source epochs. Copied literature receiving and the
+[9,466-case full local composition](../evidence/literature_saved_checkpoint_20261107.json)
+pass. Original formats
+@1–@18 remain fixed.
 
 ## Source and interpretation contract
 
@@ -50,10 +58,66 @@ both legs of structure mention context. Related rows reference shared support
 membership rather than repeating a complete publication explanation per row.
 Text and HTML previews are bounded and escaped; full retained data stays readable.
 
-Saving is explicitly unavailable in this live increment. First qualify and commit
-the live producer, then capture a genuine clean original before writing its new
-independent saved verifier. Do not regenerate original controls to pass a later
-reader. Older saved exploration must not invoke the new live literature readers.
+The LIVE producer was qualified and committed before its genuine clean original
+was captured. The independent reader is integrated and full local receiving passes.
+Do not regenerate
+original controls to pass a later reader. Older saved exploration must not invoke
+the new live literature readers.
+
+<a id="independent-original-reading-in-progress"></a>
+
+## Independent original reading and local qualification
+
+Semantic format @19 uses `literature_exploration_binding@1`; optional physical
+sharing @20 uses `shared_exploration_values@4`. Sharing preserves complete logical
+values and repeated occurrences and never establishes entity identity. Original
+formats @1–@18 and the SDK202 LIVE scientific/selection/presentation rules remain
+unchanged. A separate capability-aware presentation can advertise saving without
+changing the original wire or its identity.
+
+The original nine-Card cohort binds 13 complete scientific result objects. Frozen
+native literature, explanation, metadata, selection and inert captured-input
+predicates reproduce those exact original wires. They do not construct a Card,
+call a current scientific reader or invoke a source client/public digester. Only
+declared generated-rule output paths provide producer labels; opaque source
+fields, including fields named `sabueso_version`, remain original source values.
+
+Verification must bind complete native publications and explanations, exact role
+counts, uncertainty and source/query coverage; human question/effective options;
+machine projection, typed equality, exact membership and null-last order; original
+relationship/SourceAssertion/locator destinations, both structural support legs,
+missing support and return paths. Reading exposes retained originals rather than
+verifier-computed replacements. Unvisited requests and destinations remain
+`not_saved`. Integrity verification does not establish source authenticity or
+scientific truth.
+
+The complete original is packaged byte-faithfully as
+`tests/core/data/literature_live_sdk202.tar.gz`: all 3,818 members and manifest,
+without projection or scientific regeneration. Its nine Cards, 13 complete
+scientific wires and 65 recorded machine requests remain the control scope.
+Selected saved receiving replays those queries, including typed cells, membership
+and ordering, and retains the complete 459-link publication. The two heavy
+TcTIM cases share one complete producer/save; the other 46 cases are a separate
+disjoint gate. These gates pass 46 cases in 531.77 s and two cases in 828.67 s,
+respectively, with zero warnings and swap. The full graph is 98,590,120 physical
+and 241,520,362 logical JSON bytes; this case explicitly allows 128 MiB encoded/
+decoded input while preserving the product's default 64 MiB transport refusal.
+The isolated copied outer passes with all 48 overlapping child cases in
+1,469.23 s (1,470 s supervised), at 1,080,225,792 bytes peak owned RSS and zero
+warnings/swap. It receives only the exact test module, full genuine public
+capsule and its README outside the checkout. Its receptor stream is complete and
+integrity-valid; child assertions validate all 48 cases. The temporary child
+stream is not claimed retained, and copied cases add no extra distinct coverage.
+The final full-source local composition passes; its 19 phases retain their exact
+source epochs, original controls and permitted test-only deltas.
+
+Semantic @19 also owns SDK202 activity bibliography through Bio-v2. The additional
+clean original precedes that predicate: four synthetic scalar cases, twelve full
+activity wires, eight literature wires and complete publication wrappers. Its
+22-case source receiving passes, including type-preserving mixed/standalone
+save/read/resave, hostile substitutions, inert fresh reading and original @17/@18
+compatibility. Its [handoff](../pending_bugs/literature_activity_historical_binding.md)
+records the request/focal corrections and independent receiving boundaries.
 
 ## Finite public receiving
 
@@ -91,9 +155,10 @@ assertion. A null short summary still cannot establish missing source knowledge.
 
 ## Remaining acceptance
 
-Selected live implementation checks pass, including older historical compatibility
-and a copied consumer. A clean original capture and independent original reading
-remain technical work. Source authenticity, scientific review,
+Selected live and saved implementation checks pass, including older historical
+compatibility and copied literature/Bio-v2 receiving. The clean original capture
+is complete and the full-source local composition passes.
+Source authenticity, scientific review,
 an uncoached researcher journey, representative workload budgets and actual
 consumer acceptance remain separate gates. This slice neither adopts deferred
 B2 defaults nor resumes release consolidation.

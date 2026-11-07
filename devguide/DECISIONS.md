@@ -1,5 +1,23 @@
 # Sabueso — Decision Log
 
+## 2026-11-07 UTC — Bind new activity and literature saves at SDK202
+
+New LIVE activity or literature saves use semantic @19 and optional physical
+sharing @20. Bio-v2 retains SDK202 bibliography scalars across complete activity
+wires and publication contexts. Original @17/@18 reads and resaves retain
+SDK200 Bio-v1. Dispatch follows the verified logical format, without payload
+guesses, producer-version heuristics or old-verifier edits. Activity classes,
+measurement/copy policies and deferred B2 defaults retain their existing scope.
+
+The additional clean SDK202 scalar original was captured and independently
+verified before Bio-v2 implementation. Original values, opaque source-owned
+labels, typed false/zero/null, exact requests and originating contexts stay bound.
+Explicit cross-Card questions differ from inherited navigation; foreign focal or
+unregistered parents cannot silently change the return route. Complete local
+receiving passes 9,466 distinct cases; hosted/artifact/human gates remain open.
+Owners: #148/#108/#112; see the
+[handoff](pending_bugs/literature_activity_historical_binding.md).
+
 ## 2026-11-06 — Require bounded MolSysMT interoperability for B3
 
 The maintainer selects a bounded integrated MolSysMT test with positive and

@@ -75,8 +75,8 @@ Foreign or ambiguous focal identity refuses unscoped interpretation.
 
 ## Independent original saved reading
 
-The independent reader and its complete retained public saved journey pass local
-technical receiving. The semantic format
+The historical SDK200 reader and its complete retained public saved journey pass
+local technical receiving. Its semantic format
 `sabueso.card_exploration@17` uses `bioactivity_exploration_binding@1` to bind
 the original captured input, native answer, focused molecule/group/record
 membership, quantities, support, human navigation and exact machine request.
@@ -149,6 +149,27 @@ bytes and process RSS are different quantities; compression does not waive the
 logical-work limit. Default-budget refusal must occur without returning a partial
 result. The 1 GiB allowance is a bounded test/workload selection; the successful
 complete journey has separate receiving below and leaves the global default fixed.
+
+## SDK202 activity and literature boundary
+
+New LIVE activity or literature saves use semantic @19 and optional sharing @20.
+The Bio-v2 reader retains SDK202's typed bibliography scalars throughout the
+complete activity wire and on-demand publication context. Old @17/@18 reading
+and resaving keep the immutable SDK200 predicates above; dispatch follows the
+verified logical format. Scientific classifications, quantity handling and
+deferred B2 defaults remain unchanged.
+
+The additional clean SDK202 original was captured before Bio-v2 implementation.
+It preserves four explicitly synthetic scalar controls, twelve activity wires
+across three grains, eight literature wires and four complete publication
+wrappers. All members are retained byte-faithfully in
+`tests/core/data/bioactivity_literature_scalars_sdk202.tar.gz`; declarations and
+source rights remain in [capsule provenance](../../tests/core/data/README.md).
+The 22-case source module passes with mutable readers/clients/profiles blocked,
+including mixed/standalone saving, exact original types, inert resaving, resealed
+substitution refusal, original @17/derived @18 compatibility and explicit
+cross-Card/focal context. Full current-source and copied qualification remain
+separate. See the [counterexample handoff](../pending_bugs/literature_activity_historical_binding.md).
 
 ## Delivery and acceptance
 

@@ -1,5 +1,76 @@
 # Historical exploration fixtures
 
+## Complete original LIVE literature capture (SDK202)
+
+`literature_live_sdk202.tar.gz` packages every byte of the genuine clean
+`1145ea364a558b6f03d3823dfd1be4a6839663e5` / `0.14.0+202.g1145ea3` LIVE
+capture, made before independent literature saved reading existed. All 3,818
+original members (62,493,260 bytes) and the original manifest are retained;
+there is no projection or scientific regeneration. The archive contains nine
+public Card cases, thirteen complete scientific wires, complete native
+publication explanations including 459 and nine links, original query quality,
+human/source/locator/return observations, typed cells, exact machine queries,
+producer/source hashes and original raw public inputs with `NOTICE.md`.
+The original could not save and admitted no saved format. The capture records
+zero source acquisitions and network attempts; earlier input-preparation and
+source-owned version labels remain unchanged.
+
+Tar metadata is normalized and gzip has `mtime=0`; member contents are byte
+identical to the original, not re-encoded. The included source notice retains
+UniProt, ChEMBL, MONDO and Europe PMC attribution and their separate data,
+service and publication/fragment terms. Source inputs and derived content are
+not relicensed as MIT; Sabueso-authored code follows the repository licence.
+No private material or new source query is included. Preserve this complete
+original; never regenerate it merely to satisfy a later reader.
+
+Original manifest SHA-256:
+`da63a041dc872bc5b3c2532faae409c7e3cfdb605df32b18d00b32b61a967ef5`.
+
+Compressed: 5,526,864 bytes; SHA-256
+`34a157d630df43245e55039968025f2eb847c6d05e5719d2116b5a40d57edfb1`.
+
+Uncompressed tar: 66,058,240 bytes; SHA-256
+`baa1857bfe9411a815af8c4f2694b42da68727d623cb26cacdf2a29584a9675e`.
+
+## Original SDK202 activity/literature scalar controls
+
+`bioactivity_literature_scalars_sdk202.tar.gz` preserves all 755 original members
+(15,795,152 bytes) and their manifest from clean source `1145ea3`, actual editable
+SDK `0.14.0+202.g1145ea3`. Capture occurred after the initial literature reader
+implementation, but **before any Bio-v2 predicate**. Its isolated producer had no
+new reader and made no source/network acquisition or saved-format admission.
+Four explicitly synthetic controls retain boolean False, integer zero, floating
+zero and null, twelve complete activity wires across all three grains, eight
+literature wires, complete native publication wrappers, original inputs, exact
+requests, source support and human/navigation observations.
+
+Each declaration records a reduction of a separate public TcTIM input to one
+original source activity and one added synthetic ECO-supported assertion. These
+mutations establish no provider statement or biological claim. Original raw
+public inputs, source labels and the source NOTICE remain intact. Source content
+keeps its own UniProt/ChEMBL and referenced publication terms; authored code follows
+the repository licence. The full earlier literature original remains separate.
+Do not regenerate either original to pass a later reader.
+
+Original manifest SHA-256: `ae10189753c6a4cfca0bb4a97dba491ba9ad901d5606686c62930f32ebb83b3e`.
+Compressed: 1639601 bytes; SHA-256 `861cff367985eb68dee581c0033dbe8021bde3b71d601a8725cce2bda8148691`.
+Uncompressed tar: 16506880 bytes; SHA-256 `14b1d95be5894895cc7ff03b9ed965a5237eb682283785fdb72e1275e5ce060f`.
+Normalized USTAR metadata and gzip mtime=0 package unchanged member bytes.
+
+## Retained original activity format17 before Bio-v2
+
+`bioactivity_saved_original17_sdk202.json.gz` retains the exact format17 file
+from the passing 29-case `b4-literature-saved-old-bio-1` local gate, before Bio-v2
+implementation. Its partially integrated literature workspace has SDK202 labels;
+this is not a clean producer claim. Bio-v1 native values, source support and
+requests remain unchanged. It uses the public TcTIM/ChEMBL SDK200 cohort with
+its original source terms and NOTICE. Gzip packages unchanged JSON bytes.
+Never regenerate this original to satisfy v2.
+
+Compressed SHA-256: `6875c898ccc6b8fcdd52669ba97db956176eb265c2399dd708db1e2de90252d0`.
+Decoded SHA-256: `9db610457051ea94efa95f56c47449a5641ffe2429a04feb28afc5aab262d080`.
+Original bundle digest: `sha256:1318d33912abcbc7ae504d323ce739557eb2c76e2dd52ffa6c45eef16cd096c4`.
+
 ## Original live chemical adapter before saved reading
 
 `chemical_live_v1.json.gz` is a genuine clean SDK `0.14.0+193.g03bdb2c` capture

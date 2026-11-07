@@ -757,3 +757,192 @@ def test_declared_live_literature_runs_with_only_required_public_fixtures():
                 "xpassed",
             )
         )
+
+
+def test_declared_saved_literature_runs_with_only_genuine_public_capsule():
+    """One outer case receives the complete overlapping saved-literature cohort."""
+    from pytest_receptor import read_artifact
+
+    root = Path(__file__).resolve().parents[2]
+    name = "test_card_saved_literature_offline.py"
+    originals = ("literature_live_sdk202.tar.gz", "README.md")
+    for workflow_path in (
+        ".github/workflows/ci.yml",
+        ".github/workflows/test_staged_conda_package.yaml",
+    ):
+        workflow = (root / workflow_path).read_text(encoding="utf-8")
+        assert (
+            sum("cp " in line and name in line for line in workflow.splitlines()) == 1
+        )
+        command = re.search(r"python -m pytest (.+)", workflow.replace("\\\n", " "))
+        assert command is not None
+        assert shlex.split(command[1]).count(name) == 1
+        for original in originals:
+            assert (
+                sum(
+                    "cp " in line and f"data/{original}" in line
+                    for line in workflow.splitlines()
+                )
+                == 1
+            )
+    outside_parent = None if sys.platform == "win32" else "/tmp"
+    with tempfile.TemporaryDirectory(
+        prefix="sabueso-saved-literature-", dir=outside_parent
+    ) as directory:
+        stage = Path(directory)
+        assert not stage.resolve().is_relative_to(root.resolve())
+        shutil.copyfile(root / "tests/core" / name, stage / name)
+        (stage / "data").mkdir()
+        for original in originals:
+            shutil.copyfile(
+                root / "tests/core/data" / original, stage / "data" / original
+            )
+        # The unchanged full original carries its Card inputs and public NOTICE.
+        # A current source fixture or a LIVE fixture factory would hide a missing
+        # installed receiving dependency, so neither is copied into this client.
+        assert {
+            path.relative_to(stage).as_posix()
+            for path in stage.rglob("*")
+            if path.is_file()
+        } == {name, *("data/" + original for original in originals)}
+        env = dict(os.environ, PYTHONPATH=str(stage), PYTHONDONTWRITEBYTECODE="1")
+        env.pop("PYTEST_ADDOPTS", None)
+        env.pop("PYTEST_PLUGINS", None)
+        events = stage / "events.jsonl"
+        result = subprocess.run(
+            [
+                sys.executable,
+                "-m",
+                "pytest",
+                "--receptor=llm",
+                f"--receptor-events={events}",
+                "-m",
+                "not online",
+                "-o",
+                "tmp_path_retention_policy=failed",
+                name,
+            ],
+            cwd=stage,
+            env=env,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            timeout=1800,
+        )
+        assert result.returncode == 0, result.stdout + result.stderr
+        assert "PASS exit=0" in result.stdout
+        artifact = read_artifact(events)
+        assert artifact.complete and artifact.integrity_valid and artifact.final
+        final = artifact.final.data
+        assert final["complete"] and final["exitstatus"] == 0
+        counts = final["counts"]
+        assert counts["collected"] == counts["executed"] == counts["passed"] == 48
+        assert not any(
+            counts[key]
+            for key in (
+                "failed",
+                "errors",
+                "skipped",
+                "not_executed",
+                "xfailed",
+                "xpassed",
+            )
+        )
+        assert not (stage / "temp_data").exists()
+
+
+def test_declared_bioactivity_literature_v2_runs_with_only_genuine_public_capsule():
+    """One outer case receives SDK202 and historical-v1 overlapping children."""
+    from pytest_receptor import read_artifact
+
+    root = Path(__file__).resolve().parents[2]
+    name = "test_bioactivity_literature_v2_offline.py"
+    originals = (
+        "bioactivity_literature_scalars_sdk202.tar.gz",
+        "bioactivity_saved_original17_sdk202.json.gz",
+        "README.md",
+    )
+    for workflow_path in (
+        ".github/workflows/ci.yml",
+        ".github/workflows/test_staged_conda_package.yaml",
+    ):
+        workflow = (root / workflow_path).read_text(encoding="utf-8")
+        assert (
+            sum("cp " in line and name in line for line in workflow.splitlines()) == 1
+        )
+        command = re.search(r"python -m pytest (.+)", workflow.replace("\\\n", " "))
+        assert command is not None
+        assert shlex.split(command[1]).count(name) == 1
+        for original in originals:
+            assert (
+                sum(
+                    "cp " in line and f"data/{original}" in line
+                    for line in workflow.splitlines()
+                )
+                == 1
+            )
+    outside_parent = None if sys.platform == "win32" else "/tmp"
+    with tempfile.TemporaryDirectory(
+        prefix="sabueso-bioactivity-literature-v2-", dir=outside_parent
+    ) as directory:
+        stage = Path(directory)
+        assert not stage.resolve().is_relative_to(root.resolve())
+        shutil.copyfile(root / "tests/core" / name, stage / name)
+        (stage / "data").mkdir()
+        for original in originals:
+            shutil.copyfile(
+                root / "tests/core/data" / original, stage / "data" / original
+            )
+        # The scalar original carries its Card inputs and public NOTICE; the
+        # separate retained @17 output binds historical v1 reading and resaving.
+        # A current source fixture or a LIVE fixture factory would hide a missing
+        # installed receiving dependency, so neither is copied into this client.
+        assert {
+            path.relative_to(stage).as_posix()
+            for path in stage.rglob("*")
+            if path.is_file()
+        } == {name, *("data/" + original for original in originals)}
+        env = dict(os.environ, PYTHONPATH=str(stage), PYTHONDONTWRITEBYTECODE="1")
+        env.pop("PYTEST_ADDOPTS", None)
+        env.pop("PYTEST_PLUGINS", None)
+        events = stage / "events.jsonl"
+        result = subprocess.run(
+            [
+                sys.executable,
+                "-m",
+                "pytest",
+                "--receptor=llm",
+                f"--receptor-events={events}",
+                "-m",
+                "not online",
+                "-o",
+                "tmp_path_retention_policy=failed",
+                name,
+            ],
+            cwd=stage,
+            env=env,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            timeout=600,
+        )
+        assert result.returncode == 0, result.stdout + result.stderr
+        assert "PASS exit=0" in result.stdout
+        artifact = read_artifact(events)
+        assert artifact.complete and artifact.integrity_valid and artifact.final
+        final = artifact.final.data
+        assert final["complete"] and final["exitstatus"] == 0
+        counts = final["counts"]
+        assert counts["collected"] == counts["executed"] == counts["passed"] == 22
+        assert not any(
+            counts[key]
+            for key in (
+                "failed",
+                "errors",
+                "skipped",
+                "not_executed",
+                "xfailed",
+                "xpassed",
+            )
+        )
+        assert not (stage / "temp_data").exists()

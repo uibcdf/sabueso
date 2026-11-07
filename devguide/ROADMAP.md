@@ -72,9 +72,12 @@ Destination restoration and the earlier
 their `7ec81ce` baseline scope. The committed `276160a` checkpoint has the selected
 [1,109-case original bioactivity receiving](evidence/bioactivity_saved_checkpoint_20261106.json).
 The next [shared literature increment](pending_proposals/card_literature_exploration.md)
-is being integrated through four new LIVE modules and their dispatch wiring;
-it is not yet qualified. Its clean live producer and genuine original capture
-must precede a new independent saved reader.
+has its LIVE producer committed at `1145ea3` / SDK202 with the selected
+1,202-case local checkpoint. Its genuine original was captured and independently
+hash-verified before the new saved reader. Independent saved reading and copied
+receiving pass the [9,466-case full local checkpoint](evidence/literature_saved_checkpoint_20261107.json).
+Hosted/artifact qualification and human acceptance remain open; continue the
+remaining molecule-target/context and broader B4–B6 profiles.
 
 Continue the rich profiles through the
 [current destination actions](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions)

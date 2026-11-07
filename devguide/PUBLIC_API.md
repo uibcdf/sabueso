@@ -50,8 +50,10 @@ context @2 with explicit agreement/refusal; existing mappings @6–@14 retain or
 activity interpretation. The development [live activity explorer](pending_proposals/card_bioactivity_exploration.md)
 now shares molecule, group and original source-record results with compact agent
 selection and complete publication context. Original saved reading is implemented
-with separate frozen predicates and exact retained requests; its selected local
-receiving passes and is recorded in the checkpoint. Broader activity/literature and independent
+with separate frozen predicates and exact retained requests; its original
+SDK200 @17/@18 receiving is recorded in the checkpoint. New LIVE activity or
+literature saves use SDK202 @19/@20; complete receiving of the new writer/reader
+is in progress. Broader activity/literature and independent
 scientific/researcher acceptance remain pending. See
 [the scoped correction](pending_bugs/bioactivity_interpretation.md).
 
@@ -69,9 +71,19 @@ The current native literature summary preserves scalar `False`, `0` and `0.0`
 without changing the original assertions. The historical SDK200 predicates retain
 their original meaning. The live shared catalog passes its owning 35-case local
 gate; broader historical and copied receiving retain their own checkpoint scope.
-Saving this new literature profile is not yet available: a clean live control
-must precede the independently versioned original saved reader. Existing saved
-formats remain fixed.
+The clean LIVE producer is `1145ea3` / SDK202; its complete original was captured
+and verified before independent saved-reader implementation. The new reader is
+integrated under semantic format @19, with separate optional value sharing
+@20. It also owns SDK202 activity bibliography under Bio-v2; old @17/@18 resaves
+retain Bio-v1. Saved requests must match retained original options, projections, typed
+filters, exact members and ordering; unretained requests return `not_saved`.
+Scientific results and original support are validated by frozen predicates, never
+replaced by current scientific interpretation. The selected checkpoint passes
+with its declared per-phase source epochs; copied literature receiving passes all
+48 overlapping child cases. The [full local composition](evidence/literature_saved_checkpoint_20261107.json)
+passes 9,466 distinct cases, with exact source hashes and separate hosted,
+installed-artifact and independent human gates.
+Existing saved formats @1–@18 remain fixed.
 
 Development opt-in `measurement_rule="measurement_identity@2"` is shared by
 `bioactivities`, `explain_measurement`, `explain_bioactivity`, `ligands`,

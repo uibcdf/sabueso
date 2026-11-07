@@ -370,11 +370,14 @@ relationship/SourceAssertion/locator → return navigation. Public TcTIM and HsT
 inputs, the complete 459-link B4 publication and explicit partial/absent/unqueried/
 failed controls provide the finite cohort. #148 owns human/agent/saved continuity;
 #108 owns bibliography and source lineage. Acquire no articles or metadata for
-this slice and invent no document SourceAssertion. Fix and capture a clean live
-producer before implementing its next independent original reader; keep @1–@18
-fixed and scientific/researcher acceptance separate. Four new LIVE modules and
-their existing dispatch wiring are being integrated; selected qualification is
-pending. Their implementation does not inherit the earlier bioactivity result.
+this slice and invent no document SourceAssertion. The LIVE producer is committed
+at `1145ea3` / SDK202 with its selected 1,202-case local checkpoint. Its genuine
+original was captured and independently hash-verified before reader implementation.
+Independent saved reading and copied receiving pass the
+[9,466-case full local checkpoint](evidence/literature_saved_checkpoint_20261107.json);
+keep @1–@18 fixed and retain scientific/researcher acceptance separately.
+The original and its scope are bound
+in the [capture receipt](evidence/literature_live_original_20261107.json).
 
 The maintainer has selected the
 [bounded positive/uncertain MolSysMT integration](pending_proposals/structural_journey_acceptance_20261104.md#accepted-assembly-scope--2026-11-06)
@@ -662,8 +665,8 @@ milestones, or when a concrete dependency makes one necessary.
 2. Preserve
    genuine #167/#191 controls and their earlier membership; do not reimplement
    completed persistence/filter work or substitute smaller historical controls.
-3. Complete the in-progress shared literature LIVE increment, qualify its clean
-   producer and capture its original before implementing the independent reader.
+3. Continue from the complete local shared-literature saved-reading checkpoint
+   and its preserved clean SDK202 originals to molecule-target activity context.
    Continue remaining B3 routes after its passing 28-case finite MolSysMT gate,
    and the complete B4/B5 journeys, then B6.
    Use the broad inventory as the completion checklist and obtain human/scientific/

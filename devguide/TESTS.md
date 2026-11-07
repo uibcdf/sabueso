@@ -98,9 +98,10 @@ Card natures, complete native catalog/explanation parity, the full 459-link
 publication context, original SourceAssertions and both structural-support legs,
 missing support, separate source/query states, typed false/zero/null, unchanged
 measurement quantities, shared detached requests, bounded pages and typed
-locations, selection, escaped presentation and explicit saving refusal. Saving
-needs a genuine clean-producer LIVE capture before an independent reader is
-implemented; original formats and frozen scientific kernels remain fixed.
+locations, selection, escaped presentation and capability-aware saving. Its
+genuine clean SDK202 original precedes independent literature reading. New
+activity/literature saves use @19/@20; original @17/@18 reads and resaves retain
+SDK200 predicates. Original formats and scientific kernels remain fixed.
 
 The native literature selection in `b4-literature-native-1/` records **60 passed**
 in 18.00 s (19.12 s supervised), with four intentional `EnrichmentFailedWarning`
@@ -306,6 +307,100 @@ Select verification by changed behavior and state its scope. Detailed provider
 cases are in [the native test reference](sources/NATIVE_TEST_REFERENCE.md); dated
 receipts remain [archived](archive/consolidation_2026-10-08/TESTS.md). A passing
 source test does not complete a scientific journey, consumer contract or release.
+
+<a id="independent-literature-reading-checkpoint-in-progress"></a>
+
+## Independent literature reading checkpoint
+
+The [full local receipt](evidence/literature_saved_checkpoint_20261107.json)
+verifies 9,466 distinct passing cases across 19 phases at its exact source hashes.
+It contains 1,273 public source hashes and separately labelled generated metadata;
+37 local-only originals remain outside that public map. All 1,311 internal target
+hashes are verified. The earlier selected/failed phases below retain their
+original epochs and cannot replace that composed result. Hosted, installed
+artifact and independent human acceptance remain separate.
+
+The clean SDK202 producer `1145ea3` predates the new independent reader. Its
+full nine-case original contains 13 scientific result objects. The frozen
+source/native predicates reproduce all 13 complete wires with mutable Card
+scientific readers blocked: 2.01 s, 94,846,976 bytes peak owned RSS and zero swap.
+This narrow probe is not complete saved exploration qualification.
+
+The updated LIVE capability and original scalar-value modules pass 45 cases in
+17.38 s, zero warnings and zero swap. The first attempt preserved 44 passes and
+one failed new regression: the regression asked the existing selections catalog
+for a topic descriptor. Correcting it to the topics catalog changes no product
+behavior. Receipts are retained under
+`recovered_work/checkpoint_recovery_20261106/b4-literature-saved-live-{1,2}/`,
+owned by #148/#108 for this saved-reader checkpoint review.
+
+The new `test_card_saved_literature_offline.py` receives the full genuine
+`data/literature_live_sdk202.tar.gz`, all original scientific wires and executed
+requests, independent inert fresh-process read/resave, complete 459-link context,
+source/locator/back continuity, uncertainty, typed scalar values and resealed
+scientific/request/membership/source/navigation substitutions. Semantic @19 and
+optional sharing @20 keep separate bindings; formats @1–@18 stay fixed. Both
+installed workflows and an isolated outside-checkout consumer receive this exact
+module/archive. Its final scope replays all 65 original machine requests across
+nine Cards. The two heavy TcTIM cases share one complete save; the other 46
+cases form a disjoint gate. Earlier 47-case receiving passes but predates this
+complete replay scope and does not replace the final source gate.
+
+The complete graph was observed at 98,590,120 physical and 241,520,362 logical
+JSON bytes. Preserve its visible 64 MiB transport refusal; this workload explicitly
+declares 128 MiB encoded/decoded limits with the default 256 MiB logical limit.
+The initial 600 s whole-case stop is nonqualification. Its elapsed-only recovery
+profile is 1,200 s with unchanged 2 GiB owned RSS, native threads one, 16 GiB host
+reserve, zero swap and 4 GiB scratch. The final 46-case gate passes in 531.77 s
+(532.93 s supervised), at 573,935,616 bytes peak owned RSS. The complete two-case
+gate passes in 828.67 s (830.64 s supervised), at 1,007,120,384 bytes RSS. Both
+have zero warnings/swap and unchanged before/after source hashes. Their exact
+union is the 48-case module, replaying all 65 original queries. The copied
+consumer allows 1,800 s for that complete child workload and 2,400 s for its outer
+tree, retaining 2 GiB RSS and the same scratch/swap/native-thread bounds. These
+elapsed allowances follow completed receiving. The isolated copied outer now
+passes its one case with all 48 children in 1,469.23 s (1,470 s supervised),
+1,080,225,792 bytes peak owned RSS and zero warnings/swap. Its root receptor
+stream is complete and integrity-valid; its passing assertions check the child
+stream and exact 48-case result before the temporary payload is removed.
+Child streams are indirect evidence here and add no distinct primary cases.
+
+`test_bioactivity_literature_v2_offline.py` passes 22 source cases in 106.25 s,
+423,661,568 bytes peak owned RSS and zero warnings/swap. Its copied outer passes
+with 22 overlapping children in 108.08 s, 474,005,504 bytes RSS and zero warnings/
+swap; receptor streams are complete and integrity-valid. Its archives retain
+the full clean SDK202 scalar original and an actual earlier @17 file. Derived
+@18 is labelled representation testing; original @17 and derived @18 are
+read/resaved with Bio-v2 expectations forbidden. Child cases add no distinct
+coverage to the outer count. For the full checkpoint these two gates were repeated
+with complete runtime source maps: source22 passes in 120.59 s / 122.02 s guarded,
+at 414,830,592 bytes RSS; outer22 passes in 122.00 s / 122.99 s guarded, at
+462,872,576 bytes RSS. Both have zero warnings/swap and unchanged source maps.
+
+Fresh collection binds 7,923 public nodes, 1,553 marked native nodes and their
+ten-node overlap to exactly 9,466 distinct local nodes. The final checkpoint
+partitions that scope into disjoint public phases and a native increment; copied
+child cases are repeated receiving. Source hashes bind each phase. A collection,
+partial stream or resource-monitor interruption cannot qualify execution. The
+full checkpoint independently verifies every planned phase, exact node union and
+expected public skip. Its public selection passes 7,913 cases and skips exactly
+ten native controls; all 1,553 native cases pass and replace those skips once.
+The composition therefore has 9,476 primary executions and 9,466 distinct passes,
+with thirteen reported warnings and zero failures/errors/unexecuted cases. Copied
+children and supplemental controls add zero distinct coverage. All gate trees
+report zero swap within their declared limits.
+
+The first public attempt stopped on a scratch-monitor deletion race. The next
+complete attempt has 7,548 passed, ten expected native-input skips and one stale
+generic-catalog assertion: shared literature is now a delivered generic topic.
+It remains a failed checkpoint. A one-literal correction preserves every original
+structure/identity/no-acquisition assertion; all 40 owning cases then pass in
+8.10 s (9.05 s supervised), with zero warnings/swap. The complete public repeat
+passes 7,549 cases plus its ten expected native skips in 614.81 s / 616.27 s
+guarded, at 3,253,805,056 bytes peak RSS. Other disjoint public phases supply 364
+passes. The native increment passes all 1,553 in 41.44 s / 42.57 s guarded, at
+1,834,844,160 bytes RSS. The earlier incomplete and failed attempts remain
+separate and supply no passing coverage.
 
 ## Current workstation profile
 
@@ -516,7 +611,7 @@ these technical checks.
 | Changed behavior | Select these test files / gates |
 | --- | --- |
 | Chemical classification live profile | `test_card_chemical_exploration_offline.py`, native classification, human/nature/access/navigation/selection, saved historical, argument/quantity and copied installed scope gates. Preserve genuine SDK192 canonical native bytes and original retained menus, source-stated identity/whole-field support, direct/inherited/unknown assignments, typed false/null versus zero, duplicate positions, source/open/back parity, cache isolation, scope after filtering/projection, explicit bounded deferral, original @15/shared @16 saving, exact requests and preserved older sessions. Run `test_card_saved_chemical_offline.py` and its isolated original SDK193 capsule gate before declaring this panel complete (#148/#112) |
-| Shared LIVE literature and native summary values | `test_card_literature_exploration_offline.py`, `test_literature_summary_values_offline.py`, native literature/explanation/located/packet and source-review tests, affected human/agent/nature/context/argument/quantity and historical-reader gates, plus the isolated outer copied consumer. Preserve exact native publication identities, complete 459-link context, separate query coverage and source-stated roles, original support/locators/alternatives and typed false/zero/null. Receive both copied modules once in each installed workflow; saving stays unavailable pending genuine LIVE capture and independent reading (#148/#108/#112) |
+| Shared LIVE literature and native summary values | `test_card_literature_exploration_offline.py`, `test_literature_summary_values_offline.py`, native literature/explanation/located/packet and source-review tests, affected human/agent/nature/context/argument/quantity and historical-reader gates, plus isolated copied receiving. Preserve exact publication identities, full 459-link context, separate query coverage/roles, original support/locators/alternatives and typed false/zero/null. Also run saved literature48, Bio-v2 22, complete activity29, original historical and copied gates for @19/@20 changes. Preserve every genuine SDK202 wire and all 65 original queries; old @17/@18 reads/resaves retain Bio-v1. Deliver new modules/capsules once in each installed workflow; local qualification does not replace installed-artifact or exact-head hosted gates (#148/#108/#112) |
 | Original bioactivity saved reading | `test_card_saved_bioactivity_offline.py` defines 29 cases over the genuine SDK200 projection: nine original wires, three grains, finite exact requests, quantity and source-state distinctions, full publication context, support/back closure, fresh inert reading, resealed tampering and repeat saving. Run live bioactivity, affected human/agent/quantity/argument/history/transport cases and the copied installed consumer. Keep semantic @17/shared @18 separate from frozen older bindings. The complete 709,616,078-byte logical case uses explicit 1 GiB logical and 128 MiB transport limits. Its local 29-case module and outer copied consumer pass under the separate 4 GiB/1,800 s serial and 4 GiB/2,400 s outer-tree profiles above; hosted and installed-artifact qualification remain open (#148/#112) |
 | Original nonpolymer assembly exploration | `test_card_nonpolymer_assembly_offline.py` and `test_card_saved_nonpolymer_assembly_offline.py`, native @5/key @2 and all affected assembly/context/human/agent/saved/argument/quantity/transport cases; genuine pre-reader public capsule, default/@4 request identity, shared one-capture evaluation, complete original rows/text with explicit saved notice, partial/duplicate/conflicting native context, mixed original structure questions, closed @7 and explanation-request @2 receiving, inert outside-checkout read, atomic deferral, resealing/coherent reidentification, deliberate budgets and stable repeat saving. Preserve original native @1–@5 and saved @1–@6 bytes; unskipped exact-source CI/governance qualifies the completed block (#173/#148/#112) |
 | Structure and declared-component navigation | `test_card_component_navigation_offline.py`, `test_card_saved_component_navigation_offline.py`, `test_original_structure_navigation_offline.py`, and affected structure/context/human/agent/assembly/saved/transport/argument/quantity/copied-receiving gates. Check exact native/literal/qualifier parents, shared explicit @5 result with unchanged direct @4 defaults, repeated positions and uncertain records, original source/open/back, exact clicked-link binding, coherent sibling substitutions, fresh inert reading, repeat saving and `not_saved` for unvisited destinations. Genuine clean-producer live navigation and saved @6/@7 fixtures predate the new verifier; never regenerate them. Format @8 freezes new navigation over unchanged @2 scientific wire. Run original large saved controls separately under the resource guard; qualify unskipped exact-source CI/governance (#173/#148/#112) |

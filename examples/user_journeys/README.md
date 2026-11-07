@@ -107,9 +107,10 @@ An exact reference with no stored link returns `not_on_card`; a separate empty
 Europe PMC annotation response coexists with retained publications. Neither
 establishes absence from an article or the literature. Network connections are
 forbidden, and exploration acquires no articles or new metadata. Publication
-profile saving is explicitly unavailable pending a genuine clean original
-capture and independent saved reader. Scientific review, researcher acceptance
-and released-package qualification remain separate gates.
+profile saving uses the separately versioned original reader after a genuine
+clean SDK202 capture. Reading verifies retained requests and source context without
+source acquisition or current scientific readers. Scientific review, researcher
+acceptance and released-package qualification remain separate gates.
 
 ## Clinical bibliography
 

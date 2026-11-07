@@ -606,12 +606,17 @@ class CardItem:
                 return self._view._explorer._answer(self._entry.key, {}, self._view)
             return self._view._explorer._topic(self._entry.key, self._view)
         if self._view._record_panel == "literature":
-            from .card_literature_exploration import open_item
+            if self._view._explorer.mode == "saved":
+                from .card_exploration_literature import open_item
+            else:
+                from .card_literature_exploration import open_item
 
             return open_item(self)
         if self._view._record_panel == "bioactivities":
             if self._view._explorer.mode == "saved":
-                from .card_exploration_bioactivity import open_item
+                from .card_bioactivity_dispatch import binding
+
+                open_item = binding(self._view._explorer.access).open_item
             else:
                 from .card_bioactivity_exploration import open_item
 
@@ -1070,9 +1075,6 @@ class CardView:
             capabilities["root_machine_selection_ref"] = self._machine_ref
         if self._record_panel == "literature":
             capabilities["sort"] = list(self.schema["columns"])
-            capabilities["save_reason"] = (
-                "Independent original literature saving is not implemented yet."
-            )
         if self._explorer.mode == "saved":
             from .card_exploration_storage import operation_key
 
@@ -1350,12 +1352,17 @@ class CardView:
         """Select exact declared cells without changing the scientific result."""
         self._check_column(column)
         if self._record_panel == "literature":
-            from .card_literature_exploration import display_filter
+            if self._explorer.mode == "saved":
+                from .card_exploration_literature import display_filter
+            else:
+                from .card_literature_exploration import display_filter
 
             return display_filter(self, column, equals)
         if self._record_panel == "bioactivities":
             if self._explorer.mode == "saved":
-                from .card_exploration_bioactivity import display_filter
+                from .card_bioactivity_dispatch import binding
+
+                display_filter = binding(self._explorer.access).display_filter
             else:
                 from .card_bioactivity_exploration import display_filter
 
@@ -1463,12 +1470,17 @@ class CardView:
         if unit is not None and (not isinstance(unit, str) or not unit.strip()):
             raise ArgumentError("unit requires a nonempty unit name or None.")
         if self._record_panel == "literature":
-            from .card_literature_exploration import display_sort
+            if self._explorer.mode == "saved":
+                from .card_exploration_literature import display_sort
+            else:
+                from .card_literature_exploration import display_sort
 
             return display_sort(self, column, descending, unit)
         if self._record_panel == "bioactivities":
             if self._explorer.mode == "saved":
-                from .card_exploration_bioactivity import display_sort
+                from .card_bioactivity_dispatch import binding
+
+                display_sort = binding(self._explorer.access).display_sort
             else:
                 from .card_bioactivity_exploration import display_sort
 

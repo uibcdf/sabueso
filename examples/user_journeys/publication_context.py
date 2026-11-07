@@ -3,9 +3,11 @@
 import argparse
 import socket
 from pathlib import Path
+from tempfile import TemporaryDirectory
 from unittest.mock import patch
 
 import sabueso
+from sabueso.core.card import Card
 from sabueso.resolver import EntityResolver, FixtureUniProtClient
 from sabueso.tools.db.chembl import FixtureChEMBLClient
 from sabueso.tools.db.europepmc import FixtureEuropePMCClient
@@ -111,10 +113,62 @@ def activity_publication(fixtures):
         "The missing-publication outcome changed",
     )
     print("not_on_card describes this capture; it does not establish article absence.")
-    require(catalog.capabilities["save"] is False, "Review the example's saved scope")
+    require(catalog.capabilities["save"] is True, "Review the example's saved scope")
     print(
-        "Publication-profile saving is explicitly unavailable in this live increment."
+        "Use save(path) and read_exploration(path) to retain and independently read this captured publication context."
     )
+    saved_publication(card)
+
+
+def saved_publication(card):
+    """Read a bounded original request without invoking current science."""
+    explorer = card.explore()
+    options = {"publication_ref": "pubmed:35189560"}
+    original = explorer.answer("publications", options=options)
+    expected = original.native_payload
+    require(len(expected["links"]) == 9, "The bounded publication control changed")
+    selected = explorer.access.select(
+        "literature", fields=["publication_ref", "measurement_count"], options=options
+    )
+    with TemporaryDirectory(prefix="sabueso-publication-example-") as directory:
+        path = Path(directory) / "publication.json.gz"
+        receipt = original.save(path, compression="gzip")
+        with (
+            patch.object(Card, "literature", forbidden),
+            patch.object(Card, "explain_literature", forbidden),
+            patch.object(Card, "knowledge_state", forbidden),
+            patch.object(FixtureUniProtClient, "__init__", forbidden),
+            patch.object(FixtureChEMBLClient, "__init__", forbidden),
+            patch.object(FixtureEuropePMCClient, "__init__", forbidden),
+        ):
+            saved = sabueso.read_exploration(
+                path, expected_digest=receipt["bundle_digest"]
+            )
+            require(saved.native_payload == expected, "Saved native context changed")
+            retained = saved.explorer.access.select(
+                "literature",
+                fields=["publication_ref", "measurement_count"],
+                options=options,
+            )
+            require(
+                retained.selection_ref == selected.selection_ref,
+                "The original machine request was not retained",
+            )
+            missing = saved.explorer.view(
+                "literature", options={"publication_ref": ACTIVITY_PUBLICATION}
+            )
+            require(
+                missing.outcome["status"] == "not_saved",
+                "An unvisited scientific request must remain not_saved",
+            )
+            saved.save(
+                Path(directory) / "publication-resaved.json.gz", compression="gzip"
+            )
+        print(
+            "The saved PMID 35189560 request retains all nine original links and "
+            "its exact agent selection without current scientific readers or source clients. "
+            "An unvisited publication request remains not_saved."
+        )
 
 
 def follow(links, role, question):
@@ -221,8 +275,8 @@ def main():
     print(
         "\nOnly declared public fixture responses were read. Exploration acquires "
         "no articles or new metadata, creates no project Evidence and establishes "
-        "no efficacy conclusion. Independent original saved reading and researcher "
-        "acceptance remain separate work."
+        "no efficacy conclusion. Scientific review, researcher acceptance and "
+        "installed-package qualification remain separate work."
     )
 
 

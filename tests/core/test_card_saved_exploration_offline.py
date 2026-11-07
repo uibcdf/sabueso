@@ -2,7 +2,8 @@
 
 import json
 import socket
-from copy import deepcopy
+from copy import copy, deepcopy
+from dataclasses import replace
 from pathlib import Path
 
 import pytest
@@ -17,6 +18,35 @@ from sabueso.tools.card.disease import resolve_disease_card
 from sabueso.tools.card.small_molecule import single_molecule_card
 from sabueso.tools.db.chembl import FixtureChEMBLClient
 from sabueso.tools.db.mondo import FixtureMONDOClient
+
+
+@pytest.mark.parametrize("origin_kind", ["view", "explorer"])
+def test_saving_rejects_an_origin_from_an_independent_session(origin_kind, tmp_path):
+    """An unregistered return route cannot silently become a root view."""
+    own = (
+        Card(
+            meta={"card_id": "sabueso:protein:uniprot:P60174", "entity_type": "protein"}
+        )
+        .explore()
+        .view("content")
+    )
+    foreign = (
+        Card(
+            meta={"card_id": "sabueso:protein:uniprot:P52270", "entity_type": "protein"}
+        )
+        .explore()
+        .view("content")
+    )
+    if origin_kind == "view":
+        candidate = replace(own, _origin=foreign)
+    else:
+        explorer = copy(own._explorer)
+        explorer._origin = foreign
+        candidate = replace(own, _explorer=explorer)
+    path = tmp_path / "foreign-origin.json"
+    with pytest.raises(StorageError, match="outside.*session"):
+        candidate.save(path)
+    assert not path.exists()
 
 
 @pytest.fixture(autouse=True)

@@ -340,7 +340,11 @@ class CardAccess:
                     registry_entries = (
                         rebound._scientific.entries
                         if rebound._scientific.wire["context"]["adapter"]
-                        in ("ligand_site_exploration@1", "bioactivity_exploration@1")
+                        in (
+                            "ligand_site_exploration@1",
+                            "bioactivity_exploration@1",
+                            "literature_exploration@1",
+                        )
                         else rebound._entries
                     )
                     for entry in registry_entries:
@@ -403,8 +407,7 @@ class CardAccess:
             if self.profile == "small_molecule"
             else []
         )
-        if self.mode == "live":
-            scientific_topics.append("literature")
+        scientific_topics.append("literature")
         retained = {
             selection._operation.removeprefix("select:")
             for selection in self._selections.values()
@@ -669,10 +672,25 @@ class CardAccess:
                     "description": "Complete stored Card content; scientific topics have separate descriptors.",
                 }
             }
-            if self.mode == "live":
+            if self.mode == "saved":
+                from .card_literature_history_v1 import (
+                    descriptor as literature_descriptor,
+                )
+            else:
                 from .card_literature_access import descriptor as literature_descriptor
 
-                data["literature"] = literature_descriptor()
+            data["literature"] = literature_descriptor()
+            data["literature"]["save"] = True
+            data["literature"].pop("save_reason", None)
+            data["literature"]["availability"] = (
+                "retained"
+                if self.mode == "live"
+                or "literature" in self.capabilities["scientific_topics"]
+                else "not_saved"
+            )
+            data["literature"]["selection_availability"] = (
+                "retained_requests_only" if self.mode == "saved" else "live"
+            )
             if self.profile == "small_molecule":
                 if self.mode == "saved":
                     from .card_chemical_history_v1 import (
@@ -702,9 +720,9 @@ class CardAccess:
 
                     data["bioactivities"] = bioactivity_descriptor()
                 else:
-                    from .card_bioactivity_history_v1 import (
-                        descriptor as bioactivity_descriptor,
-                    )
+                    from .card_bioactivity_dispatch import history
+
+                    bioactivity_descriptor = history(self).descriptor
 
                     data["bioactivities"] = {
                         **bioactivity_descriptor(),
@@ -870,6 +888,12 @@ class CardAccess:
                 "Scientific selection supports structures, ligand_site_comparisons, quaternary_interpretation, assembly_generation, chemical_classification, bioactivities and literature."
             )
         if topic == "literature":
+            if self.mode == "saved":
+                from .card_exploration_literature import saved_selection
+
+                return saved_selection(
+                    self, fields, options, where, item_refs, order_by
+                )
             from .card_literature_access import materialize, options_for_literature
             from .card_literature_selection_v1 import (
                 active,
@@ -881,12 +905,6 @@ class CardAccess:
 
             options, fields = options_for_literature(options), projection(fields)
             query = normalize(where, item_refs, order_by)
-            if self.mode == "saved":
-                from .card_exploration_storage import missing_selection
-
-                return missing_selection(
-                    self, topic, options, fields, query if active(query) else None
-                )
             if query["item_refs"] is not None and any(
                 ref not in self._scientific_items for ref in query["item_refs"]
             ):
@@ -896,9 +914,9 @@ class CardAccess:
             result = materialize(self, options)
         elif topic == "bioactivities":
             if self.mode == "saved":
-                from .card_exploration_bioactivity import saved_selection
+                from .card_bioactivity_dispatch import binding
 
-                return saved_selection(
+                return binding(self).saved_selection(
                     self, fields, options, where, item_refs, order_by
                 )
             from .card_bioactivity_access import materialize, options_for_bioactivities
@@ -1183,12 +1201,17 @@ class CardAccess:
 
     def _defer(self, item):
         if item.get("adapter") == "literature_exploration@1":
-            from .card_literature_access import defer_frame
+            if self.mode == "saved":
+                from .card_literature_history_v1 import defer_frame
+            else:
+                from .card_literature_access import defer_frame
 
             return defer_frame(item)
         if item.get("adapter") == "bioactivity_exploration@1":
             if self.mode == "saved":
-                from .card_bioactivity_history_v1 import defer_frame
+                from .card_bioactivity_dispatch import history
+
+                defer_frame = history(self).defer_frame
             else:
                 from .card_bioactivity_access import defer_frame
 

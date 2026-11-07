@@ -288,7 +288,7 @@ def test_empty_unsupported_and_missing_identity_have_distinct_outcomes(monkeypat
     generic = Card().explore()
     unsupported = generic.view("structures")
     assert unsupported.outcome["status"] == "not_applicable"
-    assert generic.capabilities["scientific_topics"] == []
+    assert generic.capabilities["scientific_topics"] == ["literature"]
     assert "structures" not in generic.capabilities["topics"]
     empty = (
         Card(

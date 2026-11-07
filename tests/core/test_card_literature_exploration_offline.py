@@ -13,7 +13,7 @@ from sabueso._private.smonitor.warnings import (
     EnrichmentTruncatedWarning,
 )
 from sabueso.core.card import Card
-from sabueso.core.errors import ArgumentError, StorageError
+from sabueso.core.errors import ArgumentError
 from sabueso.core.quantities import seal
 from sabueso.core.relationship_store import make_relationship
 from sabueso.core.snapshot import canonical_json
@@ -345,19 +345,20 @@ def test_pinless_card_refuses_native_readers_and_keeps_explicit_prerequisite(
     assert not view.items() and view.outcome["status"] == "missing_prerequisite"
 
 
-def test_live_literature_saving_is_explicitly_unavailable_including_detail_origins(
-    card, tmp_path
-):
+def test_live_literature_advertises_independent_saving_without_changing_wire(card):
     explorer = card.explore()
     view = explorer.view(TOPIC, options={"publication_ref": BTS_PAPER})
     selected = explorer.access.select(TOPIC, options={"publication_ref": BTS_PAPER})
-    assert view.capabilities["save"] is False
-    assert selected.capabilities["save"] is False
-    for index, candidate in enumerate((view, view.items()[0].open(), selected)):
-        path = tmp_path / f"unsupported-{index}.json"
-        with pytest.raises(StorageError):
-            candidate.save(path)
-        assert not path.exists()
+    assert view.capabilities["save"] is True
+    assert selected.capabilities["save"] is True
+    assert view.items()[0].open().capabilities["save"] is True
+    descriptor_row = next(
+        row for row in frames(explorer.access.catalog("topics")) if row["key"] == TOPIC
+    )
+    descriptor = explorer.inspect(locator=descriptor_row["location"]).native_payload
+    assert descriptor["save"] is True and "save_reason" not in descriptor
+    assert "save" not in selected._scientific.wire["schema"]
+    assert "save_reason" not in selected._scientific.wire["schema"]
 
 
 def test_focus_and_machine_explain_keep_all_459_original_links(card):

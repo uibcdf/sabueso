@@ -1,0 +1,91 @@
+{
+  "kind": "Genuine clean LIVE literature original before independent saved reader",
+  "owners": [
+    "uibcdf/sabueso#148",
+    "uibcdf/sabueso#108"
+  ],
+  "producer_head": "1145ea364a558b6f03d3823dfd1be4a6839663e5",
+  "producer_version": "0.14.0+202.g1145ea3",
+  "manifest_sha256": "da63a041dc872bc5b3c2532faae409c7e3cfdb605df32b18d00b32b61a967ef5",
+  "original_path": "recovered_work/checkpoint_recovery_20261106/b4-literature-original-preparation-1/original1",
+  "capture_complete": true,
+  "admitted_saved_format": false,
+  "verified_members": 3818,
+  "verified_bytes": 62493260,
+  "source_tree_clean_after_capture": true,
+  "attempts": {
+    "network": 0,
+    "source_acquisitions": 0
+  },
+  "case_names": [
+    "bare",
+    "disease",
+    "empty",
+    "failed",
+    "located",
+    "mixed",
+    "molecule",
+    "search",
+    "tctim"
+  ],
+  "scope": "Complete nine-case LIVE overviews, quality, publication explanations and result wires, named human requests, exact agent selections and captured source/navigation contexts. Lossless content-addressed capture envelopes are not a saved explorer format.",
+  "resources": {
+    "owner": "uibcdf/sabueso#148/#108",
+    "review_trigger": "Literature input preparation or explicitly authorized clean SDK202 original capture; not pytest, an admitted save format or installed-artifact qualification",
+    "command": [
+      "nice",
+      "-n",
+      "10",
+      "taskset",
+      "-c",
+      "13",
+      "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+      "-B",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b4-literature-original-preparation-1/capture_literature_original.py",
+      "--capture",
+      "--inputs",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b4-literature-original-preparation-1/inputs1",
+      "--expected-input-manifest-sha256",
+      "5bc79df671c4e135c414d785e35523a65f9e423215f8eb1b2e8e2727c427f639",
+      "--expected-head",
+      "1145ea364a558b6f03d3823dfd1be4a6839663e5",
+      "--expected-version",
+      "0.14.0+202.g1145ea3",
+      "--output",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b4-literature-original-preparation-1/original1"
+    ],
+    "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+    "exit_code": 0,
+    "elapsed_s": 32.28,
+    "stop_reason": null,
+    "peak_owned_rss_bytes": 134774784,
+    "minimum_host_available_bytes": 51313889280,
+    "peak_owned_swap_bytes": 0,
+    "peak_owned_scratch_bytes": 67125724,
+    "limits": {
+      "owned_rss_bytes": 2147483648,
+      "host_available_bytes": 17179869184,
+      "owned_swap_bytes": 0,
+      "cpu_affinity_count": 1,
+      "nice": 10,
+      "elapsed_s": 600,
+      "owned_scratch_bytes": 4294967296
+    },
+    "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b4-literature-original-preparation-1/cargo-target"
+  },
+  "resources_sha256": "f59ef70f36f3dc3bd7d4de5aeb9dc04365372e7fa8276db5bd9d54d4d8c2335f",
+  "checks": {
+    "complete_member_size_and_sha256_verification": "Passed independently before reader implementation and repeated when resuming it.",
+    "post_commit_selected_controls": 47,
+    "reader_status": "Implementation in progress; no saved-reader qualification yet."
+  },
+  "retention": {
+    "original": "Immutable public source-bound original. Never regenerate to pass a reader.",
+    "owner": "uibcdf/sabueso#148 / #108",
+    "review_trigger": "Independent literature saved-reader receiving and public capsule review"
+  },
+  "limits": [
+    "Local LIVE qualification does not establish exact-current-source hosted, installed-artifact, scientific, researcher or actual-consumer acceptance.",
+    "Release consolidation remains paused; B2 scientific/default review remains deferred."
+  ]
+}

@@ -770,7 +770,7 @@ def _parts(view):
 
         opening.extend(chemical_opening(view, preview))
     if view._record_panel == "literature":
-        from .card_literature_presentation_v1 import opening as literature_opening
+        from .card_literature_presentation_v2 import opening as literature_opening
 
         opening.extend(literature_opening(view, preview))
     if view.context.get("adapter") == "literature_context_links@1":

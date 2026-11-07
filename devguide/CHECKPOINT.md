@@ -1,58 +1,71 @@
 # Sabueso — Checkpoint
 
-Current working-state checkpoint: **2026-11-06**. Start with
+Current working-state checkpoint: **2026-11-07**. Start with
 [ONBOARDING](ONBOARDING.md) for project context and the
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
 ## Active increment and next action
 
-The maintainer resumed implementation of the six-stage roadmap after the pause.
-The preceding committed, locally validated checkpoint is **`276160a` / SDK201**:
-activity saved reading with 1,109 selected distinct passing cases, original SDK200
-controls preserved and remote CI deferred with `[skip ci]`. Those results do not
-qualify subsequent working-tree changes.
+The maintainer resumed the full six-stage roadmap after the pause. This
+checkpoint implements independent saved reading for the shared literature
+catalog and SDK202 activity bibliography, under semantic @19 / optional sharing
+@20. The [full local receipt](evidence/literature_saved_checkpoint_20261107.json)
+verifies **9,466 distinct passing cases** across 19 actual phases. This supersedes
+the selected checkpoint as the current local qualification; it does not establish
+hosted, installed-artifact or independent human acceptance.
 
-The current increment is the [shared literature catalog](pending_proposals/card_literature_exploration.md).
-Live access/selection, readable publication/source/locator navigation and its
-public positive/uncertain regression cohort now pass the selected
-[1,202-case local checkpoint](evidence/literature_live_checkpoint_20261107.json).
-This includes the full older saved-bioactivity module and five separate historical
-modules. The eight-worker cohort passes 976 cases with four intentional
-source-failure warnings; the history and copied gates report no warnings. All
-owned process trees report zero swap. The copied consumer receives 45 overlapping
-child cases outside the checkout; they are not extra distinct coverage.
+Fresh collection contains 7,923 public nodes and 1,553 marked native nodes. The
+public phases pass 7,913 cases and skip exactly ten local-original controls; the
+native phase passes all 1,553, replacing those skips once. The composition has
+9,476 primary executions and 9,466 distinct passes, with no failures, errors,
+unexecuted cases, reruns, xfails or xpasses. Thirteen warnings are reported. All
+owned gate trees report zero swap within their declared resource limits. Copied
+29/48/22-case child workloads overlap source cases and add no distinct coverage;
+their temporary child streams are indirect passing-outer evidence.
 
-The native summary correction preserves scalar `False`, `0` and `0.0`, and the
-public walkthrough executes in 4.02 s at 93,642,752 bytes peak owned RSS. Earlier
-discovery assertions were updated for the delivered shared topic/question while
-retaining no-acquisition and unavailable-selection controls. Initial failures and
-formatter-only AST-equivalent changes retain their own receipts.
+Saved browsing preserves original native values, typed requests, membership,
+ordering, complete source support, uncertainty and publication/source/locator/back
+navigation without current scientific readers or acquisition. The literature
+cohort replays all 65 original machine queries, thirteen complete wires and the
+full 459-link publication. That graph uses explicit 128 MiB transport allowances;
+the product's default 64 MiB refusal and 256 MiB logical budget remain unchanged.
+Original @1–@18 meanings and controls remain fixed; @17/@18 reads and resaves
+retain SDK200 Bio-v1. See the [literature contract](pending_proposals/card_literature_exploration.md).
 
-Next: commit the checked live producer with `[skip ci]`, verify its editable
-runtime/distribution/generated version outside the checkout, and capture a genuine
-clean original before implementing the independent literature saved reader.
-Saving this new profile is explicitly unavailable; formats @1–@18 remain fixed.
-The source hashes and actual gate scope are in the accompanying receipt; it does
-not claim exact-current-source remote, installed-artifact or human acceptance.
+The clean LIVE producer is **`1145ea3` / SDK202**. Its
+[genuine literature original](evidence/literature_live_original_20261107.json)
+contains 3,818 independently verified members and predates reader implementation.
+The additional clean SDK202 Bio scalar original has 755 verified members and
+predates Bio-v2, not the initial literature reader. Earlier selected receipts
+retain their own scope: [LIVE 1,202](evidence/literature_live_checkpoint_20261107.json)
+and [saved 1,274](evidence/literature_saved_selected_checkpoint_20261107.json).
+Never regenerate an original to pass a later reader.
 
-Every increment updates this current-state section, its owning feature contract,
-the applicable API/test guidance and evidence receipt in the same change. Keep
-implemented behavior, locally verified behavior, remote/artifact qualification
-and independent human acceptance distinct. The integrated B0–B8 dependencies
-remain in the continuation plan; longer-term stages remain in the roadmap.
+Full receiving used coherent imported/distribution/generated label
+`0.14.0+202.g1145ea3` with changed implementation bound separately by hashes; that
+label is not a clean producer claim for the reader. The receipt carries 1,273
+public source hashes and separate generated metadata. All 1,311 internal target
+hashes were verified; 37 local-only originals remain omitted from the public map.
+Earlier stopped/failed attempts are preserved, including the monitor deletion
+race and the stale generic-catalog expectation. A one-literal test correction
+retains the structure/identity/no-acquisition controls; its 40-case owning gate
+and the repeated full public phase pass. No failed coverage enters the union.
 
-Destination restoration and complete local offline baseline receiving are complete. The
-[destination review](evidence/destination_review_20261106.json) records the new
-workstation, reproduced CI failures and parallel calibration; the subsequent
-[corrected checkpoint](evidence/destination_checkpoint_20261106.json) records
-their repair and 9,276 distinct passing local cases at the source blobs committed
-as `7ec81ce`. Its hosted receiving subsequently exposed a Windows-only test
-fixture encoding error; the
-[UTF-8 follow-up](evidence/windows_chemical_fixture_recovery_20261106.json)
-has targeted local receiving and still needs its own hosted result. Continue from the
-[current action plan](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions),
-not the original transfer checklist.
+Continue with the exact molecule-to-supplied-target activity-context journey,
+then the remaining molecule, clinical and disease profiles and B6. Its preparation
+reuses explicit source identity edges, captured target pins and existing native
+measurement/group/record/assay/publication readers; it is not an integrated new
+profile yet. Keep both foundational and pilot-driven routes and the full B0–B8
+inventory in the [continuation plan](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions).
+B2 scientific/default review is explicitly deferred; B7 independent acceptance
+remains open and B8 consolidation/publication remains paused.
+
+Intermediate commits use `[skip ci]` as requested. #148/#112 own recovery at the
+agreed cumulative exact-head CI/governance checkpoint through gh-run-receptor.
+No new remote run, release, tag, freeze or staging is authorized or claimed by
+this local result. Every increment updates this page, its feature contract and
+applicable API/test guidance in the same change.
 
 ## Published and development state
 
@@ -62,10 +75,12 @@ not the original transfer checklist.
 | Published schema | **0.3.13**; published versions, shapes and frozen Cards remain immutable |
 | Development schema | **0.3.14**, unpublished, 1,985 recorded paths; see [SCHEMA](SCHEMA.md), migrations and the shape gate |
 | Packet mapping | Current development default **`packet_aspects@16`**, as declared in `sabueso/core/packets.py`; original mappings retain their own meanings. Packet mapping, Card schema and exploration file format are separate versions |
-| Code checkpoint | `7ec81ce` commits the complete public/composed local baseline: 9,276 distinct passed, with [exact hashes](evidence/destination_checkpoint_20261106.json) against transferred parent `0e4d7d4a80e3a32437acea25204bef80b185f981`. The later UTF-8 correction changes three test-helper I/O calls only; runtime, schema and original controls remain identical. Its own hosted qualification remains pending |
-| Producer labels | The full local checkpoint ran with imported/distribution/generated label `0.14.0+197.g0e4d7d4` and changed source bound separately by hashes; that label is not a clean producer claim for the correction. Stale source-root egg-info remains preserved outside the import path. Original SDK192/SDK193 controls retain their original labels |
+| Clean pre-reader LIVE source | `1145ea3` / SDK202: LIVE shared literature; [1,202 selected cases](evidence/literature_live_checkpoint_20261107.json), plus separately scoped post-commit controls. Its genuine capture precedes independent saved reading |
+| Earlier complete local baseline | `7ec81ce`: 9,276 distinct passed with [exact hashes](evidence/destination_checkpoint_20261106.json) against transferred parent `0e4d7d4a80e3a32437acea25204bef80b185f981`. This historical result does not qualify the current reader |
+| Producer labels during full receiving | Imported/distribution/generated label `0.14.0+202.g1145ea3`; changed source is bound separately by hashes, not claimed as a clean producer. Generated metadata is separate from versioned public source. Original controls retain their actual producer labels |
 | Saved reading checkpoint | Chemical semantic @15 and sharing @16 are committed with 705 selected local cases plus independent whole-session receiving; exact-final-source hosted, artifact, scientist and researcher acceptance remain separate |
-| Current selected activity checkpoint | Independent activity semantic @17 and sharing @18 pass **1,109 distinct selected local cases**; the [receipt](evidence/bioactivity_saved_checkpoint_20261106.json) preserves the genuine SDK200 live control, complete saved workload, exact node accounting and deferred remote/artifact/human acceptance |
+| Earlier SDK200 activity checkpoint | Independent activity semantic @17 and sharing @18 pass **1,109 distinct selected local cases**; the [receipt](evidence/bioactivity_saved_checkpoint_20261106.json) preserves the genuine SDK200 live control, complete saved workload, exact node accounting and deferred remote/artifact/human acceptance |
+| Current local shared saved reader | Semantic @19 / sharing @20: [9,466 distinct passing local cases](evidence/literature_saved_checkpoint_20261107.json), exact 19-phase composition and preserved older formats. Copied literature/Bio receiving passes; exact-head hosted, installed-artifact and independent human acceptance remain open |
 | Machine migration | All 10,654 declared payload files were restored and independently hash-verified, including 37 protected originals. Both ZIPs and auxiliary staging were removed at the maintainer's request. Retained manifests/receipts remain local; the active released receptor checkout is now `../pytest-receptor-1.2.0` |
 | Hosted receiving | Latest read-only metadata observation, 2026-11-07 03:27 UTC: corrected `896eaf8` run `42311030582` has 13 successful jobs and four queued macOS jobs; overall conclusion remains pending. This observation starts no CI and does not supply missing full logs or qualify newer code. The earlier `7ec81ce` Windows encoding failure and its original receipts remain preserved |
 | Release target | **0.15.0**, the full agreed exploration design and validated human experience; [consolidation](pending_proposals/release_consolidation_0150.md) remains paused. No release/tag/freeze/staging is authorized |
@@ -146,18 +161,27 @@ qualify every workload. Use the [current profiles](TESTS.md#current-workstation-
 
 ## Resume here
 
-1. Preserve the corrected source/test hashes and complete local checkpoint above.
-   Keep the original failed review and historical scientific controls unchanged.
-2. Complete the UTF-8 test follow-up's hosted CI/governance through the applicable
-   authorized route. Earlier passing receipts, local calibration and queued jobs
-   do not establish a green exact-source matrix or installed-artifact acceptance.
-3. Continue from the locally passing B4 original reader below to the shared
-   literature catalog; retain the clean pre-reader SDK200 control unchanged.
-   Progress B3's remaining structural
-   transitions and independent acceptance alongside the B4–B6
-   journeys in the [current plan](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions).
-   The broad inventory and scientist/researcher gates remain required; B2 review
-   is still explicitly deferred and B8 publication remains paused.
+1. Preserve the complete shared saved-reader checkpoint, its exact source map,
+   original controls and failed/stopped attempts. Proceed to the molecule-to-target
+   activity-context adapter using the already prepared public cohort and existing
+   native readers. Qualify and commit its clean LIVE producer before capturing
+   the original for its next independent saved reader.
+2. Keep hosted CI/governance deferred to the agreed batched checkpoint, owned by
+   #148/#112. Verify that checkpoint's exact SHA through the receptor. Earlier
+   passing receipts or queued jobs cannot qualify a newer source or installed
+   artifact. No new remote run has been dispatched for this increment.
+3. Continue B4's molecule-target/context work and B5's remaining molecule,
+   clinical and disease profiles, alongside B3's remaining structural transitions
+   and B6 in the [current plan](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions).
+   Broad inventory and independent scientist/researcher/consumer gates remain
+   required. B2 review is explicitly deferred; B8 publication remains paused.
+
+Two native observations are prepared for the next increment: [order-dependent
+ligand flags](pending_bugs/ligand_investigation_flag_ordering.md) (#25/#23) and
+[zero/null clinical phase ordering](pending_bugs/clinical_phase_zero_ordering.md)
+(#81). Both have synthetic reproductions; public prevalence and journey impact
+are unmeasured. Their internal handoffs leave the current source unchanged and
+do not adopt a new scientific policy.
 
 ### Windows test-fixture follow-up — 2026-11-06
 
@@ -221,8 +245,8 @@ installed-artifact or independent human/scientific qualification.
 | B0/B1 | Preview and conservative activity corrections are in technically qualified earlier checkpoints, including accumulated `c5b8af1`; independent scientific/consumer acceptance remains separate |
 | B2 | Opt-in measurement correspondence @2 and copy-aware target scope @2 exist; original @1 defaults remain. The maintainer's [six-case scientific review](pending_proposals/measurement_correspondence_review_20261104.md) is explicitly deferred; no default adoption follows from more tests |
 | B3 | The accepted [bounded positive/uncertain MolSysMT gate](pending_proposals/structural_journey_acceptance_20261104.md#accepted-assembly-scope--2026-11-06) passes all 28 destination cases. Remaining structural transitions and independent scientific/researcher/workload acceptance stay open |
-| B4 | The [activity journey](pending_proposals/card_bioactivity_exploration.md) connects molecules, native groups, original records, assay/citation/support and complete publication context. Independent original saving and selected local receiving pass; continue the shared literature catalog and broader profiles, then independent human/scientific acceptance |
-| B5 | Continue from the local chemical checkpoint to independent acceptance and the remaining molecule, clinical and disease profiles, positive/uncertain public tasks and human/agent/saved parity |
+| B4 | The [activity journey](pending_proposals/card_bioactivity_exploration.md) connects molecules, native groups, original records, assay/citation/support and full publication context. Shared literature and independent saved reading pass the full local 9,466-case composition and copied receiving. Continue molecule-target/context and broader profiles, then independent human/scientific acceptance |
+| B5 | Continue from the local chemical checkpoint to independent acceptance and the remaining molecule, clinical and disease profiles, positive/uncertain public tasks and human/agent/saved parity. Review the reproduced [zero/null phase ordering handoff](pending_bugs/clinical_phase_zero_ordering.md) in that clinical increment |
 | B6 | Rich variant/isoform/tissue/comparative and association profiles remain required with exact supplied identity/axis/source context |
 | B7 | Scientist, uncoached researcher, agent, workload, private-pilot and actual-consumer acceptance remain open; passing tests alone cannot establish the wow experience |
 | B8 | Consolidation/publication stays paused until accepted scope, preceding gates and maintainer resumption; the release is not authorized by migration |

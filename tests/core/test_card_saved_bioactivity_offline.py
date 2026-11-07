@@ -1,4 +1,4 @@
-"""Original SDK200 live controls and independent saved bioactivity receiving."""
+"""Original SDK200 controls and current SDK202 saved bioactivity receiving."""
 
 import gzip
 import hashlib
@@ -277,7 +277,7 @@ def saved_session(original, tmp_path_factory):
     path = tmp_path_factory.mktemp("saved-bioactivity") / "session.json"
     receipt = root.save(path, **BUDGETS)
     physical = json.loads(path.read_text(encoding="utf-8"))
-    assert physical["format"] == "sabueso.card_exploration@18"
+    assert physical["format"] == "sabueso.card_exploration@20"
     assert 256 * 1024**2 < physical["logical_bytes"] <= BUDGETS["max_logical_bytes"]
     del physical
     # The shared header refuses the default workload before rebuilding the graph.
@@ -306,8 +306,8 @@ def read(path, **kwargs):
 
 def logical_bundle(path, *, bioactivity=True):
     bundle = json.loads(path.read_text(encoding="utf-8"))
-    if bundle["format"] == "sabueso.card_exploration@18":
-        from sabueso.core.card_exploration_shared_values_v3 import unpack
+    if bundle["format"] == "sabueso.card_exploration@20":
+        from sabueso.core.card_exploration_shared_values_v4 import unpack
 
         bundle, _ = unpack(
             bundle,
@@ -315,7 +315,7 @@ def logical_bundle(path, *, bioactivity=True):
             component_limit=BUDGETS["max_decoded_bytes"],
         )
     if bioactivity:
-        assert bundle["format"] == "sabueso.card_exploration@17"
+        assert bundle["format"] == "sabueso.card_exploration@19"
     return bundle
 
 
