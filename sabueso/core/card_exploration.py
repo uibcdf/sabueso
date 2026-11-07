@@ -28,6 +28,10 @@ _LABELS = {
     "entities": "Entity records",
 }
 _TOPICS = {
+    "literature": (
+        "Publications and stored source links",
+        "Original citations, ECO support, curated statements, mentions and source activity records, with complete publication context.",
+    ),
     "bioactivities": (
         "Measured molecules and assay context",
         "Retained molecule, measurement-group and activity records with units, original assay/citation context and source support.",
@@ -155,6 +159,8 @@ class CardItem:
 
     @property
     def kind(self):
+        if self._view._record_panel == "literature":
+            return self._entry.value["kind"]
         if self._view._record_panel == "bioactivities":
             return self._entry.value["kind"]
         if self._view._record_panel == "chemical_classification":
@@ -267,6 +273,10 @@ class CardItem:
 
     @property
     def support(self):
+        if self._view._record_panel == "literature":
+            from .card_literature_exploration import support
+
+            return support(self)
         if self._view._record_panel == "bioactivities":
             from .card_bioactivity_exploration import support
 
@@ -320,6 +330,22 @@ class CardItem:
 
     @property
     def cells(self):
+        if self._view._record_panel == "literature":
+            from .card_literature_selection_v1 import COLUMNS
+
+            result = self._view._selection._scientific
+            support = tuple(self.support)
+            return MappingProxyType(
+                {
+                    column: Cell(
+                        deepcopy(result.value(self._entry.key, column)),
+                        state=result.cell_state(self._entry.key, column),
+                        reason=result.cell_reason(self._entry.key, column),
+                        _support=support,
+                    )
+                    for column in COLUMNS
+                }
+            )
         if self._view._record_panel == "bioactivities":
             from .card_bioactivity_selection_v1 import COLUMNS
             from .quantities import to_quantity
@@ -579,6 +605,10 @@ class CardItem:
             if self._view._question_catalog:
                 return self._view._explorer._answer(self._entry.key, {}, self._view)
             return self._view._explorer._topic(self._entry.key, self._view)
+        if self._view._record_panel == "literature":
+            from .card_literature_exploration import open_item
+
+            return open_item(self)
         if self._view._record_panel == "bioactivities":
             if self._view._explorer.mode == "saved":
                 from .card_exploration_bioactivity import open_item
@@ -654,6 +684,10 @@ class CardItem:
         return result
 
     def _live_explain(self):
+        if self._view._record_panel == "literature":
+            from .card_literature_exploration import explain
+
+            return explain(self)
         if self._view._record_panel == "bioactivities":
             from .card_bioactivity_exploration import explain
 
@@ -1016,6 +1050,7 @@ class CardView:
                 filter=self.schema["columns"], sort=self.schema["columns"]
             )
             capabilities["scientific_adapter"] = self._record_panel in (
+                "literature",
                 "bioactivities",
                 "chemical_classification",
                 "coverage",
@@ -1033,6 +1068,11 @@ class CardView:
             )
         if self._machine_ref is not None:
             capabilities["root_machine_selection_ref"] = self._machine_ref
+        if self._record_panel == "literature":
+            capabilities["sort"] = list(self.schema["columns"])
+            capabilities["save_reason"] = (
+                "Independent original literature saving is not implemented yet."
+            )
         if self._explorer.mode == "saved":
             from .card_exploration_storage import operation_key
 
@@ -1049,6 +1089,15 @@ class CardView:
     def schema(self):
         if self._saved_state is not None:
             return deepcopy(self._saved_state["schema"])
+        if self._record_panel == "literature":
+            from .card_literature_selection_v1 import COLUMNS
+
+            return {
+                "kind": "literature_exploration",
+                "grain": "one exact native publication identity on the focal captured Card",
+                "columns": list(COLUMNS),
+                "presentations": ["summary", "table", "detail"],
+            }
         if self._record_panel == "bioactivities":
             from .card_bioactivity_selection_v1 import COLUMNS
 
@@ -1300,6 +1349,10 @@ class CardView:
     def filter(self, column, *, equals, skip_digestion=False):
         """Select exact declared cells without changing the scientific result."""
         self._check_column(column)
+        if self._record_panel == "literature":
+            from .card_literature_exploration import display_filter
+
+            return display_filter(self, column, equals)
         if self._record_panel == "bioactivities":
             if self._explorer.mode == "saved":
                 from .card_exploration_bioactivity import display_filter
@@ -1409,6 +1462,10 @@ class CardView:
             raise ArgumentError("descending must be True or False.")
         if unit is not None and (not isinstance(unit, str) or not unit.strip()):
             raise ArgumentError("unit requires a nonempty unit name or None.")
+        if self._record_panel == "literature":
+            from .card_literature_exploration import display_sort
+
+            return display_sort(self, column, descending, unit)
         if self._record_panel == "bioactivities":
             if self._explorer.mode == "saved":
                 from .card_exploration_bioactivity import display_sort
@@ -1583,6 +1640,7 @@ class CardExplorer:
             "cross_card_navigation": True,
             "save": True,
         }
+        capabilities["scientific_topics"].append("literature")
 
         if self.mode == "saved":
             views = [
@@ -1649,9 +1707,16 @@ class CardExplorer:
     @property
     def _topics(self):
         keys = (
-            (*self._nature_topics, "sources", "coverage", "quality", "content")
+            (
+                *self._nature_topics,
+                "literature",
+                "sources",
+                "coverage",
+                "quality",
+                "content",
+            )
             if self._nature_topics
-            else ("sources", "coverage", "content")
+            else ("literature", "sources", "coverage", "content")
         )
         return {
             key: (
@@ -1679,9 +1744,9 @@ class CardExplorer:
 
     @property
     def _questions(self):
-        from .card_exploration_profiles import QUESTIONS
+        from .card_exploration_profiles import COMMON_QUESTIONS, QUESTIONS
 
-        return QUESTIONS.get(self.profile, {})
+        return {**QUESTIONS.get(self.profile, {}), **COMMON_QUESTIONS}
 
     def _location(self, *keys):
         return self.access._card_location(segments=[_key(key) for key in keys])
@@ -1775,6 +1840,10 @@ class CardExplorer:
             raise ArgumentError("Scientific options require a mapping or None.")
         from .card_exploration_profiles import PANELS
 
+        if topic == "literature":
+            from .card_literature_exploration import view
+
+            return view(self, origin, options)
         if topic == "bioactivities":
             from .card_bioactivity_exploration import view
 
@@ -1997,7 +2066,8 @@ class CardExplorer:
             view = self._topic(self._questions[question]["topic"], origin, options)
             effective = (
                 deepcopy(view.context["options"])
-                if question in ("assembly_generation", "measured_molecules")
+                if question
+                in ("assembly_generation", "measured_molecules", "publications")
                 else {}
             )
         else:

@@ -3,7 +3,8 @@
 This page owns long-term objectives, their dependency structure and the integration
 of foundational and pilot-driven work. [CHECKPOINT](CHECKPOINT.md) owns current
 source/qualification; the [continuation plan](CONTINUATION_PLAN_20261104.md#execution-order)
-owns the active B0–B8 schedule. New contributors start with [ONBOARDING](ONBOARDING.md).
+owns the active B0–B8 schedule within the accepted long-term stages below.
+New contributors start with [ONBOARDING](ONBOARDING.md).
 The [workstation handoff](WORKSTATION_HANDOFF_20261106.md) preserves the transfer
 procedure and source-machine facts; the
 [destination action plan](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions)
@@ -22,6 +23,30 @@ A pilot blocker has priority, but its smallest useful slice uses the general
 knowledge model. A pilot chooses order, not the boundary of Sabueso's scientific
 purpose. Each release reviews both routes. A bounded delivered feature is not proof
 of complete source coverage, live health, consumer usefulness or human acceptance.
+
+## Accepted long-term execution stages
+
+The maintainer has resumed the complete six-stage program. The stages retain
+their dependencies and separate acceptance requirements; the current 0.15.0
+scope stays fixed. Record an updated developer-guide checkpoint after every
+increment, including its actual source, selected checks, unresolved limits and
+next action. Dates, test totals and commit counts do not measure completion of
+these stages.
+
+| Stage | Accepted objective and completion boundary |
+| --- | --- |
+| 1 — Complete the rich 0.15.0 profiles | Finish B3–B6's required structural, activity/literature, molecule/clinical/disease and variant/isoform/comparative/association journeys, including human/agent/source continuity and independent original saved reading. Use the broad inventory for the complete scope. B2 scientific/default review remains explicitly deferred; current defaults and historical meanings stay fixed |
+| 2 — Accept and deliver 0.15.0 | Obtain B7's recorded scientific, uncoached researcher, agent, workload and actual-consumer acceptance. Resume B8 only with maintainer authorization, then qualify the exact candidate source and installed artifacts through the existing release route |
+| 3 — Expand semantic and temporal knowledge access | Broaden KnowledgeQuery, packets and source-supported temporal questions with explicit unknowns, original support and real consumer receiving; preserve shared MOLI contracts and distinguish stored history from unqueried historical sources |
+| 4 — Expand real interoperability | Complete useful MOLI and MolSysSuite exchanges with their actual consumers, retaining identity, units, support and the ownership of Knowledge, Evidence, geometry and provenance |
+| 5 — Expand scientific coverage and source guarantees | Address scientific/source gaps, source utilization and health, bibliography, acquisition observation and rights through their owning contracts and registry; preserve explicit licensing, unsupported scope and adoption decisions |
+| 6 — Deliver separately scoped exploration products | Develop Deck navigation, interactive viewing/document export, presentation video and a CLI when useful and needed. These remain future projects with their own scope and acceptance; they add no automatic 0.15.0 requirements |
+
+The [continuation plan](CONTINUATION_PLAN_20261104.md#accepted-six-stage-program)
+connects these stages to incremental execution. An unavailable reviewer or queued
+remote runner does not block independent authorized work; its dependent acceptance
+or delivery remains open. An integrity fix needed by a current journey belongs
+in that journey even when its broader direction appears in a later stage.
 
 ## Latest release: 0.14.0 (#134)
 
@@ -42,15 +67,23 @@ scientific/human/agent journeys.
 
 ### Immediate resumption sequence
 
-Destination restoration, environment/import checks and the
-[corrected complete local checkpoint](evidence/destination_checkpoint_20261106.json)
-are complete at the `7ec81ce` baseline: 9,276 distinct cases pass. The subsequent
-[Windows test-helper correction](evidence/windows_chemical_fixture_recovery_20261106.json)
-has targeted receiving and needs its own exact-source hosted result. Follow the
+Destination restoration and the earlier
+[complete local checkpoint](evidence/destination_checkpoint_20261106.json) retain
+their `7ec81ce` baseline scope. The committed `276160a` checkpoint has the selected
+[1,109-case original bioactivity receiving](evidence/bioactivity_saved_checkpoint_20261106.json).
+The next [shared literature increment](pending_proposals/card_literature_exploration.md)
+is being integrated through four new LIVE modules and their dispatch wiring;
+it is not yet qualified. Its clean live producer and genuine original capture
+must precede a new independent saved reader.
+
+Continue the rich profiles through the
 [current destination actions](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions)
-to finish corrected-source hosted qualification before expanding rich panels. The original
-[chemical checkpoint](evidence/chemical_saved_checkpoint_20261106.json) keeps its
-source-machine scope; broader scientific/human acceptance remains open. The
+with applicable local checks and the maintainer's authorized CI batching.
+Retain deferred source/scope/owner/recovery records and qualify the exact final
+candidate remotely; an older green SHA never qualifies new work. Earlier
+[Windows](evidence/windows_chemical_fixture_recovery_20261106.json) and
+[chemical](evidence/chemical_saved_checkpoint_20261106.json) receipts keep their
+own source and outcome scopes. Broader scientific/human acceptance remains open. The
 [workstation profile](TESTS.md#current-workstation-profile) owns measured execution
 budgets. Do not restart completed correctness work or claim its deferred
 scientific review.

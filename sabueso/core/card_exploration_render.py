@@ -696,7 +696,9 @@ def _parts(view):
     if view.request is not None:
         request = view.request
         question_label = (
-            "Which molecules have retained measurements, and what supports each result?"
+            "Which publications and original source links are retained?"
+            if view._record_panel == "literature"
+            else "Which molecules have retained measurements, and what supports each result?"
             if view._record_panel == "bioactivities"
             else "Which chemical classes and source-stated roles are retained?"
             if view._record_panel == "chemical_classification"
@@ -767,6 +769,14 @@ def _parts(view):
         from .card_chemical_presentation_v1 import opening as chemical_opening
 
         opening.extend(chemical_opening(view, preview))
+    if view._record_panel == "literature":
+        from .card_literature_presentation_v1 import opening as literature_opening
+
+        opening.extend(literature_opening(view, preview))
+    if view.context.get("adapter") == "literature_context_links@1":
+        from .card_literature_presentation_v1 import context_opening
+
+        opening.extend(context_opening(view, preview))
     if view._record_panel == "bioactivities":
         from .card_bioactivity_presentation_v2 import opening as bioactivity_opening
 
@@ -980,6 +990,11 @@ def _parts(view):
                     f"{preview(value['availability'])} · {len(value['candidates'])} captured destinations",
                 )
             )
+            continue
+        if view._record_panel == "literature":
+            from .card_literature_presentation_v1 import display_row
+
+            rows.append(display_row(item, index, preview))
             continue
         if view._record_panel == "bioactivities":
             from .card_bioactivity_presentation_v1 import display_row
@@ -1242,6 +1257,10 @@ def _parts(view):
 
 
 def _headers(view):
+    if view._record_panel == "literature":
+        from .card_literature_presentation_v1 import HEADERS
+
+        return list(HEADERS)
     if view._record_panel == "bioactivities":
         from .card_bioactivity_presentation_v1 import HEADERS
 

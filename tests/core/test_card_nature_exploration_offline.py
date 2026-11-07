@@ -409,8 +409,11 @@ def test_profiles_advertise_only_their_own_routes_and_missing_identity_is_explic
     nature, topics, questions
 ):
     explorer = Card(meta={"entity_type": nature}).explore()
-    assert set(explorer.capabilities["scientific_topics"]) == topics | {"coverage"}
-    assert set(explorer.capabilities["question_keys"]) == questions
+    assert set(explorer.capabilities["scientific_topics"]) == topics | {
+        "coverage",
+        "literature",
+    }
+    assert set(explorer.capabilities["question_keys"]) == questions | {"publications"}
     missing = explorer.view("coverage")
     assert missing.outcome["status"] == "missing_prerequisite" and not missing.items()
     assert missing.coverage["classification"] == "not_evaluated"

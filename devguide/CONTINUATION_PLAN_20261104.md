@@ -60,6 +60,36 @@ require a new maintainer decision. Published artifacts and original rules/reader
 remain immutable. Candidate selection, freezing, staging and release publication
 remain paused until the earlier acceptance gates are met and resumption is agreed.
 
+## Accepted six-stage program
+
+The active goal covers the complete
+[long-term program](ROADMAP.md#accepted-long-term-execution-stages). This plan's
+B0–B8 blocks provide the detailed execution and acceptance dependencies for its
+first two stages:
+
+1. Complete the rich 0.15.0 B3–B6 profile inventory, including coherent human,
+   agent, source and independent original saved journeys.
+2. Complete B7's combined scientific/researcher/agent/workload/consumer acceptance,
+   then perform B8 only after maintainer authorization and exact-source,
+   installed-artifact and existing release-route qualification.
+3. Expand KnowledgeQuery, packets and source-supported temporal access under
+   their shared contracts, with actual consumer receiving.
+4. Expand real MOLI and MolSysSuite interoperability, preserving component
+   ownership, identity, units, support and explicit unresolved consumer limits.
+5. Expand scientific coverage, source utilization/health, bibliography,
+   acquisition observation and rights through owning scientific/source contracts.
+6. Develop separately scoped Deck navigation, viewer/document export, video and
+   a CLI when needed. These future products are not added to the 0.15.0 gate.
+
+Advance independent authorized work when a human review or remote runner is
+unavailable; retain its dependent acceptance as open. B2 default review stays
+explicitly deferred, and no stage grants release authority ahead of B7/B8 gates.
+At every increment, update CHECKPOINT and the affected contract/inventory with
+the actual source, implementation state, selected check outcomes, limits and
+next action. Update this plan or its ROADMAP stage when that state changes.
+Preserve original failures and controls; do not substitute a progress percentage,
+forecast date or older green result for acceptance evidence.
+
 ## Required wow experience in 0.15.0
 
 The researcher's intended experience is: **"I understand what we know about this
@@ -290,7 +320,10 @@ receipt and transfer manifest remain unchanged historical records.
 | 6 — Accept B7 across the delivered slices (#148/#112) | Obtain scientist, uncoached researcher, agent, representative workload and actual-consumer results throughout the work, then review the combined protein/molecule/disease experience | Recorded task outcomes, interpretation/navigation failures and fixes; source/software/human/consumer acceptance remain distinct |
 
 Order 1 and complete local receiving are done; order 2 still needs corrected-source
-hosted qualification. They do not reopen source-qualified B1/B2 engineering.
+hosted qualification within its recorded scope. This queue does not block
+independent rich-panel implementation: use applicable local checks, authorized
+CI batching and an explicit deferred source/scope/owner/recovery record, then
+qualify the exact final candidate. Do not reopen source-qualified B1/B2 engineering.
 The six-case B2 scientific/default review stays explicitly
 deferred and maintainer-owned. B4 can expose exact original records and current
 policies while that review is pending; it cannot claim acceptance of new grouping
@@ -327,8 +360,10 @@ its own scope; queued remote runners do not justify substituting an older green 
 Small local commits carry `[skip ci]` at the maintainer's request, with applicable
 local gates and an explicit recovery checkpoint for deferred remote receiving.
 
-After this saved-reader checkpoint, the next bounded B4 implementation is a
-shared publication catalog over the existing `Card.literature()` and
+The committed `276160a` baseline retains that selected 1,109-case checkpoint.
+The current bounded B4 increment is the
+[shared publication catalog](pending_proposals/card_literature_exploration.md)
+over the existing `Card.literature()` and
 `Card.explain_literature()` readers. Preserve distinct citations, ECO support,
 mentions, curated assertions and measurements, with publication → original
 relationship/SourceAssertion/locator → return navigation. Public TcTIM and HsTIM
@@ -337,7 +372,9 @@ failed controls provide the finite cohort. #148 owns human/agent/saved continuit
 #108 owns bibliography and source lineage. Acquire no articles or metadata for
 this slice and invent no document SourceAssertion. Fix and capture a clean live
 producer before implementing its next independent original reader; keep @1–@18
-fixed and scientific/researcher acceptance separate.
+fixed and scientific/researcher acceptance separate. Four new LIVE modules and
+their existing dispatch wiring are being integrated; selected qualification is
+pending. Their implementation does not inherit the earlier bioactivity result.
 
 The maintainer has selected the
 [bounded positive/uncertain MolSysMT integration](pending_proposals/structural_journey_acceptance_20261104.md#accepted-assembly-scope--2026-11-06)
@@ -345,9 +382,11 @@ as a B3/pre-0.15.0 gate. This resolves the release-scope decision, and all 28
 destination cases subsequently pass with MolSysMT available. Remaining B3
 transitions and scientific/researcher acceptance remain separate.
 
-Finish the corrected source's hosted checkpoint; postpone another codec
-experiment, unrestricted source expansion or a new framework unless a delivered
-journey demonstrates its need. Documentation CI is a useful later #112 improvement;
+Continue authorized profile increments while retaining corrected-source remote
+follow-up and the final candidate's exact-source CI/governance obligations.
+Postpone another codec experiment, unrestricted source expansion or a new
+framework unless a delivered journey demonstrates its need.
+Documentation CI is a useful later #112 improvement;
 the local warning-fatal docs gate remains in force. Existing #182 identity/glossary
 scope enters the first affected path, without reopening qualified #180/#181 work.
 
@@ -499,10 +538,13 @@ Report additional actionable findings at their owning component.
 Protect private material and keep shared contracts in MOLI. Do not turn every
 checklist item into a separate issue when a coherent owning issue already exists.
 
-Finish coherent blocks with selected checks and reviewable commits. Previously
+Record a developer-guide checkpoint after every increment, including failed or
+incomplete attempts, before beginning the next increment. Finish coherent blocks
+with selected checks and reviewable commits. Previously
 authorized intermediate main pushes may use the repository's tested-code batching
 policy; record any deferred SHA/scope/owner/recovery route. Complete each code
-checkpoint with its applicable exact-source CI/governance. Packaging, dependency,
+block's final validation with its applicable exact-source CI/governance; batched
+intermediate work remains explicitly scoped until that receiving. Packaging, dependency,
 migration and integration gates retain their immediate requirements. Update public
 receipts only after checking actual evidence; an older green run does not qualify
 new bytes. Review and intentionally restart any paused automation before allowing
@@ -549,7 +591,10 @@ limits or drop content to obtain a passing measurement.
 
 ## Planning estimate — 2026-11-05
 
-At the maintainer's request, the current engineering estimate is **60–65% of the
+This dated estimate is retained as planning history; use CHECKPOINT and the
+completion ledger for current delivery and acceptance states.
+
+At the maintainer's request, the engineering estimate at that time was **60–65% of the
 complete agreed 0.15.0 scope implemented/progressed**, with **35–40% remaining**.
 This is an approximate judgment across the blocks, not a measured completion
 score, elapsed-time forecast or release admission criterion. Confidence is
@@ -571,8 +616,12 @@ scope changes; retain concrete delivery/acceptance states in the inventory below
 
 ## Completion ledger and release boundary
 
-After each block, update this plan's starting state, CHECKPOINT, the broad panel
-inventory, owning issues and relevant risks/decisions in the same coherent change.
+After every increment, update CHECKPOINT and any affected feature contract or
+broad panel inventory in the same coherent change. Record actual source/input
+identity, selected gate results and resource limits, remaining acceptance and the
+next action. Update this plan's starting state, owning issue handoff and relevant
+risks/decisions when the increment changes them. Keep incomplete work and failed
+receipts explicit; the next increment must not assume they passed.
 Keep one status per deliverable: pending, implemented, locally checked,
 source-qualified, scientist/researcher accepted, installed-qualified or released;
 record separate statuses where those dimensions differ. Do not add overlapping
@@ -605,15 +654,23 @@ milestones, or when a concrete dependency makes one necessary.
 
 ## Immediate next work session
 
-1. Preserve the corrected complete local checkpoint and qualify its exact source
-   remotely through [the current action plan](#destination-review-and-next-actions).
-   Completed correction, migration and local receiving are not a new queue.
+1. Preserve committed checkpoint `276160a` and its selected 1,109-case original
+   bioactivity receiving. Follow [the current action plan](#destination-review-and-next-actions)
+   with applicable local gates and authorized CI batching; retain remote recovery
+   and exact-final-candidate obligations. Completed migration and correctness
+   work do not re-enter the implementation queue.
 2. Preserve
    genuine #167/#191 controls and their earlier membership; do not reimplement
    completed persistence/filter work or substitute smaller historical controls.
-3. Continue remaining B3 routes after its passing 28-case finite MolSysMT gate,
-   and start the coherent B4/B5 journeys, then B6.
+3. Complete the in-progress shared literature LIVE increment, qualify its clean
+   producer and capture its original before implementing the independent reader.
+   Continue remaining B3 routes after its passing 28-case finite MolSysMT gate,
+   and the complete B4/B5 journeys, then B6.
    Use the broad inventory as the completion checklist and obtain human/scientific/
    agent/workload feedback throughout. B2 review remains explicitly deferred.
 4. Obtain actual combined B7 and consumer acceptance before any decision to resume
    B8. This plan does not authorize a release, schema freeze or staging.
+5. Continue the accepted semantic/temporal, interoperability, scientific/source
+   and separately scoped product stages through the
+   [six-stage program](#accepted-six-stage-program), with a developer-guide
+   checkpoint after each increment and explicit dependency/acceptance limits.

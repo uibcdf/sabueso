@@ -92,6 +92,47 @@ and one outer copied consumer. Its scope is this composed selection; standalone
 historical efficiency controls, exact-final-source hosted and installed-artifact
 receiving, and independent scientific/researcher acceptance remain open.
 
+Shared LIVE literature exploration uses
+`test_card_literature_exploration_offline.py`: exact publication identity across
+Card natures, complete native catalog/explanation parity, the full 459-link
+publication context, original SourceAssertions and both structural-support legs,
+missing support, separate source/query states, typed false/zero/null, unchanged
+measurement quantities, shared detached requests, bounded pages and typed
+locations, selection, escaped presentation and explicit saving refusal. Saving
+needs a genuine clean-producer LIVE capture before an independent reader is
+implemented; original formats and frozen scientific kernels remain fixed.
+
+The native literature selection in `b4-literature-native-1/` records **60 passed**
+in 18.00 s (19.12 s supervised), with four intentional `EnrichmentFailedWarning`
+records and zero swap. It includes the ten new native summary-value controls,
+existing literature/explanation/located/packet cases and two original SDK200
+reader controls. False and numeric zero retain their original types in the
+current native summary; empty fallback and field priority remain covered.
+This native result does not qualify the new LIVE adapter.
+
+Both installed workflows copy/select the new LIVE module and
+`test_literature_summary_values_offline.py` once. The new isolated outer node,
+`test_declared_live_literature_runs_with_only_required_public_fixtures`, copies
+only those modules and eight required public responses plus `temp_data/NOTICE.md`
+outside the checkout. Its child expects 45 cases (35 LIVE plus ten native),
+with receptor integrity/count checks, explicit UTF-8 and a 600 s timeout. Run
+that outer node separately under the current one-CPU/native-thread, 2 GiB RSS,
+600 s, 16 GiB reserve, zero-swap and 4 GiB scratch profile. Child cases repeat
+the selected module scope and add no distinct cases to the outer count.
+Owning LIVE receiving passes 35 cases in 17.32 s (18.37 s supervised), with
+133,193,728 bytes peak owned RSS and zero warnings/swap. The copied outer passes
+in 19.18 s (20.17 s supervised), with 189,198,336 bytes peak RSS and zero swap;
+its complete child receptor reports the same 45 cases without extra coverage.
+
+The [current composed receipt](evidence/literature_live_checkpoint_20261107.json)
+records **1,202 distinct passed**: 976 affected parallel cases, 198 disjoint
+historical cases, 29 older saved-bioactivity cases and one copied outer, with two
+explicit original-predicate overlaps removed. The parallel phase retains four
+intentional source-failure warnings; the other phases report none. Formatter-only
+changes preserve identical ASTs, and the 976-case final-source gate passes again.
+This is selected local receiving, not a full repository run, installed-artifact
+qualification or independent scientist/researcher acceptance (#148/#108/#112).
+
 Structural display continuity uses the retained-filter, native-model, API-fragment
 and range-alias navigation modules. Check text/HTML limitations after chained
 filter/table/sort/summary and focused detail, positive and zero selections, inert
@@ -475,6 +516,7 @@ these technical checks.
 | Changed behavior | Select these test files / gates |
 | --- | --- |
 | Chemical classification live profile | `test_card_chemical_exploration_offline.py`, native classification, human/nature/access/navigation/selection, saved historical, argument/quantity and copied installed scope gates. Preserve genuine SDK192 canonical native bytes and original retained menus, source-stated identity/whole-field support, direct/inherited/unknown assignments, typed false/null versus zero, duplicate positions, source/open/back parity, cache isolation, scope after filtering/projection, explicit bounded deferral, original @15/shared @16 saving, exact requests and preserved older sessions. Run `test_card_saved_chemical_offline.py` and its isolated original SDK193 capsule gate before declaring this panel complete (#148/#112) |
+| Shared LIVE literature and native summary values | `test_card_literature_exploration_offline.py`, `test_literature_summary_values_offline.py`, native literature/explanation/located/packet and source-review tests, affected human/agent/nature/context/argument/quantity and historical-reader gates, plus the isolated outer copied consumer. Preserve exact native publication identities, complete 459-link context, separate query coverage and source-stated roles, original support/locators/alternatives and typed false/zero/null. Receive both copied modules once in each installed workflow; saving stays unavailable pending genuine LIVE capture and independent reading (#148/#108/#112) |
 | Original bioactivity saved reading | `test_card_saved_bioactivity_offline.py` defines 29 cases over the genuine SDK200 projection: nine original wires, three grains, finite exact requests, quantity and source-state distinctions, full publication context, support/back closure, fresh inert reading, resealed tampering and repeat saving. Run live bioactivity, affected human/agent/quantity/argument/history/transport cases and the copied installed consumer. Keep semantic @17/shared @18 separate from frozen older bindings. The complete 709,616,078-byte logical case uses explicit 1 GiB logical and 128 MiB transport limits. Its local 29-case module and outer copied consumer pass under the separate 4 GiB/1,800 s serial and 4 GiB/2,400 s outer-tree profiles above; hosted and installed-artifact qualification remain open (#148/#112) |
 | Original nonpolymer assembly exploration | `test_card_nonpolymer_assembly_offline.py` and `test_card_saved_nonpolymer_assembly_offline.py`, native @5/key @2 and all affected assembly/context/human/agent/saved/argument/quantity/transport cases; genuine pre-reader public capsule, default/@4 request identity, shared one-capture evaluation, complete original rows/text with explicit saved notice, partial/duplicate/conflicting native context, mixed original structure questions, closed @7 and explanation-request @2 receiving, inert outside-checkout read, atomic deferral, resealing/coherent reidentification, deliberate budgets and stable repeat saving. Preserve original native @1–@5 and saved @1–@6 bytes; unskipped exact-source CI/governance qualifies the completed block (#173/#148/#112) |
 | Structure and declared-component navigation | `test_card_component_navigation_offline.py`, `test_card_saved_component_navigation_offline.py`, `test_original_structure_navigation_offline.py`, and affected structure/context/human/agent/assembly/saved/transport/argument/quantity/copied-receiving gates. Check exact native/literal/qualifier parents, shared explicit @5 result with unchanged direct @4 defaults, repeated positions and uncertain records, original source/open/back, exact clicked-link binding, coherent sibling substitutions, fresh inert reading, repeat saving and `not_saved` for unvisited destinations. Genuine clean-producer live navigation and saved @6/@7 fixtures predate the new verifier; never regenerate them. Format @8 freezes new navigation over unchanged @2 scientific wire. Run original large saved controls separately under the resource guard; qualify unskipped exact-source CI/governance (#173/#148/#112) |

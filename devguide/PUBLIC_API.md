@@ -55,6 +55,24 @@ receiving passes and is recorded in the checkpoint. Broader activity/literature 
 scientific/researcher acceptance remain pending. See
 [the scoped correction](pending_bugs/bioactivity_interpretation.md).
 
+Development: the [shared publication catalog](pending_proposals/card_literature_exploration.md)
+uses `card.explore().view("literature")` or `answer("publications")` across Card
+natures. `options={"publication_ref": "pubmed:20889239"}` selects an exact retained
+publication; `card.access().select("literature", fields=[...], where={...})`
+provides the matching compact typed access. Publication opening preserves the
+complete original explanation, including all 459 links of the public control.
+Related navigation exposes the original relationships, source statements and
+locators with a return path. Native publication states remain separate from
+source/query coverage; absent links do not establish article absence.
+
+The current native literature summary preserves scalar `False`, `0` and `0.0`
+without changing the original assertions. The historical SDK200 predicates retain
+their original meaning. The live shared catalog passes its owning 35-case local
+gate; broader historical and copied receiving retain their own checkpoint scope.
+Saving this new literature profile is not yet available: a clean live control
+must precede the independently versioned original saved reader. Existing saved
+formats remain fixed.
+
 Development opt-in `measurement_rule="measurement_identity@2"` is shared by
 `bioactivities`, `explain_measurement`, `explain_bioactivity`, `ligands`,
 `explain_ligand`, `compare_ligands` and applicable tables. Default/original @1

@@ -5,6 +5,43 @@ Current working-state checkpoint: **2026-11-06**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Active increment and next action
+
+The maintainer resumed implementation of the six-stage roadmap after the pause.
+The preceding committed, locally validated checkpoint is **`276160a` / SDK201**:
+activity saved reading with 1,109 selected distinct passing cases, original SDK200
+controls preserved and remote CI deferred with `[skip ci]`. Those results do not
+qualify subsequent working-tree changes.
+
+The current increment is the [shared literature catalog](pending_proposals/card_literature_exploration.md).
+Live access/selection, readable publication/source/locator navigation and its
+public positive/uncertain regression cohort now pass the selected
+[1,202-case local checkpoint](evidence/literature_live_checkpoint_20261107.json).
+This includes the full older saved-bioactivity module and five separate historical
+modules. The eight-worker cohort passes 976 cases with four intentional
+source-failure warnings; the history and copied gates report no warnings. All
+owned process trees report zero swap. The copied consumer receives 45 overlapping
+child cases outside the checkout; they are not extra distinct coverage.
+
+The native summary correction preserves scalar `False`, `0` and `0.0`, and the
+public walkthrough executes in 4.02 s at 93,642,752 bytes peak owned RSS. Earlier
+discovery assertions were updated for the delivered shared topic/question while
+retaining no-acquisition and unavailable-selection controls. Initial failures and
+formatter-only AST-equivalent changes retain their own receipts.
+
+Next: commit the checked live producer with `[skip ci]`, verify its editable
+runtime/distribution/generated version outside the checkout, and capture a genuine
+clean original before implementing the independent literature saved reader.
+Saving this new profile is explicitly unavailable; formats @1–@18 remain fixed.
+The source hashes and actual gate scope are in the accompanying receipt; it does
+not claim exact-current-source remote, installed-artifact or human acceptance.
+
+Every increment updates this current-state section, its owning feature contract,
+the applicable API/test guidance and evidence receipt in the same change. Keep
+implemented behavior, locally verified behavior, remote/artifact qualification
+and independent human acceptance distinct. The integrated B0–B8 dependencies
+remain in the continuation plan; longer-term stages remain in the roadmap.
+
 Destination restoration and complete local offline baseline receiving are complete. The
 [destination review](evidence/destination_review_20261106.json) records the new
 workstation, reproduced CI failures and parallel calibration; the subsequent
@@ -30,7 +67,7 @@ not the original transfer checklist.
 | Saved reading checkpoint | Chemical semantic @15 and sharing @16 are committed with 705 selected local cases plus independent whole-session receiving; exact-final-source hosted, artifact, scientist and researcher acceptance remain separate |
 | Current selected activity checkpoint | Independent activity semantic @17 and sharing @18 pass **1,109 distinct selected local cases**; the [receipt](evidence/bioactivity_saved_checkpoint_20261106.json) preserves the genuine SDK200 live control, complete saved workload, exact node accounting and deferred remote/artifact/human acceptance |
 | Machine migration | All 10,654 declared payload files were restored and independently hash-verified, including 37 protected originals. Both ZIPs and auxiliary staging were removed at the maintainer's request. Retained manifests/receipts remain local; the active released receptor checkout is now `../pytest-receptor-1.2.0` |
-| Hosted receiving | For `7ec81ce`, governance, Ruff, all four Linux source lanes and all four installed public-Ackredit lanes pass. The first captured Windows source lane fails four tests from one implicit-encoding helper defect; macOS jobs remain queued. The follow-up does not relabel this source as qualified. Original `0e4d7d4` and earlier failed runs retain their own receipts |
+| Hosted receiving | Latest read-only metadata observation, 2026-11-07 03:27 UTC: corrected `896eaf8` run `42311030582` has 13 successful jobs and four queued macOS jobs; overall conclusion remains pending. This observation starts no CI and does not supply missing full logs or qualify newer code. The earlier `7ec81ce` Windows encoding failure and its original receipts remain preserved |
 | Release target | **0.15.0**, the full agreed exploration design and validated human experience; [consolidation](pending_proposals/release_consolidation_0150.md) remains paused. No release/tag/freeze/staging is authorized |
 
 ## Latest implementation and qualification

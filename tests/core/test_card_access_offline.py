@@ -97,7 +97,7 @@ def test_complete_literal_reconstruction(nature):
         else ["chemical_classification"]
         if nature == "small_molecule"
         else []
-    )
+    ) + ["literature"]
 
 
 def test_capture_once_isolation_and_defensive_public_values(monkeypatch):
@@ -310,11 +310,13 @@ def test_no_source_acquisition_scientific_views_or_repeated_serialization(monkey
     monkeypatch.setattr(socket, "getaddrinfo", forbidden)
     monkeypatch.setattr(Card, "structures", forbidden)
     monkeypatch.setattr(Card, "knowledge_state", forbidden)
+    monkeypatch.setattr(Card, "literature", forbidden)
+    monkeypatch.setattr(Card, "explain_literature", forbidden)
     card = _card({"x": 1})
     access = card.access()
     monkeypatch.setattr(Card, "to_dict", forbidden)
     assert _reconstruct(access, _location(access, "synthetic")) == {"x": 1}
-    assert access.catalog().count == 1
+    assert access.catalog().count == 2
 
 
 def test_bad_schema_and_unqualified_quantity_are_refused():

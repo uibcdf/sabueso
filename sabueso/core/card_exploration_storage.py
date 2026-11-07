@@ -444,6 +444,18 @@ def _objects_for(access, records):
 
 def _prepare(root):
     _require(
+        not any(
+            view._record_panel == "literature"
+            or (
+                isinstance(view._context_override, dict)
+                and view._context_override.get("adapter")
+                == "literature_context_links@1"
+            )
+            for view in required_views(root)
+        ),
+        "Literature saving requires an independent original historical verifier; it is not available in this live adapter.",
+    )
+    _require(
         admitted_view(root),
         "Saving derived structures/coverage or their originating trail requires a historical verifier not yet implemented. Save a supported literal/field view or inspect capabilities.",
     )
@@ -1647,6 +1659,15 @@ def saved_topic(explorer, topic, origin, options):
         from .card_exploration_bioactivity import saved_topic as bioactivity_saved_topic
 
         return bioactivity_saved_topic(explorer, origin, options)
+    if topic == "literature":
+        from .card_literature_access import options_for_literature
+
+        options_for_literature(options)
+        return not_saved(
+            explorer,
+            "Literature was not retained with an independent original verifier.",
+            origin,
+        )
     if topic in ("content", "sources", "quality") or (
         topic == "coverage" and not explorer._nature_topics
     ):
@@ -1723,6 +1744,15 @@ def saved_topic(explorer, topic, origin, options):
 
 
 def saved_answer(explorer, question, options, origin):
+    if question == "publications":
+        from .card_literature_access import options_for_literature
+
+        options_for_literature(options)
+        return not_saved(
+            explorer,
+            "This literature question was not retained with an independent original verifier.",
+            origin,
+        )
     if question == "measured_molecules" and explorer.profile == "protein":
         from .card_bioactivity_history_v1 import options_for_bioactivities
 

@@ -88,6 +88,29 @@ Its saved reading can revisit those exact retained panels; earlier bundles repor
 unretained panel variants as `not_saved`. Derived model coverage and site/instance
 overlap integration remain separate from these source views.
 
+### Publication links, original support and scoped unknowns
+
+```bash
+python examples/user_journeys/publication_context.py --fixtures temp_data
+```
+
+This offline development walkthrough uses the shared `literature` topic and
+`publications` question. It selects TcTIM's exact PMID 20889239, opens all 459
+retained relationship links and projects the same member through compact agent
+access. Counts describe source activity records, not independent experiments.
+HsTIM's PMID 40832834 context follows original SourceAssertions, relationships
+and located structure mentions, preserving both support legs for 2JK2 and three
+unlinked 7QON occurrences. Bounded previews leave complete native data readable;
+`back()` returns to each originating selection.
+
+An exact reference with no stored link returns `not_on_card`; a separate empty
+Europe PMC annotation response coexists with retained publications. Neither
+establishes absence from an article or the literature. Network connections are
+forbidden, and exploration acquires no articles or new metadata. Publication
+profile saving is explicitly unavailable pending a genuine clean original
+capture and independent saved reader. Scientific review, researcher acceptance
+and released-package qualification remain separate gates.
+
 ## Clinical bibliography
 
 ```bash

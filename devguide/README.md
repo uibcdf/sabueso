@@ -19,7 +19,7 @@ anything: the remote repository does not contain the whole local state.
 | What is published, what is local, and what is next? | [CHECKPOINT](CHECKPOINT.md) |
 | In what order do we work? | [Current destination actions](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions) and [integrated B0–B8 plan](CONTINUATION_PLAN_20261104.md#execution-order) |
 | What must the complete Card experience deliver? | [Broad exploration inventory](pending_proposals/card_exploration_completion_0150.md) and [observable wow criteria](CONTINUATION_PLAN_20261104.md#required-wow-experience-in-0150) |
-| What are the long-term goals and dependencies? | [ROADMAP](ROADMAP.md) |
+| What are the long-term goals and dependencies? | [Accepted six-stage program](ROADMAP.md#accepted-long-term-execution-stages) and [its execution](CONTINUATION_PLAN_20261104.md#accepted-six-stage-program) |
 | What decisions explain the design? | [DECISIONS](DECISIONS.md), the owning issue and its feature analysis; use the [onboarding history map](ONBOARDING.md#how-the-project-reached-this-point) rather than reading the full log sequentially |
 | How do I change and verify something? | [Root instructions](../AGENTS.md), [API conventions](API_CONVENTIONS.md), [TESTS](TESTS.md) |
 | How do I resume on another machine without losing work? | [Handoff](WORKSTATION_HANDOFF_20261106.md), its manifest and the current checkpoint |
@@ -32,30 +32,35 @@ acceptance. Completing one adapter or passing technical tests does not meet that
 release gate. Candidate selection, schema freezing, staging and publication remain
 paused; this documentation update does not authorize them.
 
-The chemical saved-reading block now has a committed, locally validated
-[checkpoint](evidence/chemical_saved_checkpoint_20261106.json). Destination
-restoration, environment/import checks and complete local offline receiving are
-complete. The [corrected destination checkpoint](evidence/destination_checkpoint_20261106.json)
-records the `7ec81ce` baseline's 9,276 distinct passed cases and B3's 28-case
-finite MolSysMT gate. Its later Windows
-[test-fixture UTF-8 correction](evidence/windows_chemical_fixture_recovery_20261106.json)
-has scoped local receiving; exact follow-up hosted qualification remains open. The
-[destination review](evidence/destination_review_20261106.json)
-and [current action plan](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions)
-preserve the original failures and current follow-up. Corrected-source hosted
-qualification and broader acceptance remain separate. Scientific measurement
-review is maintainer-owned and explicitly deferred; remaining structural/rich profiles and
-combined researcher/consumer acceptance remain open. Exact current state belongs
+The maintainer has resumed the entire [six-stage program](ROADMAP.md#accepted-long-term-execution-stages).
+Complete the rich 0.15.0 profiles, obtain B7 acceptance and authorized B8 delivery,
+then expand semantic/temporal access, real interoperability, scientific/source
+coverage and separately scoped exploration products. The future products do not
+enlarge 0.15.0. Independent authorized work continues while a reviewer or remote
+runner is unavailable; dependent acceptance and exact-candidate qualification
+remain open. B2 scientific/default review remains explicitly deferred.
+
+Destination restoration and earlier corrected-source receipts retain their
+[recorded scope](WORKSTATION_HANDOFF_20261106.md). Exact current state belongs
 to [CHECKPOINT](CHECKPOINT.md); execution budgets belong to the
-[current workstation profile](TESTS.md#current-workstation-profile). Historical
-green receipts do not qualify a changed working tree.
+[current workstation profile](TESTS.md#current-workstation-profile). The
+[current action plan](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions)
+uses applicable local checks and authorized CI batching. Historical green
+receipts do not qualify a changed working tree or later candidate artifacts.
 
 The [live protein activity journey](pending_proposals/card_bioactivity_exploration.md)
 connects molecules, native groups, original activity records and exact retained
 assay/citation/publication support. Its separately versioned original saved reader
-passes its selected 1,109-case local checkpoint after a clean SDK200 live capture;
+passes its selected 1,109-case local checkpoint, committed at `276160a`, after a clean SDK200 live capture;
 the [saved receipt](evidence/bioactivity_saved_checkpoint_20261106.json) owns the
 scope and limits. The broader B4 and human/scientific acceptance remain open.
+
+The [shared literature catalog](pending_proposals/card_literature_exploration.md)
+is the current B4 LIVE increment: four new modules and their dispatch wiring
+across Card natures pass the selected
+[1,202-case local checkpoint](evidence/literature_live_checkpoint_20261107.json).
+Commit the clean live producer, then capture its genuine original
+before implementing independent saved reading. Older formats stay fixed.
 
 ## Design
 
@@ -66,6 +71,7 @@ scope and limits. The broader B4 and human/scientific acceptance remain open.
 | [SCIENTIFIC_POTENTIAL](SCIENTIFIC_POTENTIAL.md), [FUTURE_EXPANSIONS](FUTURE_EXPANSIONS.md) | Long-term directions; they are not automatic release commitments |
 | [Human exploration plan](pending_proposals/card_human_exploration_api.md) and [nature-specific detailed design](pending_proposals/card_exploration_detailed_design.md) | Accepted interaction design; original staged sequences are read through the current completion inventory |
 | [Agent access contract](pending_proposals/card_agent_access_v1_contract.md) | Compact structured access with full scientific support and explicit budgets |
+| [Shared publication exploration](pending_proposals/card_literature_exploration.md) | Current B4 literature increment, original support/navigation and the clean-capture boundary before saved reading |
 | [Global audit](GLOBAL_AUDIT_20261104.md) | Dated engineering/scientific findings, limitations and acceptance evidence requirements |
 | [Continuation plan](CONTINUATION_PLAN_20261104.md) | Current B0–B8 order and required human/scientific/workload gates |
 | [RISKS_AND_OPEN_QUESTIONS](RISKS_AND_OPEN_QUESTIONS.md) | Outstanding risks and decisions to revisit |
@@ -112,6 +118,9 @@ scope and limits. The broader B4 and human/scientific acceptance remain open.
 ## Keeping the guide true
 
 A change that makes a line false updates the affected guide in the same commit.
+After every implementation increment, update CHECKPOINT with its actual source,
+changes, selected gate outcomes, unresolved limits and next action before
+continuing. Keep unqualified work explicit and preserve earlier receipts.
 Keep current state in CHECKPOINT, scheduling in the continuation plan, breadth in
 the completion inventory and long-term objectives in ROADMAP. Update API/schema/
 field/test/source contracts with their behavior; do not append the same chronology

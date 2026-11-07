@@ -1,0 +1,890 @@
+{
+  "schema": "sabueso.literature-live-checkpoint@1",
+  "recorded_at_utc": "2026-11-07T03:29:07.607302+00:00",
+  "owners": [
+    "#148",
+    "#108",
+    "#112"
+  ],
+  "source_parent": "276160a61f007db89883ede925ee4f805787de5e",
+  "runtime_label_at_tests": "0.14.0+201.g276160a; working changes bound by source hashes, not a clean producer claim",
+  "scope": "Composed affected local checkpoint, not a complete repository run or installed-artifact qualification",
+  "distinct_passed": 1202,
+  "executed_primary_cases": 1204,
+  "overlap_nodeids": [
+    "tests/core/test_card_saved_bioactivity_offline.py::test_frozen_predicates_match_all_nine_original_wires_without_current_engines",
+    "tests/core/test_card_saved_bioactivity_offline.py::test_frozen_publication_keeps_the_original_459_link_context"
+  ],
+  "selection_sha256": "0ee6499dcbd76a27f1e558491277666261094abd91eac58f2866cb98900ec2fa",
+  "source_proof_sha256": "a4ed2a93a41c7d8b40589600d9dc9486752133e083c7e5d6a02e86392b1b4018",
+  "verified_source_files": 1107,
+  "source_sha256": {
+    ".github/workflows/ci.yml": "d94285d8f1fcb4e73d9ec9bb360d47b5ce37ad95bbbd582c30cf0999845e8266",
+    ".github/workflows/test_staged_conda_package.yaml": "449b7b5ff5e51a80aef1b15ae767006039486a5817667168a4a3e2d14dc9ce4c",
+    "sabueso/core/_bioactivity_history_v1/literature.py": "fe378d3312a50bc9ee9ad4c290efe7fa5f6a378636678ef0fc1f4e976e9d5f88",
+    "sabueso/core/_bioactivity_history_v1/literature_explanation.py": "089cd0afd0044ad75bcecdf4b2f0f257aab460dd30e72437a9a59258f8855a74",
+    "sabueso/core/card_access.py": "29a33cb80d05385450d7d02506b7c1e2c27f8050b7b9634b0f03e1aacd7cda9f",
+    "sabueso/core/card_context_navigation.py": "cd3b663eda7cdba0505b1cc3acee7dda440553e20cbc0aa2e8b8d5b415b33c8f",
+    "sabueso/core/card_exploration.py": "8d8468ec6fcd1cda778dfb25025e3651701482d337e96750e7b0b564e274e380",
+    "sabueso/core/card_exploration_profiles.py": "2078e4e43ca9a7e0443b501bc32ea308592c8ffe0097d649c570be0717a9c874",
+    "sabueso/core/card_exploration_render.py": "ff5741517e1bb1c93b7253ae24238a4e9c23ef183dfa99e41f1a32cb551893a5",
+    "sabueso/core/card_exploration_storage.py": "58d3f0de24580c23e1603345efaaa13a2637dd92f66d703fdda131d748729d44",
+    "sabueso/core/card_literature_access.py": "189745a6f10bc355fed133996de5a6567c24210b5685036fd85df3410604dfa3",
+    "sabueso/core/card_literature_exploration.py": "af63af1fbe7468ecfa29cc55a0f16e0b8f4f838c9533a692959cc534bce2bd90",
+    "sabueso/core/card_literature_presentation_v1.py": "61a1f7e32066b04bf54b5f6b1b13270ac396316017a9b365cfcbcab0faccb07d",
+    "sabueso/core/card_literature_selection_v1.py": "5e97c092ddb6229fb8527a0d86731841e7146a65d0236d24b7bc5f31d046f6c5",
+    "sabueso/core/literature.py": "b8d3f4ed8f0fa55ebee72ff09052bbd6d1b6cc1def6de6364ab695172e550203",
+    "sabueso/core/literature_explanation.py": "82474369f058cb3d72fb9fca03386c214e936c1a472e847fa05bb6fdd99c9ef4",
+    "sabueso/core/literature_extraction.py": "9ae9f56627b13439ea572124bf4c96a0ba0f6995565805f11deeb34e1a44c5ab",
+    "sabueso/tools/literature.py": "aea134775fdcb69dcd72aecf9dd46db93ac9b748c1f51bd95a52687567150669",
+    "tests/core/test_card_access_offline.py": "b5b6d06a4ebfab737877f56c42df2efa393be7f1a0961fec06f9c133fec648b5",
+    "tests/core/test_card_exploration_offline.py": "9fff2b5c42209dfb598503802a9db086e9dd9ca9609bf614641891f266b0cdb3",
+    "tests/core/test_card_literature_exploration_offline.py": "36d97aae233fe4150162fc48ed37ff6333ff8d0cbc59ae0d17cb1830758445ff",
+    "tests/core/test_card_nature_exploration_offline.py": "dfb47896f4b679ca6c1b94756ab680a07ee4ba334a1d3981d0bf5aa6e6c6bf95",
+    "tests/core/test_card_protein_exploration_offline.py": "684803cd530a4fa0aafcf1994e603a03e88bac52f606768966055c8fc13bfe28",
+    "tests/core/test_literature_explanation_offline.py": "daf44e3b15d76dc57459daddf692e8a9f8e2e6dccae4f5b286220a873d438ea8",
+    "tests/core/test_literature_intake_offline.py": "7b1d16d1df9851ae9f0343ecc6afeb6b423c8ea4c12498e09519ff70d61e06cd",
+    "tests/core/test_literature_offline.py": "489d4390f69a969b302941bba720a05aed2ab5679dcfea5619cb7729f4982ddd",
+    "tests/core/test_literature_packets_offline.py": "29402d2aa4c74e1f5ea4f8537f985ea0f0b0b5d021ab8a94f03c51ed82c3c87e",
+    "tests/core/test_literature_source_review_journey_offline.py": "f537b1e25ae6849d19e1516f0fcaf47b8f9ce7b7929b2132fec8f23052b67afe",
+    "tests/core/test_literature_summary_values_offline.py": "fee05b5866bf9327b49e92a945e43f016ae5ffc4e719f47493f4fd5228efe1c3",
+    "tests/core/test_located_literature_offline.py": "e5847ff5408be8e0e123a2a222d0fac12d45030f3acd77500be8f45e5511b3f1",
+    "tests/core/test_rule_literature_extraction_offline.py": "25890efd31a8daacb39cb22be227dc35827bf2eea372b4c64f01c6504bc6dd51",
+    "tests/tools/test_installed_receiving_scope_offline.py": "dc93e9cb845676bf68752c853e1185f209648f04e279d270490cf685635f4ef0"
+  },
+  "formatting_equivalence": {
+    "owner": "#148/#108/#112",
+    "purpose": "Pinned formatter receiving; behavior and original controls unchanged",
+    "changed_source_files": [
+      "sabueso/core/card_literature_access.py",
+      "sabueso/core/card_literature_selection_v1.py",
+      "sabueso/core/literature.py",
+      "tests/core/test_literature_summary_values_offline.py"
+    ],
+    "files": {
+      "sabueso/core/card_literature_access.py": {
+        "before_sha256": "64a7b6300b0c5a3171a9b93b993295b18bc22d42f88931879807242141f6d23c",
+        "after_sha256": "189745a6f10bc355fed133996de5a6567c24210b5685036fd85df3410604dfa3",
+        "ast_identical": true
+      },
+      "sabueso/core/card_literature_selection_v1.py": {
+        "before_sha256": "7d0aa7b47f09fab5aa277003537819950ccc0f86a95baf65c2a733e47a83ee07",
+        "after_sha256": "5e97c092ddb6229fb8527a0d86731841e7146a65d0236d24b7bc5f31d046f6c5",
+        "ast_identical": true
+      },
+      "sabueso/core/literature.py": {
+        "before_sha256": "1d827faf8f8477b2429325827062c01a8ac31fcd3065781f4e69efed3fd24cbc",
+        "after_sha256": "b8d3f4ed8f0fa55ebee72ff09052bbd6d1b6cc1def6de6364ab695172e550203",
+        "ast_identical": true
+      },
+      "tests/core/test_literature_summary_values_offline.py": {
+        "before_sha256": "cccf2fe718203220d80d54d370f2b1344f8b6d43b56220fc666cdce40d5058b6",
+        "after_sha256": "fee05b5866bf9327b49e92a945e43f016ae5ffc4e719f47493f4fd5228efe1c3",
+        "ast_identical": true
+      }
+    },
+    "source_before": "b4-literature-tested-source-1.json",
+    "source_after": "b4-literature-tested-source-2.json",
+    "claim_limit": "AST equivalence is recorded separately from executed byte-source gates; new live/native-summary cases receive the formatted bytes again."
+  },
+  "phases": [
+    {
+      "name": "b4-literature-affected-3",
+      "counts": {
+        "collected": 976,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 976,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 976,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 4,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "resources": {
+        "owner": "uibcdf/sabueso#148/#173/#112",
+        "review_trigger": "complete checkpoint partition / #112/#148/#191; whole-module envelope, not historical performance qualification",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1,2,3,4,5,6,7",
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-B",
+          "-m",
+          "pytest",
+          "tests/core/test_card_bioactivity_exploration_offline.py",
+          "tests/core/test_card_access_offline.py",
+          "tests/core/test_card_exploration_offline.py",
+          "tests/core/test_card_protein_exploration_offline.py",
+          "tests/core/test_card_nature_exploration_offline.py",
+          "tests/core/test_card_human_labels_offline.py",
+          "tests/core/test_card_context_navigation_offline.py",
+          "tests/core/test_argument_contracts_offline.py",
+          "tests/core/test_quantities_offline.py",
+          "tests/core/test_bioactivity_explanation_offline.py",
+          "tests/core/test_bioactivity_class_v4_offline.py",
+          "tests/core/test_measurement_correspondence_offline.py",
+          "tests/core/test_bioactivity_target_scope_offline.py",
+          "tests/core/test_measurement_identity_offline.py",
+          "tests/core/test_card_saved_exploration_offline.py",
+          "tests/core/test_card_saved_assembly_offline.py",
+          "tests/core/test_card_saved_nonpolymer_assembly_offline.py",
+          "tests/core/test_card_saved_chemical_offline.py",
+          "tests/core/test_card_agent_selection_offline.py",
+          "tests/core/test_card_retained_filter_offline.py",
+          "-n",
+          "8",
+          "--dist=load",
+          "-m",
+          "not online",
+          "--receptor=llm",
+          "--receptor-events=recovered_work/checkpoint_recovery_20261106/b4-literature-affected-3/events.jsonl",
+          "-p",
+          "checkpoint_scope",
+          "--basetemp=recovered_work/checkpoint_recovery_20261106/b4-literature-affected-3/pytest-scratch",
+          "-W",
+          "error:unclosed database:ResourceWarning",
+          "-W",
+          "error::pytest.PytestUnraisableExceptionWarning",
+          "tests/core/test_card_literature_exploration_offline.py",
+          "tests/core/test_literature_summary_values_offline.py",
+          "tests/core/test_literature_offline.py",
+          "tests/core/test_literature_explanation_offline.py",
+          "tests/core/test_literature_packets_offline.py",
+          "tests/core/test_located_literature_offline.py",
+          "tests/core/test_card_saved_bioactivity_offline.py::test_frozen_predicates_match_all_nine_original_wires_without_current_engines",
+          "tests/core/test_card_saved_bioactivity_offline.py::test_frozen_publication_keeps_the_original_459_link_context"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "exit_code": 0,
+        "elapsed_s": 117.4,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 2049433600,
+        "minimum_host_available_bytes": 49272803328,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 41640732,
+        "limits": {
+          "owned_rss_bytes": 8589934592,
+          "host_available_bytes": 17179869184,
+          "owned_swap_bytes": 0,
+          "cpu_affinity_count": 8,
+          "nice": 10,
+          "elapsed_s": 1800,
+          "owned_scratch_bytes": 4294967296
+        },
+        "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b4-literature-affected-3/cargo-target"
+      },
+      "events_sha256": "43679dafba5c709076907d017e91d1d27f4331390fb98afa8fdee2d6896c7195",
+      "scope_sha256": "46cf115097aa2ff7909ca18bdef993e5e2e6d744520114a91453663e024a40b2"
+    },
+    {
+      "name": "b4-literature-history-science-1",
+      "counts": {
+        "collected": 41,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 41,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 41,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "resources": {
+        "owner": "uibcdf/sabueso#148/#173/#112",
+        "review_trigger": "complete checkpoint partition / #112/#148/#191; whole-module envelope, not historical performance qualification",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "8",
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-B",
+          "-m",
+          "pytest",
+          "tests/core/test_card_saved_science_offline.py",
+          "-m",
+          "not online",
+          "--receptor=llm",
+          "--receptor-events=recovered_work/checkpoint_recovery_20261106/b4-literature-history-science-1/events.jsonl",
+          "-p",
+          "checkpoint_scope",
+          "--basetemp=recovered_work/checkpoint_recovery_20261106/b4-literature-history-science-1/pytest-scratch"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "exit_code": 0,
+        "elapsed_s": 153.82,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 403202048,
+        "minimum_host_available_bytes": 49416261632,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 38354569,
+        "limits": {
+          "owned_rss_bytes": 2147483648,
+          "host_available_bytes": 17179869184,
+          "owned_swap_bytes": 0,
+          "cpu_affinity_count": 1,
+          "nice": 10,
+          "elapsed_s": 600,
+          "owned_scratch_bytes": 4294967296
+        },
+        "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b4-literature-history-science-1/cargo-target"
+      },
+      "events_sha256": "a785efc4b6b3f586bc7e762007e9b6a91b5bb9b58b8dfbb7f37125e993ef3299",
+      "scope_sha256": "e322a137596af5a0789942e5d6db5b037b682e0bef509766450d77ab3aa72ad9"
+    },
+    {
+      "name": "b4-literature-history-sites-1",
+      "counts": {
+        "collected": 41,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 41,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 41,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "resources": {
+        "owner": "uibcdf/sabueso#148/#173/#112",
+        "review_trigger": "complete checkpoint partition / #112/#148/#191; whole-module envelope, not historical performance qualification",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "9",
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-B",
+          "-m",
+          "pytest",
+          "tests/core/test_card_saved_sites_offline.py",
+          "-m",
+          "not online",
+          "--receptor=llm",
+          "--receptor-events=recovered_work/checkpoint_recovery_20261106/b4-literature-history-sites-1/events.jsonl",
+          "-p",
+          "checkpoint_scope",
+          "--basetemp=recovered_work/checkpoint_recovery_20261106/b4-literature-history-sites-1/pytest-scratch"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "exit_code": 0,
+        "elapsed_s": 45.83,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 242774016,
+        "minimum_host_available_bytes": 49416261632,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 18785328,
+        "limits": {
+          "owned_rss_bytes": 2147483648,
+          "host_available_bytes": 17179869184,
+          "owned_swap_bytes": 0,
+          "cpu_affinity_count": 1,
+          "nice": 10,
+          "elapsed_s": 600,
+          "owned_scratch_bytes": 4294967296
+        },
+        "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b4-literature-history-sites-1/cargo-target"
+      },
+      "events_sha256": "46c7b75f2cba5b75ba692bdcae2df729d4acaee79fdb580e5d51174b5ad5ce5e",
+      "scope_sha256": "88bbec096f3be212b787fc38d60d922c59cc1fc22782ffb7c8b2cfc1954f2363"
+    },
+    {
+      "name": "b4-literature-history-quaternary-1",
+      "counts": {
+        "collected": 41,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 41,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 41,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "resources": {
+        "owner": "uibcdf/sabueso#148/#173/#112",
+        "review_trigger": "complete checkpoint partition / #112/#148/#191; whole-module envelope, not historical performance qualification",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "10",
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-B",
+          "-m",
+          "pytest",
+          "tests/core/test_card_saved_quaternary_offline.py",
+          "-m",
+          "not online",
+          "--receptor=llm",
+          "--receptor-events=recovered_work/checkpoint_recovery_20261106/b4-literature-history-quaternary-1/events.jsonl",
+          "-p",
+          "checkpoint_scope",
+          "--basetemp=recovered_work/checkpoint_recovery_20261106/b4-literature-history-quaternary-1/pytest-scratch"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "exit_code": 0,
+        "elapsed_s": 99.66,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 340516864,
+        "minimum_host_available_bytes": 49416261632,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 43324684,
+        "limits": {
+          "owned_rss_bytes": 2147483648,
+          "host_available_bytes": 17179869184,
+          "owned_swap_bytes": 0,
+          "cpu_affinity_count": 1,
+          "nice": 10,
+          "elapsed_s": 600,
+          "owned_scratch_bytes": 4294967296
+        },
+        "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b4-literature-history-quaternary-1/cargo-target"
+      },
+      "events_sha256": "33df77ba1e3429438f18f1ab8da8dc903426dc341833a91eccf30cd7eb5443c4",
+      "scope_sha256": "753b58622988259eb433957acb039a1bd35a434f6bfff0246316d081ead95a15"
+    },
+    {
+      "name": "b4-literature-history-components-1",
+      "counts": {
+        "collected": 19,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 19,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 19,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "resources": {
+        "owner": "uibcdf/sabueso#148/#173/#112",
+        "review_trigger": "complete checkpoint partition / #112/#148/#191; whole-module envelope, not historical performance qualification",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "11",
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-B",
+          "-m",
+          "pytest",
+          "tests/core/test_card_saved_component_navigation_offline.py",
+          "-m",
+          "not online",
+          "--receptor=llm",
+          "--receptor-events=recovered_work/checkpoint_recovery_20261106/b4-literature-history-components-1/events.jsonl",
+          "-p",
+          "checkpoint_scope",
+          "--basetemp=recovered_work/checkpoint_recovery_20261106/b4-literature-history-components-1/pytest-scratch"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "exit_code": 0,
+        "elapsed_s": 194.08,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 405344256,
+        "minimum_host_available_bytes": 49416261632,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 21954143,
+        "limits": {
+          "owned_rss_bytes": 2147483648,
+          "host_available_bytes": 17179869184,
+          "owned_swap_bytes": 0,
+          "cpu_affinity_count": 1,
+          "nice": 10,
+          "elapsed_s": 600,
+          "owned_scratch_bytes": 4294967296
+        },
+        "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b4-literature-history-components-1/cargo-target"
+      },
+      "events_sha256": "a0fd77003fec5f4c11eab4f3550b9e5c16c4ab28bc1ed65c44e18a0f144a6f04",
+      "scope_sha256": "dbdf2dcd3f6c064ef8e722d7ec9d4bcbbad5b28362d3e581cfdc32b916238a61"
+    },
+    {
+      "name": "b4-literature-history-shared-values-1",
+      "counts": {
+        "collected": 56,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 56,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 56,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "resources": {
+        "owner": "uibcdf/sabueso#148/#173/#112",
+        "review_trigger": "Historical saved chemical/science/shared compatibility on current worktree / #148/#112; complete explicit module selection, not full-suite or new B4 qualification",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "12",
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-B",
+          "-m",
+          "pytest",
+          "--receptor=llm",
+          "--receptor-events=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b4-literature-history-shared-values-1/events.jsonl",
+          "-p",
+          "checkpoint_scope",
+          "-W",
+          "error:unclosed database:ResourceWarning",
+          "-W",
+          "error::pytest.PytestUnraisableExceptionWarning",
+          "--basetemp=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b4-literature-history-shared-values-1/pytest-scratch",
+          "-m",
+          "not online",
+          "tests/core/test_exploration_shared_values_offline.py"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "exit_code": 0,
+        "elapsed_s": 13.34,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 150319104,
+        "minimum_host_available_bytes": 49427722240,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 715656,
+        "limits": {
+          "owned_rss_bytes": 2147483648,
+          "host_available_bytes": 17179869184,
+          "owned_swap_bytes": 0,
+          "cpu_affinity_count": 1,
+          "nice": 10,
+          "elapsed_s": 600,
+          "owned_scratch_bytes": 4294967296
+        },
+        "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b4-literature-history-shared-values-1/cargo-target"
+      },
+      "events_sha256": "82d1988444eddfc8c77a98075dc8df0446369003b41045d618e388593890818c",
+      "scope_sha256": "966b1e6783d5c6dc0036a57faba2afa692ea381ae3f8d6bcca45fe10e2700b94"
+    },
+    {
+      "name": "b4-literature-old-bio-saved-1",
+      "counts": {
+        "collected": 29,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 29,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 29,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "resources": {
+        "owner": "uibcdf/sabueso#148/#173/#112",
+        "review_trigger": "complete checkpoint partition / #112/#148/#191; whole-module envelope, not historical performance qualification",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "15",
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-B",
+          "-m",
+          "pytest",
+          "tests/core/test_card_saved_bioactivity_offline.py",
+          "-m",
+          "not online",
+          "--receptor=llm",
+          "--receptor-events=recovered_work/checkpoint_recovery_20261106/b4-literature-old-bio-saved-1/events.jsonl",
+          "-p",
+          "checkpoint_scope",
+          "--basetemp=recovered_work/checkpoint_recovery_20261106/b4-literature-old-bio-saved-1/pytest-scratch",
+          "-W",
+          "error:unclosed database:ResourceWarning",
+          "-W",
+          "error::pytest.PytestUnraisableExceptionWarning"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "exit_code": 0,
+        "elapsed_s": 801.83,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 2933329920,
+        "minimum_host_available_bytes": 49008066560,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 152045633,
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "owned_swap_bytes": 0,
+          "cpu_affinity_count": 1,
+          "nice": 10,
+          "elapsed_s": 1800,
+          "owned_scratch_bytes": 4294967296
+        },
+        "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b4-literature-old-bio-saved-1/cargo-target"
+      },
+      "events_sha256": "27bcb5eaab41643b231fe6ad977976f20d05a9dc6093d83d2cdff8fff28f434a",
+      "scope_sha256": "44b0043e31ffc7b9e7ac7dd5849b935a2387d14631f303acb4de90769affc9f9"
+    },
+    {
+      "name": "b4-literature-copied-1",
+      "counts": {
+        "collected": 1,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 1,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 1,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "resources": {
+        "owner": "uibcdf/sabueso#148/#173/#112",
+        "review_trigger": "complete checkpoint partition / #112/#148/#191; whole-module envelope, not historical performance qualification",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "14",
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-B",
+          "-m",
+          "pytest",
+          "tests/tools/test_installed_receiving_scope_offline.py::test_declared_live_literature_runs_with_only_required_public_fixtures",
+          "-m",
+          "not online",
+          "--receptor=llm",
+          "--receptor-events=recovered_work/checkpoint_recovery_20261106/b4-literature-copied-1/events.jsonl",
+          "-p",
+          "checkpoint_scope",
+          "--basetemp=recovered_work/checkpoint_recovery_20261106/b4-literature-copied-1/pytest-scratch"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "exit_code": 0,
+        "elapsed_s": 20.17,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 189198336,
+        "minimum_host_available_bytes": 50713522176,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 9016,
+        "limits": {
+          "owned_rss_bytes": 2147483648,
+          "host_available_bytes": 17179869184,
+          "owned_swap_bytes": 0,
+          "cpu_affinity_count": 1,
+          "nice": 10,
+          "elapsed_s": 600,
+          "owned_scratch_bytes": 4294967296
+        },
+        "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b4-literature-copied-1/cargo-target"
+      },
+      "events_sha256": "5fd5137b6511782388053397d9b10738f8f1531551d73a0487867d2c7b34777e",
+      "scope_sha256": "a03cbecd60d9055cefe60f769180f3882560ec5a3b3b263be8fec727e7fb02fe"
+    }
+  ],
+  "repeated_receiving": {
+    "owning_live35": "b4-literature-live-1",
+    "native60": "b4-literature-native-1",
+    "copied_child45": "Included by one passing outer case; no extra distinct cases",
+    "example": "b4-literature-example-1; script receiving, not extra pytest cases"
+  },
+  "warnings": "Four deliberate Europe PMC source-failure controls; retained, not suppressed",
+  "limits": [
+    "No new remote CI dispatched; intermediate commits carry [skip ci].",
+    "No new saved reader or admitted format in this LIVE slice; original @1-@18 remain fixed.",
+    "Clean LIVE producer and pre-reader capture follow commit and editable metadata verification.",
+    "Scientific/researcher/consumer and original workload acceptance remain separate."
+  ],
+  "static_validation": {
+    "summary_path": "recovered_work/checkpoint_recovery_20261106/b4-literature-static-2/summary.json",
+    "summary_sha256": "f2be32f000b83ce4010c52ea37f8f65dca6415c7f00770a4a3e3604587c83f30",
+    "reported_gates": {
+      "created_at_utc": "2026-11-07T03:22:18.446758+00:00",
+      "owner": "uibcdf/sabueso#148/#108/#112",
+      "scope": "pre-closeout editable static validation; no tracked edits by the static agent; later documentation updates require final checking",
+      "initial_receipts": {
+        "ruff-format": {
+          "exit_code": 1,
+          "elapsed_s": 0.1,
+          "log_sha256": "a65eb3e54027fcc28300be8947105e04c2cfb84841840a9853bb3474b1ecf560",
+          "receipt": "recovered_work/checkpoint_recovery_20261106/b4-literature-static-1/ruff-format.json"
+        },
+        "ruff-check": {
+          "exit_code": 0,
+          "elapsed_s": 0.1,
+          "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+          "receipt": "recovered_work/checkpoint_recovery_20261106/b4-literature-static-1/ruff-check.json"
+        },
+        "fixture-delivery": {
+          "exit_code": 0,
+          "elapsed_s": 0.37,
+          "log_sha256": "9ad96d946f6576fb6d3b1345692b114247c3d077abceacb41d9e581b36678025",
+          "receipt": "recovered_work/checkpoint_recovery_20261106/b4-literature-static-1/fixture-delivery.json"
+        },
+        "source-registry": {
+          "exit_code": 0,
+          "elapsed_s": 1.6,
+          "log_sha256": "b1e9864eba59e768c6cff53728ba3e9b1c4a42ca34a3fa53f8b1345c19224f5d",
+          "receipt": "recovered_work/checkpoint_recovery_20261106/b4-literature-static-1/source-registry.json"
+        },
+        "card-shape": {
+          "exit_code": 0,
+          "elapsed_s": 6.1,
+          "log_sha256": "a586fb32e30ce3bed964fcb5b6786391981cd887887ec9c24af6101e2ad47c3d",
+          "receipt": "recovered_work/checkpoint_recovery_20261106/b4-literature-static-1/card-shape.json"
+        },
+        "validate-schema": {
+          "exit_code": 0,
+          "elapsed_s": 0.57,
+          "log_sha256": "af91b092c8481bd46354a571078e5816312ed8a3c8847ae0a52d3dd63fb81e8f",
+          "receipt": "recovered_work/checkpoint_recovery_20261106/b4-literature-static-1/validate-schema.json"
+        },
+        "moli-governance": {
+          "exit_code": 0,
+          "elapsed_s": 0.06,
+          "log_sha256": "5a06edc554fa450ac8fdafc3b04ca285ecaf5c6d2bb754b0867ff1f2bdf5af9d",
+          "receipt": "recovered_work/checkpoint_recovery_20261106/b4-literature-static-1/moli-governance.json"
+        },
+        "dependency-preflight": {
+          "exit_code": 0,
+          "elapsed_s": 0.12,
+          "log_sha256": "bc03a5c1ea3bf7324583978cae57a75e4cf846668d4f621908d1e0a496021769",
+          "receipt": "recovered_work/checkpoint_recovery_20261106/b4-literature-static-1/dependency-preflight.json"
+        },
+        "ast-py311": {
+          "exit_code": 0,
+          "elapsed_s": 0.2,
+          "log_sha256": "5eef44c280d43b5531d44e21abaa153de4e14a057cf5fa2118542046878d913b",
+          "receipt": "recovered_work/checkpoint_recovery_20261106/b4-literature-static-1/ast-py311.json"
+        },
+        "workflow-yaml": {
+          "exit_code": 0,
+          "elapsed_s": 0.15,
+          "log_sha256": "415732f836924102a5113a5f1d61f66f322b5cca9b39f5bc5fa2f0420ba56066",
+          "receipt": "recovered_work/checkpoint_recovery_20261106/b4-literature-static-1/workflow-yaml.json"
+        },
+        "guide": {
+          "exit_code": 0,
+          "elapsed_s": 0.41,
+          "log_sha256": "76ea269bb7a188f35505b32b97793ebd36231592ce77df4414cbc6d997297fbd",
+          "receipt": "recovered_work/checkpoint_recovery_20261106/b4-literature-static-1/guide.json"
+        },
+        "sphinx": {
+          "exit_code": 1,
+          "elapsed_s": 0.08,
+          "log_sha256": "52f45fd1ae773a2c376caed362b69598722aede7fe0173da6e36b0063e80f42a",
+          "receipt": "recovered_work/checkpoint_recovery_20261106/b4-literature-static-1/sphinx.json"
+        },
+        "sphinx-gate": {
+          "exit_code": 0,
+          "elapsed_s": 28.31,
+          "log_sha256": "9e6279e6b8ce880df281cbc6a9f4c2e721ad3e91b55e36a61b79553b2125771b",
+          "receipt": "recovered_work/checkpoint_recovery_20261106/b4-literature-static-1/sphinx-gate.json"
+        },
+        "input-hashes-after": {
+          "exit_code": 1,
+          "elapsed_s": 0.21,
+          "log_sha256": "d2369209c0774a0cde2184d1191456e9e8e42ddce9477ea2e36fa16283edce1a",
+          "receipt": "recovered_work/checkpoint_recovery_20261106/b4-literature-static-1/input-hashes-after.json"
+        }
+      },
+      "refreshed_receipts": {
+        "input-hashes-before": {
+          "exit_code": 0,
+          "elapsed_s": 0.2,
+          "log_sha256": "1f1ebf29e49bd9fddc0de0739ac4cce6f5a73833d4e08fbaaf2bd43090960b83",
+          "receipt": "recovered_work/checkpoint_recovery_20261106/b4-literature-static-2/input-hashes-before.json"
+        },
+        "ruff-format": {
+          "exit_code": 0,
+          "elapsed_s": 0.1,
+          "log_sha256": "aeae85a8ecdbc277c157e3ede65286f01f95a4982c4c743b024aca01cb46ec09",
+          "receipt": "recovered_work/checkpoint_recovery_20261106/b4-literature-static-2/ruff-format.json"
+        },
+        "ruff-check": {
+          "exit_code": 0,
+          "elapsed_s": 0.1,
+          "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+          "receipt": "recovered_work/checkpoint_recovery_20261106/b4-literature-static-2/ruff-check.json"
+        },
+        "ast-py311": {
+          "exit_code": 0,
+          "elapsed_s": 0.22,
+          "log_sha256": "9cf5a9b38ee4b7c4da0f30c34f0bfc674de8662213f6583064f2c19c31e189fb",
+          "receipt": "recovered_work/checkpoint_recovery_20261106/b4-literature-static-2/ast-py311.json"
+        },
+        "input-hashes-after": {
+          "exit_code": 0,
+          "elapsed_s": 0.21,
+          "log_sha256": "082f9ccb816b455011c2839047c05afd4c48a8bb0c92e5daa055a6c53fc75b36",
+          "receipt": "recovered_work/checkpoint_recovery_20261106/b4-literature-static-2/input-hashes-after.json"
+        }
+      },
+      "initial_failure_dispositions": {
+        "ruff-format": "Root formatted the exact four named files and separately proved AST equivalence; refreshed root formatting/lint and AST pass.",
+        "sphinx": "The wrapper opened sphinx.log before the copied resource guard inspected that same basename; guard refused before launching Sphinx. Unique-name sphinx-gate/sphinx-bounded runs then passed.",
+        "input-hashes-after": "Observed exactly the four root-formatted files. The refreshed pass covers 1070 Python code/test/example files with no changes."
+      },
+      "card_shape_warning_scope": "Declared fixture truncations for STRING, Open Targets, ClinVar and Europe PMC, plus retained conflicting pubmed:18562316 natural-variant source statements; shape 0.3.14 matches.",
+      "ast_exact_inputs": "recovered_work/checkpoint_recovery_20261106/b4-literature-static-2/ast-inputs.json",
+      "yaml_exact_inputs": "recovered_work/checkpoint_recovery_20261106/b4-literature-static-1/yaml-inputs.json",
+      "guide_receipt": "recovered_work/checkpoint_recovery_20261106/b4-literature-static-1/guide-validation.json",
+      "sphinx_resources": {
+        "owner": "uibcdf/sabueso#148/#173/#112",
+        "review_trigger": "complete checkpoint partition / #112/#148/#191; whole-module envelope, not historical performance qualification",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "14",
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-B",
+          "-m",
+          "sphinx",
+          "-W",
+          "--keep-going",
+          "-b",
+          "html",
+          "docs",
+          "recovered_work/checkpoint_recovery_20261106/b4-literature-static-1/sphinx-html"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "exit_code": 0,
+        "elapsed_s": 28.22,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 281047040,
+        "minimum_host_available_bytes": 50843979776,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 41025463,
+        "limits": {
+          "owned_rss_bytes": 2147483648,
+          "host_available_bytes": 17179869184,
+          "owned_swap_bytes": 0,
+          "cpu_affinity_count": 1,
+          "nice": 10,
+          "elapsed_s": 600,
+          "owned_scratch_bytes": 4294967296
+        },
+        "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b4-literature-static-1/cargo-target"
+      },
+      "retention": "Retain useful receipts for checkpoint review. Sphinx HTML/caches are owned disposable preview output after maintainer review."
+    }
+  },
+  "public_example": {
+    "path": "examples/user_journeys/publication_context.py",
+    "sha256": "878a341404cdeff93c963024e541b218f3685d7e60721a79770ccdfa87c4e158",
+    "resources": {
+      "owner": "uibcdf/sabueso#148/#173/#112",
+      "review_trigger": "complete checkpoint partition / #112/#148/#191; whole-module envelope, not historical performance qualification",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "14",
+        "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-B",
+        "examples/user_journeys/publication_context.py"
+      ],
+      "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 4.02,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 93642752,
+      "minimum_host_available_bytes": 50198986752,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 19758,
+      "limits": {
+        "owned_rss_bytes": 2147483648,
+        "host_available_bytes": 17179869184,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 4294967296
+      },
+      "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b4-literature-example-1/cargo-target"
+    }
+  },
+  "native_integrity_fix": {
+    "owner": "#108",
+    "behavior": "Native short summaries retain False/int0/float0.0 with original types, priority and empty fallback; source assertions/Card data unchanged",
+    "regressions": 10,
+    "historical_kernels_and_original_controls": "Unchanged; full old bioactivity and original-predicate receiving pass"
+  },
+  "hosted_observation": {
+    "owner": "#112/#148",
+    "captured_at": "2026-11-07T03:27:17.796077+00:00",
+    "head_sha": "896eaf8147fee87c8333ff7c6404b48bd7560093",
+    "run_id": 42311030582,
+    "status": "queued",
+    "conclusion": null,
+    "capture_policy": "metadata",
+    "members": {
+      "run.json": "434890503ab8b3a786ce394e8eac92c6070ea64b6ecc13059862c03750f6279b",
+      "checks.json": "dd67d551f7f442197fc85608a2370a60fd4b2abe188beab3c6330d54de35d5b3",
+      "jobs.json": "ab82f5811201ada6b9c64fa55fc3778a01c925d2c7908dfb84e9dfc7872ec756",
+      "manifest.json": "77843c775982007cc8246e1a7f6a663666c611517170845cb9e4fbe830651fe6",
+      "artifacts.json": "dd64315d9ce02768de50a89942a66e66ebc49e4135694c3d33c58e479a237b44",
+      "workflow.json": "2695d216eaf6d431fb7cdd5446b889b48c960dbfa8bbe481f7b268ff68ff9879"
+    },
+    "claim_limit": "Read-only state observation of an existing old-source run. No dispatch/cancel, no full-log or new-source qualification."
+  },
+  "acceptance": {
+    "live_selected_local": "passed",
+    "original_literature_saved_reader": "not_implemented",
+    "clean_live_capture": "next_after_commit_and_editable_install",
+    "remote_current_source": "deferred; [skip ci] intermediate development",
+    "installed_artifact": "not_qualified_by_editable_copy_receiving",
+    "scientific_researcher_consumer": "pending",
+    "release": "0.15.0 consolidation remains subject to preceding acceptance and maintainer resumption"
+  }
+}

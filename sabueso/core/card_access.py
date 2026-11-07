@@ -403,6 +403,8 @@ class CardAccess:
             if self.profile == "small_molecule"
             else []
         )
+        if self.mode == "live":
+            scientific_topics.append("literature")
         retained = {
             selection._operation.removeprefix("select:")
             for selection in self._selections.values()
@@ -667,6 +669,10 @@ class CardAccess:
                     "description": "Complete stored Card content; scientific topics have separate descriptors.",
                 }
             }
+            if self.mode == "live":
+                from .card_literature_access import descriptor as literature_descriptor
+
+                data["literature"] = literature_descriptor()
             if self.profile == "small_molecule":
                 if self.mode == "saved":
                     from .card_chemical_history_v1 import (
@@ -858,11 +864,37 @@ class CardAccess:
             "assembly_generation",
             "chemical_classification",
             "bioactivities",
+            "literature",
         ):
             raise ArgumentError(
-                "Scientific selection supports structures, ligand_site_comparisons, quaternary_interpretation, assembly_generation, chemical_classification and bioactivities."
+                "Scientific selection supports structures, ligand_site_comparisons, quaternary_interpretation, assembly_generation, chemical_classification, bioactivities and literature."
             )
-        if topic == "bioactivities":
+        if topic == "literature":
+            from .card_literature_access import materialize, options_for_literature
+            from .card_literature_selection_v1 import (
+                active,
+                evaluate,
+                normalize,
+                projection,
+                selection_ref,
+            )
+
+            options, fields = options_for_literature(options), projection(fields)
+            query = normalize(where, item_refs, order_by)
+            if self.mode == "saved":
+                from .card_exploration_storage import missing_selection
+
+                return missing_selection(
+                    self, topic, options, fields, query if active(query) else None
+                )
+            if query["item_refs"] is not None and any(
+                ref not in self._scientific_items for ref in query["item_refs"]
+            ):
+                raise ArgumentError(
+                    "item_refs contains an item not retained in this access session."
+                )
+            result = materialize(self, options)
+        elif topic == "bioactivities":
             if self.mode == "saved":
                 from .card_exploration_bioactivity import saved_selection
 
@@ -1105,6 +1137,7 @@ class CardAccess:
                 "assembly_generation_exploration@2",
                 "chemical_classification_exploration@1",
                 "bioactivity_exploration@1",
+                "literature_exploration@1",
             ):
                 return selection._scientific.frame(self, selection, entry)
             from .card_structure_page import complete_frame
@@ -1149,6 +1182,10 @@ class CardAccess:
         return frame
 
     def _defer(self, item):
+        if item.get("adapter") == "literature_exploration@1":
+            from .card_literature_access import defer_frame
+
+            return defer_frame(item)
         if item.get("adapter") == "bioactivity_exploration@1":
             if self.mode == "saved":
                 from .card_bioactivity_history_v1 import defer_frame

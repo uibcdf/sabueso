@@ -76,6 +76,14 @@ def _question(label, topic, scope):
     return {"label": label, "topic": topic, "required_options": [], "scope": scope}
 
 
+COMMON_QUESTIONS = {
+    "publications": _question(
+        "Which publications and original source links are retained?",
+        "literature",
+        "Original citations, ECO support, curated statements, mentions and activity records; publication links are not project Evidence.",
+    )
+}
+
 QUESTIONS = {
     "protein": PROTEIN_QUESTIONS,
     "small_molecule": {
@@ -259,6 +267,7 @@ RECORD_COLUMNS = {
 
 def record_label(panel, row):
     if panel in (
+        "literature",
         "bioactivities",
         "chemical_classification",
         "ligand_site_comparisons",

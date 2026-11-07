@@ -24,6 +24,9 @@ development queue.
   (#148/#112/#108): live molecule/group/source-record navigation and exact
   publication context; original saved reading implemented, current receiving and
   broader acceptance recorded in its contract and checkpoint.
+- [Shared publication and source-link exploration](card_literature_exploration.md)
+  (#148/#108/#112): current live catalog/navigation increment; original capture,
+  independent saving and broader acceptance remain separate pending work.
 - [Original design and implementation review](design_implementation_review.md)
   (#112): dated foundation/implementation evidence, scientific gaps and
   consumer-owned acceptance. Its original post-0.13.0 order is historical;

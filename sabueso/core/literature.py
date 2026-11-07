@@ -42,8 +42,9 @@ def _summary(value: Any) -> Any:
             "value",
             "object_ref",
         ):
-            if value.get(key):
-                return value[key]
+            candidate = value.get(key)
+            if candidate or (type(candidate) in (bool, int, float) and candidate == 0):
+                return candidate
         return None
     return value
 

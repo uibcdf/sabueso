@@ -223,8 +223,9 @@ def test_protein_routes_do_not_leak_into_other_natures(nature):
     assert "function" not in explorer.capabilities["question_keys"]
     assert "region_coverage" not in explorer.capabilities["question_keys"]
     if nature not in ("small_molecule", "disease"):
-        assert explorer.capabilities["scientific_questions"] is False
-        assert explorer.questions().outcome["status"] == "unsupported"
+        assert explorer.capabilities["scientific_questions"] is True
+        assert explorer.capabilities["question_keys"] == ["publications"]
+        assert set(explorer.questions().native_payload) == {"publications"}
     assert explorer.view("function").outcome["status"] == "not_applicable"
     with pytest.raises(ArgumentError):
         explorer.answer("function")

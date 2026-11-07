@@ -152,16 +152,16 @@ def test_navigation_preserves_selection_and_hidden_item_identity():
 def test_only_delivered_topics_are_advertised_and_route_open_has_origin():
     explorer = _card().explore()
     topics = explorer.topics()
-    assert len(topics.items()) == 3
-    assert explorer.capabilities["scientific_topics"] == []
-    assert explorer.capabilities["scientific_questions"] is False
+    assert len(topics.items()) == 4
+    assert explorer.capabilities["scientific_topics"] == ["literature"]
+    assert explorer.capabilities["scientific_questions"] is True
     assert topics.items()[0].kind == "route"
     assert topics.items()[0].open().back() is topics
     assert explorer.view("sources").native_payload == []
     quality = explorer.view("coverage")
     assert quality.coverage["classification"] == "not_evaluated"
-    assert explorer.questions().outcome["status"] == "unsupported"
-    assert len(explorer.questions().items()) == 0
+    assert explorer.questions().outcome["status"] == "ok"
+    assert set(explorer.questions().native_payload) == {"publications"}
     with pytest.raises(ArgumentError):
         explorer.view("made-up")
 
@@ -400,7 +400,9 @@ def test_unhashable_topic_with_skipped_digestion_is_an_argument_error():
 
 
 def test_display_selection_cannot_relabel_an_unsupported_operation():
-    view = _card().explore().questions()
+    # Publications are now shared questions; protein function stays inapplicable
+    # to a generic Card and still exercises the explicit no-row refusal.
+    view = _card().explore().view("function")
     original = view.outcome
     with pytest.raises(ArgumentError, match="no retained rows"):
         view.filter("label", equals="anything")
