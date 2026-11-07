@@ -130,6 +130,11 @@ Its [735-case selected correction](evidence/molecule_activity_quantity_display_c
 preserves original science and JSON operands while making PyUnitWizard display
 requests serializable. Qualify the clean producer and positive original controls,
 then continue saved admission and complete original replay. B4/B5 remain open.
+The corrected clean `af5180b` / SDK211 producer now supplies
+[positive original controls](evidence/molecule_activity_quantity_original_20261107.json)
+with all observed view instances and parent identities, six quantity-form/grain
+routes and complete public source/publication inputs. Integrate all three original
+capsules into independent saved receiving next; this capture does not close B4/B5.
 
 Continue the rich profiles through the
 [current destination actions](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions)

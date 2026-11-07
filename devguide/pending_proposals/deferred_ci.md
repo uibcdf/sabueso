@@ -9,6 +9,19 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Corrected quantity-display original (2026-11-07, #148/#112)
+
+The [SDK211 original](../evidence/molecule_activity_quantity_original_20261107.json)
+captures clean `af5180b` after its 60-case repeated LIVE gate. This increment adds
+only immutable public control/provenance bytes and maintained documentation;
+runtime/test code and the SDK205/SDK208 originals stay fixed. Byte/graph audits
+cover every member, observed instance, typed quantity binding and parent/back
+identity. Record the exact published head and editable metadata under
+`recovered_work/checkpoint_recovery_20261106/b5-molecule-quantity-original-commit-1/`.
+The authorized intermediate `[skip ci]` route retains cumulative exact-final-head
+CI/governance recovery through gh-run-receptor under #148/#112. No saved-reader,
+new pytest or installed-artifact qualification is claimed by this data increment.
+
 ### Molecule quantity-display navigation (2026-11-07, #148/#112)
 
 The [735-case selected receipt](../evidence/molecule_activity_quantity_display_checkpoint_20261107.json)

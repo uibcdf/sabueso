@@ -103,6 +103,11 @@ operands keep their original types and units. The
 [owning update](https://github.com/uibcdf/sabueso/issues/148#issuecomment-6712960392)
 records the reproduced defect. Qualify the clean correction and preserve positive
 controls before finishing saved admission; no saved format is enabled here.
+The clean correction is now `af5180b` / SDK211; its
+[genuine positive original](evidence/molecule_activity_quantity_original_20261107.json)
+retains all 104 observed view instances, 96 named routes and six machine requests,
+including exact parent identities for equal view handles. Resume full saved
+admission and original replay over SDK205, SDK208 and SDK211 next.
 
 The [shared literature catalog](pending_proposals/card_literature_exploration.md)
 has its B4 LIVE producer committed: four new modules and their dispatch wiring

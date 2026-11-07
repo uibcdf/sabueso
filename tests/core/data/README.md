@@ -1,5 +1,37 @@
 # Historical exploration fixtures
 
+## Corrected quantity-display LIVE original (SDK211)
+
+`molecule_activity_quantity_live_sdk211.tar.gz` preserves genuine clean
+`af5180b1fd146e83e1a25eb88a5703e68c072229` / `0.14.0+211.gaf5180b` observations
+after the PyUnitWizard display-request correction. Six quantity-form/grain
+routes retain 96 named human views, all 104 actual view instances, full flags and
+overrides, exact parent/explorer-parent instance identities, complete access
+states and six typed machine requests/pages. Equal semantic view handles keep
+separate observed instances, including JSON integer and PyUnitWizard-normalized
+floating operands. All source/back/navigation and native crossing data remain
+complete; no scientific value or source identity is inferred from equal handles.
+
+All 516 members / 123,460,582 original member bytes are retained. The complete
+public 493-record target and 9/459-link bibliography remain intact. The input
+member is byte-identical to the SDK205 original. The included `NOTICE.md` retains
+source/date/licence declarations; source data keep their own terms and authored
+code follows the repository licence. No source acquisition, private/pilot data or
+new synthetic scientific assertion is included. Whole-capture persistent network/
+client counters record zero attempts.
+
+This observation follows private predicate/restoration and incomplete internal
+prototype work, and precedes full installed saved admission. It does not replace
+or regenerate the SDK205/SDK208 originals. Byte/graph verification is not a saved
+reader or researcher acceptance gate. The
+[receipt](../../../devguide/evidence/molecule_activity_quantity_original_20261107.json)
+records complete membership, typed quantity bindings and scope. Preserve these
+original bytes. Normalized USTAR metadata and gzip mtime=0 are fixture packaging.
+
+Original manifest SHA-256: `59d35b9a32726ec432c8e2f570977711188894fc385233bc4a48834facba6f30`.
+Compressed: 5304482 bytes; SHA-256 `b7aef835ed698e613e1dd74fc9e3e8085f00e221ff7fe4f17e106eb4641ee012`.
+Uncompressed tar: 123873280 bytes; SHA-256 `bc102cfe44cdefaee99b26b4a361f14e27543ec62a5165e26659ffb59e4e6b60`.
+
 ## Corrected multi-focal LIVE molecule activity supplement (SDK208)
 
 `molecule_activity_multifocal_live_sdk208.tar.gz` preserves the genuine clean

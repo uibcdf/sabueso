@@ -114,6 +114,14 @@ controller/worker, 1,157-source-hash and resource accounting. Two expected UniCh
 warnings remain visible; owned swap is zero. Its 60 copied children and six
 focused red/green cases overlap and add no distinct coverage. Earlier receipts
 retain their own code bindings; no new full offline or saved-reader gate is claimed.
+The [clean SDK211 positive original](evidence/molecule_activity_quantity_original_20261107.json)
+retains all 516 members, 104 observed view instances, 96 named human routes and six
+machine requests/pages. Byte/graph audits check acyclic parent and explorer-parent
+identities, all flags/back references, typed integer/float operands and 16
+explicitly bound quantity cells, with full 493-record and 9/459-link input scope.
+These capture/audit counts are not additional pytest cases. The clean producer
+passes all 60 LIVE cases again; those repeats add no distinct coverage. Full
+independent saved reading must receive SDK205, SDK208 and SDK211 together.
 The [clean SDK205 original receipt](evidence/molecule_activity_live_original_20261107.json)
 verifies 6,035 unchanged members across 29 scenarios, 1,337 named human views and
 288 actual machine requests with 311 complete pages before any independent

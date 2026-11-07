@@ -62,6 +62,13 @@ navigation serialization, preserving existing JSON requests and original science
 Qualify the corrected clean producer and positive original controls before
 finishing full saved admission. The report is
 [published under #148](https://github.com/uibcdf/sabueso/issues/148#issuecomment-6712960392).
+That clean correction is `af5180b` / SDK211. Its
+[genuine positive original](../evidence/molecule_activity_quantity_original_20261107.json)
+retains 516 byte-verified members, 96 named human views, all 104 actual instances
+with full flags/overrides/parent identities, six machine requests/pages and the
+complete 493-record/9/459-link scope. This follows the private foundations and
+internal prototype, before full installed saved admission; earlier capsules stay
+unchanged. Include all three originals in independent saved/UI/origin receiving.
 
 ## Independent private predicate checkpoint
 

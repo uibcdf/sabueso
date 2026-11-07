@@ -5,6 +5,35 @@ Current working-state checkpoint: **2026-11-07**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Genuine corrected quantity-display original — 2026-11-07
+
+The corrected clean **`af5180b` / SDK211** producer is committed and pushed with
+`[skip ci]`; all 60 LIVE cases pass again on its exact clean editable runtime,
+after the selected 735-case correction checkpoint. The
+[new original receipt](evidence/molecule_activity_quantity_original_20261107.json)
+byte-verifies **516 members / 123,460,582 member bytes**. Its
+[5,304,482-byte public capsule](../tests/core/data/README.md#corrected-quantity-display-live-original-sdk211)
+retains 96 named views, all 104 observed instances and six machine requests/pages
+across JSON/PyUnitWizard quantities and target/group/record grains.
+
+The original records full flags, overrides and exact parent/explorer-parent
+instance identities. A separate audit verifies the acyclic graph, every back
+reference, all 104 flag sets and 16 quantity cells with explicit field/unit
+bindings. Equal semantic view handles retain their distinct actual instances and
+typed original operands. All 493 public target records, the complete 9/459-link
+bibliography and supplied-input order remain intact. Whole-capture persistent
+network/client counters are zero; capture takes 63.91 s at 220,577,792 bytes peak
+owned RSS, with zero swap. Packaging and member verification take 5.36 s.
+
+This observation follows private foundations and incomplete internal prototype
+work, and precedes full installed saved admission. The SDK205/SDK208 capsules
+remain byte-identical. **Next:** finish explicit independent saved admission over
+all three originals, full human/source/origin replay, semantic resealing,
+transport/resave, fresh inert file reading and copied receiving. Public saving
+remains false; no complete saved-reader or researcher gate is claimed. Broader
+B4–B6, B7/B8, cumulative exact-final-head CI recovery and the full six-stage goal
+remain open under #148/#112.
+
 ## PyUnitWizard display-filter navigation correction — 2026-11-07
 
 Full-reader integration exposed a public LIVE boundary defect: a PyUnitWizard

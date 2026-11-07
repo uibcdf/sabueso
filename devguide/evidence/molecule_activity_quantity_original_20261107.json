@@ -1,0 +1,218 @@
+{
+  "kind": "Byte-verified genuine corrected SDK211 quantity-display original",
+  "packaged_utc": "2026-11-07T21:21:35.643711+00:00",
+  "producer_head": "af5180b1fd146e83e1a25eb88a5703e68c072229",
+  "producer_version": "0.14.0+211.gaf5180b",
+  "capture_complete": true,
+  "admitted_saved_format": false,
+  "sequencing": "After private predicate/restoration and incomplete internal prototype work, before full installed saved admission. Existing SDK205/SDK208 originals are unchanged.",
+  "verified_members": 516,
+  "verified_member_bytes": 123460582,
+  "manifest_sha256": "59d35b9a32726ec432c8e2f570977711188894fc385233bc4a48834facba6f30",
+  "named_human_views": 96,
+  "observed_view_instances": 104,
+  "machine_requests": 6,
+  "machine_pages": 6,
+  "acyclic_original_parent_graph_verified": true,
+  "distinct_equal_handle_instances": {
+    "target": {
+      "json_node_instance": "N4",
+      "pyunitwizard_instance": "N20",
+      "shared_semantic_view_ref": "XV_e0e61f4b50c49abb37734beb070b3aefe0257c454ca99c0d8af63e9fa8ef9af4"
+    },
+    "group": {
+      "json_node_instance": "N36",
+      "pyunitwizard_instance": "N52",
+      "shared_semantic_view_ref": "XV_cf6ea480503d0cf194a2c20daa0887a85782aff7ccc5429d7ab7e4f29aa5a038"
+    },
+    "record": {
+      "json_node_instance": "N68",
+      "pyunitwizard_instance": "N84",
+      "shared_semantic_view_ref": "XV_de6e347761748931710458a1d02ed0c55703bbcf408c5433bca44c0ba808de50"
+    }
+  },
+  "complete_original_flags_and_override_records": true,
+  "publication_links": {
+    "pubmed:20889239": 459,
+    "pubmed:35189560": 9
+  },
+  "public_target_activity_records": 493,
+  "attempts": {
+    "network": 0,
+    "source_acquisitions": 0
+  },
+  "attempt_counter_scope": "Entire capture with persistent failure-safe counters.",
+  "source_files_unchanged": 1155,
+  "previous_originals_unchanged": {
+    "tests/core/data/molecule_activity_live_sdk205.tar.gz": "61a5556a3d9cc75485a321c707341f2233954606b14c2e917bd5cd627b3d123f",
+    "tests/core/data/molecule_activity_multifocal_live_sdk208.tar.gz": "599a755df31fa5b17b4d39d899bf02adae80bd9f7e55c5140aeb02f6d562a699"
+  },
+  "resources": {
+    "owner": "uibcdf/sabueso#148/#173/#112",
+    "review_trigger": "Genuine corrected SDK211 quantity-display original with complete observed view graph; after private foundations, before full saved admission",
+    "command": [
+      "nice",
+      "-n",
+      "10",
+      "taskset",
+      "-c",
+      "16",
+      "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+      "-B",
+      "recovered_work/checkpoint_recovery_20261106/b5-molecule-quantity-original-1/capture.py",
+      "--capture"
+    ],
+    "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+    "exit_code": 0,
+    "elapsed_s": 63.91,
+    "stop_reason": null,
+    "peak_owned_rss_bytes": 220577792,
+    "minimum_host_available_bytes": 61067030528,
+    "peak_owned_swap_bytes": 0,
+    "peak_owned_scratch_bytes": 123514622,
+    "limits": {
+      "owned_rss_bytes": 4294967296,
+      "host_available_bytes": 17179869184,
+      "owned_swap_bytes": 0,
+      "cpu_affinity_count": 1,
+      "nice": 10,
+      "elapsed_s": 1800,
+      "owned_scratch_bytes": 8589934592
+    },
+    "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b5-molecule-quantity-original-1/cargo-target"
+  },
+  "archive": {
+    "path": "tests/core/data/molecule_activity_quantity_live_sdk211.tar.gz",
+    "bytes": 5304482,
+    "sha256": "b7aef835ed698e613e1dd74fc9e3e8085f00e221ff7fe4f17e106eb4641ee012",
+    "uncompressed_tar_bytes": 123873280,
+    "uncompressed_tar_sha256": "bc102cfe44cdefaee99b26b4a361f14e27543ec62a5165e26659ffb59e4e6b60",
+    "local_packaged_path": "recovered_work/checkpoint_recovery_20261106/b5-molecule-quantity-original-1/original1.tar.gz"
+  },
+  "owner": "uibcdf/sabueso#148/#112",
+  "review_trigger": "Independent saved admission and complete source/origin, transport/resave and copied receiving",
+  "limits": [
+    "Complete LIVE observation and byte verification; not an independent saved-reader or researcher gate.",
+    "Recorded source/native data are complete. No private pilot, source acquisition, scientific/default or earlier-format change.",
+    "B4-B6, B7/B8 and the complete six-stage goal remain open."
+  ],
+  "graph_audit": {
+    "flags_verified": 104,
+    "parent_back_ref_identities_verified": 104,
+    "quantity_cells_with_explicit_field_and_unit": 16,
+    "acyclic_node_and_explorer_parent_graph_verified": true
+  },
+  "packaging_resources": {
+    "owner": "uibcdf/sabueso#148/#173/#112",
+    "review_trigger": "Genuine corrected SDK211 quantity-display original with complete observed view graph; after private foundations, before full saved admission",
+    "command": [
+      "nice",
+      "-n",
+      "10",
+      "taskset",
+      "-c",
+      "16",
+      "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+      "-B",
+      "recovered_work/checkpoint_recovery_20261106/b5-molecule-quantity-original-1/package.py"
+    ],
+    "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+    "exit_code": 0,
+    "elapsed_s": 5.36,
+    "stop_reason": null,
+    "peak_owned_rss_bytes": 114425856,
+    "minimum_host_available_bytes": 61298122752,
+    "peak_owned_swap_bytes": 0,
+    "peak_owned_scratch_bytes": 128834730,
+    "limits": {
+      "owned_rss_bytes": 4294967296,
+      "host_available_bytes": 17179869184,
+      "owned_swap_bytes": 0,
+      "cpu_affinity_count": 1,
+      "nice": 10,
+      "elapsed_s": 1800,
+      "owned_scratch_bytes": 8589934592
+    },
+    "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b5-molecule-quantity-original-1/cargo-target"
+  },
+  "clean_producer_qualification": {
+    "selected_distinct_passed": 735,
+    "clean_head_repeated_passes": 60,
+    "repeats_added_distinct": 0,
+    "receipt": "recovered_work/checkpoint_recovery_20261106/b5-molecule-quantity-display-commit-1/push-handoff.json",
+    "ci": "Deferred intermediate [skip ci]; no hosted qualification claimed."
+  },
+  "quality": {
+    "ruff-format": {
+      "command": [
+        "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/ruff",
+        "format",
+        "--check",
+        "."
+      ],
+      "exit_code": 0,
+      "elapsed_s": 0.03
+    },
+    "ruff-lint": {
+      "command": [
+        "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/ruff",
+        "check",
+        "."
+      ],
+      "exit_code": 0,
+      "elapsed_s": 0.03
+    },
+    "fixtures": {
+      "command": [
+        "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "tools/fixture_delivery.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 0.35
+    },
+    "governance": {
+      "command": [
+        "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "devtools/moli_governance.py"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 0.05
+    },
+    "guide": {
+      "command": [
+        "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "recovered_work/checkpoint_recovery_20261106/b5-molecule-quantity-original-quality-1/check_guide.py"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 0.37
+    },
+    "diff": {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 0.01
+    },
+    "guide_validation": {
+      "scope": "Maintained non-archive guide paths; changed-page Markdown heading anchors; changed Python examples parse as Python3.11.",
+      "maintained_markdown_files": 170,
+      "local_path_targets_checked": 1282,
+      "changed_page_anchors_checked": 35,
+      "python_examples_checked": 0,
+      "errors": [],
+      "preexisting_anchor_gaps": [],
+      "unchanged_historical_records_not_regenerated": true
+    }
+  },
+  "ci": {
+    "deferred": true,
+    "owners": [
+      148,
+      112
+    ],
+    "recovery": "Agreed cumulative exact-final-head CI and governance through gh-run-receptor; no workflow dispatched."
+  }
+}
