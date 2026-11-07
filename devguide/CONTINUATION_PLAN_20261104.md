@@ -304,7 +304,7 @@ swap. This is a warm, nonrandomized selected-cohort observation. Adopt the
 selections; measure broader batches before increasing to 12 or 16 workers.
 Historical workload controls retain their original budgets and meanings.
 
-The next bounded implementation candidate is B4's public TcTIM activity journey:
+The first live B4 implementation is the [public TcTIM activity journey](pending_proposals/card_bioactivity_exploration.md):
 `P52270` → BTS (`CHEMBL1161789`) → retained activity `24815542`
 (`IC50 = 33000 nM`) → assay `CHEMBL5138431` → document `CHEMBL5137001` →
 original support, paired with inconclusive/missing-value controls. Reuse existing
@@ -314,6 +314,16 @@ record, while the older frozen Card does not: do not backfill that historical
 Card. The [document-support grain](RISKS_AND_OPEN_QUESTIONS.md#risks) needs honest
 presentation before claiming independent document-object lineage. No additional
 structural algorithm is implied by the remaining B3 acceptance work.
+
+The live adapter preserves the complete 493-record fixture, exact native policies
+and human/agent focus. Its benznidazole control opens the complete 459-link
+publication context separately from the molecule's two records. Independent
+original saving is the next technical step: first retain a clean live-adapter
+capture, then implement a separately versioned inert verifier and receive the
+full workload. B4 continues while already dispatched corrected-source CI is
+observed; queued remote runners do not justify substituting an older green SHA.
+Small local commits carry `[skip ci]` at the maintainer's request, with applicable
+local gates and an explicit recovery checkpoint for deferred remote receiving.
 
 The maintainer has selected the
 [bounded positive/uncertain MolSysMT integration](pending_proposals/structural_journey_acceptance_20261104.md#accepted-assembly-scope--2026-11-06)

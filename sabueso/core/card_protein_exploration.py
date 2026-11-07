@@ -13,6 +13,12 @@ FUNCTION_FIELDS = {
     "sequence.length": "Sequence length",
 }
 _SOURCE_QUESTIONS = {
+    "measured_molecules": {
+        "label": "Which molecules have retained measurements, and what supports each result?",
+        "topic": "bioactivities",
+        "required_options": [],
+        "scope": "Original molecule, measurement-group, activity-record and assay/citation context with units and support; concentration bands do not establish mechanism or efficacy.",
+    },
     "assembly_generation": {
         "label": "Which components and operations are declared for each retained assembly?",
         "topic": "assembly_generation",

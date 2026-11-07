@@ -396,6 +396,7 @@ class CardAccess:
                 "ligand_site_comparisons",
                 "quaternary_interpretation",
                 "assembly_generation",
+                "bioactivities",
             ]
             if self.profile == "protein"
             else ["chemical_classification"]
@@ -689,6 +690,12 @@ class CardAccess:
                 )
             if self.profile == "protein":
                 if self.mode == "live":
+                    from .card_bioactivity_access import (
+                        descriptor as bioactivity_descriptor,
+                    )
+
+                    data["bioactivities"] = bioactivity_descriptor()
+                if self.mode == "live":
                     from .card_scientific_access import descriptor
 
                     data["structures"] = descriptor()
@@ -841,11 +848,35 @@ class CardAccess:
             "quaternary_interpretation",
             "assembly_generation",
             "chemical_classification",
+            "bioactivities",
         ):
             raise ArgumentError(
-                "Scientific selection supports structures, ligand_site_comparisons, quaternary_interpretation, assembly_generation and chemical_classification."
+                "Scientific selection supports structures, ligand_site_comparisons, quaternary_interpretation, assembly_generation, chemical_classification and bioactivities."
             )
-        if topic == "chemical_classification":
+        if topic == "bioactivities":
+            if self.mode == "saved":
+                raise ArgumentError(
+                    "This saved session has no retained bioactivity adapter request."
+                )
+            from .card_bioactivity_access import materialize, options_for_bioactivities
+            from .card_bioactivity_selection_v1 import (
+                active,
+                evaluate,
+                normalize,
+                projection,
+                selection_ref,
+            )
+
+            options, fields = options_for_bioactivities(options), projection(fields)
+            query = normalize(where, item_refs, order_by)
+            if query["item_refs"] is not None and any(
+                ref not in self._scientific_items for ref in query["item_refs"]
+            ):
+                raise ArgumentError(
+                    "item_refs contains an item not retained in this access session."
+                )
+            result = materialize(self, options)
+        elif topic == "chemical_classification":
             if self.mode == "saved":
                 from .card_exploration_chemical import saved_selection
 
@@ -1062,6 +1093,7 @@ class CardAccess:
                 "assembly_generation_exploration@1",
                 "assembly_generation_exploration@2",
                 "chemical_classification_exploration@1",
+                "bioactivity_exploration@1",
             ):
                 return selection._scientific.frame(self, selection, entry)
             from .card_structure_page import complete_frame
@@ -1106,6 +1138,10 @@ class CardAccess:
         return frame
 
     def _defer(self, item):
+        if item.get("adapter") == "bioactivity_exploration@1":
+            from .card_bioactivity_access import defer_frame
+
+            return defer_frame(item)
         if item.get("adapter") == "chemical_classification_exploration@1":
             from .card_chemical_history_v1 import defer_frame
 

@@ -47,8 +47,10 @@ default to conservative `bioactivity_class@4` and readable explanation @2.
 classification @3 retains original classes and explanation @1 / ligand explanation @2.
 New packets use `packet_aspects@16`, adding original AlphaFold range-alias
 context @2 with explicit agreement/refusal; existing mappings @6–@14 retain original @3
-activity interpretation. Rich activity explorer/saved-scientific routes remain
-pending. See
+activity interpretation. The development [live activity explorer](pending_proposals/card_bioactivity_exploration.md)
+now shares molecule, group and original source-record results with compact agent
+selection and complete publication context. Independent original saved reading
+and the broader activity/literature experience remain pending. See
 [the scoped correction](pending_bugs/bioactivity_interpretation.md).
 
 Development opt-in `measurement_rule="measurement_identity@2"` is shared by

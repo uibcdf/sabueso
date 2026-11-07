@@ -113,8 +113,9 @@ qualify every workload. Use the [current profiles](TESTS.md#current-workstation-
 2. Complete the UTF-8 test follow-up's hosted CI/governance through the applicable
    authorized route. Earlier passing receipts, local calibration and queued jobs
    do not establish a green exact-source matrix or installed-artifact acceptance.
-3. Continue B3's remaining structural transitions and independent acceptance from
-   its passing finite MolSysMT gate, then implement the B4–B6
+3. Continue the live B4 slice below with a genuine clean pre-reader capture and
+   independently verified original saving. Progress B3's remaining structural
+   transitions and independent acceptance alongside the B4–B6
    journeys in the [current plan](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions).
    The broad inventory and scientist/researcher gates remain required; B2 review
    is still explicitly deferred and B8 publication remains paused.
@@ -132,7 +133,31 @@ nested 27 cases. Nested counts are not added to distinct totals. Ruff passes.
 The [follow-up receipt](evidence/windows_chemical_fixture_recovery_20261106.json)
 records this narrower scope, not a new complete-suite run or Windows OS emulation.
 The library source remains byte-identical to the 9,276-case baseline; a new
-exact-source Windows/hosted checkpoint is still required.
+exact-source hosted checkpoint is still required. The corrected `896eaf8` source's
+actual [Windows 3.14 job](https://github.com/uibcdf/sabueso/actions/runs/42311030582/job/128212230174)
+now passes 7,702 cases, with 31 declared skips, 26 online deselections and nine
+reported warnings. Its full job log and six capture members have verified byte
+counts/hashes; other matrix jobs remain pending. This qualifies that lane only,
+not a new source or the entire workflow.
+
+### Live activity journey — 2026-11-06
+
+The [B4 live adapter](pending_proposals/card_bioactivity_exploration.md) shares
+captured molecule, group and original source-record results between human and
+compact-agent access, including assay/citation/source and full publication
+context. The [local receipt](evidence/bioactivity_live_checkpoint_20261106.json)
+binds **1,023 distinct passed** selected cases, without warnings or skips, from
+one eight-worker cohort and four separate historical-module gates. The copied
+public payload also passes its owning **40 cases** outside the checkout; these
+repeat cases and are not added to the distinct total or promoted to installed
+artifact acceptance. A first grouped historical run reached its declared 600 s
+ceiling and is retained as incomplete, separate from the complete partition.
+
+Intermediate commits use `[skip ci]` as the maintainer requested. #148/#112 own
+the deferred hosted scope and recovery checkpoint after original saved reading.
+Preserve the clean live producer and capture its original session before writing
+the independent verifier. Saving is explicitly unavailable in this live slice;
+broader B4 and scientific/researcher acceptance remain open.
 
 ## Open work and boundaries
 
@@ -141,7 +166,7 @@ exact-source Windows/hosted checkpoint is still required.
 | B0/B1 | Preview and conservative activity corrections are in technically qualified earlier checkpoints, including accumulated `c5b8af1`; independent scientific/consumer acceptance remains separate |
 | B2 | Opt-in measurement correspondence @2 and copy-aware target scope @2 exist; original @1 defaults remain. The maintainer's [six-case scientific review](pending_proposals/measurement_correspondence_review_20261104.md) is explicitly deferred; no default adoption follows from more tests |
 | B3 | The accepted [bounded positive/uncertain MolSysMT gate](pending_proposals/structural_journey_acceptance_20261104.md#accepted-assembly-scope--2026-11-06) passes all 28 destination cases. Remaining structural transitions and independent scientific/researcher/workload acceptance stay open |
-| B4 | Rich activity/group/measurement/assay/document and shared literature journeys remain required, respecting B1/B2 semantics |
+| B4 | The [live activity journey](pending_proposals/card_bioactivity_exploration.md) now connects molecules, native groups, original records, assay/citation/support and complete publication context. Independent original saving and receiving, broader shared literature journeys and human/scientific acceptance remain required |
 | B5 | Continue from the local chemical checkpoint to independent acceptance and the remaining molecule, clinical and disease profiles, positive/uncertain public tasks and human/agent/saved parity |
 | B6 | Rich variant/isoform/tissue/comparative and association profiles remain required with exact supplied identity/axis/source context |
 | B7 | Scientist, uncoached researcher, agent, workload, private-pilot and actual-consumer acceptance remain open; passing tests alone cannot establish the wow experience |

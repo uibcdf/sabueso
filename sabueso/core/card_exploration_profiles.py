@@ -55,6 +55,7 @@ PANELS = {
 NATURE_TOPICS = {
     "protein": (
         "function",
+        "bioactivities",
         "structures",
         "sequence",
         "annotated_regions",
@@ -258,6 +259,7 @@ RECORD_COLUMNS = {
 
 def record_label(panel, row):
     if panel in (
+        "bioactivities",
         "chemical_classification",
         "ligand_site_comparisons",
         "quaternary_interpretation",

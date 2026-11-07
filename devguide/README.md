@@ -50,6 +50,11 @@ to [CHECKPOINT](CHECKPOINT.md); execution budgets belong to the
 [current workstation profile](TESTS.md#current-workstation-profile). Historical
 green receipts do not qualify a changed working tree.
 
+The [live protein activity journey](pending_proposals/card_bioactivity_exploration.md)
+connects molecules, native groups, original activity records and exact retained
+assay/citation/publication support. Independent original saving is its next
+technical gate; the broader B4 and human/scientific acceptance remain open.
+
 ## Design
 
 | Document | Role |

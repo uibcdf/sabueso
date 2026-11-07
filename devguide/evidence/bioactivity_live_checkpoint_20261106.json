@@ -1,0 +1,194 @@
+{
+  "recorded_at_utc": "2026-11-07T00:33:00.012064+00:00",
+  "owners": [
+    "uibcdf/sabueso#148",
+    "uibcdf/sabueso#112"
+  ],
+  "scope": "Live protein bioactivity exploration; native policies unchanged; independent original saved reading not yet implemented",
+  "source_parent": "896eaf8147fee87c8333ff7c6404b48bd7560093",
+  "tested_runtime": "0.14.0+199.g896eaf8",
+  "python": "3.14.10",
+  "changed_code_tests_and_workflows_sha256": {
+    ".github/workflows/ci.yml": "f23811f50868bb6e38c3735df383f2b920e5feccd98ffc5c4bc2344590890871",
+    ".github/workflows/test_staged_conda_package.yaml": "955f2bd44536b08ea59a87ab9846559eff1e96cae8d5d573e31f02f2d69f9350",
+    "sabueso/core/card_access.py": "b0117d245b81ec8ace381952f1620a000596dffcf426dbf0fe5044e4874cc3ed",
+    "sabueso/core/card_bioactivity_access.py": "ae33c6cb85c8e39107fb535d04bb74a093c4fbb382875eb4a8ac495f5cb916af",
+    "sabueso/core/card_bioactivity_exploration.py": "9214284d5a529f493bbbe9b8ace81a3af7bda09ddfc997343648348927b844ee",
+    "sabueso/core/card_bioactivity_presentation_v1.py": "c3b9513a0adc4d10a9a3e74c5c8cfdae3281a686bdf37dd317d315272d442d85",
+    "sabueso/core/card_bioactivity_selection_v1.py": "81434820b95837380a7d0226f4c5b4ac40dc62a33bcf82d51be87d3520065cae",
+    "sabueso/core/card_context_navigation.py": "367d56680d60d8d0e464ba7dd0f0aa6b42f1cf6e09ecba24e2bafed5c825348d",
+    "sabueso/core/card_exploration.py": "1578030059ecd9ce6479b9dd218cb440fc256398b733c334a97181442bb79bdc",
+    "sabueso/core/card_exploration_profiles.py": "f3c281b9484978d0b009b243b8fdceac5b2df250c8344ab0f19b0882a87729fe",
+    "sabueso/core/card_exploration_render.py": "e061d445785d038a68ee1e776e7bff4fbe988ed925f285b956ee5f4d42956cce",
+    "sabueso/core/card_exploration_storage.py": "871deff1197a99c091409d1d2a58164f3d26a128a3bb45e507336ecc4728dbc6",
+    "sabueso/core/card_protein_exploration.py": "fe7f7fd71a382435e2de5ef1b606700d89459b79b71d8ebf2a8f19a820de2165",
+    "tests/core/test_card_access_offline.py": "6419251374f531089d872804358d208543b2988a4cb6f75a6ee97ae561e4a3b8",
+    "tests/core/test_card_bioactivity_exploration_offline.py": "8d412eee4853f3b557dabff5077c4b65d6bcf2f64ecfcbdf39cc344ec6d48703",
+    "tests/core/test_card_nature_exploration_offline.py": "24d26fc7e7b3e6ba1fc88c9297798cbb8c9602c2eb9ff22b8d69714c24bc4d73"
+  },
+  "full_tested_source_manifest": {
+    "path": "recovered_work/checkpoint_recovery_20261106/b4-live-tested-source.json",
+    "bytes": 123261,
+    "sha256": "7dddb7fe8651783d7f5594c8d2aae936423bdac9bc801c1637201e6de6148868"
+  },
+  "local_receiving": {
+    "distinct_passed": 1023,
+    "composition": "Disjoint parallel cohort and four independent original-module gates; not a repeated full offline suite",
+    "phases": [
+      {
+        "name": "b4-historical-parallel-1",
+        "passed": 881,
+        "warnings": 0,
+        "skipped": 0,
+        "pytest_seconds": 99.73568263200286,
+        "peak_owned_rss_bytes": 2017656832,
+        "peak_owned_swap_bytes": 0,
+        "cpu_affinity_count": 8,
+        "events": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-parallel-1/events.jsonl",
+          "bytes": 1113952,
+          "sha256": "d559193678bb28422ef6602605f440d19959047de02e55c52acb65319e848e05"
+        },
+        "resources": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-parallel-1/live-and-compatible-history-resource.json",
+          "bytes": 2498,
+          "sha256": "c21fa9521d175fe51c577e220741a06c187a996248b2344fe940c8f392338861"
+        }
+      },
+      {
+        "name": "b4-historical-science-1",
+        "passed": 41,
+        "warnings": 0,
+        "skipped": 0,
+        "pytest_seconds": 176.6519648560061,
+        "peak_owned_rss_bytes": 401989632,
+        "peak_owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "events": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-science-1/events.jsonl",
+          "bytes": 49709,
+          "sha256": "97f0dd916b360bd80e9c78c342a35b3e9371b53bcff61056146941af7e67c359"
+        },
+        "resources": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-science-1/original-resource.json",
+          "bytes": 1381,
+          "sha256": "ceefcc58a661993fcd9f1f4f4dbfc777090669bdd16cf7eef92d09d6649e8ebf"
+        }
+      },
+      {
+        "name": "b4-historical-sites-1",
+        "passed": 41,
+        "warnings": 0,
+        "skipped": 0,
+        "pytest_seconds": 40.8920178880071,
+        "peak_owned_rss_bytes": 242831360,
+        "peak_owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "events": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-sites-1/events.jsonl",
+          "bytes": 51377,
+          "sha256": "5eafcf80bed2ff1670696b7f3e401d9f67ec08a5afe17b2a8329e12e9dcba054"
+        },
+        "resources": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-sites-1/original-resource.json",
+          "bytes": 1372,
+          "sha256": "92cb59e59c9a91154da4e37ec73ac078687eea152edd3b7281e8c011f0035392"
+        }
+      },
+      {
+        "name": "b4-historical-quaternary-1",
+        "passed": 41,
+        "warnings": 0,
+        "skipped": 0,
+        "pytest_seconds": 102.221640682008,
+        "peak_owned_rss_bytes": 344428544,
+        "peak_owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "events": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-quaternary-1/events.jsonl",
+          "bytes": 51397,
+          "sha256": "ce65949c4ea686f440a2d742589b20b51085ccf43891721c8a4cb6b6586a754d"
+        },
+        "resources": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-quaternary-1/original-resource.json",
+          "bytes": 1394,
+          "sha256": "541269f264f3b6e250d3612faa7ab816c4fe0e7b3b3e9c160d6fc7a292ee5d31"
+        }
+      },
+      {
+        "name": "b4-historical-components-1",
+        "passed": 19,
+        "warnings": 0,
+        "skipped": 0,
+        "pytest_seconds": 198.4621801119938,
+        "peak_owned_rss_bytes": 405311488,
+        "peak_owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "events": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-components-1/events.jsonl",
+          "bytes": 24968,
+          "sha256": "bd4fe86a2ed7e00690e59e448191e723e6cc0b2334c0fb90670a4375ee25cbf6"
+        },
+        "resources": {
+          "path": "recovered_work/checkpoint_recovery_20261106/b4-historical-components-1/original-resource.json",
+          "bytes": 1404,
+          "sha256": "5aab8ba3d62899dd53eed9d2100d654133412b2929127bfaf7aaca9a594f5546"
+        }
+      }
+    ]
+  },
+  "copied_public_payload": {
+    "name": "b4-copied-live-3",
+    "passed": 40,
+    "warnings": 0,
+    "skipped": 0,
+    "pytest_seconds": 31.639207920001354,
+    "peak_owned_rss_bytes": 140566528,
+    "peak_owned_swap_bytes": 0,
+    "cpu_affinity_count": 1,
+    "events": {
+      "path": "recovered_work/checkpoint_recovery_20261106/b4-copied-live-3/events.jsonl",
+      "bytes": 55587,
+      "sha256": "86dddf3a785924c2777ae0dc41524d758597008cac21c4a3326232d0e0125e97"
+    },
+    "resources": {
+      "path": "recovered_work/checkpoint_recovery_20261106/b4-copied-live-3/copied-resource.json",
+      "bytes": 1439,
+      "sha256": "fe5d57ee18446997cba01a72f6124e0974801eab69218d85e57692b5aa4d9f8d"
+    },
+    "distinct_total_policy": "Repeats the owning 40 cases; not added to the 1023 distinct total",
+    "installed_artifact_acceptance": false,
+    "fixture_manifest": {
+      "path": "recovered_work/checkpoint_recovery_20261106/b4-copied-live-3/payload-manifest.json",
+      "bytes": 731,
+      "sha256": "15ad44f74b99ec5f8fa2c02147845181023a4f14a2ced40716012ba1af8ea543"
+    }
+  },
+  "earlier_attempts": {
+    "initial_live": "33 passed; two table-dispatch failures corrected before final receiving",
+    "harness": "A reused scope filename and a checkout-only scope option each prevented a complete earlier gate; final gates use fresh owned directories and an outside-checkout scope helper",
+    "additional_review": "Aggregation missing-value, focused native-family and conjunction quantity cases corrected with five additional regression cases",
+    "grouped_historical": "Stopped at declared 600s elapsed ceiling, exit -15; incomplete and not counted. Complete receiving is partitioned above."
+  },
+  "scientific_boundaries": {
+    "public_source_activity_records": 493,
+    "publication_context_links": 459,
+    "defaults": [
+      "bioactivity_class@4",
+      "measurement_identity@1",
+      "bioactivity_target_scope@1"
+    ],
+    "independence": "not_established",
+    "source_document_assertion": "not_retained; citation context labelled without invented lineage",
+    "b2_review": "explicitly deferred",
+    "release_consolidation": "paused"
+  },
+  "remote_receiving": {
+    "intermediate_commit_marker": "[skip ci]",
+    "owner": "uibcdf/sabueso#148/#112",
+    "deferred_scope": "New live adapter, additive discovery and installed receiving wiring",
+    "recovery_route": "Complete B4 independent original reading, then batch an explicitly authorized substantial exact-source CI/governance checkpoint; current 896eaf8 runs do not qualify this new code",
+    "source_parent_windows314": "Actual source-parent Windows 3.14 job 128212230174 succeeds: 7702 passed,31 skipped,26 deselected,9 warnings; remaining whole matrix is not declared green"
+  },
+  "retention": "Keep original public inputs, scripts, logs, failed/stopped receipts and future pre-reader originals under #148/#112; remove only passed disposable scratch after incorporation."
+}

@@ -398,6 +398,15 @@ def _objects_for(access, records):
 
 def _prepare(root):
     _require(
+        not any(
+            view._selection._scientific is not None
+            and view._selection._scientific.wire.get("context", {}).get("adapter")
+            == "bioactivity_exploration@1"
+            for view in required_views(root)
+        ),
+        "Independent saved bioactivity reading is not implemented yet; export the original Card or inspect a supported literal view.",
+    )
+    _require(
         admitted_view(root),
         "Saving derived structures/coverage or their originating trail requires a historical verifier not yet implemented. Save a supported literal/field view or inspect capabilities.",
     )

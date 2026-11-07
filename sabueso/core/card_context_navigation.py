@@ -294,6 +294,10 @@ def _link_view(
 
 
 def related(item):
+    if item._view._record_panel == "bioactivities":
+        from .card_bioactivity_exploration import links
+
+        return links(item)
     if item._view._record_panel == "chemical_classification":
         from .card_chemical_exploration import links
 
@@ -492,6 +496,10 @@ def _destination(explorer, candidate, origin, title="Referenced source record"):
 
 def follow(item):
     explorer, link = item._view._explorer, item._entry.value
+    if link.get("rule") == "bioactivity_context_links@1":
+        from .card_bioactivity_exploration import follow as follow_bioactivity
+
+        return follow_bioactivity(item)
     if link.get("rule") in (
         "assembly_generation_links@3",
         "assembly_component_list_links@1",

@@ -20,6 +20,9 @@ development queue.
   review gaps, with bounded adapters and verified public paper walkthroughs.
 - [Required knowledge-pipeline attribution](ackredit_knowledge_pipeline_attribution.md)
   (#108, moli#36): required automatic runtime attribution; public provider adopted; broader acquisition/bibliography and record integration remain open.
+- [Protein activity and literature exploration](card_bioactivity_exploration.md)
+  (#148/#112/#108): live molecule/group/source-record navigation and exact
+  publication context; independent original saving and broader acceptance pending.
 - [Original design and implementation review](design_implementation_review.md)
   (#112): dated foundation/implementation evidence, scientific gaps and
   consumer-owned acceptance. Its original post-0.13.0 order is historical;

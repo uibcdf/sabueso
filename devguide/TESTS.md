@@ -29,6 +29,18 @@ a resealed scientific-manifest claim is refused. These controls do not replace
 the complete original SDK193, historical, mixed or isolated receiving gates.
 Scientific/researcher and final-source qualification remain required.
 
+Live activity exploration uses `test_card_bioactivity_exploration_offline.py`:
+the complete public 493-record TcTIM fixture, molecule/group/source-record and
+assay/citation/source navigation, the publication's complete 459-link context,
+shared exact requests, detached capture, typed quantity selection, bounded paging,
+explicit indirect/copy controls, source-state distinctions, identity refusal,
+retained uncertainty, escaped presentation and explicit unsupported saving.
+Both installed routes copy/select it. Include affected protein/nature/human/access,
+context, quantity, argument and original saved-reading gates. Current activity,
+measurement and target-scope policies are reused; no new scientific defaults or
+source mappings are introduced. Live passing does not qualify original saving,
+independent human/scientific acceptance or the remaining B4 literature profiles.
+
 Structural display continuity uses the retained-filter, native-model, API-fragment
 and range-alias navigation modules. Check text/HTML limitations after chained
 filter/table/sort/summary and focused detail, positive and zero selections, inert

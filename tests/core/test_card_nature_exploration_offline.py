@@ -376,6 +376,7 @@ def test_coverage_source_states_and_unknown_counts_are_not_reclassified(
                 "quaternary_structure",
                 "quaternary_interpretation",
                 "assembly_generation",
+                "bioactivities",
             },
             {
                 "function",
@@ -389,6 +390,7 @@ def test_coverage_source_states_and_unknown_counts_are_not_reclassified(
                 "quaternary_structure",
                 "quaternary_interpretation",
                 "assembly_generation",
+                "measured_molecules",
             },
         ),
         (

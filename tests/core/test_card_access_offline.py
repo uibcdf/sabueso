@@ -91,6 +91,7 @@ def test_complete_literal_reconstruction(nature):
             "ligand_site_comparisons",
             "quaternary_interpretation",
             "assembly_generation",
+            "bioactivities",
         ]
         if nature == "protein"
         else ["chemical_classification"]

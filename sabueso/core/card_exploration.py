@@ -28,6 +28,10 @@ _LABELS = {
     "entities": "Entity records",
 }
 _TOPICS = {
+    "bioactivities": (
+        "Measured molecules and assay context",
+        "Retained molecule, measurement-group and activity records with units, original assay/citation context and source support.",
+    ),
     "assembly_generation": (
         "Assembly components and operations",
         "Original assembly declarations, key binding and declared combination counts; physical copies and contacts remain uncomputed.",
@@ -151,6 +155,8 @@ class CardItem:
 
     @property
     def kind(self):
+        if self._view._record_panel == "bioactivities":
+            return self._entry.value["kind"]
         if self._view._record_panel == "chemical_classification":
             return self._entry.value["kind"]
         if self._view._record_panel == "assembly_generation":
@@ -261,6 +267,10 @@ class CardItem:
 
     @property
     def support(self):
+        if self._view._record_panel == "bioactivities":
+            from .card_bioactivity_exploration import support
+
+            return support(self)
         if self._view._record_panel == "chemical_classification":
             from .card_chemical_exploration import support
 
@@ -310,6 +320,27 @@ class CardItem:
 
     @property
     def cells(self):
+        if self._view._record_panel == "bioactivities":
+            from .card_bioactivity_selection_v1 import COLUMNS
+            from .quantities import to_quantity
+
+            result = self._view._selection._scientific
+            values = {
+                column: result.value(self._entry.key, column) for column in COLUMNS
+            }
+            return MappingProxyType(
+                {
+                    column: Cell(
+                        to_quantity(value)
+                        if column == "measurement" and value is not None
+                        else deepcopy(value),
+                        state=result.cell_state(self._entry.key, column),
+                        reason=result.cell_reason(self._entry.key, column),
+                        _support=tuple(self.support),
+                    )
+                    for column, value in values.items()
+                }
+            )
         if self._view._record_panel == "assembly_generation":
             from .card_assembly_selection_v1 import COLUMNS
 
@@ -547,6 +578,10 @@ class CardItem:
             if self._view._question_catalog:
                 return self._view._explorer._answer(self._entry.key, {}, self._view)
             return self._view._explorer._topic(self._entry.key, self._view)
+        if self._view._record_panel == "bioactivities":
+            from .card_bioactivity_exploration import open_item
+
+            return open_item(self)
         if self._view._record_panel in (
             "chemical_classification",
             "ligand_site_comparisons",
@@ -615,6 +650,10 @@ class CardItem:
         return result
 
     def _live_explain(self):
+        if self._view._record_panel == "bioactivities":
+            from .card_bioactivity_exploration import explain
+
+            return explain(self)
         if self._view._record_panel == "chemical_classification":
             from .card_chemical_exploration import explain
 
@@ -973,6 +1012,7 @@ class CardView:
                 filter=self.schema["columns"], sort=self.schema["columns"]
             )
             capabilities["scientific_adapter"] = self._record_panel in (
+                "bioactivities",
                 "chemical_classification",
                 "coverage",
                 "ligand_site_comparisons",
@@ -1005,6 +1045,15 @@ class CardView:
     def schema(self):
         if self._saved_state is not None:
             return deepcopy(self._saved_state["schema"])
+        if self._record_panel == "bioactivities":
+            from .card_bioactivity_selection_v1 import COLUMNS
+
+            return {
+                "kind": "bioactivity_exploration",
+                "grain": "one original molecule, native measurement group or source activity record for the exact focused request",
+                "columns": list(COLUMNS),
+                "presentations": ["summary", "table", "detail"],
+            }
         if self._record_panel == "chemical_classification":
             from .card_chemical_selection_v1 import COLUMNS
 
@@ -1247,6 +1296,10 @@ class CardView:
     def filter(self, column, *, equals, skip_digestion=False):
         """Select exact declared cells without changing the scientific result."""
         self._check_column(column)
+        if self._record_panel == "bioactivities":
+            from .card_bioactivity_exploration import display_filter
+
+            return display_filter(self, column, equals)
         if self._record_panel == "chemical_classification":
             from .card_chemical_presentation_v1 import display_filter
 
@@ -1349,6 +1402,10 @@ class CardView:
             raise ArgumentError("descending must be True or False.")
         if unit is not None and (not isinstance(unit, str) or not unit.strip()):
             raise ArgumentError("unit requires a nonempty unit name or None.")
+        if self._record_panel == "bioactivities":
+            from .card_bioactivity_exploration import display_sort
+
+            return display_sort(self, column, descending, unit)
         if self._selection._scientific is not None and self._explorer.mode == "saved":
             from .card_exploration_adapter_v1 import _sorted_entries as sorted_entries
         else:
@@ -1708,6 +1765,10 @@ class CardExplorer:
             raise ArgumentError("Scientific options require a mapping or None.")
         from .card_exploration_profiles import PANELS
 
+        if topic == "bioactivities":
+            from .card_bioactivity_exploration import view
+
+            return view(self, origin, options)
         if topic == "assembly_generation":
             from .card_assembly_dispatch import options_for_assembly, view
 
@@ -1926,7 +1987,7 @@ class CardExplorer:
             view = self._topic(self._questions[question]["topic"], origin, options)
             effective = (
                 deepcopy(view.context["options"])
-                if question == "assembly_generation"
+                if question in ("assembly_generation", "measured_molecules")
                 else {}
             )
         else:
