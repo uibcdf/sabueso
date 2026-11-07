@@ -401,10 +401,18 @@ The [molecule activity-context LIVE checkpoint](evidence/molecule_activity_live_
 adds 1,133 distinct selected local passes across owning, shared, native/profile,
 historical and copied receiving. Exact source identity joins and supplied target
 pins connect the molecule to original groups/records and full publication context.
-Next identify its clean committed producer and capture the complete genuine
-original before independent saved reading. The profile remains unfinished until
-that saved reader is qualified; clinical/disease and B6 journeys, B7 acceptance
-and authorized B8 delivery retain their full scope.
+The clean SDK205 original, corrected SDK208 multi-focal supplement and SDK211
+quantity original are now preserved without regeneration. Private object/
+restoration predicates and the complete SDK211 instance-graph binding pass their
+[206-case selected checkpoint](evidence/molecule_activity_human_binding_checkpoint_20261107.json).
+Next finish complete SDK205/SDK208 human replay, literal/detail continuity,
+explicit new-format admission, semantic resealing, transports/resave and fresh
+inert/copied file receiving. Public saving remains disabled. The
+[confirmed numeric root-return limitation](pending_bugs/molecule_activity_root_selection_equality.md)
+has its own unfixed follow-up; original predicates retain its observed behavior.
+The profile remains unfinished until its complete saved reader is qualified;
+clinical/disease and B6 journeys, B7 acceptance and authorized B8 delivery retain
+their full scope.
 
 ## Execution order
 

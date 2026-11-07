@@ -96,6 +96,17 @@ It reads recorded row order, native memberships and exact-scope retained crossin
 wrappers without scientific recalculation. It is an input to full saved admission;
 it does not enable public saving or qualify saved human/source/origin navigation.
 
+The [private original human binding](evidence/molecule_activity_human_binding_checkpoint_20261107.json)
+now receives all 104 SDK211 view instances and six machine requests with current
+Cards/science/clients/digesters and LIVE molecule UI helpers forbidden. Its
+206-case selected gate includes the prior 75 private cases and two public
+save-refusal/discovery cases. Full original SDK205/SDK208 human replay and complete
+file admission, transports/resave and fresh inert/copied receiving remain open.
+The [numeric root-return limitation](pending_bugs/molecule_activity_root_selection_equality.md)
+is confirmed and unfixed; the historical binding preserves the observed original
+operand types and Python equality interpretation explicitly. Public saving stays
+disabled; the checkpoint owns exact source, qualification and continuation.
+
 The [PyUnitWizard display boundary correction](evidence/molecule_activity_quantity_display_checkpoint_20261107.json)
 passes 735 selected cases, including the complete 60-case LIVE profile. Quantity
 filters now keep their source/back/publication/native routes; existing JSON-node

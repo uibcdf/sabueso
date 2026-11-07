@@ -118,6 +118,28 @@ restoration infrastructure: explicit new-format admission, complete human/source
 origin, whole-bundle tampering, transports/resave, fresh inert file reading and
 copied receiving remain required before enabling saving.
 
+The [private original human-binding checkpoint](../evidence/molecule_activity_human_binding_checkpoint_20261107.json)
+adds independent predicates for original human/machine rows, typed quantities,
+questions, full source/destination links and visited support/native/publication
+contexts. It hydrates the SDK211 capsule's 104 actual instances, exact flags and
+both origin identities, plus six machine requests, without Cards, current
+science/clients/digesters or current LIVE molecule UI helpers. Eighteen semantic
+alteration controls are included. Together with the prior 75 private cases and
+two public save-refusal/discovery cases, the selected gate passes 206 distinct
+cases. This qualifies the stated original graph, not complete SDK205/SDK208 human
+replay or a saved-file reader. Retained routing/manifest scaffolding and internal
+@21/@22 verifier drafts remain unqualified for public admission.
+
+Original root return uses Python dictionary equality, including `33 == 33.0`.
+The immutable original and a separate current LIVE probe confirm a
+[typed display-request limitation](../pending_bugs/molecule_activity_root_selection_equality.md).
+Keep those original types and that historical interpretation visible; do not
+silently normalize them to satisfy the new reader. The current LIVE correction
+remains a separate #148 follow-up. Continue literal descendants/record-detail
+display bindings, complete original human replay, explicit admission, semantic
+resealing, transport/resave and fresh inert/copied receiving before enabling
+saving. Scientific defaults and formats @1–@20 remain fixed.
+
 ## Delivered LIVE contract
 
 Topic `activity_context`, question `measured_targets` and adapter

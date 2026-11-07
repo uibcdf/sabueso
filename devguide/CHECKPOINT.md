@@ -5,6 +5,51 @@ Current working-state checkpoint: **2026-11-07**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Private original molecule human binding — 2026-11-07
+
+`card_exploration_molecule_activity.py` now implements original human/machine
+row, quantity, question, source/link/support and visited-endpoint predicates,
+with retained routing/manifest scaffolding. The
+[selected receipt](evidence/molecule_activity_human_binding_checkpoint_20261107.json)
+passes **206 distinct cases**: 129 new human-binding cases, all 75 prior private
+object/restoration cases and two public save-refusal/older-saved-discovery cases.
+The earlier 123-case source epoch adds no distinct coverage. Complete receptor
+integrity, exact nodes, 1,164 stable scoped source/input hashes and zero warnings
+or owned swap are verified. The main 204-case gate takes 368.80 s pytest /
+369.92 s guarded at 769,396,736 bytes peak owned RSS. The two public cases take
+7.04 s pytest / 8.05 s guarded.
+
+The new gate hydrates all **104 actual SDK211 instances**, their exact flags,
+parent/explorer-parent identities and six machine requests from the immutable
+original. Current Cards, science, clients, digesters and LIVE molecule UI helpers
+are forbidden during human verification. Full 493-record input and 9/459-link
+publication scopes remain intact. Eighteen alteration controls reject foreign
+support, units, membership, payloads, questions, navigation scope and presentation
+flags. Original quantities and source-owned values are never regenerated.
+
+A separate [confirmed LIVE return limitation](pending_bugs/molecule_activity_root_selection_equality.md)
+conflates integer `33` and floating `33.0` through Python equality. The original
+graph contains that behavior; its historical predicate explicitly preserves it
+without normalizing either operand. A bounded SDK212 probe reproduces it with
+unchanged inputs and zero source/network attempts. It remains unfixed, with a
+concrete #148 report awaiting separate material approval. The previously approved
+quantity-navigation report is already
+[published](https://github.com/uibcdf/sabueso/issues/148#issuecomment-6712960392).
+
+Qualification uses editable SDK212 metadata against parent `9c29eb4`, with the
+new implementation and tests bound by their own hashes. Public saving and
+@21/@22 storage dispatch remain disabled. Untested manifest/routing helpers and
+internally staged verifier/shared-value copies do not constitute file admission.
+**Next:** finish complete SDK205/SDK208 human replay, original literal descendants
+and record-detail display bindings, explicit @21/@22 dispatch, whole-bundle
+semantic resealing, transport/resave and fresh inert/copied file receiving.
+Formats @1–@20, all three capsules, frozen predicates and scientific defaults
+stay fixed. This is selected local verification; full offline, hosted,
+installed-artifact, scientific/researcher and actual-consumer gates remain open.
+Cumulative exact-final-head CI/governance recovery stays under #148/#112; no
+remote workflow is dispatched for this intermediate block. The six-stage
+objective and B7/B8 boundaries remain open.
+
 ## Genuine corrected quantity-display original — 2026-11-07
 
 The corrected clean **`af5180b` / SDK211** producer is committed and pushed with
