@@ -120,6 +120,14 @@ included source records and their original measurements, and source focus is
 preserved even when native keys are parent-normalized. See the
 [membership correction](pending_bugs/molecule_activity_identity_membership.md).
 
+Native ligand crossings are cached by the exact focal molecule capture, supplied
+target capture, ordered input occurrences and scientific policies. Explicit
+source-relationship navigation and candidate selection can change the focal
+capture while retaining the supplied context. Repeated crossings preserve each
+capture's own native payload and wrapper pin, including separate snapshots with
+one Card ID; target activity evaluation remains shared. See the
+[cross-focal cache correction](pending_bugs/molecule_activity_cross_focal_cache.md).
+
 Development opt-in `measurement_rule="measurement_identity@2"` is shared by
 `bioactivities`, `explain_measurement`, `explain_bioactivity`, `ligands`,
 `explain_ligand`, `compare_ligands` and applicable tables. Default/original @1

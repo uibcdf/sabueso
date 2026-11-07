@@ -9,6 +9,21 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Exact-focal molecule crossing cache (2026-11-07, #148/#112)
+
+The [selected correction receipt](../evidence/molecule_activity_cross_focal_checkpoint_20261107.json)
+binds the one-line LIVE cache correction and its three public-route regressions
+to 765 distinct local passes, including all 54 LIVE cases, 36 private originals
+and isolated copied receiving. It preserves the SDK205 original, scientific
+defaults and formats @1–@20. The pre-commit editable label is SDK207; exact changed
+source is hashed separately. Record the actual committed/pushed SHA, refreshed
+editable metadata and clean-head repeats in
+`recovered_work/checkpoint_recovery_20261106/b5-molecule-cross-focal-commit-1/`.
+This is another authorized intermediate `[skip ci]` increment. No hosted run is
+claimed; recover cumulative exact-final-head CI and governance through
+gh-run-receptor before code-block closeout. Owners remain #148/#112. Supplemental
+clean-producer multi-focal capture and independent saved admission are next.
+
 ### Current intermediate activity reader (2026-11-06, #148/#112)
 
 The clean live checkpoint `2eb611463c0f8ab990039ec017833f5b33ae2711`

@@ -395,6 +395,7 @@ class MoleculeActivityResult:
         cache_key = (
             ADAPTER,
             "native_crossing",
+            self._access._focal_key,
             pin,
             tuple(self._access._inputs),
             canonical_json(policies),

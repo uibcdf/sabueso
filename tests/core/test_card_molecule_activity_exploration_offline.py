@@ -941,6 +941,104 @@ def synthetic_cross_alias_copy(target):
 
 
 @pytest.mark.parametrize(
+    "first_name,second_name",
+    [("bts", "benz"), ("benz", "bts"), ("bts", "bts-snapshot")],
+)
+def test_native_crossing_cache_keeps_each_publicly_navigated_focal_molecule(
+    public_originals, monkeypatch, first_name, second_name
+):
+    first, target = (
+        restored(public_originals, name) for name in (first_name, "target")
+    )
+    if second_name == "bts-snapshot":
+        raw = first.to_dict()
+        raw["meta"]["synthetic_snapshot_control"] = (
+            "Distinct molecule snapshot; unchanged source relationships."
+        )
+        second = Card.from_dict(raw)
+        assert second.id == first.id and second.pinned_ref() != first.pinned_ref()
+    else:
+        second = restored(public_originals, second_name)
+    before = [card.to_dict() for card in (first, target, second)]
+    oracles = {
+        card.pinned_ref(): serialized_native(
+            target.explain_ligand(card.id, Deck([first, second]))
+        )
+        for card in (first, second)
+    }
+    original, calls = Card.bioactivities, []
+
+    def counted(card, *args, **kwargs):
+        calls.append(card.id)
+        return original(card, *args, **kwargs)
+
+    monkeypatch.setattr(Card, "bioactivities", counted)
+
+    def link(view, role):
+        return next(item for item in view.items() if item._entry.value["role"] == role)
+
+    root = first.explore(related_cards=[target, second]).answer("measured_targets")
+    first_links = root.items()[0].related()
+    first_crossing = link(first_links, "native_ligand_crossing").open()
+    assert first_crossing.native_payload == oracles[first.pinned_ref()]
+    protein = link(first_links, "target_card").open()
+    activity = protein.explorer.answer("measured_molecules")
+    second_alias = BENZ if second_name == "benz" else BTS
+    molecule = next(
+        item
+        for item in activity.items()
+        if item.cells["molecule_ref"].value == second_alias
+    )
+    relationship = link(molecule.related(), "original_relationship").open()
+    object_ref = next(
+        item for item in relationship.items() if item._entry.key == "object_ref"
+    )
+    destinations = object_ref.related()
+    destination = next(
+        item
+        for item in destinations.items()
+        if any(
+            candidate["capture"] == second.pinned_ref()
+            for candidate in item._entry.value.get("candidates", [])
+        )
+    ).open()
+    if destination.explorer.context["card_ref"] != second.pinned_ref():
+        assert destination.outcome["status"] == "ambiguous"
+        destination = next(
+            item
+            for item in destination.items()
+            if any(
+                candidate["capture"] == second.pinned_ref()
+                for candidate in item._entry.value.get("candidates", [])
+            )
+        ).open()
+    assert destination.explorer.context["card_ref"] == second.pinned_ref()
+    second_root = destination.explorer.answer("measured_targets")
+    second_links = second_root.items()[0].related()
+    second_crossing = link(second_links, "native_ligand_crossing").open()
+    assert second_crossing.native_payload["molecule_ref"] == second.id
+    assert second_crossing.native_payload == oracles[second.pinned_ref()]
+    _, location = second_crossing.explorer.access._resolve(
+        second_crossing._selection._target["location"]
+    )
+    assert location["segments"] == [{"type": "Key", "value": "native_payload"}]
+    wrapper = second_crossing.explorer.access._objects[location["result_ref"]]
+    assert wrapper["molecule_card_ref"] == second.pinned_ref()
+    assert second_crossing.explorer.context["card_ref"] == second.pinned_ref()
+    assert second_crossing.back().view_ref == second_links.view_ref
+    assert (
+        link(first_links, "native_ligand_crossing").open().native_payload
+        == oracles[first.pinned_ref()]
+    )
+    assert (
+        link(second_links, "native_ligand_crossing").open().native_payload
+        == oracles[second.pinned_ref()]
+    )
+    assert calls == [target.id]
+    assert before == [card.to_dict() for card in (first, target, second)]
+
+
+@pytest.mark.parametrize(
     "measurement_rule", ["measurement_identity@1", "measurement_identity@2"]
 )
 @pytest.mark.parametrize("admit_alias", [False, True])

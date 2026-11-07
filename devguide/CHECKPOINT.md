@@ -5,6 +5,36 @@ Current working-state checkpoint: **2026-11-07**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Exact-focal molecule crossing cache correction — 2026-11-07
+
+Cross-focal receiving exposed a [LIVE cache defect](pending_bugs/molecule_activity_cross_focal_cache.md):
+after explicit molecule → target → molecule navigation, the explorer could
+retain the second molecule while returning the first one's native crossing.
+The cache now includes the exact focal capture alongside the target, ordered
+inputs and policies. Three regressions cover both compound orders and explicit
+selection of a separate same-ID snapshot; target activity evaluation stays shared.
+
+The [selected correction receipt](evidence/molecule_activity_cross_focal_checkpoint_20261107.json)
+verifies **765 distinct passes**: 54 LIVE, 36 private original, 291 shared,
+383 native/profile and one isolated copied-consumer case. Its 54 child cases and
+focused repeats add no distinct coverage. All five phases have complete/integrity
+receptor artifacts, exact controller/worker accounting, 1,156 stable source/input
+hashes and zero owned swap. Two expected offline UniChem warnings remain visible.
+Qualification used editable SDK207 metadata with the changed source separately
+bound against parent `4859afb`; it is selected local QA, not a full-source,
+installed-artifact or human/scientific checkpoint.
+
+**Next:** qualify the corrected clean producer and capture supplemental genuine
+multi-focal routes before new saved admission. The SDK205 original stays
+byte-identical: its one-focal-per-case scope does not exercise this transition.
+Then finish independent saved admission, complete human/source/origin replay,
+semantic resealing, transport/resave, fresh inert reading and copied receiving.
+Public saving remains false. Native policies, schema and formats @1–@20 stay fixed.
+The report draft awaits concrete publication permission; code work continues.
+Intermediate CI remains deferred under #148/#112 to the agreed cumulative
+exact-final-head CI/governance recovery through gh-run-receptor. Broader B4–B6,
+B7/B8 and the full six-stage goal remain open.
+
 ## Independent molecule activity predicate checkpoint — 2026-11-07
 
 A new private `_molecule_activity_history_v1` package freezes the SDK205

@@ -104,6 +104,13 @@ request/cell. Integrate saved admission, full original human/source/origin route
 transport/resave and copied receiving next. Public saving remains false and the
 entire B4/B5 slice stays open; this is not B7 acceptance or B8 resumption.
 
+New cross-focal receiving found a
+[native crossing cache defect](pending_bugs/molecule_activity_cross_focal_cache.md)
+outside the original's one-focal-per-case scope. Scope the cache to the exact
+molecule capture, qualify the corrected clean producer and preserve supplemental
+genuine multi-focal routes before new saved admission. Keep the original SDK205
+capsule unchanged; the private predicate foundation does not close this gap.
+
 Continue the rich profiles through the
 [current destination actions](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions)
 with applicable local checks and the maintainer's authorized CI batching.

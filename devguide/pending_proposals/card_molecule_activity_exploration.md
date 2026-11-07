@@ -7,7 +7,7 @@ workload, real-consumer and exact-candidate qualification remain separate.
 
 ## Current checkpoint and next action
 
-The LIVE producer is committed and pushed as **`ddc1fc8` / SDK205**, using
+The complete original's LIVE producer is committed and pushed as **`ddc1fc8` / SDK205**, using
 `[skip ci]`. Editable import/distribution/generated labels agree outside the
 checkout at `0.14.0+205.gddc1fc8`. The
 [code correction receipt](../evidence/molecule_activity_identity_checkpoint_20261107.json)
@@ -24,7 +24,21 @@ named human views, 288 actual machine requests with 311 pages, all complete capt
 native/access/source objects and raw public inputs. It is an observation capsule,
 not an admitted saved explorer format or researcher acceptance.
 
-Next implement the independent original reader, semantic tamper refusal,
+Cross-focal receiving subsequently exposed a
+[native crossing cache defect](../pending_bugs/molecule_activity_cross_focal_cache.md).
+The current correction includes the exact focal capture in the key, alongside
+the target, ordered inputs and policies. The three public-route controls cover
+both compound orders and a distinct same-ID snapshot. They retain one shared
+target activity evaluation while binding each crossing to its actual molecule.
+The [765-case selected receipt](../evidence/molecule_activity_cross_focal_checkpoint_20261107.json)
+passes the full 54-case LIVE cohort, all 36 private original cases, affected
+shared/native/profile regressions and the isolated copied consumer. Focused
+repeats and the 54 copied child cases add no distinct coverage.
+The SDK205 original has one focal molecule per case and does not exercise this
+transition. Qualify the corrected clean producer and capture supplemental genuine
+multi-focal routes before new saved admission; keep that original byte-identical.
+
+Then implement the independent original reader, semantic tamper refusal,
 transport/resave, inert fresh-process reading and full copied receiving. Saving
 remains explicitly refused. Keep formats @1–@20 and all earlier originals fixed.
 No native default adoption, schema change, hosted CI or release occurs here.
@@ -86,8 +100,8 @@ Implementation:
   projection, candidate-first quantity comparisons and null-last ordering;
 - `card_molecule_activity_exploration.py` implements human/source/return routes;
 - `card_molecule_activity_presentation_v1.py` provides bounded text/HTML;
-- `test_card_molecule_activity_exploration_offline.py` retains all 51 owning
-  public and explicitly synthetic controls; the copied consumer requires all 51.
+- `test_card_molecule_activity_exploration_offline.py` retains all 54 owning
+  public and explicitly synthetic controls; the copied consumer requires all 54.
 
 Shared access, profile, context-navigation, presentation and storage hooks are
 committed. Descriptor saving remains false until independent historical
@@ -147,6 +161,10 @@ only their declared output rules; opaque source-owned lookalikes remain literal.
 Expected values verify retained knowledge and never replace it. Preserve exact
 source relationship IDs, included/context-only membership, all native originals,
 quantity field/unit bindings, null states and both molecule/target origin pins.
+Native crossing admission must bind the exact focal capture as well as target,
+ordered input occurrences and policies; a target pin or molecule Card ID alone
+cannot identify the crossing. Include the corrected producer's supplemental
+multi-focal routes without rewriting the original SDK205 observations.
 
 Choose explicit new logical/sharing formats after auditing dispatch. Original
 @1–@20 readers and resaves retain their original meanings. Verify all 29 original

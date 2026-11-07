@@ -77,6 +77,15 @@ across 311 pages. It keeps current Cards/readers/clients out of verification.
 Explicit saved admission, human/source/origin replay, transport and copied
 receiving remain open; this private foundation does not enable public saving.
 
+Cross-focal receiving also exposed a [native crossing cache defect](pending_bugs/molecule_activity_cross_focal_cache.md):
+after explicit molecule → target → molecule navigation, a shared cache could
+return the previous molecule's crossing. The correction scopes that cache to
+the exact focal capture, including distinct snapshots with the same Card ID.
+Its [765-case selected checkpoint](evidence/molecule_activity_cross_focal_checkpoint_20261107.json)
+passes LIVE, private original, affected shared/native/profile and copied gates.
+Qualify the corrected producer and capture supplemental genuine multi-focal
+routes before admitting saved reading; preserve the complete SDK205 original.
+
 The [shared literature catalog](pending_proposals/card_literature_exploration.md)
 has its B4 LIVE producer committed: four new modules and their dispatch wiring
 across Card natures pass the selected
