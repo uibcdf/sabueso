@@ -61,7 +61,7 @@ fixed. See the [activity contract](pending_proposals/card_bioactivity_exploratio
 and [capsule provenance](../tests/core/data/README.md#original-live-bioactivity-projection-before-saved-reading).
 
 The LIVE molecule-to-supplied-target profile uses
-`test_card_molecule_activity_exploration_offline.py`: 54 cases over complete
+`test_card_molecule_activity_exploration_offline.py`: 60 cases over complete
 public TcTIM/BTS/benznidazole inputs, explicit synthetic identity/empty controls,
 and the unchanged @17 original. Six new controls receive literal alias membership
 within broader native copy groups and parent-normalized native keys, source focus,
@@ -70,6 +70,9 @@ Three cross-focal regressions follow the public source-relationship route in
 both molecule orders and explicitly select a second same-ID snapshot. They check
 complete native oracles, exact wrapper ownership, repeat/back/focal navigation,
 unchanged inputs and one shared target-bioactivity evaluation.
+Six quantity-display cases exercise target/group/record grains with ordinary or
+skipped digestion. They preserve source/back/publication/native routes for
+PyUnitWizard operands and the exact types/units of existing JSON operands.
 It also checks exact identity conflicts and aliases,
 duplicate input occurrences, separate target snapshots, source/query states,
 native policy parity, quantity/null grains, complete 9/459-link publication
@@ -79,7 +82,7 @@ until genuine producer controls and independent saved reading exist. Both
 installed workflows copy/select the module once. Its isolated outer gate,
 `test_declared_molecule_activity_runs_with_only_required_public_inputs`, copies
 the six required public fixture files and original @17 capsule outside the
-checkout and verifies the child's complete receptor stream and exact 54-case
+checkout and verifies the child's complete receptor stream and exact 60-case
 count. These child cases overlap the source cohort; do not add them to distinct
 coverage. Run affected nature/access/navigation, arguments/quantities, native
 ligand/activity and historical saved gates. Technical receiving does not supply
@@ -96,7 +99,7 @@ receives its 51 owning cases, 291 shared, 383 native/profile and one copied
 outer case, with complete/integrity and exact node/source/resource accounting.
 The 51 copied children and six focused repeats overlap and add no distinct cases.
 The [cross-focal cache receipt](evidence/molecule_activity_cross_focal_checkpoint_20261107.json)
-receives the current 54 LIVE cases, all 36 private originals, the same 291 shared
+receives its 54 LIVE cases, all 36 private originals, the same 291 shared
 and 383 native/profile cases, and one copied outer case: 765 distinct passes.
 All five gates verify complete receptor integrity, exact nodes/workers, 1,156
 stable source/input hashes and declared resources with zero owned swap. Its 54
@@ -104,6 +107,13 @@ copied child cases and focused red/green repetitions add no distinct coverage;
 the same two expected offline UniChem warnings remain visible. The SDK205
 capsule has one focal molecule per case, so supplemental clean-producer
 multi-focal capture is required before new saved admission.
+The [quantity-display correction receipt](evidence/molecule_activity_quantity_display_checkpoint_20261107.json)
+receives all 60 current LIVE cases, the same 291 shared and 383 native/profile
+cases, and one copied outer case: 735 distinct passes with complete receptor,
+controller/worker, 1,157-source-hash and resource accounting. Two expected UniChem
+warnings remain visible; owned swap is zero. Its 60 copied children and six
+focused red/green cases overlap and add no distinct coverage. Earlier receipts
+retain their own code bindings; no new full offline or saved-reader gate is claimed.
 The [clean SDK205 original receipt](evidence/molecule_activity_live_original_20261107.json)
 verifies 6,035 unchanged members across 29 scenarios, 1,337 named human views and
 288 actual machine requests with 311 complete pages before any independent

@@ -940,6 +940,73 @@ def synthetic_cross_alias_copy(target):
     return original, copied
 
 
+@pytest.mark.parametrize("grain", ("target", "group", "record"))
+@pytest.mark.parametrize("skip_digestion", (False, True))
+def test_quantity_display_filter_preserves_public_source_and_native_navigation(
+    public_originals, monkeypatch, grain, skip_digestion
+):
+    molecule, target, benz = (
+        restored(public_originals, name) for name in ("bts", "target", "benz")
+    )
+    before = [card.to_dict() for card in (molecule, target, benz)]
+    original, calls = Card.bioactivities, []
+
+    def counted(card, *args, **kwargs):
+        calls.append(card.id)
+        return original(card, *args, **kwargs)
+
+    monkeypatch.setattr(Card, "bioactivities", counted)
+    root = molecule.explore(related_cards=[target, benz]).answer("measured_targets")
+    scope = root
+    if grain in ("group", "record"):
+        scope = scope.items()[0].open()
+    if grain == "record":
+        scope = scope.items()[0].open()
+    node = {"value": 33, "unit": "micromolar"}
+    node_selected = scope.filter("measurement", equals=node)
+    quantity = puw.quantity(33, "micromolar", form="pint")
+    selected = scope.filter(
+        "measurement", equals=quantity, skip_digestion=skip_digestion
+    )
+    assert len(selected.items()) == len(node_selected.items()) == 1
+    assert selected.view_ref == node_selected.view_ref
+    links = selected.items()[0].related()
+    control_links = node_selected.items()[0].related()
+    assert selected._display_request["equals"] == {
+        "value": 33.0,
+        "unit": "micromolar",
+    }
+    assert type(node_selected._display_request["equals"]["value"]) is int
+    assert node_selected._display_request["equals"] == node
+    assert puw.get_value(quantity, to_unit="micromolar") == 33
+
+    def link(view, role):
+        return next(item for item in view.items() if item._entry.value["role"] == role)
+
+    source = link(links, "source").open()
+    source_context = source.context["molecule_activity_navigation"]
+    assert (
+        source_context["parent_selection"]["display_request"]
+        == selected._display_request
+    )
+    assert source.back().view_ref == links.view_ref
+    assert links.back().view_ref == selected.view_ref
+    assert links.back()._display_request == selected._display_request
+    control_source = link(control_links, "source").open()
+    assert source.native_payload == control_source.native_payload
+    publication = link(links, "publication_context").open()
+    assert len(publication.native_payload["links"]) == 9
+    crossing = link(links, "native_ligand_crossing").open()
+    assert (
+        crossing.native_payload
+        == public_originals["native"]["ligand_explanations"]["bts"]
+    )
+    returned = link(links, "molecule_root").open()
+    assert returned.view_ref == (selected if grain == "target" else root).view_ref
+    assert calls == [target.id]
+    assert before == [card.to_dict() for card in (molecule, target, benz)]
+
+
 @pytest.mark.parametrize(
     "first_name,second_name",
     [("bts", "benz"), ("benz", "bts"), ("bts", "bts-snapshot")],

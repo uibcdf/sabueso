@@ -128,6 +128,13 @@ capture's own native payload and wrapper pin, including separate snapshots with
 one Card ID; target activity evaluation remains shared. See the
 [cross-focal cache correction](pending_bugs/molecule_activity_cross_focal_cache.md).
 
+Display filters on `measurement` accept PyUnitWizard quantities or explicit
+value/unit nodes. The generated navigation request stores a serializable
+value/unit node for a PyUnitWizard operand; existing JSON-node scalar types and
+units are preserved. Filtering keeps source, publication, native crossing and
+back routes in the original scientific scope. See the
+[quantity display correction](pending_bugs/molecule_activity_quantity_display.md).
+
 Development opt-in `measurement_rule="measurement_identity@2"` is shared by
 `bioactivities`, `explain_measurement`, `explain_bioactivity`, `ligands`,
 `explain_ligand`, `compare_ligands` and applicable tables. Default/original @1

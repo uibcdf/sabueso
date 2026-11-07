@@ -8,6 +8,7 @@ from .card_molecule_activity_access import TOPIC, materialize
 from .card_molecule_activity_selection_v1 import (
     FORMAT,
     equal,
+    quantity_node,
     sorted_entries,
     validate_equality,
 )
@@ -518,7 +519,11 @@ def display_filter(view, column, equals):
         _display_request={
             "operation": "filter",
             "column": column,
-            "equals": deepcopy(equals),
+            "equals": quantity_node(equals)
+            if column == "measurement"
+            and equals is not None
+            and not isinstance(equals, dict)
+            else deepcopy(equals),
             "filter_policy": FORMAT,
         },
     )

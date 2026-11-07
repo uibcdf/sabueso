@@ -96,6 +96,14 @@ It reads recorded row order, native memberships and exact-scope retained crossin
 wrappers without scientific recalculation. It is an input to full saved admission;
 it does not enable public saving or qualify saved human/source/origin navigation.
 
+The [PyUnitWizard display boundary correction](evidence/molecule_activity_quantity_display_checkpoint_20261107.json)
+passes 735 selected cases, including the complete 60-case LIVE profile. Quantity
+filters now keep their source/back/publication/native routes; existing JSON-node
+operands keep their original types and units. The
+[owning update](https://github.com/uibcdf/sabueso/issues/148#issuecomment-6712960392)
+records the reproduced defect. Qualify the clean correction and preserve positive
+controls before finishing saved admission; no saved format is enabled here.
+
 The [shared literature catalog](pending_proposals/card_literature_exploration.md)
 has its B4 LIVE producer committed: four new modules and their dispatch wiring
 across Card natures pass the selected

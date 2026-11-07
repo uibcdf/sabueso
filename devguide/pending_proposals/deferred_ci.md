@@ -9,6 +9,21 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Molecule quantity-display navigation (2026-11-07, #148/#112)
+
+The [735-case selected receipt](../evidence/molecule_activity_quantity_display_checkpoint_20261107.json)
+qualifies PyUnitWizard display-operand serialization and original source/back/
+publication/native navigation. All 60 LIVE cases pass, with affected shared/native/
+profile and copied receiving. Existing JSON requests, scientific defaults,
+frozen predicates, controls and formats @1–@20 stay fixed. The defect's approved
+preparation-time report is published under #148. Record the exact committed/pushed
+head, editable metadata and clean-head repeats under
+`recovered_work/checkpoint_recovery_20261106/b5-molecule-quantity-display-commit-1/`.
+This is another authorized intermediate `[skip ci]` increment. Recover cumulative
+exact-final-head CI/governance through gh-run-receptor before code-block closeout.
+No remote workflow, full offline, installed-artifact or full saved-reader gate is
+claimed. Preserve positive clean-producer controls and finish new saved admission.
+
 ### Retained molecule-result restoration (2026-11-07, #148/#112)
 
 The [75-case selected receipt](../evidence/molecule_activity_retained_checkpoint_20261107.json)

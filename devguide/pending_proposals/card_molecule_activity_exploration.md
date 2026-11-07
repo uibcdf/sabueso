@@ -53,6 +53,16 @@ transport/resave, inert fresh-process reading and full copied receiving. Saving
 remains explicitly refused. Keep formats @1–@20 and all earlier originals fixed.
 No native default adoption, schema change, hosted CI or release occurs here.
 
+Full-reader integration subsequently exposed a
+[PyUnitWizard display operand defect](../pending_bugs/molecule_activity_quantity_display.md).
+Its [735-case selected correction](../evidence/molecule_activity_quantity_display_checkpoint_20261107.json)
+passes all 60 LIVE cases, affected shared/native/profile tests and copied
+receiving. It normalizes only a non-dictionary PyUnitWizard display operand before
+navigation serialization, preserving existing JSON requests and original science.
+Qualify the corrected clean producer and positive original controls before
+finishing full saved admission. The report is
+[published under #148](https://github.com/uibcdf/sabueso/issues/148#issuecomment-6712960392).
+
 ## Independent private predicate checkpoint
 
 The new private `_molecule_activity_history_v1` package contains frozen SDK205
@@ -130,8 +140,8 @@ Implementation:
   projection, candidate-first quantity comparisons and null-last ordering;
 - `card_molecule_activity_exploration.py` implements human/source/return routes;
 - `card_molecule_activity_presentation_v1.py` provides bounded text/HTML;
-- `test_card_molecule_activity_exploration_offline.py` retains all 54 owning
-  public and explicitly synthetic controls; the copied consumer requires all 54.
+- `test_card_molecule_activity_exploration_offline.py` retains all 60 owning
+  public and explicitly synthetic controls; the copied consumer requires all 60.
 
 Shared access, profile, context-navigation, presentation and storage hooks are
 committed. Descriptor saving remains false until independent historical

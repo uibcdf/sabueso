@@ -5,6 +5,36 @@ Current working-state checkpoint: **2026-11-07**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## PyUnitWizard display-filter navigation correction — 2026-11-07
+
+Full-reader integration exposed a public LIVE boundary defect: a PyUnitWizard
+measurement filter selects the correct molecule activity row, then source
+navigation fails because the generated display request contains a non-JSON
+quantity object. The [owning report](pending_bugs/molecule_activity_quantity_display.md)
+records the complete public reproducer and its
+[approved issue update](https://github.com/uibcdf/sabueso/issues/148#issuecomment-6712960392).
+The correction stores an explicit finite value/unit node for this operand while
+preserving existing JSON operands, source values and scientific policies.
+
+The [selected correction receipt](evidence/molecule_activity_quantity_display_checkpoint_20261107.json)
+passes **735 distinct cases**: all 60 LIVE cases, 291 shared, 383 native/profile
+and one isolated copied-consumer case. The copied 60 child cases and six focused
+red/green repeats add no distinct coverage. Complete receptor integrity, exact
+controller/worker accounting, 1,157 stable source/input hashes and zero owned swap
+are verified. Two expected offline UniChem warnings remain visible. Qualification
+uses editable SDK210 metadata with changed code/tests bound separately against
+`75a7533`. This is selected local receiving, not a full offline, hosted, installed
+artifact or human/scientific checkpoint.
+
+**Next:** qualify the corrected clean producer and preserve genuine positive
+quantity-display navigation controls, then finish explicit independent saved
+admission and full original human/source/origin, semantic resealing, transports/
+resave, fresh inert reading and copied receiving. The private 75-case restoration
+foundation retains its own source binding. Current saving remains false; original
+capsules, frozen predicates, scientific defaults, Card schema and formats @1–@20
+stay fixed. Cumulative exact-final-head CI/governance recovery remains under
+#148/#112; the six-stage objective stays open.
+
 ## Retained molecule-result restoration foundation — 2026-11-07
 
 The current increment adds private retained-result restoration to

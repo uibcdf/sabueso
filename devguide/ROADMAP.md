@@ -124,6 +124,13 @@ Integrate explicit saved admission, complete original human/source/origin,
 semantic whole-bundle tampering, transport/resave, fresh inert reading and copied
 receiving. This foundation does not finish the molecule profile or enable saving.
 
+Reader integration also reproduced a
+[quantity display/source-navigation defect](pending_bugs/molecule_activity_quantity_display.md).
+Its [735-case selected correction](evidence/molecule_activity_quantity_display_checkpoint_20261107.json)
+preserves original science and JSON operands while making PyUnitWizard display
+requests serializable. Qualify the clean producer and positive original controls,
+then continue saved admission and complete original replay. B4/B5 remain open.
+
 Continue the rich profiles through the
 [current destination actions](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions)
 with applicable local checks and the maintainer's authorized CI batching.
