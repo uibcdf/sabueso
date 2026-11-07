@@ -5,6 +5,35 @@ Current working-state checkpoint: **2026-11-07**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Joined human/LIVE guard qualification — 2026-11-07
+
+The clean `5422dac` / SDK213 check exposed an import-isolation defect in the new
+test guard: importing the LIVE UI after patching its provider retained a forbidden
+`materialize` alias. The following LIVE test failed. The guard now imports the UI
+before patching providers. Product code, original capsules and frozen predicates
+are unchanged. This is a test correction, not a provider defect.
+
+The [corrected joined receipt](evidence/molecule_activity_human_binding_isolation_checkpoint_20261107.json)
+passes all **206 cases in one fresh process**: both private modules followed by
+the two public refusal/discovery cases. It verifies exact receptor/nodes and
+1,164 stable scoped source/input hashes, with zero warnings or owned swap.
+Qualification takes 383.35 s pytest / 384.46 s guarded at 782,995,456 bytes peak
+owned RSS. The focused 131-case repeat adds no distinct coverage. The original
+red artifact remains visible; the corrected source uses editable SDK213 metadata
+against `5422dac`, with the changed test bound separately.
+
+The separately approved numeric root-return report is now
+[published in #148](https://github.com/uibcdf/sabueso/issues/148#issuecomment-6713763040)
+with its exact reviewed body. LIVE behavior remains unfixed. Public saving and
+@21/@22 dispatch remain disabled. **Next deliverable:** a complete real-file
+journey for the SDK211 original, with source operations bound to their actual
+retained history, transport/resave and a fresh inert reader. Then extend that
+file qualification over all SDK205/SDK208 journeys and copied receiving. Equal
+item/view handles must not silently select the last link panel from a different
+display request. Internal verifier/storage drafts remain unqualified. The full
+six-stage objective, B7/B8 and cumulative exact-final-head CI/governance recovery
+stay open under #148/#112; no remote workflow has been dispatched.
+
 ## Private original molecule human binding — 2026-11-07
 
 `card_exploration_molecule_activity.py` now implements original human/machine
@@ -32,7 +61,8 @@ conflates integer `33` and floating `33.0` through Python equality. The original
 graph contains that behavior; its historical predicate explicitly preserves it
 without normalizing either operand. A bounded SDK212 probe reproduces it with
 unchanged inputs and zero source/network attempts. It remains unfixed, with a
-concrete #148 report awaiting separate material approval. The previously approved
+separately approved [report published in #148](https://github.com/uibcdf/sabueso/issues/148#issuecomment-6713763040).
+The previously approved
 quantity-navigation report is already
 [published](https://github.com/uibcdf/sabueso/issues/148#issuecomment-6712960392).
 

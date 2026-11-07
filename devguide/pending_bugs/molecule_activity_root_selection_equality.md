@@ -1,8 +1,11 @@
 # Molecule root return conflates equal numeric display operands
 
 Owner: Sabueso #148/#112. Status: confirmed on the current LIVE implementation;
-unfixed. An exact public issue-update draft is retained internally for maintainer
-approval. This report does not extend permission for earlier approved updates.
+unfixed. The exact separately approved report is
+[published in #148](https://github.com/uibcdf/sabueso/issues/148#issuecomment-6713763040).
+The returned body matches the reviewed draft byte for byte. Its authorization,
+payload and response receipts are retained internally; this permission covers
+that concrete report only.
 
 ## Observation
 

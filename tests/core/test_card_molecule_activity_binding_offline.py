@@ -275,8 +275,12 @@ def block_current(monkeypatch):
         block_current as block_science,
     )
 
-    block_science(monkeypatch)
     import sabueso.core.card_molecule_activity_exploration as current
+
+    # Import aliases before their providers are patched. Importing the LIVE UI
+    # under the science guard would capture its temporary forbidden materialize
+    # alias and contaminate later LIVE tests in the same process.
+    block_science(monkeypatch)
 
     def forbidden(*args, **kwargs):
         raise AssertionError(

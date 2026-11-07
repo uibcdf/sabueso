@@ -140,6 +140,15 @@ display bindings, complete original human replay, explicit admission, semantic
 resealing, transport/resave and fresh inert/copied receiving before enabling
 saving. Scientific defaults and formats @1–@20 remain fixed.
 
+The [joined original/LIVE guard checkpoint](../evidence/molecule_activity_human_binding_isolation_checkpoint_20261107.json)
+corrects a test import-alias leak and requalifies the same 206 cases in one fresh
+process, including both public cases after both private modules. No product
+implementation or frozen-original change is needed. The next deliverable is a
+real saved-file/inert-reader journey over SDK211, then complete SDK205/SDK208
+file receiving. Molecule operations must bind the actual source history rather
+than reuse one generic `(focal, item_ref)` link entry for distinct displayed
+selections. This is required admission work, not an enabled public contract.
+
 ## Delivered LIVE contract
 
 Topic `activity_context`, question `measured_targets` and adapter

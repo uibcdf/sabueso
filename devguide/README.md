@@ -107,6 +107,12 @@ is confirmed and unfixed; the historical binding preserves the observed original
 operand types and Python equality interpretation explicitly. Public saving stays
 disabled; the checkpoint owns exact source, qualification and continuation.
 
+Its [joined 206-case requalification](evidence/molecule_activity_human_binding_isolation_checkpoint_20261107.json)
+corrects a test import-alias leak and runs both private modules followed by the
+public refusal/discovery cases in the same fresh process. The next useful
+deliverable is the complete real-file/inert-reader journey, retaining each
+source operation's actual history; the independent file reader remains open.
+
 The [PyUnitWizard display boundary correction](evidence/molecule_activity_quantity_display_checkpoint_20261107.json)
 passes 735 selected cases, including the complete 60-case LIVE profile. Quantity
 filters now keep their source/back/publication/native routes; existing JSON-node
