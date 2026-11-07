@@ -5,7 +5,32 @@ Current working-state checkpoint: **2026-11-07**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
-## Molecule activity-context LIVE checkpoint — 2026-11-07
+## Corrected molecule identity membership — 2026-11-07
+
+The clean LIVE producer `69c0914` / SDK204 is committed and pushed with
+`[skip ci]`; its 1,133 selected cases and 45 repeated clean-runtime controls retain
+their recorded scope. Pre-capture inspection then reproduced an additional
+cross-alias copy counterexample: a native group exposes a source record whose
+literal molecule identity was never joined to the focal Card. The wrapper showed
+two included records instead of one. Full public inputs remain intact, with one
+explicitly synthetic copied record added for this control.
+
+The working correction intersects literal source-record objects with selected
+explicit identities, preserves the complete native group as context, and keeps
+drill-down scope across parent-normalized native keys. All six new regression
+cases pass. The initial six-failure and four-pass/two-failure attempts remain
+retained. The complete 51-case owning, 291 shared, 383 native/profile and copied
+outer gates pass: 726 distinct cases, plus 51 overlapping copied children.
+The [selected correction receipt](evidence/molecule_activity_identity_checkpoint_20261107.json)
+binds this source separately from the earlier 1,133-case checkpoint. Root Ruff,
+fixture delivery, governance and warning-fatal Sphinx pass; the final guide
+check and clean-producer closeout complete this increment. No new genuine
+original or independent reader has been created. Continue from the
+[profile contract](pending_proposals/card_molecule_activity_exploration.md).
+The [identity-membership report](pending_bugs/molecule_activity_identity_membership.md)
+owns the exact counterexample and its source-context distinction.
+
+## Earlier molecule activity-context LIVE checkpoint — 2026-11-07
 
 The maintainer resumed the full six-stage goal after the requested pause.
 Previous full committed and pushed checkpoint:

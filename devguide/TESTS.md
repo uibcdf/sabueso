@@ -61,9 +61,12 @@ fixed. See the [activity contract](pending_proposals/card_bioactivity_exploratio
 and [capsule provenance](../tests/core/data/README.md#original-live-bioactivity-projection-before-saved-reading).
 
 The LIVE molecule-to-supplied-target profile uses
-`test_card_molecule_activity_exploration_offline.py`: 45 cases over complete
+`test_card_molecule_activity_exploration_offline.py`: 51 cases over complete
 public TcTIM/BTS/benznidazole inputs, explicit synthetic identity/empty controls,
-and the unchanged @17 original. It checks exact identity conflicts and aliases,
+and the unchanged @17 original. Six new controls receive literal alias membership
+within broader native copy groups and parent-normalized native keys, source focus,
+included versus contextual records, scalar applicability and complete raw support.
+It also checks exact identity conflicts and aliases,
 duplicate input occurrences, separate target snapshots, source/query states,
 native policy parity, quantity/null grains, complete 9/459-link publication
 routes, cross-Card support locations, exact back/fresh-question requests, typed
@@ -72,17 +75,23 @@ until genuine producer controls and independent saved reading exist. Both
 installed workflows copy/select the module once. Its isolated outer gate,
 `test_declared_molecule_activity_runs_with_only_required_public_inputs`, copies
 the six required public fixture files and original @17 capsule outside the
-checkout and verifies the child's complete receptor stream and exact 45-case
+checkout and verifies the child's complete receptor stream and exact 51-case
 count. These child cases overlap the source cohort; do not add them to distinct
 coverage. Run affected nature/access/navigation, arguments/quantities, native
 ligand/activity and historical saved gates. Technical receiving does not supply
 independent scientist/researcher acceptance or finish B4/B5 (#148/#112/#25/#23).
-The [selected LIVE receipt](evidence/molecule_activity_live_checkpoint_20261107.json)
-verifies 1,133 distinct cases across six actual phases, including the complete
+The [earlier selected LIVE receipt](evidence/molecule_activity_live_checkpoint_20261107.json)
+verifies its original 45-case profile and 1,133 distinct cases across six actual phases, including the complete
 29-case historical activity workload. It verifies complete receptor integrity,
 controller/worker node accounting, stable during-gate source hashes and resource
 limits. Two expected UniChem fixture warnings are retained. This selected result
-does not replace the earlier full-source receipt or qualify a later reader.
+does not replace the earlier full-source receipt, qualify the later identity
+correction or qualify an independent reader. The
+[726-case identity receipt](evidence/molecule_activity_identity_checkpoint_20261107.json)
+receives all 51 current owning cases, 291 shared, 383 native/profile and one copied
+outer case, with complete/integrity and exact node/source/resource accounting.
+The 51 copied children and six focused repeats overlap and add no distinct cases.
+Current clean-producer/capture state belongs to CHECKPOINT.
 
 The complete retained SDK200 bioactivity session measures **709,616,078 logical JSON bytes**;
 its qualification uses an explicit **1 GiB logical budget** and **128 MiB encoded

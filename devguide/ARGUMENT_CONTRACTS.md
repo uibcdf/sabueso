@@ -627,7 +627,9 @@ of `sabueso.tools.db` and every decorated public method of `Card`, `Deck`,
   complete canonical pinned Card reference, without whitespace normalization,
   item suffixes or bare CardID guessing. The pin must belong to the captured
   inputs; a source `molecule_ref` must be an explicit focal identity member, and
-  `measurement_ref` requires that exact target pin and joined native membership.
+  `measurement_ref` requires that exact target pin and admitted source-record/group
+  membership. Literal record focus outside the selected identities refuses before
+  native evaluation; a selected source alias need not equal the native parent key.
   Malformed policies, projections and typed selection requests are refused before
   native interpretation. Saved historical requests for this new topic report
   `not_saved` without invoking its current scientific option normalizer.

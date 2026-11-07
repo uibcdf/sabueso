@@ -62,7 +62,6 @@ def open_item(item):
     if row["kind"] == "activity_context_group":
         options.update(
             target_card_ref=row["target_card_ref"],
-            molecule_ref=row["molecule_ref"],
             measurement_ref=row["measurement_ref"],
         )
         return view(parent._explorer, parent, options)
@@ -117,6 +116,7 @@ def _navigation(item):
         "original_request": parent.request,
         "scientific_options": deepcopy(result.options),
         "identity_edges": deepcopy(support(item)[0]["identity_edges"]),
+        "identity_membership": deepcopy(support(item)[0]["identity_membership"]),
     }
 
 
@@ -269,7 +269,12 @@ def links(item):
         destinations.append(
             (
                 "original_relationship",
-                "Original identity or activity relationship · "
+                (
+                    "Native context only · original activity relationship · "
+                    if relationship["id"]
+                    in original["identity_membership"]["context_only_relationship_ids"]
+                    else "Original identity or activity relationship · "
+                )
                 + str(relationship["id"]),
                 location,
             )

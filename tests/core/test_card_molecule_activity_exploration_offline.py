@@ -14,6 +14,7 @@ from sabueso._private.smonitor.warnings import EnrichmentFailedWarning
 from sabueso.core.card import Card
 from sabueso.core.deck import Deck
 from sabueso.core.errors import ArgumentError, StorageError
+from sabueso.core.measurements import record_source
 from sabueso.core.relationship_store import make_relationship
 from sabueso.core.source_assertion_store import make_source_assertion
 from sabueso.resolver import EntityResolver, FixtureUniProtClient
@@ -900,3 +901,176 @@ def test_bounded_page_defers_complete_scientific_values_and_retains_read_locatio
         ]["field"]
         == QUANTITY_FIELD
     )
+
+
+def synthetic_cross_alias_copy(target):
+    """Retain the full public target plus one explicitly synthetic foreign-alias copy."""
+    original = next(
+        row
+        for row in target.relationships("has_bioactivity")
+        if row["object_ref"] == BTS
+    )
+    qualifiers = deepcopy(original["qualifiers"])
+    qualifiers.update(
+        source="Synthetic copy control",
+        activity_id="SYN-COPY",
+        copy_of={
+            "source": record_source(qualifiers),
+            "activity_id": qualifiers["activity_id"],
+        },
+    )
+    assertion = make_source_assertion(
+        "relationships.has_bioactivity",
+        qualifiers,
+        "Synthetic copy control",
+        "SYN-COPY",
+        "synthetic fixture",
+        subject_ref="uniprot:P52270",
+    )
+    target.source_assertion_store.add(assertion)
+    copied = make_relationship(
+        "uniprot:P52270",
+        "has_bioactivity",
+        "chembl:CHEMBL999999997",
+        qualifiers,
+        [assertion["id"]],
+    )
+    target.relationship_store.add(copied)
+    assert len(target.relationships("has_bioactivity")) == 494
+    return original, copied
+
+
+@pytest.mark.parametrize(
+    "measurement_rule", ["measurement_identity@1", "measurement_identity@2"]
+)
+@pytest.mark.parametrize("admit_alias", [False, True])
+def test_cross_alias_copy_requires_explicit_identity_and_preserves_complete_native_context(
+    pair, measurement_rule, admit_alias
+):
+    molecule, target = pair
+    original, copied = synthetic_cross_alias_copy(target)
+    if admit_alias:
+        synthetic_alias(molecule, copied["object_ref"])
+    before = molecule.to_dict(), target.to_dict()
+    options = {"measurement_rule": measurement_rule}
+    native = serialized_native(target.bioactivities(**options))
+    explorer = molecule.explore(related_cards=[target])
+    root = explorer.view(TOPIC, options=options)
+    assert (
+        root.native_payload["targets"][target.pinned_ref()]["overview"]["wire"][
+            "native_payload"
+        ]
+        == native
+    )
+    expected = {original["id"], copied["id"]} if admit_alias else {original["id"]}
+    assert root.items()[0].cells["record_count"].value == len(expected)
+    assert root.items()[0].cells["measurement_count"].value == 1
+    assert root.items()[0].cells["measurement_ref"].state == "not_applicable"
+    groups = root.items()[0].open()
+    assert len(groups.items()) == 1
+    group = groups.items()[0]
+    assert group.cells["record_count"].value == len(expected)
+    membership = group._entry.value["interpretation"]["identity_membership"]
+    assert set(membership["included_relationship_ids"]) == expected
+    assert set(membership["context_only_relationship_ids"]) == (
+        {copied["id"]} if not admit_alias else set()
+    )
+    records = group.open()
+    assert len(records.items()) == len(expected)
+    assert {item.cells["relationship_id"].value for item in records.items()} == expected
+    assert all(item.cells["class"].state == "present" for item in records.items())
+    explanation = serialized_native(
+        target.explain_measurement(group.cells["measurement_ref"].value, **options)
+    )
+    assert {row["relationship"]["id"] for row in explanation["records"]} == {
+        original["id"],
+        copied["id"],
+    }
+    for item in records.items():
+        assert item.open().native_payload == next(
+            row
+            for row in explanation["records"]
+            if row["relationship"]["id"] == item.cells["relationship_id"].value
+        )
+    for wire in records.native_payload["targets"][target.pinned_ref()][
+        "focused_results"
+    ].values():
+        assert wire["native_payload"] == explanation
+    page = explorer.access.select(
+        TOPIC,
+        options={
+            **options,
+            "target_card_ref": target.pinned_ref(),
+            "measurement_ref": group.cells["measurement_ref"].value,
+        },
+        fields=["molecule_ref", "relationship_id", "measurement"],
+    ).page(max_bytes=65536)
+    assert {
+        frame["cells"]["relationship_id"]["value"] for frame in page["items"]
+    } == expected
+    if not admit_alias:
+        assert (
+            group.cells["class"].value is None
+            and group.cells["class"].state == "not_applicable"
+        )
+        assert "outside" in group.cells["class"].reason
+        context_link = next(
+            item
+            for item in group.related().items()
+            if item._entry.value["role"] == "original_relationship"
+            and copied["id"] in item.label
+        )
+        assert "context only" in context_link.label.lower()
+        assert context_link.open().native_payload["id"] == copied["id"]
+    # A requested source-record focus remains narrower than all admitted aliases.
+    focused = explorer.view(
+        TOPIC,
+        options={
+            **options,
+            "target_card_ref": target.pinned_ref(),
+            "molecule_ref": BTS,
+        },
+    )
+    assert focused.items()[0].cells["record_count"].value == 1
+    assert {
+        item.cells["relationship_id"].value
+        for item in focused.items()[0].open().items()
+    } == {original["id"]}
+    if admit_alias:
+        assert "multiple source-molecule contexts" in str(groups)
+        copy_focus = explorer.view(
+            TOPIC,
+            options={
+                **options,
+                "target_card_ref": target.pinned_ref(),
+                "molecule_ref": copied["object_ref"],
+            },
+        )
+        assert copy_focus.items()[0].cells["record_count"].value == 1
+        assert {
+            item.cells["relationship_id"].value
+            for item in copy_focus.items()[0].open().items()
+        } == {copied["id"]}
+    assert before == (molecule.to_dict(), target.to_dict())
+
+
+@pytest.mark.parametrize(
+    "measurement_rule", ["measurement_identity@1", "measurement_identity@2"]
+)
+def test_foreign_alias_record_focus_refuses_before_native_evaluation(
+    pair, monkeypatch, measurement_rule
+):
+    molecule, target = pair
+    _, copied = synthetic_cross_alias_copy(target)
+    explorer = molecule.explore(related_cards=[target])
+    monkeypatch.setattr(Card, "bioactivities", forbidden)
+    monkeypatch.setattr(Card, "explain_measurement", forbidden)
+    with pytest.raises(ArgumentError):
+        explorer.view(
+            TOPIC,
+            options={
+                "measurement_rule": measurement_rule,
+                "target_card_ref": target.pinned_ref(),
+                "measurement_ref": copied["id"],
+            },
+        )

@@ -58,8 +58,11 @@ scope and limits. The broader B4 and human/scientific acceptance remain open.
 The next [molecule-to-supplied-target activity journey](pending_proposals/card_molecule_activity_exploration.md)
 has a selected LIVE checkpoint: explicit source identity joins retain exact
 target captures, native measurements and full source/publication navigation. Its
-45-case owning and adjacent/historical/copied gates total
+earlier 45-case owning and adjacent/historical/copied gates total
 [1,133 distinct local passes](evidence/molecule_activity_live_checkpoint_20261107.json).
+The [identity-membership correction](evidence/molecule_activity_identity_checkpoint_20261107.json)
+adds six controls and passes the complete 51-case cohort plus affected shared,
+native/profile and copied gates: 726 distinct cases with their own source binding.
 Saving awaits a clean producer capture and an independent original reader. The
 checkpoint distinguishes this unfinished profile from full-source, installed and
 human qualification.

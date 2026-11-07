@@ -1,5 +1,33 @@
 # Exact molecule-to-target activity context
 
+## Current pre-capture correction
+
+Clean producer `69c0914` / SDK204 passed its selected 1,133 cases and 45 repeated
+post-commit cases and was pushed. A further pre-capture control reproduced an
+identity-membership defect over the full public 493-record target plus one
+explicit synthetic copy. The native group spans two literal molecule records;
+only one was explicitly joined to the focal molecule, yet two records were shown
+and counted. Native parent-molecule keys remain interpretation context and do
+not replace exact literal record identity. The
+[identity-membership report](../pending_bugs/molecule_activity_identity_membership.md)
+owns the full counterexample and correction.
+
+The correction projects records/counts through explicit selected identities,
+retains complete original native wires and support, withholds broader/aggregate
+summary scalars without reclassifying a subset, and preserves alias scope through
+group drill-down. Source-record focus outside the joined identity refuses before
+native evaluation. Six permanent regression cases pass for default/opt-in grouping,
+absent/present alias joins and exact source focus, including parent-normalized
+native keys. Receiving and failed attempts remain in the local recovery
+tree under `b5-molecule-identity-regression-*`. The original 45 controls stay in
+place; the copied consumer now requires all 51 cases. Owning/shared/native/profile
+and copied gates pass 726 distinct cases, with two expected UniChem fixture
+warnings and zero owned swap. The
+[correction receipt](../evidence/molecule_activity_identity_checkpoint_20261107.json)
+owns its exact source and selected scope. Final quality and a corrected clean
+producer precede the genuine original capture. No new
+independent reader or saved format exists.
+
 Owner: Sabueso #148, with molecule identity/crossing under #25/#23.
 The maintainer resumed the full six-stage goal after the 2026-11-07 pause. This
 B4/B5 increment has a [selected LIVE checkpoint](../evidence/molecule_activity_live_checkpoint_20261107.json):

@@ -846,7 +846,7 @@ def test_declared_molecule_activity_runs_with_only_required_public_inputs():
             final["counts"]["collected"]
             == final["counts"]["executed"]
             == final["counts"]["passed"]
-            == 45
+            == 51
         )
         assert not any(
             final["counts"][key]

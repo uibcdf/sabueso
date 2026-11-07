@@ -32,6 +32,14 @@ TOPIC = "activity_context"
 ADAPTER = "molecule_activity_context_exploration@1"
 SUPPORT_FORMAT = "molecule_activity_context_support@1"
 RULE = "molecule_activity_context@1"
+SUMMARY_COLUMNS = (
+    "class",
+    "measurement",
+    "relation",
+    "source",
+    "assay_ref",
+    "document_ref",
+)
 SCOPE = (
     "Exact source-stated molecule identity within explicitly supplied target pins; "
     "retained measurements and source/query scope, not target discovery, inactivity, "
@@ -74,6 +82,7 @@ def descriptor():
             "row_grain",
             "effective_options",
             "identity_basis",
+            "identity_membership",
             "target_card_ref",
             "native_outcomes",
             "counting_scope",
@@ -262,12 +271,26 @@ class MoleculeActivityResult:
     def cell_state(self, key, column):
         if self.value(key, column) is not None:
             return "present"
+        membership = self.wire["rows"][key]["interpretation"]["identity_membership"]
+        if column in SUMMARY_COLUMNS and (
+            membership["context_only_relationship_ids"]
+            or len(membership["included_molecule_refs"]) > 1
+        ):
+            return "not_applicable"
         members = self.native_members(key)
+        if column == "molecule_ref" and len(membership["included_molecule_refs"]) > 1:
+            return "not_applicable"
         if (
             column in ("molecule_ref", "measurement_ref", "relationship_id")
             and len(members) != 1
         ):
             return "not_applicable"
+        if (
+            column in ("molecule_ref", "measurement_ref", "relationship_id")
+            and len(members) == 1
+        ):
+            _, result, entry = members[0]
+            return result.cell_state(entry.key, column)
         if column in (
             "class",
             "measurement",
@@ -287,6 +310,14 @@ class MoleculeActivityResult:
 
     def cell_reason(self, key, column):
         state = self.cell_state(key, column)
+        if (
+            state == "not_applicable"
+            and column in SUMMARY_COLUMNS
+            and self.wire["rows"][key]["interpretation"]["identity_membership"][
+                "context_only_relationship_ids"
+            ]
+        ):
+            return "The original native summary includes records outside the selected source-molecule identities. It remains inspectable as context; no narrower class or scalar was recomputed."
         return (
             None
             if state == "present"
@@ -430,21 +461,56 @@ def _policies(options):
     }
 
 
-def _counts(members):
-    groups, records = set(), set()
-    for _, result, entry in members:
-        row = entry.value
-        if result.wire["context"]["grain"] == "molecule":
-            for measurement in row["item"]["measurements"]:
-                groups.add(measurement["group"])
-                records.add(measurement["relationship_id"])
-        elif result.wire["context"]["grain"] == "group":
-            groups.add(row["measurement_ref"])
-            records.update(row["item"]["records"])
-        else:
-            groups.add(row["measurement_ref"])
-            records.add(row["relationship_id"])
-    return len(groups), len(records)
+def _record_pairs(result, entry):
+    row = entry.value
+    grain = result.wire["context"]["grain"]
+    if grain == "molecule":
+        return [
+            (value["relationship_id"], value["group"])
+            for value in row["item"]["measurements"]
+        ]
+    if grain == "group":
+        return [
+            (identifier, row["measurement_ref"])
+            for identifier in row["item"]["records"]
+        ]
+    return [(row["relationship_id"], row["measurement_ref"])]
+
+
+def _membership(members, aliases):
+    """Intersect literal record objects without reinterpreting the native group."""
+    groups, included, context_only, other_molecules, included_molecules = (
+        set(),
+        set(),
+        set(),
+        set(),
+        set(),
+    )
+    for access, result, entry in members:
+        relationships = {
+            row["id"]: row
+            for row in access._focal.data.get("relationship_store", [])
+            if row.get("predicate") == "has_bioactivity"
+        }
+        for identifier, group in _record_pairs(result, entry):
+            molecule = relationships.get(identifier, {}).get("object_ref")
+            if molecule in aliases:
+                groups.add(group)
+                included.add(identifier)
+                included_molecules.add(molecule)
+            else:
+                context_only.add(identifier)
+                if molecule is not None:
+                    other_molecules.add(molecule)
+    return {
+        "basis": "Exact has_bioactivity object_ref membership in the selected, explicitly joined source-molecule identities; native copy/group context does not establish chemical identity.",
+        "selected_molecule_refs": list(aliases),
+        "included_relationship_ids": sorted(included),
+        "included_molecule_refs": sorted(included_molecules),
+        "included_native_group_ids": sorted(groups),
+        "context_only_relationship_ids": sorted(context_only),
+        "context_only_molecule_refs": sorted(other_molecules),
+    }
 
 
 def _unique_locations(locations):
@@ -524,6 +590,21 @@ def materialize(access, options=None):
     if unavailable is None:
         for target_key in target_keys:
             target_access = access._for_capture(target_key)
+            admitted_records = {
+                row["id"]
+                for row in target_access._focal.data.get("relationship_store", [])
+                if row.get("predicate") == "has_bioactivity"
+                and row.get("object_ref") in aliases
+            }
+            reference = options["measurement_ref"]
+            if (
+                reference is not None
+                and reference.startswith("REL_")
+                and reference not in admitted_records
+            ):
+                raise ArgumentError(
+                    "measurement_ref is outside the explicitly joined source-molecule membership of this target capture."
+                )
             root = bioactivity(target_access, _policies(options))
             targets[target_key] = {
                 "overview": {"result_ref": root.result_ref, "wire": root.wire},
@@ -541,7 +622,10 @@ def materialize(access, options=None):
             matching = [
                 entry
                 for entry in root.entries
-                if entry.value["molecule_ref"] in aliases
+                if any(
+                    identifier in admitted_records
+                    for identifier, _ in _record_pairs(root, entry)
+                )
             ]
             if grain == "target":
                 key = _handle("MC_", [target_key])
@@ -568,6 +652,11 @@ def materialize(access, options=None):
                         focused.wire
                     )
                     for entry in focused.entries:
+                        if not any(
+                            identifier in admitted_records
+                            for identifier, _ in _record_pairs(focused, entry)
+                        ):
+                            continue
                         original_key = (
                             entry.value["relationship_id"]
                             if grain == "record"
@@ -575,6 +664,15 @@ def materialize(access, options=None):
                         )
                         key = _handle("MC_", [target_key, grain, original_key])
                         rows.setdefault(key, {"target_card_ref": target_key})
+                        rows[key].setdefault("native_member_occurrences", []).append(
+                            {
+                                "result_ref": focused.result_ref,
+                                "entry_key": entry.key,
+                                "molecule_ref": alias,
+                            }
+                        )
+                        if grain == "record" and members.get(key):
+                            continue  # One literal source record; all native focus wires remain retained.
                         members.setdefault(key, []).append(
                             (target_access, focused, entry)
                         )
@@ -638,8 +736,9 @@ def materialize(access, options=None):
     shell = MoleculeActivityResult(ref, wire, (), deepcopy(options), access, members)
     for key, row in rows.items():
         originals = members[key]
+        membership = _membership(originals, aliases)
         source_rows = [entry.value for _, _, entry in originals]
-        molecule_refs = sorted({value["molecule_ref"] for value in source_rows})
+        molecule_refs = membership["included_molecule_refs"]
         row.update({column: None for column in COLUMNS if column not in row})
         row.update(
             kind="activity_context_" + grain,
@@ -669,11 +768,27 @@ def materialize(access, options=None):
         if grain == "group":
             row["measurement_ref"] = source_rows[0]["measurement_ref"]
         if originals:
-            row["measurement_count"], row["record_count"] = _counts(originals)
+            row["measurement_count"] = len(membership["included_native_group_ids"])
+            row["record_count"] = len(membership["included_relationship_ids"])
         elif targets[row["target_card_ref"]]["overview"]["wire"]["outcome"][
             "status"
         ] in ("ok", "empty", "partial"):
             row["measurement_count"], row["record_count"] = 0, 0
+        row["molecule_ref"] = molecule_refs[0] if len(molecule_refs) == 1 else None
+        if membership["context_only_relationship_ids"] or len(molecule_refs) > 1:
+            for column in SUMMARY_COLUMNS:
+                row[column] = None
+        row.setdefault(
+            "native_member_occurrences",
+            [
+                {
+                    "result_ref": result.result_ref,
+                    "entry_key": entry.key,
+                    "molecule_ref": entry.value["molecule_ref"],
+                }
+                for _, result, entry in originals
+            ],
+        )
         edges = [
             edge
             for edge in identity["focal_edges"]
@@ -711,6 +826,8 @@ def materialize(access, options=None):
             "format": SUPPORT_FORMAT,
             "basis": "Explicit original identity edges and exact target-native activity membership",
             "identity_edges": deepcopy(edges),
+            "identity_membership": deepcopy(membership),
+            "native_member_occurrences": deepcopy(row["native_member_occurrences"]),
             "native_supports": native_supports,
             "source_assertions": assertions,
             "relationship_locations": _unique_locations(relationships),
@@ -725,6 +842,7 @@ def materialize(access, options=None):
             "row_grain": grain,
             "effective_options": deepcopy(options),
             "identity_basis": identity["basis"],
+            "identity_membership": deepcopy(membership),
             "target_card_ref": row["target_card_ref"],
             "state": "support_unknown"
             if support_unknown
@@ -736,7 +854,7 @@ def materialize(access, options=None):
             "native_outcomes": [
                 deepcopy(targets[row["target_card_ref"]]["overview"]["wire"]["outcome"])
             ],
-            "counting_scope": "Distinct native group IDs and source relationship IDs within each exact supplied target pin; alias/input occurrences remain explicit, not independent experiments.",
+            "counting_scope": "Distinct included native group IDs and literal source relationship IDs within each exact target pin and selected explicit molecule identities. Broader native copy/group records and repeated native views remain inspectable context, not additional included records or independent experiments.",
             "independence_status": "not_established",
             "native_interpretations": [
                 deepcopy(value["interpretation"]) for value in source_rows

@@ -1,5 +1,25 @@
 # Sabueso — Decision Log
 
+## 2026-11-07 UTC — Keep literal molecule membership separate from native group context
+
+The LIVE molecule activity profile joins exact stored `has_bioactivity.object_ref`
+values through selected explicit identity edges. Native parent-molecule keys and
+measurement-copy groups remain scientific context; they supply no additional
+chemical identity joins. Counts and exposed source records follow literal
+membership, and group drill-down preserves the originating alias selection.
+Repeated native views of the same exact source relationship are retained as
+context without adding rows or votes.
+
+Broader or multi-alias native summary scalars remain in the original payload;
+the wrapper computes no narrower class or quantity. Included source-record cells
+retain their original values, units and support. This corrects the intended
+`molecule_activity_context@1` scope before any genuine original or saved reader
+exists. Native scientific policies, deferred B2 defaults, Card schema and saved
+formats @1–@20 remain fixed. The
+[counterexample](pending_bugs/molecule_activity_identity_membership.md) and exact
+qualification belong to #148/#112 and CHECKPOINT. A corrected clean producer
+must precede the new independent original capture.
+
 ## 2026-11-07 UTC — Bind new activity and literature saves at SDK202
 
 New LIVE activity or literature saves use semantic @19 and optional physical

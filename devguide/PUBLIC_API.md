@@ -112,6 +112,14 @@ old sessions report this new interpretation as `not_saved`. The
 passes 1,133 distinct cases; independent saved, hosted/artifact and human/scientific
 qualification retain their separate boundaries.
 
+Record membership uses literal source objects within the selected explicit
+identities. Native copy groups and parent-molecule keys retain their complete
+context, including other records, without extending chemical identity. Broader
+or multi-alias summary cells report `not_applicable`; drill-down reaches the
+included source records and their original measurements, and source focus is
+preserved even when native keys are parent-normalized. See the
+[membership correction](pending_bugs/molecule_activity_identity_membership.md).
+
 Development opt-in `measurement_rule="measurement_identity@2"` is shared by
 `bioactivities`, `explain_measurement`, `explain_bioactivity`, `ligands`,
 `explain_ligand`, `compare_ligands` and applicable tables. Default/original @1

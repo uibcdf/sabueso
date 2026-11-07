@@ -87,6 +87,13 @@ the clean committed LIVE producer and capture its complete genuine original befo
 reading. This remains part of the open B4/B5 scope, followed by clinical/disease
 and B6 profiles; it does not supply B7 acceptance or resume B8.
 
+Pre-capture receiving found and corrected literal source-record membership
+inside native copy/parent context. The
+[726-case correction checkpoint](evidence/molecule_activity_identity_checkpoint_20261107.json)
+keeps complete native context, exact alias scope and all original controls.
+Use its corrected clean producer for capture; no new original or saved reader
+exists yet. This does not change native scientific defaults or historical formats.
+
 Continue the rich profiles through the
 [current destination actions](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions)
 with applicable local checks and the maintainer's authorized CI batching.

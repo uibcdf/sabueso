@@ -38,6 +38,12 @@ def _aliases(refs, preview):
 
 def display_row(item, index, preview):
     row = item._entry.value
+    broader = bool(
+        row["interpretation"]["identity_membership"]["context_only_relationship_ids"]
+    )
+    multiple = (
+        len(row["interpretation"]["identity_membership"]["included_molecule_refs"]) > 1
+    )
     return (
         str(index),
         preview(row["label"]),
@@ -46,14 +52,26 @@ def display_row(item, index, preview):
         if row["molecule_ref"] is not None
         else _aliases(row["molecule_refs"], preview),
         KINDS[row["kind"]],
-        CLASSES.get(row["class"], _scalar(row["class"], preview)),
+        "broader native summary; inspect included records"
+        if broader
+        else "no single source-molecule summary"
+        if multiple
+        else CLASSES.get(row["class"], _scalar(row["class"], preview)),
         _quantity(row["measurement"], preview)
         if row["measurement"] is not None
+        else "no quantity recomputed for this subset"
+        if broader
         else "no single retained quantity",
-        _scalar(row["relation"], preview),
+        "no single relation for this scope"
+        if broader or multiple
+        else _scalar(row["relation"], preview),
         _scalar(row["measurement_count"], preview),
         _scalar(row["record_count"], preview),
-        " · ".join(
+        "inspect broader native context"
+        if broader
+        else "multiple source-molecule contexts"
+        if multiple
+        else " · ".join(
             _scalar(row[key], preview)
             for key in ("source", "assay_ref", "document_ref")
         ),
@@ -95,6 +113,13 @@ def opening(view, preview):
             "record": "Open a source record for its complete measurement, assay, citation and qualifiers; display selection does not reevaluate science.",
         }[grain]
     )
+    if any(
+        row["interpretation"]["identity_membership"]["context_only_relationship_ids"]
+        for row in result.wire["rows"].values()
+    ):
+        lines.append(
+            "Rows and counts include only source records whose literal molecule identities were explicitly selected. Additional records in the native copy/group remain context; no narrower class or scalar is recomputed from that broader summary. Open the included source records for their own retained measurements."
+        )
     lines.extend(
         (
             "explain() shows exact identity and activity statements, including unavailable references. related() opens molecule, target, source, assay, citation and full publication context; back() returns the exact preceding selection.",
@@ -130,6 +155,13 @@ def context_opening(view, preview):
         + _scalar(context.get("molecule_card_ref"), preview),
         "Target capture: " + _scalar(context.get("target_card_ref"), preview),
     ]
+    membership = context.get("molecule_activity_navigation", {}).get(
+        "identity_membership", {}
+    )
+    if membership.get("context_only_relationship_ids"):
+        lines.append(
+            "The original native summary also retains records outside the selected source-molecule identities. Those context-only records and their support remain inspectable; they do not add to the included record count."
+        )
     if role == "target_card":
         lines.append(
             "This explicit crossing opens the supplied protein explorer. New questions use that target Card; back() returns to the molecule activity links."
