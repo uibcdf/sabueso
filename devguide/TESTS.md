@@ -105,6 +105,30 @@ full offline checkpoint. Replay the entire original in independent receiving;
 never regenerate it or reduce the public 493 records or 9/459-link contexts.
 Current source, scope and next action belong to CHECKPOINT.
 
+The private original-predicate module
+`test_card_molecule_activity_history_offline.py` uses the entire immutable SDK205
+capsule, independently verifies its 6,035 members, and receives every captured
+molecule-activity wire and native crossing across all 29 scenarios. Its 36 cases
+also cover scientific/support-field changes and opaque source scalar types.
+The final owning gate checks all 99 original molecule-activity wires, 26 native
+crossing payloads and the 288 original typed requests/cell frames across 311 pages.
+The [87-case selected receipt](evidence/molecule_activity_frozen_checkpoint_20261107.json)
+combines these 36 cases with 51 unchanged LIVE regressions; both phases have zero
+warnings/swap and complete receptor/source/node integrity. Current Card/Deck construction, native readers,
+public digesters and clients are blocked. This is private expected-result
+verification; no saved bundle admission or full human replay is implied.
+
+Run this public heavy-original module as a separate serial gate: one CPU,
+4 GiB owned-tree RSS, 1,800 s, 16 GiB host reserve, native threads one, zero owned
+swap and 4 GiB scratch. It decompresses one complete 1,720,330,240-byte tar for
+random member access instead of replicating Cards or repeatedly expanding gzip.
+For the next full checkpoint, exclude it from the eight-worker parallel remainder
+with `--ignore=tests/core/test_card_molecule_activity_history_offline.py`, then run
+its full module separately and include all 36 cases once in the union. Do not
+mark public originals local-only or shrink the capsule to fit a parallel phase.
+The earlier 9,466-case full receipt predates this module. Installed/copy wiring
+and admitted saved reading remain the next integration work.
+
 The complete retained SDK200 bioactivity session measures **709,616,078 logical JSON bytes**;
 its qualification uses an explicit **1 GiB logical budget** and **128 MiB encoded
 and decoded transport budgets**. Keep the default logical limit at 256 MiB and

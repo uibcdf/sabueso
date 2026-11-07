@@ -97,6 +97,13 @@ Its complete original now retains 6,035 byte-verified members, including full
 493-record inputs and original 9/459-link contexts. Independent saved reading
 remains open. This does not change native scientific defaults or historical formats.
 
+The independent private molecule-activity predicates pass their
+[87-case selected checkpoint](evidence/molecule_activity_frozen_checkpoint_20261107.json),
+including every original scientific wire, native crossing and typed machine
+request/cell. Integrate saved admission, full original human/source/origin routes,
+transport/resave and copied receiving next. Public saving remains false and the
+entire B4/B5 slice stays open; this is not B7 acceptance or B8 resumption.
+
 Continue the rich profiles through the
 [current destination actions](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions)
 with applicable local checks and the maintainer's authorized CI batching.

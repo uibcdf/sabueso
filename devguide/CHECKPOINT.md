@@ -5,6 +5,36 @@ Current working-state checkpoint: **2026-11-07**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Independent molecule activity predicate checkpoint — 2026-11-07
+
+A new private `_molecule_activity_history_v1` package freezes the SDK205
+identity/result/selection and complete ligand/site/crossing predicates, with
+inert captured inputs and a Deck facade. `card_molecule_activity_history_v1.py`
+compares original wires and supplies independent selection expectations. The
+[selected receipt](evidence/molecule_activity_frozen_checkpoint_20261107.json)
+verifies **87 distinct passes**: all 36 private owning cases plus the unchanged
+51-case LIVE profile. Every one of the original 29 scenarios is retained, with
+all 99 complete molecule-activity wires, 26 distinct native crossing payloads,
+288 typed machine requests and cells across 311 complete pages. Six modified-field
+controls and opaque False/int0/float0/null metadata pass. Mutable Card/Deck
+construction, scientific readers, public digesters and clients are blocked.
+
+Both phases have complete/integrity receptor artifacts, exact node accounting,
+1,156 stable source/input hashes, zero warnings and zero owned swap. The owning
+phase takes 136.69 s pytest / 137.60 s guarded, at 592,568,320 bytes peak owned
+RSS; LIVE takes 51.51 s / 52.58 s, at 208,510,976 bytes. The earlier 36-case
+source epoch is retained separately and adds no distinct cases. This is selected
+private predicate qualification, not a repeated full offline checkpoint or saved
+bundle admission. Qualification used editable SDK206 labels; source hashes bind
+the changed implementation separately from its `8341221` parent.
+
+**Next:** integrate explicit independently versioned saved admission, restore
+retained originals, verify human/source/return and origin bindings, whole-bundle
+semantic resealing, transport/resave, fresh inert file reading and copied
+receiving. All 1,337 original named human routes still need independent saved
+replay. Public saving remains false; formats @1–@20 and native defaults stay
+fixed. Broader B4–B6, B7/B8 and the full six-stage goal remain open.
+
 ## Complete molecule activity LIVE original — 2026-11-07
 
 The corrected clean producer is **`ddc1fc8` / SDK205**, committed and pushed

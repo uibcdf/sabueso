@@ -1,0 +1,14 @@
+{
+  "producer_head": "ddc1fc83725d10c2cc5fe569341ae1b761dddc8d",
+  "producer_version": "0.14.0+205.gddc1fc8",
+  "original_capsule": "tests/core/data/molecule_activity_live_sdk205.tar.gz",
+  "source_files": {
+    "sabueso/core/card_molecule_activity_access.py": "b408abe93d7d7e244a86edab74fa35964319cd1edc9158f4af36c9986a6a5e69",
+    "sabueso/core/card_molecule_activity_selection_v1.py": "5a6607157932aae7e47b1c14e29c6470cbc8a27d4cd80b8a61f08420ac7177e7",
+    "sabueso/core/ligands.py": "188d9f7e1a984ab4b6605036d0e04ff568787aa29bc92f8ec2f339b0e00e5543",
+    "sabueso/core/ligand_sites.py": "74bb169804fac55eacfe542c890dfe0c6d6693a405814a4ccb4bfce8ce660999",
+    "sabueso/core/ligand_site_scope.py": "069193cb1d54fdaab54fef582b5e5f4e81ea4b499c04c27a6139e147ae5d3ecf",
+    "sabueso/core/ligand_explanation.py": "155e4749fc05966ac3dc1d2116b076e33db350bc106b8c3d5ef86598b06c1393"
+  },
+  "scope": "Private frozen verification predicates. Import/facade/producer adaptations preserve the original semantics. No saved-format admission."
+}

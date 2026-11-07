@@ -29,6 +29,34 @@ transport/resave, inert fresh-process reading and full copied receiving. Saving
 remains explicitly refused. Keep formats @1–@20 and all earlier originals fixed.
 No native default adoption, schema change, hosted CI or release occurs here.
 
+## Independent private predicate checkpoint
+
+The new private `_molecule_activity_history_v1` package contains frozen SDK205
+adapter/selection, ligand crossing/explanation/site/coordinate predicates,
+independent validation, scoped producer labels and inert input/Deck facades.
+`card_molecule_activity_history_v1.py` supplies full result comparison and typed
+selection expectations. Six exact clean-producer source hashes are declared in
+`SOURCE.json`; the existing Bio-v1/v2 and literature-v1 predicates stay unchanged.
+The native crossing preserves original site/structure and Deck membership
+context, duplicates and known #192 semantics. Expected values never replace
+retained knowledge. No Card construction, current scientific reader, public
+digester, current profile or source client is needed by these predicates.
+
+The [87-case selected receipt](../evidence/molecule_activity_frozen_checkpoint_20261107.json)
+passes all 36 private owning cases and 51 unchanged LIVE regressions. It verifies
+all 99 molecule-activity wires, 26 distinct native crossings and 288 typed machine
+requests/cells across 311 original pages in the complete 29-case capsule. Six
+modified scientific/support-field controls and opaque source scalar types pass.
+Both phases retain complete receptor integrity, exact node accounting, 1,156
+stable source/input hashes, zero warnings/swap and declared resource budgets.
+The first 36-case source epoch remains separate and adds no distinct coverage.
+
+This is private predicate receiving, not an admitted saved format, whole-bundle
+tamper proof, installed/copy qualification, full offline suite or independent
+researcher acceptance. Public saving remains false. All human routes, complete
+persisted origin/context, semantic resealing, transport/resave, fresh inert file
+reading and copied receiving remain required for this slice.
+
 ## Delivered LIVE contract
 
 Topic `activity_context`, question `measured_targets` and adapter

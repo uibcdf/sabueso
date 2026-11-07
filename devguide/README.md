@@ -70,6 +70,13 @@ independent saved reading. Saving awaits that independent reader. The checkpoint
 distinguishes this unfinished profile from full-source, installed and human
 qualification.
 
+The independent molecule-activity predicate foundation now passes its
+[87-case selected checkpoint](evidence/molecule_activity_frozen_checkpoint_20261107.json):
+99 original scientific wires, 26 native crossings and all 288 machine requests/cells
+across 311 pages. It keeps current Cards/readers/clients out of verification.
+Explicit saved admission, human/source/origin replay, transport and copied
+receiving remain open; this private foundation does not enable public saving.
+
 The [shared literature catalog](pending_proposals/card_literature_exploration.md)
 has its B4 LIVE producer committed: four new modules and their dispatch wiring
 across Card natures pass the selected
