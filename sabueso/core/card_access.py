@@ -403,7 +403,7 @@ class CardAccess:
                 "bioactivities",
             ]
             if self.profile == "protein"
-            else ["chemical_classification"]
+            else ["chemical_classification", "activity_context"]
             if self.profile == "small_molecule"
             else []
         )
@@ -692,6 +692,23 @@ class CardAccess:
                 "retained_requests_only" if self.mode == "saved" else "live"
             )
             if self.profile == "small_molecule":
+                if self.mode == "live":
+                    from .card_molecule_activity_access import (
+                        descriptor as activity_context_descriptor,
+                    )
+
+                    data["activity_context"] = activity_context_descriptor()
+                    data["activity_context"]["availability"] = "live"
+                else:
+                    data["activity_context"] = {
+                        "key": "activity_context",
+                        "label": "Targets, measurements and assay context",
+                        "scientific_adapter": True,
+                        "availability": "not_saved",
+                        "save": False,
+                        "operations": [],
+                        "description": "This new molecule-target interpretation was not retained in the original exploration; start a new explicit local interpretation from supplied captures.",
+                    }
                 if self.mode == "saved":
                     from .card_chemical_history_v1 import (
                         descriptor as chemical_descriptor,
@@ -881,13 +898,50 @@ class CardAccess:
             "quaternary_interpretation",
             "assembly_generation",
             "chemical_classification",
+            "activity_context",
             "bioactivities",
             "literature",
         ):
             raise ArgumentError(
-                "Scientific selection supports structures, ligand_site_comparisons, quaternary_interpretation, assembly_generation, chemical_classification, bioactivities and literature."
+                "Scientific selection supports structures, ligand_site_comparisons, quaternary_interpretation, assembly_generation, chemical_classification, activity_context, bioactivities and literature."
             )
-        if topic == "literature":
+        if topic == "activity_context":
+            from .card_molecule_activity_selection_v1 import (
+                active,
+                evaluate,
+                normalize,
+                projection,
+                selection_ref,
+            )
+
+            fields = projection(fields)
+            query = normalize(where, item_refs, order_by)
+            if self.mode == "saved":
+                from .card_exploration_storage import missing_selection
+
+                if options is not None and not isinstance(options, dict):
+                    raise ArgumentError("Scientific options require a mapping or None.")
+                return missing_selection(
+                    self,
+                    topic,
+                    deepcopy(options),
+                    fields,
+                    query if active(query) else None,
+                )
+            from .card_molecule_activity_access import (
+                materialize,
+                options_for_activity_context,
+            )
+
+            options = options_for_activity_context(options)
+            if query["item_refs"] is not None and any(
+                ref not in self._scientific_items for ref in query["item_refs"]
+            ):
+                raise ArgumentError(
+                    "item_refs contains an item not retained in this access session."
+                )
+            result = materialize(self, options)
+        elif topic == "literature":
             if self.mode == "saved":
                 from .card_exploration_literature import saved_selection
 
@@ -1154,6 +1208,7 @@ class CardAccess:
                 "assembly_generation_exploration@1",
                 "assembly_generation_exploration@2",
                 "chemical_classification_exploration@1",
+                "molecule_activity_context_exploration@1",
                 "bioactivity_exploration@1",
                 "literature_exploration@1",
             ):
@@ -1200,6 +1255,10 @@ class CardAccess:
         return frame
 
     def _defer(self, item):
+        if item.get("adapter") == "molecule_activity_context_exploration@1":
+            from .card_molecule_activity_access import defer_frame
+
+            return defer_frame(item)
         if item.get("adapter") == "literature_exploration@1":
             if self.mode == "saved":
                 from .card_literature_history_v1 import defer_frame

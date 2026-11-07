@@ -55,6 +55,15 @@ passes its selected 1,109-case local checkpoint, committed at `276160a`, after a
 the [saved receipt](evidence/bioactivity_saved_checkpoint_20261106.json) owns the
 scope and limits. The broader B4 and human/scientific acceptance remain open.
 
+The next [molecule-to-supplied-target activity journey](pending_proposals/card_molecule_activity_exploration.md)
+has a selected LIVE checkpoint: explicit source identity joins retain exact
+target captures, native measurements and full source/publication navigation. Its
+45-case owning and adjacent/historical/copied gates total
+[1,133 distinct local passes](evidence/molecule_activity_live_checkpoint_20261107.json).
+Saving awaits a clean producer capture and an independent original reader. The
+checkpoint distinguishes this unfinished profile from full-source, installed and
+human qualification.
+
 The [shared literature catalog](pending_proposals/card_literature_exploration.md)
 has its B4 LIVE producer committed: four new modules and their dispatch wiring
 across Card natures pass the selected

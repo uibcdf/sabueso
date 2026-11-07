@@ -622,6 +622,15 @@ of `sabueso.tools.db` and every decorated public method of `Card`, `Deck`,
   case changes, whitespace normalization or identifier resolution. It reuses
   `include_indirect` and quantity-bearing `thresholds` contracts. A well-formed
   missing native item returns `not_on_card`, never a negative measurement.
+  Development molecule `activity_context` reuses these policy and focus
+  digesters. Its separate `target_card_ref` digester accepts None or an exact
+  complete canonical pinned Card reference, without whitespace normalization,
+  item suffixes or bare CardID guessing. The pin must belong to the captured
+  inputs; a source `molecule_ref` must be an explicit focal identity member, and
+  `measurement_ref` requires that exact target pin and joined native membership.
+  Malformed policies, projections and typed selection requests are refused before
+  native interpretation. Saved historical requests for this new topic report
+  `not_saved` without invoking its current scientific option normalizer.
   Since 0.13.0, `explain_ligand_site` digests `ligand_site_ref`: an exact local
   `REL_` id from `ligand_sites()`. Source ligand identifiers, groups and pinned
   fragments are refused. `explain_ligand` reuses `molecule_ref` with its caller

@@ -759,6 +759,109 @@ def test_declared_live_literature_runs_with_only_required_public_fixtures():
         )
 
 
+def test_declared_molecule_activity_runs_with_only_required_public_inputs():
+    """Receive the complete LIVE cohort outside the checkout, with exact inputs."""
+    from pytest_receptor import read_artifact
+
+    root = Path(__file__).resolve().parents[2]
+    name = "test_card_molecule_activity_exploration_offline.py"
+    original = "bioactivity_saved_original17_sdk202.json.gz"
+    fixtures = (
+        "NOTICE.md",
+        "P52270.json",
+        "chembl/CHEMBL5834.json",
+        "chembl/molecules.json",
+        "pdb_ccd/BTS.json",
+        "rcsb/1SUX.json",
+    )
+    for workflow_path in (
+        ".github/workflows/ci.yml",
+        ".github/workflows/test_staged_conda_package.yaml",
+    ):
+        workflow = (root / workflow_path).read_text(encoding="utf-8")
+        assert (
+            sum("cp " in line and name in line for line in workflow.splitlines()) == 1
+        )
+        command = re.search(r"python -m pytest (.+)", workflow.replace("\\\n", " "))
+        assert command is not None and shlex.split(command[1]).count(name) == 1
+        assert (
+            sum(
+                "cp " in line and f"data/{original}" in line
+                for line in workflow.splitlines()
+            )
+            == 1
+        )
+    outside_parent = None if sys.platform == "win32" else "/tmp"
+    with tempfile.TemporaryDirectory(
+        prefix="sabueso-molecule-activity-", dir=outside_parent
+    ) as directory:
+        stage = Path(directory)
+        assert not stage.resolve().is_relative_to(root.resolve())
+        shutil.copyfile(root / "tests/core" / name, stage / name)
+        (stage / "data").mkdir()
+        shutil.copyfile(root / "tests/core/data" / original, stage / "data" / original)
+        for fixture in fixtures:
+            destination = stage / "temp_data" / fixture
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(root / "temp_data" / fixture, destination)
+        assert {
+            path.relative_to(stage).as_posix()
+            for path in stage.rglob("*")
+            if path.is_file()
+        } == {
+            name,
+            "data/" + original,
+            *("temp_data/" + fixture for fixture in fixtures),
+        }
+        env = dict(os.environ, PYTHONPATH=str(stage), PYTHONDONTWRITEBYTECODE="1")
+        env.pop("PYTEST_ADDOPTS", None)
+        env.pop("PYTEST_PLUGINS", None)
+        events = stage / "events.jsonl"
+        result = subprocess.run(
+            [
+                sys.executable,
+                "-m",
+                "pytest",
+                "--receptor=llm",
+                f"--receptor-events={events}",
+                "-m",
+                "not online",
+                "-o",
+                "tmp_path_retention_policy=failed",
+                name,
+            ],
+            cwd=stage,
+            env=env,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            timeout=600,
+        )
+        assert result.returncode == 0, result.stdout + result.stderr
+        artifact = read_artifact(events)
+        assert artifact.complete and artifact.integrity_valid and artifact.final
+        final = artifact.final.data
+        assert final["complete"] and final["exitstatus"] == 0
+        assert (
+            final["counts"]["collected"]
+            == final["counts"]["executed"]
+            == final["counts"]["passed"]
+            == 45
+        )
+        assert not any(
+            final["counts"][key]
+            for key in (
+                "failed",
+                "errors",
+                "skipped",
+                "not_executed",
+                "reruns",
+                "xfailed",
+                "xpassed",
+            )
+        )
+
+
 def test_declared_saved_literature_runs_with_only_genuine_public_capsule():
     """One outer case receives the complete overlapping saved-literature cohort."""
     from pytest_receptor import read_artifact

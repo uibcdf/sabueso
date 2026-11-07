@@ -28,6 +28,10 @@ _LABELS = {
     "entities": "Entity records",
 }
 _TOPICS = {
+    "activity_context": (
+        "Targets, measurements and assay context",
+        "Exact molecule identity joins into explicitly supplied target captures, preserving original measurements and source/query scope.",
+    ),
     "literature": (
         "Publications and stored source links",
         "Original citations, ECO support, curated statements, mentions and source activity records, with complete publication context.",
@@ -161,7 +165,7 @@ class CardItem:
     def kind(self):
         if self._view._record_panel == "literature":
             return self._entry.value["kind"]
-        if self._view._record_panel == "bioactivities":
+        if self._view._record_panel in ("bioactivities", "activity_context"):
             return self._entry.value["kind"]
         if self._view._record_panel == "chemical_classification":
             return self._entry.value["kind"]
@@ -273,6 +277,10 @@ class CardItem:
 
     @property
     def support(self):
+        if self._view._record_panel == "activity_context":
+            from .card_molecule_activity_exploration import support
+
+            return support(self)
         if self._view._record_panel == "literature":
             from .card_literature_exploration import support
 
@@ -346,8 +354,11 @@ class CardItem:
                     for column in COLUMNS
                 }
             )
-        if self._view._record_panel == "bioactivities":
-            from .card_bioactivity_selection_v1 import COLUMNS
+        if self._view._record_panel in ("bioactivities", "activity_context"):
+            if self._view._record_panel == "activity_context":
+                from .card_molecule_activity_selection_v1 import COLUMNS
+            else:
+                from .card_bioactivity_selection_v1 import COLUMNS
             from .quantities import to_quantity
 
             result = self._view._selection._scientific
@@ -605,6 +616,10 @@ class CardItem:
             if self._view._question_catalog:
                 return self._view._explorer._answer(self._entry.key, {}, self._view)
             return self._view._explorer._topic(self._entry.key, self._view)
+        if self._view._record_panel == "activity_context":
+            from .card_molecule_activity_exploration import open_item
+
+            return open_item(self)
         if self._view._record_panel == "literature":
             if self._view._explorer.mode == "saved":
                 from .card_exploration_literature import open_item
@@ -689,6 +704,10 @@ class CardItem:
         return result
 
     def _live_explain(self):
+        if self._view._record_panel == "activity_context":
+            from .card_molecule_activity_exploration import explain
+
+            return explain(self)
         if self._view._record_panel == "literature":
             from .card_literature_exploration import explain
 
@@ -1055,6 +1074,7 @@ class CardView:
                 filter=self.schema["columns"], sort=self.schema["columns"]
             )
             capabilities["scientific_adapter"] = self._record_panel in (
+                "activity_context",
                 "literature",
                 "bioactivities",
                 "chemical_classification",
@@ -1091,6 +1111,15 @@ class CardView:
     def schema(self):
         if self._saved_state is not None:
             return deepcopy(self._saved_state["schema"])
+        if self._record_panel == "activity_context":
+            from .card_molecule_activity_selection_v1 import COLUMNS
+
+            return {
+                "kind": "molecule_activity_context",
+                "grain": "one exact supplied target context, native group or source activity record under explicit molecule identity",
+                "columns": list(COLUMNS),
+                "presentations": ["summary", "table", "detail"],
+            }
         if self._record_panel == "literature":
             from .card_literature_selection_v1 import COLUMNS
 
@@ -1351,6 +1380,10 @@ class CardView:
     def filter(self, column, *, equals, skip_digestion=False):
         """Select exact declared cells without changing the scientific result."""
         self._check_column(column)
+        if self._record_panel == "activity_context":
+            from .card_molecule_activity_exploration import display_filter
+
+            return display_filter(self, column, equals)
         if self._record_panel == "literature":
             if self._explorer.mode == "saved":
                 from .card_exploration_literature import display_filter
@@ -1469,6 +1502,10 @@ class CardView:
             raise ArgumentError("descending must be True or False.")
         if unit is not None and (not isinstance(unit, str) or not unit.strip()):
             raise ArgumentError("unit requires a nonempty unit name or None.")
+        if self._record_panel == "activity_context":
+            from .card_molecule_activity_exploration import display_sort
+
+            return display_sort(self, column, descending, unit)
         if self._record_panel == "literature":
             if self._explorer.mode == "saved":
                 from .card_exploration_literature import display_sort
@@ -1672,6 +1709,8 @@ class CardExplorer:
                 for view in views
                 if view._record_panel
                 in (
+                    "bioactivities",
+                    "literature",
                     "chemical_classification",
                     "classification",
                     "coverage",
@@ -1852,6 +1891,10 @@ class CardExplorer:
             raise ArgumentError("Scientific options require a mapping or None.")
         from .card_exploration_profiles import PANELS
 
+        if topic == "activity_context":
+            from .card_molecule_activity_exploration import view
+
+            return view(self, origin, options)
         if topic == "literature":
             from .card_literature_exploration import view
 
@@ -2079,7 +2122,12 @@ class CardExplorer:
             effective = (
                 deepcopy(view.context["options"])
                 if question
-                in ("assembly_generation", "measured_molecules", "publications")
+                in (
+                    "assembly_generation",
+                    "measured_molecules",
+                    "measured_targets",
+                    "publications",
+                )
                 else {}
             )
         else:

@@ -1,6 +1,6 @@
 ---
 summary: Reversing repeated ligand occurrences changes a native false/null investigation flag.
-issue: uibcdf/sabueso#25
+issue: uibcdf/sabueso#192
 status: open
 opened: 2026-11-07
 closed:
@@ -12,8 +12,17 @@ supersedes: []
 
 # Order-dependent ligand investigation flags
 
-Internal handoff for Sabueso #25/#23 and the B4/B5 molecule-target context work
-under #148. No issue update has been published and no aggregation policy changed.
+Reported as [Sabueso #192](https://github.com/uibcdf/sabueso/issues/192), linked to
+original work #25/#23 and B4/B5 molecule-target context #148. No aggregation
+policy changed.
+
+On 2026-11-07 a standalone public bug draft was prepared after checking the owning
+issues; #25 is closed and no dedicated duplicate was found. Automatic review
+initially rejected publication. The maintainer then explicitly authorized the
+destination, action and exact `b5-ligand-flag-issue-draft-1.md` material. Issue #192
+was created on 2026-11-07 and its returned body matches that authorized draft.
+The new LIVE consumer discloses the original native
+limitation and retains its occurrence context; it does not change the policy.
 
 The native `ligands._structure_ligands()` helper groups source ligand occurrences
 by component and structure using `previous_flag or current_flag`. For two
@@ -32,6 +41,6 @@ observation concerns the grouped native output.
 Before reusing that output in molecule-target browsing, add a permutation
 regression and state the grouping policy explicitly, preserving original
 occurrences and unknown/negative distinctions. Do not infer identity, efficacy or
-experimental independence from the aggregate. Offer this observation as an update
-to #25/#23 at the maintainer checkpoint; retain the handoff until publication is
-authorized. The current shared-reading checkpoint keeps native code unchanged.
+experimental independence from the aggregate. Follow up under #192, retaining its
+original #25/#23 context. This LIVE increment keeps native code unchanged;
+scientific rule/version and historical compatibility remain part of the fix review.

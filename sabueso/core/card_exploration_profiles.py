@@ -67,7 +67,7 @@ NATURE_TOPICS = {
         "quaternary_interpretation",
         "assembly_generation",
     ),
-    "small_molecule": ("chemistry", "properties", "classification"),
+    "small_molecule": ("chemistry", "properties", "classification", "activity_context"),
     "disease": ("definition", "classification", "identity"),
 }
 
@@ -87,6 +87,11 @@ COMMON_QUESTIONS = {
 QUESTIONS = {
     "protein": PROTEIN_QUESTIONS,
     "small_molecule": {
+        "measured_targets": _question(
+            "Which supplied target contexts retain measurements for this exact molecule?",
+            "activity_context",
+            "Explicit source identity edges and captured target pins; no target search, implicit identity merge or inactivity/efficacy inference.",
+        ),
         "chemical_identity": _question(
             "Which chemical entity do these records describe?",
             "chemistry",
@@ -267,6 +272,7 @@ RECORD_COLUMNS = {
 
 def record_label(panel, row):
     if panel in (
+        "activity_context",
         "literature",
         "bioactivities",
         "chemical_classification",

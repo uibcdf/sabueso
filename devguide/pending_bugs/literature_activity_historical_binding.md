@@ -81,10 +81,11 @@ Issue handoff and hosted/artifact/human qualification remain separate; this
 report does not claim that the owning issues have been closed.
 
 Nonblocking diagnostic follow-up for #148/#112: the shared restore path admits
-chemical results in @19, but its unsupported-format message still lists only
+chemical results in @19, but its unsupported-format message listed only
 @15/@17. The observed mismatch concerns error guidance; admission itself includes
-@19. Align that text on the next maintained storage change, without editing a
-frozen verifier or reopening current scientific policy.
+@19. The molecule activity-context increment aligns that text with @15/@17/@19
+in the maintained storage facade. No frozen verifier or scientific policy was
+changed; applicable historical receiving remains recorded with that increment.
 
 The genuine nine-Card SDK202 literature original remains immutable. These
 counterexamples do not replace it or qualify complete saved workloads. Preserve

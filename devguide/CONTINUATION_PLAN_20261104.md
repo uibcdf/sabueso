@@ -397,6 +397,15 @@ B8 remains paused until accepted broad scope, preceding gates and explicit
 maintainer resumption. Deck navigation #153, viewer/export #154, videos #155 and
 other future directions retain their separate scope and priority.
 
+The [molecule activity-context LIVE checkpoint](evidence/molecule_activity_live_checkpoint_20261107.json)
+adds 1,133 distinct selected local passes across owning, shared, native/profile,
+historical and copied receiving. Exact source identity joins and supplied target
+pins connect the molecule to original groups/records and full publication context.
+Next identify its clean committed producer and capture the complete genuine
+original before independent saved reading. The profile remains unfinished until
+that saved reader is qualified; clinical/disease and B6 journeys, B7 acceptance
+and authorized B8 delivery retain their full scope.
+
 ## Execution order
 
 The block table defines the stable B0–B8 dependencies. The dated

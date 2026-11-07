@@ -5,10 +5,34 @@ Current working-state checkpoint: **2026-11-07**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
-## Active increment and next action
+## Molecule activity-context LIVE checkpoint — 2026-11-07
 
-The maintainer resumed the full six-stage roadmap after the pause. This
-checkpoint implements independent saved reading for the shared literature
+The maintainer resumed the full six-stage goal after the requested pause.
+Previous full committed and pushed checkpoint:
+**`290ed16`**, `[skip ci]`, with 9,466 distinct offline passes. Its refreshed
+editable runtime is SDK203 and 67 repeated post-commit controls pass. These
+results qualify their recorded source, not the later uncommitted worktree.
+
+This increment implements the molecule-target `activity_context` LIVE core and
+its human/agent integration. Its
+[selected local receipt](evidence/molecule_activity_live_checkpoint_20261107.json)
+verifies **1,133 distinct passes**: 45 owning, 291 shared, 383 native/adjacent,
+384 historical, 29 complete original activity and one copied outer consumer.
+The outer checks 45 overlapping child cases, which add no distinct coverage.
+Two expected UniChem fixture warnings remain; all owned trees report zero swap.
+This is selected qualification of the recorded source, not a repeated full
+9,466-case run or installed-artifact/human acceptance. Failed attempts and their
+source epochs remain preserved. Continue from the
+[concrete file/API/test handoff](pending_proposals/card_molecule_activity_exploration.md).
+Next identify the clean committed LIVE producer, align its editable runtime and
+capture its complete genuine original before implementing independent saved
+reading. That reader is required to finish this slice. No new saved format,
+original capture, remote CI or release was performed. Earlier full results retain
+their original source scope; the new selected receipt binds this implementation.
+
+## Last complete checkpoint and next action
+
+The last complete checkpoint implements independent saved reading for the shared literature
 catalog and SDK202 activity bibliography, under semantic @19 / optional sharing
 @20. The [full local receipt](evidence/literature_saved_checkpoint_20261107.json)
 verifies **9,466 distinct passing cases** across 19 actual phases. This supersedes
@@ -53,10 +77,10 @@ retains the structure/identity/no-acquisition controls; its 40-case owning gate
 and the repeated full public phase pass. No failed coverage enters the union.
 
 Continue with the exact molecule-to-supplied-target activity-context journey,
-then the remaining molecule, clinical and disease profiles and B6. Its preparation
-reuses explicit source identity edges, captured target pins and existing native
-measurement/group/record/assay/publication readers; it is not an integrated new
-profile yet. Keep both foundational and pilot-driven routes and the full B0–B8
+then the remaining molecule, clinical and disease profiles and B6. Its uncommitted
+implementation reuses explicit source identity edges, captured target pins and
+existing native measurement/group/record/assay/publication readers; it has not
+passed its complete qualification. Keep both foundational and pilot-driven routes and the full B0–B8
 inventory in the [continuation plan](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions).
 B2 scientific/default review is explicitly deferred; B7 independent acceptance
 remains open and B8 consolidation/publication remains paused.

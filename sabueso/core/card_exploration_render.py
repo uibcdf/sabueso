@@ -700,6 +700,8 @@ def _parts(view):
             if view._record_panel == "literature"
             else "Which molecules have retained measurements, and what supports each result?"
             if view._record_panel == "bioactivities"
+            else "Which supplied target contexts retain measurements for this exact molecule?"
+            if view._record_panel == "activity_context"
             else "Which chemical classes and source-stated roles are retained?"
             if view._record_panel == "chemical_classification"
             else request["question"]
@@ -783,6 +785,14 @@ def _parts(view):
         opening.extend(bioactivity_opening(view, preview))
     if view.context.get("adapter") == "bioactivity_context_links@1":
         from .card_bioactivity_presentation_v1 import context_opening
+
+        opening.extend(context_opening(view, preview))
+    if view._record_panel == "activity_context":
+        from .card_molecule_activity_presentation_v1 import opening as activity_opening
+
+        opening.extend(activity_opening(view, preview))
+    if view.context.get("adapter") == "molecule_activity_context_links@1":
+        from .card_molecule_activity_presentation_v1 import context_opening
 
         opening.extend(context_opening(view, preview))
     if view._record_panel == "quaternary_interpretation":
@@ -998,6 +1008,11 @@ def _parts(view):
             continue
         if view._record_panel == "bioactivities":
             from .card_bioactivity_presentation_v1 import display_row
+
+            rows.append(display_row(item, index, preview))
+            continue
+        if view._record_panel == "activity_context":
+            from .card_molecule_activity_presentation_v1 import display_row
 
             rows.append(display_row(item, index, preview))
             continue
@@ -1263,6 +1278,10 @@ def _headers(view):
         return list(HEADERS)
     if view._record_panel == "bioactivities":
         from .card_bioactivity_presentation_v1 import HEADERS
+
+        return list(HEADERS)
+    if view._record_panel == "activity_context":
+        from .card_molecule_activity_presentation_v1 import HEADERS
 
         return list(HEADERS)
     if view._record_panel == "chemical_classification":

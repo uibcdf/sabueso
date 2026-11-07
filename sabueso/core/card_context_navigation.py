@@ -268,6 +268,7 @@ def _link_view(
         "assembly_generation_links@3",
         "assembly_component_list_links@1",
         "assembly_component_detail_links@1",
+        "molecule_activity_context_links@1",
         "ligand_site_context_links@1",
         "quaternary_context_links@1",
         "ligand_instance_context_links@1",
@@ -294,6 +295,10 @@ def _link_view(
 
 
 def related(item):
+    if item._view._record_panel == "activity_context":
+        from .card_molecule_activity_exploration import links
+
+        return links(item)
     if item._view._record_panel == "literature":
         from .card_literature_exploration import links
 
@@ -500,6 +505,12 @@ def _destination(explorer, candidate, origin, title="Referenced source record"):
 
 def follow(item):
     explorer, link = item._view._explorer, item._entry.value
+    if link.get("rule") == "molecule_activity_context_links@1":
+        from .card_molecule_activity_exploration import (
+            follow as follow_activity_context,
+        )
+
+        return follow_activity_context(item)
     if link.get("rule") == "literature_context_links@1":
         if explorer.mode == "saved":
             from .card_exploration_literature import follow as follow_literature

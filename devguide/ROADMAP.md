@@ -79,6 +79,14 @@ receiving pass the [9,466-case full local checkpoint](evidence/literature_saved_
 Hosted/artifact qualification and human acceptance remain open; continue the
 remaining molecule-target/context and broader B4–B6 profiles.
 
+The [molecule activity-context LIVE implementation](pending_proposals/card_molecule_activity_exploration.md)
+now joins exact source-stated molecule identities to supplied target captures.
+The [selected 1,133-case checkpoint](evidence/molecule_activity_live_checkpoint_20261107.json)
+passes owning/shared/native/profile/historical and copied gates. Next identify
+the clean committed LIVE producer and capture its complete genuine original before independent saved
+reading. This remains part of the open B4/B5 scope, followed by clinical/disease
+and B6 profiles; it does not supply B7 acceptance or resume B8.
+
 Continue the rich profiles through the
 [current destination actions](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions)
 with applicable local checks and the maintainer's authorized CI batching.

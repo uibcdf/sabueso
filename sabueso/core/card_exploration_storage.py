@@ -460,6 +460,14 @@ def _objects_for(access, records):
 
 def _prepare(root):
     _require(
+        not any(
+            view._record_panel == "activity_context"
+            or view.context.get("adapter") == "molecule_activity_context_links@1"
+            for view in required_views(root)
+        ),
+        "Saving molecule activity context requires a genuine clean LIVE original and its independent historical verifier, which are not available yet.",
+    )
+    _require(
         admitted_view(root),
         "Saving derived structures/coverage or their originating trail requires a historical verifier not yet implemented. Save a supported literal/field view or inspect capabilities.",
     )
@@ -1143,7 +1151,7 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
                     "sabueso.card_exploration@17",
                     "sabueso.card_exploration@19",
                 ),
-                "Chemical results require explicit format @15 or @17.",
+                "Chemical results require explicit format @15, @17 or @19.",
             )
             scientific_results[ref] = restore_result(ref, wire)
         elif adapter in (
@@ -1737,6 +1745,12 @@ def saved_topic(explorer, topic, origin, options):
         options is not None and not isinstance(options, dict)
     ):
         raise ArgumentError("Use a declared topic key and options mapping or None.")
+    if topic == "activity_context":
+        return not_saved(
+            explorer,
+            "This molecule-target interpretation was not retained with an independent original verifier; start a new explicit local interpretation from the captures.",
+            origin,
+        )
     if topic == "bioactivities":
         from .card_bioactivity_dispatch import binding
 
@@ -1821,6 +1835,14 @@ def saved_topic(explorer, topic, origin, options):
 
 
 def saved_answer(explorer, question, options, origin):
+    if question == "measured_targets" and explorer.profile == "small_molecule":
+        if not isinstance(options, dict):
+            raise ArgumentError("Question options require a mapping.")
+        return not_saved(
+            explorer,
+            "This new molecule-target question was not retained in the original exploration.",
+            origin,
+        )
     if question == "publications":
         from .card_exploration_literature import saved_answer as literature_saved_answer
 

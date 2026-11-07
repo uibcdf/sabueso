@@ -60,7 +60,31 @@ have their own independent bindings; all prior formats and original controls sta
 fixed. See the [activity contract](pending_proposals/card_bioactivity_exploration.md#independent-original-saved-reading)
 and [capsule provenance](../tests/core/data/README.md#original-live-bioactivity-projection-before-saved-reading).
 
-The complete retained public session measures **709,616,078 logical JSON bytes**;
+The LIVE molecule-to-supplied-target profile uses
+`test_card_molecule_activity_exploration_offline.py`: 45 cases over complete
+public TcTIM/BTS/benznidazole inputs, explicit synthetic identity/empty controls,
+and the unchanged @17 original. It checks exact identity conflicts and aliases,
+duplicate input occurrences, separate target snapshots, source/query states,
+native policy parity, quantity/null grains, complete 9/459-link publication
+routes, cross-Card support locations, exact back/fresh-question requests, typed
+machine selection and bounded atomic deferral. Saving remains explicitly refused
+until genuine producer controls and independent saved reading exist. Both
+installed workflows copy/select the module once. Its isolated outer gate,
+`test_declared_molecule_activity_runs_with_only_required_public_inputs`, copies
+the six required public fixture files and original @17 capsule outside the
+checkout and verifies the child's complete receptor stream and exact 45-case
+count. These child cases overlap the source cohort; do not add them to distinct
+coverage. Run affected nature/access/navigation, arguments/quantities, native
+ligand/activity and historical saved gates. Technical receiving does not supply
+independent scientist/researcher acceptance or finish B4/B5 (#148/#112/#25/#23).
+The [selected LIVE receipt](evidence/molecule_activity_live_checkpoint_20261107.json)
+verifies 1,133 distinct cases across six actual phases, including the complete
+29-case historical activity workload. It verifies complete receptor integrity,
+controller/worker node accounting, stable during-gate source hashes and resource
+limits. Two expected UniChem fixture warnings are retained. This selected result
+does not replace the earlier full-source receipt or qualify a later reader.
+
+The complete retained SDK200 bioactivity session measures **709,616,078 logical JSON bytes**;
 its qualification uses an explicit **1 GiB logical budget** and **128 MiB encoded
 and decoded transport budgets**. Keep the default logical limit at 256 MiB and
 test visible default refusal separately. Logical expansion, physical sharing,

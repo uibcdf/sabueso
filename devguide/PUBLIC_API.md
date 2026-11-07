@@ -52,8 +52,8 @@ now shares molecule, group and original source-record results with compact agent
 selection and complete publication context. Original saved reading is implemented
 with separate frozen predicates and exact retained requests; its original
 SDK200 @17/@18 receiving is recorded in the checkpoint. New LIVE activity or
-literature saves use SDK202 @19/@20; complete receiving of the new writer/reader
-is in progress. Broader activity/literature and independent
+literature saves use SDK202 @19/@20; their full local receiving is recorded below.
+Broader activity/literature and independent
 scientific/researcher acceptance remain pending. See
 [the scoped correction](pending_bugs/bioactivity_interpretation.md).
 
@@ -84,6 +84,33 @@ with its declared per-phase source epochs; copied literature receiving passes al
 passes 9,466 distinct cases, with exact source hashes and separate hosted,
 installed-artifact and independent human gates.
 Existing saved formats @1–@18 remain fixed.
+
+Development: the [molecule activity-context profile](pending_proposals/card_molecule_activity_exploration.md)
+uses `molecule.explore(related_cards=[target])`, followed by
+`view("activity_context")` or `answer("measured_targets")`. Only explicit
+source-stated identity edges join the focal molecule to the native activities of
+those supplied protein captures. Target rows open native groups, then original
+source records; `explain()` and `related()` retain both Card pins, identity and
+activity support, assay/citation context and the complete target publication.
+An explicit target-Card crossing starts fresh questions on the protein; the
+molecule return route preserves the original display selection.
+
+`explorer.access.select("activity_context", fields=[...], where={...},
+order_by=...)` uses the same captured result. Options reuse the native activity
+policies and add an exact `target_card_ref`; that pin selects the group grain,
+and `measurement_ref` selects the record grain within its exact membership.
+Multiple source aliases retain their native members without choosing a best
+class or scalar. Explicit units are required for quantity selection; percentage
+and concentration are not interchangeable. Successfully queried zero matches,
+unqueried sources, failed sources and missing identity/context remain distinct.
+The supplied contexts establish neither global target coverage nor efficacy,
+selectivity or independent experiments. Saving this new profile remains
+unavailable until a clean LIVE producer has supplied genuine original controls
+for a separately versioned independent reader. Historical formats remain fixed;
+old sessions report this new interpretation as `not_saved`. The
+[selected local checkpoint](evidence/molecule_activity_live_checkpoint_20261107.json)
+passes 1,133 distinct cases; independent saved, hosted/artifact and human/scientific
+qualification retain their separate boundaries.
 
 Development opt-in `measurement_rule="measurement_identity@2"` is shared by
 `bioactivities`, `explain_measurement`, `explain_bioactivity`, `ligands`,
