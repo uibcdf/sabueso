@@ -53,6 +53,16 @@ CASES = (
     "wrong-focal-nature",
 )
 ADAPTER = "molecule_activity_context_exploration@1"
+SUPPLEMENT = DATA.with_name("molecule_activity_multifocal_live_sdk208.tar.gz")
+SUPPLEMENT_SHA = "599a755df31fa5b17b4d39d899bf02adae80bd9f7e55c5140aeb02f6d562a699"
+SUPPLEMENT_DECODED_SHA = (
+    "9f9679cb4589790e7171c7beace3e845e4aae44c737afaeb3cf8193cf4947cf3"
+)
+SUPPLEMENT_MANIFEST_SHA = (
+    "c7e1bdec2c438e2b2c255b728ec485c8f72491f74c00a3809dd02f16565e15c9"
+)
+SUPPLEMENT_DECODED_BYTES = 454113280
+SUPPLEMENT_CASES = ("bts-to-benz", "benz-to-bts", "bts-to-same-id-snapshot")
 
 
 class Original:
@@ -144,6 +154,146 @@ class Original:
     def close(self):
         self.cache.clear()
         self.archive.close()
+
+
+class MultiFocalOriginal(Original):
+    """Read the complete corrected supplement with its own producer binding."""
+
+    def __init__(self, path):
+        self.archive, self.cache = tarfile.open(path, "r:"), OrderedDict()
+        self.manifest = self.member("manifest.json")
+        assert self.manifest["capture_complete"]
+        assert not self.manifest["admitted_saved_format"]
+        assert (
+            self.manifest["producer_head"] == "142618d305d7d0c732f3ebdbf2d49ee6a9bbb65c"
+        )
+        assert self.manifest["producer_version"] == "0.14.0+208.g142618d"
+        assert not any(self.manifest["attempts"].values())
+        assert self.manifest["parent_original"]["sha256"] == ENCODED_SHA
+        assert set(self.manifest["cases"]) == set(SUPPLEMENT_CASES)
+        members, expected = self.archive.getmembers(), self.manifest["files"]
+        assert len(members) == len(expected) + 1 == 1740
+        assert {m.name for m in members} == {*expected, "manifest.json"}
+        for member in members:
+            assert member.isfile() and not Path(member.name).is_absolute()
+            assert ".." not in Path(member.name).parts
+            with self.archive.extractfile(member) as stream:
+                digest = hashlib.file_digest(stream, "sha256").hexdigest()
+            if member.name == "manifest.json":
+                assert digest == SUPPLEMENT_MANIFEST_SHA
+            else:
+                assert member.size == expected[member.name]["bytes"]
+                assert digest == expected[member.name]["sha256"]
+
+    def focal_access(self, name, focal):
+        state = self.case(name)["access_states"][focal]
+        keys = list(dict.fromkeys([*state["inputs"], *state["captures"]]))
+        return SimpleNamespace(
+            _captures={
+                key: SimpleNamespace(
+                    pin=state["captures"][key]["pin"],
+                    snapshot=state["captures"][key]["snapshot"],
+                    data=self.value(state["captures"][key]["data_ref"]),
+                )
+                for key in keys
+            },
+            _inputs=state["inputs"],
+            _focal_key=focal,
+            _nonce=state["nonce"],
+        )
+
+
+@pytest.fixture(scope="module")
+def multifocal_original(tmp_path_factory):
+    with SUPPLEMENT.open("rb") as stream:
+        assert hashlib.file_digest(stream, "sha256").hexdigest() == SUPPLEMENT_SHA
+    path = tmp_path_factory.mktemp("sdk208-multifocal-original") / "original.tar"
+    digest, total = hashlib.sha256(), 0
+    with gzip.open(SUPPLEMENT, "rb") as source, path.open("xb") as target:
+        while chunk := source.read(1024 * 1024):
+            digest.update(chunk)
+            total += len(chunk)
+            assert total <= SUPPLEMENT_DECODED_BYTES
+            target.write(chunk)
+    assert total == SUPPLEMENT_DECODED_BYTES
+    assert digest.hexdigest() == SUPPLEMENT_DECODED_SHA
+    control = MultiFocalOriginal(path)
+    yield control
+    control.close()
+
+
+@pytest.mark.parametrize("case", SUPPLEMENT_CASES)
+def test_corrected_multifocal_original_keeps_independent_exact_capture_crossings(
+    multifocal_original, case, monkeypatch
+):
+    block_current(monkeypatch)
+    from sabueso.core._molecule_activity_history_v1.adapter import defer_frame
+    from sabueso.core.card_molecule_activity_history_v1 import (
+        expected_result,
+        expected_selection,
+    )
+
+    original, expected = multifocal_original, {}
+    recorded = original.case(case)
+    assert len(recorded["native_crossing_cache"]) == 2
+    assert len(recorded["target_bioactivity_calls"]) == 1
+    for prefix in ("first", "second"):
+        crossing = recorded["crossings"][prefix]
+        focal, pin = crossing["focal"], crossing["molecule_pin"]
+        access = original.focal_access(case, focal)
+        assert access._captures[focal].pin == pin
+        state = recorded["access_states"][focal]
+        for ref, member in state["objects"].items():
+            value = original.value(member)
+            if (
+                not isinstance(value, dict)
+                or not isinstance(value.get("context"), dict)
+                or value["context"].get("adapter") != ADAPTER
+                or value["context"].get("molecule_card_ref") != pin
+                or "native_payload" not in value
+            ):
+                continue
+            result = expected_result(
+                access, value["context"]["options"], original=value
+            )
+            assert result.result_ref == ref
+            assert canonical_json(result.wire) == canonical_json(value)
+            expected[ref] = result
+        source_ref = recorded["human"][prefix + "/root"]["selection"][
+            "scientific_result_ref"
+        ]
+        result = expected[source_ref]
+        native, location = result.native_crossing(crossing["target_pin"])
+        assert canonical_json(native) == canonical_json(
+            original.value(crossing["oracle_ref"])
+        )
+        wrapper = result._access._objects[location["result_ref"]]
+        assert canonical_json(wrapper) == canonical_json(
+            original.value(crossing["wrapper_ref"])
+        )
+        assert canonical_json(location) == canonical_json(crossing["payload_location"])
+        assert wrapper["molecule_card_ref"] == pin
+    assert len({c["molecule_pin"] for c in recorded["crossings"].values()}) == 2
+    assert len({c["focal"] for c in recorded["crossings"].values()}) == 2
+    for request in recorded["machine"]:
+        selection, query = request["selection"], request["query"]
+        result = expected[selection["scientific_result_ref"]]
+        assert result._access._focal_key == request["focal"]
+        ref, entries, fields, _ = expected_selection(result, **query)
+        assert ref == selection["selection_ref"]
+        assert [entry.key for entry in entries] == [
+            entry["key"] for entry in selection["entries"]
+        ]
+        assert list(fields) == selection["request"]["fields"]
+        for page in original.value(request["pages_ref"]):
+            assert page["page"]["total"] == len(entries)
+            for index, frame in enumerate(page["items"], start=page["page"]["offset"]):
+                actual = result.frame(
+                    result._access, SimpleNamespace(_fields=fields), entries[index]
+                )
+                if not frame["value_included"]:
+                    actual = defer_frame(actual)
+                assert canonical_json(actual) == canonical_json(frame)
 
 
 def forbidden(*args, **kwargs):

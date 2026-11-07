@@ -5,6 +5,45 @@ Current working-state checkpoint: **2026-11-07**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Corrected multi-focal LIVE original — 2026-11-07
+
+The corrected clean producer **`142618d` / SDK208** is committed and pushed with
+`[skip ci]`; import/distribution/generated labels agree outside the checkout.
+Its selected 765-case correction checkpoint and 90 clean-head repeats retain
+their recorded scope. The new
+[supplemental original receipt](evidence/molecule_activity_multifocal_original_20261107.json)
+byte-verifies **1,740 members / 452,807,056 member bytes**, containing three complete
+multi-focal journeys, 176 named human views and 24 machine requests/pages. The
+[public capsule](../tests/core/data/README.md#corrected-multi-focal-live-molecule-activity-supplement-sdk208)
+is 18,491,162 bytes and preserves each molecule's complete native crossing,
+wrapper pin, source/support and back context. Every case retains the public
+493-record target and full 9/459-link bibliography. The same-ID second snapshot
+is explicitly synthetic metadata; source statements stay unchanged.
+
+The full capture has persistent zero network/client-attempt counters, 1,154
+stable producer-source hashes and zero owned swap. Capture takes 176.52 s at
+399,732,736 bytes peak owned RSS; byte packaging/verification takes 17.29 s.
+This supplement follows the independent private kernel and precedes full new
+saved admission. The original SDK205 capsule remains byte-identical.
+
+The three new independent predicate controls pass with current Cards, science,
+public digesters and source clients blocked. They compare both focal scopes,
+all retained molecule wires, complete native wrappers/locations and typed machine
+frames. The complete expanded private module passes **39 cases**, with complete
+receptor integrity, exact node accounting, 1,157 stable source/input hashes and
+zero warnings/swap. It takes 180.46 s pytest / 181.48 s guarded at 635,138,048
+bytes peak owned RSS. The new controls compare all 20 supplemental molecule
+wires, six complete crossings and every machine frame; the 176 human views still
+require independent saved UI/source/origin replay. Focused repeats add no
+distinct cases. No runtime or frozen predicate implementation changes here.
+
+**Next:** implement explicit independently versioned saved admission/restoration
+over both originals, full human/source/origin replay, semantic resealing,
+transport/resave, fresh inert file reading and copied receiving. Public saving
+remains false. Formats @1–@20, scientific defaults and Card schema stay fixed.
+Broader B4–B6, B7/B8 and the six-stage goal remain open; cumulative exact-final-head
+CI/governance recovery remains under #148/#112.
+
 ## Exact-focal molecule crossing cache correction — 2026-11-07
 
 Cross-focal receiving exposed a [LIVE cache defect](pending_bugs/molecule_activity_cross_focal_cache.md):

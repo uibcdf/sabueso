@@ -83,8 +83,12 @@ return the previous molecule's crossing. The correction scopes that cache to
 the exact focal capture, including distinct snapshots with the same Card ID.
 Its [765-case selected checkpoint](evidence/molecule_activity_cross_focal_checkpoint_20261107.json)
 passes LIVE, private original, affected shared/native/profile and copied gates.
-Qualify the corrected producer and capture supplemental genuine multi-focal
-routes before admitting saved reading; preserve the complete SDK205 original.
+The clean corrected `142618d` / SDK208 producer now supplies a
+[genuine supplemental original](evidence/molecule_activity_multifocal_original_20261107.json):
+three multi-focal routes with 176 human views and 24 machine requests/pages,
+complete source/publication contexts and both exact molecule pins. The SDK205
+original stays byte-identical. Resume full independently versioned saved admission
+and original human/source/origin replay next.
 
 The [shared literature catalog](pending_proposals/card_literature_exploration.md)
 has its B4 LIVE producer committed: four new modules and their dispatch wiring

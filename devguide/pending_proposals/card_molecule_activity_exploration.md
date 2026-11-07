@@ -35,8 +35,18 @@ passes the full 54-case LIVE cohort, all 36 private original cases, affected
 shared/native/profile regressions and the isolated copied consumer. Focused
 repeats and the 54 copied child cases add no distinct coverage.
 The SDK205 original has one focal molecule per case and does not exercise this
-transition. Qualify the corrected clean producer and capture supplemental genuine
-multi-focal routes before new saved admission; keep that original byte-identical.
+transition. This gap required a corrected clean producer and supplemental genuine
+multi-focal routes before new saved admission; that original stays byte-identical.
+
+That clean correction is now **`142618d` / SDK208**. Its
+[supplemental original](../evidence/molecule_activity_multifocal_original_20261107.json)
+preserves three complete multi-focal journeys, 176 human views and 24 machine
+requests/pages in 1,740 byte-verified members. Complete native payloads and wrapper
+locations bind both molecule pins. Every case keeps the 493 public records and
+9/459-link publication contexts; only one declared snapshot metadata field is
+synthetic. The full capture records zero network/client attempts with durable
+telemetry. This is after the private predicate foundation and before full new
+saved admission; the earlier SDK205 original is unchanged.
 
 Then implement the independent original reader, semantic tamper refusal,
 transport/resave, inert fresh-process reading and full copied receiving. Saving
@@ -70,6 +80,14 @@ tamper proof, installed/copy qualification, full offline suite or independent
 researcher acceptance. Public saving remains false. All human routes, complete
 persisted origin/context, semantic resealing, transport/resave, fresh inert file
 reading and copied receiving remain required for this slice.
+The current private module adds three independent supplemental cases, receiving
+both focal scopes, full crossing wrappers/locations and all 24 original typed
+machine requests/frames. Its complete cohort is 39 cases; the older 87-case
+receipt retains its original 36-private/51-LIVE scope. The supplemental 176 human
+views still require full saved UI/source/origin replay.
+The complete 39-case module passes with complete receptor integrity, 1,157 stable
+source/input hashes, exact nodes and zero warnings/swap. No runtime or private
+frozen predicate implementation changes are needed to receive the supplement.
 
 ## Delivered LIVE contract
 

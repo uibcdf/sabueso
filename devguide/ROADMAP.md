@@ -106,10 +106,16 @@ entire B4/B5 slice stays open; this is not B7 acceptance or B8 resumption.
 
 New cross-focal receiving found a
 [native crossing cache defect](pending_bugs/molecule_activity_cross_focal_cache.md)
-outside the original's one-focal-per-case scope. Scope the cache to the exact
-molecule capture, qualify the corrected clean producer and preserve supplemental
-genuine multi-focal routes before new saved admission. Keep the original SDK205
+outside the original's one-focal-per-case scope. Its correction scopes the cache
+to the exact molecule capture and requires a corrected clean producer with
+supplemental genuine multi-focal routes before new saved admission. Keep the original SDK205
 capsule unchanged; the private predicate foundation does not close this gap.
+The corrected clean `142618d` / SDK208 producer now supplies that
+[supplement](evidence/molecule_activity_multifocal_original_20261107.json), with
+all three multi-focal journeys, 176 human views, 24 machine requests/pages and
+complete original source/publication context. Continue full saved admission and
+original replay over both capsules; observing these LIVE routes is not saved
+UI/origin or researcher acceptance.
 
 Continue the rich profiles through the
 [current destination actions](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions)

@@ -59,6 +59,14 @@ capture supplemental genuine multi-focal routes. Preserve every byte of the
 existing SDK205 original and formats @1–@20. The initial 99-wire original has
 one focal molecule per case and does not exercise this shared-cache transition.
 
+The corrected clean `142618d` / SDK208 producer passes the 54 LIVE and 36 private
+original cases again on its exact committed runtime. Its
+[genuine supplement](../evidence/molecule_activity_multifocal_original_20261107.json)
+now preserves all three multi-focal routes, 176 human views, 24 machine
+requests/pages, full source/publication context and both crossing wrapper pins.
+It follows the private kernel and precedes full new saved admission. The SDK205
+original remains byte-identical; this capture is not saved-reader acceptance.
+
 Owning report material is prepared as `b5-cross-focal-issue148-draft-1.md` in the
 local recovery tree. Concrete publication permission is requested separately;
 earlier report approvals do not cover this material. Retain the full reproduction,

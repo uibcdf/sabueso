@@ -131,13 +131,29 @@ warnings/swap and complete receptor/source/node integrity. Current Card/Deck con
 public digesters and clients are blocked. This is private expected-result
 verification; no saved bundle admission or full human replay is implied.
 
+The [corrected SDK208 supplement](evidence/molecule_activity_multifocal_original_20261107.json)
+adds three independent multi-focal cases to the same module: 39 cases total.
+They verify all 1,740 supplemental member hashes and the complete molecule wires,
+both native crossing wrappers/locations and 24 typed machine requests/frames.
+The complete 39-case gate passes in 180.46 s pytest / 181.48 s guarded at
+635,138,048 bytes peak owned RSS, with complete receptor integrity, exact nodes,
+1,157 stable source/input hashes and zero warnings/swap. The three new cases
+receive all 20 supplemental molecule wires and six crossings; the earlier focused
+three-case gate overlaps and adds no distinct coverage.
+Current Card/science/digester/client entry points remain blocked. Both molecule
+orders and explicit same-ID snapshot choice retain their own capture pins.
+The original's 176 human views remain future saved UI/origin replay controls;
+scientific predicate parity does not qualify that unimplemented reader.
+
 Run this public heavy-original module as a separate serial gate: one CPU,
 4 GiB owned-tree RSS, 1,800 s, 16 GiB host reserve, native threads one, zero owned
 swap and 4 GiB scratch. It decompresses one complete 1,720,330,240-byte tar for
 random member access instead of replicating Cards or repeatedly expanding gzip.
+The supplemental fixture adds one 454,113,280-byte plain tar; the complete module
+retains both original byte streams under the same 4 GiB scratch ceiling.
 For the next full checkpoint, exclude it from the eight-worker parallel remainder
 with `--ignore=tests/core/test_card_molecule_activity_history_offline.py`, then run
-its full module separately and include all 36 cases once in the union. Do not
+its full module separately and include all 39 cases once in the union. Do not
 mark public originals local-only or shrink the capsule to fit a parallel phase.
 The earlier 9,466-case full receipt predates this module. Installed/copy wiring
 and admitted saved reading remain the next integration work.

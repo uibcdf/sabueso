@@ -1,5 +1,36 @@
 # Historical exploration fixtures
 
+## Corrected multi-focal LIVE molecule activity supplement (SDK208)
+
+`molecule_activity_multifocal_live_sdk208.tar.gz` preserves the genuine clean
+`142618d305d7d0c732f3ebdbf2d49ee6a9bbb65c` / `0.14.0+208.g142618d` observations
+after the exact-focal crossing-cache correction. Three public journeys retain
+BTS→benznidazole, the reverse order and explicit selection of a second same-ID
+BTS snapshot. Only the third case adds declared synthetic snapshot metadata;
+source relationships and chemical identity assertions are unchanged.
+
+All 1,740 members / 452,807,056 original member bytes are retained, including 176
+named human views, 24 machine requests and all 24 pages, complete native crossing
+wrappers/oracles for both molecule pins, source/support/back routes and supplied
+Cards. The target keeps all 493 records and each case keeps the complete 9/459-link
+bibliography. Persistent network/client-construction counters cover the whole
+capture and record zero attempts. No new source or private/pilot data is included.
+The public input member is byte-identical to the SDK205 capsule; its source/date/
+licence declarations remain in that capsule and [NOTICE](../../../temp_data/NOTICE.md).
+Source data keep their own terms; Sabueso-authored code follows the repository licence.
+
+This supplement follows the independent private predicate kernel and precedes
+full new saved admission/restoration. It neither replaces nor regenerates the
+SDK205 original. Capture and transport verification do not establish independent
+saved UI/origin verification or researcher acceptance. Preserve the original bytes.
+The [receipt](../../../devguide/evidence/molecule_activity_multifocal_original_20261107.json)
+records exact scope, source and resource bounds. Normalized USTAR metadata and
+gzip mtime=0 package complete original members.
+
+Original manifest SHA-256: `c7e1bdec2c438e2b2c255b728ec485c8f72491f74c00a3809dd02f16565e15c9`.
+Compressed: 18491162 bytes; SHA-256 `599a755df31fa5b17b4d39d899bf02adae80bd9f7e55c5140aeb02f6d562a699`.
+Uncompressed tar: 454113280 bytes; SHA-256 `9f9679cb4589790e7171c7beace3e845e4aae44c737afaeb3cf8193cf4947cf3`.
+
 ## Complete original LIVE molecule activity capture (SDK205)
 
 `molecule_activity_live_sdk205.tar.gz` preserves every byte of the clean

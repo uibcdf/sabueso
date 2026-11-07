@@ -9,6 +9,20 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Corrected multi-focal original (2026-11-07, #148/#112)
+
+The [SDK208 supplement](../evidence/molecule_activity_multifocal_original_20261107.json)
+captures the corrected clean `142618d` producer before new saved admission and
+preserves all SDK205 original bytes. The expanded private predicate module passes
+39 cases, including the three new multi-focal controls. This increment changes
+test/control/documentation bytes only; runtime and frozen predicates stay fixed.
+Record its exact committed/pushed head, editable refresh and clean-head repeats
+under `recovered_work/checkpoint_recovery_20261106/b5-molecule-multifocal-commit-1/`.
+It uses the authorized intermediate `[skip ci]` route; cumulative exact-final-head
+CI/governance recovery through gh-run-receptor remains under #148/#112. No remote
+workflow is dispatched and no full saved-reader or installed-artifact gate is
+claimed. Finish independently versioned admission and full original receiving next.
+
 ### Exact-focal molecule crossing cache (2026-11-07, #148/#112)
 
 The [selected correction receipt](../evidence/molecule_activity_cross_focal_checkpoint_20261107.json)
