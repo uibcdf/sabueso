@@ -58,17 +58,22 @@ receptor streams and during-gate source maps remain intact. Complete receiving
 passes 51 owning, 291 shared, 383 native/profile and one copied outer case;
 51 overlapping copied children add no distinct coverage. The
 [selected receipt](../evidence/molecule_activity_identity_checkpoint_20261107.json)
-binds the correction; final quality and clean-producer closeout precede capture.
-No new genuine original or independent
-saved reader has been created; a corrected clean producer must precede capture.
+binds the correction. Final quality and clean-producer closeout passed at
+`ddc1fc8` / SDK205; all 51 owning cases pass again on its clean runtime. Its
+[complete genuine original](../evidence/molecule_activity_live_original_20261107.json)
+preserves all 29 scenarios before any independent saved reader. Saved reading
+remains the next qualification boundary; the original is never regenerated to
+pass that reader.
 
 Owning issue delivery belongs to #148, with #112 checkpoint coordination. Retain
 the evidence through the corrected producer/original-reader review. The separate
 structural investigation flag defect remains #192.
 
-A concrete ordinary technical update to #148 is prepared locally as
-`b5-identity-issue148-draft-1.md`. Automatic approval review rejected publication
-because the evidenced concrete approval covered only #192. Explicit permission
-for this destination/material has been requested. No comment was posted and no
-alternative publication route was used; retain the internal report for handoff
-until that permission arrives.
+The maintainer explicitly approved the exact local
+`b5-identity-issue148-draft-1.md` after the initial automatic-review rejection.
+The [owning report](https://github.com/uibcdf/sabueso/issues/148#issuecomment-6710936650)
+is published and its returned body is byte-identical to the approved draft,
+SHA-256 `bf05388e2c6d1afa0ed82f1396ae35a0056fe8af6fda97ad1236948f3a790989`.
+The local authorization/publication receipts retain delivery evidence. That report
+is a preparation-time snapshot; the later code/original checkpoints record actual
+delivery and remaining limits. No broader publication authority is inferred.

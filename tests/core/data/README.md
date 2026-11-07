@@ -1,5 +1,43 @@
 # Historical exploration fixtures
 
+## Complete original LIVE molecule activity capture (SDK205)
+
+`molecule_activity_live_sdk205.tar.gz` preserves every byte of the clean
+`ddc1fc83725d10c2cc5fe569341ae1b761dddc8d` / `0.14.0+205.gddc1fc8` LIVE
+original, before any independent molecule-activity saved reader. Its 29 scenarios
+retain 1,337 named human views, 288 exact machine requests with all 311 pages,
+complete access/native wires, original source support and raw public inputs.
+All 6,035 members (1,715,663,795 bytes, including the manifest) were
+independently verified before packaging. The full public 493-record TcTIM input
+and original 9/459-link publication contexts remain complete. Explicit synthetic
+copy controls retain the added record and its ten-link citation context; they
+state no real chemical equivalence or provider error. Other declared controls
+cover missing/conflicting identity, duplicate inputs, distinct snapshots,
+source/query states, policy options, quantities and opaque typed source values.
+
+The initial capture stopped on a capture-helper expectation for a distinct
+nonprotein context. An explicit continuation preserved all 4,893 existing members
+byte for byte, including 21 complete cases, and added the remaining eight cases.
+Both capture scripts, the stopped-phase log/resource receipt and the prior-member
+hash inventory are retained. Network/client construction is guarded in both
+phases. The resumed phase records zero attempts; the stopped phase did not persist
+its in-memory counters, so its missing telemetry is not reported as a measured
+zero. An earlier separate partial attempt is retained locally and is not this
+complete original. No independent reader or saved format is admitted by capture.
+
+Normalized USTAR metadata and gzip mtime=0 package unchanged original bytes.
+The included original `NOTICE.md` retains UniProt, ChEMBL, RCSB/PDB and CCD
+source/date/licence declarations. Source data and publication contexts retain
+their own terms and are not relicensed as MIT; Sabueso-authored code follows
+the repository licence. No private/pilot material is included. Never regenerate
+this original merely to pass a later reader. The
+[capture receipt](../../../devguide/evidence/molecule_activity_live_original_20261107.json)
+records exact source, scope, verification, stopped attempts and limits.
+
+Original manifest SHA-256: `c6fc262c3a02d3756e771709c622a14d932130182b914c758260a138615cf9eb`.
+Compressed: 69321034 bytes; SHA-256 `61a5556a3d9cc75485a321c707341f2233954606b14c2e917bd5cd627b3d123f`.
+Uncompressed tar: 1720330240 bytes; SHA-256 `47f4a14976c345a9ad52f3eeefd7c7ef5d358685b9cd8deaeee4b8280bb48b10`.
+
 ## Complete original LIVE literature capture (SDK202)
 
 `literature_live_sdk202.tar.gz` packages every byte of the genuine clean

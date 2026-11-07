@@ -63,9 +63,12 @@ earlier 45-case owning and adjacent/historical/copied gates total
 The [identity-membership correction](evidence/molecule_activity_identity_checkpoint_20261107.json)
 adds six controls and passes the complete 51-case cohort plus affected shared,
 native/profile and copied gates: 726 distinct cases with their own source binding.
-Saving awaits a clean producer capture and an independent original reader. The
-checkpoint distinguishes this unfinished profile from full-source, installed and
-human qualification.
+The clean corrected producer is `ddc1fc8` / SDK205; its
+[complete genuine original](evidence/molecule_activity_live_original_20261107.json)
+preserves 29 scenarios, 1,337 human views and 288 machine requests with all 311 pages before
+independent saved reading. Saving awaits that independent reader. The checkpoint
+distinguishes this unfinished profile from full-source, installed and human
+qualification.
 
 The [shared literature catalog](pending_proposals/card_literature_exploration.md)
 has its B4 LIVE producer committed: four new modules and their dispatch wiring

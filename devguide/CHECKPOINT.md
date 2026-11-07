@@ -5,55 +5,61 @@ Current working-state checkpoint: **2026-11-07**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
-## Corrected molecule identity membership — 2026-11-07
+## Complete molecule activity LIVE original — 2026-11-07
 
-The clean LIVE producer `69c0914` / SDK204 is committed and pushed with
-`[skip ci]`; its 1,133 selected cases and 45 repeated clean-runtime controls retain
-their recorded scope. Pre-capture inspection then reproduced an additional
-cross-alias copy counterexample: a native group exposes a source record whose
-literal molecule identity was never joined to the focal Card. The wrapper showed
-two included records instead of one. Full public inputs remain intact, with one
-explicitly synthetic copied record added for this control.
+The corrected clean producer is **`ddc1fc8` / SDK205**, committed and pushed
+with `[skip ci]`. Import, distribution and generated labels agree outside the
+checkout at `0.14.0+205.gddc1fc8`. Its
+[genuine original receipt](evidence/molecule_activity_live_original_20261107.json)
+verifies all **6,035 members / 1,715,663,795 bytes** before any independent
+molecule-activity saved reader exists. The byte-identical
+[public capsule](../tests/core/data/README.md#complete-original-live-molecule-activity-capture-sdk205)
+retains 29 scenarios, 1,337 named human views, 288 exact machine requests with 311 pages,
+complete native/access/source objects, quantities and raw public inputs.
+The full public 493-record target and original 9/459-link bibliography remain
+intact; the explicitly synthetic copy's additional citation stays in its
+complete ten-link context. Identity, uncertainty and source/query states are
+separate; native scientific defaults and Card schema are unchanged.
 
-The working correction intersects literal source-record objects with selected
-explicit identities, preserves the complete native group as context, and keeps
-drill-down scope across parent-normalized native keys. All six new regression
-cases pass. The initial six-failure and four-pass/two-failure attempts remain
-retained. The complete 51-case owning, 291 shared, 383 native/profile and copied
-outer gates pass: 726 distinct cases, plus 51 overlapping copied children.
-The [selected correction receipt](evidence/molecule_activity_identity_checkpoint_20261107.json)
-binds this source separately from the earlier 1,133-case checkpoint. Root Ruff,
-fixture delivery, governance and warning-fatal Sphinx pass; the final guide
-check and clean-producer closeout complete this increment. No new genuine
-original or independent reader has been created. Continue from the
+A capture-helper expectation stopped the initial phase after 21 complete cases.
+The explicit continuation verifies all 4,893 prior member hashes unchanged and
+adds the remaining eight cases without regenerating earlier observations.
+The stopped log/resource receipt, both scripts and prior-member inventory are
+inside the capsule. Both phases install network/client-construction guards;
+the resumed phase records zero attempts. Initial in-memory counters were not
+persisted on failure and are not claimed as measured zeros. The earlier separate
+partial attempt is retained locally, outside this complete original.
+
+**Next:** implement independent original saved reading, full transport/resave,
+semantic tamper refusal, inert fresh-process and copied receiving. Saving is
+still refused for this profile. Formats @1–@20 and all earlier originals remain
+fixed. Continue from the
 [profile contract](pending_proposals/card_molecule_activity_exploration.md).
-The [identity-membership report](pending_bugs/molecule_activity_identity_membership.md)
-owns the exact counterexample and its source-context distinction.
+No remote CI, installed artifact, human acceptance or release is established by
+this original capture. The full six-stage program, broader B4–B6, B7 acceptance
+and authorized B8 delivery remain open; B2 default review stays deferred.
 
-## Earlier molecule activity-context LIVE checkpoint — 2026-11-07
+## Corrected molecule identity code checkpoint
 
-The maintainer resumed the full six-stage goal after the requested pause.
-Previous full committed and pushed checkpoint:
-**`290ed16`**, `[skip ci]`, with 9,466 distinct offline passes. Its refreshed
-editable runtime is SDK203 and 67 repeated post-commit controls pass. These
-results qualify their recorded source, not the later uncommitted worktree.
+The earlier `69c0914` / SDK204 selected receipt retains its 1,133-case source
+scope. Pre-capture receiving then found literal source records being admitted
+through broader native copy/parent context. The correction at `ddc1fc8` projects
+membership through selected explicit identities, retains complete native context
+and preserves source-record focus across parent-normalized native keys.
+The [identity report](pending_bugs/molecule_activity_identity_membership.md)
+records the exact counterexample and
+[authorized owning update](https://github.com/uibcdf/sabueso/issues/148#issuecomment-6710936650).
 
-This increment implements the molecule-target `activity_context` LIVE core and
-its human/agent integration. Its
-[selected local receipt](evidence/molecule_activity_live_checkpoint_20261107.json)
-verifies **1,133 distinct passes**: 45 owning, 291 shared, 383 native/adjacent,
-384 historical, 29 complete original activity and one copied outer consumer.
-The outer checks 45 overlapping child cases, which add no distinct coverage.
-Two expected UniChem fixture warnings remain; all owned trees report zero swap.
-This is selected qualification of the recorded source, not a repeated full
-9,466-case run or installed-artifact/human acceptance. Failed attempts and their
-source epochs remain preserved. Continue from the
-[concrete file/API/test handoff](pending_proposals/card_molecule_activity_exploration.md).
-Next identify the clean committed LIVE producer, align its editable runtime and
-capture its complete genuine original before implementing independent saved
-reading. That reader is required to finish this slice. No new saved format,
-original capture, remote CI or release was performed. Earlier full results retain
-their original source scope; the new selected receipt binds this implementation.
+The [selected correction receipt](evidence/molecule_activity_identity_checkpoint_20261107.json)
+verifies 726 distinct passes: 51 owning, 291 shared, 383 native/profile and one
+copied outer case. Its 51 child cases overlap and add no distinct coverage.
+Two expected UniChem fixture warnings and zero owned swap are recorded. All 51
+owning cases pass again on the clean SDK205 runtime. Root Ruff, fixture delivery,
+governance and warning-fatal Sphinx passed at that code checkpoint. The new
+original capture and its integrity checks are a separate qualification scope;
+they are not a repeated full offline suite or independent saved-reader pass.
+Hosted CI/governance remains deferred under #148/#112 to the agreed cumulative
+exact-head checkpoint through gh-run-receptor.
 
 ## Last complete checkpoint and next action
 

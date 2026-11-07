@@ -1,207 +1,164 @@
 # Exact molecule-to-target activity context
 
-## Current pre-capture correction
+Owner: Sabueso #148, with molecule identity/crossing under #25/#23 and checkpoint
+coordination under #112. The complete six-stage goal remains active. This B4/B5
+slice requires independent saved reading before completion; scientific, human,
+workload, real-consumer and exact-candidate qualification remain separate.
 
-Clean producer `69c0914` / SDK204 passed its selected 1,133 cases and 45 repeated
-post-commit cases and was pushed. A further pre-capture control reproduced an
-identity-membership defect over the full public 493-record target plus one
-explicit synthetic copy. The native group spans two literal molecule records;
-only one was explicitly joined to the focal molecule, yet two records were shown
-and counted. Native parent-molecule keys remain interpretation context and do
-not replace exact literal record identity. The
-[identity-membership report](../pending_bugs/molecule_activity_identity_membership.md)
-owns the full counterexample and correction.
+## Current checkpoint and next action
 
-The correction projects records/counts through explicit selected identities,
-retains complete original native wires and support, withholds broader/aggregate
-summary scalars without reclassifying a subset, and preserves alias scope through
-group drill-down. Source-record focus outside the joined identity refuses before
-native evaluation. Six permanent regression cases pass for default/opt-in grouping,
-absent/present alias joins and exact source focus, including parent-normalized
-native keys. Receiving and failed attempts remain in the local recovery
-tree under `b5-molecule-identity-regression-*`. The original 45 controls stay in
-place; the copied consumer now requires all 51 cases. Owning/shared/native/profile
-and copied gates pass 726 distinct cases, with two expected UniChem fixture
-warnings and zero owned swap. The
-[correction receipt](../evidence/molecule_activity_identity_checkpoint_20261107.json)
-owns its exact source and selected scope. Final quality and a corrected clean
-producer precede the genuine original capture. No new
-independent reader or saved format exists.
+The LIVE producer is committed and pushed as **`ddc1fc8` / SDK205**, using
+`[skip ci]`. Editable import/distribution/generated labels agree outside the
+checkout at `0.14.0+205.gddc1fc8`. The
+[code correction receipt](../evidence/molecule_activity_identity_checkpoint_20261107.json)
+verifies 726 distinct selected passes; all 51 owning cases pass again after the
+commit on its clean runtime. Earlier full/selected receipts keep their own scope.
 
-Owner: Sabueso #148, with molecule identity/crossing under #25/#23.
-The maintainer resumed the full six-stage goal after the 2026-11-07 pause. This
-B4/B5 increment has a [selected LIVE checkpoint](../evidence/molecule_activity_live_checkpoint_20261107.json):
-1,133 distinct local passes across six phases. Independent saved parity,
-exact-head hosted/artifact qualification and human/scientific acceptance remain
-unfinished. Identify the clean committed producer and align its editable runtime
-before capturing the genuine original required by the new saved reader.
+The [genuine original receipt](../evidence/molecule_activity_live_original_20261107.json)
+verifies the complete 29-case LIVE capture before independent saved reading.
+All 6,035 members / 1,715,663,795 bytes are packaged byte-identically in
+`tests/core/data/molecule_activity_live_sdk205.tar.gz`; the
+[capsule notice](../../tests/core/data/README.md#complete-original-live-molecule-activity-capture-sdk205)
+records source terms, exact digests and retention. The original contains 1,337
+named human views, 288 actual machine requests with 311 pages, all complete captured
+native/access/source objects and raw public inputs. It is an observation capsule,
+not an admitted saved explorer format or researcher acceptance.
 
-## Last complete checkpoint
+Next implement the independent original reader, semantic tamper refusal,
+transport/resave, inert fresh-process reading and full copied receiving. Saving
+remains explicitly refused. Keep formats @1–@20 and all earlier originals fixed.
+No native default adoption, schema change, hosted CI or release occurs here.
 
-`290ed16f57d1bbbcf2cb19769fe20fe93250a34b` is pushed to `main` with `[skip ci]`.
-Its [full local checkpoint](../evidence/literature_saved_checkpoint_20261107.json)
-has 9,466 distinct passes. The editable import/distribution/generated labels agree
-outside the checkout at `0.14.0+203.g290ed16`; 67 repeated post-commit controls
-pass, recorded under `b4-shared-reader-postcommit-1/` in the local recovery tree.
-Hosted CI/governance remains deferred under #148/#112. Installed-artifact and
-independent human acceptance remain separate. Those results do not qualify the
-new implementation. Its own selected receipt binds the new source. No new
-original capture or saved format exists.
-Formats @1–@20 and original scientific controls remain fixed.
+## Delivered LIVE contract
 
-## Current implementation and qualification limits
+Topic `activity_context`, question `measured_targets` and adapter
+`molecule_activity_context_exploration@1` share one human/agent result. Only
+explicit `same_as` edges to a coherent focal molecule anchor join retained source
+records to explicitly supplied captured protein pins. Names, similarity, parent
+keys and copy grouping supply no chemical identity join. Contradictions and
+missing assertion support remain visible; original source statements survive
+selection. Existing Bio readers evaluate the protein capture, never the molecule.
 
-New files present:
+Defaults remain `include_indirect=False`, `thresholds=None`, class @4,
+measurement @1 and target scope @1. Explicit policies retain their original
+meaning. Focus options are `target_card_ref`, `molecule_ref` and `measurement_ref`;
+record focus requires an exact supplied target pin. Three row grains expose
+targets, native groups and original source relationships, with exact membership
+and quantity/scalar applicability. Aggregate or broader native summary scalars
+remain original context; no best class or narrowed quantity is invented.
+Missing, unqueried, failed, scoped empty, unsupported and conflicting contexts
+do not establish inactivity, efficacy, selectivity or independent experiments.
 
-- `sabueso/_private/argdigest/argument/target_card_ref.py`: None or a canonical
-  complete Card pin, without an item suffix, stripping or coercion;
-- `sabueso/core/card_molecule_activity_access.py`: exact identity joins, cached
-  complete native target contexts, group/record membership and source support;
-- `sabueso/core/card_molecule_activity_selection_v1.py`: typed equality,
-  membership, projection, quantity comparisons and null-last ordering;
-- `sabueso/core/card_molecule_activity_exploration.py`: human/navigation;
-- `sabueso/core/card_molecule_activity_presentation_v1.py`: bounded presentation;
-- `tests/core/test_card_molecule_activity_exploration_offline.py`: public fixture
-  preparation and initial native/human/agent/source/publication/back regressions.
+Implementation:
 
-Existing-file WIP is in `card_access.py`, `card_context_navigation.py`,
-`card_exploration.py`, `card_exploration_profiles.py`,
-`card_exploration_render.py` and `card_exploration_storage.py`.
+- `target_card_ref.py` validates a complete canonical Card pin without coercion;
+- `card_molecule_activity_access.py` implements exact identity membership,
+  complete cached native contexts, source support and lazy native crossing;
+- `card_molecule_activity_selection_v1.py` implements typed equality, membership,
+  projection, candidate-first quantity comparisons and null-last ordering;
+- `card_molecule_activity_exploration.py` implements human/source/return routes;
+- `card_molecule_activity_presentation_v1.py` provides bounded text/HTML;
+- `test_card_molecule_activity_exploration_offline.py` retains all 51 owning
+  public and explicitly synthetic controls; the copied consumer requires all 51.
 
-Two owning attempts finished and their evidence remains under
-`recovered_work/checkpoint_recovery_20261106/`:
+Shared access, profile, context-navigation, presentation and storage hooks are
+committed. Descriptor saving remains false until independent historical
+admission. Source/wire/cell interpretation keeps quantities bound to
+`relationships.has_bioactivity.measurement.normalized` and explicit units.
 
-- `b5-molecule-activity-live-1/`: one failed, three passed. The test incorrectly
-  assumed a flat QuantityRecord payload; the assertion was corrected to use the
-  published codec and its manifest/values representation.
-- `b5-molecule-activity-live-2/`: 32 passed, two failed, 22.72 s pytest time,
-  zero warnings and zero owned swap. The lazy native crossing tried to append
-  a segment to an unresolved lookup location, and one test used `value` instead
-  of SourceAssertion's `asserted_value`. Both corrections are written, but not
-  rerun. The saved-science discovery regression passed within this attempt.
+Wrapper/group/record/assay/publication routes retain the focal molecule and
+exact supplied target pin. `target_card` explicitly crosses to a protein explorer,
+where fresh questions get their own request. `molecule_root` returns the actual
+original display selection, including its filters. Literal source-record focus
+works when a native group key is parent-normalized. Full native source/group
+context remains reachable even when some records are context-only.
 
-Seven more test cases were appended after the second attempt: successful scoped
-empty response, two opt-in policy cases, exact record focus, filtered back/paging,
-explicit target crossing/fresh question and detached captures. These additions
-pass with the corrected original cohort in `b5-molecule-activity-live-3/`:
-41 passed, 33.54 s pytest time, zero warnings/swap; all 1,316 source/input hashes
-are stable during the gate. That result qualifies its source epoch only.
+## Genuine original scope and capture history
 
-Four additional controls now cover percentage/null group and record semantics,
-cross-Card support locations, escaped source text and bounded atomic deferral.
-Known scoped-zero rows now distinguish empty evaluation from unqueried or failed
-contexts; no scientific policy changes. `b5-molecule-activity-live-4/` passes 44
-cases and fails one test that assumed a deferred item would fit in 4 KiB. The
-page correctly returned its explicit item-too-large result. The corrected 8 KiB
-measurement projection passes its focused gate in
-`b5-molecule-activity-budget-1/`; `b5-molecule-activity-live-5/` passes the full
-45-case cohort in 35.88 s, with zero warnings/swap and stable source hashes.
-The repeated shared gate passes 291 cases using eight workers in 55.57 s;
-its first attempt retained one stale small-molecule catalogue expectation.
-Only the new topic/question expectations changed, retaining its applicability
-and missing-identity assertions. The native/adjacent profile gate passes 383
-cases with two expected UniChem fixture-failure warnings. The copied outer
-consumer passes and verifies all 45 overlapping child cases; its temporary
-child stream is indirect evidence through that passing outer case. Historical
-receiving passes 384 cases, plus the separately bounded complete 29-case original
-activity module (791.36 s, 2,946,895,872 bytes peak owned RSS, zero swap).
-The 384-case phase takes 866.17 s and peaks at 3,098,320,896 bytes; eight workers
-remain inside its 8 GiB/1,800 s envelope. All six primary phases pass with complete
-receptor integrity and exact disjoint node accounting. The earlier 41-case and
-focused budget repeats add no distinct coverage. Both installed workflows copy/select the new module once;
-the outside-checkout consumer uses only its six required public fixture files
-and unchanged original @17 capsule. No new original capture or saved reader exists.
+The 29 scenarios include public BTS and benznidazole, full molecule and duplicate
+input Decks, distinct target snapshots, no/nonprotein/unsupported contexts and
+wrong focal nature; unqueried, failed, successful synthetic empty and mixed query
+states; missing/incoherent/conflicting identity controls; unmatched
+aliases with opaque False/int0/float0/null source metadata; multiple explicit
+synthetic aliases; indirect, original/opt-in policies and physical thresholds;
+and copy-alias identity joins absent/present under grouping @1/@2. Synthetic
+changes are declared per case and assert no real chemical equivalence.
 
-## Implementation contract on resumption
+The full 493-record public target remains intact. Copy controls add one declared
+synthetic source record; original nine-link citation context therefore has ten
+links in that modified target. Every captured publication matches the complete
+independent native explanation of its exact supplied target. Public originals
+retain all nine and 459 links. No reduced positive or bibliography substitute
+was used to obtain a pass.
 
-Deliver topic `activity_context`, question `measured_targets`, and adapter
-`molecule_activity_context_exploration@1` over one shared human/agent result.
-Join only explicit `same_as` edges to the focal molecule anchor and explicitly
-supplied captured protein pins; preserve source relationships/assertions and
-contradictions. Never infer identity from names or similarity. Evaluate existing
-Bio readers on the protein capture, not the molecule.
+Human observations preserve all actual target/group/record branches, source,
+identity, assay, citation and publication routes, lazy native crossings, support,
+filtered origin return and explicit fresh protein questions. Machine requests
+retain fields, empty/exact membership, typed quantity/null selection, options,
+ordering and complete bounded pages. All actual access objects, Cards, source
+locations and focal identities remain available; unvisited scope is not invented.
 
-Retain Bio defaults: `include_indirect=False`, `thresholds=None`, class @4,
-measurement @1 and target scope @1. Focus options are `target_card_ref`,
-`molecule_ref` and `measurement_ref`; measurement focus requires an exact target
-pin. Row kinds are `activity_context_target`, `activity_context_group` and
-`activity_context_record`. Columns add `target_card_ref`, `target_ref` and
-`molecule_card_ref` to Bio columns. Aggregate rows never choose an invented best
-class/value across aliases. Missing/unqueried/failed/unmatched/conflicting
-contexts remain distinct and do not establish inactivity or efficacy.
+The first separate partial capture stopped on a helper's nine-link expectation
+applied to the synthetic ten-link context. It remains local and incomplete.
+The complete original's initial phase then stopped after 21 cases because the
+helper confused a distinct nonprotein context (`unsupported`) with a repeated
+focal molecule, deduplicated to no target (`missing_prerequisite`). Continuation
+kept all 4,893 existing members byte-identical and added eight cases. Both scripts,
+initial log/resource and prior-member inventory are retained in the capsule.
+Both phases guard network/client construction; only the resumed phase's counters
+were persisted and measure zero attempts. Initial missing telemetry is explicitly
+unknown. All owned capture/packaging trees report zero swap. These are integrity
+and LIVE observations, not independent saved-reader tests.
 
-The implemented core provides `descriptor(save=False)`,
-`options_for_activity_context`, `materialize`, and a common `MoleculeActivityResult`
-interface (`result_ref`, `wire`, `entries`, `options`, native/location/value/cell/
-frame methods). Wire keys include context/native_payload/rows/support/
-explanations/coverage/exclusions/outcome/schema/scope. Preserve complete native
-Bio overview/focus wires by target pin. Human support expects `target_access`,
-`native_member` and ordered `native_members`; optional `native_crossing` is lazy.
-Groups retain explicit target/group identity, alias membership and distinct native
-group/record counts. Duplicate input occurrences remain inspectable.
+## Independent reader requirements
 
-Human exports: `view`, `open_item`, `support`, `explain`, `links`, `follow`,
-`display_filter`, `display_sort`. Presentation exports HEADERS/KINDS/display_row/
-opening/context_opening. Link rule: `molecule_activity_context_links@1`.
-Wrapper/group/record/assay/publication routes keep the molecule focal;
-`target_card` is an explicit protein-explorer crossing, and `molecule_root`
-returns the original display selection. Both pins, exact options, source support
-and full publication contexts must stay visible. The lazy
-`native_ligand_crossing` link and its location correction pass receiving against
-the complete native oracle and duplicate input occurrences.
+Freeze original identity, result, native crossing, selection and source/navigation
+predicates independently of current Card/scientific readers, public digesters,
+profiles, source clients and credit generators. Generated producer labels bind
+only their declared output rules; opaque source-owned lookalikes remain literal.
+Expected values verify retained knowledge and never replace it. Preserve exact
+source relationship IDs, included/context-only membership, all native originals,
+quantity field/unit bindings, null states and both molecule/target origin pins.
 
-On resumption, format/lint the changed Python files and run a fresh, separately
-recorded owning gate against fresh source hashes. Audit the 38-obligation cohort
-and run applicable adjacent human/agent, quantity, argument, navigation and
-historical saved gates. Unsupported saving and old-session `not_saved` behavior
-are implemented without changing frozen readers/codecs; verify their complete
-scope. Update the public API, argument and test guidance with the actual result.
-Then qualify a clean LIVE
-producer, commit it with `[skip ci]`, capture its genuine complete original, and
-only then implement independently versioned saved parity. Saving is required for
-completion of this slice. B2 defaults stay deferred; B7/B8 boundaries remain.
+Choose explicit new logical/sharing formats after auditing dispatch. Original
+@1–@20 readers and resaves retain their original meanings. Verify all 29 original
+scenarios, actual human/agent routes, full source/publication contexts, semantic
+resealing attacks, caller origin, budgets/transports, inert fresh processes and
+complete copied receiving. Measure full logical/encoded/decoded sizes and test
+visible default refusal independently from deliberate larger qualification budgets.
+Never regenerate originals or replace complete inputs with smaller controls.
 
-## Preparation, evidence and findings
+The local 38-obligation inventory under
+`recovered_work/checkpoint_recovery_20261106/b5-molecule-activity-next-slice-1/`
+remains the broader acceptance checklist. Counts in that plan are requirements,
+not passing pytest cases. Saving, B4/B5 completion, broader clinical/disease and
+B6 profiles, B7 acceptance and authorized B8 delivery remain open. B2 scientific
+review and default adoption stay explicitly deferred.
 
-The actual text/HTML journey is retained locally in
-`b5-molecule-activity-preview-2/` under the recovery tree, with both molecule
-captures, exact supplied target, source/assay links and complete 9/459-link
-publication contexts. It uses offline public fixture preparation and blocked
-network access. This is a working-tree review preview, not a genuine clean
-producer original, independent saved result or observed researcher acceptance.
-Its receipt names the fixture factory hash, artifact digests, owner and review
-trigger. The first preview is superseded because its label incorrectly claimed
-no source queries while performing offline fixture queries.
+## Earlier evidence and owning findings
 
-The complete preparation is under
-`recovered_work/checkpoint_recovery_20261106/b5-molecule-activity-next-slice-1/`:
-`INTEGRATION_PROPOSAL.md`, `source-inventory.json`, `cohort.json` and receipts.
-Its 38 obligations are future acceptance requirements, not passing pytest cases.
-Nine local controls/two existing native routes preserve 493 target records,
-BTS publication context with nine links and benznidazole context with 459.
-Do not reduce the full profile to this nonintegrated prototype.
+The earlier LIVE source `69c0914` / SDK204 passed
+[1,133 selected cases](../evidence/molecule_activity_live_checkpoint_20261107.json)
+and 45 repeated clean-runtime cases. Pre-capture receiving exposed extra source
+membership inside native copy/parent context. Its
+[identity report](../pending_bugs/molecule_activity_identity_membership.md) and
+[approved issue update](https://github.com/uibcdf/sabueso/issues/148#issuecomment-6710936650)
+record the reproduction, correction and source-focus distinction. The corrected
+726-case receipt has separate source binding and two expected UniChem warnings.
+The copied 51 child cases and focused/post-commit repetitions add no distinct
+coverage. Failed/partial/red/green attempts remain under the local recovery tree.
 
-The [structural-flag observation](../pending_bugs/ligand_investigation_flag_ordering.md)
-remains unfixed. Preserve original occurrences and disclose the grouped
-False/None limitation without adopting an aggregation policy.
+The earlier `290ed16` / SDK203
+[full 9,466-case checkpoint](../evidence/literature_saved_checkpoint_20261107.json)
+retains its own source scope. It does not qualify later implementation, hosted
+runs, installed artifacts or researcher acceptance. The saved-science discovery
+allowlist bug was fixed with the LIVE integration; its
+[owning update](https://github.com/uibcdf/sabueso/issues/148#issuecomment-6703532443)
+and permanent regression remain intact.
 
-A Sabueso #148 observation is reproduced: the genuine unchanged
-@17 capsule `bioactivity_saved_original17_sdk202.json.gz` restores a scientific
-activity view and agent topic `bioactivities`, but human
-`explorer.capabilities['scientific_topics']` is empty. The human saved-panel
-allowlist omits activity/literature. Evidence:
-`recovered_work/checkpoint_recovery_20261106/b5-saved-capability-observation-1.json`
-(1.95 s, 106,606,592 bytes self peak RSS). The allowlist correction and regression
-are now written; the regression passed within the otherwise failing second
-attempt, without scientific reinterpretation. The
-[owning issue update](https://github.com/uibcdf/sabueso/issues/148#issuecomment-6703532443)
-was published using the prepared public technical material. The local
-`b5-saved-discovery-report-1.json` records delivery and the validated issue
-destination. Complete receiving of the changed worktree remains pending.
-
-The maintainer reiterated reporting sibling-component defects and needed
-improvements to their owning issue, with evidence and Sabueso cross-links.
-`AGENTS.md` already carries this rule. Respect disclosure/confidentiality scope;
-do not misattribute the earlier local monitor race to pytest-receptor.
-Retain useful evidence under #148/#112/#25/#23 until checkpoint/next-slice review;
-remove only owned disposable resources and protect caller outputs/sessions.
+The separate [structural flag defect](../pending_bugs/ligand_investigation_flag_ordering.md)
+is reported as #192 and remains unfixed. Original occurrences and the grouped
+False/None limitation stay visible; no aggregation policy is adopted.
+Temporary successful build outputs may be removed after verification. Retain
+originals, source maps, stopped evidence and receipts under #148/#112 until
+independent-reader review; protect caller outputs, sessions and worktrees.

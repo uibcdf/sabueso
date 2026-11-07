@@ -1,0 +1,655 @@
+{
+  "kind": "Byte-verified genuine clean LIVE molecule activity original before independent saved reading",
+  "recorded_utc": "2026-11-07T18:17:37.715777+00:00",
+  "owners": [
+    "uibcdf/sabueso#148",
+    "uibcdf/sabueso#112"
+  ],
+  "producer_head": "ddc1fc83725d10c2cc5fe569341ae1b761dddc8d",
+  "producer_version": "0.14.0+205.gddc1fc8",
+  "original_path": "recovered_work/checkpoint_recovery_20261106/b5-molecule-original-preparation-1/original2",
+  "manifest_sha256": "c6fc262c3a02d3756e771709c622a14d932130182b914c758260a138615cf9eb",
+  "capture_complete": true,
+  "admitted_saved_format": false,
+  "independent_reader_implemented": false,
+  "verified_members": 6035,
+  "verified_bytes": 1715663795,
+  "verified_source_files": 1140,
+  "source_tree_clean_after_capture": true,
+  "attempts": {
+    "network": 0,
+    "source_acquisitions": 0
+  },
+  "attempt_counter_scope": "Eight resumed cases; the initial stopped phase did not persist its in-memory counters. Both phases install the captured network/client-construction guards. Do not treat missing initial telemetry as a measured zero.",
+  "resumption": {
+    "all_prior_member_bytes_unchanged": true,
+    "already_complete_cases": [
+      "benz",
+      "bts",
+      "conflicting-anchors",
+      "copy-1-joined",
+      "copy-1-unjoined",
+      "copy-2-joined",
+      "copy-2-unjoined",
+      "duplicate-molecules",
+      "duplicate-targets",
+      "empty",
+      "explicit-physical-thresholds",
+      "failed",
+      "foreign-target-identity",
+      "full-molecule-deck",
+      "include-indirect",
+      "incoherent-molecule-anchor",
+      "missing-context",
+      "missing-identity-support",
+      "missing-identity",
+      "mixed-source-states",
+      "multiple-aliases"
+    ],
+    "cause": "Initial helper expected missing_prerequisite for a distinct nonprotein context; actual unchanged producer returns unsupported. Previously completed cases are never regenerated.",
+    "initial_terminal_resource": "capture-initial-resource.json",
+    "prior_members": 4893,
+    "resumed": true
+  },
+  "initial_resource": {
+    "owner": "uibcdf/sabueso#148/#173/#112",
+    "review_trigger": "Clean SDK205 input preparation and complete LIVE original capture; retain source, raw public fixtures and declared synthetic controls until independent-reader review",
+    "command": [
+      "nice",
+      "-n",
+      "10",
+      "taskset",
+      "-c",
+      "16",
+      "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b5-molecule-original-preparation-1/capture_molecule_original.py",
+      "--capture",
+      "--inputs",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b5-molecule-original-preparation-1/inputs2",
+      "--input-manifest-sha256",
+      "3bcaaa596ac0e54b39f61e3dc2dd011b80ebadc6bf565c21c7c509b93ec41c26",
+      "--output",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b5-molecule-original-preparation-1/original2"
+    ],
+    "cwd": "/tmp",
+    "exit_code": 1,
+    "elapsed_s": 497.03,
+    "stop_reason": null,
+    "peak_owned_rss_bytes": 318095360,
+    "minimum_host_available_bytes": 60857835520,
+    "peak_owned_swap_bytes": 0,
+    "peak_owned_scratch_bytes": 1660866365,
+    "limits": {
+      "owned_rss_bytes": 4294967296,
+      "host_available_bytes": 17179869184,
+      "owned_swap_bytes": 0,
+      "cpu_affinity_count": 1,
+      "nice": 10,
+      "elapsed_s": 1800,
+      "owned_scratch_bytes": 4294967296
+    },
+    "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b5-molecule-original-preparation-1/cargo-target"
+  },
+  "prior_members_independently_byte_verified_unchanged": 4893,
+  "case_names": [
+    "benz",
+    "bts",
+    "conflicting-anchors",
+    "copy-1-joined",
+    "copy-1-unjoined",
+    "copy-2-joined",
+    "copy-2-unjoined",
+    "duplicate-molecules",
+    "duplicate-targets",
+    "empty",
+    "explicit-physical-thresholds",
+    "failed",
+    "foreign-target-identity",
+    "full-molecule-deck",
+    "include-indirect",
+    "incoherent-molecule-anchor",
+    "missing-context",
+    "missing-identity",
+    "missing-identity-support",
+    "mixed-source-states",
+    "multiple-aliases",
+    "nonprotein-context",
+    "optin-policies",
+    "original-classification",
+    "two-target-snapshots",
+    "unmatched-alias-opaque",
+    "unqueried",
+    "unsupported-context",
+    "wrong-focal-nature"
+  ],
+  "cases": {
+    "benz": {
+      "human_views": 92,
+      "machine_queries": 13,
+      "foci": [
+        "sabueso:protein:uniprot:P52270@sha256:cec6a4d284c9f604349c3a31beaf00c20b208896e112ea1698cf9d1b5de4228e",
+        "sabueso:small_molecule:inchikey:CULUWZNBISUWAS-UHFFFAOYSA-N@sha256:0d9ec573389fadede11ab69ec011ad563e8b2770ac04b532af25530cd1fa61d4"
+      ],
+      "root_status": "ok",
+      "synthetic_control": null
+    },
+    "bts": {
+      "human_views": 59,
+      "machine_queries": 11,
+      "foci": [
+        "sabueso:protein:uniprot:P52270@sha256:cec6a4d284c9f604349c3a31beaf00c20b208896e112ea1698cf9d1b5de4228e",
+        "sabueso:small_molecule:inchikey:XBNHRNFODJOFRU-UHFFFAOYSA-N@sha256:73c5c059a128de3a40acd6835731cd4e62dcd0d5c1d90b0bf2427b4a4b29895e"
+      ],
+      "root_status": "ok",
+      "synthetic_control": null
+    },
+    "conflicting-anchors": {
+      "human_views": 4,
+      "machine_queries": 6,
+      "foci": [
+        "sabueso:small_molecule:inchikey:XBNHRNFODJOFRU-UHFFFAOYSA-N@sha256:73c5c059a128de3a40acd6835731cd4e62dcd0d5c1d90b0bf2427b4a4b29895e"
+      ],
+      "root_status": "missing_prerequisite",
+      "synthetic_control": "Attach BTS source alias to a different synthetic chemical anchor."
+    },
+    "copy-1-joined": {
+      "human_views": 80,
+      "machine_queries": 12,
+      "foci": [
+        "sabueso:protein:uniprot:P52270@sha256:ac51a7be181bfd7819c839afbdf21daf5aba087382ed62d0f1efce933cf31f09",
+        "sabueso:small_molecule:inchikey:XBNHRNFODJOFRU-UHFFFAOYSA-N@sha256:6338aef6debaa3d4bb68460d6e1567b33152c80f4b52f30285784bed68215151"
+      ],
+      "root_status": "ok",
+      "synthetic_control": "Full public 493 plus one declared synthetic source-copy alias; explicit identity join is True."
+    },
+    "copy-1-unjoined": {
+      "human_views": 61,
+      "machine_queries": 11,
+      "foci": [
+        "sabueso:protein:uniprot:P52270@sha256:ac51a7be181bfd7819c839afbdf21daf5aba087382ed62d0f1efce933cf31f09",
+        "sabueso:small_molecule:inchikey:XBNHRNFODJOFRU-UHFFFAOYSA-N@sha256:73c5c059a128de3a40acd6835731cd4e62dcd0d5c1d90b0bf2427b4a4b29895e"
+      ],
+      "root_status": "ok",
+      "synthetic_control": "Full public 493 plus one declared synthetic source-copy alias; explicit identity join is False."
+    },
+    "copy-2-joined": {
+      "human_views": 80,
+      "machine_queries": 12,
+      "foci": [
+        "sabueso:protein:uniprot:P52270@sha256:ac51a7be181bfd7819c839afbdf21daf5aba087382ed62d0f1efce933cf31f09",
+        "sabueso:small_molecule:inchikey:XBNHRNFODJOFRU-UHFFFAOYSA-N@sha256:6338aef6debaa3d4bb68460d6e1567b33152c80f4b52f30285784bed68215151"
+      ],
+      "root_status": "ok",
+      "synthetic_control": "Full public 493 plus one declared synthetic source-copy alias; explicit identity join is True."
+    },
+    "copy-2-unjoined": {
+      "human_views": 61,
+      "machine_queries": 11,
+      "foci": [
+        "sabueso:protein:uniprot:P52270@sha256:ac51a7be181bfd7819c839afbdf21daf5aba087382ed62d0f1efce933cf31f09",
+        "sabueso:small_molecule:inchikey:XBNHRNFODJOFRU-UHFFFAOYSA-N@sha256:73c5c059a128de3a40acd6835731cd4e62dcd0d5c1d90b0bf2427b4a4b29895e"
+      ],
+      "root_status": "ok",
+      "synthetic_control": "Full public 493 plus one declared synthetic source-copy alias; explicit identity join is False."
+    },
+    "duplicate-molecules": {
+      "human_views": 57,
+      "machine_queries": 11,
+      "foci": [
+        "sabueso:protein:uniprot:P52270@sha256:cec6a4d284c9f604349c3a31beaf00c20b208896e112ea1698cf9d1b5de4228e",
+        "sabueso:small_molecule:inchikey:XBNHRNFODJOFRU-UHFFFAOYSA-N@sha256:73c5c059a128de3a40acd6835731cd4e62dcd0d5c1d90b0bf2427b4a4b29895e"
+      ],
+      "root_status": "ok",
+      "synthetic_control": null
+    },
+    "duplicate-targets": {
+      "human_views": 57,
+      "machine_queries": 11,
+      "foci": [
+        "sabueso:protein:uniprot:P52270@sha256:cec6a4d284c9f604349c3a31beaf00c20b208896e112ea1698cf9d1b5de4228e",
+        "sabueso:small_molecule:inchikey:XBNHRNFODJOFRU-UHFFFAOYSA-N@sha256:73c5c059a128de3a40acd6835731cd4e62dcd0d5c1d90b0bf2427b4a4b29895e"
+      ],
+      "root_status": "ok",
+      "synthetic_control": null
+    },
+    "empty": {
+      "human_views": 17,
+      "machine_queries": 8,
+      "foci": [
+        "sabueso:protein:uniprot:P52270@sha256:83f7096d85ebd67d54a0b0be7971c40136bef0bcf1d7d70a6870c60556dd8ada",
+        "sabueso:small_molecule:inchikey:XBNHRNFODJOFRU-UHFFFAOYSA-N@sha256:73c5c059a128de3a40acd6835731cd4e62dcd0d5c1d90b0bf2427b4a4b29895e"
+      ],
+      "root_status": "empty",
+      "synthetic_control": "Successful empty acquisition is explicitly synthetic."
+    },
+    "explicit-physical-thresholds": {
+      "human_views": 57,
+      "machine_queries": 11,
+      "foci": [
+        "sabueso:protein:uniprot:P52270@sha256:cec6a4d284c9f604349c3a31beaf00c20b208896e112ea1698cf9d1b5de4228e",
+        "sabueso:small_molecule:inchikey:XBNHRNFODJOFRU-UHFFFAOYSA-N@sha256:73c5c059a128de3a40acd6835731cd4e62dcd0d5c1d90b0bf2427b4a4b29895e"
+      ],
+      "root_status": "ok",
+      "synthetic_control": null
+    },
+    "failed": {
+      "human_views": 17,
+      "machine_queries": 8,
+      "foci": [
+        "sabueso:protein:uniprot:P52270@sha256:6ecfe0e025d6df304b179b36c3a89939be4f70ee737017fc432319362eef080e",
+        "sabueso:small_molecule:inchikey:XBNHRNFODJOFRU-UHFFFAOYSA-N@sha256:73c5c059a128de3a40acd6835731cd4e62dcd0d5c1d90b0bf2427b4a4b29895e"
+      ],
+      "root_status": "unavailable",
+      "synthetic_control": null
+    },
+    "foreign-target-identity": {
+      "human_views": 17,
+      "machine_queries": 8,
+      "foci": [
+        "sabueso:protein:uniprot:P52270@sha256:88b52e832562dc19f9a799cc462fc1a0c1ea53c289ee1fdd4aed59c3c1127690",
+        "sabueso:small_molecule:inchikey:XBNHRNFODJOFRU-UHFFFAOYSA-N@sha256:73c5c059a128de3a40acd6835731cd4e62dcd0d5c1d90b0bf2427b4a4b29895e"
+      ],
+      "root_status": "missing_prerequisite",
+      "synthetic_control": "One source-record subject deliberately contradicts the supplied target identity."
+    },
+    "full-molecule-deck": {
+      "human_views": 57,
+      "machine_queries": 11,
+      "foci": [
+        "sabueso:protein:uniprot:P52270@sha256:cec6a4d284c9f604349c3a31beaf00c20b208896e112ea1698cf9d1b5de4228e",
+        "sabueso:small_molecule:inchikey:XBNHRNFODJOFRU-UHFFFAOYSA-N@sha256:73c5c059a128de3a40acd6835731cd4e62dcd0d5c1d90b0bf2427b4a4b29895e"
+      ],
+      "root_status": "ok",
+      "synthetic_control": null
+    },
+    "include-indirect": {
+      "human_views": 57,
+      "machine_queries": 11,
+      "foci": [
+        "sabueso:protein:uniprot:P52270@sha256:cec6a4d284c9f604349c3a31beaf00c20b208896e112ea1698cf9d1b5de4228e",
+        "sabueso:small_molecule:inchikey:XBNHRNFODJOFRU-UHFFFAOYSA-N@sha256:73c5c059a128de3a40acd6835731cd4e62dcd0d5c1d90b0bf2427b4a4b29895e"
+      ],
+      "root_status": "ok",
+      "synthetic_control": null
+    },
+    "incoherent-molecule-anchor": {
+      "human_views": 4,
+      "machine_queries": 6,
+      "foci": [
+        "sabueso:small_molecule:inchikey:XBNHRNFODJOFRU-UHFFFAOYSA-N@sha256:34683b84e6d404a32aa1c3d6169d2976827edc9b525b8d591ae8e54c648646d6"
+      ],
+      "root_status": "missing_prerequisite",
+      "synthetic_control": "Identifier field deliberately contradicts the molecule Card anchor."
+    },
+    "missing-context": {
+      "human_views": 4,
+      "machine_queries": 6,
+      "foci": [
+        "sabueso:small_molecule:inchikey:XBNHRNFODJOFRU-UHFFFAOYSA-N@sha256:73c5c059a128de3a40acd6835731cd4e62dcd0d5c1d90b0bf2427b4a4b29895e"
+      ],
+      "root_status": "missing_prerequisite",
+      "synthetic_control": null
+    },
+    "missing-identity": {
+      "human_views": 4,
+      "machine_queries": 6,
+      "foci": [
+        "sabueso:small_molecule:inchikey:XBNHRNFODJOFRU-UHFFFAOYSA-N@sha256:bc780d9cd3e018f922b3f03dae7d436b50107fae383796947cf2eee612b7c735"
+      ],
+      "root_status": "missing_prerequisite",
+      "synthetic_control": "Remove explicit identity edges; retain original identifiers and names."
+    },
+    "missing-identity-support": {
+      "human_views": 57,
+      "machine_queries": 11,
+      "foci": [
+        "sabueso:protein:uniprot:P52270@sha256:cec6a4d284c9f604349c3a31beaf00c20b208896e112ea1698cf9d1b5de4228e",
+        "sabueso:small_molecule:inchikey:XBNHRNFODJOFRU-UHFFFAOYSA-N@sha256:3b5316bfd362a81ad198ff95268f6f9b9cc7e28189074c355c281afb2ebd339e"
+      ],
+      "root_status": "partial",
+      "synthetic_control": "Retain identity edges but remove their source assertions."
+    },
+    "mixed-source-states": {
+      "human_views": 96,
+      "machine_queries": 17,
+      "foci": [
+        "sabueso:protein:uniprot:P52270@sha256:6ecfe0e025d6df304b179b36c3a89939be4f70ee737017fc432319362eef080e",
+        "sabueso:protein:uniprot:P52270@sha256:71b6eaf785202df88f229991a89678ded2ff5c7299ba64d615f4022f76cb2770",
+        "sabueso:protein:uniprot:P52270@sha256:83f7096d85ebd67d54a0b0be7971c40136bef0bcf1d7d70a6870c60556dd8ada",
+        "sabueso:protein:uniprot:P52270@sha256:cec6a4d284c9f604349c3a31beaf00c20b208896e112ea1698cf9d1b5de4228e",
+        "sabueso:small_molecule:inchikey:XBNHRNFODJOFRU-UHFFFAOYSA-N@sha256:73c5c059a128de3a40acd6835731cd4e62dcd0d5c1d90b0bf2427b4a4b29895e"
+      ],
+      "root_status": "partial",
+      "synthetic_control": "Mixed known/unqueried/failed/synthetic successful-empty captures."
+    },
+    "multiple-aliases": {
+      "human_views": 128,
+      "machine_queries": 15,
+      "foci": [
+        "sabueso:protein:uniprot:P52270@sha256:cec6a4d284c9f604349c3a31beaf00c20b208896e112ea1698cf9d1b5de4228e",
+        "sabueso:small_molecule:inchikey:XBNHRNFODJOFRU-UHFFFAOYSA-N@sha256:76bbfcd7d7d952afe960272dfff29e17a07519ff4b471afb1bf175f15b90431c"
+      ],
+      "root_status": "ok",
+      "synthetic_control": "Explicit synthetic identity join of two actual public source aliases; no real chemical equivalence claim."
+    },
+    "nonprotein-context": {
+      "human_views": 4,
+      "machine_queries": 6,
+      "foci": [
+        "sabueso:small_molecule:inchikey:XBNHRNFODJOFRU-UHFFFAOYSA-N@sha256:73c5c059a128de3a40acd6835731cd4e62dcd0d5c1d90b0bf2427b4a4b29895e"
+      ],
+      "root_status": "unsupported",
+      "synthetic_control": null
+    },
+    "optin-policies": {
+      "human_views": 57,
+      "machine_queries": 11,
+      "foci": [
+        "sabueso:protein:uniprot:P52270@sha256:cec6a4d284c9f604349c3a31beaf00c20b208896e112ea1698cf9d1b5de4228e",
+        "sabueso:small_molecule:inchikey:XBNHRNFODJOFRU-UHFFFAOYSA-N@sha256:73c5c059a128de3a40acd6835731cd4e62dcd0d5c1d90b0bf2427b4a4b29895e"
+      ],
+      "root_status": "ok",
+      "synthetic_control": null
+    },
+    "original-classification": {
+      "human_views": 57,
+      "machine_queries": 11,
+      "foci": [
+        "sabueso:protein:uniprot:P52270@sha256:cec6a4d284c9f604349c3a31beaf00c20b208896e112ea1698cf9d1b5de4228e",
+        "sabueso:small_molecule:inchikey:XBNHRNFODJOFRU-UHFFFAOYSA-N@sha256:73c5c059a128de3a40acd6835731cd4e62dcd0d5c1d90b0bf2427b4a4b29895e"
+      ],
+      "root_status": "ok",
+      "synthetic_control": null
+    },
+    "two-target-snapshots": {
+      "human_views": 110,
+      "machine_queries": 16,
+      "foci": [
+        "sabueso:protein:uniprot:P52270@sha256:0584bf9d5b1c3f02d5553ead4ad619f7107c3648f6eaa8525c488031993c70e5",
+        "sabueso:protein:uniprot:P52270@sha256:cec6a4d284c9f604349c3a31beaf00c20b208896e112ea1698cf9d1b5de4228e",
+        "sabueso:small_molecule:inchikey:XBNHRNFODJOFRU-UHFFFAOYSA-N@sha256:73c5c059a128de3a40acd6835731cd4e62dcd0d5c1d90b0bf2427b4a4b29895e"
+      ],
+      "root_status": "ok",
+      "synthetic_control": "Same Card ID, distinct supplied snapshot."
+    },
+    "unmatched-alias-opaque": {
+      "human_views": 19,
+      "machine_queries": 8,
+      "foci": [
+        "sabueso:protein:uniprot:P52270@sha256:cec6a4d284c9f604349c3a31beaf00c20b208896e112ea1698cf9d1b5de4228e",
+        "sabueso:small_molecule:inchikey:XBNHRNFODJOFRU-UHFFFAOYSA-N@sha256:84c9ddf7e5bf0ce39a99d71d3adf29b5b5d182707ac35155a39a9debcc8429dd"
+      ],
+      "root_status": "empty",
+      "synthetic_control": "Explicit unmatched synthetic alias; opaque values are source-owned literals, not codecs."
+    },
+    "unqueried": {
+      "human_views": 17,
+      "machine_queries": 8,
+      "foci": [
+        "sabueso:protein:uniprot:P52270@sha256:71b6eaf785202df88f229991a89678ded2ff5c7299ba64d615f4022f76cb2770",
+        "sabueso:small_molecule:inchikey:XBNHRNFODJOFRU-UHFFFAOYSA-N@sha256:73c5c059a128de3a40acd6835731cd4e62dcd0d5c1d90b0bf2427b4a4b29895e"
+      ],
+      "root_status": "not_queried",
+      "synthetic_control": null
+    },
+    "unsupported-context": {
+      "human_views": 4,
+      "machine_queries": 6,
+      "foci": [
+        "sabueso:small_molecule:inchikey:XBNHRNFODJOFRU-UHFFFAOYSA-N@sha256:73c5c059a128de3a40acd6835731cd4e62dcd0d5c1d90b0bf2427b4a4b29895e"
+      ],
+      "root_status": "unsupported",
+      "synthetic_control": "Minimal disease context without assertions; unsupported target nature control."
+    },
+    "wrong-focal-nature": {
+      "human_views": 3,
+      "machine_queries": 6,
+      "foci": [
+        "sabueso:protein:uniprot:P52270@sha256:cec6a4d284c9f604349c3a31beaf00c20b208896e112ea1698cf9d1b5de4228e"
+      ],
+      "root_status": "not_applicable",
+      "synthetic_control": "Actual public protein supplied as focal object to a molecule-only interpretation."
+    }
+  },
+  "human_views": 1337,
+  "machine_queries": 288,
+  "publication_link_counts": {
+    "benz": {
+      "sabueso:protein:uniprot:P52270@sha256:cec6a4d284c9f604349c3a31beaf00c20b208896e112ea1698cf9d1b5de4228e|pubmed:20889239": 459
+    },
+    "bts": {
+      "sabueso:protein:uniprot:P52270@sha256:cec6a4d284c9f604349c3a31beaf00c20b208896e112ea1698cf9d1b5de4228e|pubmed:35189560": 9
+    },
+    "conflicting-anchors": {},
+    "copy-1-joined": {
+      "sabueso:protein:uniprot:P52270@sha256:ac51a7be181bfd7819c839afbdf21daf5aba087382ed62d0f1efce933cf31f09|pubmed:35189560": 10
+    },
+    "copy-1-unjoined": {
+      "sabueso:protein:uniprot:P52270@sha256:ac51a7be181bfd7819c839afbdf21daf5aba087382ed62d0f1efce933cf31f09|pubmed:35189560": 10
+    },
+    "copy-2-joined": {
+      "sabueso:protein:uniprot:P52270@sha256:ac51a7be181bfd7819c839afbdf21daf5aba087382ed62d0f1efce933cf31f09|pubmed:35189560": 10
+    },
+    "copy-2-unjoined": {
+      "sabueso:protein:uniprot:P52270@sha256:ac51a7be181bfd7819c839afbdf21daf5aba087382ed62d0f1efce933cf31f09|pubmed:35189560": 10
+    },
+    "duplicate-molecules": {
+      "sabueso:protein:uniprot:P52270@sha256:cec6a4d284c9f604349c3a31beaf00c20b208896e112ea1698cf9d1b5de4228e|pubmed:35189560": 9
+    },
+    "duplicate-targets": {
+      "sabueso:protein:uniprot:P52270@sha256:cec6a4d284c9f604349c3a31beaf00c20b208896e112ea1698cf9d1b5de4228e|pubmed:35189560": 9
+    },
+    "empty": {},
+    "explicit-physical-thresholds": {
+      "sabueso:protein:uniprot:P52270@sha256:cec6a4d284c9f604349c3a31beaf00c20b208896e112ea1698cf9d1b5de4228e|pubmed:35189560": 9
+    },
+    "failed": {},
+    "foreign-target-identity": {},
+    "full-molecule-deck": {
+      "sabueso:protein:uniprot:P52270@sha256:cec6a4d284c9f604349c3a31beaf00c20b208896e112ea1698cf9d1b5de4228e|pubmed:35189560": 9
+    },
+    "include-indirect": {
+      "sabueso:protein:uniprot:P52270@sha256:cec6a4d284c9f604349c3a31beaf00c20b208896e112ea1698cf9d1b5de4228e|pubmed:35189560": 9
+    },
+    "incoherent-molecule-anchor": {},
+    "missing-context": {},
+    "missing-identity": {},
+    "missing-identity-support": {
+      "sabueso:protein:uniprot:P52270@sha256:cec6a4d284c9f604349c3a31beaf00c20b208896e112ea1698cf9d1b5de4228e|pubmed:35189560": 9
+    },
+    "mixed-source-states": {
+      "sabueso:protein:uniprot:P52270@sha256:cec6a4d284c9f604349c3a31beaf00c20b208896e112ea1698cf9d1b5de4228e|pubmed:35189560": 9
+    },
+    "multiple-aliases": {
+      "sabueso:protein:uniprot:P52270@sha256:cec6a4d284c9f604349c3a31beaf00c20b208896e112ea1698cf9d1b5de4228e|pubmed:20889239": 459,
+      "sabueso:protein:uniprot:P52270@sha256:cec6a4d284c9f604349c3a31beaf00c20b208896e112ea1698cf9d1b5de4228e|pubmed:35189560": 9
+    },
+    "nonprotein-context": {},
+    "optin-policies": {
+      "sabueso:protein:uniprot:P52270@sha256:cec6a4d284c9f604349c3a31beaf00c20b208896e112ea1698cf9d1b5de4228e|pubmed:35189560": 9
+    },
+    "original-classification": {
+      "sabueso:protein:uniprot:P52270@sha256:cec6a4d284c9f604349c3a31beaf00c20b208896e112ea1698cf9d1b5de4228e|pubmed:35189560": 9
+    },
+    "two-target-snapshots": {
+      "sabueso:protein:uniprot:P52270@sha256:0584bf9d5b1c3f02d5553ead4ad619f7107c3648f6eaa8525c488031993c70e5|pubmed:35189560": 9,
+      "sabueso:protein:uniprot:P52270@sha256:cec6a4d284c9f604349c3a31beaf00c20b208896e112ea1698cf9d1b5de4228e|pubmed:35189560": 9
+    },
+    "unmatched-alias-opaque": {},
+    "unqueried": {},
+    "unsupported-context": {},
+    "wrong-focal-nature": {}
+  },
+  "quantity_cell_bindings": [
+    {
+      "field": "relationships.has_bioactivity.measurement.normalized",
+      "unit": "nanomolar"
+    },
+    {
+      "field": "relationships.has_bioactivity.measurement.normalized",
+      "unit": "percent"
+    }
+  ],
+  "archive": {
+    "path": "tests/core/data/molecule_activity_live_sdk205.tar.gz",
+    "bytes": 69321034,
+    "sha256": "61a5556a3d9cc75485a321c707341f2233954606b14c2e917bd5cd627b3d123f",
+    "uncompressed_tar_bytes": 1720330240,
+    "uncompressed_tar_sha256": "47f4a14976c345a9ad52f3eeefd7c7ef5d358685b9cd8deaeee4b8280bb48b10",
+    "contents": "Every original member is byte-identical; normalized USTAR metadata, gzip mtime=0, no scientific regeneration.",
+    "original_package_path": "recovered_work/checkpoint_recovery_20261106/b5-molecule-original-preparation-1/original2.tar.gz"
+  },
+  "resources": {
+    "owner": "uibcdf/sabueso#148/#173/#112",
+    "review_trigger": "Clean SDK205 input preparation and complete LIVE original capture; retain source, raw public fixtures and declared synthetic controls until independent-reader review",
+    "command": [
+      "nice",
+      "-n",
+      "10",
+      "taskset",
+      "-c",
+      "16",
+      "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b5-molecule-original-preparation-1/capture_molecule_original.py",
+      "--capture",
+      "--resume",
+      "--inputs",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b5-molecule-original-preparation-1/inputs2",
+      "--input-manifest-sha256",
+      "3bcaaa596ac0e54b39f61e3dc2dd011b80ebadc6bf565c21c7c509b93ec41c26",
+      "--output",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b5-molecule-original-preparation-1/original2"
+    ],
+    "cwd": "/tmp",
+    "exit_code": 0,
+    "elapsed_s": 160.03,
+    "stop_reason": null,
+    "peak_owned_rss_bytes": 428855296,
+    "minimum_host_available_bytes": 61050515456,
+    "peak_owned_swap_bytes": 0,
+    "peak_owned_scratch_bytes": 2022450848,
+    "limits": {
+      "owned_rss_bytes": 4294967296,
+      "host_available_bytes": 17179869184,
+      "owned_swap_bytes": 0,
+      "cpu_affinity_count": 1,
+      "nice": 10,
+      "elapsed_s": 1800,
+      "owned_scratch_bytes": 4294967296
+    },
+    "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b5-molecule-original-preparation-1/cargo-target"
+  },
+  "resources_sha256": "3913e3e5997f6e9f8b40b887c80ac942c3ed6974e8fcef180cd6092b83204dad",
+  "retention": {
+    "owner": "uibcdf/sabueso#148/#112",
+    "review_trigger": "Independent original reader and full transport/copied receiving; immutable original remains protected."
+  },
+  "limits": [
+    "Byte and capture qualification is not an independent saved-reader pass, full offline code gate, hosted/installed-artifact qualification or scientist/researcher/consumer acceptance.",
+    "B2 scientific/default adoption remains deferred. B7 acceptance and authorized B8 delivery remain open; broader six-stage scope is unchanged."
+  ],
+  "packaging_resources": {
+    "owner": "uibcdf/sabueso#148/#173/#112",
+    "review_trigger": "Clean SDK205 input preparation and complete LIVE original capture; retain source, raw public fixtures and declared synthetic controls until independent-reader review",
+    "command": [
+      "nice",
+      "-n",
+      "10",
+      "taskset",
+      "-c",
+      "16",
+      "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b5-molecule-original-preparation-1/package_original.py",
+      "--original",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b5-molecule-original-preparation-1/original2",
+      "--resource",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b5-molecule-original-preparation-1/capture2-resume1-resource.json",
+      "--archive",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b5-molecule-original-preparation-1/original2.tar.gz",
+      "--receipt",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b5-molecule-original-preparation-1/original2-byte-proof.json"
+    ],
+    "cwd": "/tmp",
+    "exit_code": 0,
+    "elapsed_s": 58.82,
+    "stop_reason": null,
+    "peak_owned_rss_bytes": 358912000,
+    "minimum_host_available_bytes": 61860773888,
+    "peak_owned_swap_bytes": 0,
+    "peak_owned_scratch_bytes": 2091798625,
+    "limits": {
+      "owned_rss_bytes": 4294967296,
+      "host_available_bytes": 17179869184,
+      "owned_swap_bytes": 0,
+      "cpu_affinity_count": 1,
+      "nice": 10,
+      "elapsed_s": 1800,
+      "owned_scratch_bytes": 4294967296
+    },
+    "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b5-molecule-original-preparation-1/cargo-target"
+  },
+  "owning_report": "https://github.com/uibcdf/sabueso/issues/148#issuecomment-6710936650",
+  "machine_pages": 311,
+  "checks": {
+    "original_byte_and_archive_verification": "Passed independently before reader implementation; all 6035 members and 4893 prior members unchanged.",
+    "ruff_format": {
+      "passed": true,
+      "files": 1475
+    },
+    "ruff_lint": "passed",
+    "fixture_delivery": {
+      "passed": true,
+      "reviewed_repository_inputs": 81,
+      "protected_local_only_originals": 37
+    },
+    "moli_governance": "passed",
+    "guide": {
+      "scope": "Maintained non-archive guide paths; changed-page Markdown heading anchors; changed Python examples parse as Python3.11.",
+      "maintained_markdown_files": 168,
+      "local_path_targets_checked": 1234,
+      "changed_page_anchors_checked": 31,
+      "python_examples_checked": 0,
+      "errors": [],
+      "preexisting_anchor_gaps": [],
+      "unchanged_historical_records_not_regenerated": true
+    },
+    "sphinx": {
+      "owner": "uibcdf/sabueso#148/#173/#112",
+      "review_trigger": "Initial integrated molecule-target LIVE gate; preserve failures and exact source/fixture scope; no saved-reader or scientific acceptance claim",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "15",
+        "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/sphinx-build",
+        "-W",
+        "--keep-going",
+        "-b",
+        "html",
+        "docs",
+        "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b5-molecule-original-sphinx-1/html"
+      ],
+      "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 26.28,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 281174016,
+      "minimum_host_available_bytes": 62191513600,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 40975629,
+      "limits": {
+        "owned_rss_bytes": 2147483648,
+        "host_available_bytes": 17179869184,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 4294967296
+      },
+      "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b5-molecule-original-sphinx-1/cargo-target"
+    },
+    "pytest": "No new run for this documentation/original-only checkpoint. Earlier code results retain their original source scope."
+  }
+}

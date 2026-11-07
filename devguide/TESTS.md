@@ -91,7 +91,19 @@ correction or qualify an independent reader. The
 receives all 51 current owning cases, 291 shared, 383 native/profile and one copied
 outer case, with complete/integrity and exact node/source/resource accounting.
 The 51 copied children and six focused repeats overlap and add no distinct cases.
-Current clean-producer/capture state belongs to CHECKPOINT.
+The [clean SDK205 original receipt](evidence/molecule_activity_live_original_20261107.json)
+verifies 6,035 unchanged members across 29 scenarios, 1,337 named human views and
+288 actual machine requests with 311 complete pages before any independent
+molecule reader. The
+[capsule notice](../tests/core/data/README.md#complete-original-live-molecule-activity-capture-sdk205)
+records exact hashes, complete public/synthetic inputs, full publication contexts
+and the stopped/resumed capture. All 4,893 prior members remain byte-identical
+across continuation. Initial attempt counters were not persisted; resumed counters
+measure zero and both phases install source/network guards. Byte/transport
+verification of this original is not a saved-reader pytest pass or a repeated
+full offline checkpoint. Replay the entire original in independent receiving;
+never regenerate it or reduce the public 493 records or 9/459-link contexts.
+Current source, scope and next action belong to CHECKPOINT.
 
 The complete retained SDK200 bioactivity session measures **709,616,078 logical JSON bytes**;
 its qualification uses an explicit **1 GiB logical budget** and **128 MiB encoded
