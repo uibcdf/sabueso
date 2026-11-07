@@ -80,14 +80,26 @@ tamper proof, installed/copy qualification, full offline suite or independent
 researcher acceptance. Public saving remains false. All human routes, complete
 persisted origin/context, semantic resealing, transport/resave, fresh inert file
 reading and copied receiving remain required for this slice.
-The current private module adds three independent supplemental cases, receiving
+The supplemental checkpoint added three independent private cases, receiving
 both focal scopes, full crossing wrappers/locations and all 24 original typed
-machine requests/frames. Its complete cohort is 39 cases; the older 87-case
+machine requests/frames. That complete cohort had 39 cases; the older 87-case
 receipt retains its original 36-private/51-LIVE scope. The supplemental 176 human
 views still require full saved UI/source/origin replay.
 The complete 39-case module passes with complete receptor integrity, 1,157 stable
 source/input hashes, exact nodes and zero warnings/swap. No runtime or private
 frozen predicate implementation changes are needed to receive the supplement.
+
+`card_molecule_activity_history_v1.restore_result` now reconstructs retained rows,
+their recorded order and native member occurrences directly from original nested
+target wires. Its result subtype reads only separately retained native crossing
+wrappers in exact focal/target/input/policy scope; it never falls back to native
+evaluation. The [75-case selected checkpoint](../evidence/molecule_activity_retained_checkpoint_20261107.json)
+receives all 119 original molecule wires and the 312 machine requests/335 pages
+with both current science and private expected materializers blocked during
+restoration. The earlier private packages and capsules stay fixed. This is still
+restoration infrastructure: explicit new-format admission, complete human/source/
+origin, whole-bundle tampering, transports/resave, fresh inert file reading and
+copied receiving remain required before enabling saving.
 
 ## Delivered LIVE contract
 

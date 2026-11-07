@@ -9,6 +9,20 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Retained molecule-result restoration (2026-11-07, #148/#112)
+
+The [75-case selected receipt](../evidence/molecule_activity_retained_checkpoint_20261107.json)
+qualifies private retained-result restoration over all SDK205/SDK208 original
+wires and typed machine pages, with recalculation blocked during restoration.
+It changes one private helper and its tests; frozen predicates, controls, public
+saving and formats @1–@20 stay fixed. Record the exact committed/pushed head,
+editable metadata and clean-head repeats in
+`recovered_work/checkpoint_recovery_20261106/b5-molecule-retained-commit-1/`.
+Use the authorized intermediate `[skip ci]` route and batch a remote checkpoint
+when useful. Cumulative exact-final-head CI/governance recovery through
+gh-run-receptor remains under #148/#112. No new saved reader or full offline,
+installed-artifact or researcher gate is claimed.
+
 ### Corrected multi-focal original (2026-11-07, #148/#112)
 
 The [SDK208 supplement](../evidence/molecule_activity_multifocal_original_20261107.json)

@@ -117,6 +117,13 @@ complete original source/publication context. Continue full saved admission and
 original replay over both capsules; observing these LIVE routes is not saved
 UI/origin or researcher acceptance.
 
+The [retained-result restoration foundation](evidence/molecule_activity_retained_checkpoint_20261107.json)
+passes 75 private cases over both originals, including all 119 molecule wires and
+335 machine pages with scientific recalculation blocked during restoration.
+Integrate explicit saved admission, complete original human/source/origin,
+semantic whole-bundle tampering, transport/resave, fresh inert reading and copied
+receiving. This foundation does not finish the molecule profile or enable saving.
+
 Continue the rich profiles through the
 [current destination actions](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions)
 with applicable local checks and the maintainer's authorized CI batching.

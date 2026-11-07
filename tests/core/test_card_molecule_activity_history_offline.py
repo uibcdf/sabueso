@@ -392,6 +392,205 @@ def block_current(monkeypatch):
     monkeypatch.setattr(socket, "create_connection", forbidden)
 
 
+def retained_keys(control, case, ref, wire):
+    """Find complete original row order in actual unfiltered observations."""
+    recorded = control.case(case)
+    candidates = [
+        view["selection"]
+        for view in recorded["human"].values()
+        if view["selection"]["request"]["operation"] == "read"
+    ]
+    candidates.extend(
+        query["selection"]
+        for query in recorded["machine"]
+        if not any(
+            query["query"].get(key) is not None
+            for key in ("where", "item_refs", "order_by")
+        )
+    )
+    for selection in candidates:
+        if selection["scientific_result_ref"] != ref:
+            continue
+        keys = [entry["key"] for entry in selection["entries"]]
+        if len(keys) == len(wire["rows"]) and set(keys) == set(wire["rows"]):
+            return keys
+    raise AssertionError("Complete original order must have an observed witness")
+
+
+def retained_crossings(control, case, ref):
+    """Read actual visited crossing wrappers, without evaluating native science."""
+    recorded, result = control.case(case), {}
+    for view in recorded["human"].values():
+        context = view["context"]
+        navigation = context.get("molecule_activity_navigation", {})
+        if (
+            context.get("activity_context") != "native_ligand_crossing"
+            or navigation.get("source_result_ref") != ref
+        ):
+            continue
+        state = recorded["access_states"][view["focal"]]
+        location = view["selection"]["request"]["target"]["location"]
+        if location["kind"] == "lookup":
+            location = state["locations"][location["location_ref"]]
+        pin = context["target_card_ref"]
+        result[pin] = {
+            "wrapper": control.value(state["objects"][location["result_ref"]]),
+            "location": location,
+            "inputs": state["inputs"],
+            "policies": {
+                key: value
+                for key, value in navigation["scientific_options"].items()
+                if key not in ("target_card_ref", "molecule_ref", "measurement_ref")
+            },
+        }
+    return result
+
+
+def restored_original_results(control, case):
+    """Expose each original wire using only inert input and retained facades."""
+    from sabueso.core._molecule_activity_history_v1.inputs import _FrozenAccess
+    from sabueso.core.card_molecule_activity_history_v1 import restore_result
+
+    recorded, seen = control.case(case), set()
+    for focal, state in recorded["access_states"].items():
+        pin = state["captures"][focal]["pin"]
+        for ref, member in state["objects"].items():
+            wire = control.value(member)
+            if (
+                ref in seen
+                or not isinstance(wire, dict)
+                or not isinstance(wire.get("context"), dict)
+                or wire["context"].get("adapter") != ADAPTER
+                or wire["context"].get("molecule_card_ref") != pin
+                or "native_payload" not in wire
+            ):
+                continue
+            seen.add(ref)
+            access = (
+                control.focal_access(case, focal)
+                if isinstance(control, MultiFocalOriginal)
+                else control.access(case)
+            )
+            access = _FrozenAccess(access)
+            keys = retained_keys(control, case, ref, wire)
+            crossings = retained_crossings(control, case, ref)
+            result = restore_result(
+                access, ref, wire, entry_keys=keys, native_crossings=crossings
+            )
+            assert result.wire is wire
+            assert [entry.key for entry in result.entries] == keys
+            yield ref, result, crossings
+
+
+@pytest.mark.parametrize(
+    "source,case",
+    [("sdk205", case) for case in CASES]
+    + [("sdk208", case) for case in SUPPLEMENT_CASES],
+)
+def test_retained_restoration_replays_original_members_and_frames_without_science(
+    request, source, case, monkeypatch
+):
+    control = request.getfixturevalue(
+        "original" if source == "sdk205" else "multifocal_original"
+    )
+    block_current(monkeypatch)
+    import sabueso.core._molecule_activity_history_v1.adapter as adapter
+    import sabueso.core.card_bioactivity_history_v2 as bioactivity
+    import sabueso.core.card_molecule_activity_history_v1 as history
+
+    for owner, names in (
+        (history, ("expected_result", "materialize")),
+        (adapter, ("materialize",)),
+        (bioactivity, ("expected_result", "materialize")),
+    ):
+        for name in names:
+            monkeypatch.setattr(owner, name, forbidden)
+    results = {}
+    for ref, result, crossings in restored_original_results(control, case):
+        results[ref] = result
+        for entry in result.entries:
+            recorded = entry.value["native_member_occurrences"]
+            if result.wire["context"]["grain"] == "record":
+                recorded = recorded[:1]
+            assert [
+                {"result_ref": native.result_ref, "entry_key": member.key}
+                for _, native, member in result.native_members(entry.key)
+            ] == [
+                {key: occurrence[key] for key in ("result_ref", "entry_key")}
+                for occurrence in recorded
+            ]
+        for pin, crossing in crossings.items():
+            native, location = result.native_crossing(pin)
+            assert canonical_json(native) == canonical_json(
+                crossing["wrapper"]["native_payload"]
+            )
+            assert location == crossing["location"]
+            native["restored_copy_probe"] = True
+            assert "restored_copy_probe" not in result.native_crossing(pin)[0]
+        with pytest.raises(StorageError, match="not retained"):
+            result.native_crossing("unsupplied-original-target")
+    assert results
+    for query in control.case(case)["machine"]:
+        selection, options = query["selection"], query["query"]
+        result = results[selection["scientific_result_ref"]]
+        ref, entries, fields, _ = history.expected_selection(
+            result, **{key: value for key, value in options.items() if key != "options"}
+        )
+        assert ref == selection["selection_ref"]
+        assert [entry.key for entry in entries] == [
+            entry["key"] for entry in selection["entries"]
+        ]
+        for page in control.value(query["pages_ref"]):
+            assert page["page"]["total"] == len(entries)
+            for index, frame in enumerate(page["items"], start=page["page"]["offset"]):
+                actual = result.frame(
+                    result._access, SimpleNamespace(_fields=fields), entries[index]
+                )
+                if not frame["value_included"]:
+                    actual = adapter.defer_frame(actual)
+                assert canonical_json(actual) == canonical_json(frame)
+
+
+@pytest.mark.parametrize("mutation", ("focal", "inputs", "policies", "location"))
+def test_restored_native_crossing_refuses_foreign_exact_scope(
+    multifocal_original, monkeypatch, mutation
+):
+    block_current(monkeypatch)
+    import sabueso.core.card_molecule_activity_history_v1 as history
+
+    monkeypatch.setattr(history, "expected_result", forbidden)
+    monkeypatch.setattr(history, "materialize", forbidden)
+    case = "bts-to-same-id-snapshot"
+    _, result, crossings = next(
+        record
+        for record in restored_original_results(multifocal_original, case)
+        if record[2]
+    )
+    pin = next(iter(crossings))
+    changed = deepcopy(crossings)
+    if mutation == "focal":
+        changed[pin]["wrapper"]["molecule_card_ref"] = next(
+            item["molecule_pin"]
+            for item in multifocal_original.case(case)["crossings"].values()
+            if item["molecule_pin"] != result._access._focal.pin
+        )
+    elif mutation == "inputs":
+        changed[pin]["inputs"].reverse()
+    elif mutation == "policies":
+        changed[pin]["policies"]["include_indirect"] = True
+    else:
+        changed[pin]["location"]["result_ref"] = "XR_foreign"
+    restored = history.restore_result(
+        result._access,
+        result.result_ref,
+        result.wire,
+        entry_keys=[entry.key for entry in result.entries],
+        native_crossings=changed,
+    )
+    with pytest.raises(StorageError, match="foreign capture or scope"):
+        restored.native_crossing(pin)
+
+
 @pytest.fixture(scope="module")
 def original(tmp_path_factory):
     with DATA.open("rb") as stream:

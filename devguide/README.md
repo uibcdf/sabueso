@@ -90,6 +90,12 @@ complete source/publication contexts and both exact molecule pins. The SDK205
 original stays byte-identical. Resume full independently versioned saved admission
 and original human/source/origin replay next.
 
+Retained molecule-result restoration now passes its own
+[75-case private checkpoint](evidence/molecule_activity_retained_checkpoint_20261107.json).
+It reads recorded row order, native memberships and exact-scope retained crossing
+wrappers without scientific recalculation. It is an input to full saved admission;
+it does not enable public saving or qualify saved human/source/origin navigation.
+
 The [shared literature catalog](pending_proposals/card_literature_exploration.md)
 has its B4 LIVE producer committed: four new modules and their dispatch wiring
 across Card natures pass the selected

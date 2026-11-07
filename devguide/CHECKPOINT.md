@@ -5,6 +5,36 @@ Current working-state checkpoint: **2026-11-07**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Retained molecule-result restoration foundation — 2026-11-07
+
+The current increment adds private retained-result restoration to
+`card_molecule_activity_history_v1.py`. It reconstructs rows from recorded entry
+order and native member occurrences in the original nested target wires, without
+new activity/ligand calculation. Native crossings expose only separately retained
+wrappers in the exact focal/target/input/policy scope; missing endpoints fail
+explicitly. This helper does not admit a saved format or enable public saving.
+
+The [selected receipt](evidence/molecule_activity_retained_checkpoint_20261107.json)
+passes **75 distinct cases**: the prior 39 independent predicate cases, retained
+restoration of all 29 SDK205 and three SDK208 scenarios, and four foreign-scope
+controls. Restoration uses all 119 original molecule wires, original member/order
+witnesses and 312 typed machine requests across 335 pages. Current Card/science/
+client/digester APIs and expected-result/materialization functions are blocked
+during restoration. The full gate has complete receptor integrity, exact node
+accounting, 1,157 stable source/input hashes and zero warnings/swap. It takes
+358.68 s pytest / 359.66 s guarded at 759,013,376 bytes peak owned RSS. The earlier
+36-case source epoch adds no distinct cases. Original capsules and frozen
+predicate packages remain byte-identical; qualification uses editable SDK209
+labels with changed restoration/test source bound separately against `f48c669`.
+
+An incomplete admission-binding prototype is retained internally under
+`recovered_work/checkpoint_recovery_20261106/b5-molecule-saved-admission-work-1/`.
+It is staging, not installed runtime code or a qualified @21/@22 reader.
+
+Continue explicit saved admission/restoration, human/source/origin bindings,
+whole-bundle semantic tampering, transport/resave, fresh inert reading and copied
+receiving. Formats @1–@20 remain fixed; the full six-stage objective stays open.
+
 ## Corrected multi-focal LIVE original — 2026-11-07
 
 The corrected clean producer **`142618d` / SDK208** is committed and pushed with
