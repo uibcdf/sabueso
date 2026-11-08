@@ -1,0 +1,228 @@
+{
+  "owner": "uibcdf/sabueso#148/#112",
+  "state": "PASS",
+  "producer": {
+    "head": "b1bbfaa1fde03c1148a5150a047098ecfcc93fbf",
+    "version": "0.14.0+218.gb1bbfaa"
+  },
+  "asset": "tests/core/data/molecule_activity_root_exact_live_sdk218.tar.gz",
+  "encoded_bytes": 10691368,
+  "encoded_sha256": "7bc8beb6f5220bbe73e1c2353eafaa4aead71b80f1b30f4a43c06a9e757cb266",
+  "decoded_bytes": 247961600,
+  "decoded_sha256": "72b3f17d305f544e3be42cb6fa5aba081a571e88c4ec1236905cf2ee8fa60357",
+  "manifest_sha256": "d0b1d6b281a55fc9a7c4de0dcd7329ace9d16ee426ab0549f5bcb280efcb096c",
+  "members": 1034,
+  "originals": {
+    "node-first": {
+      "manifest_sha256": "de5d8a64a6615fb16771446d1fa74dabb760d20c6c148acf10cae2055f1f03f8",
+      "members": 516,
+      "named_views": 96,
+      "actual_instances": 104,
+      "machine_requests": 6,
+      "typed_returns_and_actual_parent_history_verified": true,
+      "source_before_after_equal": true,
+      "forbidden_attempts": {
+        "network": 0,
+        "source_acquisitions": 0
+      }
+    },
+    "quantity-first": {
+      "manifest_sha256": "8d242a4a546ec743ae703521c0995831c234823666b8991deb4575a6f278c5ce",
+      "members": 516,
+      "named_views": 96,
+      "actual_instances": 104,
+      "machine_requests": 6,
+      "typed_returns_and_actual_parent_history_verified": true,
+      "source_before_after_equal": true,
+      "forbidden_attempts": {
+        "network": 0,
+        "source_acquisitions": 0
+      }
+    }
+  },
+  "scope": "Independent full original byte/graph audit and lossless packaging only; no new saved reader, saved admission, scientific or human acceptance.",
+  "capture_resources": {
+    "node-first": {
+      "owner": "uibcdf/sabueso#148/#112",
+      "review_trigger": "Clean SDK218 exact-origin LIVE original, before independent new saved binding; full unchanged public inputs and original source history",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "14",
+        "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-B",
+        "recovered_work/checkpoint_recovery_20261106/b5-root-exact-live-original-1/capture.py",
+        "--capture",
+        "--order",
+        "node-first"
+      ],
+      "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 65.19,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 220815360,
+      "minimum_host_available_bytes": 60392833024,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 123519848,
+      "limits": {
+        "owned_rss_bytes": 2147483648,
+        "host_available_bytes": 17179869184,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 4294967296
+      },
+      "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b5-root-exact-live-original-1/cargo-target"
+    },
+    "quantity-first": {
+      "owner": "uibcdf/sabueso#148/#112",
+      "review_trigger": "Clean SDK218 exact-origin LIVE original, before independent new saved binding; full unchanged public inputs and original source history",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "14",
+        "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-B",
+        "recovered_work/checkpoint_recovery_20261106/b5-root-exact-live-original-1/capture.py",
+        "--capture",
+        "--order",
+        "quantity-first"
+      ],
+      "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 64.46,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 220811264,
+      "minimum_host_available_bytes": 59854835712,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 246985989,
+      "limits": {
+        "owned_rss_bytes": 2147483648,
+        "host_available_bytes": 17179869184,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 4294967296
+      },
+      "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b5-root-exact-live-original-1/cargo-target"
+    }
+  },
+  "packaging_resources": {
+    "owner": "uibcdf/sabueso#148/#112",
+    "review_trigger": "Clean SDK218 exact-origin LIVE original, before independent new saved binding; full unchanged public inputs and original source history",
+    "command": [
+      "nice",
+      "-n",
+      "10",
+      "taskset",
+      "-c",
+      "14",
+      "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+      "-B",
+      "recovered_work/checkpoint_recovery_20261106/b5-root-exact-live-original-1/package.py"
+    ],
+    "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+    "exit_code": 0,
+    "elapsed_s": 9.27,
+    "stop_reason": null,
+    "peak_owned_rss_bytes": 29900800,
+    "minimum_host_available_bytes": 60843823104,
+    "peak_owned_swap_bytes": 0,
+    "peak_owned_scratch_bytes": 494959488,
+    "limits": {
+      "owned_rss_bytes": 2147483648,
+      "host_available_bytes": 17179869184,
+      "owned_swap_bytes": 0,
+      "cpu_affinity_count": 1,
+      "nice": 10,
+      "elapsed_s": 600,
+      "owned_scratch_bytes": 4294967296
+    },
+    "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b5-root-exact-live-original-1/cargo-target"
+  },
+  "sequencing": "Both clean SDK218 LIVE observations precede the new independently versioned exact-origin saved binding; existing @21/@22 reading and originals are unchanged.",
+  "retention": "Frozen public original, owner #148/#112; never regenerate to match a verifier. Raw source/graph/resource evidence remains under recovered_work/checkpoint_recovery_20261106/b5-root-exact-live-original-1 until new saved admission and code-block closeout.",
+  "limits": [
+    "Byte/graph capture is not an independent new saved reader or saved-file admission",
+    "No hosted, installed-platform, scientific or human acceptance",
+    "The new capsule will enter copied installed receiving with its new reader tests; current old-format copied cases do not consume it"
+  ],
+  "existing_fixture_licensing": {
+    "counts": {
+      "collected": 4,
+      "deselected": 0,
+      "errors": 0,
+      "executed": 4,
+      "failed": 0,
+      "not_executed": 0,
+      "passed": 4,
+      "reruns": 0,
+      "skipped": 0,
+      "subtests": {},
+      "warnings": 0,
+      "xfailed": 0,
+      "xpassed": 0
+    },
+    "pytest_s": 0.34614214199973503,
+    "resources": {
+      "owner": "uibcdf/sabueso#148/#112",
+      "review_trigger": "SDK218 immutable LIVE original: existing fixture licensing; no new reader or changed runtime",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "14",
+        "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "tests/core/test_fixture_licensing_offline.py",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "--receptor-events=recovered_work/checkpoint_recovery_20261106/b5-root-exact-original-licensing-1/events.jsonl",
+        "-p",
+        "checkpoint_scope",
+        "--basetemp=recovered_work/checkpoint_recovery_20261106/b5-root-exact-original-licensing-1/pytest-scratch",
+        "-o",
+        "tmp_path_retention_policy=failed",
+        "-W",
+        "error:unclosed database:ResourceWarning",
+        "-W",
+        "error::pytest.PytestUnraisableExceptionWarning"
+      ],
+      "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 1.26,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 54489088,
+      "minimum_host_available_bytes": 59633934336,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 148744,
+      "limits": {
+        "owned_rss_bytes": 2147483648,
+        "host_available_bytes": 17179869184,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 900,
+        "owned_scratch_bytes": 4294967296
+      },
+      "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b5-root-exact-original-licensing-1/cargo-target"
+    },
+    "source_count": 1171,
+    "source_before_after_equal": true,
+    "receptor_complete_and_valid": true,
+    "events_sha256": "964df9f995ee2e5a2b8cb1e82278cfe81ee8e5b6fbde85be2f2001a2c818977f"
+  }
+}

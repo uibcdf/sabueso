@@ -10,8 +10,10 @@ workload, real-consumer and exact-candidate qualification remain separate.
 Current working follow-up: LIVE root returns use
 `molecule_activity_root_selection_exact_origin@1`, preserving the actual
 initiating instance and typed request. The selected 515-case local checkpoint
-passes, including all 68 owning LIVE cases. New LIVE saving explicitly waits for the new
-interpretation's clean original and independent saved binding. Genuine @21/@22
+passes, including all 68 owning LIVE cases. The clean `b1bbfaa` / SDK218 producer
+now supplies [two complete originals](../evidence/molecule_activity_root_exact_original_20261107.json)
+with opposite operand creation orders, before the new reader. New LIVE saving
+explicitly waits for that independent saved binding. Genuine @21/@22
 files remain readable/resavable under their original policy. The clean SDK216
 pre-fix saved control is committed as `190c291`; earlier receipts below retain
 their own source and behavior. See [CHECKPOINT](../CHECKPOINT.md) for current gates.

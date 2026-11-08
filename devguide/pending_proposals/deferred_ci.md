@@ -17,14 +17,17 @@ global saved/access/navigation paths and genuine SDK205/208/211/216 compatibilit
 New LIVE molecule saving explicitly waits for the new independent original
 binding; older @21/@22 files keep their original policy and reading/resaving.
 The pre-fix control checkpoint is `190c291`, locally committed with `[skip ci]`.
-Record the exact corrected producer commit, source equivalence, editable metadata
-and eventual direct push under
+The corrected producer is `b1bbfaa1fde03c1148a5150a047098ecfcc93fbf` / SDK218.
+Record source equivalence, editable metadata and the batched direct push under
 `recovered_work/checkpoint_recovery_20261106/b5-root-exact-commit-1/`.
 This remains the authorized intermediate `[skip ci]` route: recover cumulative CI
 and governance on the exact final SHA through gh-run-receptor under #148/#112.
 No hosted workflow, new installed-platform admission or release is authorized
-or claimed by this local increment. Retain the clean corrected LIVE original
-before implementing its new independent saved reader.
+or claimed by this local increment. The
+[two clean SDK218 originals](../evidence/molecule_activity_root_exact_original_20261107.json)
+are retained and byte-verified before the new independent reader. The following
+data/documentation checkpoint changes no tested runtime; its exact pushed head
+is retained with the same owner and final-head recovery route.
 
 ### Molecule original saved reader and package-data checkpoint (2026-11-07, #148/#112)
 

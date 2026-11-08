@@ -103,8 +103,10 @@ assertions, native quantities and earlier capsules are unchanged.
 
 The [515-case selected checkpoint](../evidence/molecule_activity_root_exact_live_checkpoint_20261107.json)
 passes all 68 LIVE cases, 443 adjacent cases and four genuine-file compatibility
-controls, with complete receptor/source accounting and zero warnings/swap. Next retain
-the clean corrected LIVE producer and its complete original before implementing
-the new independent saved interpretation. Then restore new LIVE saving and
+controls, with complete receptor/source accounting and zero warnings/swap.
+Clean `b1bbfaa` / SDK218 now supplies
+[two complete originals](../evidence/molecule_activity_root_exact_original_20261107.json),
+one for each operand creation order, before implementing the new independent
+saved interpretation. Next qualify that reader, restore new LIVE saving and
 qualify complete source/back/machine, semantic refusal, transport and copied
 receiving. No new saved-format admission or acceptance is claimed here.

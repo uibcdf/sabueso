@@ -1,5 +1,30 @@
 # Historical exploration fixtures
 
+## Corrected exact-origin LIVE originals (SDK218)
+
+`molecule_activity_root_exact_live_sdk218.tar.gz` preserves two genuine clean
+`b1bbfaa1fde03c1148a5150a047098ecfcc93fbf` / `0.14.0+218.gb1bbfaa` observations,
+before the new independent saved reader. One fresh session creates the JSON
+integer filter first; another creates the PyUnitWizard floating filter first.
+Each keeps all 96 named views, 104 actual instances and six machine requests/pages,
+with complete flags, exact parent identities and source/access states. The new
+`molecule_activity_root_selection_exact_origin@1` returns each actual initiating
+selection with its original operand type. Scientific values and old originals
+are unchanged.
+
+All 1,034 packaged members are byte-verified. Each public target retains
+493 records and full 9/459-link publication context. Original inputs and embedded
+`NOTICE.md` retain their source/date/licence declarations; authored code follows
+the repository MIT licence. No private/pilot content, network/client attempts or
+new acquisition is included. The capsule is a lossless tar/gzip of actual LIVE
+observations; it is not a newly admitted saved explorer file. Preserve its bytes.
+The [receipt](../../../devguide/evidence/molecule_activity_root_exact_original_20261107.json)
+records both original graphs, typed/back checks, clean producer and resource scope.
+
+Manifest SHA-256: `d0b1d6b281a55fc9a7c4de0dcd7329ace9d16ee426ab0549f5bcb280efcb096c`.
+Compressed: 10691368 bytes; SHA-256 `7bc8beb6f5220bbe73e1c2353eafaa4aead71b80f1b30f4a43c06a9e757cb266`.
+Uncompressed tar: 247961600 bytes; SHA-256 `72b3f17d305f544e3be42cb6fa5aba081a571e88c4ec1236905cf2ee8fa60357`.
+
 ## Genuine pre-fix saved molecule control (SDK216)
 
 `molecule_activity_saved_legacy_sdk216.tar.gz` retains an actual @21/@22 file

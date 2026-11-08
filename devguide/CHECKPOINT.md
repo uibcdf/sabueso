@@ -37,9 +37,21 @@ The minimum host available RAM across these gates exceeds 51 GiB. The receipt
 owns the working source against `190c291` with the SDK216 generated label;
 it does not claim a new full-suite or installed-artifact checkpoint.
 
-Next, commit the clean corrected producer and retain its genuine complete
-original before independent new saved reading.
-Then restore new LIVE saving and continue clinical/disease and B6. Exact-head
+The corrected clean producer is now committed as **`b1bbfaa` / SDK218**, with
+`[skip ci]`. Editable, generated and distribution versions agree outside checkout;
+only the generated label differs from the 515-case working epoch, with all other
+1,169 implementation/test/input paths unchanged. Its
+[two genuine LIVE originals](evidence/molecule_activity_root_exact_original_20261107.json)
+are now captured and independently byte/graph verified, before the new reader.
+Fresh node-first and quantity-first sessions each retain all 96 named views,
+104 actual instances and six machine requests. Capture takes 65.19 / 64.46 s
+at 220,815,360 / 220,811,264 bytes RSS, with unchanged sources and zero forbidden
+attempts/swap. All 1,034 losslessly packaged members are verified; SDK205/208/211/216
+remain fixed. This is original capture, not new saved-file admission.
+
+Next, implement and qualify the independent new saved binding against these
+unchanged originals, then restore new LIVE saving and continue clinical/disease
+and B6. Exact-head
 hosted/installed and scientific/human acceptance remain open; no release resumes.
 
 ## Typed root-return preparation — clean older file preserved

@@ -67,8 +67,8 @@ focused checkpoint. Complete historical/multi-focal original-file receiving now
 passes all 44 cases; all 54 copied molecule cases also pass. The complete local
 checkpoint covers 9,786 distinct offline cases on its recorded source. New LIVE
 navigation now uses `molecule_activity_root_selection_exact_origin@1`; new LIVE
-molecule saving explicitly waits for that interpretation's genuine original and
-independent saved binding. Its descriptor states the unavailable-save reason.
+molecule saving explicitly waits for independent saved binding against its two
+genuine clean SDK218 originals. Its descriptor states the unavailable-save reason.
 Older files retain their original numeric policy. Installed/hosted/human
 acceptance remains open. See [the current state](CHECKPOINT.md) and
 [profile contract](pending_proposals/card_molecule_activity_exploration.md).
