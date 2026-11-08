@@ -7,6 +7,14 @@ This page owns current state; dated receipt histories are linked below.
 
 ## Independent exact-origin saved binding — selected local checkpoint
 
+Code checkpoint **[`7257c65`](https://github.com/uibcdf/sabueso/commit/7257c650eeb9acc8d441bba47f086f2e3b8f03d9)**
+is committed on `main` with `[skip ci]`. Its clean SDK220 editable, distribution
+and generated labels agree outside checkout. Only the generated version label
+differs from the tested working epoch; all other 1,175 implementation/test/input
+paths remain byte-identical. The following documentation handoff changes no
+runtime implementation; its SCM label may advance. Exact-head CI/governance
+remain deferred under #148/#112 and are required before block admission.
+
 The increment passes its [901-case selected local checkpoint](evidence/molecule_activity_root_exact_saved_checkpoint_20261108.json).
 Validation is based on pushed `e112871` with working source and uses editable /
 generated `0.14.0+219.ge112871`. This label is not a new clean producer or published

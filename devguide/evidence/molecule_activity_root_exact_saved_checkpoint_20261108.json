@@ -2506,5 +2506,45 @@
     "Installed workflows copy/select the complete modules and five capsules, but actual installed artifact/OS/Python and hosted gates remain open.",
     "No source/default/identity/Card-schema change, online acquisition, B7 human/scientific acceptance, B8 resumption, candidate, freeze, release or package publication.",
     "Intermediate push uses [skip ci]; #148/#112 own deferred exact-final-head CI/governance recovery and gh-run-receptor verification before block admission."
-  ]
+  ],
+  "committed_code_checkpoint": {
+    "sha": "7257c650eeb9acc8d441bba47f086f2e3b8f03d9",
+    "marker": "[skip ci]",
+    "clean_code_runtime_label": "0.14.0+220.g7257c65",
+    "outside_editable_import_and_metadata_agree": true,
+    "only_changed_path_from_tested_source": "sabueso/_version.py",
+    "unchanged_implementation_test_input_paths": 1175,
+    "qualification": "The901-case source epoch remains explicit. Following handoff documentation does not change this implementation; every actual final head still needs its deferred hosted gates before block admission.",
+    "ci_owner": "#148/#112",
+    "recovery": "Before admission, obtain authorized CI and MOLI governance on the exact final SHA and inspect all applicable evidence with gh-run-receptor. No workflow dispatch, release or publication is performed by this checkpoint."
+  },
+  "local_quality": {
+    "ruff_check": {
+      "exit_code": 0,
+      "output": "All checks passed!"
+    },
+    "ruff_format": {
+      "exit_code": 0,
+      "files_already_formatted": 1503
+    },
+    "python311_syntax_changed_files": 15,
+    "governance": {
+      "exit_code": 0,
+      "output": "Local MOLI governance surface is valid."
+    },
+    "guide_before_code_commit": {
+      "scope": "Maintained non-archive guide paths; changed-page Markdown heading anchors; changed Python examples parse as Python3.11.",
+      "maintained_markdown_files": 172,
+      "local_path_targets_checked": 1311,
+      "changed_page_anchors_checked": 70,
+      "python_examples_checked": 0,
+      "errors": [],
+      "preexisting_anchor_gaps": [],
+      "unchanged_historical_records_not_regenerated": true
+    },
+    "diff_check": {
+      "exit_code": 0,
+      "staged_and_unstaged_checked": true
+    }
+  }
 }
