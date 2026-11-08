@@ -113,7 +113,9 @@ original @21/@22 files keep their original reading/resaving.
 The [clinical LIVE profile](pending_proposals/card_clinical_exploration.md) now
 implements separate native indication/citation/registry grains and passes its
 [576-case selected source checkpoint](evidence/clinical_live_checkpoint_20261108.json)
-and 40 copied clinical cases. Its clean producer/original must precede independent saved reading;
+and 40 copied clinical cases. Clean SDK224 and its
+[genuine complete original](evidence/clinical_live_original_20261108.json) are
+committed/captured before the independent saved reader, which remains next;
 the preceding full reader receipt does not qualify the changed clinical source.
 Disease and B6 profiles retain their full accepted scope. Scientific
 and uncoached researcher/agent/workload/actual-consumer acceptance stay open; B8

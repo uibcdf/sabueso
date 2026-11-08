@@ -22,8 +22,10 @@ Projection, typed equality, exact membership and scalar null-last ordering are
 available; registry phase lists support exact equality. Native source/query states
 remain visible. This development adapter performs no acquisition or efficacy
 inference. The [576-case selected source checkpoint](evidence/clinical_live_checkpoint_20261108.json)
-and all 40 copied clinical cases pass; independent clinical saved
-reading and public delivery are not yet implemented.
+and all 40 copied clinical cases pass. The clean SDK224 producer and its
+[genuine LIVE original](evidence/clinical_live_original_20261108.json) precede the
+independent clinical saved reader, which is not implemented. Clinical saving and
+public delivery remain unavailable.
 
 Development small-molecule `Card.explore().answer("classification")` (also
 `view("classification")`) presents source-bound chemical classes and roles,

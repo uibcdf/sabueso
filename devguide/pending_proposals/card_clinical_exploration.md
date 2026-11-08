@@ -18,10 +18,15 @@ current gates and the next action.
 The earlier complete 10,050-case receipt qualifies its recorded reader source,
 not this new clinical implementation.
 
-No independent clinical saved reader or original clinical capsule is claimed yet.
-Qualify and commit the clean producer, verify coherent editable metadata, then
-capture its genuine complete LIVE original before implementing that reader.
-Public clinical saving truthfully reports unavailable in the meantime. Original
+The clean producer is committed and pushed as `66989a4` / SDK224. Outside-checkout
+editable metadata and 42 post-commit controls agree. Its
+[genuine LIVE original](../evidence/clinical_live_original_20261108.json) is now
+captured: seven cases, 1,814 named views / 3,565 actual instances and 49 queries /
+210 pages, with every packaged member and original reference/graph byte-verified.
+Public source/fixture states and explicitly synthetic uncertainty controls stay
+distinct; the failure case uses the fixture client's simulated error. Independent
+clinical saved reading remains unimplemented; implement it against these fixed
+bytes. Public clinical saving truthfully reports unavailable in the meantime. Original
 exploration formats and their scientific interpretations stay fixed.
 
 ## Native knowledge and row grains
@@ -96,7 +101,7 @@ refused.
 
 ## Completion sequence
 
-After the clean genuine capture, implement a separately versioned independent
+The clean genuine capture is complete. Implement a separately versioned independent
 reader with frozen clinical/source/selection predicates. Qualify all original
 human/machine/source/back observations, semantic refusal, plain/gzip/zstd resaves
 and fresh inert/copied receiving. Never regenerate the original to satisfy a

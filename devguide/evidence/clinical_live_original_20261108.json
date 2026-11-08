@@ -1,0 +1,335 @@
+{
+  "state": "PASS",
+  "producer_head": "66989a407564e74758b6d0eb946ec07774ddbee3",
+  "producer_version": "0.14.0+224.g66989a4",
+  "manifest_sha256": "1c8c02d13262b95fe013b021fd77987b81e33bae110b7d751b6ed1809fe4de5b",
+  "members": 6394,
+  "every_member_byte_verified": true,
+  "encoded": {
+    "bytes": 14484290,
+    "sha256": "2f355f0705081bce2090e2be5265a845535793bdfcf74a184f79c9c6c38b7b50"
+  },
+  "decoded": {
+    "bytes": 117739520,
+    "sha256": "9b371e5aea112ef85adc154c945e40f4efa03bfdc459e1460be6daa94b327b39"
+  },
+  "source_paths": 1175,
+  "source_stable": true,
+  "cases": {
+    "bare": {
+      "named_views": 21,
+      "actual_instances": 33,
+      "machine_queries": 7,
+      "machine_pages": 7,
+      "synthetic_control": null,
+      "case_sha256": "9eab5e58d38cb3904b77bfc500647be6776e20ce66a9d1750361663225f72cf0"
+    },
+    "failed": {
+      "named_views": 270,
+      "actual_instances": 531,
+      "machine_queries": 7,
+      "machine_pages": 32,
+      "synthetic_control": null,
+      "case_sha256": "3d9611692c7fbec0ecb376324b5c98f8876534383f572dd8240944819de4641c"
+    },
+    "indications": {
+      "named_views": 270,
+      "actual_instances": 531,
+      "machine_queries": 7,
+      "machine_pages": 32,
+      "synthetic_control": null,
+      "case_sha256": "0a03ad31d1e7ef2c289f8fbf9abcb795e9c0894d3a46a73a579ab1f1b443add9"
+    },
+    "limited": {
+      "named_views": 296,
+      "actual_instances": 583,
+      "machine_queries": 7,
+      "machine_pages": 36,
+      "synthetic_control": null,
+      "case_sha256": "6404fea67dd41fb9f12d779439fb5b07ec39474d43eac581ea7b01ece50fb1c9"
+    },
+    "misbound-registry": {
+      "named_views": 468,
+      "actual_instances": 927,
+      "machine_queries": 7,
+      "machine_pages": 48,
+      "synthetic_control": "Synthetic registry-subject misbinding; preserve the mismatch rather than treating it as source support.",
+      "case_sha256": "e59b58700f9955644bc00a32548ed994781f39677a4ad84d49cd5541163d4464"
+    },
+    "trials": {
+      "named_views": 468,
+      "actual_instances": 927,
+      "machine_queries": 7,
+      "machine_pages": 48,
+      "synthetic_control": null,
+      "case_sha256": "9dbfb1786d8af49ec41b9338e3b846019cdee994014f62bf095d64d4c126b264"
+    },
+    "unknown-ledger": {
+      "named_views": 21,
+      "actual_instances": 33,
+      "machine_queries": 7,
+      "machine_pages": 7,
+      "synthetic_control": "Synthetic missing enrichment ledger; original public source bytes stay fixed.",
+      "case_sha256": "58381f25d50e867114c36260e51d387d2ad7f30df191f7ccdd55546a97416592"
+    }
+  },
+  "attempts_during_observation": {
+    "network": 0,
+    "source_acquisitions": 0
+  },
+  "input_preparation": "Existing public fixture clients only, with networking forbidden. The zero acquisition counter starts after input preparation.",
+  "not_a_saved_file": true,
+  "independent_reader_not_yet_implemented": true,
+  "owner": "uibcdf/sabueso#148/#81/#112",
+  "capsule": "tests/core/data/clinical_live_sdk224.tar.gz",
+  "verification": {
+    "state": "PASS",
+    "decoded_tar_sha256": "9b371e5aea112ef85adc154c945e40f4efa03bfdc459e1460be6daa94b327b39",
+    "decoded_tar_bytes": 117739520,
+    "value_references_resolve_exactly": 153886,
+    "actual_view_instances": 3565,
+    "named_views": 1814,
+    "machine_queries": 49,
+    "machine_pages": 210,
+    "all_origin_nodes_resolve": true,
+    "actual_machine_counts_agree": true,
+    "scope": "Independent byte/reference/graph accounting of existing LIVE observations. No saved reader or scientific/human acceptance implied."
+  },
+  "producer_qualification": {
+    "selected_receipt": "devguide/evidence/clinical_live_checkpoint_20261108.json",
+    "distinct_source_cases": 576,
+    "owning_clinical_cases": 40,
+    "copied_cases": 40,
+    "copied_additional_distinct": 0,
+    "postcommit_cases": 42,
+    "postcommit_additional_distinct": 0,
+    "outside_editable_metadata": {
+      "state": "PASS",
+      "clean_head": "66989a407564e74758b6d0eb946ec07774ddbee3",
+      "runtime": "0.14.0+224.g66989a4",
+      "distribution": "0.14.0+224.g66989a4",
+      "import": "/fast_data/home/liliana/repos@uibcdf/sabueso/sabueso/__init__.py",
+      "direct_url": {
+        "dir_info": {
+          "editable": true
+        },
+        "url": "file:///fast_data/home/liliana/repos%40uibcdf/sabueso"
+      },
+      "protected_paths_unchanged": 1168,
+      "generated_label_only_changed": true,
+      "no_independent_clinical_reader_yet": true,
+      "actual_installed_artifact_qualification": false
+    },
+    "remote_main_verified": "66989a407564e74758b6d0eb946ec07774ddbee3",
+    "exact_producer_workflow_count_observed": 0
+  },
+  "resources": {
+    "capture": {
+      "owner": "uibcdf/sabueso#148/#112",
+      "review_trigger": "Clean SDK224 clinical LIVE original;1CPU,10GiBtotalRSS,native1,16GiBhostfloor,2GiBscratch",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-B",
+        "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b5-clinical-live-original-1/capture.py"
+      ],
+      "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 31.73,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 196829184,
+      "minimum_host_available_bytes": 60176478208,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 112939588,
+      "limits": {
+        "owned_rss_bytes": 10737418240,
+        "host_available_bytes": 17179869184,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b5-clinical-live-original-1/cargo-target"
+    },
+    "package": {
+      "owner": "uibcdf/sabueso#148/#112",
+      "review_trigger": "Clean SDK224 clinical LIVE original;1CPU,10GiBtotalRSS,native1,16GiBhostfloor,2GiBscratch",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-B",
+        "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b5-clinical-live-original-1/package_original.py"
+      ],
+      "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 10.37,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 398786560,
+      "minimum_host_available_bytes": 59980419072,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 245172881,
+      "limits": {
+        "owned_rss_bytes": 10737418240,
+        "host_available_bytes": 17179869184,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b5-clinical-live-original-1/cargo-target"
+    },
+    "verify": {
+      "owner": "uibcdf/sabueso#148/#112",
+      "review_trigger": "Clean SDK224 clinical LIVE original;1CPU,10GiBtotalRSS,native1,16GiBhostfloor,2GiBscratch",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-B",
+        "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b5-clinical-live-original-1/verify_encoded.py"
+      ],
+      "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 3.69,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 267567104,
+      "minimum_host_available_bytes": 60109639680,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 127441663,
+      "limits": {
+        "owned_rss_bytes": 10737418240,
+        "host_available_bytes": 17179869184,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b5-clinical-live-original-1/cargo-target"
+    }
+  },
+  "rights": {
+    "origin": "Existing unchanged public ChEMBL molecule/indication and ClinicalTrials.gov study fixtures; no new source acquisition or private pilot data",
+    "ChEMBL": "CC BY-SA 3.0; original release/retrieval and attribution retained in embedded fixtures/NOTICE.md",
+    "ClinicalTrials.gov": "Source: National Library of Medicine; existing US government-work declaration retained",
+    "authored_code_and_metadata": "Repository MIT; original database data retain their own terms",
+    "modifications": "Captured native Cards, derived clinical/source/query/selection/navigation observations and explicitly labelled synthetic missing-ledger/registry-subject controls. Raw supplied fixture bytes are unchanged."
+  },
+  "temporary_resources": {
+    "owner": "uibcdf/sabueso#148/#112",
+    "active_owned_operations": 0,
+    "raw_tar_cleanup": {
+      "state": "PASS",
+      "owner": "uibcdf/sabueso#148/#112",
+      "removed_owned_raw_tar": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b5-clinical-live-original-1/clinical_live_sdk224.tar",
+      "bytes": 117739520,
+      "sha256": "9b371e5aea112ef85adc154c945e40f4efa03bfdc459e1460be6daa94b327b39",
+      "reason": "Every compressed member verified; retain original producer tree, compressed capsule and reports until independent reader closeout."
+    },
+    "retained": "Original producer tree, compressed original, capture/verification scripts, source maps, logs and receipts",
+    "review_trigger": "After independent clinical original receiving and broader block closeout. Never regenerate or delete the tracked original capsule."
+  },
+  "limits": [
+    "The capsule is complete genuine LIVE observation, not an actual admitted clinical saved explorer file",
+    "Independent original clinical saved reading and public clinical save admission remain unimplemented",
+    "Independent decoding/reference/graph checks do not establish scientific, human or consumer acceptance",
+    "Selected local source/editable/copied qualification does not supply full changed-repository, installed-artifact/OS/Python or exact-final-head hosted admission",
+    "B2 default review remains deferred, #192 remains open, B7 acceptance open, B8/candidate/freeze/release remain paused"
+  ],
+  "next": "Implement separately versioned frozen clinical/native/source/selection predicates and exact original human/machine/navigation replay; receive these unchanged SDK224 bytes in fresh inert and copied processes. Profile one representative actual-file case before increasing concurrency.",
+  "case_interpretation_notes": {
+    "failed": "Existing FixtureClinicalTrialsClient(failing={NCT00123916}) simulates a registry batch failure; this is not an observed live outage. The original captured input module and quality detail preserve that fact.",
+    "limited": "Explicit request limit2 retains the actual first two public fixture studies and declares the other14 IDs not fetched.",
+    "unknown-ledger": "Explicit synthetic removal of the request ledger; the current original scope reports not_recorded.",
+    "misbound-registry": "Explicit synthetic mismatch of one registry assertion subject; support remains unverified rather than accepted."
+  },
+  "data_and_guide_closeout": {
+    "fixture_licensing_delivery_registry": {
+      "passed": 57,
+      "additional_distinct": 0,
+      "pytest_s": 5.633667953996337,
+      "resources": {
+        "owner": "uibcdf/sabueso#148/#112",
+        "review_trigger": "Clinical LIVE owning controls; 1 workers,10GiBtotalRSS,native1,host16GiBfloor,2GiBscratch",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0",
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-B",
+          "-m",
+          "pytest",
+          "tests/core/test_fixture_licensing_offline.py",
+          "tests/core/test_fixture_delivery_offline.py",
+          "tests/core/test_source_registry_offline.py",
+          "-m",
+          "not online",
+          "--receptor=llm",
+          "--receptor-events=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b5-clinical-capture-data-1/events.jsonl",
+          "-p",
+          "checkpoint_scope",
+          "--basetemp=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b5-clinical-capture-data-1/pytest-scratch",
+          "-o",
+          "tmp_path_retention_policy=failed",
+          "-W",
+          "error:unclosed database:ResourceWarning",
+          "-W",
+          "error::pytest.PytestUnraisableExceptionWarning"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "exit_code": 0,
+        "elapsed_s": 6.56,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 110645248,
+        "minimum_host_available_bytes": 60186206208,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 231036,
+        "limits": {
+          "owned_rss_bytes": 10737418240,
+          "host_available_bytes": 17179869184,
+          "owned_swap_bytes": 0,
+          "cpu_affinity_count": 1,
+          "nice": 10,
+          "elapsed_s": 600,
+          "owned_scratch_bytes": 2147483648
+        },
+        "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b5-clinical-capture-data-1/cargo-target"
+      },
+      "complete_receptor_source_and_call_accounting": true
+    },
+    "fixture_delivery_check": "PASS:81 reviewed repository inputs;37 protected local-only originals. The current notice count was stale71 and is synchronized to81; the embedded historical producer notice remains byte-identical. No delivery decision or licence changed.",
+    "source_registry_check": "PASS:source registry, its page, packaged source terms and metadata catalog",
+    "governance_check": "PASS:Local MOLI governance surface is valid.",
+    "guide_validation": {
+      "scope": "Maintained non-archive guide paths; changed-page Markdown heading anchors; changed Python examples parse as Python3.11.",
+      "maintained_markdown_files": 173,
+      "local_path_targets_checked": 1337,
+      "changed_page_anchors_checked": 54,
+      "python_examples_checked": 0,
+      "errors": [],
+      "preexisting_anchor_gaps": [],
+      "unchanged_historical_records_not_regenerated": true
+    },
+    "python_quality": "Reuse byte-identical Python source Ruff check/format and Python3.11 grammar results from the LIVE checkpoint; no Python code changed in this capsule increment.",
+    "diff_check": "PASS:git diff --check"
+  }
+}

@@ -36,9 +36,29 @@ does not replace complete-repository qualification for the changed source.
 No Card schema, acquisition client, native scientific/default interpretation or
 earlier saved binding changed. Clinical saving remains explicitly unavailable.
 
-Next commit the clean qualified producer and verify coherent editable metadata.
-Capture its genuine complete LIVE original before implementing independent saved
-reading. Continue disease and B6 profiles afterward. B7 acceptance and the complete
+The clean producer is committed and pushed as `66989a4` / SDK224. Outside-checkout
+editable metadata agrees; all 42 post-commit clinical/catalog controls pass.
+Its [genuine original](evidence/clinical_live_original_20261108.json) is captured
+before independent saved reading: seven cases, 1,814 named views, 3,565 actual
+instances and 49 machine queries / 210 pages. Every one of 6,394 members is
+byte-verified; independent decoded bytes, 153,886 value references, origin nodes
+and actual machine counts agree. Existing public fixtures and labelled synthetic
+uncertainty controls retain their source/rights scope. The failure case uses the
+fixture client's simulated failure, not an observed live outage.
+
+Capture uses one CPU, 31.73 s and 196,829,184 bytes peak RSS; observation attempts
+no network/source acquisition. Input preparation uses offline fixture clients.
+The verified capsule is `tests/core/data/clinical_live_sdk224.tar.gz`; preserve
+its original bytes. The disposable verified raw tar was removed (117,739,520
+bytes); original producer data, compressed capsule and receipts remain owned by
+#148/#112 until independent receiving/block closeout. No owned operation is active.
+
+Next implement separately versioned independent clinical/native/source/selection
+predicates and complete original human/machine/source/navigation replay. Current
+Cards/scientific readers/clients must remain forbidden during independent
+receiving. Measure one actual-file case before increasing concurrency. Clinical
+saved admission remains unavailable. Continue disease and B6 profiles afterward.
+B7 acceptance and the complete
 six-stage program remain open; B8 and release remain unresumed.
 
 ## Preceding complete offline root-reader checkpoint — PASS

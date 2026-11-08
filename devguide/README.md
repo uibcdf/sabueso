@@ -52,8 +52,10 @@ The [clinical LIVE profile](pending_proposals/card_clinical_exploration.md) now
 shares native indications, individual cited-trial occurrences and retained
 registry contexts between human and compact-agent routes. Its
 [576-case selected checkpoint](evidence/clinical_live_checkpoint_20261108.json)
-and all 40 copied clinical cases pass; clean producer/original capture and independent saved reading
-remain next. [CHECKPOINT](CHECKPOINT.md) owns current source and actual results.
+and all 40 copied clinical cases pass. The clean SDK224 producer's
+[genuine complete original](evidence/clinical_live_original_20261108.json)
+is captured and byte/graph-verified before independent saved reading, which is
+next. [CHECKPOINT](CHECKPOINT.md) owns current source and actual results.
 The preceding full reader receipt retains its source epoch and does not qualify
 this new clinical implementation.
 

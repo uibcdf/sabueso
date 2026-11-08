@@ -25,7 +25,7 @@ wrote it (`sabueso/tools/db/`, `sabueso/resolver/`).
 
 The reviewed recovery file inventory is
 [`devguide/sources/fixture_delivery.json`](../devguide/sources/fixture_delivery.json).
-It records 71 repository-delivery inputs and 37 protected local-only originals,
+It records 81 repository-delivery inputs and 37 protected local-only originals,
 with exact byte identities and file-specific decisions. `.gitignore` protects
 the local input directories; `python tools/fixture_delivery.py --check` rejects
 their inclusion in the Git index and checks the reviewed repository inputs.
@@ -81,6 +81,21 @@ input rights and publication/software grants remain separate. See
 [follow-up 10](../devguide/archive/local_work_2026-07/followup_10_source_integration.md).
 
 ## Contents
+
+`tests/core/data/clinical_live_sdk224.tar.gz` is a derived compatibility capsule,
+captured on 2026-11-08 from clean Sabueso `66989a4` / SDK224 before independent
+clinical saved reading. It retains original public ChEMBL_37 molecule/indication
+and ClinicalTrials.gov study fixture bytes, full native/source/query/navigation
+observations and explicitly labelled synthetic missing-ledger/registry-subject
+controls. ChEMBL content and derived data retain **CC BY-SA 3.0**; registry data
+retain **Source: National Library of Medicine** and the existing US government-work
+declaration below. Authored code/metadata retain repository MIT. Its embedded
+`fixtures/NOTICE.md` preserves original retrieval dates and terms; this capture
+makes no new remote acquisition or live-service claim. The failure case uses a
+fixture-client simulation. See the complete source, hashes,
+modification scope and limits in
+[the fixture README](../tests/core/data/README.md#original-clinical-live-observations-sdk224)
+and [receipt](../devguide/evidence/clinical_live_original_20261108.json).
 
 `tests/core/data/bioactivity_default_legacy_v1.json.gz` is a derived compatibility
 capture produced on 2026-11-04 with exact Sabueso source

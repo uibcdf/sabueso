@@ -1,5 +1,34 @@
 # Historical exploration fixtures
 
+## Original clinical LIVE observations (SDK224)
+
+`clinical_live_sdk224.tar.gz` preserves genuine clean
+`66989a407564e74758b6d0eb946ec07774ddbee3` / `0.14.0+224.g66989a4`
+observations captured on 2026-11-08 before independent clinical saved reading.
+The seven cases retain 1,814 named views, all 3,565 actual instances, 49 machine
+queries / 210 pages, full source/access states and exact parent identities.
+Unqueried, indication-only, fetched and limited public fixture contexts remain
+distinct. The failure case uses the fixture client's simulated batch error;
+missing-ledger and registry-subject controls are explicitly synthetic. Every original value and source/indication/registry/back destination
+remains retained. No actual clinical saved file is claimed.
+
+All 6,394 members are byte-verified; independent decoding, 153,886 value references,
+origin graphs and actual machine counts agree. Input preparation uses the existing
+public fixtures offline. Observation performs zero network or source-acquisition
+attempts and preserves the producer source. ChEMBL data remain CC BY-SA 3.0;
+ClinicalTrials.gov data retain the National Library of Medicine attribution and
+existing US government-work declaration. The embedded `fixtures/NOTICE.md`
+preserves the source releases, retrieval dates and terms. Authored code is MIT;
+synthetic modifications are labelled. No private/pilot data are included.
+
+Manifest SHA-256: `1c8c02d13262b95fe013b021fd77987b81e33bae110b7d751b6ed1809fe4de5b`.
+Compressed: 14484290 bytes; SHA-256 `2f355f0705081bce2090e2be5265a845535793bdfcf74a184f79c9c6c38b7b50`.
+Uncompressed tar: 117739520 bytes; SHA-256 `9b371e5aea112ef85adc154c945e40f4efa03bfdc459e1460be6daa94b327b39`.
+
+The [original receipt](../../../devguide/evidence/clinical_live_original_20261108.json)
+records clean source, local qualification, complete byte/graph checks and limits.
+Preserve these bytes; never regenerate this original to satisfy a later reader.
+
 ## Corrected exact-origin LIVE originals (SDK218)
 
 `molecule_activity_root_exact_live_sdk218.tar.gz` preserves two genuine clean

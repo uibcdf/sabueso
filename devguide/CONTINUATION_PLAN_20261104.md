@@ -437,9 +437,10 @@ is complete: the exact composed passing set covers all
 417 history/storage/copied-consumer controls on the preceding source epoch.
 The [clinical LIVE profile](pending_proposals/card_clinical_exploration.md) is now
 implemented and passes its [576-case selected source checkpoint](evidence/clinical_live_checkpoint_20261108.json)
-and all 40 copied clinical cases. Commit its clean
-producer and capture its genuine complete original before independent saved
-reading, then continue disease and B6. The 10,050-case receipt does not qualify
+and all 40 copied clinical cases. Clean SDK224 / `66989a4` and its
+[genuine complete original](evidence/clinical_live_original_20261108.json) now
+precede independent saved reading. Implement and qualify that reader next, then
+continue disease and B6. The 10,050-case receipt does not qualify
 this changed clinical source.
 Both installed routes now copy/select all five
 capsules and the complete selected modules; actual installed receiving stays open.
