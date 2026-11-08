@@ -318,7 +318,108 @@ def test_original_machine_selection_saves_with_its_molecule_panel(
     assert repeated.native_payload == saved.native_payload
 
 
-def _independent_receive(path, original_tar, report_path):
+def test_genuine_sdk216_saved_file_preserves_pre_fix_numeric_root_return(tmp_path):
+    """Keep the complete clean pre-fix file, independent of future LIVE writers."""
+    import gzip
+    import hashlib
+    import json
+    import shutil
+    import tarfile
+
+    capsule = (
+        Path(__file__).with_name("data")
+        / "molecule_activity_saved_legacy_sdk216.tar.gz"
+    )
+    with capsule.open("rb") as stream:
+        assert hashlib.file_digest(stream, "sha256").hexdigest() == (
+            "36b1a546c0cb9e9095e896b21e722d661fb79c7fedf6e2b3a6f4ab5a8d258e74"
+        )
+    original_tar = tmp_path / "original.tar"
+    with gzip.open(capsule, "rb") as source, original_tar.open("wb") as target:
+        shutil.copyfileobj(source, target)
+    with original_tar.open("rb") as stream:
+        assert hashlib.file_digest(stream, "sha256").hexdigest() == (
+            "3de7626766aea8171012774f4e58164b5535862b02848b16ad2bb235c5a6025d"
+        )
+    saved = tmp_path / "legacy-original.json"
+    with tarfile.open(original_tar, "r:") as archive:
+        members = archive.getmembers()
+        assert len(members) == 519
+        with archive.extractfile("manifest.json") as stream:
+            raw = stream.read()
+        assert hashlib.sha256(raw).hexdigest() == (
+            "8d55f8d38618146cabacd553b6e44520df1d3e103ed8c70d0a60de75658e1754"
+        )
+        manifest = json.loads(raw)
+        assert manifest["producer_head"] == ("a759b1d559e512ee6c3d991b82616b7df7189505")
+        assert manifest["producer_version"] == "0.14.0+216.ga759b1d"
+        assert manifest["capture_complete"] and not any(manifest["attempts"].values())
+        assert {member.name for member in members} == {
+            *manifest["files"],
+            "manifest.json",
+        }
+        for member in members:
+            assert member.isfile() and not Path(member.name).is_absolute()
+            assert ".." not in Path(member.name).parts
+            if member.name == "manifest.json":
+                continue
+            with archive.extractfile(member) as stream:
+                digest = hashlib.file_digest(stream, "sha256").hexdigest()
+            assert digest == manifest["files"][member.name]["sha256"]
+            assert member.size == manifest["files"][member.name]["bytes"]
+        with archive.extractfile("saved-pre-fix.json.gz") as source:
+            saved.write_bytes(source.read())
+    assert hashlib.sha256(saved.read_bytes()).hexdigest() == (
+        "4511c6aa6f0ca6fc4a440385b472a2f88c88ab8e5ebba64ec13b9ae621ad999f"
+    )
+    report_path = tmp_path / "receiver-report.json"
+    script = (
+        "import sys\nsys.path.insert(0, sys.argv[4])\n"
+        + inspect.getsource(_independent_receive)
+        + "\n_independent_receive(*sys.argv[1:4], original_sha=sys.argv[5])\n"
+    )
+    with tempfile.TemporaryDirectory(
+        prefix="sabueso-legacy-molecule-reader-",
+        dir=None if sys.platform == "win32" else "/tmp",
+    ) as directory:
+        result = subprocess.run(
+            [
+                sys.executable,
+                "-B",
+                "-c",
+                script,
+                str(saved),
+                str(original_tar),
+                str(report_path),
+                str(Path(__file__).resolve().parent),
+                "3de7626766aea8171012774f4e58164b5535862b02848b16ad2bb235c5a6025d",
+            ],
+            cwd=directory,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            timeout=600,
+        )
+    assert result.returncode == 0, result.stdout + result.stderr
+    assert not result.stderr, result.stderr
+    report = json.loads(report_path.read_text())
+    assert report["native_original_human_views"] == 96
+    assert report["original_machine_requests_and_pages"] == 6
+    assert report["verified_navigation_policies"] == [
+        "molecule_activity_root_selection_python_equality@1"
+    ]
+    assert report["typed_root_return"] == {
+        "requested_type": "float",
+        "returned_type": "int",
+    }
+
+
+def _independent_receive(
+    path,
+    original_tar,
+    report_path,
+    original_sha="bc102cfe44cdefaee99b26b4a361f14e27543ec62a5165e26659ffb59e4e6b60",
+):
     """Read one real file outside the checkout with every mutable reader blocked."""
     import hashlib
     import json
@@ -335,10 +436,7 @@ def _independent_receive(path, original_tar, report_path):
     from sabueso.core.snapshot import canonical_json
 
     with Path(original_tar).open("rb") as stream:
-        assert (
-            hashlib.file_digest(stream, "sha256").hexdigest()
-            == "bc102cfe44cdefaee99b26b4a361f14e27543ec62a5165e26659ffb59e4e6b60"
-        )
+        assert hashlib.file_digest(stream, "sha256").hexdigest() == original_sha
     archive = tarfile.open(original_tar, "r:")
 
     def member(ref):
@@ -530,6 +628,24 @@ def _independent_receive(path, original_tar, report_path):
             "publication_links": [9, 459],
             "saved_activity_menu_retained": True,
             "capabilities_bound_to_actual_operation_history": True,
+            "verified_navigation_policies": saved.validation.get(
+                "verified_navigation_policies"
+            ),
+            "typed_root_return": {
+                "requested_type": type(
+                    actual["target/pyunitwizard/filtered"]._display_request["equals"][
+                        "value"
+                    ]
+                ).__name__,
+                "returned_type": type(
+                    next(
+                        view
+                        for name, view in actual.items()
+                        if name.startswith("target/pyunitwizard/")
+                        and name.endswith("/molecule_root")
+                    )._display_request["equals"]["value"]
+                ).__name__,
+            },
         }
         Path(report_path).write_text(json.dumps(report, indent=2) + "\n")
     archive.close()

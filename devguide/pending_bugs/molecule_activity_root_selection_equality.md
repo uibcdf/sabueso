@@ -76,3 +76,9 @@ reenact UI operations through LIVE functions; a corrected return must not be
 used to regenerate SDK211's historical expectation. Keep that older meaning
 under explicit original predicates and qualify a separately versioned new
 interpretation against its own clean LIVE original.
+
+That pre-fix file is now captured from clean `a759b1d` / SDK216. Its complete
+96-view/six-request journey passes fresh inert receiving, and the
+[frozen control](../../tests/core/data/README.md#genuine-pre-fix-saved-molecule-control-sdk216)
+retains all actual instances and writer node mappings. It is a compatibility
+control for the old meaning, not adoption of the process-only correction.

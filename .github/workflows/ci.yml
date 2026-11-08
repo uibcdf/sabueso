@@ -155,6 +155,7 @@ jobs:
           cp tests/core/data/molecule_activity_live_sdk205.tar.gz "$client_dir/data/"
           cp tests/core/data/molecule_activity_multifocal_live_sdk208.tar.gz "$client_dir/data/"
           cp tests/core/data/molecule_activity_quantity_live_sdk211.tar.gz "$client_dir/data/"
+          cp tests/core/data/molecule_activity_saved_legacy_sdk216.tar.gz "$client_dir/data/"
           cp tests/core/data/README.md "$client_dir/data/"
           cp tests/core/data/card_shared_support_predecessor_v8.json.gz "$client_dir/data/"
           cp tests/core/test_rule_literature_extraction_offline.py "$client_dir/"

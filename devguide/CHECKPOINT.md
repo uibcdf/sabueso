@@ -5,6 +5,39 @@ Current working-state checkpoint: **2026-11-07**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Typed root-return preparation — clean older file preserved
+
+The clean SDK216 producer at `a759b1d` now supplies a genuine pre-fix @21/@22
+saved control, before any LIVE root-return change. Capture retains all **96
+named views, 104 actual instances and six machine requests/pages**, full public
+493-record input and 9/459-link publication contexts. The actual writer's node
+mapping is observed without changing serialization. Capture takes 167.99 s at
+886,374,400 bytes peak RSS; a fresh inert receiver passes the complete original
+in 46.79 s at 367,816,704 bytes RSS. Both have zero swap, unchanged inputs and
+zero network/client attempts. The older numeric return remains intentionally
+visible in this control; production is still unfixed.
+
+The [fixture notice](../tests/core/data/README.md#genuine-pre-fix-saved-molecule-control-sdk216)
+owns exact bytes and scope. All 519 packaged members are verified; the first
+packaging audit's incorrect 520-member assertion is retained separately and
+corrected without changing the capture. SDK205/SDK208/SDK211 remain byte-identical.
+The selected checkpoint passes **eight distinct source cases**: the new genuine
+file regression, existing SDK211 real-file/helper-default case, original numeric
+policy control, and five wiring/licensing cases. The new case also passes copied
+receiving with ten byte-identical staged files. Source/copy times are 51.50 /
+49.33 s pytest, 52.40 / 50.19 s guarded; peaks are 469,446,656 / 466,968,576
+bytes RSS. All gates have complete receptor accounting, 1,170 stable source/input
+hashes and zero warnings/swap. Both installed routes copy the fourth capsule.
+All 55 file cases collect outside checkout, but only the new copied case executes
+in this increment; no complete 55-case pass is claimed. Runtime code is unchanged.
+The 9,786-case receipt below retains its prior code/test epoch and is not a new
+full-suite claim for this test/control increment.
+
+Next, commit this qualified control, then correct LIVE returns by exact
+initiating instance and typed request. Keep old @21/@22 reading unchanged; the
+new interpretation needs its own named policy, clean LIVE original and independent
+saved admission. Clinical/disease and B6 follow; B7/B8 remain open.
+
 ## Molecule saved-reader local checkpoint — navigation follow-up open
 
 Code checkpoint **[`92d1491`](https://github.com/uibcdf/sabueso/commit/92d149180ea0c3196bbebc3a670e1d0a96111adb)**
@@ -167,8 +200,8 @@ partitions cover all 48 cases without overlap. All these historical/copied gates
 are terminal; the corrected public remainder also passes. Copied children and the repeated 44 molecule-original
 cases add zero distinct primary coverage; the ten SDK211 cases have their exact
 copied-module identity and byte manifest.
-Next, preserve a genuine pre-fix saved control from the clean qualified producer
-before the typed root-return correction; keep deferred exact-head CI explicit.
+The genuine pre-fix saved control is now retained and qualified above. Continue
+the typed root-return correction; keep deferred exact-head CI explicit.
 Source-only inspection
 has prepared the next `clinical_context`/`clinical` increment using the existing
 native reader and separate source assertion subjects; no rich clinical adapter

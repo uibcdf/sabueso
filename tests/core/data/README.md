@@ -1,5 +1,37 @@
 # Historical exploration fixtures
 
+## Genuine pre-fix saved molecule control (SDK216)
+
+`molecule_activity_saved_legacy_sdk216.tar.gz` retains an actual @21/@22 file
+written by clean `a759b1d559e512ee6c3d991b82616b7df7189505` /
+`0.14.0+216.ga759b1d`, after existing original reading and before the typed
+root-return correction. It records all 96 named quantity-route views, 104 actual
+instances, six machine requests/pages, complete access states and the actual
+writer's instance-to-node mapping. The saved file was produced by the public
+LIVE API; it was not reconstructed from a verifier's expected result.
+
+All 519 members are byte-identical to the capture. The target retains 493 source
+records and full 9/459-link publication contexts. Inputs are the unchanged public
+SDK205/SDK211 inputs; the embedded `NOTICE.md` retains their source/date/licence
+declarations. Authored code follows the repository MIT licence. Network/client
+attempts are zero and the input Cards remain unchanged. No private/pilot data or
+new source acquisition is included. The embedded save's transport is `none`, as
+its receipt declares; the outer gzip is lossless fixture packaging.
+
+This control deliberately retains
+`molecule_activity_root_selection_python_equality@1`: the floating display
+request may return the earlier integer request. Preserve that observed older
+meaning. Never regenerate these bytes to absorb the corrected LIVE behavior.
+A fresh inert process replays every named view and machine page with current
+Cards/science/clients/digesters and LIVE molecule UI forbidden. This qualifies
+the old file's technical reading, not a new interpretation or human acceptance.
+
+Manifest SHA-256: `8d55f8d38618146cabacd553b6e44520df1d3e103ed8c70d0a60de75658e1754`.
+Compressed: 15857216 bytes; SHA-256 `36b1a546c0cb9e9095e896b21e722d661fb79c7fedf6e2b3a6f4ab5a8d258e74`.
+Uncompressed tar: 155392000 bytes; SHA-256 `3de7626766aea8171012774f4e58164b5535862b02848b16ad2bb235c5a6025d`.
+Actual saved JSON SHA-256: `4511c6aa6f0ca6fc4a440385b472a2f88c88ab8e5ebba64ec13b9ae621ad999f`.
+Saved bundle digest: `sha256:af054c966854aeebb33836c9b5f0558b4960dbab787bf189d774416dfb22081c`.
+
 ## Corrected quantity-display LIVE original (SDK211)
 
 `molecule_activity_quantity_live_sdk211.tar.gz` preserves genuine clean

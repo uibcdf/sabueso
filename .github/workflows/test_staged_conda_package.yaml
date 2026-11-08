@@ -240,6 +240,7 @@ jobs:
           cp "$GITHUB_WORKSPACE/tests/core/data/molecule_activity_live_sdk205.tar.gz" "$client_dir/data/"
           cp "$GITHUB_WORKSPACE/tests/core/data/molecule_activity_multifocal_live_sdk208.tar.gz" "$client_dir/data/"
           cp "$GITHUB_WORKSPACE/tests/core/data/molecule_activity_quantity_live_sdk211.tar.gz" "$client_dir/data/"
+          cp "$GITHUB_WORKSPACE/tests/core/data/molecule_activity_saved_legacy_sdk216.tar.gz" "$client_dir/data/"
           cp "$GITHUB_WORKSPACE/tests/core/data/README.md" "$client_dir/data/"
           cp "$GITHUB_WORKSPACE/tests/core/data/card_shared_support_predecessor_v8.json.gz" "$client_dir/data/"
           cp "$GITHUB_WORKSPACE/tests/core/data/model_range_alias_modern_only_legacy_v1.json.gz" "$client_dir/data/"

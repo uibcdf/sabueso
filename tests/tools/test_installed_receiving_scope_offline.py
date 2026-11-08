@@ -1065,6 +1065,7 @@ def test_installed_molecule_files_deliver_the_complete_original_payload():
         "molecule_activity_live_sdk205.tar.gz",
         "molecule_activity_multifocal_live_sdk208.tar.gz",
         "molecule_activity_quantity_live_sdk211.tar.gz",
+        "molecule_activity_saved_legacy_sdk216.tar.gz",
     )
     for path, job in (
         (".github/workflows/ci.yml", "ackredit-pilot"),
