@@ -31,6 +31,7 @@ def retained_writer(tmp_path_factory):
     for view in original.nodes.values():
         object.__setattr__(view, "_saved_state", None)
     original.session.pop("format")
+    original.session["molecule_activity_root_policy"] = binding.ROOT_RETURN_EQUALITY
     for access_id, access in original.accesses.items():
         access._mode = "live"
         for (owner, ref), result in original.results.items():

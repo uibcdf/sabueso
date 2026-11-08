@@ -173,6 +173,9 @@ def _hydrate(control, name):
         "views": {},
         "links": {},
         "explanations": {},
+        "molecule_activity_root_policy": (
+            "molecule_activity_root_selection_python_equality@1"
+        ),
         "retained_original_machine_requests": tuple(machine_requests),
     }
     for access in accesses.values():
@@ -215,6 +218,34 @@ def _retained_writer():
         importlib.import_module("sabueso.core." + module)
     with pytest.MonkeyPatch.context() as guard:
         block_current(guard)
+        # Historical reenactment only: retain the SDK216 root-return branch from
+        # a759b1d, before exact-origin LIVE navigation. Immutable original files
+        # remain the oracle; this branch never supplies expected observations.
+        from sabueso.core import card_molecule_activity_exploration as live
+
+        current_follow = live.follow
+
+        def original_follow(item):
+            parent, explorer, link = item._view, item._view._explorer, item._entry.value
+            navigation, role = link["molecule_activity_navigation"], link["role"]
+            if role == "molecule_root":
+                matches = [
+                    candidate
+                    for candidate in explorer._session["views"].values()
+                    if candidate.view_ref == navigation["molecule_root_view_ref"]
+                    and live._selection_binding(candidate)
+                    == navigation["molecule_root_selection"]
+                ]
+                if not matches:
+                    from sabueso.core.errors import ArgumentError
+
+                    raise ArgumentError(
+                        "The originating molecule selection is not retained."
+                    )
+                return replace(matches[0], _origin=parent, _request=parent.request)
+            return current_follow(item)
+
+        guard.setattr(live, "follow", original_follow)
         from sabueso.core._molecule_activity_history_v1.selection import normalize
         from sabueso.core.card_bioactivity_history_v2 import options_for_bioactivities
         from sabueso.core.card_literature_history_v1 import options_for_literature

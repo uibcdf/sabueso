@@ -13,7 +13,7 @@ import sabueso
 from sabueso._private.smonitor.warnings import EnrichmentFailedWarning
 from sabueso.core.card import Card
 from sabueso.core.deck import Deck
-from sabueso.core.errors import ArgumentError
+from sabueso.core.errors import ArgumentError, StorageError
 from sabueso.core.measurements import record_source
 from sabueso.core.relationship_store import make_relationship
 from sabueso.core.source_assertion_store import make_source_assertion
@@ -300,7 +300,7 @@ def test_group_record_source_assay_full_publication_and_exact_back(
     )
 
 
-def test_human_machine_projection_quantities_and_saved_roundtrip(pair, tmp_path):
+def test_human_machine_projection_quantities_and_pending_saved_binding(pair, tmp_path):
     molecule, target = pair
     explorer = molecule.explore(related_cards=[target])
     human = explorer.view(TOPIC)
@@ -314,12 +314,17 @@ def test_human_machine_projection_quantities_and_saved_roundtrip(pair, tmp_path)
     )
     assert puw.get_value(decoded, to_unit="nanomolar") == 33000
     assert quantity["manifest"]["unit"] == "nanomolar"
-    assert human.capabilities["save"] and machine.capabilities["save"]
-    assert next(
+    assert not human.capabilities["save"] and not machine.capabilities["save"]
+    descriptor = next(
         entry.value
         for entry in explorer.access.catalog()._entries
         if entry.key == TOPIC
-    )["save"]
+    )
+    assert not descriptor["save"]
+    assert descriptor["root_return_policy"] == (
+        "molecule_activity_root_selection_exact_origin@1"
+    )
+    assert "independent saved reader" in descriptor["save_reason"]
     path = tmp_path / "molecule-activity.json"
     with pytest.MonkeyPatch.context() as guard:
         for name in (
@@ -336,24 +341,21 @@ def test_human_machine_projection_quantities_and_saved_roundtrip(pair, tmp_path)
         ):
             guard.setattr(Card, name, forbidden)
         guard.setattr(Deck, "__init__", forbidden)
-        human.save(path)
-        saved = sabueso.read_exploration(path)
-        assert saved.result_ref == human.result_ref
-        assert saved.native_payload == human.native_payload
-        assert saved.capabilities["save"]
-        assert (
-            saved.explorer.topics().native_payload[TOPIC]["availability"] == "retained"
-        )
-        assert (
-            saved.explorer.access.select(TOPIC).selection_ref == machine.selection_ref
-        )
-        links = saved.items()[0].related()
-        unvisited = next(
-            item
-            for item in links.items()
-            if item._entry.value["role"] == "native_ligand_crossing"
-        )
-        assert unvisited.open().outcome["status"] == "not_saved"
+        for selection in (human, machine):
+            with pytest.raises(StorageError, match="independent saved reader"):
+                selection.save(path)
+            assert not path.exists()
+
+
+def test_machine_first_save_waits_for_corrected_navigation_binding(pair, tmp_path):
+    molecule, target = pair
+    access = molecule.access(related_cards=[target])
+    machine = access.select(TOPIC)
+    assert not machine.capabilities["save"]
+    path = tmp_path / "machine-first.json"
+    with pytest.raises(StorageError, match="independent saved reader"):
+        machine.save(path)
+    assert not path.exists()
 
 
 @pytest.mark.parametrize(
@@ -1038,9 +1040,98 @@ def test_quantity_display_filter_preserves_public_source_and_native_navigation(
         == public_originals["native"]["ligand_explanations"]["bts"]
     )
     returned = link(links, "molecule_root").open()
-    assert returned.view_ref == (selected if grain == "target" else root).view_ref
+    initiating = selected if grain == "target" else root
+    assert returned.view_ref == initiating.view_ref
+    from sabueso.core.snapshot import canonical_json
+
+    assert canonical_json(returned._display_request) == canonical_json(
+        initiating._display_request
+    )
+    assert returned._selected is initiating._selected
     assert calls == [target.id]
     assert before == [card.to_dict() for card in (molecule, target, benz)]
+
+
+@pytest.mark.parametrize("reverse", (False, True))
+@pytest.mark.parametrize("repeated_display", (False, True))
+def test_root_return_keeps_exact_typed_initiating_instance(
+    public_originals, monkeypatch, reverse, repeated_display
+):
+    from sabueso.core.snapshot import canonical_json
+
+    molecule, target = (restored(public_originals, name) for name in ("bts", "target"))
+    before = [molecule.to_dict(), target.to_dict()]
+    original, calls = Card.bioactivities, []
+
+    def counted(card, *args, **kwargs):
+        calls.append(card.id)
+        return original(card, *args, **kwargs)
+
+    monkeypatch.setattr(Card, "bioactivities", counted)
+    root = molecule.explore(related_cards=[target]).answer("measured_targets")
+    operands = [
+        {"value": 33, "unit": "micromolar"},
+        puw.quantity(33, "micromolar", form="pint"),
+    ]
+    if reverse:
+        operands.reverse()
+    selections = [root.filter("measurement", equals=value) for value in operands]
+    assert selections[0].view_ref == selections[1].view_ref
+    assert type(selections[0]._display_request["equals"]["value"]) is (
+        float if reverse else int
+    )
+    for selection, operand in zip(selections, operands, strict=True):
+        if repeated_display:
+            # Same semantic handle and operand, distinct actual no-op operation.
+            selection = selection.filter("measurement", equals=operand)
+        links = selection.items()[0].related()
+        link = next(
+            item
+            for item in links.items()
+            if item._entry.value["role"] == "molecule_root"
+        )
+        returned = link.open()
+        assert canonical_json(returned._display_request) == canonical_json(
+            selection._display_request
+        )
+        assert returned._display_request is selection._display_request
+        assert returned._selected is selection._selected
+        assert returned._explorer is selection._explorer
+        assert returned.back() is links and links.back() is selection
+        assert canonical_json(returned.native_payload) == canonical_json(
+            selection.native_payload
+        )
+    assert calls == [target.id]
+    assert before == [molecule.to_dict(), target.to_dict()]
+
+
+@pytest.mark.parametrize("fault", ("missing", "foreign_instance", "operand_type"))
+def test_root_return_refuses_missing_or_changed_exact_history(public_originals, fault):
+    from dataclasses import replace
+
+    molecule, target = (restored(public_originals, name) for name in ("bts", "target"))
+    root = molecule.explore(related_cards=[target]).answer("measured_targets")
+    first = root.filter("measurement", equals={"value": 33, "unit": "micromolar"})
+    selected = root.filter(
+        "measurement", equals=puw.quantity(33, "micromolar", form="pint")
+    )
+    assert first.view_ref == selected.view_ref
+    links = selected.items()[0].related()
+    link = next(
+        item for item in links.items() if item._entry.value["role"] == "molecule_root"
+    )
+    if fault == "missing":
+        root._explorer._session["views"].pop(id(selected))
+    elif fault == "foreign_instance":
+        root._explorer._session["views"][id(selected)] = first
+    else:
+        value = deepcopy(link._entry.value)
+        value["molecule_activity_navigation"]["molecule_root_selection"][
+            "display_request"
+        ]["equals"]["value"] = 33
+        link = replace(link, _entry=replace(link._entry, value=value))
+    with pytest.raises(ArgumentError, match="originating molecule selection"):
+        link.open()
 
 
 @pytest.mark.parametrize(

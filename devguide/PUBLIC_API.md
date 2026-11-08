@@ -57,16 +57,20 @@ Broader activity/literature and independent
 scientific/researcher acceptance remain pending. See
 [the scoped correction](pending_bugs/bioactivity_interpretation.md).
 
-Development: molecule `activity_context` / `measured_targets` now has working
-@21/@22 persistence over the original retained results. Human and agent catalogs
+Development: molecule `activity_context` / `measured_targets` has working
+@21/@22 reading/resaving over the original retained results. Human and agent catalogs
 identify retained activity and finite saved requests; support/save capabilities
 use the actual recorded source history. A new nonempty display whose operation
 closure was not retained reports unavailable support and refuses saving.
 Human saving with production byte limits and machine-first saving pass their
 focused checkpoint. Complete historical/multi-focal original-file receiving now
 passes all 44 cases; all 54 copied molecule cases also pass. The complete local
-checkpoint covers 9,786 distinct offline cases. Typed root-return follow-up and
-installed/hosted/human acceptance remain open. See [the current state](CHECKPOINT.md) and
+checkpoint covers 9,786 distinct offline cases on its recorded source. New LIVE
+navigation now uses `molecule_activity_root_selection_exact_origin@1`; new LIVE
+molecule saving explicitly waits for that interpretation's genuine original and
+independent saved binding. Its descriptor states the unavailable-save reason.
+Older files retain their original numeric policy. Installed/hosted/human
+acceptance remains open. See [the current state](CHECKPOINT.md) and
 [profile contract](pending_proposals/card_molecule_activity_exploration.md).
 The @21 binding preserves incoming questions across explicit source-backed
 protein/molecule crossings. An inherited question requires its original verified

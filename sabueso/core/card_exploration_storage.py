@@ -119,7 +119,28 @@ def admitted_selection(selection):
     return True
 
 
+def molecule_save_reason(access):
+    """Keep new LIVE navigation out of the older Python-equality file binding."""
+    if access.mode != "live":
+        return None
+    from .card_exploration_molecule_activity import ROOT_RETURN_EQUALITY, is_result
+    from .card_molecule_activity_access import ROOT_RETURN_POLICY, SAVE_REASON
+
+    session = access._exploration_session or {}
+    policy = session.get("molecule_activity_root_policy")
+    if policy == ROOT_RETURN_EQUALITY:
+        return None
+    if policy == ROOT_RETURN_POLICY or any(
+        getattr(value, "wire", None) is not None and is_result(value)
+        for value in access._scientific_cache.values()
+    ):
+        return SAVE_REASON
+    return None
+
+
 def can_save_selection(selection):
+    if molecule_save_reason(selection._access) is not None:
+        return False
     if not admitted_selection(selection):
         return False
     if selection._access.mode == "saved":
@@ -165,6 +186,8 @@ def required_views(root):
 
 
 def can_save(view):
+    if molecule_save_reason(view._explorer.access) is not None:
+        return False
     if not admitted_view(view):
         return False
     if view._explorer.mode == "saved":
@@ -490,6 +513,8 @@ def _objects_for(access, records):
 
 
 def _prepare(root):
+    reason = molecule_save_reason(root._explorer.access)
+    _require(reason is None, reason)
     _require(
         admitted_view(root),
         "Saving derived structures/coverage or their originating trail requires a historical verifier not yet implemented. Save a supported literal/field view or inspect capabilities.",
@@ -2170,6 +2195,8 @@ def save_selection(selection, path, overwrite, **transport_options):
     transport.byte_budget(
         "max_logical_bytes", transport_options.get("max_logical_bytes", 268435456)
     )
+    reason = molecule_save_reason(selection._access)
+    _require(reason is None, reason)
     _require(
         can_save_selection(selection),
         "Scientific selection persistence requires an unsupported historical verifier.",

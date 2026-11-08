@@ -411,8 +411,8 @@ The [nine-case real-file checkpoint](evidence/molecule_activity_real_file_checkp
 now passes the actual SDK211 file, exact source-operation histories,
 transport/resave, fresh inert original replay and six fully rehashed semantic
 refusals. Finish complete SDK205/SDK208 human replay, copied receiving and
-affected adjacent/historical gates next. The current working @21/@22 contract
-advertises saving and its guarded public round trip passes. Complete original
+affected adjacent/historical gates next. That @21/@22 contract
+advertises saving and its guarded public round trip passes on its recorded source. Complete original
 file replay keeps its earlier red evidence. Exact generic destination replay,
 per-graph incoming-anchor verification and retained-machine-request writer
 preparation now pass all 44 original/boundary cases, 443 adjacent cases and the
@@ -421,7 +421,10 @@ complete observer footer. The package-data correction, diagnostic artifacts and
 composed 9,786-case full local checkpoint pass. Record the code handoff and close
 the versioned typed root-return follow-up before declaring this journey complete. The
 [confirmed numeric root-return limitation](pending_bugs/molecule_activity_root_selection_equality.md)
-has its own unfixed follow-up; original predicates retain its observed behavior.
+now has an exact-origin LIVE correction, with a selected 515-case local checkpoint;
+original predicates and the genuine SDK216 saved control retain its observed
+older behavior. New LIVE molecule saving explicitly waits for the corrected
+interpretation's own original and independent saved binding.
 The profile remains unfinished until its complete saved reader is qualified;
 clinical/disease and B6 journeys, B7 acceptance and authorized B8 delivery retain
 their full scope.

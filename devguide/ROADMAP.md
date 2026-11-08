@@ -98,9 +98,11 @@ does not replace installed public-dependency/OS/Python or exact-head hosted gate
 
 Before declaring complete molecule navigation, close the
 [typed root-return limitation](pending_bugs/molecule_activity_root_selection_equality.md).
-Preserve a genuine saved control from the clean pre-fix producer, qualify the
-corrected LIVE interpretation and capture its own original before independent
-versioned saved receiving. A process-only prototype is not a production fix.
+The genuine saved control from the clean pre-fix SDK216 producer is retained.
+The corrected exact-origin LIVE implementation passes its 68 owning cases;
+finish its qualification and capture its own clean original before independent
+versioned saved receiving. New LIVE saving explicitly waits for that binding;
+original @21/@22 files keep their original reading/resaving.
 Clinical/disease and B6 profiles then retain their full accepted scope. Scientific
 and uncoached researcher/agent/workload/actual-consumer acceptance stay open; B8
 and release remain unresumed. Original formats, source assertions and scientific

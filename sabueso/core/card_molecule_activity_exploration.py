@@ -4,7 +4,7 @@ from copy import deepcopy
 from dataclasses import replace
 
 from .card_access import _Entry, _handle
-from .card_molecule_activity_access import TOPIC, materialize
+from .card_molecule_activity_access import ROOT_RETURN_POLICY, TOPIC, materialize
 from .card_molecule_activity_selection_v1 import (
     FORMAT,
     equal,
@@ -13,6 +13,7 @@ from .card_molecule_activity_selection_v1 import (
     validate_equality,
 )
 from .errors import ArgumentError
+from .snapshot import canonical_json
 
 LINK_RULE = "molecule_activity_context_links@1"
 
@@ -20,6 +21,7 @@ LINK_RULE = "molecule_activity_context_links@1"
 def view(explorer, origin, options=None):
     """Open one shared result without changing its original scientific scope."""
     result = materialize(explorer.access, options)
+    explorer._session.setdefault("molecule_activity_root_policy", ROOT_RETURN_POLICY)
     title = {
         "target": "Targets, measurements and assay context",
         "group": "Native measurement groups in the exact target context",
@@ -417,15 +419,17 @@ def follow(item):
             _context_override=_context(parent, navigation, role),
         )
     if role == "molecule_root":
-        matches = [
-            candidate
-            for candidate in explorer._session["views"].values()
-            if candidate.view_ref == navigation["molecule_root_view_ref"]
-            and _selection_binding(candidate) == navigation["molecule_root_selection"]
-        ]
-        if not matches:
+        candidate = _root_view(parent)
+        if (
+            candidate is None
+            or explorer._session["views"].get(id(candidate)) is not candidate
+            or candidate._explorer is not explorer
+            or candidate.view_ref != navigation["molecule_root_view_ref"]
+            or canonical_json(_selection_binding(candidate))
+            != canonical_json(navigation["molecule_root_selection"])
+        ):
             raise ArgumentError("The originating molecule selection is not retained.")
-        return replace(matches[0], _origin=parent, _request=parent.request)
+        return replace(candidate, _origin=parent, _request=parent.request)
     if len(link["candidates"]) == 1:
         if role == "target_card":
             from .card_context_navigation import _destination

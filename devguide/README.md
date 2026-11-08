@@ -79,8 +79,11 @@ inspection pass; the [complete local checkpoint](evidence/molecule_activity_full
 qualifies 9,786 distinct offline cases with an exact discovery union.
 The installed delivery wiring is applied and locally checked; actual installed
 OS/Python, hosted and human/scientific acceptance remain open. The
-[numeric root-return limitation](pending_bugs/molecule_activity_root_selection_equality.md)
-remains unfixed and is preserved explicitly in original reading.
+[numeric root-return correction](pending_bugs/molecule_activity_root_selection_equality.md)
+now binds LIVE navigation to the exact initiating instance and typed request;
+its selected 515-case local checkpoint passes. Genuine older @21/@22 files retain their
+original meaning. New LIVE molecule saving explicitly waits for the corrected
+interpretation's own original and independent saved reader.
 [CHECKPOINT](CHECKPOINT.md) owns the exact active source, results and next action.
 Clinical/disease and B6 journeys follow this reader increment within the full
 accepted plan.

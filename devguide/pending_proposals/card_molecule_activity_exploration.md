@@ -7,6 +7,15 @@ workload, real-consumer and exact-candidate qualification remain separate.
 
 ## Current checkpoint and next action
 
+Current working follow-up: LIVE root returns use
+`molecule_activity_root_selection_exact_origin@1`, preserving the actual
+initiating instance and typed request. The selected 515-case local checkpoint
+passes, including all 68 owning LIVE cases. New LIVE saving explicitly waits for the new
+interpretation's clean original and independent saved binding. Genuine @21/@22
+files remain readable/resavable under their original policy. The clean SDK216
+pre-fix saved control is committed as `190c291`; earlier receipts below retain
+their own source and behavior. See [CHECKPOINT](../CHECKPOINT.md) for current gates.
+
 The complete original's LIVE producer is committed and pushed as **`ddc1fc8` / SDK205**, using
 `[skip ci]`. Editable import/distribution/generated labels agree outside the
 checkout at `0.14.0+205.gddc1fc8`. The
@@ -163,9 +172,10 @@ descriptor still reported `save=False` while admission branches were being quali
 Finish complete SDK205/SDK208 human replay, copied and adjacent/historical gates
 and the public/default-budget contract before claiming admission. Positive file
 cases remove invocation byte limits explicitly; production defaults are unchanged.
-The original numeric root-return defect remains a separate unfixed follow-up.
+The original numeric root-return defect has the separately qualified LIVE/saved
+follow-up described at the top of this page; original files remain unchanged.
 
-The current working source advertises implemented saving, recognizes retained
+That qualified source advertises implemented saving, recognizes retained
 activity in human/agent catalogs and binds saved support/save capabilities to
 the actual source-instance history. An unrecorded nonempty display cannot reuse
 another display's closure. Machine-first saving uses the molecule panel; a
@@ -226,12 +236,12 @@ Implementation:
   projection, candidate-first quantity comparisons and null-last ordering;
 - `card_molecule_activity_exploration.py` implements human/source/return routes;
 - `card_molecule_activity_presentation_v1.py` provides bounded text/HTML;
-- `test_card_molecule_activity_exploration_offline.py` retains all 60 owning
-  public and explicitly synthetic controls; the copied consumer requires all 60.
+- `test_card_molecule_activity_exploration_offline.py` retains all 68 owning
+  public and explicitly synthetic controls; the copied consumer requires the whole module.
 
 Shared access, profile, context-navigation, presentation and storage hooks are
-committed. The current working saved contract advertises saving, with its
-qualification and unresolved complete-original failures recorded in CHECKPOINT.
+committed. Original saved contracts advertise their retained saving scope;
+new LIVE navigation's independent saved binding is pending, as recorded in CHECKPOINT.
 Source/wire/cell interpretation keeps quantities bound to
 `relationships.has_bioactivity.measurement.normalized` and explicit units.
 

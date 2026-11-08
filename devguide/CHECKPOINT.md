@@ -5,6 +5,43 @@ Current working-state checkpoint: **2026-11-07**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Exact-origin LIVE root return — selected local checkpoint
+
+The pre-fix control below is committed locally at `190c291` with `[skip ci]`.
+The working LIVE implementation now uses
+`molecule_activity_root_selection_exact_origin@1`: the actual origin instance,
+retained ownership and canonical typed request must all match. Eight focused
+cases pass in 12.91 s pytest / 14.08 s guarded at 175,153,152 bytes peak RSS,
+zero warnings/swap and 1,170 stable hashes. They cover both numeric creation
+orders, repeated no-op displays, duplicate semantic handles, three damaged
+history refusals and machine-first save refusal. An initial launcher used
+unsupported receptor flags and executed no tests; those usage errors are kept
+separately and the corrected receptor runs own the pass.
+
+New LIVE molecule saving explicitly waits for its own independent saved binding;
+the descriptor and human/machine capability checks agree. Genuine older files
+keep their existing reading/resaving and original numeric policy. Historical
+writer reenactments explicitly select that policy and retain the SDK216 return
+branch; no immutable original or scientific result schema changes.
+
+The [selected local receipt](evidence/molecule_activity_root_exact_live_checkpoint_20261107.json)
+passes **515 distinct cases**: all 68 LIVE cases, 443 adjacent saved/access/
+navigation/quantity cases, genuine SDK216 receiving, the full SDK211 file, and
+complete SDK205 BTS / SDK208 BTS-to-benznidazole file journeys. The focused eight
+cases overlap the 68 and add no distinct count. All gates have complete valid
+receptor accounting, 1,170 unchanged hashes and zero warnings/swap. LIVE takes
+50.17 s / 51.01 s guarded at 483,143,680 bytes RSS with two workers; the 443-case
+gate takes 116.01 s / 117.04 s at 1,119,453,184 bytes RSS with four workers.
+The two older journeys take 353.97 s / 354.99 s at 3,768,467,456 bytes RSS.
+The minimum host available RAM across these gates exceeds 51 GiB. The receipt
+owns the working source against `190c291` with the SDK216 generated label;
+it does not claim a new full-suite or installed-artifact checkpoint.
+
+Next, commit the clean corrected producer and retain its genuine complete
+original before independent new saved reading.
+Then restore new LIVE saving and continue clinical/disease and B6. Exact-head
+hosted/installed and scientific/human acceptance remain open; no release resumes.
+
 ## Typed root-return preparation — clean older file preserved
 
 The clean SDK216 producer at `a759b1d` now supplies a genuine pre-fix @21/@22
@@ -15,7 +52,7 @@ mapping is observed without changing serialization. Capture takes 167.99 s at
 886,374,400 bytes peak RSS; a fresh inert receiver passes the complete original
 in 46.79 s at 367,816,704 bytes RSS. Both have zero swap, unchanged inputs and
 zero network/client attempts. The older numeric return remains intentionally
-visible in this control; production is still unfixed.
+visible in this control; the following LIVE correction never rewrites it.
 
 The [fixture notice](../tests/core/data/README.md#genuine-pre-fix-saved-molecule-control-sdk216)
 owns exact bytes and scope. All 519 packaged members are verified; the first
@@ -33,8 +70,8 @@ in this increment; no complete 55-case pass is claimed. Runtime code is unchange
 The 9,786-case receipt below retains its prior code/test epoch and is not a new
 full-suite claim for this test/control increment.
 
-Next, commit this qualified control, then correct LIVE returns by exact
-initiating instance and typed request. Keep old @21/@22 reading unchanged; the
+This control checkpoint precedes the LIVE correction above. Keep old @21/@22
+reading unchanged; the
 new interpretation needs its own named policy, clean LIVE original and independent
 saved admission. Clinical/disease and B6 follow; B7/B8 remain open.
 
