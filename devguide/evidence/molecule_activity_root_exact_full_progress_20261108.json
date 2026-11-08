@@ -1,11 +1,11 @@
 {
   "owner": "uibcdf/sabueso#148/#112",
-  "state": "Partial complete-checkpoint qualification; large historical controls remain pending",
-  "source_head": "6ae3877829c8bfa513c110c56a9fb26ba46b200e",
-  "runtime_label": "0.14.0+221.g6ae3877",
+  "state": "Historical partial progress record; completed by the separate full checkpoint",
+  "source_head": "f6891c3801776422e68e09f8f7432dfc5056d8da",
+  "runtime_label": "0.14.0+222.gf6891c3",
   "discovered_offline_cases": 10050,
-  "distinct_verified_passes": 9578,
-  "remaining_cases": 472,
+  "distinct_verified_passes": 9633,
+  "remaining_cases": 417,
   "normal_discovery_exact_union": true,
   "full_offline_suite_pass_claimed": false,
   "native_passes": 1553,
@@ -281,7 +281,7 @@
     "sabueso/_private/smonitor/outcomes.py": "2b2e8e83e6617ea91836e5e3078c8172cb434dcda57175950575d2dbf95fb2f7",
     "sabueso/_private/smonitor/warnings.py": "e0febceaa614a649316742294a6cc1cb35254338fb66ae5aa2ab4be361687cc4",
     "sabueso/_smonitor.py": "ac8cf8f243c5624380afcb836c1907573bacdf0215a9d4b0de30b0b904b70f3e",
-    "sabueso/_version.py": "f606310ac82571a5f4db37039c2e8d94a399b697f7431f33248d672c481a5880",
+    "sabueso/_version.py": "de499c4c8d067b471afb204da7f3868913e7fa66cca8c5c21abce895dac1d86b",
     "sabueso/core/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "sabueso/core/_assembly_history_v1/__init__.py": "8ef9017ab1eb525f60072a1d5601f8c76cfa763b60f5747756a868fed2367f46",
     "sabueso/core/_assembly_history_v1/assembly_component_binding_v1.py": "5831ac5f50e5b8783f3fae5b76b5b199502243a12bb05a1b0021dad534670b63",
@@ -1232,7 +1232,10 @@
       "source_count": 1176,
       "source_stable": true,
       "complete_accounting": true,
-      "events_sha256": "b676d50be6cc953f09c07622aaf88e0e22c9a53068558924aa6aa7a18af0d215"
+      "events_sha256": "b676d50be6cc953f09c07622aaf88e0e22c9a53068558924aa6aa7a18af0d215",
+      "only_source_difference_to_current_reference": [
+        "sabueso/_version.py"
+      ]
     },
     {
       "owned_directory": "recovered_work/checkpoint_recovery_20261106/b5-root-exact-full-public-1",
@@ -1269,17 +1272,88 @@
       "source_count": 1176,
       "source_stable": true,
       "complete_accounting": true,
-      "events_sha256": "44bfda884d2dfebe5c7a410b55b60eb586a6e42ee73dafd95519884394747f91"
+      "events_sha256": "44bfda884d2dfebe5c7a410b55b60eb586a6e42ee73dafd95519884394747f91",
+      "only_source_difference_to_current_reference": [
+        "sabueso/_version.py"
+      ]
+    },
+    {
+      "owned_directory": "recovered_work/checkpoint_recovery_20261106/b5-root-exact-full-old-files-1",
+      "state": "PASS",
+      "counts": {
+        "collected": 55,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 55,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 55,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "pytest_s": 1951.9167389760114,
+      "guarded_s": 1952.75,
+      "peak_owned_rss_bytes": 5890744320,
+      "minimum_host_available_bytes": 53445197824,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 10737418240,
+        "host_available_bytes": 17179869184,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 4,
+        "nice": 10,
+        "elapsed_s": 3600,
+        "owned_scratch_bytes": 17179869184
+      },
+      "source_count": 1176,
+      "source_stable": true,
+      "complete_accounting": true,
+      "events_sha256": "f1024ecb5f256e7857ea7713869e546348f17b756f860de69043669a7bdaba26",
+      "only_source_difference_to_current_reference": []
     }
   ],
   "remaining_partitions": {
-    "historical_molecule_files": 55,
     "other_history_storage_and_copied_consumers": 417
   },
   "limits": [
-    "No full-suite pass until all472 remaining controls execute and match normal discovery.",
+    "No full-suite pass until all417 remaining controls execute and match normal discovery.",
     "No runtime implementation, source default, original capsule or Card schema changed.",
     "Actual hosted/installed artifact/OS/Python and B7 scientific/human/agent/workload/consumer acceptance remain open; B8 and release remain paused.",
     "Intermediate checkpoint commits retain[skip ci];#148/#112 own exact-final-head CI/governance recovery through gh-run-receptor before admission."
-  ]
+  ],
+  "progress_history": [
+    {
+      "git_receipt": "f6891c3801776422e68e09f8f7432dfc5056d8da:devguide/evidence/molecule_activity_root_exact_full_progress_20261108.json",
+      "source_head": "6ae3877829c8bfa513c110c56a9fb26ba46b200e",
+      "runtime_label": "0.14.0+221.g6ae3877",
+      "verified": 9578,
+      "remaining": 472
+    }
+  ],
+  "scheduling_incident": {
+    "failed_directory": "recovered_work/checkpoint_recovery_20261106/b5-root-exact-full-other-heavy-1",
+    "exit_code": 3,
+    "executed": 0,
+    "coverage_added": 0,
+    "source_stable": true,
+    "known_provider_issue": "https://github.com/pytest-dev/pytest-xdist/issues/1386",
+    "merged_unreleased_fix": "https://github.com/pytest-dev/pytest-xdist/pull/1388",
+    "observed_versions": {
+      "pytest": "9.2.0",
+      "xdist": "3.8.0"
+    },
+    "observed": "Same-mark4-case probe passed assertions but split2/2 across workers; old _nodeid mutation has no effect. Passing assertions alone do not prove group placement.",
+    "workaround": "Owned controller-level scopes over unchanged original IDs; four-case control puts all4 calls on one worker. Four workers in the current417-case run each verified the full417 normal-discovery IDs and30 declared scopes before execution.",
+    "diagnostic_cases_added_to_scientific_coverage": 0,
+    "external_comment": "Not posted; redundant follow-up withdrawn after maintainer review. Existing upstream issue/fix retained as tracking."
+  },
+  "completed_by": {
+    "receipt": "molecule_activity_root_exact_full_checkpoint_20261108.json",
+    "distinct_passed_cases": 10050,
+    "normal_discovery_exact_union": true
+  }
 }

@@ -431,14 +431,16 @@ older behavior. The corrected clean SDK218 originals now precede the working
 independent logical @23/shared @24 binding. Public LIVE saving is restored and
 all 69 LIVE cases pass. All 24 original-file cases and the full copied LIVE
 consumer also pass. Complete copied exact-origin receiving passes all 254 cases;
-the current selected checkpoint covers 901 distinct cases. Qualify the applicable
-broader offline scope: normal discovery selects 10,050, the exact composed
-passing set covers 9,578 and 472 large historical controls remain pending.
+the selected checkpoint covers 901 distinct cases. The broader offline scope
+is complete: the exact composed passing set covers all
+10,050 normally discovered cases, including all 55 historical molecule-file and
+417 history/storage/copied-consumer controls. Continue the clinical LIVE journey
+and its clean original before independent saved reading, then disease and B6.
 Both installed routes now copy/select all five
 capsules and the complete selected modules; actual installed receiving stays open.
-The profile remains unfinished until its complete saved reader is qualified;
-clinical/disease and B6 journeys, B7 acceptance and authorized B8 delivery retain
-their full scope.
+The independent saved reader is locally qualified. The broader clinical/disease
+and B6 journeys, installed/hosted qualification, B7 acceptance and authorized B8
+delivery retain their full scope.
 
 ## Execution order
 

@@ -19,7 +19,9 @@ projection after @23 integrity verification. Public saving is restored and all
 69 LIVE cases pass. All 24 complete-file cases and the full copied LIVE consumer
 also pass. Complete copied exact-origin receiving passes all 254 cases with
 thirteen byte-identical inputs. The [901-case selected receipt](../evidence/molecule_activity_root_exact_saved_checkpoint_20261108.json)
-records source epochs and limits; broader offline qualification remains next.
+records its source epochs and limits. The [complete current checkpoint](../evidence/molecule_activity_root_exact_full_checkpoint_20261108.json)
+now passes all 10,050 discovered cases. Clinical/disease and B6 work follows;
+installed/hosted and scientific/human acceptance remain separate.
 Genuine @21/@22
 files remain readable/resavable under their original policy. The clean SDK216
 pre-fix saved control is committed as `190c291`; earlier receipts below retain

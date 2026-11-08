@@ -96,8 +96,8 @@ cases, actual wheel/sdist resource inspection and installed diagnostic imports.
 [CHECKPOINT](CHECKPOINT.md) owns exact source epochs and the code handoff. Diagnostic artifact receiving
 does not replace installed public-dependency/OS/Python or exact-head hosted gates.
 
-Before declaring complete molecule navigation, close the
-[typed root-return limitation](pending_bugs/molecule_activity_root_selection_equality.md).
+The [typed root-return correction](pending_bugs/molecule_activity_root_selection_equality.md)
+is implemented and locally qualified.
 The genuine saved control from the clean pre-fix SDK216 producer is retained.
 The corrected exact-origin LIVE implementation passes its selected 515-case
 checkpoint and clean SDK218 originals preserve both operand creation orders.
@@ -105,9 +105,10 @@ The working independent logical @23/shared @24 binding restores public saving;
 all 69 owning LIVE cases pass with eight workers and 10 GiB total owned-tree RSS.
 All 24 complete original-file cases and the full copied LIVE consumer also pass.
 Complete copied exact-origin receiving passes all 254 cases with byte-identical
-inputs; the selected checkpoint covers 901 distinct cases. Qualify the applicable
-broader offline scope: 9,578 of 10,050 discovered cases now have actual passing
-evidence and 472 large historical controls remain pending;
+inputs; the selected checkpoint covers 901 distinct cases. The broader
+offline scope is now complete: the [current receipt](evidence/molecule_activity_root_exact_full_checkpoint_20261108.json)
+verifies all 10,050 discovered cases, including historical files and all remaining
+history/storage/copied-consumer controls;
 original @21/@22 files keep their original reading/resaving.
 Clinical/disease and B6 profiles then retain their full accepted scope. Scientific
 and uncoached researcher/agent/workload/actual-consumer acceptance stay open; B8

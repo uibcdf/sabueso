@@ -5,49 +5,74 @@ Current working-state checkpoint: **2026-11-08**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
-## Complete offline reader checkpoint — in progress
+## Complete offline reader checkpoint — PASS
 
-Current validation source is clean `6ae3877` / editable SDK221. Normal root
-discovery with verified local originals selects **10,050 offline cases**; its
-collection-only execution takes 12.86 s pytest / 14.34 s guarded and executes
-zero cases. The exact partition and source maps are retained under
-`recovered_work/checkpoint_recovery_20261106/b5-root-exact-full-collection-1/`.
-The earlier 901 selected passes remain applicable: all 1,175 implementation,
-test and original-input paths agree; only the generated version label differs.
+The [complete composed local receipt](evidence/molecule_activity_root_exact_full_checkpoint_20261108.json)
+verifies **10,050 distinct offline cases** and an exact union with normal root
+discovery. The ten public native-original skips are all replaced by actual
+native passes. Repeated/copied cases and the isolated scheduling probes add no
+extra coverage. This is local Linux Python 3.14 editable-source qualification;
+it does not supply installed-platform, hosted or scientific/human acceptance.
 
-All **1,553 native-original cases pass** on the current source in 41.87 s /
-42.84 s guarded, at 1,846,644,736 bytes peak owned RSS. Receptor accounting is
-complete and valid, all 1,176 source/input hashes remain stable, and warnings
-and owned swap are zero. Actual selection equals the entire declared native set.
+The code checkpoint remains `7257c65`. Discovery/native/public gates use
+`6ae3877` / SDK221; historical-file and final grouped gates use documentation
+head `f6891c3` / SDK222. The reused 901-case receipt retains its SDK219 source
+epoch and earlier delivery-only differences. Every implementation, test and
+original-input path agrees; the generated label is the sole later source change.
+No implementation, original capsule, native default or Card schema changed
+while completing this qualification.
 
-The disjoint **7,134-case public remainder passes** in
-`b5-root-exact-full-public-1`: 7,124 pass and ten expected native-original skips.
-All ten skipped cases actually pass in the native gate and count once there.
-The run takes 598.47 s pytest / 599.80 s guarded, at 2,984,624,128 bytes peak
-owned RSS, with zero owned swap and complete valid receptor accounting. All
-eight pre-execution selection proofs, source hashes and owned execution-helper
-hashes remain valid. Its thirteen warnings are the intentional negative
-acquisition-failure/truncation controls, preserved in the complete artifact.
+| Actual scope | Distinct passes | Pytest / guarded time | Peak owned RSS |
+| --- | --- | --- | --- |
+| Earlier selected source/copied controls | 901 | Retained selected receipt; repeats count once | At most 8.414 GiB |
+| Verified native originals | 1,553 | 41.87 / 42.84 s | 1.72 GiB |
+| Public remainder | 7,124 | 598.47 / 599.80 s | 2.78 GiB |
+| Historical SDK205/208/211/216 actual files | 55 | 1,951.92 / 1,952.75 s | 5.49 GiB |
+| Remaining history/storage/copied consumers | 417 | 1,865.45 / 1,866.39 s | 6.48 GiB |
 
-The [current progress receipt](evidence/molecule_activity_root_exact_full_progress_20261108.json)
-therefore verifies **9,578 distinct cases** after removing overlaps. It records
-normal discovery, the generated-label-only reuse of 901 cases and replacement
-of all ten public native skips by their actual native passes.
+All gates have complete valid receptor/controller/worker/call accounting and
+stable source/input maps. The public gate retains thirteen intentional negative
+acquisition-failure/truncation warnings; the other new full-checkpoint gates
+have zero warnings. Owned swap is zero throughout. Ordinary gates use eight
+workers and the large cohorts four, within a **10 GiB combined owned-tree RSS**
+ceiling, native threads one and a 16 GiB host-available reserve. Free capacity
+is not a reservation; each launch has its own fresh preflight and supervisor.
 
-The remaining **472 large cases** comprise 55 historical molecule-file cases
-and 417 other history/storage/copied-consumer cases. They remain pending under
-separately reviewed four-worker profiles with a 10 GiB combined RSS ceiling.
-The 55-case gate uses smaller scheduling chunks; the 417-case gate keeps full
-historical modules together and schedules each copied consumer separately.
-These are scheduling choices only; the exact original discovery set is checked
-before execution. Preserve complete scope and original
-efficiency controls, cap native threads at one and retain the 16 GiB host reserve.
-The collection and partition do not constitute a full-suite pass. Close actual
-executions and verify their discovery union before publishing that claim.
+The first 417-case launch stopped before any call because installed pytest 9.2 /
+xdist 3.8 loses `loadgroup` placement, the known
+[xdist #1386 defect](https://github.com/pytest-dev/pytest-xdist/issues/1386).
+[Its fix is merged](https://github.com/pytest-dev/pytest-xdist/pull/1388), but is
+absent from installed 3.8. That terminal error adds zero coverage. The qualified
+owned controller scheduler uses unchanged original node IDs; actual assignment
+confirms all thirty scopes stay on one worker. Project tests, source fixtures
+and installed libraries are unchanged. The maintainer withdrew a redundant
+upstream follow-up; the existing issue/fix remain the provider tracking.
 
-No runtime implementation changes accompany this qualification. Exact-head
-hosted/installed, B7 acceptance and authorized B8 retain their existing scope;
-the complete six-stage goal remains active and release stays paused.
+Local governance and guide-path/anchor checks pass. Ruff and Python 3.11 syntax
+results remain applicable to byte-identical code; only generated ignored version
+metadata differs. Owned temporary-resource review removed fifteen hash-verified
+disposable raw tar expansions (11,433,768,960 bytes), retaining compressed
+originals, actual saved files, receiver outputs and complete receipts. No active
+owned test gate remains.
+
+Full owned receipts, source maps and scheduling proofs remain under
+`recovered_work/checkpoint_recovery_20261106/b5-root-exact-full-*`. The earlier
+9,786-case full and 901-case selected receipts retain their original epochs and
+limits; the new complete receipt owns the current reader checkpoint.
+
+Next implement the rich clinical journey using existing `Card.clinical()`
+semantics: separate source indications, cited trial IDs and fetched registry
+records, with exact source/back navigation and compact-agent parity. Qualify the
+LIVE producer, commit its clean checkpoint and capture its complete genuine
+original before implementing independent saved reading. Continue disease and
+B6 profiles within the complete accepted six-stage program. B2 scientific/default
+review remains deferred; #192's separate aggregation defect remains open.
+
+Exact-final-head CI/governance and installed artifact/OS/Python gates remain
+owned by #148/#112, with gh-run-receptor verification before block admission.
+B7 scientist/researcher/agent/workload/actual-consumer acceptance remains open.
+B8, candidate selection, schema freeze, release and package publication remain
+paused. Intermediate checkpoint commits retain `[skip ci]`.
 
 ## Independent exact-origin saved binding — selected local checkpoint
 

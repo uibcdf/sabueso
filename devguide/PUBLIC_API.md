@@ -73,8 +73,9 @@ to the retained initiating instance and typed request. Public human/machine save
 and mixed target activity pass the 69-case LIVE gate. All 24 complete-file cases
 and the full copied LIVE consumer also pass. Complete copied exact-origin
 receiving passes all 254 cases against the two genuine clean SDK218 originals;
-the selected checkpoint covers 901 distinct cases. Broader offline qualification
-is in progress, with exact scope and outcomes in CHECKPOINT. Older @21/@22 files retain their original numeric policy and
+the selected checkpoint covers 901 distinct cases. Complete composed offline
+qualification now passes all 10,050 discovered cases; exact scope and source
+epochs are recorded in CHECKPOINT. Older @21/@22 files retain their original numeric policy and
 resaving format. Installed/hosted/human
 acceptance remains open. See [the current state](CHECKPOINT.md) and
 [profile contract](pending_proposals/card_molecule_activity_exploration.md).

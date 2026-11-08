@@ -4,8 +4,9 @@ Owner: Sabueso #148/#112. Status: LIVE correction passes its selected local
 checkpoint; the independent @23/@24 saved binding now passes its
 [901-case selected local checkpoint](../evidence/molecule_activity_root_exact_saved_checkpoint_20261108.json).
 Public saving is restored; all 69 LIVE, 24 actual-file and 254 copied exact-origin
-cases pass. Broader offline, hosted/installed and scientific/human qualification
-remain open.
+cases pass. The [complete offline checkpoint](../evidence/molecule_activity_root_exact_full_checkpoint_20261108.json)
+now passes all 10,050 discovered cases. Hosted/installed and scientific/human
+qualification remain open.
 The exact separately approved report is
 [published in #148](https://github.com/uibcdf/sabueso/issues/148#issuecomment-6713763040).
 The returned body matches the reviewed draft byte for byte. Its authorization,

@@ -609,37 +609,52 @@ remain historical scoped controls, not current universal worker/RAM defaults.
 
 ### Current checkpoint partition
 
-The active exact-origin checkpoint discovers **10,050 offline cases** on
-`6ae3877` / SDK221. Its exact partition reuses the 901 selected cases only after
-checking that implementation, tests and original inputs agree; the sole source
-difference is the generated label. Normal public discovery excludes 34 complete
-modules already covered or separately owned, leaving 7,134 cases. The 1,553
-native-original cases execute through normal discovery with
-`--local-source-inputs -m "not online and local_source_inputs"`; the ten public
-native skips are replaced by those actual native passes. The 472 remaining
-large cases split into 55 historical molecule-file and 417 other history/storage/
-copied-consumer cases. Keep their complete scope and reviewed resource bounds.
-The exact node lists and ignore modules belong to the destination-owned
-`b5-root-exact-full-collection-1/collection-receipt.json`; collection executes
-zero cases and does not qualify a complete checkpoint. CHECKPOINT owns actual
-execution outcomes.
+The [complete exact-origin checkpoint](evidence/molecule_activity_root_exact_full_checkpoint_20261108.json)
+passes **10,050 distinct offline cases**, exactly matching normal root discovery.
+It composes 901 earlier selected cases, 1,553 native-original passes, 7,124 public
+passes, 55 historical molecule-file passes and 417 remaining history/storage/
+copied-consumer passes. The ten public native skips are all replaced by their
+actual native passes. Repeated copies and diagnostic scheduling probes add zero
+extra coverage. Product/test/original-input hashes agree across the SDK219/221/
+222 epochs except their explicit generated label and earlier delivery metadata.
 
-Current receiving passes all 1,553 native cases in 41.87 s / 42.84 s guarded at
-1,846,644,736 bytes RSS, then the public remainder passes 7,124 plus ten expected
-native skips in 598.47 s / 599.80 s at 2,984,624,128 bytes RSS. All ten skipped
-cases actually pass in the native gate. Including the 901-case selected receipt,
-the exact composed set has 9,578 distinct passes; 472 large cases remain pending.
-The public gate's thirteen warnings are its intentional negative acquisition
-controls; both gates have zero owned swap and complete receptor/source accounting.
-Use four workers and a 10 GiB total RSS ceiling for the remaining large cohorts,
-with native threads one, a 16 GiB host reserve and separate owned execution.
-The historical molecule-file gate permits 16 GiB scratch and 3,600 s. Its earlier
-four-worker peak is below 7 GiB; eight workers are not an admitted profile for
-that workload. For the other 417 cases, keep historical modules in one scheduling
-group each and give each copied consumer its own group. Record a one-to-one
-mapping from grouped item ids to the unchanged normal-discovery ids. Original
-case byte/time/efficiency controls remain intact. Do not infer a full pass from
-this scheduling plan or from collection alone.
+Normal public discovery excludes 34 complete modules already covered or
+separately owned, leaving 7,134 selected cases. Native-original cases use normal
+root discovery with `--local-source-inputs -m "not online and local_source_inputs"`.
+Exact node lists and ignore modules are retained in the destination-owned
+`b5-root-exact-full-collection-1/collection-receipt.json`. Its collection-only
+execution runs zero cases; the separate execution receipts prove the pass.
+
+The native gate passes in 41.87 s / 42.84 s guarded at 1,846,644,736 bytes RSS;
+the public gate passes 7,124 plus ten expected skips in 598.47 s / 599.80 s at
+2,984,624,128 bytes RSS. Both use eight workers, a 10 GiB combined tree-RSS
+ceiling, native threads one, nice 10 and a 16 GiB host-available reserve. The
+public gate's thirteen warnings are intentional negative acquisition controls.
+All gates have zero owned swap and complete valid receptor/source accounting.
+
+The larger cohorts use four workers, the same 10 GiB total RSS ceiling and
+16 GiB host reserve, with 16 GiB owned scratch and 3,600 s per gate. All 55
+historical molecule-file cases pass in 1,951.92 s / 1,952.75 s at 5,890,744,320
+bytes RSS. All 417 other large cases pass in 1,865.45 s / 1,866.39 s at
+6,961,463,296 bytes RSS. Both have zero warnings. Eight workers remain an
+unqualified profile for the historical large-file workload.
+
+Installed pytest 9.2 / xdist 3.8 loses the `loadgroup` suffix because pytest now
+reads structured IDs; see the already reported
+[xdist #1386](https://github.com/pytest-dev/pytest-xdist/issues/1386) and
+[merged fix #1388](https://github.com/pytest-dev/pytest-xdist/pull/1388).
+The first 417-case launch refuses the mismatch before any call and adds zero
+coverage. The qualified owned workaround uses a controller scope scheduler
+through `pytest_xdist_make_scheduler`, unchanged normal node IDs and
+`--dist=loadscope --no-loadscope-reorder`. Historical modules stay together;
+each copied consumer has its own scope, and measured long groups start first.
+All four workers verify the exact 417 original IDs before execution. Actual
+assignment confirms each of thirty scopes runs on one worker. No installed
+library, project test, fixture or scientific expectation is patched. The
+maintainer withdrew a redundant upstream follow-up; the existing issue/fix
+provide provider tracking. Original case byte/time/efficiency controls remain
+intact. Actual installed artifact/platform, hosted and human/scientific gates
+remain separate from this local software checkpoint.
 
 The earlier 9,786-case checkpoint separates the following modules into individually
 owned gates. Their original capsules, module caches, nested readers or optional
