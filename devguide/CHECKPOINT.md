@@ -5,6 +5,54 @@ Current working-state checkpoint: **2026-11-08**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Disease associations — LIVE selected local checkpoint PASS
+
+The [disease association profile](pending_proposals/card_disease_association_exploration.md)
+now implements human `view("associations")` / `answer("retained_associations")`
+and compact-agent `access.select("associations")`. It retains original
+association/indication/condition occurrences, source roles, input revision pins
+and subject/object direction. Exact MONDO and supported bounded MedGen identity
+paths keep their source steps; conflicts, unfinished paths, missing/misbound
+support, placeholders and foreign subjects stay explicit. Names, related xrefs,
+hierarchy and shared headings do not join identities. Unknown scalar shapes and
+equal repeated conditions retain their original values/locations.
+
+The [selected LIVE receipt](evidence/disease_association_live_checkpoint_20261108.json)
+verifies **1,031 distinct offline cases**, including all **43 owning disease
+cases**, native disease/grouping/identity/deck/acquisition, clinical, nature,
+access/exploration, source/agent/cell/navigation, argument/quantity and
+fixture/licensing/registry controls. The one warning is the existing simulated
+ChEMBL failure control in disease-deck support, not a live outage.
+All **43 owning cases also pass outside checkout** with seven byte-identical
+public inputs, verified placement/import metadata and an exact source/copy set.
+The copied cases add no distinct coverage.
+
+The selected source gate uses eight workers, native threads one, a 10 GiB combined
+RSS ceiling and 16 GiB host reserve. It peaks at **2,243,813,376 bytes** in
+272.79 s / 273.80 s guarded, with zero owned swap. Copied receiving uses one CPU,
+114,872,320 bytes and 4.88 s / 5.79 s guarded, without warnings or swap. Complete
+receptor/controller/worker/call/source/input accounting agrees. Earlier red
+collection/catalog epochs remain red. Ruff, format, Python 3.11 grammar,
+governance, installed copy/select and guide checks accompany this checkpoint.
+
+Original source scores, qualifiers, raw fields and native context remain
+inspectable; no source is acquired or score ranked. Cross-capture source
+navigation returns to the actual initiating view/question. Disease definition,
+identity and hierarchy remain separate, with term status displayed only when
+retained. Native disease grouping/defaults, clinical interpretation, Card schema
+and earlier saved meanings are unchanged.
+
+**Next preserve a genuine complete original from the clean committed LIVE
+producer, before implementing independent disease saved reading.** New disease
+association saving remains unavailable. Continue B6 afterward. This selected
+local editable/copy checkpoint is not complete-repository, installed-artifact,
+hosted or scientific/human admission. Exact-final-head CI/governance remains
+deferred under the intermediate `[skip ci]` route, owned by #148/#112; recover
+through an authorized unskipped route or separately authorized manual runs and
+inspect with gh-run-receptor before block admission. No workflow was dispatched.
+B2 remains deferred, #192 unresolved and B7 acceptance open; B8/candidate/schema
+freeze/release remain unresumed.
+
 ## Independent clinical reader — selected local checkpoint PASS
 
 The independent clinical reader is implemented as logical

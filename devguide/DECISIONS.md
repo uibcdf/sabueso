@@ -1,5 +1,32 @@
 # Sabueso — Decision Log
 
+## 2026-11-08 UTC — Explore disease associations through explicit captured identity
+
+The LIVE `associations` / `retained_associations` routes use the named
+`disease_association_context@1` rule and shared typed human/agent selections.
+Original relationships, UniProt disease xrefs and ClinVar condition occurrences
+remain separate. Each input revision keeps its pin; repeated caller input
+occurrences are recorded without manufacturing independent source observations.
+Relationship subject/object endpoints are different entities, whereas the xrefs
+of one source condition are identifiers asserted for that condition.
+
+Identity uses a coherent focal MONDO anchor, supported MONDO equivalences and
+the existing bounded MedGen concept/UID/MONDO contract. Each step retains its
+original source role, subject and pin. Conflicts and unfinished competing paths
+stay explicit. Names, related xrefs and hierarchy grant no identity, and source
+scores are not normalized or ranked. Native disease grouping/defaults, clinical
+values, source assertions and Card schema stay fixed.
+
+Source navigation switches inspection to the exact supplied capture and returns
+to the actual initiating selection/question. Clinical and protein native context
+and original request states remain inspectable; absence in supplied context is
+not global absence. First-screen term status is reported only when retained.
+The new scientific panel cannot be saved until a genuine clean producer original
+precedes separately qualified independent reading. Earlier saved interpretations
+remain unchanged. Owners: #148/#90/#112; the
+[disease contract](pending_proposals/card_disease_association_exploration.md) and
+[checkpoint](CHECKPOINT.md) own qualification and follow-up.
+
 ## 2026-11-08 UTC — Bind saved clinical exploration to the genuine SDK224 original
 
 Clinical exploration adds logical @25 and optional shared representation @26.

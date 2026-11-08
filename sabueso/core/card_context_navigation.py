@@ -295,6 +295,10 @@ def _link_view(
 
 
 def related(item):
+    if item._view._record_panel == "associations":
+        from .card_disease_association_exploration import links
+
+        return links(item)
     if item._view._record_panel == "clinical":
         from .card_clinical_exploration import links
 
@@ -525,6 +529,10 @@ def _destination(explorer, candidate, origin, title="Referenced source record"):
 
 def follow(item):
     explorer, link = item._view._explorer, item._entry.value
+    if link.get("rule") == "disease_association_context_links@1":
+        from .card_disease_association_exploration import follow as follow_association
+
+        return follow_association(item)
     if link.get("rule") == "clinical_context_links@1":
         if explorer.mode == "saved":
             from .card_exploration_clinical import item_operation

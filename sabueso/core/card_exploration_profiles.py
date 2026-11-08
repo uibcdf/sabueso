@@ -74,7 +74,7 @@ NATURE_TOPICS = {
         "activity_context",
         "clinical",
     ),
-    "disease": ("definition", "classification", "identity"),
+    "disease": ("definition", "classification", "identity", "associations"),
 }
 
 
@@ -129,6 +129,11 @@ QUESTIONS = {
             "Which broader terms are stated?",
             "classification",
             "Retained parent relationships; equivalent and related identifiers have a separate identity route.",
+        ),
+        "retained_associations": _question(
+            "What molecular and clinical associations are retained for this term?",
+            "associations",
+            "Exact identifiers and source-stated equivalents in explicitly supplied Cards; no name/hierarchy joins, causal inference or source acquisition.",
         ),
     },
 }
@@ -283,6 +288,7 @@ RECORD_COLUMNS = {
 
 def record_label(panel, row):
     if panel in (
+        "associations",
         "clinical",
         "activity_context",
         "literature",

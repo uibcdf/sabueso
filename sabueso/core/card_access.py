@@ -407,6 +407,8 @@ class CardAccess:
             if self.profile == "protein"
             else ["chemical_classification", "activity_context", "clinical"]
             if self.profile == "small_molecule"
+            else ["associations"]
+            if self.profile == "disease"
             else []
         )
         scientific_topics.append("literature")
@@ -693,6 +695,20 @@ class CardAccess:
             data["literature"]["selection_availability"] = (
                 "retained_requests_only" if self.mode == "saved" else "live"
             )
+            if self.profile == "disease":
+                from .card_disease_association_access import (
+                    descriptor as association_descriptor,
+                )
+
+                data["associations"] = association_descriptor()
+                data["associations"]["availability"] = (
+                    "live" if self.mode == "live" else "not_saved"
+                )
+                data["associations"]["selection_availability"] = (
+                    "live" if self.mode == "live" else "not_saved"
+                )
+                if self.mode == "saved":
+                    data["associations"]["operations"] = []
             if self.profile == "small_molecule":
                 if self.mode == "saved":
                     from .card_exploration_clinical import (
@@ -956,11 +972,34 @@ class CardAccess:
             "bioactivities",
             "literature",
             "clinical",
+            "associations",
         ):
             raise ArgumentError(
-                "Scientific selection supports structures, ligand_site_comparisons, quaternary_interpretation, assembly_generation, chemical_classification, activity_context, clinical, bioactivities and literature."
+                "Scientific selection supports structures, ligand_site_comparisons, quaternary_interpretation, assembly_generation, chemical_classification, activity_context, clinical, associations, bioactivities and literature."
             )
-        if topic == "clinical":
+        if topic == "associations":
+            from .card_disease_association_access import (
+                materialize,
+                options_for_associations,
+            )
+            from .card_disease_association_selection_v1 import (
+                active,
+                evaluate,
+                normalize,
+                projection,
+                selection_ref,
+            )
+
+            options, fields = options_for_associations(options), projection(fields)
+            query = normalize(where, item_refs, order_by)
+            if self.mode == "saved":
+                from .card_exploration_storage import missing_selection
+
+                return missing_selection(
+                    self, topic, options, fields, query if active(query) else None
+                )
+            result = materialize(self, options)
+        elif topic == "clinical":
             if self.mode == "saved":
                 from .card_exploration_clinical import saved_selection
 
@@ -1307,6 +1346,7 @@ class CardAccess:
                 "bioactivity_exploration@1",
                 "literature_exploration@1",
                 "clinical_exploration@1",
+                "disease_association_exploration@1",
             ):
                 return selection._scientific.frame(self, selection, entry)
             from .card_structure_page import complete_frame
@@ -1351,6 +1391,10 @@ class CardAccess:
         return frame
 
     def _defer(self, item):
+        if item.get("adapter") == "disease_association_exploration@1":
+            from .card_disease_association_access import defer_frame
+
+            return defer_frame(item)
         if item.get("adapter") == "clinical_exploration@1":
             from .card_clinical_history_v1 import defer_frame
 

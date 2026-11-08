@@ -141,6 +141,7 @@ def _opening(view):
                 ("identifiers.mondo", "MONDO identifier"),
                 ("annotations.definition", "Ontology definition"),
                 ("names.synonyms", "Scoped synonyms"),
+                ("annotations.term_status", "Retained term status"),
             )
         )
         for path, label in fields:
@@ -706,6 +707,8 @@ def _parts(view):
             if view._record_panel == "activity_context"
             else "Which chemical classes and source-stated roles are retained?"
             if view._record_panel == "chemical_classification"
+            else "What molecular and clinical associations are retained for this term?"
+            if view._record_panel == "associations"
             else request["question"]
         )
         opening.append(f"Question: {question_label}")
@@ -773,6 +776,18 @@ def _parts(view):
         from .card_chemical_presentation_v1 import opening as chemical_opening
 
         opening.extend(chemical_opening(view, preview))
+    if view._record_panel == "associations":
+        from .card_disease_association_presentation_v1 import (
+            opening as association_opening,
+        )
+
+        opening.extend(association_opening(view, preview))
+    if view.context.get("adapter") == "disease_association_context_links@1":
+        from .card_disease_association_presentation_v1 import (
+            context_opening as association_context,
+        )
+
+        opening.extend(association_context(view, preview))
     if view._record_panel == "clinical":
         from .card_clinical_presentation_v2 import opening as clinical_opening
 
@@ -1010,6 +1025,11 @@ def _parts(view):
                     f"{preview(value['availability'])} · {len(value['candidates'])} captured destinations",
                 )
             )
+            continue
+        if view._record_panel == "associations":
+            from .card_disease_association_presentation_v1 import display_row
+
+            rows.append(display_row(item, index, preview))
             continue
         if view._record_panel == "clinical":
             from .card_clinical_presentation_v2 import display_row
@@ -1287,6 +1307,10 @@ def _parts(view):
 
 
 def _headers(view):
+    if view._record_panel == "associations":
+        from .card_disease_association_presentation_v1 import HEADERS
+
+        return list(HEADERS)
     if view._record_panel == "clinical":
         from .card_clinical_presentation_v2 import HEADERS
 

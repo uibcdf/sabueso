@@ -442,7 +442,11 @@ and all 40 copied clinical cases. Clean SDK224 / `66989a4` and its
 precede the independent @25/@26 reader. Its original-file and admission controls
 pass in the [805-case selected saved checkpoint](evidence/clinical_saved_checkpoint_20261108.json),
 with all 91 copied clinical cases and exact diagnostic wheel/sdist resources.
-Continue disease and B6. The 10,050-case receipt does not qualify
+The [disease association LIVE profile](pending_proposals/card_disease_association_exploration.md)
+now implements explicit supplied-context association/indication/condition routes
+with source-bound MONDO/MedGen paths and original direction. Its [1,031-case selected checkpoint](evidence/disease_association_live_checkpoint_20261108.json)
+and all 43 copied owning cases pass. Preserve the clean genuine original, then implement
+independent saved reading. B6 retains its full accepted scope. The 10,050-case receipt does not qualify
 this changed clinical source.
 Both installed routes copy/select the complete owning modules and required
 original capsules; actual installed receiving stays open.

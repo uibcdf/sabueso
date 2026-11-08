@@ -120,7 +120,11 @@ and admission controls now pass in the
 [805-case selected saved checkpoint](evidence/clinical_saved_checkpoint_20261108.json),
 with all 91 copied clinical cases and exact diagnostic wheel/sdist resources. The preceding full reader
 receipt does not qualify this changed clinical source.
-Disease and B6 profiles retain their full accepted scope. Scientific
+The [disease association LIVE profile](pending_proposals/card_disease_association_exploration.md)
+now implements explicit supplied-context association/indication/condition routes
+with source-bound MONDO/MedGen paths and original direction. Its [1,031-case selected checkpoint](evidence/disease_association_live_checkpoint_20261108.json)
+and all 43 copied owning cases pass. Preserve the clean genuine original, then implement
+independent saved reading. B6 retains its full accepted scope. Scientific
 and uncoached researcher/agent/workload/actual-consumer acceptance stay open; B8
 and release remain unresumed. Original formats, source assertions and scientific
 defaults stay fixed under their named interpretations.

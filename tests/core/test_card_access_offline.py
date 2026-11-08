@@ -96,6 +96,8 @@ def test_complete_literal_reconstruction(nature):
         if nature == "protein"
         else ["chemical_classification", "activity_context", "clinical"]
         if nature == "small_molecule"
+        else ["associations"]
+        if nature == "disease"
         else []
     ) + ["literature"]
 

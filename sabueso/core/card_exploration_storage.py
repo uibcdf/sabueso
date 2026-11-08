@@ -2051,6 +2051,15 @@ def saved_topic(explorer, topic, origin, options):
         options is not None and not isinstance(options, dict)
     ):
         raise ArgumentError("Use a declared topic key and options mapping or None.")
+    if topic == "associations":
+        from .card_disease_association_access import options_for_associations
+
+        options_for_associations(options)
+        return not_saved(
+            explorer,
+            "Independent original disease association saved reading is not implemented.",
+            origin,
+        )
     if topic == "clinical":
         from .card_exploration_clinical import saved_topic as clinical_topic
 
@@ -2151,6 +2160,8 @@ def saved_topic(explorer, topic, origin, options):
 
 
 def saved_answer(explorer, question, options, origin):
+    if question == "retained_associations" and explorer.profile == "disease":
+        return saved_topic(explorer, "associations", origin, options)
     if question == "clinical_context" and explorer.profile == "small_molecule":
         from .card_exploration_clinical import saved_topic as clinical_topic
 

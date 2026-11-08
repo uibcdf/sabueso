@@ -412,8 +412,8 @@ def test_coverage_source_states_and_unknown_counts_are_not_reclassified(
         ),
         (
             "disease",
-            {"definition", "classification", "identity"},
-            {"meaning", "classification"},
+            {"definition", "classification", "identity", "associations"},
+            {"meaning", "classification", "retained_associations"},
         ),
     ],
 )

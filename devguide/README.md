@@ -48,6 +48,16 @@ to [CHECKPOINT](CHECKPOINT.md); execution budgets belong to the
 uses applicable local checks and authorized CI batching. Historical green
 receipts do not qualify a changed working tree or later candidate artifacts.
 
+The [retained disease association profile](pending_proposals/card_disease_association_exploration.md)
+is the active B5 increment: human and typed agent routes share original
+relationship, indication and condition occurrences in explicitly supplied
+captures. Source-supported MONDO/MedGen identity paths, direction, unknowns and
+exact source/back context stay visible. The [1,031-case selected LIVE checkpoint](evidence/disease_association_live_checkpoint_20261108.json)
+and all 43 copied owning cases pass. A genuine clean producer original must
+precede independent saved reading; new association saving remains unavailable.
+Definition, identity and hierarchy remain separate. [CHECKPOINT](CHECKPOINT.md)
+owns current results and next actions.
+
 The [clinical LIVE profile](pending_proposals/card_clinical_exploration.md) now
 shares native indications, individual cited-trial occurrences and retained
 registry contexts between human and compact-agent routes. Its

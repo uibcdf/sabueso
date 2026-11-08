@@ -12,6 +12,21 @@ For contributor context and current qualification, read [ONBOARDING](ONBOARDING.
 and [CHECKPOINT](CHECKPOINT.md). The development additions below do not establish
 published delivery; the [entry-point reference](#entry-point) follows them.
 
+Development disease `Card.explore().view("associations")` and
+`answer("retained_associations")` share a captured result with
+`explorer.access.select("associations")`. Supply molecular context through
+`related_cards`; exploration acquires nothing. Original association directions,
+indication and condition occurrences retain role-bound sources and exact
+MONDO/MedGen identifier paths. Typed selection and original source/back navigation
+are available. Definition, hierarchy and identity remain separate. This is
+scoped source knowledge, not diagnosis, target validity, causality or efficacy.
+The [disease association contract](pending_proposals/card_disease_association_exploration.md)
+and [selected 1,031-case receipt](evidence/disease_association_live_checkpoint_20261108.json)
+own the local scope, including complete 43-case copied receiving.
+[CHECKPOINT](CHECKPOINT.md) owns current next actions. Disease association
+saving remains unavailable until a genuine clean LIVE original and separately
+qualified independent reader exist.
+
 Development small-molecule `Card.explore().view("clinical")` and
 `answer("clinical_context")` share retained native `Card.clinical()` knowledge
 with `explorer.access.select("clinical")`. The
