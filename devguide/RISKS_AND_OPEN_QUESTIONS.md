@@ -1,5 +1,15 @@
 # Sabueso — Risks and Open Questions
 
+Packaging metadata (#112/#35): the corrected wheel/sdist build succeeds with
+setuptools 84.2.1 but warns that the TOML-table `project.license` form is
+deprecated. Review a compatible SPDX metadata transition together with the
+current `setuptools>=68` build floor before installed qualification closes.
+The backend's stated migration date is a warning, not a reproduced enforcement
+failure. Preserve the MIT licence and source-rights contracts. A concrete report
+is retained for private maintainer handoff in
+`b5-package-artifact-build-1/license-metadata-issue112-draft-1.md` under
+`recovered_work/checkpoint_recovery_20261106/`; publication authorization is pending.
+
 Native reference context (#148): the current original focal UniProt sequence
 assertions retain entry/sequence versions and checksums but omit the sequence
 update date. The new interval finding therefore leaves date agreement unknown,

@@ -13,7 +13,7 @@ import sabueso
 from sabueso._private.smonitor.warnings import EnrichmentFailedWarning
 from sabueso.core.card import Card
 from sabueso.core.deck import Deck
-from sabueso.core.errors import ArgumentError, StorageError
+from sabueso.core.errors import ArgumentError
 from sabueso.core.measurements import record_source
 from sabueso.core.relationship_store import make_relationship
 from sabueso.core.source_assertion_store import make_source_assertion
@@ -300,7 +300,7 @@ def test_group_record_source_assay_full_publication_and_exact_back(
     )
 
 
-def test_human_machine_projection_quantities_and_explicit_save_refusal(pair, tmp_path):
+def test_human_machine_projection_quantities_and_saved_roundtrip(pair, tmp_path):
     molecule, target = pair
     explorer = molecule.explore(related_cards=[target])
     human = explorer.view(TOPIC)
@@ -314,10 +314,46 @@ def test_human_machine_projection_quantities_and_explicit_save_refusal(pair, tmp
     )
     assert puw.get_value(decoded, to_unit="nanomolar") == 33000
     assert quantity["manifest"]["unit"] == "nanomolar"
-    assert not human.capabilities["save"]
-    with pytest.raises(StorageError, match="independent|historical"):
-        human.save(tmp_path / "unsupported.json")
-    assert not (tmp_path / "unsupported.json").exists()
+    assert human.capabilities["save"] and machine.capabilities["save"]
+    assert next(
+        entry.value
+        for entry in explorer.access.catalog()._entries
+        if entry.key == TOPIC
+    )["save"]
+    path = tmp_path / "molecule-activity.json"
+    with pytest.MonkeyPatch.context() as guard:
+        for name in (
+            "__init__",
+            "from_dict",
+            "bioactivities",
+            "explain_bioactivity",
+            "explain_measurement",
+            "ligands",
+            "explain_ligand",
+            "literature",
+            "explain_literature",
+            "knowledge_state",
+        ):
+            guard.setattr(Card, name, forbidden)
+        guard.setattr(Deck, "__init__", forbidden)
+        human.save(path)
+        saved = sabueso.read_exploration(path)
+        assert saved.result_ref == human.result_ref
+        assert saved.native_payload == human.native_payload
+        assert saved.capabilities["save"]
+        assert (
+            saved.explorer.topics().native_payload[TOPIC]["availability"] == "retained"
+        )
+        assert (
+            saved.explorer.access.select(TOPIC).selection_ref == machine.selection_ref
+        )
+        links = saved.items()[0].related()
+        unvisited = next(
+            item
+            for item in links.items()
+            if item._entry.value["role"] == "native_ligand_crossing"
+        )
+        assert unvisited.open().outcome["status"] == "not_saved"
 
 
 @pytest.mark.parametrize(

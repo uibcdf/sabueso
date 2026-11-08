@@ -79,62 +79,32 @@ receiving pass the [9,466-case full local checkpoint](evidence/literature_saved_
 Hosted/artifact qualification and human acceptance remain open; continue the
 remaining molecule-target/context and broader B4–B6 profiles.
 
-The [molecule activity-context LIVE implementation](pending_proposals/card_molecule_activity_exploration.md)
-now joins exact source-stated molecule identities to supplied target captures.
-The [selected 1,133-case checkpoint](evidence/molecule_activity_live_checkpoint_20261107.json)
-passes owning/shared/native/profile/historical and copied gates. The corrected
-clean LIVE producer is `ddc1fc8` / SDK205 and its
-[complete original](evidence/molecule_activity_live_original_20261107.json)
-preserves all 29 scenarios before independent saved reading. Implement that
-reader next. This remains part of the open B4/B5 scope, followed by clinical/disease
-and B6 profiles; it does not supply B7 acceptance or resume B8.
+The [molecule activity-context profile](pending_proposals/card_molecule_activity_exploration.md)
+joins exact source-stated molecule identities to supplied target captures. Its
+SDK205, SDK208 and SDK211 genuine originals remain immutable. The current
+@21/@22 writer and independent reader pass 44 complete-original/boundary cases,
+264 joined private/LIVE cases and 443 adjacent cases on their recorded source;
+all 54 copied molecule cases also pass. The
+[capability receipt](evidence/molecule_activity_saved_capabilities_checkpoint_20261107.json)
+owns exact source epochs, earlier red results and qualification limits. Earlier
+private foundations and producer receipts remain linked from the profile analysis.
 
-Pre-capture receiving found and corrected literal source-record membership
-inside native copy/parent context. The
-[726-case correction checkpoint](evidence/molecule_activity_identity_checkpoint_20261107.json)
-keeps complete native context, exact alias scope and all original controls.
-Its complete original now retains 6,035 byte-verified members, including full
-493-record inputs and original 9/459-link contexts. Independent saved reading
-remains open. This does not change native scientific defaults or historical formats.
+The [complete composed local checkpoint](evidence/molecule_activity_full_checkpoint_20261107.json)
+passes all 9,786 distinct offline cases. Its first public remainder exposed a
+package-data omission; the one-path correction passes the existing package-data
+cases, actual wheel/sdist resource inspection and installed diagnostic imports.
+[CHECKPOINT](CHECKPOINT.md) owns exact source epochs and the code handoff. Diagnostic artifact receiving
+does not replace installed public-dependency/OS/Python or exact-head hosted gates.
 
-The independent private molecule-activity predicates pass their
-[87-case selected checkpoint](evidence/molecule_activity_frozen_checkpoint_20261107.json),
-including every original scientific wire, native crossing and typed machine
-request/cell. Integrate saved admission, full original human/source/origin routes,
-transport/resave and copied receiving next. Public saving remains false and the
-entire B4/B5 slice stays open; this is not B7 acceptance or B8 resumption.
-
-New cross-focal receiving found a
-[native crossing cache defect](pending_bugs/molecule_activity_cross_focal_cache.md)
-outside the original's one-focal-per-case scope. Its correction scopes the cache
-to the exact molecule capture and requires a corrected clean producer with
-supplemental genuine multi-focal routes before new saved admission. Keep the original SDK205
-capsule unchanged; the private predicate foundation does not close this gap.
-The corrected clean `142618d` / SDK208 producer now supplies that
-[supplement](evidence/molecule_activity_multifocal_original_20261107.json), with
-all three multi-focal journeys, 176 human views, 24 machine requests/pages and
-complete original source/publication context. Continue full saved admission and
-original replay over both capsules; observing these LIVE routes is not saved
-UI/origin or researcher acceptance.
-
-The [retained-result restoration foundation](evidence/molecule_activity_retained_checkpoint_20261107.json)
-passes 75 private cases over both originals, including all 119 molecule wires and
-335 machine pages with scientific recalculation blocked during restoration.
-Integrate explicit saved admission, complete original human/source/origin,
-semantic whole-bundle tampering, transport/resave, fresh inert reading and copied
-receiving. This foundation does not finish the molecule profile or enable saving.
-
-Reader integration also reproduced a
-[quantity display/source-navigation defect](pending_bugs/molecule_activity_quantity_display.md).
-Its [735-case selected correction](evidence/molecule_activity_quantity_display_checkpoint_20261107.json)
-preserves original science and JSON operands while making PyUnitWizard display
-requests serializable. Qualify the clean producer and positive original controls,
-then continue saved admission and complete original replay. B4/B5 remain open.
-The corrected clean `af5180b` / SDK211 producer now supplies
-[positive original controls](evidence/molecule_activity_quantity_original_20261107.json)
-with all observed view instances and parent identities, six quantity-form/grain
-routes and complete public source/publication inputs. Integrate all three original
-capsules into independent saved receiving next; this capture does not close B4/B5.
+Before declaring complete molecule navigation, close the
+[typed root-return limitation](pending_bugs/molecule_activity_root_selection_equality.md).
+Preserve a genuine saved control from the clean pre-fix producer, qualify the
+corrected LIVE interpretation and capture its own original before independent
+versioned saved receiving. A process-only prototype is not a production fix.
+Clinical/disease and B6 profiles then retain their full accepted scope. Scientific
+and uncoached researcher/agent/workload/actual-consumer acceptance stay open; B8
+and release remain unresumed. Original formats, source assertions and scientific
+defaults stay fixed under their named interpretations.
 
 Continue the rich profiles through the
 [current destination actions](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions)

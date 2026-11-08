@@ -9,6 +9,25 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Molecule original saved reader and package-data checkpoint (2026-11-07, #148/#112)
+
+The [complete local receipt](../evidence/molecule_activity_full_checkpoint_20261107.json)
+qualifies 9,786 distinct offline cases with exact discovery/phase accounting.
+New @21/@22 saving retains actual operation histories, original typed requests,
+cross-focal/source/native/back navigation and all three immutable originals.
+The 54-case outside-checkout payload passes. The package-data correction is
+qualified by the existing regression, actual wheel/sdist membership/bytes and
+separate installed diagnostic imports; it changes no build/runtime requirement.
+Earlier failed, incomplete and stopped attempts supply no passing coverage.
+
+Use the authorized intermediate `[skip ci]` route. Record the exact committed/
+pushed head, source maps, generated/editable metadata and clean-head repeats in
+`recovered_work/checkpoint_recovery_20261106/b5-molecule-reader-commit-1/`.
+Cumulative exact-final-head CI and governance recovery through gh-run-receptor
+remain owned by #148/#112; no remote workflow is dispatched here. Actual installed
+public-dependency/OS/Python receiving, typed root-return follow-up, the remaining
+rich panels and B7 acceptance stay open; B8 and release remain unresumed.
+
 ### Corrected quantity-display original (2026-11-07, #148/#112)
 
 The [SDK211 original](../evidence/molecule_activity_quantity_original_20261107.json)

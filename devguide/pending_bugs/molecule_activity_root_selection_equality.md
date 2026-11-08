@@ -48,6 +48,20 @@ check is not a correction of current LIVE behavior.
 
 ## Proposed follow-up
 
+An isolated process-only prototype now binds the return to the actual initiating
+target view in the origin chain, verifies retained-instance membership and exact
+canonical selection binding, and preserves its typed display request. Four
+comparison cases use both creation orders of JSON integer and PyUnitWizard float
+operands. Current LIVE loses the second request's type in either order; the
+prototype preserves both original requests, scientific payload and back route.
+Each case evaluates the target once, with unchanged inputs and zero network or
+acquisition attempts. The supervised experiment takes 8.05 s at 245,923,840 bytes
+peak RSS and zero swap; all 1,169 protected source hashes stay unchanged.
+Evidence is retained in `b5-root-return-prototype-1` under
+`recovered_work/checkpoint_recovery_20261106/`, owned by #148/#112 until the
+versioned correction is implemented and qualified. This is not a production fix,
+new genuine original or saved-reading qualification; the status remains unfixed.
+
 Bind future LIVE returns to the initiating display request with its original
 types, or to an explicit retained instance identity. Qualify coexisting JSON-node
 and PyUnitWizard requests, no-op filters, duplicate semantic handles and their
@@ -55,3 +69,10 @@ actual back histories. Preserve original saved interpretations under their
 versioned predicates; do not silently normalize old operands or regenerate
 originals. The exact rule/version and regression scope remain implementation
 work under #148, before claiming complete saved navigation.
+
+Before changing LIVE, preserve a representative genuine @21/@22 saved control
+from the next clean qualified producer. Current original-file writer helpers
+reenact UI operations through LIVE functions; a corrected return must not be
+used to regenerate SDK211's historical expectation. Keep that older meaning
+under explicit original predicates and qualify a separately versioned new
+interpretation against its own clean LIVE original.

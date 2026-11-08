@@ -344,6 +344,7 @@ class CardAccess:
                             "ligand_site_exploration@1",
                             "bioactivity_exploration@1",
                             "literature_exploration@1",
+                            "molecule_activity_context_exploration@1",
                         )
                         else rebound._entries
                     )
@@ -699,6 +700,22 @@ class CardAccess:
 
                     data["activity_context"] = activity_context_descriptor()
                     data["activity_context"]["availability"] = "live"
+                elif (
+                    self._exploration_session is not None
+                    and self._exploration_session.get("format")
+                    == "sabueso.card_exploration@21"
+                ):
+                    from .card_exploration_molecule_activity import (
+                        descriptor as activity_context_descriptor,
+                    )
+
+                    data["activity_context"] = activity_context_descriptor()
+                    data["activity_context"].update(
+                        availability="retained"
+                        if "activity_context" in self.capabilities["scientific_topics"]
+                        else "not_saved",
+                        selection_availability="retained_requests_only",
+                    )
                 else:
                     data["activity_context"] = {
                         "key": "activity_context",
@@ -906,6 +923,17 @@ class CardAccess:
                 "Scientific selection supports structures, ligand_site_comparisons, quaternary_interpretation, assembly_generation, chemical_classification, activity_context, bioactivities and literature."
             )
         if topic == "activity_context":
+            if (
+                self.mode == "saved"
+                and self._exploration_session is not None
+                and self._exploration_session.get("format")
+                == "sabueso.card_exploration@21"
+            ):
+                from .card_exploration_molecule_activity import saved_selection
+
+                return saved_selection(
+                    self, fields, options, where, item_refs, order_by
+                )
             from .card_molecule_activity_selection_v1 import (
                 active,
                 evaluate,
@@ -1256,7 +1284,10 @@ class CardAccess:
 
     def _defer(self, item):
         if item.get("adapter") == "molecule_activity_context_exploration@1":
-            from .card_molecule_activity_access import defer_frame
+            if self.mode == "saved":
+                from ._molecule_activity_history_v1.adapter import defer_frame
+            else:
+                from .card_molecule_activity_access import defer_frame
 
             return defer_frame(item)
         if item.get("adapter") == "literature_exploration@1":

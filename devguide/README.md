@@ -55,76 +55,35 @@ passes its selected 1,109-case local checkpoint, committed at `276160a`, after a
 the [saved receipt](evidence/bioactivity_saved_checkpoint_20261106.json) owns the
 scope and limits. The broader B4 and human/scientific acceptance remain open.
 
-The next [molecule-to-supplied-target activity journey](pending_proposals/card_molecule_activity_exploration.md)
-has a selected LIVE checkpoint: explicit source identity joins retain exact
-target captures, native measurements and full source/publication navigation. Its
-earlier 45-case owning and adjacent/historical/copied gates total
-[1,133 distinct local passes](evidence/molecule_activity_live_checkpoint_20261107.json).
-The [identity-membership correction](evidence/molecule_activity_identity_checkpoint_20261107.json)
-adds six controls and passes the complete 51-case cohort plus affected shared,
-native/profile and copied gates: 726 distinct cases with their own source binding.
-The clean corrected producer is `ddc1fc8` / SDK205; its
-[complete genuine original](evidence/molecule_activity_live_original_20261107.json)
-preserves 29 scenarios, 1,337 human views and 288 machine requests with all 311 pages before
-independent saved reading. Saving awaits that independent reader. The checkpoint
-distinguishes this unfinished profile from full-source, installed and human
-qualification.
+The [molecule-to-supplied-target activity journey](pending_proposals/card_molecule_activity_exploration.md)
+connects exact source-stated molecule identities to explicitly supplied target
+captures, native measurements and full source/publication context. Its genuine
+SDK205, SDK208 and SDK211 originals remain immutable. The current @21/@22 writer
+and independent saved reader preserve source-instance operation history, exact
+cross-focal destinations and original inherited questions; current Cards,
+scientific readers and clients are forbidden during original receiving.
 
-The independent molecule-activity predicate foundation now passes its
-[87-case selected checkpoint](evidence/molecule_activity_frozen_checkpoint_20261107.json):
-99 original scientific wires, 26 native crossings and all 288 machine requests/cells
-across 311 pages. It keeps current Cards/readers/clients out of verification.
-Explicit saved admission, human/source/origin replay, transport and copied
-receiving remain open; this private foundation does not enable public saving.
+The current implementation passes **44 complete original-file/boundary cases**,
+**264 joined private/LIVE cases** and **443 adjacent cases** on their recorded
+source epoch. The [capability receipt](evidence/molecule_activity_saved_capabilities_checkpoint_20261107.json)
+owns those results and their earlier red epochs; the
+[first real-file receipt](evidence/molecule_activity_real_file_checkpoint_20261107.json)
+retains the SDK211 transport/resave and semantic-refusal foundation. Human/agent
+catalogs recognize retained activity, and support/save capabilities require the
+actual retained operation closure. A public LIVE round trip uses production byte
+limits; complete original-file controls explicitly declare their larger scope.
 
-Cross-focal receiving also exposed a [native crossing cache defect](pending_bugs/molecule_activity_cross_focal_cache.md):
-after explicit molecule → target → molecule navigation, a shared cache could
-return the previous molecule's crossing. The correction scopes that cache to
-the exact focal capture, including distinct snapshots with the same Card ID.
-Its [765-case selected checkpoint](evidence/molecule_activity_cross_focal_checkpoint_20261107.json)
-passes LIVE, private original, affected shared/native/profile and copied gates.
-The clean corrected `142618d` / SDK208 producer now supplies a
-[genuine supplemental original](evidence/molecule_activity_multifocal_original_20261107.json):
-three multi-focal routes with 176 human views and 24 machine requests/pages,
-complete source/publication contexts and both exact molecule pins. The SDK205
-original stays byte-identical. Resume full independently versioned saved admission
-and original human/source/origin replay next.
-
-Retained molecule-result restoration now passes its own
-[75-case private checkpoint](evidence/molecule_activity_retained_checkpoint_20261107.json).
-It reads recorded row order, native memberships and exact-scope retained crossing
-wrappers without scientific recalculation. It is an input to full saved admission;
-it does not enable public saving or qualify saved human/source/origin navigation.
-
-The [private original human binding](evidence/molecule_activity_human_binding_checkpoint_20261107.json)
-now receives all 104 SDK211 view instances and six machine requests with current
-Cards/science/clients/digesters and LIVE molecule UI helpers forbidden. Its
-206-case selected gate includes the prior 75 private cases and two public
-save-refusal/discovery cases. Full original SDK205/SDK208 human replay and complete
-file admission, transports/resave and fresh inert/copied receiving remain open.
-The [numeric root-return limitation](pending_bugs/molecule_activity_root_selection_equality.md)
-is confirmed and unfixed; the historical binding preserves the observed original
-operand types and Python equality interpretation explicitly. Public saving stays
-disabled; the checkpoint owns exact source, qualification and continuation.
-
-Its [joined 206-case requalification](evidence/molecule_activity_human_binding_isolation_checkpoint_20261107.json)
-corrects a test import-alias leak and runs both private modules followed by the
-public refusal/discovery cases in the same fresh process. The next useful
-deliverable is the complete real-file/inert-reader journey, retaining each
-source operation's actual history; the independent file reader remains open.
-
-The [PyUnitWizard display boundary correction](evidence/molecule_activity_quantity_display_checkpoint_20261107.json)
-passes 735 selected cases, including the complete 60-case LIVE profile. Quantity
-filters now keep their source/back/publication/native routes; existing JSON-node
-operands keep their original types and units. The
-[owning update](https://github.com/uibcdf/sabueso/issues/148#issuecomment-6712960392)
-records the reproduced defect. Qualify the clean correction and preserve positive
-controls before finishing saved admission; no saved format is enabled here.
-The clean correction is now `af5180b` / SDK211; its
-[genuine positive original](evidence/molecule_activity_quantity_original_20261107.json)
-retains all 104 observed view instances, 96 named routes and six machine requests,
-including exact parent identities for equal view handles. Resume full saved
-admission and original replay over SDK205, SDK208 and SDK211 next.
+All 54 copied molecule cases pass outside the checkout with complete accounting
+and byte-identical inputs. The package-data correction and actual artifact
+inspection pass; the [complete local checkpoint](evidence/molecule_activity_full_checkpoint_20261107.json)
+qualifies 9,786 distinct offline cases with an exact discovery union.
+The installed delivery wiring is applied and locally checked; actual installed
+OS/Python, hosted and human/scientific acceptance remain open. The
+[numeric root-return limitation](pending_bugs/molecule_activity_root_selection_equality.md)
+remains unfixed and is preserved explicitly in original reading.
+[CHECKPOINT](CHECKPOINT.md) owns the exact active source, results and next action.
+Clinical/disease and B6 journeys follow this reader increment within the full
+accepted plan.
 
 The [shared literature catalog](pending_proposals/card_literature_exploration.md)
 has its B4 LIVE producer committed: four new modules and their dispatch wiring

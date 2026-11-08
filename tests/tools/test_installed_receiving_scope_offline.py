@@ -1049,3 +1049,51 @@ def test_declared_bioactivity_literature_v2_runs_with_only_genuine_public_capsul
             )
         )
         assert not (stage / "temp_data").exists()
+
+
+def test_installed_molecule_files_deliver_the_complete_original_payload():
+    root = Path(__file__).resolve().parents[2]
+    modules = (
+        "test_card_saved_molecule_activity_offline.py",
+        "test_card_saved_molecule_activity_originals_offline.py",
+    )
+    helpers = (
+        "test_card_molecule_activity_binding_offline.py",
+        "test_card_molecule_activity_history_offline.py",
+    )
+    capsules = (
+        "molecule_activity_live_sdk205.tar.gz",
+        "molecule_activity_multifocal_live_sdk208.tar.gz",
+        "molecule_activity_quantity_live_sdk211.tar.gz",
+    )
+    for path, job in (
+        (".github/workflows/ci.yml", "ackredit-pilot"),
+        (".github/workflows/test_staged_conda_package.yaml", "install"),
+    ):
+        workflow = (root / path).read_text(encoding="utf-8")
+        section = re.search(
+            rf"(?ms)^  {re.escape(job)}:\n(.*?)(?=^  [a-zA-Z0-9_-]+:\n|\Z)",
+            workflow,
+        )[1]
+        lines = section.splitlines()
+        for name in (*modules, *helpers, *capsules):
+            assert sum("cp " in line and name in line for line in lines) == 1
+        command = re.search(r"python -m pytest (.+)", section.replace("\\\n", " "))
+        selected = shlex.split(command[1])
+        assert all(selected.count(name) == 1 for name in modules)
+        assert all(name not in selected for name in helpers)
+        # Both installed routes execute all cases serially. The local copied
+        # parallel gate is separate evidence, not an installed-matrix pass.
+        assert "--collect-only" not in selected and "-k" not in selected
+        assert "timeout-minutes: 240" in section
+        for variable in (
+            "OPENMM_CPU_THREADS",
+            "OMP_NUM_THREADS",
+            "OPENBLAS_NUM_THREADS",
+            "MKL_NUM_THREADS",
+            "NUMEXPR_NUM_THREADS",
+            "NUMBA_NUM_THREADS",
+        ):
+            assert f'{variable}: "1"' in section
+        assert "tests/core/data/README.md" in section
+        assert "temp_data" in section

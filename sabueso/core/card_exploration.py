@@ -617,6 +617,10 @@ class CardItem:
                 return self._view._explorer._answer(self._entry.key, {}, self._view)
             return self._view._explorer._topic(self._entry.key, self._view)
         if self._view._record_panel == "activity_context":
+            if self._view._explorer.mode == "saved":
+                from .card_molecule_activity_operations_v1 import saved_item
+
+                return saved_item(self, "open")
             from .card_molecule_activity_exploration import open_item
 
             return open_item(self)
@@ -667,6 +671,17 @@ class CardItem:
                 title=f"Structure {self.label}",
                 presentation="detail",
             )
+        context = self._view._context_override
+        if (
+            isinstance(context, dict)
+            and context.get("adapter") == "molecule_activity_context_links@1"
+            and self._entry.location["kind"] == "card"
+            and self._entry.location["card_ref"]
+            != self._view._explorer.access._focal.pin
+        ):
+            from .card_exploration_molecule_activity import open_retained_child
+
+            return open_retained_child(self)
         return replace(
             self._view._explorer._inspect(
                 self._entry.location, self._view, title=self.label
@@ -1105,6 +1120,13 @@ class CardView:
             capabilities["related"] = bool(keys) and all(
                 key in self._explorer._session["links"] for key in keys
             )
+            from .card_exploration_molecule_activity import FORMAT, is_view
+
+            if self._explorer._session.get("format") == FORMAT and is_view(self):
+                from .card_molecule_activity_operations_v1 import has_operation
+
+                capabilities["explain"] = has_operation(self, "explanations")
+                capabilities["related"] = has_operation(self, "links")
         return capabilities
 
     @property
@@ -1381,7 +1403,10 @@ class CardView:
         """Select exact declared cells without changing the scientific result."""
         self._check_column(column)
         if self._record_panel == "activity_context":
-            from .card_molecule_activity_exploration import display_filter
+            if self._explorer.mode == "saved":
+                from .card_exploration_molecule_activity import display_filter
+            else:
+                from .card_molecule_activity_exploration import display_filter
 
             return display_filter(self, column, equals)
         if self._record_panel == "literature":
@@ -1503,7 +1528,10 @@ class CardView:
         if unit is not None and (not isinstance(unit, str) or not unit.strip()):
             raise ArgumentError("unit requires a nonempty unit name or None.")
         if self._record_panel == "activity_context":
-            from .card_molecule_activity_exploration import display_sort
+            if self._explorer.mode == "saved":
+                from .card_exploration_molecule_activity import display_sort
+            else:
+                from .card_molecule_activity_exploration import display_sort
 
             return display_sort(self, column, descending, unit)
         if self._record_panel == "literature":
@@ -1709,6 +1737,7 @@ class CardExplorer:
                 for view in views
                 if view._record_panel
                 in (
+                    "activity_context",
                     "bioactivities",
                     "literature",
                     "chemical_classification",

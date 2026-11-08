@@ -2,10 +2,13 @@
 
 Only original retained values are exposed. Independent expected predicates
 authenticate science, source membership, original order and native crossings.
-Storage dispatch and public saving remain disabled until complete qualification.
+Explicit @21/@22 storage dispatch uses these bindings. Full profile, historical
+and consumer qualification remains separate from the selected local checkpoints.
 """
 
-from copy import deepcopy
+from contextlib import contextmanager
+from contextvars import ContextVar
+from copy import copy, deepcopy
 from dataclasses import replace
 
 from ._molecule_activity_history_v1.selection import (
@@ -42,12 +45,23 @@ LINK_RULE = "molecule_activity_context_links@1"
 # Preserve that historical interpretation; never rewrite either retained operand.
 ROOT_RETURN_EQUALITY = "molecule_activity_root_selection_python_equality@1"
 ADAPTERS = (*PREVIOUS_ADAPTERS, ADAPTER)
+_INCOMING_ANCHORS = ContextVar("molecule_incoming_verification_anchors", default=None)
 SCHEMA = {
     "kind": "molecule_activity_context",
     "grain": "one exact supplied target context, native group or source activity record under explicit molecule identity",
     "columns": list(COLUMNS),
     "presentations": ["summary", "table", "detail"],
 }
+
+
+def descriptor():
+    """Expose the independent original contract with explicit storage dispatch."""
+    from ._molecule_activity_history_v1.adapter import descriptor as original
+
+    result = original()
+    result["save"] = True
+    result.pop("save_reason", None)
+    return result
 
 
 def require(condition, message):
@@ -160,6 +174,10 @@ def register_bundle(bundle, objects, access):
             not is_context(view)
             or view._context_override.get("activity_context")
             != "native_ligand_crossing"
+            or view._origin is None
+            or not view._origin._link_panel
+            or view._origin.native_payload.get("rule") != LINK_RULE
+            or view._display_request is not None
         ):
             continue
         navigation = view._context_override["molecule_activity_navigation"]
@@ -345,6 +363,7 @@ def _saved_topic_view(explorer, options):
             and view._explorer.access._focal_key == explorer.access._focal_key
             and view._display_request is None
             and view._machine_ref is None
+            and view.request is None
             and view._selection._operation == "read"
             and view._selected == view._selection._entries
             and canonical_json(view.native_payload)
@@ -376,98 +395,6 @@ def saved_topic(explorer, origin, options=None):
     )
 
 
-def open_item(item):
-    from .card_exploration_storage import not_saved
-
-    parent, row = item._view, item._entry.value
-    options = deepcopy(parent._selection._scientific.options)
-    if row["kind"] == "activity_context_target":
-        options.update(target_card_ref=row["target_card_ref"], measurement_ref=None)
-    elif row["kind"] == "activity_context_group":
-        options.update(
-            target_card_ref=row["target_card_ref"],
-            measurement_ref=row["measurement_ref"],
-        )
-    else:
-        for view in parent._explorer._session["views"].values():
-            if (
-                view._saved_state is not None
-                and is_view(view)
-                and view.result_ref == parent.result_ref
-                and view._display_request is None
-                and len(view._selected) == 1
-                and view._selected[0].location == item._entry.location
-                and view.presentation == "detail"
-                and canonical_json(view.native_payload) == canonical_json(row["item"])
-                and view._origin is not None
-                and is_view(view._origin)
-            ):
-                return replace(
-                    view,
-                    _explorer=parent._explorer,
-                    _origin=parent,
-                    _display_request=None,
-                    _request=parent.request,
-                )
-        return not_saved(
-            parent._explorer,
-            "This original source-record detail was not retained.",
-            parent,
-        )
-    view = _saved_topic_view(parent._explorer, options)
-    if view is None:
-        return not_saved(
-            parent._explorer,
-            "This exact original molecule drill-down was not retained.",
-            parent,
-        )
-    return replace(
-        view,
-        _explorer=parent._explorer,
-        _origin=parent,
-        _request=parent.request,
-        _display_request=None,
-    )
-
-
-def follow(item):
-    from .card_exploration_storage import not_saved
-
-    parent, link, explorer = item._view, item._entry.value, item._view._explorer
-    navigation, role = link["molecule_activity_navigation"], link["role"]
-    if role == "molecule_root":
-        for view in explorer._session["views"].values():
-            if (
-                view.view_ref == navigation["molecule_root_view_ref"]
-                and _selection_binding(view) == navigation["molecule_root_selection"]
-            ):
-                return replace(view, _origin=parent, _request=parent.request)
-    for view in explorer._session["views"].values():
-        if (
-            view._saved_state is None
-            or not is_context(view)
-            or view._display_request is not None
-            or view._context_override.get("activity_context") != role
-            or canonical_json(
-                view._context_override.get("molecule_activity_navigation")
-            )
-            != canonical_json(navigation)
-            or view._origin is None
-            or not view._origin._link_panel
-            or canonical_json(view._origin.native_payload)
-            != canonical_json(parent.native_payload)
-        ):
-            continue
-        return replace(
-            view, _origin=parent, _display_request=None, _request=parent.request
-        )
-    return not_saved(
-        explorer,
-        "This exact visited molecule activity endpoint was not retained.",
-        parent,
-    )
-
-
 def _selection_binding(view):
     return {
         "view_ref": view.view_ref,
@@ -487,6 +414,68 @@ def _original_context(view):
     return {**view._explorer.access.context, "mode": "live"}
 
 
+def _incoming_bioactivity_question(view):
+    """Bind an inherited protein question to its explicit @21 molecule crossing."""
+    from . import card_exploration_bioactivity_v2 as bioactivity
+    from .card_exploration_verification_v21 import _verify_links
+
+    request = view.request
+    require(
+        isinstance(request, dict)
+        and set(request) == {"question", "topic", "options"}
+        and request["question"] == "measured_molecules"
+        and request["topic"] == bioactivity.TOPIC,
+        "Unsupported incoming protein question at a molecule destination.",
+    )
+    access = view._explorer.access
+    chain, current, seen = [], view, set()
+    while current is not None and (is_view(current) or is_context(current)):
+        require(id(current) not in seen, "Incoming molecule history is cyclic.")
+        seen.add(id(current))
+        same(current.request, request, "incoming molecule original protein question")
+        require(
+            current._explorer.access._focal_key == access._focal_key
+            and current._explorer.access._inputs == access._inputs,
+            "Incoming molecule history changed its exact captured scope.",
+        )
+        chain.append(current)
+        current = current._origin
+    require(
+        chain
+        and is_view(chain[-1])
+        and current is not None
+        and current._link_panel
+        and current.native_payload.get("rule")
+        in ("retained_context_links@2", "retained_context_links@7")
+        and current._explorer.access.profile == "protein"
+        and access.profile == "small_molecule"
+        and current._explorer.access._inputs == access._inputs,
+        "Incoming molecule question has no original protein destination link.",
+    )
+    same(request, current.request, "molecule original incoming protein question")
+    bioactivity._question(current)
+    _verify_links(current)
+    matches = []
+    for entry in current._selected:
+        link = entry.value
+        if link["role"] not in ("object", "candidate"):
+            continue
+        for candidate in link["candidates"]:
+            if candidate["capture"] != access._focal_key:
+                continue
+            full = access._resolve(candidate["location"])[1]
+            if (
+                full["kind"] == "card"
+                and full["card_ref"] == access._focal.pin
+                and full["snapshot_id"] == access._focal.snapshot
+            ):
+                matches.append(entry.key)
+    require(
+        len(matches) == 1,
+        "Incoming molecule question lost its exact declared object/candidate.",
+    )
+
+
 def _question(view, result=None):
     parent, request = view._origin, view.request
     inherited = parent is not None and (is_view(parent) or is_context(parent))
@@ -494,6 +483,8 @@ def _question(view, result=None):
         same(request, parent.request, "molecule originating question continuity")
     if request is None:
         return
+    if isinstance(request, dict) and request.get("question") == "measured_molecules":
+        return _incoming_bioactivity_question(view)
     require(
         isinstance(request, dict)
         and set(request) == {"question", "topic", "options"}
@@ -583,6 +574,7 @@ def _filter_result(view, column, equals):
 
 def display_filter(view, column, equals):
     from ._molecule_activity_history_v1.selection import quantity_node
+    from .card_molecule_activity_operations_v1 import NODE, recorded_display
 
     entries, outcome = _filter_result(view, column, equals)
     operand = (
@@ -592,12 +584,24 @@ def display_filter(view, column, equals):
         and not isinstance(equals, dict)
         else deepcopy(equals)
     )
+    operation = {
+        "operation": "filter",
+        "column": column,
+        "equals": operand,
+        "filter_policy": SELECTION_FORMAT,
+    }
+    retained = recorded_display(view, operation)
+    if retained is not None:
+        return retained
     return replace(
         view,
         _selected=entries,
         _origin=view,
         _status=outcome["status"],
         _reason=outcome["reason"],
+        _saved_state={**view._saved_state, NODE: None}
+        if view._saved_state is not None
+        else None,
         _display_request={
             "operation": "filter",
             "column": column,
@@ -608,6 +612,8 @@ def display_filter(view, column, equals):
 
 
 def display_sort(view, column, descending=False, unit=None):
+    from .card_molecule_activity_operations_v1 import NODE, recorded_display
+
     entries = sorted_entries(
         view._selected,
         view._selection._scientific,
@@ -615,10 +621,23 @@ def display_sort(view, column, descending=False, unit=None):
         descending=descending,
         unit=unit,
     )
+    operation = {
+        "operation": "sort",
+        "column": column,
+        "descending": descending,
+        "unit": unit,
+        "selection_policy": SELECTION_FORMAT,
+    }
+    retained = recorded_display(view, operation)
+    if retained is not None:
+        return retained
     return replace(
         view,
         _selected=tuple(entries),
         _origin=view,
+        _saved_state={**view._saved_state, NODE: None}
+        if view._saved_state is not None
+        else None,
         _display_request={
             "operation": "sort",
             "column": column,
@@ -1397,6 +1416,36 @@ def verify_explanation(view, record):
     _literal_state(view, record)
 
 
+def _endpoint_entries(view, parent, role):
+    """Distinguish original equal labels by their exact retained destinations."""
+    choices = [
+        entry
+        for entry in parent._selected
+        if entry.value["role"] == role
+        and (
+            entry.value["label"] == view.title
+            or view.native_payload == {"link": entry.value}
+        )
+    ]
+    if len(choices) > 1:
+        access = view._explorer.access
+        full = access._resolve(view._selection._target["location"])[1]
+        choices = [
+            entry
+            for entry in choices
+            if len(entry.value["candidates"]) == 1
+            and canonical_json(
+                access._resolve(entry.value["candidates"][0]["location"])[1]
+            )
+            == canonical_json(full)
+        ]
+    require(
+        len(choices) == 1,
+        "Molecule endpoint has no unique exact original destination.",
+    )
+    return choices
+
+
 def verify_context(view, record):
     """Bind each visited endpoint to its original row, pins and actual parent."""
     if view._link_panel:
@@ -1405,6 +1454,9 @@ def verify_context(view, record):
         return verify_explanation(view, record)
     access, anchor = view._explorer.access, _anchor(view)
     parent = anchor._origin
+    if parent is not None and is_context(parent) and not parent._link_panel:
+        _question(view)
+        return _verify_literal_descendant(view, record, anchor, parent)
     require(
         parent is not None and parent._link_panel and is_context(parent),
         "Molecule endpoint lost its original link/back context.",
@@ -1417,14 +1469,7 @@ def verify_context(view, record):
         navigation,
         "molecule endpoint navigation scope",
     )
-    choices = [
-        link
-        for link in parent.native_payload["links"]
-        if link["role"] == role
-        and (link["label"] == anchor.title or anchor.native_payload == {"link": link})
-    ]
-    require(len(choices) == 1, "Molecule endpoint has no unique original destination.")
-    link = choices[0]
+    link = _endpoint_entries(anchor, parent, role)[0].value
     require(len(link["candidates"]) <= 1, "Unsupported molecule endpoint ambiguity.")
     require(
         not any(
@@ -1625,3 +1670,415 @@ def verify_literature_view(view, record):
         "Incoming publication view lost its explicit exact target destination.",
     )
     return previous_view(replace(view, _request=None), record)
+
+
+def saved_answer(explorer, options, origin):
+    from .card_exploration_storage import not_saved
+
+    options = options_for_activity_context(options)
+    request = {"question": "measured_targets", "topic": TOPIC, "options": options}
+    for view in explorer._session.get("original_nodes", {}).values():
+        if (
+            is_view(view)
+            and view._explorer.access._focal_key == explorer.access._focal_key
+            and view._machine_ref is None
+            and view._display_request is None
+            and view._selected == view._selection._entries
+            and view.request == request
+            and view._selection._scientific.options == options
+        ):
+            return replace(
+                view,
+                _explorer=explorer,
+                _origin=explorer._origin if origin is None else origin,
+            )
+    return not_saved(
+        explorer, "This exact original molecule question was not retained.", origin
+    )
+
+
+def _verify_literal_descendant(view, record, anchor, parent):
+    access = view._explorer.access
+    full = access._resolve(anchor._selection._target["location"])[1]
+    require(
+        any(access._resolve(entry.location)[1] == full for entry in parent._selected),
+        "Molecule literal descendant was not an original selected child.",
+    )
+    same(
+        anchor._context_override,
+        parent._context_override,
+        "molecule descendant inherited context",
+    )
+    same(
+        view._context_override,
+        parent._context_override,
+        "molecule descendant display context",
+    )
+    require(
+        anchor._context_only == parent._context_only
+        and view._context_only == parent._context_only
+        and anchor._machine_ref is None
+        and view._machine_ref is None,
+        "Molecule descendant changed its original availability/operation kind.",
+    )
+    _literal_selection(anchor, full)
+    if view is not anchor:
+        _literal_selection(view, full)
+    status = "ok" if anchor._selection.count else "empty"
+    reason = None if anchor._selection.count else "This retained container is empty."
+    require(
+        anchor._status == status and anchor._reason == reason,
+        "Molecule descendant changed its literal availability.",
+    )
+    native = access._resolve(full)[0]
+    same(record["native_payload"], native, "molecule descendant complete original node")
+    require(
+        record.get("native_encoding", "json") == "json",
+        "Unknown molecule descendant encoding.",
+    )
+    context = record["state"]["context"]
+    require(
+        context.get("mode") in ("live", "saved"),
+        "Unknown saved molecule descendant mode.",
+    )
+    same(
+        context,
+        {**parent._context_override, "mode": context["mode"]},
+        "molecule descendant saved context",
+    )
+    _literal_state(view, record)
+    return native
+
+
+def open_retained_child(item):
+    """Inspect an actual child of an explicit molecule/target context endpoint."""
+    from .card_exploration import CardView
+
+    parent, access = item._view, item._view._explorer.access
+    require(
+        is_context(parent) and any(entry is item._entry for entry in parent._selected),
+        "Molecule context child is outside its originating displayed scope.",
+    )
+    _, location = access._resolve(item.payload_location)
+    navigation = parent._context_override["molecule_activity_navigation"]
+    require(
+        location["kind"] == "card"
+        and location["card_ref"]
+        in (navigation["molecule_card_ref"], navigation["target_card_ref"]),
+        "Molecule context child has a foreign original capture.",
+    )
+    selection = access.read(location)
+    return CardView(
+        parent._explorer,
+        selection,
+        selection._entries,
+        item.label,
+        parent,
+        _context_override=deepcopy(parent._context_override),
+        _request=parent.request,
+        _status="ok" if selection.count else "empty",
+        _reason=None if selection.count else "This retained container is empty.",
+    )
+
+
+@contextmanager
+def verification_scope():
+    """Keep anchor proofs only while one private, owned graph is being verified."""
+    token = _INCOMING_ANCHORS.set({})
+    try:
+        yield
+    finally:
+        _INCOMING_ANCHORS.reset(token)
+
+
+def _verify_incoming_anchor(kind, anchor):
+    cache = _INCOMING_ANCHORS.get()
+    key = (kind, id(anchor))
+    if cache is not None and cache.get(key) is anchor:
+        return
+    verifier = {
+        "bioactivity": verify_bioactivity_view,
+        "literature": verify_literature_view,
+    }[kind]
+    verifier(
+        anchor,
+        {
+            "state": anchor._saved_state,
+            "native_payload": anchor.native_payload,
+            "native_encoding": "json",
+        },
+    )
+    if cache is not None:
+        cache[key] = anchor
+
+
+def _same_original_history(left, right):
+    """Compare exact captured scope and every original back step, never names."""
+    seen = set()
+    while left is not None and right is not None:
+        pair = (id(left), id(right))
+        if pair in seen:
+            return False
+        seen.add(pair)
+        if (
+            left._explorer.access._focal_key != right._explorer.access._focal_key
+            or left._explorer.access._inputs != right._explorer.access._inputs
+            or canonical_json(_selection_binding(left))
+            != canonical_json(_selection_binding(right))
+            or canonical_json(left._context_override)
+            != canonical_json(right._context_override)
+            or canonical_json(left.native_payload)
+            != canonical_json(right.native_payload)
+        ):
+            return False
+        left, right = left._origin, right._origin
+    return left is None and right is None
+
+
+def saved_declared_destination(explorer, candidate, origin):
+    """Replay a recorded protein-to-molecule overview with its exact history."""
+    from .card_exploration import CardExplorer
+
+    session, access = explorer._session, explorer.access
+    if (
+        explorer.mode != "saved"
+        or session.get("format") != FORMAT
+        or access.profile != "protein"
+        or origin is None
+        or not origin._link_panel
+        or origin.native_payload.get("rule")
+        not in ("retained_context_links@2", "retained_context_links@7")
+    ):
+        return None
+    _, full = access._resolve(candidate["location"])
+    captured = access._captures[candidate["capture"]]
+    if (
+        full["kind"] != "card"
+        or full["segments"]
+        or full["card_ref"] != captured.pin
+        or full["snapshot_id"] != captured.snapshot
+        or not any(
+            canonical_json(candidate) == canonical_json(value)
+            for entry in origin._selected
+            for value in entry.value["candidates"]
+        )
+    ):
+        return None
+    choices = [
+        view
+        for view in session.get("original_nodes", {}).values()
+        if view._route_catalog
+        and view.title == "Card overview"
+        and view.presentation == "summary"
+        and view.request is None
+        and view._display_request is None
+        and view._explorer.access._focal_key == candidate["capture"]
+        and view._explorer.access._inputs == access._inputs
+        and view._explorer.access.profile == "small_molecule"
+        and _same_original_history(view._origin, origin)
+    ]
+    if not choices:
+        return None
+    first = choices[0]
+    require(
+        all(
+            canonical_json(_selection_binding(view))
+            == canonical_json(_selection_binding(first))
+            and canonical_json(view.native_payload)
+            == canonical_json(first.native_payload)
+            for view in choices
+        ),
+        "Recorded molecule destination overviews disagree under the same history.",
+    )
+    destination = object.__new__(CardExplorer)
+    destination._access = access._for_capture(candidate["capture"])
+    destination._coverage_result = None
+    destination._origin = origin
+    destination._navigation_cache = explorer._navigation_cache
+    destination._session = session
+    return replace(first, _explorer=destination, _origin=origin)
+
+
+def _literature_bridge(view):
+    """Verify the incoming molecule question before the frozen publication grammar."""
+    from . import card_exploration_literature as literature
+
+    request = view.request
+    if request is None or request.get("question") != "measured_targets":
+        return view
+    chain, current, seen = [], view, set()
+    while current is not None and (
+        literature.is_view(current)
+        or literature.is_context(current)
+        or (
+            current._link_panel
+            and current.native_payload.get("rule") == literature.LINK_RULE
+        )
+    ):
+        require(id(current) not in seen, "Incoming publication history is cyclic.")
+        seen.add(id(current))
+        same(
+            current.request,
+            request,
+            "incoming publication original question continuity",
+        )
+        require(
+            current._explorer.access._focal_key == view._explorer.access._focal_key,
+            "Incoming publication history changed its exact target capture.",
+        )
+        chain.append(current)
+        current = current._origin
+    require(
+        chain and literature.is_view(chain[-1]),
+        "Incoming publication support has no original publication view.",
+    )
+    anchor = chain[-1]
+    _verify_incoming_anchor("literature", anchor)
+    parent = current
+    for original in reversed(chain):
+        clone = copy(original)
+        object.__setattr__(clone, "_request", None)
+        object.__setattr__(clone, "_origin", parent)
+        parent = clone
+    return parent
+
+
+def verify_literature_context(view, record):
+    from .card_exploration_literature import verify_context as original
+
+    return original(_literature_bridge(view), record)
+
+
+def verify_literature_links(view, record):
+    from .card_exploration_literature import verify_links as original
+
+    return original(_literature_bridge(view), record)
+
+
+def verify_bioactivity_view(view, record):
+    from .card_exploration_bioactivity_v2 import verify_view as original
+
+    request = view.request
+    if not isinstance(request, dict) or request.get("question") != "measured_targets":
+        return original(view, record)
+    parent, access = view._origin, view._explorer.access
+    require(
+        parent is not None and parent._link_panel and is_context(parent),
+        "Incoming bioactivity question has no original molecule target crossing.",
+    )
+    verify_links(parent)
+    _question(parent)
+    same(request, parent.request, "bioactivity original incoming molecule question")
+    navigation = parent._context_override["molecule_activity_navigation"]
+    require(
+        navigation["target_card_ref"] == access._focal.pin
+        and access.profile == "protein"
+        and any(
+            link["role"] == "target_card"
+            and any(
+                candidate["capture"] == access._focal_key
+                for candidate in link["candidates"]
+            )
+            for link in parent.native_payload["links"]
+        ),
+        "Incoming bioactivity view lost its explicit exact target destination.",
+    )
+    return original(replace(view, _request=None), record)
+
+
+def _bioactivity_bridge(view):
+    from . import card_exploration_bioactivity_v2 as bioactivity
+
+    request = view.request
+    if not isinstance(request, dict) or request.get("question") != "measured_targets":
+        return view
+    chain, current, seen = [], view, set()
+    while current is not None and (
+        bioactivity.is_view(current)
+        or bioactivity.is_context(current)
+        or bioactivity.is_explanation(current)
+        or (
+            current._link_panel
+            and current.native_payload.get("rule") == bioactivity.LINK_RULE
+        )
+    ):
+        require(id(current) not in seen, "Incoming bioactivity history is cyclic.")
+        seen.add(id(current))
+        same(
+            current.request,
+            request,
+            "incoming bioactivity original question continuity",
+        )
+        require(
+            current._explorer.access._focal_key == view._explorer.access._focal_key,
+            "Incoming bioactivity history changed its exact target capture.",
+        )
+        chain.append(current)
+        current = current._origin
+    require(
+        chain and bioactivity.is_view(chain[-1]),
+        "Incoming bioactivity support has no original scientific view.",
+    )
+    anchor = chain[-1]
+    _verify_incoming_anchor("bioactivity", anchor)
+    parent = current
+    for original in reversed(chain):
+        clone = copy(original)
+        object.__setattr__(clone, "_request", None)
+        object.__setattr__(clone, "_origin", parent)
+        parent = clone
+    return parent
+
+
+def verify_bioactivity_context(view, record):
+    from . import card_exploration_bioactivity_v2 as bioactivity
+
+    anchor, seen = view, set()
+    while anchor._display_request is not None:
+        require(
+            id(anchor) not in seen
+            and anchor._origin is not None
+            and bioactivity.is_context(anchor._origin),
+            "Bioactivity literal display has a cyclic or foreign origin.",
+        )
+        seen.add(id(anchor))
+        require(
+            anchor._selection.selection_ref == anchor._origin._selection.selection_ref
+            and anchor.result_ref == anchor._origin.result_ref,
+            "Bioactivity literal display changed its original request.",
+        )
+        anchor = anchor._origin
+    parent = anchor._origin
+    if parent is not None and bioactivity.is_context(parent) and not parent._link_panel:
+        require(
+            not any(
+                (
+                    view._record_panel,
+                    view._field_panel,
+                    view._link_panel,
+                    view._route_catalog,
+                    view._question_catalog,
+                    view._focus,
+                    view._component_navigation,
+                )
+            )
+            and view._selection._scientific is None
+            and view._explorer.access._focal_key == parent._explorer.access._focal_key,
+            "Bioactivity literal child changed its original presentation or capture.",
+        )
+        bioactivity._question(_bioactivity_bridge(view))
+        return _verify_literal_descendant(view, record, anchor, parent)
+
+    return bioactivity.verify_context(_bioactivity_bridge(view), record)
+
+
+def verify_bioactivity_links(view):
+    from .card_exploration_bioactivity_v2 import verify_links as original
+
+    return original(_bioactivity_bridge(view))
+
+
+def verify_bioactivity_explanation(view):
+    from .card_exploration_bioactivity_v2 import verify_explanation as original
+
+    return original(_bioactivity_bridge(view))

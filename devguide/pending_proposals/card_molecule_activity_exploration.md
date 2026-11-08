@@ -149,6 +149,54 @@ file receiving. Molecule operations must bind the actual source history rather
 than reuse one generic `(focal, item_ref)` link entry for distinct displayed
 selections. This is required admission work, not an enabled public contract.
 
+The [selected nine-case real-file checkpoint](../evidence/molecule_activity_real_file_checkpoint_20261107.json)
+now exercises actual @21/@22 writer/reader branches against the full SDK211
+original. A fresh inert process outside the checkout replays all 96 named views
+and six machine requests/pages. Plain, gzip and zstd resaves repeat that replay;
+six complete-rehash semantic alterations refuse. Source operations bind actual
+instances, actual visited endpoints own crossings and explicitly related foreign
+source children retain context/back/focal scope. Generic foreign inspection stays
+bounded. Original operands, scientific wires and formats @1–@20 stay fixed.
+
+That receipt covers a dirty implementation against `6c99b24` / SDK214 whose public
+descriptor still reported `save=False` while admission branches were being qualified.
+Finish complete SDK205/SDK208 human replay, copied and adjacent/historical gates
+and the public/default-budget contract before claiming admission. Positive file
+cases remove invocation byte limits explicitly; production defaults are unchanged.
+The original numeric root-return defect remains a separate unfixed follow-up.
+
+The current working source advertises implemented saving, recognizes retained
+activity in human/agent catalogs and binds saved support/save capabilities to
+the actual source-instance history. An unrecorded nonempty display cannot reuse
+another display's closure. Machine-first saving uses the molecule panel; a
+legitimate focal rebind matches the full retained request rather than a Python
+facade identity. The first focused source epoch passes all 60 LIVE cases,
+including a round trip with production byte limits, a machine-first file case
+and a separate inert original-reader capability probe. The subsequent focal-rebind
+ten-case SDK211 gate passes. The complete 32-scenario SDK205/SDK208 file gate
+executes all scenarios but finds three reverse inherited-question failures and
+one multiple-alias endpoint-label failure (32 passes/four failures including its
+boundary controls). A new @21-only correction verifies the incoming protein
+object/candidate crossing and exact molecule scope, and disambiguates equal
+assay/citation labels by retained destination location. Its nine-case focused
+gate reaches its declared elapsed ceiling with six completed passes (including
+the complete multiple-alias file), two generic-destination replay failures and
+one interrupted SDK208 journey. The newest @21 source replays the exact recorded
+generic overview by candidate/capture/full history, scopes incoming-anchor
+verification to one graph and corrects original-machine-request writer hydration
+without recalculating scientific values. Three new scope/history controls and
+443 adjacent cases pass. All 12 focused actual-file/boundary cases also pass,
+including every earlier red original journey. The full module now passes all
+**44 cases**: 29 SDK205 and three SDK208 scenarios plus twelve boundary controls.
+Both private modules followed by all 60 LIVE cases also pass together (264 cases).
+The full 54-case copied gate now passes with a complete observer footer after
+the local harness correction and bounded four-worker fallback. The public
+remainder exposed an omitted package-data declaration. The explicit correction,
+wheel/sdist inspection and separate installed diagnostic pass; the composed
+full local checkpoint qualifies 9,786 distinct cases. CHECKPOINT owns exact source
+epochs and the remaining typed root-return, installed/hosted and acceptance queue. No original capsule or frozen predicate
+is regenerated; public implementation does not establish complete qualification.
+
 ## Delivered LIVE contract
 
 Topic `activity_context`, question `measured_targets` and adapter
@@ -182,8 +230,9 @@ Implementation:
   public and explicitly synthetic controls; the copied consumer requires all 60.
 
 Shared access, profile, context-navigation, presentation and storage hooks are
-committed. Descriptor saving remains false until independent historical
-admission. Source/wire/cell interpretation keeps quantities bound to
+committed. The current working saved contract advertises saving, with its
+qualification and unresolved complete-original failures recorded in CHECKPOINT.
+Source/wire/cell interpretation keeps quantities bound to
 `relationships.has_bioactivity.measurement.normalized` and explicit units.
 
 Wrapper/group/record/assay/publication routes retain the focal molecule and

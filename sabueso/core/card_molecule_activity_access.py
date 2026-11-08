@@ -89,8 +89,7 @@ def descriptor():
             "independence_status",
         ],
         "source_support": {"format": SUPPORT_FORMAT},
-        "save": False,
-        "save_reason": "A clean LIVE producer and genuine original must precede independent saved reading for this new molecule-target interpretation.",
+        "save": True,
     }
 
 

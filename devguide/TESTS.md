@@ -77,8 +77,10 @@ It also checks exact identity conflicts and aliases,
 duplicate input occurrences, separate target snapshots, source/query states,
 native policy parity, quantity/null grains, complete 9/459-link publication
 routes, cross-Card support locations, exact back/fresh-question requests, typed
-machine selection and bounded atomic deferral. Saving remains explicitly refused
-until genuine producer controls and independent saved reading exist. Both
+machine selection and bounded atomic deferral. The current LIVE contract includes
+a guarded public save/read round trip with production byte budgets; its prior
+save-refusal expectation belongs to the earlier producer epochs. Complete saved
+profile admission still requires the original-file and copied gates below. Both
 installed workflows copy/select the module once. Its isolated outer gate,
 `test_declared_molecule_activity_runs_with_only_required_public_inputs`, copies
 the six required public fixture files and original @17 capsule outside the
@@ -135,6 +137,28 @@ verification of this original is not a saved-reader pytest pass or a repeated
 full offline checkpoint. Replay the entire original in independent receiving;
 never regenerate it or reduce the public 493 records or 9/459-link contexts.
 Current source, scope and next action belong to CHECKPOINT.
+
+Complete original molecule file journeys use
+`test_card_saved_molecule_activity_originals_offline.py`: all 29 SDK205 and three
+SDK208 scenarios, plus twelve transition/literal/destination/cache boundary controls.
+The writer reenacts the original operations over retained facades, without
+producing new expected data. Fresh processes outside the checkout replay every
+named human view and machine page with current Cards, scientific engines,
+digesters, clients and LIVE molecule UI helpers forbidden. Positive scope includes
+both molecule orders, distinct same-ID snapshots and equal assay/citation labels
+with different exact retained locations. Reject lost/foreign origins, changed
+question scope, focal captures, selected candidates and endpoint locations.
+Verify that a successful incoming-anchor proof cannot survive into the next
+graph, including a changed request with the same object identity. Recorded
+generic overviews require the exact candidate and entire back history. During
+writer preparation, transfer already executed original machine selections to
+the actually visited focal facades without scientific recalculation.
+The initial 36-case gate is red (32 passed/four failed); do not treat its complete
+execution as complete profile admission. The subsequent focused correction and
+44-case module require their own source-bound receipts. Use the explicit
+four-worker, one-native-thread, 16 GiB RSS/scratch, 16 GiB host reserve and
+3,600 s complete-module profile. Wire and execute copied receiving separately;
+the earlier 46/51-case copied collections predate the current 54-case workload.
 
 The private original-predicate module
 `test_card_molecule_activity_history_offline.py` uses the entire immutable SDK205
@@ -584,9 +608,10 @@ remain historical scoped controls, not current universal worker/RAM defaults.
 
 ### Current checkpoint partition
 
-The current full checkpoint separates the following modules into individual serial
-gates. Their original capsules, module caches, nested readers or optional modeling
-consumer need explicit process-tree accounting:
+The current full checkpoint separates the following modules into individually
+owned gates. Their original capsules, module caches, nested readers or optional
+modeling consumer need explicit process-tree accounting. Ordinary selections are
+serial; the two new molecule file modules use their explicit four-worker profiles.
 
 ```text
 tests/core/test_card_cell_support_offline.py
@@ -598,6 +623,12 @@ tests/core/test_card_saved_science_offline.py
 tests/core/test_card_saved_quaternary_offline.py
 tests/core/test_card_saved_sites_offline.py
 tests/core/test_card_saved_bioactivity_offline.py
+tests/core/test_card_saved_literature_offline.py
+tests/core/test_bioactivity_literature_v2_offline.py
+tests/core/test_card_molecule_activity_history_offline.py
+tests/core/test_card_molecule_activity_binding_offline.py
+tests/core/test_card_saved_molecule_activity_offline.py
+tests/core/test_card_saved_molecule_activity_originals_offline.py
 tests/core/test_structural_context_journey_offline.py
 tests/tools/test_installed_receiving_scope_offline.py
 ```
@@ -608,11 +639,36 @@ the root `conftest.py` exclusion of local-only modules before import. Do not
 replace discovery with an explicit list of every native module. No automatic
 heavy-test marker or scheduler is assumed.
 
-The ordinary 2 GiB/600 s serial-module envelope has two explicit B4
-exceptions: `test_card_saved_bioactivity_offline.py` uses 4 GiB/1,800 s, and
-`test_installed_receiving_scope_offline.py` allows 4 GiB/2,400 s for the outer tree
-containing its copied saved-bioactivity child. Both selections pass local
-receiving; retain the actual resource result for each invocation. Neither
+Use the named literature profile above for its disjoint 46-case and two-case
+gates, each serial with 2 GiB RSS and 1,200 s. The private molecule history and
+human-binding modules need the 4 GiB RSS/scratch, one-CPU, 1,800 s profile and a
+joined run followed by the current LIVE cohort to detect import-alias leakage;
+repeated LIVE cases add no distinct coverage. The SDK211 ten-case file module
+uses four CPUs, 8 GiB owned RSS / 12 GiB scratch and 1,800 s. The complete
+SDK205/SDK208 44-case file module uses four CPUs, 16 GiB owned RSS/scratch and
+3,600 s. All retain the 16 GiB host reserve, native threads one and zero swap.
+The complete 44-case source gate passes in 1,547.00 s pytest / 1,547.87 s guarded,
+at 6,664,568,832 bytes peak owned RSS and zero warnings/swap. Its copied 54-case
+gate passes in 2,069.46 s / 2,070.57 s guarded, at 6,206,197,760 bytes RSS,
+9,463,223,840 bytes scratch and zero warnings/swap. The earlier eight-worker attempt stops
+on owned swap before any call completes and supplies no measured passing profile.
+The passing four-worker fallback keeps 16 GiB RSS/scratch and 3,600 s. The first
+public remainder uses four workers, 8 GiB RSS, 4 GiB scratch and 2,400 s and
+exposes a package-data omission. After its one-path correction, the final repeat
+uses eight workers, 8 GiB RSS, 4 GiB scratch and 1,800 s.
+These invocation profiles preserve the complete selected scope;
+record every selected node and ensure
+the union covers complete discovery without counting overlapping repeats twice.
+
+The ordinary 2 GiB/600 s serial-module envelope also has explicit B4 exceptions:
+`test_card_saved_bioactivity_offline.py` uses 4 GiB/1,800 s. Split the current
+20-case `test_installed_receiving_scope_offline.py` into 17 ordinary cases and
+three separately bounded outer cases: saved bioactivity (4 GiB/2,400 s), saved
+literature (2 GiB/2,400 s) and Bio-v2 literature (2 GiB/600 s). Each outer tree
+includes its copied child. The 2,400 s allowance belongs to one heavy outer case,
+not to the sum of every copied workload in the module. The historical individual
+selections pass local receiving; retain actual current outcomes and verify the
+four disjoint selectors cover all 20 cases. Neither
 exception qualifies the original standalone 512 MiB efficiency controls under a
 larger budget. Preserve and receive each such control at its recorded limits
 before claiming comparable efficiency. Native/numerical threads stay at one in
@@ -740,7 +796,9 @@ these technical checks.
 
 | Changed behavior | Select these test files / gates |
 | --- | --- |
-| Private original molecule human binding | `test_card_molecule_activity_binding_offline.py` plus `test_card_molecule_activity_history_offline.py`; byte-verify the immutable SDK211 capsule, hydrate all 104 actual view instances and six machine selections, retain exact flags/origins, full quantities/source/native/publication scope and explicit original Python numeric equality. Forbid current Cards/science/clients/digesters and LIVE molecule UI helpers. Include foreign support/unit/member/payload/question/history/presentation refusals and the public save-refusal/older-saved-discovery cases. Run both private modules followed by the two public cases in the same fresh pytest process, serially with an owned resource profile; separate processes miss import-alias leakage. This selected checkpoint does not qualify new-format file admission, complete SDK205/SDK208 human replay or inert/copied file receiving (#148/#112) |
+| Actual molecule activity files | `test_card_saved_molecule_activity_offline.py` defines ten cases: actual SDK211 writer, all 96 named human views/six machine requests, source-child scope, machine-first/focal-rebound saving, truthful retained capabilities, plain/gzip/zstd resaves and six fully rehashed semantic refusals. Keep all 493 target records, complete 9/459-link publication context and original quantity operand types. The current complete 54-case copied file cohort passes with byte-identical payload and inert outside-checkout receivers; its four-worker 16 GiB RSS/scratch profile is recorded above. The earlier nine-case receipt retains its separate 704.67 s / 2,284,380,160-byte scope. Positive full-original cases explicitly remove invocation byte limits; production defaults stay fixed. The full local receipt covers 9,786 distinct cases; typed root-return, hosted/installed and scientific/human acceptance remain open (#148/#112) |
+| Complete original molecule files | `test_card_saved_molecule_activity_originals_offline.py` defines all 29 SDK205 and three SDK208 scenarios plus twelve boundary controls: 44 cases, all passing. The writer reenacts immutable original operations with current science/sources forbidden; a fresh inert receiver compares every named view/machine page, typed value, native/source support and full publication context. Incoming question scope, exact generic destination/back history, equal endpoint occurrences and graph-local anchor verification have explicit refusals. The copied 54-case cohort includes these same 44 cases and adds zero repeated coverage. Keep the earlier red epochs and original capsules fixed. Complete local receiving is recorded separately from typed-root production follow-up, hosted/installed or human acceptance (#148/#112) |
+| Private original molecule human binding prerequisite | `test_card_molecule_activity_binding_offline.py` plus `test_card_molecule_activity_history_offline.py`; byte-verify the immutable SDK211 capsule, hydrate all 104 actual view instances and six machine selections, retain exact flags/origins, full quantities/source/native/publication scope and explicit original Python numeric equality. Forbid current Cards/science/clients/digesters and LIVE molecule UI helpers. Include foreign support/unit/member/payload/question/history/presentation refusals. The private-only `6c99b24` checkpoint joined both private modules and both public save-refusal/older-discovery cases in one process. For the working file increment, the unchanged-source 205-case regression joins both private modules and older discovery; the current LIVE cohort replaces the earlier save-refusal expectation with a guarded round trip using production byte limits. Rejoin both private modules with the current complete LIVE cohort for changed-source qualification. Keep the same-process import-isolation check and owned serial resource profile. This prerequisite does not qualify complete SDK205/SDK208 human replay or inert/copied file receiving (#148/#112) |
 | Chemical classification live profile | `test_card_chemical_exploration_offline.py`, native classification, human/nature/access/navigation/selection, saved historical, argument/quantity and copied installed scope gates. Preserve genuine SDK192 canonical native bytes and original retained menus, source-stated identity/whole-field support, direct/inherited/unknown assignments, typed false/null versus zero, duplicate positions, source/open/back parity, cache isolation, scope after filtering/projection, explicit bounded deferral, original @15/shared @16 saving, exact requests and preserved older sessions. Run `test_card_saved_chemical_offline.py` and its isolated original SDK193 capsule gate before declaring this panel complete (#148/#112) |
 | Shared LIVE literature and native summary values | `test_card_literature_exploration_offline.py`, `test_literature_summary_values_offline.py`, native literature/explanation/located/packet and source-review tests, affected human/agent/nature/context/argument/quantity and historical-reader gates, plus isolated copied receiving. Preserve exact publication identities, full 459-link context, separate query coverage/roles, original support/locators/alternatives and typed false/zero/null. Also run saved literature48, Bio-v2 22, complete activity29, original historical and copied gates for @19/@20 changes. Preserve every genuine SDK202 wire and all 65 original queries; old @17/@18 reads/resaves retain Bio-v1. Deliver new modules/capsules once in each installed workflow; local qualification does not replace installed-artifact or exact-head hosted gates (#148/#108/#112) |
 | Original bioactivity saved reading | `test_card_saved_bioactivity_offline.py` defines 29 cases over the genuine SDK200 projection: nine original wires, three grains, finite exact requests, quantity and source-state distinctions, full publication context, support/back closure, fresh inert reading, resealed tampering and repeat saving. Run live bioactivity, affected human/agent/quantity/argument/history/transport cases and the copied installed consumer. Keep semantic @17/shared @18 separate from frozen older bindings. The complete 709,616,078-byte logical case uses explicit 1 GiB logical and 128 MiB transport limits. Its local 29-case module and outer copied consumer pass under the separate 4 GiB/1,800 s serial and 4 GiB/2,400 s outer-tree profiles above; hosted and installed-artifact qualification remain open (#148/#112) |

@@ -407,10 +407,19 @@ restoration predicates and the complete SDK211 instance-graph binding pass their
 [206-case selected checkpoint](evidence/molecule_activity_human_binding_checkpoint_20261107.json),
 with the test import guard corrected in a
 [joined 206-case requalification](evidence/molecule_activity_human_binding_isolation_checkpoint_20261107.json).
-Next deliver an actual SDK211 file with exact source-operation histories,
-transport/resave and fresh inert reading, then finish complete SDK205/SDK208
-human replay, literal/detail continuity, semantic resealing and copied receiving.
-Public saving remains disabled. The
+The [nine-case real-file checkpoint](evidence/molecule_activity_real_file_checkpoint_20261107.json)
+now passes the actual SDK211 file, exact source-operation histories,
+transport/resave, fresh inert original replay and six fully rehashed semantic
+refusals. Finish complete SDK205/SDK208 human replay, copied receiving and
+affected adjacent/historical gates next. The current working @21/@22 contract
+advertises saving and its guarded public round trip passes. Complete original
+file replay keeps its earlier red evidence. Exact generic destination replay,
+per-graph incoming-anchor verification and retained-machine-request writer
+preparation now pass all 44 original/boundary cases, 443 adjacent cases and the
+264-case joined private/LIVE gate. All 54 copied molecule cases now pass with a
+complete observer footer. The package-data correction, diagnostic artifacts and
+composed 9,786-case full local checkpoint pass. Record the code handoff and close
+the versioned typed root-return follow-up before declaring this journey complete. The
 [confirmed numeric root-return limitation](pending_bugs/molecule_activity_root_selection_equality.md)
 has its own unfixed follow-up; original predicates retain its observed behavior.
 The profile remains unfinished until its complete saved reader is qualified;

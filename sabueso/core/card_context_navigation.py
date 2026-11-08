@@ -489,6 +489,15 @@ def related(item):
 def _destination(explorer, candidate, origin, title="Referenced source record"):
     from .card_exploration import CardExplorer
 
+    if (
+        explorer.mode == "saved"
+        and explorer._session.get("format") == "sabueso.card_exploration@21"
+    ):
+        from .card_exploration_molecule_activity import saved_declared_destination
+
+        recorded = saved_declared_destination(explorer, candidate, origin)
+        if recorded is not None:
+            return recorded
     destination = object.__new__(CardExplorer)
     destination._access = explorer.access._for_capture(candidate["capture"])
     destination._coverage_result = None
@@ -506,6 +515,10 @@ def _destination(explorer, candidate, origin, title="Referenced source record"):
 def follow(item):
     explorer, link = item._view._explorer, item._entry.value
     if link.get("rule") == "molecule_activity_context_links@1":
+        if explorer.mode == "saved":
+            from .card_molecule_activity_operations_v1 import saved_item
+
+            return saved_item(item, "open")
         from .card_molecule_activity_exploration import (
             follow as follow_activity_context,
         )

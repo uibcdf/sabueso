@@ -5,6 +5,374 @@ Current working-state checkpoint: **2026-11-07**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Molecule saved-reader local checkpoint — navigation follow-up open
+
+The [complete composed local checkpoint](evidence/molecule_activity_full_checkpoint_20261107.json)
+passes **9,786 distinct offline cases** on the recorded working source against
+`6c99b24` / editable SDK214. Exact normal discovery, seventeen separate public
+modules and verified native-input receiving agree; copied children and repeats
+add no extra cases. The corrected public remainder passes **7,609 cases with ten
+expected native skips** in **633.62 s pytest / 634.90 s guarded**, at
+3,084,554,240 bytes peak owned RSS and zero swap. All ten skipped public controls
+pass in the 1,553-case native increment. Its thirteen acquisition warnings are
+the intentional negative controls, retained in the full receptor artifact.
+The source maps distinguish earlier unaffected scientific gates from later
+workflow/wiring/package-data metadata; no changed epoch borrows an identical-source
+claim. Actual wheel/sdist membership and separate installed diagnostic imports
+also pass. Exact-head hosted, installed public-dependency/platform, independent
+scientific/researcher/agent/workload/consumer and B8 qualification remain open.
+
+The current source additionally recognizes retained `activity_context` in both
+human and agent topic catalogs. New-format saved catalogs expose the independent
+original descriptor and finite retained-request scope; formats @1–@20 keep their
+older unavailable interpretation. Human and machine saving now agree with the
+implemented dispatch. Saved row support and save capabilities bind the actual
+source-instance operation history: an unrecorded nonempty display no longer
+advertises another display's support closure. Machine-first molecule saving also
+uses its molecule panel instead of the protein activity panel.
+
+The newest working source additionally restores recorded protein-to-molecule
+overviews by exact capture, selected candidate and complete original back history.
+It distinguishes the overview operation from the separate topics operation.
+Incoming activity/publication anchors are memoized only during one private @21
+graph verification; each graph and each ordinary top-level view still runs its
+own predicates, and the memo is discarded even on failure. Formats @1–@20 stay
+unchanged. All three new exact-history and cross-graph tamper controls pass in
+**40.21 s pytest / 40.97 s guarded**, at 1,610,174,464 bytes peak owned RSS,
+zero warnings/swap and 1,169 stable hashes, in `b5-molecule-destination-controls-1`.
+The same source repeats **443 adjacent passes** in 67.88 s pytest / 68.79 s
+guarded, at 2,004,389,888 bytes peak owned RSS with zero warnings/swap and stable
+hashes, in `b5-molecule-adjacent-3`.
+Its **12-case actual-file/boundary gate passes** in
+`b5-molecule-destination-files-1`: four complete original journeys and eight
+boundary/cache controls. Explicit node order places one file and one boundary
+case in each initial worker pair, preserving full selected scope while avoiding
+the preceding run's two idle workers. All four complete original-file journeys
+and all eight boundary controls pass in **527.03 s pytest / 527.95 s guarded**,
+at 7,743,950,848 bytes peak owned RSS, zero warnings/swap and 1,169 stable hashes.
+Receptor integrity, four workers, controller selection and call outcomes agree.
+These 12 cases include the earlier three controls; do not count them twice.
+
+The SDK208 receiving prototype now passes its entire original human journey,
+then exposes a test-preparation gap: machine requests were hydrated on the initial
+per-capture facades but not transferred to the actual second-molecule facade
+created during the reenacted journey. The writer now rebinds the captured
+selections to the visited facades by exact focal key and ordered inputs, without
+recalculating science or generating new expectations. This is a test-hydration
+correction, not a confirmed public machine-selection defect. The current complete
+module has **44 cases**, and all pass in
+`b5-molecule-original-files-full-2`: **1,547.00 s pytest / 1,547.87 s guarded**,
+6,664,568,832 bytes peak owned RSS, zero warnings/swap and 1,169 stable hashes.
+The complete original 29 SDK205 and three SDK208 scenarios retain 1,513 named
+human views and 312 machine requests across 335 pages; twelve boundary controls
+complete the module. Controller, four workers, calls and receptor integrity agree.
+The first **54-case copied gate** in `b5-molecule-copied-receiving-1` observes
+all 54 calls passing, but exits with a local observer error at session finish:
+the outside-checkout configuration has no `local_source_inputs` option. Its
+missing receptor footer makes the gate invalid. The observer now supplies a
+default; a separate bare two-case lifecycle probe passes with complete accounting.
+An eight-worker retry in `b5-molecule-copied-receiving-2` stops after 9.68 s
+at 3,473,408 bytes owned swap, before any call completes; host available RAM
+remains above 54 GiB. No product failure or passing gate is inferred. The full
+four-worker fallback passes all **54 cases** in
+`b5-molecule-copied-receiving-3`: **2,069.46 s pytest / 2,070.57 s guarded**,
+6,206,197,760 bytes peak owned RSS, 9,463,223,840 bytes peak scratch and zero
+warnings/swap. Controller, four workers, complete receptor and call outcomes
+agree; all 1,169 protected hashes and nine byte-identical staged files remain
+unchanged. This is
+workspace editable receiving, not installed-artifact qualification. A
+separate **264-case joined private/LIVE gate passes** in
+`b5-molecule-joined-private-live-1`: 75 original-history cases, 129 human-binding
+cases and then all 60 current LIVE cases run in that exact order in one process.
+It takes **548.70 s pytest / 549.95 s guarded**, at 769,654,784 bytes peak owned
+RSS, zero warnings/swap and 1,169 stable hashes, preserving the import guard.
+Source/copy gates use separate four-CPU, 16 GiB RSS/scratch, 3,600 s budgets;
+the joined gate is serial with 4 GiB RSS/scratch and 1,800 s. All retain the host
+16 GiB reserve, one native thread and zero swap. Do not change protected source
+until the final quality checks and code checkpoint close. The earlier 51-case copied collection belongs to
+its older source. Ruff, current guide targets/anchors, local governance and
+warning-fatal Sphinx pass; the latter takes 30.62 s at 281,370,624 bytes RSS.
+The installed-delivery patch is applied, with evidence in
+`b5-molecule-installed-delivery-plan-1`. It delivers both new modules, two
+helpers and three public capsules once per installed route, runs all 54 cases,
+and keeps the helpers out of the selectors. Its new structure regression passes
+against the actual workflows. The finite four-hour job ceiling and
+one native thread avoid the prior staging job's 45-minute cap; actual installed
+OS/Python runtime qualification remains required. Only the two workflow files
+and their wiring test differ from the passing 44/264/443 implementation epoch;
+the source-delta receipt preserves that distinction. No remote run is dispatched.
+
+The current full public remainder in `b5-full-public-parallel-1` is terminal:
+**7,608 passed, one failed and ten expected native-input skips**, in 790.09 s
+pytest / 791.85 s guarded, at 1,826,742,272 bytes peak owned RSS and zero swap.
+All 7,619 selected nodes and four workers are accounted for, with stable source
+hashes and a valid complete receptor. The existing package-data regression finds
+`core/_molecule_activity_history_v1/SOURCE.json` missing from the distribution
+declaration. This is a failed checkpoint. The explicit one-path fix is now applied,
+and both existing package-data cases pass. Actual wheel/sdist inspection verifies
+the exact resource bytes and all 773 Python modules; a separate Linux/Python3.14
+venv imports the installed wheel and new readers outside the checkout. This
+diagnostic uses workspace dependencies and is not the installed platform matrix.
+The generated build label and two owned build-only directories were recorded and
+restored/removed before the corrected eight-worker public repeat started in
+`b5-full-public-parallel-2`. Seventeen separate heavy modules and the verified local-original
+increment retain their full scope; this remainder alone is not the composed
+full checkpoint.
+
+Fresh complete local collection selects **9,786 distinct offline nodes**:
+8,243 public nodes and 1,553 verified native-input nodes, with exactly ten
+overlaps. The public remainder owns 7,619 nodes; the seventeen separately
+qualified modules own the other 624. Their exact union is verified in
+`b5-full-local-collection-1/collection-receipt.json`. Collection executes zero
+cases and supplies no passing coverage.
+
+Separate completed gates on the applied-delivery source are recorded in the
+[capability receipt](evidence/molecule_activity_saved_capabilities_checkpoint_20261107.json):
+
+| Complete selection | Actual result | Pytest / guarded seconds | Peak owned RSS bytes |
+| --- | --- | --- | --- |
+| Cell support | 21 passed | 43.38 / 46.05 | 745,766,912 |
+| Regional reading | 13 passed | 33.53 / 36.49 | 749,801,472 |
+| Original structure navigation | 2 passed | 18.16 / 19.88 | 347,238,400 |
+| Verified local-original increment | 1,553 passed | 106.27 / 108.32 | 323,997,696 |
+| Saved component navigation | 19 passed | 203.97 / 205.10 | 403,853,312 |
+| Model fragments | 41 passed | 86.89 / 88.09 | 258,777,088 |
+| Saved scientific exploration | 41 passed | 162.98 / 164.19 | 400,314,368 |
+| Original saved bioactivity | 29 passed | 884.42 / 886.90 | 2,950,135,808 |
+| Heavy saved-literature partition | 2 passed | 948.62 / 950.62 | 1,005,015,040 |
+| Saved quaternary exploration | 41 passed | 98.90 / 100.19 | 331,632,640 |
+| Saved sites | 41 passed | 42.10 / 43.32 | 245,968,896 |
+| Ordinary copied outer partition | 17 passed | 544.73 / 545.65 | 331,665,408 |
+| Structural journey with MolSysMT | 28 passed | 50.32 / 52.14 | 413,184,000 |
+| Copied Bio-v2 outer / verified child | 1 / 22 passed | 109.63 / 110.72 | 468,045,824 |
+| Copied bioactivity outer / verified child | 1 / 29 passed | 881.48 / 882.48 | 3,001,540,608 |
+| Remaining saved-literature partition | 46 passed | 528.33 / 529.51 | 603,389,952 |
+| Copied literature outer / verified child | 1 / 48 passed | 1,525.97 / 1,526.85 | 1,067,671,552 |
+
+Every row has complete receptor/scope accounting, zero warnings/swap and 1,169
+stable source hashes. The native increment replaces overlapping public skips;
+its count must not simply be added to every public selection. The two literature
+partitions cover all 48 cases without overlap. All these historical/copied gates
+are terminal; the corrected public remainder also passes. Copied children and the repeated 44 molecule-original
+cases add zero distinct primary coverage; the ten SDK211 cases have their exact
+copied-module identity and byte manifest.
+Next, record the authorized `[skip ci]` code checkpoint with deferred exact-head
+CI, verify clean editable metadata and preserve a genuine pre-fix saved control.
+Source-only inspection
+has prepared the next `clinical_context`/`clinical` increment using the existing
+native reader and separate source assertion subjects; no rich clinical adapter
+or new original is implemented yet. Before declaring the molecule journey
+complete, finish the [typed root-return follow-up](pending_bugs/molecule_activity_root_selection_equality.md)
+with a corrected LIVE producer, genuine new original and independently versioned
+receiving; preserve SDK211's original equality interpretation.
+
+The [first focused source epoch](evidence/molecule_activity_saved_capabilities_checkpoint_20261107.json)
+passes all **60 LIVE cases**, including a human
+round trip with production byte limits, and a separate machine-first file case.
+A fresh inert receiver also replays the SDK211 96-view/six-request original with
+the corrected catalogs and operation capabilities. The exact scoped source maps
+and receptor/resource records are retained in the `live-1`, `machine-1` and
+`original-1` directories prefixed `b5-molecule-capabilities-` under
+`recovered_work/checkpoint_recovery_20261106/`.
+
+The subsequent source epoch also preserves saved machine requests through a
+legitimate focal rebind, checking the exact retained request and entries rather
+than requiring the same Python facade. Its **ten-case SDK211 file gate passes in
+993.44 s pytest / 995.71 s guarded**, at 2,302,177,280 bytes peak owned RSS with
+zero warnings/swap and 1,169 stable source/input hashes. The same receipt records
+this separate source epoch; it is not combined with earlier test counts. A
+two-case original-file probe passes SDK205 `unqueried` but fails SDK208
+`bts-to-benz` at an incoming molecule-question transition.
+
+The current @21 binding now checks that transition against its actual molecule
+link panel, exact supplied target and original incoming question, then invokes
+the unchanged SDK202 protein grammar on verification-only facade copies. Every
+original question, native value and history remains stored unchanged; @17/@19
+readers are untouched. The repeated SDK211 inert receiver passes all 96 views,
+six requests and new capability checks in 65.16 s. All three incoming-transition
+refusal controls pass. The three SDK208 file journeys then reach a second missing
+@21 binding: a literal field below a protein activity endpoint inherits that
+endpoint's context, while the frozen verifier expects an immediate link parent.
+Those red results remain in `b5-molecule-original-files-probe-2`.
+
+The current @21-only literal-child binding checks exact selected-child membership,
+inherited context/question, unchanged focal capture, availability and original
+native value/support. It delegates ordinary endpoints to the unchanged frozen
+verifier. The first literal-child probe exposed an incorrectly reused molecule
+question check; that check now lives at the molecule caller while the protein
+caller validates its own question. The focused positive/foreign-location/context
+test passes in **31.75 s pytest / 33.45 s guarded**, at 519,159,808 bytes peak
+owned RSS, with zero warnings/swap and 1,169 stable source/input hashes. Keep
+the intermediate red source's evidence in `b5-molecule-original-files-probe-3`.
+
+The first **complete 36-case original-file gate finishes with 32 passes and four
+failures** in `b5-molecule-original-files-full-1`: all 29 SDK205 and three SDK208
+scenarios plus four boundary controls executed. It takes 1,505.24 s pytest /
+1,506.23 s guarded, at 6,275,788,800 bytes peak owned RSS, with zero warnings/swap
+and 1,169 stable source/input hashes. Receptor integrity, controller/four-worker
+and call-phase accounting agree. It never creates a new original; its red result
+does not qualify complete-module admission.
+The broad gate exposes the reverse transition as well: an
+intermediate molecule view inherits the protein's `measured_molecules` question
+after an explicit declared-object/candidate crossing. Its current molecule-only
+question check rejects it. Keep that result red and implement the reverse
+@21-only binding, verifying the actual protein link,
+selected exact molecule pin and original question. Do not rewrite the captured
+question or accept it without its source-backed destination history.
+SDK205 `multiple-aliases` also exposes an endpoint-occurrence defect: operation
+registration matches an assay/citation link by role and label, which are not
+unique across native members of the retained aliases. It refuses the original
+journey before file writing. Bind the exact selected destination location;
+equal labels must never merge source records or captured identities. Keep this failure
+visible alongside the three reverse-transition failures.
+The same protected source passes **443 adjacent cases** across access, human
+navigation/labels/previews, earlier literal and chemical saving, activity,
+literature and quantity paths: 60.90 s pytest / 61.88 s guarded, 2,045,861,888
+bytes peak owned RSS, zero warnings/swap and 1,169 stable hashes. The unchanged
+original @17 bioactivity module also passes all **29 cases** in 840.85 s pytest /
+843.34 s guarded, at 2,949,963,776 bytes peak owned RSS, zero warnings/swap and the
+same stable source map, in `b5-molecule-old-bioactivity-1`.
+A staged payload outside the checkout collected
+all 46 new file cases with nine byte-identical source/input copies; collect-only
+is explicitly not receiving or installed-artifact qualification. Its manifest
+and delivery plan are in `b5-molecule-copied-preparation-1`.
+Keep the first red source's evidence in
+`b5-molecule-original-files-probe-1` and do not borrow its tests across source
+epochs. The preceding 214-case result keeps its original hashes. Original
+capsules, frozen predicates and formats @1–@20 remain fixed.
+
+The next working correction validates the reverse incoming protein question only
+through its verified original protein object/candidate link, exact molecule pin,
+snapshot and ordered inputs. It keeps the original question unchanged. Endpoint
+verification and operation registration share exact-location disambiguation for
+equal labels. Read-only retained diagnostics check the three incoming molecule
+instances and four ambiguous assay/citation endpoints before the correction;
+they are not file-admission passes. The **nine-case focused gate is terminal but
+incomplete** in
+`b5-molecule-transition-fixes-1`: four previously red original-file journeys and
+five new exact-origin/question/focal/candidate/location controls. The complete
+module now has 41 cases; its previous 36-case result remains bound to the red
+source. The supervisor stops the focused gate at its declared **1,800.20 s**
+ceiling: six completed passes, two completed failures and the third SDK208
+journey interrupted. Its receptor has no complete final record. The six observed
+passes include the entire SDK205 multiple-alias original file journey and all
+five new boundary controls; do not claim a nine-case pass. Source maps remain
+stable at 1,169 files, with 5,148,803,072 bytes peak owned RSS and zero swap.
+The corrected source separately repeats all **443 adjacent cases successfully**
+in 64.79 s pytest / 65.82 s guarded, at 2,019,373,056 bytes peak owned RSS,
+zero warnings/swap and 1,169 stable hashes, in `b5-molecule-adjacent-2`. Its
+controller, eight workers and receptor call records agree. This repeat adds no
+distinct cases and does not replace the pending original-file qualification.
+The corrected copied payload collects **51 cases** (ten SDK211 and 41 complete
+original/boundary cases) outside the checkout, with nine byte-identical copies
+and valid receptor stream integrity. Its execution is correctly `INCOMPLETE`
+because collection executes zero cases. Retain the staged directory named in
+`b5-molecule-copied-preparation-2/stage.json` for full copied receiving; the
+earlier 46-case preparation keeps its own source and scope.
+
+The focused gate has now written the first two SDK208 files (58,269,859 and
+55,070,851 bytes), and fresh readers pass integrity/semantic admission and the
+first part of the original journey. Both then fail the unchanged
+`second/destination` view-reference comparison: the generic source-backed return
+creates a newly annotated saved overview instead of replaying the captured
+destination. Preserve the original comparison; bind this recorded generic
+destination to its exact original history/capture in @21. The interrupted third
+file also exists for retained receiving diagnosis; it still needs a complete
+passing gate. All three owned files remain #148/#112 evidence.
+
+Owned phase diagnostics locate substantial work in shared packing and incoming
+activity/literature navigation verification. The baseline diagnostic reaches its
+declared 480 s ceiling during restore; this is diagnostic termination, not a
+passing file gate. An experimental larger pack memo takes 138.79 s versus
+130.41 s baseline packing and uses more RSS, so there is no evidence to adopt
+that change. A separate bridge-only per-restore incoming-anchor memo experiment
+finishes restore in **66.17 s** and the complete save in **275.76 s guarded**,
+at 2,236,997,632 bytes peak owned RSS with zero swap. It fully verifies each
+incoming activity/publication anchor once; the ordinary top-level predicates
+remain active. This is a candidate for an explicitly scoped @21 implementation
+with fresh-read/tamper controls, not a product or complete-original replay pass.
+Separate writer sessions have session-specific lookup aliases and are not
+byte-identical controls. These experiments change only their own process and
+produce no new original expectations.
+Raw graph inspection also confirms the exact original `second/destination`
+overview already exists as N18 with its protein source-link origin N15. A
+process-only receiving prototype first found both the topics and overview
+operations, then passed the complete human journey when it selected the recorded
+overview operation. Its subsequent machine failure exposed the test-preparation
+gap described above. Keep unrelated/historical generic navigation unchanged
+and never choose a destination by a shared label or molecular name.
+
+After these checks, finish complete SDK205/SDK208 file replay,
+copied receiving and affected adjacent/historical gates. B4–B8 and the full
+six-stage objective remain open; release/consolidation and remote workflows
+remain unresumed.
+
+## Preceding real molecule file checkpoint — admission unfinished
+
+The preceding @21/@22 writer and independent reader pass the
+[nine-case actual-file gate](evidence/molecule_activity_real_file_checkpoint_20261107.json).
+A **31,505,022-byte file** retains the complete SDK211 graph. A fresh process
+outside the checkout replays all **96 named human views and six machine
+requests/pages**, including typed quantity filters, exact source/native/back
+routes, 493 public target records and the full 9/459-link publication contexts.
+Current Cards, science, clients, digesters and LIVE molecule UI helpers are
+forbidden during receiving. Three further isolated receivers resave as plain,
+gzip and zstd and repeat the same original replay. Six fully rehashed semantic
+alterations are rejected. Positive file cases explicitly remove invocation byte
+budgets; production limits stay unchanged.
+
+Operation histories bind actual source-view instances, rather than equal semantic
+handles. Only actual visited endpoints register native crossings. Explicit
+molecule/target source children retain their original context/back/focal scope;
+generic foreign-capture inspection still refuses. The original numeric
+root-return limitation below remains unfixed and explicitly preserved.
+The distinct [source-child finding](pending_bugs/molecule_activity_source_child_scope.md)
+has an internal owning-update draft awaiting authorization to publish.
+
+All **nine cases pass in 702.51 s pytest / 704.67 s guarded**, at 2,284,380,160 bytes
+peak owned RSS, with zero warnings or owned swap and 1,168 stable scoped source/
+input hashes. The source is a dirty implementation against `6c99b24` with editable
+SDK214 metadata, not a clean-source qualification. The last committed green
+checkpoint remains `6c99b24` below. All original capsules and formats @1–@20 stay
+fixed. Successful per-case transport scratch is released by pytest; the module
+file, original tar and main independent-reader report remain owned evidence.
+
+The same unchanged source also passes **205 private-original/older-discovery
+cases in one process**, for **214 distinct selected cases** with the new file
+module. This regression takes 392.61 s pytest / 393.74 s guarded at 781,889,536
+bytes peak owned RSS, zero warnings/swap and the same 1,168 stable source hashes.
+It deliberately does not select the old LIVE save-refusal expectation: resolve
+that changed public contract below. Lint, formatting, guide paths/anchors and
+warning-fatal Sphinx also pass; none substitutes for the pending profile gates.
+
+Four further SDK205 receiving diagnostics now pass outside the checkout with
+the same current helpers forbidden: BTS, benznidazole (including percentage/null
+values), two exact target snapshots and missing context. They replay **265
+original named views and 46 machine requests across all 51 pages**. Original
+menu nodes are retained and checked separately from newly generated saved topic
+menus, which intentionally add availability and have different handles. The first
+full diagnostics incorrectly equated those distinct menu values; their red
+receipts remain visible. These diagnostics add no pytest case count and do not
+qualify the other 25 SDK205 scenarios or the SDK208 routes.
+
+That source's new saved menu marked retained `activity_context` as `not_saved`;
+the current working correction above addresses its inventory and public catalog.
+It also checks capabilities of newly requested display histories against their
+actually retained operation routes. Keep original menu nodes, source values and
+history fixed while completing this integration.
+All diagnostics are terminal; their files, scripts, source maps and reports remain
+owned #148/#112 evidence for full-original/copied qualification. Seven ended owned
+scratch/build directories were removed (847,107,491 bytes), with no cleanup failure.
+
+**Next:** complete every SDK205/SDK208 original journey and copied receiving,
+then the affected adjacent/historical gates and public descriptor/default-budget
+contract. At that preceding source epoch the descriptor still advertised
+`save=False`; the current working contract and its qualification are described
+above. This selected gate does not finish public admission, B4/B5, full offline,
+hosted/artifact qualification or B7 acceptance. B8 remains paused. Keep the full
+six-stage objective and exact-final-head CI/governance recovery under #148/#112;
+no remote workflow has been dispatched.
+
 ## Joined human/LIVE guard qualification — 2026-11-07
 
 The clean `5422dac` / SDK213 check exposed an import-isolation defect in the new
@@ -24,13 +392,14 @@ against `5422dac`, with the changed test bound separately.
 
 The separately approved numeric root-return report is now
 [published in #148](https://github.com/uibcdf/sabueso/issues/148#issuecomment-6713763040)
-with its exact reviewed body. LIVE behavior remains unfixed. Public saving and
-@21/@22 dispatch remain disabled. **Next deliverable:** a complete real-file
+with its exact reviewed body. LIVE behavior remains unfixed. At that checkpoint,
+public saving and @21/@22 dispatch remained disabled. Its **next deliverable** was a complete real-file
 journey for the SDK211 original, with source operations bound to their actual
 retained history, transport/resave and a fresh inert reader. Then extend that
 file qualification over all SDK205/SDK208 journeys and copied receiving. Equal
 item/view handles must not silently select the last link panel from a different
-display request. Internal verifier/storage drafts remain unqualified. The full
+display request. The selected real-file result above now supersedes that draft
+status; full admission remains open. The full
 six-stage objective, B7/B8 and cumulative exact-final-head CI/governance recovery
 stay open under #148/#112; no remote workflow has been dispatched.
 
