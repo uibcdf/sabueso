@@ -23,6 +23,13 @@ Earlier failed, incomplete and stopped attempts supply no passing coverage.
 Use the authorized intermediate `[skip ci]` route. Record the exact committed/
 pushed head, source maps, generated/editable metadata and clean-head repeats in
 `recovered_work/checkpoint_recovery_20261106/b5-molecule-reader-commit-1/`.
+The actual code head is **`92d149180ea0c3196bbebc3a670e1d0a96111adb`**, pushed to
+`main` with `[skip ci]`; no Actions run is returned for that SHA. Clean SDK215
+metadata agrees outside checkout and all 60 LIVE cases repeat successfully.
+Only the generated version label differs from the full working-source epoch;
+the [receipt](../evidence/molecule_activity_full_checkpoint_20261107.json) records
+that exact distinction. Following documentation-only handoff heads retain the
+same tested implementation and do not become remote passing evidence.
 Cumulative exact-final-head CI and governance recovery through gh-run-receptor
 remain owned by #148/#112; no remote workflow is dispatched here. Actual installed
 public-dependency/OS/Python receiving, typed root-return follow-up, the remaining

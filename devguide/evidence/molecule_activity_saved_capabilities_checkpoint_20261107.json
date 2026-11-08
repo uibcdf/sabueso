@@ -29586,5 +29586,14 @@
       "full_discovery_union_verified": true,
       "copied_children_add_no_distinct_coverage": true
     }
+  },
+  "committed_code_checkpoint": {
+    "source_commit": "92d149180ea0c3196bbebc3a670e1d0a96111adb",
+    "runtime_version": "0.14.0+215.g92d1491",
+    "full_local_receipt": "devguide/evidence/molecule_activity_full_checkpoint_20261107.json",
+    "postcommit_live_cases": 60,
+    "remote_actions_observed": [],
+    "remote_ci_governance": "Deferred, no passing remote claim",
+    "next": "Retain genuine pre-fix @21/@22 saved control from clean producer before versioned typed root-return correction."
   }
 }

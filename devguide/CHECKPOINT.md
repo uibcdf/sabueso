@@ -7,6 +7,17 @@ This page owns current state; dated receipt histories are linked below.
 
 ## Molecule saved-reader local checkpoint — navigation follow-up open
 
+Code checkpoint **[`92d1491`](https://github.com/uibcdf/sabueso/commit/92d149180ea0c3196bbebc3a670e1d0a96111adb)**
+is committed and pushed to `main` with `[skip ci]`. Its clean SDK215 editable,
+distribution and generated labels agree outside the checkout. All **60 LIVE
+cases repeat successfully** in 86.23 s pytest / 87.30 s guarded, at 228,638,720
+bytes RSS, zero warnings/swap and stable source hashes. The only source change
+from the full working epoch is its generated version label; all other 1,168
+implementation/test/input paths are identical. These repeated cases add no
+distinct coverage. No Actions run is observed for the exact code SHA; remote
+CI/governance remain deferred under #148/#112. Following documentation-only
+handoff commits do not change this validated implementation.
+
 The [complete composed local checkpoint](evidence/molecule_activity_full_checkpoint_20261107.json)
 passes **9,786 distinct offline cases** on the recorded working source against
 `6c99b24` / editable SDK214. Exact normal discovery, seventeen separate public
@@ -156,8 +167,8 @@ partitions cover all 48 cases without overlap. All these historical/copied gates
 are terminal; the corrected public remainder also passes. Copied children and the repeated 44 molecule-original
 cases add zero distinct primary coverage; the ten SDK211 cases have their exact
 copied-module identity and byte manifest.
-Next, record the authorized `[skip ci]` code checkpoint with deferred exact-head
-CI, verify clean editable metadata and preserve a genuine pre-fix saved control.
+Next, preserve a genuine pre-fix saved control from the clean qualified producer
+before the typed root-return correction; keep deferred exact-head CI explicit.
 Source-only inspection
 has prepared the next `clinical_context`/`clinical` increment using the existing
 native reader and separate source assertion subjects; no rich clinical adapter
@@ -332,8 +343,9 @@ has an internal owning-update draft awaiting authorization to publish.
 All **nine cases pass in 702.51 s pytest / 704.67 s guarded**, at 2,284,380,160 bytes
 peak owned RSS, with zero warnings or owned swap and 1,168 stable scoped source/
 input hashes. The source is a dirty implementation against `6c99b24` with editable
-SDK214 metadata, not a clean-source qualification. The last committed green
-checkpoint remains `6c99b24` below. All original capsules and formats @1–@20 stay
+SDK214 metadata, not a clean-source qualification. Its preceding committed
+checkpoint is `6c99b24` below; the latest code checkpoint is recorded at the top.
+All original capsules and formats @1–@20 stay
 fixed. Successful per-case transport scratch is released by pytest; the module
 file, original tar and main independent-reader report remain owned evidence.
 

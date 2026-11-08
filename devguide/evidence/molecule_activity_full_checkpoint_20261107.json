@@ -2179,5 +2179,50 @@
     "errors": [],
     "preexisting_anchor_gaps": [],
     "unchanged_historical_records_not_regenerated": true
+  },
+  "committed_code_checkpoint": {
+    "source_commit": "92d149180ea0c3196bbebc3a670e1d0a96111adb",
+    "remote_main_verified": true,
+    "commit_marker": "[skip ci]",
+    "runtime_version": "0.14.0+215.g92d1491",
+    "generated_distribution_and_import_versions_agree_outside_checkout": true,
+    "source_changes_from_full_working_epoch": {
+      "sabueso/_version.py": {
+        "qualified_working_epoch": "1cd67a77dbaf196bfb33d7b900a03a57136c6264afe81e8234cb68d0acd3e0bd",
+        "clean_committed_runtime": "c72b67ad0ca87a9fa7778aab4ff0c94279d3bd6c14e0096da27f9051968c7268"
+      }
+    },
+    "other_1168_source_test_input_paths_unchanged": true,
+    "postcommit_live_counts": {
+      "collected": 60,
+      "deselected": 0,
+      "errors": 0,
+      "executed": 60,
+      "failed": 0,
+      "not_executed": 0,
+      "passed": 60,
+      "reruns": 0,
+      "skipped": 0,
+      "subtests": {},
+      "warnings": 0,
+      "xfailed": 0,
+      "xpassed": 0
+    },
+    "postcommit_pytest_s": 86.22833184000046,
+    "postcommit_guarded_s": 87.3,
+    "postcommit_peak_rss_bytes": 228638720,
+    "postcommit_events_sha256": "8f525b269959d4e21d24754ad57df44b4856d78f36e00f6d82ede3c0a8bc431c",
+    "repeated_live_cases_add_distinct_coverage": 0,
+    "remote_actions_runs_observed": [],
+    "deferred_gates": [
+      "Exact-final-head CI inspected through gh-run-receptor",
+      "Exact-final-head governance inspected through gh-run-receptor",
+      "Installed public dependency and supported OS/Python qualification"
+    ],
+    "owners": [
+      "uibcdf/sabueso#148",
+      "uibcdf/sabueso#112"
+    ],
+    "recovery_route": "Authorized final unskipped push or explicitly authorized manual CI and governance dispatch, then complete exact-SHA receptor verification. No remote workflow dispatched here."
   }
 }
