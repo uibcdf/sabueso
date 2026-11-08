@@ -404,7 +404,7 @@ class CardAccess:
                 "bioactivities",
             ]
             if self.profile == "protein"
-            else ["chemical_classification", "activity_context"]
+            else ["chemical_classification", "activity_context", "clinical"]
             if self.profile == "small_molecule"
             else []
         )
@@ -693,6 +693,17 @@ class CardAccess:
                 "retained_requests_only" if self.mode == "saved" else "live"
             )
             if self.profile == "small_molecule":
+                from .card_clinical_access import descriptor as clinical_descriptor
+
+                data["clinical"] = clinical_descriptor()
+                data["clinical"]["availability"] = (
+                    "live" if self.mode == "live" else "not_saved"
+                )
+                data["clinical"]["selection_availability"] = (
+                    "live" if self.mode == "live" else "not_saved"
+                )
+                if self.mode == "saved":
+                    data["clinical"]["operations"] = []
                 if self.mode == "live":
                     from .card_molecule_activity_access import (
                         descriptor as activity_context_descriptor,
@@ -925,11 +936,37 @@ class CardAccess:
             "activity_context",
             "bioactivities",
             "literature",
+            "clinical",
         ):
             raise ArgumentError(
-                "Scientific selection supports structures, ligand_site_comparisons, quaternary_interpretation, assembly_generation, chemical_classification, activity_context, bioactivities and literature."
+                "Scientific selection supports structures, ligand_site_comparisons, quaternary_interpretation, assembly_generation, chemical_classification, activity_context, clinical, bioactivities and literature."
             )
-        if topic == "activity_context":
+        if topic == "clinical":
+            from .card_clinical_access import materialize, options_for_clinical
+            from .card_clinical_selection_v1 import (
+                active,
+                evaluate,
+                normalize,
+                projection,
+                selection_ref,
+            )
+
+            options, fields = options_for_clinical(options), projection(fields)
+            query = normalize(where, item_refs, order_by)
+            if self.mode == "saved":
+                from .card_exploration_storage import missing_selection
+
+                return missing_selection(
+                    self, topic, options, fields, query if active(query) else None
+                )
+            if query["item_refs"] is not None and any(
+                ref not in self._scientific_items for ref in query["item_refs"]
+            ):
+                raise ArgumentError(
+                    "item_refs contains an item not retained in this access session."
+                )
+            result = materialize(self, options)
+        elif topic == "activity_context":
             if (
                 self.mode == "saved"
                 and self._exploration_session is not None
@@ -1246,6 +1283,7 @@ class CardAccess:
                 "molecule_activity_context_exploration@1",
                 "bioactivity_exploration@1",
                 "literature_exploration@1",
+                "clinical_exploration@1",
             ):
                 return selection._scientific.frame(self, selection, entry)
             from .card_structure_page import complete_frame
@@ -1290,6 +1328,10 @@ class CardAccess:
         return frame
 
     def _defer(self, item):
+        if item.get("adapter") == "clinical_exploration@1":
+            from .card_clinical_access import defer_frame
+
+            return defer_frame(item)
         if item.get("adapter") == "molecule_activity_context_exploration@1":
             if self.mode == "saved":
                 from ._molecule_activity_history_v1.adapter import defer_frame

@@ -110,7 +110,12 @@ offline scope is now complete: the [current receipt](evidence/molecule_activity_
 verifies all 10,050 discovered cases, including historical files and all remaining
 history/storage/copied-consumer controls;
 original @21/@22 files keep their original reading/resaving.
-Clinical/disease and B6 profiles then retain their full accepted scope. Scientific
+The [clinical LIVE profile](pending_proposals/card_clinical_exploration.md) now
+implements separate native indication/citation/registry grains and passes its
+[576-case selected source checkpoint](evidence/clinical_live_checkpoint_20261108.json)
+and 40 copied clinical cases. Its clean producer/original must precede independent saved reading;
+the preceding full reader receipt does not qualify the changed clinical source.
+Disease and B6 profiles retain their full accepted scope. Scientific
 and uncoached researcher/agent/workload/actual-consumer acceptance stay open; B8
 and release remain unresumed. Original formats, source assertions and scientific
 defaults stay fixed under their named interpretations.

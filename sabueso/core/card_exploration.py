@@ -28,6 +28,10 @@ _LABELS = {
     "entities": "Entity records",
 }
 _TOPICS = {
+    "clinical": (
+        "Indications and clinical studies",
+        "Source indications, individual cited trials and retained registry records, with separate phases, support and original request scope.",
+    ),
     "activity_context": (
         "Targets, measurements and assay context",
         "Exact molecule identity joins into explicitly supplied target captures, preserving original measurements and source/query scope.",
@@ -163,6 +167,8 @@ class CardItem:
 
     @property
     def kind(self):
+        if self._view._record_panel == "clinical":
+            return self._entry.value["kind"]
         if self._view._record_panel == "literature":
             return self._entry.value["kind"]
         if self._view._record_panel in ("bioactivities", "activity_context"):
@@ -338,6 +344,22 @@ class CardItem:
 
     @property
     def cells(self):
+        if self._view._record_panel == "clinical":
+            from .card_clinical_selection_v1 import COLUMNS
+
+            result = self._view._selection._scientific
+            support = tuple(self.support)
+            return MappingProxyType(
+                {
+                    column: Cell(
+                        deepcopy(result.value(self._entry.key, column)),
+                        state=result.cell_state(self._entry.key, column),
+                        reason=result.cell_reason(self._entry.key, column),
+                        _support=support,
+                    )
+                    for column in COLUMNS
+                }
+            )
         if self._view._record_panel == "literature":
             from .card_literature_selection_v1 import COLUMNS
 
@@ -608,6 +630,10 @@ class CardItem:
 
     def open(self):
         """Open all retained detail, or follow a labeled catalog route."""
+        if self._view._record_panel == "clinical":
+            from .card_clinical_exploration import open_item
+
+            return open_item(self)
         if self._view._link_panel:
             from .card_context_navigation import follow
 
@@ -719,6 +745,10 @@ class CardItem:
         return result
 
     def _live_explain(self):
+        if self._view._record_panel == "clinical":
+            from .card_clinical_exploration import explain
+
+            return explain(self)
         if self._view._record_panel == "activity_context":
             from .card_molecule_activity_exploration import explain
 
@@ -1110,6 +1140,10 @@ class CardView:
             capabilities["root_machine_selection_ref"] = self._machine_ref
         if self._record_panel == "literature":
             capabilities["sort"] = list(self.schema["columns"])
+        if self._record_panel == "clinical":
+            from .card_clinical_selection_v1 import SORT_COLUMNS
+
+            capabilities["sort"] = list(SORT_COLUMNS)
         if self._explorer.mode == "saved":
             from .card_exploration_storage import operation_key
 
@@ -1136,6 +1170,15 @@ class CardView:
     def schema(self):
         if self._saved_state is not None:
             return deepcopy(self._saved_state["schema"])
+        if self._record_panel == "clinical":
+            from .card_clinical_selection_v1 import COLUMNS
+
+            return {
+                "kind": "clinical_exploration",
+                "grain": "separate molecule phase, indication, cited-trial occurrence and registry record",
+                "columns": list(COLUMNS),
+                "presentations": ["summary", "table", "detail"],
+            }
         if self._record_panel == "activity_context":
             from .card_molecule_activity_selection_v1 import COLUMNS
 
@@ -1405,6 +1448,10 @@ class CardView:
     def filter(self, column, *, equals, skip_digestion=False):
         """Select exact declared cells without changing the scientific result."""
         self._check_column(column)
+        if self._record_panel == "clinical":
+            from .card_clinical_exploration import display_filter
+
+            return display_filter(self, column, equals)
         if self._record_panel == "activity_context":
             if self._explorer.mode == "saved":
                 from .card_exploration_molecule_activity import display_filter
@@ -1530,6 +1577,10 @@ class CardView:
             raise ArgumentError("descending must be True or False.")
         if unit is not None and (not isinstance(unit, str) or not unit.strip()):
             raise ArgumentError("unit requires a nonempty unit name or None.")
+        if self._record_panel == "clinical":
+            from .card_clinical_exploration import display_sort
+
+            return display_sort(self, column, descending, unit)
         if self._record_panel == "activity_context":
             if self._explorer.mode == "saved":
                 from .card_exploration_molecule_activity import display_sort
@@ -1923,6 +1974,10 @@ class CardExplorer:
             raise ArgumentError("Scientific options require a mapping or None.")
         from .card_exploration_profiles import PANELS
 
+        if topic == "clinical":
+            from .card_clinical_exploration import view
+
+            return view(self, origin, options)
         if topic == "activity_context":
             from .card_molecule_activity_exploration import view
 

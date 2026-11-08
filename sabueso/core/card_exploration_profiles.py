@@ -67,7 +67,13 @@ NATURE_TOPICS = {
         "quaternary_interpretation",
         "assembly_generation",
     ),
-    "small_molecule": ("chemistry", "properties", "classification", "activity_context"),
+    "small_molecule": (
+        "chemistry",
+        "properties",
+        "classification",
+        "activity_context",
+        "clinical",
+    ),
     "disease": ("definition", "classification", "identity"),
 }
 
@@ -87,6 +93,11 @@ COMMON_QUESTIONS = {
 QUESTIONS = {
     "protein": PROTEIN_QUESTIONS,
     "small_molecule": {
+        "clinical_context": _question(
+            "What indications and studies do the sources report?",
+            "clinical",
+            "ChEMBL indications, individual cited-trial occurrences and fetched registry records; source/query gaps remain explicit and no efficacy is inferred.",
+        ),
         "measured_targets": _question(
             "Which supplied target contexts retain measurements for this exact molecule?",
             "activity_context",
@@ -272,6 +283,7 @@ RECORD_COLUMNS = {
 
 def record_label(panel, row):
     if panel in (
+        "clinical",
         "activity_context",
         "literature",
         "bioactivities",

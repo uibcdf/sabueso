@@ -696,7 +696,9 @@ def _parts(view):
     if view.request is not None:
         request = view.request
         question_label = (
-            "Which publications and original source links are retained?"
+            "What indications and studies do the sources report?"
+            if view._record_panel == "clinical"
+            else "Which publications and original source links are retained?"
             if view._record_panel == "literature"
             else "Which molecules have retained measurements, and what supports each result?"
             if view._record_panel == "bioactivities"
@@ -771,6 +773,14 @@ def _parts(view):
         from .card_chemical_presentation_v1 import opening as chemical_opening
 
         opening.extend(chemical_opening(view, preview))
+    if view._record_panel == "clinical":
+        from .card_clinical_presentation_v1 import opening as clinical_opening
+
+        opening.extend(clinical_opening(view, preview))
+    if view.context.get("adapter") == "clinical_context_links@1":
+        from .card_clinical_presentation_v1 import context_opening as clinical_context
+
+        opening.extend(clinical_context(view, preview))
     if view._record_panel == "literature":
         from .card_literature_presentation_v2 import opening as literature_opening
 
@@ -1000,6 +1010,11 @@ def _parts(view):
                     f"{preview(value['availability'])} · {len(value['candidates'])} captured destinations",
                 )
             )
+            continue
+        if view._record_panel == "clinical":
+            from .card_clinical_presentation_v1 import display_row
+
+            rows.append(display_row(item, index, preview))
             continue
         if view._record_panel == "literature":
             from .card_literature_presentation_v1 import display_row
@@ -1272,6 +1287,10 @@ def _parts(view):
 
 
 def _headers(view):
+    if view._record_panel == "clinical":
+        from .card_clinical_presentation_v1 import HEADERS
+
+        return list(HEADERS)
     if view._record_panel == "literature":
         from .card_literature_presentation_v1 import HEADERS
 

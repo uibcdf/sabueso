@@ -1951,6 +1951,15 @@ def saved_topic(explorer, topic, origin, options):
         options is not None and not isinstance(options, dict)
     ):
         raise ArgumentError("Use a declared topic key and options mapping or None.")
+    if topic == "clinical":
+        from .card_clinical_access import options_for_clinical
+
+        options_for_clinical(options)
+        return not_saved(
+            explorer,
+            "This clinical interpretation has no independent original saved reader; start a new explicit local interpretation from the captures.",
+            origin,
+        )
     if topic == "activity_context":
         if explorer._session.get("format") in MOLECULE_FORMATS:
             from .card_exploration_molecule_activity import (
@@ -2047,6 +2056,15 @@ def saved_topic(explorer, topic, origin, options):
 
 
 def saved_answer(explorer, question, options, origin):
+    if question == "clinical_context" and explorer.profile == "small_molecule":
+        from .card_clinical_access import options_for_clinical
+
+        options_for_clinical(options)
+        return not_saved(
+            explorer,
+            "This clinical question was not retained with an independent original saved reader.",
+            origin,
+        )
     if question == "measured_targets" and explorer.profile == "small_molecule":
         if explorer._session.get("format") in MOLECULE_FORMATS:
             from .card_exploration_molecule_activity import (

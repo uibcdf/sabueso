@@ -48,6 +48,15 @@ to [CHECKPOINT](CHECKPOINT.md); execution budgets belong to the
 uses applicable local checks and authorized CI batching. Historical green
 receipts do not qualify a changed working tree or later candidate artifacts.
 
+The [clinical LIVE profile](pending_proposals/card_clinical_exploration.md) now
+shares native indications, individual cited-trial occurrences and retained
+registry contexts between human and compact-agent routes. Its
+[576-case selected checkpoint](evidence/clinical_live_checkpoint_20261108.json)
+and all 40 copied clinical cases pass; clean producer/original capture and independent saved reading
+remain next. [CHECKPOINT](CHECKPOINT.md) owns current source and actual results.
+The preceding full reader receipt retains its source epoch and does not qualify
+this new clinical implementation.
+
 The [live protein activity journey](pending_proposals/card_bioactivity_exploration.md)
 connects molecules, native groups, original activity records and exact retained
 assay/citation/publication support. Its separately versioned original saved reader
@@ -90,13 +99,13 @@ pass with eight workers and a 10 GiB combined RSS ceiling. All 24 actual-file
 cases and the full copied LIVE consumer also pass. Complete copied exact-origin
 receiving passes all 254 cases with thirteen byte-identical inputs. The
 [901-case selected checkpoint](evidence/molecule_activity_root_exact_saved_checkpoint_20261108.json)
-records its selected qualification. The [complete current checkpoint](evidence/molecule_activity_root_exact_full_checkpoint_20261108.json)
+records its selected qualification. The [complete preceding root-reader checkpoint](evidence/molecule_activity_root_exact_full_checkpoint_20261108.json)
 now verifies all 10,050 discovered offline cases with an exact union, actual
 historical-file receiving and verified worker placement. Installed/hosted and
 scientific/human acceptance remain open. The
 older 9,786-case receipt does not qualify this changed source.
 [CHECKPOINT](CHECKPOINT.md) owns the exact active source, results and next action.
-Clinical/disease and B6 journeys follow this reader increment within the full
+Clinical is the active next increment; disease and B6 journeys retain their full
 accepted plan.
 
 The [shared literature catalog](pending_proposals/card_literature_exploration.md)

@@ -5,7 +5,43 @@ Current working-state checkpoint: **2026-11-08**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
-## Complete offline reader checkpoint — PASS
+## Clinical LIVE producer — selected local checkpoint PASS
+
+The [clinical profile](pending_proposals/card_clinical_exploration.md) now implements
+`view("clinical")`, `answer("clinical_context")` and compact-agent
+`access.select("clinical")` over the same detached native `Card.clinical()` result.
+Indications, individual cited-trial occurrences and retained registry contexts
+keep separate grains, role-bound source subjects and original request states.
+Citations navigate to their complete original indication without copying its
+whole trial list into every occurrence. Typed selection, exact source/back
+navigation and bounded text/HTML presentation are implemented.
+
+The [selected clinical receipt](evidence/clinical_live_checkpoint_20261108.json)
+verifies **576 distinct source cases**, including all **40 owning clinical cases**,
+native clinical/registry/bibliography, nature/access/exploration, knowledge-state,
+agent/cell/navigation, argument/quantity and fixture/licensing/registry controls.
+All 40 owning cases also pass outside checkout with five byte-identical public
+inputs. These repeated cases add no distinct coverage. Both installed workflows
+copy/select the complete module once; actual installed-platform/hosted admission
+remains open.
+
+The final source gate passes in 200.43 s (201.35 s guarded), at 2,063,065,088 bytes
+peak owned RSS with eight workers. Copied receiving passes in 2.32 / 3.27 s at
+101,568,512 bytes with one worker. Both use native threads one, a 10 GiB combined
+RSS ceiling and 16 GiB host reserve, with zero warnings or owned swap. Complete
+receptor/controller/worker/call accounting and source/input maps agree. Earlier
+red/partial epochs remain recorded and do not become passes. Ruff, Python 3.11
+grammar, governance and guide checks accompany the commit; this selected gate
+does not replace complete-repository qualification for the changed source.
+No Card schema, acquisition client, native scientific/default interpretation or
+earlier saved binding changed. Clinical saving remains explicitly unavailable.
+
+Next commit the clean qualified producer and verify coherent editable metadata.
+Capture its genuine complete LIVE original before implementing independent saved
+reading. Continue disease and B6 profiles afterward. B7 acceptance and the complete
+six-stage program remain open; B8 and release remain unresumed.
+
+## Preceding complete offline root-reader checkpoint — PASS
 
 The [complete composed local receipt](evidence/molecule_activity_root_exact_full_checkpoint_20261108.json)
 verifies **10,050 distinct offline cases** and an exact union with normal root
@@ -60,12 +96,9 @@ Full owned receipts, source maps and scheduling proofs remain under
 9,786-case full and 901-case selected receipts retain their original epochs and
 limits; the new complete receipt owns the current reader checkpoint.
 
-Next implement the rich clinical journey using existing `Card.clinical()`
-semantics: separate source indications, cited trial IDs and fetched registry
-records, with exact source/back navigation and compact-agent parity. Qualify the
-LIVE producer, commit its clean checkpoint and capture its complete genuine
-original before implementing independent saved reading. Continue disease and
-B6 profiles within the complete accepted six-stage program. B2 scientific/default
+The next clinical journey is now being qualified as described above. Its clean
+producer and genuine original must precede independent saved reading. Continue
+disease and B6 profiles within the complete accepted six-stage program. B2 scientific/default
 review remains deferred; #192's separate aggregation defect remains open.
 
 Exact-final-head CI/governance and installed artifact/OS/Python gates remain

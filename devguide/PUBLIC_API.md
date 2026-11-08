@@ -12,6 +12,19 @@ For contributor context and current qualification, read [ONBOARDING](ONBOARDING.
 and [CHECKPOINT](CHECKPOINT.md). The development additions below do not establish
 published delivery; the [entry-point reference](#entry-point) follows them.
 
+Development small-molecule `Card.explore().view("clinical")` and
+`answer("clinical_context")` share retained native `Card.clinical()` knowledge
+with `explorer.access.select("clinical")`. The
+[clinical contract](pending_proposals/card_clinical_exploration.md) distinguishes
+ChEMBL molecule/indication phases, individual cited-trial occurrences and fetched
+registry contexts, with role-bound support and exact source/back navigation.
+Projection, typed equality, exact membership and scalar null-last ordering are
+available; registry phase lists support exact equality. Native source/query states
+remain visible. This development adapter performs no acquisition or efficacy
+inference. The [576-case selected source checkpoint](evidence/clinical_live_checkpoint_20261108.json)
+and all 40 copied clinical cases pass; independent clinical saved
+reading and public delivery are not yet implemented.
+
 Development small-molecule `Card.explore().answer("classification")` (also
 `view("classification")`) presents source-bound chemical classes and roles,
 direct/inherited/unknown assignments, original support and back navigation.

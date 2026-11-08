@@ -434,8 +434,13 @@ consumer also pass. Complete copied exact-origin receiving passes all 254 cases;
 the selected checkpoint covers 901 distinct cases. The broader offline scope
 is complete: the exact composed passing set covers all
 10,050 normally discovered cases, including all 55 historical molecule-file and
-417 history/storage/copied-consumer controls. Continue the clinical LIVE journey
-and its clean original before independent saved reading, then disease and B6.
+417 history/storage/copied-consumer controls on the preceding source epoch.
+The [clinical LIVE profile](pending_proposals/card_clinical_exploration.md) is now
+implemented and passes its [576-case selected source checkpoint](evidence/clinical_live_checkpoint_20261108.json)
+and all 40 copied clinical cases. Commit its clean
+producer and capture its genuine complete original before independent saved
+reading, then continue disease and B6. The 10,050-case receipt does not qualify
+this changed clinical source.
 Both installed routes now copy/select all five
 capsules and the complete selected modules; actual installed receiving stays open.
 The independent saved reader is locally qualified. The broader clinical/disease
