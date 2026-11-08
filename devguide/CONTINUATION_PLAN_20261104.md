@@ -439,11 +439,13 @@ The [clinical LIVE profile](pending_proposals/card_clinical_exploration.md) is n
 implemented and passes its [576-case selected source checkpoint](evidence/clinical_live_checkpoint_20261108.json)
 and all 40 copied clinical cases. Clean SDK224 / `66989a4` and its
 [genuine complete original](evidence/clinical_live_original_20261108.json) now
-precede independent saved reading. Implement and qualify that reader next, then
-continue disease and B6. The 10,050-case receipt does not qualify
+precede the independent @25/@26 reader. Its original-file and admission controls
+pass in the [805-case selected saved checkpoint](evidence/clinical_saved_checkpoint_20261108.json),
+with all 91 copied clinical cases and exact diagnostic wheel/sdist resources.
+Continue disease and B6. The 10,050-case receipt does not qualify
 this changed clinical source.
-Both installed routes now copy/select all five
-capsules and the complete selected modules; actual installed receiving stays open.
+Both installed routes copy/select the complete owning modules and required
+original capsules; actual installed receiving stays open.
 The independent saved reader is locally qualified. The broader clinical/disease
 and B6 journeys, installed/hosted qualification, B7 acceptance and authorized B8
 delivery retain their full scope.

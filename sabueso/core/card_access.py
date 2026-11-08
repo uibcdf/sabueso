@@ -345,6 +345,7 @@ class CardAccess:
                             "bioactivity_exploration@1",
                             "literature_exploration@1",
                             "molecule_activity_context_exploration@1",
+                            "clinical_exploration@1",
                         )
                         else rebound._entries
                     )
@@ -693,16 +694,30 @@ class CardAccess:
                 "retained_requests_only" if self.mode == "saved" else "live"
             )
             if self.profile == "small_molecule":
-                from .card_clinical_access import descriptor as clinical_descriptor
+                if self.mode == "saved":
+                    from .card_exploration_clinical import (
+                        descriptor as clinical_descriptor,
+                    )
+                else:
+                    from .card_clinical_access import descriptor as clinical_descriptor
 
                 data["clinical"] = clinical_descriptor()
+                data["clinical"]["save"] = True
+                data["clinical"].pop("save_reason", None)
                 data["clinical"]["availability"] = (
-                    "live" if self.mode == "live" else "not_saved"
+                    "live"
+                    if self.mode == "live"
+                    else "retained"
+                    if "clinical" in self.capabilities["scientific_topics"]
+                    else "not_saved"
                 )
                 data["clinical"]["selection_availability"] = (
-                    "live" if self.mode == "live" else "not_saved"
+                    "live" if self.mode == "live" else "retained_requests_only"
                 )
-                if self.mode == "saved":
+                if (
+                    self.mode == "saved"
+                    and "clinical" not in self.capabilities["scientific_topics"]
+                ):
                     data["clinical"]["operations"] = []
                 if self.mode == "live":
                     from .card_molecule_activity_access import (
@@ -714,15 +729,19 @@ class CardAccess:
                 elif (
                     self._exploration_session is not None
                     and self._exploration_session.get("format")
-                    in ("sabueso.card_exploration@21", "sabueso.card_exploration@23")
+                    in (
+                        "sabueso.card_exploration@21",
+                        "sabueso.card_exploration@23",
+                        "sabueso.card_exploration@25",
+                    )
                 ):
                     from .card_exploration_molecule_activity import (
                         descriptor as activity_context_descriptor,
                     )
 
-                    if (
-                        self._exploration_session.get("format")
-                        == "sabueso.card_exploration@23"
+                    if self._exploration_session.get("format") in (
+                        "sabueso.card_exploration@23",
+                        "sabueso.card_exploration@25",
                     ):
                         from .card_exploration_molecule_activity_v2 import (
                             descriptor as activity_context_descriptor,
@@ -942,6 +961,12 @@ class CardAccess:
                 "Scientific selection supports structures, ligand_site_comparisons, quaternary_interpretation, assembly_generation, chemical_classification, activity_context, clinical, bioactivities and literature."
             )
         if topic == "clinical":
+            if self.mode == "saved":
+                from .card_exploration_clinical import saved_selection
+
+                return saved_selection(
+                    self, fields, options, where, item_refs, order_by
+                )
             from .card_clinical_access import materialize, options_for_clinical
             from .card_clinical_selection_v1 import (
                 active,
@@ -953,12 +978,6 @@ class CardAccess:
 
             options, fields = options_for_clinical(options), projection(fields)
             query = normalize(where, item_refs, order_by)
-            if self.mode == "saved":
-                from .card_exploration_storage import missing_selection
-
-                return missing_selection(
-                    self, topic, options, fields, query if active(query) else None
-                )
             if query["item_refs"] is not None and any(
                 ref not in self._scientific_items for ref in query["item_refs"]
             ):
@@ -971,7 +990,11 @@ class CardAccess:
                 self.mode == "saved"
                 and self._exploration_session is not None
                 and self._exploration_session.get("format")
-                in ("sabueso.card_exploration@21", "sabueso.card_exploration@23")
+                in (
+                    "sabueso.card_exploration@21",
+                    "sabueso.card_exploration@23",
+                    "sabueso.card_exploration@25",
+                )
             ):
                 from .card_exploration_molecule_activity import saved_selection
 
@@ -1329,7 +1352,7 @@ class CardAccess:
 
     def _defer(self, item):
         if item.get("adapter") == "clinical_exploration@1":
-            from .card_clinical_access import defer_frame
+            from .card_clinical_history_v1 import defer_frame
 
             return defer_frame(item)
         if item.get("adapter") == "molecule_activity_context_exploration@1":

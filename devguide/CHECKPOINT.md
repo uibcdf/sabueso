@@ -5,6 +5,72 @@ Current working-state checkpoint: **2026-11-08**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Independent clinical reader — selected local checkpoint PASS
+
+The independent clinical reader is implemented as logical
+`sabueso.card_exploration@25`, with physical shared representation @26.
+It uses frozen SDK224 clinical/native/source/selection rules over the genuine
+original; current Cards, scientific readers, clinical LIVE UI, clients and public
+item-ref digesters are forbidden during independent receiving. The immutable
+capsule and earlier @1–@24 interpretations remain unchanged.
+
+The [clinical saved receipt](evidence/clinical_saved_checkpoint_20261108.json)
+verifies **805 distinct offline cases**, including
+all **91 clinical cases** across the three complete modules. It covers seven
+native/source wires, 49 machine requests / 210 pages, complete original human/
+source/back graphs, seven actual files and fresh outside-checkout processes.
+It also covers eight altered wires, unchanged and eight altered resealed
+controls, none/gzip/zstd resaves, frozen catalogs, finite missing requests,
+production-limit saves, machine-first scope and mixed chemical/activity/clinical
+files, alongside applicable native/access/argument/quantity/persistence gates.
+
+The source gate uses eight workers and native threads one, with a 10 GiB combined
+RSS ceiling and 16 GiB host reserve. It peaks at **3,796,492,288 bytes** in
+499.54 s / 500.31 s guarded, with zero warnings or owned swap. Complete receptor,
+controller/worker/call sets and source before/after maps agree. Earlier 36-case
+original-file and 55-case admission gates retain their source epochs; repeated
+cases add no distinct coverage.
+
+Public human, machine and detail saving is enabled in the working implementation.
+Scientific saved selection reopens exact retained requests; an unexecuted request
+reports `not_saved`. Original native JSON and source-role/support membership stay
+fixed. Frozen literal reading can inspect retained clinical items and their exact
+source/indication/registry endpoints without acquiring knowledge, and back returns
+to the actual initiating view and inherited question. Source authenticity,
+scientific truth, efficacy and completeness outside captured requests are not
+established. A saved source assertion remains a source assertion, never Evidence.
+
+Small public controls retain production byte limits. Full original-file controls
+explicitly lift their byte ceilings: the largest complete graph exceeds the
+default encoded limit. This does not change public defaults or qualify arbitrary
+large workloads. B2's scientific/default review remains deferred, including the
+existing zero/null phase ordering; #192 remains unresolved.
+
+All **91 clinical cases also pass outside checkout** with nine byte-identical
+public inputs and exact source/copy case correspondence. Controller and four
+workers verify staged placement, input bytes and editable imports. The copied
+gate peaks at 3,185,483,776 bytes in 273.88 s / 274.61 s guarded, without warnings
+or owned swap. These repeats add no distinct coverage.
+
+The isolated diagnostic wheel/sdist inspection passes: all 796 implementation
+Python modules and both frozen source resources match the qualified checkout.
+Its source-only diagnostic version `0.0.0+unknown` is intentional, not a candidate.
+One CPU peaks at 96,247,808 bytes in 9.20 s; the complete monitored owned tree
+stays below 21 MiB. Ruff, format, Python 3.11 grammar, source lineage, governance
+and workflow copy/select checks pass. The existing license-metadata warning
+retains its #112/#35 handoff. Disposable isolated build trees and duplicate
+artifacts (29,898,129 bytes) were removed; useful originals, logs and final
+diagnostic artifacts retain owners and review triggers.
+
+This is an authorized intermediate `[skip ci]` checkpoint. Applicable exact-final-
+head CI/governance remain deferred to #148/#112 through an authorized unskipped
+route or separately authorized manual runs, inspected with gh-run-receptor.
+No workflow dispatch or remote PASS is claimed. Earlier red/interrupted epochs stay
+recorded; the 10,050-case preceding root-reader receipt does not qualify this new
+source. Continue disease and B6 after this increment. Installed OS/Python, hosted,
+scientist, uncoached researcher, agent, workload and actual-consumer acceptance
+remain open; B8/candidate/schema freeze/release remain unresumed.
+
 ## Clinical LIVE producer — selected local checkpoint PASS
 
 The [clinical profile](pending_proposals/card_clinical_exploration.md) now implements
@@ -34,7 +100,8 @@ red/partial epochs remain recorded and do not become passes. Ruff, Python 3.11
 grammar, governance and guide checks accompany the commit; this selected gate
 does not replace complete-repository qualification for the changed source.
 No Card schema, acquisition client, native scientific/default interpretation or
-earlier saved binding changed. Clinical saving remains explicitly unavailable.
+earlier saved binding changed in that LIVE producer checkpoint. Clinical saving
+was explicitly unavailable there; the independent reader above now enables it.
 
 The clean producer is committed and pushed as `66989a4` / SDK224. Outside-checkout
 editable metadata agrees; all 42 post-commit clinical/catalog controls pass.
@@ -51,15 +118,12 @@ no network/source acquisition. Input preparation uses offline fixture clients.
 The verified capsule is `tests/core/data/clinical_live_sdk224.tar.gz`; preserve
 its original bytes. The disposable verified raw tar was removed (117,739,520
 bytes); original producer data, compressed capsule and receipts remain owned by
-#148/#112 until independent receiving/block closeout. No owned operation is active.
+#148/#112 until independent receiving/block closeout. At that original closeout, no owned operation was active.
 
-Next implement separately versioned independent clinical/native/source/selection
-predicates and complete original human/machine/source/navigation replay. Current
-Cards/scientific readers/clients must remain forbidden during independent
-receiving. Measure one actual-file case before increasing concurrency. Clinical
-saved admission remains unavailable. Continue disease and B6 profiles afterward.
-B7 acceptance and the complete
-six-stage program remain open; B8 and release remain unresumed.
+The subsequent independent reader above uses these fixed original bytes.
+Its current source and qualification supersede this producer-only next action;
+the producer receipt does not itself qualify saved reading. Disease and B6
+remain next profiles, with the complete accepted six-stage program unchanged.
 
 ## Preceding complete offline root-reader checkpoint — PASS
 

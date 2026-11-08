@@ -115,8 +115,11 @@ implements separate native indication/citation/registry grains and passes its
 [576-case selected source checkpoint](evidence/clinical_live_checkpoint_20261108.json)
 and 40 copied clinical cases. Clean SDK224 and its
 [genuine complete original](evidence/clinical_live_original_20261108.json) are
-committed/captured before the independent saved reader, which remains next;
-the preceding full reader receipt does not qualify the changed clinical source.
+committed/captured before the independent @25/@26 reader. Original-file receiving
+and admission controls now pass in the
+[805-case selected saved checkpoint](evidence/clinical_saved_checkpoint_20261108.json),
+with all 91 copied clinical cases and exact diagnostic wheel/sdist resources. The preceding full reader
+receipt does not qualify this changed clinical source.
 Disease and B6 profiles retain their full accepted scope. Scientific
 and uncoached researcher/agent/workload/actual-consumer acceptance stay open; B8
 and release remain unresumed. Original formats, source assertions and scientific

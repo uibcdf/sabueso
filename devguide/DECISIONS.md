@@ -1,5 +1,33 @@
 # Sabueso — Decision Log
 
+## 2026-11-08 UTC — Bind saved clinical exploration to the genuine SDK224 original
+
+Clinical exploration adds logical @25 and optional shared representation @26.
+Independent frozen native/source/selection predicates validate the complete
+clinical wire, source-role membership, coverage/request states, typed human and
+machine selections and exact initiating question/back context against captured
+inputs. Expected values validate original data; receiving restores the retained
+wire. The genuine pre-reader SDK224 capsule remains immutable. Only its declared
+generated knowledge-state rule path supplies the producer label.
+
+Scientific saved selection reopens exact retained requests. An unexecuted request
+or human topic/question stays `not_saved`; machine-first saving creates no human
+answer. Clinical item/source operations are literal reads over one retained
+native result, so frozen navigation can inspect original item, indication,
+registry and role-bound source endpoints without new scientific materialization
+or acquisition. Each operation keeps its actual initiating instance and question.
+This differs from a scientific cross-focal destination and grants no new identity
+join, source assertion or Evidence.
+
+Mixed files retain the prior frozen chemical/activity predicates and exact
+originating-root policy. Earlier @1–@24 readers/resaves, native scientific defaults
+and Card schema remain unchanged. Full original corpus controls explicitly lift
+byte limits; ordinary public saving retains production limits. The selected
+805-case source gate passes; [CHECKPOINT](CHECKPOINT.md) owns copied/artifact and
+subsequent qualification. This local persistence decision grants no release or
+scientific/human acceptance. Owners: #148/#112; see the
+[clinical contract](pending_proposals/card_clinical_exploration.md).
+
 ## 2026-11-08 UTC — Version exact-origin molecule root returns independently
 
 New LIVE molecule activity saves use logical exploration @23 and optional shared

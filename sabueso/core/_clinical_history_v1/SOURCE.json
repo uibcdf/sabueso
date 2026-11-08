@@ -1,0 +1,45 @@
+{
+  "producer_head": "66989a407564e74758b6d0eb946ec07774ddbee3",
+  "producer_version": "0.14.0+224.g66989a4",
+  "purpose": "Independent original clinical verification; original values are retained, never replaced by expected output.",
+  "original_files": {
+    "card_clinical_access.py": "196184bb7a3c71d581fb9dff7f298dcc5b36ab1037e1991bc56fed149a8527a8",
+    "card_clinical_selection_v1.py": "a13d393621c0a55acfc366d460ac800decea4952435294989a1ff56746a5e75a",
+    "card_clinical_exploration.py": "5988d6d1732741e4c4cd2c75ce70e27feb83c23817905de72379bb7e633bd545",
+    "card_clinical_presentation_v1.py": "453b11afa717e6f96881bb70b8b8c36528ff20b1b395899bdb0fade6156e8827",
+    "clinical.py": "0313480e7b8b98377586a945194566c663a2794009ca488360c1f1f3248cbbff",
+    "card_access.py": "cd25dea30f139932ff6e97f8e7c50c6ca602355408706a0f680793ed1dd93c6b",
+    "card_exploration.py": "bdd303ff49fd4aa7380b20c9ed7e7c191e774bde5de2ab488207c4efd9f30eac",
+    "card_exploration_profiles.py": "8891a2b430939f191f8d6ec8ac5f8321c5cb443e3fe415c1e40f713b9c7a1d27",
+    "card_context_navigation.py": "5af375a6250e9344ab66ae6d9b6a4c8233b9ac9b31053df28b5bf0c666b5f1e9"
+  },
+  "reused_frozen_files": {
+    "card_exploration_coverage_v1.py": "b8735b043509f1f54f8b9402a57725942925fb180e7df2510d8c409c207e78d5",
+    "card_exploration_history.py": "fb1e8de9604244e8d3360883ecec7d521ae121d7288c9eab83d1ed1d7c45b3dc",
+    "_literature_history_v1/inputs.py": "767af694005c7ff869051992751cbb3a84164765b64ea420edf2dfa91e8b536e",
+    "_literature_history_v1/validation.py": "dba6d06bc4544732c093df5df9e6b00c2d1f32d20fd2a654f8c808feb56474c6"
+  },
+  "allowed_differences": "Versioned independent implementation: native/clinical/source/selection/presentation rules rebind relative imports; extracted literal grammar and explicit inert ownership glue are separately described. Original observations, not regenerated expected outputs, qualify the bindings.",
+  "extracted_and_new_predicates": {
+    "navigation.py": "Original _link and _link_view exact-location grammar; resolution without a retained explicit location is refused.",
+    "replay.py": "Original literal children, selection, inspection, metadata and support grammar with inert stores and frozen catalogs; never constructs a current Card.",
+    "catalogs.py": "Literal SDK224 nature/topic/question declarations.",
+    "machine.py": "Versioned typed request grammar rebound to the immutable clinical selection predicates.",
+    "inputs.py": "Previously frozen knowledge-state/input behavior; substitutes only the declared generated coverage rule producer label.",
+    "validation.py": "Previously frozen literal item-ref validation."
+  },
+  "frozen_files": {
+    "__init__.py": "8e2855b1a3bab4f914ea479f96d7588dc6dfbb6eb9ac816b1183a0b42365d220",
+    "adapter.py": "bf0f60b83dbe712ab07327484b8a3d3b2e066e0e58fa4e6e5d4fc0537cc53f61",
+    "catalogs.py": "19d2c9859f47d18eef76630ed739287968108cc6bf35f4eda7b8f19e4c64787b",
+    "clinical.py": "0313480e7b8b98377586a945194566c663a2794009ca488360c1f1f3248cbbff",
+    "exploration.py": "201fc5c11808f5e6874f2ed2831c995eeebdc2f970981d4aa17e737e12e7b9c3",
+    "inputs.py": "44485af25970918de4bcddc811b5df2dc5bf4cc55a0b8db35e8836f7c6587fb9",
+    "machine.py": "41be202442ed7592e113d6e686823fada1ba470baabe41bfc7e8c30a3bc9aab3",
+    "navigation.py": "c408ade001e3ceaba6fb74fbb8aa57bfc9c8ea1b2ccaee79b96a1639dceda60e",
+    "presentation.py": "453b11afa717e6f96881bb70b8b8c36528ff20b1b395899bdb0fade6156e8827",
+    "replay.py": "f6f4e293e5dcf52376ef44f2cae31577f24b476f1b2502d12f36283b52617ee4",
+    "selection.py": "8b1f04126e46d72da8a38f347bcb0cca5c287c5489ecc3fcadda8c5edbd5eca9",
+    "validation.py": "3b9a20c897562543dca1e44fbf5c098829a1aeaf5c056091b3fd8987ecc15d7b"
+  }
+}

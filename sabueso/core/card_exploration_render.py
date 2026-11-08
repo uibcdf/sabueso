@@ -774,11 +774,11 @@ def _parts(view):
 
         opening.extend(chemical_opening(view, preview))
     if view._record_panel == "clinical":
-        from .card_clinical_presentation_v1 import opening as clinical_opening
+        from .card_clinical_presentation_v2 import opening as clinical_opening
 
         opening.extend(clinical_opening(view, preview))
     if view.context.get("adapter") == "clinical_context_links@1":
-        from .card_clinical_presentation_v1 import context_opening as clinical_context
+        from .card_clinical_presentation_v2 import context_opening as clinical_context
 
         opening.extend(clinical_context(view, preview))
     if view._record_panel == "literature":
@@ -1012,7 +1012,7 @@ def _parts(view):
             )
             continue
         if view._record_panel == "clinical":
-            from .card_clinical_presentation_v1 import display_row
+            from .card_clinical_presentation_v2 import display_row
 
             rows.append(display_row(item, index, preview))
             continue
@@ -1288,7 +1288,7 @@ def _parts(view):
 
 def _headers(view):
     if view._record_panel == "clinical":
-        from .card_clinical_presentation_v1 import HEADERS
+        from .card_clinical_presentation_v2 import HEADERS
 
         return list(HEADERS)
     if view._record_panel == "literature":

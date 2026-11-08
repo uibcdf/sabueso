@@ -25,9 +25,46 @@ captured: seven cases, 1,814 named views / 3,565 actual instances and 49 queries
 210 pages, with every packaged member and original reference/graph byte-verified.
 Public source/fixture states and explicitly synthetic uncertainty controls stay
 distinct; the failure case uses the fixture client's simulated error. Independent
-clinical saved reading remains unimplemented; implement it against these fixed
-bytes. Public clinical saving truthfully reports unavailable in the meantime. Original
-exploration formats and their scientific interpretations stay fixed.
+clinical saved reading now has an independent @25/@26 implementation. The
+[805-case selected saved checkpoint](../evidence/clinical_saved_checkpoint_20261108.json)
+passes, including all 91 owning cases. All 91 also pass outside checkout with
+nine byte-identical inputs, and actual diagnostic wheel/sdist resource inspection
+agrees. These are local editable/copy/resource checks; installed/hosted and
+scientific/human acceptance remain open.
+The SDK224 capsule remains byte-identical. Earlier formats and their scientific
+interpretations stay fixed. [CHECKPOINT](../CHECKPOINT.md) owns current results.
+
+## Original saved reading
+
+The private `_clinical_history_v1` rules bind native values/order, source roles,
+coverage/request states, citations and registry context directly to captured
+inputs. A declared generated coverage-rule producer label is the only substituted
+path. Validation checks expected values but restores the original wire, never
+replacement outputs. Source lineage and frozen module hashes ship as package data.
+
+Logical @25 and physical @26 add explicit clinical admission while retaining
+earlier frozen scientific predicates, source-instance operation history and exact
+originating-root checks for mixed molecule/activity files. The new clinical
+binding preserves exact typed requests, projection, membership, ordering and
+exclusions. Saved scientific selection returns only executed retained requests;
+missing requests stay `not_saved`. Saved topic/question views likewise require
+their original retained human requests. Machine-first saving does not manufacture
+a human answer.
+
+Clinical item/source reading is literal navigation over the one fully retained
+native result. Frozen rules may open its original item, role-bound explanation,
+indication, registry and source endpoints without consulting a source or
+materializing new scientific knowledge. Each operation keeps its actual
+initiating view and inherited question. New display operations preserve the
+original result. This literal capability does not widen scientific query scope.
+
+Small public controls retain production byte limits. Complete original graphs
+explicitly lift limits; the largest graph exceeds the default encoded ceiling.
+Tests exercise fresh inert processes, exact original pages and back paths,
+none/gzip/zstd resaves, mutable-catalog isolation, a resealed unchanged control and
+eight resealed semantic refusals. Hashes establish consistency, not source truth
+or authenticity. No current Card/client/scientific reader/clinical LIVE UI/public
+item-ref digester is allowed during independent original receiving.
 
 ## Native knowledge and row grains
 

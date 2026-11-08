@@ -12,7 +12,7 @@ from sabueso._private.smonitor.warnings import (
     EnrichmentTruncatedWarning,
 )
 from sabueso.core.card import Card
-from sabueso.core.errors import ArgumentError, StorageError
+from sabueso.core.errors import ArgumentError
 from sabueso.core.snapshot import canonical_json
 from sabueso.tools.db.chembl import FixtureChEMBLClient
 from sabueso.tools.db.clinicaltrials import FixtureClinicalTrialsClient
@@ -389,22 +389,23 @@ def test_deferred_machine_values_keep_exact_paths_and_interpretation(originals):
             assert recovered["kind"] == row["kind"]
 
 
-def test_live_saving_is_truthfully_deferred_until_independent_reader(
+def test_live_human_machine_and_detail_save_with_production_byte_limits(
     originals, tmp_path
 ):
-    explorer = card(originals).explore()
+    explorer = card(originals, "bare").explore()
     view = explorer.view("clinical")
     selection = explorer.access.select("clinical")
-    assert not view.capabilities["save"]
-    assert not selection.capabilities["save"]
+    assert view.capabilities["save"]
+    assert selection.capabilities["save"]
     for output, operation in [
         ("human.json", view.save),
         ("machine.json", selection.save),
         ("detail.json", view.items()[0].open().save),
     ]:
-        with pytest.raises(StorageError):
-            operation(tmp_path / output)
-        assert not (tmp_path / output).exists()
+        operation(tmp_path / output)
+        saved = sabueso.read_exploration(tmp_path / output)
+        assert saved.validation["verifier"] == "clinical_exploration_binding@1"
+        assert saved.context["mode"] == "saved"
 
 
 def test_nonmolecule_profile_refuses_clinical_native_reader(monkeypatch):
@@ -414,6 +415,53 @@ def test_nonmolecule_profile_refuses_clinical_native_reader(monkeypatch):
     monkeypatch.setattr(Card, "clinical", forbidden)
     with pytest.raises(ArgumentError):
         explorer.access.select("clinical")
+
+
+def test_machine_first_clinical_save_retains_only_executed_scientific_requests(
+    originals, monkeypatch, tmp_path
+):
+    from test_card_clinical_history_offline import block_current
+
+    explorer = card(originals, "bare").explore()
+    request = {"fields": ["chembl_max_phase"], "where": {"chembl_max_phase": 4.0}}
+    selection = explorer.access.select("clinical", **request)
+    path = tmp_path / "machine-first.json"
+    selection.save(path)
+    block_current(monkeypatch)
+    saved = sabueso.read_exploration(path)
+    received = saved.explorer.access.select("clinical", **request, skip_digestion=True)
+    assert received.selection_ref == selection.selection_ref
+    assert received.count == selection.count == 1
+    assert saved.explorer.view("clinical").outcome["status"] == "not_saved"
+
+
+def test_clinical_file_composes_with_existing_molecule_and_chemical_bindings(
+    originals, monkeypatch, tmp_path
+):
+    from test_card_clinical_history_offline import block_current
+
+    explorer = card(originals, "bare").explore()
+    clinical = explorer.answer("clinical_context")
+    chemical = explorer.answer("classification")
+    activity = explorer.answer("measured_targets")
+    path = tmp_path / "mixed.json"
+    clinical.save(path)
+    block_current(monkeypatch)
+    saved = sabueso.read_exploration(path)
+    assert saved.native_payload == clinical.native_payload
+    assert (
+        saved.explorer.answer("classification", skip_digestion=True).native_payload
+        == chemical.native_payload
+    )
+    assert (
+        saved.explorer.answer("measured_targets", skip_digestion=True).native_payload
+        == activity.native_payload
+    )
+    assert set(saved.validation["verified_scientific_adapters"]) == {
+        "clinical_exploration@1",
+        "chemical_classification_exploration@1",
+        "molecule_activity_context_exploration@1",
+    }
 
 
 def test_missing_request_ledger_is_unknown_and_native_coverage_is_unchanged(originals):

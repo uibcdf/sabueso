@@ -345,7 +345,10 @@ class CardItem:
     @property
     def cells(self):
         if self._view._record_panel == "clinical":
-            from .card_clinical_selection_v1 import COLUMNS
+            if self._view._explorer.mode == "saved":
+                from ._clinical_history_v1.selection import COLUMNS
+            else:
+                from .card_clinical_selection_v1 import COLUMNS
 
             result = self._view._selection._scientific
             support = tuple(self.support)
@@ -631,6 +634,10 @@ class CardItem:
     def open(self):
         """Open all retained detail, or follow a labeled catalog route."""
         if self._view._record_panel == "clinical":
+            if self._view._explorer.mode == "saved":
+                from .card_exploration_clinical import item_operation
+
+                return item_operation(self, "open")
             from .card_clinical_exploration import open_item
 
             return open_item(self)
@@ -1141,7 +1148,10 @@ class CardView:
         if self._record_panel == "literature":
             capabilities["sort"] = list(self.schema["columns"])
         if self._record_panel == "clinical":
-            from .card_clinical_selection_v1 import SORT_COLUMNS
+            if self._explorer.mode == "saved":
+                from ._clinical_history_v1.selection import SORT_COLUMNS
+            else:
+                from .card_clinical_selection_v1 import SORT_COLUMNS
 
             capabilities["sort"] = list(SORT_COLUMNS)
         if self._explorer.mode == "saved":
@@ -1159,6 +1169,7 @@ class CardView:
             if self._explorer._session.get("format") in (
                 "sabueso.card_exploration@21",
                 "sabueso.card_exploration@23",
+                "sabueso.card_exploration@25",
             ) and is_view(self):
                 from .card_molecule_activity_operations_v1 import has_operation
 
@@ -1171,7 +1182,10 @@ class CardView:
         if self._saved_state is not None:
             return deepcopy(self._saved_state["schema"])
         if self._record_panel == "clinical":
-            from .card_clinical_selection_v1 import COLUMNS
+            if self._explorer.mode == "saved":
+                from ._clinical_history_v1.selection import COLUMNS
+            else:
+                from .card_clinical_selection_v1 import COLUMNS
 
             return {
                 "kind": "clinical_exploration",
@@ -1449,7 +1463,10 @@ class CardView:
         """Select exact declared cells without changing the scientific result."""
         self._check_column(column)
         if self._record_panel == "clinical":
-            from .card_clinical_exploration import display_filter
+            if self._explorer.mode == "saved":
+                from .card_exploration_clinical import display_filter
+            else:
+                from .card_clinical_exploration import display_filter
 
             return display_filter(self, column, equals)
         if self._record_panel == "activity_context":
@@ -1578,7 +1595,10 @@ class CardView:
         if unit is not None and (not isinstance(unit, str) or not unit.strip()):
             raise ArgumentError("unit requires a nonempty unit name or None.")
         if self._record_panel == "clinical":
-            from .card_clinical_exploration import display_sort
+            if self._explorer.mode == "saved":
+                from .card_exploration_clinical import display_sort
+            else:
+                from .card_clinical_exploration import display_sort
 
             return display_sort(self, column, descending, unit)
         if self._record_panel == "activity_context":
@@ -1792,6 +1812,7 @@ class CardExplorer:
                 if view._record_panel
                 in (
                     "activity_context",
+                    "clinical",
                     "bioactivities",
                     "literature",
                     "chemical_classification",
@@ -1834,12 +1855,27 @@ class CardExplorer:
 
     @property
     def _nature_topics(self):
+        if (
+            self.mode == "saved"
+            and self._session.get("format") == "sabueso.card_exploration@25"
+        ):
+            from ._clinical_history_v1.catalogs import NATURE_TOPICS
+
+            return NATURE_TOPICS.get(self.profile, ())
         from .card_exploration_profiles import NATURE_TOPICS
 
         return NATURE_TOPICS.get(self.profile, ())
 
     @property
     def _topics(self):
+        if (
+            self.mode == "saved"
+            and self._session.get("format") == "sabueso.card_exploration@25"
+        ):
+            from ._clinical_history_v1.catalogs import TOPICS
+
+            if self.profile in TOPICS:
+                return TOPICS[self.profile]
         keys = (
             (
                 *self._nature_topics,
@@ -1878,6 +1914,14 @@ class CardExplorer:
 
     @property
     def _questions(self):
+        if (
+            self.mode == "saved"
+            and self._session.get("format") == "sabueso.card_exploration@25"
+        ):
+            from ._clinical_history_v1.catalogs import QUESTIONS
+
+            if self.profile in QUESTIONS:
+                return QUESTIONS[self.profile]
         from .card_exploration_profiles import COMMON_QUESTIONS, QUESTIONS
 
         return {**QUESTIONS.get(self.profile, {}), **COMMON_QUESTIONS}

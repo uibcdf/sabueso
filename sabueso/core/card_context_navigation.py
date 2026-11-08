@@ -496,6 +496,7 @@ def _destination(explorer, candidate, origin, title="Referenced source record"):
     if explorer.mode == "saved" and explorer._session.get("format") in (
         "sabueso.card_exploration@21",
         "sabueso.card_exploration@23",
+        "sabueso.card_exploration@25",
     ):
         from .card_exploration_molecule_activity import saved_declared_destination
 
@@ -503,6 +504,8 @@ def _destination(explorer, candidate, origin, title="Referenced source record"):
             from .card_exploration_molecule_activity_v2 import (
                 saved_declared_destination,
             )
+        elif explorer._session.get("format") == "sabueso.card_exploration@25":
+            from .card_exploration_clinical import saved_declared_destination
         recorded = saved_declared_destination(explorer, candidate, origin)
         if recorded is not None:
             return recorded
@@ -523,6 +526,10 @@ def _destination(explorer, candidate, origin, title="Referenced source record"):
 def follow(item):
     explorer, link = item._view._explorer, item._entry.value
     if link.get("rule") == "clinical_context_links@1":
+        if explorer.mode == "saved":
+            from .card_exploration_clinical import item_operation
+
+            return item_operation(item, "open")
         from .card_clinical_exploration import follow as follow_clinical
 
         return follow_clinical(item)

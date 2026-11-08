@@ -54,8 +54,12 @@ registry contexts between human and compact-agent routes. Its
 [576-case selected checkpoint](evidence/clinical_live_checkpoint_20261108.json)
 and all 40 copied clinical cases pass. The clean SDK224 producer's
 [genuine complete original](evidence/clinical_live_original_20261108.json)
-is captured and byte/graph-verified before independent saved reading, which is
-next. [CHECKPOINT](CHECKPOINT.md) owns current source and actual results.
+is captured and byte/graph-verified before the independent @25/@26 reader.
+That reader now implements original clinical values, source roles, finite typed
+requests and exact navigation. Its [selected saved checkpoint](evidence/clinical_saved_checkpoint_20261108.json)
+passes 805 distinct offline cases and all 91 copied clinical cases; diagnostic
+wheel/sdist resource bytes also agree. Installed/hosted and human/scientific
+acceptance remain open. [CHECKPOINT](CHECKPOINT.md) owns current source and actual results.
 The preceding full reader receipt retains its source epoch and does not qualify
 this new clinical implementation.
 

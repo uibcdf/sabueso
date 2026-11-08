@@ -24,8 +24,18 @@ remain visible. This development adapter performs no acquisition or efficacy
 inference. The [576-case selected source checkpoint](evidence/clinical_live_checkpoint_20261108.json)
 and all 40 copied clinical cases pass. The clean SDK224 producer and its
 [genuine LIVE original](evidence/clinical_live_original_20261108.json) precede the
-independent clinical saved reader, which is not implemented. Clinical saving and
-public delivery remain unavailable.
+independent @25/@26 clinical saved reader. Human views, machine selections and
+detail can now be saved in the development implementation. Independent reading
+preserves original native values, source roles, typed requests and initiating
+question/back context. Scientific saved selection reopens exact retained
+requests; an unexecuted request returns `not_saved`. Frozen literal navigation
+can inspect retained source/indication/registry JSON without a new source call.
+Earlier formats keep their meaning. Full original corpus controls explicitly
+lift byte limits; ordinary calls retain production limits. See
+the [805-case selected receipt](evidence/clinical_saved_checkpoint_20261108.json)
+for complete 91-case copied receiving and diagnostic artifact resource scope.
+[CHECKPOINT](CHECKPOINT.md) owns current qualification.
+Public package delivery, hosted and scientific/researcher acceptance remain open.
 
 Development small-molecule `Card.explore().answer("classification")` (also
 `view("classification")`) presents source-bound chemical classes and roles,
