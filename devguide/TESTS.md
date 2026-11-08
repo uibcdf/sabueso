@@ -609,7 +609,39 @@ remain historical scoped controls, not current universal worker/RAM defaults.
 
 ### Current checkpoint partition
 
-The current full checkpoint separates the following modules into individually
+The active exact-origin checkpoint discovers **10,050 offline cases** on
+`6ae3877` / SDK221. Its exact partition reuses the 901 selected cases only after
+checking that implementation, tests and original inputs agree; the sole source
+difference is the generated label. Normal public discovery excludes 34 complete
+modules already covered or separately owned, leaving 7,134 cases. The 1,553
+native-original cases execute through normal discovery with
+`--local-source-inputs -m "not online and local_source_inputs"`; the ten public
+native skips are replaced by those actual native passes. The 472 remaining
+large cases split into 55 historical molecule-file and 417 other history/storage/
+copied-consumer cases. Keep their complete scope and reviewed resource bounds.
+The exact node lists and ignore modules belong to the destination-owned
+`b5-root-exact-full-collection-1/collection-receipt.json`; collection executes
+zero cases and does not qualify a complete checkpoint. CHECKPOINT owns actual
+execution outcomes.
+
+Current receiving passes all 1,553 native cases in 41.87 s / 42.84 s guarded at
+1,846,644,736 bytes RSS, then the public remainder passes 7,124 plus ten expected
+native skips in 598.47 s / 599.80 s at 2,984,624,128 bytes RSS. All ten skipped
+cases actually pass in the native gate. Including the 901-case selected receipt,
+the exact composed set has 9,578 distinct passes; 472 large cases remain pending.
+The public gate's thirteen warnings are its intentional negative acquisition
+controls; both gates have zero owned swap and complete receptor/source accounting.
+Use four workers and a 10 GiB total RSS ceiling for the remaining large cohorts,
+with native threads one, a 16 GiB host reserve and separate owned execution.
+The historical molecule-file gate permits 16 GiB scratch and 3,600 s. Its earlier
+four-worker peak is below 7 GiB; eight workers are not an admitted profile for
+that workload. For the other 417 cases, keep historical modules in one scheduling
+group each and give each copied consumer its own group. Record a one-to-one
+mapping from grouped item ids to the unchanged normal-discovery ids. Original
+case byte/time/efficiency controls remain intact. Do not infer a full pass from
+this scheduling plan or from collection alone.
+
+The earlier 9,786-case checkpoint separates the following modules into individually
 owned gates. Their original capsules, module caches, nested readers or optional
 modeling consumer need explicit process-tree accounting. Ordinary selections are
 serial; the two new molecule file modules use their explicit four-worker profiles.

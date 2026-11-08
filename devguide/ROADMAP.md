@@ -106,7 +106,8 @@ all 69 owning LIVE cases pass with eight workers and 10 GiB total owned-tree RSS
 All 24 complete original-file cases and the full copied LIVE consumer also pass.
 Complete copied exact-origin receiving passes all 254 cases with byte-identical
 inputs; the selected checkpoint covers 901 distinct cases. Qualify the applicable
-broader offline scope next;
+broader offline scope: 9,578 of 10,050 discovered cases now have actual passing
+evidence and 472 large historical controls remain pending;
 original @21/@22 files keep their original reading/resaving.
 Clinical/disease and B6 profiles then retain their full accepted scope. Scientific
 and uncoached researcher/agent/workload/actual-consumer acceptance stay open; B8

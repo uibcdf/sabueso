@@ -5,6 +5,50 @@ Current working-state checkpoint: **2026-11-08**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Complete offline reader checkpoint — in progress
+
+Current validation source is clean `6ae3877` / editable SDK221. Normal root
+discovery with verified local originals selects **10,050 offline cases**; its
+collection-only execution takes 12.86 s pytest / 14.34 s guarded and executes
+zero cases. The exact partition and source maps are retained under
+`recovered_work/checkpoint_recovery_20261106/b5-root-exact-full-collection-1/`.
+The earlier 901 selected passes remain applicable: all 1,175 implementation,
+test and original-input paths agree; only the generated version label differs.
+
+All **1,553 native-original cases pass** on the current source in 41.87 s /
+42.84 s guarded, at 1,846,644,736 bytes peak owned RSS. Receptor accounting is
+complete and valid, all 1,176 source/input hashes remain stable, and warnings
+and owned swap are zero. Actual selection equals the entire declared native set.
+
+The disjoint **7,134-case public remainder passes** in
+`b5-root-exact-full-public-1`: 7,124 pass and ten expected native-original skips.
+All ten skipped cases actually pass in the native gate and count once there.
+The run takes 598.47 s pytest / 599.80 s guarded, at 2,984,624,128 bytes peak
+owned RSS, with zero owned swap and complete valid receptor accounting. All
+eight pre-execution selection proofs, source hashes and owned execution-helper
+hashes remain valid. Its thirteen warnings are the intentional negative
+acquisition-failure/truncation controls, preserved in the complete artifact.
+
+The [current progress receipt](evidence/molecule_activity_root_exact_full_progress_20261108.json)
+therefore verifies **9,578 distinct cases** after removing overlaps. It records
+normal discovery, the generated-label-only reuse of 901 cases and replacement
+of all ten public native skips by their actual native passes.
+
+The remaining **472 large cases** comprise 55 historical molecule-file cases
+and 417 other history/storage/copied-consumer cases. They remain pending under
+separately reviewed four-worker profiles with a 10 GiB combined RSS ceiling.
+The 55-case gate uses smaller scheduling chunks; the 417-case gate keeps full
+historical modules together and schedules each copied consumer separately.
+These are scheduling choices only; the exact original discovery set is checked
+before execution. Preserve complete scope and original
+efficiency controls, cap native threads at one and retain the 16 GiB host reserve.
+The collection and partition do not constitute a full-suite pass. Close actual
+executions and verify their discovery union before publishing that claim.
+
+No runtime implementation changes accompany this qualification. Exact-head
+hosted/installed, B7 acceptance and authorized B8 retain their existing scope;
+the complete six-stage goal remains active and release stays paused.
+
 ## Independent exact-origin saved binding — selected local checkpoint
 
 Code checkpoint **[`7257c65`](https://github.com/uibcdf/sabueso/commit/7257c650eeb9acc8d441bba47f086f2e3b8f03d9)**

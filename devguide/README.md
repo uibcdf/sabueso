@@ -90,7 +90,9 @@ pass with eight workers and a 10 GiB combined RSS ceiling. All 24 actual-file
 cases and the full copied LIVE consumer also pass. Complete copied exact-origin
 receiving passes all 254 cases with thirteen byte-identical inputs. The
 [901-case selected checkpoint](evidence/molecule_activity_root_exact_saved_checkpoint_20261108.json)
-records current qualification; broader offline receiving remains next, and the
+records its selected qualification. The [broader checkpoint progress](evidence/molecule_activity_root_exact_full_progress_20261108.json)
+verifies 9,578 of the 10,050 discovered cases; 472 large historical controls
+remain pending. The
 older 9,786-case receipt does not qualify this changed source.
 [CHECKPOINT](CHECKPOINT.md) owns the exact active source, results and next action.
 Clinical/disease and B6 journeys follow this reader increment within the full

@@ -432,7 +432,9 @@ independent logical @23/shared @24 binding. Public LIVE saving is restored and
 all 69 LIVE cases pass. All 24 original-file cases and the full copied LIVE
 consumer also pass. Complete copied exact-origin receiving passes all 254 cases;
 the current selected checkpoint covers 901 distinct cases. Qualify the applicable
-broader offline scope next. Both installed routes now copy/select all five
+broader offline scope: normal discovery selects 10,050, the exact composed
+passing set covers 9,578 and 472 large historical controls remain pending.
+Both installed routes now copy/select all five
 capsules and the complete selected modules; actual installed receiving stays open.
 The profile remains unfinished until its complete saved reader is qualified;
 clinical/disease and B6 journeys, B7 acceptance and authorized B8 delivery retain
