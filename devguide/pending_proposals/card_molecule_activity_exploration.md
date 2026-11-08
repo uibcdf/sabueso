@@ -12,8 +12,15 @@ Current working follow-up: LIVE root returns use
 initiating instance and typed request. The selected 515-case local checkpoint
 passes, including all 68 owning LIVE cases. The clean `b1bbfaa` / SDK218 producer
 now supplies [two complete originals](../evidence/molecule_activity_root_exact_original_20261107.json)
-with opposite operand creation orders, before the new reader. New LIVE saving
-explicitly waits for that independent saved binding. Genuine @21/@22
+with opposite operand creation orders, before the new reader. The working
+independent reader uses logical @23/shared @24 and a complete exact-origin
+manifest; unchanged @21 scientific predicates receive only a private header
+projection after @23 integrity verification. Public saving is restored and all
+69 LIVE cases pass. All 24 complete-file cases and the full copied LIVE consumer
+also pass. Complete copied exact-origin receiving passes all 254 cases with
+thirteen byte-identical inputs. The [901-case selected receipt](../evidence/molecule_activity_root_exact_saved_checkpoint_20261108.json)
+records source epochs and limits; broader offline qualification remains next.
+Genuine @21/@22
 files remain readable/resavable under their original policy. The clean SDK216
 pre-fix saved control is committed as `190c291`; earlier receipts below retain
 their own source and behavior. See [CHECKPOINT](../CHECKPOINT.md) for current gates.
@@ -238,14 +245,34 @@ Implementation:
   projection, candidate-first quantity comparisons and null-last ordering;
 - `card_molecule_activity_exploration.py` implements human/source/return routes;
 - `card_molecule_activity_presentation_v1.py` provides bounded text/HTML;
-- `test_card_molecule_activity_exploration_offline.py` retains all 68 owning
+- `test_card_molecule_activity_exploration_offline.py` retains all 69 owning
   public and explicitly synthetic controls; the copied consumer requires the whole module.
 
 Shared access, profile, context-navigation, presentation and storage hooks are
 committed. Original saved contracts advertise their retained saving scope;
-new LIVE navigation's independent saved binding is pending, as recorded in CHECKPOINT.
+the new working @23/@24 binding restores LIVE saving, with exact gate status
+recorded in CHECKPOINT.
 Source/wire/cell interpretation keeps quantities bound to
 `relationships.has_bioactivity.measurement.normalized` and explicit units.
+
+The independent exact-origin layer uses
+`card_exploration_molecule_activity_v2.py`,
+`card_exploration_verification_v23.py` and
+`card_exploration_shared_values_v6.py`. The original @21 binding, verifier,
+sharing @5 algorithm and operation predicates remain unchanged. Header projection
+is explicit and private after new-format integrity verification; it never changes
+scientific or view values. The added manifest binds every molecule root return
+to its exact retained origin instance. The saved report states the named policy.
+
+`test_card_molecule_activity_exact_binding_offline.py` defines 230 original graph,
+typed-return and policy controls. `test_card_saved_molecule_activity_exact_offline.py`
+defines 24 public actual-file cases across both SDK218 operand orders, eight fully
+rehashed semantic refusals per order and separate plain/gzip/zstd transport/resaves.
+Fresh receivers forbid current Cards, science and LIVE UI while replaying every
+96-view/six-request original. Both installed routes copy/select the complete
+modules, helpers and all five immutable molecule capsules. Local copied receiving
+qualifies only its recorded editable-source scope; actual installed platform,
+hosted, scientific and human gates remain separate.
 
 Wrapper/group/record/assay/publication routes retain the focal molecule and
 exact supplied target pin. `target_card` explicitly crosses to a protein explorer,

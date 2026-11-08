@@ -846,7 +846,7 @@ def test_declared_molecule_activity_runs_with_only_required_public_inputs():
             final["counts"]["collected"]
             == final["counts"]["executed"]
             == final["counts"]["passed"]
-            == 60
+            == 69
         )
         assert not any(
             final["counts"][key]
@@ -1056,6 +1056,8 @@ def test_installed_molecule_files_deliver_the_complete_original_payload():
     modules = (
         "test_card_saved_molecule_activity_offline.py",
         "test_card_saved_molecule_activity_originals_offline.py",
+        "test_card_molecule_activity_exact_binding_offline.py",
+        "test_card_saved_molecule_activity_exact_offline.py",
     )
     helpers = (
         "test_card_molecule_activity_binding_offline.py",
@@ -1066,6 +1068,7 @@ def test_installed_molecule_files_deliver_the_complete_original_payload():
         "molecule_activity_multifocal_live_sdk208.tar.gz",
         "molecule_activity_quantity_live_sdk211.tar.gz",
         "molecule_activity_saved_legacy_sdk216.tar.gz",
+        "molecule_activity_root_exact_live_sdk218.tar.gz",
     )
     for path, job in (
         (".github/workflows/ci.yml", "ackredit-pilot"),

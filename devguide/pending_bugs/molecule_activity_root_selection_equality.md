@@ -1,7 +1,12 @@
 # Molecule root return conflates equal numeric display operands
 
 Owner: Sabueso #148/#112. Status: LIVE correction passes its selected local
-checkpoint; the new independent saved binding remains open. The exact separately approved report is
+checkpoint; the independent @23/@24 saved binding now passes its
+[901-case selected local checkpoint](../evidence/molecule_activity_root_exact_saved_checkpoint_20261108.json).
+Public saving is restored; all 69 LIVE, 24 actual-file and 254 copied exact-origin
+cases pass. Broader offline, hosted/installed and scientific/human qualification
+remain open.
+The exact separately approved report is
 [published in #148](https://github.com/uibcdf/sabueso/issues/148#issuecomment-6713763040).
 The returned body matches the reviewed draft byte for byte. Its authorization,
 payload and response receipts are retained internally; this permission covers
@@ -94,9 +99,9 @@ an operand-type substitution. Together with machine-first save refusal, the
 focused eight-case gate passes in 12.91 s pytest / 14.08 s guarded, at 175,153,152
 bytes peak RSS, zero warnings/swap and 1,170 stable source/input hashes.
 
-New LIVE saving reports unavailable until its own independent binding is ready;
-it cannot silently serialize the new interpretation as the older Python-equality
-policy. The descriptor states the reason. Existing @21/@22 reading and resaving
+The committed SDK218 producer withheld new LIVE saving until its own independent
+binding was ready; it could not silently serialize the new interpretation as the
+older Python-equality policy. Its descriptor stated the reason. Existing @21/@22 reading and resaving
 remain available; historical reenactment helpers explicitly retain the SDK216
 root-return branch and original policy. The scientific result schema, source
 assertions, native quantities and earlier capsules are unchanged.
@@ -107,6 +112,16 @@ controls, with complete receptor/source accounting and zero warnings/swap.
 Clean `b1bbfaa` / SDK218 now supplies
 [two complete originals](../evidence/molecule_activity_root_exact_original_20261107.json),
 one for each operand creation order, before implementing the new independent
-saved interpretation. Next qualify that reader, restore new LIVE saving and
-qualify complete source/back/machine, semantic refusal, transport and copied
-receiving. No new saved-format admission or acceptance is claimed here.
+saved interpretation.
+
+The working reader now uses logical @23/shared @24. It checks its own integrity
+and complete exact-origin manifest, reuses unchanged frozen scientific predicates
+through a private header projection, and verifies the manifest against actual
+retained origin chains. Public saving is restored and all 69 LIVE cases pass,
+including production-budget human/machine round trips and mixed target activity.
+The 230 new private graph controls pass on their recorded source epoch, and all
+24 current public actual-file cases pass without a guard override. Complete
+copied receiving passes all 254 cases with thirteen byte-identical inputs. The
+selected union covers 901 distinct cases; broader offline qualification is next.
+[CHECKPOINT](../CHECKPOINT.md) owns current results. Older files and originals
+are unchanged; hosted/installed and scientific/human acceptance remain separate.

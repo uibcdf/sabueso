@@ -67,9 +67,15 @@ focused checkpoint. Complete historical/multi-focal original-file receiving now
 passes all 44 cases; all 54 copied molecule cases also pass. The complete local
 checkpoint covers 9,786 distinct offline cases on its recorded source. New LIVE
 navigation now uses `molecule_activity_root_selection_exact_origin@1`; new LIVE
-molecule saving explicitly waits for independent saved binding against its two
-genuine clean SDK218 originals. Its descriptor states the unavailable-save reason.
-Older files retain their original numeric policy. Installed/hosted/human
+molecule saving now uses the independent logical @23 binding, with optional
+shared representation @24. Its exact originating-node manifest binds each return
+to the retained initiating instance and typed request. Public human/machine saves
+and mixed target activity pass the 69-case LIVE gate. All 24 complete-file cases
+and the full copied LIVE consumer also pass. Complete copied exact-origin
+receiving passes all 254 cases against the two genuine clean SDK218 originals;
+the selected checkpoint covers 901 distinct cases. Broader offline qualification
+remains next. Older @21/@22 files retain their original numeric policy and
+resaving format. Installed/hosted/human
 acceptance remains open. See [the current state](CHECKPOINT.md) and
 [profile contract](pending_proposals/card_molecule_activity_exploration.md).
 The @21 binding preserves incoming questions across explicit source-backed

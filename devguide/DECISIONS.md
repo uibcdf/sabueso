@@ -1,5 +1,29 @@
 # Sabueso — Decision Log
 
+## 2026-11-08 UTC — Version exact-origin molecule root returns independently
+
+New LIVE molecule activity saves use logical exploration @23 and optional shared
+representation @24. The named policy
+`molecule_activity_root_selection_exact_origin@1` preserves the exact initiating
+instance and typed display request. A complete `molecule_activity_root_returns`
+manifest maps each retained return node to its originating root node; receiving
+checks that mapping against the actual restored origin chain.
+
+The @23 verifier checks its own complete integrity and closed manifest before
+passing a private header projection to unchanged @21 scientific predicates.
+Scientific objects, views, source assertions, quantities and original operation
+history are unchanged by the projection. Shared @24 retains the earlier sharing
+algorithm and explicitly owns the added logical member. Existing @21/@22 files
+and resaves retain `molecule_activity_root_selection_python_equality@1`, including
+their original numeric return behavior. No Card schema or native default changes.
+
+Both clean SDK218 LIVE originals were captured and byte/graph verified before
+this reader. Public saving is restored and the selected local checkpoint passes
+901 distinct cases, including complete 254-case copied receiving; CHECKPOINT owns
+exact source qualification and remaining gates. This decision does not authorize candidate,
+freeze, release or scientific/human acceptance. Owners: #148/#112; see the
+[root-return analysis](pending_bugs/molecule_activity_root_selection_equality.md).
+
 ## 2026-11-07 UTC — Keep literal molecule membership separate from native group context
 
 The LIVE molecule activity profile joins exact stored `has_bioactivity.object_ref`

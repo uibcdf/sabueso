@@ -47,10 +47,6 @@ SCOPE = (
 )
 DEFAULT_OPTIONS = {**BIO_OPTIONS, "target_card_ref": None}
 ROOT_RETURN_POLICY = "molecule_activity_root_selection_exact_origin@1"
-SAVE_REASON = (
-    "Saving the corrected molecule navigation awaits its independent saved reader. "
-    "Existing saved explorations remain readable and can be saved again."
-)
 
 
 def descriptor():
@@ -95,8 +91,7 @@ def descriptor():
         ],
         "source_support": {"format": SUPPORT_FORMAT},
         "root_return_policy": ROOT_RETURN_POLICY,
-        "save": False,
-        "save_reason": SAVE_REASON,
+        "save": True,
     }
 
 

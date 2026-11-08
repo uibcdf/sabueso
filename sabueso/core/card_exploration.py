@@ -1120,9 +1120,12 @@ class CardView:
             capabilities["related"] = bool(keys) and all(
                 key in self._explorer._session["links"] for key in keys
             )
-            from .card_exploration_molecule_activity import FORMAT, is_view
+            from .card_exploration_molecule_activity import is_view
 
-            if self._explorer._session.get("format") == FORMAT and is_view(self):
+            if self._explorer._session.get("format") in (
+                "sabueso.card_exploration@21",
+                "sabueso.card_exploration@23",
+            ) and is_view(self):
                 from .card_molecule_activity_operations_v1 import has_operation
 
                 capabilities["explain"] = has_operation(self, "explanations")

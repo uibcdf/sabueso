@@ -58,7 +58,7 @@ scope and limits. The broader B4 and human/scientific acceptance remain open.
 The [molecule-to-supplied-target activity journey](pending_proposals/card_molecule_activity_exploration.md)
 connects exact source-stated molecule identities to explicitly supplied target
 captures, native measurements and full source/publication context. Its genuine
-SDK205, SDK208 and SDK211 originals remain immutable. The current @21/@22 writer
+SDK205, SDK208 and SDK211 originals remain immutable. The original @21/@22 writer
 and independent saved reader preserve source-instance operation history, exact
 cross-focal destinations and original inherited questions; current Cards,
 scientific readers and clients are forbidden during original receiving.
@@ -82,8 +82,16 @@ OS/Python, hosted and human/scientific acceptance remain open. The
 [numeric root-return correction](pending_bugs/molecule_activity_root_selection_equality.md)
 now binds LIVE navigation to the exact initiating instance and typed request;
 its selected 515-case local checkpoint passes. Genuine older @21/@22 files retain their
-original meaning. The corrected clean SDK218 originals now preserve both operand
-creation orders; new LIVE molecule saving waits for their independent saved reader.
+original meaning. The corrected clean SDK218 originals preserve both operand
+creation orders. The working independent @23/@24 reader adds an exact originating
+node manifest and typed root-return checks while reusing unchanged frozen
+scientific predicates. Public LIVE saving is restored; all 69 owning LIVE cases
+pass with eight workers and a 10 GiB combined RSS ceiling. All 24 actual-file
+cases and the full copied LIVE consumer also pass. Complete copied exact-origin
+receiving passes all 254 cases with thirteen byte-identical inputs. The
+[901-case selected checkpoint](evidence/molecule_activity_root_exact_saved_checkpoint_20261108.json)
+records current qualification; broader offline receiving remains next, and the
+older 9,786-case receipt does not qualify this changed source.
 [CHECKPOINT](CHECKPOINT.md) owns the exact active source, results and next action.
 Clinical/disease and B6 journeys follow this reader increment within the full
 accepted plan.

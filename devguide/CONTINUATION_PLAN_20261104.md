@@ -334,7 +334,11 @@ calibration passes the same 95 chemical cases in 23.57 s, versus an earlier
 60.42 s serial observation, with about 1.013 GiB peak owned-tree RSS and no owned
 swap. This is a warm, nonrandomized selected-cohort observation. Adopt the
 [current workstation profiles](TESTS.md#current-workstation-profile) for reviewed
-selections; measure broader batches before increasing to 12 or 16 workers.
+selections. The maintainer's current profile is eight workers and 10 GiB total
+owned-tree RSS, with native threads one and a 16 GiB host-available floor. The
+69-case LIVE gate passes at 2,432,856,064 bytes peak RSS; measure heavier original
+cohorts separately and reduce concurrency when their estimated footprint exceeds
+that ceiling.
 Historical workload controls retain their original budgets and meanings.
 
 The first live B4 implementation is the [public TcTIM activity journey](pending_proposals/card_bioactivity_exploration.md):
@@ -423,8 +427,13 @@ the versioned typed root-return follow-up before declaring this journey complete
 [confirmed numeric root-return limitation](pending_bugs/molecule_activity_root_selection_equality.md)
 now has an exact-origin LIVE correction, with a selected 515-case local checkpoint;
 original predicates and the genuine SDK216 saved control retain its observed
-older behavior. New LIVE molecule saving explicitly waits for the corrected
-interpretation's own original and independent saved binding.
+older behavior. The corrected clean SDK218 originals now precede the working
+independent logical @23/shared @24 binding. Public LIVE saving is restored and
+all 69 LIVE cases pass. All 24 original-file cases and the full copied LIVE
+consumer also pass. Complete copied exact-origin receiving passes all 254 cases;
+the current selected checkpoint covers 901 distinct cases. Qualify the applicable
+broader offline scope next. Both installed routes now copy/select all five
+capsules and the complete selected modules; actual installed receiving stays open.
 The profile remains unfinished until its complete saved reader is qualified;
 clinical/disease and B6 journeys, B7 acceptance and authorized B8 delivery retain
 their full scope.

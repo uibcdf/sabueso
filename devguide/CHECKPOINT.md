@@ -1,11 +1,83 @@
 # Sabueso — Checkpoint
 
-Current working-state checkpoint: **2026-11-07**. Start with
+Current working-state checkpoint: **2026-11-08**. Start with
 [ONBOARDING](ONBOARDING.md) for project context and the
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
-## Exact-origin LIVE root return — selected local checkpoint
+## Independent exact-origin saved binding — selected local checkpoint
+
+The increment passes its [901-case selected local checkpoint](evidence/molecule_activity_root_exact_saved_checkpoint_20261108.json).
+Validation is based on pushed `e112871` with working source and uses editable /
+generated `0.14.0+219.ge112871`. This label is not a new clean producer or published
+package. The complete six-stage program remains active. B2 scientific/default
+review, B8, candidate selection, schema freeze and release retain their pauses.
+
+New public saving uses logical exploration **@23**, optional shared **@24** and
+`molecule_activity_root_selection_exact_origin@1`. Its complete
+`molecule_activity_root_returns` manifest binds each return to the retained
+initiating instance and canonical typed request. The @23 verifier checks its own
+integrity before passing a private header-only projection to unchanged frozen
+@21 scientific predicates, then checks the restored origin graph. Scientific,
+source, quantity and view values remain unchanged. The earlier sharing algorithm,
+Card schema, native defaults, old @21/@22 meanings and all five originals stay fixed.
+
+Current closed executions under `recovered_work/checkpoint_recovery_20261106/`:
+
+| Scope | Actual result | Pytest / guarded time | Peak owned RSS |
+| --- | --- | --- | --- |
+| Public LIVE, `b5-root-exact-public-live-1` | 69 pass, including production-budget human/machine saves and mixed target activity | 147.27 / 148.12 s | 2,432,856,064 bytes |
+| Complete new actual files, `b5-root-exact-public-files-1` | 24 pass, both original operand orders, sixteen fully rehashed semantic refusals and all six plain/gzip/zstd transports/resaves, without a save-guard override | 666.38 / 667.33 s | 9,034,625,024 bytes |
+| Old private binding and delivery/licensing, `b5-root-exact-public-adjacent-1` | 134 pass | 10.37 / 11.22 s | 3,274,563,584 bytes |
+| Full adjacent access/navigation/saved/quantity scope, `b5-root-exact-public-adjacent-2` | 443 pass | 60.48 / 61.33 s | 2,002,108,416 bytes |
+| Copied LIVE consumer, `b5-root-exact-public-live-copied-1` | One outer case passes and verifies all 69 child cases; these children overlap LIVE | 237.29 / 238.25 s | 1,079,197,696 bytes |
+| Complete copied exact-origin cohort, `b5-root-exact-public-copied-1` | All 254 cases pass: 24 public-file and 230 private original graph controls | 972.64 / 973.63 s | 5,354,504,192 bytes |
+
+Every closed gate has complete valid receptor accounting, stable 1,176-path
+source/input maps and zero warnings/swap. Delivery-only differences between gate
+epochs are explicit; current runtime and scientific bindings agree. The first
+one-off adjacent launcher selected only 134 of the intended 577 cases; that
+actual pass is retained, and the separate 443-case execution supplies its omitted
+scope. Never infer 577 cases from the first execution.
+
+Both installed receiving routes copy/select the complete two new modules and
+fifth capsule. The copied LIVE consumer now expects the actual 69 cases. The
+complete **254-case copied exact-origin cohort passes** in
+`b5-root-exact-public-copied-1`: all 24 file cases and 230 private graph controls.
+All thirteen inputs remain byte-identical after receiving in the fresh stage
+owned by `b5-root-exact-copy-stage-2/stage.json`. The six principal gates cover
+**901 distinct cases** after normalizing copied paths and removing repeats.
+This is editable-source receiving; actual installed artifact/OS/Python and hosted
+qualification remain open.
+
+Parallel gates use the maintainer's **eight workers / 10 GiB combined owned-tree
+RSS** profile, native threads one, nice 10, a 16 GiB host-available floor and
+fresh resource preflight. The complete file gate peaks at 8.414 GiB with at least
+48.305 GiB host-available RAM and no swap. The copied LIVE outer case is serial
+under its separate 2 GiB tree limit; its child shares that same budget. Free
+capacity is not a reservation.
+
+Earlier development epochs retain their own scope: 359 private, 427 joined,
+443 adjacent and two old-file cases passed before public saving was restored;
+the twenty-case new-file and 232-case copied gates used an explicit parent save
+guard override. The eighteen-case file attempt remains FAIL (15 pass / three
+fail: two overly specific refusal messages and one publication-origin recipe),
+and the public joined attempt remains FAIL (427 pass / one wrong source-native
+filter reference). Their original red reports are retained; no original was
+regenerated and no identity namespaces were merged.
+
+Ruff lint/format, Python 3.11 syntax parsing, local governance and guide-path
+checks pass. The selected receipt records the exact union, original hashes,
+unchanged frozen bindings, source-epoch differences and earlier failed attempts.
+This intermediate source checkpoint uses `[skip ci]`; it is not remote admission.
+Next qualify the applicable broader offline scope; the older 9,786-case receipt
+does not qualify this changed source.
+#148/#112 own recovery of exact-final-head CI/governance, inspected through
+gh-run-receptor before block admission. Clinical/disease and B6 follow this reader
+increment; B7 scientific/human/agent/workload/consumer and authorized B8 keep their
+full scope. No release resumes.
+
+## Exact-origin LIVE root return — SDK218 producer checkpoint
 
 The pre-fix control below is committed locally at `190c291` with `[skip ci]`.
 The working LIVE implementation now uses
@@ -18,8 +90,9 @@ history refusals and machine-first save refusal. An initial launcher used
 unsupported receptor flags and executed no tests; those usage errors are kept
 separately and the corrected receptor runs own the pass.
 
-New LIVE molecule saving explicitly waits for its own independent saved binding;
-the descriptor and human/machine capability checks agree. Genuine older files
+At this producer checkpoint, new LIVE molecule saving explicitly waited for its
+own independent saved binding; the descriptor and human/machine capability
+checks agreed. Genuine older files
 keep their existing reading/resaving and original numeric policy. Historical
 writer reenactments explicitly select that policy and retain the SDK216 return
 branch; no immutable original or scientific result schema changes.
@@ -49,9 +122,9 @@ at 220,815,360 / 220,811,264 bytes RSS, with unchanged sources and zero forbidde
 attempts/swap. All 1,034 losslessly packaged members are verified; SDK205/208/211/216
 remain fixed. This is original capture, not new saved-file admission.
 
-Next, implement and qualify the independent new saved binding against these
-unchanged originals, then restore new LIVE saving and continue clinical/disease
-and B6. Exact-head
+The independent reader follow-up above now restores working public saving and
+qualifies it against these unchanged originals. Clinical/disease and B6 follow.
+Exact-head
 hosted/installed and scientific/human acceptance remain open; no release resumes.
 
 ## Typed root-return preparation — clean older file preserved

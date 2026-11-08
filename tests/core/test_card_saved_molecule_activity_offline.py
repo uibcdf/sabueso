@@ -20,6 +20,16 @@ def retained_writer(tmp_path_factory):
 
     generator = original_graph.__wrapped__(tmp_path_factory)
     original = next(generator)
+    _prepare_retained_writer(original, binding.ROOT_RETURN_EQUALITY)
+    yield original
+    try:
+        next(generator)
+    except StopIteration:
+        pass
+
+
+def _prepare_retained_writer(original, root_policy):
+    """Hydrate original writer ownership without recalculating scientific data."""
     # Import provider aliases before scientific guards; never leave a temporary
     # forbidden alias captured by a subsequently imported LIVE UI module.
     for name in (
@@ -31,7 +41,7 @@ def retained_writer(tmp_path_factory):
     for view in original.nodes.values():
         object.__setattr__(view, "_saved_state", None)
     original.session.pop("format")
-    original.session["molecule_activity_root_policy"] = binding.ROOT_RETURN_EQUALITY
+    original.session["molecule_activity_root_policy"] = root_policy
     for access_id, access in original.accesses.items():
         access._mode = "live"
         for (owner, ref), result in original.results.items():
@@ -84,11 +94,6 @@ def retained_writer(tmp_path_factory):
             original.nodes.items(), key=lambda pair: int(pair[0][1:])
         )
     }
-    yield original
-    try:
-        next(generator)
-    except StopIteration:
-        pass
 
 
 @pytest.fixture(scope="module")
@@ -420,6 +425,7 @@ def _independent_receive(
     original_tar,
     report_path,
     original_sha="bc102cfe44cdefaee99b26b4a361f14e27543ec62a5165e26659ffb59e4e6b60",
+    original_prefix="",
 ):
     """Read one real file outside the checkout with every mutable reader blocked."""
     import hashlib
@@ -442,7 +448,7 @@ def _independent_receive(
 
     def member(ref):
         with archive.extractfile(
-            ref if isinstance(ref, str) else ref["path"]
+            original_prefix + (ref if isinstance(ref, str) else ref["path"])
         ) as stream:
             return json.load(stream)
 
@@ -496,7 +502,17 @@ def _independent_receive(
                     if name.startswith(prefix + "/link/"):
                         index = int(re.search(r"/link/(\d+)/", name).group(1))
                         actual[name] = links.items()[index].open()
-        destination = actual["target/node/link/5/target_card"]
+        publication_scope = observed("target/publications")
+        destination_names = [
+            name
+            for name in actual
+            if name.endswith("/target_card")
+            and observed(name)["focal"] == publication_scope["focal"]
+            and observed(name)["explorer_origin_node_id"]
+            == publication_scope["explorer_origin_node_id"]
+        ]
+        assert len(destination_names) == 1
+        destination = actual[destination_names[0]]
         publications = destination.explorer.answer("publications", skip_digestion=True)
         actual["target/publications"] = publications
         for reference in ("pubmed:35189560", "pubmed:20889239"):

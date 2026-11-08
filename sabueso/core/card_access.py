@@ -703,12 +703,19 @@ class CardAccess:
                 elif (
                     self._exploration_session is not None
                     and self._exploration_session.get("format")
-                    == "sabueso.card_exploration@21"
+                    in ("sabueso.card_exploration@21", "sabueso.card_exploration@23")
                 ):
                     from .card_exploration_molecule_activity import (
                         descriptor as activity_context_descriptor,
                     )
 
+                    if (
+                        self._exploration_session.get("format")
+                        == "sabueso.card_exploration@23"
+                    ):
+                        from .card_exploration_molecule_activity_v2 import (
+                            descriptor as activity_context_descriptor,
+                        )
                     data["activity_context"] = activity_context_descriptor()
                     data["activity_context"].update(
                         availability="retained"
@@ -927,7 +934,7 @@ class CardAccess:
                 self.mode == "saved"
                 and self._exploration_session is not None
                 and self._exploration_session.get("format")
-                == "sabueso.card_exploration@21"
+                in ("sabueso.card_exploration@21", "sabueso.card_exploration@23")
             ):
                 from .card_exploration_molecule_activity import saved_selection
 

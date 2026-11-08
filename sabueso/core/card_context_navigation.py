@@ -489,12 +489,16 @@ def related(item):
 def _destination(explorer, candidate, origin, title="Referenced source record"):
     from .card_exploration import CardExplorer
 
-    if (
-        explorer.mode == "saved"
-        and explorer._session.get("format") == "sabueso.card_exploration@21"
+    if explorer.mode == "saved" and explorer._session.get("format") in (
+        "sabueso.card_exploration@21",
+        "sabueso.card_exploration@23",
     ):
         from .card_exploration_molecule_activity import saved_declared_destination
 
+        if explorer._session.get("format") == "sabueso.card_exploration@23":
+            from .card_exploration_molecule_activity_v2 import (
+                saved_declared_destination,
+            )
         recorded = saved_declared_destination(explorer, candidate, origin)
         if recorded is not None:
             return recorded

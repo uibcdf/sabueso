@@ -7,7 +7,11 @@ def _sdk202(access):
         access.mode == "saved"
         and session is not None
         and session.get("format")
-        in ("sabueso.card_exploration@19", "sabueso.card_exploration@21")
+        in (
+            "sabueso.card_exploration@19",
+            "sabueso.card_exploration@21",
+            "sabueso.card_exploration@23",
+        )
     )
 
 

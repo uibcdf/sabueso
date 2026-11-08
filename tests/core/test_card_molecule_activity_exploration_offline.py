@@ -13,7 +13,7 @@ import sabueso
 from sabueso._private.smonitor.warnings import EnrichmentFailedWarning
 from sabueso.core.card import Card
 from sabueso.core.deck import Deck
-from sabueso.core.errors import ArgumentError, StorageError
+from sabueso.core.errors import ArgumentError
 from sabueso.core.measurements import record_source
 from sabueso.core.relationship_store import make_relationship
 from sabueso.core.source_assertion_store import make_source_assertion
@@ -300,7 +300,7 @@ def test_group_record_source_assay_full_publication_and_exact_back(
     )
 
 
-def test_human_machine_projection_quantities_and_pending_saved_binding(pair, tmp_path):
+def test_human_machine_projection_quantities_and_saved_roundtrip(pair, tmp_path):
     molecule, target = pair
     explorer = molecule.explore(related_cards=[target])
     human = explorer.view(TOPIC)
@@ -314,17 +314,12 @@ def test_human_machine_projection_quantities_and_pending_saved_binding(pair, tmp
     )
     assert puw.get_value(decoded, to_unit="nanomolar") == 33000
     assert quantity["manifest"]["unit"] == "nanomolar"
-    assert not human.capabilities["save"] and not machine.capabilities["save"]
-    descriptor = next(
+    assert human.capabilities["save"] and machine.capabilities["save"]
+    assert next(
         entry.value
         for entry in explorer.access.catalog()._entries
         if entry.key == TOPIC
-    )
-    assert not descriptor["save"]
-    assert descriptor["root_return_policy"] == (
-        "molecule_activity_root_selection_exact_origin@1"
-    )
-    assert "independent saved reader" in descriptor["save_reason"]
+    )["save"]
     path = tmp_path / "molecule-activity.json"
     with pytest.MonkeyPatch.context() as guard:
         for name in (
@@ -341,21 +336,42 @@ def test_human_machine_projection_quantities_and_pending_saved_binding(pair, tmp
         ):
             guard.setattr(Card, name, forbidden)
         guard.setattr(Deck, "__init__", forbidden)
-        for selection in (human, machine):
-            with pytest.raises(StorageError, match="independent saved reader"):
-                selection.save(path)
-            assert not path.exists()
+        human.save(path)
+        saved = sabueso.read_exploration(path)
+        assert saved.validation["verified_navigation_policies"] == [
+            "molecule_activity_root_selection_exact_origin@1"
+        ]
+        assert saved.result_ref == human.result_ref
+        assert saved.native_payload == human.native_payload
+        assert saved.capabilities["save"]
+        assert (
+            saved.explorer.topics().native_payload[TOPIC]["availability"] == "retained"
+        )
+        assert (
+            saved.explorer.access.select(TOPIC).selection_ref == machine.selection_ref
+        )
+        links = saved.items()[0].related()
+        unvisited = next(
+            item
+            for item in links.items()
+            if item._entry.value["role"] == "native_ligand_crossing"
+        )
+        assert unvisited.open().outcome["status"] == "not_saved"
 
 
-def test_machine_first_save_waits_for_corrected_navigation_binding(pair, tmp_path):
+def test_machine_first_save_retains_exact_request_and_new_policy(pair, tmp_path):
     molecule, target = pair
     access = molecule.access(related_cards=[target])
     machine = access.select(TOPIC)
-    assert not machine.capabilities["save"]
+    assert machine.capabilities["save"]
     path = tmp_path / "machine-first.json"
-    with pytest.raises(StorageError, match="independent saved reader"):
-        machine.save(path)
-    assert not path.exists()
+    machine.save(path)
+    saved = sabueso.read_exploration(path)
+    assert saved.validation["verified_navigation_policies"] == [
+        "molecule_activity_root_selection_exact_origin@1"
+    ]
+    assert saved.native_payload == machine._scientific.native
+    assert saved.explorer.access.select(TOPIC).selection_ref == machine.selection_ref
 
 
 @pytest.mark.parametrize(
@@ -807,6 +823,56 @@ def test_explicit_target_crossing_can_start_a_fresh_question_without_focal_confu
     }
     assert fresh.explorer.context["card_ref"] == target.pinned_ref()
     assert destination.back().view_ref == links.view_ref
+
+
+def test_saved_target_activity_keeps_its_original_semantics_in_molecule_file(
+    pair, tmp_path
+):
+    from sabueso.core.snapshot import canonical_json
+
+    molecule, target = pair
+    root = molecule.explore(related_cards=[target]).answer("measured_targets")
+    destination = next(
+        link
+        for link in root.items()[0].related().items()
+        if link._entry.value["role"] == "target_card"
+    ).open()
+    fresh = destination.explorer.answer("measured_molecules")
+    assert fresh.explorer.context["card_ref"] == target.pinned_ref()
+    expected = canonical_json(fresh.native_payload)
+    selected = fresh.filter("molecule_ref", equals=BTS)
+    assert selected.items()
+    path = tmp_path / "mixed-molecule-target-activity.json"
+    with pytest.MonkeyPatch.context() as guard:
+        for name in (
+            "__init__",
+            "from_dict",
+            "bioactivities",
+            "explain_bioactivity",
+            "explain_measurement",
+            "ligands",
+            "explain_ligand",
+            "literature",
+            "explain_literature",
+            "knowledge_state",
+        ):
+            guard.setattr(Card, name, forbidden)
+        guard.setattr(Deck, "__init__", forbidden)
+        fresh.save(
+            path, max_encoded_bytes=None, max_decoded_bytes=None, max_logical_bytes=None
+        )
+        saved = sabueso.read_exploration(
+            path, max_encoded_bytes=None, max_decoded_bytes=None, max_logical_bytes=None
+        )
+        replay = saved.explorer.answer("measured_molecules")
+        assert canonical_json(replay.native_payload) == expected
+        assert replay.request == fresh.request
+        assert [
+            item.item_ref for item in replay.filter("molecule_ref", equals=BTS).items()
+        ] == [item.item_ref for item in selected.items()]
+        assert saved.validation["verified_navigation_policies"] == [
+            "molecule_activity_root_selection_exact_origin@1"
+        ]
 
 
 def test_capture_is_detached_and_repeated_requests_do_not_repeat_native_work(

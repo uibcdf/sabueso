@@ -31,6 +31,8 @@ MANIFEST_SHA = "59d35b9a32726ec432c8e2f570977711188894fc385233bc4a48834facba6f30
 
 
 class OriginalGraph:
+    SAVED_FORMAT = binding.FORMAT
+
     def __init__(self, path):
         self.archive = tarfile.open(path, "r:")
         self.cache = {}
@@ -63,9 +65,12 @@ class OriginalGraph:
         self.observed = {
             key: self.value(ref) for key, ref in self.graph["nodes"].items()
         }
+        self._hydrate_graph()
+
+    def _hydrate_graph(self):
         self.accesses, self.results, self.nodes, self.records = {}, {}, {}, {}
         self.session = {
-            "format": binding.FORMAT,
+            "format": self.SAVED_FORMAT,
             "views": {},
             "explanations": {},
             "links": {},
