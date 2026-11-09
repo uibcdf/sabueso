@@ -635,6 +635,7 @@ def follow(item):
             request = basis["request"]
             return explorer._answer(request["question"], request["options"], item._view)
         from .card_exploration import CardView
+        from .card_sequence_change_exploration import inherited_request
 
         selection = explorer.access.read(
             explorer.access._object_location({key: basis, "link": link})
@@ -647,6 +648,7 @@ def follow(item):
             if key == "model_context"
             else "Annotation structural context unavailable",
             item._view,
+            _request=inherited_request(item._view) if explorer.mode == "live" else None,
             _status=basis["state"],
             _reason=basis["reason"],
         )

@@ -5241,3 +5241,15 @@ access share result and occurrence identities. New original saving waits for a
 clean producer original before independent predicates; previous saved meanings
 stay fixed. Scientific, researcher and actual-consumer acceptance remain separate.
 Owner: #148/#112; see the sequence-change profile and current CHECKPOINT.
+
+
+## 2026-11-09 — Scope sequence-change request continuity to its LIVE producer
+
+Clean SDK233 calibration and an unchanged-source synthetic reproduction show that
+source destinations and blocked structural context lose the initiating sequence
+question property while retaining correct back links. Inherit the actual LIVE
+sequence_changes request for those source/literal steps; preserve a newly executed
+structural question's own request. Do not change older generic annotation or saved
+request semantics. Freeze and verify the corrected clean producer before building
+independent sequence-change receiving. Failed calibration remains diagnostic and
+no completed original is overwritten. Owner: #148/#112.

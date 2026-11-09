@@ -1196,3 +1196,10 @@ Include affected access, agent, nature/protein/source/annotation, navigation,
 cells, argument, quantity, historical saved/transport and original variant gates.
 The current LIVE checkpoint does not qualify a future independent sequence-change
 reader; capture the genuine clean producer before implementing that reader.
+
+
+The sequence-change module also checks original LIVE request continuity through
+source and literal descendants, missing support and blocked structural questions.
+An explicit structural delegation replaces the inherited request. Preserve older
+generic annotation behavior and the original saved contracts; a back link alone
+is insufficient proof that the returned request property was retained.

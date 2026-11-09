@@ -4,6 +4,7 @@ import importlib
 import json
 import socket
 from copy import deepcopy
+from dataclasses import replace
 from pathlib import Path
 
 import pytest
@@ -515,3 +516,74 @@ def test_one_retained_value_preserves_multiple_native_contexts_without_unique_co
         "without inventing unique feature correspondence"
         in delivered["interpretation"]["mapping_lineage"]
     )
+
+
+@pytest.mark.parametrize("kind", ["ready", "uncertain", "missing_source"])
+def test_sequence_question_survives_source_and_blocked_question_navigation(kind):
+    record = feature()
+    if kind == "uncertain":
+        record["location"]["start"]["modifier"] = "LESS_THAN"
+    raw = synthetic([record]).to_dict()
+    if kind == "missing_source":
+        ref = raw["sections"]["features_positional"]["natural_variant"][
+            "source_assertion_ids"
+        ][0]
+        raw["source_assertion_store"] = [
+            r for r in raw["source_assertion_store"] if r["id"] != ref
+        ]
+    explorer = Card.from_dict(raw).explore()
+    question = explorer.answer("sequence_changes").sort("start")
+    links = question.items()[0].related()
+    sources = links.filter("role", equals="source")
+    for source in sources.items():
+        opened = source.open()
+        assert opened.request == question.request
+        assert opened.back() is sources
+        if opened.explorer is not None:
+            for child in opened.items():
+                assert child.open().request == question.request
+                assert child.open().back() is opened
+    if kind != "ready":
+        unavailable = links.filter("role", equals="question").items()[0].open()
+        assert unavailable.request == question.request
+        assert unavailable.outcome["status"] != "ok"
+
+
+def test_explicit_structural_question_replaces_inherited_sequence_question(monkeypatch):
+    explorer = synthetic([feature()]).explore()
+    question = explorer.answer("sequence_changes")
+    link = question.items()[0].related().filter("role", equals="question").items()[0]
+    calls = []
+
+    def delegated(self, key, options, origin=None):
+        calls.append((key, deepcopy(options), origin))
+        return replace(
+            self._metadata(
+                {"explicit_synthetic_delegation": True},
+                "Explicit structural request",
+                origin,
+            ),
+            _request={
+                "question": key,
+                "topic": "structures",
+                "options": deepcopy(options),
+            },
+        )
+
+    from sabueso.core.card_exploration import CardExplorer
+
+    monkeypatch.setattr(CardExplorer, "_answer", delegated)
+    opened = link.open()
+    assert len(calls) == 1 and calls[0][0] == "region_coverage"
+    assert calls[0][1]["region"] == [[2, 2]]
+    assert opened.request["question"] == "region_coverage"
+    assert opened.request["topic"] == "structures" and opened.back() is link._view
+
+
+def test_older_generic_annotation_question_keeps_its_original_literal_behavior():
+    explorer = synthetic([feature()]).explore()
+    question = explorer.answer("annotated_regions")
+    links = question.items()[0].related()
+    source = links.filter("role", equals="source").items()[0].open()
+    assert source.request is None
+    assert source.back().back() is links

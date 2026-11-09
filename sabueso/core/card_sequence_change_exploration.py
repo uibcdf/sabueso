@@ -22,6 +22,18 @@ HEADERS = (
 )
 
 
+def inherited_request(origin):
+    """Keep the actual LIVE sequence-change question through literal source steps."""
+    request = origin.request if origin is not None else None
+    if (
+        isinstance(request, dict)
+        and request.get("question") == "sequence_changes"
+        and request.get("topic") == "sequence_changes"
+    ):
+        return request
+    return None
+
+
 def view(explorer, origin, options=None):
     result = materialize(explorer.access, options)
     captured = explorer._inspect(

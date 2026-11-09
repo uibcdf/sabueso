@@ -64,6 +64,17 @@ mutagenesis annotation. Positive mutagenesis, duplicate, missing/false/deletion,
 malformed, conflicting, uncertain and foreign-scope controls are explicitly
 synthetic. They are not observations about an experimental molecular system.
 
+## Original request continuity
+
+SDK233 clean capture calibration exposed a missing request property on generic
+source/literal destinations and blocked structural context, despite correct actual
+back edges. The current scoped correction retains the initiating LIVE sequence
+question through these operations. Executing an admitted explicit structural
+question replaces that context with the requested structural question. Older
+generic annotation and saved meanings remain unchanged. Regression coverage
+includes source details, missing support, uncertain scope, explicit delegation
+and the legacy generic route; CHECKPOINT owns current qualification.
+
 ## Saving and qualification boundary
 
 This new topic/question is advertised only for LIVE protein access. Its panel,

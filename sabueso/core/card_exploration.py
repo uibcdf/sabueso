@@ -2184,12 +2184,18 @@ class CardExplorer:
                 "Inspection is limited to the focal capture; open a related link to switch context explicitly."
             )
         selection = self.access.read(full)
+        request = None
+        if self.mode == "live":
+            from .card_sequence_change_exploration import inherited_request
+
+            request = inherited_request(origin)
         return CardView(
             self,
             selection,
             selection._entries,
             title,
             origin,
+            _request=request,
             _status="ok" if selection.count else "empty",
             _reason=None if selection.count else "This retained container is empty.",
         )

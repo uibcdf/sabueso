@@ -5,6 +5,27 @@ Current working-state checkpoint: **2026-11-09**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Sequence-change source question continuity — local checkpoint PASS
+
+Clean SDK233 capture calibration found that a sequence-change question survived
+its source link and actual back edge but was lost on the returned source view.
+A separate unchanged-producer synthetic reproduction confirms the same loss on
+blocked structural context. No completed original was overwritten: calibration1
+remains an incomplete failed instrument epoch, with zero acquisition/network attempts.
+
+The correction inherits only the actual LIVE `sequence_changes` request during
+literal/source inspection and blocked structural navigation. An executed explicit
+structural question retains its own replacement request. Older generic annotation
+and saved-format request behavior remains fixed. All 49 owning and 1,636 adjacent cases pass: 1,685 distinct selected offline
+cases on one unchanged 1,255-path source map. All 49 copied owning cases also pass
+outside checkout with three byte-identical inputs and five controller/worker
+placement/import proofs. The [correction receipt](evidence/sequence_change_question_checkpoint_20261109.json)
+owns exact results and resource scopes. Fix the clean producer before complete
+original capture. The preceding LIVE receipt keeps its source epoch.
+Owner: #148/#112; local evidence is `b6-sequence-question-continuity-1` and
+`b6-sequence-live-original-1/sdk233-question-reproduction.json`. No independent
+sequence-change reader exists yet.
+
 ## Natural variants and mutagenesis — LIVE local checkpoint PASS
 
 The new `sequence_changes` topic/question projects retained natural-variant and

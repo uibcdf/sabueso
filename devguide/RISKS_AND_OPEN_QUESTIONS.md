@@ -886,3 +886,11 @@ when new producers evolve; new semantics require a new verifier rather than edit
 v1. Unknown required verifiers remain explicit errors. Complete closure is still
 large; measure and review retention/storage strategies under #148 before claiming
 storage efficiency, scaling or researcher acceptance.
+
+
+- **Generic LIVE question continuity beyond sequence changes (#148):** SDK233's
+  sequence-change route demonstrably lost the request property on generic source
+  and blocked-context destinations. The correction is scoped to that new LIVE
+  profile. Other generic profiles may share the behavior (hypothesis, untested);
+  review concrete researcher journeys separately without changing historical
+  saved meanings. The owning source/capture report retains the reproduction.
