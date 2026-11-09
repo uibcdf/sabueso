@@ -1,5 +1,47 @@
 # Historical exploration fixtures
 
+## Original disease association LIVE observations (SDK227)
+
+`disease_association_live_sdk227.tar.gz` preserves genuine clean
+`0e17f8561381c6016ca6ebe77c336b357b0d4203` / `0.14.0+227.g0e17f85`
+observations captured on 2026-11-08 (local date), before independent disease
+association saved reading. Its 21 cases include three public fixture scopes and
+18 explicitly labelled synthetic uncertainty controls. It retains 3,382 named
+views, all 7,861 actual view instances and 1,328 distinct access instances,
+with 294 executed machine requests / 333 complete pages. Source navigation keeps
+each exact focal capture, revision pin, parent and inherited question. Equal view
+handles and equal condition values do not collapse distinct observed instances.
+
+Public HsTIM annotations and Chagas/benznidazole indications keep complete native,
+source-role and knowledge-state context. Controls distinguish ontology-only scope,
+missing/misbound support, foreign subjects, conflicting/unfinished MedGen identity,
+duplicate supplied input occurrences, distinct revisions, repeated condition
+locations, directed disease endpoints, unknown scalar shape, placeholders and an
+incoherent anchor. They are explicit synthetic controls, never scientific results.
+
+All 7,410 members are byte-verified against the original producer tree. Shared
+containers and whole observations use content-addressed packaging references;
+each actual view/access node remains separate. Independent byte/reference/graph
+accounting uses no SDK interpretation. The immutable capsule is an original
+observational reference, not an admitted saved exploration file or researcher
+acceptance. Public saving remains unavailable pending its independent reader.
+
+Embedded `fixtures/NOTICE.md` preserves source releases, retrieval dates, terms
+and attributions. Source material keeps those terms, including ChEMBL CC BY-SA
+3.0 and the existing National Library of Medicine attribution. Authored code and
+labelled synthetic controls are MIT. No private/pilot material or new remote
+acquisition is included. Fixture-only preparation forbids networking; observation
+attempts zero network/source acquisitions and preserves all 1,201 producer paths.
+
+Manifest SHA-256: `f4d7a91be5d6abdc0a2a66086bdab1f3ec8bf7be87a91d09d2f085982c2047e1`.
+Compressed: 18782263 bytes; SHA-256 `bfc64d581db372319b7216d6a2588bb6dbaa9429d40eed800529a6359da85abf`.
+Uncompressed tar: 158453760 bytes; SHA-256 `0b82a9f4cdc78b9891f98f7cab69c03e9ab344549acd4500337b1e08db645a2b`.
+
+The [original receipt](../../../devguide/evidence/disease_association_live_original_20261108.json)
+records the source, byte/graph checks, actual gate scope and limits. Preserve these
+bytes; never regenerate the original to fit a later verifier. Owner: #148/#90/#112;
+review retained development resources at independent receiving and block closeout.
+
 ## Original clinical LIVE observations (SDK224)
 
 `clinical_live_sdk224.tar.gz` preserves genuine clean

@@ -1,5 +1,23 @@
 # Sabueso — Decision Log
 
+## 2026-11-08 local date — Preserve genuine multi-access disease originals first
+
+The clean SDK227 / `0e17f85` LIVE producer is the disease-association observation
+baseline before any independent disease saved reader. Preserve its exact public
+capsule bytes and source/rights declarations. An actual view instance and an
+actual focal-access instance have distinct node identities even when semantic
+handles or shared containers are equal. Content-addressed references only factor
+identical packaging bytes. They do not merge source entities, revisions, condition
+occurrences, scientific claims or navigation origins.
+
+Record complete underlying selections separately from displayed item order and
+filtered membership; preserve both. Original machine queries are the requests
+actually executed, not arbitrary future coverage. Independent byte/graph checks
+may correct their own mistaken accounting assumptions without rewriting an
+original. The 21-case original and its receipt precede independent saved reading;
+this observation does not enable saving, validate scientific truth or admit B7/B8.
+Owners: #148/#90/#112; see the [original receipt](evidence/disease_association_live_original_20261108.json).
+
 ## 2026-11-08 UTC — Explore disease associations through explicit captured identity
 
 The LIVE `associations` / `retained_associations` routes use the named

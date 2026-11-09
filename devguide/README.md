@@ -53,8 +53,10 @@ is the active B5 increment: human and typed agent routes share original
 relationship, indication and condition occurrences in explicitly supplied
 captures. Source-supported MONDO/MedGen identity paths, direction, unknowns and
 exact source/back context stay visible. The [1,031-case selected LIVE checkpoint](evidence/disease_association_live_checkpoint_20261108.json)
-and all 43 copied owning cases pass. A genuine clean producer original must
-precede independent saved reading; new association saving remains unavailable.
+and all 43 copied owning cases pass. The clean SDK227 [genuine original](evidence/disease_association_live_original_20261108.json)
+now preserves 21 complete observed cases, exact multi-access origin graphs and
+294 machine requests. Its byte/reference/graph checks pass; independent saved
+reading is next, and new association saving remains unavailable.
 Definition, identity and hierarchy remain separate. [CHECKPOINT](CHECKPOINT.md)
 owns current results and next actions.
 
@@ -121,8 +123,8 @@ historical-file receiving and verified worker placement. Installed/hosted and
 scientific/human acceptance remain open. The
 older 9,786-case receipt does not qualify this changed source.
 [CHECKPOINT](CHECKPOINT.md) owns the exact active source, results and next action.
-Clinical is the active next increment; disease and B6 journeys retain their full
-accepted plan.
+These clinical/root receipts retain their recorded source epochs. Independent
+disease association saved reading is next; B6 retains its full accepted plan.
 
 The [shared literature catalog](pending_proposals/card_literature_exploration.md)
 has its B4 LIVE producer committed: four new modules and their dispatch wiring

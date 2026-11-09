@@ -82,6 +82,21 @@ input rights and publication/software grants remain separate. See
 
 ## Contents
 
+`tests/core/data/disease_association_live_sdk227.tar.gz` is a derived compatibility
+capsule captured on 2026-11-08 (local date) from clean Sabueso `0e17f85` / SDK227,
+before independent disease association saved reading. It preserves public MONDO,
+frozen HsTIM UniProt/DISEASES/Open Targets/Orphanet/ClinVar, and Chagas/benznidazole
+ChEMBL/ClinicalTrials.gov input and source bytes, complete observed human/agent
+navigation and explicitly labelled synthetic uncertainty controls. Source data keep
+their existing terms and attributions below, including ChEMBL **CC BY-SA 3.0** and
+**Source: National Library of Medicine** for registry data. Authored code and
+synthetic controls follow repository MIT. Embedded `fixtures/NOTICE.md` retains
+original releases, retrieval dates and licences; `NOTICE.md` states the modification
+scope. No private/pilot material or new remote acquisition is included. This is an
+original observational reference, not an admitted saved exploration or scientific
+acceptance. See the [fixture README](../tests/core/data/README.md#original-disease-association-live-observations-sdk227)
+and [receipt](../devguide/evidence/disease_association_live_original_20261108.json).
+
 `tests/core/data/clinical_live_sdk224.tar.gz` is a derived compatibility capsule,
 captured on 2026-11-08 from clean Sabueso `66989a4` / SDK224 before independent
 clinical saved reading. It retains original public ChEMBL_37 molecule/indication

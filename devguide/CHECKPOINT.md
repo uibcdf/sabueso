@@ -5,6 +5,50 @@ Current working-state checkpoint: **2026-11-08**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Disease association original — captured and independently verified
+
+The clean LIVE producer `0e17f85` / `0.14.0+227.g0e17f85` now has its
+[genuine original](evidence/disease_association_live_original_20261108.json),
+captured before any independent disease saved reader. Twenty-one cases retain
+3,382 named views, all 7,861 actual view instances, 1,328 actual access instances
+and 294 executed machine requests / 333 complete pages. Distinct access nodes
+preserve exact focal captures, input revisions and inherited questions; equal
+view handles never collapse actual instances. Shared bytes use observational
+packaging references without merging scientific entities or operation origins.
+
+All 7,410 members pass byte verification. Independent SDK-free decoding verifies
+135,927 value references, 3,095 cross-focal origin edges, native context/oracle
+agreement and complete machine counts. The public capsule is
+`tests/core/data/disease_association_live_sdk227.tar.gz`; its exact hashes and
+source/rights scope belong to the receipt and fixture README. Preserve these
+original bytes. Public fixture preparation forbids networking, and observation
+attempts zero network/source acquisitions. All 1,201 producer source paths stay
+fixed before/after capture. Synthetic controls are labelled, never scientific
+observations; no private/pilot material is included.
+
+All **123 selected offline cases pass**, including the complete 23-case original
+integrity module, all 43 LIVE owning cases and fixture/licensing/delivery/registry
+controls. The same **23 original cases pass outside checkout** with four
+byte-identical inputs and exact source/copy case correspondence. Both gates use
+one CPU with zero warnings/swap; source uses 20.70 s / 21.72 s guarded and
+580,132,864 bytes peak RSS, copied uses 9.69 s / 10.93 s and 566,919,168 bytes.
+Copied cases add no distinct coverage. Both installed routes copy/select the
+new integrity module and capsule; actual installed/hosted receiving remains open.
+
+Capture uses one CPU for 132.13 s, peaking at 134,250,496 bytes owned RSS with zero
+swap. Packaging verifies the complete compressed member set; the disposable raw
+tar is removed only after that comparison. Original byte/graph accounting is
+separate from the executable original-integrity and copied-input gates recorded
+in the receipt. Earlier failed accounting assumptions about display ordering and
+underlying selection membership remain recorded; no original was regenerated.
+
+**Next implement separately versioned independent disease saved reading over
+this immutable original**, with current Cards/scientific readers/LIVE UI/clients
+forbidden during receiving. New disease association saving remains unavailable.
+B6 follows; B2, #192, B7 and B8/release keep their previous dispositions. Exact-head
+remote CI/governance remains deferred under the intermediate `[skip ci]` route,
+owned by #148/#112, until an authorized recovery route is executed and inspected.
+
 ## Disease associations — LIVE selected local checkpoint PASS
 
 The [disease association profile](pending_proposals/card_disease_association_exploration.md)
@@ -42,8 +86,8 @@ identity and hierarchy remain separate, with term status displayed only when
 retained. Native disease grouping/defaults, clinical interpretation, Card schema
 and earlier saved meanings are unchanged.
 
-**Next preserve a genuine complete original from the clean committed LIVE
-producer, before implementing independent disease saved reading.** New disease
+The genuine clean producer original is now preserved and independently checked
+above; next implement independent disease saved reading over those bytes. New disease
 association saving remains unavailable. Continue B6 afterward. This selected
 local editable/copy checkpoint is not complete-repository, installed-artifact,
 hosted or scientific/human admission. Exact-final-head CI/governance remains

@@ -47,8 +47,12 @@ simulated ChEMBL failure control; copied owning tests emit none. Native, identit
 and source/fixture gates are included in the selected scope. Keep devguide current at
 each increment and commit intermediate checkpoints with `[skip ci]`.
 
-Capture the genuine clean producer's complete human/machine/source/navigation
-original before implementing the separately versioned independent reader.
+The clean SDK227 producer's [genuine original](../evidence/disease_association_live_original_20261108.json)
+now preserves 21 cases, 7,861 actual view nodes, 1,328 distinct focal-access nodes
+and 294 machine requests / 333 pages. Byte/graph verification keeps every original
+parent/explorer-parent, source role and input pin. Public fixtures retain original
+rights; synthetic controls are labelled. Preserve the immutable capsule before
+implementing the separately versioned independent reader.
 Saving this new scientific panel is unavailable until that reader is qualified.
 Existing exploration formats and scientific defaults stay fixed. Installed,
 hosted, scientist, uncoached researcher, workload and actual-consumer acceptance

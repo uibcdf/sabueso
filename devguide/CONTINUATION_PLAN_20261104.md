@@ -445,8 +445,11 @@ with all 91 copied clinical cases and exact diagnostic wheel/sdist resources.
 The [disease association LIVE profile](pending_proposals/card_disease_association_exploration.md)
 now implements explicit supplied-context association/indication/condition routes
 with source-bound MONDO/MedGen paths and original direction. Its [1,031-case selected checkpoint](evidence/disease_association_live_checkpoint_20261108.json)
-and all 43 copied owning cases pass. Preserve the clean genuine original, then implement
-independent saved reading. B6 retains its full accepted scope. The 10,050-case receipt does not qualify
+and all 43 copied owning cases pass. The clean SDK227
+[genuine original](evidence/disease_association_live_original_20261108.json) now
+preserves 21 cases with complete human/machine/source and distinct focal-access
+graphs. Byte/reference/graph checks pass. Implement independent saved reading
+over those immutable bytes next; association saving remains unavailable. B6 retains its full accepted scope. The 10,050-case receipt does not qualify
 this changed clinical source.
 Both installed routes copy/select the complete owning modules and required
 original capsules; actual installed receiving stays open.
