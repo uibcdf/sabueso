@@ -417,7 +417,8 @@ class CardAccess:
         if self.profile == "protein" and (
             self.mode == "live"
             or self._exploration_session
-            and self._exploration_session.get("format") == "sabueso.card_exploration@29"
+            and self._exploration_session.get("format")
+            in ("sabueso.card_exploration@29", "sabueso.card_exploration@31")
         ):
             scientific_topics.extend(("variants", "sequence_changes"))
         scientific_topics.append("literature")
@@ -707,7 +708,7 @@ class CardAccess:
             if self.profile == "protein" and (
                 self.mode == "live"
                 or self._exploration_session.get("format")
-                == "sabueso.card_exploration@29"
+                in ("sabueso.card_exploration@29", "sabueso.card_exploration@31")
             ):
                 if self.mode == "saved":
                     from .card_variant_history_v1 import (
@@ -723,7 +724,24 @@ class CardAccess:
 
                     data["sequence_changes"] = change_descriptor()
                     data["sequence_changes"].update(
-                        availability="live", selection_availability="live"
+                        save=True, availability="live", selection_availability="live"
+                    )
+                    data["sequence_changes"].pop("save_reason", None)
+                if (
+                    self.mode == "saved"
+                    and self._exploration_session.get("format")
+                    == "sabueso.card_exploration@31"
+                ):
+                    from .card_sequence_change_history_v1 import (
+                        descriptor as change_descriptor,
+                    )
+
+                    data["sequence_changes"] = change_descriptor()
+                    data["sequence_changes"].update(
+                        availability="retained"
+                        if "sequence_changes" in self.capabilities["scientific_topics"]
+                        else "not_saved",
+                        selection_availability="retained_requests_only",
                     )
                 data["variants"] = variant_descriptor()
                 data["variants"]["save"] = True
@@ -742,6 +760,7 @@ class CardAccess:
                 if self.mode == "saved" and self._exploration_session.get("format") in (
                     "sabueso.card_exploration@27",
                     "sabueso.card_exploration@29",
+                    "sabueso.card_exploration@31",
                 ):
                     from .card_disease_association_history_v1 import (
                         descriptor as association_descriptor,
@@ -754,7 +773,11 @@ class CardAccess:
                 data["associations"] = association_descriptor()
                 admitted = self.mode == "live" or self._exploration_session.get(
                     "format"
-                ) in ("sabueso.card_exploration@27", "sabueso.card_exploration@29")
+                ) in (
+                    "sabueso.card_exploration@27",
+                    "sabueso.card_exploration@29",
+                    "sabueso.card_exploration@31",
+                )
                 data["associations"]["save"] = admitted
                 if admitted:
                     data["associations"].pop("save_reason", None)
@@ -816,6 +839,7 @@ class CardAccess:
                         "sabueso.card_exploration@25",
                         "sabueso.card_exploration@27",
                         "sabueso.card_exploration@29",
+                        "sabueso.card_exploration@31",
                     )
                 ):
                     from .card_exploration_molecule_activity import (
@@ -827,6 +851,7 @@ class CardAccess:
                         "sabueso.card_exploration@25",
                         "sabueso.card_exploration@27",
                         "sabueso.card_exploration@29",
+                        "sabueso.card_exploration@31",
                     ):
                         from .card_exploration_molecule_activity_v2 import (
                             descriptor as activity_context_descriptor,
@@ -1052,7 +1077,11 @@ class CardAccess:
             topic == "associations"
             and self.mode == "saved"
             and self._exploration_session.get("format")
-            in ("sabueso.card_exploration@27", "sabueso.card_exploration@29")
+            in (
+                "sabueso.card_exploration@27",
+                "sabueso.card_exploration@29",
+                "sabueso.card_exploration@31",
+            )
         ):
             from .card_exploration_disease_association import saved_selection
 
@@ -1060,9 +1089,18 @@ class CardAccess:
         if (
             topic == "variants"
             and self.mode == "saved"
-            and self._exploration_session.get("format") == "sabueso.card_exploration@29"
+            and self._exploration_session.get("format")
+            in ("sabueso.card_exploration@29", "sabueso.card_exploration@31")
         ):
             from .card_exploration_variant import saved_selection
+
+            return saved_selection(self, fields, options, where, item_refs, order_by)
+        if (
+            topic == "sequence_changes"
+            and self.mode == "saved"
+            and self._exploration_session.get("format") == "sabueso.card_exploration@31"
+        ):
+            from .card_exploration_sequence_change import saved_selection
 
             return saved_selection(self, fields, options, where, item_refs, order_by)
         if topic == "sequence_changes":
@@ -1161,6 +1199,7 @@ class CardAccess:
                     "sabueso.card_exploration@25",
                     "sabueso.card_exploration@27",
                     "sabueso.card_exploration@29",
+                    "sabueso.card_exploration@31",
                 )
             ):
                 from .card_exploration_molecule_activity import saved_selection
@@ -1522,8 +1561,10 @@ class CardAccess:
 
     def _defer(self, item):
         if item.get("adapter") == "sequence_change_exploration@1":
-            from .card_sequence_change_access import defer_frame
-
+            if self.mode == "saved":
+                from .card_sequence_change_history_v1 import defer_frame
+            else:
+                from .card_sequence_change_access import defer_frame
             return defer_frame(item)
         if item.get("adapter") == "variant_tissue_context_exploration@1":
             from .card_variant_access import defer_frame

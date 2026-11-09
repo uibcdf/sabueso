@@ -787,7 +787,9 @@ def _parts(view):
 
         opening.extend(chemical_opening(view, preview))
     if view._record_panel == "sequence_changes":
-        from .card_sequence_change_exploration import opening as change_opening
+        from .card_sequence_change_dispatch import presentation
+
+        change_opening = presentation(view).opening
 
         opening.extend(change_opening(view, preview))
     if view._record_panel == "variants":
@@ -1053,7 +1055,9 @@ def _parts(view):
             )
             continue
         if view._record_panel == "sequence_changes":
-            from .card_sequence_change_exploration import display_row as change_row
+            from .card_sequence_change_dispatch import presentation
+
+            change_row = presentation(view).display_row
 
             rows.append(change_row(item, index, preview))
             continue
@@ -1348,7 +1352,9 @@ def _parts(view):
 
 def _headers(view):
     if view._record_panel == "sequence_changes":
-        from .card_sequence_change_exploration import HEADERS
+        from .card_sequence_change_dispatch import presentation
+
+        HEADERS = presentation(view).HEADERS
 
         return list(HEADERS)
     if view._record_panel == "variants":

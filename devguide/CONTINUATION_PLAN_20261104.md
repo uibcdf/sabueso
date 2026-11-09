@@ -469,8 +469,10 @@ cases retain their source epoch. The scoped question fix passes 49 owning and
 1,636 adjacent cases. Its clean SDK234
 [genuine original](evidence/sequence_change_live_original_20261109.json) now
 preserves 31 cases and all actual source/parent/agent graphs: 146 selected and
-38 copied original cases pass. Next implement independent saved reading over
-those immutable bytes, then continue explicitly supplied
+38 copied original cases pass. Independent logical @31 / shared @32 reading now
+preserves those immutable values, finite requests and distinct actual accesses;
+public saving is enabled. The [saved checkpoint](evidence/sequence_change_saved_checkpoint_20261109.json)
+owns current qualification and limits. Continue explicitly supplied
 Card comparisons and typed biological associations. Those retain their full B6 scope. The 10,050-case receipt does not qualify this changed source.
 Both installed routes copy/select the complete owning modules and required
 original capsules; actual installed receiving stays open.

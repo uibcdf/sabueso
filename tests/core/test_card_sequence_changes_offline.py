@@ -12,7 +12,7 @@ import pytest
 from sabueso.core.aggregator import build_card_from_mapping
 from sabueso.core.card import Card
 from sabueso.core.card_sequence_change_access import ADAPTER, materialize
-from sabueso.core.errors import ArgumentError, StorageError
+from sabueso.core.errors import ArgumentError
 from sabueso.core.snapshot import canonical_json
 from sabueso.mappings.uniprot import map_protein
 
@@ -371,28 +371,86 @@ def test_detached_capture_and_escaped_human_presentation():
     )
 
 
-def test_new_save_is_explicitly_unavailable_without_blocking_unrelated_literal(
-    tmp_path,
+@pytest.mark.parametrize(
+    "entrypoint", ["human", "question", "machine", "detail", "source"]
+)
+def test_public_sequence_saving_uses_production_limits(
+    tmp_path, monkeypatch, entrypoint
 ):
-    explorer = synthetic().explore()
-    view = explorer.view("sequence_changes")
-    selection = explorer.access.select("sequence_changes")
-    assert not view.capabilities["save"] and not selection.capabilities["save"]
-    for item in (
-        view,
-        view.items()[0].open(),
-        view.items()[0].explain(),
-        view.items()[0].related(),
-        selection,
-    ):
-        with pytest.raises(StorageError):
-            item.save(tmp_path / "unsupported.json")
-    explorer.inspect("identifiers.uniprot").save(tmp_path / "literal.json")
+    from test_card_sequence_change_history_offline import block_current
+
     from sabueso import read_exploration
 
+    explorer = synthetic().explore()
+    view = (
+        explorer.answer("sequence_changes")
+        if entrypoint == "question"
+        else explorer.view("sequence_changes")
+    )
+    selection = explorer.access.select("sequence_changes")
+    assert view.capabilities["save"] and selection.capabilities["save"]
+    root = (
+        selection
+        if entrypoint == "machine"
+        else view.items()[0].open()
+        if entrypoint == "detail"
+        else view.items()[0].related().items()[0].open()
+        if entrypoint == "source"
+        else view
+    )
+    expected_question = root.request if entrypoint != "machine" else None
+    block_current(monkeypatch)
+    target = tmp_path / "sequence.json.gz"
+    root.save(target, compression="gzip")
+    restored = read_exploration(target)
+    assert restored.validation["verifier"] == "sequence_change_exploration_binding@1"
+    assert restored.request == expected_question
+    assert restored.capabilities["save"]
+    if entrypoint == "machine":
+        assert restored._machine_ref == selection.selection_ref
+
+
+def test_unobserved_literal_saving_keeps_sequence_changes_unqueried(tmp_path):
+    from sabueso import read_exploration
+
+    explorer = synthetic().explore()
+    explorer.inspect("identifiers.uniprot").save(tmp_path / "literal.json")
     restored = read_exploration(tmp_path / "literal.json")
     assert "sequence_changes" not in restored.explorer.capabilities["topics"]
     assert restored.explorer.access.select("sequence_changes").count == 0
+
+
+def test_observed_changes_remain_available_from_a_saved_literal_root(
+    tmp_path, monkeypatch
+):
+    from test_card_sequence_change_history_offline import block_current
+
+    from sabueso import read_exploration
+
+    explorer = synthetic().explore()
+    original = explorer.view("sequence_changes")
+    literal = explorer.inspect("identifiers.uniprot")
+    block_current(monkeypatch)
+    literal.save(tmp_path / "observed.json")
+    saved = read_exploration(tmp_path / "observed.json")
+    assert saved.explorer.view("sequence_changes").result_ref == original.result_ref
+    assert saved.explorer.answer("sequence_changes").outcome["status"] == "not_saved"
+
+
+def test_public_hstim_sequence_save_does_not_execute_unvisited_structure_question(
+    public, tmp_path, monkeypatch
+):
+    from test_card_sequence_change_history_offline import block_current
+
+    from sabueso import read_exploration
+
+    root = public.explore().answer("sequence_changes")
+    assert len(root.items()) == 8
+    block_current(monkeypatch)
+    root.save(tmp_path / "public.json.gz", compression="gzip")
+    saved = read_exploration(tmp_path / "public.json.gz")
+    assert len(saved.items()) == 8
+    assert saved.explorer.view("structures").outcome["status"] == "not_saved"
 
 
 def test_public_catalog_and_no_card_reconstruction_or_hidden_engines(
@@ -407,7 +465,7 @@ def test_public_catalog_and_no_card_reconstruction_or_hidden_engines(
         "sequence_changes"
     ]
     assert (
-        descriptor["save"] is False
+        descriptor["save"] is True
         and descriptor["columns"]["alternatives"]["type"] == "array[string]|null"
     )
     result = materialize(explorer.access)

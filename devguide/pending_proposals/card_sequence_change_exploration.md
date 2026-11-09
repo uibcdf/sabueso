@@ -75,25 +75,43 @@ generic annotation and saved meanings remain unchanged. Regression coverage
 includes source details, missing support, uncertain scope, explicit delegation
 and the legacy generic route; CHECKPOINT owns current qualification.
 
-## Saving and qualification boundary
+## Independent original saving and reading
 
-This new topic/question is advertised only for LIVE protein access. Its panel,
-dependent source/detail routes and compact selections explicitly refuse original
-saving until independent receiving qualifies the genuine clean SDK234 original. Unrelated
-literal saving and captured Card export remain available. Older saved catalogs,
-schemas and verifiers retain their own meanings; a new unretained compact request
-is `not_saved` and never evaluates the current projection.
+Logical `sabueso.card_exploration@31` and physical shared @32 now retain the
+original sequence-change projection, typed selections, human presentations and
+actual source/back/question context. The frozen SDK234 native/annotation/source/
+selection/presentation predicates calculate private input-bound expectations and
+restore the original wire. They neither create knowledge nor substitute current
+results. Original source-owned format/version/reference lookalikes remain literal.
+Current Cards, sequence/annotation engines, scientific digesters, source clients
+and network are forbidden during receiving. Earlier formats retain their own
+verifiers; original schema/default/source-assertion behavior stays fixed.
 
-`test_card_sequence_changes_offline.py` is the complete owning module. Both
-installed routes copy/select it once with the already declared public P60174 and
-NOTICE inputs. All 44 owning and 1,636 adjacent cases pass, with eight overlapping focused
-catalog cases counted once in the 1,680-case selected source union. All 44 copied
-owning cases also pass outside checkout with three byte-identical inputs and
-controller/worker placement proofs. The [LIVE receipt](../evidence/sequence_change_live_checkpoint_20261109.json)
-owns exact results, source epochs and resources; [CHECKPOINT](../CHECKPOINT.md) owns current state. No installed-platform, hosted,
-scientific, uncoached researcher, agent, representative workload or actual-consumer
-acceptance is inferred. The immutable tissue-context SDK230 original and its
-independent reader remain a separate contract.
+`sequence_change_access_origins@1` keeps each actual explorer and selection access
+instance separate, including source destinations with equal focal pins. Explicit
+shared input/object/location containers keep their original alias boundary; bytes
+never establish identity. Each instance retains its own observed compact requests.
+A source follow switches access explicitly; literal source children keep that
+actual access. Reopening a literal child preserves the original question, while
+executing a retained explicit structural question owns its replacement request.
+
+Public human, agent and original annotation detail saving is enabled. The writer
+retains already materialized results and their source/navigation closure without
+executing unvisited science. A human-only history does not acquire an agent
+selection; an agent-only history does not invent a human question or panel visit.
+Saved compact selection accepts only an actually retained exact typed request;
+others return `not_saved`. Mixed bundles preserve observed variant and isoform
+questions through their existing frozen exact-request dispatch. Display filtering preserves the complete underlying
+rows and support. Re-saving preserves original node/access identities and assigns
+new identities only to new operations. Transport and logical work budgets remain
+explicit; qualification overrides do not raise production defaults.
+
+The complete LIVE, original-integrity, independent history and actual-file modules
+are copied/selected by both installed workflows. Current local qualification,
+source epochs, resource measurements, fresh/copied receiving and limits belong to
+[CHECKPOINT](../CHECKPOINT.md). Technical receiving is separate from installed/
+hosted, scientific, uncoached researcher/agent, workload and actual-consumer
+acceptance. The SDK230 tissue-context original and reader remain separate.
 
 ## Immutable original before independent saved reading
 
@@ -113,7 +131,6 @@ registry/package cases pass: 146 distinct selected cases. The same 38 original
 cases pass outside checkout with four byte-identical inputs and placement/import
 proofs. Both installed routes copy/select the complete new module and capsule.
 The earlier 1,680-case LIVE and subsequent 1,685-case correction receipts retain
-their exact source epochs. Next freeze separate native/source/selection/
-presentation predicates and replay original actual navigation without current
-Cards, LIVE helpers, science or clients. Preserve older saved meanings and these
-original bytes. Original saving stays unavailable until that reader qualifies.
+their exact source epochs. The independent native/source/selection/presentation reader now uses these
+immutable observations. Preserve their exact bytes and older saved meanings;
+CHECKPOINT owns the separate receiving qualification.

@@ -1,0 +1,355 @@
+{
+  "state": "SELECTED_LOCAL_PASS",
+  "date": "2026-11-09",
+  "owner": "uibcdf/sabueso#148/#112",
+  "base_head": "7f557f1c98b78644967d5d863125fbc1daace3ee",
+  "runtime": {
+    "python": "3.14.10 | packaged by conda-forge | (main, Oct 26 2026, 11:35:38) [GCC 15.3.0]",
+    "platform": "Linux",
+    "scope": "Linux editable source development environment; other Python/platform and installed-artifact qualification remains open."
+  },
+  "source_fingerprint": "b785a1db101179cbca60c5cbb10a795616d95313842878f9ba76261bdf95bff6",
+  "source_paths": 1277,
+  "format_only_delta": {
+    "state": "PASS",
+    "path": "sabueso/core/card_exploration_storage.py",
+    "qualified_sha256": "fe642be572b485d650bc903e8c788b01f75eb105e85c93761447223ae2eedcde",
+    "formatted_sha256": "fdbfd3c54b69b0a0f3783c94454b269044584f1e58af4a623b3ac8dbd34f6f31",
+    "ast_sha256": "6bcab877dfda15c169032eb066e5034cd8c8c777f436e910ea6dabb90809b4e2",
+    "ast_identical": true,
+    "difference": "Ruff wraps only the new saved-answer format condition; no expression, statement, literal or type comment changes.",
+    "scope": "Complete 1957-case source/copy gates precede this formatting-only delta. Diagnostic package contents and planned exact committed-head owning receiving use formatted bytes. No earlier gate receipt is rewritten."
+  },
+  "original": {
+    "producer_head": "87537f5c70f51f540bb82044fdc080bd5c78b547",
+    "producer_version": "0.14.0+234.g87537f5",
+    "capsule": "tests/core/data/sequence_change_live_sdk234.tar.gz",
+    "encoded": {
+      "bytes": 6593645,
+      "sha256": "9720c900281d9fd2f97d82c9ee4f943ae78ca71cba102a193f29bd0cfabdfb02"
+    },
+    "decoded": {
+      "bytes": 54845440,
+      "sha256": "0139902cd995efe2f6b77c5c74150b4ce8577cd30fb606c84417e17a62f0eba2"
+    },
+    "manifest_sha256": "d6cfb5e48a258d95b2393d25a93b36c8b037a38736141ee99b54ad11f0847b99",
+    "cases": 31,
+    "public_HsTIM_journeys": 2,
+    "labelled_synthetic_controls": 29,
+    "actual_views": 2952,
+    "actual_access_instances": 283,
+    "finite_agent_queries": 483,
+    "finite_agent_pages": 513,
+    "unchanged": true,
+    "public_natural_variants": 8,
+    "public_mutagenesis": 0
+  },
+  "implementation": {
+    "logical_format": "sabueso.card_exploration@31",
+    "shared_format": "sabueso.card_exploration@32",
+    "verifier": "sequence_change_exploration_binding@1",
+    "access_origins_rule": "sequence_change_access_origins@1",
+    "frozen_namespace": "sabueso.core._sequence_change_history_v1",
+    "frozen_SOURCE_sha256": "c7a43ebf63201757abfede8ec0eee1820199ff53bfbf8fd93e4506372aa7c8c0",
+    "public_saving": "Human/view/question/detail/source and compact-agent routes; production limits unchanged.",
+    "original_return": "Restore exact original wire after private input/source/typed consistency verification; never replacement knowledge.",
+    "observed_scope": "Exact actual view/access/parent aliases, distinct source-follow instances, original typed cells, native quantities, source metadata, text/HTML and finite agent requests/pages. Human-only and machine-only remain distinct.",
+    "forbidden_during_original_receiving": [
+      "current Card construction/readers",
+      "current sequence/annotation science and LIVE helpers",
+      "public scientific digesters",
+      "fixture/online source clients",
+      "network"
+    ],
+    "unchanged": [
+      "Card schema",
+      "scientific defaults",
+      "SourceAssertions",
+      "old saved predicates/formats",
+      "SDK234 and SDK230 original capsules",
+      "literal source-owned version/reference/format values"
+    ]
+  },
+  "source_receiving": {
+    "state": "PASS",
+    "distinct_cases": 1957,
+    "owning_cases": 221,
+    "adjacent_cases": 1636,
+    "historical_variant_cases": 100,
+    "complete_disjoint_modules": 50,
+    "all_source_maps_identical": true,
+    "gates": {
+      "b6-sequence-saved-owning-final-2": {
+        "cases": 221,
+        "pytest_elapsed_s": 215.27016241199453,
+        "guarded_elapsed_s": 217.11,
+        "peak_rss_bytes": 2830045184,
+        "peak_scratch_bytes": 1162726892,
+        "minimum_host_available_bytes": 57345499136,
+        "peak_swap_bytes": 0,
+        "limits": {
+          "owned_rss_bytes": 10737418240,
+          "host_available_bytes": 17179869184,
+          "owned_swap_bytes": 0,
+          "cpu_affinity_count": 8,
+          "nice": 10,
+          "elapsed_s": 600,
+          "owned_scratch_bytes": 4294967296
+        },
+        "events_sha256": "462bdf76c1555770b0fccf8f2158979ec0105bc97b91eec64f207775e77a98f4"
+      },
+      "b6-sequence-saved-adjacent-final-2": {
+        "cases": 1636,
+        "pytest_elapsed_s": 320.58466777799185,
+        "guarded_elapsed_s": 325.72,
+        "peak_rss_bytes": 3469570048,
+        "peak_scratch_bytes": 3893002018,
+        "minimum_host_available_bytes": 57304682496,
+        "peak_swap_bytes": 0,
+        "limits": {
+          "owned_rss_bytes": 10737418240,
+          "host_available_bytes": 17179869184,
+          "owned_swap_bytes": 0,
+          "cpu_affinity_count": 8,
+          "nice": 10,
+          "elapsed_s": 1200,
+          "owned_scratch_bytes": 10737418240
+        },
+        "events_sha256": "8e5a6f734422cf772be692c72c7ee4179da9d829a6726414e8755e132b3abdcd"
+      },
+      "b6-sequence-saved-variant-history-final-1": {
+        "cases": 100,
+        "pytest_elapsed_s": 793.0801833620062,
+        "guarded_elapsed_s": 796.08,
+        "peak_rss_bytes": 4742307840,
+        "peak_scratch_bytes": 1692247933,
+        "minimum_host_available_bytes": 54315728896,
+        "peak_swap_bytes": 0,
+        "limits": {
+          "owned_rss_bytes": 10737418240,
+          "host_available_bytes": 17179869184,
+          "owned_swap_bytes": 0,
+          "cpu_affinity_count": 4,
+          "nice": 10,
+          "elapsed_s": 1200,
+          "owned_scratch_bytes": 10737418240
+        },
+        "events_sha256": "0925b7997b1502ca6ffa603d1990db1d622927f2c5b5a52cb464c8deb5146fda"
+      }
+    },
+    "discovery": {
+      "state": "PASS",
+      "selected_cases": 1957,
+      "complete_discovery_equals_disjoint_executed_union": true,
+      "selected_nodeids_sha256": "90571f90253ddb455233ac0da683dc3797c64021ac0f993c563be32f9ca78409",
+      "source_inputs_unchanged": true,
+      "source_paths": 1277,
+      "events_sha256": "8764f640c53ddbc107524d0c82ad2c4e67f5caf2cdf5b5a4bcc48dd43a3377d9",
+      "scope": "Independent collection only; contributes zero executed cases."
+    },
+    "limits": "Selected complete modules on one unchanged source map. A subsequent Ruff-only condition wrap is separately verified AST-identical and receives the planned exact-head owning check; no repeated full-suite claim. Discovery and repeats add no executed coverage."
+  },
+  "copied_receiving": {
+    "state": "PASS",
+    "cases": 221,
+    "byte_identical_public_inputs": 8,
+    "controller_worker_placement_proofs": 9,
+    "normalized_union_equals_source_owning": true,
+    "gate": {
+      "cases": 221,
+      "pytest_elapsed_s": 214.09809273900464,
+      "guarded_elapsed_s": 216.18,
+      "peak_rss_bytes": 2796802048,
+      "peak_scratch_bytes": 1162708287,
+      "minimum_host_available_bytes": 58015600640,
+      "peak_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 10737418240,
+        "host_available_bytes": 17179869184,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 8,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 4294967296
+      },
+      "events_sha256": "b907eb7897f67accff1f724a87d50644440719f21b478751710deeefad7ae7de"
+    },
+    "scope": "Complete four owning modules outside checkout; exact editable imports and original input bytes before/after. Not installed-artifact acceptance."
+  },
+  "fresh_receivers": "Four full original files, including both public HsTIM journeys and two synthetic boundary cases, received in guarded independent outside-checkout processes in both complete owning scopes. Earlier original variant fresh controls are also repeated in their complete historical gate.",
+  "mixed_question_correction": {
+    "observation": "Two new positive mixed-panel controls reproduced not_saved for observed variant and isoform questions in new format @31.",
+    "correction": "Use existing frozen variant exact-request dispatch in @31; preserve original options/results and reject incompatible modes. No older-format meaning changes.",
+    "red_epoch": "b6-sequence-saved-mixed-reproduction-1",
+    "green_epoch": "b6-sequence-saved-mixed-correction-1",
+    "final_complete_scope": "b6-sequence-saved-owning-final-2"
+  },
+  "diagnostic_artifacts": {
+    "owner": "uibcdf/sabueso#148/#35/#112",
+    "state": "PASS",
+    "python_modules_exact": 866,
+    "frozen_source_resources": {
+      "sabueso/core/_clinical_history_v1/SOURCE.json": "00688c256d6aee51ebc97d752fdd641f7317c5d399ae8dd84db0ee4dc7e60650",
+      "sabueso/core/_molecule_activity_history_v1/SOURCE.json": "14d59d034aa795516bc3258f11f8a4f8caaa1b5b38b3c30bfb273f8cfddde797",
+      "sabueso/core/_disease_association_history_v1/SOURCE.json": "a927a304b67df6144995c9d5f21e44ff4a34a98e8023221e47361f3dfe53feef",
+      "sabueso/core/_variant_history_v1/SOURCE.json": "b55ee3cd34ef6f7efdca561ce4b06fbacb8ea4f3ca67f7bb2d362cb82f3a6998",
+      "sabueso/core/_sequence_change_history_v1/SOURCE.json": "c7a43ebf63201757abfede8ec0eee1820199ff53bfbf8fd93e4506372aa7c8c0"
+    },
+    "artifacts": {
+      "sabueso-0.0.0+unknown-py3-none-any.whl": {
+        "bytes": 2144636,
+        "sha256": "f067e4ffc40cbb1644068fb649a592bc1dfed20579c33eabfb392abb7c147c0f"
+      },
+      "sabueso-0.0.0+unknown.tar.gz": {
+        "bytes": 1573977,
+        "sha256": "22a351015e07fad3dc1bb7056367ba15969c679af7c90cd283bc6755565b9e03"
+      }
+    },
+    "source_inputs_unchanged": true,
+    "scope": "Isolated diagnostic wheel/sdist; exact working implementation and five frozen SOURCE resources. The no-VCS 0.0.0+unknown fallback is intentional. No installed-artifact, release or publication acceptance."
+  },
+  "quality": {
+    "state": "PASS",
+    "checks": {
+      "ruff": {
+        "exit_code": 0,
+        "command": [
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/ruff",
+          "check",
+          "."
+        ],
+        "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+        "output": "All checks passed!"
+      },
+      "format": {
+        "exit_code": 0,
+        "command": [
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/ruff",
+          "format",
+          "--check",
+          "."
+        ],
+        "log_sha256": "f587fcd1650c5d9a88b7fd141fc3d116f13c82f6ed34613292f58b66b712c0cd",
+        "output": "1613 files already formatted"
+      },
+      "governance": {
+        "exit_code": 0,
+        "command": [
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-B",
+          "/fast_data/home/liliana/repos@uibcdf/moli/devtools/scripts/check_repository.py",
+          "/fast_data/home/liliana/repos@uibcdf/sabueso",
+          "--canonical-guide",
+          "/fast_data/home/liliana/repos@uibcdf/moli/MOLI_GUIDE.md"
+        ],
+        "log_sha256": "a020ded5dd1f74aa00e4857214df2663df0f9ace41abffacee569f6e35b823c8",
+        "output": "/fast_data/home/liliana/repos@uibcdf/sabueso: conforms to MOLI governance core."
+      },
+      "guide": {
+        "exit_code": 0,
+        "command": [
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-B",
+          "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-sequence-saved-1/check_guide.py"
+        ],
+        "log_sha256": "f2466a9240f167a615ca2c870470f0d272e17ffc58050cf7b90365afccdf451a",
+        "output": "{\"state\": \"PASS\", \"scope\": \"Maintained non-archive guide local targets; changed-target Markdown anchors; changed fenced Python3.11 grammar. No external link or runtime example qualification.\", \"maintained_markdown_files\": 176, \"local_path_targets_checked\": 1445, \"changed_page_anchors_checked\": 73, \"python_examples_checked\": 0, \"errors\": []}"
+      },
+      "git_diff": {
+        "exit_code": 0,
+        "command": [
+          "git",
+          "diff",
+          "--check"
+        ],
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "output": ""
+      }
+    },
+    "python311_changed_modules": 24,
+    "workflow_wiring": {
+      ".github/workflows/ci.yml": {
+        "test_card_sequence_changes_offline.py": {
+          "copied_once": true,
+          "selected_once": true
+        },
+        "test_card_sequence_change_original_offline.py": {
+          "copied_once": true,
+          "selected_once": true
+        },
+        "test_card_sequence_change_history_offline.py": {
+          "copied_once": true,
+          "selected_once": true
+        },
+        "test_card_saved_sequence_change_offline.py": {
+          "copied_once": true,
+          "selected_once": true
+        }
+      },
+      ".github/workflows/test_staged_conda_package.yaml": {
+        "test_card_sequence_changes_offline.py": {
+          "copied_once": true,
+          "selected_once": true
+        },
+        "test_card_sequence_change_original_offline.py": {
+          "copied_once": true,
+          "selected_once": true
+        },
+        "test_card_sequence_change_history_offline.py": {
+          "copied_once": true,
+          "selected_once": true
+        },
+        "test_card_saved_sequence_change_offline.py": {
+          "copied_once": true,
+          "selected_once": true
+        }
+      }
+    },
+    "guide": {
+      "state": "PASS",
+      "scope": "Maintained non-archive guide local targets; changed-target Markdown anchors; changed fenced Python3.11 grammar. No external link or runtime example qualification.",
+      "maintained_markdown_files": 176,
+      "local_path_targets_checked": 1445,
+      "changed_page_anchors_checked": 73,
+      "python_examples_checked": 0,
+      "errors": []
+    },
+    "scope": "Local lint/format/grammar/governance/guide and installed-workflow wiring only. No installed or hosted qualification."
+  },
+  "earlier_epochs": {
+    "closed_logs": "Earlier red calibration/native/quantity/owning epochs remain in owned local evidence and add no coverage.",
+    "instrument_corrections": "Restore explicitly recorded actual shared containers and actual native_override flags, including None for structural quantity details. Do not infer identity from equal bytes or replace genuine original observations. No PyUnitWizard provider defect was demonstrated.",
+    "interrupted": "b6-sequence-saved-owning-4 is INTERRUPTED_UNQUALIFIED after a missing test import was noticed; no complete receptor/resource pass claimed. Its interrupted-disposition.json is retained.",
+    "superseded_green": "100-case matrix, 125-case history/file, 56-case LIVE, 219-case owning and first 1636-case adjacent gates retain their exact earlier source epochs; final union uses only the explicitly named final gates."
+  },
+  "privacy_and_rights": "Only frozen public responses and explicitly labelled synthetic controls; NOTICE and original capture rights retained. No confidential pilot content, source refresh or new data acquisition.",
+  "local_evidence": "recovered_work/checkpoint_recovery_20261106/b6-sequence-saved-1",
+  "reporting": {
+    "destination": "uibcdf/sabueso#148",
+    "draft": "recovered_work/checkpoint_recovery_20261106/b6-sequence-saved-1/issue148-sequence-saved-draft-1.md",
+    "status": "Reviewable local handoff; no new comment published without concrete-material authorization.",
+    "portability_hypothesis": "Older variant fresh-receiver test assumes /tmp on Windows; observed code, Windows consequence not reproduced. Separate local handoff records owner and reproduction/fix route."
+  },
+  "ci": {
+    "state": "DEFERRED",
+    "owner": "uibcdf/sabueso#148/#112",
+    "marker": "[skip ci]",
+    "deferred_head": "Commit containing this receipt; exact SHA and all-event run query recorded in the local final handoff.",
+    "scope": "Changed source, installed workflow receiving and governance on final head; local checks are scoped above.",
+    "recovery": "At the authorized block/candidate checkpoint, unskipped push or explicitly authorized manual CI and governance; inspect every applicable exact-SHA gate through gh-run-receptor. Installed staging qualification remains required before release.",
+    "zero_runs_is_not_PASS": true
+  },
+  "temporary_resources": {
+    "owner": "#148/#112",
+    "retain": "Original SDK234 and SDK230 capsules, primary capture inputs, SOURCE lineage, complete receptor/resource/source/placement receipts and scoped red/interrupted logs.",
+    "review_trigger": "B6 closeout or workstation handoff; remove only completed owned pytest scratch, copied workspaces and diagnostic build duplicates after last needed use.",
+    "cleanup_receipt": "Owned exact paths, bytes and any failures are recorded in the local post-qualification handoff."
+  },
+  "next": [
+    "B6 explicit supplied-Card comparative profile",
+    "B6 typed biological associations with exact direction/support",
+    "B7 independent scientific, uncoached researcher, agent, workload and actual-consumer acceptance",
+    "B2 scientific/default review remains deferred",
+    "B8 candidate/release remains unresumed; no release/tag/package publication or workflow dispatch authorized"
+  ]
+}

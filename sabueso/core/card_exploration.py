@@ -372,7 +372,9 @@ class CardItem:
             "sequence_changes",
         ):
             if self._view._record_panel == "sequence_changes":
-                from .card_sequence_change_selection_v1 import COLUMNS
+                from .card_sequence_change_dispatch import selection
+
+                COLUMNS = selection(self._view).COLUMNS
             elif self._view._record_panel == "variants":
                 if self._view._explorer.mode == "saved":
                     from ._variant_history_v1.selection import COLUMNS
@@ -672,9 +674,32 @@ class CardItem:
     def open(self):
         """Open all retained detail, or follow a labeled catalog route."""
         if self._view._record_panel == "sequence_changes":
-            from .card_sequence_change_exploration import open_item
+            if self._view._explorer.mode == "saved":
+                from .card_exploration_sequence_change import item_operation
+
+                return item_operation(self, "open")
+            from .card_sequence_change_dispatch import presentation
+
+            open_item = presentation(self._view).open_item
 
             return open_item(self)
+        if (
+            self._view._explorer.mode == "saved"
+            and self._view._explorer._session.get("format")
+            == "sabueso.card_exploration@31"
+        ):
+            from .card_exploration_sequence_change import (
+                is_context,
+                item_operation,
+                open_retained_child,
+            )
+
+            if is_context(self._view):
+                return (
+                    item_operation(self, "open")
+                    if self._view._link_panel
+                    else open_retained_child(self)
+                )
         if self._view._record_panel == "variants":
             if self._view._explorer.mode == "saved":
                 from .card_exploration_variant import item_operation
@@ -827,7 +852,9 @@ class CardItem:
 
     def _live_explain(self):
         if self._view._record_panel == "sequence_changes":
-            from .card_sequence_change_exploration import explain
+            from .card_sequence_change_dispatch import presentation
+
+            explain = presentation(self._view).explain
 
             return explain(self)
         if self._view._record_panel == "variants":
@@ -1232,7 +1259,9 @@ class CardView:
         if self._machine_ref is not None:
             capabilities["root_machine_selection_ref"] = self._machine_ref
         if self._record_panel == "sequence_changes":
-            from .card_sequence_change_selection_v1 import SORT_COLUMNS
+            from .card_sequence_change_dispatch import selection
+
+            SORT_COLUMNS = selection(self).SORT_COLUMNS
 
             capabilities["sort"] = list(SORT_COLUMNS)
         if self._record_panel == "literature":
@@ -1262,6 +1291,7 @@ class CardView:
                 "sabueso.card_exploration@25",
                 "sabueso.card_exploration@27",
                 "sabueso.card_exploration@29",
+                "sabueso.card_exploration@31",
             ) and is_view(self):
                 from .card_molecule_activity_operations_v1 import has_operation
 
@@ -1274,7 +1304,9 @@ class CardView:
         if self._saved_state is not None:
             return deepcopy(self._saved_state["schema"])
         if self._record_panel == "sequence_changes":
-            from .card_sequence_change_selection_v1 import COLUMNS
+            from .card_sequence_change_dispatch import selection
+
+            COLUMNS = selection(self).COLUMNS
 
             return {
                 "kind": "sequence_change_exploration",
@@ -1588,7 +1620,9 @@ class CardView:
         """Select exact declared cells without changing the scientific result."""
         self._check_column(column)
         if self._record_panel == "sequence_changes":
-            from .card_sequence_change_exploration import display_filter
+            from .card_sequence_change_dispatch import presentation
+
+            display_filter = presentation(self).display_filter
 
             return display_filter(self, column, equals)
         if self._record_panel == "variants":
@@ -1740,7 +1774,9 @@ class CardView:
         if unit is not None and (not isinstance(unit, str) or not unit.strip()):
             raise ArgumentError("unit requires a nonempty unit name or None.")
         if self._record_panel == "sequence_changes":
-            from .card_sequence_change_exploration import display_sort
+            from .card_sequence_change_dispatch import presentation
+
+            display_sort = presentation(self).display_sort
 
             return display_sort(self, column, descending, unit)
         if self._record_panel == "variants":
@@ -2024,7 +2060,14 @@ class CardExplorer:
     def _nature_topics(self):
         if (
             self.mode == "saved"
-            and self._session.get("format") == "sabueso.card_exploration@29"
+            and self._session.get("format") == "sabueso.card_exploration@31"
+        ):
+            from ._sequence_change_history_v1.catalogs import NATURE_TOPICS
+
+            return NATURE_TOPICS[self.profile]
+        if self.mode == "saved" and self._session.get("format") in (
+            "sabueso.card_exploration@29",
+            "sabueso.card_exploration@31",
         ):
             from ._variant_history_v1.catalogs import NATURE_TOPICS
 
@@ -2032,6 +2075,7 @@ class CardExplorer:
         if self.mode == "saved" and self._session.get("format") in (
             "sabueso.card_exploration@27",
             "sabueso.card_exploration@29",
+            "sabueso.card_exploration@31",
         ):
             from ._disease_association_history_v1.catalogs import NATURE_TOPICS
 
@@ -2056,7 +2100,14 @@ class CardExplorer:
     def _topics(self):
         if (
             self.mode == "saved"
-            and self._session.get("format") == "sabueso.card_exploration@29"
+            and self._session.get("format") == "sabueso.card_exploration@31"
+        ):
+            from ._sequence_change_history_v1.catalogs import TOPICS
+
+            return TOPICS[self.profile]
+        if self.mode == "saved" and self._session.get("format") in (
+            "sabueso.card_exploration@29",
+            "sabueso.card_exploration@31",
         ):
             from ._variant_history_v1.catalogs import TOPICS
 
@@ -2064,6 +2115,7 @@ class CardExplorer:
         if self.mode == "saved" and self._session.get("format") in (
             "sabueso.card_exploration@27",
             "sabueso.card_exploration@29",
+            "sabueso.card_exploration@31",
         ):
             from ._disease_association_history_v1.catalogs import TOPICS
 
@@ -2107,6 +2159,7 @@ class CardExplorer:
         if self.mode == "saved" and self._session.get("format") in (
             "sabueso.card_exploration@27",
             "sabueso.card_exploration@29",
+            "sabueso.card_exploration@31",
         ):
             return self._topics[topic][0]
         if topic == "classification" and self.profile == "small_molecule":
@@ -2121,7 +2174,14 @@ class CardExplorer:
     def _questions(self):
         if (
             self.mode == "saved"
-            and self._session.get("format") == "sabueso.card_exploration@29"
+            and self._session.get("format") == "sabueso.card_exploration@31"
+        ):
+            from ._sequence_change_history_v1.catalogs import QUESTIONS
+
+            return QUESTIONS[self.profile]
+        if self.mode == "saved" and self._session.get("format") in (
+            "sabueso.card_exploration@29",
+            "sabueso.card_exploration@31",
         ):
             from ._variant_history_v1.catalogs import QUESTIONS
 
@@ -2129,6 +2189,7 @@ class CardExplorer:
         if self.mode == "saved" and self._session.get("format") in (
             "sabueso.card_exploration@27",
             "sabueso.card_exploration@29",
+            "sabueso.card_exploration@31",
         ):
             from ._disease_association_history_v1.catalogs import QUESTIONS
 

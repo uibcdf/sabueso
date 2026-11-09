@@ -5,6 +5,53 @@ Current working-state checkpoint: **2026-11-09**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Independent sequence-change saved reading — local checkpoint PASS
+
+Logical `sabueso.card_exploration@31` / physical shared @32 now reads the immutable
+clean SDK234 original with private frozen native/source/selection/presentation
+predicates. Public human/question/detail/source and compact-agent saving is enabled
+under unchanged production budgets. Reading preserves original values, source
+metadata, typed cells, native structural quantities, text/HTML, finite requests and
+actual source/back/question context. The new `sequence_change_access_origins@1`
+manifest preserves all 283 actual access instances and their aliases without
+merging equal focal values. Human-only and machine-only histories remain distinct;
+unvisited science and unexecuted requests remain `not_saved`.
+
+All **1,957 distinct selected offline cases pass** on one unchanged 1,277-path
+source map: 221 complete owning, 1,636 adjacent and 100 complete historical variant
+cases in 50 disjoint modules. A subsequent Ruff-only condition wrap is verified
+AST-identical; the final committed-head owning check is recorded separately. Independent discovery equals the exact executed
+union. All **221 copied owning cases pass outside checkout**, with eight
+byte-identical public inputs and nine controller/worker placement/import proofs.
+All 31 complete actual original files pass guarded receiving; both public HsTIM
+journeys and two synthetic boundary cases also pass fresh inert receiving. These
+repeats add no distinct coverage. Fully resealed altered values, sources, cells,
+questions and access aliases are refused; none/gzip/zstd resaves preserve originals.
+
+Mixed-panel controls reproduced and corrected an unpublished dispatch gap:
+observed variant and isoform questions returned `not_saved` inside the new format.
+Both now use their existing frozen exact-request dispatch, preserving their original
+results and refusing an incompatible mode. Older formats retain their meanings.
+The diagnostic wheel and sdist contain byte-identical implementation modules and
+all five frozen SOURCE resources. The isolated `0.0.0+unknown` fallback is intentional;
+this is package-content inspection, separate from installed-artifact qualification.
+
+The [saved receipt](evidence/sequence_change_saved_checkpoint_20261109.json) owns
+exact source epochs, complete receptor/discovery/resource accounting, prior red or
+interrupted dispositions, quality checks and limits. The original 31-case SDK234
+capsule and older SDK230 capsule remain unchanged. No provider bug was demonstrated
+by the corrected quantity/alias hydration instrument. A separate local handoff
+records a suspected Windows `/tmp` assumption in the older variant fresh-receiver
+test; its Windows consequence remains unverified.
+
+Continue B6's explicit supplied-Card comparisons and typed biological associations.
+B7 scientific, uncoached researcher/agent, representative workload and actual-consumer
+acceptance remain open; B2 scientific/default review stays deferred and B8/release
+unresumed. CI is deferred under #148/#112 with `[skip ci]`; installed/hosted receiving
+is open. Exact final committed metadata, code, remote/run verification and owned
+cleanup belong to the local post-push handoff. Retain original captures and useful
+receipts through B6 closeout; remove only completed owned disposable paths.
+
 ## Genuine sequence-change original — local checkpoint PASS
 
 The clean SDK234 producer now has an immutable 31-case original before independent
@@ -27,10 +74,9 @@ The original is 6,593,645 compressed bytes and never regenerated to fit a verifi
 Both installed routes now copy/select the complete module and capsule; actual
 installed/hosted qualification remains open.
 
-Next implement separately versioned frozen native/source/selection/presentation
-reading and exact original human/agent/actual-origin replay with current Cards,
-LIVE projection, scientific readers and clients forbidden. Original panel saving
-remains unavailable until this qualifies. B6 comparison/typed associations and B7
+This receipt precedes the separately versioned frozen reader now implemented
+above. It retains its original source epoch; the new saved checkpoint owns
+human/agent/actual-origin receiving and public panel saving. B6 comparison/typed associations and B7
 scientific/uncoached researcher/agent/workload/consumer acceptance remain open;
 B8 and release are unresumed. CI is deferred under #148/#112. Exact final committed
 metadata/code/remote verification belongs to the local post-push handoff. Retain
@@ -55,8 +101,8 @@ placement/import proofs. The [correction receipt](evidence/sequence_change_quest
 owns exact results and resource scopes. The corrected clean SDK234 producer
 now precedes the complete immutable original above. The preceding LIVE receipt keeps its source epoch.
 Owner: #148/#112; local evidence is `b6-sequence-question-continuity-1` and
-`b6-sequence-live-original-1/sdk233-question-reproduction.json`. No independent
-sequence-change reader exists yet.
+`b6-sequence-live-original-1/sdk233-question-reproduction.json`. The independent
+reader is now implemented above; this correction receipt retains its source epoch.
 
 ## Natural variants and mutagenesis — LIVE local checkpoint PASS
 
@@ -90,9 +136,9 @@ route. Earlier red receipts remain scoped. Global Ruff/format, Python3.11 gramma
 canonical governance and complete installed-workflow copy/select wiring pass.
 
 The [profile](pending_proposals/card_sequence_change_exploration.md) owns behavior.
-Original saving of the new panel, its dependent routes and compact selections is
-explicitly unavailable until clean producer capture and independent saved reading.
-Unrelated literal saving and captured Card export remain available. The preceding
+The LIVE receipt predates public panel saving. The genuine clean SDK234 original
+and independent saved checkpoint above now qualify that separate capability;
+unrelated literal saving and captured Card export remain available. The preceding
 1,715-case receipt below retains its source epoch. B6 comparisons/typed associations
 and B7 acceptance keep their remaining scope; installed/hosted qualification is
 open and CI deferred under #148/#112. Exact committed-head metadata/code/remote

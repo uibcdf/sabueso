@@ -1188,14 +1188,16 @@ conflicts, uncertain/foreign axes, repeated occurrences and multiple native
 contexts supporting one retained Card value. Check shared human/agent IDs,
 original source/back/question routes, no implicit science/acquisition, atomic
 response budgets, detached capture, escaped display, exact catalog admission,
-explicit save refusal and unaffected literal saving. Copy the complete module,
+production-budget human/question/detail/machine saving, unobserved-request refusal
+and unaffected literal saving. Copy the complete module,
 P60174 and NOTICE bytes outside checkout and verify controller/worker placement
 and editable imports. Both installed workflows copy/select it once.
 
 Include affected access, agent, nature/protein/source/annotation, navigation,
 cells, argument, quantity, historical saved/transport and original variant gates.
-The current LIVE checkpoint does not qualify a future independent sequence-change
-reader; capture the genuine clean producer before implementing that reader.
+The LIVE receipt retains its source epoch. The genuine SDK234 producer was
+captured before implementing the separate independent reader qualified below;
+original bytes and earlier saved contracts remain fixed.
 
 
 The sequence-change module also checks original LIVE request continuity through
@@ -1226,3 +1228,38 @@ independent saved reader admission, arbitrary-query completeness, installed/host
 or scientific/researcher acceptance. Never regenerate the original to fit a later
 verifier. The [receipt](evidence/sequence_change_live_original_20261109.json) owns
 actual gates, source epochs and resource limits (#148/#112).
+
+
+## Independent sequence-change saved reading
+
+Run the complete `test_card_sequence_change_history_offline.py` and
+`test_card_saved_sequence_change_offline.py`, together with the complete owning
+LIVE and immutable-original modules. Qualify all 31 original scenarios, full
+actual view/access/selection/parent aliases, original text/HTML and cells, every
+finite compact request/page, direct captured Card occurrence binding, structural
+sidecar units and literal source metadata. The original instrument records actual
+shared containers and runtime override flags; hydration restores those recorded
+facts rather than inferring aliases from equal values or overriding every native
+payload. Keep all SDK234 original bytes fixed.
+
+Fully reseal altered native/axis/substitution/support/cell/coverage/question/
+source/filter/origin and access-alias controls; each must be refused by semantic
+receiving. Include a fully resealed unchanged positive, forced shared @32,
+none/gzip/zstd resaves, missing/unexecuted human versus agent routes and fresh
+inert outside-checkout receivers. Block current Card reconstruction, sequence and
+annotation helpers, scientific digesters, clients and network. Test public LIVE
+human/agent/detail saving under production budgets and unchanged literal-only
+saving. Mixed sequence-change bundles must reopen the exact observed variant
+and isoform questions through their existing frozen request dispatch, including
+positive rows and refusal of an incompatible mode. Run affected historical,
+access/agent/navigation/quantity/transport,
+fixture/licensing/delivery/registry/package gates and diagnostic artifact checks.
+
+Both installed workflows copy/select the two new complete modules alongside the
+owning LIVE/original modules and their capsule/public inputs. Repeat the entire
+owning scope outside checkout with byte-identical inputs and verified controller/
+worker/import placement. Repeats add no distinct coverage. Scope the final source
+union explicitly and preserve earlier red or interrupted epochs. Fresh receiver
+children share the same 10 GiB RSS ceiling; select low concurrency first and
+increase only from measurements. Local passing does not establish installed/
+hosted/scientific/human acceptance (#148/#112).

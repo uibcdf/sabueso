@@ -67,7 +67,11 @@ and all 44 copied owning cases retain their source epoch. The scoped question
 continuity fix passes 49 owning and 1,636 adjacent cases. Its clean SDK234
 [genuine original](evidence/sequence_change_live_original_20261109.json) now
 preserves 31 cases and all actual source/parent/agent graphs: 146 selected and
-38 copied original cases pass. Original saving awaits the independent reader. Remaining comparative/association and
+38 copied original cases pass. Independent logical @31 / shared @32 reading now
+preserves those immutable values, source/question routes, finite requests and
+distinct actual access instances. Public sequence-change saving is enabled;
+the [saved checkpoint](evidence/sequence_change_saved_checkpoint_20261109.json)
+owns current qualification and limits. Remaining comparative/association and
 B7 acceptance scope stays open. CHECKPOINT owns actual current results.
 
 The [retained disease association profile](pending_proposals/card_disease_association_exploration.md)

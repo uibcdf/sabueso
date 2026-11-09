@@ -1,0 +1,40 @@
+{
+  "producer_head": "87537f5c70f51f540bb82044fdc080bd5c78b547",
+  "producer_version": "0.14.0+234.g87537f5",
+  "purpose": "Independent original sequence-change consistency. Private expectations verify input/source/typed occurrence binding and never replace retained original knowledge.",
+  "original_files": {
+    "sabueso/core/card_sequence_change_access.py": "a96da0f8bcdc7ebd5cc416459ca37cd895488eab87fc322acd137d78355abd0f",
+    "sabueso/core/card_sequence_change_selection_v1.py": "bad30c65d78cd3bea789664b6a7a5aa9baa2b0180e8df297c88c073d40999375",
+    "sabueso/core/card_annotation_regions_v1.py": "8000f53a2eb35de4ce4b9ebbbf7caca2a4886de26f8906f86687bc678cb84db7",
+    "sabueso/core/card_sequence_change_exploration.py": "0ec7be2c0f8ea747d68d55c025d1de65d168aba64d742de040af971a60e7ca1a",
+    "sabueso/core/card_context_navigation.py": "f6e66c27634f6f0ed021e1e8399fbbef2d653e6e14dc20c6b01e02a53e09b976",
+    "sabueso/core/card_exploration.py": "acd7a04d91f04a120d6f49fccb9d54169acbf9f5ee84a5786df4e1ff324ca529",
+    "sabueso/core/card_exploration_render.py": "06c07b6729ee3db47c77e1b3aab5255bee5fe2e935892fd34beab19d37316048",
+    "sabueso/core/_variant_history_v1/catalogs.py": "3c0a314181b8656b070811962391aa56bf8fceeca834ff360773fab2ccc82612",
+    "sabueso/core/_variant_history_v1/replay.py": "b3f046b2d1203ded0ae86e32126484d26736d1abe2e74aec51c81e066c0c1050",
+    "sabueso/core/_variant_history_v1/machine.py": "ec459f04724c08395c2c56308bf759d7e2864efb3a7ca1bbbf87d6ce8c38645f",
+    "sabueso/core/_variant_history_v1/rules.py": "8016f21a7168262eaca87a9aba4bcbfbadd05bc71f2fa00eb6d001e67f6c9e8c"
+  },
+  "frozen_files": {
+    "__init__.py": "5eca6df4efa8904b47d36f46aedd9ba3424fe62d5c8a5fdeac3e92a631673ca9",
+    "adapter.py": "4dc161b4a99de9cd5017c7a63d8c7676e40cb34959152d0f57631234446eea67",
+    "annotations.py": "bfc2d5833dfe23b6b34313760066d131a5215114cd71f623ddd531c8e16f7ad3",
+    "catalogs.py": "f994e1faca55ee6918d940eea0583d371ee23529e473a00abe7b64f48b97c54e",
+    "exploration.py": "6015e5a0c179d14dbad4c1a49802f5c0f452b854f4759c732eb4abe27e6fb2ad",
+    "inputs.py": "1cb41bd3267072d048a3eca5f2a008e03479b4a91b8d2015627b4b6577fad7e1",
+    "machine.py": "7f6d2256103640a35ea97de8289dfe336c50fcb3ba3d2ac2d4a3a716b156277c",
+    "navigation.py": "9ce407857f8f35413fca589db0a51b1c77fb360b983647d5679e632ea71719a7",
+    "replay.py": "c28771058401a6adf72ad6941c2719caf8498570af8dfad7b2dc8a70a9ac2b14",
+    "rules.py": "7687f9ba5402cfcde193bfc0457ebead656d86c9cbd24a22c1fe56dafdffb3c7",
+    "selection.py": "4e153c91cf184bb97e2df75672a8d309215dc980e7414e580ff99f038a1433a6"
+  },
+  "reused_frozen_files": {
+    "sabueso/core/_literature_history_v1/inputs.py": "767af694005c7ff869051992751cbb3a84164765b64ea420edf2dfa91e8b536e",
+    "sabueso/core/_literature_history_v1/validation.py": "dba6d06bc4544732c093df5df9e6b00c2d1f32d20fd2a654f8c808feb56474c6",
+    "sabueso/core/_variant_history_v1/source.py": "619e329ad9513b3c2d1f2e26bc1dbc50412136c753f0a64e2c7ab424c1f6d2ab",
+    "sabueso/core/card_exploration_history.py": "fb1e8de9604244e8d3360883ecec7d521ae121d7288c9eab83d1ed1d7c45b3dc",
+    "sabueso/core/card_exploration_adapter_v1.py": "1fceea655072a14f0d5204374ca79ffba1c4a9fa7f9333cbd03418d05f528544",
+    "sabueso/core/card_exploration_structure_v1.py": "229053ffa397bf5e1bb651ad15833ebcff1a6597a25c70e7a37de13e6009c606"
+  },
+  "allowed_differences": "Relative import rebinding; private exact typed traversal and original snapshot checking; freeze annotation support/structural-request admission, sequence projection/selection/presentation, generic literal navigation, SDK234 catalogs and inherited sequence questions. Reuse qualified inert framework and earlier frozen predicates. Generated producer label only at the explicit sequence_change_projection@1 derivation constructor. No source metadata rewriting, scientific acquisition, current projection/digester/client or substitution of original output."
+}

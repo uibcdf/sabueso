@@ -52,7 +52,7 @@ include = ["sabueso*"]
 # Non-Python files the package reads at runtime (uibcdf/sabueso#35). Every such file must
 # be listed here; tests/core/test_package_data_offline.py enforces it.
 [tool.setuptools.package-data]
-sabueso = ["resolver/*.json", "core/_molecule_activity_history_v1/SOURCE.json", "core/_clinical_history_v1/SOURCE.json", "core/_disease_association_history_v1/SOURCE.json", "core/_variant_history_v1/SOURCE.json"]
+sabueso = ["resolver/*.json", "core/_molecule_activity_history_v1/SOURCE.json", "core/_clinical_history_v1/SOURCE.json", "core/_disease_association_history_v1/SOURCE.json", "core/_variant_history_v1/SOURCE.json", "core/_sequence_change_history_v1/SOURCE.json"]
 
 [tool.pytest.ini_options]
 norecursedirs = [".*", "build", "dist", "recovered_work"]

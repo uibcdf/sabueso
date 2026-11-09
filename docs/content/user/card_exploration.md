@@ -228,6 +228,56 @@ invent per-annotation source membership. Stored fragments, unknown location
 modifiers, alternative source statements and conflicts remain available. No
 alignment, residue correspondence or source query is performed.
 
+## Read retained natural variants and mutagenesis (development)
+
+```python
+changes = explorer.answer("sequence_changes")
+changes.table()
+if changes.items():
+    annotation = changes.items()[0]
+    original = annotation.open()
+    support = annotation.explain()
+    destinations = annotation.related()
+```
+
+Each row is one retained natural-variant or experimental-mutagenesis annotation.
+Positions, numbering modifiers, original residues, substitution alternatives and
+explicit missing/deletion flags retain their source values. Unknown flags remain
+unknown. Multiple source statements can support one Card occurrence without
+establishing a unique correspondence. A structural destination requires the
+original annotation's explicit reference and admissible region; following it asks
+a separate question. These rows do not predict the effect of a substitution or
+join a protein annotation to a genomic variant by position alone.
+
+Agents use the same retained rows and exact typed filters:
+
+```python
+selection = explorer.access.select(
+    "sequence_changes",
+    fields=["start", "original", "alternatives", "missing", "support_state"],
+)
+page = selection.page(max_bytes=16000)
+```
+
+Integer positions, boolean flags, nulls and ordered alternative lists remain
+distinct. Human panels and machine requests are retained separately. Save after
+opening the destinations and executing the exact requests you need:
+
+```python
+from sabueso import read_exploration
+
+changes.save("sequence_changes.json.gz", compression="gzip")
+saved_changes = read_exploration("sequence_changes.json.gz")
+saved_changes.table()
+```
+
+The saved reader preserves original values, source support, questions and back
+routes with its frozen interpretation. Unvisited structural questions and
+unexecuted agent requests remain `not_saved`; reading does not acquire sources or
+calculate a replacement answer. Saving only a machine request does not invent
+an observed human panel, and saving only a human panel does not invent an agent
+request.
+
 ## Explore individual annotations in structures
 
 ```python

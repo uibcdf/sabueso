@@ -1,5 +1,26 @@
 # Sabueso — Decision Log
 
+## Preserve independent sequence-change occurrences and access origins (2026-11-09)
+
+The independent logical @31 / physical @32 reader uses the immutable clean
+SDK234 original. Freeze exact Card occurrence, annotation support/structural-request,
+projection, selection and presentation meanings. Compute private expectations and
+restore retained output; never create replacement knowledge, SourceAssertions or
+Evidence. Generated producer labels are interpreted only at their declared rule
+constructor; literal source metadata keeps its original types and contents.
+
+Source navigation creates actual access instances even when a destination has
+the same focal pin. The new `sequence_change_access_origins@1` manifest records
+explorer/selection aliases, per-instance request scope and explicit shared input
+containers. A source follow keeps its new access boundary; literal descendants
+retain it. Preserve exact parent/question context, separately executed structural
+questions and human-only versus agent-only histories. Re-saving preserves existing
+node/access identities; sharing bytes never merges scientific or runtime identity.
+Older formats remain fixed. Technical receiving, installed/hosted qualification
+and scientific/uncoached researcher/agent/workload/consumer acceptance remain
+separate. Owner: #148/#112; retain original bytes through independent receiving
+and B6 closeout and remove only owned disposable resources after last use.
+
 ## Preserve clean SDK234 sequence-change observations before saved reading (2026-11-09)
 
 A failed SDK233 calibration exposed real loss of inherited source/blocked-question
