@@ -21,6 +21,7 @@ development queue.
 - [Required knowledge-pipeline attribution](ackredit_knowledge_pipeline_attribution.md)
   (#108, moli#36): required automatic runtime attribution; public provider adopted; broader acquisition/bibliography and record integration remain open.
 - [Variant and isoform tissue-context exploration](card_variant_tissue_exploration.md)
+- [Natural variants and mutagenesis](card_sequence_change_exploration.md)
   — first B6 LIVE human/agent slice over scoped native rules; the genuine SDK230
   original is preserved, and independent reading precedes new panel save admission
   (#148/#102/#138/#112).

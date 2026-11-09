@@ -1176,3 +1176,23 @@ verify source/input hashes and repeat the complete affected gate; a quota failur
 is not passing evidence. Remove the owned scratch after its final needed use.
 The observed [2026-10-26 recovery](https://github.com/uibcdf/sabueso/issues/112#issuecomment-6428403275)
 is not a universal space requirement or permission to delete shared/caller paths.
+
+
+## Retained sequence-change projection
+
+`test_card_sequence_changes_offline.py` owns the complete natural-variant and
+mutagenesis LIVE projection scope. Use the public eight-annotation HsTIM input
+and labelled synthetic controls for experimental mutagenesis, typed null/false/
+deletion/alternatives, missing and malformed fields, exact subject/value support,
+conflicts, uncertain/foreign axes, repeated occurrences and multiple native
+contexts supporting one retained Card value. Check shared human/agent IDs,
+original source/back/question routes, no implicit science/acquisition, atomic
+response budgets, detached capture, escaped display, exact catalog admission,
+explicit save refusal and unaffected literal saving. Copy the complete module,
+P60174 and NOTICE bytes outside checkout and verify controller/worker placement
+and editable imports. Both installed workflows copy/select it once.
+
+Include affected access, agent, nature/protein/source/annotation, navigation,
+cells, argument, quantity, historical saved/transport and original variant gates.
+The current LIVE checkpoint does not qualify a future independent sequence-change
+reader; capture the genuine clean producer before implementing that reader.

@@ -108,8 +108,10 @@ is located in the repository's `examples/user_journeys/` directory. It prepares
 current-source and historical-missing-context readings without source queries,
 then reopens them independently. Technical script/HTML checks are distinct from
 observed researcher usefulness. Full compact annotation-topic projection is still
-pending; exact source nodes remain available through bounded literal machine
-access, and target structural requests reuse the existing scientific adapter.
+pending; the [natural-variant/mutagenesis slice](card_sequence_change_exploration.md)
+now supplies a shared LIVE projection of those retained Card occurrences. Other
+annotation kinds keep bounded literal machine access, and target structural
+requests reuse the existing scientific adapter.
 
 Source qualification, public examples and gate evidence are retained under
 `recovered_work/annotation_regions_20261024/`, owned by #148/#160, review at the next

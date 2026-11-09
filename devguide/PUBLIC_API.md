@@ -920,3 +920,29 @@ Complete original-file and copied receiving pass their selected local checkpoint
 [CHECKPOINT](CHECKPOINT.md) owns actual qualification and acceptance limits. Earlier saved menus and interpretations retain their
 original meaning. This is development source, not a published release or
 scientific/human acceptance.
+
+
+### Development: natural variants and mutagenesis
+
+For a captured protein Card, `explorer.view("sequence_changes")` and
+`explorer.answer("sequence_changes")` share their result and item references with
+`explorer.access.select("sequence_changes")`. The LIVE projection retains one
+Card annotation occurrence per row, its exact source membership, original axis,
+substitution alternatives and the stated missing/deletion flag. Natural variation,
+experimental mutagenesis and population genomic variants remain separate scopes.
+
+Use `where={"feature_type": "natural_variant"}` or `"mutagenesis"`, exact
+`item_refs`, unique declared `fields`, and scalar `order_by` columns. Positions
+require positive integers, `missing` requires a boolean, alternatives require an
+original text list, and null remains explicit. Alternatives support exact list
+equality and cannot be sorted. Missing/malformed values, source conflicts and
+multiple native source contexts retain their distinct meaning. Full mandatory
+interpretation accompanies compact values or is deferred with them atomically.
+
+Human `open()`, `explain()` and `related()` retain original source records and
+reuse the existing source-bound structural question without an implicit reader.
+Original saving is explicitly unavailable pending clean producer capture and
+independent saved receiving; unrelated literal saving and Card export remain
+available. See the [profile](pending_proposals/card_sequence_change_exploration.md)
+and [CHECKPOINT](CHECKPOINT.md) for current qualification. This is development
+source; installed/hosted and independent scientific/researcher acceptance remain open.

@@ -461,9 +461,13 @@ now preserves 33 complete observed cases, exact actual origins and finite agent
 requests; byte/graph and 140 selected/39 copied receiving cases pass. Independent
 @29/@30 saved reading now passes its selected local checkpoint over those
 immutable bytes with current engines forbidden: all 200 owning and 1,515 adjacent
-cases, plus all 200 copied owning cases outside checkout. Next continue natural-variant/mutagenesis
-rich annotations, supplied-Card comparisons and typed biological associations
-retain the full remaining B6 scope. The 10,050-case receipt does not qualify this changed source.
+cases, plus all 200 copied owning cases outside checkout. That receipt retains its
+source epoch. The next [natural-variant/mutagenesis profile](pending_proposals/card_sequence_change_exploration.md)
+now implements LIVE shared annotation projection with exact source and structural
+question scope; its 1,680-case selected source checkpoint and all 44 copied owning
+cases pass. Next capture its genuine
+clean producer before independent saved reading, then continue explicitly supplied
+Card comparisons and typed biological associations. Those retain their full B6 scope. The 10,050-case receipt does not qualify this changed source.
 Both installed routes copy/select the complete owning modules and required
 original capsules; actual installed receiving stays open.
 The independent saved reader is locally qualified. The broader clinical/disease

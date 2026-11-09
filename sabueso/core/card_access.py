@@ -348,6 +348,7 @@ class CardAccess:
                             "clinical_exploration@1",
                             "disease_association_exploration@1",
                             "variant_tissue_context_exploration@1",
+                            "sequence_change_exploration@1",
                         )
                         else rebound._entries
                     )
@@ -418,7 +419,7 @@ class CardAccess:
             or self._exploration_session
             and self._exploration_session.get("format") == "sabueso.card_exploration@29"
         ):
-            scientific_topics.append("variants")
+            scientific_topics.extend(("variants", "sequence_changes"))
         scientific_topics.append("literature")
         retained = {
             selection._operation.removeprefix("select:")
@@ -715,6 +716,15 @@ class CardAccess:
                 else:
                     from .card_variant_access import descriptor as variant_descriptor
 
+                if self.mode == "live":
+                    from .card_sequence_change_access import (
+                        descriptor as change_descriptor,
+                    )
+
+                    data["sequence_changes"] = change_descriptor()
+                    data["sequence_changes"].update(
+                        availability="live", selection_availability="live"
+                    )
                 data["variants"] = variant_descriptor()
                 data["variants"]["save"] = True
                 data["variants"].pop("save_reason", None)
@@ -1033,9 +1043,10 @@ class CardAccess:
             "clinical",
             "associations",
             "variants",
+            "sequence_changes",
         ):
             raise ArgumentError(
-                "Scientific selection supports variants, structures, ligand_site_comparisons, quaternary_interpretation, assembly_generation, chemical_classification, activity_context, clinical, associations, bioactivities and literature."
+                "Scientific selection supports sequence_changes, variants, structures, ligand_site_comparisons, quaternary_interpretation, assembly_generation, chemical_classification, activity_context, clinical, associations, bioactivities and literature."
             )
         if (
             topic == "associations"
@@ -1054,7 +1065,26 @@ class CardAccess:
             from .card_exploration_variant import saved_selection
 
             return saved_selection(self, fields, options, where, item_refs, order_by)
-        if topic == "variants":
+        if topic == "sequence_changes":
+            from .card_sequence_change_access import materialize, options_for_changes
+            from .card_sequence_change_selection_v1 import (
+                active,
+                evaluate,
+                normalize,
+                projection,
+                selection_ref,
+            )
+
+            options, fields = options_for_changes(options), projection(fields)
+            query = normalize(where, item_refs, order_by)
+            if self.mode == "saved":
+                from .card_exploration_storage import missing_selection
+
+                return missing_selection(
+                    self, topic, options, fields, query if active(query) else None
+                )
+            result = materialize(self, options)
+        elif topic == "variants":
             from .card_variant_access import materialize, options_for_variants
             from .card_variant_selection_v1 import (
                 active,
@@ -1446,7 +1476,7 @@ class CardAccess:
                 "clinical_exploration@1",
                 "disease_association_exploration@1",
                 "variant_tissue_context_exploration@1",
-                "variant_tissue_context_exploration@1",
+                "sequence_change_exploration@1",
             ):
                 return selection._scientific.frame(self, selection, entry)
             from .card_structure_page import complete_frame
@@ -1491,6 +1521,10 @@ class CardAccess:
         return frame
 
     def _defer(self, item):
+        if item.get("adapter") == "sequence_change_exploration@1":
+            from .card_sequence_change_access import defer_frame
+
+            return defer_frame(item)
         if item.get("adapter") == "variant_tissue_context_exploration@1":
             from .card_variant_access import defer_frame
 

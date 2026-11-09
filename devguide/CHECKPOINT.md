@@ -5,6 +5,47 @@ Current working-state checkpoint: **2026-11-09**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Natural variants and mutagenesis — LIVE local checkpoint PASS
+
+The new `sequence_changes` topic/question projects retained natural-variant and
+experimental mutagenesis annotations through one human/compact-agent result.
+Original substitutions, alternatives, explicit deletion flags, typed positions,
+modifiers, complete source support and structural-request limits stay visible.
+Each row represents one retained Card annotation occurrence; multiple matching
+native source statements remain explicit without inventing unique correspondence.
+Existing `annotation_item_support@1` and `annotation_structure_request@1` are reused.
+No acquisition, structural/tissue calculation, genomic join, source mapping,
+SourceAssertion or Card schema changes occur.
+
+All **44 complete owning cases pass**, together with **1,636 adjacent cases** in
+45 complete modules. The focused owning/catalog gate overlaps eight adjacent
+cases: the actual source union is **1,680 distinct selected offline cases** over
+one unchanged 1,255-path source map. All **44 copied owning cases also pass outside
+checkout** with three byte-identical public inputs, controller/four-worker
+placement, explicit fixture root and editable import proofs. Repetitions add no
+distinct coverage. The [LIVE receipt](evidence/sequence_change_live_checkpoint_20261109.json)
+records exact scopes, earlier red epochs, complete receptor/node/worker accounting
+and resource limits. The public HsTIM input has eight natural variants; positive
+mutagenesis and boundary cases are labelled synthetic.
+
+Eight workers use 319.13 s / 322.96 s guarded for adjacent receiving, peaking at
+3,333,922,816 bytes RSS with zero warnings or swap. The owning/catalog gate uses
+2.83 s / 3.79 s guarded and 426,926,080 bytes RSS; copied receiving uses 2.70 s /
+3.79 s and 415,948,800 bytes. The first adjacent epoch passed 1,634 and exposed two
+old exact catalog expectations; those now include the implemented LIVE protein
+route. Earlier red receipts remain scoped. Global Ruff/format, Python3.11 grammar,
+canonical governance and complete installed-workflow copy/select wiring pass.
+
+The [profile](pending_proposals/card_sequence_change_exploration.md) owns behavior.
+Original saving of the new panel, its dependent routes and compact selections is
+explicitly unavailable until clean producer capture and independent saved reading.
+Unrelated literal saving and captured Card export remain available. The preceding
+1,715-case receipt below retains its source epoch. B6 comparisons/typed associations
+and B7 acceptance keep their remaining scope; installed/hosted qualification is
+open and CI deferred under #148/#112. Exact committed-head metadata/code/remote
+verification belongs to the post-push local handoff. No release or workflow was
+dispatched by this checkpoint.
+
 ## Independent variant/isoform reading — local checkpoint PASS
 
 Logical `sabueso.card_exploration@29` / physical shared @30 is implemented over

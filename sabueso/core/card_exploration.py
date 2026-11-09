@@ -28,6 +28,10 @@ _LABELS = {
     "entities": "Entity records",
 }
 _TOPICS = {
+    "sequence_changes": (
+        "Natural variants and mutagenesis",
+        "Original protein substitutions and source annotations, separate from population genomic variants.",
+    ),
     "variants": (
         "Variants, isoforms and tissue context",
         "Original population-variant and isoform tissue scope, exact input support and per-tissue unknowns.",
@@ -175,7 +179,12 @@ class CardItem:
 
     @property
     def kind(self):
-        if self._view._record_panel in ("clinical", "associations", "variants"):
+        if self._view._record_panel in (
+            "clinical",
+            "associations",
+            "variants",
+            "sequence_changes",
+        ):
             return self._entry.value["kind"]
         if self._view._record_panel == "literature":
             return self._entry.value["kind"]
@@ -223,6 +232,8 @@ class CardItem:
 
     @property
     def label(self):
+        if self._view._record_panel == "sequence_changes":
+            return self._entry.value["label"]
         if self._view._link_panel:
             return self._entry.value["label"]
         if self._view._record_panel:
@@ -283,6 +294,8 @@ class CardItem:
 
     @property
     def payload_location(self):
+        if self._view._record_panel == "sequence_changes":
+            return deepcopy(self._entry.value["original_location"])
         return deepcopy(self._entry.location)
 
     @property
@@ -352,8 +365,15 @@ class CardItem:
 
     @property
     def cells(self):
-        if self._view._record_panel in ("clinical", "associations", "variants"):
-            if self._view._record_panel == "variants":
+        if self._view._record_panel in (
+            "clinical",
+            "associations",
+            "variants",
+            "sequence_changes",
+        ):
+            if self._view._record_panel == "sequence_changes":
+                from .card_sequence_change_selection_v1 import COLUMNS
+            elif self._view._record_panel == "variants":
                 if self._view._explorer.mode == "saved":
                     from ._variant_history_v1.selection import COLUMNS
                 else:
@@ -651,6 +671,10 @@ class CardItem:
 
     def open(self):
         """Open all retained detail, or follow a labeled catalog route."""
+        if self._view._record_panel == "sequence_changes":
+            from .card_sequence_change_exploration import open_item
+
+            return open_item(self)
         if self._view._record_panel == "variants":
             if self._view._explorer.mode == "saved":
                 from .card_exploration_variant import item_operation
@@ -802,6 +826,10 @@ class CardItem:
         return result
 
     def _live_explain(self):
+        if self._view._record_panel == "sequence_changes":
+            from .card_sequence_change_exploration import explain
+
+            return explain(self)
         if self._view._record_panel == "variants":
             from .card_variant_exploration import explain
 
@@ -1203,6 +1231,10 @@ class CardView:
             )
         if self._machine_ref is not None:
             capabilities["root_machine_selection_ref"] = self._machine_ref
+        if self._record_panel == "sequence_changes":
+            from .card_sequence_change_selection_v1 import SORT_COLUMNS
+
+            capabilities["sort"] = list(SORT_COLUMNS)
         if self._record_panel == "literature":
             capabilities["sort"] = list(self.schema["columns"])
         if self._record_panel == "clinical":
@@ -1241,6 +1273,15 @@ class CardView:
     def schema(self):
         if self._saved_state is not None:
             return deepcopy(self._saved_state["schema"])
+        if self._record_panel == "sequence_changes":
+            from .card_sequence_change_selection_v1 import COLUMNS
+
+            return {
+                "kind": "sequence_change_exploration",
+                "grain": "one original natural-variant or mutagenesis occurrence",
+                "columns": list(COLUMNS),
+                "presentations": ["summary", "table", "detail"],
+            }
         if self._record_panel == "variants":
             if self._explorer.mode == "saved":
                 from ._variant_history_v1.selection import COLUMNS
@@ -1546,6 +1587,10 @@ class CardView:
     def filter(self, column, *, equals, skip_digestion=False):
         """Select exact declared cells without changing the scientific result."""
         self._check_column(column)
+        if self._record_panel == "sequence_changes":
+            from .card_sequence_change_exploration import display_filter
+
+            return display_filter(self, column, equals)
         if self._record_panel == "variants":
             if self._explorer.mode == "saved":
                 from .card_exploration_variant import display_filter
@@ -1694,6 +1739,10 @@ class CardView:
             raise ArgumentError("descending must be True or False.")
         if unit is not None and (not isinstance(unit, str) or not unit.strip()):
             raise ArgumentError("unit requires a nonempty unit name or None.")
+        if self._record_panel == "sequence_changes":
+            from .card_sequence_change_exploration import display_sort
+
+            return display_sort(self, column, descending, unit)
         if self._record_panel == "variants":
             if self._explorer.mode == "saved":
                 from .card_exploration_variant import display_sort
@@ -1998,7 +2047,7 @@ class CardExplorer:
 
         topics = NATURE_TOPICS.get(self.profile, ())
         return (
-            (*topics, "variants")
+            (*topics, "variants", "sequence_changes")
             if self.mode == "live" and self.profile == "protein"
             else topics
         )
@@ -2112,6 +2161,13 @@ class CardExplorer:
                     "required_options": [],
                     "scope": "Original scoped native rules, genomic/transcript/CDS context and per-tissue unknowns; no clinical inference or acquisition.",
                 }
+        if self.mode == "live" and self.profile == "protein":
+            result["sequence_changes"] = {
+                "label": "Which natural variants and experimental sequence changes are retained?",
+                "topic": "sequence_changes",
+                "required_options": [],
+                "scope": "Original annotation occurrences, substitutions and source support; no genomic correspondence or clinical inference.",
+            }
         return result
 
     def _location(self, *keys):
@@ -2212,6 +2268,10 @@ class CardExplorer:
             raise ArgumentError("Scientific options require a mapping or None.")
         from .card_exploration_profiles import PANELS
 
+        if topic == "sequence_changes":
+            from .card_sequence_change_exploration import view
+
+            return view(self, origin, options)
         if topic == "variants":
             from .card_variant_exploration import view
 
@@ -2469,6 +2529,7 @@ class CardExplorer:
                     "publications",
                     "variant_tissue_context",
                     "isoform_tissue_context",
+                    "sequence_changes",
                 )
                 else {}
             )

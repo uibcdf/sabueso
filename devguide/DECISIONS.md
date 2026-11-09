@@ -5226,3 +5226,18 @@ including integer versus float cutoffs. Literal saving may retain already observ
 variant views; an unvisited variant profile remains unavailable in older formats.
 Card schema, scientific defaults, SourceAssertions and earlier saved meanings stay
 fixed. Qualification is in progress; CHECKPOINT owns results and remaining gates.
+
+
+## 2026-11-09 — Project retained sequence changes without a new mapping
+
+B6 natural-variant/mutagenesis access uses a separately named LIVE projection of
+retained Card annotation occurrences. It reuses immutable annotation item support
+and structural-request admission instead of recalculating biological science or
+adding genomic correspondence. Several exact native statements can support one
+normalized Card value; projection never asserts unique feature correspondence.
+Original alternatives stay together, deletion flags retain false/unknown, and
+mandatory interpretation travels atomically with compact values. Human and agent
+access share result and occurrence identities. New original saving waits for a
+clean producer original before independent predicates; previous saved meanings
+stay fixed. Scientific, researcher and actual-consumer acceptance remain separate.
+Owner: #148/#112; see the sequence-change profile and current CHECKPOINT.

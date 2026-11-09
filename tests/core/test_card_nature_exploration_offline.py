@@ -378,6 +378,7 @@ def test_coverage_source_states_and_unknown_counts_are_not_reclassified(
                 "assembly_generation",
                 "bioactivities",
                 "variants",
+                "sequence_changes",
             },
             {
                 "function",
@@ -394,6 +395,7 @@ def test_coverage_source_states_and_unknown_counts_are_not_reclassified(
                 "measured_molecules",
                 "variant_tissue_context",
                 "isoform_tissue_context",
+                "sequence_changes",
             },
         ),
         (

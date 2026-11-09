@@ -711,6 +711,10 @@ def _parts(view):
             if view._record_panel == "associations"
             else request["question"]
         )
+        if request["question"] == "sequence_changes":
+            question_label = (
+                "Which natural variants and experimental sequence changes are retained?"
+            )
         if request["question"] in ("variant_tissue_context", "isoform_tissue_context"):
             question_label = (
                 "What tissue context is retained for population variants?"
@@ -782,6 +786,10 @@ def _parts(view):
         from .card_chemical_presentation_v1 import opening as chemical_opening
 
         opening.extend(chemical_opening(view, preview))
+    if view._record_panel == "sequence_changes":
+        from .card_sequence_change_exploration import opening as change_opening
+
+        opening.extend(change_opening(view, preview))
     if view._record_panel == "variants":
         from .card_variant_dispatch import presentation
 
@@ -1043,6 +1051,11 @@ def _parts(view):
                     f"{preview(value['availability'])} · {len(value['candidates'])} captured destinations",
                 )
             )
+            continue
+        if view._record_panel == "sequence_changes":
+            from .card_sequence_change_exploration import display_row as change_row
+
+            rows.append(change_row(item, index, preview))
             continue
         if view._record_panel == "variants":
             from .card_variant_dispatch import presentation
@@ -1334,6 +1347,10 @@ def _parts(view):
 
 
 def _headers(view):
+    if view._record_panel == "sequence_changes":
+        from .card_sequence_change_exploration import HEADERS
+
+        return list(HEADERS)
     if view._record_panel == "variants":
         from .card_variant_dispatch import presentation
 

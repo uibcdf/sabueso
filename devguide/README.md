@@ -60,8 +60,12 @@ now preserves all 33 observed cases, original source/actual-origin graphs and
 Independent @29/@30 reading and saving pass the
 [saved checkpoint](evidence/variant_tissue_context_saved_checkpoint_20261108.json):
 1,715 distinct selected source cases and all 200 copied owning cases outside
-checkout. Remaining variants/comparative/association and B7 acceptance scope
-stays open. CHECKPOINT owns actual current results.
+checkout. The next [natural-variant/mutagenesis profile](pending_proposals/card_sequence_change_exploration.md)
+now implements LIVE shared annotation projection and original source/structural
+questions; its [1,680-case selected checkpoint](evidence/sequence_change_live_checkpoint_20261109.json)
+and all 44 copied owning cases pass. Original saving awaits
+a clean producer and independent reader. Remaining comparative/association and
+B7 acceptance scope stays open. CHECKPOINT owns actual current results.
 
 The [retained disease association profile](pending_proposals/card_disease_association_exploration.md)
 is a delivered B5 increment: human and typed agent routes share original

@@ -1,0 +1,211 @@
+{
+  "state": "SELECTED_LIVE_LOCAL_PASS",
+  "owner": "uibcdf/sabueso#148/#112",
+  "date": "2026-11-09",
+  "base_head": "c140cb0de1a9b669fd5ce4cd9850ead822d828d3",
+  "head": "Containing implementation commit; exact final metadata/local/remote SHA belongs to the post-push handoff.",
+  "topic": "sequence_changes",
+  "adapter": "sequence_change_exploration@1",
+  "projection_rule": "sequence_change_projection@1",
+  "selection_rule": "sequence_change_selection@1",
+  "support_rules": [
+    "annotation_item_support@1",
+    "annotation_structure_request@1"
+  ],
+  "scope": "One retained Card natural-variant/mutagenesis annotation occurrence; all exact matching native source contexts remain explicit, without unique feature correspondence or a new source/scientific mapping.",
+  "source_paths": 1255,
+  "source_fingerprint": "8487cf69004b85a0885472df097f3843344107656eda5d808806039e7619656a",
+  "source_maps_all_identical": true,
+  "distinct_selected_source_cases": 1680,
+  "owning_module_cases": 44,
+  "adjacent_complete_modules": 45,
+  "adjacent_cases": 1636,
+  "focused_catalog_overlap": 8,
+  "copied_repeated_cases": 44,
+  "copied_public_inputs": {
+    "test_card_sequence_changes_offline.py": {
+      "original": "tests/core/test_card_sequence_changes_offline.py",
+      "bytes": 19664,
+      "sha256": "cb6d92fd8115536f832792e56ab961a47dcf330c21496ee7d5089ede57c4090b"
+    },
+    "temp_data/P60174.json": {
+      "original": "temp_data/P60174.json",
+      "bytes": 86279,
+      "sha256": "25b200a9f5f22f24d68d7f64445b447770b1875126829b1de2f9e7e01cc6acdd"
+    },
+    "temp_data/NOTICE.md": {
+      "original": "temp_data/NOTICE.md",
+      "bytes": 103070,
+      "sha256": "e6a73bdc75051f7e3e91a1097a7867f56598cb455580bc1735fbe704bea22f6e"
+    }
+  },
+  "copied_controller_and_workers": 5,
+  "placement_hook_sha256": "877cac8dae282e33d50b51e5bd44f6ab5aad6146a60859ce898278cc548bdb3f",
+  "copied_normalized_union_equals_complete_owning": true,
+  "gates": {
+    "b6-sequence-owning-final-3": {
+      "cases": 52,
+      "counts": {
+        "collected": 52,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 52,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 52,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "pytest_elapsed_s": 2.827956113003893,
+      "guarded_elapsed_s": 3.79,
+      "peak_rss_bytes": 426926080,
+      "minimum_host_available_bytes": 60493021184,
+      "peak_swap_bytes": 0,
+      "peak_scratch_bytes": 378900,
+      "limits": {
+        "owned_rss_bytes": 10737418240,
+        "host_available_bytes": 17179869184,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 4,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 4294967296
+      },
+      "events_sha256": "ed2f596fe868493f56e3284ebee31affb1f7802067d998f86d16850128bfa6c9"
+    },
+    "b6-sequence-adjacent-final-2": {
+      "cases": 1636,
+      "counts": {
+        "collected": 1636,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 1636,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 1636,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "pytest_elapsed_s": 319.1358275169914,
+      "guarded_elapsed_s": 322.96,
+      "peak_rss_bytes": 3333922816,
+      "minimum_host_available_bytes": 57558278144,
+      "peak_swap_bytes": 0,
+      "peak_scratch_bytes": 4095872044,
+      "limits": {
+        "owned_rss_bytes": 10737418240,
+        "host_available_bytes": 17179869184,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 8,
+        "nice": 10,
+        "elapsed_s": 1200,
+        "owned_scratch_bytes": 10737418240
+      },
+      "events_sha256": "2c3f0aded320e63b36749cf68c80436b49898ba0901286fe83097d2ed9f0ac7e"
+    },
+    "b6-sequence-copied-final-1": {
+      "cases": 44,
+      "counts": {
+        "collected": 44,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 44,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 44,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "pytest_elapsed_s": 2.698418996995315,
+      "guarded_elapsed_s": 3.79,
+      "peak_rss_bytes": 415948800,
+      "minimum_host_available_bytes": 59981279232,
+      "peak_swap_bytes": 0,
+      "peak_scratch_bytes": 257549,
+      "limits": {
+        "owned_rss_bytes": 10737418240,
+        "host_available_bytes": 17179869184,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 4,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 4294967296
+      },
+      "events_sha256": "cd9a1d4ebccae71ae7c31f1236323f69a5cb81f4d83907c17c00ee7286ac9255"
+    }
+  },
+  "quality": {
+    "state": "PASS",
+    "python311_grammar_files": 9,
+    "workflow_copy_select": {
+      ".github/workflows/ci.yml": {
+        "complete_module_copy": 1,
+        "complete_module_selection": 1,
+        "fixture_supply": "ln -s \"$GITHUB_WORKSPACE/temp_data\" \"$client_dir/temp_data\"",
+        "required_public_inputs_present": true
+      },
+      ".github/workflows/test_staged_conda_package.yaml": {
+        "complete_module_copy": 1,
+        "complete_module_selection": 1,
+        "fixture_supply": "cp -R \"$GITHUB_WORKSPACE/temp_data\" \"$client_dir/temp_data\"",
+        "required_public_inputs_present": true
+      }
+    },
+    "ruff": "PASS",
+    "ruff_format_files": 1593,
+    "canonical_governance": "PASS",
+    "static_checker_disposition": "The first checker assumed individual fixture filenames in workflow text; existing workflows supply the full reviewed temp_data directory. Checked those actual routes; no workflow fixture correction was needed.",
+    "limits": "Static/source checks only; LinuxPython3.14 selected runtime and copied qualification are separate. No installed-platform/hosted/scientific/researcher acceptance.",
+    "guide_validation": {
+      "state": "PASS",
+      "scope": "Maintained non-archive guide local targets; changed-target Markdown anchors; changed fenced Python3.11 grammar. No external link or runtime example qualification.",
+      "maintained_markdown_files": 176,
+      "local_path_targets_checked": 1432,
+      "changed_page_anchors_checked": 72,
+      "python_examples_checked": 0,
+      "errors": []
+    },
+    "git_diff_check": "PASS"
+  },
+  "public_scope": "Eight retained natural-variant annotations from the existing public HsTIM fixture. Mutagenesis positives and uncertainty/typed/duplicate/malformed/conflict controls are explicitly synthetic; not new biological observations.",
+  "save_boundary": "New human/machine/detail original saving is explicitly unavailable pending a genuine clean producer and independent saved reader. Unrelated literal saving and captured Card export remain available; earlier formats and verifiers unchanged.",
+  "unchanged": [
+    "SourceAssertions",
+    "Card schema/migration",
+    "source mappings/clients",
+    "native tissue/structure rules and defaults",
+    "all preceding original capsules and saved predicates"
+  ],
+  "earlier_epochs": {
+    "calibration1": "30PASS/3FAIL: two checker assumptions (lookup references and interval-form region request), plus absent-field classification. Closed failed epoch retained.",
+    "calibration2": "32PASS/1FAIL: explicitly retained empty lists were counted as partial gaps. Corrected and retained.",
+    "owning_final1": "41PASS prior source epoch; later44 includes malformed container, exact scope and multiple original context controls.",
+    "owning_final2": "43PASS before final Card-occurrence/mapping-lineage wording and two catalog expectation changes.",
+    "adjacent_final1": "1634PASS/2FAIL from old exact LIVE protein catalogs that omitted the new topic/question. Catalog expectations updated; complete1636 recovery above qualifies final source."
+  },
+  "ci": {
+    "state": "Deferred intermediate [skip ci]; no hosted PASS or dispatch",
+    "owner": "uibcdf/sabueso#148/#112",
+    "recovery": "Before block admission, exact-final-head CI/governance via an authorized unskipped route or separately authorized manual runs, inspected with gh-run-receptor."
+  },
+  "limits": [
+    "Selected LinuxPython3.14 editable source and copied public inputs; not a full-suite, installed-artifact or hosted qualification.",
+    "No independent scientific, uncoached researcher, agent, workload or actual-consumer acceptance.",
+    "No genomic correspondence, alignment, source acquisition, pathogenicity or clinical conclusion inferred. SourceAssertion remains distinct from Evidence.",
+    "Clean sequence-change producer capture and independent saved reading remain next. B6 comparisons/typed associations and B7 acceptance remain open; B2 deferred,#192 unresolved in local plan,B8/candidate/schema freeze/staging/release unresumed."
+  ],
+  "local_evidence": "recovered_work/checkpoint_recovery_20261106/b6-sequence-changes-live-1",
+  "retention": "Owner#148/#112; retain scoped reports/logs/source/event/placement/fixture hashes through block admission or audited handoff; dispose only explicit completed owned scratch/stage after last use."
+}

@@ -139,8 +139,12 @@ owns selected qualification. Its clean SDK230
 now preserves complete observed values/source/actual-origin graphs and finite
 agent requests, with byte/graph and 140 selected/39 copied receiving cases passing.
 Independent @29/@30 saved reading passes all 200 owning and 1,515 adjacent
-selected cases, plus complete copied owning receiving outside checkout. Continue
-the remaining B6 comparison/annotation/association scope. Scientific
+selected cases, plus complete copied owning receiving outside checkout. The next
+[natural-variant/mutagenesis profile](pending_proposals/card_sequence_change_exploration.md)
+now shares retained annotation occurrences and substitutions between LIVE human
+and compact-agent access; all 44 owning and 1,636 adjacent cases pass, alongside
+complete copied owning receiving. Independent saving requires clean producer capture first. Continue that reader and the
+remaining B6 comparison/association scope. Scientific
 and uncoached researcher/agent/workload/actual-consumer acceptance stay open; B8
 and release remain unresumed. Original formats, source assertions and scientific
 defaults stay fixed under their named interpretations.
