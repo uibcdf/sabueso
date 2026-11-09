@@ -48,8 +48,18 @@ to [CHECKPOINT](CHECKPOINT.md); execution budgets belong to the
 uses applicable local checks and authorized CI batching. Historical green
 receipts do not qualify a changed working tree or later candidate artifacts.
 
+The first B6 [variant/isoform tissue-context profile](pending_proposals/card_variant_tissue_exploration.md)
+now shares existing scoped native results between human and typed agent access.
+It preserves original genomic/transcript/CDS scope, per-tissue unknowns, source
+membership and exact navigation. All 44 owning cases pass; the
+[LIVE receipt](evidence/variant_tissue_context_live_checkpoint_20261108.json)
+owns broader selected/copy qualification and limits. Preserve a genuine clean
+producer original before independent saved reading; new panel saving is explicitly
+unavailable. Remaining variants/comparative/association and B7 acceptance scope
+stays open. CHECKPOINT owns actual current results.
+
 The [retained disease association profile](pending_proposals/card_disease_association_exploration.md)
-is the active B5 increment: human and typed agent routes share original
+is a delivered B5 increment: human and typed agent routes share original
 relationship, indication and condition occurrences in explicitly supplied
 captures. Source-supported MONDO/MedGen identity paths, direction, unknowns and
 exact source/back context stay visible. The [1,031-case selected LIVE checkpoint](evidence/disease_association_live_checkpoint_20261108.json)

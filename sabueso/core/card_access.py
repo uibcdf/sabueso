@@ -412,6 +412,8 @@ class CardAccess:
             if self.profile == "disease"
             else []
         )
+        if self.mode == "live" and self.profile == "protein":
+            scientific_topics.append("variants")
         scientific_topics.append("literature")
         retained = {
             selection._operation.removeprefix("select:")
@@ -696,6 +698,11 @@ class CardAccess:
             data["literature"]["selection_availability"] = (
                 "retained_requests_only" if self.mode == "saved" else "live"
             )
+            if self.mode == "live" and self.profile == "protein":
+                from .card_variant_access import descriptor as variant_descriptor
+
+                data["variants"] = variant_descriptor()
+                data["variants"]["availability"] = "live"
             if self.profile == "disease":
                 if (
                     self.mode == "saved"
@@ -1001,9 +1008,10 @@ class CardAccess:
             "literature",
             "clinical",
             "associations",
+            "variants",
         ):
             raise ArgumentError(
-                "Scientific selection supports structures, ligand_site_comparisons, quaternary_interpretation, assembly_generation, chemical_classification, activity_context, clinical, associations, bioactivities and literature."
+                "Scientific selection supports variants, structures, ligand_site_comparisons, quaternary_interpretation, assembly_generation, chemical_classification, activity_context, clinical, associations, bioactivities and literature."
             )
         if (
             topic == "associations"
@@ -1013,7 +1021,26 @@ class CardAccess:
             from .card_exploration_disease_association import saved_selection
 
             return saved_selection(self, fields, options, where, item_refs, order_by)
-        if topic == "associations":
+        if topic == "variants":
+            from .card_variant_access import materialize, options_for_variants
+            from .card_variant_selection_v1 import (
+                active,
+                evaluate,
+                normalize,
+                projection,
+                selection_ref,
+            )
+
+            options, fields = options_for_variants(options), projection(fields)
+            query = normalize(where, item_refs, order_by)
+            if query["item_refs"] is not None and any(
+                ref not in self._scientific_items for ref in query["item_refs"]
+            ):
+                raise ArgumentError(
+                    "item_refs contains an item not retained in this access session."
+                )
+            result = materialize(self, options)
+        elif topic == "associations":
             from .card_disease_association_access import (
                 materialize,
                 options_for_associations,
@@ -1384,6 +1411,7 @@ class CardAccess:
                 "literature_exploration@1",
                 "clinical_exploration@1",
                 "disease_association_exploration@1",
+                "variant_tissue_context_exploration@1",
             ):
                 return selection._scientific.frame(self, selection, entry)
             from .card_structure_page import complete_frame
@@ -1428,6 +1456,10 @@ class CardAccess:
         return frame
 
     def _defer(self, item):
+        if item.get("adapter") == "variant_tissue_context_exploration@1":
+            from .card_variant_access import defer_frame
+
+            return defer_frame(item)
         if item.get("adapter") == "disease_association_exploration@1":
             from .card_disease_association_access import defer_frame
 

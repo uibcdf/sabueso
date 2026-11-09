@@ -901,3 +901,19 @@ sequence-revision mismatches for placement; retained original features and ECO
 support remain available. Source cautions and similarity do not create quality or
 identity findings. Migration records the optional refresh gaps. See `SCHEMA.md`,
 `FIELD_PATHS.md` and `tests/core/test_uniprot_domain_recovery_offline.py`.
+
+### Development variant and isoform tissue context
+
+Protein explorers now offer `view("variants", options={"mode": "variants"})`
+and mode `isoforms`, plus questions `variant_tissue_context` and
+`isoform_tissue_context`. The dimensionless `threshold` defaults to 0.1.
+Compact-agent `access.select("variants", ...)` shares the captured scoped native
+result and supports typed equality, projection, exact members and scalar order.
+Full native values/explanations and source/input/quality links retain original
+genomic, transcript/CDS and per-tissue uncertainty. See the
+[profile](pending_proposals/card_variant_tissue_exploration.md) for exact scope.
+These routes are LIVE-only. New panel/detail/source saving is explicitly
+unavailable pending a genuine clean original and independent saved reader;
+unrelated literal saving and Card export remain available. Existing saved menus
+and interpretations retain their original meaning. This is development source,
+not a new published release or scientific/human acceptance.

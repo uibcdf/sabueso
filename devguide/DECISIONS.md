@@ -1,5 +1,24 @@
 # Sabueso — Decision Log
 
+## B6 starts with scoped native variant/isoform tissue context (2026-11-08)
+
+The first B6 rich slice uses existing `pext_at_variant@2` and
+`isoform_exon_usage@3` explanation views. Human and compact-agent routes share one
+captured result per effective mode/threshold, preserving original input/source
+occurrences, field conflicts, genomic/transcript/CDS scope and per-tissue unknowns.
+It adds no sequence/genomic correspondence, liftover, identity inference or
+clinical interpretation. Natural-variant annotations and broader B6 comparisons
+and typed associations retain their remaining scope. See the
+[profile](pending_proposals/card_variant_tissue_exploration.md) and
+[LIVE receipt](evidence/variant_tissue_context_live_checkpoint_20261108.json).
+
+Advertise the new topic/questions only in LIVE protein explorers. Existing saved
+menus/verifiers remain fixed. Refuse saving this new scientific panel and its
+dependent context until a clean LIVE producer original precedes separately
+versioned independent reading. Keep unrelated literal saving and Card export.
+Source assertions and native defaults remain unchanged; no B7/B8 or release
+admission follows from this implementation. Owners: #148/#102/#138/#112.
+
 ## 2026-11-08 local date — Independently bind disease source occurrences and origins
 
 The new logical @27 / shared @28 reader uses immutable SDK227 scientific inputs,

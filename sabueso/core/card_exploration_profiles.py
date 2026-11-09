@@ -288,6 +288,7 @@ RECORD_COLUMNS = {
 
 def record_label(panel, row):
     if panel in (
+        "variants",
         "associations",
         "clinical",
         "activity_context",

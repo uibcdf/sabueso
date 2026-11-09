@@ -5,6 +5,62 @@ Current working-state checkpoint: **2026-11-08**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## B6 variant/isoform tissue context — selected local checkpoint PASS
+
+The first [B6 LIVE profile](pending_proposals/card_variant_tissue_exploration.md)
+now shares original population-variant and UniProt isoform tissue context between
+human questions and typed compact-agent selection. It delegates to existing
+`pext_at_variant@2` and `isoform_exon_usage@3` explanations, preserving their full
+native values, genomic versus protein positions, exact transcript/CDS support,
+per-tissue unknowns/conflicts/zero values and original source scope. One effective
+captured request evaluates once; display and source operations reuse the result.
+Original conflicts/alternatives and missing/misbound assertions remain explicit.
+No Card schema, scientific default, SourceAssertion or historical rule is changed.
+
+All **44 owning cases pass**, including the public HsTIM positive example,
+labelled synthetic uncertainty, exact source/input/open/back paths, typed
+selection, captured revision stability, atomic machine-byte deferral and escaped
+HTML. Four workers use 4.37 s / 5.32 s guarded and 496,459,776 bytes peak RSS,
+without warnings or owned swap. The initial adjacent gate finds two stale LIVE
+menu expectations and passes its other 1,048 cases. The exact expected protein
+topic/question sets are updated; both reproduced cases pass separately.
+
+The [LIVE receipt](evidence/variant_tissue_context_live_checkpoint_20261108.json)
+verifies **1,215 distinct selected offline cases**, including all 44 owning cases,
+native variants/isoforms/scoped tissue/comparative and acquisition, protein/nature/
+access/human/context/navigation, agent/cell, quantity/argument, bibliography,
+package-data and fixture/licensing/registry controls, plus all 157 selected older
+disease cases. The final eight-worker gate uses 134.47 s / 138.15 s guarded,
+peaking at 2,878,980,096 bytes owned RSS, with zero warnings or swap. It preserves
+a 16 GiB host reserve and 10 GiB combined RSS ceiling. Receptor/controller/worker/
+call sets and all 1,224 source paths agree before/after execution. The earlier
+failed gate retains its red source epoch.
+
+All **44 owning cases also pass outside checkout** with eight byte-identical
+public inputs, verified controller/four-worker placement and editable import
+origins, and exact source/copy case correspondence. This uses 4.08 s / 5.06 s
+guarded and 494,260,224 bytes peak RSS, without warnings or swap. Copied cases and
+earlier subsets add no distinct coverage. Lint, format, Python 3.11 grammar,
+governance, guide and complete installed copy/select wiring checks pass. Owned
+scratch/staged payloads are removed after verification; useful logs, maps, proofs
+and native characterization retain owners and review triggers in the receipt.
+
+New topic/questions are advertised only for LIVE protein explorers. Existing
+saved menus, verifiers and interpretations stay fixed. New variant panel/detail/
+source saving is explicitly unavailable before independent original saved
+reading; unrelated literal saving and captured Card export remain available.
+Both installed workflows copy/select the complete new owning module. Actual
+installed/hosted receiving and scientific/uncoached researcher/agent/workload/
+consumer acceptance remain open.
+
+Next capture a genuine clean LIVE producer before separately versioned
+independent original saved reading. Remaining natural-variant/mutagenesis rich
+annotations, supplied-Card comparisons and typed biological associations retain
+B6's full scope. B2 stays deferred; #192 unresolved; B7 open; B8/candidate/schema
+freezing/release remain unresumed. Exact-final-head CI/governance stays deferred
+under the authorized intermediate `[skip ci]` route, owned by #148/#112, until
+an authorized recovery is executed and inspected. No workflow was dispatched.
+
 ## Independent disease association reader — selected local checkpoint PASS
 
 Logical `sabueso.card_exploration@27` / physical shared @28 is implemented over
@@ -67,9 +123,10 @@ the receipt. Earlier red/interrupted epochs retain their disposition. Source tru
 authenticity and completeness outside observed requests are not established.
 A source assertion remains a source assertion, never Evidence.
 
-Next audit B6's existing variant/isoform/tissue and supplied-Card comparison
-readers, then implement the first rich human/agent slice with positive and
-uncertain public controls. Typed biological associations remain in B6 scope.
+At this disease-reader checkpoint, the next action was the B6 native-reader
+audit. The first LIVE variant/isoform tissue-context slice above now builds on
+that base; preserve its clean original before independent saved reading.
+Remaining annotations, comparisons and typed associations stay in B6 scope.
 B2 stays deferred, #192 unresolved and B7 acceptance open; B8/candidate/schema
 freeze/release remain unresumed. Exact-final-head CI/governance is deferred under
 #148/#112 through the authorized intermediate `[skip ci]` route, until an

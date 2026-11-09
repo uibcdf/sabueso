@@ -131,7 +131,11 @@ preserves the original scientific wire, finite requests and actual navigation;
 public human, machine and detail saving is enabled in the working implementation.
 The [saved checkpoint](evidence/disease_association_saved_checkpoint_20261108.json)
 owns its selected local qualification and separate acceptance limits.
-Continue B6 with its full accepted scope. Scientific
+B6 now has its first [LIVE variant/isoform tissue-context slice](pending_proposals/card_variant_tissue_exploration.md),
+with shared scoped native results and explicit genomic/transcript/CDS/source gaps.
+Its [LIVE receipt](evidence/variant_tissue_context_live_checkpoint_20261108.json)
+owns selected qualification. Capture a clean producer original before independent
+saved reading, and retain all remaining B6 comparison/annotation/association scope. Scientific
 and uncoached researcher/agent/workload/actual-consumer acceptance stay open; B8
 and release remain unresumed. Original formats, source assertions and scientific
 defaults stay fixed under their named interpretations.

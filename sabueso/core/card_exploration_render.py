@@ -711,6 +711,12 @@ def _parts(view):
             if view._record_panel == "associations"
             else request["question"]
         )
+        if request["question"] in ("variant_tissue_context", "isoform_tissue_context"):
+            question_label = (
+                "What tissue context is retained for population variants?"
+                if request["question"] == "variant_tissue_context"
+                else "What tissue context is retained for individual isoforms?"
+            )
         opening.append(f"Question: {question_label}")
         if request["question"] == "region_coverage":
             original = view
@@ -776,6 +782,14 @@ def _parts(view):
         from .card_chemical_presentation_v1 import opening as chemical_opening
 
         opening.extend(chemical_opening(view, preview))
+    if view._record_panel == "variants":
+        from .card_variant_presentation_v1 import opening as variant_opening
+
+        opening.extend(variant_opening(view, preview))
+    if view.context.get("adapter") == "variant_context_links@1":
+        from .card_variant_presentation_v1 import context_opening as variant_context
+
+        opening.extend(variant_context(view, preview))
     if view._record_panel == "associations":
         from .card_disease_association_dispatch import presentation
 
@@ -1025,6 +1039,11 @@ def _parts(view):
                     f"{preview(value['availability'])} · {len(value['candidates'])} captured destinations",
                 )
             )
+            continue
+        if view._record_panel == "variants":
+            from .card_variant_presentation_v1 import display_row
+
+            rows.append(display_row(item, index, preview))
             continue
         if view._record_panel == "associations":
             from .card_disease_association_dispatch import presentation
@@ -1309,6 +1328,10 @@ def _parts(view):
 
 
 def _headers(view):
+    if view._record_panel == "variants":
+        from .card_variant_presentation_v1 import HEADERS
+
+        return list(HEADERS)
     if view._record_panel == "associations":
         from .card_disease_association_dispatch import presentation
 

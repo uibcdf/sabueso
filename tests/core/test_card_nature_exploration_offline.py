@@ -377,6 +377,7 @@ def test_coverage_source_states_and_unknown_counts_are_not_reclassified(
                 "quaternary_interpretation",
                 "assembly_generation",
                 "bioactivities",
+                "variants",
             },
             {
                 "function",
@@ -391,6 +392,8 @@ def test_coverage_source_states_and_unknown_counts_are_not_reclassified(
                 "quaternary_interpretation",
                 "assembly_generation",
                 "measured_molecules",
+                "variant_tissue_context",
+                "isoform_tissue_context",
             },
         ),
         (

@@ -28,6 +28,10 @@ _LABELS = {
     "entities": "Entity records",
 }
 _TOPICS = {
+    "variants": (
+        "Variants, isoforms and tissue context",
+        "Original population-variant and isoform tissue scope, exact input support and per-tissue unknowns.",
+    ),
     "associations": (
         "Retained molecular and clinical associations",
         "Original association directions, indication and variant-condition occurrences in explicitly supplied input scope.",
@@ -171,7 +175,7 @@ class CardItem:
 
     @property
     def kind(self):
-        if self._view._record_panel in ("clinical", "associations"):
+        if self._view._record_panel in ("clinical", "associations", "variants"):
             return self._entry.value["kind"]
         if self._view._record_panel == "literature":
             return self._entry.value["kind"]
@@ -348,8 +352,10 @@ class CardItem:
 
     @property
     def cells(self):
-        if self._view._record_panel in ("clinical", "associations"):
-            if self._view._record_panel == "associations":
+        if self._view._record_panel in ("clinical", "associations", "variants"):
+            if self._view._record_panel == "variants":
+                from .card_variant_selection_v1 import COLUMNS
+            elif self._view._record_panel == "associations":
                 if self._view._explorer.mode == "saved":
                     from ._disease_association_history_v1.selection import COLUMNS
                 else:
@@ -642,6 +648,10 @@ class CardItem:
 
     def open(self):
         """Open all retained detail, or follow a labeled catalog route."""
+        if self._view._record_panel == "variants":
+            from .card_variant_exploration import open_item
+
+            return open_item(self)
         if self._view._record_panel == "associations":
             if self._view._explorer.mode == "saved":
                 from .card_exploration_disease_association import item_operation
@@ -777,6 +787,10 @@ class CardItem:
         return result
 
     def _live_explain(self):
+        if self._view._record_panel == "variants":
+            from .card_variant_exploration import explain
+
+            return explain(self)
         if self._view._record_panel == "associations":
             from .card_disease_association_exploration import explain
 
@@ -1211,6 +1225,15 @@ class CardView:
     def schema(self):
         if self._saved_state is not None:
             return deepcopy(self._saved_state["schema"])
+        if self._record_panel == "variants":
+            from .card_variant_selection_v1 import COLUMNS
+
+            return {
+                "kind": "variant_tissue_context_exploration",
+                "grain": "native population-variant or isoform occurrence",
+                "columns": list(COLUMNS),
+                "presentations": ["summary", "table", "detail"],
+            }
         if self._record_panel == "associations":
             if self._explorer.mode == "saved":
                 from ._disease_association_history_v1.selection import COLUMNS
@@ -1504,6 +1527,10 @@ class CardView:
     def filter(self, column, *, equals, skip_digestion=False):
         """Select exact declared cells without changing the scientific result."""
         self._check_column(column)
+        if self._record_panel == "variants":
+            from .card_variant_exploration import display_filter
+
+            return display_filter(self, column, equals)
         if self._record_panel == "associations":
             if self._explorer.mode == "saved":
                 from .card_exploration_disease_association import display_filter
@@ -1644,6 +1671,10 @@ class CardView:
             raise ArgumentError("descending must be True or False.")
         if unit is not None and (not isinstance(unit, str) or not unit.strip()):
             raise ArgumentError("unit requires a nonempty unit name or None.")
+        if self._record_panel == "variants":
+            from .card_variant_exploration import display_sort
+
+            return display_sort(self, column, descending, unit)
         if self._record_panel == "associations":
             if self._explorer.mode == "saved":
                 from .card_exploration_disease_association import display_sort
@@ -1930,7 +1961,12 @@ class CardExplorer:
             return NATURE_TOPICS.get(self.profile, ())
         from .card_exploration_profiles import NATURE_TOPICS
 
-        return NATURE_TOPICS.get(self.profile, ())
+        topics = NATURE_TOPICS.get(self.profile, ())
+        return (
+            (*topics, "variants")
+            if self.mode == "live" and self.profile == "protein"
+            else topics
+        )
 
     @property
     def _topics(self):
@@ -2009,7 +2045,25 @@ class CardExplorer:
                 return QUESTIONS[self.profile]
         from .card_exploration_profiles import COMMON_QUESTIONS, QUESTIONS
 
-        return {**QUESTIONS.get(self.profile, {}), **COMMON_QUESTIONS}
+        result = {**QUESTIONS.get(self.profile, {}), **COMMON_QUESTIONS}
+        if self.mode == "live" and self.profile == "protein":
+            for question, label in (
+                (
+                    "variant_tissue_context",
+                    "What tissue context is retained for population variants?",
+                ),
+                (
+                    "isoform_tissue_context",
+                    "What tissue context is retained for individual isoforms?",
+                ),
+            ):
+                result[question] = {
+                    "label": label,
+                    "topic": "variants",
+                    "required_options": [],
+                    "scope": "Original scoped native rules, genomic/transcript/CDS context and per-tissue unknowns; no clinical inference or acquisition.",
+                }
+        return result
 
     def _location(self, *keys):
         return self.access._card_location(segments=[_key(key) for key in keys])
@@ -2109,6 +2163,10 @@ class CardExplorer:
             raise ArgumentError("Scientific options require a mapping or None.")
         from .card_exploration_profiles import PANELS
 
+        if topic == "variants":
+            from .card_variant_exploration import view
+
+            return view(self, origin, options)
         if topic == "associations":
             from .card_disease_association_exploration import view
 
@@ -2343,6 +2401,13 @@ class CardExplorer:
             )
         if not isinstance(options, dict):
             raise ArgumentError("Question options require a mapping.")
+        if question in ("variant_tissue_context", "isoform_tissue_context"):
+            mode = "variants" if question == "variant_tissue_context" else "isoforms"
+            if "mode" in options and options["mode"] != mode:
+                raise ArgumentError(
+                    "The requested tissue-context question requires its matching mode."
+                )
+            options = {**options, "mode": mode}
         if question != "region_coverage":
             view = self._topic(self._questions[question]["topic"], origin, options)
             effective = (
@@ -2353,6 +2418,8 @@ class CardExplorer:
                     "measured_molecules",
                     "measured_targets",
                     "publications",
+                    "variant_tissue_context",
+                    "isoform_tissue_context",
                 )
                 else {}
             )

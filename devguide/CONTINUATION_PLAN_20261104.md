@@ -451,11 +451,14 @@ preserves 21 cases with complete human/machine/source and distinct focal-access
 graphs. Byte/reference/graph checks pass. Independent @27/@28 saved reading now
 preserves original values, source roles, finite requests and actual navigation;
 public saving is enabled. The [saved receipt](evidence/disease_association_saved_checkpoint_20261108.json)
-owns current local qualification and limits. Continue B6: first audit the existing
-variant/isoform/tissue and supplied-Card comparison readers, then deliver the
-first rich human/agent slice with positive and uncertain public controls and
-independent original saved reading. Typed biological associations remain in B6's
-full accepted scope. The 10,050-case receipt does not qualify this changed source.
+owns current local qualification and limits. B6 now has its first
+[LIVE variant/isoform tissue-context slice](pending_proposals/card_variant_tissue_exploration.md),
+sharing scoped native results with positive/uncertain human/agent/source controls.
+Its [LIVE receipt](evidence/variant_tissue_context_live_checkpoint_20261108.json)
+owns selected qualification. Next preserve a genuine clean producer original
+before separately versioned independent saved reading. Natural-variant/mutagenesis
+rich annotations, supplied-Card comparisons and typed biological associations
+retain the full remaining B6 scope. The 10,050-case receipt does not qualify this changed source.
 Both installed routes copy/select the complete owning modules and required
 original capsules; actual installed receiving stays open.
 The independent saved reader is locally qualified. The broader clinical/disease
