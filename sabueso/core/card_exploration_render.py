@@ -777,15 +777,15 @@ def _parts(view):
 
         opening.extend(chemical_opening(view, preview))
     if view._record_panel == "associations":
-        from .card_disease_association_presentation_v1 import (
-            opening as association_opening,
-        )
+        from .card_disease_association_dispatch import presentation
+
+        association_opening = presentation(view).opening
 
         opening.extend(association_opening(view, preview))
     if view.context.get("adapter") == "disease_association_context_links@1":
-        from .card_disease_association_presentation_v1 import (
-            context_opening as association_context,
-        )
+        from .card_disease_association_dispatch import presentation
+
+        association_context = presentation(view).context_opening
 
         opening.extend(association_context(view, preview))
     if view._record_panel == "clinical":
@@ -1027,7 +1027,9 @@ def _parts(view):
             )
             continue
         if view._record_panel == "associations":
-            from .card_disease_association_presentation_v1 import display_row
+            from .card_disease_association_dispatch import presentation
+
+            display_row = presentation(view).display_row
 
             rows.append(display_row(item, index, preview))
             continue
@@ -1308,7 +1310,9 @@ def _parts(view):
 
 def _headers(view):
     if view._record_panel == "associations":
-        from .card_disease_association_presentation_v1 import HEADERS
+        from .card_disease_association_dispatch import presentation
+
+        HEADERS = presentation(view).HEADERS
 
         return list(HEADERS)
     if view._record_panel == "clinical":

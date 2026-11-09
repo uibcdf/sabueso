@@ -70,10 +70,14 @@ def projection(fields):
 def normalize(where, item_refs, order_by):
     where = {} if where is None else where
     if not isinstance(where, dict):
-        raise ArgumentError("Clinical where requires a column-to-operand mapping.")
+        raise ArgumentError(
+            "Disease association where requires a column-to-operand mapping."
+        )
     for column, value in where.items():
         if not isinstance(column, str):
-            raise ArgumentError("Clinical where keys require declared column names.")
+            raise ArgumentError(
+                "Disease association where keys require declared column names."
+            )
         validate_equality(column, value)
     if item_refs is not None:
         from sabueso._private.argdigest.argument.item_ref import digest_item_ref
@@ -95,7 +99,7 @@ def normalize(where, item_refs, order_by):
             or order_by.get("unit") is not None
         ):
             raise ArgumentError(
-                "Clinical order_by requires a sortable scalar column, boolean descending and no unit."
+                "Disease association order_by requires a sortable scalar column, boolean descending and no unit."
             )
         order_by = {
             "column": order_by["column"],

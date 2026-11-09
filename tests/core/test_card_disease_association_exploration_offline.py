@@ -9,7 +9,7 @@ import pytest
 
 import sabueso
 from sabueso.core.card import Card
-from sabueso.core.errors import ArgumentError, StorageError
+from sabueso.core.errors import ArgumentError
 from sabueso.core.relationship_store import make_relationship
 from sabueso.core.snapshot import canonical_json
 from sabueso.core.source_assertion_store import make_source_assertion
@@ -633,8 +633,14 @@ def test_complete_raw_values_and_source_roles_are_deferred_together(originals):
             assert native["interpretation"]["rule"] == "disease_association_context@1"
 
 
-def test_original_saving_is_unavailable_until_independent_reader(originals, tmp_path):
-    explorer = explore(originals)
+def test_public_view_machine_and_detail_saving_use_production_limits(
+    originals, tmp_path
+):
+    protein = Card(
+        meta={"entity_type": "protein", "card_id": "sabueso:protein:uniprot:SYNTHETIC"}
+    )
+    add_statement(protein, "mondo:MONDO:0014221", missing=True)
+    explorer = card(originals, "disease").explore(related_cards=[protein])
     view = explorer.view(TOPIC)
     selection = explorer.access.select(TOPIC)
     for name, item in (
@@ -642,10 +648,16 @@ def test_original_saving_is_unavailable_until_independent_reader(originals, tmp_
         ("machine", selection),
         ("detail", view.items()[0].open()),
     ):
-        assert not item.capabilities["save"]
-        with pytest.raises(StorageError):
-            item.save(tmp_path / (name + ".json"))
-        assert not (tmp_path / (name + ".json")).exists()
+        assert item.capabilities["save"]
+        path = tmp_path / (name + ".json")
+        item.save(path)
+        saved = sabueso.read_exploration(path)
+        assert (
+            saved.validation["verifier"] == "disease_association_exploration_binding@1"
+        )
+        assert saved.native_payload == (
+            item._scientific.native if name == "machine" else item.native_payload
+        )
 
 
 def test_bounded_escaped_display_preserves_full_original_values(originals):

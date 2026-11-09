@@ -1,5 +1,26 @@
 # Sabueso — Decision Log
 
+## 2026-11-08 local date — Independently bind disease source occurrences and origins
+
+The new logical @27 / shared @28 reader uses immutable SDK227 scientific inputs,
+source-role/identity rules and original human/agent observations. Validation checks
+private expectations and returns the actual original wire. Repeated literal
+SourceAssertion references remain repeated occurrences in the explanation; they
+never create independent experiments or identity claims. Identical source links
+retain their original positions and actual destination/back nodes. The producer's
+missing clicked-index distinction stays explicit; no index is invented.
+
+New-format literal child inspection switches to the exact supplied input owner
+and keeps the actual initiating view/question. Missing source context receives
+no replacement explorer. A new scientific topic entered from a disease source
+link keeps that origin without claiming to answer the previous disease question;
+explicit answers own their own question. New-format resaves preserve existing
+original node IDs and assign separate IDs to new operations. Earlier readers,
+scientific defaults, source assertions and Card schema remain unchanged. Original
+integrity, local technical receiving and B7/B8 acceptance remain separate.
+Owners: #148/#90/#112; the [profile](pending_proposals/card_disease_association_exploration.md)
+and CHECKPOINT own the full contract and qualification state.
+
 ## 2026-11-08 local date — Preserve genuine multi-access disease originals first
 
 The clean SDK227 / `0e17f85` LIVE producer is the disease-association observation

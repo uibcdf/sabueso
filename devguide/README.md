@@ -54,9 +54,12 @@ relationship, indication and condition occurrences in explicitly supplied
 captures. Source-supported MONDO/MedGen identity paths, direction, unknowns and
 exact source/back context stay visible. The [1,031-case selected LIVE checkpoint](evidence/disease_association_live_checkpoint_20261108.json)
 and all 43 copied owning cases pass. The clean SDK227 [genuine original](evidence/disease_association_live_original_20261108.json)
-now preserves 21 complete observed cases, exact multi-access origin graphs and
-294 machine requests. Its byte/reference/graph checks pass; independent saved
-reading is next, and new association saving remains unavailable.
+preserves 21 complete observed cases, exact multi-access origin graphs and
+294 machine requests. The independent logical @27 / physical @28 reader now
+preserves those original values, sources, finite requests and actual navigation.
+All 178 owning cases pass; copied and adjacent qualification are recorded in the
+[saved checkpoint](evidence/disease_association_saved_checkpoint_20261108.json).
+Public human, machine and detail saving is enabled in the working implementation.
 Definition, identity and hierarchy remain separate. [CHECKPOINT](CHECKPOINT.md)
 owns current results and next actions.
 
@@ -124,7 +127,7 @@ scientific/human acceptance remain open. The
 older 9,786-case receipt does not qualify this changed source.
 [CHECKPOINT](CHECKPOINT.md) owns the exact active source, results and next action.
 These clinical/root receipts retain their recorded source epochs. Independent
-disease association saved reading is next; B6 retains its full accepted plan.
+disease association saved reading is implemented; B6 retains its full accepted plan.
 
 The [shared literature catalog](pending_proposals/card_literature_exploration.md)
 has its B4 LIVE producer committed: four new modules and their dispatch wiring

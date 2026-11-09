@@ -5,6 +5,76 @@ Current working-state checkpoint: **2026-11-08**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Independent disease association reader — selected local checkpoint PASS
+
+Logical `sabueso.card_exploration@27` / physical shared @28 is implemented over
+the immutable clean SDK227 original. Frozen disease/native/clinical/knowledge,
+MONDO/MedGen identity, source-role, selection and presentation predicates verify
+private expectations, then restore the original scientific wire. Current Cards,
+scientific readers, disease LIVE UI, clients, public scientific item-ref digesters
+and network are forbidden during independent original receiving. Earlier saved
+interpretations, Card schema and scientific defaults remain unchanged.
+
+All **178 owning offline cases pass**, with no warnings: the complete 23-case
+original, 43-case LIVE, 93-case history and 19-case saved-admission modules.
+They include all 21 actual original files and fresh outside-checkout receivers,
+294 finite machine requests / 333 pages, full actual view/access/parent/focal
+identity, source occurrences, eight altered wires and eight resealed semantic
+refusals. None/gzip/zstd resaves retain original node identities. Public human,
+machine and detail saving uses production limits; complete originals explicitly
+lift byte ceilings. Human-only and machine-first scope, finite missing requests,
+frozen catalogs, mixed clinical/classification/activity and a second explicit
+disease retain their exact original context.
+
+The owning gate uses four workers and native threads one, a 10 GiB combined RSS
+ceiling and 16 GiB host reserve. It completes in 486.01 s / 487.74 s guarded,
+peaking at 2,764,607,488 bytes owned RSS with zero swap. Receptor, controller,
+worker, call and before/after source accounting agrees. A subsequent fixture
+README correction changes documentation only. One redundant adapter name was
+then removed from a CardAccess membership tuple without changing membership;
+final adjacent and postcommit owning checks cover that resulting source. Test
+and original-capsule bytes remain exact.
+
+The diagnostic wheel/sdist inspection passes: all 820 implementation Python
+modules and all three frozen SOURCE.json resources match. The isolated
+source-only version `0.0.0+unknown` is intentional and is not a candidate.
+The final exact-source build uses one CPU for 10.23 s, peaking at 96,567,296 bytes
+RSS without swap; it repeats the preceding artifact inspection after removing
+the redundant tuple entry. Original capsule bytes remain immutable; no package
+was published.
+
+The [saved receipt](evidence/disease_association_saved_checkpoint_20261108.json)
+verifies **1,417 distinct selected offline cases**: the 178 owning cases plus
+1,239 disjoint adjacent cases covering native disease/identity, clinical,
+bioactivity/literature, earlier persistence/shared formats, source/cell/navigation,
+agent, quantity/argument, package-data and fixture/licensing/registry behavior.
+The adjacent gate uses eight workers for 586.17 s / 587.24 s guarded, peaking at
+3,792,334,848 bytes RSS with zero swap. Its one warning is the existing simulated
+ChEMBL failure control. Complete source/controller/worker/call accounting agrees.
+
+All **178 cases pass outside checkout** with twelve byte-identical public inputs,
+verified controller/four-worker placement and editable import origins, and exact
+source/copy case correspondence. This uses four workers for 468.74 s / 470.71 s
+guarded, peaking at 2,910,912,512 bytes RSS without warnings or swap. These repeats
+add no distinct coverage. Both installed workflows copy/select all four complete
+owning modules and the unchanged capsule; actual installed/hosted receiving stays
+open. Lint, format, Python 3.11 grammar, governance and guide checks pass.
+
+Owned failed-test expansions, isolated build-source copies and the completed
+copied stage were removed after byte verification; logs/events/maps, placement
+proofs, originals and diagnostic artifacts retain owners and review triggers in
+the receipt. Earlier red/interrupted epochs retain their disposition. Source truth,
+authenticity and completeness outside observed requests are not established.
+A source assertion remains a source assertion, never Evidence.
+
+Next audit B6's existing variant/isoform/tissue and supplied-Card comparison
+readers, then implement the first rich human/agent slice with positive and
+uncertain public controls. Typed biological associations remain in B6 scope.
+B2 stays deferred, #192 unresolved and B7 acceptance open; B8/candidate/schema
+freeze/release remain unresumed. Exact-final-head CI/governance is deferred under
+#148/#112 through the authorized intermediate `[skip ci]` route, until an
+authorized recovery is executed and inspected. No workflow was dispatched.
+
 ## Disease association original — captured and independently verified
 
 The clean LIVE producer `0e17f85` / `0.14.0+227.g0e17f85` now has its
@@ -42,9 +112,9 @@ separate from the executable original-integrity and copied-input gates recorded
 in the receipt. Earlier failed accounting assumptions about display ordering and
 underlying selection membership remain recorded; no original was regenerated.
 
-**Next implement separately versioned independent disease saved reading over
-this immutable original**, with current Cards/scientific readers/LIVE UI/clients
-forbidden during receiving. New disease association saving remains unavailable.
+At this capture checkpoint, independent reading and save admission were still
+pending. The subsequent reader above now implements them over this immutable
+original with current Cards/science/LIVE UI/clients forbidden during receiving.
 B6 follows; B2, #192, B7 and B8/release keep their previous dispositions. Exact-head
 remote CI/governance remains deferred under the intermediate `[skip ci]` route,
 owned by #148/#112, until an authorized recovery route is executed and inspected.
@@ -87,8 +157,8 @@ retained. Native disease grouping/defaults, clinical interpretation, Card schema
 and earlier saved meanings are unchanged.
 
 The genuine clean producer original is now preserved and independently checked
-above; next implement independent disease saved reading over those bytes. New disease
-association saving remains unavailable. Continue B6 afterward. This selected
+above. The subsequent reader at the top now implements independent reading and
+save admission over those bytes. Continue B6 afterward. This selected
 local editable/copy checkpoint is not complete-repository, installed-artifact,
 hosted or scientific/human admission. Exact-final-head CI/governance remains
 deferred under the intermediate `[skip ci]` route, owned by #148/#112; recover

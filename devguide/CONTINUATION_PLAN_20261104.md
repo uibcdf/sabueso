@@ -448,9 +448,14 @@ with source-bound MONDO/MedGen paths and original direction. Its [1,031-case sel
 and all 43 copied owning cases pass. The clean SDK227
 [genuine original](evidence/disease_association_live_original_20261108.json) now
 preserves 21 cases with complete human/machine/source and distinct focal-access
-graphs. Byte/reference/graph checks pass. Implement independent saved reading
-over those immutable bytes next; association saving remains unavailable. B6 retains its full accepted scope. The 10,050-case receipt does not qualify
-this changed clinical source.
+graphs. Byte/reference/graph checks pass. Independent @27/@28 saved reading now
+preserves original values, source roles, finite requests and actual navigation;
+public saving is enabled. The [saved receipt](evidence/disease_association_saved_checkpoint_20261108.json)
+owns current local qualification and limits. Continue B6: first audit the existing
+variant/isoform/tissue and supplied-Card comparison readers, then deliver the
+first rich human/agent slice with positive and uncertain public controls and
+independent original saved reading. Typed biological associations remain in B6's
+full accepted scope. The 10,050-case receipt does not qualify this changed source.
 Both installed routes copy/select the complete owning modules and required
 original capsules; actual installed receiving stays open.
 The independent saved reader is locally qualified. The broader clinical/disease

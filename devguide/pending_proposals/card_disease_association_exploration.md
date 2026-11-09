@@ -53,7 +53,70 @@ and 294 machine requests / 333 pages. Byte/graph verification keeps every origin
 parent/explorer-parent, source role and input pin. Public fixtures retain original
 rights; synthetic controls are labelled. Preserve the immutable capsule before
 implementing the separately versioned independent reader.
-Saving this new scientific panel is unavailable until that reader is qualified.
+The working independent reader below owns subsequent save admission; its local
+qualification and separate acceptance limits belong to CHECKPOINT.
 Existing exploration formats and scientific defaults stay fixed. Installed,
 hosted, scientist, uncoached researcher, workload and actual-consumer acceptance
 remain separate; this work does not resume B8 or authorize a release.
+
+## Independent original saved reading
+
+The working independent reader adds logical `sabueso.card_exploration@27` and
+physical shared representation @28. It receives the immutable clean SDK227
+original; current Cards, disease/clinical/knowledge readers, MONDO normalization,
+source clients, disease LIVE UI and public scientific item-ref digesters are
+blocked during original receiving. Frozen SDK227 native, source-role, exact
+MONDO/MedGen identity and typed-selection predicates compute private expectations.
+Validation restores the retained original wire, never replacement output. Only
+the declared generated disease/knowledge rule producer labels are parameterized;
+source versions and assertions remain original.
+
+Each actual view retains its exact parent and explorer-parent node, inherited
+question, focal capture and input pins. Original underlying selections remain
+separate from displayed membership/order. New-format resaves retain existing
+original node identifiers; new operations receive their own nodes. Content
+sharing establishes no entity identity. The complete original is received in
+fresh processes with explicit outside-checkout working directories and unchanged
+member bytes, including all 294 finite typed requests / 333 original pages.
+An unexecuted request reports `not_saved`; a machine-only file manufactures no
+human question, and a human-only file manufactures no machine request.
+
+`disease_source_occurrences@1` preserves repeated literal source references in a
+role-bound explanation. Equal references do not become independent observations.
+The original protein example includes three literally identical MONDO source
+links at distinct list positions. All remain retained; SDK227 did not record a
+clicked index in their common destination. Independent reading checks membership
+among those identical destinations and preserves the actual view/parent nodes,
+without inventing a clicked occurrence. Non-identical ambiguous destinations
+remain unsupported. Other formats keep their original duplicate-membership rules.
+
+Frozen literal reading may inspect an exact retained child and explicitly switch
+to that child's original capture, preserving the actual parent and disease scope.
+This allows inspection of protein sources in a disease explanation without a
+current Card or new scientific query. Missing source bodies remain an explicit
+missing-prerequisite context, with no replacement Card/explorer.
+`disease_scientific_question_transition@1` keeps the originating link when an
+explicit new clinical/classification/activity question is asked from a supplied
+molecule; its intermediate topic does not claim to answer the old disease
+question. An explicit second supplied disease keeps its own result and return.
+Earlier clinical, activity, chemical and saved interpretations remain unchanged.
+
+Small public controls retain production byte limits. Complete original-file
+controls lift their limits explicitly; this does not qualify arbitrary workloads.
+None/gzip/zstd resaves, unchanged and resealed altered controls, source/card scope,
+frozen catalogs, finite requests and mixed profiles are tested separately. Hash
+consistency establishes neither source authenticity nor scientific truth. The
+selected/copy/artifact checkpoint and exact source epochs belong to CHECKPOINT;
+scientific, uncoached researcher, workload, actual-consumer, installed/hosted and
+release acceptance remain open. B2 stays deferred and B8 is not resumed.
+
+## Qualification and continuation
+
+The [saved checkpoint](../evidence/disease_association_saved_checkpoint_20261108.json)
+owns selected source/copy/artifact qualification, exact case accounting, resource
+measurements and limits. The original producer receipt continues to describe
+capture only. Repeated copied cases add no distinct coverage; a selected local
+checkpoint does not qualify every repository test or an installed package.
+Continue B6's variant/isoform/tissue, supplied-Card comparison and typed biological
+association profiles; keep independent scientific, researcher, agent, workload,
+consumer and hosted/installed acceptance open. B8 and release remain unresumed.

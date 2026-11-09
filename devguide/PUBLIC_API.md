@@ -23,9 +23,15 @@ scoped source knowledge, not diagnosis, target validity, causality or efficacy.
 The [disease association contract](pending_proposals/card_disease_association_exploration.md)
 and [selected 1,031-case receipt](evidence/disease_association_live_checkpoint_20261108.json)
 own the local scope, including complete 43-case copied receiving.
-[CHECKPOINT](CHECKPOINT.md) owns current next actions. Disease association
-saving remains unavailable until a genuine clean LIVE original and separately
-qualified independent reader exist.
+[CHECKPOINT](CHECKPOINT.md) owns current source qualification and next actions.
+The immutable SDK227 original now precedes the working independent @27/@28 reader.
+Human views, exact executed machine requests and retained details can preserve
+original sources, values, input pins and actual navigation origins; unexecuted
+requests report `not_saved`. Repeated source-role references remain separate
+occurrences. Literal source reading acquires no new knowledge, and explicit
+clinical/classification/activity questions preserve their original return context.
+Earlier formats and scientific defaults retain their meanings. Installed/hosted,
+scientific and human acceptance remain separate from local development gates.
 
 Development small-molecule `Card.explore().view("clinical")` and
 `answer("clinical_context")` share retained native `Card.clinical()` knowledge

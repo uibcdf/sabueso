@@ -50,7 +50,9 @@ class Original:
     def __init__(self, directory, observed):
         self.directory = directory
         self.observed = observed
-        self.manifest = json.loads((directory / "manifest.json").read_text())
+        self.manifest = json.loads(
+            (directory / "manifest.json").read_text(encoding="utf-8")
+        )
         self._decoded = {}
 
     def ref(self, ref):
@@ -60,7 +62,7 @@ class Original:
         ]
         if ref["path"] not in self._decoded:
             self._decoded[ref["path"]] = json.loads(
-                (self.directory / ref["path"]).read_text()
+                (self.directory / ref["path"]).read_text(encoding="utf-8")
             )
         return self._decoded[ref["path"]]
 
@@ -126,8 +128,12 @@ def test_original_producer_bytes_rights_and_scope_are_fixed(original):
     assert manifest["genuine_live_original"] and manifest["capture_complete"]
     assert manifest["attempts"] == {"network": 0, "source_acquisitions": 0}
     assert set(manifest["cases"]) == set(CASES)
-    before = json.loads((original.directory / "source-before.json").read_text())
-    after = json.loads((original.directory / "source-after.json").read_text())
+    before = json.loads(
+        (original.directory / "source-before.json").read_text(encoding="utf-8")
+    )
+    after = json.loads(
+        (original.directory / "source-after.json").read_text(encoding="utf-8")
+    )
     assert before == after and "sabueso/_version.py" in before
     assert "sabueso/core/card_disease_association_access.py" in before
     assert "sabueso/core/card_exploration_disease_association.py" not in before

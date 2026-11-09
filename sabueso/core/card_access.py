@@ -346,6 +346,7 @@ class CardAccess:
                             "literature_exploration@1",
                             "molecule_activity_context_exploration@1",
                             "clinical_exploration@1",
+                            "disease_association_exploration@1",
                         )
                         else rebound._entries
                     )
@@ -696,18 +697,43 @@ class CardAccess:
                 "retained_requests_only" if self.mode == "saved" else "live"
             )
             if self.profile == "disease":
-                from .card_disease_association_access import (
-                    descriptor as association_descriptor,
-                )
+                if (
+                    self.mode == "saved"
+                    and self._exploration_session.get("format")
+                    == "sabueso.card_exploration@27"
+                ):
+                    from .card_disease_association_history_v1 import (
+                        descriptor as association_descriptor,
+                    )
+                else:
+                    from .card_disease_association_access import (
+                        descriptor as association_descriptor,
+                    )
 
                 data["associations"] = association_descriptor()
+                admitted = (
+                    self.mode == "live"
+                    or self._exploration_session.get("format")
+                    == "sabueso.card_exploration@27"
+                )
+                data["associations"]["save"] = admitted
+                if admitted:
+                    data["associations"].pop("save_reason", None)
                 data["associations"]["availability"] = (
-                    "live" if self.mode == "live" else "not_saved"
+                    "live"
+                    if self.mode == "live"
+                    else "retained"
+                    if "associations" in self.capabilities["scientific_topics"]
+                    else "not_saved"
                 )
                 data["associations"]["selection_availability"] = (
-                    "live" if self.mode == "live" else "not_saved"
+                    "live"
+                    if self.mode == "live"
+                    else "retained_requests_only"
+                    if admitted
+                    else "not_saved"
                 )
-                if self.mode == "saved":
+                if not admitted:
                     data["associations"]["operations"] = []
             if self.profile == "small_molecule":
                 if self.mode == "saved":
@@ -749,6 +775,7 @@ class CardAccess:
                         "sabueso.card_exploration@21",
                         "sabueso.card_exploration@23",
                         "sabueso.card_exploration@25",
+                        "sabueso.card_exploration@27",
                     )
                 ):
                     from .card_exploration_molecule_activity import (
@@ -758,6 +785,7 @@ class CardAccess:
                     if self._exploration_session.get("format") in (
                         "sabueso.card_exploration@23",
                         "sabueso.card_exploration@25",
+                        "sabueso.card_exploration@27",
                     ):
                         from .card_exploration_molecule_activity_v2 import (
                             descriptor as activity_context_descriptor,
@@ -977,6 +1005,14 @@ class CardAccess:
             raise ArgumentError(
                 "Scientific selection supports structures, ligand_site_comparisons, quaternary_interpretation, assembly_generation, chemical_classification, activity_context, clinical, associations, bioactivities and literature."
             )
+        if (
+            topic == "associations"
+            and self.mode == "saved"
+            and self._exploration_session.get("format") == "sabueso.card_exploration@27"
+        ):
+            from .card_exploration_disease_association import saved_selection
+
+            return saved_selection(self, fields, options, where, item_refs, order_by)
         if topic == "associations":
             from .card_disease_association_access import (
                 materialize,
@@ -1033,6 +1069,7 @@ class CardAccess:
                     "sabueso.card_exploration@21",
                     "sabueso.card_exploration@23",
                     "sabueso.card_exploration@25",
+                    "sabueso.card_exploration@27",
                 )
             ):
                 from .card_exploration_molecule_activity import saved_selection

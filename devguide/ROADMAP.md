@@ -126,8 +126,12 @@ with source-bound MONDO/MedGen paths and original direction. Its [1,031-case sel
 and all 43 copied owning cases pass. The clean SDK227
 [genuine original](evidence/disease_association_live_original_20261108.json) now
 preserves 21 cases with complete human/machine/source and distinct focal-access
-graphs. Byte/reference/graph checks pass. Implement independent saved reading
-over those immutable bytes next; association saving remains unavailable. B6 retains its full accepted scope. Scientific
+graphs. Byte/reference/graph checks pass. Independent @27/@28 saved reading now
+preserves the original scientific wire, finite requests and actual navigation;
+public human, machine and detail saving is enabled in the working implementation.
+The [saved checkpoint](evidence/disease_association_saved_checkpoint_20261108.json)
+owns its selected local qualification and separate acceptance limits.
+Continue B6 with its full accepted scope. Scientific
 and uncoached researcher/agent/workload/actual-consumer acceptance stay open; B8
 and release remain unresumed. Original formats, source assertions and scientific
 defaults stay fixed under their named interpretations.

@@ -24,7 +24,9 @@ containers and whole observations use content-addressed packaging references;
 each actual view/access node remains separate. Independent byte/reference/graph
 accounting uses no SDK interpretation. The immutable capsule is an original
 observational reference, not an admitted saved exploration file or researcher
-acceptance. Public saving remains unavailable pending its independent reader.
+acceptance. The subsequent independent @27/@28 reader uses these exact bytes;
+its current source qualification and public save admission belong to CHECKPOINT.
+This original producer receipt does not itself qualify that later reader.
 
 Embedded `fixtures/NOTICE.md` preserves source releases, retrieval dates, terms
 and attributions. Source material keeps those terms, including ChEMBL CC BY-SA
