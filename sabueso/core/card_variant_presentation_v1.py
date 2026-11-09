@@ -36,7 +36,7 @@ def opening(view, preview):
         + ".",
         "Genomic assembly/chromosome, exact transcript/CDS support and per-tissue denominators remain explicit. A missing/conflicting tissue value is unknown, never zero expression or harmlessness.",
         "Inspect complete native items and explanations for every tissue, unknown, excluded input and source scope. Source/context links return to the actual initiating selection and question.",
-        "Independent original saved reading remains pending for this new panel. Captured Card export is available through explorer.access.export_card(path).",
+        "Saving retains original values, source context and executed requests for independent offline reading. Unexecuted saved queries remain explicitly not_saved.",
     ]
 
 

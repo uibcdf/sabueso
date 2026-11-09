@@ -57,7 +57,10 @@ owns broader selected/copy qualification and limits. Its clean SDK230
 [genuine original](evidence/variant_tissue_context_live_original_20261108.json)
 now preserves all 33 observed cases, original source/actual-origin graphs and
 1,415 finite agent requests. Its 140 selected and 39 copied original cases pass.
-Independent saved reading is next; new panel saving remains unavailable. Remaining variants/comparative/association and B7 acceptance scope
+Independent @29/@30 reading and saving pass the
+[saved checkpoint](evidence/variant_tissue_context_saved_checkpoint_20261108.json):
+1,715 distinct selected source cases and all 200 copied owning cases outside
+checkout. Remaining variants/comparative/association and B7 acceptance scope
 stays open. CHECKPOINT owns actual current results.
 
 The [retained disease association profile](pending_proposals/card_disease_association_exploration.md)

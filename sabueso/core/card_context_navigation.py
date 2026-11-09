@@ -533,6 +533,13 @@ def _destination(explorer, candidate, origin, title="Referenced source record"):
 
 def follow(item):
     explorer, link = item._view._explorer, item._entry.value
+    if (
+        link.get("rule") == "variant_context_links@1"
+        and item._view._explorer.mode == "saved"
+    ):
+        from .card_exploration_variant import item_operation
+
+        return item_operation(item, "open")
     if link.get("rule") == "variant_context_links@1":
         from .card_variant_exploration import follow as follow_variant
 

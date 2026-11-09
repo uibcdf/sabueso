@@ -8,7 +8,7 @@ import pytest
 
 import sabueso
 from sabueso.core.card import Card
-from sabueso.core.errors import ArgumentError, StorageError
+from sabueso.core.errors import ArgumentError
 from sabueso.core.snapshot import canonical_json
 from sabueso.core.source_assertion_store import make_source_assertion
 from sabueso.core.tissue_usage import EXONS, ISOFORMS, REGIONS, TRANSCRIPTS, VARIANTS
@@ -418,14 +418,15 @@ def test_other_modes_foreign_members_and_cursors_are_refused(originals):
 
 
 @pytest.mark.parametrize("mode", ["variants", "isoforms"])
-def test_live_saving_is_explicitly_refused_before_independent_original_reading(
+def test_live_human_machine_and_detail_saving_keep_original_context(
     originals, tmp_path, mode
 ):
     explorer = public(originals).explore()
-    view = explorer.view("variants", options={"mode": mode})
+    view = explorer.answer(
+        "variant_tissue_context" if mode == "variants" else "isoform_tissue_context"
+    )
     selection = explorer.access.select("variants", options={"mode": mode})
-    assert not view.capabilities["save"]
-    assert not explorer.access.catalog().page()["items"] == []
+    assert view.capabilities["save"]
     for index, target in enumerate(
         [
             view,
@@ -435,10 +436,22 @@ def test_live_saving_is_explicitly_refused_before_independent_original_reading(
             selection,
         ]
     ):
-        path = tmp_path / f"unsupported-{index}.json"
-        with pytest.raises(StorageError):
-            target.save(path)
-        assert not path.exists()
+        path = tmp_path / f"retained-{index}.json.gz"
+        target.save(path, compression="gzip")
+        saved = sabueso.read_exploration(path)
+        assert (
+            saved.validation["verifier"]
+            == "variant_tissue_context_exploration_binding@1"
+        )
+        assert canonical_json(saved.native_payload) == canonical_json(
+            view.native_payload if target is selection else target.native_payload
+        )
+        assert (
+            saved.explorer.access.select(
+                "variants", options={"mode": mode}
+            ).selection_ref
+            == selection.selection_ref
+        )
 
 
 def test_bare_and_nonprotein_profiles_do_not_invent_rows():
@@ -537,14 +550,27 @@ def test_source_text_is_escaped_in_bounded_html_and_complete_in_native_items():
     assert view.items()[0].open().native_payload["variant_id"] == value["variant_id"]
 
 
-def test_unrelated_literal_save_does_not_admit_new_variant_science(originals, tmp_path):
+@pytest.mark.parametrize("visited", [False, True])
+def test_literal_saving_retains_only_observed_variant_context(
+    originals, tmp_path, visited
+):
     explorer = public(originals).explore()
-    explorer.view("variants")
+    original = explorer.view("variants") if visited else None
     literal = explorer.inspect("names.canonical_name")
     path = tmp_path / "literal.json"
     literal.save(path)
     saved = sabueso.read_exploration(path)
     assert saved.native_payload == literal.native_payload
-    assert "variants" not in saved.explorer.capabilities["scientific_topics"]
-    assert "variants" not in saved.explorer._topics
-    assert "variant_tissue_context" not in saved.explorer._questions
+    assert ("variants" in saved.explorer.capabilities["scientific_topics"]) == visited
+    assert ("variants" in saved.explorer._topics) == visited
+    assert ("variant_tissue_context" in saved.explorer._questions) == visited
+    if visited:
+        assert saved.explorer.view("variants").native_payload == original.native_payload
+        assert (
+            saved.explorer.answer("variant_tissue_context").outcome["status"]
+            == "not_saved"
+        )
+        assert (
+            saved.explorer.access.select("variants").page()["outcome"]["status"]
+            == "not_saved"
+        )

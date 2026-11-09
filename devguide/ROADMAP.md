@@ -138,8 +138,9 @@ owns selected qualification. Its clean SDK230
 [genuine original](evidence/variant_tissue_context_live_original_20261108.json)
 now preserves complete observed values/source/actual-origin graphs and finite
 agent requests, with byte/graph and 140 selected/39 copied receiving cases passing.
-Next implement independent saved reading over those immutable bytes, retaining
-all remaining B6 comparison/annotation/association scope. Scientific
+Independent @29/@30 saved reading passes all 200 owning and 1,515 adjacent
+selected cases, plus complete copied owning receiving outside checkout. Continue
+the remaining B6 comparison/annotation/association scope. Scientific
 and uncoached researcher/agent/workload/actual-consumer acceptance stay open; B8
 and release remain unresumed. Original formats, source assertions and scientific
 defaults stay fixed under their named interpretations.

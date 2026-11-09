@@ -9,6 +9,14 @@ meanings. Explain that own-base scope concerns retained isoform annotations and
 does not establish biological zero expression. Review alongside the
 [variant/isoform profile](pending_proposals/card_variant_tissue_exploration.md).
 
+Original presentation and current capability wording (#148): frozen producer
+presentation retains its original statement that independent saving was pending,
+while the new @29/@30 reader exposes current verified save capabilities separately.
+Preserving scientific meaning and original human observations is required; the
+possibility that a researcher mistakes historical capability wording for current
+availability is an untested usability hypothesis. Review explicit orientation in
+B7 without silently rewriting stored source/native values or earlier formats.
+
 
 Packaging metadata (#112/#35): the corrected wheel/sdist build succeeds with
 setuptools 84.2.1 but warns that the TOML-table `project.license` form is

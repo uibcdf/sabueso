@@ -912,8 +912,11 @@ result and supports typed equality, projection, exact members and scalar order.
 Full native values/explanations and source/input/quality links retain original
 genomic, transcript/CDS and per-tissue uncertainty. See the
 [profile](pending_proposals/card_variant_tissue_exploration.md) for exact scope.
-These routes are LIVE-only. New panel/detail/source saving is explicitly
-unavailable pending independent saved reading over the preserved SDK230 original;
-unrelated literal saving and Card export remain available. Existing saved menus
-and interpretations retain their original meaning. This is development source,
-not a new published release or scientific/human acceptance.
+The working source enables human, machine and detail saving with independent
+logical @29 / shared @30 reading over the preserved SDK230 original. Saved
+scientific access reopens exact retained requests and typed options; an unexecuted
+request remains `not_saved`. Source reading uses retained data without acquisition.
+Complete original-file and copied receiving pass their selected local checkpoint;
+[CHECKPOINT](CHECKPOINT.md) owns actual qualification and acceptance limits. Earlier saved menus and interpretations retain their
+original meaning. This is development source, not a published release or
+scientific/human acceptance.

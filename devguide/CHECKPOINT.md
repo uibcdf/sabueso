@@ -1,9 +1,52 @@
 # Sabueso — Checkpoint
 
-Current working-state checkpoint: **2026-11-08**. Start with
+Current working-state checkpoint: **2026-11-09**. Start with
 [ONBOARDING](ONBOARDING.md) for project context and the
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
+
+## Independent variant/isoform reading — local checkpoint PASS
+
+Logical `sabueso.card_exploration@29` / physical shared @30 is implemented over
+the immutable clean SDK230 original. Private frozen native/source/selection/
+presentation predicates verify input-bound expectations and restore the original
+wire. Current Cards, scientific engines, variant LIVE helpers, public scientific
+digesters, clients and network are forbidden during original receiving. Earlier
+saved formats, Card schema, scientific defaults and SourceAssertions stay fixed.
+
+All **200 owning offline cases pass** over one unchanged 1,251-path source map:
+100 history/native/human/actual-file, 39 original integrity, 45 LIVE and 16 saved
+semantic/transport/catalog/route-scope cases. Independent discovery equals the
+exact disjoint executed union. Every original native result, actual view, cell,
+source path and finite agent page is preserved, including original text/HTML.
+All 33 actual files pass guarded receiving; both public HsTIM journeys and two
+synthetic boundary cases also pass fresh outside-checkout receivers. These four
+repeats add no distinct coverage. The [saved receipt](evidence/variant_tissue_context_saved_checkpoint_20261108.json)
+retains source epochs, resource profiles, earlier red dispositions and limits.
+
+Human/machine/detail saving passes production-budget LIVE controls. Unexecuted
+questions or selections remain `not_saved`; observed variant context is retained
+and advertised consistently when saving a literal root. None/gzip/zstd resaves
+preserve exact origins. The diagnostic wheel/sdist inspection passes: all 846
+implementation modules and four frozen SOURCE resources match. Its isolated
+`0.0.0+unknown` version is intentional; this is not an installed artifact or release.
+
+All **1,515 adjacent cases pass** in two disjoint complete gates: the ordinary
+39-module selection and the large historical exact-molecule module. Their union
+equals the original selection. The initial combined gate stopped at its elapsed
+ceiling and remains unqualified; its partial passing phases add no coverage.
+Together with the 200 owning cases, this checkpoint covers **1,715 distinct
+selected offline cases** on unchanged source.
+
+All **200 copied owning cases pass outside checkout**, with thirteen byte-identical
+public inputs, verified controller/worker placement and editable import origins.
+The normalized copied union equals the source owning union and adds no distinct
+coverage. Final guide, grammar, lint, package-resource and workflow-wiring checks
+pass. Exact committed-head metadata/code verification belongs to the post-commit
+local handoff. Installed/hosted and independent
+scientific/uncoached researcher/agent/workload/consumer acceptance remain open;
+CI is deferred under #148/#112. Remaining B6 rich annotations/comparisons/typed
+associations, B2, #192 and B8/release keep their existing dispositions.
 
 ## B6 variant/isoform original — captured and independently verified
 
@@ -46,10 +89,10 @@ add no distinct coverage. Both installed workflows copy/select the complete
 new module and unchanged original capsule; actual installed/hosted receiving
 remains open. The preceding 1,215-case LIVE receipt retains its source epoch.
 
-Next implement separately versioned independent variant/native/source/selection/
-presentation reading over this immutable original, with current Cards/scientific
-readers/LIVE UI/clients forbidden. New panel saving stays unavailable until that
-receiving is qualified. Remaining B6 annotations/comparisons/typed associations
+At this clean-capture checkpoint, independent variant/native/source/selection/
+presentation reading was next. The working reader above now uses this immutable
+original with current Cards/scientific readers/LIVE UI/clients forbidden; its
+qualified local receiving and separate acceptance limits remain explicit. Remaining B6 annotations/comparisons/typed associations
 and B7 acceptance keep their full scope; B2 deferred, #192 unresolved and
 B8/candidate/schema freezing/release unresumed. Exact-final-head CI/governance
 stays deferred under the intermediate `[skip ci]` route owned by #148/#112.

@@ -60,19 +60,26 @@ the complete module. Copied receiving uses byte-identical declared public inputs
 the [LIVE receipt](../evidence/variant_tissue_context_live_checkpoint_20261108.json)
 owns actual results, source epochs, resources and acceptance limits.
 
-The new topic/questions are advertised only for LIVE protein explorers. Earlier
-saved menus, verifiers and interpretations remain unchanged. Saving this new
-panel and its dependent source/detail views is explicitly unavailable until a
-genuine clean-producer original precedes separately versioned independent saved
-reading. Unrelated literal saving and captured Card export remain available.
+The new topic/questions are advertised for LIVE protein explorers and original
+@29/@30 saved sessions. Earlier saved menus, verifiers and interpretations remain
+unchanged. The working source enables human/machine/detail saving; exact finite
+requests and typed options reopen, while unexecuted requests remain `not_saved`.
+Independent original-file and complete copied receiving pass their selected
+local checkpoint. Captured Card export remains available.
 
 The clean SDK230 [genuine original](../evidence/variant_tissue_context_live_original_20261108.json)
 now preserves 33 cases, all actual source/navigation/access instances, 101 native
 requests and 1,415 finite agent requests / 1,461 pages. SDK-free byte/reference/
 cell/locator accounting passes, alongside 140 selected and all 39 copied original
-cases. The capsule is immutable and predates independent reading. Next implement
-separately versioned independent native/source/selection/presentation and exact
-actual-origin replay over these bytes with current scientific engines forbidden.
+cases. The capsule is immutable and predates independent reading. Working logical
+@29/shared @30 uses separately versioned native/source/selection/presentation and
+exact actual-origin replay over these bytes with current scientific engines
+forbidden. All 200 owning and 1,515 adjacent selected cases pass, alongside all
+200 copied owning cases outside checkout with thirteen byte-identical public
+inputs. Diagnostic wheel/sdist inspection verifies all 846 implementation modules
+and four frozen SOURCE resources; actual installed/hosted qualification remains
+open. The [saved receipt](../evidence/variant_tissue_context_saved_checkpoint_20261108.json)
+owns exact scope, resources and earlier red dispositions; CHECKPOINT owns current results.
 Natural-variant/mutagenesis rich annotation context, supplied-Card comparisons and
 typed biological associations retain their remaining B6 scope. Scientific,
 uncoached researcher, agent, representative workload, actual-consumer and

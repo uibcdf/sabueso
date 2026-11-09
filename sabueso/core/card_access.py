@@ -347,6 +347,7 @@ class CardAccess:
                             "molecule_activity_context_exploration@1",
                             "clinical_exploration@1",
                             "disease_association_exploration@1",
+                            "variant_tissue_context_exploration@1",
                         )
                         else rebound._entries
                     )
@@ -412,7 +413,11 @@ class CardAccess:
             if self.profile == "disease"
             else []
         )
-        if self.mode == "live" and self.profile == "protein":
+        if self.profile == "protein" and (
+            self.mode == "live"
+            or self._exploration_session
+            and self._exploration_session.get("format") == "sabueso.card_exploration@29"
+        ):
             scientific_topics.append("variants")
         scientific_topics.append("literature")
         retained = {
@@ -698,16 +703,35 @@ class CardAccess:
             data["literature"]["selection_availability"] = (
                 "retained_requests_only" if self.mode == "saved" else "live"
             )
-            if self.mode == "live" and self.profile == "protein":
-                from .card_variant_access import descriptor as variant_descriptor
+            if self.profile == "protein" and (
+                self.mode == "live"
+                or self._exploration_session.get("format")
+                == "sabueso.card_exploration@29"
+            ):
+                if self.mode == "saved":
+                    from .card_variant_history_v1 import (
+                        descriptor as variant_descriptor,
+                    )
+                else:
+                    from .card_variant_access import descriptor as variant_descriptor
 
                 data["variants"] = variant_descriptor()
-                data["variants"]["availability"] = "live"
+                data["variants"]["save"] = True
+                data["variants"].pop("save_reason", None)
+                data["variants"]["availability"] = (
+                    "live"
+                    if self.mode == "live"
+                    else "retained"
+                    if "variants" in self.capabilities["scientific_topics"]
+                    else "not_saved"
+                )
+                data["variants"]["selection_availability"] = (
+                    "live" if self.mode == "live" else "retained_requests_only"
+                )
             if self.profile == "disease":
-                if (
-                    self.mode == "saved"
-                    and self._exploration_session.get("format")
-                    == "sabueso.card_exploration@27"
+                if self.mode == "saved" and self._exploration_session.get("format") in (
+                    "sabueso.card_exploration@27",
+                    "sabueso.card_exploration@29",
                 ):
                     from .card_disease_association_history_v1 import (
                         descriptor as association_descriptor,
@@ -718,11 +742,9 @@ class CardAccess:
                     )
 
                 data["associations"] = association_descriptor()
-                admitted = (
-                    self.mode == "live"
-                    or self._exploration_session.get("format")
-                    == "sabueso.card_exploration@27"
-                )
+                admitted = self.mode == "live" or self._exploration_session.get(
+                    "format"
+                ) in ("sabueso.card_exploration@27", "sabueso.card_exploration@29")
                 data["associations"]["save"] = admitted
                 if admitted:
                     data["associations"].pop("save_reason", None)
@@ -783,6 +805,7 @@ class CardAccess:
                         "sabueso.card_exploration@23",
                         "sabueso.card_exploration@25",
                         "sabueso.card_exploration@27",
+                        "sabueso.card_exploration@29",
                     )
                 ):
                     from .card_exploration_molecule_activity import (
@@ -793,6 +816,7 @@ class CardAccess:
                         "sabueso.card_exploration@23",
                         "sabueso.card_exploration@25",
                         "sabueso.card_exploration@27",
+                        "sabueso.card_exploration@29",
                     ):
                         from .card_exploration_molecule_activity_v2 import (
                             descriptor as activity_context_descriptor,
@@ -1016,9 +1040,18 @@ class CardAccess:
         if (
             topic == "associations"
             and self.mode == "saved"
-            and self._exploration_session.get("format") == "sabueso.card_exploration@27"
+            and self._exploration_session.get("format")
+            in ("sabueso.card_exploration@27", "sabueso.card_exploration@29")
         ):
             from .card_exploration_disease_association import saved_selection
+
+            return saved_selection(self, fields, options, where, item_refs, order_by)
+        if (
+            topic == "variants"
+            and self.mode == "saved"
+            and self._exploration_session.get("format") == "sabueso.card_exploration@29"
+        ):
+            from .card_exploration_variant import saved_selection
 
             return saved_selection(self, fields, options, where, item_refs, order_by)
         if topic == "variants":
@@ -1097,6 +1130,7 @@ class CardAccess:
                     "sabueso.card_exploration@23",
                     "sabueso.card_exploration@25",
                     "sabueso.card_exploration@27",
+                    "sabueso.card_exploration@29",
                 )
             ):
                 from .card_exploration_molecule_activity import saved_selection
@@ -1411,6 +1445,7 @@ class CardAccess:
                 "literature_exploration@1",
                 "clinical_exploration@1",
                 "disease_association_exploration@1",
+                "variant_tissue_context_exploration@1",
                 "variant_tissue_context_exploration@1",
             ):
                 return selection._scientific.frame(self, selection, entry)

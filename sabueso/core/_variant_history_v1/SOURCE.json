@@ -1,0 +1,51 @@
+{
+  "producer_head": "c5b573b15f61619ff0a3f52ba3c3275807fcd8ba",
+  "producer_version": "0.14.0+230.gc5b573b",
+  "purpose": "Independent original variant/isoform scoped tissue consistency. Compute private expectations without substituting original output.",
+  "original_files": {
+    "sabueso/core/source_assertion_store.py": "35dd17018907f362d4bdb3b9f563b2c1df937756b9941c2d4892767c0f729703",
+    "sabueso/core/bioactivity_explanation.py": "d1ffc514cc8621dd7d5c5277d9ce8eed6c10ef6d4f1f62a47faf2a3a0d35ac40",
+    "sabueso/mappings/gtex.py": "1e889de01bd80b534be12d4b0ecaed724266c4c65e72b5546419be8cddd1f8bf",
+    "sabueso/core/tissue_usage.py": "4c67e02e8ef58ddd915b6520ddb394ba1880fd4ed0ff8a6aead846cba83f040c",
+    "sabueso/core/scoped_tissue_usage.py": "cbc7b15227aed31ffef203d1be43040b64801bb766ab60ea579a0300073dac68",
+    "sabueso/core/comparative_explanation.py": "f432469dabcba674287e1c30780f03425db4cb71eac5041123241ebdd7b2a7bf",
+    "sabueso/core/card_variant_access.py": "2a54ccf0406c2c46ce70efab3496ac463bab93c7cde2e49e0766fc9444da9d16",
+    "sabueso/core/card_variant_selection_v1.py": "8a0d585f9b2da8c458ab02effc15c8e00408aa218a06b390e8a449d04c865c41",
+    "sabueso/core/card_variant_presentation_v1.py": "afbdce2e69fbfff03a248830a83b0807714739559aca0455266a4e233c03ca0f",
+    "sabueso/core/card_variant_exploration.py": "bce2cae3af0721f3c951f5f8d921b40dbf23ff18fa8adb876a0a1a277de87f5f",
+    "sabueso/core/_disease_association_history_v1/navigation.py": "7f450d6cf9c1b1edc6aa31fc48effe9d00f753050e01a75bc57d4dbf286066e2",
+    "sabueso/core/_disease_association_history_v1/machine.py": "6ce5de8da8022039e63cb030d7412f4d65169227f85c80327cb6899b0e41fb41",
+    "sabueso/core/_disease_association_history_v1/replay.py": "3f2017c71a8cc7281573eb9dd192e7859dbb98331c1950ccd94308eb25592b3d",
+    "sabueso/core/_disease_association_history_v1/catalogs.py": "6c04085d48b94b8dec4a72fc7841ec9ae40e205f9e7694a6c89c74b683714f2f",
+    "sabueso/core/card_exploration.py": "7b4f6245909bda33597056fecfa332fa048160a5284c31a16a87ff13895870f8",
+    "sabueso/core/card_exploration_profiles.py": "07907f67a2f06b07c0ab0b875ae4afd811d3a690a0e3eaf24267b27542c02aae",
+    "sabueso/core/card_exploration_disease_association.py": "ec58ddb04bc755909719b61eb19f3c8b4c5389ab85646fd89379ffb6f7bbc92c",
+    "sabueso/core/card_exploration_verification_v27.py": "3287819ff45f09339e0f0bb6f54e42a24e05412a814608944e8151ae26bb426d",
+    "sabueso/core/card_exploration_shared_values_v8.py": "062fc6994cd70cea7abc416a012965922826dc391a25c498b6915f6a5a012184"
+  },
+  "frozen_files": {
+    "__init__.py": "577e6a1b31eaf608070319e2f7f9da2440d365a2c76d6e3d8b7ca1a7b3913083",
+    "adapter.py": "c6a108f930b182c9dd8f94cb2de84ec2607a246b92ba7e51a268ccbf2db87547",
+    "catalogs.py": "3c0a314181b8656b070811962391aa56bf8fceeca834ff360773fab2ccc82612",
+    "explanation.py": "cccc61514f1795b49f8b665918c3b417f889cd98ca31622a237a4b0f298c65e5",
+    "exploration.py": "2e856c3a3d5d230e4c31d4c83534b45362356b1660ad212da28fc9ca72e9d68a",
+    "inputs.py": "a39c3e11bf8c65b72611eb5828f2cd405cf9be41fa1525d43906b52949f91c82",
+    "machine.py": "ec459f04724c08395c2c56308bf759d7e2864efb3a7ca1bbbf87d6ce8c38645f",
+    "navigation.py": "addffe541271a9f3bed3889e13d5b5954b179f6629d36f9459545e88e48c5014",
+    "presentation.py": "afbdce2e69fbfff03a248830a83b0807714739559aca0455266a4e233c03ca0f",
+    "replay.py": "b3f046b2d1203ded0ae86e32126484d26736d1abe2e74aec51c81e066c0c1050",
+    "rules.py": "8016f21a7168262eaca87a9aba4bcbfbadd05bc71f2fa00eb6d001e67f6c9e8c",
+    "scoped_tissue_usage.py": "099467f2854a9c538f34a147b9e24365312d96a02d52d9ebca1a78cd4011e34a",
+    "selection.py": "d8b84a824502926c832dc31739f13165b47ea4a4b5aef269b7689d4d643f200c",
+    "source.py": "619e329ad9513b3c2d1f2e26bc1dbc50412136c753f0a64e2c7ab424c1f6d2ab",
+    "terms.py": "eeb3af68f5f921bc0b0e60168a9690c8c1c09fcda1fb2c32d49eb5e65d3892ce",
+    "tissue_usage.py": "f970c4fbda38c30547efba1daa0d193483a58f0a0083d0a1236c0f9da72c76f1",
+    "validation.py": "f23ebccce3ae0a8fea551a07da43a07e67124f7d1ba79d3816c4e62d27f65eef"
+  },
+  "allowed_differences": "Relative import rebinding; extract existing scoped tissue rules/helpers, comparative support and GTEx key normalization; inert retained input facade; pure original threshold/item grammar; generated producer labels only at explicit rule construction. No source value rewriting or acquisition. Native @1 and isoform @2 legacy engines are outside this new profile; their existing readers stay fixed. Remove runtime source-only type annotations from extracted assertion_value; formatting/import ordering only.",
+  "reused_frozen_files": {
+    "sabueso/core/_literature_history_v1/inputs.py": "767af694005c7ff869051992751cbb3a84164765b64ea420edf2dfa91e8b536e",
+    "sabueso/core/_literature_history_v1/validation.py": "dba6d06bc4544732c093df5df9e6b00c2d1f32d20fd2a654f8c808feb56474c6",
+    "sabueso/core/card_exploration_history.py": "fb1e8de9604244e8d3360883ecec7d521ae121d7288c9eab83d1ed1d7c45b3dc"
+  }
+}

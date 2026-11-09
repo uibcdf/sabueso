@@ -5206,3 +5206,23 @@ single-component bounds. This is the implementation choice for the
 scientific, researcher or release acceptance. Its full 64-item workload now
 passes the bounded local save/read/resave control; wider compatibility and
 hosted qualification remain separate requirements.
+
+
+## 2026-11-08 — Independent SDK230 variant/isoform saved reading
+
+Owners: #148/#102/#138/#112. New logical exploration @29 / physical shared @30
+keeps original scoped native @2/@3 tissue interpretations, exact typed cutoffs,
+source memberships and actual originating view instances. Frozen predicates
+calculate private expectations from captured inputs; successful receiving returns
+the original wire rather than recomputed knowledge. Mutable Card/native/LIVE
+helpers, scientific digesters and clients are forbidden during original receiving.
+Generated producer labels are supplied only at declared rule construction paths;
+source-owned labels and JSON are never recursively rewritten.
+
+The genuine SDK230 capsule predates this reader and remains immutable. Human
+viewing does not invent an executed agent request, and a native cache entry does
+not invent a human question. Finite saved access compares canonical typed options,
+including integer versus float cutoffs. Literal saving may retain already observed
+variant views; an unvisited variant profile remains unavailable in older formats.
+Card schema, scientific defaults, SourceAssertions and earlier saved meanings stay
+fixed. Qualification is in progress; CHECKPOINT owns results and remaining gates.

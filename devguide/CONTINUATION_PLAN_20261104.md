@@ -458,9 +458,10 @@ Its [LIVE receipt](evidence/variant_tissue_context_live_checkpoint_20261108.json
 owns selected qualification. Its clean SDK230
 [genuine original](evidence/variant_tissue_context_live_original_20261108.json)
 now preserves 33 complete observed cases, exact actual origins and finite agent
-requests; byte/graph and 140 selected/39 copied receiving cases pass. Next
-implement separately versioned independent saved reading over those immutable
-bytes with current engines forbidden. Natural-variant/mutagenesis
+requests; byte/graph and 140 selected/39 copied receiving cases pass. Independent
+@29/@30 saved reading now passes its selected local checkpoint over those
+immutable bytes with current engines forbidden: all 200 owning and 1,515 adjacent
+cases, plus all 200 copied owning cases outside checkout. Next continue natural-variant/mutagenesis
 rich annotations, supplied-Card comparisons and typed biological associations
 retain the full remaining B6 scope. The 10,050-case receipt does not qualify this changed source.
 Both installed routes copy/select the complete owning modules and required
