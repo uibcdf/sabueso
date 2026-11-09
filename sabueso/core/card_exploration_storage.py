@@ -1449,7 +1449,11 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
 
             _require(
                 bundle["format"]
-                in ("sabueso.card_exploration@27", "sabueso.card_exploration@29"),
+                in (
+                    "sabueso.card_exploration@27",
+                    "sabueso.card_exploration@29",
+                    "sabueso.card_exploration@31",
+                ),
                 "Disease associations require explicit original format @27.",
             )
             scientific_results[ref] = restore_result(ref, wire)
@@ -1884,7 +1888,8 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
 
             original_membership = original_occurrences(selection, record)
             if (
-                bundle["format"] == "sabueso.card_exploration@29"
+                bundle["format"]
+                in ("sabueso.card_exploration@29", "sabueso.card_exploration@31")
                 and original_membership is None
             ):
                 from .card_exploration_variant import (
@@ -2565,7 +2570,11 @@ def saved_answer(explorer, question, options, origin):
         question == "retained_associations"
         and explorer.profile == "disease"
         and explorer._session.get("format")
-        in ("sabueso.card_exploration@27", "sabueso.card_exploration@29")
+        in (
+            "sabueso.card_exploration@27",
+            "sabueso.card_exploration@29",
+            "sabueso.card_exploration@31",
+        )
     ):
         from .card_exploration_disease_association import saved_topic as disease_topic
 

@@ -1255,6 +1255,12 @@ positive rows and refusal of an incompatible mode. Run affected historical,
 access/agent/navigation/quantity/transport,
 fixture/licensing/delivery/registry/package gates and diagnostic artifact checks.
 
+Mixed supplied disease captures also retain an already observed association
+question when its native answer is unknown or missing prerequisites. Check new
+format admission and exact question/native return without inventing a biological
+association. Original variant explanation occurrences retain their role-bound
+source membership in the same bundle; earlier-format predicates remain fixed.
+
 Both installed workflows copy/select the two new complete modules alongside the
 owning LIVE/original modules and their capsule/public inputs. Repeat the entire
 owning scope outside checkout with byte-identical inputs and verified controller/

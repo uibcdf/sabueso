@@ -5,6 +5,26 @@ Current working-state checkpoint: **2026-11-09**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Mixed saved contexts — local checkpoint PASS
+
+The follow-up to the saved-reader checkpoint extends three existing new-format
+@31 predicates: original disease-result admission, exact retained disease question
+return, and role-bound variant explanation occurrences. An explicitly supplied
+synthetic disease capture retains its original unknown association state; no
+biological relationship or source conclusion is invented. Earlier formats and
+all original capsules remain unchanged.
+
+All **474 selected cases pass** on the follow-up source, including all **222 current
+owning cases** and 252 affected disease/access/agent/context/argument controls.
+All **222 copied owning cases pass outside checkout**, with eight byte-identical
+inputs and nine controller/worker placement/import proofs. Diagnostic wheel/sdist
+contents also pass. The [follow-up receipt](evidence/sequence_change_mixed_context_checkpoint_20261109.json)
+owns exact source and resource accounting. Combined distinct coverage is 1,958
+across the explicitly scoped base and follow-up epochs; the earlier 1,957-case
+receipt below does not qualify changed code automatically. Final committed-head
+metadata/code/remote verification belongs to the local post-push handoff. The
+remaining B6/B7/B8 and installed/hosted limits below stay open.
+
 ## Independent sequence-change saved reading — local checkpoint PASS
 
 Logical `sabueso.card_exploration@31` / physical shared @32 now reads the immutable

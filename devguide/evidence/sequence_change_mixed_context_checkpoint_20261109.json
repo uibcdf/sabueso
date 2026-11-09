@@ -1,0 +1,341 @@
+{
+  "state": "SELECTED_LOCAL_PASS",
+  "owner": "uibcdf/sabueso#148/#112",
+  "base_head": "cd2357a3423bef18c91afb32f7fef40197454431",
+  "date": "2026-11-09",
+  "problem": "New format @31 admitted sequence-change and earlier adapters in its manifest, but restoration omitted disease native objects, exact disease question dispatch and role-bound variant explanation occurrence restoration.",
+  "observation": "An explicitly supplied synthetic disease capture with an already observed unknown/missing-prerequisite association question caused save-time validation to refuse the new format. The native uncertainty must remain unchanged; no biological association is asserted.",
+  "fix": "Extend three existing format predicates to @31 and reuse the existing frozen disease and variant predicates. Preserve original native/request/source/cell/alias values; older-format membership is unchanged.",
+  "scope": "Sabueso implementation only; no Card schema, scientific default, source assertion, identity, provider, source acquisition or original capsule change.",
+  "red_epochs": {
+    "b6-sequence-disease-question-reproduction-1": "Synthetic test Card id omitted the required sabueso prefix; rejected correctly before the intended operation. Instrument error only.",
+    "b6-sequence-disease-question-reproduction-2": "Confirmed new-format native disease admission failure during save-time validation."
+  },
+  "source_cases": 474,
+  "source_complete_modules": 10,
+  "source_owning_cases": 222,
+  "source_adjacent_cases": 252,
+  "source_map_paths": 1277,
+  "source_maps_identical_with_copy": true,
+  "source_fingerprint": "cedc7330e3a644783f5d15cf43f27e75fb09f117dc3754c1d0a844582153530e",
+  "source_gate": {
+    "state": "PASS",
+    "source_count": 1277,
+    "before_after_equal": true,
+    "controller_workers_and_calls_agree": true,
+    "events_sha256": "789764662981c457b77bd03621f4e7f6506f3859cddc7c12c94cf46854f52f14",
+    "resources": {
+      "owner": "uibcdf/sabueso#148/#112",
+      "review_trigger": "Variant/isoform LIVE and adjacent controls; 8 workers,10GiBtotalRSS,native1,host16GiBfloor,10GiBscratch",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0,1,2,3,4,5,6,7",
+        "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "tests/core/test_card_sequence_changes_offline.py",
+        "tests/core/test_card_sequence_change_original_offline.py",
+        "tests/core/test_card_sequence_change_history_offline.py",
+        "tests/core/test_card_saved_sequence_change_offline.py",
+        "tests/core/test_card_saved_disease_association_offline.py",
+        "tests/core/test_card_disease_association_exploration_offline.py",
+        "tests/core/test_card_access_offline.py",
+        "tests/core/test_card_agent_selection_offline.py",
+        "tests/core/test_card_context_navigation_offline.py",
+        "tests/core/test_argument_contracts_offline.py",
+        "--maxschedchunk=2",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "--receptor-events=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-sequence-disease-question-owning-final-1/events.jsonl",
+        "-p",
+        "checkpoint_scope",
+        "--basetemp=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-sequence-disease-question-owning-final-1/pytest-scratch",
+        "-o",
+        "tmp_path_retention_policy=failed",
+        "-W",
+        "error:unclosed database:ResourceWarning",
+        "-W",
+        "error::pytest.PytestUnraisableExceptionWarning",
+        "-n",
+        "8",
+        "--dist=load"
+      ],
+      "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 261.42,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 3096870912,
+      "minimum_host_available_bytes": 57688891392,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 2190099917,
+      "limits": {
+        "owned_rss_bytes": 10737418240,
+        "host_available_bytes": 17179869184,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 8,
+        "nice": 10,
+        "elapsed_s": 1200,
+        "owned_scratch_bytes": 10737418240
+      },
+      "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-sequence-disease-question-owning-final-1/cargo-target"
+    },
+    "counts": {
+      "collected": 474,
+      "deselected": 0,
+      "errors": 0,
+      "executed": 474,
+      "failed": 0,
+      "not_executed": 0,
+      "passed": 474,
+      "reruns": 0,
+      "skipped": 0,
+      "subtests": {},
+      "warnings": 0,
+      "xfailed": 0,
+      "xpassed": 0
+    },
+    "pytest_elapsed_s": 257.4026533490105
+  },
+  "copied_gate": {
+    "state": "PASS",
+    "source_count": 1277,
+    "before_after_equal": true,
+    "controller_workers_and_calls_agree": true,
+    "events_sha256": "84eb2ddc32b2fe561d6c42717401119a6147ccdc4ca7750b9e08c92ccdcbf620",
+    "resources": {
+      "owner": "uibcdf/sabueso#148/#112",
+      "review_trigger": "Variant/isoform LIVE and adjacent controls; 8 workers,10GiBtotalRSS,native1,host16GiBfloor,4GiBscratch",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0,1,2,3,4,5,6,7",
+        "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "test_card_sequence_changes_offline.py",
+        "test_card_sequence_change_original_offline.py",
+        "test_card_sequence_change_history_offline.py",
+        "test_card_saved_sequence_change_offline.py",
+        "--maxschedchunk=2",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "--receptor-events=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-sequence-disease-question-copied-final-1/events.jsonl",
+        "-p",
+        "checkpoint_scope",
+        "--basetemp=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-sequence-disease-question-copied-final-1/pytest-scratch",
+        "-o",
+        "tmp_path_retention_policy=failed",
+        "-W",
+        "error:unclosed database:ResourceWarning",
+        "-W",
+        "error::pytest.PytestUnraisableExceptionWarning",
+        "-n",
+        "8",
+        "--dist=load"
+      ],
+      "cwd": "/tmp/sabueso-sequence-context-consumer-af0cg0no",
+      "exit_code": 0,
+      "elapsed_s": 215.77,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 2872623104,
+      "minimum_host_available_bytes": 57386160128,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 1111125966,
+      "limits": {
+        "owned_rss_bytes": 10737418240,
+        "host_available_bytes": 17179869184,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 8,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 4294967296
+      },
+      "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-sequence-disease-question-copied-final-1/cargo-target"
+    },
+    "counts": {
+      "collected": 222,
+      "deselected": 0,
+      "errors": 0,
+      "executed": 222,
+      "failed": 0,
+      "not_executed": 0,
+      "passed": 222,
+      "reruns": 0,
+      "skipped": 0,
+      "subtests": {},
+      "warnings": 0,
+      "xfailed": 0,
+      "xpassed": 0
+    },
+    "pytest_elapsed_s": 212.87212017699494
+  },
+  "copied_cases": 222,
+  "copied_public_inputs": 8,
+  "placement_proofs": 9,
+  "discovery": {
+    "state": "PASS",
+    "selected_cases": 1958,
+    "complete_discovery_equals_actual_combined_union": true,
+    "new_distinct_case_since_base": 1,
+    "contributes_executed_cases": 0
+  },
+  "combined_coverage": {
+    "distinct_selected_cases": 1958,
+    "epochs": "Base saved-reader receipt qualifies its 1957-case source epoch. This follow-up qualifies 474 selected cases on its changed source, including all 222 current owning cases. The remaining earlier cases are not relabelled as tests of this later source. Repeats and collection do not increase coverage."
+  },
+  "diagnostic_artifacts": {
+    "owner": "uibcdf/sabueso#148/#35/#112",
+    "state": "PASS",
+    "python_modules_exact": 866,
+    "frozen_source_resources": {
+      "sabueso/core/_clinical_history_v1/SOURCE.json": "00688c256d6aee51ebc97d752fdd641f7317c5d399ae8dd84db0ee4dc7e60650",
+      "sabueso/core/_molecule_activity_history_v1/SOURCE.json": "14d59d034aa795516bc3258f11f8a4f8caaa1b5b38b3c30bfb273f8cfddde797",
+      "sabueso/core/_disease_association_history_v1/SOURCE.json": "a927a304b67df6144995c9d5f21e44ff4a34a98e8023221e47361f3dfe53feef",
+      "sabueso/core/_variant_history_v1/SOURCE.json": "b55ee3cd34ef6f7efdca561ce4b06fbacb8ea4f3ca67f7bb2d362cb82f3a6998",
+      "sabueso/core/_sequence_change_history_v1/SOURCE.json": "c7a43ebf63201757abfede8ec0eee1820199ff53bfbf8fd93e4506372aa7c8c0"
+    },
+    "artifacts": {
+      "sabueso-0.0.0+unknown-py3-none-any.whl": {
+        "bytes": 2144628,
+        "sha256": "785f203ec0ae783c34de3891a542190be2b127f9cd35e3cd2f9b718c37ddef45"
+      },
+      "sabueso-0.0.0+unknown.tar.gz": {
+        "bytes": 1573949,
+        "sha256": "c859d7943470f976f56da8d16f9b94433f5062c997ba9586dd1dbe308a959ab4"
+      }
+    },
+    "source_inputs_unchanged": true,
+    "scope": "Current mixed-context correction; isolated no-VCS diagnostic wheel/sdist. Not installed-artifact, release or publication acceptance."
+  },
+  "quality": {
+    "state": "PASS",
+    "checks": {
+      "ruff": {
+        "exit_code": 0,
+        "command": [
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/ruff",
+          "check",
+          "."
+        ],
+        "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+        "output": "All checks passed!"
+      },
+      "format": {
+        "exit_code": 0,
+        "command": [
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/ruff",
+          "format",
+          "--check",
+          "."
+        ],
+        "log_sha256": "f587fcd1650c5d9a88b7fd141fc3d116f13c82f6ed34613292f58b66b712c0cd",
+        "output": "1613 files already formatted"
+      },
+      "governance": {
+        "exit_code": 0,
+        "command": [
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-B",
+          "/fast_data/home/liliana/repos@uibcdf/moli/devtools/scripts/check_repository.py",
+          "/fast_data/home/liliana/repos@uibcdf/sabueso",
+          "--canonical-guide",
+          "/fast_data/home/liliana/repos@uibcdf/moli/MOLI_GUIDE.md"
+        ],
+        "log_sha256": "a020ded5dd1f74aa00e4857214df2663df0f9ace41abffacee569f6e35b823c8",
+        "output": "/fast_data/home/liliana/repos@uibcdf/sabueso: conforms to MOLI governance core."
+      },
+      "guide": {
+        "exit_code": 0,
+        "command": [
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-B",
+          "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-sequence-disease-question-1/check_guide.py"
+        ],
+        "log_sha256": "d7e4a04e20ed3b3d27add2102905822cce4c79b8ab4fbd67e0b33dd890abf753",
+        "output": "{\"state\": \"PASS\", \"scope\": \"Maintained non-archive guide local targets; changed-target Markdown anchors; changed fenced Python3.11 grammar. No external link or runtime example qualification.\", \"maintained_markdown_files\": 176, \"local_path_targets_checked\": 1446, \"changed_page_anchors_checked\": 21, \"python_examples_checked\": 0, \"errors\": []}"
+      },
+      "git_diff": {
+        "exit_code": 0,
+        "command": [
+          "git",
+          "diff",
+          "--check"
+        ],
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "output": ""
+      }
+    },
+    "python311_changed_modules": 2,
+    "workflow_wiring": {
+      ".github/workflows/ci.yml": {
+        "test_card_sequence_changes_offline.py": {
+          "copied_once": true,
+          "selected_once": true
+        },
+        "test_card_sequence_change_original_offline.py": {
+          "copied_once": true,
+          "selected_once": true
+        },
+        "test_card_sequence_change_history_offline.py": {
+          "copied_once": true,
+          "selected_once": true
+        },
+        "test_card_saved_sequence_change_offline.py": {
+          "copied_once": true,
+          "selected_once": true
+        }
+      },
+      ".github/workflows/test_staged_conda_package.yaml": {
+        "test_card_sequence_changes_offline.py": {
+          "copied_once": true,
+          "selected_once": true
+        },
+        "test_card_sequence_change_original_offline.py": {
+          "copied_once": true,
+          "selected_once": true
+        },
+        "test_card_sequence_change_history_offline.py": {
+          "copied_once": true,
+          "selected_once": true
+        },
+        "test_card_saved_sequence_change_offline.py": {
+          "copied_once": true,
+          "selected_once": true
+        }
+      }
+    },
+    "guide": {
+      "state": "PASS",
+      "scope": "Maintained non-archive guide local targets; changed-target Markdown anchors; changed fenced Python3.11 grammar. No external link or runtime example qualification.",
+      "maintained_markdown_files": 176,
+      "local_path_targets_checked": 1446,
+      "changed_page_anchors_checked": 21,
+      "python_examples_checked": 0,
+      "errors": []
+    },
+    "scope": "Local lint/format/grammar/governance/guide and installed-workflow wiring only. No installed or hosted qualification."
+  },
+  "ci": {
+    "state": "DEFERRED",
+    "marker": "[skip ci]",
+    "owner": "#148/#112",
+    "recovery": "Final block/candidate unskipped push or explicitly authorized manual exact-SHA CI and governance; gh-run-receptor inspection. No run or release is dispatched by this checkpoint."
+  },
+  "acceptance_limits": "Linux Python3.14 editable source and copied receiving; diagnostic package contents only. Installed/hosted, scientific, uncoached researcher/agent, workload and actual-consumer acceptance remain open. B2 review stays deferred; B8/release unresumed.",
+  "temporary_resources": {
+    "owner": "#148/#112",
+    "review_trigger": "B6 closeout or handoff; retain original capsules and useful receipts, remove only exact completed owned gate/copy/build scratch after last use."
+  },
+  "local_evidence": "recovered_work/checkpoint_recovery_20261106/b6-sequence-disease-question-1"
+}

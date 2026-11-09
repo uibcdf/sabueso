@@ -55,6 +55,8 @@ def test_observed_variant_questions_keep_exact_scope_in_sequence_bundle(
     assert observed.items()
     root = explorer.answer("sequence_changes")
     expected = observed.request
+    explanation = observed.items()[0].explain()
+    expected_sources = [item.item_ref for item in explanation.items()]
     block_current(monkeypatch)
     path = tmp_path / "mixed.json.gz"
     root.save(path, compression="gzip")
@@ -67,8 +69,49 @@ def test_observed_variant_questions_keep_exact_scope_in_sequence_bundle(
     assert [item.item_ref for item in retained.items()] == [
         item.item_ref for item in observed.items()
     ]
+    assert [
+        item.item_ref for item in retained.items()[0].explain().items()
+    ] == expected_sources
     with pytest.raises(ArgumentError):
         saved.explorer.answer(question, options={"mode": "unrecognized"})
+
+
+def test_observed_supplied_disease_question_survives_sequence_bundle(
+    monkeypatch, tmp_path
+):
+    from test_card_sequence_changes_offline import synthetic
+
+    from sabueso.core.card import Card
+    from sabueso.core.card_exploration_storage import _explorer
+
+    disease = Card(
+        meta={
+            "entity_type": "disease",
+            "card_id": "sabueso:disease:synthetic:unknown-associations",
+        }
+    )
+    explorer = synthetic().explore(related_cards=[disease])
+    root = explorer.answer("sequence_changes")
+    focal = explorer.access._inputs[1]
+    # This separate supplied capture asserts no biological association.
+    supplied = _explorer(explorer.access._for_capture(focal), explorer._session)
+    observed = supplied.answer("retained_associations")
+    expected = deepcopy(observed.native_payload)
+    request = deepcopy(observed.request)
+    block_current(monkeypatch)
+    path = tmp_path / "supplied-disease.json.gz"
+    root.save(path, compression="gzip")
+    saved = sabueso.read_exploration(path)
+    retained_context = next(
+        view.explorer
+        for view in saved.explorer._session["original_nodes"].values()
+        if view.explorer.access._focal_key == focal
+    )
+    retained = retained_context.answer("retained_associations")
+    assert retained.outcome["status"] != "not_saved"
+    assert retained.request == request
+    assert retained.native_payload == expected
+    assert retained.result_ref == observed.result_ref
 
 
 @pytest.mark.parametrize("name", CASES)
