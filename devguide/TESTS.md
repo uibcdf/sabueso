@@ -1203,3 +1203,26 @@ source and literal descendants, missing support and blocked structural questions
 An explicit structural delegation replaces the inherited request. Preserve older
 generic annotation behavior and the original saved contracts; a back link alone
 is insufficient proof that the returned request property was retained.
+
+
+## Genuine sequence-change original
+
+Run complete `test_card_sequence_change_original_offline.py` (38 cases) with
+`test_card_sequence_changes_offline.py` and applicable fixture/licensing/delivery/
+registry/package gates. Verify exact encoded/decoded/member bytes, clean SDK234
+source epoch and rights, every actual view/access/parent/focal instance, direct
+Card-field oracle and original typed cells, source/blocked-question continuity,
+explicit structural replacement, literal unknown/malformed flags, duplicate Card
+occurrences versus multiple native statements, input revisions, source-owned
+reference/version lookalikes, atomic deferral and finite page/locator closure.
+Human-only and machine-only histories remain genuinely separate. No SDK or
+scientific implementation is imported by the original integrity module.
+
+Repeat the complete 38-case module outside checkout with byte-identical module,
+capsule, data README and NOTICE; verify source/copy case accounting, controller/
+worker placement and editable origins. Both installed workflows copy/select the
+complete module and capsule once. These are byte/graph/input checks, separate from
+independent saved reader admission, arbitrary-query completeness, installed/hosted
+or scientific/researcher acceptance. Never regenerate the original to fit a later
+verifier. The [receipt](evidence/sequence_change_live_original_20261109.json) owns
+actual gates, source epochs and resource limits (#148/#112).

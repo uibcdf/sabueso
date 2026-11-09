@@ -465,8 +465,12 @@ cases, plus all 200 copied owning cases outside checkout. That receipt retains i
 source epoch. The next [natural-variant/mutagenesis profile](pending_proposals/card_sequence_change_exploration.md)
 now implements LIVE shared annotation projection with exact source and structural
 question scope; its 1,680-case selected source checkpoint and all 44 copied owning
-cases pass. Next capture its genuine
-clean producer before independent saved reading, then continue explicitly supplied
+cases retain their source epoch. The scoped question fix passes 49 owning and
+1,636 adjacent cases. Its clean SDK234
+[genuine original](evidence/sequence_change_live_original_20261109.json) now
+preserves 31 cases and all actual source/parent/agent graphs: 146 selected and
+38 copied original cases pass. Next implement independent saved reading over
+those immutable bytes, then continue explicitly supplied
 Card comparisons and typed biological associations. Those retain their full B6 scope. The 10,050-case receipt does not qualify this changed source.
 Both installed routes copy/select the complete owning modules and required
 original capsules; actual installed receiving stays open.

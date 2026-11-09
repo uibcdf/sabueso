@@ -79,7 +79,7 @@ and the legacy generic route; CHECKPOINT owns current qualification.
 
 This new topic/question is advertised only for LIVE protein access. Its panel,
 dependent source/detail routes and compact selections explicitly refuse original
-saving until a genuine clean producer precedes independent receiving. Unrelated
+saving until independent receiving qualifies the genuine clean SDK234 original. Unrelated
 literal saving and captured Card export remain available. Older saved catalogs,
 schemas and verifiers retain their own meanings; a new unretained compact request
 is `not_saved` and never evaluates the current projection.
@@ -94,3 +94,26 @@ owns exact results, source epochs and resources; [CHECKPOINT](../CHECKPOINT.md) 
 scientific, uncoached researcher, agent, representative workload or actual-consumer
 acceptance is inferred. The immutable tissue-context SDK230 original and its
 independent reader remain a separate contract.
+
+## Immutable original before independent saved reading
+
+The [SDK234 original receipt](../evidence/sequence_change_live_original_20261109.json)
+retains 31 actual LIVE cases after the question-continuity correction. Two are
+public HsTIM journeys; 29 are labelled synthetic controls. Every observed actual
+view/access/parent, original input/native/source/cell, finite compact request/page,
+text and HTML is preserved. Human-only and machine-only histories are distinct;
+ready structural questions are executed only where explicitly requested. A direct
+Card-field scan checks retained occurrence grain without calling the projection.
+All 4,344 members pass SDK-free byte/reference/locator accounting. The immutable
+capsule is an original observational reference, not an admitted saved format or
+scientific/human acceptance.
+
+All 38 complete original-integrity, 49 LIVE and 59 fixture/delivery/licensing/
+registry/package cases pass: 146 distinct selected cases. The same 38 original
+cases pass outside checkout with four byte-identical inputs and placement/import
+proofs. Both installed routes copy/select the complete new module and capsule.
+The earlier 1,680-case LIVE and subsequent 1,685-case correction receipts retain
+their exact source epochs. Next freeze separate native/source/selection/
+presentation predicates and replay original actual navigation without current
+Cards, LIVE helpers, science or clients. Preserve older saved meanings and these
+original bytes. Original saving stays unavailable until that reader qualifies.

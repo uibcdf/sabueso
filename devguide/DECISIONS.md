@@ -1,5 +1,24 @@
 # Sabueso — Decision Log
 
+## Preserve clean SDK234 sequence-change observations before saved reading (2026-11-09)
+
+A failed SDK233 calibration exposed real loss of inherited source/blocked-question
+request context; fix and qualify that producer before complete original capture.
+The [SDK234 original](evidence/sequence_change_live_original_20261109.json) now
+retains 31 complete public/synthetic cases, actual view/access/parent identities,
+source/cell/native observations and finite compact requests. Human-only and
+machine-only histories remain separate. Direct retained Card field occurrences
+provide the original input oracle independently of projection materialization.
+
+Freeze the verified original bytes. SDK-free checks interpret packaging references
+only at declared protocol edges; source-owned reference/version/format lookalikes
+remain literal. Correct erroneous instrument expectations without rewriting the
+original. Original saving stays unavailable until separately versioned independent
+reading qualifies these exact observations with current Cards/science/LIVE helpers
+and clients forbidden. Technical byte/graph fidelity does not establish scientific
+truth, researcher acceptance, source authenticity or release readiness. Owner:
+#148/#112; review owned retained resources at independent receiving/B6 closeout.
+
 ## Preserve the complete SDK230 variant/isoform original before saved reading (2026-11-08)
 
 The clean LIVE producer is captured before any independent variant saved reader.

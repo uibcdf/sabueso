@@ -5,6 +5,38 @@ Current working-state checkpoint: **2026-11-09**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Genuine sequence-change original — local checkpoint PASS
+
+The clean SDK234 producer now has an immutable 31-case original before independent
+sequence-change saved reading: two public HsTIM journeys and 29 labelled synthetic
+controls. It preserves all 2,952 actual views, 283 actual access instances, original
+cells/source/back/question context, nine explicitly executed structural sidecars
+and 483 finite agent requests / 513 pages. Human-only and machine-only histories
+remain distinct. All 4,344 members, 148,237 declared references and 29,605 exact
+locations pass SDK-free byte/input/graph checks, with zero detached values or
+network/source acquisitions. Public HsTIM contains eight natural variants;
+positive mutagenesis is synthetic.
+
+All **146 distinct selected offline cases pass**: 38 complete original-integrity,
+49 LIVE and 59 fixture/licensing/delivery/registry/package cases. All **38 copied
+original cases pass** outside checkout with four byte-identical inputs and five
+controller/worker placement/import proofs. Copies add no distinct coverage.
+The [original receipt](evidence/sequence_change_live_original_20261109.json)
+owns exact source epochs, earlier instrument errors and resource/rights limits.
+The original is 6,593,645 compressed bytes and never regenerated to fit a verifier.
+Both installed routes now copy/select the complete module and capsule; actual
+installed/hosted qualification remains open.
+
+Next implement separately versioned frozen native/source/selection/presentation
+reading and exact original human/agent/actual-origin replay with current Cards,
+LIVE projection, scientific readers and clients forbidden. Original panel saving
+remains unavailable until this qualifies. B6 comparison/typed associations and B7
+scientific/uncoached researcher/agent/workload/consumer acceptance remain open;
+B8 and release are unresumed. CI is deferred under #148/#112. Exact final committed
+metadata/code/remote verification belongs to the local post-push handoff. Retain
+`b6-sequence-live-original-1/original1` and the tracked capsule through independent
+receiving and B6 closeout; remove only completed owned disposable scratch.
+
 ## Sequence-change source question continuity — local checkpoint PASS
 
 Clean SDK233 capture calibration found that a sequence-change question survived
@@ -20,8 +52,8 @@ and saved-format request behavior remains fixed. All 49 owning and 1,636 adjacen
 cases on one unchanged 1,255-path source map. All 49 copied owning cases also pass
 outside checkout with three byte-identical inputs and five controller/worker
 placement/import proofs. The [correction receipt](evidence/sequence_change_question_checkpoint_20261109.json)
-owns exact results and resource scopes. Fix the clean producer before complete
-original capture. The preceding LIVE receipt keeps its source epoch.
+owns exact results and resource scopes. The corrected clean SDK234 producer
+now precedes the complete immutable original above. The preceding LIVE receipt keeps its source epoch.
 Owner: #148/#112; local evidence is `b6-sequence-question-continuity-1` and
 `b6-sequence-live-original-1/sdk233-question-reproduction.json`. No independent
 sequence-change reader exists yet.

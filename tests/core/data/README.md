@@ -810,3 +810,45 @@ not an admitted saved file, arbitrary-query completeness, source authentication
 or scientific/human acceptance. The original receipt owns actual receiving
 results; an independent saved reader must be qualified separately over these
 exact bytes. Do not regenerate this capsule with a later implementation.
+
+## Genuine natural-variant/mutagenesis original (SDK234)
+
+`sequence_change_live_sdk234.tar.gz` retains clean producer
+`87537f5c70f51f540bb82044fdc080bd5c78b547` / `0.14.0+234.g87537f5`, captured
+on 2026-11-09 before independent sequence-change saved reading. Its 31 cases
+include two public HsTIM journeys and 29 labelled synthetic controls. The public
+fixture contains eight natural variants and no mutagenesis annotation; positive
+mutagenesis and all uncertainty controls are synthetic.
+
+All 4,344 members retain the actual observed source/native/cell/text/HTML values,
+1,677 named views, 2,952 actual view instances, 283 actual access instances and
+exact parent/focal/source destinations. The 483 executed compact requests retain
+513 complete pages and 397 frames, including two atomic deferrals. Nine structural
+sidecars belong to explicitly executed questions; unvisited questions remain
+unexecuted. Human-only and machine-only histories remain distinct. Equal normalized
+Card occurrences, multiple native source statements, input revisions, malformed
+typed values and source-owned reference/format/version lookalikes stay literal.
+
+SDK-free checks resolve 148,237 declared references and 29,605 exact locations,
+with no detached value members. The direct input oracle scans captured Card fields
+without rematerializing the projection. Shared byte storage never merges actual
+operation instances or scientific identity. `test_card_sequence_change_original_offline.py`
+checks the immutable capsule without importing Sabueso or a scientific reader.
+This finite original is not an admitted saved file, arbitrary-query completeness,
+source authentication or scientific/researcher acceptance. Preserve its exact bytes.
+
+Preparation maps the existing public UniProt P60174 JSON; no fixture-client or
+network/source acquisition occurs. Embedded `fixtures/NOTICE.md` retains original
+source/date/licence declarations, including UniProt CC BY 4.0 attribution.
+Authored capture code and labelled synthetic controls follow the embedded MIT
+LICENSE. No private/pilot material is included. All 1,262 producer paths are fixed.
+
+Manifest SHA-256: `d6cfb5e48a258d95b2393d25a93b36c8b037a38736141ee99b54ad11f0847b99`.
+Compressed: 6593645 bytes; SHA-256 `9720c900281d9fd2f97d82c9ee4f943ae78ca71cba102a193f29bd0cfabdfb02`.
+Decoded tar: 54845440 bytes; SHA-256 `0139902cd995efe2f6b77c5c74150b4ce8577cd30fb606c84417e17a62f0eba2`.
+
+The [original receipt](../../../devguide/evidence/sequence_change_live_original_20261109.json)
+owns actual local qualification and limits. An independent saved reader must be
+qualified separately over these exact bytes. Owner: #148/#112; review retained
+resources at independent receiving and B6 closeout. Never regenerate this original
+to fit a later verifier.

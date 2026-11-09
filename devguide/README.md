@@ -63,8 +63,11 @@ Independent @29/@30 reading and saving pass the
 checkout. The next [natural-variant/mutagenesis profile](pending_proposals/card_sequence_change_exploration.md)
 now implements LIVE shared annotation projection and original source/structural
 questions; its [1,680-case selected checkpoint](evidence/sequence_change_live_checkpoint_20261109.json)
-and all 44 copied owning cases pass. Original saving awaits
-a clean producer and independent reader. Remaining comparative/association and
+and all 44 copied owning cases retain their source epoch. The scoped question
+continuity fix passes 49 owning and 1,636 adjacent cases. Its clean SDK234
+[genuine original](evidence/sequence_change_live_original_20261109.json) now
+preserves 31 cases and all actual source/parent/agent graphs: 146 selected and
+38 copied original cases pass. Original saving awaits the independent reader. Remaining comparative/association and
 B7 acceptance scope stays open. CHECKPOINT owns actual current results.
 
 The [retained disease association profile](pending_proposals/card_disease_association_exploration.md)

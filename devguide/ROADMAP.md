@@ -143,7 +143,11 @@ selected cases, plus complete copied owning receiving outside checkout. The next
 [natural-variant/mutagenesis profile](pending_proposals/card_sequence_change_exploration.md)
 now shares retained annotation occurrences and substitutions between LIVE human
 and compact-agent access; all 44 owning and 1,636 adjacent cases pass, alongside
-complete copied owning receiving. Independent saving requires clean producer capture first. Continue that reader and the
+complete copied owning receiving at that source epoch. The scoped question fix
+passes 49 owning / 1,636 adjacent cases. The clean SDK234
+[genuine original](evidence/sequence_change_live_original_20261109.json) now
+preserves 31 complete cases, with 146 selected and 38 copied original cases passing.
+Continue independent saved reading over those immutable bytes and the
 remaining B6 comparison/association scope. Scientific
 and uncoached researcher/agent/workload/actual-consumer acceptance stay open; B8
 and release remain unresumed. Original formats, source assertions and scientific
