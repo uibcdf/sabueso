@@ -1,5 +1,15 @@
 # Sabueso — Risks and Open Questions
 
+B6 human state wording (#148): the genuine public HsTIM isoform view currently
+prints raw basis tokens such as `no_own_coding_bases` and
+`resolved_tissue_values`. This is an observed presentation detail; possible
+researcher confusion is a usability hypothesis pending B7 review. Consider clear
+human labels while retaining exact machine/native tokens and original saved
+meanings. Explain that own-base scope concerns retained isoform annotations and
+does not establish biological zero expression. Review alongside the
+[variant/isoform profile](pending_proposals/card_variant_tissue_exploration.md).
+
+
 Packaging metadata (#112/#35): the corrected wheel/sdist build succeeds with
 setuptools 84.2.1 but warns that the TOML-table `project.license` form is
 deprecated. Review a compatible SPDX metadata transition together with the

@@ -5,6 +5,57 @@ Current working-state checkpoint: **2026-11-08**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## B6 variant/isoform original — captured and independently verified
+
+The clean producer `c5b573b` / `0.14.0+230.gc5b573b` now has its
+[genuine LIVE original](evidence/variant_tissue_context_live_original_20261108.json),
+captured before any independent variant saved reader. Its 33 cases are two
+public HsTIM journeys and 31 labelled synthetic controls. They retain 8,368
+named API views, all 16,470 actual runtime view instances, 33 access instances,
+101 native requests and 1,415 finite agent requests / 1,461 complete pages.
+Original values, source support, input revisions, typed cutoff creation orders,
+actual parent/back identities, per-tissue unknowns and unavailable contexts stay
+explicit. Shared bytes never merge scientific entities or actual operation nodes.
+
+The capsule `tests/core/data/variant_tissue_context_live_sdk230.tar.gz` is
+47,581,375 bytes with 25,714 byte-verified members; exact encoded/decoded/member
+hashes and rights belong to the receipt and fixture README. SDK-free independent
+checks resolve 564,707 declared references and 86,379 exact locations, original
+cells/native frames, all finite request counts and both typed cache creation
+orders. Source-owned JSON remains literal. Actual scientific-cache bindings
+identify results; adapter-tagged literal metadata does not establish result
+identity. Six views retain an unavailable explorer and twelve agent frames retain
+atomic value/interpretation deferral. All 1,231 producer source paths remain fixed.
+No network or source acquisition occurs during observation or preparation.
+
+Capture uses one CPU for 194.30 s, peaking at 129,339,392 bytes RSS with zero swap.
+Final independent byte/graph verification uses 19.13 s and 492,892,160 bytes RSS.
+Packaging verifies every compressed member before deleting its owned raw tar;
+this uses 28.48 s and 70,275,072 bytes RSS. No original is regenerated to correct
+verification assumptions. Earlier instrument revisions retain their scope.
+
+All **140 selected offline cases pass**, including the complete 39-case original
+module, all 44 LIVE owning cases and fixture/licensing/delivery/registry controls.
+Four workers use 32.04 s / 34.24 s guarded, peaking at 1,696,067,584 bytes RSS,
+without warnings or swap. All **39 original cases also pass outside checkout**
+with four byte-identical inputs and exact source/copy correspondence. Controller
+and four workers verify placement and editable imports. This uses 29.88 s /
+32.29 s guarded and 1,397,387,264 bytes RSS, without warnings or swap. Receptor,
+controller/worker/call and before/after source maps agree. Repeated copied cases
+add no distinct coverage. Both installed workflows copy/select the complete
+new module and unchanged original capsule; actual installed/hosted receiving
+remains open. The preceding 1,215-case LIVE receipt retains its source epoch.
+
+Next implement separately versioned independent variant/native/source/selection/
+presentation reading over this immutable original, with current Cards/scientific
+readers/LIVE UI/clients forbidden. New panel saving stays unavailable until that
+receiving is qualified. Remaining B6 annotations/comparisons/typed associations
+and B7 acceptance keep their full scope; B2 deferred, #192 unresolved and
+B8/candidate/schema freezing/release unresumed. Exact-final-head CI/governance
+stays deferred under the intermediate `[skip ci]` route owned by #148/#112.
+No workflow was dispatched. Source authenticity and scientific truth are not
+established by byte fidelity; a source assertion remains a source assertion.
+
 ## B6 variant/isoform tissue context — selected local checkpoint PASS
 
 The first [B6 LIVE profile](pending_proposals/card_variant_tissue_exploration.md)
@@ -53,8 +104,9 @@ Both installed workflows copy/select the complete new owning module. Actual
 installed/hosted receiving and scientific/uncoached researcher/agent/workload/
 consumer acceptance remain open.
 
-Next capture a genuine clean LIVE producer before separately versioned
-independent original saved reading. Remaining natural-variant/mutagenesis rich
+At this LIVE checkpoint, clean original capture was next; the original above
+now preserves that source epoch. Continue independent saved reading over those
+bytes. Remaining natural-variant/mutagenesis rich
 annotations, supplied-Card comparisons and typed biological associations retain
 B6's full scope. B2 stays deferred; #192 unresolved; B7 open; B8/candidate/schema
 freezing/release remain unresumed. Exact-final-head CI/governance stays deferred

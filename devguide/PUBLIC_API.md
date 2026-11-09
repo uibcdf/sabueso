@@ -913,7 +913,7 @@ Full native values/explanations and source/input/quality links retain original
 genomic, transcript/CDS and per-tissue uncertainty. See the
 [profile](pending_proposals/card_variant_tissue_exploration.md) for exact scope.
 These routes are LIVE-only. New panel/detail/source saving is explicitly
-unavailable pending a genuine clean original and independent saved reader;
+unavailable pending independent saved reading over the preserved SDK230 original;
 unrelated literal saving and Card export remain available. Existing saved menus
 and interpretations retain their original meaning. This is development source,
 not a new published release or scientific/human acceptance.

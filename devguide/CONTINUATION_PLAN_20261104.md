@@ -455,8 +455,12 @@ owns current local qualification and limits. B6 now has its first
 [LIVE variant/isoform tissue-context slice](pending_proposals/card_variant_tissue_exploration.md),
 sharing scoped native results with positive/uncertain human/agent/source controls.
 Its [LIVE receipt](evidence/variant_tissue_context_live_checkpoint_20261108.json)
-owns selected qualification. Next preserve a genuine clean producer original
-before separately versioned independent saved reading. Natural-variant/mutagenesis
+owns selected qualification. Its clean SDK230
+[genuine original](evidence/variant_tissue_context_live_original_20261108.json)
+now preserves 33 complete observed cases, exact actual origins and finite agent
+requests; byte/graph and 140 selected/39 copied receiving cases pass. Next
+implement separately versioned independent saved reading over those immutable
+bytes with current engines forbidden. Natural-variant/mutagenesis
 rich annotations, supplied-Card comparisons and typed biological associations
 retain the full remaining B6 scope. The 10,050-case receipt does not qualify this changed source.
 Both installed routes copy/select the complete owning modules and required

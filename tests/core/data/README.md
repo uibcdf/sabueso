@@ -773,3 +773,40 @@ packaging size is not the logical cost of saving or reading that session.
   `65a6108769ba1f178a8c13be0096689ba783ade038bb90382895450c93ad38f0`.
 - Decoded bytes: 20,525,099; SHA-256
   `2aed16cd0884049cca506e7831cf4897d7a149f92dd812959c6c1c9e92a0c7f0`.
+
+## Genuine variant/isoform tissue-context original (SDK230)
+
+`variant_tissue_context_live_sdk230.tar.gz` preserves the clean LIVE producer
+`c5b573b15f61619ff0a3f52ba3c3275807fcd8ba` / `0.14.0+230.gc5b573b`, captured
+before any independent variant saved reader. Its 33 cases are two public HsTIM
+journeys and 31 labelled synthetic controls: genomic scope, transcript/CDS gaps,
+source membership, conflicts, duplicate occurrences, opaque values, typed cutoff
+creation orders, deferral, explicit input revisions and machine-first execution.
+Every observed API/native/source/back result is retained, including 8,368 named
+views, 16,470 actual view instances, 33 actual access instances and 101 native
+requests. The 1,415 executed agent requests retain 1,461 complete pages and 1,232
+frames, including 12 atomic deferrals. Six views explicitly expose no explorer
+for unavailable source context. SDK-free checks resolve 564,707 declared
+references and 86,379 exact locations, with no detached value members.
+
+The encoded capsule is **47,581,375 bytes**, SHA-256
+`27fe90cb9ea17dcb4ce4672c2f485b90cd6fd6477cf85d1d1b1e2b248f950708`.
+The decoded tar is **425,492,480 bytes**, SHA-256
+`1dab591cce87444ce2d99a25a0b22b9920cad1755f28bd188bbcd84cd0330bac`.
+Its **25,714 members** include the manifest, SHA-256
+`cdd19ea46e6fd12c1be65e907ee053a133813c3dc6cd8608800c60a74ff50406`.
+All member sizes/hashes, actual parent/access identities, original cells/native
+values, locators, finite agent pages and typed scientific-cache bindings are
+checked by `test_card_variant_original_offline.py` without current scientific
+readers. References are followed only at declared protocol edges. Adapter-tagged
+literal metadata and source-owned JSON remain literal; shared bytes never merge
+scientific identity or actual operation origins.
+
+Public rights and dates remain in internal `fixtures/NOTICE.md`, internal
+`NOTICE.md` and `temp_data/NOTICE.md`; authored code/synthetic controls retain MIT
+LICENSE. No source/network acquisition occurs during observation, and all 1,231
+producer source paths remain fixed. This is an immutable observational reference,
+not an admitted saved file, arbitrary-query completeness, source authentication
+or scientific/human acceptance. The original receipt owns actual receiving
+results; an independent saved reader must be qualified separately over these
+exact bytes. Do not regenerate this capsule with a later implementation.

@@ -1,5 +1,22 @@
 # Sabueso — Decision Log
 
+## Preserve the complete SDK230 variant/isoform original before saved reading (2026-11-08)
+
+The clean LIVE producer is captured before any independent variant saved reader.
+Its [original receipt](evidence/variant_tissue_context_live_original_20261108.json)
+records immutable public/synthetic inputs, all actually observed API/runtime
+instances, typed request/cache creation order and original source/back contexts.
+Preserve these bytes; verification corrections do not regenerate an original.
+Byte sharing retains separate scientific and actual operation identities.
+
+Declared protocol edges identify packaging references. Captured scientific-cache
+bindings identify results; adapter-looking metadata and opaque source dictionaries
+remain literal. Independent stdlib checks verify all member/reference/location/
+native-frame relationships without importing current science. This is technical
+fidelity, not source authentication, scientific truth, uncoached acceptance or
+an admitted saved format. Next implement versioned independent reading; new
+variant panel saving remains unavailable. Owners: #148/#102/#138/#112.
+
 ## B6 starts with scoped native variant/isoform tissue context (2026-11-08)
 
 The first B6 rich slice uses existing `pext_at_variant@2` and

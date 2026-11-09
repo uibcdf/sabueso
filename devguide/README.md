@@ -53,9 +53,11 @@ now shares existing scoped native results between human and typed agent access.
 It preserves original genomic/transcript/CDS scope, per-tissue unknowns, source
 membership and exact navigation. All 44 owning cases pass; the
 [LIVE receipt](evidence/variant_tissue_context_live_checkpoint_20261108.json)
-owns broader selected/copy qualification and limits. Preserve a genuine clean
-producer original before independent saved reading; new panel saving is explicitly
-unavailable. Remaining variants/comparative/association and B7 acceptance scope
+owns broader selected/copy qualification and limits. Its clean SDK230
+[genuine original](evidence/variant_tissue_context_live_original_20261108.json)
+now preserves all 33 observed cases, original source/actual-origin graphs and
+1,415 finite agent requests. Its 140 selected and 39 copied original cases pass.
+Independent saved reading is next; new panel saving remains unavailable. Remaining variants/comparative/association and B7 acceptance scope
 stays open. CHECKPOINT owns actual current results.
 
 The [retained disease association profile](pending_proposals/card_disease_association_exploration.md)

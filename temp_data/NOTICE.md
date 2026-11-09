@@ -634,3 +634,21 @@ provider request or private input is included. The original file preserves the
 actual seven-row no-op membership and missing display operation; it must not be
 regenerated under the corrected filter. Its gzip SHA256 is
 `d806c3802dbfab562f1951baa62fef3aa9f9c9f5bb58ad27d97d165401d54225`.
+
+## Variant and isoform tissue-context LIVE original
+
+`tests/core/data/variant_tissue_context_live_sdk230.tar.gz` was captured on 2026-11-08 (exact UTC time in its manifest) from clean Sabueso SDK230,
+commit `c5b573b15f61619ff0a3f52ba3c3275807fcd8ba`, before independent
+variant saved reading. It contains two public HsTIM journeys over the existing
+UniProt, gnomAD and GTEx fixtures above, plus 31 explicitly labelled synthetic
+controls. Original responses, assertions, provenance and source terms remain
+retained. UniProt keeps CC BY 4.0 attribution; gnomAD core and pext retain their
+recorded CC0 1.0 scope. The Genotype-Tissue Expression (GTEx) Project, GTEx Portal
+(https://gtexportal.org/), is acknowledged for original tissue metadata. Source
+annotations are not relicensed as MIT; authored code and synthetic controls use
+the repository LICENSE. The internal `fixtures/NOTICE.md` preserves the earlier
+source notice snapshot; internal `NOTICE.md` states this capsule's exact scope.
+No private or pilot data is included. This is a finite genuine LIVE original,
+not an admitted saved exploration, scientific validation or source authentication.
+Encoded/member bytes, actual instances and finite requests belong to the fixture
+README and original receipt. Preserve these bytes for independent receiving.

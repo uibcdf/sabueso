@@ -134,8 +134,12 @@ owns its selected local qualification and separate acceptance limits.
 B6 now has its first [LIVE variant/isoform tissue-context slice](pending_proposals/card_variant_tissue_exploration.md),
 with shared scoped native results and explicit genomic/transcript/CDS/source gaps.
 Its [LIVE receipt](evidence/variant_tissue_context_live_checkpoint_20261108.json)
-owns selected qualification. Capture a clean producer original before independent
-saved reading, and retain all remaining B6 comparison/annotation/association scope. Scientific
+owns selected qualification. Its clean SDK230
+[genuine original](evidence/variant_tissue_context_live_original_20261108.json)
+now preserves complete observed values/source/actual-origin graphs and finite
+agent requests, with byte/graph and 140 selected/39 copied receiving cases passing.
+Next implement independent saved reading over those immutable bytes, retaining
+all remaining B6 comparison/annotation/association scope. Scientific
 and uncoached researcher/agent/workload/actual-consumer acceptance stay open; B8
 and release remain unresumed. Original formats, source assertions and scientific
 defaults stay fixed under their named interpretations.
