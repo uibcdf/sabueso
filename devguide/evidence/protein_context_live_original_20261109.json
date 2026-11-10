@@ -1,0 +1,543 @@
+{
+  "state": "ORIGINAL_CAPTURE_AND_SELECTED_CHECKS_PASS",
+  "owner": "uibcdf/sabueso#148/#112",
+  "date": "2026-11-09",
+  "producer": {
+    "head": "738a42203288af2ffac9e09e576e618553db8189",
+    "version": "0.14.0+239.g738a422"
+  },
+  "capsule": "tests/core/data/protein_context_live_sdk239.tar.gz",
+  "original": {
+    "state": "PASS",
+    "producer_head": "738a42203288af2ffac9e09e576e618553db8189",
+    "producer_version": "0.14.0+239.g738a422",
+    "manifest_sha256": "9f9378b1a1e36143676b6548ec1c6b231744a3b932cedb750d367ca589c93369",
+    "members": 8565,
+    "every_member_byte_verified": true,
+    "encoded": {
+      "bytes": 12422238,
+      "sha256": "b3eb6e4df386a2e3e08f63be8793c3c8bd4667a3dc62f1f9a4ec7668d7282c19"
+    },
+    "decoded": {
+      "bytes": 94382080,
+      "sha256": "9948675d11573d8ac66f2d6b6da020dfb47a4a07b33c7aa41de0b064b9b7363c"
+    },
+    "source_paths": 1288,
+    "source_stable": true,
+    "cases": {
+      "ambiguous-revisions": {
+        "named_views": 155,
+        "actual_instances": 288,
+        "access_instances": 49,
+        "machine_queries": 16,
+        "machine_pages": 24,
+        "synthetic_control": "Synthetic matching identifier with two distinct captures stays ambiguous.",
+        "case_sha256": "0cd19244e5dfbeb26086da43ecb7f1887a8e1cb3418f9a49ff2967829d88bb6b"
+      },
+      "bare": {
+        "named_views": 11,
+        "actual_instances": 16,
+        "access_instances": 1,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic unstated relationships; no biological absence claim.",
+        "case_sha256": "e7247e09f109bdbe8dc6c77595df9b4d65e8dc2071576446f9ec7e1816f6fac3"
+      },
+      "deferred-values": {
+        "named_views": 43,
+        "actual_instances": 72,
+        "access_instances": 9,
+        "machine_queries": 17,
+        "machine_pages": 17,
+        "synthetic_control": "Synthetic long raw record exercises atomic bounded delivery.",
+        "case_sha256": "a69775344edd20996393c39a9eac7dbae89716da87e8e8785ed6aae1a4509c16"
+      },
+      "escaped-source": {
+        "named_views": 43,
+        "actual_instances": 72,
+        "access_instances": 9,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic source markup remains literal and escaped in presentation.",
+        "case_sha256": "3306fcbe6fb8d2a8240af26d2967cc15943ac12a7882e64dfc03de9c803a1904"
+      },
+      "human-only": {
+        "named_views": 65,
+        "actual_instances": 113,
+        "access_instances": 17,
+        "machine_queries": 0,
+        "machine_pages": 0,
+        "synthetic_control": "Synthetic human-only observed history, no compact request or scientific question.",
+        "case_sha256": "88a614d85efad9d45f465c5fef3051324d2d6896960115c8590d87e23296639a"
+      },
+      "literal-key-collision": {
+        "named_views": 47,
+        "actual_instances": 80,
+        "access_instances": 11,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic literal relationship id cannot replace an input occurrence.",
+        "case_sha256": "69bba5ca74e0509d171022b80af55a0b8726f266cc6b97932582291d547969d1"
+      },
+      "machine-only": {
+        "named_views": 0,
+        "actual_instances": 0,
+        "access_instances": 1,
+        "machine_queries": 17,
+        "machine_pages": 26,
+        "synthetic_control": "Synthetic compact-only observed history, no human views.",
+        "case_sha256": "3e71b93e6ff2ec8775b24bed8a9fa1f26da402bd0e5c0a90a5c0e6391be665c3"
+      },
+      "malformed-channel": {
+        "named_views": 43,
+        "actual_instances": 72,
+        "access_instances": 9,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic original channel type remains literal; typed display retains uncertainty.",
+        "case_sha256": "9eac5738641437a4fe9334f2d05449f98e3ededda55f94d16aa228c2a5ecfa6c"
+      },
+      "malformed-source-id": {
+        "named_views": 39,
+        "actual_instances": 66,
+        "access_instances": 7,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic non-string source id is literal uncertainty, never a replacement binding.",
+        "case_sha256": "344daf5bb0c65a115df566077c12932292cee2bf4d84a5b559fcce0cf33369a6"
+      },
+      "null-channel": {
+        "named_views": 43,
+        "actual_instances": 72,
+        "access_instances": 9,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic original channel type remains literal; typed display retains uncertainty.",
+        "case_sha256": "ff1f5b536f59a8d145d21f7633459bf18c973ca928e22360ec97592cbfc77c6b"
+      },
+      "opaque-source": {
+        "named_views": 139,
+        "actual_instances": 240,
+        "access_instances": 33,
+        "machine_queries": 16,
+        "machine_pages": 24,
+        "synthetic_control": "Synthetic source-owned reference/version/format lookalikes remain literal.",
+        "case_sha256": "c2ad2962d21c0d7674a314ee701c10a40ba7751ff9b0f541ae8b1bdbd2b8c0ae"
+      },
+      "public-human-first": {
+        "named_views": 107,
+        "actual_instances": 184,
+        "access_instances": 25,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": null,
+        "case_sha256": "019965932ef64d636e8701e33a7a823357901bd5f8581d23f30334a5633d54d6"
+      },
+      "public-machine-first": {
+        "named_views": 107,
+        "actual_instances": 184,
+        "access_instances": 25,
+        "machine_queries": 17,
+        "machine_pages": 17,
+        "synthetic_control": null,
+        "case_sha256": "b7d0115ba8143db93031ba5065cb3c2e9a79236ff3469c2bead8274fb2b1033d"
+      },
+      "public-oma": {
+        "named_views": 235,
+        "actual_instances": 408,
+        "access_instances": 57,
+        "machine_queries": 16,
+        "machine_pages": 32,
+        "synthetic_control": null,
+        "case_sha256": "26dbe6ac61f7eb05b99f2b7ac64ef5d4318a1a29108300665c8f4ed79c7b46a1"
+      },
+      "public-sequence": {
+        "named_views": 53,
+        "actual_instances": 91,
+        "access_instances": 13,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": null,
+        "case_sha256": "fb6b693e2e6eabcb656c025ba958e70e1500660d94af6e8cc792cf2e123676bc"
+      },
+      "public-uniref": {
+        "named_views": 239,
+        "actual_instances": 420,
+        "access_instances": 59,
+        "machine_queries": 16,
+        "machine_pages": 31,
+        "synthetic_control": null,
+        "case_sha256": "a8b677111d529fd01919899044c5be6dbebeb3a7a13498fe19e2e7f99877f493"
+      },
+      "repeated-inputs": {
+        "named_views": 107,
+        "actual_instances": 196,
+        "access_instances": 25,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic repeated exact supplied occurrences remain separate rows.",
+        "case_sha256": "5e61c04bae7ef619e15aaabeb655ed5f79337361178afffd3f1de13bc74bc87a"
+      },
+      "separate-channels": {
+        "named_views": 75,
+        "actual_instances": 128,
+        "access_instances": 17,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic separate channels remain independent relationship records.",
+        "case_sha256": "dfa2f93c7b4ed04c783da693176bf2e912b322f5694849da18750634340fdbb9"
+      },
+      "sequence-different": {
+        "named_views": 53,
+        "actual_instances": 91,
+        "access_instances": 13,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic sequence-different; only equal integer positions, no alignment or correspondence.",
+        "case_sha256": "38fd2bfa19852a835ba5c70ae4ab659a6415bb6710b81d43603ed9f06287042a"
+      },
+      "sequence-identical": {
+        "named_views": 53,
+        "actual_instances": 91,
+        "access_instances": 13,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic sequence-identical; only equal integer positions, no alignment or correspondence.",
+        "case_sha256": "f65174bf0e945922afc637897597176c9cc7f4ccb39c785e8c0c2ec0d9defdd5"
+      },
+      "sequence-lengths": {
+        "named_views": 53,
+        "actual_instances": 91,
+        "access_instances": 13,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic sequence-lengths; only equal integer positions, no alignment or correspondence.",
+        "case_sha256": "e8d25bc4c771e588c2110c7a99c9f88855b12f83c444b35e5ada289387485b3e"
+      },
+      "sequence-support-malformed": {
+        "named_views": 53,
+        "actual_instances": 91,
+        "access_instances": 13,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic comparator malformed input; no supported equality invented.",
+        "case_sha256": "107e07d2895c2d7aec734c2089ef5f88acb3cfa82398de27b6b1d4447b6db9ad"
+      },
+      "sequence-support-missing": {
+        "named_views": 49,
+        "actual_instances": 85,
+        "access_instances": 11,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic comparator missing input; no supported equality invented.",
+        "case_sha256": "5a59cec17d0d7b5c54968e673c6d6ef876e7337e0d7822871320e0fb5d36f015"
+      },
+      "sequence-support-value": {
+        "named_views": 53,
+        "actual_instances": 91,
+        "access_instances": 13,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic comparator value input; no supported equality invented.",
+        "case_sha256": "f69f2b4ccd88504222257f8c9824d622510df0db5e966ee52425ed0b062f3f2d"
+      },
+      "sequence-unstated": {
+        "named_views": 47,
+        "actual_instances": 81,
+        "access_instances": 11,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic sequence-unstated; only equal integer positions, no alignment or correspondence.",
+        "case_sha256": "83b2fb559d9a23be8a56205a20d22f3051d3c3dba0640b67421200e65fdd08f7"
+      },
+      "supplied-only": {
+        "named_views": 43,
+        "actual_instances": 76,
+        "access_instances": 9,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic explicit supplied input is not a source relationship.",
+        "case_sha256": "5c4e45cac40c32668f96158a97ac865514a06a446c2c873cd56f68f69d074542"
+      },
+      "support-conflict": {
+        "named_views": 43,
+        "actual_instances": 72,
+        "access_instances": 9,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic conflict recorded binding; preserve the original, never repair or invent source claims.",
+        "case_sha256": "dcadf72c6a4f72462463b3313d19d922ab86a2abe2639bf348ac2f361b7f2823"
+      },
+      "support-derived": {
+        "named_views": 37,
+        "actual_instances": 62,
+        "access_instances": 7,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic derived recorded binding; preserve the original, never repair or invent source claims.",
+        "case_sha256": "089391562dadde7c0a2a29de2e4a1e4e96577749989bff30509e01dcb3887435"
+      },
+      "support-field": {
+        "named_views": 43,
+        "actual_instances": 72,
+        "access_instances": 9,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic field recorded binding; preserve the original, never repair or invent source claims.",
+        "case_sha256": "7e77dcc00f01aea2c5601fa6864f19cbc0f4626c3a234889395337d981bb3d18"
+      },
+      "support-foreign": {
+        "named_views": 43,
+        "actual_instances": 72,
+        "access_instances": 9,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic foreign recorded binding; preserve the original, never repair or invent source claims.",
+        "case_sha256": "8c0555bf22d2a6258867cc8583ae3c9307ec554a3637c05443144149d17a1c70"
+      },
+      "support-missing": {
+        "named_views": 39,
+        "actual_instances": 66,
+        "access_instances": 7,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic missing recorded binding; preserve the original, never repair or invent source claims.",
+        "case_sha256": "3047f4c66449095e537cdced34f6c155dad67d86d4845c181ce9210961e13968"
+      },
+      "support-subject": {
+        "named_views": 43,
+        "actual_instances": 72,
+        "access_instances": 9,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic subject recorded binding; preserve the original, never repair or invent source claims.",
+        "case_sha256": "17ae8b415440b7794e64cf099252d3feb0560c47abb25b17cddbf3a92009a539"
+      },
+      "synthetic-associations": {
+        "named_views": 155,
+        "actual_instances": 272,
+        "access_instances": 41,
+        "machine_queries": 16,
+        "machine_pages": 24,
+        "synthetic_control": "Labelled synthetic four biological predicates with original source/channel/direction.",
+        "case_sha256": "1fd2248f107ef71346d30524753534df14f87223075b69e19999ec7864a1a113"
+      },
+      "synthetic-comparative": {
+        "named_views": 115,
+        "actual_instances": 204,
+        "access_instances": 29,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Labelled synthetic orthology/cluster relationships and separately supplied comparison input.",
+        "case_sha256": "de3556097ab9df182fad192a6fa850713e944b487dfe8208d4a554984b91746b"
+      },
+      "typed-conflicts": {
+        "named_views": 43,
+        "actual_instances": 72,
+        "access_instances": 9,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic integer zero and boolean false alternatives retained in original conflict metadata.",
+        "case_sha256": "945e6f7845617e1c95528728e5622347ef9bc835373dbbb98d848a3533ff7fd9"
+      }
+    },
+    "attempts_during_observation": {
+      "network": 0,
+      "source_acquisitions": 0
+    },
+    "input_preparation": "Existing public UniProt/IntAct, UniRef and OMA JSON mappings and labelled synthetic controls; no fixture-client calls, zero source/network attempts during preparation and observation.",
+    "not_a_saved_file": true,
+    "independent_reader_not_yet_implemented": true
+  },
+  "independent_graph": {
+    "state": "PASS",
+    "scope": "SDK-free complete member/declared-reference/actual-parent/access/direct-input/compact-frame accounting. No scientific recomputation or saved-reader admission.",
+    "members": 8565,
+    "member_bytes": 87978605,
+    "source_paths": 1288,
+    "declared_references": 341668,
+    "unreferenced_value_members": 0,
+    "totals": {
+      "named_views": 2516,
+      "actual_view_instances": 4363,
+      "actual_access_instances": 601,
+      "projection_results": 35,
+      "original_relationships": 56,
+      "additional_projections": 53,
+      "machine_queries": 547,
+      "machine_pages": 611,
+      "machine_frames": 580,
+      "deferred_frames": 10,
+      "unavailable_explorer_views": 82,
+      "exact_locations": 68852
+    }
+  },
+  "selected_source": {
+    "state": "PASS",
+    "counts": {
+      "collected": 106,
+      "deselected": 0,
+      "errors": 0,
+      "executed": 106,
+      "failed": 0,
+      "not_executed": 0,
+      "passed": 106,
+      "reruns": 0,
+      "skipped": 0,
+      "subtests": {},
+      "warnings": 0,
+      "xfailed": 0,
+      "xpassed": 0
+    },
+    "source_paths": 1283,
+    "source_stable": true,
+    "calls_and_workers_agree": true,
+    "events_sha256": "e2b8387ac13f7a7860196808105919f8a24370c72503678dada9dcd1327f33df",
+    "resources": {
+      "owner": "uibcdf/sabueso#148/#112",
+      "review_trigger": "Variant/isoform LIVE and adjacent controls; 4 workers,10GiBtotalRSS,native1,host16GiBfloor,4GiBscratch",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0,1,2,3",
+        "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "tests/core/test_card_protein_context_original_offline.py",
+        "tests/core/test_card_protein_context_offline.py",
+        "tests/core/test_relationships_offline.py",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "--receptor-events=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-context-original-owning-1/events.jsonl",
+        "-p",
+        "checkpoint_scope",
+        "--basetemp=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-context-original-owning-1/pytest-scratch",
+        "-o",
+        "tmp_path_retention_policy=failed",
+        "-W",
+        "error:unclosed database:ResourceWarning",
+        "-W",
+        "error::pytest.PytestUnraisableExceptionWarning",
+        "-n",
+        "4",
+        "--dist=load"
+      ],
+      "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 13.21,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 457859072,
+      "minimum_host_available_bytes": 58417901568,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 352331510,
+      "limits": {
+        "owned_rss_bytes": 10737418240,
+        "host_available_bytes": 17179869184,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 4,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 4294967296
+      },
+      "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-context-original-owning-1/cargo-target"
+    }
+  },
+  "copied_original": {
+    "state": "PASS",
+    "counts": {
+      "collected": 46,
+      "deselected": 0,
+      "errors": 0,
+      "executed": 46,
+      "failed": 0,
+      "not_executed": 0,
+      "passed": 46,
+      "reruns": 0,
+      "skipped": 0,
+      "subtests": {},
+      "warnings": 0,
+      "xfailed": 0,
+      "xpassed": 0
+    },
+    "source_paths": 1283,
+    "source_stable": true,
+    "calls_and_workers_agree": true,
+    "events_sha256": "95c267a62ecd68068917bafd2e14005c4790f04cca15c2fea057280fe8beae8c",
+    "resources": {
+      "owner": "uibcdf/sabueso#148/#112",
+      "review_trigger": "Variant/isoform LIVE and adjacent controls; 4 workers,10GiBtotalRSS,native1,host16GiBfloor,4GiBscratch",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0,1,2,3",
+        "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "test_card_protein_context_original_offline.py",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "--receptor-events=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-context-original-copied-1/events.jsonl",
+        "-p",
+        "checkpoint_scope",
+        "--basetemp=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-context-original-copied-1/pytest-scratch",
+        "-o",
+        "tmp_path_retention_policy=failed",
+        "-W",
+        "error:unclosed database:ResourceWarning",
+        "-W",
+        "error::pytest.PytestUnraisableExceptionWarning",
+        "-n",
+        "4",
+        "--dist=load"
+      ],
+      "cwd": "/tmp/sabueso-protein-original-client-byr0kwi3",
+      "exit_code": 0,
+      "elapsed_s": 14.96,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 462344192,
+      "minimum_host_available_bytes": 59253723136,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 352184029,
+      "limits": {
+        "owned_rss_bytes": 10737418240,
+        "host_available_bytes": 17179869184,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 4,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 4294967296
+      },
+      "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-context-original-copied-1/cargo-target"
+    }
+  },
+  "copied_public_inputs": 2,
+  "placement_proofs": 5,
+  "attempts": {
+    "network": 0,
+    "source_acquisitions": 0
+  },
+  "before_independent_reader": true,
+  "boundary": "Immutable genuine LIVE original, not an admitted saved file. Original values/source/request/access graphs retained; independent result/view/transport reading is next. No scientific/researcher/installed/hosted acceptance or release authorization.",
+  "ci": {
+    "state": "DEFERRED",
+    "marker": "[skip ci]",
+    "owner": "#148/#112",
+    "deferred_head": "Commit containing this original checkpoint; exact final SHA in local handoff",
+    "recovery": "Authorized block/candidate exact-SHA CI/governance through gh-run-receptor; skipped/zero runs are not passing evidence."
+  },
+  "retention": {
+    "owner": "#148/#112",
+    "review_trigger": "Independent receiving and B6 closeout; preserve accepted capsule and source/graph proofs. Remove only exact superseded calibration and owned test scratch after last use."
+  },
+  "earlier_calibration": "Initial instrument expected the old two-step annotation links, canonical object ordering and per-cell interpretation pointers. Corrected to actual one-step protein links, separate row grains, native list order and frame-level interpretation; no producer or accepted original modification."
+}

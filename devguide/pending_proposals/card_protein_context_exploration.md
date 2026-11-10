@@ -89,8 +89,9 @@ the complete module and exact public inputs outside checkout; verify controller,
 worker and editable-import placement. Both installed routes select the whole module.
 CHECKPOINT owns actual passing counts, source epochs and acceptance limits.
 
-Next capture all actual human/agent/source/question/access operations on a clean
-qualified producer before implementing independent saved reading. Include public
+The clean SDK239 [genuine original](../evidence/protein_context_live_original_20261109.json)
+now preserves 35 actual human/agent/source/question/access cases. Independent saved
+reading must qualify those immutable bytes. Its matrix includes public
 UniProt/IntAct, UniRef and OMA journeys and public TcTIM/strain sequence comparison,
 plus labelled synthetic missing/conflicting/foreign support, recorded derivations,
 repeated inputs, ambiguous revisions, malformed values, equal/different lengths,

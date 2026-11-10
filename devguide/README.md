@@ -52,8 +52,9 @@ The next B6 [protein comparative/association profile](pending_proposals/card_pro
 now implements LIVE retained orthology/cluster and disease/pathway/interaction
 panels, shared with typed compact agents. Explicit supplied sequence comparison
 reuses the original equal-position native rule without establishing correspondence
-or identity. Independent original saving awaits a clean producer capture and frozen
-reader. CHECKPOINT owns current qualification; general knowledge/residue-map
+or identity. Its clean SDK239
+[genuine original](evidence/protein_context_live_original_20261109.json) now precedes
+independent frozen reading; public original saving remains unavailable. CHECKPOINT owns current qualification; general knowledge/residue-map
 comparisons and B7 acceptance remain open.
 
 The first B6 [variant/isoform tissue-context profile](pending_proposals/card_variant_tissue_exploration.md)

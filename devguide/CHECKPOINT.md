@@ -5,6 +5,26 @@ Current working-state checkpoint: **2026-11-09**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Clean SDK239 protein-context original — local checkpoint PASS
+
+The [genuine original](evidence/protein_context_live_original_20261109.json)
+captures all 35 complete public/synthetic cases before independent saved reading:
+4,363 actual views, 601 distinct access instances, 547 finite compact requests
+and 611 pages. UniProt/IntAct, UniRef and OMA source records, explicit sequence
+inputs, unavailable bases, typed conflicts and ambiguous revisions stay literal.
+Human-only and machine-only histories remain separate. SDK-free checks verify every
+member, declared reference, actual parent and direct-input binding. Preparation and
+observation make zero network or acquisition attempts; the producer stays unchanged.
+
+All 106 selected original/LIVE/relationship cases and all 46 copied original cases
+outside checkout pass. The original has 8,565 verified members; the immutable gzip
+capsule is retained before implementing the independent reader. These checks do
+not qualify saved-file admission, installed artifacts, hosted CI or B7 acceptance.
+Next implement frozen input/result/selection and original human/source navigation
+reading, then resume general knowledge/residue-map comparisons. B2 review remains
+deferred and B8/release unresumed. The qualifier fix is now reported in
+[Sabueso #158](https://github.com/uibcdf/sabueso/issues/158#issuecomment-6755724900).
+
 ## Typed relationship conflicts and visible sequence outcomes — local checkpoint PASS
 
 RelationshipStore now preserves recursively typed raw qualifier alternatives,
@@ -24,9 +44,9 @@ owns this epoch. The preceding 1,901-case LIVE receipt retains its earlier sourc
 scope; it does not automatically qualify the changed merge or table. Real-source
 prevalence and released-version impact of the qualifier defect remain unverified.
 
-The owning concrete issue report is retained locally for authorized maintainer
-publication. Next capture this clean qualified producer before independent saved
-reading; general knowledge/residue-map comparison and B7 acceptance stay open.
+The owning concrete issue report was published in Sabueso #158; the clean
+producer original above now precedes independent saved reading. General
+knowledge/residue-map comparison and B7 acceptance stay open.
 B2 review remains deferred, B8/release unresumed and hosted CI deferred under
 #148/#112. Final committed metadata/code/remote and cleanup proofs belong to the
 local post-push handoff.

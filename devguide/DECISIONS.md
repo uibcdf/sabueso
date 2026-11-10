@@ -1,5 +1,15 @@
 # Sabueso — Decision Log
 
+## Preserve the genuine SDK239 protein-context original before saved reading (2026-11-09)
+
+Capture the clean qualified producer before implementing independent predicates.
+Retain the complete 35-case public/synthetic original, its source and byte hashes,
+actual view/access aliases and finite executed compact requests. Interpret packaging
+references only at declared edges; source-owned lookalikes remain literal. Preserve
+relationship, supplied-input and derived sequence-pair row grains separately, without
+conflating their payload locations. The original is not a saved-file format or proof
+of scientific/researcher acceptance. Owner #148/#112; retain through B6 closeout.
+
 ## Retain typed raw qualifier alternatives during relationship merging (2026-11-09)
 
 Python equality equates integer, boolean and float alternatives such as `0`,

@@ -1298,3 +1298,10 @@ Copy the complete module and its public inputs outside checkout; verify byte has
 controller/worker placement and editable imports. Both installed workflows copy and
 select the whole module once. A clean qualified LIVE original must precede any
 independent reader; previous saved predicates and original capsules remain fixed.
+
+The immutable `protein_context_live_sdk239.tar.gz` original is checked by complete
+`test_card_protein_context_original_offline.py`, including SDK-free member/graph
+integrity, all 35 actual cases, source-owned reference lookalikes, 547 finite
+requests, distinct access instances and explicit sequence uncertainty. Copy the
+complete module and capsule outside checkout and verify input bytes/placement.
+Never regenerate this producer original to accommodate a later reader.
