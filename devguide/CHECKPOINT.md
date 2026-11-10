@@ -1,9 +1,32 @@
 # Sabueso — Checkpoint
 
-Current working-state checkpoint: **2026-11-09**. Start with
+Current working-state checkpoint: **2026-11-10**. Start with
 [ONBOARDING](ONBOARDING.md) for project context and the
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
+
+## Cold-import test guard isolation — follow-up local checkpoint PASS
+
+The [guard follow-up](evidence/knowledge_comparison_guard_checkpoint_20261110.json)
+closes a test-order failure exposed by the exact committed-code check. A temporary
+historical-reader guard could be copied into a late-imported LIVE sequence adapter
+and survive restoration. Consumer adapters and their provider aliases are now
+preimported through the presentation boundary, explicitly guarded and restored. A fresh-child regression proves both
+that guarded LIVE entry points remain forbidden and that actual sequence, variant
+and native @2 knowledge questions work afterwards. Production code, all immutable
+originals and frozen resources are unchanged.
+
+All **2,371 distinct selected source cases pass** in 71 complete modules: the
+370-case owning follow-up and the unchanged 2,001-case adjacent base. The only
+source-map delta is this owning historical test module, outside the adjacent
+selection and its test imports. Fresh collection equals the exact executed union.
+Prior 83 copied cases and diagnostic 892-module/six-SOURCE content proofs retain
+unchanged inputs and production bytes; they add no new copied or installed claims.
+The earlier failed committed gate and cold-instrument calibration remain explicit.
+Final committed metadata/code/remote checks belong to the local handoff. Continue
+with a clean producer original, then independent comparison saved reading. B6/B7
+acceptance, expanded historical scope, exact-candidate hosted/installed gates and
+B2 review remain open or deferred; B8/release stays unresumed.
 
 ## Typed knowledge and supplied-map LIVE comparison — local checkpoint PASS
 

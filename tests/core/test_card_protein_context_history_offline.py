@@ -3,7 +3,10 @@
 import importlib
 import json
 import socket
+import subprocess
+import sys
 from copy import deepcopy
+from pathlib import Path
 from types import SimpleNamespace
 
 import pytest
@@ -39,6 +42,21 @@ def block_current(guard):
             "display_sort",
         ),
         "card_annotation_regions_v1": ("entries", "support"),
+        "card_sequence_change_access": ("materialize", "make_derivation"),
+        "card_variant_access": ("materialize", "assertion_value"),
+        "card_knowledge_comparison_access": ("materialize", "make_derivation"),
+        "card_knowledge_diff_v2": ("compare", "make_derivation"),
+        "card_disease_association_access": (
+            "materialize",
+            "make_derivation",
+            "assertion_value",
+        ),
+        "card_molecule_activity_access": ("materialize", "make_derivation"),
+        "card_sequence_change_exploration": ("view", "materialize"),
+        "card_variant_exploration": ("view", "materialize"),
+        "card_knowledge_comparison_exploration": ("view", "materialize"),
+        "card_disease_association_exploration": ("view", "materialize"),
+        "card_molecule_activity_exploration": ("view", "materialize"),
         "sequences": ("sequence_differences_view",),
         "relationship_store": ("make_derivation",),
         "source_assertion_store": ("assertion_value",),
@@ -552,3 +570,53 @@ def test_live_context_remains_usable_after_guarded_original_reading(original):
         card.explore().answer("protein_associations").items()[0].open().native_payload
         == expected
     )
+
+
+def test_history_guards_restore_cold_live_imports(tmp_path):
+    script = r"""
+import importlib
+import sys
+from pytest import MonkeyPatch
+
+sys.path.insert(0, sys.argv[1])
+from test_card_protein_context_history_offline import block_current
+from test_card_protein_context_offline import protein
+
+assert "sabueso.core.card_sequence_change_access" not in sys.modules
+assert "sabueso.core.card_knowledge_comparison_access" not in sys.modules
+with MonkeyPatch.context() as guard:
+    block_current(guard)
+    for name in ("card_sequence_change_access", "card_variant_access",
+                 "card_knowledge_comparison_access"):
+        module = importlib.import_module("sabueso.core." + name)
+        try:
+            module.materialize(None)
+        except AssertionError as error:
+            assert "Independent protein-context reader" in str(error)
+        else:
+            raise AssertionError("LIVE adapter guard was weakened")
+    for name in ("card_sequence_change_exploration", "card_variant_exploration",
+                 "card_knowledge_comparison_exploration"):
+        module = importlib.import_module("sabueso.core." + name)
+        try:
+            module.view(None, None)
+        except AssertionError as error:
+            assert "Independent protein-context reader" in str(error)
+        else:
+            raise AssertionError("LIVE presentation guard was weakened")
+left, right = protein(), protein("P52270")
+explorer = left.explore(related_cards=[right])
+assert explorer.answer("sequence_changes").native_payload is not None
+assert explorer.answer("variant_tissue_context").native_payload is not None
+knowledge = explorer.answer("knowledge_differences", options={
+    "other_ref": explorer.context["inputs"][1]})
+assert knowledge.native_payload["rule"]["rule"] == "card_knowledge_diff@2"
+"""
+    result = subprocess.run(
+        [sys.executable, "-B", "-c", script, str(Path(__file__).parent), str(tmp_path)],
+        cwd=tmp_path,
+        capture_output=True,
+        text=True,
+        timeout=90,
+    )
+    assert result.returncode == 0, result.stdout + result.stderr

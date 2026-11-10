@@ -1375,7 +1375,10 @@ mode and its observed descendants must refuse before writing; existing modes and
 fresh unrelated literal saving retain their capability. Original frozen catalogs
 keep their own registered questions. Preimport LIVE modules before temporary
 guards and restore actual targeted functions, so receiving guards cannot poison
-later LIVE annotation helpers. Keep prior red instrument epochs explicit.
+later LIVE annotation helpers or retain rejected provider aliases in cold imports.
+The fresh-child historical guard regression checks sequence, variant and knowledge
+entry points both during guarding and after restoration. Keep prior red instrument
+epochs explicit.
 
 Copy both complete new modules with exact public inputs outside checkout and
 verify controller/worker/import placement. Both installed workflows select/copy
