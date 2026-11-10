@@ -350,6 +350,7 @@ class CardAccess:
                             "variant_tissue_context_exploration@1",
                             "sequence_change_exploration@1",
                             "protein_context_exploration@1",
+                            "protein_knowledge_comparison_exploration@1",
                         )
                         else rebound._entries
                     )
@@ -784,6 +785,24 @@ class CardAccess:
 
                 for topic in ("comparative_context", "associations"):
                     data[topic] = protein_descriptor(topic)
+                    if self.mode == "live" and topic == "comparative_context":
+                        from .card_knowledge_comparison_dispatch import (
+                            ADAPTER as comparison_adapter,
+                        )
+                        from .card_knowledge_comparison_dispatch import SAVE_REASON
+
+                        data[topic]["comparison_modes"] = {
+                            "relationships": {"save": True},
+                            "sequence": {"save": True},
+                            "knowledge": {
+                                "adapter": comparison_adapter,
+                                "native_rule": "card_knowledge_diff@2",
+                                "save": False,
+                                "save_reason": SAVE_REASON,
+                                "other_ref": "exact supplied protein capture",
+                                "residue_map": "optional one-to-one positive integer pairs; no alignment performed",
+                            },
+                        }
                     data[topic].update(
                         availability="live"
                         if self.mode == "live"
@@ -1608,6 +1627,7 @@ class CardAccess:
                 "variant_tissue_context_exploration@1",
                 "sequence_change_exploration@1",
                 "protein_context_exploration@1",
+                "protein_knowledge_comparison_exploration@1",
             ):
                 return selection._scientific.frame(self, selection, entry)
             from .card_structure_page import complete_frame
@@ -1652,6 +1672,10 @@ class CardAccess:
         return frame
 
     def _defer(self, item):
+        if item.get("adapter") == "protein_knowledge_comparison_exploration@1":
+            from .card_protein_context_access import defer_frame
+
+            return defer_frame(item)
         if item.get("adapter") == "protein_context_exploration@1":
             from .card_protein_context_history_v1 import defer_frame
 

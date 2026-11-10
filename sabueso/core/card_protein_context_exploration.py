@@ -29,13 +29,26 @@ def inherited_request(origin):
         request
         if isinstance(request, dict)
         and request.get("question")
-        in ("protein_associations", "related_proteins", "sequence_differences")
+        in (
+            "protein_associations",
+            "related_proteins",
+            "sequence_differences",
+            "knowledge_differences",
+        )
         and request.get("topic") in ("associations", "comparative_context")
         else None
     )
 
 
 def view(explorer, topic, origin=None, options=None):
+    if (
+        topic == "comparative_context"
+        and isinstance(options, dict)
+        and options.get("mode") == "knowledge"
+    ):
+        from .card_knowledge_comparison_exploration import view as comparison
+
+        return comparison(explorer, origin, options)
     result = materialize(explorer.access, topic, options)
     captured = explorer._inspect(
         result.location(), origin, title=result.wire["schema"]["label"]

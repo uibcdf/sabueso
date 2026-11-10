@@ -1242,14 +1242,20 @@ class Card:
         other: "Card",
         residue_map: Dict[int, int] | None = None,
         skip_digestion: bool = False,
+        *,
+        comparison_rule: str = "card_knowledge_diff@1",
     ) -> Dict[str, Any]:
         """What this card and ``other`` both state, what only one states, and what they
         state differently (#59). Positional features are compared only through
         ``residue_map`` ({position here: position in other}, e.g. from a MolSysMT
-        alignment). See ``sabueso.core.card_diff``."""
+        alignment). The explicit ``card_knowledge_diff@2`` rule retains typed values,
+        ambiguous item identities and exact supplied map pairs. The default remains
+        ``card_knowledge_diff@1``. See ``sabueso.core.card_diff``."""
         from .card_diff import compare_knowledge
 
-        return compare_knowledge(self, other, residue_map)
+        return compare_knowledge(
+            self, other, residue_map, comparison_rule=comparison_rule
+        )
 
     def get(self, field_path: str) -> Any:
         cur = self.sections

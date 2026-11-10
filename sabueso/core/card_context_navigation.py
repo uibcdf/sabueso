@@ -264,6 +264,7 @@ def _link_view(
     )
     if rule in (
         "protein_context_links@1",
+        "knowledge_comparison_links@1",
         "assembly_generation_links@1",
         "assembly_generation_links@2",
         "assembly_generation_links@3",
@@ -297,9 +298,9 @@ def _link_view(
 
 def related(item):
     if item._view._record_panel == "protein_context":
-        from .card_protein_context_exploration import links
+        from .card_protein_context_dispatch import presentation
 
-        return links(item)
+        return presentation(item._view).links(item)
     if item._view._record_panel == "variants":
         from .card_variant_exploration import links
 

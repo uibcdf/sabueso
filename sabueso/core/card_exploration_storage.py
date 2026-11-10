@@ -60,6 +60,10 @@ def operation_key(item):
 
 
 def admitted_selection(selection):
+    from .card_knowledge_comparison_dispatch import pending
+
+    if pending(selection._access):
+        return False
     if selection._scientific is not None:
         return selection._scientific.wire.get("context", {}).get("adapter") in (
             "structure_exploration@1",
@@ -539,6 +543,10 @@ def _objects_for(access, records):
 
 
 def _prepare(root):
+    from .card_knowledge_comparison_dispatch import SAVE_REASON, pending
+
+    if pending(root._explorer.access):
+        raise StorageError(SAVE_REASON)
     _require(
         admitted_view(root),
         "Saving derived structures/coverage or their originating trail requires a historical verifier not yet implemented. Save a supported literal/field view or inspect capabilities.",

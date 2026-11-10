@@ -57,7 +57,12 @@ or identity. Its clean SDK239
 independent logical @33 / shared @34 reading and public saving. The
 [saved checkpoint](evidence/protein_context_saved_checkpoint_20261109.json) owns
 original human/source/agent preservation, exact actual access instances and local
-qualification. General knowledge/residue-map comparisons and B7 acceptance remain open.
+qualification. The next [knowledge/map comparison profile](pending_proposals/card_knowledge_comparison_exploration.md)
+now shares explicit `card_knowledge_diff@2` typed field, relationship and state
+results between LIVE human and compact-agent routes. Exact caller maps retain
+uncertain and ambiguous scope. New comparison saving awaits a clean original and
+independent reader; earlier rules/defaults and saved meanings remain fixed.
+CHECKPOINT owns qualification; full B6 and B7 acceptance remain open.
 
 The first B6 [variant/isoform tissue-context profile](pending_proposals/card_variant_tissue_exploration.md)
 now shares existing scoped native results between human and typed agent access.

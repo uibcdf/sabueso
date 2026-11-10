@@ -1,5 +1,24 @@
 # Sabueso — Decision Log
 
+## Make typed knowledge comparison explicit before shared exploration (2026-11-09)
+
+The published/default `card_knowledge_diff@1` keeps its original output. The new
+explicit `card_knowledge_diff@2` compares typed stored representations, preserves
+all item-identity candidates and state rows, and records exact supplied map pairs
+with both input pins. Free text and unavailable/ambiguous correspondence remain
+explicit. A map requires one-to-one positive positions and source canonical axes;
+Sabueso neither aligns nor silently overwrites other location metadata. Source
+references, alternatives, conflicts, relationship direction and units remain intact.
+B2 default/scientific review stays deferred; no published version is reinterpreted.
+
+The new LIVE `comparative_context` mode `knowledge` and `knowledge_differences`
+question share this native result through `protein_knowledge_projection@1` over
+inert captures. Keep field, predicate, state and supplied-map row grains separate.
+Rendered labels never establish row identity. Original source/open/back/question
+routes and finite typed agent access preserve their scope. Refuse new-context
+saving until a clean qualified producer original precedes a frozen reader. Owner
+#148/#59/#112; broader B6/B7 and installed/hosted qualification remain open.
+
 ## Preserve independent protein context and actual access scope (2026-11-09)
 
 Logical @33 / shared @34 reads the unchanged clean SDK239 original. Freeze the

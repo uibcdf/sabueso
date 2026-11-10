@@ -609,7 +609,9 @@ not promise card enrichment, live availability or public-package delivery.
   - `acquisition()` (how the card's statements entered: database, curation,
     extraction, #92);
   - `entities()` and `entity(ref)`;
-  - `compare(other, fields=None)` and `compare_knowledge(other, residue_map=None)`.
+  - `compare(other, fields=None)` and `compare_knowledge(other, residue_map=None, *, comparison_rule="card_knowledge_diff@1")`.
+    The keyword-only `comparison_rule` and explicit @2 are development additions;
+    the published/default @1 keeps its existing meaning.
 - **Tables.** `table(view, **options)` gives flat rows; `sabueso.to_dataframe(rows,
   units=None)` needs pandas.
 - **Literal extraction (since 0.13.0).**

@@ -721,6 +721,10 @@ def _parts(view):
                 "protein_associations": "Which disease, pathway and interaction statements are retained?",
                 "sequence_differences": "How do the explicitly supplied captured sequences differ at equal positions?",
             }[request["question"]]
+        if request["question"] == "knowledge_differences":
+            question_label = (
+                "What do these supplied protein captures state alike or differently?"
+            )
         if request["question"] == "sequence_changes":
             question_label = (
                 "Which natural variants and experimental sequence changes are retained?"

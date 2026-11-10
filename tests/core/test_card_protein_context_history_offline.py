@@ -38,6 +38,7 @@ def block_current(guard):
             "display_filter",
             "display_sort",
         ),
+        "card_annotation_regions_v1": ("entries", "support"),
         "sequences": ("sequence_differences_view",),
         "relationship_store": ("make_derivation",),
         "source_assertion_store": ("assertion_value",),

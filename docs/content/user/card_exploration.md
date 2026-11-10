@@ -331,6 +331,51 @@ and unexecuted selections remain `not_saved`. Human-only and agent-only historie
 keep their original scope. Existing captured display text remains literal, including
 an old producer notice; inspect the current `capabilities["save"]` for availability.
 
+## Compare supplied protein knowledge (development)
+
+Ask what two explicitly supplied captures state alike or differently:
+
+```python
+explorer = protein_card.explore(related_cards=[other_protein_card])
+comparison = explorer.answer(
+    "knowledge_differences",
+    options={"other_ref": explorer.context["inputs"][1]},
+)
+comparison.table()
+changes = comparison.filter("state", equals="differs")
+```
+
+The table preserves both original values, including their types and units. It
+compares stored representations; it does not infer physical equivalence or read
+free-text meaning. Multiple annotation candidates, conflicts and unplaced values
+remain explicit. Open a row for the complete native entry, explain it for source
+bindings, or follow its related links to either original capture and its sources.
+
+Without a residue map, positional annotations remain `not_compared`. Supply an
+explicit one-to-one `residue_map` in the question options as a mapping or portable
+`[[self_position, other_position], ...]` pairs. The exact supplied pairs are retained;
+foreign sequence axes, uncertain boundaries and incompletely mapped annotations
+are not silently transferred. Alignment and scientific map validation remain
+outside Sabueso.
+
+Compact agents select the same cached result:
+
+```python
+selection = explorer.access.select(
+    "comparative_context",
+    options={"mode": "knowledge", "other_ref": explorer.context["inputs"][1]},
+    fields=["label", "kind", "state", "support_state"],
+    where={"state": "differs"},
+)
+page = selection.page(max_bytes=16000)
+```
+
+This mode explicitly uses `card_knowledge_diff@2`; the default native
+`Card.compare_knowledge` still uses @1. New comparison sessions cannot yet be saved:
+a clean producer original and independent reader must qualify that capability.
+Observing the new question menu belongs to the same saving boundary. Captured Card
+export and unrelated literal sessions remain available.
+
 ## Explore individual annotations in structures
 
 ```python

@@ -113,7 +113,7 @@ def _compare_items(
     return result
 
 
-def compare_knowledge(
+def _compare_knowledge_v1(
     card: Any, other: Any, residue_map: Dict[int, int] | None = None
 ) -> Dict[str, Any]:
     """See the module docstring."""
@@ -190,3 +190,24 @@ def compare_knowledge(
             },
         ),
     }
+
+
+def compare_knowledge(
+    card: Any,
+    other: Any,
+    residue_map: Dict[int, int] | None = None,
+    *,
+    comparison_rule: str = DIFF_RULE,
+) -> Dict[str, Any]:
+    """Compare under an explicit rule; the published default keeps its meaning."""
+    from .errors import ArgumentError
+
+    if isinstance(comparison_rule, str) and comparison_rule == DIFF_RULE:
+        return _compare_knowledge_v1(card, other, residue_map)
+    if isinstance(comparison_rule, str) and comparison_rule == "card_knowledge_diff@2":
+        from .card_knowledge_diff_v2 import compare
+
+        return compare(card, other, residue_map)
+    raise ArgumentError(
+        'comparison_rule requires "card_knowledge_diff@1" or "card_knowledge_diff@2".'
+    )

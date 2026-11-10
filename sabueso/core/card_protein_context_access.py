@@ -81,6 +81,10 @@ def options_for_context(topic, options=None):
     if topic not in PREDICATES or options is not None and not isinstance(options, dict):
         raise ArgumentError("Use a declared protein context topic and options mapping.")
     options = {} if options is None else options
+    if topic == "comparative_context" and options.get("mode") == "knowledge":
+        from .card_knowledge_comparison_access import options_for_comparison
+
+        return options_for_comparison(options)
     if topic == "associations":
         if options:
             raise ArgumentError("Protein associations take no scientific options.")
@@ -315,6 +319,10 @@ class _SequenceInput:
 
 def materialize(access, topic, options=None):
     options = options_for_context(topic, options)
+    if options.get("mode") == "knowledge":
+        from .card_knowledge_comparison_access import materialize as comparison
+
+        return comparison(access, options)
     if access.mode != "live" or access.profile != "protein":
         raise ArgumentError(
             "Protein context materialization requires a LIVE captured protein."

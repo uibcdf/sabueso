@@ -2,6 +2,15 @@
 
 
 def presentation(view):
+    result = view._selection._scientific
+    if (
+        result is not None
+        and result.wire.get("context", {}).get("adapter")
+        == "protein_knowledge_comparison_exploration@1"
+    ):
+        from . import card_knowledge_comparison_exploration as comparison
+
+        return comparison
     if (
         view._explorer.mode == "saved"
         or view._explorer._session.get("format") == "sabueso.card_exploration@33"

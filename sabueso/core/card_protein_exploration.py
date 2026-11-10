@@ -89,6 +89,12 @@ QUESTIONS = {
     },
 }
 QUESTIONS.update(_SOURCE_QUESTIONS)
+QUESTIONS["knowledge_differences"] = {
+    "label": "What do these supplied protein captures state alike or differently?",
+    "topic": "comparative_context",
+    "required_options": ["other_ref"],
+    "scope": "Typed original field/relationship/state records; positional features require an explicit caller map. No alignment or identity merge.",
+}
 
 
 def node(explorer, path):

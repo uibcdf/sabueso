@@ -164,7 +164,10 @@ agent/source access and independent logical @33 / shared @34 reading are impleme
 The clean SDK239 original remains immutable; public saving preserves observed
 questions, finite agent requests, typed values and distinct actual accesses. The
 [saved checkpoint](evidence/protein_context_saved_checkpoint_20261109.json) owns
-local qualification. Continue general knowledge/residue-map comparison; scientific/
+local qualification. The next [knowledge/map comparison profile](pending_proposals/card_knowledge_comparison_exploration.md)
+now implements shared LIVE typed comparison under explicit native @2, without
+changing the default @1. Qualify this producer, capture its genuine original and
+implement independent receiving before enabling comparison saving. Scientific/
 researcher/workload acceptance remains open. CHECKPOINT owns actual current checks.
 
 Continue the rich profiles through the

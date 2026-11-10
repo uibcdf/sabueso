@@ -5,6 +5,50 @@ Current working-state checkpoint: **2026-11-09**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Typed knowledge and supplied-map LIVE comparison — local checkpoint PASS
+
+The new [knowledge comparison profile](pending_proposals/card_knowledge_comparison_exploration.md)
+shares explicit `card_knowledge_diff@2` results between `knowledge_differences` and
+compact-agent `comparative_context` mode `knowledge`. Exact supplied captures,
+typed values and units, complete duplicate candidate groups, original field/source
+support, full relationship records and repeated state rows remain inspectable.
+Caller maps retain exact pairs and both input pins; unavailable axes, uncertain
+boundaries and incomplete correspondence stay explicit. No acquisition, alignment,
+Card reconstruction, identity merge or SourceAssertion creation is performed.
+The published/default native @1 and all older saved meanings stay fixed; B2
+scientific/default review remains deferred.
+
+All **2,370 distinct selected offline cases pass** in 71 disjoint complete modules
+on one unchanged 1,311-path map: 369 owning/native/argument/original/history/saved
+cases and 2,001 adjacent cases. Independent collection equals the exact executed
+union. All **83 copied new owning cases pass outside checkout** with five
+byte-identical public inputs and five controller/worker placement/import proofs.
+The diagnostic wheel/sdist contain all 892 implementation modules and six frozen
+SOURCE resources byte-identically. These are source/copy/content checks; installed/
+hosted/scientific/human/workload/consumer qualification remains separate.
+
+Saving the new comparison or an observed new question catalog refuses before file
+creation until a clean producer original and independent reader qualify it.
+Existing-mode sessions without that new catalog/result and unrelated literal
+sessions retain their capability; captured Card export stays available. An
+uncited alternative never becomes selected field support. Source routes, bounded
+escaped previews, typed selection and atomic compact deferral pass their controls.
+A temporary receiving guard is now preimported/restored correctly so it cannot
+poison later LIVE annotation helpers; this was test instrumentation, not a
+provider defect. Earlier red/stopped epochs remain excluded from qualification.
+
+The [LIVE receipt](evidence/knowledge_comparison_live_checkpoint_20261109.json)
+owns exact source/resource accounting and limits. Synthetic default-@1 value and
+candidate-order loss also appears in the 0.14.0 source lineage; real-source
+prevalence and clean installed-release impact remain unverified. Its concrete
+owning-issue report is retained for review. The preceding saved-profile report is
+[published in #148](https://github.com/uibcdf/sabueso/issues/148#issuecomment-6759096647).
+Next capture this clean qualified producer before frozen receiving. B6/B7 acceptance,
+the expanded 524-case historical cohort, and exact-candidate installed/hosted gates
+remain open. B8/release stays unresumed. CI is deferred under #148/#112 with
+`[skip ci]`; final committed metadata/code/remote and cleanup proofs belong to the
+local post-push handoff.
+
 ## Independent protein-context saved reading — local checkpoint PASS
 
 Logical `sabueso.card_exploration@33` / shared @34 now reads the unchanged clean

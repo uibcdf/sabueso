@@ -814,3 +814,13 @@ reverse), also when digestion is skipped. Defaults are `pext_at_variant@2` and
 `isoform_exon_usage@3`; explicit prior versions retain historical behavior. All four
 methods validate finite dimensionless `threshold` in [0, 1]; booleans, nonnumbers,
 nonfinite values and oversized integers fail through SMonitor/ArgumentError.
+
+
+### Explicit knowledge comparison rule
+
+`Card.compare_knowledge` accepts keyword-only `comparison_rule` through its named
+ArgDigest digester. Only `card_knowledge_diff@1` (unchanged default) and explicit
+`card_knowledge_diff@2` are accepted; unknown versions are not coerced. The new
+native rule independently validates one-to-one positive integer map pairs and
+bounds where sequence lengths are stated, including when digestion is skipped.
+The older rule and the shared `residue_map` digester retain their existing scope.

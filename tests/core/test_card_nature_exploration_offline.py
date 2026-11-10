@@ -401,6 +401,7 @@ def test_coverage_source_states_and_unknown_counts_are_not_reclassified(
                 "related_proteins",
                 "protein_associations",
                 "sequence_differences",
+                "knowledge_differences",
             },
         ),
         (

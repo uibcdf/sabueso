@@ -1349,3 +1349,36 @@ SDK205/208 menu inputs. Compare actual retained original topic/question menus in
 receivers; a newly generated menu can carry newer availability or route scope.
 Keep the immutable producer observations fixed and record targeted versus expanded
 historical qualification separately.
+
+
+## Explicit knowledge and supplied-map comparison
+
+Run complete `test_card_knowledge_diff_v2_offline.py` and
+`test_card_knowledge_comparison_offline.py`, the prior native comparison and public
+argument contracts, and affected current catalog/navigation/source/storage gates.
+Include the unchanged SDK239 original/history/saved modules and prior sequence/
+variant receiving. Use the shared-resource limits above; a small representative
+run precedes increased concurrency. Never edit source before its gate closes.
+
+Require typed scalar/nested distinctions, unchanged @1 defaults, full duplicate
+candidate groups, original item indices, exact map pairs, canonical source axes,
+partial/unplaced/foreign/uncertain scope and declared sequence bounds. Keep large
+interval handling bounded by actual map coverage. Preserve quantities, source
+alternatives/conflicts, full relationship context and every knowledge-state row.
+Compare public TcTIM/HsTIM native output exactly. Block Card reconstruction and
+acquisition; human and agent requests must share one cached native execution.
+
+Check source/open/back/question continuity, equal-label state occurrences, typed
+filters/membership/order, finite bounded pages and atomic deferral. Missing or
+invalid comparator/map requests must fail before native work. Saving the new
+mode and its observed descendants must refuse before writing; existing modes and
+fresh unrelated literal saving retain their capability. Original frozen catalogs
+keep their own registered questions. Preimport LIVE modules before temporary
+guards and restore actual targeted functions, so receiving guards cannot poison
+later LIVE annotation helpers. Keep prior red instrument epochs explicit.
+
+Copy both complete new modules with exact public inputs outside checkout and
+verify controller/worker/import placement. Both installed workflows select/copy
+those modules. Package inspection requires all implementation modules and the six
+unchanged frozen SOURCE resources. Technical qualification is separate from a
+clean original, independent saved reading, hosted/installed and B7 acceptance.

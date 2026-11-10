@@ -2429,6 +2429,8 @@ class CardExplorer:
 
     def questions(self):
         """Delivered question routes, their scope and required explicit inputs."""
+        if self.mode == "live" and "knowledge_differences" in self._questions:
+            self._session["pending_knowledge_catalog"] = True
         if self._questions:
             result = self._metadata(self._questions, "Scientific questions")
             order = tuple(self._questions)
@@ -2728,6 +2730,10 @@ class CardExplorer:
             raise ArgumentError(
                 "related_proteins requires relationship context; ask sequence_differences explicitly for sequence comparison."
             )
+        if question == "knowledge_differences":
+            if "mode" in options and options["mode"] != "knowledge":
+                raise ArgumentError("knowledge_differences requires mode knowledge.")
+            options = {**options, "mode": "knowledge"}
         if question == "sequence_differences":
             if "mode" in options and options["mode"] != "sequence":
                 raise ArgumentError("sequence_differences requires mode sequence.")
@@ -2755,6 +2761,7 @@ class CardExplorer:
                     "related_proteins",
                     "protein_associations",
                     "sequence_differences",
+                    "knowledge_differences",
                 )
                 else {}
             )
