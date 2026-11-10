@@ -484,9 +484,11 @@ The [protein comparative/association LIVE profile](pending_proposals/card_protei
 now exposes retained orthology/cluster and disease/pathway/interaction records,
 shared typed selection and exact source/input navigation. Explicit sequence
 comparison reuses the existing equal-position rule and requires a supplied capture.
-Qualify this producer, capture its genuine original and implement independent saved
-reading before claiming that capability. General knowledge/residue-map comparisons
-and B7 acceptance retain their scope; this increment does not resume B8.
+The clean SDK239 genuine original now has independent logical @33 / shared @34
+reading and public saving, preserving observed source/question routes and finite
+compact requests. The [saved checkpoint](evidence/protein_context_saved_checkpoint_20261109.json)
+owns local receiving scope and limits. Continue general knowledge/residue-map
+comparisons and B7 acceptance; this increment does not resume B8.
 
 ## Execution order
 

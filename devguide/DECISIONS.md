@@ -1,5 +1,25 @@
 # Sabueso — Decision Log
 
+## Preserve independent protein context and actual access scope (2026-11-09)
+
+Logical @33 / shared @34 reads the unchanged clean SDK239 original. Freeze the
+relationship, supplied-input and sequence-pair row grains separately, with exact
+original source/input/native/cell support and finite executed selection semantics.
+`protein_context_access_origins@1` preserves actual runtime instances and aliases;
+equal focal values never collapse source-follow boundaries. Unvisited science and
+unexecuted agent requests stay `not_saved`. Human-only and machine-only scope remains
+separate. Source assertions, Card schema and earlier readers stay fixed.
+
+Validate original intermediate sequence-question construction using its exact
+parent comparison link. Preserve the incoming protein question through observed
+bioactivity catalog crossings; the new-format predicate validates that anchor
+before applying unchanged older bioactivity meaning. Retained sequence/variant
+questions keep their frozen rules. The named original-action presentation rule
+preserves SDK239 display text independently of current save capability. Only named
+generated rule constructors interpret producer labels; source-owned lookalikes stay
+literal. Keep technical, installed/hosted and B7 acceptance distinct. Owner #148/#112;
+retain original and useful qualification evidence through B6 closeout.
+
 ## Preserve the genuine SDK239 protein-context original before saved reading (2026-11-09)
 
 Capture the clean qualified producer before implementing independent predicates.
@@ -21,7 +41,8 @@ This corrects metadata loss without changing the Card schema or frozen readers.
 The new protein-context table also exposes native sequence difference counts,
 equality and unavailable bases directly. Qualification remains scoped to its
 recorded source epoch; release impact and real-source prevalence are unverified.
-Owner: Sabueso #148/#112; the local concrete report awaits publication approval.
+Owner: Sabueso #148/#112; the approved concrete qualifier report is published in
+[Sabueso #158](https://github.com/uibcdf/sabueso/issues/158#issuecomment-6755724900).
 
 ## Project retained protein context before adding new correspondence (2026-11-09)
 

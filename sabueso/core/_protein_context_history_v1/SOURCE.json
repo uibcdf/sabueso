@@ -1,0 +1,19 @@
+{
+  "producer_head": "738a42203288af2ffac9e09e576e618553db8189",
+  "producer_version": "0.14.0+239.g738a422",
+  "capsule_sha256": "b3eb6e4df386a2e3e08f63be8793c3c8bd4667a3dc62f1f9a4ec7668d7282c19",
+  "manifest_sha256": "9f9378b1a1e36143676b6548ec1c6b231744a3b932cedb750d367ca589c93369",
+  "producer_sources": {
+    "card_protein_context_access.py": "eef7a196e8ed2d8d129dce28d6304fd1b0904765e64e813b38630ce0f66e72c0",
+    "card_protein_context_selection_v1.py": "b899084f08911a2319e679fceabe5d97decec9c2a3f5fefadb1dd34c928f1db3",
+    "card_protein_context_exploration.py": "d00ea81a72cdf92d865f02a7895f3dcd4d69a0fe24de971dd835303429cb4c47",
+    "sequences.py": "fb421c8012701a652d7e1f3935bfc35f4fcee4f47aa86905d98a4e0a7d45d311",
+    "card_context_navigation.py": "5f2f3585378ecf5387193f95eb1f7aaf25b7007b955a3885ca7287183977d1d5",
+    "card_exploration.py": "5dce518112be919b7b49f0af4b464f4a253c5a41fdf34a148b424d82a23118c3",
+    "card_bioactivity_presentation_v1.py": "c3b9513a0adc4d10a9a3e74c5c8cfdae3281a686bdf37dd317d315272d442d85",
+    "card_bioactivity_presentation_v2.py": "27c675d964f5b0ad71b4d6090b3b2fd2a5643515aca7adb79024f6c4805e93b0"
+  },
+  "scope": "Frozen clean SDK239 values/source-reference/native equal-position/selection/presentation meaning. Only generated rule constructors use original producer labels; source-owned metadata remains literal.",
+  "owner": "uibcdf/sabueso#148/#112",
+  "presentation": "protein_context_original_action_notice@1 preserves the recorded SDK239 session notice independently of current save capabilities; only the named generated projection producer label controls this history boundary."
+}

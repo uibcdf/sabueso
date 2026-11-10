@@ -1290,9 +1290,10 @@ Require an exact supplied comparator before native work. Check one cached native
 comparison shared by human and agent requests, unchanged equal-position scope,
 different lengths, unstated/malformed sequences, both source bindings, exact source/
 question/back continuity, literal source metadata, bounded escaped previews, typed
-membership/order and atomic compact deferral. New context saving must refuse before
-file creation, including its observed literal/source descendants; captured Card
-export and fresh unrelated literal saving remain available.
+membership/order and atomic compact deferral. The historical LIVE-only producer
+refused new context saving before file creation. The independently versioned reader
+now enables public saving, including observed source/literal descendants, without
+changing that original producer capsule.
 
 Copy the complete module and its public inputs outside checkout; verify byte hashes,
 controller/worker placement and editable imports. Both installed workflows copy and
@@ -1305,3 +1306,46 @@ integrity, all 35 actual cases, source-owned reference lookalikes, 547 finite
 requests, distinct access instances and explicit sequence uncertainty. Copy the
 complete module and capsule outside checkout and verify input bytes/placement.
 Never regenerate this producer original to accommodate a later reader.
+
+
+## Independent protein-context saved reading
+
+Run complete `test_card_protein_context_offline.py`,
+`test_card_protein_context_original_offline.py`,
+`test_card_protein_context_history_offline.py` and
+`test_card_saved_protein_context_offline.py`, plus complete relationship and
+applicable access, selection, source, navigation, storage, quantity and older
+receiving modules. Read each gate and close its unchanged source epoch before
+editing code. Collection must equal the exact disjoint executed union; copies and
+repeated final committed checks add no distinct coverage.
+
+Use all 35 immutable SDK239 originals. Block current Card reconstruction,
+protein-context/native/selection/presentation helpers, acquisition and clients;
+verify every actual human view, cell, source/open/back/question route, native
+result and finite compact request. Preserve 601 distinct access instances, actual
+aliases and separate human-only/machine-only scope. Fully reseal altered logical
+and shared files, recomputing outer hashes, to check semantic refusal rather than
+checksum failure. Include unchanged controls, none/gzip/zstd resaves, fresh
+outside-checkout children, nonempty retained bioactivity navigation and observed
+sequence/variant questions in the same new-format bundle.
+
+Copy the four complete modules, their unchanged original capsule, the older
+sequence support module and exact public fixture inputs outside checkout. Verify
+all controller/worker placements, byte hashes and editable imports. Both installed
+workflows copy/select each owning module once. Diagnostic wheel/sdist inspection
+requires all six frozen SOURCE resources and every implementation module unchanged;
+a dependency-inheriting diagnostic install is not clean installed-artifact or
+supported-OS qualification. Production byte budgets stay unchanged.
+
+Use measured low concurrency for older large saved-file receiving. At most eight
+workers/native1 share the 10 GiB RSS ceiling and 16 GiB host reserve; fresh receiver
+children count in that ceiling. Keep useful red/changed-source dispositions and
+original bytes, and remove only completed owned scratch. The saved receipt owns
+exact source, coverage and resource limits; hosted and B7 acceptance stay open.
+
+Historical writer facades must retain their original catalog vocabulary for every
+destination. Current LIVE clinical/variant/comparative routes are not original
+SDK205/208 menu inputs. Compare actual retained original topic/question menus in
+receivers; a newly generated menu can carry newer availability or route scope.
+Keep the immutable producer observations fixed and record targeted versus expanded
+historical qualification separately.

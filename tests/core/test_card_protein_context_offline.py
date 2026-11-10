@@ -8,7 +8,7 @@ import pytest
 
 from sabueso.core.aggregator import build_card_from_mapping
 from sabueso.core.card import Card
-from sabueso.core.errors import ArgumentError, StorageError
+from sabueso.core.errors import ArgumentError
 from sabueso.core.relationship_store import make_derivation, make_relationship
 from sabueso.core.snapshot import canonical_json
 from sabueso.core.source_assertion_store import make_source_assertion
@@ -376,29 +376,39 @@ def test_html_escaping_and_atomic_agent_deferral_keep_originals():
     assert "<script>" in view.items()[0].open().native_payload["object_ref"]
 
 
-def test_save_refusal_and_unrelated_literal_saving_are_explicit(tmp_path):
+def test_original_saving_and_unrelated_literal_export_keep_exact_values(tmp_path):
+    import sabueso
+
     card = protein()
     relationship(card, "interacts_with")
-    isolated = card.explore()
-    isolated.inspect("identifiers.uniprot").save(tmp_path / "literal.json")
+    card.explore().inspect("identifiers.uniprot").save(tmp_path / "literal.json")
     explorer = card.explore()
     view = explorer.view("associations")
-    assert not view.capabilities["save"]
-    assert not explorer.access.select("associations").capabilities["save"]
-    for root in (
-        view,
-        view.items()[0].open(),
-        view.items()[0].explain(),
-        view.items()[0].related(),
-        explorer.inspect("identifiers.uniprot"),
+    assert (
+        view.capabilities["save"]
+        and explorer.access.select("associations").capabilities["save"]
+    )
+    for index, root in enumerate(
+        (
+            view,
+            view.items()[0].open(),
+            view.items()[0].explain(),
+            view.items()[0].related(),
+            explorer.inspect("identifiers.uniprot"),
+        )
     ):
-        assert not root.capabilities["save"]
-        with pytest.raises(StorageError):
-            root.save(tmp_path / "unsupported.json")
-        assert not (tmp_path / "unsupported.json").exists()
+        path = tmp_path / f"original-{index}.json"
+        root.save(path)
+        received = sabueso.read_exploration(path)
+        assert canonical_json(received.native_payload) == canonical_json(
+            root.native_payload
+        )
+        assert received.request == root.request
     explorer.access.export_card(tmp_path / "card.json")
-    exported = json.loads((tmp_path / "card.json").read_text(encoding="utf-8"))
-    assert exported["relationship_store"] == card.to_dict()["relationship_store"]
+    assert (
+        json.loads((tmp_path / "card.json").read_text())["relationship_store"]
+        == card.to_dict()["relationship_store"]
+    )
 
 
 def test_public_cluster_relationships_remain_distinct_from_supplied_sequence_question():

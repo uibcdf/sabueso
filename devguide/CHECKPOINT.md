@@ -5,6 +5,48 @@ Current working-state checkpoint: **2026-11-09**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Independent protein-context saved reading — local checkpoint PASS
+
+Logical `sabueso.card_exploration@33` / shared @34 now reads the unchanged clean
+SDK239 original with private frozen input/result/selection/navigation/presentation
+rules. Public human, source and compact-agent saving is enabled under unchanged
+production byte budgets. All 35 actual originals preserve typed values, conflicts,
+original native outputs, cells, text/HTML, question/source/back context and finite
+executed requests. The new `protein_context_access_origins@1` manifest preserves
+all 601 actual access instances and their aliases without merging equal focal
+values. Human-only and machine-only scope stays distinct; unvisited science and
+unexecuted requests remain `not_saved`.
+
+All **2,285 distinct selected offline cases pass** across explicit base/follow-up
+source epochs: 68 complete modules provide 240 owning/relationship and
+2,043 adjacent cases; 2 selected historical regressions also pass. The
+only source delta is the historical writer test, outside the adjacent selection;
+production code stays unchanged. Each gate has a stable 1,304-path map. Independent discovery
+equals the exact executed union. All **224 copied owning cases pass outside checkout**
+with 14 byte-identical public/support inputs and nine controller/worker placement
+and editable-import proofs. Three actual public/synthetic originals also receive
+in fresh outside-checkout children. Repeats add no distinct coverage.
+
+Fully resealed logical/shared semantic alterations are refused; unchanged controls,
+none/gzip/zstd resaves, nonempty bioactivity source navigation and observed older
+sequence/variant questions pass. The diagnostic wheel/sdist contain all 887
+implementation modules and six frozen SOURCE resources byte-identically. A real
+Linux diagnostic wheel install also receives an actual original with current
+science/clients/network blocked. Its `0.0.0+unknown` fallback and inherited shared
+dependencies are explicit; this does not qualify clean artifacts or the OS matrix.
+
+The [saved receipt](evidence/protein_context_saved_checkpoint_20261109.json) owns
+exact source/resource accounting, guarded scope and earlier red/changed-source
+dispositions. Original capsules and older predicates remain fixed. A pre-existing historical writer
+test regenerated modern menus; its original-source catalog correction preserves
+all 61 menu inputs/labels across 32 SDK205/208 cases and passes two actual receiving
+regressions. The interrupted expanded 524-case historical cohort remains pending
+for the pre-0.15 checkpoint. Continue B6's
+general knowledge/residue-map comparisons and B7 scientific, uncoached researcher/
+agent, workload and actual-consumer acceptance. B2 review stays deferred, B8/release
+unresumed and hosted CI deferred under #148/#112. Final committed metadata/code,
+remote/run verification and owned cleanup belong to the local post-push handoff.
+
 ## Clean SDK239 protein-context original — local checkpoint PASS
 
 The [genuine original](evidence/protein_context_live_original_20261109.json)
@@ -20,8 +62,9 @@ All 106 selected original/LIVE/relationship cases and all 46 copied original cas
 outside checkout pass. The original has 8,565 verified members; the immutable gzip
 capsule is retained before implementing the independent reader. These checks do
 not qualify saved-file admission, installed artifacts, hosted CI or B7 acceptance.
-Next implement frozen input/result/selection and original human/source navigation
-reading, then resume general knowledge/residue-map comparisons. B2 review remains
+This capture checkpoint preceded frozen input/result/selection and original
+human/source navigation reading, now recorded by the saved-reader checkpoint above.
+General knowledge/residue-map comparisons remain the next B6 increment. B2 review remains
 deferred and B8/release unresumed. The qualifier fix is now reported in
 [Sabueso #158](https://github.com/uibcdf/sabueso/issues/158#issuecomment-6755724900).
 

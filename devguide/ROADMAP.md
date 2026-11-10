@@ -160,9 +160,12 @@ The next [protein comparative/association LIVE slice](pending_proposals/card_pro
 now projects retained orthology/cluster and disease/pathway/interaction records,
 with original direction, channels, conflicts and derivations, plus an explicit
 supplied-sequence question under the existing equal-position rule. Shared human/
-agent/source access is implemented. Capture a clean qualified original before
-independent saved reading; general knowledge/residue-map comparison and scientific/
-researcher/workload acceptance remain open. CHECKPOINT owns actual current checks.
+agent/source access and independent logical @33 / shared @34 reading are implemented.
+The clean SDK239 original remains immutable; public saving preserves observed
+questions, finite agent requests, typed values and distinct actual accesses. The
+[saved checkpoint](evidence/protein_context_saved_checkpoint_20261109.json) owns
+local qualification. Continue general knowledge/residue-map comparison; scientific/
+researcher/workload acceptance remains open. CHECKPOINT owns actual current checks.
 
 Continue the rich profiles through the
 [current destination actions](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions)

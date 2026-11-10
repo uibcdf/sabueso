@@ -797,7 +797,9 @@ def _parts(view):
 
         opening.extend(chemical_opening(view, preview))
     if view._record_panel == "protein_context":
-        from .card_protein_context_exploration import opening as protein_opening
+        from .card_protein_context_dispatch import presentation
+
+        protein_opening = presentation(view).opening
 
         opening.extend(protein_opening(view, preview))
     if view._record_panel == "sequence_changes":
@@ -847,8 +849,14 @@ def _parts(view):
 
         opening.extend(context_opening(view, preview))
     if view._record_panel == "bioactivities":
-        from .card_bioactivity_presentation_v2 import opening as bioactivity_opening
+        from .card_protein_context_dispatch import historical_save_notice
 
+        if historical_save_notice(view):
+            from ._protein_context_history_v1.bioactivity_presentation import (
+                opening as bioactivity_opening,
+            )
+        else:
+            from .card_bioactivity_presentation_v2 import opening as bioactivity_opening
         opening.extend(bioactivity_opening(view, preview))
     if view.context.get("adapter") == "bioactivity_context_links@1":
         from .card_bioactivity_presentation_v1 import context_opening
@@ -1071,7 +1079,9 @@ def _parts(view):
             )
             continue
         if view._record_panel == "protein_context":
-            from .card_protein_context_exploration import display_row as protein_row
+            from .card_protein_context_dispatch import presentation
+
+            protein_row = presentation(view).display_row
 
             rows.append(protein_row(item, index, preview))
             continue
@@ -1373,7 +1383,9 @@ def _parts(view):
 
 def _headers(view):
     if view._record_panel == "protein_context":
-        from .card_protein_context_exploration import HEADERS
+        from .card_protein_context_dispatch import presentation
+
+        HEADERS = presentation(view).HEADERS
 
         return list(HEADERS)
     if view._record_panel == "sequence_changes":

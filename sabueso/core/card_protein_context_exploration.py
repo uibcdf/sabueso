@@ -267,7 +267,10 @@ def opening(view, preview):
         "Source IDs are recorded bindings; this view does not independently revalidate a provider mapping. Supplied Card rows are explicit comparison inputs, not asserted relationships.",
         "Sequence comparisons require an explicit supplied capture. equal_length_positions@1 compares equal integer positions without alignment, residue correspondence or identity inference; different lengths and unstated sequences stay unavailable.",
         "Inspect complete original records with open(), source bindings with explain(), and exact captured destinations with related(). Missing source and destination Cards remain explicit.",
-        "Independent original saving is pending a clean producer capture and frozen reader; captured Card export remains available.",
+        "Independent original saving is pending a clean producer capture and frozen reader; captured Card export remains available."
+        if view._selection._scientific.native["rule"]["sabueso_version"]
+        == "0.14.0+239.g738a422"
+        else "Original records and explicit comparison inputs remain inspectable; captured Card export is available.",
     ]
 
 

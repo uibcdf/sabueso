@@ -75,26 +75,43 @@ integer zero, boolean false and floating zero are different raw values. It keeps
 first selected qualifier and lists distinct alternatives in `qualifier_conflicts`;
 relationship identifiers and source references keep their original meaning.
 
-## Original saving boundary and qualification
+## Independent original saving and qualification
 
-New context results, their dependent routes and observed sessions advertise saving
-as unavailable until a clean producer original and an independent frozen reader
-qualify them. Refusal occurs before writing a file. Captured Card export and a
-fresh unrelated literal exploration remain available. Earlier saved formats and
-all genuine SDK234/SDK230 originals remain fixed.
+Public saving and independent reading use logical `sabueso.card_exploration@33`
+and physical shared @34. The clean SDK239
+[genuine original](../evidence/protein_context_live_original_20261109.json) remains
+immutable. Private frozen input, native equal-position, selection, navigation,
+source and presentation rules verify its recorded meanings without Card
+reconstruction, current LIVE helpers, source clients or acquisition.
 
-Run the complete owning module, applicable access/agent/context/nature/source/
-comparative/quantity/transport/fixture gates, and original saved regressions. Copy
-the complete module and exact public inputs outside checkout; verify controller,
-worker and editable-import placement. Both installed routes select the whole module.
-CHECKPOINT owns actual passing counts, source epochs and acceptance limits.
+`protein_context_exploration_binding@1` checks exact original result/input/row/cell
+bindings, source references, selected scopes and human questions. The new
+`protein_context_access_origins@1` manifest preserves distinct actual instances and
+aliases even when their focal values are equal. Shared values never merge identity.
+Only retained finite agent requests can execute; unvisited science and unexecuted
+selections remain `not_saved`. Human-only and machine-only histories stay distinct.
+Earlier predicates and original capsules retain their exact bytes and meanings.
 
-The clean SDK239 [genuine original](../evidence/protein_context_live_original_20261109.json)
-now preserves 35 actual human/agent/source/question/access cases. Independent saved
-reading must qualify those immutable bytes. Its matrix includes public
-UniProt/IntAct, UniRef and OMA journeys and public TcTIM/strain sequence comparison,
-plus labelled synthetic missing/conflicting/foreign support, recorded derivations,
-repeated inputs, ambiguous revisions, malformed values, equal/different lengths,
-atomic deferral, source-owned lookalikes and separate human-only/machine-only scope.
-B7 scientific, uncoached researcher/agent, workload and actual-consumer acceptance
-remains separate; this bounded LIVE increment does not close B6 or authorize B8.
+The original matrix contains all 35 public/synthetic UniProt/IntAct, UniRef, OMA,
+TcTIM/strain, support-conflict, malformed-input, ambiguous-revision, repeated-input,
+equal/different-length, atomic-deferral and source-owned-lookalike journeys. Guarded
+receiving preserves actual text/HTML, source/open/back destinations and native
+outputs. The precise sequence-question construction scope and incoming bioactivity
+catalog context are validated in this new format, without changing older verifiers.
+An incidental SDK239 bioactivity save notice stays original under the named
+`protein_context_original_action_notice@1` presentation rule; public save capability
+is separate. Literal source-owned versions are never rewritten.
+
+Complete LIVE, immutable-original, frozen-history and saved modules run with
+applicable adjacent and older receiving controls. Copy all four complete modules,
+the unchanged capsule, support module and exact public inputs outside checkout;
+verify controller, worker and editable import placement. Both installed routes
+copy/select the four modules. Fully resealed logical/shared semantic negatives,
+none/gzip/zstd resaves, fresh receiving and nonempty bioactivity plus older
+sequence/variant contexts qualify their explicit scope. The
+[saved receipt](../evidence/protein_context_saved_checkpoint_20261109.json) and
+CHECKPOINT own actual gate counts, source epochs, resources and limits.
+
+General knowledge differences and supplied residue-map comparisons remain the
+next B6 increment. B7 scientific, uncoached researcher/agent, workload and
+actual-consumer acceptance stay separate; this work does not close B6 or resume B8.

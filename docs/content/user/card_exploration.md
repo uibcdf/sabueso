@@ -316,9 +316,20 @@ or entity identity. Different lengths, unstated sequences and malformed inputs
 remain unavailable. Source-reference binding is shown separately from scientific
 or provider-mapping validation; association does not imply causality.
 
-Independent saving for these new context sessions awaits a qualified original and
-frozen reader. Inspect `capabilities["save"]` before saving. Captured Card export
-and a fresh unrelated literal exploration remain available.
+These context sessions can be saved and read independently of current source
+clients or scientific calculations:
+
+```python
+related.save("protein-context.json.gz", compression="gzip")
+saved_context = sabueso.read_exploration("protein-context.json.gz")
+saved_context.table()
+```
+
+Saved navigation retains observed questions, source routes, actual back context
+and the finite compact requests already executed. Unvisited scientific questions
+and unexecuted selections remain `not_saved`. Human-only and agent-only histories
+keep their original scope. Existing captured display text remains literal, including
+an old producer notice; inspect the current `capabilities["save"]` for availability.
 
 ## Explore individual annotations in structures
 
