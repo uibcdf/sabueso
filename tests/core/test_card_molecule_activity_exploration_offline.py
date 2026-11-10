@@ -870,9 +870,10 @@ def test_saved_target_activity_keeps_its_original_semantics_in_molecule_file(
         assert [
             item.item_ref for item in replay.filter("molecule_ref", equals=BTS).items()
         ] == [item.item_ref for item in selected.items()]
-        assert saved.validation["verified_navigation_policies"] == [
-            "molecule_activity_root_selection_exact_origin@1"
-        ]
+        assert {
+            "molecule_activity_root_selection_exact_origin@1",
+            "knowledge_comparison_access_origins@1",
+        } <= set(saved.validation["verified_navigation_policies"])
 
 
 def test_capture_is_detached_and_repeated_requests_do_not_repeat_native_work(

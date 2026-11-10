@@ -445,6 +445,13 @@ def verify_header(logical, original_verifier):
                 "selection": {"target": record["selection"]["target"]},
             }
             continue
+        if record["flags"].get("_route_catalog", False):
+            headers[key] = {
+                "flags": {"_route_catalog": True},
+                "focal": record["focal"],
+                "selection": {"target": record["selection"]["target"]},
+            }
+            continue
         payload = record["native_payload"]
         rule = payload.get("rule") if isinstance(payload, dict) else None
         if (
@@ -458,5 +465,24 @@ def verify_header(logical, original_verifier):
                 "native_payload": {"rule": rule},
             }
             seen.add(rule)
+    from .card_exploration_knowledge_comparison import sequence_context_display_ancestry
+
+    for key in sequence_context_display_ancestry(logical):
+        record = logical["views"][key]
+        headers[key] = {
+            **headers.get(key, {}),
+            "flags": {
+                **headers.get(key, {}).get("flags", {}),
+                "_display_request": record["flags"]["_display_request"],
+            },
+            "selection": {
+                **headers.get(key, {}).get("selection", {}),
+                "scientific_result_ref": record["selection"].get(
+                    "scientific_result_ref"
+                ),
+            },
+            "origin": record["origin"],
+            "explorer_origin": record["explorer_origin"],
+        }
     projection = {**logical, "views": headers}
     original_verifier(_seal(projection), None)

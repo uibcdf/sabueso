@@ -123,8 +123,10 @@ def verify_bundle(bundle, expected_digest):
                 for ref, value in bundle["objects"].items()
                 if isinstance(value, dict)
             )
-            or comparison.has_observed_catalog(bundle),
-            "Format @35 requires an original knowledge comparison or observed original question catalog.",
+            or comparison.has_observed_catalog(bundle)
+            or comparison.has_observed_topics(bundle)
+            or comparison.has_sequence_context_display(bundle),
+            "Format @35 requires an original comparison, question catalog or sequence-context display.",
         )
     quaternary = bundle["format"] in (QUAT_FORMAT, EXTENDED_FORMAT)
     sites = bundle["format"] in (SITE_FORMAT, QUAT_FORMAT, EXTENDED_FORMAT)
@@ -1272,7 +1274,13 @@ def _verify_views(bundle, nodes):
             continue
         if changes.is_view(view) or changes.is_context(view) or changes.is_links(view):
             try:
-                changes.verify_view(view, record)
+                if not changes.is_view(view) and view._display_request is not None:
+                    # Displayed literal source/link context is not a link click.
+                    # Keep the independently frozen scientific parent predicate.
+                    changes.verify_literal_view(view, record)
+                    _verify_display(view, record)
+                else:
+                    changes.verify_view(view, record)
             except StorageError as error:
                 raise StorageError(f"Sequence-change node {key}: {error}") from error
             continue
@@ -1307,7 +1315,7 @@ def _verify_views(bundle, nodes):
             molecule.verify_view(view, record)
             continue
         if molecule.is_context(view):
-            molecule.verify_context(view, record)
+            comparison.verify_molecule_context(view, record)
             continue
         from .card_exploration_literature import (
             is_context as is_literature_context,

@@ -1,5 +1,28 @@
 # Sabueso — Decision Log
 
+## Admit current protein catalogs without upgrading historical sessions (2026-11-10)
+
+Actual current protein route catalogs select @35/@36 only for unversioned current
+sessions or existing @35 sessions. Match complete frozen SDK243 descriptors,
+registered literal metadata and captured nature. Explicit historical session
+formats keep their owning meaning when literal values coincide. Current molecule
+target menus separately verify the original source/navigation/capture binding
+before retaining all current routes. Earlier molecule predicates stay unchanged.
+A menu never executes an unobserved scientific question. See the
+[owning catalog report](pending_bugs/current_protein_catalog_saved.md) (#148).
+
+## Keep sequence source-context display distinct from navigation (2026-11-10)
+
+An actual filter/sort/presentation below a registered sequence-change result is
+a display operation, not an original link click. Current saving chooses @35/@36
+for that ancestry and verifies its frozen literal state plus its explicit display
+operation; the scientific parent keeps its original independent predicate. Shared
+header admission retains one bounded ancestry witness. Earlier verifiers,
+scientific rules, original capsules and all seven SOURCE resources stay fixed.
+Do not infer this ancestry from source-owned JSON shape. The owning
+[report](pending_bugs/sequence_context_display_saved.md) and #148 keep qualification
+and researcher acceptance distinct.
+
 ## Freeze comparison meaning and scope implicit support preparation (2026-11-10)
 
 Use separate logical @35 / shared @36 for the immutable clean SDK243 knowledge

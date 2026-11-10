@@ -214,6 +214,24 @@ consistency; it does not rerun structural classifications or authenticate source
 
 ## Sequence and tissue comparisons
 
+The development checkout also provides a combined human/agent exploration of
+TcTIM, a supplied Q4DV43 capture and HsTIM's own tissue context:
+
+```bash
+python examples/user_journeys/protein_context_review.py produce --fixtures temp_data --output /tmp/sabueso-protein-context-review
+python examples/user_journeys/protein_context_review.py read --output /tmp/sabueso-protein-context-review
+```
+
+Use an empty output directory and retain both saved sessions and `review.json`.
+Seven routes preserve original comparative records, sequence/knowledge
+differences, variants, isoforms, sequence annotations and associations. Complete
+bounded agent responses share the human values, units, states and source support.
+Separate-process reading checks the observed routes without fixtures or current
+scientific recomputation. Equal positions do not establish correspondence, and
+unavailable comparisons remain explicit. The
+[review tasks](https://github.com/uibcdf/sabueso/blob/main/devguide/pending_proposals/protein_context_review_walkthrough.md)
+prepare independent researcher acceptance; script success does not supply it.
+
 The development example `examples/user_journeys/comparative_support.py` compares
 the stated P52270/Q4DV43 sequences and inspects P60174 variant/isoform tissue
 usage. It saves ordinary results, explanations, exact card pins and original

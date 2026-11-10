@@ -62,7 +62,7 @@ def load_field_paths() -> List[str]:
     return sorted(set(out))
 
 
-def main() -> None:
+def main() -> int:
     schema_paths = load_schema_paths()
     schema_wildcards = [p for p in schema_paths if p.endswith(".*")]
     schema_expanded = []
@@ -94,7 +94,9 @@ def main() -> None:
 
     if not missing_in_schema and not missing_in_field_paths:
         print("OK: FIELD_PATHS and schema are aligned")
+        return 0
+    return 1
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

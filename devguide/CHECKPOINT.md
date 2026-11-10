@@ -5,6 +5,53 @@ Current working-state checkpoint: **2026-11-10**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Combined protein review and current saved catalogs — local checkpoint PASS
+
+The [public review](pending_proposals/protein_context_review_walkthrough.md)
+connects seven existing B6 routes across TcTIM/Q4DV43 and HsTIM: comparative
+records, explicit sequence/knowledge differences, variants, isoform/tissue usage,
+sequence annotations and biological associations. Human and complete finite
+agent requests retain values, units, states and original support. Two saved
+sessions reopen in separate processes with current science, Card construction
+and acquisition forbidden. Explicit participant tasks prepare B7; no researcher
+or scientific acceptance is inferred from the script.
+
+The integration fixes two real save refusals: a displayed sequence-source link
+was treated as a link click, and a current protein target menu was checked against
+a pre-B6 17-route catalog. The latter also fails on isolated unchanged parent
+`cd98ad6` / SDK245. Current @35/@36 binds complete SDK243 menus and original
+molecule/target/source/navigation context; explicit earlier session formats keep
+their receiving choice. Source-owned lookalikes stay literal and unexecuted
+science stays `not_saved`. The schema CLI also now exits 1 for path mismatches;
+seven subprocess controls preserve aligned and wildcard behavior.
+
+All **852 distinct selected source cases pass**: **24 complete modules plus one
+explicit installed-payload wiring case**, on one unchanged **1,341-path map**.
+Independent collection equals the disjoint executed union. All **22 copied
+cases pass outside checkout** with 22 byte-identical inputs, external process/
+pytest scratch and five controller/worker placement/import/metadata proofs.
+They include the complete three new modules and the exact formerly failing
+molecular/Bio route. UTF-8 subprocess communication is tested with inherited
+CP1252 I/O. This is editable receiving, not clean installed/platform qualification.
+One source warning identifies the declared partial STRING fixture; static shape
+checks retain their existing cut/conflict notices.
+
+The [receipt](evidence/protein_context_review_checkpoint_20261110.json) records
+scope, hashes, source groups, baseline reproduction and limits. All seven SOURCE
+resources and 45 protected test-data files remain byte-identical; no Card schema,
+scientific rule, published default or production byte budget changes. An earlier
+expanded failing epoch was stopped and remains unqualified; two full nested
+legacy payload rehearsals remain pending expanded scope. Code/guide/governance/
+workflow/static checks and the warning-fatal 75-source Sphinx build pass.
+Committed metadata/code, remote and cleanup observations belong to the owned
+handoff.
+
+B2 review remains deferred; broader profile completion and B7 independent
+scientist/researcher/agent/workload/actual-consumer acceptance remain open.
+B8/candidate/schema freeze/release remain unresumed. Intermediate CI stays
+deferred under #148/#112/#193 with `[skip ci]`; missing/skipped runs are not PASS.
+Concrete #148/#112 report drafts remain internal pending publication authority.
+
 ## Independent knowledge-comparison saved reading — local checkpoint PASS
 
 Logical `sabueso.card_exploration@35` / shared @36 independently reads all **37

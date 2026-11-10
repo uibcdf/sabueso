@@ -68,6 +68,21 @@ owns local source/copied/diagnostic receiving and limits; earlier rules/defaults
 and saved meanings remain fixed.
 CHECKPOINT owns qualification; full B6 and B7 acceptance remain open.
 
+The [combined protein-context review](pending_proposals/protein_context_review_walkthrough.md)
+now connects seven existing B6 routes with public TcTIM/Q4DV43/HsTIM inputs,
+complete typed agent requests and separate-process saved/source reading. It
+prepares explicit researcher tasks and an acceptance record. Its integration
+exposes the [sequence source-context display refusal](pending_bugs/sequence_context_display_saved.md);
+the current receiving correction and [schema CLI status fix](pending_bugs/schema_validator_exit_status.md)
+have their own regressions. CHECKPOINT owns qualification; this preparation does
+not supply independent scientific, researcher, workload or consumer acceptance.
+
+The same integration review reproduces the
+[current protein catalog refusal](pending_bugs/current_protein_catalog_saved.md)
+on the unchanged parent source. Current menus and molecular target navigation
+use @35/@36 while explicit historical session formats retain their old catalog
+meaning. The complete molecule LIVE cohort remains an owning regression.
+
 The first B6 [variant/isoform tissue-context profile](pending_proposals/card_variant_tissue_exploration.md)
 now shares existing scoped native results between human and typed agent access.
 It preserves original genomic/transcript/CDS scope, per-tissue unknowns, source

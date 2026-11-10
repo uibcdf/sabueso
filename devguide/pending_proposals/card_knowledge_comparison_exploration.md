@@ -90,6 +90,20 @@ protein/variant/sequence profiles use their owning predicates. A nonempty public
 bioactivity crossing validates the exact incoming knowledge question/catalog
 before applying the unchanged bioactivity meaning.
 
+Current @35/@36 also admits an actual displayed sequence-source context through
+its registered scientific ancestry, without requiring an observed new menu or
+comparison. The [sequence display correction](../pending_bugs/sequence_context_display_saved.md)
+keeps the original scientific parent predicate and separately binds the literal
+filter/sort/presentation operation. Shared header admission retains one bounded
+ancestry witness. Earlier format verifiers and original meanings stay fixed.
+
+An actual current protein route catalog also selects @35/@36, with complete
+frozen SDK243 descriptions and registered metadata/captured nature binding.
+Explicit historical session formats retain their original receiver even when
+literal menu values coincide. The [current target-menu correction](../pending_bugs/current_protein_catalog_saved.md)
+preserves molecular source/back context without applying a pre-B6 destination
+menu or executing the newly advertised topics.
+
 Prepare implicit literal support for the saved root and its originating trail,
 together with executed scientific rows; retain every other observed view without
 recursively materializing its unexecuted literal support. Capabilities remain

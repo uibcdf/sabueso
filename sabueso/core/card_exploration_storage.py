@@ -874,7 +874,7 @@ def _prepare(root):
         register_bundle as register_comparison,
     )
 
-    register_comparison(bundle, objects, access)
+    register_comparison(bundle, objects, access, session_format=session.get("format"))
     if bundle["format"] in MOLECULE_FORMATS:
         from .card_molecule_activity_operations_v1 import register
 

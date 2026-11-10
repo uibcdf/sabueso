@@ -497,6 +497,15 @@ gates remain separate. This increment does not resume B8.
 
 ## Execution order
 
+The [combined public protein review](pending_proposals/protein_context_review_walkthrough.md)
+provides the next B6/B7 handoff: seven existing questions over TcTIM/Q4DV43 and
+HsTIM's own context, exact source/back routes, complete finite agent requests and
+two original saved sessions. Use its participant/task record for independent
+review. Technical execution does not supply scientist, uncoached researcher,
+agent task, representative workload or actual-consumer acceptance. Continue the
+broad inventory's remaining structural and nature-specific presentation scope;
+the B2 and B8 boundaries below remain unchanged.
+
 The block table defines the stable B0–B8 dependencies. The dated
 [destination actions](#destination-review-and-next-actions) own the immediate
 execution order. The

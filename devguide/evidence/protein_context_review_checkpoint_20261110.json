@@ -1,0 +1,149 @@
+{
+  "state": "BOUNDED_LOCAL_SOURCE_AND_COPIED_PASS_CI_DEFERRED",
+  "date": "2026-11-10",
+  "owners": [
+    "uibcdf/sabueso#148",
+    "uibcdf/sabueso#112"
+  ],
+  "source_parent": "cd98ad685ea9f678f48dabe60e8d7e91503435e1",
+  "behavior": [
+    "Seven public comparative/variant/isoform/annotation/association routes share complete human and finite agent semantics and original sources across independent saved reading.",
+    "Current source-context displays use frozen literal state and explicit filter/sort/presentation binding in @35/@36.",
+    "Actual current protein catalogs keep complete SDK243 descriptions and explicit target source/navigation/capture context; historical session formats retain their owning receiver.",
+    "Schema alignment mismatches exit 1; aligned schemas exit 0."
+  ],
+  "source": {
+    "distinct_passed": 852,
+    "complete_modules": 24,
+    "additional_selected_static_cases": 1,
+    "source_paths": 1341,
+    "one_unchanged_source_map": true,
+    "independent_collection_matches_disjoint_executed_union": true,
+    "groups": {
+      "owning": {
+        "passed": 155,
+        "workers": 4,
+        "elapsed_s": 729.5,
+        "peak_sampled_owned_rss_bytes": 5051674624,
+        "receptor_complete": true,
+        "receptor_integrity_valid": true
+      },
+      "older": {
+        "passed": 128,
+        "workers": 8,
+        "elapsed_s": 277.3,
+        "peak_sampled_owned_rss_bytes": 2907795456,
+        "receptor_complete": true,
+        "receptor_integrity_valid": true
+      },
+      "adjacent": {
+        "passed": 568,
+        "workers": 8,
+        "elapsed_s": 120.85,
+        "peak_sampled_owned_rss_bytes": 2141732864,
+        "receptor_complete": true,
+        "receptor_integrity_valid": true
+      },
+      "wiring": {
+        "passed": 1,
+        "workers": 1,
+        "elapsed_s": 1.01,
+        "peak_sampled_owned_rss_bytes": 60805120,
+        "receptor_complete": true,
+        "receptor_integrity_valid": true
+      }
+    },
+    "warning_count": 1,
+    "warning_scope": "EnrichmentTruncatedWarning identifies the frozen STRING fixture returning 50 of more than 50 records. No warning was suppressed."
+  },
+  "copied": {
+    "passed": 22,
+    "complete_new_modules": 3,
+    "additional_exact_previously_failing_molecular_case": 1,
+    "byte_identical_inputs": 22,
+    "controller_worker_placement_proofs": 5,
+    "cwd_and_script_pytest_scratch_outside_checkout": true,
+    "fixture_symlinks": false,
+    "runtime": "Editable Sabueso checkout with shared dependencies; not clean installed/candidate/public/platform qualification.",
+    "inherited_cp1252_subprocess_wire_control": "Explicit UTF8 child wire; no native Windows qualification."
+  },
+  "unchanged": {
+    "card_schema": "0.3.14",
+    "new_scientific_rules": false,
+    "published_native_defaults_changed": false,
+    "frozen_SOURCE_resources": 7,
+    "protected_test_data_files": 45,
+    "all_protected_bytes_identical": true,
+    "original_capsules_regenerated": false,
+    "production_byte_budgets_changed": false
+  },
+  "source_code_inputs": {
+    ".github/workflows/ci.yml": "73828b3719283cff1b7e6bb1695e2c76ad76aa8e74bf28ca7340b66d9760a9bd",
+    ".github/workflows/test_staged_conda_package.yaml": "771a909b9cd0f8b5521cb50adece2dd79b5bb3f295e171ab29b6ae1d7ec0b0a6",
+    "examples/user_journeys/protein_context_review.py": "08a31efa772f8c539990629baccfe609f173706cec7e0c5908c48fc8f5ac221c",
+    "sabueso/core/card_exploration_knowledge_comparison.py": "02056bab7f8289056f7580607e7030f55eb332c8fee183b18c96649724d2bb71",
+    "sabueso/core/card_exploration_shared_values_v12.py": "db4ad061fb134b74bca68084ae51957be936a27e80f6b5211b0b7e2969841c76",
+    "sabueso/core/card_exploration_storage.py": "4f4f8bfcca4327539fefe84cc33966b652b381bd1902565c04689267968833ef",
+    "sabueso/core/card_exploration_verification_v35.py": "529db25e306b7a531c935d16f6d6aa9de617c0b0c7a2efa33fe4a682de10e3dc",
+    "tests/core/test_card_current_protein_catalog_offline.py": "b3d6abe9446574b579c556fc527cd3aa81002917e3b595f0a14c2e16d9034ace",
+    "tests/core/test_card_molecule_activity_exploration_offline.py": "9510d3146f58ceacf05b6d9eee0671bbec109fff17a5d3405059f0b1ef207976",
+    "tests/core/test_card_sequence_context_display_offline.py": "85f70ba0e4a242e48b9e436e2496a4104aa4193e617e1ab153debb34c41fa396",
+    "tests/core/test_protein_context_review_journey_offline.py": "9080dab8d58d4b86a16054dfc67fbcd0ba569cd71f4003df3f1de5ac4b07e069",
+    "tests/core/test_schema_alignment.py": "56e6447e3b0de1b908a2199717fd0b6fda0aa5b5f752e9b759cf2f380d7e653b",
+    "tools/validate_schema.py": "c3103216d4722c979a7ba010fcee952b27ead52628d7353494b0434dbeeac6ef"
+  },
+  "source_map_sha256": "eac2d7d70db6dd59b5ff228af07a05a6008b44e465e8ebb8f7baa17036e6b640",
+  "baseline": {
+    "parent_source": "cd98ad685ea9f678f48dabe60e8d7e91503435e1",
+    "runtime": "0.14.0+245.gcd98ad6",
+    "expected_failed_cases": 1,
+    "observed": "The unchanged copied molecule LIVE case reproduces the same 17-versus-21 target-route refusal on isolated parent package bytes. Dependencies remain shared; no public installed prevalence claim."
+  },
+  "nonqualifying_epochs": [
+    "Schema mismatch red controls and separately closed development calibrations remain distinct.",
+    "The expanded pre-correction adjacent epoch was stopped after a concrete failure. Receptor output is incomplete; none of its calls counts here. Two full legacy literature/Bio payload rehearsals remain expanded pending scope.",
+    "Earlier 78/128 increment passes and all collection/copied/postcommit repetitions add no distinct final source coverage."
+  ],
+  "resource_policy": {
+    "maximum_workers": 8,
+    "owned_rss_ceiling_gib": 10,
+    "host_available_floor_gib": 16,
+    "native_threads": 1,
+    "owned_swap_bytes": 0,
+    "fresh_preflight_and_owned_process_group_monitoring": true,
+    "resource_reservation_claimed": false
+  },
+  "quality_and_documentation": {
+    "state": "PASS",
+    "ruff_check": true,
+    "ruff_format_files": 1680,
+    "changed_python311_grammar_modules": 11,
+    "canonical_moli_governance": true,
+    "maintained_guide_paths_and_changed_anchors": true,
+    "both_installed_workflow_selections_static_only": true,
+    "fixture_delivery_card_shape_source_registry_schema_governance_dependency_preflight": true,
+    "sphinx": {
+      "sources": 75,
+      "warnings_are_errors": true,
+      "exit_code": 0,
+      "elapsed_s": 27.39,
+      "log_sha256": "b4c5f0783350713969fdffbada244616872de447844ad92d99cb2eebd386299f"
+    },
+    "local_receipts": {
+      "quality-validation.json": "5ae8553e3332239d9f557e38e761b05b82707ffec006e6186a53a22dfc3775a8",
+      "static-validation.json": "8b665b0885823b2ae288b36fc3ccee03a9bc32f7da98f67f136522b1fbd9c60e",
+      "sphinx-resource.json": "bf2536c9113813a8365b6173e4124373ab9eeccba38e835e6af3df86fff1a012"
+    },
+    "scope": "Local static and warning-fatal documentation checks; no hosted, installed-artifact or platform qualification."
+  },
+  "deferred": {
+    "ci": "Deferred intermediate direct push with [skip ci] by maintainer authority. Missing/skipped runs are not PASS. Record exact final SHA in the local handoff; recover applicable full source/installed/platform and governance gates on the exact authorized candidate through gh-run-receptor.",
+    "scientific_and_human": "B2 scientific/default review deferred; B7 scientist, uncoached researcher, actual agent/workload/private-consumer acceptance pending.",
+    "release": "B8, candidate selection, schema freeze and release/publication remain unresumed."
+  },
+  "evidence_retention": {
+    "local_root": "recovered_work/checkpoint_recovery_20261106/b6-integrated-review-1",
+    "owner": "uibcdf/sabueso#148/#112",
+    "review_trigger": "Next accepted source checkpoint or B7 review; preserve original capsules/SOURCE resources and useful receipts, remove only completed owned disposable clients/caches."
+  }
+}

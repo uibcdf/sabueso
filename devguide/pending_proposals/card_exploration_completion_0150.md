@@ -127,6 +127,13 @@ needs a positive public-data example and applicable missing/partial/conflicting
 or non-applicable cases. Identity, quantity and support contracts remain mandatory.
 No browsing operation may acquire new data, refresh a Card or fabricate findings.
 
+The [combined public B6 walkthrough](protein_context_review_walkthrough.md) now
+connects seven delivered routes with original source/back inspection, complete
+human/typed-agent semantics and two independently readable saved sessions. It
+includes task prompts and an acceptance record for a separate researcher review.
+It does not replace the remaining broad-profile integration, nature-specific
+presentation, structural transitions or independent acceptance in this inventory.
+
 ## Implementation order
 
 For resumption after the 2026-11-04 audit, the

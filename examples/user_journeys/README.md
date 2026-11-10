@@ -7,6 +7,25 @@ checkout; its local validation is separate from published-package qualification.
 
 ## Human Card exploration
 
+### Combined protein contexts
+
+`protein_context_review.py` reviews seven existing B6 routes: retained comparative
+records, explicit sequence and knowledge differences, variants, isoform/tissue
+usage, sequence annotations and biological associations. It uses public TcTIM,
+Q4DV43 and HsTIM fixtures, retains two original saved sessions and checks complete
+human/agent/source parity when reopened in a separate process without fixtures.
+
+```bash
+python examples/user_journeys/protein_context_review.py produce --fixtures temp_data --output /tmp/sabueso-protein-context-review
+python examples/user_journeys/protein_context_review.py read --output /tmp/sabueso-protein-context-review
+```
+
+Start with an empty output directory and keep all three output files. Equal
+positions do not establish correspondence; associations do not establish
+causality. This is technical preparation. The
+[researcher tasks and acceptance record](../../devguide/pending_proposals/protein_context_review_walkthrough.md)
+keep human/scientific acceptance separate.
+
 ### TcTIM structure, source context and an explicit modeling control
 
 ```bash

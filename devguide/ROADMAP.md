@@ -174,6 +174,13 @@ that scope; the [saved receipt](evidence/knowledge_comparison_saved_checkpoint_2
 owns local qualification and limits. Scientific/researcher/workload acceptance remains
 open. CHECKPOINT owns actual current checks.
 
+The [combined public B6 review](pending_proposals/protein_context_review_walkthrough.md)
+now connects seven comparative/variant/isoform/annotation/association routes,
+original sources, complete typed agent responses and independent saved reading.
+Its task record prepares B7 without claiming researcher or scientific acceptance.
+Complete the broad inventory's remaining structural transitions and protein/
+molecule/disease orientation work alongside those recorded reviews.
+
 Continue the rich profiles through the
 [current destination actions](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions)
 with applicable local checks and the maintainer's authorized CI batching.

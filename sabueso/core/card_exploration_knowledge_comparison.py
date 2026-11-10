@@ -446,7 +446,7 @@ def verify_literal_view(view, record):
     _verify_state(shadow, record, record["native_payload"], replay.access)
 
 
-def register_bundle(bundle, objects, access):
+def register_bundle(bundle, objects, access, *, session_format=None):
     retained = {
         ref: wire
         for ref, wire in objects.items()
@@ -456,7 +456,16 @@ def register_bundle(bundle, objects, access):
         and "native_payload" in wire
     }
     catalog = has_observed_catalog(bundle)
-    if not retained and not catalog:
+    current_topics = session_format in (
+        None,
+        FORMAT,
+    ) and has_observed_topics(bundle)
+    if (
+        not retained
+        and not catalog
+        and not current_topics
+        and not has_sequence_context_display(bundle)
+    ):
         return
     bundle["format"] = FORMAT
     bundle["producer"]["verifier"] = VERIFIER
@@ -482,6 +491,153 @@ def frozen_catalog():
     from ._knowledge_comparison_history_v1.catalogs import QUESTIONS
 
     return QUESTIONS["protein"]
+
+
+def frozen_protein_topics():
+    from ._knowledge_comparison_history_v1.catalogs import TOPICS
+
+    return {key: {"description": value[1]} for key, value in TOPICS["protein"].items()}
+
+
+def has_observed_topics(bundle):
+    """Recognize an actual owned protein route catalog, never source-owned lookalikes."""
+    expected = frozen_protein_topics()
+    for record in bundle["views"].values():
+        if not record["flags"].get("_route_catalog", False):
+            continue
+        capture = bundle["cards"].get(record.get("focal"), {})
+        if capture.get("data", {}).get("meta", {}).get("entity_type") != "protein":
+            continue
+        target = record["selection"]["target"]["location"]
+        if target.get("kind") == "lookup":
+            target = bundle["locations"].get(target["location_ref"], {})
+        value = bundle["objects"].get(target.get("result_ref"))
+        if (
+            target.get("kind") == "result"
+            and not target.get("segments")
+            and value == expected
+            and target["result_ref"]
+            == _handle("XR_", {"adapter": "literal_metadata@1", "value": value})
+        ):
+            return True
+    return False
+
+
+def verify_molecule_context(view, record):
+    """Bind the current complete target catalog while retaining original molecule science."""
+    from . import card_exploration_molecule_activity as molecule
+
+    if (
+        not view._route_catalog
+        or (view._context_override or {}).get("activity_context") != "target_card"
+        or view.native_payload != frozen_protein_topics()
+    ):
+        return molecule.verify_context(view, record)
+    anchor = molecule._anchor(view)
+    parent, access = anchor._origin, view._explorer.access
+    require(
+        parent is not None and parent._link_panel and molecule.is_context(parent),
+        "Current protein catalog lost its original molecule link.",
+    )
+    molecule.verify_links(parent)
+    navigation = parent._context_override["molecule_activity_navigation"]
+    same(
+        anchor._context_override["molecule_activity_navigation"],
+        navigation,
+        "current target catalog incoming navigation",
+    )
+    link = molecule._endpoint_entries(anchor, parent, "target_card")[0].value
+    require(
+        len(link["candidates"]) == 1
+        and link["candidates"][0]["capture"] == access._focal_key,
+        "Current protein catalog changed its explicit target capture.",
+    )
+    require(
+        not any(
+            (
+                view._record_panel,
+                view._field_panel,
+                view._link_panel,
+                view._question_catalog,
+                view._focus,
+                view._component_navigation,
+                view._context_only,
+            )
+        )
+        and view._selection._scientific is None
+        and view._machine_ref is None,
+        "Current protein catalog has foreign scientific/presentation flags.",
+    )
+    native, full = access._resolve(view._selection._target["location"])
+    require(
+        full["kind"] == "result"
+        and not full["segments"]
+        and full["result_ref"] in access._metadata_refs,
+        "Current protein catalog lost its complete literal metadata owner.",
+    )
+    same(native, frozen_protein_topics(), "complete frozen current target catalog")
+    same(record["native_payload"], native, "current target catalog native payload")
+    require(
+        record.get("native_encoding", "json") == "json",
+        "Unknown current target catalog encoding.",
+    )
+    molecule._literal_selection(view, full)
+    molecule._state_context(
+        view,
+        record,
+        {
+            **access.context,
+            "mode": "live",
+            "adapter": molecule.LINK_RULE,
+            "activity_context": "target_card",
+            "molecule_card_ref": navigation["molecule_card_ref"],
+            "target_card_ref": navigation["target_card_ref"],
+            "molecule_activity_navigation": deepcopy(navigation),
+        },
+    )
+    if view._display_request is None:
+        same(
+            view.outcome,
+            {"status": "ok", "reason": None},
+            "current target catalog outcome",
+        )
+    molecule._question(view)
+    molecule._literal_state(view, record)
+    from .card_exploration_verification import _verify_display
+
+    _verify_display(view, record)
+
+
+def has_sequence_context_display(bundle):
+    """Choose current receiving for actual display operations below a sequence result."""
+    return bool(sequence_context_display_ancestry(bundle))
+
+
+def sequence_context_display_ancestry(bundle):
+    """Retain one actual ancestry as the bounded shared-header admission witness."""
+    for key, record in bundle["views"].items():
+        if (
+            record["flags"].get("_display_request") is None
+            or record["selection"].get("scientific_result_ref") is not None
+        ):
+            continue
+        parent = record.get("origin") or record.get("explorer_origin")
+        seen = set()
+        path = [key]
+        while parent is not None and parent not in seen:
+            seen.add(parent)
+            path.append(parent)
+            original = bundle["views"][parent]
+            result = original["selection"].get("scientific_result_ref")
+            if result is not None:
+                if (
+                    bundle["objects"][result]["context"]["adapter"]
+                    == "sequence_change_exploration@1"
+                ):
+                    return path
+                break
+            parent = original.get("origin") or original.get("explorer_origin")
+    return []
 
 
 def has_observed_catalog(bundle):
