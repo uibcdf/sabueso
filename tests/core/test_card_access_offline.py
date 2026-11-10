@@ -94,6 +94,8 @@ def test_complete_literal_reconstruction(nature):
             "bioactivities",
             "variants",
             "sequence_changes",
+            "comparative_context",
+            "associations",
         ]
         if nature == "protein"
         else ["chemical_classification", "activity_context", "clinical"]

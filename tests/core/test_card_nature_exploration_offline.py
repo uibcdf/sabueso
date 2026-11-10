@@ -379,6 +379,8 @@ def test_coverage_source_states_and_unknown_counts_are_not_reclassified(
                 "bioactivities",
                 "variants",
                 "sequence_changes",
+                "comparative_context",
+                "associations",
             },
             {
                 "function",
@@ -396,6 +398,9 @@ def test_coverage_source_states_and_unknown_counts_are_not_reclassified(
                 "variant_tissue_context",
                 "isoform_tissue_context",
                 "sequence_changes",
+                "related_proteins",
+                "protein_associations",
+                "sequence_differences",
             },
         ),
         (

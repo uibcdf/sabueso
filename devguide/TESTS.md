@@ -1269,3 +1269,26 @@ union explicitly and preserve earlier red or interrupted epochs. Fresh receiver
 children share the same 10 GiB RSS ceiling; select low concurrency first and
 increase only from measurements. Local passing does not establish installed/
 hosted/scientific/human acceptance (#148/#112).
+
+## Protein comparative and association LIVE context
+
+Run complete `test_card_protein_context_offline.py` with affected access, agent,
+nature, context/source navigation, relationship/comparative, quantity and saved
+regressions. Check all six retained predicates, unchanged original direction and
+qualifiers, source channels versus recorded derivations, missing/misbound sources,
+conflicts, repeated supplied inputs, ambiguous revisions and typed null/false/zero.
+Public UniProt/IntAct, UniRef and OMA examples preserve their source records; the
+TcTIM/strain sequence pair must match the existing native result exactly.
+
+Require an exact supplied comparator before native work. Check one cached native
+comparison shared by human and agent requests, unchanged equal-position scope,
+different lengths, unstated/malformed sequences, both source bindings, exact source/
+question/back continuity, literal source metadata, bounded escaped previews, typed
+membership/order and atomic compact deferral. New context saving must refuse before
+file creation, including its observed literal/source descendants; captured Card
+export and fresh unrelated literal saving remain available.
+
+Copy the complete module and its public inputs outside checkout; verify byte hashes,
+controller/worker placement and editable imports. Both installed workflows copy and
+select the whole module once. A clean qualified LIVE original must precede any
+independent reader; previous saved predicates and original capsules remain fixed.

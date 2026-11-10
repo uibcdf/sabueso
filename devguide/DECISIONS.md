@@ -1,5 +1,21 @@
 # Sabueso — Decision Log
 
+## Project retained protein context before adding new correspondence (2026-11-09)
+
+Comparative and biological association panels share captured Relationship records
+and explicit supplied input occurrences under `protein_context_projection@1`.
+Keep original direction, channels, qualifiers, conflicts and recorded derivations.
+Label source-reference binding separately from independent provider-mapping or
+scientific validation. Supplied Card presence never asserts a relationship.
+
+An explicit sequence question reuses `equal_length_positions@1` over inert captured
+fields. Preserve its original output and unknowns; equal integer positions imply
+neither residue correspondence nor identity. Defer general knowledge/residue-map
+comparison to its own B6 increment. Qualify LIVE human/agent/source behavior, then
+capture a clean original before implementing its independent saved reader. Until
+then, refuse new-context session saving explicitly and preserve captured Card export.
+Owner: #148/#112; the profile analysis and CHECKPOINT own scope and qualification.
+
 ## Preserve independent sequence-change occurrences and access origins (2026-11-09)
 
 The independent logical @31 / physical @32 reader uses the immutable clean

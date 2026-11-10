@@ -48,6 +48,14 @@ to [CHECKPOINT](CHECKPOINT.md); execution budgets belong to the
 uses applicable local checks and authorized CI batching. Historical green
 receipts do not qualify a changed working tree or later candidate artifacts.
 
+The next B6 [protein comparative/association profile](pending_proposals/card_protein_context_exploration.md)
+now implements LIVE retained orthology/cluster and disease/pathway/interaction
+panels, shared with typed compact agents. Explicit supplied sequence comparison
+reuses the original equal-position native rule without establishing correspondence
+or identity. Independent original saving awaits a clean producer capture and frozen
+reader. CHECKPOINT owns current qualification; general knowledge/residue-map
+comparisons and B7 acceptance remain open.
+
 The first B6 [variant/isoform tissue-context profile](pending_proposals/card_variant_tissue_exploration.md)
 now shares existing scoped native results between human and typed agent access.
 It preserves original genomic/transcript/CDS scope, per-tissue unknowns, source

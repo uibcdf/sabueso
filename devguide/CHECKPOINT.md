@@ -5,6 +5,42 @@ Current working-state checkpoint: **2026-11-09**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Protein comparative and association LIVE profiles — local checkpoint PASS
+
+The new [protein-context profile](pending_proposals/card_protein_context_exploration.md)
+shares retained orthology/cluster and disease/pathway/physical/functional-association
+records between human and typed agent routes. Original direction, channels,
+qualifiers, recorded conflicts, derivations and exact source/input destinations
+remain visible. Supplied protein occurrences are explicit inputs, not relationships;
+multiple revisions remain ambiguous and repeated occurrences remain distinct.
+
+The explicit sequence question requires an exact supplied capture and reuses
+`equal_length_positions@1` over inert captured fields. It preserves the original
+native output, both source bindings, typed difference count/equality and unavailable
+bases, without Card reconstruction, acquisition, alignment or identity inference.
+Human and compact requests share one cached native execution. New context saving
+is explicitly unavailable until a clean producer original and frozen reader qualify
+it; captured Card export and fresh unrelated literal saving remain available.
+
+All **1,901 distinct selected offline cases pass** in two disjoint complete gates
+on one unchanged 1,281-path source map: 179 current catalog/owning cases and the
+1,722-case adjacent/historical remainder. This includes all 43 new owning cases
+and the complete 222-case previous sequence saved cohort. Independent collection
+equals the exact executed union. All **43 copied owning cases pass outside checkout**
+with eight byte-identical inputs and five controller/worker placement/import proofs.
+The diagnostic wheel/sdist contain all 869 implementation modules and five frozen
+SOURCE resources byte-identically. These are source/copy/content checks; installed/
+hosted/scientific/researcher/workload/consumer acceptance remains separate.
+
+The [LIVE receipt](evidence/protein_context_live_checkpoint_20261109.json) owns
+exact epochs, resources, earlier red expectations and limits. The independent
+synthetic qualifier-merge observation is retained for a follow-up: raw `0` and
+`False` currently merge without a conflict, while both source ids remain present.
+Capture the qualified clean producer before independent original reading, then
+continue general knowledge/residue-map comparisons and B7 acceptance. B2 review
+stays deferred, B8/release unresumed and CI deferred under #148/#112. Final committed
+metadata/code/remote and cleanup proofs belong to the local post-push handoff.
+
 ## Mixed saved contexts — local checkpoint PASS
 
 The follow-up to the saved-reader checkpoint extends three existing new-format

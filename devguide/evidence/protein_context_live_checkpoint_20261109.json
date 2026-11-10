@@ -1,0 +1,432 @@
+{
+  "state": "SELECTED_LOCAL_PASS",
+  "owner": "uibcdf/sabueso#148/#112",
+  "date": "2026-11-09",
+  "base_head": "82c1ed5d40fbbd2f986d34963d9ab2f15a9e098b",
+  "adapter": "protein_context_exploration@1",
+  "source_cases": 1901,
+  "source_complete_modules": 50,
+  "new_owning_cases": 43,
+  "source_paths": 1281,
+  "source_fingerprint": "788a59d4826e7b0c7e16006cbaf170d1d4e846c3198404703a9b98510b6aab53",
+  "source_gates": {
+    "b6-protein-context-catalog-final-1": {
+      "state": "PASS",
+      "counts": {
+        "collected": 179,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 179,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 179,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "pytest_elapsed_s": 8.974982693995116,
+      "source_count": 1281,
+      "before_after_equal": true,
+      "controller_workers_and_calls_agree": true,
+      "events_sha256": "d1221ed7f7b3fba2caa321c4b5ce3613a5fe161dcd6ea352164bbef6be07b425",
+      "resources": {
+        "owner": "uibcdf/sabueso#148/#112",
+        "review_trigger": "Variant/isoform LIVE and adjacent controls; 4 workers,10GiBtotalRSS,native1,host16GiBfloor,4GiBscratch",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1,2,3",
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-B",
+          "-m",
+          "pytest",
+          "tests/core/test_card_access_offline.py",
+          "tests/core/test_card_nature_exploration_offline.py",
+          "tests/core/test_card_disease_association_exploration_offline.py",
+          "tests/core/test_card_protein_context_offline.py",
+          "--maxschedchunk=2",
+          "-m",
+          "not online",
+          "--receptor=llm",
+          "--receptor-events=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-context-catalog-final-1/events.jsonl",
+          "-p",
+          "checkpoint_scope",
+          "--basetemp=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-context-catalog-final-1/pytest-scratch",
+          "-o",
+          "tmp_path_retention_policy=failed",
+          "-W",
+          "error:unclosed database:ResourceWarning",
+          "-W",
+          "error::pytest.PytestUnraisableExceptionWarning",
+          "-n",
+          "4",
+          "--dist=load"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "exit_code": 0,
+        "elapsed_s": 9.88,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 525365248,
+        "minimum_host_available_bytes": 60092362752,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 5868354,
+        "limits": {
+          "owned_rss_bytes": 10737418240,
+          "host_available_bytes": 17179869184,
+          "owned_swap_bytes": 0,
+          "cpu_affinity_count": 4,
+          "nice": 10,
+          "elapsed_s": 600,
+          "owned_scratch_bytes": 4294967296
+        },
+        "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-context-catalog-final-1/cargo-target"
+      }
+    },
+    "b6-protein-context-adjacent-remainder-final-1": {
+      "state": "PASS",
+      "counts": {
+        "collected": 1722,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 1722,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 1722,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "pytest_elapsed_s": 477.2364489820029,
+      "source_count": 1281,
+      "before_after_equal": true,
+      "controller_workers_and_calls_agree": true,
+      "events_sha256": "f4d668f0a1e5e3a416ad8f9a632412d279bd0edad383f3eca79bd734a8d82a80",
+      "resources": {
+        "owner": "uibcdf/sabueso#148/#112",
+        "review_trigger": "Protein context LIVE and historical adjacent controls; 8 workers,10GiBtotalRSS,native1,host16GiBfloor,10GiBscratch",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1,2,3,4,5,6,7",
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-B",
+          "-m",
+          "pytest",
+          "tests/core/test_argument_contracts_offline.py",
+          "tests/core/test_card_agent_selection_offline.py",
+          "tests/core/test_card_annotation_regions_offline.py",
+          "tests/core/test_card_bioactivity_exploration_offline.py",
+          "tests/core/test_card_cell_support_offline.py",
+          "tests/core/test_card_clinical_exploration_offline.py",
+          "tests/core/test_card_context_navigation_offline.py",
+          "tests/core/test_card_disease_association_original_offline.py",
+          "tests/core/test_card_exploration_offline.py",
+          "tests/core/test_card_human_labels_offline.py",
+          "tests/core/test_card_literature_exploration_offline.py",
+          "tests/core/test_card_navigation_preview_offline.py",
+          "tests/core/test_card_protein_exploration_offline.py",
+          "tests/core/test_card_protein_source_offline.py",
+          "tests/core/test_card_saved_clinical_offline.py",
+          "tests/core/test_card_saved_disease_association_offline.py",
+          "tests/core/test_card_saved_exploration_offline.py",
+          "tests/core/test_card_saved_science_offline.py",
+          "tests/core/test_card_saved_variant_offline.py",
+          "tests/core/test_card_variant_exploration_offline.py",
+          "tests/core/test_card_variant_original_offline.py",
+          "tests/core/test_comparative_bibliography_offline.py",
+          "tests/core/test_comparative_explanation_offline.py",
+          "tests/core/test_comparative_operations_offline.py",
+          "tests/core/test_comparative_response_contracts_offline.py",
+          "tests/core/test_comparative_support_journey_offline.py",
+          "tests/core/test_exploration_shared_values_offline.py",
+          "tests/core/test_exploration_transport_offline.py",
+          "tests/core/test_fixture_delivery_offline.py",
+          "tests/core/test_fixture_licensing_offline.py",
+          "tests/core/test_gnomad_acquisition_offline.py",
+          "tests/core/test_gnomad_offline.py",
+          "tests/core/test_gtex_acquisition_offline.py",
+          "tests/core/test_isoforms_offline.py",
+          "tests/core/test_package_data_offline.py",
+          "tests/core/test_quantities_offline.py",
+          "tests/core/test_scoped_tissue_usage_offline.py",
+          "tests/core/test_source_registry_offline.py",
+          "tests/core/test_uniprot_additional_annotations_offline.py",
+          "tests/core/test_uniprot_feature_molecule_identity_offline.py",
+          "tests/core/test_uniprot_feature_scope_offline.py",
+          "tests/core/test_variants_offline.py",
+          "tests/core/test_card_sequence_changes_offline.py",
+          "tests/core/test_card_sequence_change_original_offline.py",
+          "tests/core/test_card_sequence_change_history_offline.py",
+          "tests/core/test_card_saved_sequence_change_offline.py",
+          "--maxschedchunk=2",
+          "-m",
+          "not online",
+          "--receptor=llm",
+          "--receptor-events=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-context-adjacent-remainder-final-1/events.jsonl",
+          "-p",
+          "checkpoint_scope",
+          "--basetemp=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-context-adjacent-remainder-final-1/pytest-scratch",
+          "-o",
+          "tmp_path_retention_policy=failed",
+          "-W",
+          "error:unclosed database:ResourceWarning",
+          "-W",
+          "error::pytest.PytestUnraisableExceptionWarning",
+          "-n",
+          "8",
+          "--dist=load"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "exit_code": 0,
+        "elapsed_s": 486.64,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 3331280896,
+        "minimum_host_available_bytes": 55996571648,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 6867449173,
+        "limits": {
+          "owned_rss_bytes": 10737418240,
+          "host_available_bytes": 17179869184,
+          "owned_swap_bytes": 0,
+          "cpu_affinity_count": 8,
+          "nice": 10,
+          "elapsed_s": 1200,
+          "owned_scratch_bytes": 10737418240
+        },
+        "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-context-adjacent-remainder-final-1/cargo-target"
+      }
+    }
+  },
+  "discovery_equals_exact_disjoint_union": true,
+  "copied_cases": 43,
+  "copy_gate": {
+    "state": "PASS",
+    "counts": {
+      "collected": 43,
+      "deselected": 0,
+      "errors": 0,
+      "executed": 43,
+      "failed": 0,
+      "not_executed": 0,
+      "passed": 43,
+      "reruns": 0,
+      "skipped": 0,
+      "subtests": {},
+      "warnings": 0,
+      "xfailed": 0,
+      "xpassed": 0
+    },
+    "pytest_elapsed_s": 2.3723914379952475,
+    "source_count": 1281,
+    "before_after_equal": true,
+    "controller_workers_and_calls_agree": true,
+    "events_sha256": "3290aaf62d164e1cd67a63c942315a9f3e37c7d6a39736b83a2819de503b3f3f",
+    "resources": {
+      "owner": "uibcdf/sabueso#148/#112",
+      "review_trigger": "Variant/isoform LIVE and adjacent controls; 4 workers,10GiBtotalRSS,native1,host16GiBfloor,4GiBscratch",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0,1,2,3",
+        "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "test_card_protein_context_offline.py",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "--receptor-events=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-context-copied-final-1/events.jsonl",
+        "-p",
+        "checkpoint_scope",
+        "--basetemp=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-context-copied-final-1/pytest-scratch",
+        "-o",
+        "tmp_path_retention_policy=failed",
+        "-W",
+        "error:unclosed database:ResourceWarning",
+        "-W",
+        "error::pytest.PytestUnraisableExceptionWarning",
+        "-n",
+        "4",
+        "--dist=load"
+      ],
+      "cwd": "/tmp/sabueso-protein-context-client-xf2hkqqa",
+      "exit_code": 0,
+      "elapsed_s": 3.54,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 411774976,
+      "minimum_host_available_bytes": 58339803136,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 257677,
+      "limits": {
+        "owned_rss_bytes": 10737418240,
+        "host_available_bytes": 17179869184,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 4,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 4294967296
+      },
+      "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-context-copied-final-1/cargo-target"
+    }
+  },
+  "byte_identical_public_inputs": 8,
+  "placement_proofs": 5,
+  "same_source_maps": true,
+  "diagnostic_artifacts": {
+    "owner": "uibcdf/sabueso#148/#35/#112",
+    "state": "PASS",
+    "python_modules_exact": 869,
+    "frozen_source_resources": {
+      "sabueso/core/_clinical_history_v1/SOURCE.json": "00688c256d6aee51ebc97d752fdd641f7317c5d399ae8dd84db0ee4dc7e60650",
+      "sabueso/core/_molecule_activity_history_v1/SOURCE.json": "14d59d034aa795516bc3258f11f8a4f8caaa1b5b38b3c30bfb273f8cfddde797",
+      "sabueso/core/_disease_association_history_v1/SOURCE.json": "a927a304b67df6144995c9d5f21e44ff4a34a98e8023221e47361f3dfe53feef",
+      "sabueso/core/_variant_history_v1/SOURCE.json": "b55ee3cd34ef6f7efdca561ce4b06fbacb8ea4f3ca67f7bb2d362cb82f3a6998",
+      "sabueso/core/_sequence_change_history_v1/SOURCE.json": "c7a43ebf63201757abfede8ec0eee1820199ff53bfbf8fd93e4506372aa7c8c0"
+    },
+    "artifacts": {
+      "sabueso-0.0.0+unknown-py3-none-any.whl": {
+        "bytes": 2156669,
+        "sha256": "b7027e71b5ec63dc5188f55872de9f6f18d8ed34c41c90035629c218f4f74983"
+      },
+      "sabueso-0.0.0+unknown.tar.gz": {
+        "bytes": 1584060,
+        "sha256": "fc941e450fa77d6dca3ad79015c27915e2988cc8630e9839d3270716c7e0588f"
+      }
+    },
+    "source_inputs_unchanged": true,
+    "scope": "Diagnostic no-VCS wheel/sdist of LIVE protein context; generated 0.0.0+unknown fallback intentional. No publication or installed-artifact qualification."
+  },
+  "quality": {
+    "state": "PASS",
+    "checks": {
+      "ruff": {
+        "exit_code": 0,
+        "command": [
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/ruff",
+          "check",
+          "."
+        ],
+        "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+        "output": "All checks passed!"
+      },
+      "format": {
+        "exit_code": 0,
+        "command": [
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/ruff",
+          "format",
+          "--check",
+          "."
+        ],
+        "log_sha256": "b5a47e47c53780e4ef58ea79bad8122f485ecb110cf9972b3003ad9a4e6324e2",
+        "output": "1618 files already formatted"
+      },
+      "governance": {
+        "exit_code": 0,
+        "command": [
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-B",
+          "/fast_data/home/liliana/repos@uibcdf/moli/devtools/scripts/check_repository.py",
+          "/fast_data/home/liliana/repos@uibcdf/sabueso",
+          "--canonical-guide",
+          "/fast_data/home/liliana/repos@uibcdf/moli/MOLI_GUIDE.md"
+        ],
+        "log_sha256": "a020ded5dd1f74aa00e4857214df2663df0f9ace41abffacee569f6e35b823c8",
+        "output": "/fast_data/home/liliana/repos@uibcdf/sabueso: conforms to MOLI governance core."
+      },
+      "guide": {
+        "exit_code": 0,
+        "command": [
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-B",
+          "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-context-live-1/check_guide.py"
+        ],
+        "log_sha256": "22e9857a0d9d4ffd86eb3cc343e126254bcbc4f968bc49595968bd5ed3e87b5b",
+        "output": "{\"state\": \"PASS\", \"scope\": \"Maintained non-archive guide local targets; changed-target Markdown anchors; changed fenced Python3.11 grammar. No external link or runtime example qualification.\", \"maintained_markdown_files\": 177, \"local_path_targets_checked\": 1453, \"changed_page_anchors_checked\": 73, \"python_examples_checked\": 0, \"errors\": []}"
+      },
+      "git_diff": {
+        "exit_code": 0,
+        "command": [
+          "git",
+          "diff",
+          "--check"
+        ],
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "output": ""
+      }
+    },
+    "python311_changed_modules": 12,
+    "workflow_wiring": {
+      ".github/workflows/ci.yml": {
+        "test_card_protein_context_offline.py": {
+          "copied_once": true,
+          "selected_once": true
+        }
+      },
+      ".github/workflows/test_staged_conda_package.yaml": {
+        "test_card_protein_context_offline.py": {
+          "copied_once": true,
+          "selected_once": true
+        }
+      }
+    },
+    "guide": {
+      "state": "PASS",
+      "scope": "Maintained non-archive guide local targets; changed-target Markdown anchors; changed fenced Python3.11 grammar. No external link or runtime example qualification.",
+      "maintained_markdown_files": 177,
+      "local_path_targets_checked": 1453,
+      "changed_page_anchors_checked": 73,
+      "python_examples_checked": 0,
+      "errors": []
+    },
+    "scope": "Local lint/format/grammar/governance/guide and installed-workflow wiring only. No installed or hosted qualification."
+  },
+  "behavior": [
+    "Retained comparative and biological relationship records; exact original direction, channels, qualifiers, conflicts and recorded derivations. Source-reference binding does not independently validate provider mappings.",
+    "Explicit supplied input occurrences do not assert relationships or merge identity. Exact supplied sequence question reuses native equal_length_positions@1; no alignment or correspondence.",
+    "Human/agent/source parity, typed filters, exact membership/order, bounded pages and atomic deferral. Unknown/malformed/unavailable values remain explicit.",
+    "New context/session saving refuses before file creation until clean original and independent frozen reader; older formats and original capsules stay fixed."
+  ],
+  "earlier_epochs": {
+    "calibration1": "24passed/9failed: actual filtered back-edge assumptions, export signature, unstated sequence source count and missing new question preview. Fixed instrument assumptions and new-protocol rendering.",
+    "owning1": "41passing call phases; module was extended after execution but before closure, so before/after map differs. Not used in final qualification.",
+    "owning2": "42passed/1failed: OMA public fixture is a raw list; instrument corrected.",
+    "adjacent1": "1855passed/3failed: current LIVE catalogs and old public protein-association refusal expectations. Corrected complete 179-case gate plus disjoint1722-case remainder now qualify the full1901-case union."
+  },
+  "additional_finding": "Synthetic current RelationshipStore merge loses raw qualifier 0/False conflict; source references retained. Owned local report/reproduction; follow-up pending. No provider defect inferred.",
+  "local_evidence": "recovered_work/checkpoint_recovery_20261106/b6-protein-context-live-1",
+  "ci": {
+    "state": "DEFERRED",
+    "marker": "[skip ci]",
+    "owner": "#148/#112",
+    "deferred_head": "Commit containing this receipt, exact SHA in final local handoff",
+    "recovery": "Authorized block/candidate unskipped push or manual exact-SHA CI/governance, inspected through gh-run-receptor; zero/skipped runs are not passing evidence."
+  },
+  "next": [
+    "Clean genuine producer capture before independent saved reading",
+    "General knowledge/residue-map comparison",
+    "Separate scientific, uncoached researcher/agent, workload and actual-consumer acceptance",
+    "B2 scientific/default review remains deferred; B8/release unresumed"
+  ],
+  "privacy": "Only existing frozen public responses and labelled synthetic controls; no private pilot data or acquisitions. Existing fixture NOTICE retained.",
+  "temporary_resources": {
+    "owner": "#148/#112",
+    "retain": "Useful receipts/source maps/scoped failures; genuine originals and frozen SOURCE resources remain fixed.",
+    "review_trigger": "Block handoff or B6 closeout; remove only exact completed owned gate/copy/build scratch."
+  }
+}

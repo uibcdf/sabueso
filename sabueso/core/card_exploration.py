@@ -28,6 +28,10 @@ _LABELS = {
     "entities": "Entity records",
 }
 _TOPICS = {
+    "comparative_context": (
+        "Related proteins and explicit comparisons",
+        "Source relationships and explicitly supplied protein comparisons; no identity merge.",
+    ),
     "sequence_changes": (
         "Natural variants and mutagenesis",
         "Original protein substitutions and source annotations, separate from population genomic variants.",
@@ -184,6 +188,7 @@ class CardItem:
             "associations",
             "variants",
             "sequence_changes",
+            "protein_context",
         ):
             return self._entry.value["kind"]
         if self._view._record_panel == "literature":
@@ -232,7 +237,7 @@ class CardItem:
 
     @property
     def label(self):
-        if self._view._record_panel == "sequence_changes":
+        if self._view._record_panel in ("sequence_changes", "protein_context"):
             return self._entry.value["label"]
         if self._view._link_panel:
             return self._entry.value["label"]
@@ -294,7 +299,7 @@ class CardItem:
 
     @property
     def payload_location(self):
-        if self._view._record_panel == "sequence_changes":
+        if self._view._record_panel in ("sequence_changes", "protein_context"):
             return deepcopy(self._entry.value["original_location"])
         return deepcopy(self._entry.location)
 
@@ -370,8 +375,11 @@ class CardItem:
             "associations",
             "variants",
             "sequence_changes",
+            "protein_context",
         ):
-            if self._view._record_panel == "sequence_changes":
+            if self._view._record_panel == "protein_context":
+                from .card_protein_context_selection_v1 import COLUMNS
+            elif self._view._record_panel == "sequence_changes":
                 from .card_sequence_change_dispatch import selection
 
                 COLUMNS = selection(self._view).COLUMNS
@@ -673,6 +681,10 @@ class CardItem:
 
     def open(self):
         """Open all retained detail, or follow a labeled catalog route."""
+        if self._view._record_panel == "protein_context":
+            from .card_protein_context_exploration import open_item
+
+            return open_item(self)
         if self._view._record_panel == "sequence_changes":
             if self._view._explorer.mode == "saved":
                 from .card_exploration_sequence_change import item_operation
@@ -851,6 +863,10 @@ class CardItem:
         return result
 
     def _live_explain(self):
+        if self._view._record_panel == "protein_context":
+            from .card_protein_context_exploration import explain
+
+            return explain(self)
         if self._view._record_panel == "sequence_changes":
             from .card_sequence_change_dispatch import presentation
 
@@ -1264,6 +1280,8 @@ class CardView:
             SORT_COLUMNS = selection(self).SORT_COLUMNS
 
             capabilities["sort"] = list(SORT_COLUMNS)
+        if self._record_panel == "protein_context":
+            capabilities["sort"] = list(self.schema["columns"])
         if self._record_panel == "literature":
             capabilities["sort"] = list(self.schema["columns"])
         if self._record_panel == "clinical":
@@ -1303,6 +1321,15 @@ class CardView:
     def schema(self):
         if self._saved_state is not None:
             return deepcopy(self._saved_state["schema"])
+        if self._record_panel == "protein_context":
+            from .card_protein_context_selection_v1 import COLUMNS
+
+            return {
+                "kind": "protein_context_exploration",
+                "grain": "retained relationship or explicit captured comparison",
+                "columns": list(COLUMNS),
+                "presentations": ["summary", "table", "detail"],
+            }
         if self._record_panel == "sequence_changes":
             from .card_sequence_change_dispatch import selection
 
@@ -1619,6 +1646,10 @@ class CardView:
     def filter(self, column, *, equals, skip_digestion=False):
         """Select exact declared cells without changing the scientific result."""
         self._check_column(column)
+        if self._record_panel == "protein_context":
+            from .card_protein_context_exploration import display_filter
+
+            return display_filter(self, column, equals)
         if self._record_panel == "sequence_changes":
             from .card_sequence_change_dispatch import presentation
 
@@ -1773,6 +1804,10 @@ class CardView:
             raise ArgumentError("descending must be True or False.")
         if unit is not None and (not isinstance(unit, str) or not unit.strip()):
             raise ArgumentError("unit requires a nonempty unit name or None.")
+        if self._record_panel == "protein_context":
+            from .card_protein_context_exploration import display_sort
+
+            return display_sort(self, column, descending, unit)
         if self._record_panel == "sequence_changes":
             from .card_sequence_change_dispatch import presentation
 
@@ -2091,7 +2126,13 @@ class CardExplorer:
 
         topics = NATURE_TOPICS.get(self.profile, ())
         return (
-            (*topics, "variants", "sequence_changes")
+            (
+                *topics,
+                "variants",
+                "sequence_changes",
+                "comparative_context",
+                "associations",
+            )
             if self.mode == "live" and self.profile == "protein"
             else topics
         )
@@ -2151,6 +2192,13 @@ class CardExplorer:
                 "Retained classes, direct/inherited roles and original source support; no therapeutic inference.",
             )
             if key == "classification" and self.profile == "small_molecule"
+            else (
+                "Protein biological associations",
+                "Original disease, pathway and interaction records; source channels and recorded direction stay distinct.",
+            )
+            if key == "associations"
+            and self.profile == "protein"
+            and self.mode == "live"
             else _TOPICS[key]
             for key in keys
         }
@@ -2229,6 +2277,33 @@ class CardExplorer:
                 "required_options": [],
                 "scope": "Original annotation occurrences, substitutions and source support; no genomic correspondence or clinical inference.",
             }
+        if self.mode == "live" and self.profile == "protein":
+            for key, topic, label, required in (
+                (
+                    "related_proteins",
+                    "comparative_context",
+                    "Which comparative relationships and supplied proteins are retained?",
+                    [],
+                ),
+                (
+                    "protein_associations",
+                    "associations",
+                    "Which disease, pathway and interaction relationships are retained?",
+                    [],
+                ),
+                (
+                    "sequence_differences",
+                    "comparative_context",
+                    "How do these explicitly supplied captured sequences differ at equal positions?",
+                    ["other_ref"],
+                ),
+            ):
+                result[key] = {
+                    "label": label,
+                    "topic": topic,
+                    "required_options": required,
+                    "scope": "Captured records and explicit inputs; no identity, coordinate correspondence or causality inference.",
+                }
         return result
 
     def _location(self, *keys):
@@ -2250,6 +2325,12 @@ class CardExplorer:
             from .card_sequence_change_exploration import inherited_request
 
             request = inherited_request(origin)
+            if request is None:
+                from .card_protein_context_exploration import (
+                    inherited_request as protein_request,
+                )
+
+                request = protein_request(origin)
         return CardView(
             self,
             selection,
@@ -2335,6 +2416,14 @@ class CardExplorer:
             raise ArgumentError("Scientific options require a mapping or None.")
         from .card_exploration_profiles import PANELS
 
+        if (
+            topic == "comparative_context"
+            or topic == "associations"
+            and self.profile == "protein"
+        ):
+            from .card_protein_context_exploration import view
+
+            return view(self, topic, origin, options)
         if topic == "sequence_changes":
             from .card_sequence_change_exploration import view
 
@@ -2577,6 +2666,17 @@ class CardExplorer:
             )
         if not isinstance(options, dict):
             raise ArgumentError("Question options require a mapping.")
+        if (
+            question == "related_proteins"
+            and options.get("mode", "relationships") != "relationships"
+        ):
+            raise ArgumentError(
+                "related_proteins requires relationship context; ask sequence_differences explicitly for sequence comparison."
+            )
+        if question == "sequence_differences":
+            if "mode" in options and options["mode"] != "sequence":
+                raise ArgumentError("sequence_differences requires mode sequence.")
+            options = {**options, "mode": "sequence"}
         if question in ("variant_tissue_context", "isoform_tissue_context"):
             mode = "variants" if question == "variant_tissue_context" else "isoforms"
             if "mode" in options and options["mode"] != mode:
@@ -2597,6 +2697,9 @@ class CardExplorer:
                     "variant_tissue_context",
                     "isoform_tissue_context",
                     "sequence_changes",
+                    "related_proteins",
+                    "protein_associations",
+                    "sequence_differences",
                 )
                 else {}
             )

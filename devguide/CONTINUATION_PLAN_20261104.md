@@ -480,6 +480,14 @@ The independent saved reader is locally qualified. The broader clinical/disease
 and B6 journeys, installed/hosted qualification, B7 acceptance and authorized B8
 delivery retain their full scope.
 
+The [protein comparative/association LIVE profile](pending_proposals/card_protein_context_exploration.md)
+now exposes retained orthology/cluster and disease/pathway/interaction records,
+shared typed selection and exact source/input navigation. Explicit sequence
+comparison reuses the existing equal-position rule and requires a supplied capture.
+Qualify this producer, capture its genuine original and implement independent saved
+reading before claiming that capability. General knowledge/residue-map comparisons
+and B7 acceptance retain their scope; this increment does not resume B8.
+
 ## Execution order
 
 The block table defines the stable B0–B8 dependencies. The dated

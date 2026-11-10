@@ -263,6 +263,7 @@ def _link_view(
         for i, link in enumerate(links)
     )
     if rule in (
+        "protein_context_links@1",
         "assembly_generation_links@1",
         "assembly_generation_links@2",
         "assembly_generation_links@3",
@@ -295,6 +296,10 @@ def _link_view(
 
 
 def related(item):
+    if item._view._record_panel == "protein_context":
+        from .card_protein_context_exploration import links
+
+        return links(item)
     if item._view._record_panel == "variants":
         from .card_variant_exploration import links
 
@@ -533,6 +538,9 @@ def _destination(explorer, candidate, origin, title="Referenced source record"):
 
 def follow(item):
     explorer, link = item._view._explorer, item._entry.value
+    if link.get("rule") == "protein_context_links@1" and link.get("role") == "question":
+        request = link["comparison_request"]
+        return explorer._answer(request["question"], request["options"], item._view)
     if (
         link.get("rule") == "variant_context_links@1"
         and item._view._explorer.mode == "saved"

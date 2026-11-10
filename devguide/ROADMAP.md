@@ -156,6 +156,14 @@ and uncoached researcher/agent/workload/actual-consumer acceptance stay open; B8
 and release remain unresumed. Original formats, source assertions and scientific
 defaults stay fixed under their named interpretations.
 
+The next [protein comparative/association LIVE slice](pending_proposals/card_protein_context_exploration.md)
+now projects retained orthology/cluster and disease/pathway/interaction records,
+with original direction, channels, conflicts and derivations, plus an explicit
+supplied-sequence question under the existing equal-position rule. Shared human/
+agent/source access is implemented. Capture a clean qualified original before
+independent saved reading; general knowledge/residue-map comparison and scientific/
+researcher/workload acceptance remain open. CHECKPOINT owns actual current checks.
+
 Continue the rich profiles through the
 [current destination actions](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions)
 with applicable local checks and the maintainer's authorized CI batching.

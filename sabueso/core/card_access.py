@@ -349,6 +349,7 @@ class CardAccess:
                             "disease_association_exploration@1",
                             "variant_tissue_context_exploration@1",
                             "sequence_change_exploration@1",
+                            "protein_context_exploration@1",
                         )
                         else rebound._entries
                     )
@@ -421,6 +422,8 @@ class CardAccess:
             in ("sabueso.card_exploration@29", "sabueso.card_exploration@31")
         ):
             scientific_topics.extend(("variants", "sequence_changes"))
+        if self.profile == "protein" and self.mode == "live":
+            scientific_topics.extend(("comparative_context", "associations"))
         scientific_topics.append("literature")
         retained = {
             selection._operation.removeprefix("select:")
@@ -756,6 +759,16 @@ class CardAccess:
                 data["variants"]["selection_availability"] = (
                     "live" if self.mode == "live" else "retained_requests_only"
                 )
+            if self.profile == "protein" and self.mode == "live":
+                from .card_protein_context_access import (
+                    descriptor as protein_descriptor,
+                )
+
+                for topic in ("comparative_context", "associations"):
+                    data[topic] = protein_descriptor(topic)
+                    data[topic].update(
+                        availability="live", selection_availability="live"
+                    )
             if self.profile == "disease":
                 if self.mode == "saved" and self._exploration_session.get("format") in (
                     "sabueso.card_exploration@27",
@@ -1069,12 +1082,14 @@ class CardAccess:
             "associations",
             "variants",
             "sequence_changes",
+            "comparative_context",
         ):
             raise ArgumentError(
                 "Scientific selection supports sequence_changes, variants, structures, ligand_site_comparisons, quaternary_interpretation, assembly_generation, chemical_classification, activity_context, clinical, associations, bioactivities and literature."
             )
         if (
             topic == "associations"
+            and self.profile == "disease"
             and self.mode == "saved"
             and self._exploration_session.get("format")
             in (
@@ -1103,7 +1118,36 @@ class CardAccess:
             from .card_exploration_sequence_change import saved_selection
 
             return saved_selection(self, fields, options, where, item_refs, order_by)
-        if topic == "sequence_changes":
+        if (
+            topic == "comparative_context"
+            or topic == "associations"
+            and self.profile == "protein"
+        ):
+            from .card_protein_context_access import materialize, options_for_context
+            from .card_protein_context_selection_v1 import (
+                active,
+                evaluate,
+                normalize,
+                projection,
+                selection_ref,
+            )
+
+            options, fields = options_for_context(topic, options), projection(fields)
+            query = normalize(where, item_refs, order_by)
+            if self.mode == "saved":
+                from .card_exploration_storage import missing_selection
+
+                return missing_selection(
+                    self, topic, options, fields, query if active(query) else None
+                )
+            if query["item_refs"] is not None and any(
+                ref not in self._scientific_items for ref in query["item_refs"]
+            ):
+                raise ArgumentError(
+                    "item_refs contains an item not retained in this access session."
+                )
+            result = materialize(self, topic, options)
+        elif topic == "sequence_changes":
             from .card_sequence_change_access import materialize, options_for_changes
             from .card_sequence_change_selection_v1 import (
                 active,
@@ -1516,6 +1560,7 @@ class CardAccess:
                 "disease_association_exploration@1",
                 "variant_tissue_context_exploration@1",
                 "sequence_change_exploration@1",
+                "protein_context_exploration@1",
             ):
                 return selection._scientific.frame(self, selection, entry)
             from .card_structure_page import complete_frame
@@ -1560,6 +1605,10 @@ class CardAccess:
         return frame
 
     def _defer(self, item):
+        if item.get("adapter") == "protein_context_exploration@1":
+            from .card_protein_context_access import defer_frame
+
+            return defer_frame(item)
         if item.get("adapter") == "sequence_change_exploration@1":
             if self.mode == "saved":
                 from .card_sequence_change_history_v1 import defer_frame

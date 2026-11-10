@@ -711,6 +711,16 @@ def _parts(view):
             if view._record_panel == "associations"
             else request["question"]
         )
+        if request["question"] in (
+            "related_proteins",
+            "protein_associations",
+            "sequence_differences",
+        ):
+            question_label = {
+                "related_proteins": "Which comparative relationships and supplied proteins are retained?",
+                "protein_associations": "Which disease, pathway and interaction statements are retained?",
+                "sequence_differences": "How do the explicitly supplied captured sequences differ at equal positions?",
+            }[request["question"]]
         if request["question"] == "sequence_changes":
             question_label = (
                 "Which natural variants and experimental sequence changes are retained?"
@@ -786,6 +796,10 @@ def _parts(view):
         from .card_chemical_presentation_v1 import opening as chemical_opening
 
         opening.extend(chemical_opening(view, preview))
+    if view._record_panel == "protein_context":
+        from .card_protein_context_exploration import opening as protein_opening
+
+        opening.extend(protein_opening(view, preview))
     if view._record_panel == "sequence_changes":
         from .card_sequence_change_dispatch import presentation
 
@@ -1018,7 +1032,9 @@ def _parts(view):
         if view._link_panel:
             if value.get("role") == "question":
                 context_key = (
-                    "assembly_request"
+                    "comparison_request"
+                    if value.get("rule") == "protein_context_links@1"
+                    else "assembly_request"
                     if value.get("rule")
                     in (
                         "structure_declaration_context_links@2",
@@ -1053,6 +1069,11 @@ def _parts(view):
                     f"{preview(value['availability'])} · {len(value['candidates'])} captured destinations",
                 )
             )
+            continue
+        if view._record_panel == "protein_context":
+            from .card_protein_context_exploration import display_row as protein_row
+
+            rows.append(protein_row(item, index, preview))
             continue
         if view._record_panel == "sequence_changes":
             from .card_sequence_change_dispatch import presentation
@@ -1351,6 +1372,10 @@ def _parts(view):
 
 
 def _headers(view):
+    if view._record_panel == "protein_context":
+        from .card_protein_context_exploration import HEADERS
+
+        return list(HEADERS)
     if view._record_panel == "sequence_changes":
         from .card_sequence_change_dispatch import presentation
 

@@ -135,7 +135,17 @@ def admitted_selection(selection):
     return True
 
 
+def _pending_protein_context(access):
+    return access.mode == "live" and any(
+        getattr(result, "wire", {}).get("context", {}).get("adapter")
+        == "protein_context_exploration@1"
+        for result in access._scientific_cache.values()
+    )
+
+
 def can_save_selection(selection):
+    if _pending_protein_context(selection._access):
+        return False
     if not admitted_selection(selection):
         return False
     if selection._access.mode == "saved":
@@ -183,6 +193,8 @@ def required_views(root):
 
 
 def can_save(view):
+    if _pending_protein_context(view._explorer.access):
+        return False
     if not admitted_view(view):
         return False
     if view._explorer.mode == "saved":
@@ -535,6 +547,10 @@ def _objects_for(access, records):
 
 
 def _prepare(root):
+    if _pending_protein_context(root._explorer.access):
+        from .card_protein_context_access import SAVE_REASON
+
+        raise StorageError(SAVE_REASON)
     _require(
         admitted_view(root),
         "Saving derived structures/coverage or their originating trail requires a historical verifier not yet implemented. Save a supported literal/field view or inspect capabilities.",

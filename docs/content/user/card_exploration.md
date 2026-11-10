@@ -278,6 +278,48 @@ calculate a replacement answer. Saving only a machine request does not invent
 an observed human panel, and saving only a human panel does not invent an agent
 request.
 
+## Explore related proteins and biological associations (development)
+
+```python
+explorer = protein_card.explore(related_cards=[other_protein_card])
+related = explorer.answer("related_proteins")
+associations = explorer.answer("protein_associations")
+related.table()
+associations.table()
+```
+
+Relationship rows preserve the recorded subject, predicate and object, source
+channel, qualifiers, conflicts and derivations. Orthology, cluster membership,
+disease association, pathway participation, physical interaction and functional
+association keep their different meanings. A supplied Card is a comparison input;
+its presence does not assert a relationship. `open()`, `explain()` and `related()`
+retain complete original records and source/input navigation. Missing destinations
+and multiple supplied revisions remain explicit.
+
+```python
+comparison = explorer.answer(
+    "sequence_differences",
+    options={"other_ref": explorer.context["inputs"][1]},
+)
+original_comparison = comparison.items()[0].open().native_payload
+selection = explorer.access.select(
+    "associations",
+    fields=["predicate", "subject_ref", "object_ref", "channel", "support_state"],
+    where={"predicate": "interacts_with"},
+)
+page = selection.page(max_bytes=16000)
+```
+
+The sequence question compares equal integer positions only when both stated
+sequences have equal length. It establishes no alignment, residue correspondence
+or entity identity. Different lengths, unstated sequences and malformed inputs
+remain unavailable. Source-reference binding is shown separately from scientific
+or provider-mapping validation; association does not imply causality.
+
+Independent saving for these new context sessions awaits a qualified original and
+frozen reader. Inspect `capabilities["save"]` before saving. Captured Card export
+and a fresh unrelated literal exploration remain available.
+
 ## Explore individual annotations in structures
 
 ```python

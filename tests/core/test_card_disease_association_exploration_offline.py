@@ -574,8 +574,21 @@ def test_display_filter_keeps_original_partial_support_state(originals):
 
 @pytest.mark.parametrize("nature", ("protein", "small_molecule", "generic"))
 def test_other_card_profiles_refuse_disease_association_materialization(nature):
+    from sabueso.core.card_disease_association_access import materialize
+
+    access = Card(meta={"entity_type": nature}).access()
     with pytest.raises(ArgumentError):
-        Card(meta={"entity_type": nature}).access().select(TOPIC)
+        materialize(access)
+    if nature == "protein":
+        selected = access.select(TOPIC)
+        assert (
+            selected._scientific.wire["context"]["adapter"]
+            == "protein_context_exploration@1"
+        )
+        assert selected.count == 0
+    else:
+        with pytest.raises(ArgumentError):
+            access.select(TOPIC)
 
 
 def test_typed_projection_membership_order_and_foreign_session_refusal(originals):
