@@ -1,0 +1,740 @@
+{
+  "state": "GENUINE_ORIGINAL_AND_SELECTED_LOCAL_PASS",
+  "date": "2026-11-10",
+  "owner": "uibcdf/sabueso#148/#193/#112",
+  "producer_head": "f6d8e4a3e57944ebe1ab4ab838600870ed720e2b",
+  "producer_version": "0.14.0+243.gf6d8e4a",
+  "producer_was_clean_and_reader_absent": true,
+  "native_rule": "card_knowledge_diff@2",
+  "unchanged_default": "card_knowledge_diff@1",
+  "adapter": "protein_knowledge_comparison_exploration@1",
+  "capsule": "tests/core/data/knowledge_comparison_live_sdk243.tar.gz",
+  "transport": {
+    "state": "PASS",
+    "producer_head": "f6d8e4a3e57944ebe1ab4ab838600870ed720e2b",
+    "producer_version": "0.14.0+243.gf6d8e4a",
+    "manifest_sha256": "3d66f346cdebf449d28c4d6ae441812f757664407c92a3f5b8a3de4176200398",
+    "members": 27361,
+    "every_member_byte_verified": true,
+    "encoded": {
+      "bytes": 62899169,
+      "sha256": "3a656731e69d1f1a5f04bf4b836467ffffd4f0a49d94f69e7e7ade2683335d3e"
+    },
+    "decoded": {
+      "bytes": 537989120,
+      "sha256": "9f66bc2c841143129643e85f989d48ea0678b1d0cf901d66e8590a1ae2b6d8ed"
+    },
+    "source_paths": 1318,
+    "source_stable": true,
+    "cases": {
+      "ambiguous-forward": {
+        "named_views": 99,
+        "actual_instances": 185,
+        "access_instances": 33,
+        "machine_queries": 16,
+        "machine_pages": 23,
+        "synthetic_control": "Synthetic duplicate comparison identities retain every candidate and original index.",
+        "case_sha256": "6d0a0de705f3b4a237ad76058ae94c827b53920acbc1fd01c38c9d2d4842bc27"
+      },
+      "ambiguous-reverse": {
+        "named_views": 99,
+        "actual_instances": 185,
+        "access_instances": 33,
+        "machine_queries": 16,
+        "machine_pages": 23,
+        "synthetic_control": "Synthetic duplicate comparison identities retain every candidate and original index.",
+        "case_sha256": "f19965b8514cc8b933d54074dad1f61bddc46575af1c54d2a946cf6053c64e37"
+      },
+      "bounded-escaped-label": {
+        "named_views": 93,
+        "actual_instances": 175,
+        "access_instances": 31,
+        "machine_queries": 16,
+        "machine_pages": 23,
+        "synthetic_control": "Synthetic long scope label stays bounded and HTML escaped.",
+        "case_sha256": "5d0f1a3847c2ceaea4dae900592f8b34035e254a7dae867ed224a5f559465eea"
+      },
+      "complete-map": {
+        "named_views": 83,
+        "actual_instances": 153,
+        "access_instances": 27,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic explicit correspondence; no alignment or biological correspondence validation.",
+        "case_sha256": "aefbb85138c93e15bde75bbb37fe86a6c33e59975b368a93b529911358cc7aba"
+      },
+      "conflict": {
+        "named_views": 99,
+        "actual_instances": 185,
+        "access_instances": 33,
+        "machine_queries": 16,
+        "machine_pages": 23,
+        "synthetic_control": "Synthetic original support binding or alternative remains explicit; no claim authentication.",
+        "case_sha256": "0f1aac4af26a355994d33e95cd68fcb0ef9314c4fbcf73398895976716f7fb4c"
+      },
+      "deferred-values": {
+        "named_views": 93,
+        "actual_instances": 175,
+        "access_instances": 31,
+        "machine_queries": 17,
+        "machine_pages": 25,
+        "synthetic_control": "Synthetic long original value/support exercises bounded atomic compact deferral.",
+        "case_sha256": "5cd0cca144fa0dd673c984f939a9961cf3c5069a12166f1ef2c06606bc17340d"
+      },
+      "empty-map": {
+        "named_views": 83,
+        "actual_instances": 153,
+        "access_instances": 27,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic explicit correspondence; no alignment or biological correspondence validation.",
+        "case_sha256": "2ea3b0e4585d35372631bf8bcae8bef938eddf915ebaa01b78295245725538bb"
+      },
+      "first-exact-revision": {
+        "named_views": 55,
+        "actual_instances": 101,
+        "access_instances": 17,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic exact chosen capture, two revisions sharing a source identifier.",
+        "case_sha256": "62bbe72faa01351c9bdf43afc7a9010bf3b898def869f8fdb242ca8f239e072b"
+      },
+      "foreign-axis": {
+        "named_views": 83,
+        "actual_instances": 153,
+        "access_instances": 27,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic unavailable or unsupported positional scope; no inferred transfer.",
+        "case_sha256": "aca871e1e2d27fd7413d05ad02e2394c90a7566f241fa165dda79ee8d4778374"
+      },
+      "free-text": {
+        "named_views": 83,
+        "actual_instances": 153,
+        "access_instances": 27,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic retained free text is not semantically classified.",
+        "case_sha256": "8988a7d082834d6969ff465942b5b543c426b9ba562ccb73bee1a8d6e5d6aa19"
+      },
+      "huge-span": {
+        "named_views": 83,
+        "actual_instances": 153,
+        "access_instances": 27,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic unavailable or unsupported positional scope; no inferred transfer.",
+        "case_sha256": "5fb6655c5f3dc8a86f07e86bc9778a52883f55f4014a558082029103ce033dbd"
+      },
+      "human-only": {
+        "named_views": 37,
+        "actual_instances": 70,
+        "access_instances": 14,
+        "machine_queries": 0,
+        "machine_pages": 0,
+        "synthetic_control": "Synthetic human-only observed comparison; no compact requests.",
+        "case_sha256": "7e153390b7c6c972b7d7afb4ae78340c8211f3ca3d40c7ef823dad07896f70df"
+      },
+      "machine-only": {
+        "named_views": 0,
+        "actual_instances": 0,
+        "access_instances": 1,
+        "machine_queries": 17,
+        "machine_pages": 17,
+        "synthetic_control": "Synthetic compact-only observed comparison; no human views.",
+        "case_sha256": "03600f6df93cb56f73f691bfecec40505aa04873bd839e6dbd5514f00483d4f1"
+      },
+      "missing-source": {
+        "named_views": 85,
+        "actual_instances": 157,
+        "access_instances": 27,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic original support binding or alternative remains explicit; no claim authentication.",
+        "case_sha256": "edc23cfaa8be18dc7cb7ffea2707c0bcf0b00d419b3d7cf17dc231a310812aa9"
+      },
+      "nested-types": {
+        "named_views": 83,
+        "actual_instances": 153,
+        "access_instances": 27,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic typed stored representations, not real-source taxonomy or prevalence.",
+        "case_sha256": "bec3268ab104b1545455d4b87a257c51dc06b2a6548c2b1587676a0e838a80c5"
+      },
+      "no-map": {
+        "named_views": 83,
+        "actual_instances": 153,
+        "access_instances": 27,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic explicit correspondence; no alignment or biological correspondence validation.",
+        "case_sha256": "57d353530efbfdbc1207a2971aa2a0ad9c3ec445315a57308d4ad89a53ce74df"
+      },
+      "one-float": {
+        "named_views": 83,
+        "actual_instances": 153,
+        "access_instances": 27,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic typed stored representations, not real-source taxonomy or prevalence.",
+        "case_sha256": "7691fff2fd85742427254705cb583a0a6d5052769ad7aaad0ebf65fd40a20231"
+      },
+      "opaque-source-lookalikes": {
+        "named_views": 93,
+        "actual_instances": 175,
+        "access_instances": 31,
+        "machine_queries": 16,
+        "machine_pages": 23,
+        "synthetic_control": "Synthetic source-owned packaging/version lookalikes are ordinary literal values.",
+        "case_sha256": "f6d203958d05549afccd3b8f7b4d42a89dee54de8a6dacd68f5d3b804743b845"
+      },
+      "partial-map": {
+        "named_views": 83,
+        "actual_instances": 153,
+        "access_instances": 27,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic explicit correspondence; no alignment or biological correspondence validation.",
+        "case_sha256": "20c7282a9258543c0663486dbb6dcd6cc96927b480e75f265fc7f9e1c627fe9c"
+      },
+      "public-supplied-map": {
+        "named_views": 3257,
+        "actual_instances": 5907,
+        "access_instances": 1143,
+        "machine_queries": 16,
+        "machine_pages": 259,
+        "synthetic_control": null,
+        "case_sha256": "79c3533bf4142bab59f0be3298d1b66185fb74c30e9b9349659b544ae6741d5d"
+      },
+      "public-unmapped-human-first": {
+        "named_views": 3257,
+        "actual_instances": 5907,
+        "access_instances": 1143,
+        "machine_queries": 16,
+        "machine_pages": 259,
+        "synthetic_control": null,
+        "case_sha256": "299bdbd2be1066a8533d94da7397fcd436efe059b9d7264e2baa1f197f275fa2"
+      },
+      "public-unmapped-machine-first": {
+        "named_views": 3257,
+        "actual_instances": 5907,
+        "access_instances": 1143,
+        "machine_queries": 17,
+        "machine_pages": 290,
+        "synthetic_control": null,
+        "case_sha256": "674977926a9cce767eaf8898108ff1c3e95153caa1d25b1ba2e371073f7bec7c"
+      },
+      "quantity-units": {
+        "named_views": 83,
+        "actual_instances": 153,
+        "access_instances": 27,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic original mass values retain the schema-declared dalton unit.",
+        "case_sha256": "f096e9b853b1e56358e00b2946f9d16d5bc6382b5ab6b2cddb056f055deccbd6"
+      },
+      "relationship-direction-channels": {
+        "named_views": 117,
+        "actual_instances": 215,
+        "access_instances": 39,
+        "machine_queries": 16,
+        "machine_pages": 23,
+        "synthetic_control": "Synthetic full direction, channels, typed qualifiers and exact source records stay literal.",
+        "case_sha256": "28c1e2d9f909076f29c1b03fa6753053241dbde5598c9caec411eb5f09cec299"
+      },
+      "repeated-inputs": {
+        "named_views": 55,
+        "actual_instances": 101,
+        "access_instances": 17,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic repeated exact input occurrence is retained in the original input list.",
+        "case_sha256": "68e4e32f211e8bec8e39ca7d9e3a0f6820a792ab084606470c94ee26c1eefb0d"
+      },
+      "repeated-occurrences": {
+        "named_views": 99,
+        "actual_instances": 185,
+        "access_instances": 33,
+        "machine_queries": 16,
+        "machine_pages": 23,
+        "synthetic_control": "Synthetic identical-looking original occurrences stay separate.",
+        "case_sha256": "9a4fd65625be534d238ca616a6c412e8ab5250f6ea886658bf55ee4683a4259c"
+      },
+      "same-rendered-state-labels": {
+        "named_views": 131,
+        "actual_instances": 249,
+        "access_instances": 45,
+        "machine_queries": 16,
+        "machine_pages": 24,
+        "synthetic_control": "Synthetic distinct area/source scopes render equal labels but retain distinct native paths.",
+        "case_sha256": "175252963c62ff7ef826b7a780a488ab25f800575f9f14864ce45748c8762b8f"
+      },
+      "second-exact-revision": {
+        "named_views": 55,
+        "actual_instances": 101,
+        "access_instances": 17,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic second exact chosen capture; no implicit identifier matching.",
+        "case_sha256": "3b44a225a58c7d059b17d5488821f5ce8868d12fc2e372ae4a715739e11aa9b2"
+      },
+      "structure-legs": {
+        "named_views": 83,
+        "actual_instances": 153,
+        "access_instances": 27,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic supplied sequence mapping preserves other original location metadata.",
+        "case_sha256": "bc4322be21d1469730e5c72e0fddf4bb6ee200ac72dcd3f8946ed1615229e865"
+      },
+      "uncertain-boundary": {
+        "named_views": 83,
+        "actual_instances": 153,
+        "access_instances": 27,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic unavailable or unsupported positional scope; no inferred transfer.",
+        "case_sha256": "f5a9e532a462352636ff6735fdb2547647984a66ccb4112a4b070431f91999b7"
+      },
+      "uncited-alternative": {
+        "named_views": 105,
+        "actual_instances": 195,
+        "access_instances": 35,
+        "machine_queries": 16,
+        "machine_pages": 23,
+        "synthetic_control": "Synthetic original support binding or alternative remains explicit; no claim authentication.",
+        "case_sha256": "7d9e088a104bd6d310d897dd1842e168bac058af1992f44fad888c19c76de2f3"
+      },
+      "unstated-axis": {
+        "named_views": 83,
+        "actual_instances": 153,
+        "access_instances": 27,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic unavailable or unsupported positional scope; no inferred transfer.",
+        "case_sha256": "6161cc67d087baf4fcb609f880c71d1193cea02b80ce0e29aabb5e507065ed4f"
+      },
+      "wrong-field": {
+        "named_views": 83,
+        "actual_instances": 153,
+        "access_instances": 27,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic original support binding or alternative remains explicit; no claim authentication.",
+        "case_sha256": "03d3e025623e3de7bcf1fbe154abbc26e93c00682e833173d30989f09cd65dd5"
+      },
+      "wrong-indexing": {
+        "named_views": 83,
+        "actual_instances": 153,
+        "access_instances": 27,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic unavailable or unsupported positional scope; no inferred transfer.",
+        "case_sha256": "c203eda9d5984034f91cabe2f917f191056ba8332bd3bb634ea199d45595e249"
+      },
+      "wrong-subject": {
+        "named_views": 83,
+        "actual_instances": 153,
+        "access_instances": 27,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic original support binding or alternative remains explicit; no claim authentication.",
+        "case_sha256": "309656a02c42d92bfeb10d13d5012ecc72355bca0b0afc473d45b88b85a5026f"
+      },
+      "wrong-value": {
+        "named_views": 83,
+        "actual_instances": 153,
+        "access_instances": 27,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic original support binding or alternative remains explicit; no claim authentication.",
+        "case_sha256": "2ac571bac9cdeafeaa3a8565bf3078f556ce4480a3119ddce3003b59edf3553b"
+      },
+      "zero-false": {
+        "named_views": 83,
+        "actual_instances": 153,
+        "access_instances": 27,
+        "machine_queries": 16,
+        "machine_pages": 16,
+        "synthetic_control": "Synthetic typed stored representations, not real-source taxonomy or prevalence.",
+        "case_sha256": "043bae3deaa1c000f10b5a6df77f9cf571076f629b90125ac8cb7a51b27ed9ff"
+      }
+    },
+    "attempts_during_observation": {
+      "assertion_creation": 0,
+      "card_reconstruction": 0,
+      "network": 0,
+      "source_acquisitions": 0
+    },
+    "input_preparation": "One public UniProt JSON input set and labelled synthetic controls prepared once, then four bounded disjoint batches. Every member and case-local graph preserved; zero monitored network/acquisition/reconstruction/assertion-creation attempts during observation.",
+    "not_a_saved_file": true,
+    "independent_reader_not_yet_implemented": true
+  },
+  "sdk_free_verification": {
+    "state": "PASS",
+    "scope": "SDK-free complete byte/declared-reference/actual-parent/access/direct-input/native occurrence/compact-frame accounting. No scientific recomputation or saved-reader admission.",
+    "members": 27361,
+    "member_bytes": 517298188,
+    "source_paths": 1318,
+    "capture_batches": 4,
+    "declared_references": 7004521,
+    "unreferenced_value_members": 0,
+    "totals": {
+      "named_views": 12580,
+      "actual_view_instances": 22929,
+      "actual_access_instances": 4352,
+      "projection_results": 37,
+      "native_fields": 162,
+      "original_item_occurrences": 240,
+      "additional_projections": 0,
+      "machine_queries": 579,
+      "machine_pages": 1410,
+      "machine_frames": 3223,
+      "deferred_frames": 36,
+      "unavailable_explorer_views": 2,
+      "exact_locations": 373941
+    }
+  },
+  "capture": {
+    "batches": 4,
+    "cases": 37,
+    "prepared_once_identical_inputs": true,
+    "all1318source_hashes_agree": true,
+    "one_native_execution_per_observed_case": true,
+    "resource": {
+      "owner": "uibcdf/sabueso#148/#193/#112",
+      "review_trigger": "Clean SDK243 knowledge-comparison LIVE original;4CPUs,10GiBtotalRSS,native1,16GiBhostfloor,4GiBscratch",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0,1,2,3",
+        "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-B",
+        "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-knowledge-live-original-1/capture_parallel.py"
+      ],
+      "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 137.83,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 943546368,
+      "minimum_host_available_bytes": 59671998464,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 745436953,
+      "limits": {
+        "owned_rss_bytes": 10737418240,
+        "host_available_bytes": 17179869184,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 4,
+        "nice": 10,
+        "elapsed_s": 1200,
+        "owned_scratch_bytes": 4294967296
+      },
+      "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-knowledge-live-original-1/cargo-target"
+    }
+  },
+  "selected_source": {
+    "state": "PASS",
+    "counts": {
+      "collected": 412,
+      "deselected": 0,
+      "errors": 0,
+      "executed": 412,
+      "failed": 0,
+      "not_executed": 0,
+      "passed": 412,
+      "reruns": 0,
+      "skipped": 0,
+      "subtests": {},
+      "warnings": 0,
+      "xfailed": 0,
+      "xpassed": 0
+    },
+    "pytest_elapsed_s": 148.0156438400154,
+    "events_sha256": "d6a225fc1b7655d553a879335109f49f7df9a6e96d10363e1ab4ba2b0a303aec",
+    "source_stable": true,
+    "source_paths": 1313,
+    "controller_workers_and_calls_agree": true,
+    "resources": {
+      "owner": "uibcdf/sabueso#148/#112",
+      "review_trigger": "Protein context LIVE and historical adjacent controls; 8 workers,10GiBtotalRSS,native1,host16GiBfloor,10GiBscratch",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0,1,2,3,4,5,6,7",
+        "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "tests/core/test_argument_contracts_offline.py",
+        "tests/core/test_card_diff_offline.py",
+        "tests/core/test_card_knowledge_comparison_offline.py",
+        "tests/core/test_card_knowledge_comparison_original_offline.py",
+        "tests/core/test_card_knowledge_diff_v2_offline.py",
+        "tests/core/test_card_protein_context_history_offline.py",
+        "tests/core/test_card_protein_context_offline.py",
+        "tests/core/test_card_protein_context_original_offline.py",
+        "tests/core/test_card_saved_protein_context_offline.py",
+        "tests/core/test_relationships_offline.py",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "--receptor-events=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-knowledge-original-owning-1/events.jsonl",
+        "-p",
+        "checkpoint_scope",
+        "--basetemp=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-knowledge-original-owning-1/pytest-scratch",
+        "-o",
+        "tmp_path_retention_policy=failed",
+        "-W",
+        "error:unclosed database:ResourceWarning",
+        "-W",
+        "error::pytest.PytestUnraisableExceptionWarning",
+        "-n",
+        "8",
+        "--dist=load"
+      ],
+      "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 152.65,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 2774966272,
+      "minimum_host_available_bytes": 57761316864,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 3590346127,
+      "limits": {
+        "owned_rss_bytes": 10737418240,
+        "host_available_bytes": 17179869184,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 8,
+        "nice": 10,
+        "elapsed_s": 1200,
+        "owned_scratch_bytes": 10737418240
+      },
+      "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-knowledge-original-owning-1/cargo-target"
+    }
+  },
+  "complete_source_modules": 10,
+  "copied_original": {
+    "state": "PASS",
+    "counts": {
+      "collected": 42,
+      "deselected": 0,
+      "errors": 0,
+      "executed": 42,
+      "failed": 0,
+      "not_executed": 0,
+      "passed": 42,
+      "reruns": 0,
+      "skipped": 0,
+      "subtests": {},
+      "warnings": 0,
+      "xfailed": 0,
+      "xpassed": 0
+    },
+    "pytest_elapsed_s": 47.72892802199931,
+    "events_sha256": "b70636d331296fb173e41e2dfa7edba0c09ee8f53a7abad79a22d954b4e30795",
+    "source_stable": true,
+    "source_paths": 1313,
+    "controller_workers_and_calls_agree": true,
+    "resources": {
+      "owner": "uibcdf/sabueso#148/#112",
+      "review_trigger": "Protein context LIVE and historical adjacent controls; 4 workers,10GiBtotalRSS,native1,host16GiBfloor,10GiBscratch",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0,1,2,3",
+        "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "test_card_knowledge_comparison_original_offline.py",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "--receptor-events=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-knowledge-original-copied-1/events.jsonl",
+        "-p",
+        "checkpoint_scope",
+        "--basetemp=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-knowledge-original-copied-1/pytest-scratch",
+        "-o",
+        "tmp_path_retention_policy=failed",
+        "-W",
+        "error:unclosed database:ResourceWarning",
+        "-W",
+        "error::pytest.PytestUnraisableExceptionWarning",
+        "-n",
+        "4",
+        "--dist=load"
+      ],
+      "cwd": "/tmp/sabueso-knowledge-original-client-jpnyr3mi",
+      "exit_code": 0,
+      "elapsed_s": 51.13,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 1923600384,
+      "minimum_host_available_bytes": 58731966464,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 2069460031,
+      "limits": {
+        "owned_rss_bytes": 10737418240,
+        "host_available_bytes": 17179869184,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 4,
+        "nice": 10,
+        "elapsed_s": 1200,
+        "owned_scratch_bytes": 10737418240
+      },
+      "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-knowledge-original-copied-1/cargo-target"
+    }
+  },
+  "copied_inputs": 2,
+  "controller_worker_placement_proofs": 5,
+  "source_map_identical": true,
+  "source_paths": 1313,
+  "runtime_unchanged_from_producer": true,
+  "source_delta_from_preceding_checkpoint": [
+    "tests/core/test_card_knowledge_comparison_original_offline.py",
+    "tests/core/data/knowledge_comparison_live_sdk243.tar.gz"
+  ],
+  "coverage": [
+    "Three public UniProt TIM cases: both access orders and an exact supplied caller map.",
+    "Labelled typed/nested values, quantity units, ambiguous candidate order, repeated occurrences, omitted/empty/complete/incomplete maps, foreign/unstated/uncertain/unsupported/huge positional scopes and retained structure metadata.",
+    "Missing/misbound/unselected sources, conflicts, same-rendered state labels, full relationship direction/channels, opaque source lookalikes, bounded escaped labels and atomic compact deferral.",
+    "Exact chosen revisions, repeated input occurrences, complete actual source/open/back graphs, human-only and machine-only histories, finite executed requests/pages and distinct actual access instances."
+  ],
+  "archive_scope": "Explicit537989120byte decoded37case test ensemble. Original source/input/member bytes and every case-local graph are preserved; runtime production budgets are unchanged.",
+  "calibrations": {
+    "capture1": "Unqualified: instrument entered a separate existing bioactivity topic while assuming its source-Card catalog children were literal. Retain the complete catalog and open only literal children; comparison construction guards stay active. Producer unchanged.",
+    "capture2": "All4representative cases captured on1CPU in124.62s,304885760bytes peak RSS; all monitored forbidden-operation counters zero.",
+    "verifier1": "Unqualified verifier assumed the older adapter cache key had topic. Corrected to exact new adapter/focal/options; original observation bytes unchanged.",
+    "verifier2": "Complete4case independent verification passes with zero unreferenced values.",
+    "pytest_calibration": "All6selected archive/actual-public/typed/candidate/alias/literal/fresh-SDK-forbidden controls pass before complete412case and42copied gates."
+  },
+  "issue": {
+    "owner": "uibcdf/sabueso#193/#148/#112",
+    "url": "https://github.com/uibcdf/sabueso/issues/193",
+    "number": 193,
+    "title": "card_knowledge_diff@1 conflates typed values and drops duplicate comparison candidates",
+    "body_exactly_verified": true,
+    "approved_draft": "knowledge-comparison-issue-draft-1.md",
+    "created_at": "2026-11-10T06:18:35Z",
+    "authority": "Maintainer 2026-11-10: estoy de acuerdo, procede, y continuamos"
+  },
+  "quality_scope": "Applicable local source/copy/fixture/grammar/governance/guide and installed workflow wiring. No installed artifact or hosted acceptance.",
+  "next": [
+    "Implement an independent frozen comparison reader over this unchanged SDK243 original.",
+    "Preserve typed native values, original support and alternatives, exact supplied maps, actual access origins, observed menus and finite requests; unexecuted science remains not_saved.",
+    "Enable new comparison saving only after original receiving, coherent alteration refusal and applicable selected/copied/package gates.",
+    "B6/B7 scientific, researcher, agent, workload and actual-consumer acceptance remain separate; B2 deferred; B8/release unresumed."
+  ],
+  "limits": [
+    "Selected source412cases and copied42repeats, not full offline suite.",
+    "SDK-free observation verification does not establish saved-file admission or scientific truth.",
+    "Hosted, clean installed-artifact/OS-matrix and human acceptance remain open.",
+    "The existing six SOURCE resources and every older original remain unchanged."
+  ],
+  "ci": {
+    "state": "DEFERRED",
+    "marker": "[skip ci]",
+    "owner": "#148/#193/#112",
+    "deferred_head": "Commit containing this receipt; exact SHA in local final handoff. Original producer remains f6d8e4a.",
+    "recovery": "Authorized exact-SHA block/candidate CI and governance through gh-run-receptor; absent/skipped runs are not PASS."
+  },
+  "local_evidence": "recovered_work/checkpoint_recovery_20261106/b6-knowledge-live-original-1",
+  "temporary_resources": {
+    "owner": "#148/#193/#112",
+    "retain": "Accepted complete raw original and immutable capsule, source/member/graph/resource/receptor/placement/publication receipts and useful calibration dispositions.",
+    "review_trigger": "Independent receiving or B6/block closeout; remove explicit completed disposable scratch and byte-verified duplicate batch/calibration trees after last use."
+  },
+  "quality": {
+    "state": "PASS",
+    "checks": {
+      "ruff": {
+        "exit_code": 0,
+        "command": [
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/ruff",
+          "check",
+          "."
+        ],
+        "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+        "output": "All checks passed!"
+      },
+      "format": {
+        "exit_code": 0,
+        "command": [
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/ruff",
+          "format",
+          "--check",
+          "."
+        ],
+        "log_sha256": "00873b8a1af8d541a279e9b04437c2bdb8e71cf7a133834c2f7bc628e888cdc0",
+        "output": "1648 files already formatted"
+      },
+      "governance": {
+        "exit_code": 0,
+        "command": [
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-B",
+          "/fast_data/home/liliana/repos@uibcdf/moli/devtools/scripts/check_repository.py",
+          "/fast_data/home/liliana/repos@uibcdf/sabueso",
+          "--canonical-guide",
+          "/fast_data/home/liliana/repos@uibcdf/moli/MOLI_GUIDE.md"
+        ],
+        "log_sha256": "a020ded5dd1f74aa00e4857214df2663df0f9ace41abffacee569f6e35b823c8",
+        "output": "/fast_data/home/liliana/repos@uibcdf/sabueso: conforms to MOLI governance core."
+      },
+      "guide": {
+        "exit_code": 0,
+        "command": [
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-B",
+          "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-knowledge-live-original-1/check_guide.py"
+        ],
+        "log_sha256": "7854f0e792970a07800db284b7fe4f460f4e2c9f9a57d2f8fbc442c8fdb015d8",
+        "output": "{\"state\": \"PASS\", \"scope\": \"Maintained non-archive guide local targets; changed-target Markdown anchors; changed fenced Python3.11 grammar. No external link or runtime example qualification.\", \"maintained_markdown_files\": 178, \"local_path_targets_checked\": 1476, \"changed_page_anchors_checked\": 36, \"python_examples_checked\": 0, \"errors\": []}"
+      },
+      "git_diff": {
+        "exit_code": 0,
+        "command": [
+          "git",
+          "diff",
+          "--check"
+        ],
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "output": ""
+      }
+    },
+    "python311_changed_modules": 1,
+    "workflow_wiring": {
+      ".github/workflows/ci.yml": {
+        "complete_module_copied_once": true,
+        "capsule_copied_once": true,
+        "complete_module_selected_once": true,
+        "receptor": "ci"
+      },
+      ".github/workflows/test_staged_conda_package.yaml": {
+        "complete_module_copied_once": true,
+        "capsule_copied_once": true,
+        "complete_module_selected_once": true,
+        "receptor": "ci"
+      }
+    },
+    "guide": {
+      "state": "PASS",
+      "scope": "Maintained non-archive guide local targets; changed-target Markdown anchors; changed fenced Python3.11 grammar. No external link or runtime example qualification.",
+      "maintained_markdown_files": 178,
+      "local_path_targets_checked": 1476,
+      "changed_page_anchors_checked": 36,
+      "python_examples_checked": 0,
+      "errors": []
+    },
+    "scope": "Local lint/format/grammar/governance/guide and installed-workflow wiring only. No installed or hosted qualification."
+  }
+}

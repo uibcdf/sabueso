@@ -166,8 +166,10 @@ questions, finite agent requests, typed values and distinct actual accesses. The
 [saved checkpoint](evidence/protein_context_saved_checkpoint_20261109.json) owns
 local qualification. The next [knowledge/map comparison profile](pending_proposals/card_knowledge_comparison_exploration.md)
 now implements shared LIVE typed comparison under explicit native @2, without
-changing the default @1. Qualify this producer, capture its genuine original and
-implement independent receiving before enabling comparison saving. Scientific/
+changing the default @1. Its clean SDK243
+[genuine original](evidence/knowledge_comparison_live_original_20261110.json) now
+preserves all 37 complete cases, original values/source/access graphs and finite
+requests. Implement independent receiving before enabling comparison saving. Scientific/
 researcher/workload acceptance remains open. CHECKPOINT owns actual current checks.
 
 Continue the rich profiles through the

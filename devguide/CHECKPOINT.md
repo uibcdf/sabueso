@@ -5,6 +5,43 @@ Current working-state checkpoint: **2026-11-10**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Clean SDK243 knowledge-comparison original — local checkpoint PASS
+
+The [genuine original](evidence/knowledge_comparison_live_original_20261110.json)
+captures all **37 complete public/synthetic cases** from clean `f6d8e4a` / SDK243
+before independent comparison saved reading. It preserves **22,929 actual views**,
+**4,352 distinct access instances**, 579 finite compact requests and 1,410 pages.
+Typed values and units, every duplicate candidate/index, exact caller maps and
+unavailable scope, original support/alternatives/conflicts, full relationships,
+source-owned lookalikes and actual source/back graphs remain literal. Human-only
+and machine-only observations stay separate; unexecuted topics remain unexecuted.
+
+Inputs were prepared once. Four bounded independent batches use identical input
+bytes and all 1,318 original source hashes; each observed case executes the shared
+native comparison once. Capture takes 137.83 s at 943,546,368 bytes peak combined
+RSS, with zero monitored network/acquisition/Card-reconstruction/assertion-creation
+attempts. Every batch member is checked before byte-preserving assembly. SDK-free
+verification checks all 27,361 members and every declared source/input/occurrence/
+view/access/request binding, with zero unreferenced value members. The immutable
+capsule declares its complete decoded test-ensemble scope; production budgets stay
+fixed.
+
+All **412 selected source cases pass** in 10 complete modules on one unchanged
+1,313-path map, including the 42-case original and all prior native/LIVE/protein
+original/history/saved/argument controls. All **42 copied original cases pass**
+outside checkout with two byte-identical inputs and five controller/worker
+placement/metadata-origin proofs. A fresh child verifies an actual public case
+with SDK imports and network forbidden. Both installed routes copy/select the
+complete module and capsule once; hosted and installed qualification remains open.
+
+The native integrity report is now [published as #193](https://github.com/uibcdf/sabueso/issues/193).
+The producer implementation, old original capsules and six SOURCE resources stay
+fixed. Next implement independent frozen comparison reading, coherent alteration
+refusal and exact actual-origin/finite-request preservation before enabling new
+comparison saving. B6/B7 acceptance, expanded historical scope and exact-candidate
+gates stay open; B2 review is deferred and B8/release unresumed. Final committed
+metadata/code/remote and owned cleanup proofs belong to the local handoff.
+
 ## Cold-import test guard isolation — follow-up local checkpoint PASS
 
 The [guard follow-up](evidence/knowledge_comparison_guard_checkpoint_20261110.json)
@@ -64,7 +101,7 @@ The [LIVE receipt](evidence/knowledge_comparison_live_checkpoint_20261109.json)
 owns exact source/resource accounting and limits. Synthetic default-@1 value and
 candidate-order loss also appears in the 0.14.0 source lineage; real-source
 prevalence and clean installed-release impact remain unverified. Its concrete
-owning-issue report is retained for review. The preceding saved-profile report is
+owning-issue report is [published in #193](https://github.com/uibcdf/sabueso/issues/193). The preceding saved-profile report is
 [published in #148](https://github.com/uibcdf/sabueso/issues/148#issuecomment-6759096647).
 Next capture this clean qualified producer before frozen receiving. B6/B7 acceptance,
 the expanded 524-case historical cohort, and exact-candidate installed/hosted gates

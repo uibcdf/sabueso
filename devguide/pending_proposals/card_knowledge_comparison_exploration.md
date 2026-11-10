@@ -23,9 +23,9 @@ selects typed stored-representation comparison. The published/default
 `card_knowledge_diff@1` stays available with its original meaning; B2 default review
 is deferred. Source inspection of tag 0.14.0 and synthetic controls show that @1
 uses Python scalar equality and selects the first list identity candidate. Real
-source prevalence and clean installed-release impact remain unverified. A concrete
-local defect report is retained for its owning issue, separate from #148's already
-approved and published preceding saved-profile report.
+source prevalence and clean installed-release impact remain unverified. The concrete
+defect report is [published in #193](https://github.com/uibcdf/sabueso/issues/193),
+separate from #148's already published preceding saved-profile report.
 
 The new rule retains booleans, integers and floats distinctly, including nested
 values. Quantity values retain their declared units; this is comparison of stored
@@ -86,3 +86,21 @@ Then capture a genuinely clean producer original before implementing any frozen
 reader. B7 scientific, uncoached researcher/agent, representative workload and
 actual-consumer acceptance remain separate. This increment does not close B6 or
 resume B8/release.
+
+## Clean SDK243 original captured
+
+The [genuine original receipt](../evidence/knowledge_comparison_live_original_20261110.json)
+owns the 37 complete public/synthetic cases, unchanged clean producer, all actual
+source/view/access graphs and finite human/compact operations. Four bounded batches
+use one prepared input set; byte-preserving assembly and SDK-free complete checking
+precede immutable packaging. Every case uses one shared native comparison during
+observation, with acquisition, Card reconstruction and assertion creation blocked.
+All 412 selected source cases and all 42 copied original cases outside checkout
+pass on their recorded scope. Source-owned packaging/version lookalikes and equal
+focal actual access instances stay distinct. Both installed routes include the
+complete original module and capsule; their actual hosted/installed runs remain open.
+
+Independent frozen comparison receiving is next. Preserve these bytes and outcomes,
+include the original observed new question catalog and actual navigation instances,
+and retain explicit `not_saved` for unexecuted operations. New saving remains
+unavailable until that reader and its alteration/binding/source/copied controls pass.

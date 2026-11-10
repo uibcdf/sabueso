@@ -1385,3 +1385,29 @@ verify controller/worker/import placement. Both installed workflows select/copy
 those modules. Package inspection requires all implementation modules and the six
 unchanged frozen SOURCE resources. Technical qualification is separate from a
 clean original, independent saved reading, hosted/installed and B7 acceptance.
+
+
+## Genuine knowledge-comparison original before saved reading (#148/#193)
+
+`test_card_knowledge_comparison_original_offline.py` independently receives the
+immutable `knowledge_comparison_live_sdk243.tar.gz` ensemble from clean SDK243.
+Its 42 complete cases check every encoded/decoded/member hash, all 37 original
+native/source/actual-view/access graphs, both access orders, finite compact
+requests, typed quantities/candidates/maps, unrecognized scopes and opaque source
+lookalikes. Four capture batches retain identical prepared inputs and source maps;
+assembly copies verified bytes. Actual access instances are never merged by equal
+focal values. A fresh child receives an actual public case while SDK imports and
+network are forbidden. The archive has an explicitly declared 537,989,120-byte
+decoded fixture scope, with streaming extraction and one per-worker expansion.
+
+Run the complete module with native @2/LIVE knowledge comparison and previous
+protein context original/history/saved/argument/relationship modules. The measured
+one-worker calibration includes its fresh child; the reviewed complete 412-case
+gate uses eight workers within 10 GiB aggregate RSS and scratch, native1 and a
+16 GiB host reserve. All 42 copied cases also receive outside checkout with the
+exact module and capsule. Both installed routes copy/select them once. The
+[original receipt](evidence/knowledge_comparison_live_original_20261110.json)
+owns exact source/resource/byte accounting. These checks do not admit new saved
+files or establish hosted, installed, scientific or human acceptance. Keep the
+producer, original bytes, current defaults and older saved meanings fixed while
+implementing the independent reader.

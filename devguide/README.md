@@ -60,8 +60,10 @@ original human/source/agent preservation, exact actual access instances and loca
 qualification. The next [knowledge/map comparison profile](pending_proposals/card_knowledge_comparison_exploration.md)
 now shares explicit `card_knowledge_diff@2` typed field, relationship and state
 results between LIVE human and compact-agent routes. Exact caller maps retain
-uncertain and ambiguous scope. New comparison saving awaits a clean original and
-independent reader; earlier rules/defaults and saved meanings remain fixed.
+uncertain and ambiguous scope. Its clean SDK243 [genuine original](evidence/knowledge_comparison_live_original_20261110.json)
+now preserves all 37 complete public/synthetic cases, actual source/access graphs
+and finite requests. New comparison saving awaits an independent reader; earlier
+rules/defaults and saved meanings remain fixed.
 CHECKPOINT owns qualification; full B6 and B7 acceptance remain open.
 
 The first B6 [variant/isoform tissue-context profile](pending_proposals/card_variant_tissue_exploration.md)
