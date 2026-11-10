@@ -205,6 +205,21 @@ def make_relationship(
     return relationship
 
 
+def _same_qualifier_value(first: Any, second: Any) -> bool:
+    """Compare raw qualifier alternatives without Python's numeric coercion."""
+    if type(first) is not type(second):
+        return False
+    if isinstance(first, dict):
+        return first.keys() == second.keys() and all(
+            _same_qualifier_value(value, second[key]) for key, value in first.items()
+        )
+    if isinstance(first, (list, tuple)):
+        return len(first) == len(second) and all(
+            _same_qualifier_value(left, right) for left, right in zip(first, second)
+        )
+    return first == second
+
+
 class RelationshipStore:
     """Registry of the Relationships carried by a card (subject side)."""
 
@@ -241,19 +256,19 @@ class RelationshipStore:
         for key, value in relationship.get("qualifiers", {}).items():
             if key not in qualifiers:
                 qualifiers[key] = copy.deepcopy(value)
-            elif qualifiers[key] != value:
+            elif not _same_qualifier_value(qualifiers[key], value):
                 # Sources disagree on a qualifier: keep every value visible.
                 seen = existing.setdefault("qualifier_conflicts", {}).setdefault(
                     key, [qualifiers[key]]
                 )
-                if value not in seen:
+                if not any(_same_qualifier_value(value, other) for other in seen):
                     seen.append(copy.deepcopy(value))
         for key, values in relationship.get("qualifier_conflicts", {}).items():
             seen = existing.setdefault("qualifier_conflicts", {}).setdefault(
                 key, [copy.deepcopy(qualifiers[key])] if key in qualifiers else []
             )
             for value in values:
-                if value not in seen:
+                if not any(_same_qualifier_value(value, other) for other in seen):
                     seen.append(copy.deepcopy(value))
         return rel_id
 

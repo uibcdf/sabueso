@@ -273,10 +273,24 @@ def opening(view, preview):
 
 def display_row(item, index, preview):
     r = item._entry.value
+    basis = preview(r["basis"]) + " · " + preview(r["channel"])
+    if r["kind"] == "sequence_comparison":
+        if r["state"] == "available":
+            basis += (
+                " · "
+                + str(r["difference_count"])
+                + " positional differences · identical="
+                + str(r["identical"])
+            )
+        else:
+            native = r["item"].get("native_result") or {}
+            basis += " · Unavailable: " + preview(
+                native.get("basis", "unrecognized_sequence_shape")
+            )
     return (
         str(index),
         preview(item.label),
         preview(r["subject_ref"]) + " → " + preview(r["object_ref"]),
-        preview(r["basis"]) + " · " + preview(r["channel"]),
+        basis,
         preview(r["support_state"]),
     )

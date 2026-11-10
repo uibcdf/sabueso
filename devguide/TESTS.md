@@ -1279,6 +1279,12 @@ qualifiers, source channels versus recorded derivations, missing/misbound source
 conflicts, repeated supplied inputs, ambiguous revisions and typed null/false/zero.
 Public UniProt/IntAct, UniRef and OMA examples preserve their source records; the
 TcTIM/strain sequence pair must match the existing native result exactly.
+Require visible human difference counts/equality and original unavailable bases.
+For RelationshipStore changes, run complete relationship/source/aggregator/scope,
+derivation-application and affected provider/consumer suites. Regression controls
+must retain scalar and nested boolean/integer/float qualifier alternatives through
+merge, conflict-list deduplication and Card persistence, without caller mutation,
+changed relationship identity or lost source references.
 
 Require an exact supplied comparator before native work. Check one cached native
 comparison shared by human and agent requests, unchanged equal-position scope,

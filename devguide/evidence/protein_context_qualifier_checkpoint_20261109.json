@@ -1,0 +1,396 @@
+{
+  "state": "SELECTED_LOCAL_PASS",
+  "owner": "uibcdf/sabueso#148/#112",
+  "date": "2026-11-09",
+  "base_head": "a73828d00c7fae5df47a62b03c0326cfaa845fd1",
+  "source_cases": 626,
+  "source_complete_modules": 24,
+  "owning_cases": 60,
+  "source_paths": 1281,
+  "source_fingerprint": "1f49f840a0dd54d3403b997a0c4ceaf5e540ca3cd82336612ff5728af22de8e3",
+  "source_gates": {
+    "b6-protein-context-typed-owning-1": {
+      "state": "PASS",
+      "counts": {
+        "collected": 60,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 60,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 60,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "pytest_elapsed_s": 2.6921329280012287,
+      "source_count": 1281,
+      "before_after_equal": true,
+      "controller_workers_and_calls_agree": true,
+      "events_sha256": "0992da02c068e6e68d2e2b06af0be279612675d3b75f9a4e52ce2f4be8fba18e",
+      "resources": {
+        "owner": "uibcdf/sabueso#148/#112",
+        "review_trigger": "Variant/isoform LIVE and adjacent controls; 4 workers,10GiBtotalRSS,native1,host16GiBfloor,4GiBscratch",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1,2,3",
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-B",
+          "-m",
+          "pytest",
+          "tests/core/test_relationships_offline.py",
+          "tests/core/test_card_protein_context_offline.py",
+          "-m",
+          "not online",
+          "--receptor=llm",
+          "--receptor-events=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-context-typed-owning-1/events.jsonl",
+          "-p",
+          "checkpoint_scope",
+          "--basetemp=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-context-typed-owning-1/pytest-scratch",
+          "-o",
+          "tmp_path_retention_policy=failed",
+          "-W",
+          "error:unclosed database:ResourceWarning",
+          "-W",
+          "error::pytest.PytestUnraisableExceptionWarning",
+          "-n",
+          "4",
+          "--dist=load"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "exit_code": 0,
+        "elapsed_s": 3.54,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 417665024,
+        "minimum_host_available_bytes": 60125294592,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 300850,
+        "limits": {
+          "owned_rss_bytes": 10737418240,
+          "host_available_bytes": 17179869184,
+          "owned_swap_bytes": 0,
+          "cpu_affinity_count": 4,
+          "nice": 10,
+          "elapsed_s": 600,
+          "owned_scratch_bytes": 4294967296
+        },
+        "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-context-typed-owning-1/cargo-target"
+      }
+    },
+    "b6-protein-context-typed-adjacent-1": {
+      "state": "PASS",
+      "counts": {
+        "collected": 566,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 566,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 566,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "pytest_elapsed_s": 239.06122414398124,
+      "source_count": 1281,
+      "before_after_equal": true,
+      "controller_workers_and_calls_agree": true,
+      "events_sha256": "5665e22bc16f85d3a532084ce7e9ad70dcb89a86abe2f926cc42d8f90e47321c",
+      "resources": {
+        "owner": "uibcdf/sabueso#148/#112",
+        "review_trigger": "Protein context LIVE and historical adjacent controls; 8 workers,10GiBtotalRSS,native1,host16GiBfloor,10GiBscratch",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1,2,3,4,5,6,7",
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-B",
+          "-m",
+          "pytest",
+          "tests/core/test_source_assertions_offline.py",
+          "tests/core/test_aggregator_resolver.py",
+          "tests/core/test_structure_relationship_scope_offline.py",
+          "tests/core/test_protein_knowledge_relationships_offline.py",
+          "tests/core/test_derivation_applications_offline.py",
+          "tests/core/test_string_associations_offline.py",
+          "tests/core/test_oma_offline.py",
+          "tests/core/test_uniref_offline.py",
+          "tests/core/test_reactome_offline.py",
+          "tests/core/test_diseases_offline.py",
+          "tests/core/test_protein_cards_offline.py",
+          "tests/core/test_knowledge_store_offline.py",
+          "tests/core/test_card_access_offline.py",
+          "tests/core/test_card_nature_exploration_offline.py",
+          "tests/core/test_card_disease_association_exploration_offline.py",
+          "tests/core/test_quantities_offline.py",
+          "tests/core/test_entity_qualifier_parents_offline.py",
+          "tests/core/test_migration_offline.py",
+          "tests/core/test_card_sequence_changes_offline.py",
+          "tests/core/test_card_sequence_change_original_offline.py",
+          "tests/core/test_card_sequence_change_history_offline.py",
+          "tests/core/test_card_saved_sequence_change_offline.py",
+          "-m",
+          "not online",
+          "--receptor=llm",
+          "--receptor-events=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-context-typed-adjacent-1/events.jsonl",
+          "-p",
+          "checkpoint_scope",
+          "--basetemp=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-context-typed-adjacent-1/pytest-scratch",
+          "-o",
+          "tmp_path_retention_policy=failed",
+          "-W",
+          "error:unclosed database:ResourceWarning",
+          "-W",
+          "error::pytest.PytestUnraisableExceptionWarning",
+          "-n",
+          "8",
+          "--dist=load"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "exit_code": 0,
+        "elapsed_s": 241.41,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 2943414272,
+        "minimum_host_available_bytes": 55862497280,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 905554059,
+        "limits": {
+          "owned_rss_bytes": 10737418240,
+          "host_available_bytes": 17179869184,
+          "owned_swap_bytes": 0,
+          "cpu_affinity_count": 8,
+          "nice": 10,
+          "elapsed_s": 1200,
+          "owned_scratch_bytes": 10737418240
+        },
+        "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-context-typed-adjacent-1/cargo-target"
+      }
+    }
+  },
+  "copied_cases": 44,
+  "copy_gate": {
+    "state": "PASS",
+    "counts": {
+      "collected": 44,
+      "deselected": 0,
+      "errors": 0,
+      "executed": 44,
+      "failed": 0,
+      "not_executed": 0,
+      "passed": 44,
+      "reruns": 0,
+      "skipped": 0,
+      "subtests": {},
+      "warnings": 0,
+      "xfailed": 0,
+      "xpassed": 0
+    },
+    "pytest_elapsed_s": 2.37116880499525,
+    "source_count": 1281,
+    "before_after_equal": true,
+    "controller_workers_and_calls_agree": true,
+    "events_sha256": "bb916fa3b32759c61a902e50416e5845c9a53f4cc4e69bebfb351a4ace823cc8",
+    "resources": {
+      "owner": "uibcdf/sabueso#148/#112",
+      "review_trigger": "Variant/isoform LIVE and adjacent controls; 4 workers,10GiBtotalRSS,native1,host16GiBfloor,4GiBscratch",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0,1,2,3",
+        "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "test_card_protein_context_offline.py",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "--receptor-events=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-context-typed-copied-1/events.jsonl",
+        "-p",
+        "checkpoint_scope",
+        "--basetemp=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-context-typed-copied-1/pytest-scratch",
+        "-o",
+        "tmp_path_retention_policy=failed",
+        "-W",
+        "error:unclosed database:ResourceWarning",
+        "-W",
+        "error::pytest.PytestUnraisableExceptionWarning",
+        "-n",
+        "4",
+        "--dist=load"
+      ],
+      "cwd": "/tmp/sabueso-protein-context-qualified-dv7xk6e1",
+      "exit_code": 0,
+      "elapsed_s": 3.54,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 413663232,
+      "minimum_host_available_bytes": 58949500928,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 259799,
+      "limits": {
+        "owned_rss_bytes": 10737418240,
+        "host_available_bytes": 17179869184,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 4,
+        "nice": 10,
+        "elapsed_s": 600,
+        "owned_scratch_bytes": 4294967296
+      },
+      "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-context-typed-copied-1/cargo-target"
+    }
+  },
+  "byte_identical_public_inputs": 8,
+  "placement_proofs": 5,
+  "same_source_maps": true,
+  "diagnostic_artifacts": {
+    "owner": "uibcdf/sabueso#148/#35/#112",
+    "state": "PASS",
+    "python_modules_exact": 869,
+    "frozen_source_resources": {
+      "sabueso/core/_clinical_history_v1/SOURCE.json": "00688c256d6aee51ebc97d752fdd641f7317c5d399ae8dd84db0ee4dc7e60650",
+      "sabueso/core/_molecule_activity_history_v1/SOURCE.json": "14d59d034aa795516bc3258f11f8a4f8caaa1b5b38b3c30bfb273f8cfddde797",
+      "sabueso/core/_disease_association_history_v1/SOURCE.json": "a927a304b67df6144995c9d5f21e44ff4a34a98e8023221e47361f3dfe53feef",
+      "sabueso/core/_variant_history_v1/SOURCE.json": "b55ee3cd34ef6f7efdca561ce4b06fbacb8ea4f3ca67f7bb2d362cb82f3a6998",
+      "sabueso/core/_sequence_change_history_v1/SOURCE.json": "c7a43ebf63201757abfede8ec0eee1820199ff53bfbf8fd93e4506372aa7c8c0"
+    },
+    "artifacts": {
+      "sabueso-0.0.0+unknown-py3-none-any.whl": {
+        "bytes": 2157008,
+        "sha256": "ffd32abcfd08d7084a8a51ed7035d8bc82a75a1c110f2de308fc8898b2753b31"
+      },
+      "sabueso-0.0.0+unknown.tar.gz": {
+        "bytes": 1584486,
+        "sha256": "0138b69d3a65b4333502cfd195ba38046e5526c898bf19db4cb04c0c99203024"
+      }
+    },
+    "source_inputs_unchanged": true,
+    "scope": "Diagnostic no-VCS wheel/sdist after typed qualifier merge correction and human sequence outcome display; fallback version intentional. No installed-artifact or release qualification."
+  },
+  "quality": {
+    "state": "PASS",
+    "checks": {
+      "ruff": {
+        "exit_code": 0,
+        "command": [
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/ruff",
+          "check",
+          "."
+        ],
+        "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+        "output": "All checks passed!"
+      },
+      "format": {
+        "exit_code": 0,
+        "command": [
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/ruff",
+          "format",
+          "--check",
+          "."
+        ],
+        "log_sha256": "b5a47e47c53780e4ef58ea79bad8122f485ecb110cf9972b3003ad9a4e6324e2",
+        "output": "1618 files already formatted"
+      },
+      "governance": {
+        "exit_code": 0,
+        "command": [
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-B",
+          "/fast_data/home/liliana/repos@uibcdf/moli/devtools/scripts/check_repository.py",
+          "/fast_data/home/liliana/repos@uibcdf/sabueso",
+          "--canonical-guide",
+          "/fast_data/home/liliana/repos@uibcdf/moli/MOLI_GUIDE.md"
+        ],
+        "log_sha256": "a020ded5dd1f74aa00e4857214df2663df0f9ace41abffacee569f6e35b823c8",
+        "output": "/fast_data/home/liliana/repos@uibcdf/sabueso: conforms to MOLI governance core."
+      },
+      "guide": {
+        "exit_code": 0,
+        "command": [
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-B",
+          "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-context-qualifier-1/check_guide.py"
+        ],
+        "log_sha256": "dbe3b2d310537bc05e67fb77b2470094374acfee876169fbee41e67dd985d09f",
+        "output": "{\"state\": \"PASS\", \"scope\": \"Maintained non-archive guide local targets; changed-target Markdown anchors; changed fenced Python3.11 grammar. No external link or runtime example qualification.\", \"maintained_markdown_files\": 177, \"local_path_targets_checked\": 1454, \"changed_page_anchors_checked\": 25, \"python_examples_checked\": 0, \"errors\": []}"
+      },
+      "git_diff": {
+        "exit_code": 0,
+        "command": [
+          "git",
+          "diff",
+          "--check"
+        ],
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "output": ""
+      }
+    },
+    "python311_changed_modules": 4,
+    "workflow_wiring": {
+      ".github/workflows/ci.yml": {
+        "test_card_protein_context_offline.py": {
+          "copied_once": true,
+          "selected_once": true
+        }
+      },
+      ".github/workflows/test_staged_conda_package.yaml": {
+        "test_card_protein_context_offline.py": {
+          "copied_once": true,
+          "selected_once": true
+        }
+      }
+    },
+    "guide": {
+      "state": "PASS",
+      "scope": "Maintained non-archive guide local targets; changed-target Markdown anchors; changed fenced Python3.11 grammar. No external link or runtime example qualification.",
+      "maintained_markdown_files": 177,
+      "local_path_targets_checked": 1454,
+      "changed_page_anchors_checked": 25,
+      "python_examples_checked": 0,
+      "errors": []
+    },
+    "scope": "Local lint/format/grammar/governance/guide and installed-workflow wiring only. No installed or hosted qualification."
+  },
+  "behavior": [
+    "Typed raw scalar/nested qualifier alternatives survive merging, exact-repeat deduplication and Card persistence; first selected qualifier, identity, source ids and callers preserved.",
+    "New context human table shows native difference counts, equality and unavailable bases; original saved protocols remain fixed."
+  ],
+  "limits": [
+    "Selected scope only, not full offline suite; earlier1901 source epoch retained separately.",
+    "No prevalence or released-version impact claim from synthetic observation.",
+    "No installed-artifact/platform, hosted, scientific, uncoached researcher/agent, workload or actual-consumer acceptance."
+  ],
+  "issue_report": "recovered_work/checkpoint_recovery_20261106/b6-protein-context-qualifier-1/typed-qualifier-issue-draft-2.md; local reviewable report awaiting concrete publication approval",
+  "ci": {
+    "state": "DEFERRED",
+    "marker": "[skip ci]",
+    "owner": "#148/#112",
+    "deferred_head": "Commit containing this receipt; exact SHA in final local handoff",
+    "recovery": "Authorized block/candidate unskipped push or manual exact-SHA CI/governance through gh-run-receptor; zero/skipped runs are not PASS."
+  },
+  "next": [
+    "Clean genuine producer original before independent saved reading",
+    "General knowledge/residue-map comparison",
+    "B7 acceptance; B2 review remains deferred; B8/release unresumed"
+  ],
+  "privacy": "Existing frozen public responses and labelled synthetic controls only.",
+  "temporary_resources": {
+    "owner": "#148/#112",
+    "review_trigger": "Block handoff; retain useful evidence and all original capsules; remove only completed owned copy/build/gate scratch."
+  }
+}

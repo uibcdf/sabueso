@@ -1,5 +1,6 @@
 """Relationship model and RelationshipStore (uibcdf/sabueso#6, step 1)."""
 
+from copy import deepcopy
 from pathlib import Path
 
 import pytest
@@ -13,6 +14,7 @@ from sabueso.core.relationship_store import (
     make_derivation,
     make_relationship,
 )
+from sabueso.core.snapshot import canonical_json
 from sabueso.core.source_assertion_store import make_source_assertion
 
 
@@ -98,6 +100,67 @@ def test_same_relationship_from_two_sources_merges_support_and_keeps_conflicts()
     assert merged["qualifiers"]["chains"] == "A/B"
     assert merged["qualifier_conflicts"] == {"chains": ["A/B", "A"]}
     assert "qualifier_conflicts" not in from_uniprot  # caller's record is not mutated
+
+
+@pytest.mark.parametrize(
+    "first,second",
+    [
+        (0, False),
+        (1, True),
+        (1, 1.0),
+        ([0], [False]),
+        ({"counts": [1]}, {"counts": [True]}),
+        ({"count": 1}, {"count": 1.0}),
+        ([{"count": 0}], [{"count": False}]),
+    ],
+)
+def test_typed_qualifier_alternatives_survive_merge_and_card_roundtrip(
+    first, second, tmp_path
+):
+    mapping = _mapping_with_relationship()
+    original = mapping["relationships"][0]
+    original["qualifiers"]["experiments"] = first
+    alternative = deepcopy(original)
+    alternative["qualifiers"]["experiments"] = second
+    alternative["source_assertion_ids"] = ["SA_second"]
+    before = deepcopy([original, alternative])
+    store = RelationshipStore([original, alternative, alternative])
+    (merged,) = store.to_list()
+    assert merged["id"] == original["id"]
+    assert canonical_json(merged["qualifiers"]["experiments"]) == canonical_json(first)
+    assert canonical_json(
+        merged["qualifier_conflicts"]["experiments"]
+    ) == canonical_json([first, second])
+    assert merged["source_assertion_ids"] == original["source_assertion_ids"] + [
+        "SA_second"
+    ]
+    assert canonical_json([original, alternative]) == canonical_json(before)
+    # Persist the already merged metadata using the original valid source binding.
+    merged["source_assertion_ids"] = original["source_assertion_ids"]
+    mapping["relationships"] = [merged]
+    card = build_card_from_mapping(
+        mapping, meta={"entity_type": "protein"}, card_id="synthetic:typed-qualifiers"
+    )
+    target = str(tmp_path / "typed-qualifiers.json")
+    card.to_json(target)
+    loaded = Card.from_json(target)
+    assert canonical_json(loaded.relationship_store.to_list()) == canonical_json(
+        card.relationship_store.to_list()
+    )
+
+
+def test_existing_typed_conflict_alternatives_merge_without_losing_or_duplicating():
+    original = _mapping_with_relationship()["relationships"][0]
+    original["qualifiers"]["experiments"] = 0
+    alternative = deepcopy(original)
+    alternative["qualifier_conflicts"] = {"experiments": [0, False, 0.0, False]}
+    before = deepcopy(alternative)
+    store = RelationshipStore([original, alternative, alternative])
+    (merged,) = store.to_list()
+    assert (
+        canonical_json(merged["qualifier_conflicts"]["experiments"]) == "[0,false,0.0]"
+    )
+    assert canonical_json(alternative) == canonical_json(before)
 
 
 def test_derived_relationship_carries_a_derivation_record():

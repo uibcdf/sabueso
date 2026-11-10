@@ -1,5 +1,18 @@
 # Sabueso — Decision Log
 
+## Retain typed raw qualifier alternatives during relationship merging (2026-11-09)
+
+Python equality equates integer, boolean and float alternatives such as `0`,
+`False` and `0.0`, including nested containers. RelationshipStore must compare
+these raw values recursively with their types intact. Preserve the first selected
+qualifier and every distinct alternative in the existing `qualifier_conflicts`
+field, exact source references, relationship identifiers and caller ownership.
+This corrects metadata loss without changing the Card schema or frozen readers.
+The new protein-context table also exposes native sequence difference counts,
+equality and unavailable bases directly. Qualification remains scoped to its
+recorded source epoch; release impact and real-source prevalence are unverified.
+Owner: Sabueso #148/#112; the local concrete report awaits publication approval.
+
 ## Project retained protein context before adding new correspondence (2026-11-09)
 
 Comparative and biological association panels share captured Relationship records

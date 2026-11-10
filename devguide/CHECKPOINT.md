@@ -5,6 +5,32 @@ Current working-state checkpoint: **2026-11-09**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Typed relationship conflicts and visible sequence outcomes — local checkpoint PASS
+
+RelationshipStore now preserves recursively typed raw qualifier alternatives,
+including `0`, `False` and `0.0`, both in selected-value merging and existing
+conflict-list unions. The first selected value, relationship identifier, all
+SourceAssertion references and caller records remain intact. Card JSON round trips
+retain these distinctions. The human protein-context table now shows native
+sequence difference counts, equality and original unavailable bases directly.
+
+All **626 distinct selected cases pass** on one unchanged 1,281-path map:
+60 complete relationship/context owning cases and 566 complete adjacent cases,
+including the previous 222-case sequence original/history/saved cohort. All **44
+copied context cases pass outside checkout**, with eight byte-identical inputs
+and five placement/import proofs. Diagnostic wheel/sdist module and frozen-resource
+contents pass. The [corrective receipt](evidence/protein_context_qualifier_checkpoint_20261109.json)
+owns this epoch. The preceding 1,901-case LIVE receipt retains its earlier source
+scope; it does not automatically qualify the changed merge or table. Real-source
+prevalence and released-version impact of the qualifier defect remain unverified.
+
+The owning concrete issue report is retained locally for authorized maintainer
+publication. Next capture this clean qualified producer before independent saved
+reading; general knowledge/residue-map comparison and B7 acceptance stay open.
+B2 review remains deferred, B8/release unresumed and hosted CI deferred under
+#148/#112. Final committed metadata/code/remote and cleanup proofs belong to the
+local post-push handoff.
+
 ## Protein comparative and association LIVE profiles — local checkpoint PASS
 
 The new [protein-context profile](pending_proposals/card_protein_context_exploration.md)
@@ -33,9 +59,10 @@ SOURCE resources byte-identically. These are source/copy/content checks; install
 hosted/scientific/researcher/workload/consumer acceptance remains separate.
 
 The [LIVE receipt](evidence/protein_context_live_checkpoint_20261109.json) owns
-exact epochs, resources, earlier red expectations and limits. The independent
-synthetic qualifier-merge observation is retained for a follow-up: raw `0` and
-`False` currently merge without a conflict, while both source ids remain present.
+exact epochs, resources, earlier red expectations and limits. At that source epoch, the independent
+synthetic qualifier-merge observation retained raw `0` but lost the `False`
+alternative, while both source ids remained present. The corrective epoch above
+now owns its fix and changed-source qualification.
 Capture the qualified clean producer before independent original reading, then
 continue general knowledge/residue-map comparisons and B7 acceptance. B2 review
 stays deferred, B8/release unresumed and CI deferred under #148/#112. Final committed

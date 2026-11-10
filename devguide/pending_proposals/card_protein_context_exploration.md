@@ -36,6 +36,8 @@ A relationship identifier cannot collide with an input-occurrence row key.
 
 Sequence comparison retains the unchanged native result in one pair-level row.
 Its difference count and equality flag remain typed integers/booleans or null.
+The human table shows both outcomes directly; unavailable comparisons show their
+original native basis instead of a numeric count or equality claim.
 Equal integer positions do not establish residue correspondence or entity identity.
 Different lengths and unstated sequences retain the native unavailable basis;
 malformed sequence values are shown as an explicit gap before the native engine.
@@ -68,6 +70,10 @@ comparator; only following that question performs the comparison.
 stable missing-last scalar sorting, bounded pages and atomic value/support/meaning
 deferral. Human filters and compact requests preserve the underlying result and
 all original support. Null, zero, false and malformed original values remain distinct.
+The RelationshipStore merge also preserves recursively typed qualifier alternatives:
+integer zero, boolean false and floating zero are different raw values. It keeps the
+first selected qualifier and lists distinct alternatives in `qualifier_conflicts`;
+relationship identifiers and source references keep their original meaning.
 
 ## Original saving boundary and qualification
 

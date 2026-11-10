@@ -222,6 +222,13 @@ def test_comparison_reuses_native_rule_and_exact_pins_without_card_construction(
     )
     assert row.cells["identical"].value is expected.get("identical")
     assert "correspondence" in repr(human)
+    if basis is None:
+        assert str(len(expected["differences"])) + " positional differences" in repr(
+            human
+        )
+        assert "identical=" + str(expected["identical"]) in repr(human)
+    else:
+        assert "Unavailable: " + basis in repr(human)
     links = row.related()
     sources = links.filter("role", equals="source")
     assert len(sources.items()) == sum(
@@ -318,7 +325,29 @@ def test_support_uncertainties_and_original_derivations_stay_visible(damage):
     )
 
 
-def test_channels_and_opposite_directions_are_never_conflated():
+def test_typed_qualifier_conflict_is_visible_in_original_human_and_agent_support():
+    card = protein()
+    original, ref = relationship(card, "interacts_with")
+    original["qualifiers"]["experiments"] = 0
+    alternative = json.loads(json.dumps(original))
+    alternative["qualifiers"]["experiments"] = False
+    # Replace the initial record so both typed occurrences traverse the real merge.
+    card.relationship_store.store.clear()
+    card.relationship_store.add(original)
+    card.relationship_store.add(alternative)
+    explorer = card.explore()
+    row = explorer.view("associations").items()[0]
+    assert canonical_json(row.open().native_payload["qualifier_conflicts"]) == (
+        '{"experiments":[0,false]}'
+    )
+    assert row.cells["support_state"].value == "partial"
+    assert row.explain().native_payload["support"]["source_assertions"][0]["id"] == ref
+    selection = explorer.access.select("associations")
+    support = frames(selection)[0]["support"]
+    assert canonical_json(support["qualifier_conflicts"]) == '{"experiments":[0,false]}'
+
+
+def test_source_channels_are_never_conflated():
     card = protein()
     relationship(card, "associated_with", channel="knowledge")
     relationship(card, "associated_with", channel="text_mining")
