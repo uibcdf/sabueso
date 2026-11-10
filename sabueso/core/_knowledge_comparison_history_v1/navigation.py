@@ -1,0 +1,715 @@
+"""Source-supported navigation over detached supplied captures, never acquisition."""
+
+from __future__ import annotations
+
+from collections import defaultdict, deque
+from copy import deepcopy
+from dataclasses import replace
+
+from ..card_access import _Entry
+from ..errors import StorageError
+from ..snapshot import parse_ref
+
+RULE = "retained_context_links@2"
+
+
+def _location(capture, segments=()):
+    return {
+        "format": "card_access_location@1",
+        "kind": "card",
+        "card_ref": capture.pin,
+        "snapshot_id": capture.snapshot,
+        "segments": list(segments),
+    }
+
+
+def _record(capture, store, ref):
+    return _location(
+        capture,
+        [{"type": "Key", "value": store}, {"type": "Record", "value": ref}],
+    )
+
+
+def _identity(capture):
+    ref = capture.data["meta"].get("card_id")
+    return ref.split(":", 2)[2] if ref else None
+
+
+def _graph(explorer):
+    edges, blocked = [], []
+    for _, capture in sorted(explorer.access._captures.items()):
+        statements = {row["id"] for row in capture.data["source_assertion_store"]}
+        for row in sorted(
+            capture.data["relationship_store"], key=lambda row: row["id"]
+        ):
+            if row.get("predicate") != "same_as":
+                continue
+            refs = row.get("source_assertion_ids", [])
+            refs = (
+                refs
+                if isinstance(refs, list) and all(isinstance(ref, str) for ref in refs)
+                else []
+            )
+            retained = [ref for ref in refs if ref in statements]
+            edge = {
+                "subject_ref": row["subject_ref"],
+                "object_ref": row["object_ref"],
+                "location": _record(capture, "relationship_store", row["id"]),
+                "source_assertions": [
+                    _record(capture, "source_assertion_store", ref) for ref in retained
+                ],
+                "missing_source_assertion_ids": [
+                    ref for ref in refs if ref not in statements
+                ],
+                "basis": "source_stated_same_as",
+            }
+            # A derived/similarity relationship or a dangling assertion reference
+            # cannot establish a source-stated identity path.
+            (
+                edges if retained and not row.get("qualifier_conflicts") else blocked
+            ).append(edge)
+    return edges, blocked
+
+
+def _resolve(explorer, target):
+    cache = explorer._navigation_cache
+    key = ("target", target)
+    if key not in cache:
+        cache[key] = _resolve_target(explorer, target)
+    return deepcopy(cache[key])
+
+
+def _resolve_target(explorer, target):
+    """Return candidates and the retained identity graph, without choosing a revision."""
+    captures = explorer.access._captures
+    if target.startswith("sabueso:"):
+        try:
+            ref = parse_ref(target)
+        except StorageError:
+            return {
+                "candidates": [],
+                "paths": [],
+                "blocked_paths": [],
+                "availability": "missing_prerequisite",
+            }
+        candidates = []
+        matched_card = False
+        for key, capture in sorted(captures.items()):
+            if capture.data["meta"].get("card_id") != ref.card_id:
+                continue
+            if ref.snapshot_id and capture.snapshot != ref.snapshot_id:
+                continue
+            matched_card = True
+            segments = []
+            if ref.item_id:
+                store = (
+                    "source_assertion_store"
+                    if ref.item_id.startswith("SA_")
+                    else "relationship_store"
+                )
+                if not any(row["id"] == ref.item_id for row in capture.data[store]):
+                    continue
+                segments = _record(capture, store, ref.item_id)["segments"]
+            candidates.append(
+                {
+                    "capture": key,
+                    "location": _location(capture, segments),
+                    "basis": "exact_pinned_record"
+                    if ref.item_id
+                    else "exact_card_reference",
+                }
+            )
+        return {
+            "candidates": candidates,
+            "paths": [],
+            "blocked_paths": [],
+            "availability": "ambiguous"
+            if len(candidates) > 1
+            else "available"
+            if candidates
+            else "missing_prerequisite"
+            if matched_card
+            else "context_not_supplied",
+        }
+    if "identity_graph" not in explorer._navigation_cache:
+        explorer._navigation_cache["identity_graph"] = _graph(explorer)
+    edges, blocked = explorer._navigation_cache["identity_graph"]
+    adjacency = defaultdict(list)
+    for edge in edges:
+        a, b = edge["subject_ref"], edge["object_ref"]
+        adjacency[a].append(b)
+        adjacency[b].append(a)
+    reached, queue = {target}, deque([target])
+    while queue:
+        for neighbor in adjacency[queue.popleft()]:
+            if neighbor not in reached:
+                reached.add(neighbor)
+                queue.append(neighbor)
+    # Preserve the connected graph, rather than enumerating exponentially many
+    # cyclic paths. Every agreeing and conflicting retained identity edge survives.
+    paths = [edge for edge in edges if edge["subject_ref"] in reached]
+    blocked = [
+        edge
+        for edge in blocked
+        if edge["subject_ref"] in reached or edge["object_ref"] in reached
+    ]
+    candidates = [
+        {
+            "capture": key,
+            "location": _location(capture),
+            "basis": "exact_entity_reference"
+            if _identity(capture) == target
+            else "source_stated_identity_path",
+        }
+        for key, capture in sorted(captures.items())
+        if _identity(capture) in reached
+    ]
+    return {
+        "candidates": candidates,
+        "paths": paths,
+        "blocked_paths": blocked,
+        "availability": "ambiguous"
+        if len(candidates) > 1
+        else "available"
+        if candidates
+        else "missing_prerequisite"
+        if blocked
+        else "context_not_supplied",
+    }
+
+
+def _link(explorer, role, target, support, *, location=None):
+    label = f"{role.capitalize()} · {target}"
+    if role == "source" and location:
+        original, _ = explorer.access._resolve(location)
+        fields = {
+            "sequence.checksums": "reference sequence checksums",
+            "sequence.primary": "reference primary sequence",
+            "identifiers.uniprot": "reference UniProt identity",
+            "sequence.length": "reference sequence length",
+            "annotations.isoforms": "UniProt isoform declaration",
+            "relationships.has_predicted_structure": "predicted model metadata",
+        }
+        if isinstance(original, dict) and original.get("field_path") in fields:
+            label = f"Source · {fields[original['field_path']]} · {target}"
+    resolution = (
+        {
+            "candidates": [
+                {
+                    "location": location,
+                    "capture": explorer.access._focal_key,
+                    "basis": "exact_retained_node",
+                }
+            ],
+            "paths": [],
+            "blocked_paths": [],
+            "availability": "available",
+        }
+        if location
+        else _resolve(explorer, target)
+    )
+    return {
+        "role": role,
+        "label": label,
+        "target_ref": target,
+        "support": deepcopy(support),
+        "rule": RULE,
+        **resolution,
+    }
+
+
+def _link_view(
+    explorer,
+    links,
+    origin,
+    title,
+    *,
+    source_location=None,
+    status=None,
+    rule=RULE,
+    reason=None,
+    support_location=None,
+):
+    view = explorer._metadata(
+        {
+            "rule": rule,
+            "inputs": explorer.context["captures"],
+            "focal": explorer.access._focal_key,
+            "source_location": source_location,
+            "links": links,
+            **(
+                {"support_location": support_location}
+                if support_location is not None
+                else {}
+            ),
+        },
+        title,
+        origin,
+    )
+    root = view._selection._target["location"]
+    _, root = explorer.access._resolve(root)
+    entries = tuple(
+        _Entry(
+            {
+                **root,
+                "segments": [
+                    {"type": "Key", "value": "links"},
+                    {"type": "Index", "value": i},
+                ],
+            },
+            str(i),
+            link,
+        )
+        for i, link in enumerate(links)
+    )
+    if rule in (
+        "protein_context_links@1",
+        "knowledge_comparison_links@1",
+        "assembly_generation_links@1",
+        "assembly_generation_links@2",
+        "assembly_generation_links@3",
+        "assembly_component_list_links@1",
+        "assembly_component_detail_links@1",
+        "molecule_activity_context_links@1",
+        "ligand_site_context_links@1",
+        "quaternary_context_links@1",
+        "ligand_instance_context_links@1",
+        "structure_declaration_context_links@1",
+        "structure_declaration_context_links@2",
+        "structure_declaration_context_links@3",
+        "retained_context_links@7",
+    ):
+        explorer._session["views"].pop(id(view), None)
+    return replace(
+        view,
+        _selection=replace(view._selection, _entries=entries),
+        _selected=entries,
+        _link_panel=True,
+        _status=status or ("ok" if links else "empty"),
+        _request=origin.request,
+        _reason=reason
+        or (
+            "Retained sources and an explicit local structural question; no source queries or identity merge."
+            if rule == "retained_context_links@3"
+            else "Retained sources and explicit destinations only; no source queries or identity merge."
+        ),
+    )
+
+
+def related(item):
+    if item._view._record_panel == "protein_context":
+        from .exploration import links
+
+        return links(item)
+    if item._view._record_panel == "variants":
+        from ..card_variant_exploration import links
+
+        return links(item)
+    if item._view._record_panel == "associations":
+        from ..card_disease_association_exploration import links
+
+        return links(item)
+    if item._view._record_panel == "clinical":
+        from ..card_clinical_exploration import links
+
+        return links(item)
+    if item._view._record_panel == "activity_context":
+        from ..card_molecule_activity_exploration import links
+
+        return links(item)
+    if item._view._record_panel == "literature":
+        from ..card_literature_exploration import links
+
+        return links(item)
+    if item._view._record_panel == "bioactivities":
+        from ..card_bioactivity_exploration import links
+
+        return links(item)
+    if item._view._record_panel == "chemical_classification":
+        from ..card_chemical_exploration import links
+
+        return links(item)
+    if item._view._record_panel == "assembly_generation":
+        from ..card_assembly_dispatch import presentation
+
+        if (
+            item._view._selection._scientific.wire["context"]["adapter"]
+            == "assembly_generation_exploration@2"
+        ):
+            from ..card_assembly_component_context_v1 import assembly_related
+
+            return assembly_related(item)
+        return presentation(item._view).links(item)
+    if item._view._field_panel == "ligand_instances":
+        from ..card_ligand_instance_navigation_v1 import related as instance_related
+
+        return instance_related(item)
+    if item._view._record_panel == "quaternary_interpretation":
+        from ..card_quaternary_exploration import links
+
+        return links(item)
+    if item._view._field_panel == "quaternary_structure":
+        from ..card_quaternary_source_v1 import related as quaternary_related
+
+        return quaternary_related(item)
+    if item._view._record_panel == "ligand_site_comparisons":
+        from ..card_ligand_site_exploration import links
+
+        return links(item)
+    explorer = item._view._explorer
+    if not item._view._route_catalog and not item._view._link_panel:
+        from ..card_structure_context_v3 import context as structure_context
+        from ..card_structure_context_v3 import related as structure_related
+
+        structure = structure_context(explorer, item.payload_location)
+        if structure is not None:
+            return structure_related(item, structure)
+    # A catalog item's open() executes its explicit topic/question operation;
+    # asking for links must not implicitly execute that scientific reader.
+    origin = (
+        explorer._inspect(
+            item.payload_location, item._view, title=f"Retained entry · {item.label}"
+        )
+        if item._view._route_catalog or item._view._link_panel
+        else item.open()
+    )
+    if item._view._link_panel:
+        # Link details already contain their full retained basis. No recursive
+        # resolution of link-metadata strings as new scientific entities.
+        return _link_view(explorer, [], origin, "Related retained context")
+    links = []
+    support = item.support
+    from ..card_annotation_regions_v1 import annotation_path
+    from ..card_annotation_regions_v1 import link as annotation_link
+
+    annotation = annotation_path(item.payload_location)
+    question = None
+    if annotation is not None:
+        question = annotation_link(explorer, item.payload_location)
+        support = question["support"]
+    else:
+        from ..card_model_fragment_regions_v1 import link as model_link
+        from ..card_model_regions_v1 import model_path
+        from ..card_modelcif_regions_v1 import link as native_model_link
+
+        model_location = item.payload_location
+        if model_path(explorer, model_location):
+            row, _ = explorer.access._resolve(model_location)
+            context = (row.get("qualifiers") or {}).get("sequence_context")
+            if (
+                isinstance(context, dict)
+                and context.get("rule") == "alphafold_sequence_context@2"
+            ):
+                from ..card_model_fragment_regions_v2 import link as model_link
+
+        # Native declarations retain their own original reference predicates.
+        question = native_model_link(explorer, model_location)
+        if question is None:
+            question = model_link(explorer, model_location)
+        if question is not None:
+            support = question["support"]
+    if question is None:
+        from ..card_context_support_v1 import compact_related
+
+        compact = compact_related(item, origin, support)
+        if compact is not None:
+            return compact
+    seen = set()
+    for basis in support:
+        for statement in [
+            *basis.get("statements", basis.get("source_assertions", [])),
+            *basis.get("derivation_input_statements", []),
+        ]:
+            ref = statement["id"]
+            if ref in seen:
+                continue
+            seen.add(ref)
+            if statement["state"] == "present":
+                links.append(
+                    _link(
+                        explorer, "source", ref, [basis], location=statement["location"]
+                    )
+                )
+            else:
+                links.append(
+                    {
+                        "role": "source",
+                        "label": f"Source · {ref}",
+                        "target_ref": ref,
+                        "support": [deepcopy(basis)],
+                        "rule": RULE,
+                        "candidates": [],
+                        "paths": [],
+                        "blocked_paths": [],
+                        "availability": "missing_prerequisite",
+                    }
+                )
+    location = item.payload_location
+    relationship = None
+    if item._view._selection._scientific is not None:
+        relationship = next(
+            (
+                row
+                for row in explorer.access._focal.data["relationship_store"]
+                if row["id"] == item._entry.key
+            ),
+            None,
+        )
+    elif location["kind"] == "card":
+        segments = location["segments"]
+        if (
+            len(segments) >= 2
+            and segments[0] == {"type": "Key", "value": "relationship_store"}
+            and segments[1]["type"] == "Record"
+        ):
+            relationship = explorer.access._resolve(
+                {**location, "segments": segments[:2]}
+            )[0]
+    if (
+        location["kind"] == "card"
+        and len(location["segments"]) == 2
+        and location["segments"][0] == {"type": "Key", "value": "entities"}
+    ):
+        links.append(
+            _link(explorer, "entity", location["segments"][1]["value"], support)
+        )
+    if relationship:
+        for role in ("subject", "object"):
+            links.append(_link(explorer, role, relationship[f"{role}_ref"], support))
+    # An assertion's subject is a declared reference. Its arbitrary asserted value,
+    # a field's text and generic extensions are deliberately not join instructions.
+    if (
+        location["kind"] == "card"
+        and len(location["segments"]) >= 2
+        and location["segments"][0]
+        == {"type": "Key", "value": "source_assertion_store"}
+    ):
+        record = explorer.access._resolve(
+            {**location, "segments": location["segments"][:2]}
+        )[0]
+        if isinstance(record.get("subject_ref"), str):
+            links.append(_link(explorer, "subject", record["subject_ref"], support))
+    rule = RULE
+    if question is not None:
+        rule = question["rule"]
+        links = [{**row, "rule": rule} for row in links]
+        links.append(question)
+    return _link_view(
+        explorer,
+        links,
+        origin,
+        f"Related to {item.label}",
+        source_location=location,
+        rule=rule,
+    )
+
+
+def _destination(explorer, candidate, origin, title="Referenced source record"):
+    destination = explorer.for_capture(candidate["capture"], origin)
+    location = candidate["location"]
+    return (
+        destination._inspect(location, origin, title=title)
+        if location["segments"]
+        else destination.overview()
+    )
+
+
+def follow(item):
+    explorer, link = item._view._explorer, item._entry.value
+    if link.get("rule") == "protein_context_links@1" and link.get("role") == "question":
+        request = link["comparison_request"]
+        return explorer._answer(request["question"], request["options"], item._view)
+    if (
+        link.get("rule") == "variant_context_links@1"
+        and item._view._explorer.mode == "saved"
+    ):
+        from ..card_exploration_variant import item_operation
+
+        return item_operation(item, "open")
+    if link.get("rule") == "variant_context_links@1":
+        from ..card_variant_exploration import follow as follow_variant
+
+        return follow_variant(item)
+    if link.get("rule") == "disease_association_context_links@1":
+        if explorer.mode == "saved":
+            from ..card_exploration_disease_association import item_operation
+
+            return item_operation(item, "open")
+        from ..card_disease_association_exploration import follow as follow_association
+
+        return follow_association(item)
+    if link.get("rule") == "clinical_context_links@1":
+        if explorer.mode == "saved":
+            from ..card_exploration_clinical import item_operation
+
+            return item_operation(item, "open")
+        from ..card_clinical_exploration import follow as follow_clinical
+
+        return follow_clinical(item)
+    if link.get("rule") == "molecule_activity_context_links@1":
+        if explorer.mode == "saved":
+            from ..card_molecule_activity_operations_v1 import saved_item
+
+            return saved_item(item, "open")
+        from ..card_molecule_activity_exploration import (
+            follow as follow_activity_context,
+        )
+
+        return follow_activity_context(item)
+    if link.get("rule") == "literature_context_links@1":
+        if explorer.mode == "saved":
+            from ..card_exploration_literature import follow as follow_literature
+        else:
+            from ..card_literature_exploration import follow as follow_literature
+
+        return follow_literature(item)
+    if link.get("rule") == "bioactivity_context_links@1":
+        if explorer.mode == "saved":
+            from ..card_bioactivity_dispatch import binding
+
+            follow_bioactivity = binding(explorer.access).follow
+        else:
+            from ..card_bioactivity_exploration import follow as follow_bioactivity
+
+        return follow_bioactivity(item)
+    if link.get("rule") in (
+        "assembly_generation_links@3",
+        "assembly_component_list_links@1",
+    ) and link.get("role") in ("components", "component"):
+        from ..card_assembly_component_context_v1 import follow as follow_component
+
+        return follow_component(item)
+    if link.get("role") == "question" and link.get("rule") in (
+        "structure_declaration_context_links@2",
+        "structure_declaration_context_links@3",
+    ):
+        basis = link["assembly_request"]
+        if basis["state"] == "ready":
+            request = basis["request"]
+            return explorer._answer(request["question"], request["options"], item._view)
+        unavailable = explorer._metadata(
+            {"assembly_request": basis, "link": link},
+            "Assembly question unavailable",
+            item._view,
+        )
+        explorer._session["views"].pop(id(unavailable), None)
+        return replace(
+            unavailable,
+            _status=basis["state"],
+            _reason=basis["reason"],
+        )
+    if link.get("role") == "question" and link.get("rule") in (
+        "retained_context_links@3",
+        "retained_context_links@4",
+        "retained_context_links@5",
+        "retained_context_links@6",
+        "retained_context_links@8",
+    ):
+        key = (
+            "model_context"
+            if link["rule"]
+            in (
+                "retained_context_links@4",
+                "retained_context_links@5",
+                "retained_context_links@6",
+                "retained_context_links@8",
+            )
+            else "annotation_context"
+        )
+        basis = link[key]
+        if basis["state"] == "ready":
+            request = basis["request"]
+            return explorer._answer(request["question"], request["options"], item._view)
+        from ..card_exploration import CardView
+        from ..card_sequence_change_exploration import inherited_request
+
+        selection = explorer.access.read(
+            explorer.access._object_location({key: basis, "link": link})
+        )
+        return CardView(
+            explorer,
+            selection,
+            selection._entries,
+            "Model structural context unavailable"
+            if key == "model_context"
+            else "Annotation structural context unavailable",
+            item._view,
+            _request=inherited_request(item._view) if explorer.mode == "live" else None,
+            _status=basis["state"],
+            _reason=basis["reason"],
+        )
+    candidates = link["candidates"]
+    if len(candidates) == 1:
+        return _destination(
+            explorer,
+            candidates[0],
+            item._view,
+            title=link["label"]
+            if link.get("rule")
+            in (
+                "structure_declaration_context_links@1",
+                "structure_declaration_context_links@2",
+                "structure_declaration_context_links@3",
+            )
+            else "Referenced source record",
+        )
+    if len(candidates) > 1:
+        choices = []
+        for candidate in candidates:
+            capture = explorer.access._captures[candidate["capture"]]
+            choices.append(
+                {
+                    **deepcopy(link),
+                    "role": "candidate",
+                    "label": f"Captured destination · {_identity(capture)} · {capture.snapshot[:23]}",
+                    "target_ref": capture.pin or capture.snapshot,
+                    "availability": "available",
+                    "candidates": [candidate],
+                }
+            )
+        return _link_view(
+            explorer,
+            choices,
+            item._view,
+            "Choose a captured destination",
+            status="ambiguous",
+        )
+    # Preserve useful local glossary/relationship support without synthesizing a
+    # destination Card. Its public explorer and focal identity are explicitly null.
+    entity = explorer.access._focal.data.get("entities", {}).get(link["target_ref"])
+    reason = None
+    if link.get("rule") in (
+        "structure_declaration_context_links@1",
+        "structure_declaration_context_links@2",
+        "structure_declaration_context_links@3",
+    ):
+        from ..card_structure_context_v1 import missing_reason
+
+        reason = missing_reason(link)
+    view = explorer._metadata(
+        {"subject_ref": link["target_ref"], "entity": entity, "link": link},
+        "Retained destination context",
+        item._view,
+    )
+    contributors = {explorer.access._focal_key}
+    for path in [*link["paths"], *link["blocked_paths"]]:
+        location = path["location"]
+        contributors.add(location["card_ref"] or location["snapshot_id"])
+    return replace(
+        view,
+        _status=link["availability"],
+        _reason=reason
+        or "Destination Card not supplied or its identity support is unavailable. Pass it explicitly through related_cards to explore its fields.",
+        _context_only=True,
+        _context_override={
+            "card_ref": None,
+            "snapshot_id": None,
+            "subject_ref": link["target_ref"],
+            "profile": None,
+            "mode": "live",
+            "adapter": link["rule"],
+            "contributing_captures": sorted(contributors),
+            "captures": explorer.context["captures"],
+        },
+        _request=item._view.request,
+    )

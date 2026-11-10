@@ -30,6 +30,7 @@ MOLECULE_FORMATS = (
     "sabueso.card_exploration@29",
     "sabueso.card_exploration@31",
     "sabueso.card_exploration@33",
+    "sabueso.card_exploration@35",
 )
 _FLAGS = (
     "title",
@@ -60,10 +61,6 @@ def operation_key(item):
 
 
 def admitted_selection(selection):
-    from .card_knowledge_comparison_dispatch import pending
-
-    if pending(selection._access):
-        return False
     if selection._scientific is not None:
         return selection._scientific.wire.get("context", {}).get("adapter") in (
             "structure_exploration@1",
@@ -80,6 +77,7 @@ def admitted_selection(selection):
             "variant_tissue_context_exploration@1",
             "sequence_change_exploration@1",
             "protein_context_exploration@1",
+            "protein_knowledge_comparison_exploration@1",
         )
     try:
         node, location = selection._access._resolve(selection._target["location"])
@@ -111,6 +109,7 @@ def admitted_selection(selection):
                     "variant_tissue_context_exploration@1",
                     "sequence_change_exploration@1",
                     "protein_context_exploration@1",
+                    "protein_knowledge_comparison_exploration@1",
                 )
             node = selection._access._objects[location["result_ref"]]
             if isinstance(node, dict):
@@ -433,7 +432,11 @@ def _freeze_view(view, ids):
         or (
             selection._scientific is not None
             and selection._scientific.wire.get("context", {}).get("adapter")
-            in ("sequence_change_exploration@1", "protein_context_exploration@1")
+            in (
+                "sequence_change_exploration@1",
+                "protein_context_exploration@1",
+                "protein_knowledge_comparison_exploration@1",
+            )
         )
         or view.context.get("adapter") == "variant_context_links@1"
         or view.context.get("adapter") == "disease_association_context_links@1"
@@ -526,6 +529,7 @@ def _objects_for(access, records):
                                     "variant_tissue_context_exploration@1",
                                     "sequence_change_exploration@1",
                                     "protein_context_exploration@1",
+                                    "protein_knowledge_comparison_exploration@1",
                                 )
                             ),
                             "This view needs a scientific result whose historical verifier is not yet supported.",
@@ -543,10 +547,6 @@ def _objects_for(access, records):
 
 
 def _prepare(root):
-    from .card_knowledge_comparison_dispatch import SAVE_REASON, pending
-
-    if pending(root._explorer.access):
-        raise StorageError(SAVE_REASON)
     _require(
         admitted_view(root),
         "Saving derived structures/coverage or their originating trail requires a historical verifier not yet implemented. Save a supported literal/field view or inspect capabilities.",
@@ -557,6 +557,9 @@ def _prepare(root):
     )
     session = root._explorer._session
     if root._explorer.mode == "live":
+        from .card_exploration_knowledge_comparison import prepare as prepare_comparison
+
+        prepare_comparison(root)
         from .card_exploration_sequence_change import prepare as prepare_changes
 
         prepare_changes(root)
@@ -591,10 +594,19 @@ def _prepare(root):
 
         prepare_variant(root)
     automatic = session.setdefault("automatic_support_views", set())
+    from .card_knowledge_comparison_dispatch import pending as knowledge_context
+
+    required = (
+        {id(view) for view in required_views(root)}
+        if knowledge_context(root._explorer.access)
+        else None
+    )
     primary = [
         view
         for view in list(session["views"].values())
-        if admitted_view(view) and id(view) not in automatic
+        if admitted_view(view)
+        and id(view) not in automatic
+        and (required is None or id(view) in required)
     ]
     # Explicit saving prepares only support/navigation for already materialized
     # literal results. No unvisited scientific topic or recursive support tree runs.
@@ -657,6 +669,7 @@ def _prepare(root):
         "sabueso.card_exploration@29",
         "sabueso.card_exploration@31",
         "sabueso.card_exploration@33",
+        "sabueso.card_exploration@35",
     ):
         original = {id(view): key for key, view in session["original_nodes"].items()}
         used = set(original.values())
@@ -857,6 +870,11 @@ def _prepare(root):
     from .card_exploration_protein_context import register_bundle as register_context
 
     register_context(bundle, objects, access)
+    from .card_exploration_knowledge_comparison import (
+        register_bundle as register_comparison,
+    )
+
+    register_comparison(bundle, objects, access)
     if bundle["format"] in MOLECULE_FORMATS:
         from .card_molecule_activity_operations_v1 import register
 
@@ -869,6 +887,7 @@ def _prepare(root):
             "sabueso.card_exploration@29",
             "sabueso.card_exploration@31",
             "sabueso.card_exploration@33",
+            "sabueso.card_exploration@35",
         ):
             from .card_exploration_molecule_activity_v2 import register_roots
 
@@ -876,11 +895,20 @@ def _prepare(root):
     if bundle["format"] in (
         "sabueso.card_exploration@31",
         "sabueso.card_exploration@33",
+        "sabueso.card_exploration@35",
     ):
-        if bundle["format"] == "sabueso.card_exploration@33":
-            from .card_protein_context_origins_v1 import (
-                register as register_access_origins,
-            )
+        if bundle["format"] in (
+            "sabueso.card_exploration@33",
+            "sabueso.card_exploration@35",
+        ):
+            if bundle["format"] == "sabueso.card_exploration@35":
+                from .card_knowledge_comparison_origins_v1 import (
+                    register as register_access_origins,
+                )
+            else:
+                from .card_protein_context_origins_v1 import (
+                    register as register_access_origins,
+                )
         else:
             from .card_sequence_change_origins_v1 import (
                 register as register_access_origins,
@@ -928,9 +956,16 @@ def save_exploration(
     if logical["format"] in (
         "sabueso.card_exploration@31",
         "sabueso.card_exploration@33",
+        "sabueso.card_exploration@35",
     ):
-        if logical["format"] == "sabueso.card_exploration@33":
-            from .card_exploration_shared_values_v11 import pack
+        if logical["format"] in (
+            "sabueso.card_exploration@33",
+            "sabueso.card_exploration@35",
+        ):
+            if logical["format"] == "sabueso.card_exploration@35":
+                from .card_exploration_shared_values_v12 import pack
+            else:
+                from .card_exploration_shared_values_v11 import pack
         else:
             from .card_exploration_shared_values_v10 import pack
 
@@ -1186,6 +1221,13 @@ def _restore(
         SHARED_FORMAT = "sabueso.card_exploration@28"
     if (
         isinstance(bundle, dict)
+        and bundle.get("format") == "sabueso.card_exploration@36"
+    ):
+        from .card_exploration_shared_values_v12 import unpack
+
+        SHARED_FORMAT = "sabueso.card_exploration@36"
+    if (
+        isinstance(bundle, dict)
         and bundle.get("format") == "sabueso.card_exploration@34"
     ):
         from .card_exploration_shared_values_v11 import unpack
@@ -1236,9 +1278,16 @@ def _restore(
         if bundle.get("format") in (
             "sabueso.card_exploration@31",
             "sabueso.card_exploration@33",
+            "sabueso.card_exploration@35",
         ):
-            if bundle["format"] == "sabueso.card_exploration@33":
-                from .card_exploration_protein_context import validate_filters
+            if bundle["format"] in (
+                "sabueso.card_exploration@33",
+                "sabueso.card_exploration@35",
+            ):
+                if bundle["format"] == "sabueso.card_exploration@35":
+                    from .card_exploration_knowledge_comparison import validate_filters
+                else:
+                    from .card_exploration_protein_context import validate_filters
             else:
                 from .card_exploration_sequence_change import validate_filters
 
@@ -1298,9 +1347,22 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
     if isinstance(bundle, dict) and bundle.get("format") in (
         "sabueso.card_exploration@31",
         "sabueso.card_exploration@33",
+        "sabueso.card_exploration@35",
     ):
-        if bundle["format"] == "sabueso.card_exploration@33":
-            from .card_exploration_verification_v33 import verify_bundle, verify_views
+        if bundle["format"] in (
+            "sabueso.card_exploration@33",
+            "sabueso.card_exploration@35",
+        ):
+            if bundle["format"] == "sabueso.card_exploration@35":
+                from .card_exploration_verification_v35 import (
+                    verify_bundle,
+                    verify_views,
+                )
+            else:
+                from .card_exploration_verification_v33 import (
+                    verify_bundle,
+                    verify_views,
+                )
         else:
             from .card_exploration_verification_v31 import verify_bundle, verify_views
     elif (
@@ -1394,9 +1456,16 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
         if bundle["format"] in (
             "sabueso.card_exploration@31",
             "sabueso.card_exploration@33",
+            "sabueso.card_exploration@35",
         ):
-            if bundle["format"] == "sabueso.card_exploration@33":
-                from .card_exploration_shared_values_v11 import verify_header
+            if bundle["format"] in (
+                "sabueso.card_exploration@33",
+                "sabueso.card_exploration@35",
+            ):
+                if bundle["format"] == "sabueso.card_exploration@35":
+                    from .card_exploration_shared_values_v12 import verify_header
+                else:
+                    from .card_exploration_shared_values_v11 import verify_header
             else:
                 from .card_exploration_shared_values_v10 import verify_header
         elif bundle["format"] == "sabueso.card_exploration@29":
@@ -1487,11 +1556,20 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
         )
         wire = accesses[record["focal"]]._objects[ref]
         adapter = wire.get("context", {}).get("adapter")
-        if adapter == "protein_context_exploration@1":
+        if adapter == "protein_knowledge_comparison_exploration@1":
+            from .card_knowledge_comparison_history_v1 import restore_result
+
+            _require(
+                bundle["format"] == "sabueso.card_exploration@35",
+                "Knowledge comparisons require original format35.",
+            )
+            scientific_results[ref] = restore_result(ref, wire)
+        elif adapter == "protein_context_exploration@1":
             from .card_protein_context_history_v1 import restore_result
 
             _require(
-                bundle["format"] == "sabueso.card_exploration@33",
+                bundle["format"]
+                in ("sabueso.card_exploration@33", "sabueso.card_exploration@35"),
                 "Protein-context results require explicit format33.",
             )
             scientific_results[ref] = restore_result(ref, wire)
@@ -1500,7 +1578,11 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
 
             _require(
                 bundle["format"]
-                in ("sabueso.card_exploration@31", "sabueso.card_exploration@33"),
+                in (
+                    "sabueso.card_exploration@31",
+                    "sabueso.card_exploration@33",
+                    "sabueso.card_exploration@35",
+                ),
                 "Sequence-change results require explicit format @31.",
             )
             scientific_results[ref] = restore_result(ref, wire)
@@ -1513,6 +1595,7 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
                     "sabueso.card_exploration@29",
                     "sabueso.card_exploration@31",
                     "sabueso.card_exploration@33",
+                    "sabueso.card_exploration@35",
                 ),
                 "Variant results require explicit original format @29.",
             )
@@ -1527,6 +1610,7 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
                     "sabueso.card_exploration@29",
                     "sabueso.card_exploration@31",
                     "sabueso.card_exploration@33",
+                    "sabueso.card_exploration@35",
                 ),
                 "Disease associations require explicit original format @27.",
             )
@@ -1542,6 +1626,7 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
                     "sabueso.card_exploration@29",
                     "sabueso.card_exploration@31",
                     "sabueso.card_exploration@33",
+                    "sabueso.card_exploration@35",
                 ),
                 "Clinical results require explicit original format @25.",
             )
@@ -1570,6 +1655,7 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
                     "sabueso.card_exploration@29",
                     "sabueso.card_exploration@31",
                     "sabueso.card_exploration@33",
+                    "sabueso.card_exploration@35",
                 ),
                 "Literature results require explicit format @19.",
             )
@@ -1584,6 +1670,7 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
                 "sabueso.card_exploration@29",
                 "sabueso.card_exploration@31",
                 "sabueso.card_exploration@33",
+                "sabueso.card_exploration@35",
             ):
                 from .card_bioactivity_history_v2 import restore_result
             else:
@@ -1601,6 +1688,7 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
                     "sabueso.card_exploration@29",
                     "sabueso.card_exploration@31",
                     "sabueso.card_exploration@33",
+                    "sabueso.card_exploration@35",
                 ),
                 "Bioactivity results require explicit format @17 or @19.",
             )
@@ -1621,6 +1709,7 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
                     "sabueso.card_exploration@29",
                     "sabueso.card_exploration@31",
                     "sabueso.card_exploration@33",
+                    "sabueso.card_exploration@35",
                 ),
                 "Chemical results require explicit format @15, @17 or @19.",
             )
@@ -1637,6 +1726,7 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
             "variant_tissue_context_exploration@1",
             "sequence_change_exploration@1",
             "protein_context_exploration@1",
+            "protein_knowledge_comparison_exploration@1",
         ):
             if adapter == "assembly_generation_exploration@2":
                 from .card_assembly_history_v2 import restore_result
@@ -1660,6 +1750,7 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
                         "sabueso.card_exploration@29",
                         "sabueso.card_exploration@31",
                         "sabueso.card_exploration@33",
+                        "sabueso.card_exploration@35",
                     ),
                     "Nonpolymer assembly results require original format @7, @8, @9, @10 or @11 or @12.",
                 )
@@ -1687,6 +1778,7 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
                         "sabueso.card_exploration@29",
                         "sabueso.card_exploration@31",
                         "sabueso.card_exploration@33",
+                        "sabueso.card_exploration@35",
                     ),
                     "Assembly results require original format @5, @6, @7, @8, @9, @10 or @11 or @12.",
                 )
@@ -1702,9 +1794,16 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
         if bundle["format"] in (
             "sabueso.card_exploration@31",
             "sabueso.card_exploration@33",
+            "sabueso.card_exploration@35",
         ):
-            if bundle["format"] == "sabueso.card_exploration@33":
-                from .card_exploration_protein_context import verify_objects
+            if bundle["format"] in (
+                "sabueso.card_exploration@33",
+                "sabueso.card_exploration@35",
+            ):
+                if bundle["format"] == "sabueso.card_exploration@35":
+                    from .card_exploration_knowledge_comparison import verify_objects
+                else:
+                    from .card_exploration_protein_context import verify_objects
             else:
                 from .card_exploration_sequence_change import verify_objects
 
@@ -1754,6 +1853,7 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
             "sabueso.card_exploration@29",
             "sabueso.card_exploration@31",
             "sabueso.card_exploration@33",
+            "sabueso.card_exploration@35",
         ):
             from .card_exploration_assembly_v2 import (
                 verify_objects as verify_nonpolymer_objects,
@@ -1796,6 +1896,7 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
             "variant_tissue_context_exploration@1",
             "sequence_change_exploration@1",
             "protein_context_exploration@1",
+            "protein_knowledge_comparison_exploration@1",
         ):
             access = accesses[bundle["scientific_results"][ref]["focal"]]
             for entry in result.entries:
@@ -1808,11 +1909,20 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
     if bundle["format"] in (
         "sabueso.card_exploration@31",
         "sabueso.card_exploration@33",
+        "sabueso.card_exploration@35",
     ):
-        if bundle["format"] == "sabueso.card_exploration@33":
-            from .card_protein_context_origins_v1 import (
-                restore as restore_access_origins,
-            )
+        if bundle["format"] in (
+            "sabueso.card_exploration@33",
+            "sabueso.card_exploration@35",
+        ):
+            if bundle["format"] == "sabueso.card_exploration@35":
+                from .card_knowledge_comparison_origins_v1 import (
+                    restore as restore_access_origins,
+                )
+            else:
+                from .card_protein_context_origins_v1 import (
+                    restore as restore_access_origins,
+                )
         else:
             from .card_sequence_change_origins_v1 import (
                 restore as restore_access_origins,
@@ -1850,6 +1960,7 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
                 "sabueso.card_exploration@29",
                 "sabueso.card_exploration@31",
                 "sabueso.card_exploration@33",
+                "sabueso.card_exploration@35",
             )
             and "_component_navigation" in flags
         ):
@@ -1894,8 +2005,11 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
         selection_access = explorer_access
         if access_instances is not None:
             binding = bundle[
-                "protein_context_access_origins"
-                if bundle["format"] == "sabueso.card_exploration@33"
+                "knowledge_comparison_access_origins"
+                if bundle["format"] == "sabueso.card_exploration@35"
+                else "protein_context_access_origins"
+                if bundle["format"]
+                in ("sabueso.card_exploration@33", "sabueso.card_exploration@35")
                 else "sequence_change_access_origins"
             ]["views"][key]
             explorer_access = access_instances[binding["explorer"]]
@@ -1934,6 +2048,7 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
                     "sabueso.card_exploration@29",
                     "sabueso.card_exploration@31",
                     "sabueso.card_exploration@33",
+                    "sabueso.card_exploration@35",
                 )
                 and flags["_record_panel"] == "bioactivities"
                 and operation.get("column") == "measurement"
@@ -1990,6 +2105,7 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
             "sabueso.card_exploration@29",
             "sabueso.card_exploration@31",
             "sabueso.card_exploration@33",
+            "sabueso.card_exploration@35",
         ):
             from .card_exploration_disease_association import original_occurrences
 
@@ -2000,6 +2116,7 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
                     "sabueso.card_exploration@29",
                     "sabueso.card_exploration@31",
                     "sabueso.card_exploration@33",
+                    "sabueso.card_exploration@35",
                 )
                 and original_membership is None
             ):
@@ -2008,6 +2125,13 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
                 )
 
                 original_membership = variant_occurrences(selection, record)
+        if (
+            original_membership is None
+            and bundle["format"] == "sabueso.card_exploration@35"
+        ):
+            from .card_exploration_knowledge_comparison import original_occurrences
+
+            original_membership = original_occurrences(selection, record)
         if original_membership is None:
             _require(
                 len(entries) == len(selection._entries)
@@ -2045,6 +2169,7 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
                 "variant_tissue_context_exploration@1",
                 "sequence_change_exploration@1",
                 "protein_context_exploration@1",
+                "protein_knowledge_comparison_exploration@1",
             )
             else record["native_payload"]
             if owned and record.get("native_encoding", "json") == "json"
@@ -2081,6 +2206,7 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
                     "variant_tissue_context_exploration@1",
                     "sequence_change_exploration@1",
                     "protein_context_exploration@1",
+                    "protein_knowledge_comparison_exploration@1",
                 )
                 else selection._entries
             )
@@ -2122,6 +2248,7 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
         "sabueso.card_exploration@29",
         "sabueso.card_exploration@31",
         "sabueso.card_exploration@33",
+        "sabueso.card_exploration@35",
     ):
         from .card_explanation_request_binding_v2 import (
             verify as verify_explanation_request,
@@ -2135,8 +2262,12 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
         if bundle["format"] in (
             "sabueso.card_exploration@31",
             "sabueso.card_exploration@33",
+            "sabueso.card_exploration@35",
         ):
-            if bundle["format"] == "sabueso.card_exploration@33":
+            if bundle["format"] in (
+                "sabueso.card_exploration@33",
+                "sabueso.card_exploration@35",
+            ):
                 from .card_exploration_protein_context import (
                     is_context as variant_context,
                 )
@@ -2144,11 +2275,17 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
                 from .card_exploration_sequence_change import (
                     is_context as variant_context,
                 )
-            if bundle["format"] == "sabueso.card_exploration@33":
+            if bundle["format"] in (
+                "sabueso.card_exploration@33",
+                "sabueso.card_exploration@35",
+            ):
                 from .card_exploration_protein_context import is_links as variant_links
             else:
                 from .card_exploration_sequence_change import is_links as variant_links
-            if bundle["format"] == "sabueso.card_exploration@33":
+            if bundle["format"] in (
+                "sabueso.card_exploration@33",
+                "sabueso.card_exploration@35",
+            ):
                 from .card_exploration_protein_context import is_view as variant_view
             else:
                 from .card_exploration_sequence_change import is_view as variant_view
@@ -2167,6 +2304,7 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
             "sabueso.card_exploration@29",
             "sabueso.card_exploration@31",
             "sabueso.card_exploration@33",
+            "sabueso.card_exploration@35",
         ):
             from .card_exploration_disease_association import (
                 is_context,
@@ -2182,6 +2320,7 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
             "sabueso.card_exploration@29",
             "sabueso.card_exploration@31",
             "sabueso.card_exploration@33",
+            "sabueso.card_exploration@35",
         ):
             from .card_exploration_clinical import is_context as clinical_context
             from .card_exploration_clinical import is_links as clinical_links
@@ -2207,6 +2346,7 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
             "sabueso.card_exploration@29",
             "sabueso.card_exploration@31",
             "sabueso.card_exploration@33",
+            "sabueso.card_exploration@35",
         ):
             from .card_exploration_literature import is_context, is_explanation, is_view
 
@@ -2222,6 +2362,7 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
             "sabueso.card_exploration@29",
             "sabueso.card_exploration@31",
             "sabueso.card_exploration@33",
+            "sabueso.card_exploration@35",
         ):
             from .card_exploration_bioactivity import (
                 is_context as bioactivity_context,
@@ -2250,6 +2391,7 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
             "sabueso.card_exploration@29",
             "sabueso.card_exploration@31",
             "sabueso.card_exploration@33",
+            "sabueso.card_exploration@35",
         ):
             _, target = view._explorer.access._resolve(
                 view._selection._target["location"]
@@ -2297,6 +2439,7 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
             "sabueso.card_exploration@29",
             "sabueso.card_exploration@31",
             "sabueso.card_exploration@33",
+            "sabueso.card_exploration@35",
         )
         else "scientific_explanation_request_binding@1",
     }
@@ -2306,11 +2449,20 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
         if bundle["format"] in (
             "sabueso.card_exploration@31",
             "sabueso.card_exploration@33",
+            "sabueso.card_exploration@35",
         ):
-            if bundle["format"] == "sabueso.card_exploration@33":
-                from .card_exploration_protein_context import (
-                    verification_report as _verification_report,
-                )
+            if bundle["format"] in (
+                "sabueso.card_exploration@33",
+                "sabueso.card_exploration@35",
+            ):
+                if bundle["format"] == "sabueso.card_exploration@35":
+                    from .card_exploration_knowledge_comparison import (
+                        verification_report as _verification_report,
+                    )
+                else:
+                    from .card_exploration_protein_context import (
+                        verification_report as _verification_report,
+                    )
             else:
                 from .card_exploration_sequence_change import (
                     verification_report as _verification_report,
@@ -2364,6 +2516,7 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
             "sabueso.card_exploration@29",
             "sabueso.card_exploration@31",
             "sabueso.card_exploration@33",
+            "sabueso.card_exploration@35",
         ):
             from .card_exploration_assembly_v2 import (
                 verification_report as _verification_report,
@@ -2459,7 +2612,26 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
 
 
 def saved_item_operation(item, kind):
-    if item._view._explorer._session.get("format") == "sabueso.card_exploration@33":
+    if item._view._explorer._session.get("format") == "sabueso.card_exploration@35":
+        from .card_exploration_knowledge_comparison import (
+            is_context,
+            is_view,
+            item_operation,
+            open_retained_child,
+        )
+
+        if is_view(item._view) or is_context(item._view):
+            return (
+                item_operation(item, kind)
+                if is_view(item._view) or item._view._link_panel
+                else open_retained_child(item)
+                if kind == "open"
+                else None
+            )
+    if item._view._explorer._session.get("format") in (
+        "sabueso.card_exploration@33",
+        "sabueso.card_exploration@35",
+    ):
         from .card_exploration_protein_context import (
             is_context,
             is_view,
@@ -2478,6 +2650,7 @@ def saved_item_operation(item, kind):
     if item._view._explorer._session.get("format") in (
         "sabueso.card_exploration@31",
         "sabueso.card_exploration@33",
+        "sabueso.card_exploration@35",
     ):
         from .card_exploration_sequence_change import is_view as change_view
         from .card_exploration_sequence_change import item_operation as change_operation
@@ -2563,11 +2736,26 @@ def not_saved(explorer, reason, origin=None):
 
 def saved_topic(explorer, topic, origin, options):
     if (
+        topic == "comparative_context"
+        and isinstance(options, dict)
+        and options.get("mode") == "knowledge"
+        and explorer._session.get("format") == "sabueso.card_exploration@35"
+    ):
+        from .card_exploration_knowledge_comparison import saved_topic as original_topic
+
+        return original_topic(explorer, topic, origin, options)
+    if (
         topic in ("comparative_context", "associations")
         and explorer.profile == "protein"
-        and explorer._session.get("format") == "sabueso.card_exploration@33"
+        and explorer._session.get("format")
+        in ("sabueso.card_exploration@33", "sabueso.card_exploration@35")
     ):
-        from .card_exploration_protein_context import saved_topic as original_topic
+        if explorer._session.get("format") == "sabueso.card_exploration@35":
+            from .card_exploration_knowledge_comparison import (
+                saved_older_topic as original_topic,
+            )
+        else:
+            from .card_exploration_protein_context import saved_topic as original_topic
 
         return original_topic(explorer, topic, origin, options)
     from .card_exploration_quaternary import unrestricted as quaternary_unrestricted
@@ -2582,6 +2770,7 @@ def saved_topic(explorer, topic, origin, options):
         if explorer._session.get("format") in (
             "sabueso.card_exploration@31",
             "sabueso.card_exploration@33",
+            "sabueso.card_exploration@35",
         ):
             from .card_exploration_sequence_change import saved_topic as change_topic
 
@@ -2596,6 +2785,7 @@ def saved_topic(explorer, topic, origin, options):
             "sabueso.card_exploration@29",
             "sabueso.card_exploration@31",
             "sabueso.card_exploration@33",
+            "sabueso.card_exploration@35",
         ):
             from .card_exploration_variant import saved_topic as variant_topic
 
@@ -2608,6 +2798,7 @@ def saved_topic(explorer, topic, origin, options):
         "sabueso.card_exploration@29",
         "sabueso.card_exploration@31",
         "sabueso.card_exploration@33",
+        "sabueso.card_exploration@35",
     ):
         from .card_exploration_disease_association import saved_topic as disease_topic
 
@@ -2722,10 +2913,32 @@ def saved_topic(explorer, topic, origin, options):
 
 def saved_answer(explorer, question, options, origin):
     if (
-        question in ("related_proteins", "protein_associations", "sequence_differences")
-        and explorer._session.get("format") == "sabueso.card_exploration@33"
+        question == "knowledge_differences"
+        and explorer._session.get("format") == "sabueso.card_exploration@35"
     ):
-        from .card_exploration_protein_context import saved_topic as original_topic
+        from .card_exploration_knowledge_comparison import saved_topic as original_topic
+
+        return original_topic(
+            explorer,
+            "comparative_context",
+            origin,
+            {**options, "mode": "knowledge"},
+            question=question,
+        )
+    if question in (
+        "related_proteins",
+        "protein_associations",
+        "sequence_differences",
+    ) and explorer._session.get("format") in (
+        "sabueso.card_exploration@33",
+        "sabueso.card_exploration@35",
+    ):
+        if explorer._session.get("format") == "sabueso.card_exploration@35":
+            from .card_exploration_knowledge_comparison import (
+                saved_older_topic as original_topic,
+            )
+        else:
+            from .card_exploration_protein_context import saved_topic as original_topic
 
         topic = (
             "associations"
@@ -2738,6 +2951,7 @@ def saved_answer(explorer, question, options, origin):
     if question == "sequence_changes" and explorer._session.get("format") in (
         "sabueso.card_exploration@31",
         "sabueso.card_exploration@33",
+        "sabueso.card_exploration@35",
     ):
         from .card_exploration_sequence_change import saved_topic as change_topic
 
@@ -2749,6 +2963,7 @@ def saved_answer(explorer, question, options, origin):
         "sabueso.card_exploration@29",
         "sabueso.card_exploration@31",
         "sabueso.card_exploration@33",
+        "sabueso.card_exploration@35",
     ):
         from .card_exploration_variant import saved_topic as variant_topic
 
@@ -2767,6 +2982,7 @@ def saved_answer(explorer, question, options, origin):
             "sabueso.card_exploration@29",
             "sabueso.card_exploration@31",
             "sabueso.card_exploration@33",
+            "sabueso.card_exploration@35",
         )
     ):
         from .card_exploration_disease_association import saved_topic as disease_topic
@@ -3002,6 +3218,7 @@ def save_selection(selection, path, overwrite, **transport_options):
         "variant_tissue_context_exploration@1",
         "sequence_change_exploration@1",
         "protein_context_exploration@1",
+        "protein_knowledge_comparison_exploration@1",
     ):
         flags = {
             "_record_panel": {
@@ -3013,6 +3230,7 @@ def save_selection(selection, path, overwrite, **transport_options):
                 "variant_tissue_context_exploration@1": "variants",
                 "sequence_change_exploration@1": "sequence_changes",
                 "protein_context_exploration@1": "protein_context",
+                "protein_knowledge_comparison_exploration@1": "protein_context",
             }[selection._scientific.wire["context"]["adapter"]],
             "_native_override": selection._scientific.wire["native_payload"],
             "_context_override": selection._scientific.wire["context"],

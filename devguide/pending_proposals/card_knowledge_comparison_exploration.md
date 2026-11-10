@@ -70,22 +70,41 @@ and interpretation; `related()` reaches exact supplied captures and selected or
 other field assertions. Incoming questions and actual back edges remain intact.
 The original native result is shared rather than recomputed by each access route.
 
-## Saving and next steps
+## Independent saving and receiving
 
-New comparison results and their observed session descendants refuse saving before
-file creation. Observing the new question catalog marks the same boundary: the
-older frozen formats cannot promise its new question semantics. The descriptor advertises this boundary specifically for mode
-`knowledge`; existing relationship/sequence modes in sessions without that new catalog/result,
-and fresh unrelated literal sessions, retain their own capability. Card export remains available. Earlier saved
-catalogs keep their registered questions and do not acquire this new operation.
+Public human/source/compact saving uses logical `sabueso.card_exploration@35` and
+shared @36. `knowledge_comparison_exploration_binding@1` freezes native @2,
+`knowledge_state@5`, source declarations/item identities, typed selection, literal
+catalogs and presentation/navigation. It checks original input/source/row bindings
+without current comparison engines, Card reconstruction or acquisition.
+`knowledge_comparison_access_origins@1` preserves actual runtime instances and
+aliases, including equal focal values. Only generated rule constructors receive
+producer labels; source-owned lookalikes stay literal. All earlier originals,
+frozen resources and meanings remain fixed.
 
-Qualify the complete native and LIVE modules, affected catalog/navigation/storage
-and prior original/history/saved controls, copied receiving and diagnostic package
-contents. CHECKPOINT and the new LIVE receipt own actual counts and source epochs.
-Then capture a genuinely clean producer original before implementing any frozen
-reader. B7 scientific, uncoached researcher/agent, representative workload and
-actual-consumer acceptance remain separate. This increment does not close B6 or
-resume B8/release.
+Retain all actual observed views and finite executed normalized requests, with
+distinct human-only and machine-only scope. An observed new question menu has
+its own frozen catalog even when no science was executed. Earlier formats never
+gain that question. Unexecuted requests/topics remain `not_saved`. Older co-retained
+protein/variant/sequence profiles use their owning predicates. A nonempty public
+bioactivity crossing validates the exact incoming knowledge question/catalog
+before applying the unchanged bioactivity meaning.
+
+Prepare implicit literal support for the saved root and its originating trail,
+together with executed scientific rows; retain every other observed view without
+recursively materializing its unexecuted literal support. Capabilities remain
+explicit when an unretained closure is needed. Production byte defaults stay
+fixed. Complete archived public graphs use an explicitly declared 2 GiB logical
+test allowance, while ordinary public save/read controls use defaults. Coverage
+states the exact retained inputs as `not_evaluated`, without claiming global
+knowledge completeness or adding members to original wires.
+
+The [saved receipt](../evidence/knowledge_comparison_saved_checkpoint_20261110.json)
+owns selected source, copied and separate local installed diagnostic qualification,
+exact scopes/resources and earlier red/stopped epochs. This does not supply a
+full-suite/candidate/public/OS-matrix gate, broader historical scope or B6/B7
+scientific, uncoached researcher/agent, workload or actual-consumer acceptance.
+B2 default review is deferred and B8/release remains unresumed.
 
 ## Clean SDK243 original captured
 
@@ -100,7 +119,7 @@ pass on their recorded scope. Source-owned packaging/version lookalikes and equa
 focal actual access instances stay distinct. Both installed routes include the
 complete original module and capsule; their actual hosted/installed runs remain open.
 
-Independent frozen comparison receiving is next. Preserve these bytes and outcomes,
-include the original observed new question catalog and actual navigation instances,
-and retain explicit `not_saved` for unexecuted operations. New saving remains
-unavailable until that reader and its alteration/binding/source/copied controls pass.
+Independent receiving now preserves those bytes/outcomes and actual catalog/access
+instances through the separately versioned reader above. Complete original,
+coherent alteration, finite-request, transport, copied and local diagnostic controls
+retain their explicit scope; broader acceptance and candidate gates remain open.

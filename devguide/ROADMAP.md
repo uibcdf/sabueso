@@ -169,8 +169,10 @@ now implements shared LIVE typed comparison under explicit native @2, without
 changing the default @1. Its clean SDK243
 [genuine original](evidence/knowledge_comparison_live_original_20261110.json) now
 preserves all 37 complete cases, original values/source/access graphs and finite
-requests. Implement independent receiving before enabling comparison saving. Scientific/
-researcher/workload acceptance remains open. CHECKPOINT owns actual current checks.
+requests. Independent logical @35 / shared @36 reading and public saving now preserve
+that scope; the [saved receipt](evidence/knowledge_comparison_saved_checkpoint_20261110.json)
+owns local qualification and limits. Scientific/researcher/workload acceptance remains
+open. CHECKPOINT owns actual current checks.
 
 Continue the rich profiles through the
 [current destination actions](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions)

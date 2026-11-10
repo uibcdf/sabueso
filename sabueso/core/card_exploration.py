@@ -686,8 +686,26 @@ class CardItem:
         if (
             self._view._explorer.mode == "saved"
             and self._view._explorer._session.get("format")
-            == "sabueso.card_exploration@33"
+            == "sabueso.card_exploration@35"
         ):
+            from .card_exploration_knowledge_comparison import (
+                is_context,
+                is_view,
+                item_operation,
+                open_retained_child,
+            )
+
+            if is_view(self._view):
+                return item_operation(self, "open")
+            if is_context(self._view):
+                return (
+                    item_operation(self, "open")
+                    if self._view._link_panel
+                    else open_retained_child(self)
+                )
+        if self._view._explorer.mode == "saved" and self._view._explorer._session.get(
+            "format"
+        ) in ("sabueso.card_exploration@33", "sabueso.card_exploration@35"):
             from .card_exploration_protein_context import (
                 is_context,
                 is_view,
@@ -719,7 +737,11 @@ class CardItem:
             return open_item(self)
         if self._view._explorer.mode == "saved" and self._view._explorer._session.get(
             "format"
-        ) in ("sabueso.card_exploration@31", "sabueso.card_exploration@33"):
+        ) in (
+            "sabueso.card_exploration@31",
+            "sabueso.card_exploration@33",
+            "sabueso.card_exploration@35",
+        ):
             from .card_exploration_sequence_change import (
                 is_context,
                 item_operation,
@@ -1238,6 +1260,13 @@ class CardView:
                 "reason": "Source/area/request scope only; no global completeness denominator is known.",
             }
         if self._selection._scientific is not None:
+            if (
+                self._selection._scientific.wire.get("context", {}).get("adapter")
+                == "protein_knowledge_comparison_exploration@1"
+            ):
+                from .card_knowledge_comparison_history_v1 import coverage
+
+                return coverage(self._selection._scientific)
             return deepcopy(self._selection._scientific.wire["coverage"])
         return {
             "classification": "not_evaluated",
@@ -1331,6 +1360,7 @@ class CardView:
                 "sabueso.card_exploration@29",
                 "sabueso.card_exploration@31",
                 "sabueso.card_exploration@33",
+                "sabueso.card_exploration@35",
             ) and is_view(self):
                 from .card_molecule_activity_operations_v1 import has_operation
 
@@ -2122,7 +2152,14 @@ class CardExplorer:
     def _nature_topics(self):
         if (
             self.mode == "saved"
-            and self._session.get("format") == "sabueso.card_exploration@33"
+            and self._session.get("format") == "sabueso.card_exploration@35"
+        ):
+            from ._knowledge_comparison_history_v1.catalogs import NATURE_TOPICS
+
+            return NATURE_TOPICS[self.profile]
+        if self.mode == "saved" and self._session.get("format") in (
+            "sabueso.card_exploration@33",
+            "sabueso.card_exploration@35",
         ):
             from ._protein_context_history_v1.catalogs import NATURE_TOPICS
 
@@ -2130,6 +2167,7 @@ class CardExplorer:
         if self.mode == "saved" and self._session.get("format") in (
             "sabueso.card_exploration@31",
             "sabueso.card_exploration@33",
+            "sabueso.card_exploration@35",
         ):
             from ._sequence_change_history_v1.catalogs import NATURE_TOPICS
 
@@ -2138,6 +2176,7 @@ class CardExplorer:
             "sabueso.card_exploration@29",
             "sabueso.card_exploration@31",
             "sabueso.card_exploration@33",
+            "sabueso.card_exploration@35",
         ):
             from ._variant_history_v1.catalogs import NATURE_TOPICS
 
@@ -2147,6 +2186,7 @@ class CardExplorer:
             "sabueso.card_exploration@29",
             "sabueso.card_exploration@31",
             "sabueso.card_exploration@33",
+            "sabueso.card_exploration@35",
         ):
             from ._disease_association_history_v1.catalogs import NATURE_TOPICS
 
@@ -2177,7 +2217,14 @@ class CardExplorer:
     def _topics(self):
         if (
             self.mode == "saved"
-            and self._session.get("format") == "sabueso.card_exploration@33"
+            and self._session.get("format") == "sabueso.card_exploration@35"
+        ):
+            from ._knowledge_comparison_history_v1.catalogs import TOPICS
+
+            return TOPICS[self.profile]
+        if self.mode == "saved" and self._session.get("format") in (
+            "sabueso.card_exploration@33",
+            "sabueso.card_exploration@35",
         ):
             from ._protein_context_history_v1.catalogs import TOPICS
 
@@ -2185,6 +2232,7 @@ class CardExplorer:
         if self.mode == "saved" and self._session.get("format") in (
             "sabueso.card_exploration@31",
             "sabueso.card_exploration@33",
+            "sabueso.card_exploration@35",
         ):
             from ._sequence_change_history_v1.catalogs import TOPICS
 
@@ -2193,6 +2241,7 @@ class CardExplorer:
             "sabueso.card_exploration@29",
             "sabueso.card_exploration@31",
             "sabueso.card_exploration@33",
+            "sabueso.card_exploration@35",
         ):
             from ._variant_history_v1.catalogs import TOPICS
 
@@ -2202,6 +2251,7 @@ class CardExplorer:
             "sabueso.card_exploration@29",
             "sabueso.card_exploration@31",
             "sabueso.card_exploration@33",
+            "sabueso.card_exploration@35",
         ):
             from ._disease_association_history_v1.catalogs import TOPICS
 
@@ -2249,11 +2299,20 @@ class CardExplorer:
         }
 
     def _topic_label(self, topic):
+        if (
+            self.mode == "saved"
+            and self._session.get("format") == "sabueso.card_exploration@35"
+            and self.profile == "protein"
+        ):
+            from ._knowledge_comparison_history_v1.catalogs import PROTEIN_LABELS
+
+            return PROTEIN_LABELS[topic]
         if self.mode == "saved" and self._session.get("format") in (
             "sabueso.card_exploration@27",
             "sabueso.card_exploration@29",
             "sabueso.card_exploration@31",
             "sabueso.card_exploration@33",
+            "sabueso.card_exploration@35",
         ):
             return self._topics[topic][0]
         if topic == "classification" and self.profile == "small_molecule":
@@ -2268,7 +2327,14 @@ class CardExplorer:
     def _questions(self):
         if (
             self.mode == "saved"
-            and self._session.get("format") == "sabueso.card_exploration@33"
+            and self._session.get("format") == "sabueso.card_exploration@35"
+        ):
+            from ._knowledge_comparison_history_v1.catalogs import QUESTIONS
+
+            return QUESTIONS[self.profile]
+        if self.mode == "saved" and self._session.get("format") in (
+            "sabueso.card_exploration@33",
+            "sabueso.card_exploration@35",
         ):
             from ._protein_context_history_v1.catalogs import QUESTIONS
 
@@ -2276,6 +2342,7 @@ class CardExplorer:
         if self.mode == "saved" and self._session.get("format") in (
             "sabueso.card_exploration@31",
             "sabueso.card_exploration@33",
+            "sabueso.card_exploration@35",
         ):
             from ._sequence_change_history_v1.catalogs import QUESTIONS
 
@@ -2284,6 +2351,7 @@ class CardExplorer:
             "sabueso.card_exploration@29",
             "sabueso.card_exploration@31",
             "sabueso.card_exploration@33",
+            "sabueso.card_exploration@35",
         ):
             from ._variant_history_v1.catalogs import QUESTIONS
 
@@ -2293,6 +2361,7 @@ class CardExplorer:
             "sabueso.card_exploration@29",
             "sabueso.card_exploration@31",
             "sabueso.card_exploration@33",
+            "sabueso.card_exploration@35",
         ):
             from ._disease_association_history_v1.catalogs import QUESTIONS
 

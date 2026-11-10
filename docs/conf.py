@@ -138,12 +138,12 @@ html_theme_options = {
     "icon_links": [
         {
             "name": "GitHub",
-            "url": "https://github.com/uibcdf/molsysmt",
+            "url": "https://github.com/uibcdf/sabueso",
             "icon": "fa-brands fa-github",
         },
     ],
     "use_edit_page_button": False,
-    "header_links_before_dropdown": 8,  # valor alto para evitar 'More'
+    "header_links_before_dropdown": 8,  # Keep the primary links before "More".
 }
 
 html_context = {

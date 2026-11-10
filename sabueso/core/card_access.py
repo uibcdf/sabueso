@@ -424,13 +424,15 @@ class CardAccess:
                 "sabueso.card_exploration@29",
                 "sabueso.card_exploration@31",
                 "sabueso.card_exploration@33",
+                "sabueso.card_exploration@35",
             )
         ):
             scientific_topics.extend(("variants", "sequence_changes"))
         if self.profile == "protein" and (
             self.mode == "live"
             or self._exploration_session
-            and self._exploration_session.get("format") == "sabueso.card_exploration@33"
+            and self._exploration_session.get("format")
+            in ("sabueso.card_exploration@33", "sabueso.card_exploration@35")
         ):
             scientific_topics.extend(("comparative_context", "associations"))
         scientific_topics.append("literature")
@@ -724,6 +726,7 @@ class CardAccess:
                     "sabueso.card_exploration@29",
                     "sabueso.card_exploration@31",
                     "sabueso.card_exploration@33",
+                    "sabueso.card_exploration@35",
                 )
             ):
                 if self.mode == "saved":
@@ -748,6 +751,7 @@ class CardAccess:
                 if self.mode == "saved" and self._exploration_session.get("format") in (
                     "sabueso.card_exploration@31",
                     "sabueso.card_exploration@33",
+                    "sabueso.card_exploration@35",
                 ):
                     from .card_sequence_change_history_v1 import (
                         descriptor as change_descriptor,
@@ -777,7 +781,7 @@ class CardAccess:
                 self.mode == "live"
                 or self._exploration_session
                 and self._exploration_session.get("format")
-                == "sabueso.card_exploration@33"
+                in ("sabueso.card_exploration@33", "sabueso.card_exploration@35")
             ):
                 from .card_protein_context_history_v1 import (
                     descriptor as protein_descriptor,
@@ -785,11 +789,14 @@ class CardAccess:
 
                 for topic in ("comparative_context", "associations"):
                     data[topic] = protein_descriptor(topic)
-                    if self.mode == "live" and topic == "comparative_context":
+                    if topic == "comparative_context" and (
+                        self.mode == "live"
+                        or self._exploration_session.get("format")
+                        == "sabueso.card_exploration@35"
+                    ):
                         from .card_knowledge_comparison_dispatch import (
                             ADAPTER as comparison_adapter,
                         )
-                        from .card_knowledge_comparison_dispatch import SAVE_REASON
 
                         data[topic]["comparison_modes"] = {
                             "relationships": {"save": True},
@@ -797,8 +804,7 @@ class CardAccess:
                             "knowledge": {
                                 "adapter": comparison_adapter,
                                 "native_rule": "card_knowledge_diff@2",
-                                "save": False,
-                                "save_reason": SAVE_REASON,
+                                "save": True,
                                 "other_ref": "exact supplied protein capture",
                                 "residue_map": "optional one-to-one positive integer pairs; no alignment performed",
                             },
@@ -819,6 +825,7 @@ class CardAccess:
                     "sabueso.card_exploration@29",
                     "sabueso.card_exploration@31",
                     "sabueso.card_exploration@33",
+                    "sabueso.card_exploration@35",
                 ):
                     from .card_disease_association_history_v1 import (
                         descriptor as association_descriptor,
@@ -836,6 +843,7 @@ class CardAccess:
                     "sabueso.card_exploration@29",
                     "sabueso.card_exploration@31",
                     "sabueso.card_exploration@33",
+                    "sabueso.card_exploration@35",
                 )
                 data["associations"]["save"] = admitted
                 if admitted:
@@ -900,6 +908,7 @@ class CardAccess:
                         "sabueso.card_exploration@29",
                         "sabueso.card_exploration@31",
                         "sabueso.card_exploration@33",
+                        "sabueso.card_exploration@35",
                     )
                 ):
                     from .card_exploration_molecule_activity import (
@@ -913,6 +922,7 @@ class CardAccess:
                         "sabueso.card_exploration@29",
                         "sabueso.card_exploration@31",
                         "sabueso.card_exploration@33",
+                        "sabueso.card_exploration@35",
                     ):
                         from .card_exploration_molecule_activity_v2 import (
                             descriptor as activity_context_descriptor,
@@ -1145,6 +1155,7 @@ class CardAccess:
                 "sabueso.card_exploration@29",
                 "sabueso.card_exploration@31",
                 "sabueso.card_exploration@33",
+                "sabueso.card_exploration@35",
             )
         ):
             from .card_exploration_disease_association import saved_selection
@@ -1158,6 +1169,7 @@ class CardAccess:
                 "sabueso.card_exploration@29",
                 "sabueso.card_exploration@31",
                 "sabueso.card_exploration@33",
+                "sabueso.card_exploration@35",
             )
         ):
             from .card_exploration_variant import saved_selection
@@ -1167,7 +1179,11 @@ class CardAccess:
             topic == "sequence_changes"
             and self.mode == "saved"
             and self._exploration_session.get("format")
-            in ("sabueso.card_exploration@31", "sabueso.card_exploration@33")
+            in (
+                "sabueso.card_exploration@31",
+                "sabueso.card_exploration@33",
+                "sabueso.card_exploration@35",
+            )
         ):
             from .card_exploration_sequence_change import saved_selection
 
@@ -1176,9 +1192,17 @@ class CardAccess:
             topic in ("comparative_context", "associations")
             and self.profile == "protein"
             and self.mode == "saved"
-            and self._exploration_session.get("format") == "sabueso.card_exploration@33"
+            and self._exploration_session.get("format")
+            in ("sabueso.card_exploration@33", "sabueso.card_exploration@35")
         ):
-            from .card_exploration_protein_context import saved_selection
+            if (
+                self._exploration_session.get("format") == "sabueso.card_exploration@35"
+                and isinstance(options, dict)
+                and options.get("mode") == "knowledge"
+            ):
+                from .card_exploration_knowledge_comparison import saved_selection
+            else:
+                from .card_exploration_protein_context import saved_selection
 
             return saved_selection(
                 self, topic, fields, options, where, item_refs, order_by
@@ -1310,6 +1334,7 @@ class CardAccess:
                     "sabueso.card_exploration@29",
                     "sabueso.card_exploration@31",
                     "sabueso.card_exploration@33",
+                    "sabueso.card_exploration@35",
                 )
             ):
                 from .card_exploration_molecule_activity import saved_selection
@@ -1673,7 +1698,7 @@ class CardAccess:
 
     def _defer(self, item):
         if item.get("adapter") == "protein_knowledge_comparison_exploration@1":
-            from .card_protein_context_access import defer_frame
+            from .card_knowledge_comparison_history_v1 import defer_frame
 
             return defer_frame(item)
         if item.get("adapter") == "protein_context_exploration@1":

@@ -490,8 +490,10 @@ compact requests. The [saved checkpoint](evidence/protein_context_saved_checkpoi
 owns local receiving scope and limits. The next [knowledge/map comparison slice](pending_proposals/card_knowledge_comparison_exploration.md)
 now projects explicit native @2 over supplied captures. Typed values, full item
 candidate groups, source/state context and exact map pairs remain inspectable.
-Qualify LIVE receiving and capture a clean genuine original before its independent
-saved reader. B7 acceptance stays separate; this increment does not resume B8.
+The clean SDK243 original now has independent logical @35 / shared @36 reading and
+public saving. The [saved receipt](evidence/knowledge_comparison_saved_checkpoint_20261110.json)
+owns local source/copied/diagnostic receiving; wider B6/B7 acceptance and exact-candidate
+gates remain separate. This increment does not resume B8.
 
 ## Execution order
 

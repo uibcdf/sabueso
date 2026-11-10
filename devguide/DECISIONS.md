@@ -1,5 +1,27 @@
 # Sabueso — Decision Log
 
+## Freeze comparison meaning and scope implicit support preparation (2026-11-10)
+
+Use separate logical @35 / shared @36 for the immutable clean SDK243 knowledge
+comparison. Freeze `card_knowledge_diff@2`, `knowledge_state@5`, the participating
+source declarations and item identities, typed selection, literal catalogs,
+presentation and navigation. Reuse earlier immutable predicates only where the
+same named contract applies. Earlier formats, originals, six SOURCE resources,
+the Card schema and the default native @1 remain fixed. Only generated rule
+constructors interpret producer labels; source-owned lookalikes stay literal.
+
+Preserve every observed view and actual access instance, including equal focal
+contexts, and every executed finite request. Prepare implicit literal support for
+the saved root and its originating trail, together with executed scientific rows;
+do not recursively expand unexecuted literal support for every other observed
+source view. Missing unretained operations remain explicit through capabilities
+and `not_saved`. The first blanket-preparation measurement expanded 5,907 observed
+views to 39,021 retained views and 1,003,091,201 logical JSON bytes. Keep production
+byte defaults fixed. The complete archived public graphs may use an explicitly
+declared larger logical test allowance; ordinary public save/read controls use
+defaults. Qualification, B7 acceptance and candidate/hosted/platform gates remain
+separate. Owner #148/#193/#112.
+
 ## Make typed knowledge comparison explicit before shared exploration (2026-11-09)
 
 The published/default `card_knowledge_diff@1` keeps its original output. The new

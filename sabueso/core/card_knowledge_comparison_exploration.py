@@ -58,7 +58,9 @@ def opening(view, preview):
         "Field rows compare typed stored representations, including units. Free text, uncertain positions, incomplete maps and multiple candidates stay explicit.",
         "Relationship rows compare exact object references; original direction, channels, qualifiers, conflicts and source records remain separate.",
         "The residue map is a caller input. Sabueso does not align sequences or validate its scientific correspondence.",
-        SAVE_REASON,
+        SAVE_REASON
+        if view.native_payload["rule"]["sabueso_version"] == "0.14.0+243.gf6d8e4a"
+        else "Saving retains the executed comparison and its original source context; unexecuted questions remain unavailable.",
     ]
 
 

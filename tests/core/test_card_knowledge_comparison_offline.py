@@ -16,7 +16,7 @@ from test_card_knowledge_diff_v2_offline import (
 import sabueso
 from sabueso.core import card_knowledge_diff_v2 as native
 from sabueso.core.card import Card
-from sabueso.core.errors import ArgumentError, StorageError
+from sabueso.core.errors import ArgumentError
 from sabueso.core.snapshot import canonical_json
 
 ADAPTER = "protein_knowledge_comparison_exploration@1"
@@ -202,7 +202,7 @@ def test_sources_conflicts_and_unqueried_states_are_inspectable():
     assert "source claim" in row.explain().native_payload["input_scope"]["basis"]
 
 
-def test_save_refuses_all_observed_new_context_before_writing(tmp_path):
+def test_save_retains_all_observed_new_context_with_independent_binding(tmp_path):
     left, right = pair()
     explorer = left.explore(related_cards=[right])
     view = question(explorer)
@@ -218,11 +218,16 @@ def test_save_refuses_all_observed_new_context_before_writing(tmp_path):
             selection,
         )
     ):
-        path = tmp_path / f"unsupported-{index}.json"
-        assert target.capabilities["save"] is False
-        with pytest.raises(StorageError):
-            target.save(path)
-        assert not path.exists()
+        path = tmp_path / f"retained-{index}.json"
+        assert target.capabilities["save"] is True
+        target.save(path)
+        saved = sabueso.read_exploration(path)
+        assert (
+            saved.validation["verifier"] == "knowledge_comparison_exploration_binding@1"
+        )
+        assert canonical_json(saved.native_payload) == canonical_json(
+            target._scientific.native if target is selection else target.native_payload
+        )
     fresh = left.explore().inspect()
     path = tmp_path / "fresh.json"
     fresh.save(path)
@@ -281,6 +286,25 @@ def test_public_tim_native_output_and_quantity_source_bindings_remain_exact(
     assert canonical_json(actual.native_payload) == canonical_json(expected)
     assert "Knowledge" in actual.title
     assert "supplied" in str(actual)
+
+
+def test_public_tim_comparison_saves_with_default_production_budgets(
+    public_cards, tmp_path
+):
+    left, right = public_cards
+    explorer = left.explore(related_cards=[right])
+    view = question(explorer)
+    machine = explorer.access.select("comparative_context", options=options(explorer))
+    path = tmp_path / "public-comparison.json.gz"
+    view.save(path, compression="gzip")
+    saved = sabueso.read_exploration(path)
+    assert canonical_json(saved.native_payload) == canonical_json(view.native_payload)
+    assert (
+        saved.explorer.access.select(
+            "comparative_context", options=options(saved.explorer)
+        ).selection_ref
+        == machine.selection_ref
+    )
 
 
 def test_knowledge_mode_cannot_replace_an_association_question(monkeypatch):
@@ -385,11 +409,20 @@ def test_observed_new_question_catalog_advertises_its_actual_saving_boundary(tmp
     menu = explorer.questions()
     related = explorer.answer("related_proteins")
     for index, target in enumerate((menu, related, related.items()[0].open())):
-        assert target.capabilities["save"] is False
+        assert target.capabilities["save"] is True
         path = tmp_path / f"new-menu-{index}.json"
-        with pytest.raises(StorageError):
-            target.save(path)
-        assert not path.exists()
+        target.save(path)
+        saved = sabueso.read_exploration(path)
+        assert (
+            saved.validation["verifier"] == "knowledge_comparison_exploration_binding@1"
+        )
+        assert "knowledge_differences" in saved.explorer._questions
+        assert (
+            saved.explorer.answer(
+                "knowledge_differences", options=options(saved.explorer)
+            ).outcome["status"]
+            == "not_saved"
+        )
     exported = tmp_path / "captured-card.json"
     explorer.access.export_card(exported)
     assert exported.exists()

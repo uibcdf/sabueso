@@ -1370,9 +1370,9 @@ acquisition; human and agent requests must share one cached native execution.
 
 Check source/open/back/question continuity, equal-label state occurrences, typed
 filters/membership/order, finite bounded pages and atomic deferral. Missing or
-invalid comparator/map requests must fail before native work. Saving the new
-mode and its observed descendants must refuse before writing; existing modes and
-fresh unrelated literal saving retain their capability. Original frozen catalogs
+invalid comparator/map requests must fail before native work. Current new-mode and source/agent save/read controls use the separately versioned
+reader below; the interim save refusals remain literal in the immutable SDK243
+original. Existing modes and unrelated literal saving retain their capability. Original frozen catalogs
 keep their own registered questions. Preimport LIVE modules before temporary
 guards and restore actual targeted functions, so receiving guards cannot poison
 later LIVE annotation helpers or retain rejected provider aliases in cold imports.
@@ -1382,9 +1382,10 @@ epochs explicit.
 
 Copy both complete new modules with exact public inputs outside checkout and
 verify controller/worker/import placement. Both installed workflows select/copy
-those modules. Package inspection requires all implementation modules and the six
-unchanged frozen SOURCE resources. Technical qualification is separate from a
-clean original, independent saved reading, hosted/installed and B7 acceptance.
+those modules. Package inspection requires all implementation modules and seven
+frozen SOURCE resources, with the preceding six unchanged. The new saved-reader
+gates below qualify independent receiving; hosted/candidate/platform and B7
+acceptance remain separate.
 
 
 ## Genuine knowledge-comparison original before saved reading (#148/#193)
@@ -1411,3 +1412,36 @@ owns exact source/resource/byte accounting. These checks do not admit new saved
 files or establish hosted, installed, scientific or human acceptance. Keep the
 producer, original bytes, current defaults and older saved meanings fixed while
 implementing the independent reader.
+
+
+## Independent knowledge-comparison saved reading (#148/#193)
+
+Run complete `test_card_knowledge_comparison_history_offline.py` and
+`test_card_saved_knowledge_comparison_offline.py`, native @2/LIVE controls and the
+unchanged SDK243 original module. Include applicable earlier original/history/
+saved, argument/quantity, catalog/navigation/storage, registry/licensing and
+package-data gates. The history module has 120 cases; the saved module has 58.
+Require every original value/unit/map/candidate/state/source/actual-access binding,
+human text/HTML and finite compact request/page, coherent resealed changes,
+human-only/machine-only unknown scope, repeated saves/transports and fresh children
+with current comparison/related-family engines and acquisition forbidden. Include
+catalog-only logical/shared files and the nonempty incoming bioactivity crossing.
+
+The exhaustive public originals declare a bounded 2 GiB logical caller allowance;
+ordinary public save/read uses unchanged production budgets. Prepare only required
+root/origin literal support and scientific row closure, without dropping any
+observed view/access or executing unvisited science. Measure first: the selected
+owning gate uses three workers for whole public graphs/fresh children; lighter
+adjacent gates use eight. Keep aggregate10GiB RSS, native1, host16GiB reserve and
+zero owned swap. Never infer reservations from free resources.
+
+Copy/select the complete saved and LIVE modules outside checkout with their exact
+capsule/public/helper inputs and verify controller/worker placement. Run the whole
+saved module in a separate diagnostic wheel environment and verify actual installed
+origin; shared editable dependencies do not establish a clean public dependency
+closure. Both installed workflows copy/select complete history/saved/original
+modules once. Inspect wheel/sdist for every implementation module and all seven
+SOURCE resources. The [saved receipt](evidence/knowledge_comparison_saved_checkpoint_20261110.json)
+owns distinct source counts and limits; copied/diagnostic repetitions add no source
+coverage. Full suite, expanded historical, exact-candidate/hosted/platform and B7
+acceptance remain separate; B2 review deferred and B8/release unresumed.

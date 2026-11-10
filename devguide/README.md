@@ -62,8 +62,10 @@ now shares explicit `card_knowledge_diff@2` typed field, relationship and state
 results between LIVE human and compact-agent routes. Exact caller maps retain
 uncertain and ambiguous scope. Its clean SDK243 [genuine original](evidence/knowledge_comparison_live_original_20261110.json)
 now preserves all 37 complete public/synthetic cases, actual source/access graphs
-and finite requests. New comparison saving awaits an independent reader; earlier
-rules/defaults and saved meanings remain fixed.
+and finite requests. Independent logical @35 / shared @36 reading and public saving now preserve those
+observations. The [saved receipt](evidence/knowledge_comparison_saved_checkpoint_20261110.json)
+owns local source/copied/diagnostic receiving and limits; earlier rules/defaults
+and saved meanings remain fixed.
 CHECKPOINT owns qualification; full B6 and B7 acceptance remain open.
 
 The first B6 [variant/isoform tissue-context profile](pending_proposals/card_variant_tissue_exploration.md)

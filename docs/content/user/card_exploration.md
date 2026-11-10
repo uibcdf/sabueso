@@ -371,10 +371,22 @@ page = selection.page(max_bytes=16000)
 ```
 
 This mode explicitly uses `card_knowledge_diff@2`; the default native
-`Card.compare_knowledge` still uses @1. New comparison sessions cannot yet be saved:
-a clean producer original and independent reader must qualify that capability.
-Observing the new question menu belongs to the same saving boundary. Captured Card
-export and unrelated literal sessions remain available.
+`Card.compare_knowledge` still uses @1. Save the executed comparison and its
+original source context for independent reading:
+
+```python
+from sabueso import read_exploration
+
+comparison.save("knowledge-comparison.json.gz", compression="gzip")
+saved = read_exploration("knowledge-comparison.json.gz")
+saved.table()
+```
+
+The saved file retains typed values, units, exact supplied map pairs, original
+source bindings and observed navigation. Unexecuted scientific questions and
+compact requests remain `not_saved`. A saved question menu retains its original
+catalog without executing its questions. Earlier saved formats keep their own
+meaning and do not acquire this comparison implicitly.
 
 ## Explore individual annotations in structures
 

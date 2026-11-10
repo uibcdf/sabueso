@@ -5,6 +5,44 @@ Current working-state checkpoint: **2026-11-10**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Independent knowledge-comparison saved reading — local checkpoint PASS
+
+Logical `sabueso.card_exploration@35` / shared @36 independently reads all **37
+unchanged SDK243 originals**. It preserves 22,929 observed views, 4,352 actual
+access instances, 579 finite compact requests and 1,410 pages. Frozen native @2,
+knowledge state/source declarations, typed selection, presentation and navigation
+retain original values/units, every candidate/state occurrence, map pairs and pins,
+source/alternative/conflict context and exact source/back/question boundaries.
+Current human/source/agent saving and observed new question catalogs are enabled;
+unexecuted operations stay `not_saved`. Earlier meanings and originals stay fixed.
+
+All **2,592 distinct selected source cases pass in 74
+complete modules** on one unchanged 1,338-path map. Independent discovery
+equals the disjoint executed union. All **89 copied file/LIVE cases pass outside
+checkout**, and all **58 complete saved-reader cases pass against a separate local
+diagnostic wheel** on Linux/Python3.14 with the shared dependency environment.
+Each receiving route has five controller/worker origin/input proofs. The wheel
+and sdist contain all 914 implementation modules and
+seven SOURCE resources byte-identically. Copied/diagnostic repetitions add no
+distinct source coverage; these are not candidate/public/OS-matrix gates.
+
+Production byte budgets stay fixed. Exhaustive archived public callers declare a
+2 GiB logical test allowance; an ordinary public save/read uses defaults. Implicit
+literal support preparation covers the saved root/origin trail and scientific
+rows, while every observed view stays stored. This avoids blanket expansion of
+unexecuted literal support. Current nonempty bioactivity crossings and older
+co-retained variant/sequence/protein profiles preserve their owning meanings.
+
+The [saved receipt](evidence/knowledge_comparison_saved_checkpoint_20261110.json)
+owns source/resource/receiving scope and earlier red/stopped epochs. The coverage
+property now states `not_evaluated` retained-input scope without adding members to
+original wires. [#193](https://github.com/uibcdf/sabueso/issues/193) remains the
+published default-integrity report; additional local report drafts stay internal.
+Broader B6/B7 acceptance, expanded historical scope and exact-candidate/hosted/
+installed platform gates remain open. B2 review is deferred; B8/release unresumed.
+CI remains deferred under #148/#193/#112 with `[skip ci]`; exact committed metadata,
+code/remote and cleanup observations belong to the final local handoff.
+
 ## Clean SDK243 knowledge-comparison original — local checkpoint PASS
 
 The [genuine original](evidence/knowledge_comparison_live_original_20261110.json)

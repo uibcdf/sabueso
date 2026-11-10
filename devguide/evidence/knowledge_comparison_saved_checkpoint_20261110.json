@@ -1,0 +1,859 @@
+{
+  "state": "SELECTED_LOCAL_PASS",
+  "owner": "uibcdf/sabueso#148/#193/#112",
+  "date": "2026-11-10",
+  "base_head": "39eeb2c69916e1b21b46a495b95f5b6e5db1f931",
+  "logical_format": "sabueso.card_exploration@35",
+  "shared_format": "sabueso.card_exploration@36",
+  "verifier": "knowledge_comparison_exploration_binding@1",
+  "source_cases": 2592,
+  "complete_source_modules": 74,
+  "source_paths": 1338,
+  "source_fingerprint": "280b50fe2207a509ab07ab7d24cc34c07250e2910809161cdc703ec07a277fc3",
+  "source_gates": {
+    "b6-protein-knowledge-saved-owning-2": {
+      "state": "PASS",
+      "counts": {
+        "collected": 264,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 264,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 264,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "pytest_elapsed_s": 789.5786126710009,
+      "source_paths": 1338,
+      "source_stable": true,
+      "controller_workers_and_calls_agree": true,
+      "events_sha256": "6a7eb26405a90f6f183ade77b8a804abb4af35323d57dc59aeddbb914c16f650",
+      "resources": {
+        "owner": "uibcdf/sabueso#148/#112",
+        "review_trigger": "Protein context LIVE and historical adjacent controls; 3 workers,10GiBtotalRSS,native1,host16GiBfloor,10GiBscratch",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1,2",
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-B",
+          "-m",
+          "pytest",
+          "tests/core/test_card_knowledge_comparison_history_offline.py",
+          "tests/core/test_card_saved_knowledge_comparison_offline.py",
+          "tests/core/test_card_knowledge_comparison_offline.py",
+          "tests/core/test_card_knowledge_diff_v2_offline.py",
+          "tests/core/test_package_data_offline.py",
+          "-m",
+          "not online",
+          "--receptor=llm",
+          "--receptor-events=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-knowledge-saved-owning-2/events.jsonl",
+          "-p",
+          "checkpoint_scope",
+          "--basetemp=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-knowledge-saved-owning-2/pytest-scratch",
+          "-o",
+          "tmp_path_retention_policy=failed",
+          "-W",
+          "error:unclosed database:ResourceWarning",
+          "-W",
+          "error::pytest.PytestUnraisableExceptionWarning",
+          "-n",
+          "3",
+          "--dist=worksteal"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "exit_code": 0,
+        "elapsed_s": 793.03,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 5474967552,
+        "minimum_host_available_bytes": 54930984960,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 2616484717,
+        "limits": {
+          "owned_rss_bytes": 10737418240,
+          "host_available_bytes": 17179869184,
+          "owned_swap_bytes": 0,
+          "cpu_affinity_count": 3,
+          "nice": 10,
+          "elapsed_s": 1200,
+          "owned_scratch_bytes": 10737418240
+        },
+        "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-knowledge-saved-owning-2/cargo-target"
+      }
+    },
+    "b6-protein-knowledge-saved-older-1": {
+      "state": "PASS",
+      "counts": {
+        "collected": 329,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 329,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 329,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "pytest_elapsed_s": 192.36004359199433,
+      "source_paths": 1338,
+      "source_stable": true,
+      "controller_workers_and_calls_agree": true,
+      "events_sha256": "2e21336c0933da7d46c0623ce61c2ef6407fe3004bcb8370569c0ccb9589d81d",
+      "resources": {
+        "owner": "uibcdf/sabueso#148/#112",
+        "review_trigger": "Protein context LIVE and historical adjacent controls; 8 workers,10GiBtotalRSS,native1,host16GiBfloor,10GiBscratch",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1,2,3,4,5,6,7",
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-B",
+          "-m",
+          "pytest",
+          "tests/core/test_argument_contracts_offline.py",
+          "tests/core/test_card_diff_offline.py",
+          "tests/core/test_card_knowledge_comparison_original_offline.py",
+          "tests/core/test_card_protein_context_history_offline.py",
+          "tests/core/test_card_protein_context_offline.py",
+          "tests/core/test_card_protein_context_original_offline.py",
+          "tests/core/test_card_saved_protein_context_offline.py",
+          "tests/core/test_relationships_offline.py",
+          "-m",
+          "not online",
+          "--receptor=llm",
+          "--receptor-events=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-knowledge-saved-older-1/events.jsonl",
+          "-p",
+          "checkpoint_scope",
+          "--basetemp=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-knowledge-saved-older-1/pytest-scratch",
+          "-o",
+          "tmp_path_retention_policy=failed",
+          "-W",
+          "error:unclosed database:ResourceWarning",
+          "-W",
+          "error::pytest.PytestUnraisableExceptionWarning",
+          "-n",
+          "8",
+          "--dist=worksteal"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "exit_code": 0,
+        "elapsed_s": 197.61,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 2327023616,
+        "minimum_host_available_bytes": 56038449152,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 3920132989,
+        "limits": {
+          "owned_rss_bytes": 10737418240,
+          "host_available_bytes": 17179869184,
+          "owned_swap_bytes": 0,
+          "cpu_affinity_count": 8,
+          "nice": 10,
+          "elapsed_s": 1200,
+          "owned_scratch_bytes": 10737418240
+        },
+        "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-knowledge-saved-older-1/cargo-target"
+      }
+    },
+    "b6-protein-knowledge-saved-adjacent-1": {
+      "state": "PASS",
+      "counts": {
+        "collected": 1999,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 1999,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 1999,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "pytest_elapsed_s": 390.9510454600095,
+      "source_paths": 1338,
+      "source_stable": true,
+      "controller_workers_and_calls_agree": true,
+      "events_sha256": "177cbb9781e2ad507fc4159c7911bbe828a664e7804732279c864f0d4376d745",
+      "resources": {
+        "owner": "uibcdf/sabueso#148/#112",
+        "review_trigger": "Protein context LIVE and historical adjacent controls; 8 workers,10GiBtotalRSS,native1,host16GiBfloor,10GiBscratch",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1,2,3,4,5,6,7",
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-B",
+          "-m",
+          "pytest",
+          "tests/core/test_aggregator_resolver.py",
+          "tests/core/test_card_access_offline.py",
+          "tests/core/test_card_agent_selection_offline.py",
+          "tests/core/test_card_annotation_regions_offline.py",
+          "tests/core/test_card_bioactivity_exploration_offline.py",
+          "tests/core/test_card_cell_support_offline.py",
+          "tests/core/test_card_clinical_exploration_offline.py",
+          "tests/core/test_card_context_navigation_offline.py",
+          "tests/core/test_card_disease_association_exploration_offline.py",
+          "tests/core/test_card_disease_association_original_offline.py",
+          "tests/core/test_card_exploration_offline.py",
+          "tests/core/test_card_human_labels_offline.py",
+          "tests/core/test_card_literature_exploration_offline.py",
+          "tests/core/test_card_nature_exploration_offline.py",
+          "tests/core/test_card_navigation_preview_offline.py",
+          "tests/core/test_card_protein_exploration_offline.py",
+          "tests/core/test_card_protein_source_offline.py",
+          "tests/core/test_card_saved_clinical_offline.py",
+          "tests/core/test_card_saved_disease_association_offline.py",
+          "tests/core/test_card_saved_exploration_offline.py",
+          "tests/core/test_card_saved_science_offline.py",
+          "tests/core/test_card_saved_sequence_change_offline.py",
+          "tests/core/test_card_saved_variant_offline.py",
+          "tests/core/test_card_sequence_change_history_offline.py",
+          "tests/core/test_card_sequence_change_original_offline.py",
+          "tests/core/test_card_sequence_changes_offline.py",
+          "tests/core/test_card_variant_exploration_offline.py",
+          "tests/core/test_card_variant_original_offline.py",
+          "tests/core/test_comparative_bibliography_offline.py",
+          "tests/core/test_comparative_explanation_offline.py",
+          "tests/core/test_comparative_operations_offline.py",
+          "tests/core/test_comparative_response_contracts_offline.py",
+          "tests/core/test_comparative_support_journey_offline.py",
+          "tests/core/test_derivation_applications_offline.py",
+          "tests/core/test_diseases_offline.py",
+          "tests/core/test_entity_qualifier_parents_offline.py",
+          "tests/core/test_exploration_shared_values_offline.py",
+          "tests/core/test_exploration_transport_offline.py",
+          "tests/core/test_fixture_delivery_offline.py",
+          "tests/core/test_fixture_licensing_offline.py",
+          "tests/core/test_gnomad_acquisition_offline.py",
+          "tests/core/test_gnomad_offline.py",
+          "tests/core/test_gtex_acquisition_offline.py",
+          "tests/core/test_isoforms_offline.py",
+          "tests/core/test_knowledge_store_offline.py",
+          "tests/core/test_migration_offline.py",
+          "tests/core/test_oma_offline.py",
+          "tests/core/test_protein_cards_offline.py",
+          "tests/core/test_protein_knowledge_relationships_offline.py",
+          "tests/core/test_quantities_offline.py",
+          "tests/core/test_reactome_offline.py",
+          "tests/core/test_scoped_tissue_usage_offline.py",
+          "tests/core/test_source_assertions_offline.py",
+          "tests/core/test_source_registry_offline.py",
+          "tests/core/test_string_associations_offline.py",
+          "tests/core/test_structure_relationship_scope_offline.py",
+          "tests/core/test_uniprot_additional_annotations_offline.py",
+          "tests/core/test_uniprot_feature_molecule_identity_offline.py",
+          "tests/core/test_uniprot_feature_scope_offline.py",
+          "tests/core/test_uniref_offline.py",
+          "tests/core/test_variants_offline.py",
+          "-m",
+          "not online",
+          "--receptor=llm",
+          "--receptor-events=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-knowledge-saved-adjacent-1/events.jsonl",
+          "-p",
+          "checkpoint_scope",
+          "--basetemp=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-knowledge-saved-adjacent-1/pytest-scratch",
+          "-o",
+          "tmp_path_retention_policy=failed",
+          "-W",
+          "error:unclosed database:ResourceWarning",
+          "-W",
+          "error::pytest.PytestUnraisableExceptionWarning",
+          "-n",
+          "8",
+          "--dist=worksteal"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "exit_code": 0,
+        "elapsed_s": 398.13,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 3549474816,
+        "minimum_host_available_bytes": 55891800064,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 4955596716,
+        "limits": {
+          "owned_rss_bytes": 10737418240,
+          "host_available_bytes": 17179869184,
+          "owned_swap_bytes": 0,
+          "cpu_affinity_count": 8,
+          "nice": 10,
+          "elapsed_s": 1200,
+          "owned_scratch_bytes": 10737418240
+        },
+        "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-knowledge-saved-adjacent-1/cargo-target"
+      }
+    }
+  },
+  "copied_gate": {
+    "state": "PASS",
+    "counts": {
+      "collected": 89,
+      "deselected": 0,
+      "errors": 0,
+      "executed": 89,
+      "failed": 0,
+      "not_executed": 0,
+      "passed": 89,
+      "reruns": 0,
+      "skipped": 0,
+      "subtests": {},
+      "warnings": 0,
+      "xfailed": 0,
+      "xpassed": 0
+    },
+    "pytest_elapsed_s": 649.9851548700244,
+    "source_paths": 1338,
+    "source_stable": true,
+    "controller_workers_and_calls_agree": true,
+    "events_sha256": "4bf9a879f9a1e78a0bb2796d2de36df6bbd5cbeaf00bfdc664d928cc2375ef88",
+    "resources": {
+      "owner": "uibcdf/sabueso#148/#112",
+      "review_trigger": "Protein context LIVE and historical adjacent controls; 4 workers,10GiBtotalRSS,native1,host16GiBfloor,10GiBscratch",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0,1,2,3",
+        "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "test_card_saved_knowledge_comparison_offline.py",
+        "test_card_knowledge_comparison_offline.py",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "--receptor-events=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-knowledge-saved-copied-1/events.jsonl",
+        "-p",
+        "checkpoint_scope",
+        "--basetemp=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-knowledge-saved-copied-1/pytest-scratch",
+        "-o",
+        "tmp_path_retention_policy=failed",
+        "-W",
+        "error:unclosed database:ResourceWarning",
+        "-W",
+        "error::pytest.PytestUnraisableExceptionWarning",
+        "-n",
+        "4",
+        "--dist=worksteal"
+      ],
+      "cwd": "/tmp/sabueso-knowledge-saved-client-dnzpxv53",
+      "exit_code": 0,
+      "elapsed_s": 653.18,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 5126569984,
+      "minimum_host_available_bytes": 52933267456,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 2089223078,
+      "limits": {
+        "owned_rss_bytes": 10737418240,
+        "host_available_bytes": 17179869184,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 4,
+        "nice": 10,
+        "elapsed_s": 1200,
+        "owned_scratch_bytes": 10737418240
+      },
+      "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-knowledge-saved-copied-1/cargo-target"
+    }
+  },
+  "diagnostic_installed_gate": {
+    "state": "PASS",
+    "counts": {
+      "collected": 58,
+      "deselected": 0,
+      "errors": 0,
+      "executed": 58,
+      "failed": 0,
+      "not_executed": 0,
+      "passed": 58,
+      "reruns": 0,
+      "skipped": 0,
+      "subtests": {},
+      "warnings": 0,
+      "xfailed": 0,
+      "xpassed": 0
+    },
+    "pytest_elapsed_s": 645.1376712070196,
+    "source_paths": 1338,
+    "source_stable": true,
+    "controller_workers_and_calls_agree": true,
+    "events_sha256": "4a4661a53fe7d2112bce4d729fe2fe87d57670bb17c10750f0a16a8f373e686f",
+    "resources": {
+      "owner": "uibcdf/sabueso#148/#112",
+      "review_trigger": "Protein context LIVE and historical adjacent controls; 4 workers,10GiBtotalRSS,native1,host16GiBfloor,10GiBscratch",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0,1,2,3",
+        "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-knowledge-saved-1/diagnostic/venv/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "test_card_saved_knowledge_comparison_offline.py",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "--receptor-events=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-knowledge-saved-installed-1/events.jsonl",
+        "-p",
+        "checkpoint_scope",
+        "--basetemp=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-knowledge-saved-installed-1/pytest-scratch",
+        "-o",
+        "tmp_path_retention_policy=failed",
+        "-W",
+        "error:unclosed database:ResourceWarning",
+        "-W",
+        "error::pytest.PytestUnraisableExceptionWarning",
+        "-n",
+        "4",
+        "--dist=worksteal"
+      ],
+      "cwd": "/tmp/sabueso-knowledge-diagnostic-client-7z_xglu2",
+      "exit_code": 0,
+      "elapsed_s": 647.46,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 5478125568,
+      "minimum_host_available_bytes": 54394376192,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 2098940549,
+      "limits": {
+        "owned_rss_bytes": 10737418240,
+        "host_available_bytes": 17179869184,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 4,
+        "nice": 10,
+        "elapsed_s": 1200,
+        "owned_scratch_bytes": 10737418240
+      },
+      "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-protein-knowledge-saved-installed-1/cargo-target"
+    }
+  },
+  "placement_proofs": {
+    "b6-protein-knowledge-saved-copied-1": [
+      {
+        "owner": "uibcdf/sabueso#148/#193/#112",
+        "worker": "gw1",
+        "case_count": 89,
+        "public_input_count": 11,
+        "exit_code": 0,
+        "all_input_bytes_unchanged": true,
+        "outside_checkout_and_editable_metadata_verified": true,
+        "scope": "Complete89copied actual file/LIVE controls outside checkout against the editable checkout. Helpers/native/original modules are copied as support; their unselected cases add no coverage. No clean installed-artifact/OS/hosted/scientific qualification."
+      },
+      {
+        "owner": "uibcdf/sabueso#148/#193/#112",
+        "worker": "gw2",
+        "case_count": 89,
+        "public_input_count": 11,
+        "exit_code": 0,
+        "all_input_bytes_unchanged": true,
+        "outside_checkout_and_editable_metadata_verified": true,
+        "scope": "Complete89copied actual file/LIVE controls outside checkout against the editable checkout. Helpers/native/original modules are copied as support; their unselected cases add no coverage. No clean installed-artifact/OS/hosted/scientific qualification."
+      },
+      {
+        "owner": "uibcdf/sabueso#148/#193/#112",
+        "worker": "controller",
+        "case_count": 89,
+        "public_input_count": 11,
+        "exit_code": 0,
+        "all_input_bytes_unchanged": true,
+        "outside_checkout_and_editable_metadata_verified": true,
+        "scope": "Complete89copied actual file/LIVE controls outside checkout against the editable checkout. Helpers/native/original modules are copied as support; their unselected cases add no coverage. No clean installed-artifact/OS/hosted/scientific qualification."
+      },
+      {
+        "owner": "uibcdf/sabueso#148/#193/#112",
+        "worker": "gw3",
+        "case_count": 89,
+        "public_input_count": 11,
+        "exit_code": 0,
+        "all_input_bytes_unchanged": true,
+        "outside_checkout_and_editable_metadata_verified": true,
+        "scope": "Complete89copied actual file/LIVE controls outside checkout against the editable checkout. Helpers/native/original modules are copied as support; their unselected cases add no coverage. No clean installed-artifact/OS/hosted/scientific qualification."
+      },
+      {
+        "owner": "uibcdf/sabueso#148/#193/#112",
+        "worker": "gw0",
+        "case_count": 89,
+        "public_input_count": 11,
+        "exit_code": 0,
+        "all_input_bytes_unchanged": true,
+        "outside_checkout_and_editable_metadata_verified": true,
+        "scope": "Complete89copied actual file/LIVE controls outside checkout against the editable checkout. Helpers/native/original modules are copied as support; their unselected cases add no coverage. No clean installed-artifact/OS/hosted/scientific qualification."
+      }
+    ],
+    "b6-protein-knowledge-saved-installed-1": [
+      {
+        "owner": "uibcdf/sabueso#148/#193/#112",
+        "worker": "gw1",
+        "case_count": 58,
+        "public_input_count": 11,
+        "exit_code": 0,
+        "all_input_bytes_unchanged": true,
+        "outside_checkout_and_installed_diagnostic_origin_verified": true,
+        "scope": "Complete installed diagnostic58-case saved-reader module on Linux Python3.14, with shared/editable dependencies; no clean public/candidate/OS-matrix qualification."
+      },
+      {
+        "owner": "uibcdf/sabueso#148/#193/#112",
+        "worker": "gw2",
+        "case_count": 58,
+        "public_input_count": 11,
+        "exit_code": 0,
+        "all_input_bytes_unchanged": true,
+        "outside_checkout_and_installed_diagnostic_origin_verified": true,
+        "scope": "Complete installed diagnostic58-case saved-reader module on Linux Python3.14, with shared/editable dependencies; no clean public/candidate/OS-matrix qualification."
+      },
+      {
+        "owner": "uibcdf/sabueso#148/#193/#112",
+        "worker": "controller",
+        "case_count": 58,
+        "public_input_count": 11,
+        "exit_code": 0,
+        "all_input_bytes_unchanged": true,
+        "outside_checkout_and_installed_diagnostic_origin_verified": true,
+        "scope": "Complete installed diagnostic58-case saved-reader module on Linux Python3.14, with shared/editable dependencies; no clean public/candidate/OS-matrix qualification."
+      },
+      {
+        "owner": "uibcdf/sabueso#148/#193/#112",
+        "worker": "gw3",
+        "case_count": 58,
+        "public_input_count": 11,
+        "exit_code": 0,
+        "all_input_bytes_unchanged": true,
+        "outside_checkout_and_installed_diagnostic_origin_verified": true,
+        "scope": "Complete installed diagnostic58-case saved-reader module on Linux Python3.14, with shared/editable dependencies; no clean public/candidate/OS-matrix qualification."
+      },
+      {
+        "owner": "uibcdf/sabueso#148/#193/#112",
+        "worker": "gw0",
+        "case_count": 58,
+        "public_input_count": 11,
+        "exit_code": 0,
+        "all_input_bytes_unchanged": true,
+        "outside_checkout_and_installed_diagnostic_origin_verified": true,
+        "scope": "Complete installed diagnostic58-case saved-reader module on Linux Python3.14, with shared/editable dependencies; no clean public/candidate/OS-matrix qualification."
+      }
+    ]
+  },
+  "discovery": {
+    "state": "PASS",
+    "owner": "uibcdf/sabueso#148/#193/#112",
+    "distinct_cases": 2592,
+    "complete_modules": 74,
+    "disjoint_executed_union_equals_independent_collection": true,
+    "receptor_complete": true,
+    "receptor_integrity_valid": true,
+    "nodeids_sha256": "b5631ad13ad0f1eb3227265063d763cebbabd098c6321311bf05324ab02d40ae",
+    "scope": "Independent collection of the exact selected source union. Collection and copied/diagnostic repetitions add no source cases."
+  },
+  "diagnostic_artifacts": {
+    "owner": "uibcdf/sabueso#148/#193/#112",
+    "state": "PASS",
+    "python_modules_exact": 914,
+    "frozen_source_resources": {
+      "sabueso/core/_clinical_history_v1/SOURCE.json": "00688c256d6aee51ebc97d752fdd641f7317c5d399ae8dd84db0ee4dc7e60650",
+      "sabueso/core/_molecule_activity_history_v1/SOURCE.json": "14d59d034aa795516bc3258f11f8a4f8caaa1b5b38b3c30bfb273f8cfddde797",
+      "sabueso/core/_disease_association_history_v1/SOURCE.json": "a927a304b67df6144995c9d5f21e44ff4a34a98e8023221e47361f3dfe53feef",
+      "sabueso/core/_variant_history_v1/SOURCE.json": "b55ee3cd34ef6f7efdca561ce4b06fbacb8ea4f3ca67f7bb2d362cb82f3a6998",
+      "sabueso/core/_sequence_change_history_v1/SOURCE.json": "c7a43ebf63201757abfede8ec0eee1820199ff53bfbf8fd93e4506372aa7c8c0",
+      "sabueso/core/_protein_context_history_v1/SOURCE.json": "de78272c691573e26e04c6028cd7a375616c7c2e51d0e43d7623462bbcf40823",
+      "sabueso/core/_knowledge_comparison_history_v1/SOURCE.json": "cf1f610bff358f89a432484952ddeec7eec3d661615035ead720ea7eb202dd8a"
+    },
+    "artifacts": {
+      "sabueso-0.0.0+unknown-py3-none-any.whl": {
+        "bytes": 2294529,
+        "sha256": "53cd647762743b2611d1ca8841bcc8f1e2c60b849ffe861b4c5f8710168dd019"
+      },
+      "sabueso-0.0.0+unknown.tar.gz": {
+        "bytes": 1693109,
+        "sha256": "048d521b14e7a19592c35de3754f5baae1d750e8ccc1d6e84c435e2cdc8315b5"
+      }
+    },
+    "source_inputs_unchanged": true,
+    "scope": "Isolated diagnostic wheel/sdist content and separate Linux Python3.14 installed-reader receiving against the existing shared/editable dependency environment. No release, public clean installation, candidate or OS-matrix qualification."
+  },
+  "immutable_original": {
+    "producer": "f6d8e4a3e57944ebe1ab4ab838600870ed720e2b",
+    "sdk": "0.14.0+243.gf6d8e4a",
+    "capsule_sha256": "3a656731e69d1f1a5f04bf4b836467ffffd4f0a49d94f69e7e7ade2683335d3e",
+    "cases": 37,
+    "actual_views": 22929,
+    "actual_accesses": 4352,
+    "finite_requests": 579,
+    "pages": 1410
+  },
+  "behavior": [
+    "Frozen native@2, knowledge_state@5, source declarations and item identities; current comparison/related-family engines, Card reconstruction, assertion creation and network forbidden in original receiving.",
+    "Exact original typed values, units, map pairs/pins, candidate/row occurrences, source/alternative/conflict/relationship scope and actual source access aliases retained.",
+    "Current human/source/compact saving enabled; original observed new catalog retained independently and unexecuted normalized requests/topics stay not_saved.",
+    "Older co-retained protein/variant/sequence profiles keep their predicates; a nonempty public bioactivity catalog crossing binds the incoming knowledge question before older validation.",
+    "All actual observed views stay stored. Implicit literal support preparation covers the saved root/origin trail and executed scientific rows; missing unretained closures remain explicit through capabilities.",
+    "Native default@1, Card schema, all immutable capsules and six preceding SOURCE resources remain fixed."
+  ],
+  "budgets": {
+    "production_logical_default": 268435456,
+    "production_transport_and_component_defaults": 67108864,
+    "exhaustive_original_public_logical_test_allowance": 2147483648,
+    "scope": "Only explicit exhaustive archived public callers enlarge the logical allowance. Ordinary public save/read uses unchanged production defaults; no original members, instances or requests trimmed."
+  },
+  "blanket_preparation_measurement": {
+    "owner": "uibcdf/sabueso#148/#193/#112",
+    "case": "public-supplied-map",
+    "state": "MEASURED",
+    "actual_original_views": 5907,
+    "retained_views": 39021,
+    "logical_bytes": 1003091201,
+    "default_logical_bytes": 268435456,
+    "default_accepts": false,
+    "elapsed_s": 260.87,
+    "scope": "Complete immutable original graph after original-source closure, measured without flattening JSON. Measurement is not a saved-read qualification or production-budget change."
+  },
+  "prior_epochs": {
+    "human-calibration1": "Stopped at10GiB own RSS: test hydration copied captures/objects per actual access. Fixed sharing only after checking original explicit common-container declarations. Closed unchanged source map; incomplete, unqualified.",
+    "human-calibration2": "Two coverage property KeyErrors; added explicit not_evaluated retained-input scope without changing original wires.",
+    "save-calibration1": "Missing new link-detail rule in new35 literal predicate; fixed only the new verifier.",
+    "save-calibration2": "Test compared nonexistent AccessSelection.native_payload; corrected to the actual native result.",
+    "saved-calibration1": "Old saved-topic scan mistook the shared protein_context panel for the new adapter; new35 dispatch now admits exact owning adapters.",
+    "saved-owning1": "252 observed passing calls,2 expected production logical-budget refusals; deliberately stopped expensive repetitions. Incomplete, not qualified.",
+    "required-trail-calibration1": "Full original still exceeds default256MiB; declared explicit2GiB archived-public test scope. Forced shared catalog control now exercises36 even when small JSON has no packing saving.",
+    "bioactivity-bridge1": "Synthetic fixture omitted coherent canonical UniProt identifier; rebuilt through the existing mapping before independent guarded reading."
+  },
+  "default_integrity_report": {
+    "url": "https://github.com/uibcdf/sabueso/issues/193",
+    "state": "Already published under concrete prior authorization; no new publication in this increment."
+  },
+  "internal_handoff": {
+    "coverage_property": "Reviewable local #148 draft retained; no publication authority inferred.",
+    "large_fixture_distribution": "Prior internal distribution proposal remains unapproved and unchanged.",
+    "schema_validator_exit": "Code inspection proposal for#112 retained internally; actual schema gate also requires its semantic aligned-output message.",
+    "documentation_github_link": "Observed GitHub icon incorrectly linked MolSysMT; corrected to Sabueso and verified in built HTML. Suspected inherited template cause remains a hypothesis."
+  },
+  "ci": {
+    "state": "DEFERRED",
+    "marker": "[skip ci]",
+    "owner": "#148/#193/#112",
+    "deferred_head": "Commit containing this receipt; exact SHA and remote observation in final local handoff.",
+    "recovery": "Authorized exact-candidate unskipped push or explicitly authorized CI/governance dispatch, inspected through gh-run-receptor. Absent/skipped runs are not PASS."
+  },
+  "limits": [
+    "Selected74-module source union, copied public controls and one separate local diagnostic Linux/Python3.14 wheel environment; no full offline suite or candidate/public/clean dependency/OS-matrix qualification.",
+    "Diagnostic0.0.0+unknown package and source/copy/installed repetitions add no distinct source cases.",
+    "Expanded historical cohort, hosted/exact-candidate installed qualification and broader B6/B7 scientific/researcher/agent/workload/actual-consumer acceptance remain open.",
+    "B2 default/scientific review deferred; B8/release unresumed."
+  ],
+  "privacy": "Public immutable responses and labelled synthetic controls only; no private pilot material or acquisition.",
+  "local_evidence": "recovered_work/checkpoint_recovery_20261106/b6-knowledge-saved-1",
+  "temporary_resources": {
+    "owner": "#148/#193/#112",
+    "retain": "All immutable originals, seven SOURCE resources, useful scoped/source/receptor/resource/diagnostic/report receipts and the accepted raw SDK243 master while needed.",
+    "review_trigger": "Block handoff or B6 closeout; remove only explicitly owned completed scratch/copy/venv/build paths."
+  },
+  "quality": {
+    "state": "PASS",
+    "checks": {
+      "ruff": {
+        "exit_code": 0,
+        "command": [
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/ruff",
+          "check",
+          "."
+        ],
+        "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+        "output": "All checks passed!"
+      },
+      "format": {
+        "exit_code": 0,
+        "command": [
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/ruff",
+          "format",
+          "--check",
+          "."
+        ],
+        "log_sha256": "ba86b573eb6bf1400268168ca3fd05c501b899caed0792e00f1a422d62d14366",
+        "output": "1672 files already formatted"
+      },
+      "governance": {
+        "exit_code": 0,
+        "command": [
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-B",
+          "/fast_data/home/liliana/repos@uibcdf/moli/devtools/scripts/check_repository.py",
+          "/fast_data/home/liliana/repos@uibcdf/sabueso",
+          "--canonical-guide",
+          "/fast_data/home/liliana/repos@uibcdf/moli/MOLI_GUIDE.md"
+        ],
+        "log_sha256": "a020ded5dd1f74aa00e4857214df2663df0f9ace41abffacee569f6e35b823c8",
+        "output": "/fast_data/home/liliana/repos@uibcdf/sabueso: conforms to MOLI governance core."
+      },
+      "guide": {
+        "exit_code": 0,
+        "command": [
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-B",
+          "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b6-knowledge-saved-1/check_guide.py"
+        ],
+        "log_sha256": "72a2ed159ff8692bceeeafdfa85f0217b9c14d4d3b671e2ab89f142a925625a6",
+        "output": "{\"state\": \"PASS\", \"scope\": \"Maintained non-archive guide local targets; changed-target Markdown anchors; changed fenced Python3.11 grammar. No external link or runtime example qualification.\", \"maintained_markdown_files\": 178, \"local_path_targets_checked\": 1483, \"changed_page_anchors_checked\": 73, \"python_examples_checked\": 0, \"errors\": []}"
+      },
+      "git_diff": {
+        "exit_code": 0,
+        "command": [
+          "git",
+          "diff",
+          "--check"
+        ],
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "output": ""
+      }
+    },
+    "python311_changed_modules": 31,
+    "workflow_wiring": {
+      ".github/workflows/ci.yml": {
+        "test_card_knowledge_comparison_original_offline.py": {
+          "copied_once": true,
+          "complete_module_selected_once": true,
+          "receptor": "ci"
+        },
+        "test_card_knowledge_comparison_history_offline.py": {
+          "copied_once": true,
+          "complete_module_selected_once": true,
+          "receptor": "ci"
+        },
+        "test_card_saved_knowledge_comparison_offline.py": {
+          "copied_once": true,
+          "complete_module_selected_once": true,
+          "receptor": "ci"
+        }
+      },
+      ".github/workflows/test_staged_conda_package.yaml": {
+        "test_card_knowledge_comparison_original_offline.py": {
+          "copied_once": true,
+          "complete_module_selected_once": true,
+          "receptor": "ci"
+        },
+        "test_card_knowledge_comparison_history_offline.py": {
+          "copied_once": true,
+          "complete_module_selected_once": true,
+          "receptor": "ci"
+        },
+        "test_card_saved_knowledge_comparison_offline.py": {
+          "copied_once": true,
+          "complete_module_selected_once": true,
+          "receptor": "ci"
+        }
+      }
+    },
+    "guide": {
+      "state": "PASS",
+      "scope": "Maintained non-archive guide local targets; changed-target Markdown anchors; changed fenced Python3.11 grammar. No external link or runtime example qualification.",
+      "maintained_markdown_files": 178,
+      "local_path_targets_checked": 1483,
+      "changed_page_anchors_checked": 73,
+      "python_examples_checked": 0,
+      "errors": []
+    },
+    "scope": "Local lint/format/grammar/governance/guide and installed-workflow wiring only. No installed or hosted qualification."
+  },
+  "static_gates": {
+    "state": "PASS",
+    "gates": {
+      "fixture_delivery": {
+        "exit_code": 0,
+        "log_sha256": "9ad96d946f6576fb6d3b1345692b114247c3d077abceacb41d9e581b36678025",
+        "command": [
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-B",
+          "tools/fixture_delivery.py",
+          "--check"
+        ],
+        "semantic_schema_alignment_checked": false
+      },
+      "card_shape": {
+        "exit_code": 0,
+        "log_sha256": "a586fb32e30ce3bed964fcb5b6786391981cd887887ec9c24af6101e2ad47c3d",
+        "command": [
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-B",
+          "tools/card_shape.py"
+        ],
+        "semantic_schema_alignment_checked": false
+      },
+      "source_registry": {
+        "exit_code": 0,
+        "log_sha256": "b1e9864eba59e768c6cff53728ba3e9b1c4a42ca34a3fa53f8b1345c19224f5d",
+        "command": [
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-B",
+          "tools/source_registry.py",
+          "--check"
+        ],
+        "semantic_schema_alignment_checked": false
+      },
+      "schema": {
+        "exit_code": 0,
+        "log_sha256": "af91b092c8481bd46354a571078e5816312ed8a3c8847ae0a52d3dd63fb81e8f",
+        "command": [
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-B",
+          "tools/validate_schema.py"
+        ],
+        "semantic_schema_alignment_checked": true
+      },
+      "governance": {
+        "exit_code": 0,
+        "log_sha256": "5a06edc554fa450ac8fdafc3b04ca285ecaf5c6d2bb754b0867ff1f2bdf5af9d",
+        "command": [
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-B",
+          "devtools/moli_governance.py"
+        ],
+        "semantic_schema_alignment_checked": false
+      },
+      "dependency_preflight": {
+        "exit_code": 0,
+        "log_sha256": "bc03a5c1ea3bf7324583978cae57a75e4cf846668d4f621908d1e0a496021769",
+        "command": [
+          "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "-B",
+          "devtools/dependency_preflight.py"
+        ],
+        "semantic_schema_alignment_checked": false
+      }
+    },
+    "scope": "Applicable local fixture/schema/registry/shape/governance/dependency gates; no release or public dependency closure."
+  },
+  "documentation": {
+    "state": "PASS",
+    "html_sha256": "844932ccc6619269121869b61bf8218135c1e43f6afcabe7148caa97fd504386",
+    "github_icon_targets": [
+      "https://github.com/uibcdf/sabueso",
+      "https://github.com/uibcdf/sabueso"
+    ],
+    "scope": "Warning-fatal local Sphinx and the actual generated GitHub header target; no website deployment."
+  }
+}
