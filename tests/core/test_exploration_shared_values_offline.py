@@ -402,3 +402,133 @@ def test_archived_writer_replay_keeps_native_question_and_original_sources(monke
         hashlib.sha256(path.read_bytes()).hexdigest()
         == "9ca744ad7a46ffc51cfe82ae2d031b4af032aa1230d6557b0abc21a775e3cb5b"
     )
+
+
+# Original codec outputs captured with clean 3c26790 / SDK251 before caching.
+# These synthetic storage vectors contain no scientific source assertions.
+_CURRENT_CODEC_ORIGINAL_SHA256 = {
+    "null": "f0d86e3f9d9666936a5e70357ec715e56f0de934ac5ca2ef7a28efae44fbfeac",
+    "false": "302e2c3862a6bc4602e42cc5e5122c3b63f24b2e912a8220ae5ca4dc1e19e46a",
+    "integer-zero": "d3e10726c4c1ff3a9d7d6677fe31b8dd770b8875dd81db7ed3a2f2e389bd0597",
+    "negative-float-zero": "688ed53ebc32a58d95d4060a42cd8a51e8bec72a0824e7c4a9863e1396b182ba",
+    "mixed-native-types": "f5a83bd85fd362d6eede1203492bb3e9d26f6e8400f71cffb9043624c34424d6",
+    "unicode-and-escapes": "f706fe34255fe5e310f885b07c4555df8d25134a605f621c77e63af6e37aa2f7",
+    "literal-reference": "655668e7eaacff4c7aa1a102bb8d46fa69a7710f6d79f14aabe6bd00d7dee00a",
+    "empty-and-repeated-containers": "7c013336f081d17e1ce32a1a0238dd648fcd3ace59c7705de0e5ae2522502461",
+    "repeated-long-text": "704e202158659a5f86ce6f341f7889ffbe9a033a9e580aa46d61d30f45cc32cd",
+    "cache-eviction": "6ec8d340f5c592afbd4c2331f6c70f159da3d54b9862cfffccb6e0105dd8e60d",
+}
+
+
+def _current_codec_cases():
+    return [
+        ("null", None),
+        ("false", False),
+        ("integer-zero", 0),
+        ("negative-float-zero", -0.0),
+        ("mixed-native-types", [0.0, -0.0, True, 1, False, 0, 1.0]),
+        ("unicode-and-escapes", {"escapes": '\\"\n\t\r', "unicode": "α🧪" * 400}),
+        ("literal-reference", {"value_ref": "SV_literal_source_value"}),
+        ("empty-and-repeated-containers", [[], {}, None, []]),
+        ("repeated-long-text", ["A" * 300] * 100),
+        ("cache-eviction", [str(i) + "α" * 150 for i in range(4100)]),
+    ]
+
+
+def _current_codec_original(codec, value):
+    bundle = {
+        "format": "sabueso.card_exploration@35",
+        "producer": {"sabueso_version": "synthetic-codec-compatibility"},
+        "root_view_ref": "synthetic",
+        "root_navigation_ref": "synthetic",
+        "cards": {},
+        "inputs": [],
+        "objects": {"synthetic": value},
+        "locations": {},
+        "views": {},
+        "navigation": {},
+        "capabilities": {},
+        "presentation_metadata": {},
+    }
+    for key in codec.BASE_MEMBERS | {"scientific_results"}:
+        bundle.setdefault(key, {})
+    return bundle
+
+
+@pytest.mark.parametrize("memo_limit", [0, 2, 4096])
+@pytest.mark.parametrize("case_id,value", _current_codec_cases())
+def test_current_packing_preserves_frozen_typed_bytes(
+    case_id, value, memo_limit, monkeypatch
+):
+    from sabueso.core import card_exploration_shared_values_v12 as current
+
+    monkeypatch.setattr(current, "MEMO_LIMIT", memo_limit)
+    source = _current_codec_original(current, value)
+    before = canonical_json(source)
+    packet = current.pack(source, threshold=0, min_saving=-(10**9))
+    raw = canonical_json(packet).encode("utf-8")
+    assert hashlib.sha256(raw).hexdigest() == _CURRENT_CODEC_ORIGINAL_SHA256[case_id]
+    assert canonical_json(source) == before
+    restored, _ = current.unpack(_seal(packet), limit=None, component_limit=None)
+    assert canonical_json(restored) == before
+
+
+@pytest.mark.parametrize(
+    "value",
+    [float("nan"), float("inf"), float("-inf"), {1: "invalid-key"}, {1, 2}, object()],
+)
+def test_current_packing_still_refuses_unsupported_json(value):
+    from sabueso.core import card_exploration_shared_values_v12 as current
+
+    with pytest.raises(StorageError):
+        current.pack(
+            _current_codec_original(current, value), threshold=0, min_saving=-(10**9)
+        )
+
+
+def test_current_record_cache_does_not_bypass_digest_collision(monkeypatch):
+    from sabueso.core import card_exploration_shared_values_v12 as current
+
+    monkeypatch.setattr(current, "digest", lambda value: "sha256:" + "0" * 64)
+    source = _current_codec_original(current, [{"a": 1}, {"a": 2}])
+    with pytest.raises(StorageError, match="collision"):
+        current.pack(source, threshold=0, min_saving=-(10**9))
+
+
+def test_current_cached_records_keep_entities_units_and_positions():
+    from sabueso.core import card_exploration_shared_values_v12 as current
+
+    common = {
+        "label": "same source text",
+        "quantity": {"value": 2.0, "unit": "nanometer"},
+    }
+    value = {
+        "entities": [{"id": "entity:one", **common}, {"id": "entity:two", **common}],
+        "positions": [common, deepcopy(common), common],
+    }
+    source = _current_codec_original(current, value)
+    packet = current.pack(source, threshold=0, min_saving=-(10**9))
+    restored, _ = current.unpack(_seal(packet))
+    assert canonical_json(restored) == canonical_json(source)
+    assert len(restored["objects"]["synthetic"]["positions"]) == 3
+
+
+def test_current_cached_packing_preserves_logical_budget():
+    from sabueso.core import card_exploration_shared_values_v12 as current
+
+    source = _current_codec_original(current, ["α" * 300] * 200)
+    with pytest.raises(ArgumentError, match="max_logical_bytes"):
+        current.pack(source, limit=1000, threshold=0, min_saving=-(10**9))
+    packet = current.pack(source, limit=None, threshold=0, min_saving=-(10**9))
+    assert current.unpack(_seal(packet), limit=None)[0] == source
+
+
+def test_current_cached_packing_still_refuses_cycles():
+    from sabueso.core import card_exploration_shared_values_v12 as current
+
+    value = []
+    value.append(value)
+    with pytest.raises(StorageError, match="Cyclic"):
+        current.pack(
+            _current_codec_original(current, value), threshold=0, min_saving=-(10**9)
+        )

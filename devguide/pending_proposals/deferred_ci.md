@@ -9,6 +9,30 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Exact packing cache (2026-11-11, #167/#148/#112)
+
+The [selected local receipt](../evidence/exact_packing_cache_checkpoint_20261111.json)
+binds the two changed source/test files against `3c26790`, all **181 distinct
+source cases**, both **96-case** copied/installed diagnostic receiving scopes,
+original codec bytes and all 52 protected resources. It also records the bounded
+ABBA workload improvement and maintainer-approved provisional targets. These
+results do not qualify the entire changed source or a final candidate matrix.
+The previous full integration result remains bound to its earlier source.
+
+Publish this tested increment through the authorized intermediate `[skip ci]`
+route. Record its exact committed/pushed SHA, editable metadata and resource
+cleanup in `recovered_work/checkpoint_recovery_20261106/b7-persistence-final-candidate-1/`.
+The owning issues are #167/#148/#112; recover applicable CI and governance on the
+exact final authorized head through gh-run-receptor before admission or release.
+
+The separately authorized one-batch recovery at **`3c26790a13903d857c548886126d0c8111550704`**
+created CI **43072436424** and governance **43072515668**. Governance passes with
+full captured verification; no complete CI result is claimed here. Preserve the
+existing watcher and receipt under `b7-ci-recovery-3c26790-1/`; do not redispatch
+this batch. Its source differs from this increment and cannot qualify it. New
+dispatches require their own authorization scope. B7 independent acceptance and
+B8 resumption remain separate.
+
 ### Combined local integration and workload handoff (2026-11-11, #148/#167/#112)
 
 Implementation source `89bdb0a96348b9eb07a2ecbd3415f902367834a3`, SDK250, passes
@@ -23,9 +47,9 @@ exact pushed SHA and retained resource cleanup under
 The intermediate `[skip ci]` route remains in effect. Cumulative exact-head
 CI/governance recovery is due under #148/#112; follow the complete eighteen-job
 CI and separate governance accounting in [TESTS](../TESTS.md#recovering-deferred-ci),
-including all twelve Zstandard backend reports. No dispatch is authorized by
-these observations. A concrete one-batch manual recovery can be prepared for
-maintainer approval after the documentation checkpoint is published. B7 human,
+including all twelve Zstandard backend reports. Those observations alone
+authorized no dispatch. The later concrete one-batch approval and its actual
+run IDs are recorded above. B7 human,
 scientific, actual-agent/workload and consumer acceptance and B8 delivery remain
 separate; this is not candidate selection or a release claim.
 

@@ -1,0 +1,350 @@
+{
+  "state": "SELECTED_LOCAL_SOURCE_AND_DIAGNOSTIC_RECEIVING_PASS_ACCEPTANCE_PENDING",
+  "date": "2026-11-11",
+  "owner": [
+    "uibcdf/sabueso#167",
+    "uibcdf/sabueso#148",
+    "uibcdf/sabueso#112"
+  ],
+  "base_head": "3c26790a13903d857c548886126d0c8111550704",
+  "source_scope": "Qualified working-source fingerprints below; committed/remote SHA and refreshed editable metadata belong to the owned handoff. No full-suite result for this changed code is claimed.",
+  "source_input_delta": {
+    "sabueso/core/card_exploration_shared_values_v12.py": "a03cf24659f5524ee2d15e79e2840569baff8cabff4805fdebf93b01eea7549f",
+    "tests/core/test_exploration_shared_values_offline.py": "331194e242fb3f7590dff58214039e2f649f4e7cf00534a0507d7d62dc7f8c04"
+  },
+  "prior_full_checkpoint_inputs": 1349,
+  "other_prior_input_hashes_unchanged": 1347,
+  "distinct_source_cases": 181,
+  "source_nodeids_sha256": "4382ff5b790f3a10dd9c633ce67e91125ff55e356aca9b423d220acda4a28c7f",
+  "source_gates": {
+    "actual-small1": {
+      "state": "PASS",
+      "cases": 123,
+      "pytest_s": 67.61081693397136,
+      "events_sha256": "dc60b59201aa13467bc410d793ce1201a0d78a2a0c12bdd58dbf980bba318b4d",
+      "receptor_complete_and_integrity_valid": true,
+      "versions": {
+        "python_version": "3.14.10",
+        "pytest_version": "9.2.0",
+        "receptor_version": "1.2.0"
+      },
+      "resources": {
+        "elapsed_s": 68.65,
+        "peak_owned_rss_bytes": 979279872,
+        "minimum_host_available_bytes": 58343579648,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 54613004,
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "owned_swap_bytes": 0,
+          "cpu_affinity_count": 4,
+          "nice": 10,
+          "elapsed_s": 600,
+          "owned_scratch_bytes": 4294967296
+        }
+      },
+      "actual_source_import_and_stability_proofs": 5
+    },
+    "actual-originals1": {
+      "state": "PASS",
+      "cases": 58,
+      "pytest_s": 534.9492924539954,
+      "events_sha256": "0f2c492b7e9b7220831897918942074d9349a59e47ea4ac60994f1a1e1ce25a3",
+      "receptor_complete_and_integrity_valid": true,
+      "versions": {
+        "python_version": "3.14.10",
+        "pytest_version": "9.2.0",
+        "receptor_version": "1.2.0"
+      },
+      "resources": {
+        "elapsed_s": 536.15,
+        "peak_owned_rss_bytes": 6490062848,
+        "minimum_host_available_bytes": 52773511168,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 2151904671,
+        "limits": {
+          "owned_rss_bytes": 8589934592,
+          "host_available_bytes": 17179869184,
+          "owned_swap_bytes": 0,
+          "cpu_affinity_count": 4,
+          "nice": 10,
+          "elapsed_s": 1800,
+          "owned_scratch_bytes": 8589934592
+        }
+      },
+      "actual_source_import_and_stability_proofs": 5
+    }
+  },
+  "receiving": {
+    "copied1": {
+      "state": "PASS",
+      "cases": 96,
+      "pytest_s": 6.626110301003791,
+      "events_sha256": "a0ebb423f495173858c03d1dc29766bb01138dc3c05986bda69e9aca4220e071",
+      "receptor_complete_and_integrity_valid": true,
+      "versions": {
+        "python_version": "3.14.10",
+        "pytest_version": "9.2.0",
+        "receptor_version": "1.2.0"
+      },
+      "resources": {
+        "elapsed_s": 7.63,
+        "peak_owned_rss_bytes": 483028992,
+        "minimum_host_available_bytes": 58368737280,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 44789042,
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "owned_swap_bytes": 0,
+          "cpu_affinity_count": 4,
+          "nice": 10,
+          "elapsed_s": 600,
+          "owned_scratch_bytes": 4294967296
+        }
+      },
+      "complete_modules": [
+        "test_exploration_shared_values_offline.py"
+      ],
+      "byte_identical_public_files": 4,
+      "process_placement_proofs": 5,
+      "editable": true
+    },
+    "installed1": {
+      "state": "PASS",
+      "cases": 96,
+      "pytest_s": 6.2115389999817125,
+      "events_sha256": "7bb8e9f74e32558ce1078a6c0948087540872b8bfb9e9fe5e3219883331130b6",
+      "receptor_complete_and_integrity_valid": true,
+      "versions": {
+        "python_version": "3.14.10",
+        "pytest_version": "9.2.0",
+        "receptor_version": "1.2.0"
+      },
+      "resources": {
+        "elapsed_s": 7.25,
+        "peak_owned_rss_bytes": 480784384,
+        "minimum_host_available_bytes": 57739841536,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 239715084,
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "owned_swap_bytes": 0,
+          "cpu_affinity_count": 4,
+          "nice": 10,
+          "elapsed_s": 600,
+          "owned_scratch_bytes": 4294967296
+        }
+      },
+      "complete_modules": [
+        "test_exploration_shared_values_offline.py"
+      ],
+      "byte_identical_public_files": 4,
+      "process_placement_proofs": 5,
+      "editable": false
+    }
+  },
+  "protected_SOURCE_and_original_testdata_files_unchanged": 52,
+  "local_quality": {
+    "state": "PASS",
+    "ruff_format": "1697 files already formatted",
+    "ruff_check": "All checks passed",
+    "git_diff_check": "PASS",
+    "local_governance": "Local MOLI governance surface is valid.",
+    "Python_3_11_grammar": {
+      "state": "PASS",
+      "Python_3_11_grammar": [
+        "sabueso/core/card_exploration_shared_values_v12.py",
+        "tests/core/test_exploration_shared_values_offline.py"
+      ]
+    },
+    "maintained_guide": {
+      "state": "PASS",
+      "scope": "Maintained non-archive guide local targets; changed-target Markdown anchors; changed fenced Python3.11 grammar. No external link or runtime example qualification.",
+      "maintained_markdown_files": 187,
+      "local_path_targets_checked": 1582,
+      "changed_page_anchors_checked": 31,
+      "python_examples_checked": 0,
+      "errors": []
+    },
+    "unchanged_installed_workflow_wiring": {
+      ".github/workflows/ci.yml": {
+        "sha256": "1a0cb2be387a685329e5f995685e8e75a0297cc4e53bd6f7b224d21ba64e956b",
+        "module_copy_occurrences": 1,
+        "module_selection_occurrences": 1
+      },
+      ".github/workflows/test_staged_conda_package.yaml": {
+        "sha256": "3736c86b88bef78079f8837fcc628b703ab5d846b972b62e3ff5e95e07b5ede5",
+        "module_copy_occurrences": 1,
+        "module_selection_occurrences": 1
+      }
+    },
+    "scope": "Quality results observed separately before commit; no new full suite, source acquisition, source registry, schema or release gate claimed."
+  },
+  "artifacts": {
+    "sabueso-0.0.0+unknown-py3-none-any.whl": {
+      "bytes": 2306671,
+      "sha256": "f4e7b54281ae8beba3dfdb1d0aca8e7b4d1747f2dc8c049d1b313aaebbaa5e87"
+    },
+    "sabueso-0.0.0+unknown.tar.gz": {
+      "bytes": 1703444,
+      "sha256": "5c28c5aad75f0fea69db5dec8628a253fc3d8d919970f820fe9d5eabd43c62d0"
+    }
+  },
+  "wheel_sdist_and_actual_installed_implementation_modules_exact": 918,
+  "frozen_SOURCE_resources": {
+    "sabueso/core/_clinical_history_v1/SOURCE.json": "00688c256d6aee51ebc97d752fdd641f7317c5d399ae8dd84db0ee4dc7e60650",
+    "sabueso/core/_molecule_activity_history_v1/SOURCE.json": "14d59d034aa795516bc3258f11f8a4f8caaa1b5b38b3c30bfb273f8cfddde797",
+    "sabueso/core/_disease_association_history_v1/SOURCE.json": "a927a304b67df6144995c9d5f21e44ff4a34a98e8023221e47361f3dfe53feef",
+    "sabueso/core/_variant_history_v1/SOURCE.json": "b55ee3cd34ef6f7efdca561ce4b06fbacb8ea4f3ca67f7bb2d362cb82f3a6998",
+    "sabueso/core/_sequence_change_history_v1/SOURCE.json": "c7a43ebf63201757abfede8ec0eee1820199ff53bfbf8fd93e4506372aa7c8c0",
+    "sabueso/core/_protein_context_history_v1/SOURCE.json": "de78272c691573e26e04c6028cd7a375616c7c2e51d0e43d7623462bbcf40823",
+    "sabueso/core/_knowledge_comparison_history_v1/SOURCE.json": "cf1f610bff358f89a432484952ddeec7eec3d661615035ead720ea7eb202dd8a"
+  },
+  "diagnostic_limits": "Separate installed 0.0.0+unknown wheel, Linux Python 3.14, shared/editable dependencies. No clean public closure, staging archive, OS/Python matrix, candidate or release qualification.",
+  "benchmark": {
+    "state": "BOUNDED_ABBA_AND_EIGHT_ORIGINAL_READINGS_PASS",
+    "source_base": "3c26790a13903d857c548886126d0c8111550704",
+    "function_sha256": "f03bcb8485a51da9a8fc21b2ac7bf742b721832b7781b3ef41d8efdd5b58d8f2",
+    "samples": [
+      {
+        "label": "control-A",
+        "current_save_wall_s": 55.9233690709807,
+        "current_save_cpu_s": 55.884751077,
+        "historical_save_wall_s": 9.83402573800413,
+        "input_sha256": [
+          "8306aa747bdd34650701928ba969e80a13cc580b6b9c00b66d73ae540ce5aacb",
+          "797e77018947dcd5ee606e59fe83df79541c8274a2411466467cc5ffccaf3d0b"
+        ],
+        "input_pins": [
+          "sabueso:protein:uniprot:P52270@sha256:1f7cce673d32cdb59e4cd74e69f230478c1ecef2a99a2b1c9d1ac27172ff6cd3",
+          "sabueso:protein:uniprot:P52270@sha256:e722cd3d919e053eb1af777e9e8d3818de52adf5f518bf5008a0e067fb21367f"
+        ],
+        "reader": "PASS"
+      },
+      {
+        "label": "candidate-B",
+        "current_save_wall_s": 45.092051863030065,
+        "current_save_cpu_s": 45.062194456,
+        "historical_save_wall_s": 10.003002472978551,
+        "input_sha256": [
+          "8306aa747bdd34650701928ba969e80a13cc580b6b9c00b66d73ae540ce5aacb",
+          "797e77018947dcd5ee606e59fe83df79541c8274a2411466467cc5ffccaf3d0b"
+        ],
+        "input_pins": [
+          "sabueso:protein:uniprot:P52270@sha256:1f7cce673d32cdb59e4cd74e69f230478c1ecef2a99a2b1c9d1ac27172ff6cd3",
+          "sabueso:protein:uniprot:P52270@sha256:e722cd3d919e053eb1af777e9e8d3818de52adf5f518bf5008a0e067fb21367f"
+        ],
+        "reader": "PASS"
+      },
+      {
+        "label": "candidate-C",
+        "current_save_wall_s": 44.44172893598443,
+        "current_save_cpu_s": 44.412841744999994,
+        "historical_save_wall_s": 9.799617220996879,
+        "input_sha256": [
+          "8306aa747bdd34650701928ba969e80a13cc580b6b9c00b66d73ae540ce5aacb",
+          "797e77018947dcd5ee606e59fe83df79541c8274a2411466467cc5ffccaf3d0b"
+        ],
+        "input_pins": [
+          "sabueso:protein:uniprot:P52270@sha256:1f7cce673d32cdb59e4cd74e69f230478c1ecef2a99a2b1c9d1ac27172ff6cd3",
+          "sabueso:protein:uniprot:P52270@sha256:e722cd3d919e053eb1af777e9e8d3818de52adf5f518bf5008a0e067fb21367f"
+        ],
+        "reader": "PASS"
+      },
+      {
+        "label": "control-D",
+        "current_save_wall_s": 56.22777250997024,
+        "current_save_cpu_s": 56.195619230000005,
+        "historical_save_wall_s": 10.083272028015926,
+        "input_sha256": [
+          "8306aa747bdd34650701928ba969e80a13cc580b6b9c00b66d73ae540ce5aacb",
+          "797e77018947dcd5ee606e59fe83df79541c8274a2411466467cc5ffccaf3d0b"
+        ],
+        "input_pins": [
+          "sabueso:protein:uniprot:P52270@sha256:1f7cce673d32cdb59e4cd74e69f230478c1ecef2a99a2b1c9d1ac27172ff6cd3",
+          "sabueso:protein:uniprot:P52270@sha256:e722cd3d919e053eb1af777e9e8d3818de52adf5f518bf5008a0e067fb21367f"
+        ],
+        "reader": "PASS"
+      }
+    ],
+    "control_mean_current_save_wall_s": 56.07557079047547,
+    "candidate_mean_current_save_wall_s": 44.76689039950725,
+    "observed_reduction_percent": 20.16685738826045,
+    "scope": "Two fresh-process samples per version on identical public input bytes/pins; warm nonrandomized; original source reader receives both producers; no generic speedup, cold cache, RAM/size reduction, current installed qualification or B7 human acceptance claim"
+  },
+  "production_function_AST_matches_benchmarked_function": true,
+  "original_codec_capture": {
+    "state": "CLEAN_ORIGINAL_WRITER_CAPTURED_BEFORE_ANY_PRODUCTION_CHANGE",
+    "source": "3c26790a13903d857c548886126d0c8111550704",
+    "function_sha256": "90420bc1218b5a923c6e1975e0c6d951726d1ccd7e5362c92218a1cc4d1cd23f",
+    "artifact_sha256": "d355d86e6d925ca53ffefd55ab0233fca67e18d3b55484136c6ca80f43367a06",
+    "encoded_bytes": 364842,
+    "cases": {
+      "null": {
+        "canonical_sha256": "f0d86e3f9d9666936a5e70357ec715e56f0de934ac5ca2ef7a28efae44fbfeac",
+        "canonical_bytes": 2719
+      },
+      "false": {
+        "canonical_sha256": "302e2c3862a6bc4602e42cc5e5122c3b63f24b2e912a8220ae5ca4dc1e19e46a",
+        "canonical_bytes": 2720
+      },
+      "integer-zero": {
+        "canonical_sha256": "d3e10726c4c1ff3a9d7d6677fe31b8dd770b8875dd81db7ed3a2f2e389bd0597",
+        "canonical_bytes": 2716
+      },
+      "negative-float-zero": {
+        "canonical_sha256": "688ed53ebc32a58d95d4060a42cd8a51e8bec72a0824e7c4a9863e1396b182ba",
+        "canonical_bytes": 2719
+      },
+      "mixed-native-types": {
+        "canonical_sha256": "f5a83bd85fd362d6eede1203492bb3e9d26f6e8400f71cffb9043624c34424d6",
+        "canonical_bytes": 2937
+      },
+      "unicode-and-escapes": {
+        "canonical_sha256": "f706fe34255fe5e310f885b07c4555df8d25134a605f621c77e63af6e37aa2f7",
+        "canonical_bytes": 5544
+      },
+      "literal-reference": {
+        "canonical_sha256": "655668e7eaacff4c7aa1a102bb8d46fa69a7710f6d79f14aabe6bd00d7dee00a",
+        "canonical_bytes": 2951
+      },
+      "empty-and-repeated-containers": {
+        "canonical_sha256": "7c013336f081d17e1ce32a1a0238dd648fcd3ace59c7705de0e5ae2522502461",
+        "canonical_bytes": 3187
+      },
+      "repeated-long-text": {
+        "canonical_sha256": "704e202158659a5f86ce6f341f7889ffbe9a033a9e580aa46d61d30f45cc32cd",
+        "canonical_bytes": 12415
+      },
+      "cache-eviction": {
+        "canonical_sha256": "6ec8d340f5c592afbd4c2331f6c70f159da3d54b9862cfffccb6e0105dd8e60d",
+        "canonical_bytes": 2047703
+      }
+    }
+  },
+  "provisional_budget": {
+    "maintainer_accepted": true,
+    "save_s": 60,
+    "reopen_s": 30,
+    "owned_RSS_bytes": 1073741824,
+    "scope": "Only the measured public structural route on this workstation; actual independent researcher feedback pending",
+    "record": "devguide/DECISIONS.md#agree-a-scoped-provisional-structural-workload-budget-2026-11-11"
+  },
+  "prior_actual_failures": "Initial experimental codec fixture omitted current @35 header members: 32 failures retained. The unchanged reader correctly refused it; correcting only the synthetic fixture passes all 40 controls. No production bug or weakened original predicate is attributed to that fixture error.",
+  "hosted_recovery": {
+    "reference_head": "3c26790a13903d857c548886126d0c8111550704",
+    "governance": "PASS, full capture verified, run 43072515668",
+    "CI": "Run 43072436424 remains separately owned; no overall PASS claimed by this receipt",
+    "changed_code": "Intermediate local checkpoint; recover applicable exact-final-head CI/governance before admission or release"
+  },
+  "acceptance": "Bounded provisional workload targets accepted; independent scientist/researcher, actual-agent and real-consumer acceptance remain pending. B2 remains deferred; B8/schema freeze/staging/release unresumed.",
+  "retained_evidence": {
+    "directory": "recovered_work/checkpoint_recovery_20261106/b7-persistence-final-candidate-1",
+    "owner": "Sabueso maintainers #167/#148/#112",
+    "review_trigger": "Optimization review/B7 or before candidate preparation",
+    "records": "Original codec corpus, actual failed and passing logs, profile, function/control hashes, four fresh writer/eight reader sessions, source/event/placement proofs and immutable diagnostic archives"
+  }
+}

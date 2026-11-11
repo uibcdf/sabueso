@@ -184,6 +184,74 @@ disposable after their independent reading and hash capture; original scientific
 capsules remain protected. These local observations are retained for a
 consolidated #167 review; no new issue publication is claimed.
 
+## Current exact-record packing cache
+
+The current structural profile at clean `3c26790` / SDK251 spends 75.53 of
+154.62 profiled save seconds in shared packing, including 4.85 million canonical
+JSON calls. Preparation, packing and original verification are nested; do not add
+their cumulative times. Profiling overhead is substantial: the ordinary save
+takes about 56 s. The original producer and separate reader both pass.
+
+Two bounded caches now avoid repeated physical encoding work in the current
+@35/@36 writer. Exact native strings reuse their canonical UTF-8 sizes; small
+records reuse their existing digests through exact typed token keys. Boolean,
+integer and float kinds, signed zero, native strings and internal reference
+tokens remain distinct. Non-native string subclasses and records with more than
+32 members take the original path. Both caches have at most 4,096 entries, live
+only within one packing call and are cleared after encoding. All logical
+positions are retained, collision equality still runs, and original logical
+budget and scientific checks remain mandatory. Stored bytes, formats, named
+rules, source support and public API/defaults stay fixed.
+
+Same-session ABBA packing calibration first measures only string-size caching:
+control 26.167/27.073 s versus 23.042/22.996 s, about 13.5% for that phase.
+Adding typed record caching measures control 26.608/26.435 s versus
+16.133/16.086 s, about 39.3%. Each comparison has identical complete canonical
+physical bytes. These are isolated packing observations, not whole-save results.
+
+The separate whole-session benchmark uses the **same fixed input files and
+pins**, fresh writer processes and control/candidate/candidate/control order:
+
+| Session | Control save wall seconds | Cached save wall seconds |
+| --- | ---: | ---: |
+| Current public structural context | 55.923 /56.228 | 45.092 /44.442 |
+| Historical source context | 9.834 /10.083 | 10.003 /9.800 |
+
+Current saving averages 56.076 versus 44.767 s, a **20.2% observed reduction** in
+this bounded task. Historical saving remains around 10 s. All eight sessions
+reopen through the unmodified original reader with network access, resolution
+and Card construction forbidden; original native/source/return and finite agent
+observations match. Reader processes take about 22–23 s for each current/historical
+pair. Writer RSS stays below 482 million bytes and owned swap is zero. These
+two-sample, warm, nonrandomized observations make no general speed, cold-cache,
+file-size or RAM-reduction claim. Independent sessions have different local
+lookup namespaces; whole-file hashes are compared only within the same session.
+
+Before changing production, the clean SDK251 original writer captured ten
+synthetic codec vectors with their complete original physical outputs. Forty
+deterministic controls in the existing complete shared-values module bind their
+original hashes, typed reconstruction, eviction, unsupported values, digest
+collision refusal, entities/units/positions, budgets and cycles. The control
+corpus is engineering data, not SourceAssertions or a Card schema freeze.
+Existing test bodies, all seven SOURCE resources and all original capsules remain
+unchanged. The complete module is already copied/selected in both installed CI
+routes, so its new controls need no new payload or workflow.
+
+The maintainer [accepted scoped provisional targets](../DECISIONS.md#agree-a-scoped-provisional-structural-workload-budget-2026-11-11)
+of 60 s saving, 30 s reopening and 1 GiB RSS for this workload on this machine.
+The cached combined producer completes in about 56–57 s, with combined saves
+around 54–55 s; the measured receiving also fits. This is a bounded provisional
+workload decision, not independent researcher usefulness or complete B7 acceptance.
+Keep original large-ensemble tests' explicitly raised allowances separate.
+
+The diagnostic code, original vectors, profiles, complete logs, byte comparisons,
+ABBA observations and original-reading records are retained under
+`recovered_work/checkpoint_recovery_20261106/b7-persistence-current-profile-1/`,
+`b7-persistence-record-cache-1/` and `b7-persistence-final-candidate-1/`.
+Sabueso maintainers own them under #167/#148/#112, reviewed at adoption/B7 or
+before candidate preparation. CHECKPOINT owns final source/receiving qualification
+and exact-head CI scope. A passing older code head never qualifies this change.
+
 ## Qualification and resource ownership
 
 Owning gates cover complete original-wire immutability for literal and quantity

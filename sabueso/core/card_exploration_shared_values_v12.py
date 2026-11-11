@@ -140,13 +140,69 @@ def pack(
     logical_bytes = measure(bundle, limit)
     if logical_bytes <= threshold:
         return bundle
+    from functools import lru_cache
+
+    # Keep exact physical-encoding work local to this packing call.
+    cached_text_size = lru_cache(maxsize=MEMO_LIMIT)(_scalar_size)
     values, memo = {}, {}
     pool_fields_size = 0
+
+    from collections import OrderedDict
+
+    record_refs = OrderedDict()
+
+    def token_key(token):
+        if token is None:
+            return ("null",)
+        kind = type(token)
+        if kind is bool or kind is int or kind is str:
+            return (kind.__name__, token)
+        if kind is float:
+            # Numeric equality must not merge signed zero or numeric kinds.
+            return ("float", token.hex())
+        if (
+            kind is dict
+            and set(token) == {"value_ref"}
+            and type(token["value_ref"]) is str
+        ):
+            return ("reference", token["value_ref"])
+        return None
+
+    def record_key(record):
+        if record["kind"] == "text":
+            value = record["value"]
+            return ("text", value) if type(value) is str else None
+        entries = record["items"]
+        # Large records retain the full original path without extra key storage.
+        if len(entries) > 32:
+            return None
+        keys = []
+        if record["kind"] == "mapping":
+            for name, token in entries:
+                key = token_key(token)
+                if type(name) is not str or key is None:
+                    return None
+                keys.append((name, key))
+        else:
+            for token in entries:
+                key = token_key(token)
+                if key is None:
+                    return None
+                keys.append(key)
+        return (record["kind"], tuple(keys))
 
     def encode(value):
         nonlocal pool_fields_size
         if not isinstance(value, (dict, list, tuple)):
-            if not isinstance(value, str) or _scalar_size(value) < TEXT_THRESHOLD:
+            if (
+                not isinstance(value, str)
+                or (
+                    cached_text_size(value)
+                    if type(value) is str
+                    else _scalar_size(value)
+                )
+                < TEXT_THRESHOLD
+            ):
                 return value
             record = {"kind": "text", "value": value}
         else:
@@ -163,8 +219,17 @@ def pack(
                 if isinstance(value, dict)
                 else {"kind": "array", "items": [encode(v) for v in value]}
             )
-        encoded_record = canonical_json(record)
-        ref = "SV_" + digest(encoded_record)
+        key = record_key(record)
+        ref = record_refs.get(key) if key is not None else None
+        if ref is None:
+            encoded_record = canonical_json(record)
+            ref = "SV_" + digest(encoded_record)
+            if key is not None and MEMO_LIMIT > 0:
+                if len(record_refs) >= MEMO_LIMIT:
+                    record_refs.popitem(last=False)
+                record_refs[key] = ref
+        else:
+            record_refs.move_to_end(key)
         if ref in values:
             _require(values[ref] == record, "Shared value digest collision.")
         else:
@@ -178,6 +243,8 @@ def pack(
         return token
 
     root = encode(bundle)
+    record_refs.clear()
+    cached_text_size.cache_clear()
     memo.clear()
     packed = {
         "format": FORMAT,

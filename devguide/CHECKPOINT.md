@@ -5,6 +5,42 @@ Current working-state checkpoint: **2026-11-11**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Exact packing cache and scoped workload targets — local checkpoint PASS
+
+The current @35/@36 writer caches exact string sizes and small typed record
+digests within one packing call. Each cache is bounded to 4,096 entries;
+large records keep the original path. Original collision, logical-budget and
+scientific checks remain mandatory. All logical positions, stored formats,
+named rules, public defaults and original source support stay fixed.
+
+The [packing receipt](evidence/exact_packing_cache_checkpoint_20261111.json)
+qualifies **181 distinct selected source cases**, including forty new frozen-byte
+and refusal controls. The complete changed **96-case module** also passes outside
+checkout and from a separate installed diagnostic wheel. All 918 implementation
+modules and seven SOURCE resources match in wheel, sdist and actual installation;
+all 45 original test-data files remain unchanged. The diagnostic package uses
+`0.0.0+unknown` and shared dependencies, not a clean public or platform matrix.
+The previous 11,392-case result below qualifies its earlier source; it is not a
+full-suite result for this cache change.
+
+Fresh-process ABBA observations over identical public input bytes/pins reduce
+current structural saving from **56.076 to 44.767 s on average (20.2%)**.
+Historical saving stays near 10 s. All eight sessions pass separate original
+reading with acquisition and Card construction forbidden. Warm nonrandomized
+samples do not establish general speed, memory or size savings. The maintainer
+[accepts provisional targets](DECISIONS.md#agree-a-scoped-provisional-structural-workload-budget-2026-11-11)
+of **60 s saving, 30 s reopening and 1 GiB RSS** for this measured structural
+workload on this machine. Actual independent researcher feedback is pending.
+
+The separately authorized hosted batch targets the unchanged reference
+`3c26790`: [governance passes](https://github.com/uibcdf/sabueso/actions/runs/43072515668)
+with full captured verification; [CI recovery](https://github.com/uibcdf/sabueso/actions/runs/43072436424)
+is not yet claimed complete here. Neither qualifies the new implementation.
+This intermediate `[skip ci]` increment retains exact-final-head recovery under
+#167/#148/#112. Independent scientific/researcher, actual-agent and real-consumer
+acceptance remain open. B2 stays deferred; B8, schema freezing, staging and
+release remain unresumed.
+
 ## Public whole-session workload observations — bounded PASS
 
 The [workload receipt](evidence/public_session_workload_checkpoint_20261111.json)
@@ -21,8 +57,10 @@ the [persistence analysis](pending_proposals/card_persistence_cost.md#current-co
 records individual sizes, timings and limits under #167/#148/#112.
 These are instrumented, warm single observations; fixture preparation is not
 separately timed and no notebook timing or scaling guarantee is claimed.
-Researcher workload feedback and agreed useful-scale budgets remain pending,
-alongside the other B7 acceptance dimensions. B8 remains unresumed.
+At that measurement checkpoint researcher workload feedback and useful-scale
+budgets were pending. The later scoped provisional decision above covers only
+the measured structural workload; other B7 acceptance dimensions remain open.
+B8 remains unresumed.
 
 ## Integrated saved requests and original chemical context — local checkpoint PASS
 

@@ -1,5 +1,22 @@
 # Sabueso — Decision Log
 
+## Agree a scoped provisional structural workload budget (2026-11-11)
+
+The maintainer accepts provisional targets for the measured public structural
+source-review workload on this workstation: **at most 60 s saving, 30 s reopening
+and 1 GiB owned process-tree RSS**. The fixed current/historical public inputs,
+single CPU, native pools one, Linux Python 3.14 and warm nonrandomized observations
+are defined in the [packing analysis](pending_proposals/card_persistence_cost.md#current-exact-record-packing-cache).
+Record the actual measured scope; these targets do not qualify another input
+size, platform, source-acquisition route or an unmeasured notebook session.
+
+Keep shared-machine execution guards and original test callers' explicit logical
+budgets separate. This decision adds no runtime timeout, changes no production
+byte limit and creates no noisy speed assertion in deterministic tests. Review
+the targets under #167/#148 after independent researcher feedback or a material
+input/platform change. Scientific, researcher, actual-agent and real-consumer
+acceptance, exact-candidate gates and B8 resumption remain separate.
+
 ## Preserve historical default presentation through resaving (2026-11-10)
 
 Optional presentation metadata explicitly selects current overview orientation
