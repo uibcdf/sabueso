@@ -88,11 +88,18 @@ def _ligand_reading(view, reading):
 
 
 def _opening(view):
-    from .card_orientation_v1 import opening
+    from .card_context_presentation_v1 import enabled
 
-    current = opening(view, preview, _field_text)
-    if current is not None:
-        return current
+    if enabled(view, "overview_orientation"):
+        from .card_orientation_v1 import opening
+
+        current = opening(view, preview, _field_text)
+        if current is not None:
+            return current
+    else:
+        from .card_legacy_orientation_v1 import opening
+
+        return opening(view, preview, _field_text, _attribution)
     data = view.explorer.access._focal.data
     names = data.get("sections", {}).get("names", {})
     name = names.get("canonical_name", {}) if isinstance(names, dict) else None
@@ -220,18 +227,22 @@ def _attribution(explorer, path, field=None):
     )
 
 
-def _method(explorer, field):
+def _method(explorer, field, *, path=None):
     refs, reason = _selected_references(field)
     if refs is None:
         return f"selected-source method unknown: {reason}"
     methods = []
     missing = False
+    scope_mismatch = False
     for ref in refs[:4]:
         statement = explorer._statement(ref)
         if statement["state"] != "present":
             missing = True
             continue
         record, _ = explorer.access._resolve(statement["location"])
+        if path is not None and record.get("field_path") != path:
+            scope_mismatch = True
+            continue
         metadata = record.get("source_metadata") or {}
         method = metadata.get("method") if isinstance(metadata, dict) else None
         if isinstance(method, str) and method not in methods:
@@ -247,8 +258,18 @@ def _method(explorer, field):
                 "selected-source method: "
                 + ", ".join(preview(value) for value in methods),
                 *(["some supporting records not retained"] if missing else []),
+                *(
+                    ["some declared support has another field scope"]
+                    if scope_mismatch
+                    else []
+                ),
                 *([partial] if partial else []),
             ]
+        )
+    if scope_mismatch:
+        return (
+            "selected-source method unknown: declared support has another field scope"
+            + (f" · {partial}" if partial else "")
         )
     if missing:
         return "selected-source method unknown: supporting records not retained" + (
@@ -839,6 +860,14 @@ def _parts(view):
         opening.append(
             "Retained fields with original support; source coverage is not evaluated. Open explain() to review source records and stored alternatives."
         )
+        from .card_context_presentation_v1 import enabled as context_enabled
+
+        if view._field_panel in ("chemistry", "properties") and context_enabled(
+            view, "chemical_context"
+        ):
+            from .card_chemical_reading_v1 import opening as chemical_opening
+
+            opening.extend(chemical_opening(view, preview))
         from .card_ligand_instances_v1 import SUMMARY as INSTANCE_SUMMARY
         from .card_protein_source_v1 import SCOPES
 
@@ -1237,7 +1266,13 @@ def _parts(view):
             if "unit" in value:
                 shown += " " + preview(value["unit"])
             if view._field_panel == "properties":
-                shown += " · " + _method(view.explorer, value)
+                shown += " · " + _method(
+                    view.explorer,
+                    value,
+                    path=item._entry.key
+                    if context_enabled(view, "chemical_context")
+                    else None,
+                )
             state = (
                 "conflicting"
                 if item._conflicts

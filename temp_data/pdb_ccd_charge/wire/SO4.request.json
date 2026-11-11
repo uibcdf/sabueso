@@ -1,0 +1,1 @@
+{"query": "query($ids: [String!]!) { chem_comps(comp_ids: $ids) {\n  chem_comp { id name formula type formula_weight pdbx_release_status pdbx_formal_charge }\n  rcsb_chem_comp_descriptor { InChI InChIKey SMILES SMILES_stereo }\n} }", "variables": {"ids": ["SO4"]}}

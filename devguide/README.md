@@ -33,6 +33,17 @@ value/support locations through `overview().orientation`. Null, empty, missing
 and malformed scope remain distinct. It changes presentation only; CHECKPOINT
 owns qualification and independent acceptance remains separate.
 
+The [chemical-context presentation](pending_proposals/card_chemical_context_reading.md)
+retains source representations, native parent/formal-charge declarations and
+selected property records with units and field-scoped method/determination
+metadata. Missing scientific meaning remains explicit; CHECKPOINT owns current
+qualification.
+
+The [historical presentation contract](pending_proposals/card_orientation.md#historical-presentation-and-resaving)
+keeps original default text/HTML stable through resaving. New sessions record
+their orientation and chemical-preview policies separately from scientific
+results; explicit current detached readings remain available on old captures.
+
 The latest published package is **0.14.0**. Work targets **0.15.0**, including the
 entire agreed human/agent Card exploration design and observed researcher
 acceptance. Completing one adapter or passing technical tests does not meet that
@@ -94,7 +105,9 @@ The [combined structural source review](pending_proposals/structural_source_revi
 connects exact annotation/region, per-chain gaps/numbering, all original 1SUX
 ligand/contact collections, sources and assembly declaration positions. It keeps
 historical missing scope, unresolved components and uncomputed physical membership
-explicit. Its finite assembly request is the saved root. This complements the
+explicit. Its human assembly destination is now the saved root; the
+[request-retention correction](pending_bugs/assembly_machine_request_retention.md)
+preserves the original finite agent requests and actual access instances. This complements the
 bounded 1TCD MolSysMT control and prepares B7 tasks; CHECKPOINT owns qualification.
 
 The first B6 [variant/isoform tissue-context profile](pending_proposals/card_variant_tissue_exploration.md)

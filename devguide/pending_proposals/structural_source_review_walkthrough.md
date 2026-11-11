@@ -60,6 +60,13 @@ knowledge-only review complements the separate bounded
 [1TCD MolSysMT journey](structural_journey_acceptance_20261104.md#accepted-assembly-scope--2026-11-06).
 It does not enlarge that calculation's scope or adopt a shared handoff protocol.
 
+The current example saves the human assembly destination as root. The
+[request-retention correction](../pending_bugs/assembly_machine_request_retention.md)
+keeps its already executed finite agent requests in their actual accesses.
+Independent replay follows the original public `back()` trail to the initial
+question context; it does not recreate that request in the source destination's
+different access. Earlier receipts retain their finite-agent-root scope.
+
 ## Independent researcher tasks
 
 The [local receipt](../evidence/structural_source_review_checkpoint_20261110.json)
@@ -94,7 +101,8 @@ uncoached session:
 
 Scientific interpretation, uncoached usability, actual agent tasks, representative
 workload and actual MOLI-consumer acceptance remain separate B7 obligations.
-The [broad inventory](card_exploration_completion_0150.md) retains remaining
-cross-provider/structural transitions and nature-specific orientation. #148 owns
+The [broad inventory](card_exploration_completion_0150.md) owns cross-topic,
+source-scope and independent acceptance requirements; CHECKPOINT owns current
+integration and receiving qualification. #148 owns
 the experience, #173 the bounded assembly scope and #112 coordination. B2 review
 remains deferred; B8/candidate/schema freeze/release remain unresumed.

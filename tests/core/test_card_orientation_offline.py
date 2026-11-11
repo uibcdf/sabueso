@@ -18,6 +18,82 @@ from sabueso.tools.db.chembl import FixtureChEMBLClient
 from sabueso.tools.db.mondo import FixtureMONDOClient
 
 
+@pytest.mark.parametrize("key", ["overview_orientation", "chemical_context"])
+@pytest.mark.parametrize("value", [None, False, "unregistered_presentation@99"])
+def test_unknown_recorded_context_policy_is_rejected(tmp_path, key, value):
+    import sabueso
+    from sabueso.core.card_exploration_storage import _seal
+    from sabueso.core.errors import StorageError
+
+    card = Card(meta={"entity_type": "protein"})
+    path = tmp_path / "policy.json"
+    card.explore().overview().save(path)
+    wire = json.loads(path.read_text(encoding="utf-8"))
+    wire["presentation_metadata"][key] = value
+    path.write_text(json.dumps(_seal(wire)), encoding="utf-8")
+    with pytest.raises(StorageError, match="source-context presentation"):
+        sabueso.read_exploration(path)
+
+
+def test_legacy_default_wording_and_explicit_current_reading_survive_resave(tmp_path):
+    import sabueso
+    from sabueso.core.card_exploration_storage import _seal
+
+    card = Card(meta={"entity_type": "protein"})
+    path = tmp_path / "legacy.json"
+    card.explore().overview().save(path)
+    wire = json.loads(path.read_text(encoding="utf-8"))
+    wire["presentation_metadata"] = {
+        "navigation_preview": "question_destination_preview@1"
+    }
+    wire["producer"]["sabueso_version"] = "0.14.0+243.gf6d8e4a"
+    path.write_text(json.dumps(_seal(wire)), encoding="utf-8")
+    saved = sabueso.read_exploration(path)
+    assert "Organism: not retained in this capture." not in repr(saved)
+    organism = next(
+        row
+        for row in saved.orientation["fields"]
+        if row["path"] == "annotations.organism"
+    )
+    assert organism["state"] == "not_retained"
+    again = tmp_path / "resaved.json"
+    saved.save(again)
+    restored = sabueso.read_exploration(again)
+    assert repr(restored) == repr(saved)
+    assert (
+        restored._explorer._session["presentation_metadata"]["overview_orientation"]
+        == "legacy_card_orientation@1"
+    )
+    assert restored.explorer.start_new().overview().orientation == saved.orientation
+    assert "Organism: not retained in this capture." in repr(
+        restored.explorer.start_new().overview()
+    )
+
+
+def test_known_unmarked_orientation_producer_does_not_gain_chemical_preview(tmp_path):
+    import sabueso
+    from sabueso.core.card_exploration_storage import _seal
+
+    card = Card(meta={"entity_type": "small_molecule"})
+    path = tmp_path / "orientation-only.json"
+    card.explore().view("properties").save(path)
+    wire = json.loads(path.read_text(encoding="utf-8"))
+    wire["presentation_metadata"] = {
+        "navigation_preview": "question_destination_preview@1"
+    }
+    wire["producer"]["sabueso_version"] = "0.14.0+249.g2d7dffc"
+    path.write_text(json.dumps(_seal(wire)), encoding="utf-8")
+    saved = sabueso.read_exploration(path)
+    assert "Property context" not in repr(saved)
+    assert saved.chemical_reading["panel"] == "properties"
+    policies = saved.explorer._session["presentation_metadata"]
+    assert policies["overview_orientation"] == "card_orientation@1"
+    assert policies["chemical_context"] == "legacy_chemical_context@1"
+    second = tmp_path / "orientation-only-again.json"
+    saved.save(second)
+    assert "Property context" not in repr(sabueso.read_exploration(second))
+
+
 @pytest.fixture(autouse=True)
 def offline(monkeypatch):
     def forbidden(*a, **k):

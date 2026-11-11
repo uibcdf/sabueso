@@ -125,8 +125,9 @@ def verify_bundle(bundle, expected_digest):
             )
             or comparison.has_observed_catalog(bundle)
             or comparison.has_observed_topics(bundle)
-            or comparison.has_sequence_context_display(bundle),
-            "Format @35 requires an original comparison, question catalog or sequence-context display.",
+            or comparison.has_sequence_context_display(bundle)
+            or comparison.machine_request_witness(bundle) is not None,
+            "Format @35 requires an original comparison, catalog, sequence-context display or scientific machine request.",
         )
     quaternary = bundle["format"] in (QUAT_FORMAT, EXTENDED_FORMAT)
     sites = bundle["format"] in (SITE_FORMAT, QUAT_FORMAT, EXTENDED_FORMAT)

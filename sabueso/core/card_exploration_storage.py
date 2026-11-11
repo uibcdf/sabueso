@@ -546,6 +546,31 @@ def _objects_for(access, records):
     return deepcopy(objects), deepcopy(lookups)
 
 
+def _retain_machine_views(root):
+    """Retain executed scientific requests, preserving actual access instances."""
+    session = root._explorer._session
+    accesses, existing = {}, set()
+    for view in list(session["views"].values()):
+        for access in (view._explorer.access, view._selection._access):
+            accesses[id(access)] = access
+        existing.add((id(view._selection._access), view._selection.selection_ref))
+    added = False
+    for access in accesses.values():
+        for selection in list(access._selections.values()):
+            key = (id(access), selection.selection_ref)
+            if (
+                selection._scientific is None
+                or not selection._operation.startswith("select:")
+                or key in existing
+                or not admitted_selection(selection)
+            ):
+                continue
+            _machine_view(selection, session)
+            existing.add(key)
+            added = True
+    return added
+
+
 def _prepare(root):
     _require(
         admitted_view(root),
@@ -556,6 +581,7 @@ def _prepare(root):
         "Required saved explanation/link closure was not retained. Return to a retained view or explicitly start a new local exploration.",
     )
     session = root._explorer._session
+    retained_machine_requests = False
     if root._explorer.mode == "live":
         from .card_exploration_knowledge_comparison import prepare as prepare_comparison
 
@@ -593,6 +619,9 @@ def _prepare(root):
         from .card_exploration_variant import prepare as prepare_variant
 
         prepare_variant(root)
+        # Let each existing profile retain its requests with its own historical
+        # transport first. The common fallback wraps only requests left uncovered.
+        retained_machine_requests = _retain_machine_views(root)
     automatic = session.setdefault("automatic_support_views", set())
     from .card_knowledge_comparison_dispatch import pending as knowledge_context
 
@@ -874,7 +903,13 @@ def _prepare(root):
         register_bundle as register_comparison,
     )
 
-    register_comparison(bundle, objects, access, session_format=session.get("format"))
+    register_comparison(
+        bundle,
+        objects,
+        access,
+        session_format=session.get("format"),
+        preserve_access_origins=retained_machine_requests,
+    )
     if bundle["format"] in MOLECULE_FORMATS:
         from .card_molecule_activity_operations_v1 import register
 
@@ -1135,9 +1170,10 @@ def _access(captures, inputs, objects, locations, focal):
 
 def _explorer(access, session):
     if access.mode == "live" and "presentation_metadata" not in session:
+        from .card_context_presentation_v1 import metadata as context_metadata
         from .card_navigation_preview_v1 import metadata
 
-        session["presentation_metadata"] = metadata()
+        session["presentation_metadata"] = {**metadata(), **context_metadata()}
     explorer = object.__new__(CardExplorer)
     explorer._access, explorer._session = access, session
     access._exploration_session = session
@@ -1340,10 +1376,14 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
     # Only the file decoder and fresh private serializer transfer ownership.
     # Direct internal callers keep the original defensive state-copy boundary.
     _require(type(owned) is bool, "Internal bundle ownership requires a boolean.")
+    from .card_context_presentation_v1 import restored_metadata
     from .card_navigation_preview_v1 import rule as preview_rule
 
     if isinstance(bundle, dict):
         preview_rule(bundle.get("presentation_metadata"))
+        from .card_context_presentation_v1 import validate as validate_context_policy
+
+        validate_context_policy(bundle.get("presentation_metadata"))
     if isinstance(bundle, dict) and bundle.get("format") in (
         "sabueso.card_exploration@31",
         "sabueso.card_exploration@33",
@@ -1525,7 +1565,9 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
         "views": {},
         "explanations": {},
         "links": {},
-        "presentation_metadata": deepcopy(bundle["presentation_metadata"]),
+        "presentation_metadata": restored_metadata(
+            bundle["presentation_metadata"], bundle.get("producer")
+        ),
     }
     if bundle["format"] in MOLECULE_FORMATS:
         session["molecule_activity_operations"] = deepcopy(
@@ -3201,6 +3243,16 @@ def save_selection(selection, path, overwrite, **transport_options):
             return save_exploration(
                 original, path, overwrite=overwrite, **transport_options
             )
+    return save_exploration(
+        _machine_view(selection, session),
+        path,
+        overwrite=overwrite,
+        **transport_options,
+    )
+
+
+def _machine_view(selection, session):
+    """Wrap an observed selection with the same flags used by explicit saving."""
     explorer = _explorer(selection._access, session)
     from .card_exploration_sites import TOPIC, is_result
 
@@ -3264,12 +3316,16 @@ def save_selection(selection, path, overwrite, **transport_options):
             "_record_panel": "quaternary_interpretation",
             "_native_override": selection._scientific.wire["native_payload"],
             "_context_override": selection._scientific.wire["context"],
+            "_status": selection._scientific.wire["outcome"]["status"],
+            "_reason": selection._scientific.wire["outcome"]["reason"],
         }
     elif is_result(selection._scientific):
         flags = {
             "_record_panel": TOPIC,
             "_native_override": selection._scientific.wire["native_payload"],
             "_context_override": selection._scientific.wire["context"],
+            "_status": selection._scientific.wire["outcome"]["status"],
+            "_reason": selection._scientific.wire["outcome"]["reason"],
         }
     view = CardView(
         explorer,
@@ -3279,7 +3335,7 @@ def save_selection(selection, path, overwrite, **transport_options):
         _machine_ref=selection.selection_ref,
         **flags,
     )
-    return save_exploration(view, path, overwrite=overwrite, **transport_options)
+    return view
 
 
 def missing_selection(access, topic, options, projection, selection_query=None):

@@ -1131,6 +1131,18 @@ class CardView:
         return reading(self)
 
     @property
+    def chemical_reading(self):
+        """Detached original chemical representations, declarations and method context.
+
+        Preserves source-bound parent/charge declarations, unknowns and complete
+        property value/unit records. No chemistry or source acquisition runs.
+        None outside molecule chemical-identity and property panels.
+        """
+        from .card_chemical_reading_v1 import reading
+
+        return reading(self)
+
+    @property
     def regional_reading(self):
         """Current presentation of this focused original regional result.
 
@@ -2055,13 +2067,14 @@ class CardExplorer:
         self._coverage_result = None
         self._origin = None
         self._navigation_cache = {}
+        from .card_context_presentation_v1 import metadata as context_metadata
         from .card_navigation_preview_v1 import metadata
 
         self._session = {
             "views": {},
             "explanations": {},
             "links": {},
-            "presentation_metadata": metadata(),
+            "presentation_metadata": {**metadata(), **context_metadata()},
         }
         self._access._exploration_session = self._session
 

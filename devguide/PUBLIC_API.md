@@ -522,6 +522,17 @@ not promise card enrichment, live availability or public-package delivery.
   See the [protein journey](pending_proposals/card_protein_exploration.md).
   Molecule `chemistry`/`properties` and disease `definition`/`classification`/`identity`
   now have distinct field/relationship views and their initial question aliases.
+  Molecule field panels expose detached `chemical_reading` under
+  `chemical_context_reading@1`: original representations/native parent and formal
+  charge declarations, selected property records with units, exact original
+  support/locations and field-scoped source method/determination metadata.
+  Unknowns stay explicit; no chemical interpretation or new assertion is inferred.
+  Other views return `None`. See the
+  [chemical-context contract](pending_proposals/card_chemical_context_reading.md).
+  New sessions record their default context-presentation policies. Historical
+  default wording survives reading and resaving; explicit detached current
+  readings remain available on the original capture. See the
+  [compatibility contract](pending_proposals/card_orientation.md#historical-presentation-and-resaving).
   `view("coverage")` shares the existing knowledge-state result and lazy exact scoped
   explanations; `view("quality")` retains raw quality records. All new item payloads
   are readable through the same bounded literal access. The specialized machine

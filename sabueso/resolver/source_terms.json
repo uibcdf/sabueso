@@ -477,8 +477,8 @@
    "registry_id": "pdb_ccd",
    "licence": "CC0-1.0",
    "attribution": "wwPDB Chemical Component Dictionary (https://www.wwpdb.org/data/ccd)",
-   "statement": "https://www.wwpdb.org/about/usage-policies",
-   "reviewed": "2026-09-29"
+   "statement": "https://www.rcsb.org/pages/usage-policy",
+   "reviewed": "2026-11-11"
   },
   "PDB-REDO": {
    "registry_id": "pdb_redo",

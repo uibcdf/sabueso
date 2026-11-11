@@ -237,9 +237,7 @@ def review(explorer):
     print("Requested region with a coordinate gap:\n", gap_detail)
     print("Original ligand declarations and contacts:\n", ligands)
     print("Separate assembly declaration positions:\n", positions)
-    # Keep the finite request as the saved root, as in structural_context.py.
-    # Its access context is distinct from the source-navigation destination.
-    return machine, observation
+    return assembly, observation
 
 
 def historical(explorer):
@@ -318,7 +316,16 @@ def read(output):
         saved = sabueso.read_exploration(
             output / f"{name}.json.gz", expected_digest=session["bundle_digest"]
         )
-        _, observation = observe(saved.explorer)
+        # A source-navigation destination owns a distinct actual access. Return
+        # through the retained public trail before replaying the initial task;
+        # finite requests must stay with the access that actually executed them.
+        initial = saved
+        seen = set()
+        while initial.back() is not initial:
+            require(id(initial) not in seen, "Saved return navigation contains a cycle")
+            seen.add(id(initial))
+            initial = initial.back()
+        _, observation = observe(initial.explorer)
         require(
             observation == session["observation"],
             f"Original {name} structural observations changed: "

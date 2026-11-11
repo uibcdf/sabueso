@@ -6,6 +6,10 @@ the repository's dynamic `versioningit` configuration remains unchanged.
 The build workflow accepts either a reviewed direct release or an immutable
 staging candidate, as selected in `release_plan.toml`.
 
+The unpublished [0.15.0 readiness worksheet](release_readiness_0.15.0.md) prepares
+acceptance and exact-source/artifact handoff. It does not resume candidate
+selection, schema freeze, staging or publication.
+
 After every new release, including a source-only release, and each actual package
 publication, create or update one release-specific notice in `uibcdf/moli`.
 Use the [central template](https://github.com/uibcdf/moli/blob/main/devguide/templates/release_publication_notice.md)

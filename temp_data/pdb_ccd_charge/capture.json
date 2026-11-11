@@ -1,0 +1,34 @@
+{
+  "url": "https://data.rcsb.org/graphql",
+  "retrieved_at_utc": "2026-11-11T02:04:50.963001+00:00",
+  "request_sha256": "6c92b92af5813c1f053080467a11148272f06e36dff326cc7577f72eed3e9733",
+  "response_sha256": "ccd37cb016c67c6b9455851b0bd4fa564d400a91a6912f7401e93e88b6463d93",
+  "response_bytes": 377,
+  "licence": "CC0-1.0",
+  "policy_url": "https://www.rcsb.org/pages/usage-policy",
+  "scope": "One public SO4 component, existing CCD fields plus explicit formal-charge declaration; direct bounded fixture preparation, no Sabueso acquisition trace claimed",
+  "owner": "uibcdf/sabueso#148/#112",
+  "review_trigger": "Chemical-context fixture adoption or next source checkpoint",
+  "errors": null,
+  "format": "sabueso.public_ccd_context_capture@1",
+  "source_version": "not_retained",
+  "representations": {
+    "wire/SO4.graphql.json": {
+      "sha256": "ccd37cb016c67c6b9455851b0bd4fa564d400a91a6912f7401e93e88b6463d93",
+      "bytes": 377,
+      "representation": "unchanged original request or response bytes"
+    },
+    "wire/SO4.request.json": {
+      "sha256": "6c92b92af5813c1f053080467a11148272f06e36dff326cc7577f72eed3e9733",
+      "bytes": 264,
+      "representation": "unchanged original request or response bytes"
+    },
+    "pdb_ccd/SO4.json": {
+      "sha256": "f7819ac098a8b87356c8f9265bbbd65368c3f0f94e5ca2c12708120553b5dfd6",
+      "bytes": 433,
+      "representation": "decoded data.chem_comps[0], re-encoded as JSON"
+    }
+  },
+  "formal_charge_definition": "https://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_chem_comp.pdbx_formal_charge.html",
+  "limits": "Only SO4 requested; the native integer formal-charge declaration is retained without inferring a missing value, physical charge, or chemical identity from a representation."
+}

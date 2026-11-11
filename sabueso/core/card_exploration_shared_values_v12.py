@@ -484,5 +484,20 @@ def verify_header(logical, original_verifier):
             "origin": record["origin"],
             "explorer_origin": record["explorer_origin"],
         }
+    from .card_exploration_knowledge_comparison import machine_request_witness
+
+    key = machine_request_witness(logical)
+    if key is not None:
+        record = logical["views"][key]
+        headers[key] = {
+            "flags": {
+                name: record["flags"][name]
+                for name in ("_record_panel", "_machine_ref")
+            },
+            "selection": {
+                name: record["selection"][name]
+                for name in ("scientific_result_ref", "selection_ref", "operation")
+            },
+        }
     projection = {**logical, "views": headers}
     original_verifier(_seal(projection), None)

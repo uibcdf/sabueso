@@ -446,7 +446,9 @@ def verify_literal_view(view, record):
     _verify_state(shadow, record, record["native_payload"], replay.access)
 
 
-def register_bundle(bundle, objects, access, *, session_format=None):
+def register_bundle(
+    bundle, objects, access, *, session_format=None, preserve_access_origins=False
+):
     retained = {
         ref: wire
         for ref, wire in objects.items()
@@ -460,10 +462,17 @@ def register_bundle(bundle, objects, access, *, session_format=None):
         None,
         FORMAT,
     ) and has_observed_topics(bundle)
+    # The existing @35 verifier binds actual accesses as well as earlier native
+    # scientific predicates. A newly retained finite request needs those bindings;
+    # a verified @35 resave must keep them even without a question/menu witness.
+    current_origins = session_format == FORMAT or (
+        session_format is None and preserve_access_origins
+    )
     if (
         not retained
         and not catalog
         and not current_topics
+        and not current_origins
         and not has_sequence_context_display(bundle)
     ):
         return
@@ -485,6 +494,27 @@ def register_bundle(bundle, objects, access, *, session_format=None):
         "molecule_activity_root_returns",
     ):
         bundle.setdefault(member, {})
+
+
+def machine_request_witness(bundle):
+    """Find an owned scientific request, never a marker in source-owned JSON."""
+    for key, record in bundle["views"].items():
+        flags = record["flags"]
+        if flags.get("_machine_ref") is None:
+            continue
+        selection = record["selection"]
+        ref = selection.get("scientific_result_ref")
+        wire = bundle["objects"].get(ref, {})
+        if (
+            flags["_machine_ref"] == selection.get("selection_ref")
+            and selection.get("operation", "").startswith("select:")
+            and ref in bundle.get("scientific_results", {})
+            and isinstance(wire, dict)
+            and "native_payload" in wire
+            and wire.get("context", {}).get("adapter") in ADAPTERS
+        ):
+            return key
+    return None
 
 
 def frozen_catalog():

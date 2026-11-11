@@ -2461,10 +2461,10 @@
    "url": "https://www.wwpdb.org/data/ccd",
    "category": "chemistry_admet",
    "status": "in_use",
-   "description": "Chemical identity of PDB ligands (InChIKey, SMILES, names).",
+   "description": "Chemical identity and native formal-charge declarations of PDB ligands (InChIKey, SMILES, names).",
    "since": "2026-09-23",
    "reason": "Anchors PDB ligands to standard InChIKeys.",
-   "access": "RCSB REST API",
+   "access": "RCSB GraphQL API and supplied native component records",
    "licence": "CC0 1.0",
    "terms": {
     "source_names": [
@@ -2472,8 +2472,8 @@
     ],
     "licence": "CC0-1.0",
     "attribution": "wwPDB Chemical Component Dictionary (https://www.wwpdb.org/data/ccd)",
-    "statement": "https://www.wwpdb.org/about/usage-policies",
-    "reviewed": "2026-09-29"
+    "statement": "https://www.rcsb.org/pages/usage-policy",
+    "reviewed": "2026-11-11"
    },
    "module": [
     "sabueso.tools.db.pdb_ccd"
@@ -5708,7 +5708,12 @@
     ],
     "declared_enrichers": [],
     "recovery_inputs": {
-     "repository": [],
+     "repository": [
+      "temp_data/pdb_ccd_charge/capture.json",
+      "temp_data/pdb_ccd_charge/pdb_ccd/SO4.json",
+      "temp_data/pdb_ccd_charge/wire/SO4.graphql.json",
+      "temp_data/pdb_ccd_charge/wire/SO4.request.json"
+     ],
      "local_only": []
     },
     "live_health": "not_assessed_by_offline_inventory",

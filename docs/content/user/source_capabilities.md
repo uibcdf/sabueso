@@ -101,7 +101,7 @@ function/class names and file scopes under `source_capability_inventory@1`.
 | [UniRef (UniProt)](https://www.uniprot.org/help/uniref) | 1 / 1 | `uniref` | 0 / 0 |
 | [VEuPathDB gene identifiers](https://veupathdb.org/) | 0 / 1; via `uniprot` | none declared | 0 / 0 |
 | [WikiPathways](https://www.wikipathways.org/) | 1 / 1 | none declared | 1 / 0 |
-| [wwPDB Chemical Component Dictionary](https://www.wwpdb.org/data/ccd) | 1 / 0 | none declared | 0 / 0 |
+| [wwPDB Chemical Component Dictionary](https://www.wwpdb.org/data/ccd) | 1 / 0 | none declared | 4 / 0 |
 
 See [data sources](data_sources.md) for scientific scopes, access requirements
 and recorded terms, and [scientific journeys](journeys.md) for bounded

@@ -104,6 +104,14 @@ literal menu values coincide. The [current target-menu correction](../pending_bu
 preserves molecular source/back context without applying a pre-B6 destination
 menu or executing the newly advertised topics.
 
+The common [scientific request-retention correction](../pending_bugs/assembly_machine_request_retention.md)
+also uses @35/@36 when an already executed supported request needs an owned
+machine-view/access-origin witness. Existing profile preparation runs first and
+keeps its established transport when it already covers the request. The fallback
+does not rerun science; older structure/site/quaternary/assembly results retain
+their frozen predicates, and explicit historical files keep their original scope.
+Native empty status/reason remains part of the machine wrapper's original state.
+
 Prepare implicit literal support for the saved root and its originating trail,
 together with executed scientific rows; retain every other observed view without
 recursively materializing its unexecuted literal support. Capabilities remain

@@ -1,6 +1,6 @@
 # Sabueso 0.15.0 — Draft: knowledge integrity and inspectable scientific results
 
-Development candidate: opt-in `bioactivity_target_scope@2` prevents declared copies
+Development implementation: opt-in `bioactivity_target_scope@2` prevents declared copies
 from bypassing their retained original's target assignment in activity/ligand
 answers, explanations and tables. It keeps excluded records and support visible,
 with `outside_scope` for a retained excluded activity. Original @1/defaults and
@@ -18,6 +18,46 @@ override the earlier preparation order. `release_plan.toml` still describes publ
 is established by this draft.
 
 ## Intended changes since 0.14.0
+
+- Add nature-specific Card exploration for protein, small-molecule and disease
+  captures: readable questions, original fields and source versions, complete
+  value/support inspection, contextual source/back navigation and typed compact
+  agent access. Unknowns, alternatives and retained conflicts remain explicit.
+  The participant tasks, blank worksheet and offline public input preparer are
+  ready for recruitment; actual independent researcher acceptance is pending.
+
+- Present original molecular representations, native parent/formal-charge
+  declarations and selected property records with their units. Method attribution
+  follows the exact source field; measured/calculated origin is declared or stays
+  unknown. RCSB CCD intake now requests its native integer formal-charge field.
+
+- Extend structural exploration with source annotations and explicit regional
+  questions, original chain gaps/author numbering, native AlphaFold whole/fragment
+  scope, ligand/contact records and separate assembly declarations. The bounded
+  positive/uncertain MolSysMT control keeps geometry separate from source
+  knowledge; declaration counts alone do not establish physical membership.
+
+- Add original activity/assay/publication routes, shared literature, molecule
+  target context, clinical indication/citation/registry views and retained disease
+  associations. Source roles, exact identity bases, units, qualifiers, query gaps
+  and unsupported causal/efficacy interpretations retain their original scope.
+
+- Add variant/isoform/tissue and sequence-change exploration, retained protein
+  cluster/orthology and biological associations, and explicit supplied-context
+  sequence/knowledge comparisons. Named correspondence rules and missing maps
+  remain visible; similarity and equal integer positions do not merge entities.
+
+- Preserve delivered profiles through independent original saved readers and
+  finite agent requests, including actual access origins in @35/@36. Current
+  human-root saving now retains already executed supported scientific projections/queries and native empty outcomes;
+  source-destination replay returns through the original navigation trail.
+  Earlier meanings and original files stay fixed, and unexecuted operations remain
+  `not_saved`. Source-bound technical receipts do not replace candidate gates.
+
+- Record default overview and chemical-preview policies separately from science.
+  Historical text/HTML remains stable when reopened and saved again; explicit
+  detached current readings remain available on original captures. Unknown
+  recorded policies are refused rather than silently upgraded.
 
 - Share complete original source support across generic related links instead of
   copying every statement into every source row (#167). Exact source opening,

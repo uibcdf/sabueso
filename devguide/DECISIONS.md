@@ -1,5 +1,47 @@
 # Sabueso — Decision Log
 
+## Preserve historical default presentation through resaving (2026-11-10)
+
+Optional presentation metadata explicitly selects current overview orientation
+and chemical context for new sessions. Original files without those declarations
+retain their historical default wording. Only the exact SDK248/249 producers
+that introduced unmarked orientation receive that compatibility interpretation;
+they do not receive the later chemical supplement. Explicit legacy declarations
+survive resaving under a newer producer label. Unknown owned policies are refused.
+Current detached readings remain available on original captures, and `start_new()`
+uses current presentation. This additive metadata does not change Card schema,
+scientific wires or original predicates. Genuine historical text/HTML controls
+remain exact. See the [presentation contract](pending_proposals/card_orientation.md#historical-presentation-and-resaving)
+(#148).
+
+## Present native chemistry without inferring its missing meaning (2026-11-10)
+
+`chemical_context_reading@1` retains original representation labels, supported
+native parent/formal-charge declarations and selected property records with
+their units. Source methods/determinations stay literal and require the exact
+property field scope. A method name does not establish measured/calculated
+origin. Identity context follows the original chemistry capture, while property
+context follows selected fields. No schema or scientific rule changes; the
+default preview policy is recorded separately in optional presentation metadata.
+See the [contract](pending_proposals/card_chemical_context_reading.md) (#148).
+
+## Retain finite scientific requests in their observed accesses (2026-11-10)
+
+Human saving retains already executed supported scientific projections/queries by actual
+access instance and selection reference. It never executes an unobserved query.
+Existing profiles prepare first; the common fallback only covers requests they
+leave unrepresented and preserves their established transport selection.
+Current @35/@36 storage admits an owned machine-selection witness and preserves
+the existing access-origin manifest; full original scientific predicates still
+verify the native results. A bounded shared-header witness does not replace
+complete view verification. Earlier file meanings and original inputs stay fixed.
+Machine wrappers preserve native empty outcomes and reasons, including earlier
+site/quaternary requests; their state cannot silently default to ready.
+When replay begins from a source destination, public `back()` navigation recovers
+the initial task context rather than inventing the initial request in a different
+access. See the [owning report](pending_bugs/assembly_machine_request_retention.md)
+(#148). Technical qualification and B7/B8 acceptance remain separate.
+
 ## Keep overview orientation separate from stored knowledge (2026-11-10)
 
 `CardView.orientation` is the current `card_orientation@1` presentation of a

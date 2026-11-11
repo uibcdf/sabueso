@@ -836,14 +836,16 @@ that was not visited stays `not_saved`. Use `start_new()` for a new interpretati
 Repeated saving without further exploration preserves the same live content;
 saving does not recursively explore the support it prepared previously.
 
-Calling `page()` alone does not retain a machine projection in a human-view export.
-Call the selection's `save()` explicitly when that exact agent request needs to be
-reopened. A human export can preserve the underlying scientific findings while
-returning `not_saved` for a machine projection that was only paged; the captured
-originals remain inspectable through their typed locations.
+Current human exports also retain supported scientific selections already
+executed in the observed exploration's actual accesses, including a projection
+that was only paged. Another projection, filter or ordering that was never
+requested remains `not_saved`. Requests from a separate, unrepresented access
+are not silently imported. Older original files keep their narrower retained
+scope. Saving the selection explicitly also lets you choose it as the saved root.
 
-The comparison uses saved exploration format `@3`; genuine `@1`/`@2` readers and
-source/instance panes retain their original meanings. Integrity checks establish
+Earlier comparison files use format `@3`; current exports choose a supported
+format that retains the observed requests and actual access origins. Genuine
+earlier readers and source/instance panes retain their original meanings. Integrity checks establish
 consistency with the captured inputs, not the authenticity or truth of a source.
 Broader assembly/region/model integration and researcher acceptance remain open.
 
@@ -888,6 +890,12 @@ questions or `filter("role", equals="source")` for all source links.
 This preview policy also applies when reopening a newly saved exploration.
 Older saved files preserve their original prefix preview; `start_new()` begins
 a new live exploration with current presentation.
+
+Saved explorations also retain their original default overview and chemical
+preview when reopened and saved again. The explicit `.orientation` and
+`.chemical_reading` properties provide current detached readings of supported
+original captures. Use `start_new()` to begin a session with current default
+presentation; the original file and its scientific results remain unchanged.
 
 ## Open a structure's original context
 
@@ -1216,8 +1224,9 @@ original_assembly = sabueso.read_exploration(
 assert original_assembly.native_payload == assembly_view.native_payload
 ```
 
-Save a compact agent request separately when you want to retain that exact
-projection, filter and ordering:
+You can also make a compact agent request the saved root. Its exact projection,
+filter and ordering are retained; current human exports in the same observed
+exploration also preserve already executed supported scientific requests:
 
 ```python
 assembly_selection_receipt = assembly_selection.save("assembly-selection.json")
@@ -1653,6 +1662,8 @@ chemistry = molecule_explorer.answer("chemical_identity")
 chemistry
 molecule_properties = molecule_explorer.answer("property_context")
 molecule_properties.table()
+chemistry.chemical_reading
+molecule_properties.chemical_reading
 ```
 
 Chemical representations, formula and retained `same_as` statements remain separate
@@ -1943,8 +1954,8 @@ restored_selection.page(limit=2, max_bytes=65536)
 The `selections` catalog discovers other retained requests. Old session cursors
 are rejected. Saving a small machine selection still retains the full underlying
 result and captured inputs; the bounded page is a transport view, not the bundle's
-storage scope. Original structural machine selections now share the same saved
-reader; broader scientific selectors remain pending.
+storage scope. Supported scientific selectors use their original versioned
+readers; unexecuted variants remain `not_saved`.
 
 ## Keep a scientific reading without redoing it later
 

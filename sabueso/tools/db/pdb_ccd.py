@@ -30,7 +30,7 @@ from sabueso.tools.db._record import online, source_record
 
 RCSB_GRAPHQL = "https://data.rcsb.org/graphql"
 COMPONENTS_QUERY = """query($ids: [String!]!) { chem_comps(comp_ids: $ids) {
-  chem_comp { id name formula type formula_weight pdbx_release_status }
+  chem_comp { id name formula type formula_weight pdbx_release_status pdbx_formal_charge }
   rcsb_chem_comp_descriptor { InChI InChIKey SMILES SMILES_stereo }
 } }"""
 

@@ -133,7 +133,9 @@ python examples/user_journeys/structural_source_review.py read --output /tmp/sab
 
 Start with an empty directory and retain all three files. Human inspection and
 complete finite agent reads preserve original values, units and source/back
-context. The finite assembly request is the current saved root. Twelve declared
+context. The human assembly view is the saved root; the reader follows `back()`
+to the initial task context before replaying its original finite agent requests.
+Twelve declared
 positions include unresolved K/L; these are not twelve established physical
 copies. Contact records do not establish regional overlap or assembly membership.
 Reading requires no fixtures or geometry engine. This is technical preparation

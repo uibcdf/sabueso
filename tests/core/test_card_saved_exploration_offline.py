@@ -597,7 +597,11 @@ def test_optional_presentation_metadata_and_machine_resave(tmp_path):
     original_metadata = json.loads(path.read_text(encoding="utf-8"))[
         "presentation_metadata"
     ]
-    assert original_metadata == {"navigation_preview": "question_destination_preview@1"}
+    assert original_metadata == {
+        "navigation_preview": "question_destination_preview@1",
+        "overview_orientation": "card_orientation@1",
+        "chemical_context": "chemical_context_reading@1",
+    }
     mutate(
         path,
         lambda data: data["presentation_metadata"].update(

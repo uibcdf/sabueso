@@ -2,7 +2,7 @@
   "format": "sabueso.fixture_delivery@1",
   "reviewed": "2026-10-09",
   "issue": "uibcdf/sabueso#112",
-  "scope": "Reviewed recovery inputs, release compatibility artifacts and bounded public RCSB assembly-generation/nonpolymer-instance captures; earlier fixtures retain their notices. Public 1TCD source/coordinate correspondence inputs (#173) are separately declared. Public AlphaFold Q8WZ42-F2 archive-native control and its UniProt reference (#148) are separately declared.",
+  "scope": "Reviewed recovery inputs, release compatibility artifacts and bounded public RCSB assembly-generation/nonpolymer-instance captures; earlier fixtures retain their notices. Public 1TCD source/coordinate correspondence inputs (#173) are separately declared. Public AlphaFold Q8WZ42-F2 archive-native control and its UniProt reference (#148) are separately declared. Public SO4 CCD formal-charge context is separately declared.",
   "files": [
     {
       "path": "temp_data/3did/3did_dmi_flat.gz",
@@ -1434,6 +1434,54 @@
       "statement": "https://rest.uniprot.org/help/license",
       "basis": "Public native AlphaFold archive control or original UniProt reference, received2026-11-05; CC BY4.0 reconfirmed on official download/licence pages. Authored capture/transport metadata follows repository MIT; native source rights and attribution remain in temp_data/NOTICE.md. Not a prediction-API record or production archive intake.",
       "terms_sha256": "fe83c65a896bce874060b072a7af779b661d76da4f27c8299bcc62d49ca9a666"
+    },
+    {
+      "path": "temp_data/pdb_ccd_charge/capture.json",
+      "source_id": "pdb_ccd",
+      "sha256": "a837afe2d85f0c28b8c623c21e5264b759fbebf94f708dd8be44d5a8454d9023",
+      "bytes": 1770,
+      "delivery": "repository",
+      "recorded_licence": "CC0-1.0",
+      "reviewed": "2026-11-11",
+      "statement": "https://www.rcsb.org/pages/usage-policy",
+      "basis": "One public SO4 GraphQL capture on 2026-11-11 UTC, explicitly retaining the native formal-charge declaration. Unchanged request/response bytes and decoded/re-encoded component are distinguished in capture.json. RCSB programmatic API data are CC0-1.0; authored request/metadata follow repository MIT. No private/pilot content or inferred missing charge.",
+      "terms_sha256": "86df0bab5678dbb4fd60e2344c4fdf8c806a85ec988c0283c6a0f6cdfaa18cb8"
+    },
+    {
+      "path": "temp_data/pdb_ccd_charge/pdb_ccd/SO4.json",
+      "source_id": "pdb_ccd",
+      "sha256": "f7819ac098a8b87356c8f9265bbbd65368c3f0f94e5ca2c12708120553b5dfd6",
+      "bytes": 433,
+      "delivery": "repository",
+      "recorded_licence": "CC0-1.0",
+      "reviewed": "2026-11-11",
+      "statement": "https://www.rcsb.org/pages/usage-policy",
+      "basis": "One public SO4 GraphQL capture on 2026-11-11 UTC, explicitly retaining the native formal-charge declaration. Unchanged request/response bytes and decoded/re-encoded component are distinguished in capture.json. RCSB programmatic API data are CC0-1.0; authored request/metadata follow repository MIT. No private/pilot content or inferred missing charge.",
+      "terms_sha256": "86df0bab5678dbb4fd60e2344c4fdf8c806a85ec988c0283c6a0f6cdfaa18cb8"
+    },
+    {
+      "path": "temp_data/pdb_ccd_charge/wire/SO4.graphql.json",
+      "source_id": "pdb_ccd",
+      "sha256": "ccd37cb016c67c6b9455851b0bd4fa564d400a91a6912f7401e93e88b6463d93",
+      "bytes": 377,
+      "delivery": "repository",
+      "recorded_licence": "CC0-1.0",
+      "reviewed": "2026-11-11",
+      "statement": "https://www.rcsb.org/pages/usage-policy",
+      "basis": "One public SO4 GraphQL capture on 2026-11-11 UTC, explicitly retaining the native formal-charge declaration. Unchanged request/response bytes and decoded/re-encoded component are distinguished in capture.json. RCSB programmatic API data are CC0-1.0; authored request/metadata follow repository MIT. No private/pilot content or inferred missing charge.",
+      "terms_sha256": "86df0bab5678dbb4fd60e2344c4fdf8c806a85ec988c0283c6a0f6cdfaa18cb8"
+    },
+    {
+      "path": "temp_data/pdb_ccd_charge/wire/SO4.request.json",
+      "source_id": "pdb_ccd",
+      "sha256": "6c92b92af5813c1f053080467a11148272f06e36dff326cc7577f72eed3e9733",
+      "bytes": 264,
+      "delivery": "repository",
+      "recorded_licence": "CC0-1.0",
+      "reviewed": "2026-11-11",
+      "statement": "https://www.rcsb.org/pages/usage-policy",
+      "basis": "One public SO4 GraphQL capture on 2026-11-11 UTC, explicitly retaining the native formal-charge declaration. Unchanged request/response bytes and decoded/re-encoded component are distinguished in capture.json. RCSB programmatic API data are CC0-1.0; authored request/metadata follow repository MIT. No private/pilot content or inferred missing charge.",
+      "terms_sha256": "86df0bab5678dbb4fd60e2344c4fdf8c806a85ec988c0283c6a0f6cdfaa18cb8"
     }
   ],
   "local_qualification_tests": {

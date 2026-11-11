@@ -963,7 +963,10 @@ def test_fresh_cross_card_publication_question_keeps_destination_and_exact_reque
     assert saved.request == expected_request and saved.native_payload == expected_native
     assert saved.context["card_ref"] == expected_focal
     assert saved.back().request is None
-    bundle = logical_bundle(path)
+    # The observed current protein route catalog owns the @35 access binding.
+    # Genuine earlier literature controls keep the strict @19/@20 helper above.
+    bundle = json.loads(path.read_text(encoding="utf-8"))
+    assert bundle["format"] == "sabueso.card_exploration@35"
     bundle["views"][bundle["root_navigation_ref"]]["flags"]["_request"]["options"][
         "publication_ref"
     ] = "pubmed:8061610"

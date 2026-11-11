@@ -54,6 +54,13 @@ concrete. The [researcher kit](pending_proposals/researcher_acceptance_0150.md)
 provides shareable documentation and public input preparation while recruitment
 is pending; it supplies no actual acceptance result.
 
+The current integration joins source-bound chemical context with retention of
+executed scientific requests in their actual access instances. Historical
+default presentation is now explicit and survives resaving; the broad profile
+inventory and [CHECKPOINT](CHECKPOINT.md) own qualification. The current local
+integration checkpoint passes; obtain genuine B7 observations next. Test counts do not replace
+researcher feedback, scientific review or the actual consumer's acceptance.
+
 ## Latest release: 0.14.0 (#134)
 
 Published on 2026-10-09 from `78623d0`, schema 0.3.13. Exact source, staging,

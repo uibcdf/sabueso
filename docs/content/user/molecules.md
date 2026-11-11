@@ -30,6 +30,38 @@ source statements, not locally calculated descriptors. Physical quantities retai
 their units; use `Card.quantity` for quantity fields and {doc}`field_paths` to find
 their paths. Alternatives/conflicts remain inspectable on the card.
 
+## Read chemical declarations and property methods
+
+For a loaded molecule Card, the development exploration interface exposes the
+original representations and their source context:
+
+```python
+explorer = card.explore()
+identity = explorer.answer("chemical_identity")
+context = identity.chemical_reading
+properties = explorer.view("properties")
+property_context = properties.chemical_reading
+```
+
+`context` retains SMILES/InChI values, representation labels, exact value/source
+locations and source-declared parent identifiers or CCD formal charge numbers
+when captured. Missing charge or parent information stays unknown. Sabueso does
+not infer stereochemical completeness, physical charge or parent identity from
+the representation. The chemistry context describes the original panel even
+when a display filter selects fewer rows.
+
+`property_context` follows the selected property fields and retains each complete
+field record, its value and unit, and source method/determination metadata. A
+method is attributed only when its assertion names that same field. Measured or
+calculated origin is shown only when the source declares it; a method's name
+does not determine it. Conflicting declarations remain separate.
+
+Text and HTML provide bounded previews. Explicit `chemical_reading` returns a
+detached copy of the complete retained presentation context, including unknown
+states and exact locations usable with `explorer.inspect(locator=...)`. Its
+`complete` flag describes those inputs, not all available chemical knowledge.
+The same interface reads retained saved sessions without acquiring new sources.
+
 ## Activity belongs to an experimental context
 
 Resolving a molecule does not query all experiments against all its targets.

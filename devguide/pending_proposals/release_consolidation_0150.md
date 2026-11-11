@@ -34,6 +34,11 @@ release consolidation and publication remain paused.
 Candidate selection, schema freezing, staging builds and publication have not
 started; this proposal authorizes none of them.
 
+The [delivery readiness worksheet](../../devtools/conda-build/release_readiness_0.15.0.md)
+lists the concrete missing acceptance, exact-source, schema, artifact/platform and
+publication records. It prepares maintainer handoff while recruitment and
+functional integration continue; no candidate or publication result is inferred.
+
 The release would consolidate post-0.14.0 SQLite lifetime integrity, comparative
 genomic/coverage and historical-selector corrections, declared refresh request
 restoration, source observation/prerequisite handling, versioned disease identity
@@ -111,16 +116,19 @@ No existing source or consumer receipt substitutes for these remaining gates.
 
 Follow the authoritative [staged release route](../../devtools/conda-build/README.md):
 
-1. Confirm the substantial release scope and version, historical readers, source
-   delivery and dependency release preflight. Choose the final candidate and verify
-   all applicable CI/governance gates on that exact SHA.
-2. Build one immutable staging artifact. Qualify clean installed-package receiving
+1. Confirm acceptance, scope, version, historical readers, public source delivery
+   and release dependency preflight. Generate the unpublished schema's frozen
+   public Card using a preliminary local Conda candidate installed in a clean
+   environment, as the schema policy prescribes. Keep that preliminary build local
+   and preserve earlier cards/shapes and declared migration/refresh meanings.
+2. Include the accepted freeze in the final candidate source and verify all
+   applicable CI/governance gates on its exact SHA. Build one immutable staging
+   artifact. Qualify clean installed-package receiving
    on Linux, Apple Silicon macOS and Windows, each with Python 3.11–3.14 and declared
    public dependency provenance. A local editable suite is a separate scope.
-3. Freeze the currently unpublished card schema 0.3.14 using the exact candidate's
-   installed package and declared public fixtures. Preserve earlier cards/shapes;
-   migration, refresh and historical selectors retain their declared meaning.
-4. After candidate acceptance, publish the release, promote that same tested Conda
+3. Record candidate acceptance against the exact source, frozen input and installed
+   archive. A changed source or archive requires the affected qualification again.
+4. After final acceptance, publish the release, promote that same tested Conda
    file, verify a clean public installation and complete identical-tag Zenodo
    archival. Update installation/release claims only after their evidence exists.
 

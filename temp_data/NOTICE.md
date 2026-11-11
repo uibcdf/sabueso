@@ -21,11 +21,28 @@ recording the release and retrieval time, it is a modified copy. It is redistrib
 under the source's licence, and the modification is stated here and in the client that
 wrote it (`sabueso/tools/db/`, `sabueso/resolver/`).
 
+## Bounded public CCD charge context
+
+`pdb_ccd_charge/wire/SO4.graphql.json` and `wire/SO4.request.json` retain the
+unchanged complete response and exact request bytes from one RCSB GraphQL SO4
+query on 2026-11-11 UTC. `pdb_ccd_charge/pdb_ccd/SO4.json` is decoded
+`data.chem_comps[0]`, re-encoded as JSON; it is not the original wire.
+`pdb_ccd_charge/capture.json` records exact UTC retrieval, hashes, representations
+and scope. No native entry version was requested or inferred. The query includes
+`chem_comp.pdbx_formal_charge`; a missing field is never filled from a dictionary
+default or inferred from SMILES/InChI.
+
+Source API data are **CC0-1.0** under the [RCSB usage policy](https://www.rcsb.org/pages/usage-policy),
+checked 2026-11-11; credit RCSB PDB and the wwPDB Chemical Component Dictionary.
+Authored request/capture metadata follow repository MIT. This direct bounded
+fixture preparation claims no Sabueso acquisition trace. Existing CCD fixtures
+and all historical Card/source originals remain unchanged.
+
 ## Reviewed recovery inputs
 
 The reviewed recovery file inventory is
 [`devguide/sources/fixture_delivery.json`](../devguide/sources/fixture_delivery.json).
-It records 81 repository-delivery inputs and 37 protected local-only originals,
+It records 85 repository-delivery inputs and 37 protected local-only originals,
 with exact byte identities and file-specific decisions. `.gitignore` protects
 the local input directories; `python tools/fixture_delivery.py --check` rejects
 their inclusion in the Git index and checks the reviewed repository inputs.
@@ -197,6 +214,7 @@ do not regenerate it to satisfy a later reader.
 | `pubchem_bioassay/*.json` | PubChem BioAssay (NCBI/NLM): assays linked to P52270 and P60174, their summaries, concise tables and the InChIKeys of their compounds | — | 2026-09-25 | US public domain (NLM policy); deposited data keeps its depositor's terms: these assays were deposited by ChEMBL (**CC BY-SA 3.0**) and BindingDB |
 | `rcsb/*.json` | RCSB PDB (wwPDB archive), GraphQL entry data; assemblies added and 3Q37 retrieved 2026-09-24; all refetched with mutations, tags, unobserved residues, refinement and dates, and 2OMA, 2VOM, 4HHP and 4UNK added, 2026-09-25; refetched with author numbering, and 2V5B and 1WYI added, 2026-09-26 (1KLG kept from 2026-09-25: RCSB answered it only partially that day); all refetched with the program that assigned each instance feature (`provenance_source`), 2026-09-27, each answered completely, 1KLG included; 1BRS (barnase–barstar) added 2026-09-29; 2BUJ (STK16) and 6LI0 (GPR52, with OPM's and PDBTM's membrane segments) added 2026-09-30 | — | 2026-09-23 | CC0 1.0 |
 | `pdb_ccd/*.json` | wwPDB Chemical Component Dictionary, served by RCSB PDB | — | 2026-09-23 | CC0 1.0 |
+| `pdb_ccd_charge/capture.json`, `pdb_ccd_charge/pdb_ccd/*.json`, `pdb_ccd_charge/wire/*.json` | Public SO4 CCD formal-charge declaration: unchanged complete GraphQL wire/request, separately decoded component and capture hashes; direct fixture preparation without a Sabueso acquisition trace | Native release not retained | 2026-11-11 UTC | Source API data CC0 1.0 under the RCSB usage policy above; authored request/capture metadata MIT. Credit RCSB PDB and wwPDB CCD. |
 | `pdbe_kb/*.json` | PDBe-KB (EMBL-EBI), ligand binding sites (2026-09-23) and interface residues (2026-09-24) | — | 2026-09-23 | CC BY 4.0 |
 | `interpro/*.json` | InterPro (EMBL-EBI), site residues from the CDD member database | InterPro 110.0 | 2026-09-23 | see note below |
 | `string/*.json` | STRING; HsTIM's 50 most confident partners at score ≥ 700, of 78, marked `truncated` 2026-09-29 (refetched: same rows) | 12.0 | 2026-09-23 | CC BY 4.0 |

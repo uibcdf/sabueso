@@ -1,9 +1,53 @@
 # Sabueso — Checkpoint
 
-Current working-state checkpoint: **2026-11-10**. Start with
+Current working-state checkpoint: **2026-11-11**. Start with
 [ONBOARDING](ONBOARDING.md) for project context and the
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
+
+## Integrated saved requests and original chemical context — local checkpoint PASS
+
+Human-root saving now retains already executed scientific requests in their
+actual access instances, including native empty outcomes. The public structural
+review saves its human assembly destination and replays the initial question
+through the original return trail. Molecule panels expose source-bound
+representations, parent/formal-charge declarations and complete property records
+with units; method attribution requires the original field scope. Missing
+scientific meaning remains unknown.
+
+New sessions explicitly record their context-presentation policies. Historical
+protein, comparison, variant and sequence-change readings keep their default
+text/HTML through resaving; current detached readings remain available. Unknown
+owned policy values are refused. Original scientific predicates, Card schema,
+defaults and production byte budgets stay fixed.
+
+The [integration receipt](evidence/card_integration_checkpoint_20261111.json)
+qualifies **11,392 distinct offline cases** against one unchanged **1,349-input
+map**, with independent discovery matching actual execution. All **223 cases in
+seven complete modules** also pass outside checkout against the editable source
+and a separate installed diagnostic wheel. The respective five/nine process
+proofs bind all 24 public input files, placement and package provenance. Copied
+children and repeats add no distinct source coverage.
+
+Wheel, sdist and actual installed files preserve all **918 implementation modules**
+and **seven SOURCE resources**. All 45 original test-data files remain intact.
+The diagnostic version `0.0.0+unknown` uses shared/editable dependencies; this is
+Linux Python 3.14 development receiving, not a clean public installation or
+candidate/platform matrix. Earlier stopped/resource-calibration epochs keep
+their actual incomplete outcomes and contribute no passing coverage.
+
+Local quality, schema/shape, registry, fixture delivery and dependency/governance
+checks pass. The receipt records workflow wiring and warning-fatal documentation
+checks separately. This closes the local integration checkpoint; it does not
+supply independent B7 scientist/researcher,
+actual-agent/workload or real-consumer acceptance. Recruitment remains pending.
+The [delivery worksheet](../devtools/conda-build/release_readiness_0.15.0.md)
+records B8's remaining prerequisites. B2 review stays deferred; candidate selection,
+schema freeze, staging and release remain unresumed. Intermediate CI is deferred
+under #148/#112 with `[skip ci]`; exact-candidate recovery must actually pass,
+and missing/skipped runs are not PASS.
+
+Earlier sections retain their dated source and receiving scopes.
 
 ## Independent researcher review kit — technical preparation PASS
 
@@ -30,9 +74,10 @@ scientific behavior changes; no full-suite result is claimed for this scope.
 The [kit receipt](evidence/researcher_review_kit_checkpoint_20261110.json) owns the
 bounded source/input/rehearsal observations. The
 [three closure fronts](CONTINUATION_PLAN_20261104.md#three-remaining-closure-fronts)
-make the functional gaps, B7 results and B8 delivery dependencies explicit. The
-known human-root/distinct-access saved-reading limitation remains open; the kit
-does not turn its workaround into a fix. Independent scientific, actual-agent,
+make the functional gaps, B7 results and B8 delivery dependencies explicit. At
+that kit checkpoint the human-root/distinct-access limitation remained open.
+The current integration above corrects it; the kit itself supplied no fix.
+Independent scientific, actual-agent,
 workload and real-consumer acceptance remain separate. B2 review is deferred;
 B8/candidate/schema freeze/release remain unresumed. CI is deferred under
 #148/#112 with `[skip ci]`, recoverable on the exact authorized candidate; absent
@@ -104,10 +149,12 @@ finite literal reads retain values/units; the assembly agent page retains the
 same selected cells and original support as the human view. CP1252 parent I/O
 with an explicit UTF-8 child wire is a portability control, not Windows receiving.
 
-The current session deliberately saves its finite assembly agent request as
-root, as the existing 1TCD example does. An earlier human-destination-root
+That checkpoint saved its finite assembly agent request as root, as the
+existing 1TCD example does. The current integration instead saves the human
+assembly destination and retains its observed machine requests. An earlier human-destination-root
 calibration did not recover that distinct original access request; its observation
-and unisolated cause remain separate review work, not passing qualification.
+then had no isolated cause. The current request-retention report explains and
+corrects it without promoting the earlier calibration to qualification.
 The maintainer-approved [report is published in #148](https://github.com/uibcdf/sabueso/issues/148#issuecomment-6782871860),
 with exact-body readback; publication does not establish a general architectural diagnosis.
 The [receipt](evidence/structural_source_review_checkpoint_20261110.json) records
