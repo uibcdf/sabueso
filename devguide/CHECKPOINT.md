@@ -5,6 +5,47 @@ Current working-state checkpoint: **2026-11-10**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Combined structural source review — local checkpoint PASS
+
+The [public review](pending_proposals/structural_source_review_walkthrough.md)
+connects TcTIM's original position-96 annotation with exact 1SUX chain gaps and
+author numbering, all eight BTS/SO4 instances and original contact collections,
+source/back routes and twelve separate assembly declaration positions. The
+deliberate `[1, 96]` question keeps a coordinate gap; K/L remain unresolved and
+physical membership stays `not_computed`. A separate historical session keeps
+missing original annotation scope distinct from source absence. The full linked
+structure inventory remains retained with its original receiving limits.
+
+All **132 distinct selected source cases pass in seven complete modules** on an
+unchanged **1,342-path map**. Independent collection equals execution. All **four
+new copied cases pass outside checkout**, with six byte-identical copied inputs,
+external pytest/script scratch and five controller/worker placement/import/
+editable-metadata proofs. Strict independent reading forbids current science,
+Card construction, acquisition, fixture reads and MolSysMT imports. Complete
+finite literal reads retain values/units; the assembly agent page retains the
+same selected cells and original support as the human view. CP1252 parent I/O
+with an explicit UTF-8 child wire is a portability control, not Windows receiving.
+
+The current session deliberately saves its finite assembly agent request as
+root, as the existing 1TCD example does. An earlier human-destination-root
+calibration did not recover that distinct original access request; its observation
+and unisolated cause remain separate review work, not passing qualification.
+The [receipt](evidence/structural_source_review_checkpoint_20261110.json) records
+scope and limits. No runtime module, dependency metadata, Card schema, scientific
+rule/default, production byte budget or original input changes; all seven SOURCE
+resources and 45 protected test-data files remain byte-identical.
+
+Lint/format, guide/governance, fixture delivery and the warning-fatal 75-source
+Sphinx build pass. Both installed routes copy/select the complete new module and script; local
+editable receiving does not qualify a clean installed artifact or hosted/platform
+gate. Explicit participant tasks prepare independent review without supplying it.
+B2 review is deferred; broader B6 orientation/transitions and B7 independent
+scientist/researcher/actual-agent/workload/consumer acceptance remain open.
+B8/candidate/schema freeze/release remain unresumed. Intermediate CI stays
+deferred under #148/#173/#112 with `[skip ci]`; missing/skipped runs are not PASS.
+Exact committed metadata/code, remote and cleanup observations belong to the
+owned handoff.
+
 ## Combined protein review and current saved catalogs — local checkpoint PASS
 
 The [public review](pending_proposals/protein_context_review_walkthrough.md)
@@ -50,7 +91,10 @@ B2 review remains deferred; broader profile completion and B7 independent
 scientist/researcher/agent/workload/actual-consumer acceptance remain open.
 B8/candidate/schema freeze/release remain unresumed. Intermediate CI stays
 deferred under #148/#112/#193 with `[skip ci]`; missing/skipped runs are not PASS.
-Concrete #148/#112 report drafts remain internal pending publication authority.
+The maintainer-approved concrete reports are now published in
+[#148](https://github.com/uibcdf/sabueso/issues/148#issuecomment-6782367677) and
+[#112](https://github.com/uibcdf/sabueso/issues/112#issuecomment-6782369822), with
+exact-body readback recorded locally. Their publication does not close acceptance.
 
 ## Independent knowledge-comparison saved reading — local checkpoint PASS
 

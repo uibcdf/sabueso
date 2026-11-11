@@ -26,6 +26,23 @@ causality. This is technical preparation. The
 [researcher tasks and acceptance record](../../devguide/pending_proposals/protein_context_review_walkthrough.md)
 keep human/scientific acceptance separate.
 
+### TcTIM annotation, ligands and assembly source review
+
+```bash
+python examples/user_journeys/structural_source_review.py produce --fixtures temp_data --output /tmp/sabueso-structural-source-review
+python examples/user_journeys/structural_source_review.py read --output /tmp/sabueso-structural-source-review
+```
+
+Use an empty directory and keep all three files. The public 1SUX route connects
+the original annotation with chain gaps/numbering, BTS/SO4 instances, complete
+original contact collections, sources and twelve assembly declaration positions.
+Unresolved K/L remain unresolved. A separate historical session retains its
+missing native annotation scope. The finite assembly agent request is the current
+saved root; its access context differs from the source-navigation destination.
+Reading needs no fixtures or coordinate engine. The
+[researcher tasks](../../devguide/pending_proposals/structural_source_review_walkthrough.md)
+keep scientific/human acceptance and physical-copy calculations separate.
+
 ### TcTIM structure, source context and an explicit modeling control
 
 ```bash

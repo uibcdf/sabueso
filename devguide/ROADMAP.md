@@ -181,6 +181,13 @@ Its task record prepares B7 without claiming researcher or scientific acceptance
 Complete the broad inventory's remaining structural transitions and protein/
 molecule/disease orientation work alongside those recorded reviews.
 
+The [structural source review](pending_proposals/structural_source_review_walkthrough.md)
+now combines existing annotation/region, chain numbering/gaps, original ligand/
+contact and assembly declaration routes over 1SUX, plus a historical unknown.
+Its explicit participant tasks complement the bounded 1TCD modeling control.
+Source declaration scope and physical membership remain separate; independent
+scientific/researcher and broader nature-specific orientation work stay open.
+
 Continue the rich profiles through the
 [current destination actions](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions)
 with applicable local checks and the maintainer's authorized CI batching.

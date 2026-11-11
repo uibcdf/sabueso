@@ -83,6 +83,13 @@ on the unchanged parent source. Current menus and molecular target navigation
 use @35/@36 while explicit historical session formats retain their old catalog
 meaning. The complete molecule LIVE cohort remains an owning regression.
 
+The [combined structural source review](pending_proposals/structural_source_review_walkthrough.md)
+connects exact annotation/region, per-chain gaps/numbering, all original 1SUX
+ligand/contact collections, sources and assembly declaration positions. It keeps
+historical missing scope, unresolved components and uncomputed physical membership
+explicit. Its finite assembly request is the saved root. This complements the
+bounded 1TCD MolSysMT control and prepares B7 tasks; CHECKPOINT owns qualification.
+
 The first B6 [variant/isoform tissue-context profile](pending_proposals/card_variant_tissue_exploration.md)
 now shares existing scoped native results between human and typed agent access.
 It preserves original genomic/transcript/CDS scope, per-tissue unknowns, source

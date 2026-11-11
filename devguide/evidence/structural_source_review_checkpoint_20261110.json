@@ -1,0 +1,162 @@
+{
+  "state": "BOUNDED_STRUCTURAL_SOURCE_REVIEW_PASS_CI_DEFERRED",
+  "date": "2026-11-10",
+  "owners": [
+    "uibcdf/sabueso#148",
+    "uibcdf/sabueso#173",
+    "uibcdf/sabueso#112"
+  ],
+  "source_parent": "4802ab26598791c54e895bc318a692bee1b8df5a",
+  "behavior": "One public annotation/region/chain-numbering/ligand-contact/assembly source journey plus a separate historical missing-native-scope control.",
+  "public_scope": {
+    "protein": "P52270",
+    "fresh_rcsb_fixture": "rcsb_nonpolymer_instances/rcsb/1SUX.json",
+    "other_uniprot_linked_structures": "Retained, with no newly requested RCSB input",
+    "annotation_region": [
+      96
+    ],
+    "deliberate_gapped_region": [
+      1,
+      96
+    ],
+    "ligand_components": [
+      "BTS",
+      "SO4"
+    ],
+    "ligand_instances": 8,
+    "assembly_declaration_positions": 12,
+    "unresolved_native_keys": [
+      "K",
+      "L"
+    ],
+    "physical_membership": "not_computed",
+    "historical": "Frozen schema 0.3.9 Card; original native annotation scope missing"
+  },
+  "source": {
+    "distinct_selected_cases": 132,
+    "complete_modules": 7,
+    "source_paths": 1342,
+    "independent_collection_equals_execution": true,
+    "receptor_complete": true,
+    "receptor_integrity_valid": true,
+    "workers": 4,
+    "resources": {
+      "elapsed_s": 200.62,
+      "peak_owned_rss_bytes": 1683648512,
+      "minimum_host_available_bytes": 58133614592,
+      "peak_owned_swap_bytes": 0
+    }
+  },
+  "copied": {
+    "passed": 4,
+    "complete_modules": 1,
+    "byte_identical_inputs": 6,
+    "placement_import_metadata_proofs": 5,
+    "fixture_symlinks": false,
+    "cwd_and_pytest_script_scratch_outside_checkout": true,
+    "resources": {
+      "elapsed_s": 128.33,
+      "peak_owned_rss_bytes": 2279481344,
+      "minimum_host_available_bytes": 57616531456,
+      "peak_owned_swap_bytes": 0
+    },
+    "scope": "Editable checkout with shared dependencies; not clean installed, public, candidate or platform qualification."
+  },
+  "reading": {
+    "independent_processes": true,
+    "current_science_card_construction_acquisition_fixture_reads_forbidden": true,
+    "molsysmt_imports_forbidden": true,
+    "finite_literal_agent_reads_complete": true,
+    "assembly_agent_cells_and_original_support_equal_human": true,
+    "explicit_finite_assembly_request_is_saved_root": true,
+    "original_source_component_and_empty_return_paths": true,
+    "changed_observation_and_overwrite_refusals": true,
+    "inherited_cp1252_explicit_utf8_wire": true,
+    "native_windows_qualified": false
+  },
+  "unchanged": {
+    "runtime_modules_and_dependency_metadata": true,
+    "card_schema": "0.3.14",
+    "scientific_rules_and_defaults": true,
+    "production_byte_budgets": true,
+    "frozen_SOURCE_resources": 7,
+    "protected_test_data_files": 45,
+    "original_capsules_regenerated": false
+  },
+  "code_inputs": {
+    "examples/user_journeys/structural_source_review.py": "ebcabd79e8eec011c2b184d8ada41e850d2c2691706f789aa2880fbd503ffc5a",
+    "tests/core/test_structural_source_review_journey_offline.py": "9177dd1258b2ce8e7cbe18f060f7c0990d00bfd1ce3c497d0b0a1f41a0abcbd2",
+    ".github/workflows/ci.yml": "fffd0abbe180b2690acdd5bc1d84a9a4f6e862f2748571318ea3bf5d48fb58b6",
+    ".github/workflows/test_staged_conda_package.yaml": "fa166a45b14868aac06a9141a362d7435c0d0cf595726b77fe4594c03bc0be05"
+  },
+  "fixture_inputs": {
+    "test_structural_source_review_journey_offline.py": {
+      "original": "tests/core/test_structural_source_review_journey_offline.py",
+      "sha256": "9177dd1258b2ce8e7cbe18f060f7c0990d00bfd1ce3c497d0b0a1f41a0abcbd2",
+      "bytes": 5683
+    },
+    "examples/user_journeys/structural_source_review.py": {
+      "original": "examples/user_journeys/structural_source_review.py",
+      "sha256": "ebcabd79e8eec011c2b184d8ada41e850d2c2691706f789aa2880fbd503ffc5a",
+      "bytes": 13465
+    },
+    "temp_data/P52270.json": {
+      "original": "temp_data/P52270.json",
+      "sha256": "3f3784c45734794f0eefe20cb2402eb479f4fff791f272c53fb883fce705c7e0",
+      "bytes": 18484
+    },
+    "temp_data/NOTICE.md": {
+      "original": "temp_data/NOTICE.md",
+      "sha256": "e6a73bdc75051f7e3e91a1097a7867f56598cb455580bc1735fbe704bea22f6e",
+      "bytes": 103070
+    },
+    "temp_data/frozen_cards/schema_0.3.9__P52270.json": {
+      "original": "temp_data/frozen_cards/schema_0.3.9__P52270.json",
+      "sha256": "797e77018947dcd5ee606e59fe83df79541c8274a2411466467cc5ffccaf3d0b",
+      "bytes": 517500
+    },
+    "temp_data/rcsb_nonpolymer_instances/rcsb/1SUX.json": {
+      "original": "temp_data/rcsb_nonpolymer_instances/rcsb/1SUX.json",
+      "sha256": "3ff35948cc8d70cfeae011839ccaa08e3b5b6e658e83d74c5b14a3ec56e706e1",
+      "bytes": 67222
+    }
+  },
+  "local_checks": {
+    "quality": "Ruff, formatting, changed Python 3.11 grammar, canonical MOLI governance, maintained guide paths/anchors and exact receiving-workflow wiring PASS",
+    "static": "Fixture delivery and development dependency preflight PASS",
+    "sphinx": "75-source warning-fatal HTML build PASS",
+    "receipts_sha256": {
+      "quality-validation.json": "1c9b02ca1443dc5f61c4c70dc912ed1551122100bdf264effc875dd2e816d8a7",
+      "static-validation.json": "5b5d4226bf7838024a06af15c2464a6f79591cf8a4701eed887cbb3b3253481b",
+      "sphinx-resource.json": "1effca3ed169b81643dad2482ed9d512d62946691d5082e02d7026cbf60716e9"
+    }
+  },
+  "resource_policy": {
+    "maximum_workers": 8,
+    "actual_workers": 4,
+    "owned_rss_ceiling_gib": 10,
+    "host_available_floor_gib": 16,
+    "native_threads": 1,
+    "fresh_preflight_and_monitoring": true,
+    "resource_reservation_claimed": false
+  },
+  "published_reports": [
+    "https://github.com/uibcdf/sabueso/issues/148#issuecomment-6782367677",
+    "https://github.com/uibcdf/sabueso/issues/112#issuecomment-6782369822"
+  ],
+  "nonqualifying_epochs": [
+    "Older 1SUX input lacks retained generation data; the complete review explicitly selects the declared newer public capture.",
+    "A development example digest tried to encode a native Quantity directly; it now inspects the original QuantityRecord wire without dropping units.",
+    "A human-destination-root calibration did not recover the distinct original root-access finite assembly request. The passing scope explicitly saves that finite request as root. General root/access preservation and the exact cause remain separate review work."
+  ],
+  "deferred": {
+    "ci": "Intermediate [skip ci] checkpoint. Record exact final SHA in the local handoff; recover applicable full source, installed/platform and governance gates on the exact authorized candidate through gh-run-receptor. Missing/skipped runs are not PASS.",
+    "acceptance": "B2 review deferred. B6 broader transitions/orientation and B7 independent scientist, uncoached researcher, actual agent/workload and consumer acceptance stay open.",
+    "release": "B8, candidate selection, schema freeze and publication remain unresumed."
+  },
+  "evidence_retention": {
+    "local_root": "recovered_work/checkpoint_recovery_20261106/b6-structural-review-1",
+    "owner": "uibcdf/sabueso#148/#173/#112",
+    "review_trigger": "Next accepted checkpoint or B7 review; preserve originals and useful public examples/receipts, remove only completed owned disposable clients/caches."
+  }
+}

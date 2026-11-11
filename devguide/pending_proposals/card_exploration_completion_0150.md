@@ -134,6 +134,14 @@ includes task prompts and an acceptance record for a separate researcher review.
 It does not replace the remaining broad-profile integration, nature-specific
 presentation, structural transitions or independent acceptance in this inventory.
 
+The [combined structural review](structural_source_review_walkthrough.md) connects
+the original TcTIM annotation with exact 1SUX chain gaps/numbering, all retained
+ligand/contact collections, sources and separate assembly declaration positions.
+K/L remain unresolved; physical membership stays uncomputed. A historical session
+keeps missing annotation scope distinct from source absence. Its independent tasks
+prepare B7; further cross-provider transitions, broad orientation and acceptance
+remain open. The separate finite 1TCD MolSysMT scope is unchanged.
+
 ## Implementation order
 
 For resumption after the 2026-11-04 audit, the

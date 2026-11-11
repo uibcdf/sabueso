@@ -119,6 +119,26 @@ travel beside `knowledge.db`; retain the complete output directory. Hash checks
 detect inconsistency, not authenticity or reuse permission. Inspect {doc}`terms`
 and {doc}`source_coverage` before reusing or redistributing knowledge.
 
+## Review annotation, ligand and assembly sources
+
+The development `examples/user_journeys/structural_source_review.py` follows
+TcTIM's position-96 annotation into exact 1SUX chain numbering and coordinate
+gaps, original BTS/SO4 contacts, source records and assembly declaration positions.
+It also reopens a historical annotation with missing native scope.
+
+```bash
+python examples/user_journeys/structural_source_review.py produce --fixtures temp_data --output /tmp/sabueso-structural-source-review
+python examples/user_journeys/structural_source_review.py read --output /tmp/sabueso-structural-source-review
+```
+
+Start with an empty directory and retain all three files. Human inspection and
+complete finite agent reads preserve original values, units and source/back
+context. The finite assembly request is the current saved root. Twelve declared
+positions include unresolved K/L; these are not twelve established physical
+copies. Contact records do not establish regional overlap or assembly membership.
+Reading requires no fixtures or geometry engine. This is technical preparation
+for independent researcher review, with the separate modeling scope below.
+
 ## Explore one structure and its modeling inputs
 
 The development `examples/user_journeys/structural_context.py` follows TcTIM's
