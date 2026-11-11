@@ -48,6 +48,12 @@ remote runner does not block independent authorized work; its dependent acceptan
 or delivery remains open. An integrity fix needed by a current journey belongs
 in that journey even when its broader direction appears in a later stage.
 
+The [three closure fronts](CONTINUATION_PLAN_20261104.md#three-remaining-closure-fronts)
+make the remaining functional integration, B7 review and B8 delivery dependencies
+concrete. The [researcher kit](pending_proposals/researcher_acceptance_0150.md)
+provides shareable documentation and public input preparation while recruitment
+is pending; it supplies no actual acceptance result.
+
 ## Latest release: 0.14.0 (#134)
 
 Published on 2026-10-09 from `78623d0`, schema 0.3.13. Exact source, staging,

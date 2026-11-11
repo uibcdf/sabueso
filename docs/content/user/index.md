@@ -12,6 +12,7 @@ working with decks, curating the literature, and keeping knowledge so it can be 
 - {doc}`card_exploration`
 - {doc}`journeys`
 - {doc}`molecules`
+- {doc}`researcher_review`
 
 **What a protein card knows**
 - {doc}`structures`
@@ -48,6 +49,7 @@ concepts
 card_exploration
 journeys
 molecules
+researcher_review
 structures
 sites_and_interfaces
 bioactivities

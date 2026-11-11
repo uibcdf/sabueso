@@ -5,6 +5,44 @@ Current working-state checkpoint: **2026-11-10**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Independent researcher review kit — technical preparation PASS
+
+The [participant documentation](../docs/content/user/researcher_review.md) now
+provides a recruitment invitation, core protein/molecule/disease tasks, specialist
+modules and a downloadable blank worksheet. The separate
+[maintainer guide](pending_proposals/researcher_acceptance_0150.md) owns setup,
+expected observations and known limitations; exposure and assistance must be
+recorded rather than silently treating a trained demonstration as independent.
+No researcher is designated and actual B7 observations remain pending.
+
+The offline preparer exports three public Card inputs, original pins/file hashes,
+source/runtime labels and licence notices without solving exploration tasks.
+Its nonempty-output refusal occurs before acquisition. A copied client outside
+checkout loads all three exact pins and exercises opening/topics, original
+source/return inspection, empty recovery and saving. A separate process recovers
+all three original values/source routes with Card construction and acquisition
+forbidden. This is development/editable rehearsal, not installed-package,
+scientific or human acceptance. All 52 protected SOURCE/test-data files remain
+byte-identical. Lint/format, Python 3.11 grammar, guide/governance and the
+warning-fatal 76-source Sphinx build pass. No runtime, schema, dependency or
+scientific behavior changes; no full-suite result is claimed for this scope.
+
+The [kit receipt](evidence/researcher_review_kit_checkpoint_20261110.json) owns the
+bounded source/input/rehearsal observations. The
+[three closure fronts](CONTINUATION_PLAN_20261104.md#three-remaining-closure-fronts)
+make the functional gaps, B7 results and B8 delivery dependencies explicit. The
+known human-root/distinct-access saved-reading limitation remains open; the kit
+does not turn its workaround into a fix. Independent scientific, actual-agent,
+workload and real-consumer acceptance remain separate. B2 review is deferred;
+B8/candidate/schema freeze/release remain unresumed. CI is deferred under
+#148/#112 with `[skip ci]`, recoverable on the exact authorized candidate; absent
+or skipped runs are not PASS. Exact committed/remote and cleanup observations
+belong to the owned handoff.
+
+The preceding orientation update is now
+[published under #148](https://github.com/uibcdf/sabueso/issues/148#issuecomment-6783511779),
+with exact-body readback retained locally. It does not close acceptance.
+
 ## Original overview orientation — local checkpoint PASS
 
 The [current orientation](pending_proposals/card_orientation.md) presents curated

@@ -1,0 +1,114 @@
+{
+  "state": "BOUNDED_TECHNICAL_PREPARATION_PASS_ACCEPTANCE_PENDING",
+  "date": "2026-11-10",
+  "owner": [
+    "uibcdf/sabueso#148",
+    "uibcdf/sabueso#112"
+  ],
+  "review_trigger": "Named independent researcher, next source checkpoint or B7 closeout",
+  "parent_source": "ca4f88e893413e3322de9e577b130a18fcf008b5",
+  "changed_artifact_sha256": {
+    "examples/researcher_review/prepare.py": "933bfe2162a3a12e36d1526a3122ebce1be2c39ca7f702aa87162a8dd0aabe6d",
+    "docs/content/user/researcher_review.md": "d69cb2d315a2d0396501fa5a7c4c0601af58efc16d8a11566512ced9c3301b3a",
+    "docs/_static/researcher_review_worksheet.txt": "fd4bd9f135f803a381560d28160d4d8af2cb749c28637090c1813d461f35e615",
+    "devguide/pending_proposals/researcher_acceptance_0150.md": "3df969c55e0a13e3443a8d57dd2a97f91d9cb4c03f0f8f38b83231b928cfd623"
+  },
+  "input_manifest": {
+    "format": "sabueso.researcher_review_inputs@1",
+    "source_commit": "ca4f88e893413e3322de9e577b130a18fcf008b5",
+    "source_tree_dirty": true,
+    "sabueso_runtime": "0.14.0+248.gca4f88e",
+    "sabueso_distribution": "0.14.0+248.gca4f88e",
+    "preparation_script_sha256": "933bfe2162a3a12e36d1526a3122ebce1be2c39ca7f702aa87162a8dd0aabe6d",
+    "fixture_notice_sha256": "e6a73bdc75051f7e3e91a1097a7867f56598cb455580bc1735fbe704bea22f6e",
+    "cards": {
+      "protein": {
+        "file": "protein.json",
+        "sha256": "4f348125c6a36681bead356eb07db6d2072bb5bc31045a3be1ee32a2e8d40265",
+        "pinned_ref": "sabueso:protein:uniprot:P52270@sha256:cf09be39e4eb60e30b0c913683884b701129b7e0641b810a58b4e9cb260cfe37"
+      },
+      "molecule": {
+        "file": "molecule.json",
+        "sha256": "b1fc57c981b81ba70d3a79f4888420dfb11141d2154b0b3afb7d904a9ca05944",
+        "pinned_ref": "sabueso:small_molecule:inchikey:CULUWZNBISUWAS-UHFFFAOYSA-N@sha256:0d9ec573389fadede11ab69ec011ad563e8b2770ac04b532af25530cd1fa61d4"
+      },
+      "disease": {
+        "file": "disease.json",
+        "sha256": "dd75eab0aa9a6ecec228467b79bc59b77923259fca3a8c84615cc3d4d1c7a5e5",
+        "pinned_ref": "sabueso:disease:mondo:MONDO:0014221@sha256:9863f3e6f70a3c458307291ce86cc42d49e9fa7323e592fe31ddc9755c6dbff6"
+      }
+    },
+    "scope": "Three public fixture Cards, no solved tasks or exploration sessions",
+    "acceptance": "pending_independent_review"
+  },
+  "observations": {
+    "core_public_cards": 3,
+    "export_reload_pins": "PASS",
+    "nonempty_output_refusal_before_acquisition": "PASS",
+    "outside_checkout_copied_input_rehearsal": "PASS",
+    "separate_process_original_value_source_return_reading": "PASS",
+    "saved_reader_Card_construction_and_acquisition": "forbidden",
+    "empty_recovery": "PASS",
+    "unsupplied_disease_context": "explicit",
+    "protected_original_files_unchanged": 52,
+    "lint_format_and_python311_grammar": "PASS",
+    "local_guide_links_and_canonical_governance": "PASS",
+    "sphinx_warning_fatal_sources": 76,
+    "worksheet_in_built_HTML": "PASS"
+  },
+  "resources": {
+    "prepare2": {
+      "exit_code": 0,
+      "elapsed_s": 1.26,
+      "peak_owned_rss_bytes": 72065024,
+      "minimum_host_available_bytes": 60755120128,
+      "peak_owned_swap_bytes": 0
+    },
+    "outside-produce1": {
+      "exit_code": 0,
+      "elapsed_s": 26.94,
+      "peak_owned_rss_bytes": 130834432,
+      "minimum_host_available_bytes": 60160909312,
+      "peak_owned_swap_bytes": 0
+    },
+    "outside-read1": {
+      "exit_code": 0,
+      "elapsed_s": 6.04,
+      "peak_owned_rss_bytes": 158535680,
+      "minimum_host_available_bytes": 60572516352,
+      "peak_owned_swap_bytes": 0
+    },
+    "sphinx1": {
+      "exit_code": 0,
+      "elapsed_s": 26.09,
+      "peak_owned_rss_bytes": 281812992,
+      "minimum_host_available_bytes": 60465901568,
+      "peak_owned_swap_bytes": 0
+    }
+  },
+  "resource_scope": "One operation at a time, one CPU/native thread, ten GiB owned-tree RSS ceiling and sixteen GiB host-available floor; no reservation",
+  "pending": [
+    "Recruitment and actual independent researcher observations",
+    "Other B7 scientific/actual-agent/workload/real-consumer acceptance",
+    "Human-root/distinct-access saved-reading limitation",
+    "Remaining broad-profile functional inventory and current complete code checkpoint",
+    "B2 deferred; B8/candidate/schema freeze/release unresumed"
+  ],
+  "limits": [
+    "Documentation and standalone maintainer-helper scope only; runtime/science/schema/dependencies unchanged",
+    "No full-suite, clean-installed/public-dependency/OS/hosted or human/scientific acceptance claim",
+    "Three core Card inputs do not supply all optional specialist modules",
+    "Historical/source receipts and published artifacts remain immutable"
+  ],
+  "ci": {
+    "state": "DEFERRED",
+    "marker": "[skip ci]",
+    "owner": "uibcdf/sabueso#148/#112",
+    "recovery": "Qualify every applicable full source/installed/platform and governance gate on the exact authorized candidate through gh-run-receptor before delivery; absent/skipped runs are not PASS."
+  },
+  "preceding_orientation_publication": {
+    "url": "https://github.com/uibcdf/sabueso/issues/148#issuecomment-6783511779",
+    "exact_body_sha256": "0ee009ae55856c6ff6c50c308a0f63c3d9d87c3fa8954099d5acb77fbb358172",
+    "exact_body_readback": "PASS"
+  }
+}

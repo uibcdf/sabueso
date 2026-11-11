@@ -495,6 +495,25 @@ public saving. The [saved receipt](evidence/knowledge_comparison_saved_checkpoin
 owns local source/copied/diagnostic receiving; wider B6/B7 acceptance and exact-candidate
 gates remain separate. This increment does not resume B8.
 
+## Three remaining closure fronts
+
+Use this bounded order to finish the agreed 0.15.0 work. It distinguishes delivered
+implementation from actual acceptance and delivery; neither an increasing test
+count nor a repeated generic "complete B6" instruction measures release progress.
+The broad inventory remains the scope authority. New sources, viewer/Deck/video
+products and later long-term stages do not become prerequisites here.
+
+| Front | Concrete next work and exit condition |
+| --- | --- |
+| Functional integration | Resolve the observed [human-root/distinct-access saved-reading limitation](https://github.com/uibcdf/sabueso/issues/148#issuecomment-6782871860) with an isolated control and qualified correction, preserving historical meanings. Reconcile the broad inventory against already delivered profiles; verify the remaining molecule representation/charge/parent and property-method presentation requirements with positive retained inputs and explicit gaps. Finish required cross-topic/source/return journeys. Then run one accounted current-source offline checkpoint and the applicable copied/diagnostic checks. Existing local receipts keep their exact scope. |
+| B7 acceptance | Recruit an independent researcher using the [participant documentation](../docs/content/user/researcher_review.md) and [maintainer kit](pending_proposals/researcher_acceptance_0150.md). Obtain actual task feedback, fix consequential failures and recheck. Record scientific, actual-agent, representative workload and real downstream-consumer acceptance separately; the three-Card preparation does not close these dimensions. No researcher is designated yet. |
+| B8 delivery | After recorded B7 acceptance and maintainer resumption, qualify exact candidate CI/governance and one staging artifact through the existing installed OS/Python/public-dependency route, freeze the unpublished schema only at its accepted stage, and perform authorized release/promotion/public-install/archive/central-notice steps. Preparation and historical green receipts do not qualify that future candidate. |
+
+The functional and review-preparation work can proceed while recruitment is in
+progress. Human decisions and remote candidate gates keep their dependencies;
+B2 scientific/default review remains explicitly deferred. The kit contains no
+participant results and grants no release, schema-freeze or CI-dispatch authority.
+
 ## Execution order
 
 The [combined public protein review](pending_proposals/protein_context_review_walkthrough.md)

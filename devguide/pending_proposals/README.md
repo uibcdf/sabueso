@@ -18,6 +18,9 @@ development queue.
   protein, small-molecule and disease experiences under shared navigation contracts.
   The [v1 contract](card_exploration_v1_contract.md) resolves the five operational
   review gaps, with bounded adapters and verified public paper walkthroughs.
+- [Independent researcher review kit](researcher_acceptance_0150.md)
+  (#148/#112): participant invitation/tasks, a blank worksheet and offline public
+  input preparation. Recruitment and actual B7 results remain pending.
 - [Required knowledge-pipeline attribution](ackredit_knowledge_pipeline_attribution.md)
   (#108, moli#36): required automatic runtime attribution; public provider adopted; broader acquisition/bibliography and record integration remain open.
 - [Variant and isoform tissue-context exploration](card_variant_tissue_exploration.md)

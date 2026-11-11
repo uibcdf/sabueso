@@ -1,0 +1,50 @@
+SABUESO CARD EXPLORATION — BLANK RESEARCHER REVIEW
+
+Keep locally; return through the channel agreed with the maintainer.
+Avoid private research data. Agree any public disclosure separately.
+
+SESSION
+Review ID (pseudonym is sufficient):
+Date and session duration:
+Input manifest file / SHA-256:
+Sabueso source commit, runtime and environment identifier:
+Relevant scientific background:
+Python familiarity:
+Prior Sabueso use / development / scripted-demo exposure:
+Documents or demonstrations consulted before the session:
+Assigned tasks/modules:
+Contact / publication preference (optional, keep private):
+
+TASK RECORD — COPY THIS BLOCK FOR EACH C1–C6 OR SPECIALIST TASK
+Task ID:
+Question in my own words:
+Steps, displayed labels and commands attempted:
+Result and my scientific interpretation:
+Complete value / unit / qualifier / state, where relevant:
+Supporting source, version, Card pin or saved-session reference:
+Unknowns, alternatives or conflicts I found:
+Source/return navigation result:
+Saved-session result, root and exact steps, if attempted:
+Task progress (completed / partly_completed / blocked / not_attempted):
+Help requested and received (person, documentation or agent):
+Friction, error message or misleading wording:
+Elapsed time, if recorded (observation, not a pass threshold):
+Output files needed to reproduce this observation:
+
+DEBRIEF
+Most useful result:
+Largest obstacle:
+One improvement I would prioritize:
+Would I use this for a scientific task? Which task and under what conditions?
+Anything I could not determine from the retained sources:
+Parts of the session that became coached or trained:
+Observations requiring a private maintainer handoff:
+
+MAINTAINER REVIEW — COMPLETE AFTER THE PARTICIPANT'S FIRST ATTEMPT
+Reviewer and date:
+Observed fact versus suspected cause:
+Scientific interpretation (accepted / revision_needed / not_reviewed), with reason:
+Technical result and reproduction reference:
+Owning issue or private handoff, disposition and follow-up owner:
+Retest needed, exact scope and proposed participant:
+Independent acceptance dimensions covered / still pending:

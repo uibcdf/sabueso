@@ -19,6 +19,7 @@ anything: the remote repository does not contain the whole local state.
 | What is published, what is local, and what is next? | [CHECKPOINT](CHECKPOINT.md) |
 | In what order do we work? | [Current destination actions](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions) and [integrated B0–B8 plan](CONTINUATION_PLAN_20261104.md#execution-order) |
 | What must the complete Card experience deliver? | [Broad exploration inventory](pending_proposals/card_exploration_completion_0150.md) and [observable wow criteria](CONTINUATION_PLAN_20261104.md#required-wow-experience-in-0150) |
+| How can an independent researcher review it? | [Participant invitation and tasks](../docs/content/user/researcher_review.md), [blank worksheet](../docs/_static/researcher_review_worksheet.txt) and [maintainer preparation](pending_proposals/researcher_acceptance_0150.md); recruitment and actual acceptance are pending |
 | What are the long-term goals and dependencies? | [Accepted six-stage program](ROADMAP.md#accepted-long-term-execution-stages) and [its execution](CONTINUATION_PLAN_20261104.md#accepted-six-stage-program) |
 | What decisions explain the design? | [DECISIONS](DECISIONS.md), the owning issue and its feature analysis; use the [onboarding history map](ONBOARDING.md#how-the-project-reached-this-point) rather than reading the full log sequentially |
 | How do I change and verify something? | [Root instructions](../AGENTS.md), [API conventions](API_CONVENTIONS.md), [TESTS](TESTS.md) |

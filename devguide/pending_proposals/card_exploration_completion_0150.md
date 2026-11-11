@@ -231,6 +231,13 @@ a concrete design and owning issue; it does not authorize an implicit heuristic.
 
 ## Human acceptance and the intended exceptional experience
 
+The [participant invitation/tasks](../../docs/content/user/researcher_review.md),
+[blank worksheet](../../docs/_static/researcher_review_worksheet.txt) and
+[maintainer preparation](researcher_acceptance_0150.md) are ready for recruitment
+and technical rehearsal. The helper exports three public Card inputs without
+solved sessions. Recruitment and actual reviewer results remain pending; specialist
+inputs and the other B7 acceptance dimensions retain their separate scope.
+
 The intended "wow" experience is required before 0.15.0. Apply the
 [observable criteria in the continuation plan](../CONTINUATION_PLAN_20261104.md#required-wow-experience-in-0150)
 to every implementation slice, then record explicit combined researcher acceptance
