@@ -1128,6 +1128,46 @@ checks and immediate security, dependency, packaging,
 migration or integration gates cannot be deferred with this marker. Published
 release candidates and installed-artifact admission retain every mandatory gate.
 
+### Bounded hosted pytest execution
+
+The [observed installed-lane timeout](pending_bugs/ci_serial_execution_timeout.md)
+under #112 has a local correction in `devtools/run_ci_pytest.py`. The CI workflow
+keeps all original case/marker, warning, coverage and receptor arguments. It adds
+at most three outer `loadfile` workers; native pools remain one and parallel flags
+are not inherited by copied child pytest processes. Source/platform/public-provider,
+backend-report and coverage obligations remain unchanged. Staged installed-package
+qualification is a separate route and is not converted by this correction.
+
+The launcher examines CPU activity, exposed CPU slots, available/physical RAM and
+free disk space. It reduces workers when three do not fit, preserves a host RAM reserve
+of at least 20% with a minimum 1 GiB, and refuses a launch without one-worker
+headroom. It budgets 2 GiB per outer worker across the **entire owned process tree**,
+including launcher, workers and nested readers. The current workstation's selected
+local checks additionally request its existing 16 GiB reserve. This hosted profile
+does not interpret Slurm allocations and refuses them rather than guessing limits.
+
+Sampled limits cover RSS, host available RAM, elapsed time, Linux owned swap,
+owned scratch and host filesystem free space. Default owned scratch is 6 GiB,
+with a 2 GiB free-disk margin. The measured scratch scope is the launcher's own
+pytest/TMP tree; files created elsewhere are not claimed as measured. Sampling
+is not a resource reservation or infrastructure-enforced hard limit. Unknown
+non-Linux owned swap stays unknown. A stopped command fails and retains evidence;
+only completed successful owned scratch is removed. Original inputs and caller
+output files are protected. Actual resource JSON is streamed and uploaded even
+on pytest failure; inspect it with the original pytest summary before qualification.
+For a local operator stop, create the exact `<report>.stop` file. The launcher
+stops its own observed descendants and retains a nonpassing receipt; never send a
+signal by a PID taken from another tool session.
+
+Applicable launcher gates are the complete
+`tests/tools/test_ci_pytest_resources_offline.py`, the installed-scope controls in
+`tests/tools/test_installed_receiving_scope_offline.py`, representative genuine
+original/copied readers, and a two-module branch-coverage combination. Also check
+YAML/Bash syntax and that all original pytest argument sequences and job matrices
+remain intact. The [local receipt](evidence/ci_bounded_execution_checkpoint_20261111.json)
+owns actual counts, source hashes and scope. Run one selected gate at a time.
+Exact-head hosted OS/Python/public-provider receiving remains mandatory.
+
 ### Recovering deferred CI
 
 Finish a block with an unskipped push and inspect the resulting exact-head CI and

@@ -11,18 +11,23 @@ on:
 permissions:
   contents: read
 
+env:
+  OPENMM_CPU_THREADS: "1"
+  OMP_NUM_THREADS: "1"
+  OPENBLAS_NUM_THREADS: "1"
+  MKL_NUM_THREADS: "1"
+  NUMEXPR_NUM_THREADS: "1"
+  NUMBA_NUM_THREADS: "1"
+  VECLIB_MAXIMUM_THREADS: "1"
+  BLIS_NUM_THREADS: "1"
+  POLARS_MAX_THREADS: "1"
+  RAYON_NUM_THREADS: "1"
+
 jobs:
   ackredit-pilot:
     name: Ackredit public-package pilot (Python ${{ matrix.python-version }})
     runs-on: ubuntu-latest
     timeout-minutes: 240
-    env:
-      OPENMM_CPU_THREADS: "1"
-      OMP_NUM_THREADS: "1"
-      OPENBLAS_NUM_THREADS: "1"
-      MKL_NUM_THREADS: "1"
-      NUMEXPR_NUM_THREADS: "1"
-      NUMBA_NUM_THREADS: "1"
     strategy:
       fail-fast: false
       matrix:
@@ -222,10 +227,19 @@ jobs:
           ln -s "$GITHUB_WORKSPACE/temp_data" "$client_dir/temp_data"
           cd "$client_dir"
           # Outside the checkout: repeat its passed-case scratch policy explicitly (#183).
-          python -m pytest test_attribution_offline.py test_source_acquisition_offline.py test_rcsb_acquisition_offline.py test_chembl_acquisition_offline.py test_pubchem_acquisition_offline.py test_bindingdb_acquisition_offline.py test_chemical_identity_acquisition_offline.py test_pdbe_kb_acquisition_offline.py test_alphafold_acquisition_offline.py test_alphafold_modelcif_intake_offline.py test_alphafold_modelcif_reference_offline.py test_card_modelcif_navigation_offline.py test_interpro_acquisition_offline.py test_disease_explanation_offline.py test_disease_identity_coverage_offline.py test_knowledge_state_explanation_offline.py test_molecule_knowledge_state_offline.py test_bioactivity_explanation_offline.py test_bioactivity_class_v4_offline.py test_measurement_correspondence_offline.py test_bioactivity_target_scope_offline.py test_ligand_explanation_offline.py test_oligomer_explanation_offline.py test_rule_literature_extraction_offline.py test_literature_intake_offline.py test_article_metadata_offline.py test_persisted_pipeline_offline.py \
+          python "$GITHUB_WORKSPACE/devtools/run_ci_pytest.py" --workers 3 --seconds 12600 \
+            --report "$RUNNER_TEMP/sabueso-ci-pytest.json" -- python -m pytest test_attribution_offline.py test_source_acquisition_offline.py test_rcsb_acquisition_offline.py test_chembl_acquisition_offline.py test_pubchem_acquisition_offline.py test_bindingdb_acquisition_offline.py test_chemical_identity_acquisition_offline.py test_pdbe_kb_acquisition_offline.py test_alphafold_acquisition_offline.py test_alphafold_modelcif_intake_offline.py test_alphafold_modelcif_reference_offline.py test_card_modelcif_navigation_offline.py test_interpro_acquisition_offline.py test_disease_explanation_offline.py test_disease_identity_coverage_offline.py test_knowledge_state_explanation_offline.py test_molecule_knowledge_state_offline.py test_bioactivity_explanation_offline.py test_bioactivity_class_v4_offline.py test_measurement_correspondence_offline.py test_bioactivity_target_scope_offline.py test_ligand_explanation_offline.py test_oligomer_explanation_offline.py test_rule_literature_extraction_offline.py test_literature_intake_offline.py test_article_metadata_offline.py test_persisted_pipeline_offline.py \
             test_user_journeys_offline.py test_molecule_target_journey_offline.py test_clinical_bibliography_journey_offline.py test_disease_entities_journey_offline.py test_disease_deck_support_offline.py test_disease_deck_admission_offline.py test_mondo_acquisition_offline.py test_disease_source_acquisition_offline.py test_source_prerequisites_offline.py test_disease_lookup_acquisition_offline.py test_indication_bibliography_offline.py test_clinicaltrials_acquisition_offline.py test_ncbi_taxonomy_acquisition_offline.py test_gtex_acquisition_offline.py test_uniref_acquisition_offline.py test_oma_acquisition_offline.py test_gnomad_acquisition_offline.py test_comparative_operations_offline.py test_comparative_support_journey_offline.py test_scientific_dossier_journey_offline.py test_literature_source_review_journey_offline.py test_comparative_bibliography_offline.py test_comparative_credit_size_offline.py \
             test_card_nonpolymer_assembly_offline.py test_card_saved_nonpolymer_assembly_offline.py \
             test_card_component_navigation_offline.py test_card_saved_component_navigation_offline.py test_original_structure_navigation_offline.py test_cell_serialization_support_offline.py test_card_model_fragments_offline.py test_alphafold_range_aliases_offline.py test_card_shared_link_support_offline.py test_exploration_shared_values_offline.py test_card_region_orientation_offline.py test_card_retained_filter_offline.py test_chemical_classification_offline.py test_card_chemical_exploration_offline.py test_card_saved_chemical_offline.py test_card_bioactivity_exploration_offline.py test_card_saved_bioactivity_offline.py test_card_saved_literature_offline.py test_bioactivity_literature_v2_offline.py test_card_literature_exploration_offline.py test_card_clinical_exploration_offline.py test_card_variant_exploration_offline.py test_card_sequence_changes_offline.py test_card_sequence_context_display_offline.py test_card_current_protein_catalog_offline.py test_protein_context_review_journey_offline.py test_structural_source_review_journey_offline.py test_card_orientation_offline.py test_card_assembly_machine_retention_offline.py test_card_chemical_reading_offline.py test_card_protein_context_offline.py test_card_knowledge_diff_v2_offline.py test_card_knowledge_comparison_offline.py test_card_knowledge_comparison_original_offline.py test_card_knowledge_comparison_history_offline.py test_card_saved_knowledge_comparison_offline.py test_card_protein_context_original_offline.py test_card_protein_context_history_offline.py test_card_saved_protein_context_offline.py test_card_sequence_change_original_offline.py test_card_sequence_change_history_offline.py test_card_saved_sequence_change_offline.py test_card_variant_original_offline.py test_card_variant_history_offline.py test_card_saved_variant_offline.py test_card_disease_association_exploration_offline.py test_card_disease_association_original_offline.py test_card_disease_association_history_offline.py test_card_saved_disease_association_offline.py test_card_clinical_history_offline.py test_card_saved_clinical_offline.py test_literature_summary_values_offline.py test_card_molecule_activity_exploration_offline.py test_card_saved_molecule_activity_offline.py test_card_saved_molecule_activity_originals_offline.py test_card_molecule_activity_exact_binding_offline.py test_card_saved_molecule_activity_exact_offline.py -m "not online" --receptor=ci -o tmp_path_retention_policy=failed
+      - name: Retain bounded pytest resource report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pytest-resources-ackredit-${{ matrix.python-version }}
+          path: ${{ runner.temp }}/sabueso-ci-pytest.json
+          if-no-files-found: warn
+          retention-days: 14
       - name: Run the public offline workflow
         shell: bash -l {0}
         run: |
@@ -313,13 +327,23 @@ jobs:
           PYTHON_VERSION: ${{ matrix.python-version }}
         run: |
           if [[ "$RUNNER_OS" == "Linux" && "$PYTHON_VERSION" == "3.14" ]]; then
-            python -m pytest -m "not online" --receptor=ci \
+            python "$GITHUB_WORKSPACE/devtools/run_ci_pytest.py" --workers 3 \
+              --report "$RUNNER_TEMP/sabueso-ci-pytest.json" -- python -m pytest -m "not online" --receptor=ci \
               -W "error:unclosed database:ResourceWarning" \
               -W error::pytest.PytestUnraisableExceptionWarning \
               --cov=sabueso --cov-branch --cov-report=xml:coverage.xml
           else
-            python -m pytest -m "not online" --receptor=ci
+            python "$GITHUB_WORKSPACE/devtools/run_ci_pytest.py" --workers 3 \
+              --report "$RUNNER_TEMP/sabueso-ci-pytest.json" -- python -m pytest -m "not online" --receptor=ci
           fi
+      - name: Retain bounded pytest resource report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pytest-resources-${{ matrix.os }}-${{ matrix.python-version }}
+          path: ${{ runner.temp }}/sabueso-ci-pytest.json
+          if-no-files-found: warn
+          retention-days: 14
       - name: Retain measured coverage XML
         if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.14'
         uses: actions/upload-artifact@v4

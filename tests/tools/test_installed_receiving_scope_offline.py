@@ -1095,10 +1095,11 @@ def test_installed_molecule_files_deliver_the_complete_original_payload():
         selected = shlex.split(command[1])
         assert all(selected.count(name) == 1 for name in modules)
         assert all(name not in selected for name in helpers)
-        # Both installed routes execute all cases serially. The local copied
-        # parallel gate is separate evidence, not an installed-matrix pass.
+        # Both installed routes retain every original selected case. CI uses
+        # bounded outer workers; staging remains a separate installed-matrix gate.
         assert "--collect-only" not in selected and "-k" not in selected
         assert "timeout-minutes: 240" in section
+        effective_environment = section + workflow.partition("\njobs:\n")[0]
         for variable in (
             "OPENMM_CPU_THREADS",
             "OMP_NUM_THREADS",
@@ -1107,6 +1108,11 @@ def test_installed_molecule_files_deliver_the_complete_original_payload():
             "NUMEXPR_NUM_THREADS",
             "NUMBA_NUM_THREADS",
         ):
-            assert f'{variable}: "1"' in section
+            assert f'{variable}: "1"' in effective_environment
+        if path == ".github/workflows/ci.yml":
+            assert (
+                '"$GITHUB_WORKSPACE/devtools/run_ci_pytest.py" --workers 3' in section
+            )
+            assert "Retain bounded pytest resource report" in section
         assert "tests/core/data/README.md" in section
         assert "temp_data" in section

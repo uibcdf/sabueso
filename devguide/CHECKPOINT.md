@@ -5,6 +5,37 @@ Current working-state checkpoint: **2026-11-11**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Bounded CI timeout correction — local checks PASS, hosted recovery pending
+
+The old `3c26790` installed Python 3.13 job exceeds its four-hour execution limit;
+its authoritative check annotation and complete log are retained. Python 3.12
+passes the same 4,103-case public scope in 13,140.39 s. Python 3.14 separately
+loses runner/server communication; its underlying cause remains unknown.
+
+The [local correction](pending_bugs/ci_serial_execution_timeout.md) preserves all
+original pytest arguments and OS/Python jobs. It requests at most three outer
+`loadfile` workers, reduces concurrency for available CPU/RAM, keeps native pools
+one and monitors owned descendants, host RAM reserve, scratch/disk and elapsed
+limits. Failed, stopped or unfinished-child executions cannot pass. Resource
+reports are retained in job logs/artifacts; original hosted timeouts stay fixed.
+
+The [selected receipt](evidence/ci_bounded_execution_checkpoint_20261111.json)
+records 26 current launcher controls and 150 representative source cases,
+including original archives and outside-checkout receiving. A final three-worker
+163-case gate repeats guard/codec/chemical/copied/wiring controls with combined
+branch coverage; overlaps add no extra cases (176 distinct local IDs overall).
+The original/archive selection has its measured two-worker scope; this is no new
+full suite or three-worker all-original qualification. All production modules,
+scientific rules and 52 protected SOURCE/original files stay unchanged. A larger
+exploratory selection was deliberately stopped; its incomplete stream remains
+nonpassing and is not used as qualification.
+
+Recover every applicable gate on the exact final authorized head through
+gh-run-receptor, including public installed receiving and twelve fresh backend
+reports. The older batch retains its source and actual incomplete/failed outcomes;
+it does not authorize a new head or retry. Independent B7 researcher/scientific,
+actual-agent/real-consumer acceptance and B8 resumption remain pending.
+
 ## Current packing runtime — local validation
 
 The [composed receipt](evidence/packing_full_checkpoint_20261111.json) accounts

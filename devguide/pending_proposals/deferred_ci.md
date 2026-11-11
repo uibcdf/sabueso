@@ -9,6 +9,33 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Bounded CI timeout correction (2026-11-11, #112/#148)
+
+The old `3c26790` installed Python 3.13 job exceeds its four-hour execution limit;
+Python 3.12 completes the identical 4,103-case public scope in 13,140.39 s. The
+separate Python 3.14 runner/server loss is not assigned the same cause. Original
+full logs and authoritative check annotations remain retained, without converting
+cancelled or failed work into PASS.
+
+The [local correction](../pending_bugs/ci_serial_execution_timeout.md) preserves
+all original pytest case/marker/coverage/receptor arguments and job matrices,
+using at most three monitored outer workers and serial nested clients. Its
+[receipt](../evidence/ci_bounded_execution_checkpoint_20261111.json) qualifies only
+its declared local gates; it is not a repeated full suite, public installed matrix,
+new hosted result or release candidate. Production modules, source rules and all
+52 protected originals stay unchanged. Only development/test dependencies change.
+
+Record the exact committed/pushed head and editable metadata under
+`recovered_work/checkpoint_recovery_20261106/b7-ci-bounded-execution-1/`.
+The authorized intermediate `[skip ci]` route retains #112/#148 ownership and
+mandatory final exact-head recovery. The prior concrete authorization covers
+only old `3c26790` CI43072436424/governance43072515668. A new corrected-head batch
+needs its own explicit scope; do not repeat the old batch, overlap another batch
+without approval, silently retry or publish a new issue body. Preserve all eighteen
+CI and separate governance responsibilities, including twelve original backend
+reports and actual installed public-dependency receiving. B7 acceptance and B8
+resumption remain separate.
+
 ### Full packing-source qualification (2026-11-11, #167/#148/#112)
 
 The [full current-source receipt](../evidence/packing_full_checkpoint_20261111.json)

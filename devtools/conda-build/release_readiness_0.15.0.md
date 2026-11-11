@@ -5,6 +5,13 @@ Owner: Sabueso maintainers, coordinated under #112; exploration acceptance under
 Candidate selection, schema freeze, staging and public publication remain pending
 their acceptance prerequisites and maintainer resumption.
 
+The [bounded CI correction](../../devguide/pending_bugs/ci_serial_execution_timeout.md)
+addresses an observed four-hour installed-lane timeout while preserving all
+original selections. Its [local receiving](../../devguide/evidence/ci_bounded_execution_checkpoint_20261111.json)
+is development-tool validation, not hosted recovery. The old `3c26790` batch has
+failed/cancelled work and cannot qualify later code. A newly authorized exact-head
+CI/governance batch and all candidate/artifact prerequisites remain necessary.
+
 ## Required records
 
 | Record | Current disposition |

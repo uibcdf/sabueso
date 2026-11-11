@@ -19,6 +19,8 @@ dependencies:
   - wheel
   - pytest >=8
   - pytest-cov >=7,<8
+  - pytest-xdist >=3.8  # bounded outer CI workers; use loadfile, not loadgroup
+  - psutil >=5.9  # CI process-tree/resource sampling; not a runtime dependency
   - pytest-receptor ==1.2.0
   - nbformat >=5  # validates generated notebook reports; test tooling only
   - pyyaml >=6

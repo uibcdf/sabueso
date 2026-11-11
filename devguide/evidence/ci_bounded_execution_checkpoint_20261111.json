@@ -1,0 +1,116 @@
+{
+  "state": "SELECTED_LOCAL_CI_LAUNCHER_PASS_EXACT_HEAD_HOSTED_PENDING",
+  "owner": "uibcdf/sabueso#112/#148",
+  "review_trigger": "Next authorized exact-head CI recovery or before B7/candidate qualification",
+  "base_head": "adcd4a808b457e856e9840803544ef779ae88185",
+  "runtime": "0.14.0+253.gadcd4a8",
+  "development_tool_sources": {
+    ".github/workflows/ci.yml": "35f8e25f43e45e3441d3b8a718097967db87f23a3c881bc038893145c6eae7c4",
+    "devtools/conda-envs/test_env.yaml": "d001e74da501e772a61da2ecbe8a93822210ba8d84ef6b9c7e3ab6e560e3ca7a",
+    "devtools/run_ci_pytest.py": "2cc83c14c78125ac5d569c7041cbbfba4939be8fdd45ab561bd011cebbe759fb",
+    "tests/tools/test_ci_pytest_resources_offline.py": "902eb72e24b62ba09868537387bd597f1587d6ec7bf5d3b9d8979c8ecac3fb18",
+    "tests/tools/test_installed_receiving_scope_offline.py": "9c8791ce877e41a09eacb2361aa25193bab39932864a3eb992f7449c1d3503fd"
+  },
+  "observed_old_hosted": {
+    "head": "3c26790a13903d857c548886126d0c8111550704",
+    "run": "https://github.com/uibcdf/sabueso/actions/runs/43072436424",
+    "python313": "Cancelled: authoritative maximum execution time4h0m0s annotation and complete log retained",
+    "python312": "4103passed/13140.39s/4negative acquisition controls on107installed modules",
+    "python314": "Runner/server communication loss; underlying cause unknown, not assigned to timeout or source assertion failure"
+  },
+  "final_policy": {
+    "maximum_workers": 3,
+    "scheduler": "loadfile",
+    "native_pools": 1,
+    "memory_limit_bytes_per_outer_worker": 2147483648,
+    "host_reserve": "max(20%physical RAM,1GiB,explicit larger reserve)",
+    "local_host_reserve_bytes": 17179869184,
+    "owned_scratch_bytes": 6442450944,
+    "disk_free_margin_bytes": 2147483648,
+    "sampling_s": 0.25,
+    "claim": "Sampled safeguards, not reservations or infrastructure hard enforcement. Fallback by CPU/RAM capacity; stopped/failed/unfinished-reader execution is nonpassing. Existing hosted timeouts are unchanged."
+  },
+  "original_ci_arguments_preserved": 3,
+  "job_definitions_preserved": 5,
+  "final_ci_jobs_required": 18,
+  "separate_governance_jobs_required": 1,
+  "backend_reports_required": 12,
+  "representative_original_and_coverage_gate_two_workers": {
+    "cases": 150,
+    "pytest_duration_s": 648.991,
+    "events_sha256": "dfc13c713e7769835aee3743046afcde0930dc39cf6ae9db33d51c734f6c5ee1",
+    "workers_with_calls": [
+      "gw0",
+      "gw1"
+    ],
+    "resources": {
+      "workers": 2,
+      "elapsed_s": 650.97,
+      "peak_owned_rss_bytes": 1760632832,
+      "memory_limit_bytes": 4294967296,
+      "host_reserve_bytes": 17179869184,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 3122660087,
+      "minimum_host_available_bytes": 57662373888
+    }
+  },
+  "final_policy_guard_codec_and_copied_gate_three_workers": {
+    "cases": 163,
+    "pytest_duration_s": 58.572,
+    "events_sha256": "725028b215686aa31f15058d8aeaebc9e15817db476a36ef87aec85438910930",
+    "workers_with_calls": [
+      "gw0",
+      "gw1",
+      "gw2"
+    ],
+    "resources": {
+      "workers": 3,
+      "elapsed_s": 60.093,
+      "peak_owned_rss_bytes": 878309376,
+      "memory_limit_bytes": 6442450944,
+      "host_reserve_bytes": 17179869184,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 7114269,
+      "minimum_host_available_bytes": 58201595904
+    }
+  },
+  "final_launcher_controls": 26,
+  "distinct_selected_local_nodeids": 176,
+  "source_epoch_scope": "Representative150at two workers precedes only the declared ceiling2to3/default supervisory-time/CLI choice and corresponding fixture-policy test updates. Final163includes all26current guard controls and repeats codec/chemical/copy/workflow controls at three workers. Production code and original scientific arguments/data unchanged. No homogeneous new full-suite or all-original three-worker claim.",
+  "qualified_input_count": 1353,
+  "qualified_input_map_sha256": "1ee0a8f7553cdbf2c1366e0d00bf8d2c071038db7e4e270145de5ebd59a51da8",
+  "unchanged_previous_mapped_inputs": 1348,
+  "previous_changed_input": "tests/tools/test_installed_receiving_scope_offline.py",
+  "protected_source_and_original_files_unchanged": 52,
+  "branch_coverage": {
+    "xml_sha256": "c6fa53e129f6ac5126d0c0d5894841e85bcd969315acfe99b7612e914f4a8c5f",
+    "classes": 919,
+    "branches_covered": 2629,
+    "scope": "Combined worker branch-coverage receiving over selected modules only; no full-suite coverage percentage claimed."
+  },
+  "exploratory_attempt": {
+    "state": "STOPPED_UNQUALIFIED",
+    "selected": 181,
+    "observed_passed_calls": 147,
+    "complete_events": false,
+    "passing_cohort_claim": false,
+    "reason": "Operator bounded further cost after an unexpectedly expanded32-variant original molecular function; exact raw nonpassing resource outcome/events/input map retained."
+  },
+  "scope": "Local development/CI-tool qualification. Earlier11432-case runtime receipt keeps its own input scope. No new hosted/public dependency/installed platform, scientist/researcher/actual-agent/real-consumer, B7/B8/candidate/release acceptance or publication inferred.",
+  "local_documentation_checks": {
+    "guide": "PASS189maintainedMarkdown/1600localtargets/22changedanchors",
+    "sphinx_warning_fatal": "PASS26.35s/283910144peakRSS/zeroownswap",
+    "python311_grammar": "PASS3changedfiles",
+    "ruff": "PASS",
+    "workflow": "PASS22Bashbodies/original3argumentsequences/alljobmatrices-runners-timeouts"
+  },
+  "cleanup": {
+    "owned_exploratory_scratch_retired_regular_bytes": 1340900537,
+    "canonical_originals_retained": 52,
+    "raw_stopped_receipt_events_inputs_retained": true,
+    "final_successful_scratch_removed": true,
+    "coverage_database_retained_sha256": "ff8fa40162ec47e0f442f8baa6dbe1bcc51849bb7436a5348c77bc2be9d340a5",
+    "owner": "#112/#148",
+    "review_trigger": "Before next CI recovery or candidate preparation"
+  }
+}
