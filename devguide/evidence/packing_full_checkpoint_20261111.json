@@ -1,0 +1,264 @@
+{
+  "state": "COMPOSED_LOCAL_RUNTIME_PASS_INDEPENDENT_ACCEPTANCE_PENDING",
+  "date": "2026-11-11",
+  "owner": [
+    "uibcdf/sabueso#167",
+    "uibcdf/sabueso#148",
+    "uibcdf/sabueso#112"
+  ],
+  "runtime_source_head": "5ae3b1e222b5597493d2d12dfdcc2128a7155f01",
+  "observed_runtime_version": "0.14.0+252.g5ae3b1e",
+  "qualification_kind": "COMPLETE_DISTINCT_RUNTIME_COVERAGE_WITH_EXPLICIT_TEST_ONLY_CORRECTION",
+  "scope": "All 11,432 current normal offline IDs have actual passing outcomes under identical production/runtime code and original inputs. One isolated receiving test function is corrected and repeated; this is not a single all-green unchanged-test-tree invocation. Failed original outcomes remain unchanged. Exact committed/remote head and refreshed metadata belong to the owned handoff.",
+  "normal_offline_discovery": 11432,
+  "distinct_source_passing_outcomes": 11432,
+  "current_source_inputs": 1349,
+  "other_input_hashes_unchanged": 1348,
+  "source_map_sha256": "b9f65a2407fa56e2d7659e6dc0802023df5d9244d37e2c1257822fb6e0de8fe3",
+  "initial_discovery": "b7-packing-discovery1",
+  "current_discovery": "b7-packing-discovery2",
+  "qualified_nodeids_sha256": "e0b7dab1ae6a7cca8ad6ed59ec0ee4baf9f49e1ee3736bba06dac36b478a3ca9",
+  "initial_complete_execution": {
+    "passed": 11431,
+    "failed": 1,
+    "executed": 11432,
+    "phases": {
+      "native": {
+        "directory": "b7-packing-native1",
+        "state": "PASS",
+        "passed": 1553,
+        "failed": 0,
+        "closed_report_sha256": "231581d69d80d913d1d2de73e4cadd7be8ab3d7ebbf3eb662d4ee0c5aa5b3731",
+        "events_sha256": "0aacbff262079e5642f6f9674c52d5631b9898279edd09d539af38fbd60ce6ca",
+        "warnings": 0,
+        "resources": {
+          "exit_code": 0,
+          "elapsed_s": 28.06,
+          "peak_owned_rss_bytes": 1170198528,
+          "minimum_host_available_bytes": 58157641728,
+          "peak_owned_swap_bytes": 0,
+          "peak_owned_scratch_bytes": 7561338,
+          "limits": {
+            "owned_rss_bytes": 10737418240,
+            "host_available_bytes": 17179869184,
+            "owned_swap_bytes": 0,
+            "cpu_affinity_count": 8,
+            "nice": 10,
+            "elapsed_s": 5400,
+            "owned_scratch_bytes": 10737418240
+          }
+        }
+      },
+      "remainder": {
+        "directory": "b7-packing-remainder1",
+        "state": "PASS",
+        "passed": 8269,
+        "failed": 0,
+        "closed_report_sha256": "82794f5fd27d2021da1dc4a24f1bce4933456b960986c997d4331525722ed453",
+        "events_sha256": "c6debb377562567ca39d6a79246918386eddce45bf7cafa607b0a31fd741b1ea",
+        "warnings": 13,
+        "resources": {
+          "exit_code": 0,
+          "elapsed_s": 550.99,
+          "peak_owned_rss_bytes": 4045418496,
+          "minimum_host_available_bytes": 55330893824,
+          "peak_owned_swap_bytes": 0,
+          "peak_owned_scratch_bytes": 1300248716,
+          "limits": {
+            "owned_rss_bytes": 10737418240,
+            "host_available_bytes": 17179869184,
+            "owned_swap_bytes": 0,
+            "cpu_affinity_count": 8,
+            "nice": 10,
+            "elapsed_s": 5400,
+            "owned_scratch_bytes": 10737418240
+          }
+        }
+      },
+      "modern": {
+        "directory": "b7-packing-modern1",
+        "state": "PASS",
+        "passed": 1136,
+        "failed": 0,
+        "closed_report_sha256": "7f3afa6bb73d8948e4e33a35954bff24a1ef65dd73c5929be340a6af29690548",
+        "events_sha256": "548f707f80896ed796fd640c093f862de49c9f5c86b59456ef4e8a58a2a68573",
+        "warnings": 0,
+        "resources": {
+          "exit_code": 0,
+          "elapsed_s": 2475.86,
+          "peak_owned_rss_bytes": 6507118592,
+          "minimum_host_available_bytes": 52335214592,
+          "peak_owned_swap_bytes": 0,
+          "peak_owned_scratch_bytes": 6276152334,
+          "limits": {
+            "owned_rss_bytes": 10737418240,
+            "host_available_bytes": 17179869184,
+            "owned_swap_bytes": 0,
+            "cpu_affinity_count": 5,
+            "nice": 10,
+            "elapsed_s": 5400,
+            "owned_scratch_bytes": 10737418240
+          }
+        }
+      },
+      "old_molecule": {
+        "directory": "b7-packing-old_molecule1",
+        "state": "PASS",
+        "passed": 55,
+        "failed": 0,
+        "closed_report_sha256": "3706b9a2e05649323ea76a311267b9634570bdbf33ed0cf15432932ed88e25a6",
+        "events_sha256": "457ce6d2bd2d5c3a261d01a52ede8d31163c16dddbcb34b754436e32be9d344a",
+        "warnings": 0,
+        "resources": {
+          "exit_code": 0,
+          "elapsed_s": 1958.72,
+          "peak_owned_rss_bytes": 6299566080,
+          "minimum_host_available_bytes": 51512975360,
+          "peak_owned_swap_bytes": 0,
+          "peak_owned_scratch_bytes": 8405023206,
+          "limits": {
+            "owned_rss_bytes": 10737418240,
+            "host_available_bytes": 17179869184,
+            "owned_swap_bytes": 0,
+            "cpu_affinity_count": 4,
+            "nice": 10,
+            "elapsed_s": 5400,
+            "owned_scratch_bytes": 10737418240
+          }
+        }
+      },
+      "legacy": {
+        "directory": "b7-packing-legacy2",
+        "state": "FAILED_OR_CHANGED",
+        "passed": 418,
+        "failed": 1,
+        "closed_report_sha256": "9c9cc8051e7930262a613cc0668d37794695ede939f6612359a393f08bdc0f35",
+        "events_sha256": "28a69cba34a2df023e51be9677b31635a2b7955d77917922d1adde916dbe5dfa",
+        "warnings": 0,
+        "resources": {
+          "exit_code": 1,
+          "elapsed_s": 1897.03,
+          "peak_owned_rss_bytes": 6527225856,
+          "minimum_host_available_bytes": 52224380928,
+          "peak_owned_swap_bytes": 0,
+          "peak_owned_scratch_bytes": 3955320143,
+          "limits": {
+            "owned_rss_bytes": 10737418240,
+            "host_available_bytes": 17179869184,
+            "owned_swap_bytes": 0,
+            "cpu_affinity_count": 5,
+            "nice": 10,
+            "elapsed_s": 5400,
+            "owned_scratch_bytes": 8589934592
+          }
+        }
+      }
+    }
+  },
+  "test_only_equivalence": {
+    "file": "tests/tools/test_installed_receiving_scope_offline.py",
+    "before_sha256": "2155d208209cecb434351189cf0ddd5a3529ef4c48fc8ea4c2d1d95878b4b313",
+    "after_sha256": "6f04f3e58736652d54406956fdd88d55e78d6d747e60c460236d0b946e5c7f52",
+    "only_changed_top_level_function": "tests/tools/test_installed_receiving_scope_offline.py::test_declared_shared_values_run_without_checkout_files",
+    "all_other_top_level_AST_identical": true,
+    "scope": "Expected complete copied-module count56to96 plus genuinely external client/scratch and explicit UTF8 child I/O. All production/scientific code, original fixtures and other1348mapped inputs unchanged."
+  },
+  "corrected_case": {
+    "nodeid": "tests/tools/test_installed_receiving_scope_offline.py::test_declared_shared_values_run_without_checkout_files",
+    "directory": "b7-packing-count-fix2",
+    "passed": 1,
+    "events_sha256": "342747ac1c5580b82ae1e48359f2a01fd39e3ca8be4c92ea0c18ca5b6d1dcf39",
+    "closed_report_sha256": "8668861efa4b59e2125d6f44253ca60f62453f5a6be6bf7f9cca52171815625d",
+    "resources": {
+      "exit_code": 0,
+      "elapsed_s": 13.12,
+      "peak_owned_rss_bytes": 217395200,
+      "peak_owned_swap_bytes": 0
+    }
+  },
+  "original_failure": "Complete legacy2actually418PASS/1FAIL on unchanged initial map; its raw failure/events/logs remain intact. Child96alreadyPASS; parent56count stale. Only this test function changed and its final repeat passes. Earlier count-only repeat also passes but contributes no extra coverage.",
+  "protected_originals_unchanged": 52,
+  "preflight_only_deferral": {
+    "state": "DEFERRED_BEFORE_PYTEST_LAUNCH",
+    "at": "2026-11-11T21:35:29.285181+00:00",
+    "directory": "b7-packing-legacy1",
+    "source_cases_executed": 0,
+    "observed_free_bytes": 28562079744,
+    "required_free_bytes": 28991029248,
+    "reason": "Scratch10GiB plus host free floor16GiB plus launch margin1GiB; other resource checks passed. No test failure or passing coverage inferred.",
+    "adaptation": "Same419cases and5workers, scratch ceiling8GiB based on prior3.68GiB peak; preserve16GiB host disk floor and1GiB launch margin. Fresh preflight/receipts at b7-packing-legacy2."
+  },
+  "previous_selected_receiving": {
+    "receipt": "devguide/evidence/exact_packing_cache_checkpoint_20261111.json",
+    "source_fingerprints_match": {
+      "sabueso/core/card_exploration_shared_values_v12.py": "a03cf24659f5524ee2d15e79e2840569baff8cabff4805fdebf93b01eea7549f",
+      "tests/core/test_exploration_shared_values_offline.py": "331194e242fb3f7590dff58214039e2f649f4e7cf00534a0507d7d62dc7f8c04"
+    },
+    "copied": 96,
+    "installed": 96,
+    "implementation_modules_exact": 918,
+    "SOURCE_resources_exact": 7,
+    "scope": "Earlier exact changed-module source/copied/actual diagnostic installed receiving; same production/test module bytes, shared dependencies, 0.0.0+unknown diagnostic archives. No extra distinct source coverage or new broader/public/platform receiving inferred."
+  },
+  "documentation_checks": {
+    "changed_page": {
+      "state": "PASS",
+      "file": "docs/content/user/card_exploration.md",
+      "sha256": "e311a4c83680b499a3a127b12a465b543d726f80951d0bff2f00d71bad9d8768",
+      "fenced_python_examples": 84,
+      "grammar": "Python3.11",
+      "scope": "Syntax only, no execution or independent user acceptance. Existing owning runtime cases and full source qualification have separate actual scopes."
+    },
+    "guide": {
+      "state": "PASS",
+      "scope": "Maintained non-archive guide and changed Markdown local targets; changed-target anchors; changed fenced Python3.11 grammar. No external link or runtime example qualification.",
+      "maintained_markdown_files": 190,
+      "local_path_targets_checked": 1600,
+      "changed_page_anchors_checked": 24,
+      "python_examples_checked": 84,
+      "errors": []
+    },
+    "changed_test": {
+      "state": "PASS",
+      "file": "tests/tools/test_installed_receiving_scope_offline.py",
+      "sha256": "6f04f3e58736652d54406956fdd88d55e78d6d747e60c460236d0b946e5c7f52",
+      "grammar": "Python3.11",
+      "ruff_check": "PASS",
+      "ruff_format": "PASS"
+    },
+    "sphinx": {
+      "exit_code": 0,
+      "elapsed_s": 54.19,
+      "peak_owned_rss_bytes": 283938816,
+      "peak_owned_swap_bytes": 0,
+      "stop_reason": null
+    },
+    "scope": "Current development profiles, exact machine-root versus observed-request retention, current unpublished release notes and acceptance boundaries; syntax/links/warning-fatal build are not human usefulness evidence."
+  },
+  "workload": "The prior bounded 20.2 percent save observation and maintainer-approved 60 s save / 30 s reopen / 1 GiB targets keep their exact structural input/workstation scope. No new performance benchmark claimed.",
+  "hosted_reference": {
+    "source": "3c26790a13903d857c548886126d0c8111550704",
+    "CI_run": 43072436424,
+    "governance_run": 43072515668,
+    "governance": "Verified full-capture PASS",
+    "CI": "Incomplete overall recovery: Python 3.12 installed pilot success, Python 3.14 failure annotated runner/server communication loss, Python 3.13 cancelled observed. Actual test/resource/network cause is not inferred. Full same-run capture remains separately owned.",
+    "current_source": "Old reference results do not qualify changed packing code or this current working test correction. Exact final authorized source/platform/artifact gates must actually pass before admission/release."
+  },
+  "user_requested_tmp_cleanup": {
+    "removed_owned_stages": 9,
+    "removed_regular_bytes": 665170678,
+    "canonical_originals_and_small_proofs_retained": true,
+    "protected_active_and_other_task_paths": true,
+    "scope": "/tmp is tmpfs; this reclaims its memory-backed space, not repository disk. No broad age/prefix/same-UID deletion."
+  },
+  "acceptance": "Independent scientist/researcher,actual-agent and real-consumer observations pending. B2 review deferred; B8 candidate/schema freeze/staging/publication unresumed.",
+  "cleanup": {
+    "source_cohort_scratch_records": 5,
+    "removed_regular_bytes": 19033523311,
+    "retained_directory": "recovered_work/checkpoint_recovery_20261106/b7-packing-full-checkpoint-1",
+    "owner": "Sabueso maintainers #167/#148/#112",
+    "review_trigger": "B7 review or before candidate preparation",
+    "retained": "Raw failed/passing source/event/worker/discovery/resource/partition/correction proofs, docs build/logs, original vectors and immutable diagnostic archives. Original failed legacy2 is not relabeled. User-requested /tmp cleanup has exact ownership/data-reference archives."
+  },
+  "limits": "No online/scientific/researcher/actual-consumer/public dependency closure/installed OS-Python matrix/candidate/release acceptance inferred."
+}

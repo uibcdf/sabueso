@@ -9,6 +9,26 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Full packing-source qualification (2026-11-11, #167/#148/#112)
+
+The [full current-source receipt](../evidence/packing_full_checkpoint_20261111.json)
+accounts for all 11,432 current normal offline IDs at unchanged runtime
+`5ae3b1e` / SDK252. Initial full execution has one stale receiving-count failure;
+only that test function is corrected and repeated, with actual external client
+and scratch placement. The other 1,348 inputs and all runtime/original bytes stay
+fixed. Preserve the original 418-pass/one-failure gate and the exact correction
+certificate; coverage combines the unchanged passing cases and corrected repeat.
+Documentation and the test-only correction change no tested runtime.
+Record the exact resulting committed/pushed SHA and metadata under
+`recovered_work/checkpoint_recovery_20261106/b7-packing-full-checkpoint-1/`.
+
+The intermediate `[skip ci]` route remains authorized. Recover applicable CI and
+governance on the exact final authorized head before admission/release under
+#167/#148/#112. The older one-batch `3c26790` recovery below retains its original
+scope and actual outcomes, including observation failures. Do not count it as
+qualification of the changed packer, silently retry it or dispatch a new head.
+B7 independent acceptance and B8 resumption remain separate.
+
 ### Exact packing cache (2026-11-11, #167/#148/#112)
 
 The [selected local receipt](../evidence/exact_packing_cache_checkpoint_20261111.json)

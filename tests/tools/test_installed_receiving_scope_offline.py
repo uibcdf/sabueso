@@ -266,14 +266,21 @@ def test_declared_shared_values_run_without_checkout_files():
             )
             == 1
         )
+    outside_parent = None if sys.platform == "win32" else "/tmp"
     with tempfile.TemporaryDirectory(
-        prefix="sabueso-shared-values-receiving-"
+        prefix="sabueso-shared-values-receiving-", dir=outside_parent
     ) as directory:
-        stage = Path(directory)
+        stage = Path(directory).resolve()
+        assert not stage.is_relative_to(root)
         shutil.copyfile(root / "tests/core" / name, stage / name)
         (stage / "data").mkdir()
         shutil.copyfile(root / "tests/core/data" / original, stage / "data" / original)
-        env = dict(os.environ, PYTHONPATH=str(stage))
+        env = dict(
+            os.environ,
+            PYTHONPATH=str(stage),
+            TMPDIR=str(stage),
+            PYTHONIOENCODING="utf-8",
+        )
         env.pop("PYTEST_ADDOPTS", None)
         result = subprocess.run(
             [
@@ -283,6 +290,8 @@ def test_declared_shared_values_run_without_checkout_files():
                 "--receptor=llm",
                 "-o",
                 "tmp_path_retention_policy=failed",
+                "--basetemp",
+                str(stage / "pytest-scratch"),
                 name,
             ],
             cwd=stage,
@@ -293,7 +302,7 @@ def test_declared_shared_values_run_without_checkout_files():
             timeout=120,
         )
         assert result.returncode == 0, result.stdout + result.stderr
-        assert "56 passed" in result.stdout and "PASS exit=0" in result.stdout
+        assert "96 passed" in result.stdout and "PASS exit=0" in result.stdout
         assert not (stage / "temp_data").exists()
 
 

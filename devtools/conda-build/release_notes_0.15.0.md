@@ -8,7 +8,7 @@ packet meanings stay unchanged. Scientific/default review is explicitly pending;
 this is not a released or scientifically accepted correction yet.
 
 **Partial unpublished draft**, initially prepared 2026-10-20 under #112 and
-reviewed for the 2026-10-25 pause. The target is 0.15.0, confirmed on 2026-10-24;
+updated through 2026-11-11. The target is 0.15.0, confirmed on 2026-10-24;
 full Card exploration and actual human acceptance are prerequisites. Release
 consolidation, candidate selection and publication remain paused. The current
 [scope](../../devguide/pending_proposals/release_consolidation_0150.md) and
@@ -58,6 +58,12 @@ is established by this draft.
   Historical text/HTML remains stable when reopened and saved again; explicit
   detached current readings remain available on original captures. Unknown
   recorded policies are refused rather than silently upgraded.
+
+- Reduce repeated encoding work when saving large current explorations (#167).
+  Bounded private caches preserve exact bytes for identical inputs, typed values,
+  logical positions and original support; collision and logical-budget checks
+  remain mandatory. The measured public structural route has provisional
+  maintainer-approved time/memory targets; independent workload review is pending.
 
 - Share complete original source support across generic related links instead of
   copying every statement into every source row (#167). Exact source opening,
@@ -189,16 +195,19 @@ comparability and source-text acceptance remain open. Illustrative eligibility
 does not establish project model selection, assay equivalence or selectivity.
 Broader operation/bibliography coverage, non-protein packet queries, finer terms
 filtering, larger workload budgets and peptide identity remain roadmap work.
-The broad Card human/agent exploration implementation, source/coordinate integrity
-corrections and versioned packet history are substantial additional development
-scope since this initial draft. This list is incomplete until reconciled with
-the completion inventory; it does not claim those rich panels are all delivered.
+The broad development profiles and saved routes described above are mapped in the
+[completion inventory](../../devguide/pending_proposals/card_exploration_completion_0150.md).
+[CHECKPOINT](../../devguide/CHECKPOINT.md) owns current technical qualification.
+Independent review can still identify consequential gaps; reconcile final scope
+and acceptance before turning this partial draft into published release notes.
 Shared MOLI/Recorda contracts and Nextia Evidence retain their owners; public
 example readers do not close real consumer acceptance.
 
 ## Qualification still required
 
-Select the final candidate and inspect its exact-SHA CI/governance. Build one
+Obtain recorded B7 acceptance and maintainer resumption using the
+[readiness worksheet](release_readiness_0.15.0.md). Then select the final candidate
+and inspect its exact-SHA CI/governance. Build one
 immutable staging artifact and qualify its installed public dependency closure,
 historical readers and migrations on Linux/macOS arm64/Windows × Python 3.11–3.14.
 Obtain final acceptance, promote the tested bytes, verify a clean public install

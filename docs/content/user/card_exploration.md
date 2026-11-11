@@ -1,15 +1,10 @@
 # Explore a Card
 
-Predicted-model exploration accepts AlphaFold's `sequenceStart`/`sequenceEnd`
-and legacy `uniprotStart`/`uniprotEnd`. When both are present they must agree;
-conflicting, invalid or incomplete intervals remain visible and do not establish
-coverage or a structural question. Inspect the model and its support to see every
-original declaration. Saved reading keeps its original answer and uncertainty.
-
 **Development API:** this page describes the development checkout, after 0.14.0.
-The released 0.14.0 package does not provide `card.explore()` yet. This first
-version offers readable inspection, distinct protein/molecule/disease routes and
-source knowledge coverage; broader scientific topics are still being built.
+The released 0.14.0 package does not provide `card.explore()` yet. The development
+explorer offers protein, molecule and disease inspection, source knowledge
+coverage and the scientific routes described below. Each question uses retained
+input context; a topic's availability does not establish complete source coverage.
 
 For a complete executable example using frozen public inputs, see
 {download}`the three-Card walkthrough <../../../examples/user_journeys/card_exploration.py>`.
@@ -638,6 +633,12 @@ glossary entry is not evidence of molecular absence. Inspect the original
 relationship and its supporting statements when its qualifier context is unreadable.
 
 ## Inspect predicted models separately
+
+Predicted-model exploration accepts AlphaFold's `sequenceStart`/`sequenceEnd`
+and legacy `uniprotStart`/`uniprotEnd`. When both are present they must agree;
+conflicting, invalid or incomplete intervals remain visible and do not establish
+coverage or a structural question. Inspect the model and its support to see every
+original declaration. Saved reading keeps its original answer and uncertainty.
 
 ```python
 models = explorer.answer("predicted_models")
@@ -1455,9 +1456,12 @@ original_interfaces = sabueso.read_exploration(
 original_interfaces.table()
 ```
 
-To retain an exact agent request, save that selection explicitly. Original reading
-returns the same projection, equality filters, members and order; an unretained
-request returns `not_saved`:
+To make an exact agent request the saved root, save that selection explicitly.
+Saving a human view also retains supported requests already executed in the
+observed session's actual accesses, as described above. Reopen the request from
+its original context; unrelated accesses do not share an operation history.
+Original reading returns the same projection, equality filters, members and
+order; an unexecuted request returns `not_saved`:
 
 ```python
 compact_interface_receipt = compact_interfaces.save("compact-interface-review.json")
@@ -2025,21 +2029,22 @@ The format-@1 literal reader remains supported alongside scientific format @2.
 
 ## What comes next
 
-The bounded first version consists of complete inspection, initial nature-specific
-routes, explicit contextual navigation and portable saved reading. Richer activity,
-clinical, variant, site and comparative panels remain under development. The
-complete broad design and validated human experience are required before the
-planned 0.15.0 release. Researcher review and useful-scale qualification remain open.
+The development explorer includes the structural, chemical, activity/literature,
+clinical/disease, variant/isoform and protein-comparison routes described above.
+Available questions depend on the Card's nature and retained context. Inspect
+`explorer.capabilities` and each view's `capabilities` for supported operations;
+unrecognized natures return an explicit unsupported question catalog.
 
-The same generic inspection works for protein, small-molecule, disease and
-unrecognized Card natures. Initial protein, molecule and disease questions are
-implemented, together with explicit navigation to supplied related Cards and
-retained context for missing destinations. Supported literal/field and navigation
-sessions and initial structural/region/coverage results can now be saved. Broader
-scientific panels, full machine conformance and technical/human acceptance remain
-pending. Unrecognized natures return an explicit
-unsupported question catalog. Inspect `explorer.capabilities` and a view's
-`capabilities` for the delivered operations.
+Supported saved sessions retain visited values, original support, navigation and
+executed finite requests. Unvisited questions and unexecuted request variants
+remain `not_saved`; reopening never supplies missing history or newer science.
+Historical files keep their original interpretation and retained scope.
+
+The explorer remains a development feature, absent from published 0.14.0.
+Independent researcher, scientific, agent and downstream-consumer review, broader
+workload acceptance and final package qualification remain required before the
+planned 0.15.0 release. The {doc}`researcher_review` page explains how to take part
+with prepared public inputs.
 
 `explorer.access` reads the exact same capture through bounded machine pages;
 see {doc}`../../api/core`. Existing scientific methods such as `card.structures()`

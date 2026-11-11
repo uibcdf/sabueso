@@ -5,6 +5,40 @@ Current working-state checkpoint: **2026-11-11**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Current packing runtime — local validation
+
+The [composed receipt](evidence/packing_full_checkpoint_20261111.json) accounts
+for **11,432 distinct normal offline passing outcomes** at the unchanged packing
+runtime `5ae3b1e` / SDK252. Initial complete discovery/execution has one stale
+receiving assertion: its child passes 96 cases while the parent still expects 56.
+Only that test function is corrected, including actual outside-checkout client
+and scratch placement; its final targeted repeat passes. Independent discovery
+keeps the same 11,432 IDs. All production code, originals and the other 1,348
+mapped inputs stay fixed. The original 418-pass/one-failure gate is retained;
+the receipt combines its unchanged passing cases with the successful corrected repeat.
+All seven SOURCE resources and 45 original test-data files remain byte-identical.
+The ordinary group's thirteen warnings are existing negative acquisition controls.
+
+The receipt owns source/event/worker/phase integrity and resource/cleanup records. Ordinary/native
+groups use eight workers; large histories use five/four within the same 10 GiB
+owned-tree ceiling, 16 GiB host reserve and native pools one. Existing copied and
+installed diagnostic 96-case results retain their narrower matching-source
+scope; they are not new public/platform or candidate receiving.
+
+The user guide now describes the delivered development profiles and distinguishes
+an explicitly saved machine root from retained supported requests in observed
+actual accesses. Its grammar, local links and warning-fatal Sphinx qualification
+are recorded separately. The accepted bounded workload targets remain in
+[DECISIONS](DECISIONS.md#agree-a-scoped-provisional-structural-workload-budget-2026-11-11).
+
+This closes the composed local runtime checkpoint, not B7 acceptance or B8.
+The original `3c26790` hosted batch retains its own scope; governance passes,
+while complete CI verification is separately pending, including acquisition
+interruptions. Applicable exact-final-head hosted/platform/artifact gates must
+actually pass before admission or release. Independent scientist/researcher,
+actual-agent and real-consumer results remain pending; B2 stays deferred and
+B8 candidate/schema-freeze/staging/publication remain unresumed.
+
 ## Exact packing cache and scoped workload targets — local checkpoint PASS
 
 The current @35/@36 writer caches exact string sizes and small typed record

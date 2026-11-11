@@ -619,14 +619,19 @@ remain historical scoped controls, not current universal worker/RAM defaults.
 
 ### Current checkpoint partition
 
-The [current integration receipt](evidence/card_integration_checkpoint_20261111.json)
-qualifies all **11,392** normal offline cases on one unchanged source map:8,229
-ordinary cases,1,553 native-original cases,1,136 modern-history cases,55 grouped
-molecule-original cases and419 other history/receiving cases. Counts are exact
-disjoint source coverage; copied children and223-case development/diagnostic
-receiving add no distinct cases. The resource receipts own actual worker, RSS,
-scratch and host-reserve observations. Earlier calibration scopes below retain
-their original source epochs.
+The [current packing-source receipt](evidence/packing_full_checkpoint_20261111.json)
+accounts for all **11,432** normal offline passing outcomes:
+8,269 ordinary cases, 1,553 native-original cases, 1,136 modern-history cases,
+55 grouped molecule-original cases and 419 other history/receiving cases. Counts
+are exact disjoint source coverage; copied children and the earlier selected
+96-case development/diagnostic receiving add no distinct cases. Initial execution
+has one stale 56/96 receiving-count failure. Only that test
+function is corrected and repeated with actual external client/scratch placement;
+all runtime and other 1,348 inputs are unchanged. Raw failed outcomes stay intact.
+Module blocks remain contiguous to preserve original fixture reuse. Actual
+worker, RSS, scratch,
+cleanup and host-reserve observations belong to the receipt. The preceding
+11,392-case integration and other calibration scopes keep their original epochs.
 
 The [complete exact-origin checkpoint](evidence/molecule_activity_root_exact_full_checkpoint_20261108.json)
 passes **10,050 distinct offline cases**, exactly matching normal root discovery.
@@ -863,7 +868,7 @@ these technical checks.
 
 | Changed behavior | Select these test files / gates |
 | --- | --- |
-| Current exact packing caches | Complete `test_exploration_shared_values_offline.py`, `test_card_assembly_machine_retention_offline.py` and `test_card_saved_knowledge_comparison_offline.py`. Preserve pre-optimization SDK251 canonical byte hashes, Boolean/integer/float/signed-zero distinctions, Unicode, literal reference lookalikes, occurrences/entities/units, nonpositive/tiny/normal private memo limits, full logical budgets, unsupported/cyclic input and collision refusals. Receive all genuine SDK243 source/access/finite-request controls and fully resealed semantic refusals without weakening predicates. Repeat the complete changed 96-case shared-values module outside checkout and from a separate diagnostic wheel; inspect actual wheel/sdist/installed implementation bytes and all seven SOURCE resources. Time whole sessions separately in fresh ABBA processes over fixed inputs; no noisy test speed threshold or global performance claim. Keep the [scoped provisional workload targets](DECISIONS.md#agree-a-scoped-provisional-structural-workload-budget-2026-11-11), shared-machine guards, exact-candidate/platform qualification and independent B7 acceptance separate (#167/#148/#112) |
+| Current exact packing caches | Complete `test_exploration_shared_values_offline.py`, `test_card_assembly_machine_retention_offline.py` and `test_card_saved_knowledge_comparison_offline.py`. Preserve pre-optimization SDK251 canonical byte hashes, Boolean/integer/float/signed-zero distinctions, Unicode, literal reference lookalikes, occurrences/entities/units, nonpositive/tiny/normal private memo limits, full logical budgets, unsupported/cyclic input and collision refusals. Receive all genuine SDK243 source/access/finite-request controls and fully resealed semantic refusals without weakening predicates. Include `test_declared_shared_values_run_without_checkout_files` in `test_installed_receiving_scope_offline.py`: keep its declared complete child count aligned and require actual client/scratch placement outside checkout under controlled `TMPDIR`, with an explicit UTF-8 child wire. Repeat the complete changed 96-case shared-values module outside checkout and from a separate diagnostic wheel; inspect actual wheel/sdist/installed implementation bytes and all seven SOURCE resources. Time whole sessions separately in fresh ABBA processes over fixed inputs; no noisy test speed threshold or global performance claim. Keep the [scoped provisional workload targets](DECISIONS.md#agree-a-scoped-provisional-structural-workload-budget-2026-11-11), shared-machine guards, exact-candidate/platform qualification and independent B7 acceptance separate (#167/#148/#112) |
 | Current protein menus and molecular target catalogs | Complete `test_card_current_protein_catalog_offline.py` and all `test_card_molecule_activity_exploration_offline.py` cases, including molecule → supplied target → measured molecules. Preserve current descriptors, original source/back/request scope, units and frozen molecule science; refuse resealed label/membership/focal changes and keep source-owned lookalikes literal. Repeat complete old protein/sequence saved modules to prove explicit earlier session formats are not upgraded. Check @35/@36 without science and explicit `not_saved` routes. Both installed routes copy/select the complete new module; local copied receiving remains separate from installed/hosted qualification (#148/#112) |
 | Sequence source-context display saving | Complete `test_card_sequence_context_display_offline.py` and the public `test_protein_context_review_journey_offline.py`; filter/sort/presentation/chained/empty contexts without an opened menu, original source/back/request continuity, independent @35/@36 reading/resave, a resealed positive and altered operand/membership/source-cell refusals. Include complete current comparison saved reading, older sequence/protein saved modules, human/access/shared-value and installed-payload scope checks. Both installed routes copy/select the new complete modules and the example; actual installed/hosted qualification stays separate (#148/#112) |
 | Schema-alignment CLI status | Complete `test_schema_alignment.py` and a separate `python tools/validate_schema.py` invocation. Isolated subprocess inputs must fail for either/both mismatches and unrelated wildcard prefixes, while alignment and allowed descendants pass. This changes the developer gate, not the Card schema (#112) |
