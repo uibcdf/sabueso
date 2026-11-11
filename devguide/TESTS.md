@@ -1154,9 +1154,12 @@ gh-run-receptor watch <run-id> --repo uibcdf/sabueso --profile ci \
 
 Verify both runs' `headSha` against the recorded candidate. Check every job's
 conclusion and full test summary, not just the workflow's overall green status.
-The current matrix has thirteen test lanes (nine public OS/Python lanes and four
-installed public-Ackredit lanes), Ruff and coverage publication, plus the separate
-governance job. A missing, skipped, cancelled or failing applicable job leaves
+The current CI has eighteen jobs: thirteen pytest lanes (nine public OS/Python
+lanes and four installed public-Ackredit lanes), three additional older-Python
+macOS ARM64 Zstandard receiving jobs, Ruff and coverage publication. Governance
+adds its separate job. Receive all twelve fresh OS/Python backend reports through
+the Zstandard cross-reader gate; the three extra jobs are not extra full pytest
+lanes. A missing, skipped, cancelled or failing applicable job leaves
 qualification pending. Record run URLs and retained captures in the owning issue
 and checkpoint receipt. If `main` has advanced, these results qualify only the
 recorded candidate; the newer head still needs its own applicable checks.

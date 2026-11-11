@@ -5,6 +5,25 @@ Current working-state checkpoint: **2026-11-11**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Public whole-session workload observations — bounded PASS
+
+The [workload receipt](evidence/public_session_workload_checkpoint_20261111.json)
+measures the existing three-Card, structural and protein-context walkthroughs at
+clean `89bdb0a` / SDK250. All seven saved sessions reopen in separate processes
+with network access, Card construction and resolution forbidden. Seventeen
+immediate repeated questions keep their exact result/view bindings. Runtime,
+scientific rules and the 52 protected SOURCE/original test-data files stay fixed.
+
+With one CPU and native pools limited to one, production/reading take
+15.59/9.57 s, 69.01/22.66 s and 32.22/10.83 s respectively. Sampled owned RSS
+stays below 503 MiB, with zero owned swap. Saving dominates the producer cost;
+the [persistence analysis](pending_proposals/card_persistence_cost.md#current-combined-public-sessions)
+records individual sizes, timings and limits under #167/#148/#112.
+These are instrumented, warm single observations; fixture preparation is not
+separately timed and no notebook timing or scaling guarantee is claimed.
+Researcher workload feedback and agreed useful-scale budgets remain pending,
+alongside the other B7 acceptance dimensions. B8 remains unresumed.
+
 ## Integrated saved requests and original chemical context — local checkpoint PASS
 
 Human-root saving now retains already executed scientific requests in their

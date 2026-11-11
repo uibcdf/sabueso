@@ -9,6 +9,26 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Combined local integration and workload handoff (2026-11-11, #148/#167/#112)
+
+Implementation source `89bdb0a96348b9eb07a2ecbd3415f902367834a3`, SDK250, passes
+the [11,392-case local integration](../evidence/card_integration_checkpoint_20261111.json)
+and both 223-case outside-checkout receiving scopes. The following
+[public workload observations](../evidence/public_session_workload_checkpoint_20261111.json)
+add seven separate-process saved readings without changing that implementation.
+Documentation-only handoff commits retain the same tested runtime. Record their
+exact pushed SHA and retained resource cleanup under
+`recovered_work/checkpoint_recovery_20261106/b7-whole-session-workload-1/`.
+
+The intermediate `[skip ci]` route remains in effect. Cumulative exact-head
+CI/governance recovery is due under #148/#112; follow the complete eighteen-job
+CI and separate governance accounting in [TESTS](../TESTS.md#recovering-deferred-ci),
+including all twelve Zstandard backend reports. No dispatch is authorized by
+these observations. A concrete one-batch manual recovery can be prepared for
+maintainer approval after the documentation checkpoint is published. B7 human,
+scientific, actual-agent/workload and consumer acceptance and B8 delivery remain
+separate; this is not candidate selection or a release claim.
+
 ### Exact-origin molecule LIVE return (2026-11-07, #148/#112)
 
 The [selected 515-case local receipt](../evidence/molecule_activity_root_exact_live_checkpoint_20261107.json)

@@ -135,6 +135,55 @@ direct-caller state isolation and all frozen predicates. Its unprofiled observat
 have their own control/source/input hashes; the earlier copy reduction above still
 has no demonstrated speedup and is not relabeled by these different-task results.
 
+## Current combined public sessions
+
+The [2026-11-11 workload receipt](../evidence/public_session_workload_checkpoint_20261111.json)
+observes three existing public walkthroughs at clean source `89bdb0a96348b9eb07a2ecbd3415f902367834a3`,
+SDK `0.14.0+250.g89bdb0a`. Each producer has its own fresh-process reader;
+all seven complete saved sessions pass their original digest, selection/source
+and return-route controls. Reading forbids network access, resolution and Card
+construction. Structural and protein-context walkthroughs also retain their
+complete finite agent reads. Seventeen immediate repeated public questions keep
+their original result/view bindings.
+
+| Walkthrough | Produce / separate read (s) | Save calls, inclusive total (s) | Maximum sampled owned RSS (MiB) | Complete saved-session encoded bytes |
+| --- | ---: | ---: | ---: | ---: |
+| Three Cards: protein, molecule and disease | 15.59 / 9.57 | 3 / 13.80 | 208.43 | 29,668,764, plain JSON |
+| Current and historical structural context | 69.01 / 22.66 | 2 / 66.82 | 502.34 | 10,528,660, gzip |
+| Supplied comparison and HsTIM context | 32.22 / 10.83 | 2 / 29.67 | 245.02 | 4,273,503, gzip |
+
+These are single instrumented observations with uncontrolled warm OS caches and
+no randomized control. Different inputs, histories and storage representations
+prevent interpreting the table as a compression comparison or regression claim.
+Operation timings are inclusive and may overlap. Saving includes original
+verification and transport; it is not an isolated encoding measurement. Fixture
+loading/mapping is included in process totals but not separately timed.
+The original three-Card protein uses schema 0.3.9; the separate structural task
+includes current and historical inputs. Text response and agent-page byte
+observations are retained; notebook/HTML timing is unmeasured.
+
+One owned invocation runs at a time, with one CPU, native pools one and nice 10.
+Its stop guards are 10 GiB combined owned-tree RSS, 16 GiB host-available RAM,
+zero owned swap, 2 GiB owned scratch and 600 s. All six phases finish without a
+resource stop or owned swap, retaining at least 54.87 GiB host-available RAM.
+These engineering guards are not researcher-agreed performance targets.
+
+Saving remains the dominant observed producer cost under the existing #167
+question. This supplies current combined-session evidence, not a new correctness
+defect or accepted workload budget. Obtain actual task feedback and agree useful
+latency, memory and storage scales before closing B7's workload dimension;
+independent scientific/researcher, actual-agent usefulness and real-consumer
+acceptance remain separate. No runtime, scientific predicate, historical original
+or production workload ceiling changes in this measurement increment.
+
+Raw observer/controller code, complete logs, preflights, per-call/resource
+receipts and exact output hashes are retained under the directory declared in
+the receipt. Sabueso maintainers own review under #167/#148/#112 at B7 workload
+review or before candidate preparation. Generated measurement sessions are
+disposable after their independent reading and hash capture; original scientific
+capsules remain protected. These local observations are retained for a
+consolidated #167 review; no new issue publication is claimed.
+
 ## Qualification and resource ownership
 
 Owning gates cover complete original-wire immutability for literal and quantity

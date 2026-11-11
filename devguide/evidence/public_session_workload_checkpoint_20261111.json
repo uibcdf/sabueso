@@ -1,0 +1,559 @@
+{
+  "state": "THREE_PUBLIC_WORKLOADS_PASS_ACCEPTANCE_PENDING",
+  "date": "2026-11-11",
+  "owner": [
+    "uibcdf/sabueso#167",
+    "uibcdf/sabueso#148",
+    "uibcdf/sabueso#112"
+  ],
+  "source_commit": "89bdb0a96348b9eb07a2ecbd3415f902367834a3",
+  "runtime_tree": "4adf63ff20e22fdee15e6603c1668d94cebbe818",
+  "runtime": "0.14.0+250.g89bdb0a",
+  "method": {
+    "scope": "Existing three-Card, structural and protein-context public walkthroughs, each with a separate-process saved reader",
+    "instrument": "recovered_work/checkpoint_recovery_20261106/b7-whole-session-workload-1/measure.py",
+    "instrument_sha256": "3dc20ee142c43f2cfa8fdca574d3a450dcc4f3ce4fd39173e4aaf00f7f585aa2",
+    "sampling_interval_s": 0.25,
+    "execution": "Sequential; one CPU; native pools one; nice 10",
+    "limits": "10 GiB combined owned process-tree RSS, 16 GiB host available floor, zero owned swap, 2 GiB owned scratch and 600 s per invocation",
+    "timing": "One instrumented nonrandomized warm sample per walkthrough/phase; operation durations include nested calls and must not be summed across operations",
+    "repeat_probe": "One immediate repeated public answer per producer answer; retain exact result/view binding; not an independent cold sample",
+    "response_bytes": "Rendered text UTF-8; agent page uses json.dumps(ensure_ascii=False) with default separators, not a transport-budget measurement",
+    "input_preparation": "Fixture loading/mapping is included in whole-process time but not separately timed",
+    "rendering": "Text rendered by the existing walkthroughs; no notebook/HTML timing claimed",
+    "reader_prohibitions": "Network connections, sabueso.resolve and Card.__init__/from_dict/explore forbidden"
+  },
+  "protected_SOURCE_and_original_testdata_files_unchanged": 52,
+  "workloads": {
+    "core": {
+      "walkthrough": "examples/user_journeys/card_exploration.py",
+      "walkthrough_sha256": "314543b088962d2fda0d8585a7005e10d2ce82100906d8eb5fe4bcd60656408d",
+      "phases": {
+        "produce": {
+          "state": "PASS",
+          "source_modules_and_walkthrough_unchanged": 920,
+          "command": [
+            "nice",
+            "-n",
+            "10",
+            "taskset",
+            "-c",
+            "0",
+            "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+            "recovered_work/checkpoint_recovery_20261106/b7-whole-session-workload-1/measure.py",
+            "core",
+            "produce"
+          ],
+          "resources": {
+            "elapsed_s": 15.59,
+            "peak_owned_rss_bytes": 167092224,
+            "minimum_host_available_bytes": 59285098496,
+            "peak_owned_swap_bytes": 0,
+            "peak_owned_scratch_bytes": 29757592
+          },
+          "operations_inclusive": {
+            "capture": {
+              "calls": 3,
+              "sum_wall_s": 0.0483947719912976,
+              "maximum_wall_s": 0.043504240980837494
+            },
+            "text": {
+              "calls": 42,
+              "sum_wall_s": 0.0450944050680846,
+              "maximum_wall_s": 0.023210791987366974,
+              "maximum_response_utf8_bytes": 5154
+            },
+            "answer": {
+              "calls": 9,
+              "sum_wall_s": 0.014852150052320212,
+              "maximum_wall_s": 0.005729352997150272
+            },
+            "agent_select": {
+              "calls": 1,
+              "sum_wall_s": 0.08324746001744643,
+              "maximum_wall_s": 0.08324746001744643
+            },
+            "view": {
+              "calls": 3,
+              "sum_wall_s": 0.09084203705424443,
+              "maximum_wall_s": 0.0834152540192008
+            },
+            "save": {
+              "calls": 3,
+              "sum_wall_s": 13.798428644018713,
+              "maximum_wall_s": 5.869356718030758
+            }
+          },
+          "immediate_repeat_probes": 9,
+          "observation_sha256": "679053c3724b9faf0129c9f7ab699dd04cd27a5dd0bbbd1c19c3db41186b892c",
+          "complete_log_sha256": "b00e95594984b589cb196cd8cea4093da7fb1c5be8ac51d4cd444dc8683554d8",
+          "preflight_sha256": "46e9d974309e4df2c0dea6f5a69856c2b712515cce3f342e33a7e2fe1b41c06e"
+        },
+        "read": {
+          "state": "PASS",
+          "source_modules_and_walkthrough_unchanged": 920,
+          "command": [
+            "nice",
+            "-n",
+            "10",
+            "taskset",
+            "-c",
+            "0",
+            "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+            "recovered_work/checkpoint_recovery_20261106/b7-whole-session-workload-1/measure.py",
+            "core",
+            "read"
+          ],
+          "resources": {
+            "elapsed_s": 9.57,
+            "peak_owned_rss_bytes": 218558464,
+            "minimum_host_available_bytes": 59250593792,
+            "peak_owned_swap_bytes": 0,
+            "peak_owned_scratch_bytes": 29788552
+          },
+          "operations_inclusive": {
+            "read_exploration": {
+              "calls": 3,
+              "sum_wall_s": 8.642688035964966,
+              "maximum_wall_s": 4.075881820986979
+            },
+            "text": {
+              "calls": 19,
+              "sum_wall_s": 0.029025152092799544,
+              "maximum_wall_s": 0.01466243399772793,
+              "maximum_response_utf8_bytes": 5217
+            },
+            "view": {
+              "calls": 4,
+              "sum_wall_s": 0.0007616059738211334,
+              "maximum_wall_s": 0.000256625993642956
+            }
+          },
+          "immediate_repeat_probes": 0,
+          "observation_sha256": "7ac807dae759a6aedffa01a87616a1c30c99d062c6709c33c7eb3ed22d55934b",
+          "complete_log_sha256": "8159a6374382f8567a5086721f7f4e01611debeffd8f7576b479b7d7aa0068d2",
+          "preflight_sha256": "b28f16e5559a76173eb0db52ad7c35d3ac23fff48c9d73984065c63b7eacd2eb"
+        }
+      },
+      "sessions": {
+        "protein.json": {
+          "format": "sabueso.card_exploration@35",
+          "root_view_ref": "XV_e4361f1b94e60fc812fec5d02c080ad725496246133abe86d9a7cc7da8827de2",
+          "bundle_digest": "sha256:ae46c582cf55b9813a792ad65187295c4e17cf19bec75d3410750999ba12755a",
+          "compression": "none",
+          "encoded_bytes": 13299885,
+          "decoded_bytes": 13299885,
+          "encoded_sha256": "sha256:d0551cc1c2a76efa6b39c9d989cd0189dad3966f67fe02b1693600bce7692053",
+          "decoded_sha256": "sha256:d0551cc1c2a76efa6b39c9d989cd0189dad3966f67fe02b1693600bce7692053",
+          "input_pins": [
+            "sabueso:protein:uniprot:P52270@sha256:e722cd3d919e053eb1af777e9e8d3818de52adf5f518bf5008a0e067fb21367f"
+          ],
+          "counts": {
+            "cards": 1,
+            "objects": 62,
+            "views": 107,
+            "locations": 76
+          },
+          "save_wall_s": 5.869356718030758
+        },
+        "molecule.json": {
+          "format": "sabueso.card_exploration@2",
+          "root_view_ref": "XV_c6d84fb3f7644c20c0c76b1f5b621f57022e30319eea56f31c0e9020b0506bbc",
+          "bundle_digest": "sha256:6fbc4605eee9a62c3dcdbea0eeb04d4f1c6e8b380e7535a17ade2e7d6fffbd9d",
+          "compression": "none",
+          "encoded_bytes": 10420557,
+          "decoded_bytes": 10420557,
+          "encoded_sha256": "sha256:7458b9d90da50b270a25d31e09b1458007c50eb5f74ee7b7b37340836d4cefc9",
+          "decoded_sha256": "sha256:7458b9d90da50b270a25d31e09b1458007c50eb5f74ee7b7b37340836d4cefc9",
+          "input_pins": [
+            "sabueso:small_molecule:inchikey:CULUWZNBISUWAS-UHFFFAOYSA-N@sha256:0d9ec573389fadede11ab69ec011ad563e8b2770ac04b532af25530cd1fa61d4"
+          ],
+          "counts": {
+            "cards": 1,
+            "objects": 514,
+            "views": 712,
+            "locations": 624
+          },
+          "save_wall_s": 5.023322238994297
+        },
+        "disease.json": {
+          "format": "sabueso.card_exploration@1",
+          "root_view_ref": "XV_2ddbaf13e2a1f13e5ee9163809a724e7419dc40bffaac5be39f36346428073b6",
+          "bundle_digest": "sha256:21bf8aa760cd080dd5f88446fdadcc3cc1901e7c72deb6828c21f4a96a006d82",
+          "compression": "none",
+          "encoded_bytes": 5948322,
+          "decoded_bytes": 5948322,
+          "encoded_sha256": "sha256:dd4362264e1f4962ceea6d06aa628e24c1cd1aacbfeac51a46d3669df8917bb3",
+          "decoded_sha256": "sha256:dd4362264e1f4962ceea6d06aa628e24c1cd1aacbfeac51a46d3669df8917bb3",
+          "input_pins": [
+            "sabueso:disease:mondo:MONDO:0014221@sha256:9863f3e6f70a3c458307291ce86cc42d49e9fa7323e592fe31ddc9755c6dbff6"
+          ],
+          "counts": {
+            "cards": 1,
+            "objects": 315,
+            "views": 442,
+            "locations": 382
+          },
+          "save_wall_s": 2.9057496869936585
+        }
+      }
+    },
+    "structural": {
+      "walkthrough": "examples/user_journeys/structural_source_review.py",
+      "walkthrough_sha256": "2565ff02c0783ade5b209bf5c62d45a1b7e30b5c6a9c2a2ddcb7c6e4d6904981",
+      "phases": {
+        "produce": {
+          "state": "PASS",
+          "source_modules_and_walkthrough_unchanged": 920,
+          "command": [
+            "nice",
+            "-n",
+            "10",
+            "taskset",
+            "-c",
+            "0",
+            "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+            "recovered_work/checkpoint_recovery_20261106/b7-whole-session-workload-1/measure.py",
+            "structural",
+            "produce"
+          ],
+          "resources": {
+            "elapsed_s": 69.01,
+            "peak_owned_rss_bytes": 526745600,
+            "minimum_host_available_bytes": 58923393024,
+            "peak_owned_swap_bytes": 0,
+            "peak_owned_scratch_bytes": 40352875
+          },
+          "operations_inclusive": {
+            "capture": {
+              "calls": 2,
+              "sum_wall_s": 0.06279573804931715,
+              "maximum_wall_s": 0.04310420900583267
+            },
+            "view": {
+              "calls": 2,
+              "sum_wall_s": 0.037847500992938876,
+              "maximum_wall_s": 0.03680676402291283
+            },
+            "agent_select": {
+              "calls": 5,
+              "sum_wall_s": 0.14828088594367728,
+              "maximum_wall_s": 0.0657510370365344
+            },
+            "agent_page": {
+              "calls": 19,
+              "sum_wall_s": 0.008474031987134367,
+              "maximum_wall_s": 0.0006785609875805676,
+              "maximum_response_utf8_bytes": 6437
+            },
+            "answer": {
+              "calls": 1,
+              "sum_wall_s": 0.0354819200001657,
+              "maximum_wall_s": 0.0354819200001657
+            },
+            "text": {
+              "calls": 5,
+              "sum_wall_s": 0.01973083696793765,
+              "maximum_wall_s": 0.015932678012177348,
+              "maximum_response_utf8_bytes": 2222
+            },
+            "save": {
+              "calls": 2,
+              "sum_wall_s": 66.81715284998063,
+              "maximum_wall_s": 56.812058340990916
+            }
+          },
+          "immediate_repeat_probes": 1,
+          "observation_sha256": "c2b4328759404904deea8ca514c8f4505ad21d9416464c94d1f627d688dc1034",
+          "complete_log_sha256": "41c214f7058cff281909cb7419645e0fc12363589d071bc3551fe29ba8e36f4f",
+          "preflight_sha256": "8010df43fb50862c29ef43f980f2c80cf9e1388aaaa768cb96c0a0dc4f5d3ac3"
+        },
+        "read": {
+          "state": "PASS",
+          "source_modules_and_walkthrough_unchanged": 920,
+          "command": [
+            "nice",
+            "-n",
+            "10",
+            "taskset",
+            "-c",
+            "0",
+            "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+            "recovered_work/checkpoint_recovery_20261106/b7-whole-session-workload-1/measure.py",
+            "structural",
+            "read"
+          ],
+          "resources": {
+            "elapsed_s": 22.66,
+            "peak_owned_rss_bytes": 244744192,
+            "minimum_host_available_bytes": 59185872896,
+            "peak_owned_swap_bytes": 0,
+            "peak_owned_scratch_bytes": 40370602
+          },
+          "operations_inclusive": {
+            "read_exploration": {
+              "calls": 2,
+              "sum_wall_s": 21.600258474063594,
+              "maximum_wall_s": 18.492317315016408
+            },
+            "view": {
+              "calls": 2,
+              "sum_wall_s": 0.0007262179860845208,
+              "maximum_wall_s": 0.00042931397911161184
+            },
+            "agent_page": {
+              "calls": 19,
+              "sum_wall_s": 0.008595619059633464,
+              "maximum_wall_s": 0.0007170279859565198,
+              "maximum_response_utf8_bytes": 6438
+            },
+            "answer": {
+              "calls": 1,
+              "sum_wall_s": 0.00288995896698907,
+              "maximum_wall_s": 0.00288995896698907
+            },
+            "agent_select": {
+              "calls": 1,
+              "sum_wall_s": 0.006019241991452873,
+              "maximum_wall_s": 0.006019241991452873
+            },
+            "text": {
+              "calls": 5,
+              "sum_wall_s": 0.014856047986540943,
+              "maximum_wall_s": 0.013419058988802135,
+              "maximum_response_utf8_bytes": 2389
+            }
+          },
+          "immediate_repeat_probes": 0,
+          "observation_sha256": "3e64ff3079735ff6b0160b09593015fa36c21f3a39513b994f3c6547691fece2",
+          "complete_log_sha256": "688e17b76d8cfe322022c3c9b0a9f8d4b4eff861eefb03b06f31ee31d2494d7b",
+          "preflight_sha256": "f5b692801d354f41cc764d4a6be57752671b7087f6d4bb33b06c51f72efcfb60"
+        }
+      },
+      "sessions": {
+        "current.json.gz": {
+          "format": "sabueso.card_exploration@36",
+          "root_view_ref": "XV_4d8458c3c449a9ba0f91c805d7b20daa0e3d0923318fe2900478656eec093837",
+          "bundle_digest": "sha256:8ed6973425e32ac028c38d00d6d75bd255fcb27936ed12f7e43f9463c9836e6f",
+          "compression": "gzip",
+          "encoded_bytes": 8554991,
+          "decoded_bytes": 25443358,
+          "encoded_sha256": "sha256:a3e0588d45802ccc1e1ad8ae38be55df6c5c0c6897ece2b9f6264e768ff06128",
+          "decoded_sha256": "sha256:5df9726ff239dfe49d10948c0baa62caa344bb3a29c9adb16f1bafb2ad929a28",
+          "input_pins": [
+            "sabueso:protein:uniprot:P52270@sha256:2f1391e54bdaa229c685190ff021ee1d423418ca483a4dcc4358322012d3e2b9"
+          ],
+          "counts": {
+            "cards": 1,
+            "objects": 1884,
+            "views": 2622,
+            "locations": 2185
+          },
+          "save_wall_s": 56.812058340990916
+        },
+        "historical.json.gz": {
+          "format": "sabueso.card_exploration@13",
+          "root_view_ref": "XV_c366a9ec5487b857ecc8d364e917432927a70fdaf941c6ab1fc211729654908d",
+          "bundle_digest": "sha256:35a1bc397d61578e674ca0dd35e052cc9d34c384086e2993b6f008c5215f5b69",
+          "compression": "gzip",
+          "encoded_bytes": 1973669,
+          "decoded_bytes": 5740866,
+          "encoded_sha256": "sha256:fded245461f43a344d8f5ba6c03a7b4ee678e7b142e2f20a16e583eecb94e4ba",
+          "decoded_sha256": "sha256:2cae759a7df2a1f87c297b541701918623a0eeb9267de4c499fc4d69632bb7e9",
+          "input_pins": [
+            "sabueso:protein:uniprot:P52270@sha256:e722cd3d919e053eb1af777e9e8d3818de52adf5f518bf5008a0e067fb21367f"
+          ],
+          "counts": {
+            "cards": 1,
+            "objects": 266,
+            "views": 352,
+            "locations": 318
+          },
+          "save_wall_s": 10.005094508989714
+        }
+      }
+    },
+    "protein": {
+      "walkthrough": "examples/user_journeys/protein_context_review.py",
+      "walkthrough_sha256": "08a31efa772f8c539990629baccfe609f173706cec7e0c5908c48fc8f5ac221c",
+      "phases": {
+        "produce": {
+          "state": "PASS",
+          "source_modules_and_walkthrough_unchanged": 920,
+          "command": [
+            "nice",
+            "-n",
+            "10",
+            "taskset",
+            "-c",
+            "0",
+            "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+            "recovered_work/checkpoint_recovery_20261106/b7-whole-session-workload-1/measure.py",
+            "protein",
+            "produce"
+          ],
+          "resources": {
+            "elapsed_s": 32.22,
+            "peak_owned_rss_bytes": 256921600,
+            "minimum_host_available_bytes": 59174428672,
+            "peak_owned_swap_bytes": 0,
+            "peak_owned_scratch_bytes": 44703557
+          },
+          "operations_inclusive": {
+            "capture": {
+              "calls": 2,
+              "sum_wall_s": 0.06059266399824992,
+              "maximum_wall_s": 0.04245305497897789
+            },
+            "text": {
+              "calls": 11,
+              "sum_wall_s": 0.03494713199324906,
+              "maximum_wall_s": 0.02280919096665457,
+              "maximum_response_utf8_bytes": 2665
+            },
+            "answer": {
+              "calls": 7,
+              "sum_wall_s": 0.25517638999735937,
+              "maximum_wall_s": 0.12576299300417304
+            },
+            "agent_select": {
+              "calls": 7,
+              "sum_wall_s": 0.011538557999301702,
+              "maximum_wall_s": 0.008427715976722538
+            },
+            "agent_page": {
+              "calls": 42,
+              "sum_wall_s": 0.19691833690740168,
+              "maximum_wall_s": 0.02896702499128878,
+              "maximum_response_utf8_bytes": 63180
+            },
+            "save": {
+              "calls": 2,
+              "sum_wall_s": 29.668542644008994,
+              "maximum_wall_s": 23.102726040990092
+            }
+          },
+          "immediate_repeat_probes": 7,
+          "observation_sha256": "6bc0a99319c7cbc4caca77c12002140ba38818d37b93398fd52241eda07a9122",
+          "complete_log_sha256": "b842315b196dd7642f815d66f5c4da5c4ab978bc0dd5061020a161a8d8d9a28d",
+          "preflight_sha256": "2a9deda1ba12fcf2c6c812609a5490d811cb0d0ee8a7658093c88a474d9a8e05"
+        },
+        "read": {
+          "state": "PASS",
+          "source_modules_and_walkthrough_unchanged": 920,
+          "command": [
+            "nice",
+            "-n",
+            "10",
+            "taskset",
+            "-c",
+            "0",
+            "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+            "recovered_work/checkpoint_recovery_20261106/b7-whole-session-workload-1/measure.py",
+            "protein",
+            "read"
+          ],
+          "resources": {
+            "elapsed_s": 10.83,
+            "peak_owned_rss_bytes": 148955136,
+            "minimum_host_available_bytes": 59298934784,
+            "peak_owned_swap_bytes": 0,
+            "peak_owned_scratch_bytes": 44734655
+          },
+          "operations_inclusive": {
+            "read_exploration": {
+              "calls": 2,
+              "sum_wall_s": 9.380523410975002,
+              "maximum_wall_s": 6.926283566979691
+            },
+            "answer": {
+              "calls": 7,
+              "sum_wall_s": 0.0018169080140069127,
+              "maximum_wall_s": 0.0004494499880820513
+            },
+            "agent_select": {
+              "calls": 7,
+              "sum_wall_s": 0.01004176598507911,
+              "maximum_wall_s": 0.008938196988310665
+            },
+            "agent_page": {
+              "calls": 42,
+              "sum_wall_s": 0.16721322911325842,
+              "maximum_wall_s": 0.008208293002098799,
+              "maximum_response_utf8_bytes": 63181
+            },
+            "text": {
+              "calls": 7,
+              "sum_wall_s": 0.019843294052407146,
+              "maximum_wall_s": 0.013292899006046355,
+              "maximum_response_utf8_bytes": 2756
+            }
+          },
+          "immediate_repeat_probes": 0,
+          "observation_sha256": "35cf997b29588d6a46952079a338eaab71efe645dd97345c1cde67176ca829ba",
+          "complete_log_sha256": "f355aa577753c3e5805bcfe78a87e29d28cd2bb9ddc87b85b7f42d8f43e75b62",
+          "preflight_sha256": "ccaa14f0441320157fd5e5b71271d6941a708906ca88e5748fc683431028aa7c"
+        }
+      },
+      "sessions": {
+        "comparisons.json.gz": {
+          "format": "sabueso.card_exploration@36",
+          "root_view_ref": "XV_4d4d5089d0ebe109096f7c6f8502cc4896f7ccf5d746d078807f56f6fccb6286",
+          "bundle_digest": "sha256:8c200704deb35e0259daccbcb162a3502d75f6458e136d490e5e48a4517fa4f3",
+          "compression": "gzip",
+          "encoded_bytes": 2600371,
+          "decoded_bytes": 7815395,
+          "encoded_sha256": "sha256:8893d209340896d6265d8305a8fde4771882a72f1bba021f8983b4a3f081d2aa",
+          "decoded_sha256": "sha256:fc8b320d380f6643df0405038e1e97edf7bbc31bb3da86886357c586e936af61",
+          "input_pins": [
+            "sabueso:protein:uniprot:P52270@sha256:e2410945d9f49bb967fb43330bfce44383237376724d2e965335dd496d6790c5",
+            "sabueso:protein:uniprot:Q4DV43@sha256:8528e691f6b6e324407cd6aa7768d4a13cd9b0d9db0b6b10019e6a1dd9c961bf"
+          ],
+          "counts": {
+            "cards": 2,
+            "objects": 393,
+            "views": 319,
+            "locations": 594
+          },
+          "save_wall_s": 23.102726040990092
+        },
+        "human_context.json.gz": {
+          "format": "sabueso.card_exploration@36",
+          "root_view_ref": "XV_0bd2d7fd51c7b93feed847b68f1c1402f8fbf36db88a3ced9971be50469c0dd7",
+          "bundle_digest": "sha256:f80510215f36b73ffb58dd097cdd899b1dc244da5ee59acf95b931adf5f91364",
+          "compression": "gzip",
+          "encoded_bytes": 1673132,
+          "decoded_bytes": 4832535,
+          "encoded_sha256": "sha256:a5a3ec4af3e7bba9cb604e0a260ef948f75ed35234ab8c59155baffcb3d47ad5",
+          "decoded_sha256": "sha256:4caff4a61ec1b6099930ee641e2dd42447eabca52f96d21bb58cce535dfafeb6",
+          "input_pins": [
+            "sabueso:protein:uniprot:P60174@sha256:9d12ab3f512395c7a2dd3cbefe25fac9457e6638123842cfedd1f5693291215b"
+          ],
+          "counts": {
+            "cards": 1,
+            "objects": 144,
+            "views": 141,
+            "locations": 218
+          },
+          "save_wall_s": 6.565816603018902
+        }
+      }
+    }
+  },
+  "limits_and_next_action": [
+    "Seven complete saved sessions and 17 immediate repeat probes; not a full-profile scaling study or regression attribution",
+    "Core protein uses the public schema 0.3.9 capture; the structural journey separately includes current and historical inputs",
+    "Source acquisition, cold caches, allocation profiling, online health and private consumers are not qualified",
+    "Measured save/verify cost is an observation under existing #167, not an accepted latency/storage target or new release blocker",
+    "Obtain researcher workload feedback and agreed useful-scale budgets before accepting the complete B7 workload dimension",
+    "Independent scientist/researcher, actual-agent usefulness and real consumer acceptance remain pending",
+    "Candidate selection, schema freeze, hosted CI and release remain unresumed"
+  ],
+  "retained_evidence": {
+    "directory": "recovered_work/checkpoint_recovery_20261106/b7-whole-session-workload-1",
+    "owner": "Sabueso maintainers, #167/#148/#112",
+    "review_trigger": "B7 workload review or before candidate preparation",
+    "records": "Observer/controller code, raw calls, complete child logs, preflights, resource receipts and exact session hashes",
+    "temporary_outputs": "Owned generated sessions may be removed after all reader observations and curated hashes are retained; original scientific capsules remain protected"
+  }
+}
