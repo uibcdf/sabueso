@@ -1,5 +1,16 @@
 # Sabueso — Decision Log
 
+## Keep overview orientation separate from stored knowledge (2026-11-10)
+
+`CardView.orientation` is the current `card_orientation@1` presentation of a
+declared curated field set, with exact original value/source/version/quality
+locations. It changes no source assertion, scientific result or saved wire.
+Typed root addresses keep the original pin/snapshot instead of comparing local
+lookup handles. Complete reference declarations retain ordering and duplicate
+occurrences; a bounded preview defers attribution when it cannot validate the
+whole declaration. Never attribute a prefix while a malformed tail could invalidate
+selection. See [the contract](pending_proposals/card_orientation.md) (#148).
+
 ## Admit current protein catalogs without upgrading historical sessions (2026-11-10)
 
 Actual current protein route catalogs select @35/@36 only for unversioned current

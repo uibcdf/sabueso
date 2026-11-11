@@ -5,6 +5,46 @@ Current working-state checkpoint: **2026-11-10**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Original overview orientation — local checkpoint PASS
+
+The [current orientation](pending_proposals/card_orientation.md) presents curated
+original protein, molecule and disease fields through `overview().orientation`,
+with exact pinned value/source/version/quality locations. Text/HTML show retained
+source versions and original quality scope. Null, empty, missing, malformed,
+`False` and zero remain distinct. Declared support references keep their order
+and duplicate occurrences; a bounded preview defers attribution when it cannot
+validate the complete declaration. Full explicit orientation stays detached.
+This named presentation creates no scientific finding or SourceAssertion and
+changes no schema, native rule/default, Card data or saved wire.
+
+All **432 distinct selected source cases pass in fourteen complete modules** on
+one unchanged **1,344-path map**; independent collection equals execution. All
+**22 copied cases pass outside checkout**, with five byte-identical inputs,
+external pytest/reader scratch and five controller/worker input/import/editable
+metadata proofs. All **22 cases also pass against a separate installed diagnostic
+wheel** outside checkout, with five independent installed-origin/module/archive/
+metadata proofs. Its dependencies remain shared/editable; the diagnostic label
+`0.0.0+unknown` is not a release/candidate/public package qualification.
+
+Wheel and sdist contain all **915 implementation modules** and all **seven SOURCE
+resources** byte-identically. All 45 protected test-data files and original
+capsules stay fixed. Strict separate-process readers forbid current science,
+Card construction, acquisition, fixture reads and new assertion/derivation
+creation. Earlier setup/lookup-handle calibrations remain separate from final
+qualification; original addresses now use typed captured locations.
+
+The [receipt](evidence/card_orientation_checkpoint_20261110.json) owns hashes,
+resource/receiving scope and limits. Both installed workflows copy/select the
+complete new module once. Local quality, schema/shape/registry, fixture delivery,
+dependency/governance and warning-fatal documentation checks pass; declared
+fixture cuts/conflicts remain visible. Exact committed
+metadata/code, remote and cleanup observations belong to the owned handoff.
+
+Broader B6 profile integration and independent B7 scientist, uncoached researcher,
+actual agent/workload and consumer acceptance remain open. B2 review is deferred;
+B8/candidate/schema freeze/release remain unresumed. Intermediate CI stays
+deferred under #148/#112 with `[skip ci]`; missing/skipped runs are not PASS.
+
 ## Combined structural source review — local checkpoint PASS
 
 The [public review](pending_proposals/structural_source_review_walkthrough.md)
@@ -30,6 +70,8 @@ The current session deliberately saves its finite assembly agent request as
 root, as the existing 1TCD example does. An earlier human-destination-root
 calibration did not recover that distinct original access request; its observation
 and unisolated cause remain separate review work, not passing qualification.
+The maintainer-approved [report is published in #148](https://github.com/uibcdf/sabueso/issues/148#issuecomment-6782871860),
+with exact-body readback; publication does not establish a general architectural diagnosis.
 The [receipt](evidence/structural_source_review_checkpoint_20261110.json) records
 scope and limits. No runtime module, dependency metadata, Card schema, scientific
 rule/default, production byte budget or original input changes; all seven SOURCE

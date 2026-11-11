@@ -26,6 +26,12 @@ anything: the remote repository does not contain the whole local state.
 
 ## Current development boundary
 
+The [current overview orientation](pending_proposals/card_orientation.md) exposes
+curated original protein/molecule/disease fields, source versions and exact
+value/support locations through `overview().orientation`. Null, empty, missing
+and malformed scope remain distinct. It changes presentation only; CHECKPOINT
+owns qualification and independent acceptance remains separate.
+
 The latest published package is **0.14.0**. Work targets **0.15.0**, including the
 entire agreed human/agent Card exploration design and observed researcher
 acceptance. Completing one adapter or passing technical tests does not meet that

@@ -144,6 +144,12 @@ remain open. The separate finite 1TCD MolSysMT scope is unchanged.
 
 ## Implementation order
 
+The [current orientation presentation](card_orientation.md) supplies curated
+original opening fields and exact value/source/version/quality routes for protein,
+molecule and disease captures. It does not add scientific adapters or qualify all
+remaining chemical, terminology or cross-topic scope. Independent opening/task
+acceptance and the broader panel inventory remain required.
+
 For resumption after the 2026-11-04 audit, the
 [integrated continuation plan](../CONTINUATION_PLAN_20261104.md#execution-order)
 places preserved-work closeout and versioned A1/A2 activity corrections plus A3

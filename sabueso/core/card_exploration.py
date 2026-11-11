@@ -1119,6 +1119,18 @@ class CardView:
         return deepcopy(self._workload)
 
     @property
+    def orientation(self):
+        """Detached presentation of curated original overview fields and sources.
+
+        Exact typed locations retain field values, declared support references,
+        source versions and stored quality scope. None outside a supported
+        overview; no new knowledge, acquisition or scientific evaluation.
+        """
+        from .card_orientation_v1 import reading
+
+        return reading(self)
+
+    @property
     def regional_reading(self):
         """Current presentation of this focused original regional result.
 

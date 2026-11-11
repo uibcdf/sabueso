@@ -507,6 +507,11 @@ not promise card enrichment, live availability or public-package delivery.
   exact capture. Read-only `CardView`/`CardItems`/`CardItem`/`Cell` provide complete
   literal inspection, original support, selected-item navigation and bounded safe
   text/HTML previews. Literal selection uses `label`/`kind`;
+  `overview().orientation` supplies current curated protein/molecule/disease
+  opening fields with exact original value/support/source-version/quality locations.
+  It is detached presentation under `card_orientation@1`, with explicit unknown
+  states, not new knowledge or a saved-wire change. Other views return `None`.
+  See the [orientation contract](pending_proposals/card_orientation.md).
   `view("structures", options=None)` adds typed protein inventory columns, original
   explanations, exclusions and source scope. Resolution sorting takes `unit=None`.
   Protein `overview()` now opens readable scientific routes; `view("function")`

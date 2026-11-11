@@ -35,6 +35,32 @@ Molecules start with retained chemical identity and representations; diseases st
 with ontology definition and scoped terminology. Neither opening calculates new
 chemistry or interprets a term as a diagnosis.
 
+For supported protein, molecule and disease overviews, `orientation` gives the
+same curated opening fields with exact routes to their original values and
+declared sources:
+
+```python
+opening = explorer.overview()
+orientation = opening.orientation
+for field in orientation["fields"]:
+    print(field["label"], field["state"], field["value"])
+    if field["value_location"] is not None:
+        print(explorer.inspect(locator=field["value_location"]).native_payload)
+    for source in field["support"]["sources"]:
+        if source["location"] is not None:
+            print(explorer.inspect(locator=source["location"]).native_payload)
+```
+
+The opening includes original source versions when retained. Null, empty, missing
+and unrecognized fields or support declarations stay distinct; `False` and zero
+remain values. Conflicts and alternatives have their own original quality routes.
+The preview defers attribution for long support declarations rather than treating
+an unchecked prefix as valid. `orientation` explicitly reads the complete curated
+set and returns detached values; this is not a completeness score or independent
+validation of source claims. It performs no science or acquisition and reads the
+original capture in a saved overview too. Other views and unknown natures return
+`None`; all retained content remains reachable through ordinary inspection.
+
 The explorer captures the Card once. Later changes to `card` do not change this
 exploration. It works locally: opening, searching and reading support do not
 refresh sources. `mode="live"` describes an active local exploration context,

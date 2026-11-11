@@ -1,0 +1,160 @@
+{
+  "state": "BOUNDED_ORIENTATION_SOURCE_COPIED_DIAGNOSTIC_PASS_CI_DEFERRED",
+  "date": "2026-11-10",
+  "owners": [
+    "uibcdf/sabueso#148",
+    "uibcdf/sabueso#112"
+  ],
+  "source_parent": "1741b71dc1faecafd819ce09d111ef16c877097d",
+  "behavior": {
+    "presentation_rule": "card_orientation@1",
+    "public_property": "CardView.orientation",
+    "scope": "Curated original overview fields, values, declared source versions and exact typed field/support/quality locations; no completeness or independent support-validity assessment.",
+    "curated_fields": {
+      "protein": 6,
+      "small_molecule": 5,
+      "disease": 5
+    },
+    "retained_null_empty_missing_false_zero_and_malformed_scope_distinct": true,
+    "support_order_and_duplicate_occurrences_preserved": true,
+    "bounded_preview_support_limit": 4,
+    "long_unvalidated_support_attribution": "not_evaluated",
+    "full_content_location": "Exact captured pin/snapshot with typed empty segments, not session-local lookup equivalence"
+  },
+  "source": {
+    "distinct_selected_cases": 432,
+    "complete_modules": 14,
+    "source_paths": 1344,
+    "independent_collection_equals_execution": true,
+    "one_unchanged_source_map": true,
+    "workers": 8
+  },
+  "copied": {
+    "passed": 22,
+    "complete_modules": 1,
+    "byte_identical_inputs": 5,
+    "controller_worker_placement_proofs": 5,
+    "cwd_and_pytest_reader_scratch_outside_checkout": true,
+    "fixture_symlinks": false,
+    "scope": "Editable checkout with shared dependencies; not clean installed/public/candidate/platform qualification"
+  },
+  "diagnostic": {
+    "passed": 22,
+    "complete_modules": 1,
+    "byte_identical_inputs": 5,
+    "controller_worker_installed_origin_proofs": 5,
+    "separate_environment": true,
+    "version": "0.0.0+unknown",
+    "implementation_modules_exact_in_wheel_and_sdist": 915,
+    "frozen_SOURCE_resources_exact": 7,
+    "artifacts": {
+      "sabueso-0.0.0+unknown-py3-none-any.whl": {
+        "bytes": 2298583,
+        "sha256": "bd0b238bfad0cd8ea9bbebd9953409944d65b1c9c786ae519846b5d473f48645"
+      },
+      "sabueso-0.0.0+unknown.tar.gz": {
+        "bytes": 1696529,
+        "sha256": "2573855e08b51e36d471c019c3fc35241339625c06d4e88ec3bd1e7e2772ed1e"
+      }
+    },
+    "scope": "Installed local diagnostic wheel with shared/editable dependencies; not a clean dependency closure, public distribution, candidate or OS-matrix qualification"
+  },
+  "resources": {
+    "owning": {
+      "elapsed_s": 77.05,
+      "peak_owned_rss_bytes": 1918578688,
+      "minimum_host_available_bytes": 52286570496,
+      "peak_owned_swap_bytes": 0
+    },
+    "copied": {
+      "elapsed_s": 6.1,
+      "peak_owned_rss_bytes": 532508672,
+      "minimum_host_available_bytes": 57118810112,
+      "peak_owned_swap_bytes": 0
+    },
+    "installed": {
+      "elapsed_s": 5.58,
+      "peak_owned_rss_bytes": 504217600,
+      "minimum_host_available_bytes": 60451180544,
+      "peak_owned_swap_bytes": 0
+    }
+  },
+  "resource_policy": {
+    "maximum_workers": 8,
+    "owned_rss_ceiling_gib": 10,
+    "host_available_floor_gib": 16,
+    "native_threads": 1,
+    "fresh_preflight_and_monitoring": true,
+    "reservation_claimed": false
+  },
+  "unchanged": {
+    "Card_schema": "0.3.14",
+    "Card_data_and_original_capsules": true,
+    "scientific_rules_defaults_and_saved_wires": true,
+    "frozen_SOURCE_resources": 7,
+    "protected_test_data_files": 45,
+    "production_byte_budgets": true
+  },
+  "source_code_inputs": {
+    "sabueso/core/card_exploration.py": "abb624eb9ad2caa3aef2bf3bb4090fc1a2709960c168727afae2966a27df8084",
+    "sabueso/core/card_exploration_render.py": "63852480a0faecbd3dc2772c7fa9b4ae9e12aca628c586b2eb54d306a72d4f51",
+    "sabueso/core/card_orientation_v1.py": "6bc08453f4421b9bba7117b0db557b71401e08e9b7bc2310e97c5ec5f40c887a",
+    "tests/core/test_card_orientation_offline.py": "1ffe5d14ecefb13c3e70708e4a84d688886b511d0981a7368f41dbc1c6e8265f",
+    ".github/workflows/ci.yml": "eca567f5539d605b3f02e4bc9481dbe4eca32b7962bd37367ccf156eabd09b8a",
+    ".github/workflows/test_staged_conda_package.yaml": "b721600b0fdc2b75bb224f85e66782ff11b5955a6d6d12f8413a4416730245a0"
+  },
+  "input_files": {
+    "test_card_orientation_offline.py": {
+      "original": "tests/core/test_card_orientation_offline.py",
+      "sha256": "1ffe5d14ecefb13c3e70708e4a84d688886b511d0981a7368f41dbc1c6e8265f",
+      "bytes": 12557
+    },
+    "temp_data/frozen_cards/schema_0.3.9__P52270.json": {
+      "original": "temp_data/frozen_cards/schema_0.3.9__P52270.json",
+      "sha256": "797e77018947dcd5ee606e59fe83df79541c8274a2411466467cc5ffccaf3d0b",
+      "bytes": 517500
+    },
+    "temp_data/chembl/molecules.json": {
+      "original": "temp_data/chembl/molecules.json",
+      "sha256": "409fbf22b3a51747cce885dbeccba7bcea34e88e2de77a7f9015af8854f6ea5c",
+      "bytes": 266433
+    },
+    "temp_data/mondo/mondo.obo": {
+      "original": "temp_data/mondo/mondo.obo",
+      "sha256": "117fdc8d65e900feb4aaa0dc71336df423a57e43b5b6991185eef11bb8636fe3",
+      "bytes": 174878
+    },
+    "temp_data/NOTICE.md": {
+      "original": "temp_data/NOTICE.md",
+      "sha256": "e6a73bdc75051f7e3e91a1097a7867f56598cb455580bc1735fbe704bea22f6e",
+      "bytes": 103070
+    }
+  },
+  "local_quality": {
+    "ruff_format_python311_grammar_governance_guide_wiring": "PASS",
+    "fixture_shape_schema_registry_dependency_checks": "PASS",
+    "sphinx_warning_fatal": "PASS",
+    "retained_notices": "Declared STRING/Open Targets/ClinVar/Europe PMC fixture cuts and original literature conflict remain visible in the static shape log; optional beartype import warnings are not suppressed",
+    "receipts_sha256": {
+      "quality-validation.json": "ed4f70d92cae38423adc0663c1f8f37944330e43db0ff1cd55fbc76aab83da22",
+      "static-validation.json": "8b665b0885823b2ae288b36fc3ccee03a9bc32f7da98f67f136522b1fbd9c60e",
+      "sphinx-resource.json": "1034d9adcdde0a1f694354ed8553d3859e6902d9edad50859f55f0e65df49fa2"
+    }
+  },
+  "nonqualifying_epochs": [
+    "Initial missing-property red controls and development fixture-constructor/version setup failures remain separate.",
+    "A saved-property calibration differed only in its session-local root lookup handle; the current property uses an exact typed captured root address instead.",
+    "Earlier calibration passes, copied/diagnostic and committed repetitions add no distinct final source cases."
+  ],
+  "published_root_access_report": "https://github.com/uibcdf/sabueso/issues/148#issuecomment-6782871860",
+  "deferred": {
+    "ci": "Intermediate [skip ci] checkpoint. Record exact final SHA locally; recover applicable full source/installed/platform and governance gates on the exact authorized candidate through gh-run-receptor. Missing/skipped runs are not PASS.",
+    "acceptance": "Broader B6 profile integration and independent B7 scientist, uncoached researcher, actual agent/workload and consumer acceptance remain open. B2 review is deferred.",
+    "release": "B8/candidate/schema freeze/release remain unresumed."
+  },
+  "evidence_retention": {
+    "local_root": "recovered_work/checkpoint_recovery_20261106/b6-orientation-1",
+    "owner": "uibcdf/sabueso#148/#112",
+    "review_trigger": "Next accepted checkpoint or B7 review; retain original inputs/useful receipts/artifacts and remove only completed owned disposable clients, diagnostic source/venv and caches"
+  }
+}

@@ -188,6 +188,12 @@ Its explicit participant tasks complement the bounded 1TCD modeling control.
 Source declaration scope and physical membership remain separate; independent
 scientific/researcher and broader nature-specific orientation work stay open.
 
+The [curated overview orientation](pending_proposals/card_orientation.md) now
+connects original protein/molecule/disease fields with complete declared support,
+source versions and exact typed locations. Its bounded text/HTML distinguishes
+unknown/malformed scope and defers unvalidated long support declarations.
+Complete broad-profile integration and independent B7 review remain open.
+
 Continue the rich profiles through the
 [current destination actions](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions)
 with applicable local checks and the maintainer's authorized CI batching.
