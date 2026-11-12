@@ -1853,6 +1853,15 @@ class CardView:
             if item.cells[column].state in ("present", "conflicting")
             and equal_values(column, item.cells[column]._value, equals)
         )
+        operation = {
+            "operation": "filter",
+            "column": column,
+            "equals": deepcopy(equals),
+            **({"filter_policy": RULE} if retained_filter else {}),
+        }
+        retained = self._recorded_molecule_display(operation)
+        if retained is not None:
+            return retained
         return replace(
             self,
             _selected=entries,
@@ -1867,12 +1876,7 @@ class CardView:
             else None
             if entries
             else "No items match this display selection.",
-            _display_request={
-                "operation": "filter",
-                "column": column,
-                "equals": deepcopy(equals),
-                **({"filter_policy": RULE} if retained_filter else {}),
-            },
+            _display_request=operation,
         )
 
     @arg_digest()
@@ -1957,17 +1961,33 @@ class CardView:
             entries = tuple(entry for _, entry in [*present, *missing])
         else:
             entries = sorted_entries(self, column, descending, unit)
+        operation = {
+            "operation": "sort",
+            "column": column,
+            "descending": descending,
+            "unit": unit,
+        }
+        retained = self._recorded_molecule_display(operation)
+        if retained is not None:
+            return retained
         return replace(
             self,
             _selected=entries,
             _origin=self,
-            _display_request={
-                "operation": "sort",
-                "column": column,
-                "descending": descending,
-                "unit": unit,
-            },
+            _display_request=operation,
         )
+
+    def _recorded_molecule_display(self, operation):
+        """Reuse only the display recorded on this exact molecule context node."""
+        if self._explorer.mode != "saved":
+            return None
+        from .card_exploration_molecule_activity import is_context
+
+        if not is_context(self):
+            return None
+        from .card_molecule_activity_operations_v1 import recorded_display
+
+        return recorded_display(self, operation)
 
     def _check_column(self, column):
         if (

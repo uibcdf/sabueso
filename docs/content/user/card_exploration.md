@@ -897,6 +897,10 @@ preview when reopened and saved again. The explicit `.orientation` and
 `.chemical_reading` properties provide current detached readings of supported
 original captures. Use `start_new()` to begin a session with current default
 presentation; the original file and its scientific results remain unchanged.
+An older molecule activity opening can also retain its original saving notice.
+Inspect `view.capabilities["save"]` for the current action available on that
+captured view. New sessions display current saving guidance; reopening and
+resaving an old session preserves its original wording.
 
 ## Open a structure's original context
 

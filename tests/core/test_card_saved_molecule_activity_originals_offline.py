@@ -666,7 +666,14 @@ def _hydrate(control, name):
     }
     for access in accesses.values():
         access._exploration_session = session
-    return _explorer(accesses[first], session)
+    explorer = _explorer(accesses[first], session)
+    from sabueso.core.card_context_presentation_v1 import LEGACY_POLICIES
+
+    # These original producers predate the capability-aware action policy.
+    session["presentation_metadata"]["molecule_activity_actions"] = LEGACY_POLICIES[
+        "molecule_activity_actions"
+    ]
+    return explorer
 
 
 def _bind_original_machine_requests(explorer):

@@ -1,0 +1,257 @@
+{
+  "state": "EXPERIENCED_DEVELOPER_AGENT_PROTEIN_CONTEXT_OBSERVED_ACCEPTANCE_PENDING",
+  "recorded_utc": "2026-11-12T09:32:16.295059+00:00",
+  "owner": "Sabueso #148/#112",
+  "review_trigger": "B7 actual-agent/scientific/workload review or candidate preparation",
+  "source_head": "4d170cea5c6b9163b96ce17c19d2e52b4a76578b",
+  "runtime": "0.14.0+264.g4d170ce",
+  "actor_and_exposure": "Current developer agent with extensive implementation, public walkthrough and expected-answer exposure. Actual interactive actions retained; not an independent/uncoached researcher, scientist or actual downstream consumer. Human-context continuation rehearses the first observation after an owned resource stop.",
+  "input_scope": "Public P52270/Q4DV43 comparisons and P60174 population/isoform/sequence/association context, explicitly loaded through the documented public fixture helper before exploration. Network connections forbidden; subsequent sabueso.resolve forbidden. No private pilot or new acquisition.",
+  "observed_routes": {
+    "related": {
+      "question": "related_proteins",
+      "topic": "comparative_context",
+      "member_occurrences": 7,
+      "original_native_digest": "57c288d0b61f81791fbdb4dd9f65b70ab890eee6177732c4b7a85be0b776e5dc",
+      "complete_machine_membership": true
+    },
+    "differences": {
+      "question": "sequence_differences",
+      "topic": "comparative_context",
+      "member_occurrences": 1,
+      "original_native_digest": "de86c11628dae5c92dbcdc4a6c3b87c374d3d1c2097dfc2320749fc4ede161c4",
+      "complete_machine_membership": true
+    },
+    "knowledge": {
+      "question": "knowledge_differences",
+      "topic": "comparative_context",
+      "member_occurrences": 83,
+      "original_native_digest": "71a3e5ab1a05d03fd952d1201fe90994d8f730a4c1da639bbf605faf2a799989",
+      "complete_machine_membership": true
+    },
+    "variants": {
+      "question": "variant_tissue_context",
+      "topic": "variants",
+      "member_occurrences": 15,
+      "original_native_digest": "d14592ff78401e89911366d01571b34e80618c1c8c87b87f23440d4a679381d7",
+      "complete_machine_membership": true
+    },
+    "isoforms": {
+      "question": "isoform_tissue_context",
+      "topic": "variants",
+      "member_occurrences": 3,
+      "original_native_digest": "d56e36d261bb32b6efa0ad173772dde080fbea2cd18e3c7e6d6c1f46b69b3ecf",
+      "complete_machine_membership": true
+    },
+    "changes": {
+      "question": "sequence_changes",
+      "topic": "sequence_changes",
+      "member_occurrences": 8,
+      "original_native_digest": "fdb846dcde033f3fc39fa01dc982c149979992be24f5be96a42906f915e859eb",
+      "complete_machine_membership": true
+    },
+    "associations": {
+      "question": "protein_associations",
+      "topic": "associations",
+      "member_occurrences": 3,
+      "original_native_digest": "4e93ab4655023bc066af40f8057ac30b012acdedbf80c9591c3cd17e0879129c",
+      "complete_machine_membership": true
+    }
+  },
+  "interpretation": {
+    "identity": "Retained cluster relationships and the explicitly supplied Q4DV43 input remain distinct; no identity merge.",
+    "sequence": "Four equal-integer-position differences under equal_length_positions@1; no alignment or biological correspondence established.",
+    "knowledge": "Both active-site fields have two annotations and four retained source links. No caller residue map is supplied; comparison remains not_compared rather than equality.",
+    "population_and_sequence": "Fifteen population records stay separate from eight source sequence-change annotation occurrences; no position-based join or clinical inference.",
+    "genomic_scope": "GRCh38/chromosome12 is retained as requested/reference mapping-contract scope. The original gnomAD record explicitly reports native_assembly_echo=not_stated; no provider-authenticated assembly echo is inferred.",
+    "isoforms": "Three contexts: two report no_own_coding_bases and unstated tissues. This is captured-support scope, not zero expression or biological absence.",
+    "associations": "Three original directed interaction statements; no causal, identity or mechanism inference.",
+    "support_reading": "First population support is an exon-usage prerequisite; the second source is the original population-variant assertion. Both roles were inspected, preserving the distinction."
+  },
+  "genomic_source": {
+    "id": "SA_gnomAD_12-6867681-G-GAGGTGGTTT:ENST00000396705_3d1ba11e89c2c685",
+    "field_path": "annotations.population_variants",
+    "source": {
+      "name": "gnomAD",
+      "record_id": "12-6867681-G-GAGGTGGTTT:ENST00000396705",
+      "type": "database",
+      "version": "gnomad_r4"
+    },
+    "original_record_digest": "8263d9d99ca6e883c8fc8c6f43ceb6d15d4354d26d658fefcce543fb126233f9",
+    "back_exact": true
+  },
+  "saved_receiving": {
+    "comparison": {
+      "path": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-3/protein-context-observation/comparison.json.gz",
+      "file_sha256": "4416fda765708659f77bb3abf6ab456a1853df3fce4e522e3c1a8595be2e39a1",
+      "file_bytes": 1732639,
+      "reader": {
+        "records": {
+          "related": {
+            "same_original_native": true,
+            "same_machine_result": true,
+            "count": 7
+          },
+          "differences": {
+            "same_original_native": true,
+            "same_machine_result": true,
+            "count": 1
+          },
+          "knowledge": {
+            "same_original_native": true,
+            "same_machine_result": true,
+            "count": 83
+          }
+        },
+        "unvisited": {
+          "status": "not_saved",
+          "reason": "This original sequence-change topic/question was not retained."
+        },
+        "original_file_sha256": "4416fda765708659f77bb3abf6ab456a1853df3fce4e522e3c1a8595be2e39a1",
+        "Card_construction_and_acquisition_forbidden": true
+      },
+      "source_reader": {
+        "original_source_digest": "5216427f0052c2ffd589dcacd56e420631bf493a0bf72f01ae450dcd2eab9c96",
+        "source_id": "SA_UniProt_P52270_2a56ee5a4d0b58a3",
+        "back_exact": true
+      },
+      "first_save_receipt": "Not persisted before the combined producer was stopped; embedded scientific validation and independently recorded LIVE native digests/requests are checked by the fresh reader."
+    },
+    "human": {
+      "path": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-3/protein-context-observation-2/human-context.json.gz",
+      "receipt": {
+        "path": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-3/protein-context-observation-2/human-context.json.gz",
+        "bundle_digest": "sha256:063f0024c1eead1d73327b86a734de52b2b17a282f2c2f4f0362ceb036275624",
+        "root_view_ref": "XV_947fa580441a8d1587229f79db5ce824d121c7f1975da3ca73de64798b400afa",
+        "transport": {
+          "format": "exploration_transport@1",
+          "compression": "gzip",
+          "encoded_bytes": 7118772,
+          "decoded_bytes": 20963889,
+          "encoded_sha256": "sha256:1e22ac9e6b311f06eecd573003ada101003192682e3d211666c4727852aea952",
+          "decoded_sha256": "sha256:911f19d91e63e5b7cb95b87e01fa1f8455757d71bcb2a0e55fc7e69a3dd3d84d",
+          "backend": {
+            "module": "zlib",
+            "version": "1.3.2",
+            "level": 6
+          }
+        }
+      },
+      "reader": {
+        "records": {
+          "variants": {
+            "same_original_native_and_membership": true,
+            "count": 15
+          },
+          "isoforms": {
+            "same_original_native_and_membership": true,
+            "count": 3
+          },
+          "changes": {
+            "same_original_native_and_membership": true,
+            "count": 8
+          },
+          "associations": {
+            "same_original_native_and_membership": true,
+            "count": 3
+          }
+        },
+        "same_original_genomic_source": true,
+        "source_metadata": {
+          "coordinate_scope": {
+            "assembly": "GRCh38",
+            "basis": "requested_reference_genome_and_mapping_contract",
+            "native_assembly_echo": "not_stated",
+            "rule": "gnomad_query_coordinates@1"
+          }
+        },
+        "back_exact": true,
+        "unvisited": {
+          "status": "not_saved",
+          "reason": "This original protein-context topic/question was not retained."
+        },
+        "file_sha256": "1e22ac9e6b311f06eecd573003ada101003192682e3d211666c4727852aea952",
+        "Card_construction_and_acquisition_forbidden": true
+      },
+      "same_four_native_results_as_first_observation": true,
+      "source_input_file_sha256": "de9c64dea99f16b3d5185598036efa1208ba31f0b951d6e63988c2cd65c15fd9"
+    },
+    "reader_guards": "Separate fresh Python processes, Card.__init__/from_dict/from_json, sabueso.resolve and socket acquisition forbidden. Original saved bytes unchanged. Unexecuted questions remain not_saved."
+  },
+  "resource_observations": {
+    "initial_producer": {
+      "state": "STOPPED_AT_OWNED_256MIB_RSS_LIMIT",
+      "measurement": {
+        "peak_rss": 271536128,
+        "minimum_available": 54630830080,
+        "swap": 0,
+        "elapsed_s": 309.06647779000923
+      },
+      "scope": "Seven LIVE/machine routes observed and first comparison saved; second save incomplete. No complete first-producer success inferred."
+    },
+    "comparison_reader": {
+      "state": "FINISHED",
+      "peak_owned_rss_bytes": 161280000,
+      "minimum_host_available_bytes": 52751699968,
+      "peak_owned_swap_bytes": 0,
+      "elapsed_s": 38.88,
+      "scope": "Experienced developer-agent interactive observation; elapsed includes thinking, not workload benchmark"
+    },
+    "human_producer_continuation": {
+      "state": "FINISHED",
+      "peak_owned_rss_bytes": 317689856,
+      "minimum_host_available_bytes": 53037694976,
+      "peak_owned_swap_bytes": 0,
+      "elapsed_s": 136.665,
+      "scope": "Experienced developer-agent interactive observation; elapsed includes thinking, not workload benchmark"
+    },
+    "human_reader": {
+      "state": "FINISHED",
+      "peak_owned_rss_bytes": 242286592,
+      "minimum_host_available_bytes": 53042667520,
+      "peak_owned_swap_bytes": 0,
+      "elapsed_s": 145.791,
+      "scope": "Experienced developer-agent interactive observation; elapsed includes thinking, not workload benchmark"
+    },
+    "execution": "One CPU7/native pools1 per interactive process; source cohort6workers. Continuation512MiB RSS,16GiB host RAM/disk floors,zero swap,900s. Estimated combined source/actor envelope below10GiB; resources not reserved. Elapsed includes thinking, not a workload benchmark or package minimum."
+  },
+  "friction_and_disposition": {
+    "observed": "The chosen256MiB actor budget was insufficient during the second save; a measured512MiB continuation completes with approximately303MiB RSS. Complete source support includes distinct prerequisite and population-record roles.",
+    "scope": "Execution-profile learning and source-reading notes under #148/#112; no new provider defect, independent usability rate or speedup claim."
+  },
+  "raw_directory": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-3",
+  "raw_evidence_sha256": {
+    "protein-context-observation/comparison.json.gz": "4416fda765708659f77bb3abf6ab456a1853df3fce4e522e3c1a8595be2e39a1",
+    "protein-context-observation/interaction.log": "3c2f50818a0d7fbcd8d32fe5576564c1f9ad98c4be788945b0e476851fa1328b",
+    "protein-context-observation/interactive.py": "dace3660c31e75c1f01aa084499f57388ab05d41fc8b948c6a04294393624680",
+    "protein-context-observation/machine-pages.json": "27bc1bad991969c8fd933e3ad2c7567701657e2a37a3790d2df98f4f3906c1e6",
+    "protein-context-observation/observations.json": "08bbf5fc2a9ba944aaba2634bfbbb070ae608db3b4f7ec62a9ab2ec0e5db5793",
+    "protein-context-observation/ownership.json": "2537d7108bf078a2025c1ca175f2eea66f5e9a8e00d4014f9ab9548f0966551d",
+    "protein-context-observation/resource-stop.json": "469fe1cb40bb1a525d23b793879ff949be74becaf00f3ff93a54471a6a04baba",
+    "protein-context-observation/sources.json": "a2b578826ef1c7d08ab463bff80c97e0c451ce9e42c471df19be5e02d292efb6",
+    "protein-context-observation-2/comparison-reader.json": "5b3f019668b3e8ca4009fab92b5a9248f7ec2c06546c03861126edfb3c63db26",
+    "protein-context-observation-2/comparison-source-reader.json": "c08946df01f25547ae88e17c4aec810da26b66fb13e0638bb6603d506a71968b",
+    "protein-context-observation-2/human-context.json.gz": "1e22ac9e6b311f06eecd573003ada101003192682e3d211666c4727852aea952",
+    "protein-context-observation-2/human-genomic-source.json": "a9c93659e80aeecc38bd0c216aed366d67bbc0a367774de5f1fe211be51ef071",
+    "protein-context-observation-2/human-input.json": "de9c64dea99f16b3d5185598036efa1208ba31f0b951d6e63988c2cd65c15fd9",
+    "protein-context-observation-2/human-machine-items.json": "dd30c8fd67663477328304d146d7764a3cfb6df9c6e739a0e1ac523755f49a29",
+    "protein-context-observation-2/human-save-receipt.json": "d60804263adef62f4a11d38afd56d87e933d8cda6fcc42b03cf5725c01c3a4e9",
+    "protein-context-observation-2/interaction-reader.log": "74a35617ee75264295a1c58389333f097a0be64ee69d3bf962984b965852cbe9",
+    "protein-context-observation-2/interaction.log": "b4f65d2115c0dd150ed1370096f5a1776197c9f2b8620851ea7250be9a755c36",
+    "protein-context-observation-2/interactive.py": "1e7cdfe812b91ca29a3aa8c28351f4117750000c2574c4afc3acef329d696e59",
+    "protein-context-observation-2/ownership.json": "6f8cf7677da694d106a42e6575c96d1c28a598fdf25c8e68971581e78b6b1e31",
+    "protein-context-observation-2/resource-reader.json": "fe7ed509a35598bc851961bd8b63dea60867fc6c1461ec7ba2f52c48197a6eeb",
+    "protein-context-observation-2/resource.json": "9f937b9fe12193901cf831b37545103e112dc416b9731ab6cc6e450425bc77c2",
+    "protein-context-human-reader/human-reader.json": "3a82351bb1763c7ebc7e5fa7b1ae729f3b812b866c6263af4dac4f2f0a0e5a97",
+    "protein-context-human-reader/interaction-reader.log": "324faa38660fd384ab09cd832694aea4a7e464d71788db07618c26797c38547a",
+    "protein-context-human-reader/interactive.py": "1e7cdfe812b91ca29a3aa8c28351f4117750000c2574c4afc3acef329d696e59",
+    "protein-context-human-reader/ownership.json": "17c59abea6e3293835c999826dc2959851c9759cd97b0e1ab43ff6232cd01e75",
+    "protein-context-human-reader/resource-reader.json": "1c0c0ac65606cf38c088bd9b8bf1d5ca2379a3dc4f180c587296334a6a780190"
+  },
+  "limits": [
+    "Bounded public protein specialist routes only; broader activity/clinical and real-consumer agent acceptance not supplied",
+    "Independent researcher trial remains explicitly deferred until after0.15.0 and not_reviewed",
+    "Scientific/maintainer, broader workload and B7 acceptance remain separate decisions",
+    "No hosted or installed public archive qualification, candidate, schema freeze, staging or release"
+  ]
+}

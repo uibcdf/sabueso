@@ -9,6 +9,33 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Complete baseline recovery and subsequent context correction (2026-11-12 UTC)
+
+The [complete baseline](../evidence/pre_context_display_fix_full_checkpoint_20261112.json)
+closes all 11,514 discovered offline cases. Production inputs stay identical
+across the phases; exactly one retained-writer helper correction separates
+SDK264's first three cohorts from SDK265's final two. The 55 owning and 420
+remaining cases now pass completely. Retain earlier failed streams and the
+explicit test-input exception; this is not one identical test epoch.
+
+Actual public specialist use subsequently exposes
+[molecule context display/resave defects](../pending_bugs/molecule_activity_context_display.md).
+Their [current correction receipt](../evidence/molecule_context_display_checkpoint_20261112.json)
+closes 455 distinct selected source cases, including four complete original-file
+controls and a separate complete 71-case copied LIVE child. Actual SDK265 legacy
+read/replay/resave and explicit new current-session actions also pass. Fresh
+collection has 11,519 normal offline IDs, not a new full-suite passing claim. The
+earlier full baseline supplies no new full-run claim for that production change.
+The local committed/pushed head, complete source/provider maps
+and exact gate/cleanup records are retained under #148/#112 in
+`recovered_work/checkpoint_recovery_20261106/b7-context-display-correction-1/`.
+The authorized `[skip ci]` development route continues. Recover CI and governance
+on the exact final published SHA through the existing manual route once explicitly
+authorized, inspecting every job and all eight source codec reports through
+gh-run-receptor. No dispatch has been authorized for this new block. Installed
+Linux/Windows candidate qualification and remaining B7 acceptance remain due;
+B8 selection/freeze/staging/publication are not resumed.
+
 ### Original writer presentation correction (2026-11-12 UTC, #148/#112)
 
 The clean `4d170ce` / SDK264 attempt closes three cohorts with 11,039 passes,

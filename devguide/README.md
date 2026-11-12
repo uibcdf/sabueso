@@ -41,8 +41,10 @@ qualification.
 
 The [historical presentation contract](pending_proposals/card_orientation.md#historical-presentation-and-resaving)
 keeps original default text/HTML stable through resaving. New sessions record
-their orientation and chemical-preview policies separately from scientific
-results; explicit current detached readings remain available on old captures.
+orientation, chemical-preview and molecule saving-guidance policies separately
+from scientific results; explicit current detached readings remain available on
+old captures. The [context navigation correction](pending_bugs/molecule_activity_context_display.md)
+also preserves exact visited molecule source routes through display and resaving.
 
 The latest published package is **0.14.0**. Work targets **0.15.0**, including the
 entire agreed human/agent Card exploration design. The maintainer explicitly

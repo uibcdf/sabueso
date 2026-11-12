@@ -639,10 +639,20 @@ def _prepare(root):
     ]
     # Explicit saving prepares only support/navigation for already materialized
     # literal results. No unvisited scientific topic or recursive support tree runs.
-    if root._explorer.mode == "live":
+    saved_molecule_support = (
+        root._explorer.mode == "saved" and session.get("format") in MOLECULE_FORMATS
+    )
+    if root._explorer.mode == "live" or saved_molecule_support:
         before_support = set(session["views"])
+        original_instances = (
+            {id(view) for view in session["original_nodes"].values()}
+            if saved_molecule_support
+            else set()
+        )
         seen = set()
         for view in primary:
+            if id(view) in original_instances:
+                continue
             from .card_exploration_clinical import is_view as is_clinical
             from .card_exploration_disease_association import is_view as is_disease
             from .card_exploration_protein_context import is_view as is_protein_context
@@ -660,6 +670,18 @@ def _prepare(root):
             from .card_exploration_molecule_activity import is_view as is_molecule
 
             if is_molecule(view):
+                if saved_molecule_support:
+                    from .card_molecule_activity_operations_v1 import (
+                        has_support_closure,
+                    )
+
+                    _require(
+                        has_support_closure(view),
+                        "This molecule selection lacks its original support routes; return to a retained view or explicitly start a new local exploration.",
+                    )
+                # Replaying a saved operation creates another view instance.
+                # Its support must reopen verified original operations, never
+                # calculate science or supply an unretained selection's routes.
                 for entry in view._selected:
                     item = CardItem(view, entry)
                     for operation, role in (("links", "links"), ("explain", "support")):
@@ -677,6 +699,8 @@ def _prepare(root):
                         ]
                         if not retained:
                             item.related() if operation == "links" else item.explain()
+                continue
+            if saved_molecule_support:
                 continue
             for entry in view._selection._entries:
                 item = CardItem(view, entry)

@@ -601,6 +601,7 @@ def test_optional_presentation_metadata_and_machine_resave(tmp_path):
         "navigation_preview": "question_destination_preview@1",
         "overview_orientation": "card_orientation@1",
         "chemical_context": "chemical_context_reading@1",
+        "molecule_activity_actions": "molecule_activity_actions@1",
     }
     mutate(
         path,

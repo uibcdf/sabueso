@@ -7,10 +7,12 @@ from .errors import StorageError
 POLICIES = {
     "overview_orientation": "card_orientation@1",
     "chemical_context": "chemical_context_reading@1",
+    "molecule_activity_actions": "molecule_activity_actions@1",
 }
 LEGACY_POLICIES = {
     "overview_orientation": "legacy_card_orientation@1",
     "chemical_context": "legacy_chemical_context@1",
+    "molecule_activity_actions": "legacy_molecule_activity_actions@1",
 }
 UNMARKED_ORIENTATION_PRODUCERS = frozenset(
     ("0.14.0+248.gca4f88e", "0.14.0+249.g2d7dffc")
@@ -56,3 +58,23 @@ def restored_metadata(original, producer):
         for key, historical in LEGACY_POLICIES.items():
             result.setdefault(key, historical)
     return result
+
+
+def molecule_activity_opening(view, preview):
+    """Expose current saving actions without changing original default wording."""
+    from .card_molecule_activity_presentation_v1 import opening
+
+    lines = opening(view, preview)
+    if not enabled(view, "molecule_activity_actions"):
+        return lines
+    original = (
+        "Saving this activity-context profile is unavailable until genuine "
+        "producer controls and independent original saved reading are implemented."
+    )
+    action = (
+        "Save this captured exploration with save(path); reopen it with read_exploration(path). "
+        "Reading preserves the original answer, options and source context."
+        if view.capabilities["save"]
+        else "This view does not retain all support needed for saving; inspect capabilities or return to a retained view."
+    )
+    return [action if line == original else line for line in lines]

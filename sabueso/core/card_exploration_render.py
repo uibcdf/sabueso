@@ -820,7 +820,9 @@ def _parts(view):
 
         opening.extend(context_opening(view, preview))
     if view._record_panel == "activity_context":
-        from .card_molecule_activity_presentation_v1 import opening as activity_opening
+        from .card_context_presentation_v1 import (
+            molecule_activity_opening as activity_opening,
+        )
 
         opening.extend(activity_opening(view, preview))
     if view.context.get("adapter") == "molecule_activity_context_links@1":

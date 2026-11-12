@@ -1,0 +1,620 @@
+{
+  "state": "EXPERIENCED_SPECIALIST_AGENT_OBSERVATIONS_WITH_TWO_CONFIRMED_MOLECULE_FINDINGS",
+  "recorded_utc": "2026-11-12T10:35:04.601758+00:00",
+  "owner": [
+    "uibcdf/sabueso#148",
+    "uibcdf/sabueso#112"
+  ],
+  "review_trigger": "Adopt/regress confirmed current saved-context and action-notice corrections; B7/candidate review",
+  "actor": "Current developer agent, extensive implementation/walkthrough/test-answer exposure. Actual interactive actions and failures retained; not uncoached researcher/scientist or actual downstream consumer. Elapsed includes thinking; not benchmark.",
+  "source_epochs": {
+    "S1": "Loaded SDK264/4d170ce production; test-writer-only worktree correction. Reader started before metadata-only SDK265 refresh and retained its loaded SDK264 modules. No production input changed.",
+    "S2_S4": "SDK265/f4850ef, clean committed/pushed production and test-writer correction. No runtime edit during current complete source checkpoint."
+  },
+  "scope": "Public fixture-only preparation then browsing with network and subsequent resolve forbidden. Fresh readers additionally forbid Card construction; S2/S4 forbid current materialization and derivation. No private pilot or new online acquisition.",
+  "S1_structural": {
+    "state": "VISITED_SCIENTIFIC_SOURCE_RETURN_SCOPE_RECOVERED",
+    "card_ref": "sabueso:protein:uniprot:P52270@sha256:1c78a3ca1a5633ff54e4ec0386c0d92eb1415b36cd19eb9ea0acd10d722342a2",
+    "region96": "Both original A/B coordinate annotations cover96; reference revision agreement not_stated. Inventory sequence coverage alone is not coordinate completeness.",
+    "region1_96": [
+      {
+        "chain": "A",
+        "missing_count": 1,
+        "gaps": [
+          1
+        ]
+      },
+      {
+        "chain": "B",
+        "missing_count": 1,
+        "gaps": [
+          1
+        ]
+      }
+    ],
+    "numbering": [
+      {
+        "chain": "A",
+        "numbering": [
+          [
+            1,
+            251,
+            1
+          ]
+        ],
+        "gaps": []
+      },
+      {
+        "chain": "B",
+        "numbering": [
+          [
+            1,
+            251,
+            1
+          ]
+        ],
+        "gaps": []
+      }
+    ],
+    "ligand_components": [
+      {
+        "id": "BTS",
+        "instances": 1
+      },
+      {
+        "id": "SO4",
+        "instances": 7
+      }
+    ],
+    "first_contact": {
+      "chain": "A",
+      "min_distance": {
+        "unit": "angstrom",
+        "value": 3.351
+      },
+      "position": 71,
+      "residue": "ARG",
+      "seq_id": 71,
+      "uniprot": "P52270"
+    },
+    "contact_members": 3,
+    "assembly": "Twelve declared positions; ten native keys matched, K/L unresolved. Physical membership not_computed. No count of unique physical copies, modeled contacts or biological binding.",
+    "historical_outcome": {
+      "status": "missing_prerequisite",
+      "reason": "Original native UniProt feature scope was not retained; recorded positions remain inspectable. Refresh can record a new basis, not recover the old execution."
+    },
+    "reader": {
+      "state": "VISITED_STRUCTURAL_SCOPE_RECOVERED",
+      "positions": 12,
+      "finite_assembly_members": 1,
+      "gap_original_equal": true,
+      "source_records_equal": true,
+      "contact_values_and_units_equal": true,
+      "historical_unknown_equal": true,
+      "original_files_sha256": {
+        "current": "7b0d7042c5612ff90f708803254da389acd5932f7e1efe4c75e5f003d10f77b1",
+        "historical": "7dd7c7686e40292ce9f1f59726475eab6c9a1559f7b6cf91eccf0f704268ce68"
+      },
+      "public_back_hops": 10,
+      "Card_construction_and_acquisition_forbidden": true,
+      "actor_error": "Initial whole-page equality included mode/capability/location envelopes. Exact result/member refs, finite scope and value/unit/state cells match; mode/location envelopes remain distinct."
+    },
+    "producer_resources": {
+      "state": "FINISHED",
+      "peak_owned_rss_bytes": 177311744,
+      "minimum_host_available_bytes": 56990339072,
+      "peak_owned_swap_bytes": 0,
+      "elapsed_s": 284.309,
+      "scope": "Experienced developer-agent interactive observation; elapsed includes thinking, not workload benchmark"
+    },
+    "reader_resources": {
+      "state": "FINISHED",
+      "peak_owned_rss_bytes": 131690496,
+      "minimum_host_available_bytes": 56339025920,
+      "peak_owned_swap_bytes": 0,
+      "elapsed_s": 354.431,
+      "scope": "Experienced developer-agent interactive observation; elapsed includes thinking, not workload benchmark"
+    },
+    "actor_errors": [
+      "Initial native hashing attempted raw Quantity JSON; corrected to explicit value/unit normalization.",
+      "Whole-page equality initially compared changing saved mode/capability/location envelopes. Exact result/member refs, finite scope and value/unit/state cells match; original component payload digests remain equal."
+    ],
+    "limits": "Knowledge-only original source reading; no new MolSysMT geometry or source claim authentication."
+  },
+  "S2_activity": {
+    "state": "SOURCE_AND_QUANTITY_RECOVERED_FILTERED_CONTEXT_REFUSED_STRICT_PROTOTYPE_GREEN_ADOPTION_PENDING",
+    "source": {
+      "measurement": {
+        "value": 33000.0,
+        "unit": "nanomolar"
+      },
+      "band": "weak",
+      "publication_links": 9,
+      "interpretation": "Concentration band does not establish efficacy, selectivity or protocol comparability. Native assay confidence/taxon/target and document fields are retained; complete experimental methods remain absent."
+    },
+    "finding1": "Current opening says saving unavailable despite save=True and successful public save. Genuine SDK265 pre-correction file retained.",
+    "finding2": "Two fresh readers recover original root/source/quantity but filtered assay/citation/publication opens incorrectly report not_saved. Those original nodes exist in the verified bundle. Generic filtering keeps unfiltered nodeN5 instead of selecting strict recorded displayN8; its assay destinationN9 is retained.",
+    "prototype": {
+      "script_sha256": "8383165a0381773fdd6dfac282c9ab2c909651075018633497b64dd64f40ce26",
+      "state": "PASS_EXISTING_STRICT_RECORDED_DISPLAY_LOOKUP",
+      "restored": [
+        "assay",
+        "citation",
+        "full9link_publication"
+      ],
+      "original_data_edited": false,
+      "production_edited": false,
+      "current_science_acquisition_and_Card_construction_forbidden": true
+    },
+    "pending": "Wire/regress exact generic saved molecule filter/sort routing; preserve current/historical action wording through the presentation-policy route. Do not relax original verifiers or touch frozen inputs. Native ligand aggregation#192 remains a distinct known limitation.",
+    "unresolved_reader": {
+      "state": "INCOMPLETE_CONTEXT_PATH_RECHECK_REQUIRED",
+      "root_ref_equal": true,
+      "source_record_equal": true,
+      "assay_outcome": {
+        "status": "not_saved",
+        "reason": "This exact molecule operation and originating history were not retained."
+      },
+      "citation_outcome": {
+        "status": "not_saved",
+        "reason": "This exact molecule operation and originating history were not retained."
+      },
+      "links_view_ref": "XV_a7732684fd4459433de5274bb8f8cc925b47d0500ce1316008b922614820f4f1",
+      "links_request": {
+        "options": {
+          "classification_rule": "bioactivity_class@4",
+          "include_indirect": false,
+          "measurement_ref": null,
+          "measurement_rule": "measurement_identity@1",
+          "molecule_ref": null,
+          "target_card_ref": null,
+          "target_scope_rule": "bioactivity_target_scope@1",
+          "thresholds": null
+        },
+        "question": "measured_targets",
+        "topic": "activity_context"
+      },
+      "all_prohibitions": "Card constructors, acquisition, live molecule materialization, current derivation forbidden",
+      "possible_history_scope": "Repeated answer/root/record instance path versus originally visited exact occurrence; not yet classified as product defect"
+    },
+    "clean_reader": {
+      "assay_equal": false,
+      "citation_equal": false,
+      "assay_outcome": {
+        "status": "not_saved",
+        "reason": "This exact molecule operation and originating history were not retained."
+      },
+      "citation_outcome": {
+        "status": "not_saved",
+        "reason": "This exact molecule operation and originating history were not retained."
+      },
+      "publication_outcome": {
+        "status": "not_saved",
+        "reason": "This exact molecule operation and originating history were not retained."
+      },
+      "root_ref_equal": true,
+      "source_record_equal": true,
+      "links_ref": "XV_a7732684fd4459433de5274bb8f8cc925b47d0500ce1316008b922614820f4f1"
+    },
+    "resources": {
+      "producer": {
+        "state": "FINISHED",
+        "peak_owned_rss_bytes": 264650752,
+        "minimum_host_available_bytes": 56052252672,
+        "peak_owned_swap_bytes": 0,
+        "elapsed_s": 239.493,
+        "scope": "Experienced developer-agent interactive observation; elapsed includes thinking, not workload benchmark"
+      },
+      "first_reader": {
+        "state": "FINISHED",
+        "peak_owned_rss_bytes": 196186112,
+        "minimum_host_available_bytes": 55394877440,
+        "peak_owned_swap_bytes": 0,
+        "elapsed_s": 222.544,
+        "scope": "Experienced developer-agent interactive observation; elapsed includes thinking, not workload benchmark"
+      },
+      "clean_reader": {
+        "state": "FINISHED",
+        "peak_owned_rss_bytes": 197074944,
+        "minimum_host_available_bytes": 54816256000,
+        "peak_owned_swap_bytes": 0,
+        "elapsed_s": 55.209,
+        "scope": "Experienced developer-agent interactive observation; elapsed includes thinking, not workload benchmark"
+      }
+    },
+    "limits": "No completed original S2 saved-context acceptance before adopting/regressing the correction. Prototype is a diagnostic, not current production receiving."
+  },
+  "S4_clinical": {
+    "state": "VISITED_SCIENTIFIC_SOURCE_RETURN_SCOPE_RECOVERED",
+    "scope_states": {
+      "bare": {
+        "outcome": {
+          "status": "partial",
+          "reason": "Original source/query gaps or support limitations remain; consult clinical coverage and original quality records."
+        },
+        "items": 1,
+        "registry_request_states": [
+          {
+            "area": "relationships.tested_in",
+            "source": "ClinicalTrials.gov",
+            "state": "not_queried",
+            "count": null,
+            "release": null,
+            "basis": {
+              "rule": "clinical_query_scope@1",
+              "detail": "No matching request report in the retained enrichment ledger."
+            }
+          }
+        ]
+      },
+      "indications": {
+        "outcome": {
+          "status": "partial",
+          "reason": "Original source/query gaps or support limitations remain; consult clinical coverage and original quality records."
+        },
+        "items": 24,
+        "registry_request_states": [
+          {
+            "area": "relationships.tested_in",
+            "source": "ClinicalTrials.gov",
+            "state": "not_queried",
+            "count": null,
+            "release": null,
+            "basis": {
+              "rule": "clinical_query_scope@1",
+              "detail": "No matching request report in the retained enrichment ledger."
+            }
+          }
+        ]
+      },
+      "full": {
+        "outcome": {
+          "status": "ok",
+          "reason": null
+        },
+        "items": 40,
+        "registry_request_states": [
+          {
+            "area": "relationships.tested_in",
+            "source": "ClinicalTrials.gov",
+            "release": "2026-09-25T09:00:04",
+            "state": "known",
+            "count": 16,
+            "basis": {
+              "requests": 1
+            }
+          }
+        ]
+      },
+      "limited": {
+        "outcome": {
+          "status": "partial",
+          "reason": "Original source/query gaps or support limitations remain; consult clinical coverage and original quality records."
+        },
+        "items": 26,
+        "registry_request_states": [
+          {
+            "area": "relationships.tested_in",
+            "source": "ClinicalTrials.gov",
+            "release": "2026-09-25T09:00:04",
+            "state": "partial",
+            "count": 2,
+            "basis": {
+              "truncated_for": [
+                ""
+              ],
+              "requests": 1
+            }
+          }
+        ]
+      }
+    },
+    "complete_compact_members": 40,
+    "distinct_indication_occurrences": [
+      {
+        "item_ref": "XI_05e184966c9c3e5f1377967d09afd3d526be18f7518ab21ee41c257fe2a4801b",
+        "disease_ref": "mondo:MONDO:0001444"
+      },
+      {
+        "item_ref": "XI_52c37deeec111bff527e136e777216c34e41419c09a99302d81d8549fd754154",
+        "disease_ref": "doid:DOID:10113"
+      }
+    ],
+    "registry_context": {
+      "trial": "nct:NCT00123916",
+      "status": "COMPLETED",
+      "phases": [
+        "PHASE3"
+      ],
+      "has_results": false
+    },
+    "interpretation": "Global molecule maximum phase4 and a particular registry PHASE3 statement have distinct scopes. Completed or has_results=False is not efficacy or a negative outcome. Two cited occurrences remain attached to distinct original MONDO/DOID terms; no disease identity merge or count of independent studies. Explicit2/16 cap is not unqueried scope or source absence.",
+    "reader": {
+      "state": "VISITED_CLINICAL_SAVED_SCOPE_RECOVERED",
+      "root_ref_equal": true,
+      "native_equal": true,
+      "distinct_indication_occurrences": [
+        {
+          "item_ref": "XI_05e184966c9c3e5f1377967d09afd3d526be18f7518ab21ee41c257fe2a4801b",
+          "disease_ref": "mondo:MONDO:0001444"
+        },
+        {
+          "item_ref": "XI_52c37deeec111bff527e136e777216c34e41419c09a99302d81d8549fd754154",
+          "disease_ref": "doid:DOID:10113"
+        }
+      ],
+      "registry_record_equal": true,
+      "source_membership_equal": true,
+      "complete_compact_members": 40,
+      "machine_result_ref": "XR_832d358f69b7649dd3cd8d5cc1cf643bf82ac5903c45fb101e7d16f8ec386d0a",
+      "unvisited": {
+        "status": "not_saved",
+        "reason": "This exact original molecule question was not retained."
+      },
+      "original_file_sha256": "8e0ddf684b9687e830d0fe78fd6c147504921435e2801a76119155abcf69d91d",
+      "original_registry_sources_read_only_after_saved_reopen": [
+        {
+          "id": "SA_ChEMBL_drug_indication:118508_f7ec86f1b702d047",
+          "field_path": "relationships.investigated_for",
+          "subject_ref": "chembl:CHEMBL110",
+          "source": {
+            "name": "ChEMBL",
+            "record_id": "drug_indication:118508",
+            "type": "database",
+            "version": "ChEMBL_37"
+          }
+        },
+        {
+          "id": "SA_ChEMBL_drug_indication:118510_9fa4a2949de0b363",
+          "field_path": "relationships.investigated_for",
+          "subject_ref": "chembl:CHEMBL110",
+          "source": {
+            "name": "ChEMBL",
+            "record_id": "drug_indication:118510",
+            "type": "database",
+            "version": "ChEMBL_37"
+          }
+        },
+        {
+          "id": "SA_ClinicalTrials.gov_NCT00123916_e87ee187ca6ee928",
+          "field_path": "relationships.tested_in",
+          "subject_ref": "nct:NCT00123916",
+          "source": {
+            "name": "ClinicalTrials.gov",
+            "record_id": "NCT00123916",
+            "type": "database",
+            "version": "2026-09-25T09:00:04"
+          }
+        }
+      ],
+      "prohibited": "Card constructors, acquisition, live clinical materialization, current derivation"
+    },
+    "additional_saved_inspection": "Original registry assertion plus two indication assertions were additionally inspected only after saved reopening; no extra pre-save parity claim.",
+    "producer_resources": {
+      "state": "FINISHED",
+      "peak_owned_rss_bytes": 281853952,
+      "minimum_host_available_bytes": 55224578048,
+      "peak_owned_swap_bytes": 0,
+      "elapsed_s": 322.913,
+      "scope": "Experienced developer-agent interactive observation; elapsed includes thinking, not workload benchmark"
+    },
+    "reader_resources": {
+      "state": "FINISHED",
+      "peak_owned_rss_bytes": 201854976,
+      "minimum_host_available_bytes": 55403679744,
+      "peak_owned_swap_bytes": 0,
+      "elapsed_s": 284.277,
+      "scope": "Experienced developer-agent interactive observation; elapsed includes thinking, not workload benchmark"
+    },
+    "limits": "No primary methods/full article reading, clinical recommendation or scientist/consumer acceptance."
+  },
+  "raw_files": [
+    {
+      "path": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-4/structural-observation/observations.json",
+      "sha256": "d7616b122766df70e520db3a66e6104352b4f2cab6368341ef7ce10db5bdb163",
+      "bytes": 14732
+    },
+    {
+      "path": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-4/structural-observation/resource-reader.json",
+      "sha256": "340bd688096d5fa55504165c4ed165dc939540322851e8dab7a79b9e03fdbb06",
+      "bytes": 281
+    },
+    {
+      "path": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-4/structural-observation/interaction.log",
+      "sha256": "ac7a91d56162e228e2d9ec7a0e7f1c3a3913d4569c28b4e248fedce81b551a1b",
+      "bytes": 53712
+    },
+    {
+      "path": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-4/structural-observation/interaction-reader.log",
+      "sha256": "aa53a8a93bf403cf6bd2e83af0c0f9836e7a86bfd54b5bc4349e75ba2d640d2b",
+      "bytes": 9788
+    },
+    {
+      "path": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-4/structural-observation/resource.json",
+      "sha256": "f0a4ad2dc6ad4be4584f00da0db9a10205f7e7aa322848c0d4155d3fed232e37",
+      "bytes": 281
+    },
+    {
+      "path": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-4/structural-observation/save-receipts.json",
+      "sha256": "408c428c5a906548742d2979fba6cecbdb55fab0e3ea764e4b70394b5a71c991",
+      "bytes": 1709
+    },
+    {
+      "path": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-4/structural-observation/reader.json",
+      "sha256": "850f7c2f88889c85e4580ed3c225afd0b6fcc4574ed2ea23200b1991ebe80a70",
+      "bytes": 733
+    },
+    {
+      "path": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-4/structural-observation/structural-historical.json.gz",
+      "sha256": "7dd7c7686e40292ce9f1f59726475eab6c9a1559f7b6cf91eccf0f704268ce68",
+      "bytes": 1973333
+    },
+    {
+      "path": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-4/structural-observation/ownership.json",
+      "sha256": "6fecd9e59e3c419456c110e46248882f5423d791e4d49d6d6b1b177a4e8abd00",
+      "bytes": 675
+    },
+    {
+      "path": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-4/structural-observation/preflight.json",
+      "sha256": "4eeb8cb6bbea88200683674de0c15846c35683483ac7b44a3f13b99d0825dc92",
+      "bytes": 247
+    },
+    {
+      "path": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-4/structural-observation/interactive.py",
+      "sha256": "38e0f0dba0d0907a218be1a001fb24fb3597e0f2334da03fb0471a97f3e0534b",
+      "bytes": 2092
+    },
+    {
+      "path": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-4/structural-observation/structural-current.json.gz",
+      "sha256": "7b0d7042c5612ff90f708803254da389acd5932f7e1efe4c75e5f003d10f77b1",
+      "bytes": 2362389
+    },
+    {
+      "path": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-4/clinical-observation/observations.json",
+      "sha256": "fa55cfc002b682ac2e7d405f807d7bf44b6f4addd2ffec77176293c08ee92966",
+      "bytes": 76309
+    },
+    {
+      "path": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-4/clinical-observation/resource-reader.json",
+      "sha256": "51eae67a3ec53482e10526f77acf44ef845007c3eb955ce2c31e20501e1fcc64",
+      "bytes": 281
+    },
+    {
+      "path": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-4/clinical-observation/save-receipt.json",
+      "sha256": "d6769a77043b2a669c3821a52c1b577940b303e610c28d529e712d0a20c4aadb",
+      "bytes": 791
+    },
+    {
+      "path": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-4/clinical-observation/interaction.log",
+      "sha256": "c9edb16d0d4ac731030cfa29018ba05ff784395dd8642a768b52e95903aea746",
+      "bytes": 26451
+    },
+    {
+      "path": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-4/clinical-observation/interaction-reader.log",
+      "sha256": "ccf29902b61dcc31f8be4e683d85b796cf1fb9c7dc2fa9aa21f3ba9d0fe915a0",
+      "bytes": 5405
+    },
+    {
+      "path": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-4/clinical-observation/clinical.json.gz",
+      "sha256": "8e0ddf684b9687e830d0fe78fd6c147504921435e2801a76119155abcf69d91d",
+      "bytes": 6932232
+    },
+    {
+      "path": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-4/clinical-observation/resource.json",
+      "sha256": "6cf4e2754c98a4e357f806a871878531bfa919b215f610f1ee2e5562eda58062",
+      "bytes": 281
+    },
+    {
+      "path": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-4/clinical-observation/reader.json",
+      "sha256": "c2ac9ba15bffc56ec32703cf6c328336e764e6a9e894d663ca6b7b61e34abbe4",
+      "bytes": 2011
+    },
+    {
+      "path": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-4/clinical-observation/ownership.json",
+      "sha256": "b44e51eaa946183138c6680f37772b4ca0e421fbf64437fd8ed7941590fb7064",
+      "bytes": 592
+    },
+    {
+      "path": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-4/clinical-observation/preflight.json",
+      "sha256": "0330e4712d697fc13f06db0cb147cb361fad2564ae8af9f17a2cc6fc9e52d560",
+      "bytes": 248
+    },
+    {
+      "path": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-4/clinical-observation/interactive.py",
+      "sha256": "4b87b2ef8291f0bd2406a91bd8c71bbc6662b5c5cd1a4d8717b36cd17292ed46",
+      "bytes": 2089
+    },
+    {
+      "path": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-4/activity-observation/observations.json",
+      "sha256": "4cb2f7fd92487132bdf9ec4f54d4f113556fc8f4ffb88993ea678d04cd751ffc",
+      "bytes": 27026
+    },
+    {
+      "path": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-4/activity-observation/resource-reader.json",
+      "sha256": "74bfaff4612ed937e78ad027c7e45af384c704be9ee1f7bf78041c9ef0f16ba9",
+      "bytes": 281
+    },
+    {
+      "path": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-4/activity-observation/save-receipt.json",
+      "sha256": "3dc1a511736c5091fea59756c172cd58c14de2e515f1cf8cb5030a06f77e87d3",
+      "bytes": 790
+    },
+    {
+      "path": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-4/activity-observation/interaction.log",
+      "sha256": "7b50bdddba68ad30554c96cbc08b02096658eedbc50b00df2a31f967d0fd2962",
+      "bytes": 23094
+    },
+    {
+      "path": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-4/activity-observation/interaction-reader.log",
+      "sha256": "656b2321817718a131d476b2607d179b0983397b73d76d8b195d1d8b01eb6fcb",
+      "bytes": 18034
+    },
+    {
+      "path": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-4/activity-observation/reader-unresolved.json",
+      "sha256": "41ef488898251661665681954c7f86519e2b790c36ce32da8f4dfad9083e362c",
+      "bytes": 1191
+    },
+    {
+      "path": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-4/activity-observation/resource.json",
+      "sha256": "0f267ebcaa5baed0a8881fc15fe758643a1d32ccce8302ba84aa9a4ef67c90be",
+      "bytes": 281
+    },
+    {
+      "path": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-4/activity-observation/bundle-shape.json",
+      "sha256": "27af0c0c4bef9925160bb061ba0ad8bf6b965c44b12f09c34264aa9dcec89e1d",
+      "bytes": 478
+    },
+    {
+      "path": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-4/activity-observation/ownership.json",
+      "sha256": "7f0f587a143de7b517f315cbab1c21be122d211bde406c1fac753519b33ac7c6",
+      "bytes": 668
+    },
+    {
+      "path": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-4/activity-observation/preflight.json",
+      "sha256": "62154f06c8bf94fbf9b0498ec9dc4b660171ad34e64b5c9f1681365934b5e5f9",
+      "bytes": 248
+    },
+    {
+      "path": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-4/activity-observation/interactive.py",
+      "sha256": "684e3fb298617c56e92c14ec6541fe7b4cff0fac61dd04d4e8ed0ebcdd6de5b6",
+      "bytes": 2098
+    },
+    {
+      "path": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-4/activity-observation/activity.json.gz",
+      "sha256": "177d97120bd8583281f4ceb5b6d021fca60aa6c7ac141e46a5176ae40b7184a5",
+      "bytes": 2967664
+    },
+    {
+      "path": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-4/activity-clean-reader/clean-path.json",
+      "sha256": "ddd94c74373e95da2ab7393a5d92c2fef12e01d61e0754a5b14656dccce58ddc",
+      "bytes": 632
+    },
+    {
+      "path": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-4/activity-clean-reader/interaction.log",
+      "sha256": "1c04793357d48596b6b6f63e4e24b8b40028b0661cebf79aa8d77f1af2495173",
+      "bytes": 2504
+    },
+    {
+      "path": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-4/activity-clean-reader/resource.json",
+      "sha256": "f71b38c8b4be8028eed31e2f2e157f7c0478c24ea175d65877b661213c7be602",
+      "bytes": 280
+    },
+    {
+      "path": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-4/activity-clean-reader/ownership.json",
+      "sha256": "41c4e009af91c0e3e1ae56bcf866a95eb6f6b2f2256bb8cca6e74ff74b5ce608",
+      "bytes": 304
+    },
+    {
+      "path": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-4/activity-clean-reader/interactive.py",
+      "sha256": "684e3fb298617c56e92c14ec6541fe7b4cff0fac61dd04d4e8ed0ebcdd6de5b6",
+      "bytes": 2098
+    }
+  ],
+  "publication": "Two consolidated local#148 drafts prepared; no new issue/comment published or authorized by these observations.",
+  "remaining_acceptance": "Independent researcher is explicitly deferred until after0.15.0, remains not_reviewed. Maintainer/scientist, broader agent/workload, actual-consumer and candidate/installed/hosted gates remain independent.",
+  "subsequent_receiving": {
+    "recorded_utc": "2026-11-12",
+    "receipt": "molecule_context_display_checkpoint_20261112.json",
+    "scope": "The original S2 failures remain observed failures at their recorded source epoch. Subsequent selected-source and genuine SDK265 receiving recover visited contexts, replay/resave and current/legacy action guidance. No independent researcher/scientist or actual-consumer acceptance is inferred."
+  }
+}

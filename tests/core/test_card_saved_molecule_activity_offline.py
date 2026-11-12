@@ -42,6 +42,12 @@ def _prepare_retained_writer(original, root_policy):
         object.__setattr__(view, "_saved_state", None)
     original.session.pop("format")
     original.session["molecule_activity_root_policy"] = root_policy
+    from sabueso.core.card_context_presentation_v1 import LEGACY_POLICIES
+
+    # Reenact the original producer display, including through later resaves.
+    original.session.setdefault("presentation_metadata", {})[
+        "molecule_activity_actions"
+    ] = LEGACY_POLICIES["molecule_activity_actions"]
     for access_id, access in original.accesses.items():
         access._mode = "live"
         for (owner, ref), result in original.results.items():

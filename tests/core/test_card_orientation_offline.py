@@ -18,7 +18,9 @@ from sabueso.tools.db.chembl import FixtureChEMBLClient
 from sabueso.tools.db.mondo import FixtureMONDOClient
 
 
-@pytest.mark.parametrize("key", ["overview_orientation", "chemical_context"])
+@pytest.mark.parametrize(
+    "key", ["overview_orientation", "chemical_context", "molecule_activity_actions"]
+)
 @pytest.mark.parametrize("value", [None, False, "unregistered_presentation@99"])
 def test_unknown_recorded_context_policy_is_rejected(tmp_path, key, value):
     import sabueso

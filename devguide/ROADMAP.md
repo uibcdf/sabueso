@@ -65,8 +65,11 @@ postponed post-0.15.0 trial; it supplies no actual acceptance result.
 The current integration joins source-bound chemical context with retention of
 executed scientific requests in their actual access instances. Historical
 default presentation is now explicit and survives resaving; the broad profile
-inventory and [CHECKPOINT](CHECKPOINT.md) own qualification. The current local
-integration checkpoint passes; obtain genuine B7 observations next. Test counts do not replace
+inventory and [CHECKPOINT](CHECKPOINT.md) own qualification. The complete local
+baseline passes with its explicit test-helper epoch correction. Actual public
+protein, structural, activity and clinical developer-agent observations are now
+recorded in CHECKPOINT; they expose a molecule context correction with its own
+receiving scope. Review those results and obtain the remaining B7 decisions. Test counts do not replace
 researcher feedback, scientific review or the actual consumer's acceptance.
 
 ## Latest release: 0.14.0 (#134)

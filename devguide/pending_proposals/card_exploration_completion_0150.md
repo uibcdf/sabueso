@@ -12,6 +12,14 @@ supersedes: []
 
 # Complete Card exploration before 0.15.0
 
+The current [CHECKPOINT](../CHECKPOINT.md) records the complete 11,514-case
+pre-correction baseline and actual public protein/structural/activity/clinical
+developer-agent observations. The subsequently exposed
+[molecule context navigation and resaving defects](../pending_bugs/molecule_activity_context_display.md)
+receive their own selected, original-file and copied checks. These bounded
+observations do not close scientific, wider workload or actual-consumer acceptance;
+the independent researcher trial remains explicitly deferred until after 0.15.0.
+
 The [exact structure/component route](card_assembly_component_navigation.md)
 now links retained declarations, assembly questions, separate component positions
 and original records/sources. Saved format @8 binds the exact original click;

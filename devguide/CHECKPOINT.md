@@ -5,6 +5,72 @@ Current working-state checkpoint: **2026-11-12 (UTC)**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Molecule context navigation and resaving — selected current checks PASS
+
+Saved molecule context filtering/sorting now reuses the exact recorded display
+node, recovering visited assay, citation and complete publication routes. Resaving
+after replay prepares original support for new view instances without current
+scientific execution; unexecuted source operations stay `not_saved`. New sessions
+show the saving action permitted by their actual capabilities. Original default
+wording remains versioned and unchanged through historical read/resave.
+
+The [current correction receipt](evidence/molecule_context_display_checkpoint_20261112.json)
+closes **455 distinct selected source cases**: all 450 owning/adjacent cases,
+four complete SDK205/208/218 original-file controls and one outside-checkout
+consumer of the complete **71-case** LIVE module. Child/repeated counts add no
+distinct source coverage. All gates have complete valid receptor accounting,
+stable mapped inputs and zero warnings/skips/owned swap. Peak owned RSS is
+5,862,367,232 bytes, under the 10 GiB ceiling with at most eight workers.
+
+Actual original SDK265 reading recovers all three contexts and nine publication
+links, then resaves with its original text/HTML and source records unchanged.
+A separate explicit `start_new()` control checks current guidance and saving from
+the same public captures, retaining 33,000 nanomolar and the original source.
+All 52 protected originals/SOURCE resources and participating provider maps stay
+fixed. No scientific rule, Card schema or original verifier changes; #192 remains
+a separate limitation. The earlier red streams and stale-policy expectation
+failure are retained with their own epochs.
+
+Fresh discovery contains **11,519** normal offline IDs and excludes 26 online
+cases, retaining every baseline ID and adding exactly five. Collection supplies
+no fresh full-suite PASS. The complete 11,514-case baseline below precedes this
+production correction. Exact-final-SHA CI/governance, installed Linux/Windows
+candidate qualification and remaining B7 acceptance stay due. The independent
+researcher trial remains after 0.15.0; B8 is not resumed. Raw evidence, final
+committed/pushed identity and cleanup are retained under #148/#112 in
+`recovered_work/checkpoint_recovery_20261106/b7-context-display-correction-1/`.
+
+## Complete offline baseline recovered — 11,514 distinct cases PASS
+
+The [complete baseline receipt](evidence/pre_context_display_fix_full_checkpoint_20261112.json)
+closes all **11,514** discovered normal offline cases, with 26 online cases
+excluded. Native (1,553), ordinary (8,335), modern-history (1,151), original
+molecule (55) and remaining history/receiving (420) cohorts have complete valid
+receptor artifacts and matching controller, worker and executed node sets.
+All 931 production inputs stay identical across the five phases. Exactly one
+retained-writer test helper changes between `4d170ce` / SDK264 and `f4850ef` /
+SDK265; all other 1,352 mapped inputs stay fixed. This is explicitly composed
+coverage, rather than one identical test-input epoch. The failed earlier streams
+and disk refusal remain retained with their actual outcomes.
+
+Concurrency is 8/8/6/3/5 workers, capped at 10 GiB combined descendant-tree RSS
+with native pools one and a monitored 16 GiB host reserve. Peak owned RSS is
+7,892,307,968 bytes, with no owned swap. Thirteen expected negative-fixture
+warnings occur only in the ordinary cohort; all cases execute without skips.
+Successful scratch is removed after verified closure; originals and raw receipts
+remain owned by #148/#112 for B7/candidate review.
+
+Actual [specialist developer-agent observations](evidence/developer_agent_specialist_observations_20261112.json)
+cover public structural, activity and clinical tasks. The separate
+[protein-context observation](evidence/developer_agent_protein_context_observation_20261112.json)
+covers seven comparative/variant/isoform/association routes. They retain prior
+exposure, actor errors, source gaps and receiving limitations. These observations
+expose the [molecule context display and resave defects](pending_bugs/molecule_activity_context_display.md)
+after the passing baseline; the separate current-source checks are recorded above.
+Neither the baseline nor developer-agent observations supplies independent
+scientist/researcher or real-consumer acceptance, hosted/installed qualification
+or B8 resumption. The independent trial stays deferred until after 0.15.0.
+
 ## Retained original writer — two corrected independent readers PASS
 
 The clean `4d170ce` / SDK264 attempt closes 11,039 native/ordinary/modern-history
@@ -18,8 +84,8 @@ changes; the other 1,352 mapped inputs and all other module ASTs stay fixed.
 
 The [selected receipt](evidence/original_writer_guard_checkpoint_20261112.json)
 records both SDK208 and SDK205 positive files passing with independent readers,
-complete valid receptor accounting and zero warnings/skips/swap. Complete owning
-55-case and remaining 420-case recovery is still pending. Earlier failed streams
+complete valid receptor accounting and zero warnings/skips/swap. The later complete baseline above receives all
+55 owning cases and all 420 remaining cases successfully. Earlier failed streams
 remain unchanged; any combined passing checkpoint must disclose this test-helper
 correction and preserve each phase's actual input epoch. Owners #148/#112 retain
 raw evidence under
@@ -41,7 +107,7 @@ complete receptor integrity and exact source/worker accounting. Fifteen overlapp
 cold controls also pass outside checkout with eighteen copied modules and no data
 assets. The original complete ordinary failure and the earlier test-exception
 mismatch remain separate nonpassing records. All 931 production inputs and 52
-protected originals stay unchanged. Full clean-source recovery is still pending;
+protected originals stay unchanged. Full baseline recovery is now recorded above;
 retain its exact head/provider/input records under #112/#148 in
 `recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-2/`.
 
@@ -61,7 +127,8 @@ all **13 cases passing**, including the five affected producer cases, three
 fresh-child guard controls and the complete lifecycle module. All 931 production
 inputs, 52 protected originals and 65 existing core test-function ASTs stay fixed.
 A cold audit of eight helpers finds no retained guard aliases after correction.
-Complete corrected-source recovery and hosted qualification remain pending.
+The later complete baseline closes corrected-source recovery; hosted qualification
+remains pending.
 
 The [experienced developer-agent protein observation](evidence/developer_agent_protein_observation_20261112.json)
 adds supplied-protein C1/C2, partial C5 and visited C6 work to the earlier molecule

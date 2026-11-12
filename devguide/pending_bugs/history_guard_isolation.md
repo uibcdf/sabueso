@@ -8,6 +8,16 @@ area: [testing, historical-reading, integration]
 
 # Historical-reader guards survive through late imports
 
+The [complete baseline](../evidence/pre_context_display_fix_full_checkpoint_20261112.json)
+now closes all 11,514 normal offline cases, including all 55 original molecule
+and 420 remaining history/receiving cases. Production is fixed across phases;
+the one retained-writer helper correction and actual test epochs are explicit.
+Earlier failed attempts below keep their outcomes. Local recovery is complete
+for that baseline; exact-final-head hosted/installed qualification remains due.
+The subsequent molecule navigation correction has its own
+[receiving scope](molecule_activity_context_display.md), rather than inheriting
+this baseline's full passing claim.
+
 The complete local `f772e25` / SDK262 attempt exposes five failures in later
 protein-context and sequence-change producer tests. Both raise the temporary
 sequence-history guard, despite its pytest monkeypatch already being restored.

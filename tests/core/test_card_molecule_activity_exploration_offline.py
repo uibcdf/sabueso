@@ -1433,3 +1433,145 @@ def test_foreign_alias_record_focus_refuses_before_native_evaluation(
                 "measurement_ref": copied["id"],
             },
         )
+
+
+@pytest.mark.parametrize("display", ["filter", "sort"])
+def test_saved_context_display_recovers_its_exact_visited_operations(
+    pair, tmp_path, display
+):
+    import inspect
+    import subprocess
+    import sys
+    import tempfile
+
+    molecule, target = pair
+    before = molecule.to_dict(), target.to_dict()
+    root = molecule.explore(related_cards=[target]).answer("measured_targets")
+    record = root.items()[0].open().items()[0].open().items()[0]
+    links = record.related()
+    roles = ("assay_context", "citation_context", "publication_context")
+    ordered = links.sort("role") if display == "sort" else None
+    expected = {}
+    for role in roles:
+        displayed = (
+            links.filter("role", equals=role) if display == "filter" else ordered
+        )
+        item = next(i for i in displayed.items() if i.cells["role"].value == role)
+        opened = item.open()
+        assert opened.back() is displayed
+        expected[role] = serialized_native(opened.native_payload)
+    assert len(expected["publication_context"]["links"]) == 9
+    path = tmp_path / "recorded-context.json.gz"
+    receipt = root.save(path, compression="gzip")
+    expected_path = tmp_path / "expected-context.json"
+    expected_path.write_text(
+        json.dumps(
+            {
+                "contexts": expected,
+                "root_ref": root.view_ref,
+                "result_ref": root.result_ref,
+                "bundle_digest": receipt["bundle_digest"],
+            }
+        ),
+        encoding="utf-8",
+    )
+    # A fresh inert reader avoids leaking temporary provider guards into later tests.
+    script = (
+        "import pyunitwizard as puw\n"
+        + inspect.getsource(serialized_native)
+        + "\n"
+        + inspect.getsource(_receive_recorded_context_display)
+        + "\nimport sys\n_receive_recorded_context_display(*sys.argv[1:])\n"
+    )
+    with tempfile.TemporaryDirectory(
+        prefix="sabueso-molecule-context-display-",
+        dir=None if sys.platform == "win32" else "/tmp",
+    ) as directory:
+        child = subprocess.run(
+            [
+                sys.executable,
+                "-B",
+                "-c",
+                script,
+                str(path.resolve()),
+                str(expected_path.resolve()),
+                display,
+            ],
+            cwd=directory,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            timeout=180,
+        )
+    assert child.returncode == 0, child.stdout + child.stderr
+    assert not child.stderr, child.stderr
+    assert before == (molecule.to_dict(), target.to_dict())
+
+
+def _receive_recorded_context_display(path, expected_path, display):
+    """Recover exact visited histories without Cards, sources or current science."""
+    import hashlib
+    import json
+    import socket
+    from pathlib import Path
+
+    import sabueso
+    import sabueso.core.card_molecule_activity_access as current_access
+    import sabueso.core.card_molecule_activity_exploration as current_view
+    import sabueso.core.relationship_store as current_relationships
+    from sabueso.core.card import Card
+
+    def forbidden(*args, **kwargs):
+        raise AssertionError(
+            "Saved display reading cannot rebuild Cards, science or sources"
+        )
+
+    socket.socket.connect = forbidden
+    socket.create_connection = forbidden
+    sabueso.resolve = forbidden
+    Card.__init__ = forbidden
+    Card.from_dict = forbidden
+    Card.from_json = forbidden
+    current_access.materialize = forbidden
+    current_view.materialize = forbidden
+    current_relationships.make_derivation = forbidden
+    expected = json.loads(Path(expected_path).read_text(encoding="utf-8"))
+    original_sha = hashlib.sha256(Path(path).read_bytes()).hexdigest()
+    saved = sabueso.read_exploration(path, expected_digest=expected["bundle_digest"])
+    assert saved.view_ref == expected["root_ref"]
+    assert saved.result_ref == expected["result_ref"]
+    record = saved.items()[0].open().items()[0].open().items()[0]
+    links = record.related()
+    ordered = links.sort("role") if display == "sort" else None
+    for role, native in expected["contexts"].items():
+        displayed = (
+            links.filter("role", equals=role) if display == "filter" else ordered
+        )
+        item = next(i for i in displayed.items() if i.cells["role"].value == role)
+        opened = item.open()
+        assert serialized_native(opened.native_payload) == native
+        assert opened.back() is displayed
+    resaved_path = Path(path).with_name("resaved-context.json.gz")
+    resaved = saved.save(resaved_path, compression="gzip")
+    again = sabueso.read_exploration(
+        resaved_path, expected_digest=resaved["bundle_digest"]
+    )
+    assert again.view_ref == saved.view_ref
+    assert again.result_ref == saved.result_ref
+    # An equal endpoint under an unexecuted display history stays unretained.
+    unexecuted = (
+        links.sort("role")
+        if display == "filter"
+        else links.filter("role", equals="assay_context")
+    )
+    item = next(
+        i for i in unexecuted.items() if i.cells["role"].value == "assay_context"
+    )
+    assert item.open().outcome["status"] == "not_saved"
+    # The refused operation also remains an observation, without poisoning the
+    # original retained root or admitting the unexecuted source operation.
+    after_refusal = saved.save(
+        Path(path).with_name("after-refusal.json.gz"), compression="gzip"
+    )
+    assert after_refusal["root_view_ref"] == saved.view_ref
+    assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == original_sha

@@ -7,6 +7,14 @@ workload, real-consumer and exact-candidate qualification remain separate.
 
 ## Current checkpoint and next action
 
+The [2026-11-12 context-display correction](../pending_bugs/molecule_activity_context_display.md)
+recovers exact visited assay/citation/publication operations after generic saved
+filtering/sorting, and reopens original support for new view instances before
+resaving. Unexecuted routes remain `not_saved`. Current saving guidance has its
+own versioned presentation policy; original defaults survive resaving. CHECKPOINT
+owns present qualification. The earlier milestones below retain their source
+epochs and counts, independently of this current correction.
+
 Current working follow-up: LIVE root returns use
 `molecule_activity_root_selection_exact_origin@1`, preserving the actual
 initiating instance and typed request. The selected 515-case local checkpoint

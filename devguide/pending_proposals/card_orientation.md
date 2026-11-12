@@ -77,19 +77,23 @@ as well as earlier variant and sequence-change histories.
 The correction preserves those observed text/HTML results rather than updating
 their immutable expectations to match a newer renderer.
 
-New sessions explicitly record `overview_orientation: card_orientation@1` and
-`chemical_context: chemical_context_reading@1` in optional
+New sessions explicitly record `overview_orientation: card_orientation@1`,
+`chemical_context: chemical_context_reading@1` and
+`molecule_activity_actions: molecule_activity_actions@1` in optional
 `presentation_metadata`, alongside the existing navigation policy. These keys
 select default text/HTML presentation; they are not source assertions or new
-scientific adapter declarations. Unknown explicit values for either owned key
+scientific adapter declarations. Unknown explicit values for any owned key
 are refused rather than silently interpreted as a current policy.
 
 An older file without these declarations keeps its historical default opening
-and chemical/property preview. The two exact unmarked orientation producers,
+and chemical/property preview, including its original molecule activity action
+wording. Current `capabilities["save"]` remains separately inspectable. The two
+exact unmarked orientation producers,
 `0.14.0+248.gca4f88e` and `0.14.0+249.g2d7dffc`, keep their already introduced
 orientation but do not acquire the later chemical supplement. No broader
 producer-version range is assumed. Restoration makes missing policies explicit
-as `legacy_card_orientation@1` and `legacy_chemical_context@1` before a resave can
+as `legacy_card_orientation@1`, `legacy_chemical_context@1` and
+`legacy_molecule_activity_actions@1` before a resave can
 replace the producer label. Saving again therefore preserves that choice.
 
 Explicit `.orientation` and `.chemical_reading` expose current detached readings

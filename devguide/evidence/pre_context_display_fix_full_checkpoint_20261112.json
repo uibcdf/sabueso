@@ -1,0 +1,295 @@
+{
+  "state": "COMPLETE_OFFLINE_BASELINE_PASS_WITH_EXPLICIT_TEST_HELPER_CORRECTION",
+  "recorded_utc": "2026-11-12T11:23:49.087531+00:00",
+  "owner": [
+    "uibcdf/sabueso#112",
+    "uibcdf/sabueso#148"
+  ],
+  "review_trigger": "Adopt/regress actual-agent context findings, exact-final-head hosted recovery and B7/candidate review",
+  "source_head": "f4850ef87f1b4509b7720897bb720041678796df",
+  "runtime": "0.14.0+265.gf4850ef",
+  "scope": "Complete11514 distinct normal offline passing coverage at unchanged931 production inputs, with exactly one explicit test-helper correction. Prior native/ordinary/modern PASS epochs retain their maps; corrected owning55 and remaining420 execute anew. Linux editable Python3.14 only; not one unchanged test-input epoch, hosted/installed platform, independent scientist/researcher/real-consumer acceptance or B8.",
+  "normal_offline_discovered": 11514,
+  "online_deselected": 26,
+  "distinct_passed": 11514,
+  "additional_distinct_cases_since_preceding11432": 82,
+  "source_inputs": 1353,
+  "current_source_input_map_sha256": "d0641b0b5818d10420b22839041f33c89eb4e7416aea085a0daf93eed926c561",
+  "source_nodeids_sha256": "29e57d2d89ba263adff1d8594de21ed791986990bc1e779cf1413ca8810b6f07",
+  "production_inputs_identical_between_all_phases": 931,
+  "all_phase_test_inputs_identical": false,
+  "explicit_test_helper_correction": {
+    "file": "tests/core/test_card_saved_molecule_activity_originals_offline.py",
+    "function": "_retained_writer",
+    "other_mapped_inputs_unchanged": 1352,
+    "all_other_module_ASTs_unchanged": true,
+    "before_sha256": "12a0ab30a3fc84d66e55c78dacb690d6616251e5e81f4ad71118e0072ec0855f",
+    "after_sha256": "106d836140e57b8a59c0f3ef0a39fb04a6892d8922ed97a3fec4b91dc8012885",
+    "scope": "Three complete passing cohorts retain the earlier test-input epoch. Complete corrected owning55 and remaining420 run anew; no failed outcome relabeled. All931 production inputs stay identical."
+  },
+  "protected_SOURCE_and_original_inputs_unchanged": 52,
+  "protected_map_sha256": "4b825a52afc502b41a4846cc88491a17999085db175103bca345d5f19cc930b7",
+  "participating_provider_epoch": {
+    "sabueso": {
+      "version": "0.14.0+265.gf4850ef",
+      "module_origin": "/fast_data/home/liliana/repos@uibcdf/sabueso/sabueso/__init__.py",
+      "runtime_python_and_configuration_files": 920,
+      "runtime_python_and_configuration_map_sha256": "f5b40ffed0117cf6ef5768e02d6eafb1548c0e8feb0e135a5b3bc8eee6a814be"
+    },
+    "pytest-receptor": {
+      "version": "1.2.3+2.ga02820f",
+      "module_origin": "/fast_data/home/liliana/repos@uibcdf/pytest-receptor/pytest_receptor/__init__.py",
+      "runtime_python_and_configuration_files": 6,
+      "runtime_python_and_configuration_map_sha256": "9b967d47b686e627996d07484448c631327b7221cfbf844b5a499f60905c47cf"
+    },
+    "gh-run-receptor": {
+      "version": "1.5.0+3.ge55f15e",
+      "module_origin": "/fast_data/home/liliana/repos@uibcdf/gh-run-receptor/src/gh_run_receptor/__init__.py",
+      "runtime_python_and_configuration_files": 1,
+      "runtime_python_and_configuration_map_sha256": "b79f0fa264e0bc9d728b3915ae4f0a4d83be828721065ea8d76764b74ab3e272"
+    },
+    "ackredit": {
+      "version": "0.12.2+2.g0bb26ec",
+      "module_origin": "/fast_data/home/liliana/repos@uibcdf/ackredit/ackredit/__init__.py",
+      "runtime_python_and_configuration_files": 69,
+      "runtime_python_and_configuration_map_sha256": "85763d4b46261f13bc8f30823ef28c9f6b98bcd85b455c57bd729284e42767c5"
+    },
+    "argdigest": {
+      "version": "0.17.1+6.g7be790b",
+      "module_origin": "/fast_data/home/liliana/repos@uibcdf/argdigest/argdigest/__init__.py",
+      "runtime_python_and_configuration_files": 39,
+      "runtime_python_and_configuration_map_sha256": "f5161aa33129f96995bf53a7a1a25a92989889397aa69137f35b108de51d40dd"
+    },
+    "smonitor": {
+      "version": "0.23.0+3.g4a4cd1e",
+      "module_origin": "/fast_data/home/liliana/repos@uibcdf/smonitor/smonitor/__init__.py",
+      "runtime_python_and_configuration_files": 43,
+      "runtime_python_and_configuration_map_sha256": "b08796926e67795ab190621261067ca00f5d50b37bde4b3e706db16019fc9dbc"
+    },
+    "depdigest": {
+      "version": "0.15.2+3.g5e93eaf",
+      "module_origin": "/fast_data/home/liliana/repos@uibcdf/depdigest/depdigest/__init__.py",
+      "runtime_python_and_configuration_files": 17,
+      "runtime_python_and_configuration_map_sha256": "e6979969ca01b4430c474a4cc00defef7fe7dd8e4ae9b9a2643caa86ee7c41ac"
+    },
+    "pyunitwizard": {
+      "version": "0.29.4+3.g064c7e1",
+      "module_origin": "/fast_data/home/liliana/repos@uibcdf/pyunitwizard/pyunitwizard/__init__.py",
+      "runtime_python_and_configuration_files": 96,
+      "runtime_python_and_configuration_map_sha256": "9c37460158998749ff9e76382aff36737bba94a5e0f143a930d8938da8c7a1f9"
+    },
+    "molsysmt": {
+      "version": "0.23.0+904.gff25f1202",
+      "module_origin": "/fast_data/home/liliana/repos@uibcdf/molsysmt/molsysmt/__init__.py",
+      "runtime_python_and_configuration_files": 3117,
+      "runtime_python_and_configuration_map_sha256": "a49100f6c392e4086483114d4dbd71aa49fef79414a8e6500daa10cb610b9bce"
+    }
+  },
+  "provider_scope": "Nine complete Python/configuration maps stay identical across phases; only Sabueso editable metadata advances from SDK264 to SDK265 with the one test-only helper commit. Four additional registered editable origins were inventoried but not full-provider qualified.",
+  "phases": {
+    "native": {
+      "source_head": "4d170cea5c6b9163b96ce17c19d2e52b4a76578b",
+      "runtime": "0.14.0+264.g4d170ce",
+      "test_input_epoch": "before_explicit_writer_helper_correction",
+      "directory": "recovered_work/checkpoint_recovery_20261106/b7-current-integrated-native-1",
+      "cases": 1553,
+      "workers": 8,
+      "counts": {
+        "collected": 1553,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 1553,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 1553,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "complete_valid_receptor_and_worker_accounting": true,
+      "within_phase_source_inputs_unchanged": true,
+      "closed_report_sha256": "6c0cfddff8b0997f06a63192a3ba2cad71009e44005719f980866daadf781e85",
+      "events_sha256": "5f4350141f1bfe3ea16669ffaebc76caae395d2b8a2b7f9cc31b8d65e30ed6a5",
+      "elapsed_s": 26.29,
+      "peak_owned_tree_rss_bytes": 1172951040,
+      "peak_owned_scratch_bytes": 7815564,
+      "minimum_host_available_bytes": 57386242048,
+      "peak_owned_swap_bytes": 0,
+      "successful_scratch_removed_after_verified_close": true
+    },
+    "remainder": {
+      "source_head": "4d170cea5c6b9163b96ce17c19d2e52b4a76578b",
+      "runtime": "0.14.0+264.g4d170ce",
+      "test_input_epoch": "before_explicit_writer_helper_correction",
+      "directory": "recovered_work/checkpoint_recovery_20261106/b7-current-integrated-remainder-1",
+      "cases": 8335,
+      "workers": 8,
+      "counts": {
+        "collected": 8335,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 8335,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 8335,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 13,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "complete_valid_receptor_and_worker_accounting": true,
+      "within_phase_source_inputs_unchanged": true,
+      "closed_report_sha256": "fc58cd8c528d1cf19b4e2f801795d574f28ed67fbb3e131b8e8c1f8e24ca5dec",
+      "events_sha256": "4eb4603efc3b9a4b5d333ae72fb54c1444fb91c5538c92d8c35c16e0e350486b",
+      "elapsed_s": 592.93,
+      "peak_owned_tree_rss_bytes": 4257640448,
+      "peak_owned_scratch_bytes": 2004446391,
+      "minimum_host_available_bytes": 54109790208,
+      "peak_owned_swap_bytes": 0,
+      "successful_scratch_removed_after_verified_close": true
+    },
+    "modern": {
+      "source_head": "4d170cea5c6b9163b96ce17c19d2e52b4a76578b",
+      "runtime": "0.14.0+264.g4d170ce",
+      "test_input_epoch": "before_explicit_writer_helper_correction",
+      "directory": "recovered_work/checkpoint_recovery_20261106/b7-current-integrated-modern-2",
+      "cases": 1151,
+      "workers": 6,
+      "counts": {
+        "collected": 1151,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 1151,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 1151,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "complete_valid_receptor_and_worker_accounting": true,
+      "within_phase_source_inputs_unchanged": true,
+      "closed_report_sha256": "0dc5858ac08b34c2891a6e7b998401dd0cbafb954dfe1c1f68ddb2dbbe7fb103",
+      "events_sha256": "cb198f8ba7a434910e7f79a8d3e264e4cdabf2daf92e25b28e624b78267c8608",
+      "elapsed_s": 2122.1,
+      "peak_owned_tree_rss_bytes": 7892307968,
+      "peak_owned_scratch_bytes": 2308298226,
+      "minimum_host_available_bytes": 51637334016,
+      "peak_owned_swap_bytes": 0,
+      "successful_scratch_removed_after_verified_close": true
+    },
+    "old_molecule": {
+      "source_head": "f4850ef87f1b4509b7720897bb720041678796df",
+      "runtime": "0.14.0+265.gf4850ef",
+      "test_input_epoch": "corrected_writer_helper",
+      "directory": "recovered_work/checkpoint_recovery_20261106/b7-current-integrated-old_molecule-2",
+      "cases": 55,
+      "workers": 3,
+      "counts": {
+        "collected": 55,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 55,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 55,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "complete_valid_receptor_and_worker_accounting": true,
+      "within_phase_source_inputs_unchanged": true,
+      "closed_report_sha256": "954b594d38c3c6a591762a6cf7a97824053a5f6c1f2cfc70c4b8c8a3f292e520",
+      "events_sha256": "e67b6e00cad4ced5ccbcbca953047f3985b00be892c9e2726a56ef68a75fb63e",
+      "elapsed_s": 2563.17,
+      "peak_owned_tree_rss_bytes": 5109563392,
+      "peak_owned_scratch_bytes": 4476903233,
+      "minimum_host_available_bytes": 54445719552,
+      "peak_owned_swap_bytes": 0,
+      "successful_scratch_removed_after_verified_close": true
+    },
+    "legacy": {
+      "source_head": "f4850ef87f1b4509b7720897bb720041678796df",
+      "runtime": "0.14.0+265.gf4850ef",
+      "test_input_epoch": "corrected_writer_helper",
+      "directory": "recovered_work/checkpoint_recovery_20261106/b7-current-integrated-legacy-1",
+      "cases": 420,
+      "workers": 5,
+      "counts": {
+        "collected": 420,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 420,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 420,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "complete_valid_receptor_and_worker_accounting": true,
+      "within_phase_source_inputs_unchanged": true,
+      "closed_report_sha256": "147819d3a4ceaf9c09021acab1eafc928ecc2c5154e7b997fdfd3bde4ebf6434",
+      "events_sha256": "d7add765a1359c30706c3d67d52be34c01bb45d6174761644a2cfb2f319cc818",
+      "elapsed_s": 1763.19,
+      "peak_owned_tree_rss_bytes": 6738702336,
+      "peak_owned_scratch_bytes": 2788893481,
+      "minimum_host_available_bytes": 52859080704,
+      "peak_owned_swap_bytes": 0,
+      "successful_scratch_removed_after_verified_close": true
+    }
+  },
+  "resource_scope": "Fresh CPU/RAM/swap/PSI/disk assessment before each single intensive cohort. Maximum8workers,10GiB total owned treeRSS,native1,host RAM/disk floors16GiB,zero swap. Scratch1/5/6/6/5GiB plus1GiB launch margin beyond host disk floor. Modern6workers estimate below9GiB from the observed4worker4.9GiB peak, after module cleanup removes accumulation. Stop rather than relaxing limits. Resources are not reserved.",
+  "intentional_warnings": "13 negative acquisition fixture warnings in the ordinary cohort; all other cohorts zero warnings. SQLite/unraisable warnings are fatal. All phases zero skips/failures/owned swap.",
+  "same_epoch_disk_resumption": "Modern1 refused before pytest because22.689GiBfree<23GiB admission. Owned obsolete fixture outputs archived and byte-verified, recovering23.233GiB. Same source/input/provider epoch; retain completed native/remainder reports only after rechecking their exact integrity and node sets. No case retry or older-source outcome substitution. Limits and selected cases unchanged.",
+  "disk_resumption_receipt_sha256": "ceeddbb48552c3e571ab1938af4ece8b8d3b24d1549d3df37ebd867d1ced70c2",
+  "retired_fixture_archive_receipt_sha256": "5c60469412bf357fa1eb0e08af5aa1a9c59fbcf6f6560ccb8820e5e7233896bc",
+  "earlier_failures": [
+    "f772e25/SDK262: incomplete modern history with five guard failures and scratch stop; unchanged failed receipt retained",
+    "88b3fb2/SDK263: complete ordinary8324pass/11fail due another test guard; unchanged failed receipt retained",
+    "4d170ce/SDK264: complete old_molecule11pass/44fail caused by blocked writer presentation; one test helper corrected; complete55rerun passes",
+    "Two newly prepared shadow context display regressions fail against this unchanged baseline; excluded from all passing counts"
+  ],
+  "known_actual_agent_gaps": [
+    "Current molecule activity opening incorrectly claims saving unavailable despite successful public save",
+    "Saved generic molecule context filters/sorts fail to reuse exact recorded display nodes, blocking visited assay/citation/publication destinations already present in the verified file",
+    "Strict existing lookup prototype recovers the filtered contexts; production adoption and current/historical regressions remain due separately"
+  ],
+  "raw_directory": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-4",
+  "full_receipt_sha256": "b90f46f9f0fa8cb1b643becaad93565584b1c729556c4c4ea16d0bde9995b1eb",
+  "cleanup": [
+    {
+      "path": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-current-integrated-old_molecule-2/pytest-scratch",
+      "removed_bytes": 31505892,
+      "owner": "Sabueso #112/#148",
+      "review_trigger": "After verified recovery; successful scratch only"
+    },
+    {
+      "path": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-current-integrated-legacy-1/pytest-scratch",
+      "removed_bytes": 394200979,
+      "owner": "Sabueso #112/#148",
+      "review_trigger": "After verified recovery; successful scratch only"
+    }
+  ],
+  "limits": [
+    "Complete baseline code coverage, not technical qualification of any subsequent production correction",
+    "Linux editable Python3.14 only; not hosted, another platform/minor or installed public archive qualification",
+    "No independent scientist/researcher, full actual-agent/workload or actual-consumer acceptance",
+    "Independent researcher explicitly deferred after0.15.0, remains not_reviewed",
+    "No B8 resumption, candidate selection, schema freeze, staging or publication"
+  ]
+}

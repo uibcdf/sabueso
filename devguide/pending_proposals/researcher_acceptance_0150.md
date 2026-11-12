@@ -201,3 +201,25 @@ explicit; this supplies no independent user feedback or measured discovery-cost
 improvement.
 The disease catalog proposal remains separate. Re-evaluate discovery cost with
 actual participants rather than inferring it from passing regressions.
+
+
+## Subsequent public specialist observations — 2026-11-12 UTC
+
+The later [protein-context receipt](../evidence/developer_agent_protein_context_observation_20261112.json)
+records seven actual comparative, annotation, variant, isoform and association
+routes. The [specialist receipt](../evidence/developer_agent_specialist_observations_20261112.json)
+adds S1 structural, S2 activity and S4 clinical exploration and fresh saved reading.
+All are experienced developer-agent observations with prior answer/implementation
+exposure; earlier statements of unobserved specialist scope refer to their earlier
+epochs. GRCh38 remains requested mapping context without a source assembly echo;
+symbolic assembly membership stays distinct from physical expansion; clinical
+phase/status supplies no efficacy result. Complete original units/support and
+unvisited-operation limits remain inspectable.
+
+S2 exposes lost visited assay/citation/publication navigation and misleading
+saving guidance after the complete baseline. The
+[owning correction](../pending_bugs/molecule_activity_context_display.md) records
+its distinct source and receiving; no failure is retrospectively counted as a
+passing task. Scientific/maintainer and real-consumer decisions, representative
+workload acceptance and exact candidate qualification remain due. The independent
+researcher trial remains explicitly after 0.15.0 and `not_reviewed`.

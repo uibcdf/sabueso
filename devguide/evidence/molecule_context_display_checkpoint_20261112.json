@@ -1,0 +1,362 @@
+{
+  "state": "SELECTED_CURRENT_CONTEXT_CORRECTION_PASS",
+  "recorded_utc": "2026-11-12",
+  "owner": "uibcdf/sabueso#148/#112",
+  "review_trigger": "B7 acceptance and exact candidate preparation",
+  "source_base": "f4850ef87f1b4509b7720897bb720041678796df",
+  "runtime_during_tests": "0.14.0+265.gf4850ef",
+  "tested_worktree": "Four production files and six existing test files differ from base; no new runtime module",
+  "production_paths": [
+    "sabueso/core/card_context_presentation_v1.py",
+    "sabueso/core/card_exploration.py",
+    "sabueso/core/card_exploration_render.py",
+    "sabueso/core/card_exploration_storage.py"
+  ],
+  "production_sha256": {
+    "sabueso/core/card_context_presentation_v1.py": "9ef2fee31b64cc6b65c610a822e4cfafced4d9ac4d942c670f8960cf04ae686e",
+    "sabueso/core/card_exploration.py": "842bd379a1528ada97cda056e21783faec7d8f9a0ddb871de6d55a6c85362a24",
+    "sabueso/core/card_exploration_render.py": "b2ceafcaa0c3d09a16787871142c326d3d99ff2de1c1a4fee0d74e7f47b299c2",
+    "sabueso/core/card_exploration_storage.py": "fe95d9f350d24af98ae4de7bfa3d9415bccf9ff6974350a2da2c1d22b8e6ba99"
+  },
+  "all_selected_input_maps_equal": true,
+  "source_inputs": 1353,
+  "source_input_map_sha256": "e9b51108b02822e1958642941cca3bf79793adef888ed0aa49ae4be7feb3b84a",
+  "distinct_current_source_cases": 455,
+  "current_source_nodeids_sha256": "eaf74857bf71d456cb53d29bc38c8778f7bdbed2c103a2b34cf216f68cd86e5b",
+  "phases": {
+    "adjacent": {
+      "directory": "recovered_work/checkpoint_recovery_20261106/b7-current-context-adjacent-3",
+      "counts": {
+        "collected": 450,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 450,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 450,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "source_inputs_unchanged": true,
+      "exact_controller_worker_call_accounting": true,
+      "closed_report_sha256": "42c3c23d41e47ae6da94881ea2849da8848e00e4ffe7cafdd221cd15d722cfa1",
+      "events_sha256": "bb716c1d976a87b5a206e7af47e368b954d5fdfef07b1cffafde26b74a729a15",
+      "elapsed_s": 217.12,
+      "peak_owned_tree_rss_bytes": 2601701376,
+      "minimum_host_available_bytes": 56966881280,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 43940018,
+      "workers": 8
+    },
+    "genuine_originals": {
+      "directory": "recovered_work/checkpoint_recovery_20261106/b7-current-context-originals-1",
+      "counts": {
+        "collected": 4,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 4,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 4,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "source_inputs_unchanged": true,
+      "exact_controller_worker_call_accounting": true,
+      "closed_report_sha256": "525aa6b2315cfb794970b43fd632284755f588007851a58dfcf312137d943dae",
+      "events_sha256": "e48aa735fda8fd49b6ce4c5632b616f68fca9c3aaeef5e35f39e48eb5bb352e8",
+      "elapsed_s": 384.22,
+      "peak_owned_tree_rss_bytes": 5862367232,
+      "minimum_host_available_bytes": 53636919296,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 2733550047,
+      "workers": 4
+    },
+    "copied_LIVE": {
+      "directory": "recovered_work/checkpoint_recovery_20261106/b7-current-context-copied-1",
+      "counts": {
+        "collected": 1,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 1,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 1,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "source_inputs_unchanged": true,
+      "exact_controller_worker_call_accounting": true,
+      "closed_report_sha256": "9d0a3fcb4e77bdc3fe55e3b0b8a42c3ede90bbe8095b0bb9648a82472bd9b0d0",
+      "events_sha256": "65bdabf7582a7722d25a34d942f67fc0e15f71e2c2df9e59c8304cc9b5cc8b8c",
+      "elapsed_s": 366.28,
+      "peak_owned_tree_rss_bytes": 1083633664,
+      "minimum_host_available_bytes": 58369761280,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 32530857,
+      "workers": 1
+    }
+  },
+  "copied_receiving": {
+    "outer_cases": 1,
+    "child_cases": 71,
+    "complete_existing_LIVE_module": true,
+    "new_fixture_assets": false,
+    "both_installed_workflows_copy_and_select_module": true,
+    "coverage_note": "Child cases overlap source coverage; not installed-public artifact qualification"
+  },
+  "normal_offline_discovery": {
+    "selected": 11519,
+    "online_deselected": 26,
+    "executed": 0,
+    "added_nodeids": [
+      "tests/core/test_card_molecule_activity_exploration_offline.py::test_saved_context_display_recovers_its_exact_visited_operations[filter]",
+      "tests/core/test_card_molecule_activity_exploration_offline.py::test_saved_context_display_recovers_its_exact_visited_operations[sort]",
+      "tests/core/test_card_orientation_offline.py::test_unknown_recorded_context_policy_is_rejected[False-molecule_activity_actions]",
+      "tests/core/test_card_orientation_offline.py::test_unknown_recorded_context_policy_is_rejected[None-molecule_activity_actions]",
+      "tests/core/test_card_orientation_offline.py::test_unknown_recorded_context_policy_is_rejected[unregistered_presentation@99-molecule_activity_actions]"
+    ],
+    "all_baseline_ids_retained": true,
+    "scope": "Collection proves membership, not fresh11519-case passing execution",
+    "events_sha256": "b8f9d66ce40579201b749965e0392421528472c09ef3431498524b7f1d1e0d42"
+  },
+  "full_baseline": {
+    "receipt": "pre_context_display_fix_full_checkpoint_20261112.json",
+    "distinct_passed": 11514,
+    "scope": "Earlier unchanged-production baseline with one explicit test-helper correction; does not qualify this production patch as a fresh full run"
+  },
+  "genuine_SDK265_receiving": {
+    "state": "GENUINE_SDK265_CONTEXT_AND_HISTORICAL_PRESENTATION_RECOVERED",
+    "runtime": "0.14.0+265.gf4850ef",
+    "original_file_sha256": "177d97120bd8583281f4ceb5b6d021fca60aa6c7ac141e46a5176ae40b7184a5",
+    "root_native_digest": "ff72defed5b3869b6a416d3f1873cb33d0330e815d724dc2a912ffa3d5f70e6a",
+    "recovered_contexts": [
+      "assay_context",
+      "citation_context",
+      "publication_context"
+    ],
+    "original_publication_links": 9,
+    "original_text_and_HTML_preserved_through_resave": true,
+    "explicit_resaved_action_policy": "legacy_molecule_activity_actions@1",
+    "unexecuted_sort_context": "not_saved",
+    "current_Cards_science_derivation_and_acquisition": "forbidden",
+    "resave_receipt": {
+      "path": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-context-display-correction-1/activity-original-resaved-fixed.json.gz",
+      "bundle_digest": "sha256:d767e3ae40ed3934e40d32c6b32d74fa6abe1b242f6b8549d68b11e9af4908bf",
+      "root_view_ref": "XV_300980558a47ccdd41e9bd62e62cf54b706b78bf886b3d229880d3f3a5072413",
+      "transport": {
+        "format": "exploration_transport@1",
+        "compression": "gzip",
+        "encoded_bytes": 2992843,
+        "decoded_bytes": 10061628,
+        "encoded_sha256": "sha256:5cc3cd76c3d9672dd93d9960460724412c13942ae9f09d6e23462ac5d402abc5",
+        "decoded_sha256": "sha256:46327275fb10ed7d577b4b76a154182c1215aed12d4ec2468ce0a5002013a7bf",
+        "backend": {
+          "module": "zlib",
+          "version": "1.3.2",
+          "level": 6
+        }
+      }
+    },
+    "scope": "Actual original SDK265 file; technical saved receiving, not independent scientist/researcher/real-consumer acceptance or a benchmark"
+  },
+  "genuine_receiving_resources": {
+    "state": "FINISHED",
+    "peak_owned_rss_bytes": 263446528,
+    "minimum_host_available_bytes": 58664427520,
+    "peak_owned_swap_bytes": 0,
+    "elapsed_s": 49.326,
+    "limits": {
+      "owned_rss_bytes": 805306368,
+      "host_available_bytes": 17179869184,
+      "elapsed_s": 300
+    },
+    "owner": "Sabueso#148/#112",
+    "review_trigger": "B7/current context correction receiving"
+  },
+  "current_action_observation": {
+    "state": "CURRENT_ACTIONS_AND_ORIGINAL_SOURCE_CHECKED",
+    "runtime": "0.14.0+265.gf4850ef",
+    "operation": "explicit start_new() from original captures",
+    "source_acquisition": "forbidden",
+    "current_interpretation": "explicitly requested and allowed",
+    "original_file_sha256": "177d97120bd8583281f4ceb5b6d021fca60aa6c7ac141e46a5176ae40b7184a5",
+    "original_default_text_and_HTML_unchanged": true,
+    "original_source_records_equal": true,
+    "measurement": {
+      "value": 33000,
+      "unit": "nanomolar"
+    },
+    "classification": "weak",
+    "current_save_capability_and_guidance": true,
+    "saved_policy": "molecule_activity_actions@1",
+    "saved_file_sha256": "c650cb6913a25b3fb62a9073d7c1726f1a4def33d4a31e4a57ebcc982f19509d",
+    "receipt": {
+      "path": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-context-display-correction-1/activity-current-actions.json.gz",
+      "bundle_digest": "sha256:a441a522170936c64c5464f7259bab7547586025b163d895ec8d2d71ddf45b3e",
+      "root_view_ref": "XV_300980558a47ccdd41e9bd62e62cf54b706b78bf886b3d229880d3f3a5072413",
+      "transport": {
+        "format": "exploration_transport@1",
+        "compression": "gzip",
+        "encoded_bytes": 2285415,
+        "decoded_bytes": 8249889,
+        "encoded_sha256": "sha256:c650cb6913a25b3fb62a9073d7c1726f1a4def33d4a31e4a57ebcc982f19509d",
+        "decoded_sha256": "sha256:145d26ed530c0cec38ee4ad36112aa98814c62b8d91702ee64e95832040c0c4b",
+        "backend": {
+          "module": "zlib",
+          "version": "1.3.2",
+          "level": 6
+        }
+      }
+    },
+    "scope": "Technical current local interpretation and saving from unchanged public captures; no independent scientist/researcher, benchmark or actual-consumer acceptance"
+  },
+  "current_action_resources": {
+    "owner": "uibcdf/sabueso#148/#112",
+    "review_trigger": "Actual current local action control; one worker,10GiBtotalRSS,native1,host16GiBfloor,1GiBscratch",
+    "command": [
+      "nice",
+      "-n",
+      "10",
+      "taskset",
+      "-c",
+      "0",
+      "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+      "-B",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-context-display-correction-1/observe_current_actions.py"
+    ],
+    "cwd": "/tmp",
+    "exit_code": 0,
+    "elapsed_s": 44.02,
+    "stop_reason": null,
+    "peak_owned_rss_bytes": 278900736,
+    "minimum_host_available_bytes": 59131645952,
+    "peak_owned_swap_bytes": 0,
+    "peak_owned_scratch_bytes": 164676,
+    "limits": {
+      "owned_rss_bytes": 2147483648,
+      "host_available_bytes": 17179869184,
+      "owned_swap_bytes": 0,
+      "cpu_affinity_count": 1,
+      "nice": 10,
+      "elapsed_s": 300,
+      "owned_scratch_bytes": 1073741824
+    },
+    "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-context-display-correction-1/current-action-control/cargo-target"
+  },
+  "protected_SOURCE_and_original_inputs": {
+    "count": 52,
+    "unchanged": true,
+    "map_sha256": "fd5ab10f36432ed206d9501918c04d88b4466f63f2ea50358d23d9d54994cf24"
+  },
+  "providers": {
+    "editable_origins": 13,
+    "complete_python_configuration_maps": 9,
+    "mapped_files": 4308,
+    "maps_versions_and_origins_unchanged_during_final_checks": true,
+    "receipt_sha256": "09b40536862017715b7af4460c0dc73b8bdbbd29efb3e07a9c2339a2eb93596c"
+  },
+  "earlier_results_retained": [
+    {
+      "directory": "b7-current-context-display-red-1",
+      "scope": "Original pre-fix regression:2failed; later receiver isolation/resave follow-up retains its distinct test epoch"
+    },
+    {
+      "directory": "b7-current-context-display-green-1",
+      "scope": "Premature orchestration:0tests; unqualified, no passing coverage"
+    },
+    {
+      "directory": "b7-current-context-adjacent-1",
+      "scope": "399passed before saved resave closure follow-up"
+    },
+    {
+      "directory": "b7-current-context-adjacent-2",
+      "scope": "449passed/1failed after closure follow-up; stale optional-policy inventory expectation, production unchanged for its correction"
+    },
+    {
+      "directory": "recovered_work/checkpoint_recovery_20261106/b7-context-display-correction-1",
+      "scope": "Actual genuine untouched read/resave passed; replay/resave initially failed. Original diagnostic/resource logs preserved; follow-up fixed original support closure"
+    }
+  ],
+  "static_gates": {
+    "owner": "uibcdf/sabueso#148/#112",
+    "source_base": "f4850ef87f1b4509b7720897bb720041678796df",
+    "scope": "Current context correction plus documentation; no hosted or installed-public claim",
+    "commands": [
+      {
+        "command": "ruff format --check .",
+        "exit_code": 0,
+        "result": "1706 files already formatted"
+      },
+      {
+        "command": "ruff check .",
+        "exit_code": 0,
+        "result": "All checks passed!"
+      },
+      {
+        "command": "python devtools/moli_governance.py",
+        "exit_code": 0,
+        "result": "Local MOLI governance surface is valid."
+      },
+      {
+        "command": "python devtools/dependency_preflight.py",
+        "exit_code": 0,
+        "result": "development dependency routes agree with pyproject.toml"
+      },
+      {
+        "command": "python tools/fixture_delivery.py --check",
+        "exit_code": 0,
+        "result": "85 reviewed repository inputs; 37 protected local-only originals."
+      },
+      {
+        "command": "python tools/source_registry.py --check",
+        "exit_code": 0,
+        "result": "source registry, its page, packaged source terms and metadata catalog agree"
+      },
+      {
+        "command": "python check_local_links.py",
+        "exit_code": 0,
+        "result": "661 changed-document local destinations and four JSON receipts valid; anchors and hosted links not qualified"
+      },
+      {
+        "command": "python -m sphinx -W --keep-going -b html docs <owned output>",
+        "exit_code": 0,
+        "result": "Sphinx9.2.0 build succeeded with warnings fatal",
+        "elapsed_s": 25.2,
+        "peak_owned_tree_rss_bytes": 297943040,
+        "owned_HTML_output_bytes": 42245069
+      },
+      {
+        "command": "git diff --check",
+        "exit_code": 0,
+        "result": "No whitespace errors"
+      }
+    ]
+  },
+  "raw_directory": "recovered_work/checkpoint_recovery_20261106/b7-context-display-correction-1",
+  "cleanup": {
+    "owner": "#148/#112",
+    "successful_owned_scratch": "Remove after verified closure; record exact removed paths locally",
+    "retained": "Original files, failed streams, provider/source maps and complete gate receipts for B7/candidate review"
+  },
+  "limits": [
+    "Linux editable Python3.14 selected source qualification only",
+    "No fresh complete11519-case passing suite claim",
+    "No hosted, installed public archive or another OS/minor qualification",
+    "Experienced developer-agent observations, not independent scientist/researcher or actual-consumer acceptance",
+    "Independent researcher trial explicitly after0.15.0 and not_reviewed",
+    "No B8 resumption, candidate selection, schema freeze, staging or publication"
+  ]
+}
