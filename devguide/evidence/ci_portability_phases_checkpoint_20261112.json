@@ -1,0 +1,757 @@
+{
+  "state": "LOCAL_GUARDS_AND_WINDOWS_CONTROLS_PASS_HEAVY_AND_HOSTED_PENDING",
+  "recorded_utc": "2026-11-12",
+  "owner": "uibcdf/sabueso#112/#148",
+  "review_trigger": "Exact-head CI recovery and candidate preparation",
+  "source_base": "13e9d8df0aefc9cf5489c97440ace3eae83870c4",
+  "runtime": "0.14.0+267.g13e9d8d",
+  "scope": "Test-input portability and CI validation infrastructure only; no production, frozen original, scientific rule/default, schema or provider edit",
+  "unchanged_production_inputs": 931,
+  "unchanged_protected_originals_and_SOURCE": 52,
+  "frozen_real_git_checkout": {
+    "state": "FROZEN_LF_CHECKOUT_VERIFIED",
+    "frozen_files_checked": 62,
+    "old_attribute_CRLF_hash_failures": 62,
+    "corrected_attribute_exact_hashes": 62,
+    "original_repository_files_unchanged": true,
+    "method": "Real git core.autocrlf=true checkout-index in an owned temporary repository; no frozen hashes or source bytes changed",
+    "scope": "Checkout byte stability only; not native Windows execution"
+  },
+  "windows_convention_gate": {
+    "directory": "recovered_work/checkpoint_recovery_20261106/b7-current-windows-conventions-1",
+    "counts": {
+      "collected": 7,
+      "deselected": 0,
+      "errors": 0,
+      "executed": 7,
+      "failed": 0,
+      "not_executed": 0,
+      "passed": 7,
+      "reruns": 0,
+      "skipped": 0,
+      "subtests": {},
+      "warnings": 0,
+      "xfailed": 0,
+      "xpassed": 0
+    },
+    "source_count": 1356,
+    "stable_source_worker_call_accounting": true,
+    "resource_report": {
+      "owner": "uibcdf/sabueso#148/#112",
+      "review_trigger": "Complete current source checkpoint; 3 workers,10GiBtotalRSS,native1,host16GiBfloor,3GiBscratch",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0,1,2",
+        "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "--local-source-inputs",
+        "-p",
+        "windows_reading",
+        "@recovered_work/checkpoint_recovery_20261106/b7-ci-portability-resource-1/windows.args",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "--receptor-events=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-current-windows-conventions-1/events.jsonl",
+        "-p",
+        "checkpoint_scope",
+        "--basetemp=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-current-windows-conventions-1/pytest-scratch",
+        "-o",
+        "tmp_path_retention_policy=failed",
+        "-W",
+        "error:unclosed database:ResourceWarning",
+        "-W",
+        "error::pytest.PytestUnraisableExceptionWarning",
+        "-n",
+        "3",
+        "--dist=worksteal"
+      ],
+      "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 26.78,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 518299648,
+      "minimum_host_available_bytes": 58304880640,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 1001181864,
+      "limits": {
+        "owned_rss_bytes": 10737418240,
+        "host_available_bytes": 17179869184,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 3,
+        "nice": 10,
+        "elapsed_s": 5400,
+        "owned_scratch_bytes": 3221225472
+      },
+      "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-current-windows-conventions-1/cargo-target"
+    },
+    "closed_report_sha256": "3b828b2c10f6c474344cc89f8e445d90e47b40f9007effe0bb3ea7bd45a28bfb"
+  },
+  "complete_final_resource_dependency_platform_gate": {
+    "directory": "recovered_work/checkpoint_recovery_20261106/b7-current-ci-resources-final-2",
+    "counts": {
+      "collected": 73,
+      "deselected": 0,
+      "errors": 0,
+      "executed": 73,
+      "failed": 0,
+      "not_executed": 0,
+      "passed": 73,
+      "reruns": 0,
+      "skipped": 0,
+      "subtests": {},
+      "warnings": 0,
+      "xfailed": 0,
+      "xpassed": 0
+    },
+    "source_count": 1357,
+    "stable_source_worker_call_accounting": true,
+    "resource_report": {
+      "owner": "uibcdf/sabueso#148/#112",
+      "review_trigger": "Complete current source checkpoint; 2 workers,10GiBtotalRSS,native1,host16GiBfloor,2GiBscratch",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0,1",
+        "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "tests/tools/test_ci_pytest_resources_offline.py",
+        "tests/tools/test_dependency_preflight_offline.py",
+        "tests/tools/test_platform_scope_offline.py",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "--receptor-events=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-current-ci-resources-final-2/events.jsonl",
+        "-p",
+        "checkpoint_scope",
+        "--basetemp=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-current-ci-resources-final-2/pytest-scratch",
+        "-o",
+        "tmp_path_retention_policy=failed",
+        "-W",
+        "error:unclosed database:ResourceWarning",
+        "-W",
+        "error::pytest.PytestUnraisableExceptionWarning",
+        "-n",
+        "2",
+        "--dist=worksteal"
+      ],
+      "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 22.18,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 584757248,
+      "minimum_host_available_bytes": 58524991488,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 379829,
+      "limits": {
+        "owned_rss_bytes": 10737418240,
+        "host_available_bytes": 17179869184,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 2,
+        "nice": 10,
+        "elapsed_s": 5400,
+        "owned_scratch_bytes": 2147483648
+      },
+      "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-current-ci-resources-final-2/cargo-target"
+    },
+    "closed_report_sha256": "88a4c343d9d0b8236b18f578dd2f6f579fd319fb9ad15574720078a99b6948d2"
+  },
+  "earlier_gate": {
+    "passed": 69,
+    "scope": "Earlier infrastructure epoch, followed by report-finalization-only change"
+  },
+  "actual_core_253": {
+    "closure": {
+      "state": "STOPPED",
+      "exit_code": 70,
+      "source_count": 1357,
+      "source_stable": true,
+      "source_reference": "b7-current-ci-resources-final-2/source-before.json",
+      "original_selected_count": null,
+      "executed_count": null,
+      "minimum_local_free_disk_bytes": 24555749376,
+      "scope": "Disclosed253-case selection;35slow molecule cases not covered by this gate"
+    },
+    "resources": {
+      "format": "sabueso.ci_resource_report@1",
+      "state": "STOPPED",
+      "preflight_only": false,
+      "source_sha": null,
+      "python": "3.14.10 | packaged by conda-forge | (main, Oct 26 2026, 11:35:38) [GCC 15.3.0]",
+      "platform": "linux",
+      "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+      "owner": "uibcdf/sabueso#112/#148",
+      "review_trigger": "CI recovery or before candidate qualification",
+      "tools": {
+        "pytest": "9.2.0",
+        "pytest-xdist": "3.8.0",
+        "pytest-receptor": "1.2.3+2.ga02820f",
+        "psutil": "7.2.2"
+      },
+      "limits": "Sampled safeguards, not infrastructure-enforced limits or resource reservations",
+      "stop_request_path": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-ci-portability-resource-1/representative-core-resource.json.stop",
+      "cpu_slots_observed": 20,
+      "physical_cores_observed": 20,
+      "requested_workers": 3,
+      "host_cpu_percent_before": 4.0,
+      "host_swap_before": {
+        "total": 8589930496,
+        "used": 466903040,
+        "free": 8123027456,
+        "percent": 5.4,
+        "sin": 1081036800,
+        "sout": 1965043712
+      },
+      "preflight_wait_limit_s": 30,
+      "preflight_memory_samples": [
+        {
+          "elapsed_s": 0.0,
+          "available_bytes": 58872963072,
+          "total_bytes": 64978440192
+        }
+      ],
+      "preflight_wait_elapsed_s": 0.0,
+      "host_total_bytes": 64978440192,
+      "host_available_before_bytes": 58872963072,
+      "host_reserve_bytes": 17179869184,
+      "minimum_available_for_one_worker_bytes": 19327352832,
+      "workers": 3,
+      "memory_limit_bytes": 6442450944,
+      "scratch_limit_bytes": 5368709120,
+      "disk_free_floor_bytes": 2147483648,
+      "scratch_filesystem": "/tmp",
+      "disk_free_before_bytes": 30482649088,
+      "scratch": "/tmp/sabueso-ci-pytest-evpzjh7j",
+      "scratch_retained": true,
+      "scratch_scope": "Owned pytest/TMP tree; free-space checks also cover the working filesystem",
+      "command": [
+        "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "/fast_data/home/liliana/repos@uibcdf/sabueso/devtools/ci_pytest_plan.py",
+        "--workers",
+        "3",
+        "--scratch",
+        "/tmp/sabueso-ci-pytest-evpzjh7j",
+        "--report",
+        "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-ci-portability-resource-1/representative-core-resource.json.plan.json",
+        "--",
+        "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-m",
+        "pytest",
+        "@/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-ci-portability-resource-1/representative-core.args",
+        "--local-source-inputs",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "-W",
+        "error:unclosed database:ResourceWarning",
+        "-W",
+        "error::pytest.PytestUnraisableExceptionWarning"
+      ],
+      "native_pools": {
+        "OPENMM_CPU_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "NUMBA_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1",
+        "POLARS_MAX_THREADS": "1",
+        "RAYON_NUM_THREADS": "1"
+      },
+      "affinity": [
+        0,
+        1,
+        2
+      ],
+      "selection_plan": {
+        "format": "sabueso.ci_selection_plan@1",
+        "state": "RUNNING",
+        "phases": [],
+        "scope": "One original selection; ordinary workers followed by one serial worker. No retries or additional cases."
+      },
+      "selection_plan_path": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-ci-portability-resource-1/representative-core-resource.json.plan.json",
+      "stop_reason": "elapsed_limit",
+      "pytest_exit_code": -15,
+      "elapsed_s": 900.878,
+      "peak_owned_rss_bytes": 2633617408,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 1725377494,
+      "minimum_host_available_bytes": 55198388224,
+      "sample_interval_s": 0.25,
+      "host_swap_after": {
+        "total": 8589930496,
+        "used": 466903040,
+        "free": 8123027456,
+        "percent": 5.4,
+        "sin": 1081036800,
+        "sout": 1965043712
+      }
+    },
+    "plan": {
+      "format": "sabueso.ci_selection_plan@1",
+      "state": "RUNNING",
+      "phases": [],
+      "scope": "One original selection; ordinary workers followed by one serial worker. No retries or additional cases."
+    },
+    "ordinary_complete_passed": 105,
+    "heavy_phase": "INCOMPLETE; no passing claim"
+  },
+  "initial_incomplete_288": {
+    "state": "INCOMPLETE",
+    "supervisor_exit": 71,
+    "raw_supervisor_state": "REFUSED",
+    "scope": "Attempt began and ordinary105completed; empty plan decoding replaced terminal execution status. No288-case passing claim.",
+    "original_stop_reason": "Not retained by pre-correction supervisor; elapsed boundary observed, not reconstructed as authoritative reason",
+    "ordinary_actual_complete": 105,
+    "serial_phase": "Incomplete; no final phase scope received",
+    "source_maps_equal": true,
+    "retained_scratch": "/tmp/sabueso-ci-pytest-k5_zs83f",
+    "review_trigger": "#112resource-finalization fix and hosted recovery"
+  },
+  "initial_final_gate_preflight": {
+    "state": "REFUSED_BEFORE_PYTEST",
+    "reason": "Default10GiBscratch allowance plus16GiBreserve did not fit; measured-small owning controls received separately with2GiBscratch and the same16GiBreserve",
+    "preflight": {
+      "manager": "Direct bounded; Slurm not ready per maintainer; no scheduler changes",
+      "cpu_busy_percent": 4.2,
+      "load": [
+        0.98193359375,
+        2.2998046875,
+        2.28564453125
+      ],
+      "cpus_allowed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "physical_cores": 20,
+      "total_ram": 64978440192,
+      "available_ram": 58988380160,
+      "swap_in_delta": 0,
+      "swap_out_delta": 0,
+      "memory_pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=5356937\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5217215\n",
+      "expected_peak_rss_gib": 6.0,
+      "rss_ceiling_gib": 10,
+      "host_reserve_gib": 16,
+      "workers": 2,
+      "distribution": "worksteal",
+      "native_threads": 1,
+      "elapsed_limit_s": 5400,
+      "scratch_limit_gib": 10,
+      "disk_free": 24628789248,
+      "reservation": false,
+      "scope": "Explicit passed targets, one owned execution at a time; all workers/children share ten GiB RSS, host RAM reserve16GiB, native1. Scratch is explicitly selected per measured workload, maximum12GiB with a fresh disk check preserving16GiB free plus1GiB launch margin. No reservation; root free floor remains monitored16GiB."
+    }
+  },
+  "actual_representative_resource_report": {
+    "format": "sabueso.ci_resource_report@1",
+    "state": "REFUSED",
+    "preflight_only": false,
+    "source_sha": null,
+    "python": "3.14.10 | packaged by conda-forge | (main, Oct 26 2026, 11:35:38) [GCC 15.3.0]",
+    "platform": "linux",
+    "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+    "owner": "uibcdf/sabueso#112/#148",
+    "review_trigger": "CI recovery or before candidate qualification",
+    "tools": {
+      "pytest": "9.2.0",
+      "pytest-xdist": "3.8.0",
+      "pytest-receptor": "1.2.3+2.ga02820f",
+      "psutil": "7.2.2"
+    },
+    "limits": "Sampled safeguards, not infrastructure-enforced limits or resource reservations",
+    "stop_request_path": "recovered_work/checkpoint_recovery_20261106/b7-ci-portability-resource-1/representative-resource.json.stop",
+    "cpu_slots_observed": 20,
+    "physical_cores_observed": 20,
+    "requested_workers": 3,
+    "host_cpu_percent_before": 2.0,
+    "host_swap_before": {
+      "total": 8589930496,
+      "used": 466903040,
+      "free": 8123027456,
+      "percent": 5.4,
+      "sin": 1081036800,
+      "sout": 1965043712
+    },
+    "preflight_wait_limit_s": 30,
+    "preflight_memory_samples": [
+      {
+        "elapsed_s": 0.0,
+        "available_bytes": 59392339968,
+        "total_bytes": 64978440192
+      }
+    ],
+    "preflight_wait_elapsed_s": 0.0,
+    "host_total_bytes": 64978440192,
+    "host_available_before_bytes": 59392339968,
+    "host_reserve_bytes": 17179869184,
+    "minimum_available_for_one_worker_bytes": 19327352832,
+    "workers": 3,
+    "memory_limit_bytes": 6442450944,
+    "scratch_limit_bytes": 5368709120,
+    "disk_free_floor_bytes": 2147483648,
+    "scratch_filesystem": "/tmp",
+    "disk_free_before_bytes": 30827053056,
+    "scratch": "/tmp/sabueso-ci-pytest-k5_zs83f",
+    "scratch_retained": true,
+    "scratch_scope": "Owned pytest/TMP tree; free-space checks also cover the working filesystem",
+    "command": [
+      "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/devtools/ci_pytest_plan.py",
+      "--workers",
+      "3",
+      "--scratch",
+      "/tmp/sabueso-ci-pytest-k5_zs83f",
+      "--report",
+      "recovered_work/checkpoint_recovery_20261106/b7-ci-portability-resource-1/representative-resource.json.plan.json",
+      "--",
+      "python",
+      "-m",
+      "pytest",
+      "@recovered_work/checkpoint_recovery_20261106/b7-ci-portability-resource-1/representative.args",
+      "--local-source-inputs",
+      "-m",
+      "not online",
+      "--receptor=llm",
+      "-W",
+      "error:unclosed database:ResourceWarning",
+      "-W",
+      "error::pytest.PytestUnraisableExceptionWarning"
+    ],
+    "native_pools": {
+      "OPENMM_CPU_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "NUMBA_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1",
+      "POLARS_MAX_THREADS": "1",
+      "RAYON_NUM_THREADS": "1"
+    },
+    "affinity": [
+      0,
+      1,
+      2
+    ],
+    "reason": "Expecting value: line 1 column 1 (char 0)"
+  },
+  "actual_representative_source_epoch": {
+    "state": "REFUSED",
+    "source_count": 1357,
+    "source_maps_equal": true,
+    "source_reference": "b7-current-ci-resources-complete-1/source-before.json",
+    "production_inputs_unchanged": 931,
+    "resources_sha256": "9f53f210ef5896484953b3ddc5ff9c6494f2cf27a938705cc763131f6145ea8e",
+    "plan_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "selection_plan_state": "INCOMPLETE",
+    "limit": "Report-finalization follow-up will be a separate three-file infrastructure epoch; no scientific/test-helper edits in this workload epoch"
+  },
+  "report_finalization_followup": {
+    "changed_inputs": [
+      "devtools/ci_pytest_plan.py",
+      "devtools/run_ci_pytest.py",
+      "tests/tools/test_ci_pytest_resources_offline.py"
+    ],
+    "scope": "Initialize RUNNING JSON, preserve real stop identity/metrics with missing or malformed plan, refuse zero-exit incomplete plan; exact phase execution/scientific selection logic unchanged",
+    "red": "REPRODUCED",
+    "green": "PASS"
+  },
+  "fresh_discovery": {
+    "repository_only_offline": 9984,
+    "local_source_inputs_enabled": true,
+    "normal_offline": 11527,
+    "previous_normal_offline": 11519,
+    "new_infrastructure_test_ids": [
+      "tests/tools/test_ci_pytest_resources_offline.py::test_staged_collection_drift_stops_before_unplanned_execution",
+      "tests/tools/test_ci_pytest_resources_offline.py::test_staged_owned_stop_preserves_reason_and_metrics[]",
+      "tests/tools/test_ci_pytest_resources_offline.py::test_staged_owned_stop_preserves_reason_and_metrics[{]",
+      "tests/tools/test_ci_pytest_resources_offline.py::test_staged_plan_preserves_existing_caller_output",
+      "tests/tools/test_ci_pytest_resources_offline.py::test_staged_receiving_preserves_selection_failures_and_combined_coverage[False]",
+      "tests/tools/test_ci_pytest_resources_offline.py::test_staged_receiving_preserves_selection_failures_and_combined_coverage[True]",
+      "tests/tools/test_ci_pytest_resources_offline.py::test_staged_zero_exit_requires_passing_plan[None]",
+      "tests/tools/test_ci_pytest_resources_offline.py::test_staged_zero_exit_requires_passing_plan[{]"
+    ],
+    "existing_ids_preserved": true,
+    "executed": 0,
+    "scope": "Collection only, not new full-suite execution"
+  },
+  "workflow_scope": {
+    "state": "PASS",
+    "scope": "All job matrices, original shell commands, markers/selectors/warnings/coverage/receptor arguments and timeouts preserved; only two source command branches gain --staged. Report upload adds the plan JSON. Bash syntax is checked without executing job bodies.",
+    "steps": [
+      {
+        "job": "ackredit-pilot",
+        "step": "actions/checkout@v6"
+      },
+      {
+        "job": "ackredit-pilot",
+        "step": "mamba-org/setup-micromamba@v3.2.1"
+      },
+      {
+        "job": "ackredit-pilot",
+        "step": "Install the consumer with the public provider"
+      },
+      {
+        "job": "ackredit-pilot",
+        "step": "Verify installed imports outside both checkouts"
+      },
+      {
+        "job": "ackredit-pilot",
+        "step": "Install pinned older-Python Zstandard qualification backend"
+      },
+      {
+        "job": "ackredit-pilot",
+        "step": "Exercise the installed required provider and consumer"
+      },
+      {
+        "job": "ackredit-pilot",
+        "step": "Retain bounded pytest resource report"
+      },
+      {
+        "job": "ackredit-pilot",
+        "step": "Run the public offline workflow"
+      },
+      {
+        "job": "test",
+        "step": "actions/checkout@v6"
+      },
+      {
+        "job": "test",
+        "step": "mamba-org/setup-micromamba@v3.2.1"
+      },
+      {
+        "job": "test",
+        "step": "Install Sabueso with public runtime dependencies"
+      },
+      {
+        "job": "test",
+        "step": "Smoke the installed package outside the checkout"
+      },
+      {
+        "job": "test",
+        "step": "Environment"
+      },
+      {
+        "job": "test",
+        "step": "Check reviewed fixture publication scope"
+      },
+      {
+        "job": "test",
+        "step": "Install pinned older-Python Zstandard qualification backend"
+      },
+      {
+        "job": "test",
+        "step": "Qualify and emit Zstandard cross-reader frames"
+      },
+      {
+        "job": "test",
+        "step": "Exercise installed exploration transport outside the checkout"
+      },
+      {
+        "job": "test",
+        "step": "Run repository-input offline tests"
+      },
+      {
+        "job": "test",
+        "step": "Retain bounded pytest resource report"
+      },
+      {
+        "job": "test",
+        "step": "Retain measured coverage XML"
+      },
+      {
+        "job": "coverage-upload",
+        "step": "actions/checkout@v4"
+      },
+      {
+        "job": "coverage-upload",
+        "step": "actions/download-artifact@v4"
+      },
+      {
+        "job": "coverage-upload",
+        "step": "Upload the measured report to Codecov"
+      },
+      {
+        "job": "quality",
+        "step": "actions/checkout@v6"
+      },
+      {
+        "job": "quality",
+        "step": "actions/setup-python@v6"
+      },
+      {
+        "job": "quality",
+        "step": "Dependency-contract preflight"
+      },
+      {
+        "job": "quality",
+        "step": "Install quality tooling"
+      },
+      {
+        "job": "quality",
+        "step": "Ruff format"
+      },
+      {
+        "job": "quality",
+        "step": "Ruff lint"
+      }
+    ],
+    "source_jobs": 8,
+    "ackredit_public_provider_jobs": 4,
+    "quality_jobs": 1,
+    "downstream_coverage_jobs": 1,
+    "total_expected_jobs": 14
+  },
+  "provider_issue": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Action completed."
+      }
+    ],
+    "structuredContent": {
+      "issue": {
+        "url": "https://github.com/uibcdf/pytest-receptor/issues/54",
+        "title": "Distinct external tests with pathless node IDs collapse outcome counts",
+        "issue_number": 54,
+        "body": "Consumer: `uibcdf/sabueso#112`. Related: #39 (rerun target for external tests).\n\nObserved with Python 3.14.10, pytest 9.2.0 and editable pytest-receptor `1.2.3+2.ga02820f`; its runtime source is byte-identical to the published `1.2.3` tag.\n\nThree separate external modules defining the same `test_reader` function, selected with a config outside their tree, generate three call records but the same pathless node ID `::test_reader`. Two calls pass and the third intentionally fails. The final artifact reports collected=3, executed=1, failed=1, not_executed=2. The verdict is correctly INCOMPLETE, but distinct actual outcomes have collapsed.\n\nMinimal synthetic setup: put an empty `[pytest]` config in one directory. In a separate directory write `test_0.py` and `test_1.py`, each containing `def test_reader(): assert True`, and `test_2.py` containing `def test_reader(): assert False`. From the test directory run:\n\n```sh\npython -m pytest -c /path/to/config/pytest.ini --receptor=llm \\\n  --receptor-events=events.jsonl test_0.py test_1.py test_2.py\n```\n\nThe artifact contains three call-phase records and one unique node ID. A control adding `--rootdir=/path/to/tests` preserves three unique IDs and reports executed=3, passed=2, failed=1, not_executed=0. Exit status is 1 in both controls.\n\nSabueso now supplies that explicit root to its copied archive-lifetime controls; no provider code or scientific assertion was changed. This differs from #39's failure-location/rerun-selector fix.\n\nPlease review how the provider should account for distinct physical items with duplicate pathless node IDs: preserve an item identity using the collected file path, or diagnose the unsupported identity collision explicitly while preserving raw execution accounting. The aggregation-by-node-ID explanation is an inference; the three raw calls and collapsed final counts are directly observed. All reproduction inputs are public synthetic code.\n",
+        "state": "open",
+        "user": {
+          "login": "LMMV",
+          "name": "LMMV",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/36432062?v=4",
+          "id": 36432062
+        },
+        "assignees": null,
+        "labels": null,
+        "milestone": null,
+        "state_reason": null,
+        "comments": 0,
+        "created_at": "2026-11-12T19:55:25Z",
+        "updated_at": "2026-11-12T19:55:25Z",
+        "closed_at": null,
+        "display_url": "https://github.com/uibcdf/pytest-receptor/issues/54",
+        "display_title": "Distinct external tests with pathless node IDs collapse outcome counts"
+      },
+      "url": "https://github.com/uibcdf/pytest-receptor/issues/54",
+      "title": "Distinct external tests with pathless node IDs collapse outcome counts",
+      "display_url": "https://github.com/uibcdf/pytest-receptor/issues/54",
+      "display_title": "Distinct external tests with pathless node IDs collapse outcome counts"
+    },
+    "isError": false
+  },
+  "provider_epoch": {
+    "editable_origins": 13,
+    "mapped_files": 4308,
+    "runtime_versions_origins_and_nine_maps_stable": true,
+    "external_docs_only_head_advance": {
+      "state": "DOCS_ONLY_EXTERNAL_HEAD_ADVANCE",
+      "provider": "bindingmt",
+      "before_head": "5aa21b1aaf27ee7708e5a7bb4fe58bd0300d49f0",
+      "after_head": "e05a622ff9573730e973caac5d5014c9689e6ec0",
+      "changed_paths": [
+        "devguide/MACHINE_HANDOFF.md",
+        "devguide/PRE_STABILIZATION_PLAN.md",
+        "devguide/README.md",
+        "devguide/ROADMAP.md",
+        "devguide/binding_interface_design.md",
+        "devguide/pending_proposals/README.md",
+        "devguide/pending_proposals/binding_interface_public_contract.md"
+      ],
+      "runtime_configuration_tree_equal": true,
+      "version_and_editable_origin_equal": true,
+      "scope": "Parallel provider documentation work, not a provider source/install change by Sabueso. BindingMT is not exercised by the selected receiving. All nine consumed runtime/configuration maps remain fixed."
+    },
+    "pyunitwizard": "0.29.5+2.gcc51c8e",
+    "pytest_receptor": "1.2.3+2.ga02820f",
+    "fingerprint_sha256": "2198d02932d8bcaef612e271e022443d2eb950ad8214f2e3262aefb75997ae55"
+  },
+  "limits": [
+    "Controlled Windows conventions run on Linux; corrected native Windows/Linux all-minor CI remains required",
+    "Representative source receipt retains its actual terminal result and preceding infrastructure epoch",
+    "No full current-source passing claim from selected gates or collection",
+    "No installed candidate qualification, scientist/actual consumer acceptance or B8 authorization; independent trial stays after0.15.0"
+  ],
+  "raw_directory": "recovered_work/checkpoint_recovery_20261106/b7-ci-portability-resource-1",
+  "complete_representative_integration": false,
+  "documentation_checks": {
+    "sphinx_warning_fatal": {
+      "owner": "uibcdf/sabueso#148/#112",
+      "review_trigger": "Warning-fatal Sphinx; one CPU,2GiBtotalRSS,native1,host16GiBfloor,1GiBscratch",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "3",
+        "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/sphinx-build",
+        "-W",
+        "--keep-going",
+        "-b",
+        "html",
+        "docs",
+        "recovered_work/checkpoint_recovery_20261106/b7-ci-portability-resource-1/static/sphinx-html"
+      ],
+      "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 27.34,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 284315648,
+      "minimum_host_available_bytes": 56007577600,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 42319688,
+      "limits": {
+        "owned_rss_bytes": 2147483648,
+        "host_available_bytes": 17179869184,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 180,
+        "owned_scratch_bytes": 1073741824
+      },
+      "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-ci-portability-resource-1/static/cargo-target"
+    },
+    "ruff_check": "PASS",
+    "ruff_format_root": "PASS;1709files",
+    "local_governance": "PASS",
+    "fixture_delivery": "PASS;85repositoryinputs,37localoriginals",
+    "dependency_preflight": "PASS",
+    "python311_grammar": {
+      "state": "PASS",
+      "scope": "Every changed Python file parses with Python3.11 grammar; not native older-minor runtime qualification",
+      "python_files": 14
+    }
+  }
+}

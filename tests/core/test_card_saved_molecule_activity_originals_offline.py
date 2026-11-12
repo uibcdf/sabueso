@@ -1218,7 +1218,7 @@ def _receive(original_path, source, name, file_path, report_path):
         "cwd": str(Path.cwd()),
         "actual_file": str(file_path),
     }
-    Path(report_path).write_text(json.dumps(report, indent=2) + "\n")
+    Path(report_path).write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     control.close()
 
 
@@ -1273,7 +1273,7 @@ def test_complete_original_human_and_machine_file_journey(
         )
     assert child.returncode == 0, child.stdout + child.stderr
     assert not child.stderr, child.stderr
-    report = json.loads(report_path.read_text())
+    report = json.loads(report_path.read_text(encoding="utf-8"))
     assert report["original_named_views"] == count == len(control.case(name)["human"])
     assert report["original_machine_queries"] == len(control.case(name)["machine"])
 

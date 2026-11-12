@@ -9,6 +9,35 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Grouped Windows portability and memory scheduling recovery (2026-11-12 UTC)
+
+The [portability correction](../pending_bugs/ci_windows_original_portability.md)
+retains exact frozen bytes, POSIX archive members, UTF-8 and actual child roots.
+The approved provider report is delivered as [pytest-receptor #54](https://github.com/uibcdf/pytest-receptor/issues/54).
+The [phase correction](../pending_bugs/ci_serial_execution_timeout.md#sdk266-memory-stops-and-exact-phase-selection--2026-11-12-utc)
+keeps the complete source selection and aggregate resource limits, isolates heavy
+modules and combines coverage. All 73 final resource/dependency/platform controls
+and seven controlled Windows original readers pass. The [receipt](../evidence/ci_portability_phases_checkpoint_20261112.json)
+retains actual representative receiving, the incomplete 288-case attempt and
+its separate 253-case core, also stopped at its 900 s elapsed ceiling. Only that
+core's ordinary 105-case phase completes; no omitted or unfinished case becomes
+passing coverage. Complete heavy integration and exact native CI remain due.
+
+Production, frozen originals/verifiers and providers remain unchanged. The first
+actual report-finalization failure stays separate from its corrected follow-up
+source epoch. Fresh discovery records membership only. Local checks do not supply
+corrected native Windows/Linux, public-installed or candidate qualification.
+
+Retain this grouped block's exact committed/pushed main identity and complete
+source/provider receipts under #112/#148 in
+`recovered_work/checkpoint_recovery_20261106/b7-ci-portability-resource-1/`.
+Its final checked `[skip ci]` head supersedes the unexecuted SDK267-only manual
+request. The earlier pair's approval was consumed at SDK266. Prepare one new
+concrete CI/governance pair on the grouped exact head; recover all 14 CI jobs,
+separate governance and eight source codec reports through gh-run-receptor full
+captures. No obsolete-source retry, larger resource limit, additional publication,
+B8 resumption, candidate/freeze/staging or release is included.
+
 ### SDK266 hosted recovery and deterministic gzip parameters (2026-11-12 UTC)
 
 The maintainer resumes the exact one-time dispatch plan at clean `14a3d1a`.

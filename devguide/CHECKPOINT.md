@@ -5,6 +5,54 @@ Current working-state checkpoint: **2026-11-12 (UTC)**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Windows original portability and phased CI recovery
+
+The SDK266 hosted batch also exposes [Windows input portability failures](pending_bugs/ci_windows_original_portability.md),
+Linux 3.11/3.14 aggregate-memory stops and external child-ID accounting failures.
+Governance and the four public-package Ackredit pilots pass separately; no
+complete passing CI result is claimed. The earlier gzip correction remains in
+place. Exact corrected-head native Linux/Windows receiving remains due.
+
+Frozen history source/metadata now retain their exact bytes under Windows Git
+checkout. A real `core.autocrlf=true` control preserves all **62 files**. Archive
+member helpers use POSIX names, text helpers use UTF-8 and the variant independent
+reader uses the platform temporary directory on Windows. **Seven actual controls**
+pass under scoped Windows path and CP1252 conventions on Linux, preserving the
+scientific checks and original inputs. This is not native Windows qualification.
+The approved upstream report is delivered as [pytest-receptor #54](https://github.com/uibcdf/pytest-receptor/issues/54);
+Sabueso supplies explicit actual roots for its copied child clients.
+
+The source workflow now receives the exact original selection in ordinary and
+serial-heavy phases under its unchanged aggregate limits. Collection drift,
+duplicates and incomplete execution fail; native assertion failures remain
+failures and branch coverage combines both phases. The final **73-case** resource/
+dependency/platform gate passes with no warnings/skips/owned swap. Interrupted
+receivers retain their true stop identity/metrics even with missing plan JSON,
+and a zero exit without a passing plan cannot qualify the run. Fresh discovery
+retains all previous IDs and adds exactly eight controls: **11,527** offline cases
+with local originals enabled, or **9,984** repository-input cases; 26 online cases
+are excluded. Discovery executes no tests.
+
+The [local receipt](evidence/ci_portability_phases_checkpoint_20261112.json) owns
+actual representative original receiving, source epochs and discovery. The first
+288-case attempt remains incomplete: its ordinary 105-case phase completes, then
+empty-plan decoding loses the terminal reason. The separately disclosed 253-case
+core also stops at its original 900 s elapsed limit, retaining that exact reason,
+2,633,617,408 bytes peak owned RSS and zero owned swap. It is incomplete; its
+ordinary 105-case phase passes separately. The core omits both entire slow
+molecule modules and supplies no passing claim for those 35 cases or its unfinished
+heavy phase. All 931 production inputs and 52 protected originals/SOURCE files
+stay unchanged. No provider source/install, scientific default, schema or frozen
+verifier changes. These selected gates and collection do not establish a new
+full-current-source suite PASS, B7 acceptance or installed-candidate qualification.
+
+Raw reports and the final checked/pushed identity remain owned by #112/#148 in
+`recovered_work/checkpoint_recovery_20261106/b7-ci-portability-resource-1/`.
+The grouped `[skip ci]` checkpoint supersedes the unexecuted SDK267-only recovery
+request; prepare one exact-head CI/governance recovery, without retrying SDK266.
+The independent trial remains after 0.15.0 and B8 stays unresumed. Dated hosted
+snapshots below retain their own observation times and source scopes.
+
 ## Hosted recovery exposed a gzip parameter clock dependency
 
 The maintainer resumes the concrete one-time manual CI/governance plan for

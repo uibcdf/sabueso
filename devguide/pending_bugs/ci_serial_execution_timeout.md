@@ -8,6 +8,48 @@ area: [testing, ci, resources]
 
 # Bounded CI pytest execution
 
+## SDK266 memory stops and exact phase selection — 2026-11-12 UTC
+
+The [SDK266 batch](https://github.com/uibcdf/sabueso/actions/runs/43254731665)
+exposes overlapping large original readers under three outer workers. Linux
+Python 3.11 and 3.14 stop at the original 6 GiB aggregate owned-tree ceiling;
+their sampled RSS peaks are 6,509,154,304 and 6,546,112,512 bytes respectively.
+No owned swap is observed. These are failed resource outcomes, not passing
+scientific results. Linux Python 3.13 separately exposes the external child-ID
+accounting problem documented in the [portability report](ci_windows_original_portability.md)
+and delivered to [pytest-receptor #54](https://github.com/uibcdf/pytest-receptor/issues/54).
+
+The source workflow now requests the launcher's explicit `--staged` execution.
+An original discovery supplies exact node IDs. Ordinary modules retain the
+requested outer concurrency; saved/history/original and the explicitly listed
+large receiving modules run with one outer worker afterwards. Every case remains
+in exactly one phase. Original options, native assertion failures, warning policy,
+coverage and receptor arguments remain intact, with combined branch coverage.
+Worker collection is checked against the plan before calls; incomplete, changed
+or duplicate selections cannot pass. The original aggregate memory, scratch,
+elapsed and host-reserve criteria remain unchanged. This is CI scheduling, not
+B8 package staging or a new routine local execution default.
+
+Four actual small phased receiver controls pass, including a native failing case,
+combined coverage, collection drift before calls and caller-output protection.
+The first resource/dependency/platform gate passes 69 cases. A real interrupted
+representative attempt then exposes an empty-plan decoding error that loses the
+original terminal reason. That attempt remains incomplete, with only its ordinary
+105-case phase complete. The report-only follow-up initializes valid RUNNING
+JSON, preserves actual stop identity/metrics when the plan is unavailable and
+rejects a zero exit without a passing plan. All 73 final resource/dependency/
+platform cases pass, including four new interrupted/missing-plan controls.
+The original red stop control now reports the requested stop correctly.
+The separately disclosed 253-case actual core stops at its 900 s elapsed ceiling
+while receiving variants. Its ordinary 105-case phase completes, but the heavy
+phase remains incomplete. Peak owned RSS is 2,633,617,408 bytes with zero owned
+swap. The corrected supervisor retains `elapsed_limit` and metrics; neither this
+stop nor the earlier 288-case interruption supplies complete integration PASS.
+Representative real original reading remains separately recorded; these
+controls do not establish full hosted completion or a new full-suite baseline.
+Raw exact-source, provider and resource records are owned by #112/#148 under
+`recovered_work/checkpoint_recovery_20261106/b7-ci-portability-resource-1/`.
+
 ## Observed failure and separate unknown
 
 At source `3c26790`, CI run

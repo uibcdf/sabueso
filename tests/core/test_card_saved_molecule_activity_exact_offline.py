@@ -61,7 +61,7 @@ def saved_exact_original(exact_writer, tmp_path_factory):
         max_logical_bytes=None,
     )
     assert path.is_file()
-    raw = json.loads(path.read_text())
+    raw = json.loads(path.read_text(encoding="utf-8"))
     assert raw["format"] in (binding.FORMAT, "sabueso.card_exploration@24")
     assert receipt["bundle_digest"] == raw["bundle_digest"]
     return {"graph": graph, "order": order, "path": path, "raw": raw}
@@ -107,7 +107,7 @@ def _receive_exact_original(path, graph, order, report):
         )
     assert result.returncode == 0, result.stdout + result.stderr
     assert not result.stderr, result.stderr
-    result = json.loads(report.read_text())
+    result = json.loads(report.read_text(encoding="utf-8"))
     assert result["native_original_human_views"] == 96
     assert result["original_machine_requests_and_pages"] == 6
     assert result["verified_navigation_policies"] == [binding.ROOT_RETURN_POLICY]

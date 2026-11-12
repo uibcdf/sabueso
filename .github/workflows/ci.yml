@@ -321,13 +321,13 @@ jobs:
           PYTHON_VERSION: ${{ matrix.python-version }}
         run: |
           if [[ "$RUNNER_OS" == "Linux" && "$PYTHON_VERSION" == "3.14" ]]; then
-            python "$GITHUB_WORKSPACE/devtools/run_ci_pytest.py" --workers 3 \
+            python "$GITHUB_WORKSPACE/devtools/run_ci_pytest.py" --staged --workers 3 \
               --report "$RUNNER_TEMP/sabueso-ci-pytest.json" -- python -m pytest -m "not online" --receptor=ci \
               -W "error:unclosed database:ResourceWarning" \
               -W error::pytest.PytestUnraisableExceptionWarning \
               --cov=sabueso --cov-branch --cov-report=xml:coverage.xml
           else
-            python "$GITHUB_WORKSPACE/devtools/run_ci_pytest.py" --workers 3 \
+            python "$GITHUB_WORKSPACE/devtools/run_ci_pytest.py" --staged --workers 3 \
               --report "$RUNNER_TEMP/sabueso-ci-pytest.json" -- python -m pytest -m "not online" --receptor=ci
           fi
       - name: Retain bounded pytest resource report
@@ -335,7 +335,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: pytest-resources-${{ matrix.os }}-${{ matrix.python-version }}
-          path: ${{ runner.temp }}/sabueso-ci-pytest.json
+          path: |
+            ${{ runner.temp }}/sabueso-ci-pytest.json
+            ${{ runner.temp }}/sabueso-ci-pytest.json.plan.json
           if-no-files-found: warn
           retention-days: 14
       - name: Retain measured coverage XML

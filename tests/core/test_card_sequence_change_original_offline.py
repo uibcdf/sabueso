@@ -140,7 +140,7 @@ class Original:
 def verify_members(original):
     expected = original.manifest["files"]
     actual = {
-        str(p.relative_to(original.directory)): p
+        p.relative_to(original.directory).as_posix(): p
         for p in original.directory.rglob("*")
         if p.is_file()
     }

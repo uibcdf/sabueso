@@ -519,7 +519,8 @@ def test_all_actual_original_variant_files_receive_independently(
         ids_path.write_text(json.dumps(ids), encoding="utf-8")
         code = "import sys; sys.path.insert(0,sys.argv[5]); from test_card_variant_history_offline import independent_receive; independent_receive(*sys.argv[1:5])"
         with tempfile.TemporaryDirectory(
-            prefix="sabueso-variant-independent-", dir="/tmp"
+            prefix="sabueso-variant-independent-",
+            dir=None if sys.platform == "win32" else "/tmp",
         ) as cwd:
             env = os.environ.copy()
             env.pop("PYTHONPATH", None)

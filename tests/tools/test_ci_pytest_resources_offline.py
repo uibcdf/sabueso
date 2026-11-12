@@ -97,6 +97,262 @@ def test_scratch_count_does_not_follow_caller_links(tmp_path):
     assert RESOURCE.scratch_bytes(owned) == 3
 
 
+def staged_invocation(directory, *, failure=False, drift=False):
+    (directory / "pytest.ini").write_text(
+        "[pytest]\nmarkers = excluded: outside the original selection\n",
+        encoding="utf-8",
+    )
+    (directory / "measured.py").write_text(
+        "def light():\n    return 11\ndef heavy():\n    return 22\n",
+        encoding="utf-8",
+    )
+    helper = (
+        "import json,os\nfrom pathlib import Path\nimport measured\n"
+        "def record(name):\n"
+        "    with Path('calls.jsonl').open('a',encoding='utf-8') as stream:\n"
+        "        stream.write(json.dumps({'name':name,'pid':os.getpid()})+'\\n')\n"
+    )
+    (directory / "test_light.py").write_text(
+        helper + "import pytest\n"
+        "@pytest.mark.excluded\ndef test_excluded():\n    assert False\n"
+        "def test_light():\n    record('light')\n"
+        f"    assert measured.light() == {-1 if failure else 11}\n",
+        encoding="utf-8",
+    )
+    (directory / "test_card_saved_probe.py").write_text(
+        helper
+        + "def test_first():\n    record('first')\n    assert measured.heavy()==22\n"
+        "def test_second():\n    record('second')\n    assert measured.heavy()==22\n",
+        encoding="utf-8",
+    )
+    if drift:
+        (directory / "conftest.py").write_text(
+            "from pathlib import Path\n"
+            "def pytest_sessionfinish(session,exitstatus):\n"
+            "    if session.config.option.collectonly:\n"
+            "        Path('test_new.py').write_text(\"def test_new():\\n    assert False\\n\",encoding='utf-8')\n",
+            encoding="utf-8",
+        )
+    report = directory / "resources.json"
+    env = dict(os.environ)
+    env.pop("PYTEST_ADDOPTS", None)
+    env.pop("PYTEST_PLUGINS", None)
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(LAUNCHER),
+            "--staged",
+            "--workers",
+            "2",
+            "--scratch-parent",
+            str(directory),
+            "--scratch-gib",
+            "0.1",
+            "--seconds",
+            "60",
+            "--report",
+            str(report),
+            "--",
+            "python",
+            "-m",
+            "pytest",
+            "--rootdir",
+            str(directory),
+            "--receptor=llm",
+            "-m",
+            "not excluded",
+            "--cov=measured",
+            "--cov-report=xml:coverage.xml",
+        ],
+        cwd=directory,
+        env=env,
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        timeout=90,
+    )
+    return (
+        result,
+        json.loads(report.read_text(encoding="utf-8")),
+        json.loads(Path(str(report) + ".plan.json").read_text(encoding="utf-8")),
+    )
+
+
+@pytest.mark.parametrize("failure", [False, True])
+def test_staged_receiving_preserves_selection_failures_and_combined_coverage(
+    tmp_path, failure
+):
+    import xml.etree.ElementTree as ET
+
+    result, resources, plan = staged_invocation(tmp_path, failure=failure)
+    assert result.returncode == int(failure), result.stdout + result.stderr
+    assert resources["memory_limit_bytes"] == resources["workers"] * 2 * GIB
+    assert plan["state"] == ("FAILED" if failure else "PASS")
+    assert plan["selected_count"] == plan["executed_count"] == 3
+    assert [phase["name"] for phase in plan["phases"]] == ["ordinary", "serial"]
+    assert plan["phases"][1]["workers"] == 1
+    assert all(phase["complete_exact_selection"] for phase in plan["phases"])
+    calls = [
+        json.loads(line)
+        for line in (tmp_path / "calls.jsonl").read_text(encoding="utf-8").splitlines()
+    ]
+    assert sorted(call["name"] for call in calls) == ["first", "light", "second"]
+    heavy = {call["pid"] for call in calls if call["name"] != "light"}
+    light = {call["pid"] for call in calls if call["name"] == "light"}
+    assert len(heavy) == 1 and heavy.isdisjoint(light)
+    coverage = ET.parse(tmp_path / "coverage.xml")
+    lines = {
+        int(line.attrib["number"]): int(line.attrib["hits"])
+        for line in coverage.findall(".//class[@filename='measured.py']/lines/line")
+    }
+    assert lines[2] > 0 and lines[4] > 0
+
+
+def test_staged_collection_drift_stops_before_unplanned_execution(tmp_path):
+    result, resources, plan = staged_invocation(tmp_path, drift=True)
+    assert result.returncode != 0, result.stdout + result.stderr
+    assert resources["state"] == "FAILED" and plan["state"] == "INCOMPLETE"
+    assert not (tmp_path / "calls.jsonl").exists()
+    assert not plan["phases"][0]["complete_exact_selection"]
+
+
+def test_staged_plan_preserves_existing_caller_output(tmp_path):
+    report = tmp_path / "resources.json"
+    caller = Path(str(report) + ".plan.json")
+    caller.write_text("caller output", encoding="utf-8")
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(LAUNCHER),
+            "--staged",
+            "--report",
+            str(report),
+            "--",
+            "python",
+            "-m",
+            "pytest",
+        ],
+        cwd=tmp_path,
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        timeout=15,
+    )
+    data = json.loads(report.read_text(encoding="utf-8"))
+    assert result.returncode == 71 and data["state"] == "REFUSED"
+    assert caller.read_text(encoding="utf-8") == "caller output"
+    assert not list(tmp_path.glob("sabueso-ci-pytest-*"))
+
+
+@pytest.mark.parametrize("partial", ["", "{"])
+def test_staged_owned_stop_preserves_reason_and_metrics(tmp_path, partial):
+    report = tmp_path / "resources.json"
+    plan = Path(str(report) + ".plan.json")
+    stop = Path(str(report) + ".stop")
+    (tmp_path / "pytest.ini").write_text("[pytest]\n", encoding="utf-8")
+    (tmp_path / "test_reader.py").write_text(
+        "def test_reader():\n    assert True\n", encoding="utf-8"
+    )
+    (tmp_path / "conftest.py").write_text(
+        "from pathlib import Path\nimport time\n"
+        "def pytest_configure(config):\n"
+        f"    Path({str(plan)!r}).write_text({partial!r},encoding='utf-8')\n"
+        f"    Path({str(stop)!r}).write_text('owned stop',encoding='utf-8')\n"
+        "    time.sleep(30)\n",
+        encoding="utf-8",
+    )
+    env = dict(os.environ)
+    for key in ("PYTEST_ADDOPTS", "PYTEST_PLUGINS", "PYTHONPATH"):
+        env.pop(key, None)
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(LAUNCHER),
+            "--staged",
+            "--workers",
+            "1",
+            "--scratch-parent",
+            str(tmp_path),
+            "--scratch-gib",
+            "0.1",
+            "--seconds",
+            "45",
+            "--report",
+            str(report),
+            "--",
+            sys.executable,
+            "-m",
+            "pytest",
+            "--rootdir",
+            str(tmp_path),
+            "--receptor=llm",
+        ],
+        cwd=tmp_path,
+        env=env,
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        timeout=60,
+    )
+    data = json.loads(report.read_text(encoding="utf-8"))
+    assert result.returncode == 70, result.stdout + result.stderr
+    assert data["state"] == "STOPPED" and data["stop_reason"] == "owned_stop_request"
+    assert data["selection_plan"]["state"] == "INCOMPLETE"
+    assert data["peak_owned_rss_bytes"] > 0 and data["elapsed_s"] > 0
+    assert data["scratch_retained"] and Path(data["scratch"]).is_dir()
+    assert plan.read_text(encoding="utf-8") == partial
+
+
+@pytest.mark.parametrize("payload", [None, "{"])
+def test_staged_zero_exit_requires_passing_plan(tmp_path, monkeypatch, payload):
+    original_popen = subprocess.Popen
+    current = psutil.Process()
+    affinity = current.cpu_affinity() if hasattr(current, "cpu_affinity") else None
+    if hasattr(os, "nice"):
+        monkeypatch.setattr(RESOURCE.os, "nice", lambda _: 0)
+    priority = current.nice()
+
+    def incomplete_driver(command, **kwargs):
+        plan = Path(command[command.index("--report") + 1])
+        script = "from pathlib import Path\nimport sys\n" + (
+            "pass\n"
+            if payload is None
+            else f"Path(sys.argv[1]).write_text({payload!r},encoding='utf-8')\n"
+        )
+        return original_popen([sys.executable, "-c", script, str(plan)], **kwargs)
+
+    monkeypatch.setattr(RESOURCE.subprocess, "Popen", incomplete_driver)
+    report = tmp_path / "resources.json"
+    try:
+        code = RESOURCE.main(
+            [
+                "--staged",
+                "--workers",
+                "1",
+                "--scratch-parent",
+                str(tmp_path),
+                "--scratch-gib",
+                "0.1",
+                "--report",
+                str(report),
+                "--",
+                sys.executable,
+                "-m",
+                "pytest",
+            ]
+        )
+    finally:
+        if affinity is not None:
+            current.cpu_affinity(affinity)
+        if sys.platform == "win32":
+            current.nice(priority)
+    data = json.loads(report.read_text(encoding="utf-8"))
+    assert code == 1 and data["state"] == "FAILED"
+    assert data["pytest_exit_code"] == 0 and data["selection_plan_error"]
+    assert data["selection_plan"]["state"] == "INCOMPLETE"
+    assert data["scratch_retained"] and Path(data["scratch"]).is_dir()
+
+
 def invoke(directory, *, seconds=45, extra=()):
     report = directory / "resources.json"
     environment = dict(os.environ)

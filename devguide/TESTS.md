@@ -607,8 +607,9 @@ python -m pytest -n 8 --dist=load --receptor=llm -m "not online" \
 ```
 
 The command shows the selection; the resource supervisor remains required for
-the stated profile. No automatic heavy-test marker or xdist scheduling group is
-implemented. In particular, review the large original controls in
+the stated profile. The hosted launcher's explicit `--staged` mode uses the
+CI-only module partition described below; routine local pytest has no automatic
+heavy-test marker or xdist scheduling group. In particular, review the large original controls in
 `test_card_cell_support_offline.py`/`test_card_regional_reading_offline.py`, the
 saved-science/quaternary/site modules, whole-session experiments and copied-consumer
 subprocess gates before placing a complete suite into one parallel batch. Record
@@ -1200,6 +1201,36 @@ at most three outer `loadfile` workers; native pools remain one and parallel fla
 are not inherited by copied child pytest processes. Source/platform/public-provider,
 backend-report and coverage obligations remain unchanged. Staged installed-package
 qualification is a separate route and is not converted by this correction.
+
+The source matrix uses `--staged` to avoid overlapping the observed large saved,
+history and original-reader modules. `devtools/ci_pytest_plan.py` first collects the
+unaltered original selection, then receives complementary ordinary and heavy
+phases with at most three and exactly one outer worker respectively. Its explicit
+module classification is CI infrastructure, not a scientific marker or package
+staging. The public-provider Ackredit command retains its existing execution mode.
+Both phases share the original aggregate RSS, scratch and elapsed ceilings;
+nested readers remain within that same tree budget. The flag does not increase
+resources or extend any timeout.
+
+Each worker checks its exact planned collection before execution. Final selected
+and completed node sets must equal the original selection exactly once; a changed,
+duplicate or incomplete selection fails. Native assertion failures remain failures
+while the other complete phase can still run. Branch coverage appends the later
+phase to the first. CI retains `<resource-report>.plan.json` alongside the resource
+report, including original node IDs and per-phase completion. The small receiver
+controls exercise actual processes, combined coverage, failure preservation,
+collection drift and caller-output protection. Interrupted receivers preserve their
+actual resource-stop identity and metrics even with empty/partial plan JSON. A
+zero driver exit without a passing plan fails and retains scratch. The complete
+final resource/dependency/platform gate passes 73 cases. Exact hosted completion
+remains required before treating this scheduling correction as recovered CI.
+
+For Windows original-reader changes, include the [owning portability controls](pending_bugs/ci_windows_original_portability.md).
+Preserve exact frozen verifier bytes under Git checkout, POSIX archive member
+names and explicit UTF-8. External copied pytest clients keep the repository
+configuration but pass their actual directory as `--rootdir`, so distinct tests
+retain distinct IDs. Controlled Windows conventions on Linux do not replace the
+native Windows matrix.
 
 The launcher examines CPU activity, exposed CPU slots, available/physical RAM and
 free disk space. It reduces workers when three do not fit, preserves a host RAM reserve

@@ -414,7 +414,7 @@ def test_genuine_sdk216_saved_file_preserves_pre_fix_numeric_root_return(tmp_pat
         )
     assert result.returncode == 0, result.stdout + result.stderr
     assert not result.stderr, result.stderr
-    report = json.loads(report_path.read_text())
+    report = json.loads(report_path.read_text(encoding="utf-8"))
     assert report["native_original_human_views"] == 96
     assert report["original_machine_requests_and_pages"] == 6
     assert report["verified_navigation_policies"] == [
@@ -670,7 +670,9 @@ def _independent_receive(
                 ).__name__,
             },
         }
-        Path(report_path).write_text(json.dumps(report, indent=2) + "\n")
+        Path(report_path).write_text(
+            json.dumps(report, indent=2) + "\n", encoding="utf-8"
+        )
     archive.close()
     print(json.dumps(report))
 
@@ -768,7 +770,7 @@ def logical_original(saved_original):
 
     from sabueso.core.card_exploration_shared_values_v5 import unpack
 
-    packed = json.loads(saved_original["path"].read_text())
+    packed = json.loads(saved_original["path"].read_text(encoding="utf-8"))
     logical, _ = unpack(packed, None, limit=None, component_limit=None)
     return logical
 

@@ -25,7 +25,7 @@ def clinical_file(original, tmp_path_factory):
     with pytest.MonkeyPatch.context() as guard:
         block_current(guard)
         root.save(path)
-    raw = json.loads(path.read_text())
+    raw = json.loads(path.read_text(encoding="utf-8"))
     logical = (
         unpack(raw, limit=None, component_limit=None)[0]
         if raw["format"] == "sabueso.card_exploration@26"

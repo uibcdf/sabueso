@@ -144,7 +144,7 @@ class Original:
 def verify_members(original):
     expected = original.manifest["files"]
     actual = {
-        str(p.relative_to(original.directory)): p
+        p.relative_to(original.directory).as_posix(): p
         for p in original.directory.rglob("*")
         if p.is_file()
     }
@@ -546,7 +546,9 @@ def test_original_clean_producer_and_rights(original):
     assert set(manifest["cases"]) == set(CASES) and len(CASES) == 35
     report = verify_members(original)
     assert report["members"] == MEMBERS and report["source_paths"] == 1288
-    before = json.loads((original.directory / "source-before.json").read_text())
+    before = json.loads(
+        (original.directory / "source-before.json").read_text(encoding="utf-8")
+    )
     assert "sabueso/core/card_protein_context_access.py" in before
     assert "sabueso/core/card_protein_context_history_v1.py" not in before
     for name in ("fixtures/NOTICE.md", "NOTICE.md", "LICENSE", "capture-script.py"):

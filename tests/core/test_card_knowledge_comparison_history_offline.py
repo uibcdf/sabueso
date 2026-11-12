@@ -199,7 +199,7 @@ def test_frozen_source_manifest_names_actual_clean_producer():
     source = json.loads(
         files("sabueso.core._knowledge_comparison_history_v1")
         .joinpath("SOURCE.json")
-        .read_text()
+        .read_text(encoding="utf-8")
     )
     assert source["producer_head"] == "f6d8e4a3e57944ebe1ab4ab838600870ed720e2b"
     assert source["producer_version"] == "0.14.0+243.gf6d8e4a"

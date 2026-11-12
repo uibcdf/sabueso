@@ -191,13 +191,15 @@ def test_frozen_lineage_names_exact_clean_producer_and_capsule(original):
     record = json.loads(
         importlib.resources.files("sabueso.core._protein_context_history_v1")
         .joinpath("SOURCE.json")
-        .read_text()
+        .read_text(encoding="utf-8")
     )
     assert (
         record["producer_head"] == PRODUCER
         and record["capsule_sha256"] == ENCODED_SHA256
     )
-    before = json.loads((original.directory / "source-before.json").read_text())
+    before = json.loads(
+        (original.directory / "source-before.json").read_text(encoding="utf-8")
+    )
     for name, digest in record["producer_sources"].items():
         assert before["sabueso/core/" + name] == digest
 

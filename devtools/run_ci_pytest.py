@@ -226,6 +226,10 @@ def run(args, report):
     report["stop_request_path"] = str(stop_file)
     if stop_file.exists():
         raise ValueError("An explicit owned stop request exists before launch")
+    staged = getattr(args, "staged", False)
+    plan_path = Path(str(args.report) + ".plan.json")
+    if staged and plan_path.exists():
+        raise ValueError("An existing caller selection plan cannot be overwritten")
     current = psutil.Process()
     cpus = (
         current.cpu_affinity()
@@ -280,6 +284,19 @@ def run(args, report):
         scratch_scope="Owned pytest/TMP tree; free-space checks also cover the working filesystem",
     )
     command = pytest_command(args.command, workers, scratch)
+    if staged:
+        command = [
+            sys.executable,
+            str(Path(__file__).with_name("ci_pytest_plan.py")),
+            "--workers",
+            str(workers),
+            "--scratch",
+            str(scratch),
+            "--report",
+            str(plan_path),
+            "--",
+            *args.command,
+        ]
     report["command"] = command
     report["native_pools"] = {name: "1" for name in NATIVE_POOLS}
     report["affinity"] = "worker/native-pool limits; affinity unavailable"
@@ -360,8 +377,34 @@ def run(args, report):
         if process.poll() is None or reason:
             stop_owned(process, tracked)
     code = process.wait()
+    incomplete_plan = False
+    if staged:
+        try:
+            plan = json.loads(plan_path.read_text(encoding="utf-8"))
+            if not isinstance(plan, dict):
+                raise ValueError("Selection plan is not an object")
+        except (OSError, ValueError) as error:
+            plan = {
+                "state": "INCOMPLETE",
+                "reason": f"Selection plan unavailable: {type(error).__name__}: {error}",
+            }
+        report["selection_plan"] = {
+            key: value for key, value in plan.items() if key != "selected"
+        }
+        report["selection_plan_path"] = str(plan_path)
+        incomplete_plan = code == 0 and plan.get("state") != "PASS"
+        if incomplete_plan:
+            report["selection_plan_error"] = (
+                "The driver exited successfully without a passing selection plan"
+            )
     report.update(
-        state="STOPPED" if reason else "PASS" if code == 0 else "FAILED",
+        state=(
+            "STOPPED"
+            if reason
+            else "PASS"
+            if code == 0 and not incomplete_plan
+            else "FAILED"
+        ),
         stop_reason=reason,
         pytest_exit_code=code,
         elapsed_s=round(time.monotonic() - started, 3),
@@ -373,15 +416,20 @@ def run(args, report):
         scratch_retained=True,
         host_swap_after=psutil.swap_memory()._asdict(),
     )
-    if not reason and code == 0:
+    if not reason and code == 0 and not incomplete_plan:
         shutil.rmtree(scratch)
         report["scratch_retained"] = False
-    return 70 if reason else code
+    return 70 if reason else 1 if incomplete_plan else code
 
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--workers", type=int, choices=(1, 2, 3), default=3)
+    parser.add_argument(
+        "--staged",
+        action="store_true",
+        help="Verify the original selection, then receive large originals with one worker under the same total resource ceiling",
+    )
     parser.add_argument("--reserve-gib", type=float, default=0)
     parser.add_argument("--preflight-wait-seconds", type=float, default=30)
     parser.add_argument(

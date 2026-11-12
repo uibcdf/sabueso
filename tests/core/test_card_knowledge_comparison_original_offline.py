@@ -149,7 +149,7 @@ class Original:
 def verify_members(original):
     expected = original.manifest["files"]
     actual = {
-        str(p.relative_to(original.directory)): p
+        p.relative_to(original.directory).as_posix(): p
         for p in original.directory.rglob("*")
         if p.is_file()
     }
@@ -348,7 +348,9 @@ def verify_case(original, name):
         original.ref(root["captures"][root["focal"]]["data_ref"])
     ) == canonical(source["focal"])
     assert canonical(source) == canonical(
-        json.loads((original.directory / "inputs.json").read_text())[name]
+        json.loads((original.directory / "inputs.json").read_text(encoding="utf-8"))[
+            name
+        ]
     )
     assert (
         case["route_mode"] == source["route_mode"]
@@ -625,7 +627,7 @@ def main():
     }
     directory.parent.joinpath(
         directory.name + "-independent-verification.json"
-    ).write_text(json.dumps(report, indent=2) + "\n")
+    ).write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({k: v for k, v in report.items() if k != "cases"}, indent=2))
 
 
@@ -690,7 +692,9 @@ def original(tmp_path_factory, request):
 def test_complete_original_members_and_batch_provenance(original):
     assert verify_members(original)["members"] == MEMBERS
     assert verify_batches(original) == 4
-    source = json.loads((original.directory / "source-before.json").read_text())
+    source = json.loads(
+        (original.directory / "source-before.json").read_text(encoding="utf-8")
+    )
     assert len(source) == 1318
     assert "sabueso/core/card_knowledge_comparison_history_v1.py" not in source
     assert "sabueso/core/card_knowledge_diff_v2.py" in source
