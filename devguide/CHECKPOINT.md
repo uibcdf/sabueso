@@ -7,6 +7,18 @@ This page owns current state; dated receipt histories are linked below.
 
 ## Next product objective: interactive exploration in 0.16.0
 
+The [topic-index/panel refinement](pending_proposals/interactive_exploration_0160.md#first-layer-topic-index-and-composable-panels)
+records the requested scrollable first-layer topic tiles and user-composable
+molecular, graphical and text views. Horizontal/vertical orientation remains
+open; the revised static sketch shows both and an illustrative floating reading
+panel. Captured availability states, direct access, context-following/fixed
+panels and separate layout persistence remain design requirements/proposals,
+not newly delivered runtime or multi-window compatibility.
+This documentation-only refinement passes root format/lint, governance, diff,
+scoped links and static SVG validation/rasterized visual review. Seven local
+targets, one anchor and nineteen pinned provider paths resolve. Runtime, tests
+and dependencies remain unchanged from `07c40a6`.
+
 The maintainer's [researcher experience](pending_proposals/interactive_exploration_0160.md#researcher-controlled-assistant-experience--2026-11-12)
 now specifies a light UniProt/PDB/SMILES/disease entry and visually supported,
 researcher-controlled Card/Deck inquiry. The static layout sketch supplies a

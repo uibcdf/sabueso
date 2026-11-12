@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1080" viewBox="0 0 1400 1080" role="img" aria-labelledby="title desc">
-  <title id="title">Sabueso: proposed entry and exploration workspace</title>
-  <desc id="desc">Conceptual layout for Sabueso issue 154, prepared 2026-11-12. Retain for interface review. This is a static design sketch: controls are inactive, no data were queried and the molecular viewer is a placeholder.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1280" viewBox="0 0 1400 1280" role="img" aria-labelledby="title desc">
+  <title id="title">Sabueso: entry, scrollable topic index and composable exploration panels</title>
+  <desc id="desc">Conceptual layout for Sabueso issue 154, prepared 2026-11-12. Retain for interface review. A vertical topic index, horizontal alternative and floating reading panel illustrate proposed choices. All states are examples, controls are inactive, no data were queried and the molecular viewer is a placeholder.</desc>
   <defs>
     <style>
       text { font-family: Inter, Arial, sans-serif; fill: #223343; }
@@ -13,8 +13,13 @@
       .line { stroke: #dae2e8; stroke-width: 1; }
       .chip { fill: #f2f6f8; stroke: #d9e2e8; }
     </style>
+    <clipPath id="topicListClip"><rect x="57" y="738" width="193" height="242"/></clipPath>
+    <clipPath id="topicStripClip"><rect x="70" y="1152" width="1230" height="61"/></clipPath>
+    <filter id="panelShadow" x="-15%" y="-15%" width="135%" height="145%">
+      <feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#223343" flood-opacity="0.16"/>
+    </filter>
   </defs>
-  <rect width="1400" height="1080" fill="#edf2f5"/>
+  <rect width="1400" height="1280" fill="#edf2f5"/>
   <text x="42" y="38" class="section">A. A quiet, welcoming entry</text>
   <rect x="40" y="55" width="1320" height="285" rx="18" class="white"/>
   <text x="75" y="96" class="section">Sabueso</text>
@@ -55,14 +60,33 @@
   <text x="71" y="619" class="small">Related items</text>
   <text x="71" y="647" class="small">My selected deck</text>
   <line x1="65" y1="674" x2="250" y2="674" class="line"/>
-  <text x="65" y="708" class="section">Explore topics</text>
-  <text x="71" y="744" class="label accent">Overview</text>
-  <text x="71" y="779" class="label">Sequence and sites</text>
-  <text x="71" y="814" class="label">Structures</text>
-  <text x="71" y="849" class="label">Ligands and activity</text>
-  <text x="71" y="884" class="label">Literature</text>
-  <text x="71" y="919" class="label">Sources and gaps</text>
-  <text x="71" y="976" class="small">Topics follow the Card's nature</text>
+  <text x="65" y="708" class="section">Card topics</text>
+  <rect x="174" y="690" width="83" height="26" rx="6" class="chip"/>
+  <text x="185" y="708" class="small">All topics</text>
+  <text x="65" y="730" class="small">States below are examples</text>
+  <g clip-path="url(#topicListClip)">
+    <rect x="57" y="738" width="190" height="42" rx="7" fill="#e6f3f3"/>
+    <text x="71" y="756" class="label accent">Overview</text>
+    <text x="71" y="772" class="small">Selected topic</text>
+    <rect x="57" y="785" width="190" height="42" rx="7" class="chip"/>
+    <text x="71" y="803" class="label">Variants / mutations</text>
+    <text x="71" y="819" class="small">Not consulted · example</text>
+    <rect x="57" y="832" width="190" height="42" rx="7" class="chip"/>
+    <text x="71" y="850" class="label">Diseases</text>
+    <text x="71" y="866" class="small">Partial · example</text>
+    <rect x="57" y="879" width="190" height="42" rx="7" class="chip"/>
+    <text x="71" y="897" class="label">Structures</text>
+    <text x="71" y="913" class="small">Available · example</text>
+    <rect x="57" y="926" width="190" height="42" rx="7" class="chip"/>
+    <text x="71" y="944" class="label">Ligands</text>
+    <text x="71" y="960" class="small">Unknown scope · example</text>
+    <rect x="57" y="973" width="190" height="42" rx="7" class="chip"/>
+    <text x="71" y="991" class="label">Literature</text>
+  </g>
+  <rect x="257" y="742" width="5" height="232" rx="2" fill="#e5ebef"/>
+  <rect x="257" y="756" width="5" height="78" rx="2" fill="#96adb9"/>
+  <text x="65" y="996" class="small">Scroll for more topics</text>
+  <path d="M250 988 l5 5 l5 -5" fill="none" stroke="#5e6d7a" stroke-width="1.5"/>
 
   <text x="305" y="512" class="title">Understand the selected system</text>
   <text x="305" y="541" class="small">Protein and organism • information date • sources consulted</text>
@@ -78,6 +102,20 @@
   <text x="795" y="740" class="small">Sequence</text>
   <text x="795" y="770" class="small">Tables / relationships</text>
 
+  <g filter="url(#panelShadow)">
+    <rect x="745" y="695" width="280" height="160" rx="10" fill="#fff" stroke="#b8cbd5"/>
+    <rect x="746" y="696" width="278" height="32" rx="9" fill="#eaf2f5"/>
+    <text x="759" y="717" class="label">Reading panel</text>
+    <text x="893" y="717" class="small">Dock  Pin  Close</text>
+    <text x="759" y="750" class="small">Inspect text, context and sources.</text>
+    <text x="759" y="773" class="small">Scroll within this panel.</text>
+    <text x="759" y="806" class="small">Context: follow selection / keep</text>
+    <rect x="1007" y="741" width="4" height="76" rx="2" fill="#e5ebef"/>
+    <rect x="1007" y="745" width="4" height="29" rx="2" fill="#96adb9"/>
+    <text x="759" y="840" class="small">Move · Resize · Dock · Close</text>
+    <path d="M1010 840 l6 -6 M1004 840 l12 -12" stroke="#96adb9" fill="none"/>
+  </g>
+
   <text x="305" y="857" class="section">Possible next questions</text>
   <rect x="305" y="876" width="340" height="43" rx="9" class="chip"/>
   <rect x="663" y="876" width="352" height="43" rx="9" class="chip"/>
@@ -87,7 +125,7 @@
   <text x="305" y="978" class="small">Explore another Card or return to your Deck without losing your place.</text>
 
   <text x="1067" y="510" class="section">Details and sources</text>
-  <text x="1067" y="541" class="small">Opens when an item is selected</text>
+  <text x="1067" y="541" class="small">Docked panel · can float or close</text>
   <line x1="1067" y1="565" x2="1334" y2="565" class="line"/>
   <text x="1067" y="603" class="label">Value, units and context</text>
   <text x="1067" y="634" class="small">See the full record</text>
@@ -102,4 +140,29 @@
 
   <text x="43" y="1043" class="small">Concept sketch for #154 / #153 / #148 • All controls are inactive; this is not an implemented interface.</text>
   <text x="43" y="1066" class="small">No molecular image, scientific result, source query or usability observation is supplied by this illustration.</text>
+
+  <text x="42" y="1105" class="section">C. Alternative horizontal topic index</text>
+  <text x="880" y="1105" class="small">Orientation adapts to available space and user layout</text>
+  <rect x="40" y="1123" width="1320" height="128" rx="18" fill="#fff"/>
+  <g clip-path="url(#topicStripClip)">
+    <rect x="70" y="1152" width="240" height="61" rx="9" class="chip"/>
+    <text x="87" y="1176" class="label">Variants / mutations</text>
+    <text x="87" y="1198" class="small">Not consulted · example</text>
+    <rect x="324" y="1152" width="240" height="61" rx="9" class="chip"/>
+    <text x="341" y="1176" class="label">Diseases</text>
+    <text x="341" y="1198" class="small">Partial · example</text>
+    <rect x="578" y="1152" width="240" height="61" rx="9" class="chip"/>
+    <text x="595" y="1176" class="label">Structures</text>
+    <text x="595" y="1198" class="small">Available · example</text>
+    <rect x="832" y="1152" width="240" height="61" rx="9" class="chip"/>
+    <text x="849" y="1176" class="label">Ligands</text>
+    <text x="849" y="1198" class="small">Unknown scope · example</text>
+    <rect x="1086" y="1152" width="240" height="61" rx="9" class="chip"/>
+    <text x="1103" y="1176" class="label">Literature</text>
+    <text x="1103" y="1198" class="small">Available · example</text>
+  </g>
+  <rect x="78" y="1228" width="1220" height="5" rx="2" fill="#e5ebef"/>
+  <rect x="78" y="1228" width="400" height="5" rx="2" fill="#96adb9"/>
+  <path d="M1314 1172 l7 7 l-7 7" fill="none" stroke="#5e6d7a" stroke-width="2"/>
+  <text x="43" y="1273" class="small">Illustrative topic states; the complete index stays accessible in either orientation.</text>
 </svg>

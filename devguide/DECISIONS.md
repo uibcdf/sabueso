@@ -1,5 +1,21 @@
 # Sabueso — Decision Log
 
+## Expose the Card topic index and allow composable exploration panels (2026-11-12)
+
+The maintainer requests a scrollable first-layer index of the Card's pertinent
+information: topic tiles/buttons such as mutations, diseases, structures and
+ligands. Its orientation is deliberately open; choose horizontal/vertical layout
+according to usability and available space. The index exposes accessible scope
+and supports direct navigation alongside optional suggestions.
+
+The maintainer also asks for interactive molecular representation, optional
+floating graphical views and scrollable reading text, preserving the researcher's
+choice of questions and layout. The [panel design](pending_proposals/interactive_exploration_0160.md#first-layer-topic-index-and-composable-panels)
+proposes context-following/fixed panels, docking/resizing and separate layout
+persistence while preserving original knowledge and provider scene ownership.
+These are experience requirements and a reviewable sketch under #154/#153/#148;
+runtime implementation, host/framework and multi-window qualification remain open.
+
 ## Center the explorer on researcher-controlled visual inquiry (2026-11-12)
 
 The maintainer specifies a light, accessible entry by UniProt/PDB, a molecule's

@@ -116,17 +116,90 @@ an explicit updated reading rather than changing an old captured answer.
 
 ### Workspace and visual continuity
 
-The proposed workspace has three cooperating areas:
+The proposed workspace provides a few useful defaults and lets the researcher
+compose the reading layout:
 
-- A left navigation area for Cards/Decks and nature-appropriate topics, with
-  search and the exact route back. Keep it collapsible as space requires.
+- A navigation area for Cards/Decks, with search and the exact route back.
+  A scrollable first-layer topic index makes the Card's accessible areas visible;
+  its horizontal/vertical orientation adapts to the layout as described below.
 - A main reading area combining short orientation, questions, tables and visual
   resources. The researcher can switch between overview, sequence/chemical graph,
   molecular view, measurements, relationships and literature where supported.
-- An on-demand detail/source panel for the selected item: full value and units,
+- On-demand detail/source panels for the selected item: full value and units,
   relevant qualifiers, original support, alternatives/conflicts and unknown scope.
   Source inspection should preserve the originating selection and scroll/filter
-  context instead of replacing the whole workspace.
+  context instead of replacing the whole workspace. Panels can be docked or
+  floating; the molecular view, reading text and other scientific views remain
+  coordinated through explicit context rather than fixed screen positions.
+
+### First-layer topic index and composable panels
+
+The maintainer requires a scrollable index of the first layer of information
+accessible from a Card. Recognizable topic tiles/buttons can include variants
+and mutations, diseases, structures, ligands, activity and literature when
+pertinent. Its purpose is both discovery and direct navigation, independently
+of suggested next questions.
+
+**Orientation stays open.** A vertical list is the first workspace candidate
+because long labels, topic states and many categories fit naturally. A horizontal
+strip may work well for an opening overview or a different panel arrangement.
+Responsive layout and an explicit layout choice can support both; the prototype
+should compare discoverability and reading space rather than freeze one direction.
+
+The index should:
+
+- Include the pertinent first-layer catalog, with an explicit complete-topic
+  view/search and access to otherwise retained content. A short recommendation
+  list must not become the only path to a topic. Distinguish the topics that
+  can be investigated from information actually retained in this Card.
+- Give each tile a clear label, optional icon and concise text state grounded
+  in the capture: information available, partial, not consulted, unavailable,
+  unknown scope or an explicit source statement of absence where justified.
+  Missing retained data is not proof that the entity lacks that information.
+  Numerical badges are optional and need a declared grain/scope; do not execute
+  scientific questions merely to populate opening counts.
+- Make overflow visible through a scrollbar/continuation cue and a complete
+  index action. Support keyboard focus, touch and pointer navigation without
+  depending on color, hover or dragging alone. No automatic carousel advance.
+- Open/focus the chosen topic, mark the active context and preserve the index's
+  selection, focus and scroll position on return. Keep stable topic identities
+  through saved reading; scrolling itself triggers no source acquisition.
+
+The maintainer also asks for interactive molecular representation, optional
+floating graphical views and scrollable text so the researcher chooses what,
+how and where to investigate. Treat molecular, sequence/chemical, table/plot,
+relationship, reading and source views as composable panels with bounded,
+explicit content. Their exact availability depends on the Card and qualified
+provider capabilities; a generic graph or plot does not invent scientific scope.
+
+Provide understandable open/close, resize, dock/undock and layout-reset controls,
+with keyboard alternatives. Keep reading-text scroll independent of workspace
+scroll and molecular gestures. A default layout should be useful before any
+customization; save/restore personal layout separately from original scientific
+reading, including viewport adaptation so panels do not reopen off-screen.
+
+Each panel retains a visible entity/item/model context and exact captured basis.
+Allow it to follow the current selection or keep a chosen context while another
+panel follows a new route. This display choice does not mutate a Card, resolve
+identity or create new source support. Deliberate links can synchronize a topic,
+table row or mapped residue with the molecular view; unrelated contexts and
+missing mappings remain explicit instead of silently changing another panel.
+
+In-page floating panels and separate browser/native windows have different
+lifecycle costs. Begin with lightweight panels and one active molecular scene;
+additional molecular canvases/windows use explicit provider-supported opening,
+ownership and cleanup. Reuse MolSysViewer's state/transport rather than creating
+new scene authority or a renderer for every Deck member. Future comparison
+viewports remain provider-owned. No multiple-window compatibility or particular
+layout technology is established by the static sketch.
+
+The [sketch](interactive_explorer_experience_0160.svg) now shows a vertical topic
+index, an illustrative floating reading panel and a horizontal-index alternative.
+All topic states are labelled examples, not observations of the displayed Card.
+Prototype acceptance should check that a newcomer discovers off-screen topics,
+distinguishes unqueried/partial information, opens a molecular view, scrolls text
+without moving the camera, keeps one context while exploring another, and
+restores the layout/selection without changing original values or support.
 
 Protein reading can coordinate sequence annotations, an explicitly selected
 structure/model, sites and source-supported ligand/activity context. Molecular

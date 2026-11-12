@@ -40,6 +40,15 @@ the sketch was rasterized for visual inspection. Its owned temporary raster is
 removed after review; the SVG remains issue-owned design material through the
 first interface review. Runtime compatibility and hosted gates remain separate.
 
+The documentation/sketch follow-up from `07c40a6` records the scrollable Card
+topic index with orientation open and user-composable graphical/reading panels.
+It retains the same owners and deferred-hosted recovery route. All topic states
+in the illustration are examples; no runtime, schema, provider or dependency
+change or multi-window qualification is supplied by this block.
+Root format/lint, local governance, diff and scoped link checks pass, along with
+SVG validation and rasterized visual review. The owned temporary raster is
+removed; the issue-owned SVG remains through the first interface review.
+
 ### Grouped Windows portability and memory scheduling recovery (2026-11-12 UTC)
 
 The [portability correction](../pending_bugs/ci_windows_original_portability.md)
