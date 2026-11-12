@@ -49,6 +49,16 @@ Root format/lint, local governance, diff and scoped link checks pass, along with
 SVG validation and rasterized visual review. The owned temporary raster is
 removed; the issue-owned SVG remains through the first interface review.
 
+The documentation-only infrastructure evaluation from `4d7336f` records the
+confirmed Python/live-Viewer/standalone constraints, current provider/primary
+documentation observations and proposed Qt/web workspace experiment under #154.
+It retains the same deferred-hosted recovery route. Production, tests,
+dependencies, provider checkouts and support claims remain unchanged; no GUI,
+embedding, benchmark or new installed qualification is performed.
+Root format/lint, governance, diff and scoped link checks pass. Provider source
+paths resolve at their exact reviewed revision; no runtime test is replaced by
+these documentation checks. No temporary computation resources were created.
+
 ### Grouped Windows portability and memory scheduling recovery (2026-11-12 UTC)
 
 The [portability correction](../pending_bugs/ci_windows_original_portability.md)

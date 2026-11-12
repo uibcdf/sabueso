@@ -12,6 +12,10 @@ development queue.
   (#154/#153, coordinated with #112/#148): accepted product objective, read-only
   MolSysViewer review and platform/technology options for the next discussion.
   Host/framework, adapter qualification and the complete release scope remain open.
+- [Standalone infrastructure evaluation](standalone_infrastructure_0160.md)
+  (#154): Python/live-Viewer/standalone constraints, host and panel-library
+  comparison, a Qt/web first-prototype recommendation and provider embedding
+  handoff. No dependency or platform choice is adopted by the review.
 - [Human exploration of Card](card_human_exploration_api.md)
   (#148, coordinated with #112): intuitive progressive navigation, complete
   retained-content access and source-grounded decision assistance. Initial

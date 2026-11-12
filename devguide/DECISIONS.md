@@ -1,5 +1,19 @@
 # Sabueso — Decision Log
 
+## Require a Python backend, live molecular embedding and standalone experience (2026-11-12)
+
+The maintainer confirms these three infrastructure constraints for interactive
+Sabueso: Python owns the backend, molecular representations embed a live
+MolSysViewer session, and the product offers a standalone experience. Preserve the accepted
+user-controlled workspace and future infrastructure replaceability.
+
+The [host/stack evaluation](pending_proposals/standalone_infrastructure_0160.md)
+recommends Qt/WebEngine with a portable TypeScript UI for the first bounded
+integration, evaluates React/Dockview and retains Electron as the principal host
+alternative. These are recommendations, not accepted dependencies, a qualified
+embedding API or a final stack decision. Current Viewer Qt experimental status,
+provider ownership and separate package/platform qualification remain explicit.
+
 ## Expose the Card topic index and allow composable exploration panels (2026-11-12)
 
 The maintainer requests a scrollable first-layer index of the Card's pertinent

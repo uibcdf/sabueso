@@ -7,6 +7,19 @@ This page owns current state; dated receipt histories are linked below.
 
 ## Next product objective: interactive exploration in 0.16.0
 
+The maintainer confirms Python backend, live MolSysViewer embedding and standalone
+experience. The [latest infrastructure evaluation](pending_proposals/standalone_infrastructure_0160.md)
+compares Qt, Electron, Tauri, pywebview and browser hosting, with Qt/WebEngine
+recommended for the first integration and a React/Dockview candidate workspace.
+These remain recommendations. The current Viewer Qt host is experimental and
+its complete-window factory does not establish a qualified generic embedding
+contract. The local provider handoff records that concrete need. No runtime,
+dependency or provider change, graphics run or installed compatibility is supplied.
+Root Ruff format (1,713 files), lint, local governance, diff and scoped links
+pass: eight local targets, one anchor and twenty-one exact provider source paths.
+Runtime/test/dependency trees remain unchanged from `4d7336f`; no host comparison
+benchmark or new scientific/runtime acceptance is claimed.
+
 The [topic-index/panel refinement](pending_proposals/interactive_exploration_0160.md#first-layer-topic-index-and-composable-panels)
 records the requested scrollable first-layer topic tiles and user-composable
 molecular, graphical and text views. Horizontal/vertical orientation remains

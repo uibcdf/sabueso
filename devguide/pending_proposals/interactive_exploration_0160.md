@@ -11,6 +11,13 @@ area: [human-exploration, deck, visualization, interoperability]
 
 ## Accepted objective and current decision
 
+The latest [standalone infrastructure evaluation](standalone_infrastructure_0160.md)
+uses the maintainer's confirmed Python/live-MolSysViewer/standalone constraints.
+It recommends a thin Qt/WebEngine host for the first prototype, with a portable
+web UI and a panel-manager evaluation. Earlier browser-first/Svelte candidates
+below retain discussion context; neither is an adopted stack. Host/framework
+acceptance follows the bounded integration evidence in that evaluation.
+
 On 2026-11-12 the maintainer accepts a first complete, bounded visual exploration
 experience as the product objective for **0.16.0**. Reuse the accepted functional
 0.15.0 Card foundation and add coherent Card/Deck navigation, visible controls,
@@ -507,7 +514,8 @@ name is selected by this naming recommendation.
    repeated-open/close behavior; correct consequential failures and record the
    final supported 0.16.0 scope and limits.
 
-The first discussion should settle notebook-first versus a dedicated local
-application, the importance of an early native desktop window, and independent
-explorer versus Viewer add-on placement. Dependency minima, provider receiving,
-platform support and publication follow the evidence from that choice.
+The current decision concerns the standalone host, public live-embedding surface
+and frontend/panel-manager candidate in the latest infrastructure evaluation.
+Notebook/browser reuse and a contextual Viewer add-on remain separate possible
+entries. Dependency minima, provider receiving, platform support and publication
+follow the evidence from the selected standalone candidate.
