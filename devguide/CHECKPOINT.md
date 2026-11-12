@@ -5,6 +5,43 @@ Current working-state checkpoint: **2026-11-12 (UTC)**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Named literal molecule discovery — selected local receiving PASS
+
+Small-molecule compact catalogs now expose `chemical_identity` and
+`property_context` under `molecule_literal_topics@1`. They provide literal `read`
+routes to original names/identifiers, complete physicochemical records, all
+relationships and separate source/rule/quality stores. Values, units, original
+store ordinals and assertion references are preserved. Missing, null, empty and
+malformed input shapes remain distinct; no scientific selector, method/identity
+inference, Card schema or original verifier changes.
+
+The [source-bound local receipt](evidence/literal_molecule_topics_checkpoint_20261112.json)
+records the complete selected gates, actual old producer/reader and post-change
+developer-agent recheck, with their distinct scope and acceptance limits.
+
+All **337** selected access/human/saved/chemical/orientation/navigation/argument/
+quantity/diagnostic cases pass. Another **23** workflow/dependency/package-data
+controls pass, including one fresh outside-checkout copy of the complete **17**
+new public/synthetic cases. Child/repeat counts add no distinct source coverage.
+Both installed workflow routes copy and select that complete module. Actual
+installed public-package and hosted qualification remain separate.
+The complete existing chemical exploration, original saved-chemical and native
+classification modules add **95** passing cases: **455 distinct local cases**
+across the three selected gates, with no warnings, skips or owned swap.
+
+The actual clean SDK260 pre-change producer retains its original five-topic
+catalog. A fresh outside-checkout reader forbids acquisition, Card construction
+and descriptor regeneration, reads/resaves its exact original observation and
+then explicitly discovers the two current routes. It never appends them to the
+saved original. A post-change experienced developer-agent recheck follows the
+named entries to original weight/logP support, executes the exact user-guide
+snippet and independently reopens that saved session. Prior exposure is explicit;
+no independent usability or speed improvement is inferred. Retain producer/reader hashes, source maps, selected gate logs
+and technical receiving under
+`recovered_work/checkpoint_recovery_20261106/b7-literal-molecule-topics-2/`,
+owned by #148/#112 for B7/candidate review. Independent researcher, scientific,
+broader agent/workload/consumer acceptance and B8 resumption remain open.
+
 ## Prospective macOS support exception — Linux/Windows gates retained
 
 The maintainer selects Linux and Windows for the development line preparing
@@ -59,8 +96,8 @@ representations, 260.25 dalton weight with unspecified method, logP1.11 with
 ALogP metadata, original source/back routes and separate-process saved reading.
 The compact literal route preserves the same values, units and assertion IDs.
 The user guide now has an executable bounded field-location example for LIVE
-and saved reading; warning-fatal Sphinx passes. Dedicated compact chemical/property
-catalog descriptors remain a locally drafted usability proposal under #148.
+and saved reading; warning-fatal Sphinx passes. That observation motivates the
+compact chemical/property descriptors implemented at the current checkpoint above.
 Extensive prior actor exposure is disclosed; independent scientific/researcher,
 broader agent, workload and actual-consumer acceptance remain open.
 

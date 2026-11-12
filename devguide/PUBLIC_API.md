@@ -501,6 +501,10 @@ not promise card enrichment, live availability or public-package delivery.
   `not_saved`; broader scientific topics and per-cell support conformance remain pending.
   See [structural selection](pending_proposals/card_agent_selection.md).
   See [saved scientific scope](pending_proposals/card_saved_science.md).
+  Current small-molecule catalogs also expose `chemical_identity` and
+  `property_context` literal descriptors (`molecule_literal_topics@1`) with typed
+  original data/support locations. They advertise `read`, not `select`; current
+  discovery on a saved capture leaves its original catalog observation unchanged.
 - **Development human exploration (#148).** `explore(related_cards=())` returns
   `CardExplorer`: `overview`, `topics`, `questions`, `inspect(field_path=None,
   locator=None)`, `search(text)`, `view(topic)` and `answer(question, options=None)`. `explorer.access` shares its

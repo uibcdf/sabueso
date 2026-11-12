@@ -700,6 +700,10 @@ class CardAccess:
                     "description": "Complete stored Card content; scientific topics have separate descriptors.",
                 }
             }
+            if self.profile == "small_molecule":
+                from .card_literal_topics_v1 import descriptors as literal_descriptors
+
+                data.update(literal_descriptors(self))
             if self.mode == "saved":
                 from .card_literature_history_v1 import (
                     descriptor as literature_descriptor,

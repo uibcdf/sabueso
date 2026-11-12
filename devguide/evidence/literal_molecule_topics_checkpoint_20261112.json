@@ -1,0 +1,242 @@
+{
+  "state": "LOCAL_LITERAL_MOLECULE_DISCOVERY_PASS",
+  "owner": "Sabueso #148/#112",
+  "review_trigger": "B7 acceptance review, next hosted recovery or before candidate qualification",
+  "source_base": "c6f68add9ef3ea22d50d1d50fb25226e00444994",
+  "runtime_under_test": "0.14.0+260.gc6f68ad",
+  "implementation": {
+    "adapter": "molecule_literal_topics@1",
+    "topics": [
+      "chemical_identity",
+      "property_context"
+    ],
+    "operations": [
+      "read"
+    ],
+    "scope": "Current literal descriptors with full original paths, source/rule/quality stores and explicit missing/null/empty/malformed states. No scientific selector, identity or method inference, Card/scientific wire schema, provider mutation or original verifier change."
+  },
+  "selected_gates": {
+    "receiving": {
+      "passed": 337,
+      "pytest_duration_s": 95.96607864001999,
+      "resources": {
+        "workers": 2,
+        "elapsed_s": 96.68,
+        "peak_owned_rss_bytes": 488579072,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 22588258,
+        "minimum_host_available_bytes": 58616410112,
+        "host_reserve_bytes": 17179869184,
+        "scratch_retained": false
+      },
+      "complete_events_sha256": "e3253997bb2642f3c202cf57f4b51e7b0f5c37977adada6f33998d2a857f3262",
+      "resource_sha256": "d94f297a1b11e96e38c810ce97bad0a29f3811eb26d338006b33c11894d9e358",
+      "distinct_nodeids_sha256": "841fca7b27e018c5bf3bcaae5f81130b48fe2c5578cde5f6513720dc2efde779"
+    },
+    "wiring": {
+      "passed": 23,
+      "pytest_duration_s": 9.583396171976347,
+      "resources": {
+        "workers": 1,
+        "elapsed_s": 10.339,
+        "peak_owned_rss_bytes": 323338240,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 0,
+        "minimum_host_available_bytes": 59388076032,
+        "host_reserve_bytes": 17179869184,
+        "scratch_retained": false
+      },
+      "complete_events_sha256": "fb88bab827fba04ba9e3058c1026b6edea07b0181b63ac06e43523ca2ac90727",
+      "resource_sha256": "8964018394ed654075cdb0d9cacba1e4503adbb4dc962833d6a84cb2ce5719a8",
+      "distinct_nodeids_sha256": "c579511d3410c3a19b5ad14a2d3330995f478595ea5932bb0260bb84d897afdd"
+    },
+    "chemical-final": {
+      "passed": 95,
+      "pytest_duration_s": 34.47636932897149,
+      "resources": {
+        "workers": 2,
+        "elapsed_s": 35.362,
+        "peak_owned_rss_bytes": 480280576,
+        "peak_owned_swap_bytes": 0,
+        "peak_owned_scratch_bytes": 26637847,
+        "minimum_host_available_bytes": 58270949376,
+        "host_reserve_bytes": 17179869184,
+        "scratch_retained": false
+      },
+      "complete_events_sha256": "7f0a935ea8db4b1e957e7eb79ea8ff272f34631ebdbf9d12a49df1db21b4c921",
+      "resource_sha256": "5287f0f7930b2277fbb6e3a8a0ec36a2d379cb973fd9a73bcd072f055004a6be",
+      "distinct_nodeids_sha256": "e910c8875942d0b27db5ce98a55226212d217d4f93e962e80b603a32191d3626"
+    }
+  },
+  "distinct_passing_cases": 455,
+  "new_source_cases": 17,
+  "copied_child_cases": 17,
+  "child_counts_add_distinct_source_coverage": false,
+  "early_controls": {
+    "before_runtime_change": "Three public-source controls fail for absent chemical_identity entry, matching the observed discovery omission",
+    "first_unit_run": "Three harness comparisons failed because source records were read in ID presentation order; reconstructing original store ordinal order fixes the control. Fourteen partial passes are not added to qualification.",
+    "chemical_command_error": "An invocation with a misspelled warning category exits4 before collection; the corrected complete95case gate passes. No scientific failure is inferred."
+  },
+  "genuine_pre_change_producer": {
+    "state": "GENUINE_PRE_CHANGE_CATALOG_CAPTURED",
+    "producer_source": "c6f68add9ef3ea22d50d1d50fb25226e00444994",
+    "runtime": "0.14.0+260.gc6f68ad",
+    "source_clean": true,
+    "public_input_sha256": "b1fc57c981b81ba70d3a79f4888420dfb11141d2154b0b3afb7d904a9ca05944",
+    "catalog_keys": [
+      "activity_context",
+      "chemical_classification",
+      "clinical",
+      "content",
+      "literature"
+    ],
+    "bundle_digest": "sha256:1476c4c97ec0e259ad3a516d89f716795967f761d6ca7d4d11c572eb7bac1b51",
+    "original_file_sha256": "e7be8b5ec99d67d464c982670f359ae2c2d3e924521c2f708e90f8ba36a41d4f",
+    "original_file_bytes": 42325,
+    "scope": "Actual old producer before any new tests or runtime changes; public packet retains its SDK251 capture pin. This is not a schema freeze or researcher acceptance."
+  },
+  "genuine_original_reading": {
+    "state": "PASS_ORIGINAL_REOPENED_AND_RESAVED_WITHOUT_BACKFILL",
+    "producer_source": "c6f68add9ef3ea22d50d1d50fb25226e00444994",
+    "producer_runtime": "0.14.0+260.gc6f68ad",
+    "consumer_runtime": "0.14.0+260.gc6f68ad",
+    "original_file_sha256": "e7be8b5ec99d67d464c982670f359ae2c2d3e924521c2f708e90f8ba36a41d4f",
+    "original_bundle_digest": "sha256:1476c4c97ec0e259ad3a516d89f716795967f761d6ca7d4d11c572eb7bac1b51",
+    "original_keys": [
+      "activity_context",
+      "chemical_classification",
+      "clinical",
+      "content",
+      "literature"
+    ],
+    "original_payload_canonical_sha256": "925b91459346c2b2a6938d75e4b02a94e08efc1cfe3038c9348bc391adab2113",
+    "current_explicit_discovery_keys": [
+      "activity_context",
+      "chemical_classification",
+      "chemical_identity",
+      "clinical",
+      "content",
+      "literature",
+      "property_context"
+    ],
+    "original_observation_unchanged": true,
+    "Card_construction_source_acquisition_and_old_descriptor_regeneration_forbidden": true,
+    "resources": {
+      "elapsed_s": 1.113,
+      "peak_owned_rss_bytes": 76357632,
+      "minimum_host_available_bytes": 59622580224,
+      "peak_owned_swap_bytes": 0,
+      "cpu": 1,
+      "native_pools": 1,
+      "rss_stop_gib": 1,
+      "host_reserve_gib": 16,
+      "seconds_limit": 180
+    },
+    "scope": "Actual pre-change SDK260 original and current reader/resaver in a fresh external working directory. Explicit current literal discovery is separate from the unchanged original five-topic observation. No new schema, scientific selector, researcher acceptance or installed-artifact qualification."
+  },
+  "genuine_original_resave": {
+    "bundle_digest": "sha256:8a835bb20232b5b2baebce8b6406ba1321fb889d07147a53d943ac7bb4fda9f4",
+    "file_sha256": "d73eb4704227824d69565e074a2a77e1584bb750b3a204875001ec4857b4ccba"
+  },
+  "experienced_agent_recheck": {
+    "actor_and_exposure": "Experienced developer agent, extensive implementation/expected-answer exposure. Post-change technical task recheck, not independent scientific/researcher acceptance.",
+    "observation": "Named entries lead to original SMILES, weight260.25dalton with source Da and unknown method, and logP1.11 with ALogP metadata. Exact documented bounded-page example executed; eight of nine properties returns an explicit continuation cursor.",
+    "friction": "Descriptor fields are referenced containers, so following a topic still requires opening its descriptor and declared route; observed useful names, not a measured uncoached usability result.",
+    "acceptance_limit": "No independent researcher/scientific acceptance or measured discovery-cost/workload improvement. Disease and broader protein/specialist/actual-consumer reviews remain separate.",
+    "resources": {
+      "state": "FINISHED",
+      "peak_owned_rss_bytes": 100274176,
+      "minimum_host_available_bytes": 59286556672,
+      "peak_owned_swap_bytes": 0,
+      "elapsed_s": 52.286,
+      "scope": "Experienced developer-agent interactive observation; elapsed includes thinking, not workload benchmark"
+    },
+    "fresh_saved_reader": {
+      "state": "PASS_EXACT_DOCUMENTATION_SNIPPET_LIVE_AND_FRESH_SAVED",
+      "source_base": "c6f68add9ef3ea22d50d1d50fb25226e00444994",
+      "working_source": "Uncommitted molecule literal catalog implementation and selected tests, source hashes retained in checkpoint",
+      "actor_prior_exposure": "Experienced developer agent, extensive implementation/expected-answer exposure. Post-change technical task recheck, not independent scientific/researcher acceptance.",
+      "literal_fields_unchanged": true,
+      "Card_reconstruction_and_network_forbidden": true,
+      "catalog_observation_unchanged": true,
+      "snippet_sha256": "b3898850b1fb35ce103be44aeabd8c1dce367b4902f1d492765a18613e23987c",
+      "saved_file_sha256": "0d520c6ad5357b0fba6ea0d1cf0c4598e78a0270f89659c717c2b825ddb411ad",
+      "saved_file_bytes": 286271,
+      "reader_elapsed_s": 1.795,
+      "rss_after_bytes": 88420352,
+      "scope": "Fresh technical reading of the actual experienced-agent observation, not scientific/uncoached researcher or workload acceptance"
+    },
+    "raw_files_sha256": {
+      "current-catalog.json.gz": "0d520c6ad5357b0fba6ea0d1cf0c4598e78a0270f89659c717c2b825ddb411ad",
+      "documentation-snippet.py": "b3898850b1fb35ce103be44aeabd8c1dce367b4902f1d492765a18613e23987c",
+      "history": "76f6762216863bcc1d1dba4b8fdfc57260922b66b52995a151945cb5addc5b59",
+      "interaction.log": "331f981511e02893528d9b6f3421e6db077f85f4efaf0338da4b6be24da7ae99",
+      "interactive.py": "66d528afe7e3621d4a8af348a689fceb3df483866f002e8698e3ba9bbfc86b12",
+      "observations.json": "49f06b96353a72c260c9e680da64170095e32477d7007737b5d56aa3a3fd560e",
+      "property-page.json": "e136a61e131ca0b2c0766072433be4a1df05cc25fb962484e629a52f163b07f5",
+      "resource.json": "5975173220ffa1195b530ddcc880304466e270ef1251fee650d31e71e0db30d0",
+      "save-receipt.json": "20353555bf4e02441d1f00817fb30440b75b9b703f3a653d1ee38f03bf6321be"
+    }
+  },
+  "preservation": {
+    "state": "PASS",
+    "source_base": "c6f68add9ef3ea22d50d1d50fb25226e00444994",
+    "current_inputs": 1362,
+    "unchanged_prior_inputs": 1355,
+    "changed_prior_inputs": [
+      ".github/workflows/ci.yml",
+      ".github/workflows/test_staged_conda_package.yaml",
+      "docs/content/user/card_exploration.md",
+      "sabueso/core/card_access.py",
+      "tests/tools/test_installed_receiving_scope_offline.py"
+    ],
+    "existing_reader_and_scientific_modules_unchanged": true,
+    "workflow_changes": "Only one copy and one selector token added per installed route; all previous commands, matrices, pins, budgets and scientific selections byte-identical after removing those additions",
+    "existing_access_source_change": "Only the guarded small-molecule catalog descriptor hook",
+    "bash_bodies_syntax_checked": 26,
+    "protected_source_and_original_inputs_unchanged": 52,
+    "pre_change_original_unchanged": "e7be8b5ec99d67d464c982670f359ae2c2d3e924521c2f708e90f8ba36a41d4f",
+    "exact_documentation_snippet_rechecked": true,
+    "source_map_sha256": "97c9753fa9754b10e4ea4f4ed1cae468f11fb80f29608e5064c0824bb3018682"
+  },
+  "documentation_build": {
+    "state": "PASS",
+    "exit": 0,
+    "reason": null,
+    "elapsed_s": 26.555,
+    "peak_owned_rss_bytes": 283881472,
+    "minimum_host_available_bytes": 59286446080,
+    "workers": 1,
+    "native_pools": 1,
+    "scope": "Warning-fatal local Sphinx build; notebooks not executed by existing configuration"
+  },
+  "local_quality": {
+    "ruff_format": "1704 files already formatted",
+    "ruff_check": "All checks passed",
+    "dependency_preflight": true,
+    "moli_governance": true,
+    "fixture_delivery": "85 reviewed repository inputs and37 protected local-only originals checked"
+  },
+  "changed_source_and_document_hashes": {
+    ".github/workflows/ci.yml": "01db629e7f0eeb780260d23fe0a7d4fda34576167ac156f684f28c61d3c7bc4f",
+    ".github/workflows/test_staged_conda_package.yaml": "c6384fb00006216b3161edf9bbb9b9d6fad9cdce66276348ef9822b677b47e30",
+    "devguide/CHECKPOINT.md": "62bf89630e697563556ca76d3cc9d15acf131e515dba3a4cae7b489cb335661e",
+    "devguide/PUBLIC_API.md": "d8fda42726cb572494cb112d87b0a1c61ae1a03ba181d9b86c3f24421f3e1554",
+    "devguide/TESTS.md": "0bd45c02d2dd84c2a83c3bc3a1cdf09a177c4efc3cf44482480284618b0b6af9",
+    "devguide/pending_proposals/card_chemical_context_reading.md": "7dd33f0793c0404e2ad3157f379f4c7620ed49151447610890fa96bbb7fe749c",
+    "devguide/pending_proposals/deferred_ci.md": "24656671116533324c05f65e9213d267fcec61281c97ff0c0584a38eea716e6e",
+    "devguide/pending_proposals/researcher_acceptance_0150.md": "d6e2d2f6c3c31b45cfd62865e9a851b281a45a6008b27f8d7a14f050af0b038e",
+    "docs/content/user/card_exploration.md": "4626c3c3d790cf4d9b11edac2f644e84fa097ed55925be20663d196739e11add",
+    "sabueso/core/card_access.py": "840fce1e924f5f74c3441180e666c4ac2cbc1e0738c710cb783e3c1b25d285f4",
+    "sabueso/core/card_literal_topics_v1.py": "2fcc0d7d9b163b14faecca2908e76ca985ada162d0df03d19bd40e6bee5464f0",
+    "tests/core/test_card_molecule_literal_topics_offline.py": "79967dae302f6c1065e9c4bfe48f1d2ad0d69f0afea34c00938df7030dc4f6f8",
+    "tests/tools/test_installed_receiving_scope_offline.py": "0e92d158b6b3ad3f927b54907a485dae1bdfc0c56ab9517ce70969f0f079e2df"
+  },
+  "local_handoff": {
+    "draft": "issue148-literal-molecule-discovery-draft.md",
+    "sha256": "807f0f53fdce4b2b08251d5a2a523734a9bf23bb93c62587cb8de06d29d00be9",
+    "state": "Consolidated owning-issue draft for maintainer review; no new issue/comment publication authorized or performed"
+  },
+  "remaining": "Exact-final-head hosted CI/governance and required installed-candidate Linux/Windows gates remain due. The earlier#194/MolI publication requests are pending. Independent B7 dimensions and B8 resumption remain open; no remote run, schema freeze, staging, package or release is supplied.",
+  "recorded_utc": "2026-11-12T06:02:33.720999+00:00"
+}

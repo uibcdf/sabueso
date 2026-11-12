@@ -65,6 +65,20 @@ entries. Long declarations defer attribution rather than accepting an unchecked
 prefix. Explicit `chemical_reading` reads the complete retained scope and returns
 a detached copy; changing it cannot mutate a Card or saved session.
 
+## Current compact discovery
+
+Current compact discovery also offers `chemical_identity` and `property_context`
+under `molecule_literal_topics@1`. These are literal `read` descriptors over the
+same detached capture, with exact routes to original names/identifiers, all
+relationships, complete physicochemical fields, source assertions, selection
+rules and quality. They are not scientific selectors and perform no method,
+identity or coverage interpretation. Missing/null/empty/malformed shapes remain
+distinct, with raw locations retained when available. This changes no Card or
+scientific wire schema. Explicit current discovery is available on saved captures;
+an original catalog's stored observation and resaving remain unchanged. The
+pre-change SDK260 original and its separate-process reader are retained under
+`recovered_work/checkpoint_recovery_20261106/b7-literal-molecule-topics-2/`.
+
 ## Public positive input and verification
 
 The public RCSB GraphQL SO4 response retains the native integer `-2`, the exact

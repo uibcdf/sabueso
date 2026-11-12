@@ -153,11 +153,23 @@ is not claimed. The initial undocumented top-level Card import and subsequent
 dependent NameError are retained as actor errors, corrected using the documented
 `sabueso.core.card` import.
 
-The compact catalog advertises activity, classification, clinical, content and
+At that observation's source, the compact catalog advertised activity,
+classification, clinical, content and
 literature descriptors, without dedicated chemical-identity/property-context
-descriptors. Literal access succeeds; reduced discovery cost through named topics
+descriptors. Literal access succeeded; reduced discovery cost through named topics
 is a proposal, not a demonstrated integrity failure. The local consolidated #148
 handoff and raw evidence are retained under
 `recovered_work/checkpoint_recovery_20261106/b7-current-shared-closure-1/`.
 No new issue comment is authorized or posted. No independent researcher/scientific,
 broader protein/specialist, workload or actual-consumer acceptance is supplied.
+
+The subsequent bounded `molecule_literal_topics@1` increment adds named current
+`chemical_identity` and `property_context` descriptors with original data/support
+locations. Its current-discovery and genuine old-catalog receiving are technical
+checks. A separate post-change recheck by the same experienced developer agent
+executes the exact new guide snippet, reaches weight/logP and their original
+assertions, and independently reopens that saved session. Prior exposure remains
+explicit; this supplies no independent user feedback or measured discovery-cost
+improvement.
+The disease catalog proposal remains separate. Re-evaluate discovery cost with
+actual participants rather than inferring it from passing regressions.

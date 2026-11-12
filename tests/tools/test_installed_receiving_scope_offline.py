@@ -1,5 +1,7 @@
 """The declared installed-consumer receiving files must run in isolation (#165)."""
 
+import hashlib
+import json
 import os
 import re
 import shlex
@@ -8,6 +10,67 @@ import subprocess
 import sys
 import tempfile
 from pathlib import Path
+
+
+def test_declared_molecule_literal_topics_run_with_only_their_public_inputs():
+    root = Path(__file__).resolve().parents[2]
+    name = "test_card_molecule_literal_topics_offline.py"
+    for workflow_path in (
+        ".github/workflows/ci.yml",
+        ".github/workflows/test_staged_conda_package.yaml",
+    ):
+        workflow = (root / workflow_path).read_text(encoding="utf-8")
+        assert (
+            sum("cp " in line and name in line for line in workflow.splitlines()) == 1
+        )
+        command = re.search(r"python -m pytest (.+)", workflow.replace("\\\n", " "))
+        assert shlex.split(command[1]).count(name) == 1
+    outside_parent = None if sys.platform == "win32" else "/tmp"
+    with tempfile.TemporaryDirectory(
+        prefix="sabueso-molecule-literal-topics-", dir=outside_parent
+    ) as directory:
+        stage = Path(directory).resolve()
+        assert not stage.is_relative_to(root)
+        shutil.copyfile(root / "tests/core" / name, stage / name)
+        for relative in (
+            "chembl/molecules.json",
+            "pdb_ccd_charge/pdb_ccd/SO4.json",
+            "pubchem/3717450.json",
+        ):
+            destination = stage / "temp_data" / relative
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(root / "temp_data" / relative, destination)
+        env = dict(os.environ, PYTHONPATH=str(stage), TMPDIR=str(stage))
+        env.pop("PYTEST_ADDOPTS", None)
+        result = subprocess.run(
+            [
+                sys.executable,
+                "-m",
+                "pytest",
+                name,
+                "-m",
+                "not online",
+                "--receptor=llm",
+                "--receptor-events=events.jsonl",
+            ],
+            cwd=stage,
+            env=env,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            timeout=120,
+        )
+        assert result.returncode == 0, result.stdout + result.stderr
+        raw = (stage / "events.jsonl").read_bytes().splitlines(keepends=True)
+        finish = json.loads(raw[-1])
+        assert finish["complete"] and finish["exitstatus"] == 0
+        assert finish["counts"]["passed"] == finish["counts"]["collected"] == 17
+        assert finish["counts"]["warnings"] == finish["counts"]["skipped"] == 0
+        assert finish["integrity"]["records"] == len(raw) - 1
+        assert (
+            finish["integrity"]["digest"]
+            == hashlib.sha256(b"".join(raw[:-1])).hexdigest()
+        )
 
 
 def test_installed_chemical_receiving_provisions_older_python_zstd():

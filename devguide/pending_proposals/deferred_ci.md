@@ -9,6 +9,27 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Named literal molecule discovery (2026-11-12 UTC, #148/#112)
+
+The two current molecule catalog entries provide typed original literal routes,
+with complete source/selection/quality context and no scientific computation or
+new saved/Card schema. All 337 broad receiving cases and 23 workflow/package
+controls pass, including complete 17-case copied receiving outside checkout.
+The existing chemical exploration/saved/native scope adds 95 passing cases,
+bringing the three nonoverlapping selected gates to 455 distinct local passes.
+The genuine clean SDK260 original retains five topics through independent
+reading/resaving; explicit current discovery is a separate observation.
+The [local receipt](../evidence/literal_molecule_topics_checkpoint_20261112.json)
+binds those scopes and complete source/input/receptor integrity.
+
+Retain actual pushed head, immutable producer, reader, source/input maps and gate
+receipts under `recovered_work/checkpoint_recovery_20261106/b7-literal-molecule-topics-2/`.
+The intermediate `[skip ci]` route remains authorized; exact-final-head hosted
+CI/governance and installed-candidate Linux/Windows gates remain due under
+#112/#148, with the bounded Mac exception owned by #194. No new remote workflow,
+issue publication, central registry action or B8 resumption is authorized by
+this local increment. The preceding #194/MolI publication requests remain pending.
+
 ### Bounded prospective macOS support exception (2026-11-12 UTC, #194/#112)
 
 The maintainer selects the [bounded exception](macos_support_exception.md) for

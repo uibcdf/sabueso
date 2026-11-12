@@ -1715,10 +1715,39 @@ if mass_context is not None and mass_context["field_location"] is not None:
 
 The page keeps the value, unit and source-assertion list as separate fields.
 Container values may be referenced instead of inlined; read their returned
-locations to inspect them within the same byte limit. The compact catalog does
-not currently advertise dedicated chemical-identity or property-context topics;
-use the displayed property panel and its locations, or discover retained fields
-through literal content. A missing topic does not establish missing source data.
+locations to inspect them within the same byte limit.
+
+The current compact catalog also offers named `chemical_identity` and
+`property_context` entries for molecule captures. Their descriptors point to
+original identifiers, names, relationships and physicochemical fields, with
+separate routes to all source assertions, selection rules and quality records:
+
+```python
+compact_access = molecule_explorer.access
+catalog_page = compact_access.catalog().page(limit=16, max_bytes=8192)
+property_topic = next(
+    row for row in catalog_page["items"] if row["key"] == "property_context"
+)
+property_descriptor = molecule_explorer.inspect(
+    locator=property_topic["location"]
+).native_payload
+property_route = property_descriptor["routes"]["properties"]
+if property_route["location"] is not None:
+    compact_access.read(property_route["location"]).page(limit=8, max_bytes=8192)
+```
+
+These are literal `read` routes, not scientific `select` operations. A route
+distinguishes missing, retained null, retained empty and unrecognized shapes;
+an unrecognized container has its own inspection location. The complete stored
+property fields keep their source references and units together. The relationship
+route contains all stored predicates; inspect each predicate, endpoints and
+support before interpreting it as an identity statement. The source-assertion
+route contains all assertions, not only selected support for a displayed field.
+
+The same explicit current discovery works through `saved.explorer.access` over
+original captures. A previously saved catalog remains its original observation:
+reading or resaving it does not append current descriptors. No missing method,
+source coverage, chemical identity or unexecuted scientific request is inferred.
 
 Source rows now label **Selected support**, **Alternative statement** or
 **Selection role unknown**. These describe the original field selection; they do
