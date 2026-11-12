@@ -1,15 +1,16 @@
 # Help review Card exploration
 
-We are looking for researchers to try Sabueso's development Card explorer before
-0.15.0. If you use molecular or biomedical data, can read basic Python, and have
+The independent researcher trial is scheduled for after 0.15.0 publication. These
+materials are retained for that review; no completed independent acceptance is
+claimed for 0.15.0. If you use molecular or biomedical data, can read basic Python, and have
 little familiarity with Sabueso's internals, your experience can help us find
 unclear navigation, missing context and misleading scientific presentation.
 Arrange a session with the maintainers; no contribution to the code is required.
 
-**Development review:** the published 0.14.0 package does not include this
-explorer. A maintainer will prepare a qualified development environment and public
-input Cards. The review does not require installing an unpublished package from a
-public channel, querying online sources or supplying private research data.
+**Prepared review:** a maintainer will supply a qualified environment for the
+exact version under review and public input Cards. The session does not require
+querying online sources or supplying private research data. Record the supplied
+version and environment with your observations.
 
 ## What to expect
 

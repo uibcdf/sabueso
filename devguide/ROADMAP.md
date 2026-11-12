@@ -33,7 +33,10 @@ historical 0.14.0 evidence and all remaining B7/B8 dependencies stay distinct.
 
 The maintainer has resumed the complete six-stage program. The stages retain
 their dependencies and separate acceptance requirements; the current 0.15.0
-scope stays fixed. Record an updated developer-guide checkpoint after every
+functional scope stays fixed. The independent researcher trial is explicitly
+deferred until after 0.15.0 under its [bounded scheduling decision](pending_proposals/researcher_acceptance_0150.md#post-0150-scheduling-decision--2026-11-12),
+with `not_reviewed` status and no automatic exception for a later version. Other
+B7 dimensions remain due. Record an updated developer-guide checkpoint after every
 increment, including its actual source, selected checks, unresolved limits and
 next action. Dates, test totals and commit counts do not measure completion of
 these stages.
@@ -41,7 +44,7 @@ these stages.
 | Stage | Accepted objective and completion boundary |
 | --- | --- |
 | 1 — Complete the rich 0.15.0 profiles | Finish B3–B6's required structural, activity/literature, molecule/clinical/disease and variant/isoform/comparative/association journeys, including human/agent/source continuity and independent original saved reading. Use the broad inventory for the complete scope. B2 scientific/default review remains explicitly deferred; current defaults and historical meanings stay fixed |
-| 2 — Accept and deliver 0.15.0 | Obtain B7's recorded scientific, uncoached researcher, agent, workload and actual-consumer acceptance. Resume B8 only with maintainer authorization, then qualify the exact candidate source and installed artifacts through the existing release route |
+| 2 — Accept and deliver 0.15.0 | Obtain B7's remaining scientific, agent, workload and actual-consumer acceptance; retain the explicit independent-researcher deferral and its post-0.15.0 follow-up. Resume B8 only with maintainer authorization, then qualify the exact candidate source and installed artifacts through the existing release route |
 | 3 — Expand semantic and temporal knowledge access | Broaden KnowledgeQuery, packets and source-supported temporal questions with explicit unknowns, original support and real consumer receiving; preserve shared MOLI contracts and distinguish stored history from unqueried historical sources |
 | 4 — Expand real interoperability | Complete useful MOLI and MolSysSuite exchanges with their actual consumers, retaining identity, units, support and the ownership of Knowledge, Evidence, geometry and provenance |
 | 5 — Expand scientific coverage and source guarantees | Address scientific/source gaps, source utilization and health, bibliography, acquisition observation and rights through their owning contracts and registry; preserve explicit licensing, unsupported scope and adoption decisions |
@@ -56,8 +59,8 @@ in that journey even when its broader direction appears in a later stage.
 The [three closure fronts](CONTINUATION_PLAN_20261104.md#three-remaining-closure-fronts)
 make the remaining functional integration, B7 review and B8 delivery dependencies
 concrete. The [researcher kit](pending_proposals/researcher_acceptance_0150.md)
-provides shareable documentation and public input preparation while recruitment
-is pending; it supplies no actual acceptance result.
+provides shareable documentation and public input preparation for the explicitly
+postponed post-0.15.0 trial; it supplies no actual acceptance result.
 
 The current integration joins source-bound chemical context with retention of
 executed scientific requests in their actual access instances. Historical

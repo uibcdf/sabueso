@@ -9,6 +9,23 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Independent researcher session deferred until after 0.15.0 (2026-11-12 UTC)
+
+The maintainer's explicit [scheduling decision](researcher_acceptance_0150.md#post-0150-scheduling-decision--2026-11-12)
+moves only the independent/uncoached researcher trial after 0.15.0 publication.
+It is no longer a pre-release blocker for this version and remains `not_reviewed`.
+Other B7 dimensions, exact-source CI/governance and required installed-platform
+gates retain their scope; B8 is not resumed. At candidate preparation, attach the
+decision to the actual source/archive and release limitation, with #148/#112
+post-release follow-up. A later version needs its own explicit review decision.
+
+This documentation-only commit changes no executable behavior, test, workflow or
+fixture. The intermediate `[skip ci]` route remains authorized; preserve its exact
+pushed head and unchanged code/input fingerprints under
+`recovered_work/checkpoint_recovery_20261106/b7-researcher-post015-deferral-1/`.
+Earlier technical receipts retain their own source/acceptance limits; no new
+scientific or hosted passing result is claimed and no issue comment is posted.
+
 ### Named literal molecule discovery (2026-11-12 UTC, #148/#112)
 
 The two current molecule catalog entries provide typed original literal routes,

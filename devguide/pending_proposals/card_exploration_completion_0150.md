@@ -1,5 +1,5 @@
 ---
-summary: Maintainer-required complete exploration design and human acceptance before 0.15.0.
+summary: Complete 0.15.0 exploration scope with the independent researcher trial explicitly deferred until after release.
 issue: uibcdf/sabueso#148
 status: open
 opened: 2026-10-22
@@ -57,6 +57,13 @@ old membership preserved. Exact-source receiving remains separate. Other structu
 transitions and researcher/workload acceptance stay open.
 
 ## Maintainer decision and release gate
+
+On 2026-11-12 the maintainer explicitly postpones the independent/uncoached
+researcher trial until after 0.15.0 publication. It no longer blocks that version
+and remains `not_reviewed`. The [bounded decision](researcher_acceptance_0150.md#post-0150-scheduling-decision--2026-11-12)
+supersedes only that pre-release trial requirement; the complete functional
+scope, scientific integrity, other B7 dimensions and technical delivery gates
+retain their scope. Preserve the post-release follow-up under #148/#112.
 
 On 2026-10-22 the maintainer explicitly required **the entire broad exploration
 design and the human experience before 0.15.0**, including activities, clinical
@@ -227,7 +234,7 @@ accompany each block instead of waiting until the final walkthrough.
    [Question-first navigation previews](card_navigation_preview.md) now improve
    retained-question discovery with explicit category counts, original indices
    and unchanged complete access/history. Researcher acceptance remains pending.
-6. Complete human walkthroughs, workload qualification and final technical gates
+6. Complete the applicable technical walkthroughs, remaining B7 review, workload qualification and final technical gates
    before considering release consolidation. Do not declare the experience
    exceptional solely from tests, generated panels or implementation checkmarks.
 
@@ -245,10 +252,12 @@ and technical rehearsal. The helper exports three public Card inputs without
 solved sessions. Recruitment and actual reviewer results remain pending; specialist
 inputs and the other B7 acceptance dimensions retain their separate scope.
 
-The intended "wow" experience is required before 0.15.0. Apply the
+The intended "wow" experience remains the functional design target. Apply the
 [observable criteria in the continuation plan](../CONTINUATION_PLAN_20261104.md#required-wow-experience-in-0150)
-to every implementation slice, then record explicit combined researcher acceptance
-under #148. The final walkthrough validates the experience developed throughout;
+to every implementation slice. The independent researcher trial is explicitly
+deferred until after 0.15.0; record its actual future observations under #148,
+not as completed pre-release acceptance. The walkthrough material retains the
+experience developed throughout;
 human clarity and decision assistance are reviewed while each route is built.
 
 Researchers with declared Python familiarity must be able to orient themselves,
@@ -282,7 +291,8 @@ qualification. Combined researcher/workload acceptance remains open (#148); sele
 checks do not establish the complete experience or release readiness.
 
 Before 0.15.0, every row above must have its implemented scope, relevant public
-walkthrough and technical receipt, with human acceptance recorded for the combined
-experience. Final exact-SHA CI/governance through gh-run-receptor and the existing
+walkthrough and technical receipt, with remaining B7 review dispositions and the
+bounded independent-researcher deferral recorded explicitly. Final exact-SHA
+CI/governance through gh-run-receptor and the existing
 installed-artifact/release gates remain mandatory. Only then may the maintainer
 decide to resume the separate release route.

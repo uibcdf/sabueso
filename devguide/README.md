@@ -19,7 +19,7 @@ anything: the remote repository does not contain the whole local state.
 | What is published, what is local, and what is next? | [CHECKPOINT](CHECKPOINT.md) |
 | In what order do we work? | [Current destination actions](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions) and [integrated B0–B8 plan](CONTINUATION_PLAN_20261104.md#execution-order) |
 | What must the complete Card experience deliver? | [Broad exploration inventory](pending_proposals/card_exploration_completion_0150.md) and [observable wow criteria](CONTINUATION_PLAN_20261104.md#required-wow-experience-in-0150) |
-| How can an independent researcher review it? | [Participant invitation and tasks](../docs/content/user/researcher_review.md), [blank worksheet](../docs/_static/researcher_review_worksheet.txt) and [maintainer preparation](pending_proposals/researcher_acceptance_0150.md); recruitment and actual acceptance are pending |
+| How can an independent researcher review it? | [Participant invitation and tasks](../docs/content/user/researcher_review.md), [blank worksheet](../docs/_static/researcher_review_worksheet.txt) and [maintainer preparation](pending_proposals/researcher_acceptance_0150.md); the maintainer defers this trial until after 0.15.0, with no independent acceptance claimed |
 | What are the long-term goals and dependencies? | [Accepted six-stage program](ROADMAP.md#accepted-long-term-execution-stages) and [its execution](CONTINUATION_PLAN_20261104.md#accepted-six-stage-program) |
 | What decisions explain the design? | [DECISIONS](DECISIONS.md), the owning issue and its feature analysis; use the [onboarding history map](ONBOARDING.md#how-the-project-reached-this-point) rather than reading the full log sequentially |
 | How do I change and verify something? | [Root instructions](../AGENTS.md), [API conventions](API_CONVENTIONS.md), [TESTS](TESTS.md) |
@@ -45,9 +45,12 @@ their orientation and chemical-preview policies separately from scientific
 results; explicit current detached readings remain available on old captures.
 
 The latest published package is **0.14.0**. Work targets **0.15.0**, including the
-entire agreed human/agent Card exploration design and observed researcher
-acceptance. Completing one adapter or passing technical tests does not meet that
-release gate. Candidate selection, schema freezing, staging and publication remain
+entire agreed human/agent Card exploration design. The maintainer explicitly
+defers the independent researcher trial until after 0.15.0; it no longer blocks
+this version and remains `not_reviewed`. The [bounded decision](pending_proposals/researcher_acceptance_0150.md#post-0150-scheduling-decision--2026-11-12)
+preserves its post-release follow-up and the other B7 requirements. Completing one
+adapter or passing technical tests does not close those requirements.
+Candidate selection, schema freezing, staging and publication remain
 paused; this documentation update does not authorize them.
 
 The maintainer has resumed the entire [six-stage program](ROADMAP.md#accepted-long-term-execution-stages).

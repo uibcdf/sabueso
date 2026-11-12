@@ -1,12 +1,39 @@
 ---
-summary: Recruit and prepare independent researcher review without substituting demonstrations for B7 acceptance.
+summary: Preserve the independent researcher trial for after 0.15.0, with its missing acceptance explicit.
 issue: uibcdf/sabueso#148
 status: open
 opened: 2026-11-10
 area: [human-exploration, acceptance]
 ---
 
-# Independent researcher review for 0.15.0
+# Independent researcher review after 0.15.0
+
+## Post-0.15.0 scheduling decision — 2026-11-12
+
+The maintainer explicitly postpones this independent/uncoached researcher trial
+until after 0.15.0 publication. It is no longer a pre-release blocker for that
+version. The trial remains `not_reviewed`: there is no designated participant or
+independent result. Preserve C1–C6, the worksheet and public input preparation;
+the existing developer-agent observations do not become independent acceptance.
+
+Owner: Sabueso maintainers under #148, coordinated by #112. Reason: the maintainer
+selects delivery before this participant session and retains it as post-release
+feedback. Revisit recruitment and scheduling after 0.15.0 publication, then record
+actual task outcomes, assistance, interpretation and consequential corrections.
+This is not an automatic exception for 0.16.0 or later versions: reconsider the
+unmet review explicitly before a later release decision.
+
+Before tagging or publication, attach this decision to the exact 0.15.0 candidate
+commit and archive in the [delivery record](../../devtools/conda-build/release_readiness_0.15.0.md).
+State the gate as not performed and disclose the missing independent review in
+release limitations. Technical regressions, saved-reader controls and experienced
+developer-agent observations provide narrower evidence, not substitute participant
+results. Candidate identities remain pending; no release is selected or authorized
+by this scheduling decision. See the existing
+[bounded release-gate policy](https://github.com/uibcdf/moli/blob/main/devguide/policies/release_version_policy.md#bounded-release-gate-exceptions).
+
+Scientific review, actual-agent/workload/consumer acceptance and integrity,
+exact-source and installed-platform gates keep their existing requirements.
 
 The maintainer requested a shareable documentation section while looking for a
 researcher unfamiliar with Sabueso's internals. The
@@ -25,10 +52,11 @@ specialist scientific, actual-agent, workload and consumer acceptance remain
 separate dimensions and may need different people. The suggested 60–90 minutes
 is a scheduling estimate, not benchmark evidence.
 
-Use a qualified development environment with this checkout installed editable,
-verified import paths and exact source/runtime metadata. Public 0.14.0 does not
-provide the explorer. Do not advertise a public installation route for an
-unpublished feature. Prepare the session and check its input manifest before
+Use a qualified environment for the exact version under review, with verified
+import paths and source/runtime metadata. For development rehearsal, install the
+checkout editable; public 0.14.0 does not provide the explorer. A later released
+version can be chosen after its public installation is qualified. Do not advertise
+an unverified public installation route. Prepare the session and check its input manifest before
 giving the participant the tasks; no runtime installation or fixture internals
 should be part of their ordinary scientific task.
 
@@ -99,8 +127,8 @@ unit/identity errors or misleading absence prevent acceptance of that affected
 scope. Minor usability requests still need a disposition; they are not silently
 treated as release blockers or waived requirements.
 
-The B7 closeout must identify actual scientific review, uncoached researcher
-observations, actual-agent parity/usefulness, representative workload and real
+The B7 record must identify actual scientific review, the explicit post-0.15.0
+researcher deferral, actual-agent parity/usefulness, representative workload and real
 downstream-consumer results. This kit prepares only the researcher dimension;
 ordinary regressions and stand-in consumers do not close the others. B2 remains
 explicitly deferred. B8 candidate/schema freeze/staging/publication remains

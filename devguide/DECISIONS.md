@@ -1,5 +1,28 @@
 # Sabueso — Decision Log
 
+## Defer the independent researcher trial until after 0.15.0 (2026-11-12)
+
+The maintainer explicitly postpones the independent/uncoached researcher trial
+described by the [participant tasks](../docs/content/user/researcher_review.md)
+until after 0.15.0 publication. That session is no longer a pre-release blocking
+requirement for 0.15.0. Its actual status remains `not_reviewed`; no researcher is
+designated and no independent results or acceptance are claimed. Preserve the
+tasks, blank worksheet and prepared public inputs for the later session.
+
+The [maintainer record](pending_proposals/researcher_acceptance_0150.md#post-0150-scheduling-decision--2026-11-12)
+owns this narrow deferral under #148, coordinated by #112. At candidate preparation,
+bind the decision to the exact 0.15.0 source and archive and include the missing
+independent review in the release limitations. Follow the existing bounded
+release-gate exception rule; no candidate/source/archive identity is invented now.
+Revisit scheduling after publication and explicitly reconsider this unmet review
+before a later release decision. The deferral does not automatically extend to
+0.16.0 or any later version.
+
+Scientific review, agent usefulness, representative workloads, real-consumer
+acceptance, integrity regressions and the applicable Linux/Windows exact-source
+and installed-artifact gates retain their scope. This does not resume B8, freeze
+the schema, select a candidate, dispatch workflows or authorize publication.
+
 ## Bound prospective macOS support while continuing Linux/Windows (2026-11-12)
 
 The maintainer selects a temporary supported-OS exception for the development

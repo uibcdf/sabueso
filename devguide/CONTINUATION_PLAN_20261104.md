@@ -39,7 +39,9 @@ Implementation owners remain with each component and feature issue.
 **0.15.0 must deliver the intended "wow" experience: exceptional scientific
 usefulness with simple, understandable and coherent Card exploration.** This is
 an existing acceptance requirement for the full broad design, carried through
-each implementation block and demonstrated with researchers before consolidation.
+each implementation block. The independent/uncoached researcher trial is now
+explicitly deferred until after 0.15.0; the remaining scientific, agent, workload
+and consumer review retains its scope before consolidation.
 
 Deliver scientifically defensible, understandable and efficient access to Card
 knowledge for researchers and agents, while preserving Sabueso's Knowledge role,
@@ -69,7 +71,8 @@ first two stages:
 
 1. Complete the rich 0.15.0 B3–B6 profile inventory, including coherent human,
    agent, source and independent original saved journeys.
-2. Complete B7's combined scientific/researcher/agent/workload/consumer acceptance,
+2. Complete B7's remaining scientific/agent/workload/consumer acceptance and record
+   the explicit post-0.15.0 independent-researcher deferral,
    then perform B8 only after maintainer authorization and exact-source,
    installed-artifact and existing release-route qualification.
 3. Expand KnowledgeQuery, packets and source-supported temporal access under
@@ -132,13 +135,13 @@ acceptance dimensions.
 
 ### Demonstrate acceptance before B8
 
-Exercise actual public protein, molecule and disease journeys with the maintainer
-and a researcher unfamiliar with Sabueso internals, with declared Python
-familiarity and without developer coaching through the task. Record correct
+Exercise actual public protein, molecule and disease journeys for the remaining
+maintainer/scientific, agent, workload and consumer review. Record the exact scope,
 understanding, completion, assistance, navigation failures, scientific
-misinterpretations, workload results and specific reviewer feedback on usefulness
-and ease. Revise and recheck the failed journeys; retain observed feedback rather
-than predicting an enthusiastic reaction.
+misinterpretations and actual feedback. Revise consequential failures and recheck
+the affected journeys. The independent/uncoached researcher session with declared
+Python familiarity is explicitly postponed until after 0.15.0. Preserve its tasks
+and record its bounded deferral before B8; do not invent participant feedback.
 
 The experience remains pending when a required journey cannot be completed,
 needs internal schema explanations for routine use, conceals a consequential
@@ -504,6 +507,13 @@ gates remain separate. This increment does not resume B8.
 
 ## Three remaining closure fronts
 
+The maintainer explicitly postpones the independent/uncoached researcher trial
+until after 0.15.0. It no longer blocks that release and remains `not_reviewed`.
+The [bounded scheduling decision](pending_proposals/researcher_acceptance_0150.md#post-0150-scheduling-decision--2026-11-12)
+keeps its #148/#112 follow-up and candidate-bound release limitation. Scientific,
+agent, workload and actual-consumer review retain their scope. This does not
+resume B8 or automatically defer the trial for any later release.
+
 The prospective platform scope is now Linux and Windows under
 [#194's bounded macOS exception](pending_proposals/macos_support_exception.md).
 Review it at every proposed release; restoring macOS needs its actual source and
@@ -520,11 +530,11 @@ products and later long-term stages do not become prerequisites here.
 | Front | Concrete next work and exit condition |
 | --- | --- |
 | Functional integration | The [common request-retention correction](pending_bugs/assembly_machine_request_retention.md) and [chemical-context reading](pending_proposals/card_chemical_context_reading.md) implement the human-root correction, native empty outcomes and source-bound representation/charge/parent/property-method presentation. The [historical presentation contract](pending_proposals/card_orientation.md#historical-presentation-and-resaving) preserves original defaults through resaving. The [current local integration checkpoint](evidence/card_integration_checkpoint_20261111.json) passes the full unchanged-source offline suite and fresh copied/diagnostic receiving, including the combined source/return journeys. Use the broad inventory for independent review and candidate qualification. Existing receipts keep their exact scope; independent review may identify consequential remaining gaps. |
-| B7 acceptance | Recruit an independent researcher using the [participant documentation](../docs/content/user/researcher_review.md) and [maintainer kit](pending_proposals/researcher_acceptance_0150.md). Obtain actual task feedback, fix consequential failures and recheck. Record scientific, actual-agent, representative workload and real downstream-consumer acceptance separately; the three-Card preparation does not close these dimensions. No researcher is designated yet. |
+| B7 acceptance | Complete the remaining scientific, actual-agent, representative workload and real downstream-consumer review. The maintainer defers the independent researcher session until after 0.15.0; it no longer blocks this version and stays `not_reviewed`. Keep the [participant documentation](../docs/content/user/researcher_review.md), [maintainer kit](pending_proposals/researcher_acceptance_0150.md), #148 follow-up and candidate-bound release limitation. The three-Card preparation supplies no independent result. |
 | B8 delivery | Use the [delivery readiness worksheet](../devtools/conda-build/release_readiness_0.15.0.md) to collect the missing records. After recorded B7 acceptance and maintainer resumption, qualify exact candidate CI/governance and one staging artifact through the existing installed OS/Python/public-dependency route, freeze the unpublished schema only at its accepted stage, and perform authorized release/promotion/public-install/archive/central-notice steps. Preparation and historical green receipts do not qualify that future candidate. |
 
-The functional and review-preparation work can proceed while recruitment is in
-progress. Human decisions and remote candidate gates keep their dependencies;
+The functional and remaining review work can proceed while the researcher trial
+is deferred. Other human decisions and remote candidate gates keep their dependencies;
 B2 scientific/default review remains explicitly deferred. The kit contains no
 participant results and grants no release, schema-freeze or CI-dispatch authority.
 
@@ -555,7 +565,7 @@ requirements. Detailed historical chronologies do not override this proposed ord
 | B4 — Deliver the activity and literature journey | Sabueso #148/#112, with literature owners | Builds on B1/B2: protein → molecule → group → measurement → assay/document → original support. Add shared literature views and molecule target/activity context with exact identity joins. Review measured versus derived results, assay comparability, conflicts and missing methods; no unsupported mechanistic interpretation |
 | B5 — Complete molecule, clinical and disease profiles | Sabueso #148 and relevant clinical/identity owners | Reuse existing readers for chemical identity/properties/classes, indications/trials and disease terminology/hierarchy/associations. Distinguish clinical citation from outcome, hierarchy from identity, and prediction from measurement; positive and uncertain public examples plus exact saved/agent access |
 | B6 — Complete variants and comparative/association profiles | Sabueso #148 and relevant tissue/comparison owners | Reuse existing variant/isoform/tissue/comparison readers with explicit supplied Card context, genomic/reference scope and support. Include biological associations without inventing causality. Qualify missing/foreign/conflicting mappings and historical scope; comparisons never merge entities by similarity |
-| B7 — Accept the combined wow experience and consumer usefulness | Sabueso #148/#112; actual consumers own their receiving | Review the entire panel inventory and audit coverage map, integrate the journeys reviewed throughout B0–B6, perform independent scientific and uncoached researcher tasks, correct experience failures and record human acceptance. Qualify compact agent parity and representative whole-session costs, revisit private vertical pilots, and disposition consequential integrity gaps and unresolved external decisions |
+| B7 — Accept the combined wow experience and consumer usefulness | Sabueso #148/#112; actual consumers own their receiving | Review the full panel inventory and integrate B0–B6 journeys; complete scientific review, correct consequential experience failures and record actual-agent, workload and consumer acceptance. The independent/uncoached researcher trial is explicitly deferred until after 0.15.0, with its unperformed status and release limitation preserved. Qualify compact parity and useful-scale costs, revisit separately authorized private pilots and disposition consequential integrity gaps |
 | B8 — Consolidate 0.15.0 | Sabueso release owners and #112; assign the release's own tracking issue at candidate preparation | Only after accepted broad exploration, scientific/usefulness and resource gates, and maintainer resumption of consolidation. Select the final candidate, run exact-source CI/governance and staged installed-artifact gates, freeze only unpublished schema as prescribed, then follow the existing release/promotion/clean-install/archive route |
 
 B0 is an administrative and small-change closeout, not a new optimization project.

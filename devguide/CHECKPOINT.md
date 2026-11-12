@@ -5,6 +5,21 @@ Current working-state checkpoint: **2026-11-12 (UTC)**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Independent researcher trial deferred until after 0.15.0
+
+The maintainer explicitly moves the independent/uncoached researcher session to
+after 0.15.0 publication. It no longer blocks that release, remains `not_reviewed`
+and supplies no completed human acceptance. Preserve the participant material,
+public preparation and worksheet. The [bounded scheduling decision](pending_proposals/researcher_acceptance_0150.md#post-0150-scheduling-decision--2026-11-12)
+is owned by #148/#112; revisit it after publication and before a later acceptance
+decision. Record the exact 0.15.0 source/archive and limitation at candidate
+preparation; this grants no automatic deferral for 0.16.0 or later releases.
+
+The other B7 dimensions and required source/installed Linux/Windows qualification
+remain open with their existing scope. B8 selection, freeze, staging and release
+remain separately authorized. This is a documentation/scheduling change; earlier
+technical receipts retain their source/acceptance limits and are not relabeled.
+
 ## Named literal molecule discovery — selected local receiving PASS
 
 Small-molecule compact catalogs now expose `chemical_identity` and

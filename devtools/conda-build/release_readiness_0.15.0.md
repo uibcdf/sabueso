@@ -5,6 +5,14 @@ Owner: Sabueso maintainers, coordinated under #112; exploration acceptance under
 Candidate selection, schema freeze, staging and public publication remain pending
 their acceptance prerequisites and maintainer resumption.
 
+The maintainer explicitly defers the independent/uncoached researcher trial until
+after 0.15.0 publication. It is no longer a blocking prerequisite for this version;
+its status remains `not_reviewed`, not accepted. The
+[bounded decision](../../devguide/pending_proposals/researcher_acceptance_0150.md#post-0150-scheduling-decision--2026-11-12)
+keeps the trial under #148/#112 and requires a release limitation and exact
+candidate-bound record before publication. Other B7 dimensions and required
+source/installed-platform gates remain unchanged; this is not B8 resumption.
+
 The [bounded CI correction](../../devguide/pending_bugs/ci_serial_execution_timeout.md)
 addresses an observed four-hour installed-lane timeout while preserving all
 original selections. Its [local receiving](../../devguide/evidence/ci_bounded_execution_checkpoint_20261111.json)
@@ -45,7 +53,8 @@ Exact final-source CI/governance and all B7/candidate/artifact gates remain due.
 | Record | Current disposition |
 | --- | --- |
 | Functional scope | Use the [broad inventory](../../devguide/pending_proposals/card_exploration_completion_0150.md) and current CHECKPOINT. Close consequential integration gaps and record source-bound tests; older green receipts do not qualify later code. |
-| Independent researcher | The [participant section](../../docs/content/user/researcher_review.md), worksheet and public input preparer are available. A participant and actual results are pending. Record prior exposure, help, difficulties and retests. |
+| Independent researcher | Explicitly deferred by the maintainer until after 0.15.0; not a blocking prerequisite for this version. Status remains `not_reviewed`; no participant result is claimed. Preserve the [participant section](../../docs/content/user/researcher_review.md), worksheet and public input preparer. Owner #148/#112; revisit scheduling after publication and explicitly reconsider this unmet gate before a later release decision. |
+| Candidate-bound researcher deferral | At candidate preparation, record exact source SHA, version 0.15.0 and archive coordinates/digest, decision owner/date, this gate's unperformed status/reason, narrower technical/developer-agent evidence and limits, #148 follow-up and release-note limitation. Those candidate identities are pending; no later source/version receives an automatic exception. |
 | Scientific, agent and consumer acceptance | Record each dimension and its exact inputs, results, limitations and reviewer/consumer. Technical scripts do not supply scientist decisions or real consumer usefulness. B2's explicitly deferred default review stays separate. |
 | Representative workload | The [public-session receipt](../../devguide/evidence/public_session_workload_checkpoint_20261111.json) measures three walkthroughs and seven saved readings at `89bdb0a`. The [packing-cache checkpoint](../../devguide/evidence/exact_packing_cache_checkpoint_20261111.json) observes current structural saving at 56.076 versus 44.767 s in a fixed-input ABBA comparison, with eight original-reader controls. The maintainer accepts provisional targets of 60 s saving, 30 s reopening and 1 GiB RSS for that measured workload on this workstation. Actual independent task feedback, other useful-scale budgets and complete B7 workload acceptance remain pending under #167/#148. |
 | Candidate source and release scope | Pending. Record the immutable commit, canonical version `0.15.0`, final release notes and release tracking issue. `release_plan.toml` still describes published 0.14.0. |
@@ -68,6 +77,7 @@ rebuild or overwrite a recorded public coordinate to hide a failed check.
 Release tracking issue:
 Maintainer acceptance and resumption:
 Scientific / researcher / actual-agent / workload / consumer results:
+Independent researcher deferral: exact candidate, owner/date, not-reviewed status, limits, #148 follow-up:
 Final source SHA and canonical version:
 Schema-generation environment, source and frozen-input digest:
 Exact-SHA CI and governance runs / gh-run-receptor receipts:
