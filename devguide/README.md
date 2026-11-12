@@ -17,7 +17,7 @@ anything: the remote repository does not contain the whole local state.
 | --- | --- |
 | What does Sabueso do, and why? | [VISION](VISION.md), [ARCHITECTURE](ARCHITECTURE.md), [DATA_FLOW](DATA_FLOW.md), [GLOSSARY](GLOSSARY.md) |
 | What is published, what is local, and what is next? | [CHECKPOINT](CHECKPOINT.md) |
-| In what order do we work? | [Current destination actions](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions) and [integrated B0–B8 plan](CONTINUATION_PLAN_20261104.md#execution-order) |
+| In what order do we work? | [Immediate functional closeout of 0.15.0](pending_proposals/functional_closeout_0150.md), within the [integrated B0–B8 plan](CONTINUATION_PLAN_20261104.md#execution-order) |
 | What must the complete Card experience deliver? | [Broad exploration inventory](pending_proposals/card_exploration_completion_0150.md) and [observable wow criteria](CONTINUATION_PLAN_20261104.md#required-wow-experience-in-0150) |
 | How can an independent researcher review it? | [Participant invitation and tasks](../docs/content/user/researcher_review.md), [blank worksheet](../docs/_static/researcher_review_worksheet.txt) and [maintainer preparation](pending_proposals/researcher_acceptance_0150.md); the maintainer defers this trial until after 0.15.0, with no independent acceptance claimed |
 | What are the long-term goals and dependencies? | [Accepted six-stage program](ROADMAP.md#accepted-long-term-execution-stages) and [its execution](CONTINUATION_PLAN_20261104.md#accepted-six-stage-program) |
@@ -26,6 +26,12 @@ anything: the remote repository does not contain the whole local state.
 | How do I resume on another machine without losing work? | [Handoff](WORKSTATION_HANDOFF_20261106.md), its manifest and the current checkpoint |
 
 ## Current development boundary
+
+The immediate priority is the [written functional closeout plan](pending_proposals/functional_closeout_0150.md):
+reconcile implemented objectives with concrete remaining gaps, close essential
+journeys, disposition consequential defects and prepare the milestone decision.
+Further publication-process refinement should not dominate that work. This priority
+does not claim completed acceptance, select a tag or waive delivery requirements.
 
 The [current overview orientation](pending_proposals/card_orientation.md) exposes
 curated original protein/molecule/disease fields, source versions and exact

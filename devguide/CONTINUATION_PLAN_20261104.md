@@ -1,5 +1,13 @@
 # Sabueso — Integrated continuation plan after the audit
 
+**Immediate priority, 2026-11-12:** follow the [functional 0.15.0 closeout](pending_proposals/functional_closeout_0150.md).
+The maintainer prioritizes conceptual completion and subsequent implementation
+over further publication-process refinement. Reconcile concrete feature gaps,
+essential journeys and consequential defects before preparing the milestone
+decision. The B0–B8 scope and recorded validation/acceptance obligations below
+remain distinct; this scheduling priority claims neither completed acceptance
+nor an automatic release-gate exception.
+
 The [2026-11-06 handoff](WORKSTATION_HANDOFF_20261106.md) preserves the completed
 workstation transfer. Environment restoration and the corrected complete local
 offline checkpoint now pass; the

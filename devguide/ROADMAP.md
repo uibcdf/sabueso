@@ -6,9 +6,12 @@ source/qualification; the [continuation plan](CONTINUATION_PLAN_20261104.md#exec
 owns the active B0–B8 schedule within the accepted long-term stages below.
 New contributors start with [ONBOARDING](ONBOARDING.md).
 The [workstation handoff](WORKSTATION_HANDOFF_20261106.md) preserves the transfer
-procedure and source-machine facts; the
+procedure and source-machine facts. The immediate priority is the
+[functional 0.15.0 closeout](pending_proposals/functional_closeout_0150.md): turn
+remaining conceptual requirements into concrete dispositions and essential
+journeys before further publication-process refinement. The
 [destination action plan](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions)
-owns the immediate received-workspace sequence.
+retains the received-workspace history and technical follow-up.
 
 ## How the two routes are integrated
 

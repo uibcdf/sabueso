@@ -1,5 +1,24 @@
 # Sabueso — Decision Log
 
+## Prioritize the conceptual 0.15.0 closeout (2026-11-12)
+
+The maintainer prioritizes the conceptual objectives of 0.15.0 and continued
+implementation afterwards over further polishing of the publication process.
+The immediate [functional closeout plan](pending_proposals/functional_closeout_0150.md)
+reconciles the broad inventory, checks essential journeys, dispositions concrete
+correctness gaps and prepares an explicit delivered-scope/limitation record.
+The working assessment that the main families exist is not final acceptance of
+all requirements. Generic remaining-work phrases must become concrete cases.
+
+The maintainer expresses willingness to publish the `0.15.0` tag when appropriate;
+no tag source or publication action is selected by this documentation change.
+Keep code-milestone, source/schema qualification, public-package delivery and
+verified public-install states explicit. This priority does not waive scientific
+integrity or create a general B7/B8 exception. Any prerequisite deferral needs its
+own concrete disposition before the affected action. Existing independent-trial,
+macOS and B2 decisions retain their bounds; future long-term stages do not enlarge
+the immediate functional closeout.
+
 ## Defer the independent researcher trial until after 0.15.0 (2026-11-12)
 
 The maintainer explicitly postpones the independent/uncoached researcher trial

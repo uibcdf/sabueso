@@ -5,6 +5,25 @@ Current working-state checkpoint: **2026-11-12 (UTC)**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Immediate priority: functional 0.15.0 closeout
+
+The maintainer now prioritizes conceptual completion and continued development
+over further publication-process refinement. The [written closeout plan](pending_proposals/functional_closeout_0150.md)
+defines the next steps: reconcile the full functional inventory, close the essential
+public journeys, disposition consequential defects such as #192, and record the
+exact delivered scope and remaining limits before preparing a milestone/tag decision.
+The main feature families are implemented at their recorded scopes; final global
+functional closure is still to be demonstrated. No new family is automatically
+added to 0.15.0, and a genuine missing requirement is not silently postponed.
+
+The code checkpoint remains `9ab6dd7` / SDK268. Its separate post-commit gate
+passes eight owning scratch-lifetime, copied-reader and workflow controls with
+complete valid receptor/source/worker accounting and no warnings/skips/owned swap.
+The existing raw checkpoint below owns that receipt. Both large attempts remain
+incomplete, and hosted/candidate acceptance is not inferred. This priority change
+modifies documentation only; no new test, workflow, source selection, schema freeze,
+build, tag or publication is performed. The independent trial stays after 0.15.0.
+
 ## Windows original portability and phased CI recovery
 
 The SDK266 hosted batch also exposes [Windows input portability failures](pending_bugs/ci_windows_original_portability.md),
