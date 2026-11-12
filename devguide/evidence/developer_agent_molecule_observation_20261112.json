@@ -1,0 +1,148 @@
+{
+  "state": "EXPERIENCED_DEVELOPER_AGENT_MOLECULE_OBSERVATION_RECORDED_ACCEPTANCE_PENDING",
+  "owner": "Sabueso #148/#112",
+  "review_trigger": "B7 review or before candidate selection",
+  "source_base": "dac271de51d48ee0a88ef3e340cf43afa1359ea3",
+  "runtime": "0.14.0+258.gdac271d",
+  "actor_and_exposure": "Current developer agent with extensive implementation/test/maintainer-answer exposure including C3. Not an independent or uncoached researcher, specialist scientific review or real downstream consumer.",
+  "public_input_pins_unchanged": {
+    "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-ci-bounded-execution-1/researcher-packet/inputs/SOURCE_NOTICE.md": "87de3aeda5fbe3af5b8a04777f676c1e5c6690194b08e9ccfaca2b37c4054c03",
+    "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-ci-bounded-execution-1/researcher-packet/inputs/disease.json": "dd75eab0aa9a6ecec228467b79bc59b77923259fca3a8c84615cc3d4d1c7a5e5",
+    "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-ci-bounded-execution-1/researcher-packet/inputs/molecule.json": "b1fc57c981b81ba70d3a79f4888420dfb11141d2154b0b3afb7d904a9ca05944",
+    "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-ci-bounded-execution-1/researcher-packet/inputs/protein.json": "8306aa747bdd34650701928ba969e80a13cc580b6b9c00b66d73ae540ce5aacb",
+    "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-ci-bounded-execution-1/researcher-packet/inputs/manifest.json": "2d874f68bdd8f72fe0a52424a8251139e230a388b8272c78e7b352825f73191d"
+  },
+  "task_progress": {
+    "C3": "completed",
+    "C5": "partly_completed: empty display filter recovery and explicitly missing property method/physical charge; not complete source knowledge-coverage review",
+    "C6": "completed for this visited molecule source/property/chemical context"
+  },
+  "observed": {
+    "molecular_weight": {
+      "source_assertion_ids": [
+        "SA_ChEMBL_CHEMBL110_430ebfb10f23bf14"
+      ],
+      "unit": "dalton",
+      "value": 260.25
+    },
+    "mass_source": {
+      "acquisition": {
+        "method": "database"
+      },
+      "asserted_value": "260.25",
+      "field_path": "properties.physchem.molecular_weight",
+      "id": "SA_ChEMBL_CHEMBL110_430ebfb10f23bf14",
+      "normalized_value": 260.25,
+      "retrieved_at": "fixture",
+      "source": {
+        "name": "ChEMBL",
+        "record_id": "CHEMBL110",
+        "type": "database",
+        "version": "ChEMBL_37"
+      },
+      "source_metadata": {
+        "unit": "Da"
+      },
+      "subject_ref": "chembl:CHEMBL110"
+    },
+    "logp": {
+      "source_assertion_ids": [
+        "SA_ChEMBL_CHEMBL110_6d0f186641c54c45"
+      ],
+      "value": 1.11
+    },
+    "logp_source": {
+      "acquisition": {
+        "method": "database"
+      },
+      "asserted_value": "1.11",
+      "field_path": "properties.physchem.logp",
+      "id": "SA_ChEMBL_CHEMBL110_6d0f186641c54c45",
+      "normalized_value": 1.11,
+      "retrieved_at": "fixture",
+      "source": {
+        "name": "ChEMBL",
+        "record_id": "CHEMBL110",
+        "type": "database",
+        "version": "ChEMBL_37"
+      },
+      "source_metadata": {
+        "method": "ALogP"
+      },
+      "subject_ref": "chembl:CHEMBL110"
+    },
+    "interpretation": "Source-stated 260.25 dalton with original Da declaration, method unspecified. LogP 1.11 has ALogP metadata. Database acquisition is not a physical measurement method; no inference of missing charge, stereochemical completeness or parent identity.",
+    "actor_errors": "Initially attempted an undocumented top-level Card import and continued before it succeeded; corrected to documented sabueso.core.card import. These are actor errors, not product defects.",
+    "machine_route": "Catalog has five descriptors without chemical identity/property topics; discovered root sections/properties/physchem by bounded literal pages. Same value, unit and source assertion identifiers."
+  },
+  "independent_reader": {
+    "same_weight_logp_original_assertions_and_source_back_route": true,
+    "saved_root": "XV_1f3ff934b24121e23b54d4a5161e78804f847c61b030345f4a874ed743ad57d2",
+    "bundle_digest": "sha256:c17cb38293201e5f1a0a331f43f6b36727bb77b661729160d0a6faeb43f7e4d7",
+    "file_bytes": 7061775,
+    "file_sha256": "1c1f8555e1f52ed510d70131ef8ec4a8d3f3d39422a67704617c84a8c284e85a",
+    "construction_and_network": "Card __init__/from_dict/from_json and socket acquisition forbidden in a separate fresh Python process",
+    "compact_reading": "Same original 260.25 value, dalton unit and source identifiers via public field locations, including reopened exploration"
+  },
+  "resources": {
+    "producer": {
+      "state": "FINISHED",
+      "peak_owned_rss_bytes": 114159616,
+      "minimum_host_available_bytes": 58076971008,
+      "peak_owned_swap_bytes": 0,
+      "elapsed_s": 79.135,
+      "scope": "Experienced developer-agent interactive observation; elapsed includes thinking, not workload benchmark"
+    },
+    "reader": {
+      "state": "FINISHED",
+      "peak_owned_rss_bytes": 108138496,
+      "minimum_host_available_bytes": 56964009984,
+      "peak_owned_swap_bytes": 0,
+      "elapsed_s": 40.57,
+      "scope": "Experienced developer-agent interactive observation; elapsed includes thinking, not workload benchmark"
+    },
+    "limits": "Each process one CPU/native pools1,1GiB owned RSS,16GiB host reserve,zero owned swap,600s. Sampled safeguards; elapsed includes thinking and is not a workload benchmark."
+  },
+  "friction": {
+    "observation": "Compact catalog has activity_context, chemical_classification, clinical, content and literature, without dedicated chemical_identity/property_context topics. Literal discovery successfully reaches same values, units and source IDs.",
+    "hypothesis": "Named semantic catalog descriptors may reduce agent discovery cost; this actor does not measure uncoached usefulness.",
+    "immediate_documentation": "A tested bounded public field-location example now documents current LIVE/saved reading.",
+    "reporting": "Consolidated local #148 draft for maintainer handoff; no publication authorization or new issue comment."
+  },
+  "raw_evidence_sha256": {
+    "chemical-reading.json": "83c405022b4fbaefc81b03ccdb664b48b1497e62dd264cf2936bd281b2bd0b03",
+    "history": "50002284a42fe2da4425b52b4014dc84d64ad43310231e0b62429fd5023be11e",
+    "history-reader": "db7e222980ded9a5fd0033d712d14e071bf9af784600e1f14a43b9a48e693eac",
+    "interaction-reader.log": "1c0f4f9a6d17e598dc9aab774273bc3cf91061fa811b51046b6ee84439b73671",
+    "interaction.log": "4ec77338ec3ce7885fadf9e42dd471c2ba789a2d2d9dc58d7b461f0a280bae09",
+    "interactive.py": "66d528afe7e3621d4a8af348a689fceb3df483866f002e8698e3ba9bbfc86b12",
+    "machine-catalog.json": "ad27de230d6f591a277206df254d617bb5e597fa9f09a30f335c88828268e0f8",
+    "machine-logp.json": "68d8a8637e8312c966f77418e9fd3a7ba49f4d69d8146383294aa0e2bec0f35c",
+    "machine-mass-source-ids.json": "155607dfb3019cae9efc9dd966963a3fa057050a922e70a557533db0355255d8",
+    "machine-mass.json": "9db71c16a33c5ed17d15597da22c6d04c028673d35e61b6d329014c434ae879c",
+    "molecule-reading.json": "1c1f8555e1f52ed510d70131ef8ec4a8d3f3d39422a67704617c84a8c284e85a",
+    "observations.json": "c7e154aed9cdc0df897e456ab59b9d31d7bc28b18380ecdef5b7134d886fde46",
+    "ownership.json": "7d6a1783d466a5374facab787211900fec5c10e8a01931a0e00b7c8116b6a724",
+    "property-reading.json": "090cae269d5debdd2e9cfed02f4f12c6edb392cce8e32683f1e09d0dfd767ce2",
+    "reopened-machine-mass.json": "00632260dfa6a1679c10662a7051817f28644ee597ede1453d159a9f31636301",
+    "reopened-observations.json": "a96c8c5529b46976f59043dbef9e77036fed4fd7a1b8cd52d1db6aae4e350ce5",
+    "resource-reader.json": "53a6c13e4887e1432649e20f77725b261bbb94527fe44230cefc6fac901a810c",
+    "resource.json": "cf7cbd6fcfdd3812172bf102b7eb3ad60297df7244bb6beed1aa35ad5cc125c5",
+    "save-receipt.json": "4c49eee58f491e87b8a2b5d3102b137d84ac9be8fe216f0601d42adba36c5ba0"
+  },
+  "documentation_snippet": {
+    "state": "PASS",
+    "snippet_sha256": "a18f319ef414171a8c4be7b64c5af051ee8a9470a9152b2d9197112845238c10",
+    "modes": [
+      "live",
+      "saved"
+    ],
+    "scope": "Exact new public documentation snippet, same original source field and units; saved constructor/acquisition forbidden. Separate actual interactive actor log remains authoritative for usability observation."
+  },
+  "limits": [
+    "Public molecule C3 and visited saved scope only; no private pilot or new source acquisition",
+    "Scientific, independent researcher, broader protein/specialist agent, workload and real-consumer acceptance remain open",
+    "No macOS run, release/candidate selection, schema freeze, dependency adoption or B8 resumption"
+  ],
+  "recorded_utc": "2026-11-12T05:04:01.487994+00:00"
+}

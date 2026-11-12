@@ -127,7 +127,37 @@ The exact local draft, raw actions and saved session are retained under
 `recovered_work/checkpoint_recovery_20261106/b7-agent-disease-observation-1/`,
 owned by #148/#112 for B7 review. No new issue comment is authorized or posted.
 
-The broader protein/molecule/specialist agent and real-consumer reviews remain
-unobserved here. A maintainer acceptance decision is pending, alongside the
+The broader protein/specialist agent and real-consumer reviews remain
+unobserved here. The scoped molecule observation is recorded below.
+A maintainer acceptance decision is pending, alongside the
 independent researcher and scientific results. Interactive elapsed time includes
 thinking/idle time and supplies no workload benchmark.
+
+## Experienced developer-agent molecule observation — 2026-11-12 UTC
+
+The [public molecule receipt](../evidence/developer_agent_molecule_observation_20261112.json)
+records actual C3 use and visited C6 reading by the same experienced developer
+agent, including prior exposure to the maintainer's expected observations.
+Original public packet pins are unchanged. The actor reads SMILES/InChI context,
+260.25 dalton molecular weight and logP1.11, follows both original ChEMBL
+assertions and returns to the selected property. ALogP belongs to logP support;
+the weight assertion retains Da but no method. Neither database acquisition nor
+the chemical representation supplies missing determination or charge information.
+
+Bounded literal pages reach the same value, unit and assertion IDs. A separate
+fresh reader forbids Card construction and source acquisition while recovering
+both properties, original assertions, source/back navigation and chemical context.
+The exact new user-guide field-location snippet also works in LIVE and saved
+mode. Empty display-filter recovery is observed; full C5 coverage-state review
+is not claimed. The initial undocumented top-level Card import and subsequent
+dependent NameError are retained as actor errors, corrected using the documented
+`sabueso.core.card` import.
+
+The compact catalog advertises activity, classification, clinical, content and
+literature descriptors, without dedicated chemical-identity/property-context
+descriptors. Literal access succeeds; reduced discovery cost through named topics
+is a proposal, not a demonstrated integrity failure. The local consolidated #148
+handoff and raw evidence are retained under
+`recovered_work/checkpoint_recovery_20261106/b7-current-shared-closure-1/`.
+No new issue comment is authorized or posted. No independent researcher/scientific,
+broader protein/specialist, workload or actual-consumer acceptance is supplied.

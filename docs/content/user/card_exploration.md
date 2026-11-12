@@ -1695,6 +1695,31 @@ never replace the selected value or disappear from the explanation. When selecti
 references themselves are unrecognized, actual field assertions remain explicitly
 `unclassified_field_source_assertions`; no selected/alternative role is invented.
 
+For a bounded machine page of the same original property, use its declared
+location. This also works on a reopened exploration through its own
+`saved.explorer.access`; it does not require reconstructing a Card:
+
+```python
+mass_context = next(
+    (
+        field
+        for field in molecule_properties.chemical_reading["properties"]
+        if field["label"] == "Molecular weight"
+    ),
+    None,
+)
+if mass_context is not None and mass_context["field_location"] is not None:
+    compact_mass = molecule_explorer.access.read(mass_context["field_location"])
+    compact_mass.page(limit=8, max_bytes=8192)
+```
+
+The page keeps the value, unit and source-assertion list as separate fields.
+Container values may be referenced instead of inlined; read their returned
+locations to inspect them within the same byte limit. The compact catalog does
+not currently advertise dedicated chemical-identity or property-context topics;
+use the displayed property panel and its locations, or discover retained fields
+through literal content. A missing topic does not establish missing source data.
+
 Source rows now label **Selected support**, **Alternative statement** or
 **Selection role unknown**. These describe the original field selection; they do
 not rank source reliability. Alternative statements can agree with the selected

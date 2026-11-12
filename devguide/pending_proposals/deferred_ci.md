@@ -9,6 +9,26 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Current editable receiving and molecule task (2026-11-12 UTC, #112/#148/#76)
+
+The [selected receipt](../evidence/current_editable_receiving_checkpoint_20261112.json)
+binds 194 distinct passing local cases to the current editable-provider versions,
+stable participating runtime Python/configuration inputs and original protected
+data. Registering the previously omitted manual capacity workflow restores the
+dependency-route preflight; it reuses the checked environment without adding pins.
+The accompanying public [molecule observation](../evidence/developer_agent_molecule_observation_20261112.json)
+records experienced-agent use and independent original saved reading, with prior
+exposure and remaining B7 limits explicit. The bounded user-guide example is
+executed in LIVE/saved modes and warning-fatal Sphinx passes.
+
+The intermediate `[skip ci]` route remains authorized. Retain the exact pushed
+head, input map, editable provenance and raw receipts under
+`recovered_work/checkpoint_recovery_20261106/b7-current-shared-closure-1/`.
+Owners #112/#148 retain exact-final-head CI/governance recovery and installed
+qualification; these selected Linux development checks supply no hosted matrix.
+Resume macOS only through #194's agreed feasible route. No new workflow dispatch,
+retry, issue publication, public pin adoption or B8 action is authorized here.
+
 ### macOS validation deferred under #194 (2026-11-12 UTC)
 
 The single approved `d4f0171` capacity diagnostic is complete:

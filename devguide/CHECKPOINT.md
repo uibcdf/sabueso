@@ -5,6 +5,41 @@ Current working-state checkpoint: **2026-11-12 (UTC)**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Current shared-provider receiving and molecule agent task — selected local checks PASS
+
+The shared Python 3.14 workspace now supplies newer canonical editable providers.
+The [current receiving receipt](evidence/current_editable_receiving_checkpoint_20261112.json)
+records **166** argument, diagnostic, quantity, attribution and dependency-route
+cases plus **28** actual MolSysMT structural integration cases, all passing with
+no skips, warnings or owned swap. Stable runtime Python/configuration fingerprints
+cover nine participating components; this selected integration does not qualify
+every dependency or replace the earlier full scientific checkpoint. No public
+dependency pin or provider installation is changed.
+
+The dependency preflight exposed an omitted inventory entry for the manual
+capacity workflow. It now declares reuse of the checked `test_env.yaml` closure;
+the existing preflight and its complete regression module pass. No independent
+runtime pins are introduced. The current gh-run-receptor also replays the original
+macOS capture offline, retaining its exact run/source/attempt and failure71.
+
+The [experienced developer-agent molecule observation](evidence/developer_agent_molecule_observation_20261112.json)
+adds public C3 and visited C6 work to the earlier disease observation: chemical
+representations, 260.25 dalton weight with unspecified method, logP1.11 with
+ALogP metadata, original source/back routes and separate-process saved reading.
+The compact literal route preserves the same values, units and assertion IDs.
+The user guide now has an executable bounded field-location example for LIVE
+and saved reading; warning-fatal Sphinx passes. Dedicated compact chemical/property
+catalog descriptors remain a locally drafted usability proposal under #148.
+Extensive prior actor exposure is disclosed; independent scientific/researcher,
+broader agent, workload and actual-consumer acceptance remain open.
+
+All 52 protected SOURCE/original inputs remain unchanged. Retain exact pushed
+head, selected receipts, source maps and raw observations under
+`recovered_work/checkpoint_recovery_20261106/b7-current-shared-closure-1/`.
+Exact-final-head hosted CI/governance and installed-platform qualification remain
+due. macOS stays deferred under #194; B8 candidate/schema/staging/publication is
+unresumed. No new remote workflow or issue comment is authorized by this work.
+
 ## macOS validation deferred under #194
 
 The maintainer asks to defer further macOS validation while a feasible execution

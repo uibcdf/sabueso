@@ -19,7 +19,7 @@ kind = "recipe"
 
 [routes."devtools/conda-envs/test_env.yaml"]
 kind = "environment"
-used_by = ".github/workflows/ci.yml (offline tests, every OS and Python)"
+used_by = ".github/workflows/ci.yml (offline tests, every OS and Python); .github/workflows/ci_capacity_probe.yml (manual capacity diagnosis)"
 
 [routes."devtools/conda-envs/development_env.yaml"]
 kind = "environment"
@@ -42,6 +42,10 @@ kind = "pins"
 [routes.".github/workflows/ci.yml"]
 kind = "excluded"
 reason = "installs public runtime dependencies from test_env.yaml (checked above), Sabueso with pip --no-deps, and ruff; dedicated receiving lanes pin published Ackredit 0.9.0/py_0; optional older-Python transport qualification pins Conda backports.zstd 1.8.0 without changing the required package runtime closure"
+
+[routes.".github/workflows/ci_capacity_probe.yml"]
+kind = "excluded"
+reason = "reuses the checked test_env.yaml runtime closure and installs Sabueso with pip --no-deps for manual capacity observation; adds no independent runtime dependency pins"
 
 [routes.".github/workflows/build_and_upload_conda_packages.yaml"]
 kind = "excluded"
