@@ -9,6 +9,25 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Terminal recovery and manual capacity probe (2026-11-12 UTC, #112/#148)
+
+CI43134542677 at `74308ba` is complete: four successful/fourteen failed jobs,
+with twelve scratch stops, one pre-pytest macOS RAM refusal and downstream
+coverage publication missing its input. Full capture integrity is verified.
+The twelve actual source-bound codec reports independently decode byte-exact;
+they do not convert full CI into PASS or qualify a newer head.
+
+The [manual-only observation mode](../TESTS.md#observe-capacity-before-a-full-hosted-recovery)
+adds no pytest execution or relaxed budget. Its [local receipt](../evidence/ci_capacity_probe_checkpoint_20261112.json)
+records complete launcher/receiving and combined branch-coverage checks. The
+normal workflows and scientific/runtime inputs stay fixed. Retain exact pushed
+head, editable metadata and closure under
+`recovered_work/checkpoint_recovery_20261106/b7-ci-capacity-probe-1/`.
+The intermediate `[skip ci]` route remains authorized; mandatory final exact-head
+CI/governance recovery is still owned by #112/#148. Prepare one concrete
+diagnostic scope before another full matrix. No new run, retry or issue body is
+authorized by this local preparation; B7/B8 boundaries remain open.
+
 ### Original-reader archive lifetime (2026-11-12 UTC, #112/#183/#148)
 
 Further actual `74308ba` source/installed reports stop at the fixed 6 GiB scratch
@@ -34,7 +53,7 @@ acceptance and B8 resumption remain separate.
 The authorized `74308ba` CI43134542677/governance43134667040 batch has actually
 started once after the old run completed. Governance passes with full captured
 verification. CI's macOS source job refuses before pytest because RAM headroom
-does not fit; the rest of the current batch remains under observation. No older,
+does not fit; the later terminal accounting above records the rest of the batch. No older,
 refused, missing or unfinished result supplies a current passing matrix.
 
 The [local correction](../pending_bugs/ci_serial_execution_timeout.md#macos-startup-refusal-and-capacity-reporting--2026-11-12-utc)
@@ -50,8 +69,8 @@ Use the authorized intermediate `[skip ci]` route and retain the exact committed
 pushed head and editable verification in
 `recovered_work/checkpoint_recovery_20261106/b7-ci-preflight-capacity-1/`.
 The prior authorization covers exactly `74308ba` and the one published report;
-it does not grant a new head, retry or further issue material. Collect the rest
-of that batch before proposing a consolidated next scope. #112/#148 own the
+it does not grant a new head, retry or further issue material. Use the completed
+batch's actual outcomes before proposing a consolidated next scope. #112/#148 own the
 mandatory exact-final-head recovery; B7 and B8 remain separate.
 
 ### Bounded CI timeout correction (2026-11-11, #112/#148)

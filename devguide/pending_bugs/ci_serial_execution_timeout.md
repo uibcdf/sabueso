@@ -91,7 +91,8 @@ macOS26/Python3.14 source job `130906598267` refuses before pytest with
 `Insufficient available RAM for one worker plus the host reserve`. The old
 launcher assigns actual RAM and CPU fields after that decision, so its refused
 report cannot establish actual capacity or transient versus persistent pressure.
-Other jobs in the same batch continue; no source assertion failure is inferred.
+At that initial observation other jobs continued; the terminal disposition below
+now accounts for the complete batch. No source assertion failure is inferred.
 
 GitHub lists the standard ARM macOS runner as three M1 CPUs and 7 GB RAM in its
 [hosted-runner reference](https://docs.github.com/en/actions/reference/runners/github-hosted-runners).
@@ -112,19 +113,45 @@ The [new receipt](../evidence/ci_preflight_capacity_checkpoint_20261112.json)
 qualifies all 36 current guard controls and three existing wiring/copied-receiving
 controls locally. Synthetic pressure sequences establish behavior, not recovery
 of the actual macOS runner. The complete 96-case copied child retains its own
-scope. Actual successful macOS source receiving, the remaining current jobs and
+scope. Actual successful macOS source receiving, complete failed-matrix recovery and
 any later authorized exact-head recovery remain open. Keep the issue open and
 consolidate observations before another remote request or public update.
 
+## Terminal hosted outcome and bounded capacity diagnosis
+
+The completed `74308ba` batch has four successful and fourteen failed jobs.
+Twelve distinct resource reports stop at `owned_scratch_limit`; macOS separately
+refuses RAM headroom before pytest. Coverage publication fails on the absent
+`coverage-xml` artifact after the source gate stops. This is a downstream missing
+input, not evidence of a separate upload-provider defect. All six full-capture
+members, their bytes/hashes and ZIP integrity are verified. The twelve fresh
+backend reports nevertheless cover all OS/Python producers and decode both
+original payloads byte-exact at their recorded head. Failed full CI stays failed.
+
+The newer lifetime fix remains locally tested; no successful full hosted recovery
+is inferred. The macOS report still lacks actual available/physical RAM, so a
+full-matrix repeat would leave that capacity uncertainty unresolved in advance.
+The manual-only capacity workflow reproduces its ordinary source setup and then
+uses `--preflight-only`. The same limits must fit; `PREFLIGHT_READY` means only
+observed headroom, with no scratch, pytest, reservation or scientific acceptance.
+RAM/disk/owned-stop refusal remains nonpassing and an explicit command is refused.
+One 15-minute diagnostic job and retained capacity JSON provide a bounded next
+scope; no run, retry or full-matrix dispatch is authorized by preparing it.
+
+The [capacity-mode receipt](../evidence/ci_capacity_probe_checkpoint_20261112.json)
+owns local tests, source/fixture integrity and exact hosted-observation limits.
+Review actual macOS capacity before a consolidated final-head recovery. B7
+independent acceptance and B8 remain separate.
+
 ## Extracted original archives outlive their modules — 2026-11-12 UTC
 
-Nine subsequently completed source/installed jobs in the same `74308ba` batch
-report `STOPPED` with `owned_scratch_limit`: four Linux source lanes, Windows
+Initial observations cover nine completed source/installed jobs in the `74308ba`
+batch reporting `STOPPED` with `owned_scratch_limit`: four Linux source lanes, Windows
 3.13/3.14 and installed 3.11/3.12/3.14. Their actual logs and reports are retained
 with the run. These are stops at the fixed 6 GiB temporary-file safeguard, not
 passing pytest outcomes; RAM remained above the configured host reserve. This
 does not establish that every scientific assertion before interruption passed.
-Other jobs still require their actual outcomes.
+The terminal accounting above now includes all twelve distinct scratch stops.
 
 A separate real-reader lifecycle regression reproduces five stale extracted
 archives after their owning modules finish: SDK202/205/208/211/218 public inputs,

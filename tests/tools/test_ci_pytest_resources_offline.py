@@ -7,11 +7,13 @@ import subprocess
 import sys
 import threading
 import time
+from copy import deepcopy
 from pathlib import Path
 from types import SimpleNamespace
 
 import psutil
 import pytest
+import yaml
 
 ROOT = Path(__file__).resolve().parents[2]
 LAUNCHER = ROOT / "devtools/run_ci_pytest.py"
@@ -470,3 +472,172 @@ def test_hosted_profile_does_not_guess_slurm_allocations(tmp_path, monkeypatch):
     assert code == 71 and data["state"] == "REFUSED"
     assert "Slurm allocations" in data["reason"]
     assert "scratch" not in data and "command" not in data
+
+
+def forbid_probe_execution(monkeypatch):
+    def forbidden(*args, **kwargs):
+        pytest.fail("A capacity observation cannot create scratch or start a process")
+
+    monkeypatch.setattr(RESOURCE.subprocess, "Popen", forbidden)
+    monkeypatch.setattr(RESOURCE.tempfile, "mkdtemp", forbidden)
+    monkeypatch.setattr(RESOURCE.os, "nice", forbidden, raising=False)
+
+
+@pytest.mark.parametrize("total,available,reserve", [(8, 6, 0), (16, 12, 4)])
+def test_preflight_only_observes_capacity_without_test_qualification(
+    tmp_path, monkeypatch, total, available, reserve
+):
+    forbid_probe_execution(monkeypatch)
+    # Observe synthetic headroom only: this test never allocates the budget.
+    monkeypatch.setattr(
+        RESOURCE.psutil,
+        "virtual_memory",
+        lambda: SimpleNamespace(total=total * GIB, available=available * GIB),
+    )
+    monkeypatch.setattr(
+        RESOURCE.shutil, "disk_usage", lambda _: SimpleNamespace(free=20 * GIB)
+    )
+    report = tmp_path / "capacity.json"
+    code = RESOURCE.main(
+        [
+            "--preflight-only",
+            "--reserve-gib",
+            str(reserve),
+            "--scratch-parent",
+            str(tmp_path),
+            "--report",
+            str(report),
+        ]
+    )
+    data = json.loads(report.read_text())
+    assert code == 0 and data["state"] == "PREFLIGHT_READY"
+    assert data["preflight_only"] is True and "no pytest" in data["scope"]
+    assert (
+        data["host_available_before_bytes"]
+        >= data["host_reserve_bytes"] + data["memory_limit_bytes"]
+    )
+    assert (
+        data["disk_free_before_bytes"]
+        >= data["disk_free_floor_bytes"] + data["scratch_limit_bytes"]
+    )
+    assert data["scratch_filesystem"] == str(tmp_path.resolve())
+    assert not any(key in data for key in ("command", "scratch", "pytest_exit_code"))
+    assert list(tmp_path.iterdir()) == [report]
+
+
+def test_preflight_only_preserves_memory_refusal(tmp_path, monkeypatch):
+    forbid_probe_execution(monkeypatch)
+    report = tmp_path / "capacity.json"
+    code = RESOURCE.main(
+        ["--preflight-only", "--reserve-gib", "1000000000", "--report", str(report)]
+    )
+    data = json.loads(report.read_text())
+    assert code == 71 and data["state"] == "REFUSED" and data["preflight_only"]
+    assert "Insufficient available RAM" in data["reason"]
+    assert data["host_available_before_bytes"] > 0
+    assert not any(key in data for key in ("command", "scratch", "pytest_exit_code"))
+
+
+def test_preflight_only_preserves_disk_refusal(tmp_path, monkeypatch):
+    forbid_probe_execution(monkeypatch)
+    monkeypatch.setattr(
+        RESOURCE.psutil,
+        "virtual_memory",
+        lambda: SimpleNamespace(total=16 * GIB, available=12 * GIB),
+    )
+    monkeypatch.setattr(
+        RESOURCE.shutil, "disk_usage", lambda _: SimpleNamespace(free=7 * GIB)
+    )
+    report = tmp_path / "capacity.json"
+    code = RESOURCE.main(["--preflight-only", "--report", str(report)])
+    data = json.loads(report.read_text())
+    assert code == 71 and data["state"] == "REFUSED"
+    assert "scratch filesystem space" in data["reason"]
+    assert data["disk_free_before_bytes"] == 7 * GIB
+    assert data["scratch_limit_bytes"] + data["disk_free_floor_bytes"] == 8 * GIB
+    assert not any(key in data for key in ("command", "scratch", "pytest_exit_code"))
+
+
+@pytest.mark.parametrize("command", [["python", "-m", "pytest"], ["other-command"]])
+def test_preflight_only_cannot_hide_a_forwarded_command(tmp_path, command):
+    report = tmp_path / "capacity.json"
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(LAUNCHER),
+            "--preflight-only",
+            "--report",
+            str(report),
+            "--",
+            *command,
+        ],
+        capture_output=True,
+        text=True,
+        timeout=15,
+    )
+    assert result.returncode == 2 and "cannot accept a command" in result.stderr
+    assert not list(tmp_path.iterdir())
+
+
+def test_preflight_only_protects_existing_caller_report(tmp_path, monkeypatch):
+    forbid_probe_execution(monkeypatch)
+    report = tmp_path / "capacity.json"
+    report.write_text("caller-owned", encoding="utf-8")
+    with pytest.raises(FileExistsError):
+        RESOURCE.main(["--preflight-only", "--report", str(report)])
+    assert report.read_text() == "caller-owned"
+
+
+def test_preflight_only_respects_exact_owned_stop(tmp_path, monkeypatch):
+    forbid_probe_execution(monkeypatch)
+    report = tmp_path / "capacity.json"
+    Path(str(report) + ".stop").write_text("operator request", encoding="utf-8")
+    assert RESOURCE.main(["--preflight-only", "--report", str(report)]) == 71
+    data = json.loads(report.read_text())
+    assert data["state"] == "REFUSED" and "owned stop request" in data["reason"]
+    assert not any(key in data for key in ("command", "scratch", "pytest_exit_code"))
+
+
+def test_manual_capacity_workflow_reuses_the_macos_source_setup():
+    workflow_path = ROOT / ".github/workflows/ci_capacity_probe.yml"
+    plain = yaml.load(workflow_path.read_text(), Loader=yaml.BaseLoader)
+    assert set(plain["on"]) == {"workflow_dispatch"}
+    diagnostic = yaml.safe_load(workflow_path.read_text())
+    source = yaml.safe_load((ROOT / ".github/workflows/ci.yml").read_text())
+    assert diagnostic["env"] == source["env"]
+    assert diagnostic["permissions"] == {"contents": "read"}
+    assert set(diagnostic["jobs"]) == {"capacity"}
+    job = diagnostic["jobs"]["capacity"]
+    assert job["runs-on"] == "macos-26" and job["timeout-minutes"] == 15
+    assert "strategy" not in job
+    expected = []
+    for original in source["jobs"]["test"]["steps"]:
+        if original.get("name") == "Run repository-input offline tests":
+            break
+        if original.get("if") == "matrix.python-version != '3.14'":
+            continue
+        step = deepcopy(original)
+        if step.get("uses", "").startswith("mamba-org/setup-micromamba@"):
+            step["with"]["create-args"] = "python=3.14"
+        if step.get("name") in (
+            "Smoke the installed package outside the checkout",
+            "Exercise installed exploration transport outside the checkout",
+        ):
+            lines = step["run"].splitlines()
+            step["run"] = 'cd "$RUNNER_TEMP"\n' + next(
+                line for line in lines if line.startswith("python ")
+            )
+        if "run" in step:
+            step["run"] = step["run"].strip()
+        expected.append(step)
+    actual = deepcopy(job["steps"][:-2])
+    for step in actual:
+        if "run" in step:
+            step["run"] = step["run"].strip()
+    assert actual == expected
+    observation, artifact = job["steps"][-2:]
+    assert "--preflight-only --workers 3" in observation["run"]
+    assert " -- " not in observation["run"] and "-m pytest" not in observation["run"]
+    assert artifact["if"] == "always()"
+    assert artifact["with"]["path"] == "${{ runner.temp }}/sabueso-ci-capacity.json"
+    assert "coverage" not in workflow_path.read_text().lower()

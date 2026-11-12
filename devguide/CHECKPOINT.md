@@ -5,6 +5,39 @@ Current working-state checkpoint: **2026-11-12 (UTC)**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Completed hosted diagnosis and manual capacity observation — local checks PASS
+
+The authorized `74308ba`
+[CI run](https://github.com/uibcdf/sabueso/actions/runs/43134542677) is terminal:
+**four successful and fourteen failed jobs**. All twelve Linux/Windows source and
+installed-provider executions stop at the fixed scratch ceiling. macOS refuses
+RAM headroom before pytest. Coverage publication then fails because no
+`coverage-xml` artifact was produced. No interrupted pytest execution qualifies
+the source or installed matrix. Governance retains its verified PASS.
+
+The full six-member receptor capture and ZIP integrity are verified. All twelve
+fresh codec reports cover Linux/macOS/Windows on Python 3.11–3.14 and decode both
+original payloads byte-exact through the native reader. This closes that recorded
+codec receiving observation at `74308ba`, independently of the failed full CI;
+it does not qualify a later source or platform package.
+
+The launcher now supports `--preflight-only`: observe the same CPU/RAM/disk budget
+and bounded grace without creating scratch or launching pytest. A fitting budget
+reports `PREFLIGHT_READY`, explicitly distinct from test PASS. Refusals retain
+actual capacity; a supplied command and existing caller reports are protected.
+The separate manual-only `ci_capacity_probe.yml` reproduces the macOS source
+setup and retains its observation. Its one 15-minute job has no pytest execution
+or coverage publication and cannot qualify CI. Normal workflows, resource
+ceilings, scientific selections and runtime remain fixed.
+
+The [local receipt](evidence/ci_capacity_probe_checkpoint_20261112.json) owns
+complete guard, copied-receiving and combined branch-coverage checks, the actual
+local capacity observation and all 52 protected originals. An actual hosted
+capacity probe needs a separate exact-head authorization. No new remote run,
+retry, issue comment, candidate, schema freeze, staging or release is authorized
+or performed here. Diagnose macOS capacity before proposing another full matrix;
+B7 independent acceptance and B8 resumption remain open.
+
 ## Original-reader scratch and a scoped agent observation — local checks PASS
 
 Further actual `74308ba` jobs stop at the fixed 6 GiB scratch ceiling with RAM
@@ -31,15 +64,15 @@ source/back navigation. Extensive prior developer/maintainer-answer exposure is
 disclosed; broader agent, independent researcher/scientific and real-consumer
 acceptance remain pending. The observed compact-catalog discovery cost has a
 local #148 proposal for review. No new issue comment or hosted run is authorized
-or posted; finish observing the current batch before consolidated recovery. B8
+or posted; use the completed batch's actual outcomes for consolidated recovery. B8
 candidate/schema/staging/publication remains unresumed.
 
 ## Preflight capacity and bounded settling — local checks PASS
 
 The authorized `74308ba` batch has
 [verified governance](https://github.com/uibcdf/sabueso/actions/runs/43134667040).
-[CI](https://github.com/uibcdf/sabueso/actions/runs/43134542677) remains in progress;
-its macOS source job refuses before pytest because one worker plus the host RAM
+[CI](https://github.com/uibcdf/sabueso/actions/runs/43134542677) completed with failure;
+its macOS source job refused before pytest because one worker plus the host RAM
 reserve does not fit. The old report omits the actual RAM/CPU capacity behind
 that decision. No source test ran in that job; a transient or persistent resource
 condition cannot be distinguished from that report.
@@ -61,8 +94,8 @@ unchanged. Synthetic pressure sequences exercise the wait; the actual macOS
 resource condition and successful hosted recovery remain unmeasured. The new
 local behavior does not qualify an installed platform or the active older head.
 
-Keep the current batch's outcomes, complete its remaining observation and
-consolidate the next authorized recovery under #112/#148. No new remote run,
+Keep the completed batch's outcomes and consolidate the next authorized recovery
+under #112/#148. No new remote run,
 retry, issue comment or release is authorized by this local correction. B7
 independent acceptance and B8 resumption remain pending.
 

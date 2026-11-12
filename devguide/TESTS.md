@@ -1207,6 +1207,33 @@ actual result. The [capacity receipt](evidence/ci_preflight_capacity_checkpoint_
 records 39 distinct local parent cases and the separate copied96child scope.
 Full hosted/platform/candidate gates remain separate.
 
+#### Observe capacity before a full hosted recovery
+
+`python devtools/run_ci_pytest.py --preflight-only --report <new-report.json>`
+uses the same CPU/RAM/scratch-filesystem budget and bounded grace, then exits
+without creating scratch, changing affinity/priority or launching pytest. A
+fitting budget reports `PREFLIGHT_READY`; this is an observation, not test PASS
+or a reservation. A RAM/disk/owned-stop refusal remains nonpassing with actual
+available capacity retained. The mode rejects a forwarded command and never
+overwrites an existing report. Normal execution and its limits are unchanged.
+
+The manual-only `.github/workflows/ci_capacity_probe.yml` has one macOS26/arm64,
+Python3.14 job with a 15-minute outer timeout. It reproduces the normal macOS
+source setup through installed smoke, public fixture checks, codec emission and
+installed transport, then performs only the capacity observation. Native pools
+remain one; the report is uploaded even on refusal. A successful diagnostic
+workflow supplies no scientific, full-CI or candidate qualification. Dispatch
+needs separate exact-head maintainer authorization; do not automatically run the
+full matrix afterward or retry a refused probe.
+
+After changes, run the complete launcher module, the three receiving controls
+above and the launcher/`test_zstd_backend_offline.py` branch-coverage combination.
+Check the new workflow's manual-only trigger, unchanged source setup/environment,
+bounded job, report retention and Bash syntax. Preserve all normal workflow bytes,
+scientific selections and protected originals. The
+[receipt](evidence/ci_capacity_probe_checkpoint_20261112.json) distinguishes actual
+local checks, old-head twelve-producer codec receiving and pending hosted scope.
+
 ### Recovering deferred CI
 
 Finish a block with an unskipped push and inspect the resulting exact-head CI and

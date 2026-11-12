@@ -1,0 +1,285 @@
+{
+  "state": "LOCAL_CAPACITY_OBSERVATION_MODE_PASS_HOSTED_CAPACITY_UNMEASURED",
+  "owner": "Sabueso maintainers #112/#148",
+  "review_trigger": "Before authorizing the manual macOS diagnostic, next full recovery, or candidate qualification",
+  "source_base": "78f22df1e4bf6e90c4f3103db50640cc9cee218a",
+  "sources": {
+    "devtools/run_ci_pytest.py": "41f9d01c9177049623e80e78e86a6bf03ced2a54beaa279ac62f14bba7f31aab",
+    "tests/tools/test_ci_pytest_resources_offline.py": "ae814b7e60f45ce336f850883e31c19f12b3986c5b1916ff931721cb5c2470a3",
+    ".github/workflows/ci_capacity_probe.yml": "68190892b5943d041c28300d567e2639b8a6286b355744e840a972b926c5e172"
+  },
+  "local_gates": {
+    "unit-final": {
+      "passed": 45,
+      "pytest_s": 20.935,
+      "guarded_s": 21.61,
+      "peak_owned_rss_bytes": 360603648,
+      "peak_owned_scratch_bytes": 4602,
+      "minimum_host_available_bytes": 59409317888,
+      "peak_owned_swap_bytes": 0,
+      "events_sha256": "955f514e9168eb138cb1b5006f2be536e7eac201a334c9bade2d9fe8d5adf238",
+      "resource_sha256": "722ff8a0f895bd35f5781cd07d27e62235291f02d6aa1ae6ec45c0fed2c4014f"
+    },
+    "receiving": {
+      "passed": 3,
+      "pytest_s": 12.423,
+      "guarded_s": 13.107,
+      "peak_owned_rss_bytes": 283140096,
+      "peak_owned_scratch_bytes": 0,
+      "minimum_host_available_bytes": 59508293632,
+      "peak_owned_swap_bytes": 0,
+      "events_sha256": "9cb93a24a7de72d1cac838e6a91932e3231c0cea1562bacf5f7a7729b879bc56",
+      "resource_sha256": "9eccfbc8c55c785269566096bffbaa1321de3534b36e7e0244d8b17a3de84f2d"
+    },
+    "coverage-final": {
+      "passed": 62,
+      "pytest_s": 21.455,
+      "guarded_s": 22.107,
+      "peak_owned_rss_bytes": 376422400,
+      "peak_owned_scratch_bytes": 4602,
+      "minimum_host_available_bytes": 59418800128,
+      "peak_owned_swap_bytes": 0,
+      "events_sha256": "aecbc6b8948b13e8728ab5fbe8c765bbc7b8da76614a40f4e5892ff9d2d3af60",
+      "resource_sha256": "ba7b1d9d310326ff249b8ad7ccd5478fb8184d49407c80b7ade2b29d991635bb"
+    }
+  },
+  "distinct_local_parent_cases": 65,
+  "repeated_or_copied_child_counts_add_source_coverage": false,
+  "copied_receiving_child_cases": 96,
+  "actual_local_capacity": {
+    "state": "PREFLIGHT_READY",
+    "preflight_only": true,
+    "cpu_slots_observed": 1,
+    "host_total_bytes": 64978440192,
+    "host_available_before_bytes": 59587919872,
+    "host_reserve_bytes": 17179869184,
+    "minimum_available_for_one_worker_bytes": 19327352832,
+    "disk_free_before_bytes": 30828834816,
+    "disk_free_floor_bytes": 2147483648,
+    "scratch_limit_bytes": 6442450944,
+    "scope": "Capacity observed only; no pytest, resource reservation or test qualification"
+  },
+  "branch_coverage": {
+    "actual_measured_module_summaries": {
+      "devtools/run_ci_pytest.py": {
+        "covered_lines": 138,
+        "num_statements": 263,
+        "percent_covered": 48.45070422535211,
+        "percent_covered_display": "48",
+        "missing_lines": 125,
+        "excluded_lines": 0,
+        "percent_statements_covered": 52.47148288973384,
+        "percent_statements_covered_display": "52",
+        "num_branches": 92,
+        "num_partial_branches": 12,
+        "covered_branches": 34,
+        "missing_branches": 58,
+        "percent_branches_covered": 36.95652173913044,
+        "percent_branches_covered_display": "37"
+      },
+      "devtools/probe_zstd_backend.py": {
+        "covered_lines": 89,
+        "num_statements": 118,
+        "percent_covered": 72.85714285714286,
+        "percent_covered_display": "73",
+        "missing_lines": 29,
+        "excluded_lines": 0,
+        "percent_statements_covered": 75.42372881355932,
+        "percent_statements_covered_display": "75",
+        "num_branches": 22,
+        "num_partial_branches": 3,
+        "covered_branches": 13,
+        "missing_branches": 9,
+        "percent_branches_covered": 59.09090909090909,
+        "percent_branches_covered_display": "59"
+      }
+    },
+    "report_sha256": "5c881729ad2910e66d8a353c20fe484a8441fc559e0aa641709210a1c4a18351",
+    "scope": "One combined selected run with partial module coverage; no full-suite or hosted coverage publication claim."
+  },
+  "protected_originals_unchanged": 52,
+  "unchanged_guard_functions": [
+    "worker_budget",
+    "preflight_budget",
+    "host_reserve",
+    "pytest_command",
+    "child_environment",
+    "scratch_bytes",
+    "active_tracked",
+    "sample_tree",
+    "stop_owned"
+  ],
+  "manual_workflow": {
+    "path": ".github/workflows/ci_capacity_probe.yml",
+    "triggers": [
+      "workflow_dispatch"
+    ],
+    "jobs": 1,
+    "runner": "macos-26 arm64",
+    "python": "3.14",
+    "job_timeout_minutes": 15,
+    "pytest_started": false,
+    "qualification": "PREFLIGHT_READY is capacity observation only; no scientific PASS or reservation",
+    "existing_source_setup_and_native_pools": "Matched by complete workflow wiring control",
+    "actual_remote_execution": "NOT_AUTHORIZED_OR_STARTED"
+  },
+  "hosted_preceding_batch": {
+    "head": "74308bada0a9bd2d614ac94245090d1e87cc65c9",
+    "run_id": 43134542677,
+    "event": "workflow_dispatch",
+    "attempt": 1,
+    "full_capture_integrity": "PASS six member hashes/bytes and ZIP CRC",
+    "jobs": 18,
+    "outcomes": {
+      "success": 4,
+      "failure": 14
+    },
+    "unique_scratch_stops": 12,
+    "pre_pytest_ram_refusals": 1,
+    "downstream_coverage_missing_input": 1,
+    "governance": "Verified full capture PASS at preceding74308ba",
+    "backend_decoding": {
+      "state": "PASS_TWELVE_ORIGINAL_BYTE_EXACT",
+      "actual_cli_exit": 0,
+      "reports_verified": 12,
+      "payloads_per_report": 2,
+      "consumer_backend": "compression.zstd",
+      "consumer_zstd_version": "1.5.7",
+      "native_workers": 0,
+      "head": "74308bada0a9bd2d614ac94245090d1e87cc65c9",
+      "scope": "Actual CLI native decoding of twelve hosted producer reports. No added pytest/platform/package or later-head qualification."
+    },
+    "capture_manifest_sha256": "8b8446c6f798c7347107275e9e64a60fab5dbfbd5fb4614647f6513cff0d9e3b",
+    "all_twelve_producer_reports": [
+      {
+        "platform": "Darwin",
+        "python": [
+          3,
+          11,
+          18
+        ],
+        "sha256": "0376bd008dc1a59de8ee5178ca1d1ac48978ab3a4c24e0ae44f0382ce339855b"
+      },
+      {
+        "platform": "Darwin",
+        "python": [
+          3,
+          12,
+          16
+        ],
+        "sha256": "412fc88ce52b94a93dc0cfb587d37c47d512623cf91db6380df973c44960bd31"
+      },
+      {
+        "platform": "Darwin",
+        "python": [
+          3,
+          13,
+          18
+        ],
+        "sha256": "cba3018187474a0af160f634bc278ec8bda95e5cf9699423f691423819556099"
+      },
+      {
+        "platform": "Darwin",
+        "python": [
+          3,
+          14,
+          10
+        ],
+        "sha256": "e2bb2efe78b40aa31664a798c0850272029da14d92c13dfaabf36ceaf77b1863"
+      },
+      {
+        "platform": "Linux",
+        "python": [
+          3,
+          11,
+          18
+        ],
+        "sha256": "cbc864b2640a41cb9d92d3660b9ad3b9b2aff3245367ea6cab570d14b1523130"
+      },
+      {
+        "platform": "Linux",
+        "python": [
+          3,
+          12,
+          16
+        ],
+        "sha256": "b46fcd78c17f1526122088f32bdb95fe00b3b719c8fb640d1f0c352a3714c95a"
+      },
+      {
+        "platform": "Linux",
+        "python": [
+          3,
+          13,
+          18
+        ],
+        "sha256": "e3d9ff4b8e5f826bee2761c4f4de63dce214ecb4a029abf2b7bb9b6aa6bb8de8"
+      },
+      {
+        "platform": "Linux",
+        "python": [
+          3,
+          14,
+          10
+        ],
+        "sha256": "8a29271ec7cbd4273df3b37ae9032149b18911c9b4a5205cc868a4272ac7476f"
+      },
+      {
+        "platform": "Windows",
+        "python": [
+          3,
+          11,
+          18
+        ],
+        "sha256": "fa03de3819c8ea8691134ebc74f59aca9b8bb0186f3dfc7d193e8aa8d41b3e50"
+      },
+      {
+        "platform": "Windows",
+        "python": [
+          3,
+          12,
+          16
+        ],
+        "sha256": "6e0982d9ee19a4ed9a326c2376e523c0055a54a50bdd283cc09f137f1a2d69ce"
+      },
+      {
+        "platform": "Windows",
+        "python": [
+          3,
+          13,
+          18
+        ],
+        "sha256": "d470fc8b2908851ff0d4c961e98a4cd4847e072061946b29199a7389ba2b87c0"
+      },
+      {
+        "platform": "Windows",
+        "python": [
+          3,
+          14,
+          10
+        ],
+        "sha256": "91123c285c3042400928ea74fb9ba7d4a41e4fa27e3145519538b0721969f446"
+      }
+    ]
+  },
+  "scope": "Development observation/wiring/local receiving only. Same normal budgets, native pools, scientific arguments, production/runtime/schema/original/existing-workflow bytes remain fixed. No new full scientific suite, hosted success, public package/candidate, B7 independent acceptance or B8 resumption. No workflow dispatch, retry, cancellation, issue publication or release performed.",
+  "validation_composition": "Receiving uses identical launcher/workflow bytes before only the positive observation tests were made portable with synthetic8/16GiB capacity. Final45/62case gates use the final test inputs. Earlier44/61case records remain retained and add no coverage.",
+  "quality_and_documentation": {
+    "ruff_all": "PASS",
+    "format_two_changed_python_files": "PASS",
+    "python311_grammar": "PASS",
+    "normal_workflow_science_and_guard_integrity": "PASS",
+    "manual_workflow_bash_blocks": 8,
+    "local_governance": "PASS",
+    "diff_check": "PASS",
+    "guide": {
+      "state": "PASS",
+      "scope": "Maintained non-archive guide and changed Markdown local targets; changed-target anchors; changed fenced Python3.11 grammar. No external link or runtime example qualification.",
+      "maintained_markdown_files": 189,
+      "local_path_targets_checked": 1617,
+      "changed_page_anchors_checked": 27,
+      "python_examples_checked": 0,
+      "errors": []
+    },
+    "sphinx": "Not repeated: no Sphinx content/config changed."
+  }
+}

@@ -10,8 +10,8 @@ addresses an observed four-hour installed-lane timeout while preserving all
 original selections. Its [local receiving](../../devguide/evidence/ci_bounded_execution_checkpoint_20261111.json)
 is development-tool validation, not hosted recovery. The old `3c26790` batch has
 failed/cancelled work and cannot qualify later code. The authorized `74308ba`
-batch has verified governance but a macOS RAM refusal before pytest; its other
-jobs remain under observation. A [local preflight correction](../../devguide/evidence/ci_preflight_capacity_checkpoint_20261112.json)
+batch has verified governance but failed CI: twelve scratch stops, a macOS RAM
+refusal before pytest and missing coverage input. A [local preflight correction](../../devguide/evidence/ci_preflight_capacity_checkpoint_20261112.json)
 records capacity and bounded settling without relaxing limits. Actual macOS
 recovery, exact-final-head CI and all candidate/artifact prerequisites remain
 necessary.
@@ -23,6 +23,13 @@ releases five reproducible extracted tar copies after their final module use.
 Debug retention, failed outputs, immutable originals, scientific assertions and
 execution limits remain fixed. Its selected local checks cannot establish
 complete hosted recovery or resume B8.
+
+The completed run supplies a verified full capture and twelve byte-exact
+source-bound codec reports, separately from its failed source/installed matrix.
+A [manual-only capacity observation](../../devguide/TESTS.md#observe-capacity-before-a-full-hosted-recovery)
+is prepared to measure actual macOS headroom before another full recovery.
+It does not start pytest, qualify a platform/package or grant dispatch authority.
+Exact final-source CI/governance and all B7/candidate/artifact gates remain due.
 
 ## Required records
 

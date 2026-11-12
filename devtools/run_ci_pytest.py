@@ -253,17 +253,28 @@ def run(args, report):
     )
     scratch_limit = math.ceil(args.scratch_gib * GIB)
     disk_floor = 2 * GIB
-    if shutil.disk_usage(parent).free < disk_floor + scratch_limit:
-        raise ValueError(
-            "Insufficient scratch filesystem space plus the 2 GiB host margin"
-        )
-    scratch = Path(tempfile.mkdtemp(prefix="sabueso-ci-pytest-", dir=parent)).resolve()
+    disk_free = shutil.disk_usage(parent).free
     report.update(
         workers=workers,
         memory_limit_bytes=memory_limit,
         host_reserve_bytes=reserve,
         scratch_limit_bytes=scratch_limit,
         disk_free_floor_bytes=disk_floor,
+        scratch_filesystem=str(parent.resolve()),
+        disk_free_before_bytes=disk_free,
+    )
+    if disk_free < disk_floor + scratch_limit:
+        raise ValueError(
+            "Insufficient scratch filesystem space plus the 2 GiB host margin"
+        )
+    if args.preflight_only:
+        report.update(
+            state="PREFLIGHT_READY",
+            scope="Capacity observed only; no pytest, resource reservation or test qualification",
+        )
+        return 0
+    scratch = Path(tempfile.mkdtemp(prefix="sabueso-ci-pytest-", dir=parent)).resolve()
+    report.update(
         scratch=str(scratch),
         scratch_retained=True,
         scratch_scope="Owned pytest/TMP tree; free-space checks also cover the working filesystem",
@@ -373,6 +384,11 @@ def main(argv=None):
     parser.add_argument("--workers", type=int, choices=(1, 2, 3), default=3)
     parser.add_argument("--reserve-gib", type=float, default=0)
     parser.add_argument("--preflight-wait-seconds", type=float, default=30)
+    parser.add_argument(
+        "--preflight-only",
+        action="store_true",
+        help="Observe the same CPU/RAM/disk budget without creating scratch or starting pytest",
+    )
     parser.add_argument("--scratch-gib", type=float, default=6)
     parser.add_argument("--scratch-parent")
     parser.add_argument("--seconds", type=float, default=19800)
@@ -380,6 +396,8 @@ def main(argv=None):
     parser.add_argument("command", nargs=argparse.REMAINDER)
     args = parser.parse_args(argv)
     args.command = args.command[1:] if args.command[:1] == ["--"] else args.command
+    if args.preflight_only and args.command:
+        parser.error("Preflight-only mode cannot accept a command")
     if not all(math.isfinite(v) and v > 0 for v in (args.scratch_gib, args.seconds)):
         parser.error("Scratch and elapsed limits must be finite and positive")
     if not math.isfinite(args.reserve_gib) or args.reserve_gib < 0:
@@ -397,6 +415,7 @@ def main(argv=None):
     report = {
         "format": "sabueso.ci_resource_report@1",
         "state": "PREFLIGHT",
+        "preflight_only": args.preflight_only,
         "source_sha": os.getenv("GITHUB_SHA"),
         "python": sys.version,
         "platform": sys.platform,
