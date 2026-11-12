@@ -1,0 +1,97 @@
+{
+  "state": "APPROVED_SINGLE_DIAGNOSTIC_COMPLETED_REFUSED_CAPACITY_VERIFIED",
+  "at_utc": "2026-11-12T04:28:14.090815+00:00",
+  "head": "d4f0171488a35954c321b6e5bba6fc5ab7ecf324",
+  "run_id": 43154091218,
+  "url": "https://github.com/uibcdf/sabueso/actions/runs/43154091218",
+  "event": "workflow_dispatch",
+  "attempt": 1,
+  "jobs": 1,
+  "job_id": 130969876107,
+  "pytest_started": false,
+  "capture_members_verified": 6,
+  "log_zip_members_verified": 17,
+  "artifact_id": 13915201557,
+  "artifact_zip_sha256": "fa81c2b1ccead16f53f9fad76883c3c229fd3a5e65bf11addc07a1d404a7ac61",
+  "artifact_json_sha256": "fc7c4bf83e4e3fe1f3882bce163b68020294fd6642864dec6661d37401d475d2",
+  "artifact_report_equals_logged_report": true,
+  "cpu_slots": 3,
+  "physical_ram_bytes": 7516192768,
+  "physical_ram_gib": 7.0,
+  "last_available_bytes": 3144777728,
+  "last_available_gib": 2.928802490234375,
+  "sample_min_available_gib": 2.9227447509765625,
+  "sample_max_available_gib": 2.9487762451171875,
+  "host_reserve_bytes": 1503238554,
+  "one_worker_budget_bytes": 2147483648,
+  "minimum_required_available_bytes": 3650722202,
+  "minimum_required_available_gib": 3.400000000372529,
+  "last_headroom_shortfall_bytes": 505944474,
+  "wait_s": 30.078,
+  "all_seven_samples_below_threshold": true,
+  "interpretation": "This exact standard runner did not fit the unchanged2GiB worker plus20%physical reserve over the observed30s. No pytest started; no scientific assertion or full CI acceptance inferred.",
+  "limits": "No observation outside this30s window or on a larger runner. Cumulative swap counters alone do not establish current swap activity.",
+  "owner": "Sabueso maintainers #112/#148",
+  "review_trigger": "Next hosted resource/recovery decision or before candidate qualification",
+  "format": "sabueso.ci_capacity_observation_receipt@1",
+  "authorization": "Exactly one maintainer-approved diagnostic on d4f0171; attempt1 and unique same-head run verified",
+  "manifest_sha256": "b8b993a3a822ccb0a20e3de6317585d6547311a12c325b7254a8b75706f7641d",
+  "report_sha256": "fc7c4bf83e4e3fe1f3882bce163b68020294fd6642864dec6661d37401d475d2",
+  "report_tools": {
+    "pytest": "9.2.0",
+    "pytest-xdist": "3.8.0",
+    "pytest-receptor": "1.2.0",
+    "psutil": "7.2.2"
+  },
+  "memory_samples": [
+    {
+      "elapsed_s": 0.0,
+      "available_bytes": 3162341376,
+      "total_bytes": 7516192768
+    },
+    {
+      "elapsed_s": 5.052,
+      "available_bytes": 3166224384,
+      "total_bytes": 7516192768
+    },
+    {
+      "elapsed_s": 10.068,
+      "available_bytes": 3165110272,
+      "total_bytes": 7516192768
+    },
+    {
+      "elapsed_s": 15.071,
+      "available_bytes": 3139518464,
+      "total_bytes": 7516192768
+    },
+    {
+      "elapsed_s": 20.144,
+      "available_bytes": 3138273280,
+      "total_bytes": 7516192768
+    },
+    {
+      "elapsed_s": 25.212,
+      "available_bytes": 3140599808,
+      "total_bytes": 7516192768
+    },
+    {
+      "elapsed_s": 30.078,
+      "available_bytes": 3144777728,
+      "total_bytes": 7516192768
+    }
+  ],
+  "job_duration": "1m57s reported by gh-run-receptor",
+  "source_setup": "All setup, installed smoke, public fixture, codec and installed transport steps succeeded before refusal; uploaded artifact CRC/hash and logged JSON match",
+  "limits_unchanged": {
+    "rss_per_worker_bytes": 2147483648,
+    "host_reserve": "max(20%physical,1GiB,explicit larger reserve)",
+    "preflight_wait_seconds": 30,
+    "native_pools": 1
+  },
+  "scope": "Measured admission refusal on one standard macOS runner in the observed30s only. No pytest, scratch, scientific failure/PASS, full CI recovery, larger-runner validation, independent B7 acceptance or B8 resumption. The diagnostic approval alone grants no retry, paid infrastructure, full CI/governance or issue-publication authority; later issue permission is recorded separately.",
+  "subsequent_maintainer_decision": {
+    "action": "Defer further macOS validation pending a feasible route",
+    "issue": "https://github.com/uibcdf/sabueso/issues/194",
+    "release_effect": "Missing qualification remains pending; no release waiver, runner or matrix change"
+  }
+}

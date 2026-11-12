@@ -1234,6 +1234,14 @@ scientific selections and protected originals. The
 [receipt](evidence/ci_capacity_probe_checkpoint_20261112.json) distinguishes actual
 local checks, old-head twelve-producer codec receiving and pending hosted scope.
 
+The later approved single macOS diagnostic records the actual
+[admission refusal](evidence/macos_capacity_observation_20261112.json). The
+maintainer defers further Mac validation under
+[#194](https://github.com/uibcdf/sabueso/issues/194) until a feasible route and
+resumption criteria are agreed. Keep actual Mac qualification pending while
+independent Linux/Windows and B7 work proceeds. Existing workflow matrices,
+support claims, resource limits and release gates stay fixed by this deferral.
+
 ### Recovering deferred CI
 
 Finish a block with an unskipped push and inspect the resulting exact-head CI and

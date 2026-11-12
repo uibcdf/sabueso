@@ -1,5 +1,22 @@
 # Sabueso — Decision Log
 
+## Defer macOS validation pending a viable execution route (2026-11-12)
+
+After the approved capacity diagnostic and confirmation that the proposed
+alternative Mac is unavailable, the maintainer asks to postpone macOS validation
+and track how to resume it. [#194](https://github.com/uibcdf/sabueso/issues/194)
+owns that follow-up, linked to #112/#148. The [actual observation](evidence/macos_capacity_observation_20261112.json)
+records 2.929 GiB finally available against a 3.400 GiB one-worker admission
+requirement; all seven samples over 30.078 s are below the unchanged threshold.
+No pytest starts.
+
+Continue independent Linux/Windows and B7 work. Retain the outstanding Mac source
+and installed-package qualification, and decide its CI/release implications
+explicitly before claiming completion. This deferral changes no existing matrix,
+support claim or release gate, and authorizes no paid infrastructure or new run.
+Resume when a feasible route, its resource/cost scope and applicable exact-source/
+artifact receiving are agreed under #194. B8 remains unresumed.
+
 ## Agree a scoped provisional structural workload budget (2026-11-11)
 
 The maintainer accepts provisional targets for the measured public structural

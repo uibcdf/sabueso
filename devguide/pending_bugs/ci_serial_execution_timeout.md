@@ -143,6 +143,37 @@ owns local tests, source/fixture integrity and exact hosted-observation limits.
 Review actual macOS capacity before a consolidated final-head recovery. B7
 independent acceptance and B8 remain separate.
 
+## Measured macOS headroom and deferred validation
+
+The single approved diagnostic at `d4f0171`,
+[run 43154091218](https://github.com/uibcdf/sabueso/actions/runs/43154091218),
+completes in one attempt with `REFUSED`. Setup, installed smoke/transport and
+artifact retention succeed. No pytest or owned scratch is created. The full
+six-member capture and actual artifact bytes/digest are verified, and the report
+matches the logged JSON. The [receipt](../evidence/macos_capacity_observation_20261112.json)
+retains the measured scope.
+
+Physical RAM is 7 GiB. All seven samples over 30.078 s show 2.923–2.949 GiB
+available; the final value is 2.929 GiB. One worker needs 2 GiB plus the 20%
+host reserve of 1.400 GiB, or 3.400 GiB. The final shortfall is 505,944,474 bytes.
+This confirms the configured admission mismatch during this observation only;
+it measures neither scientific peak RSS nor another machine's capacity. The
+cumulative swap counters alone establish no current swap activity.
+
+The maintainer explicitly defers further macOS validation under
+[#194](https://github.com/uibcdf/sabueso/issues/194). Identify an available Mac
+and approve its resource scope, or explicitly review an alternative qualification
+route. GitHub documents an arm64 M2 `macos-26-xlarge` configuration with 14 GB RAM
+in its [runner reference](https://docs.github.com/en/actions/reference/runners/larger-runners);
+eligibility and cost require a separate decision using the
+[pricing reference](https://docs.github.com/en/billing/reference/actions-runner-pricing).
+No larger runner has been configured or tested here.
+
+Do not convert the deferral into a passing Mac result. Required source and
+installed-artifact receiving and the CI/release consequences remain owned by #194
+and #112. Existing workflows, safety reserves and scientific selections remain
+unchanged. Independent Linux/Windows and B7 work can continue; B8 remains open.
+
 ## Extracted original archives outlive their modules — 2026-11-12 UTC
 
 Initial observations cover nine completed source/installed jobs in the `74308ba`

@@ -304,6 +304,13 @@ on reviewer availability, and do not build B4 summaries as accepted science yet.
 
 ## Destination review and next actions
 
+On 2026-11-12 the maintainer defers macOS validation under
+[#194](https://github.com/uibcdf/sabueso/issues/194), after the measured standard
+runner cannot admit one worker within the unchanged RAM reserve. The issue owns
+the execution-route decision and resumption criteria. Continue independent
+Linux/Windows qualification and B7 acceptance work; the missing Mac result stays
+explicit. This does not alter the existing CI matrix or waive B8 requirements.
+
 The maintainer requested this review after completing restoration on 2026-11-06.
 The [dated receipt](evidence/destination_review_20261106.json) separates completed
 transfer/selected receiving, reproducible current failures, measured resources

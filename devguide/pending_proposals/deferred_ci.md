@@ -9,6 +9,26 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### macOS validation deferred under #194 (2026-11-12 UTC)
+
+The single approved `d4f0171` capacity diagnostic is complete:
+[43154091218](https://github.com/uibcdf/sabueso/actions/runs/43154091218), one job,
+one attempt. The report refuses admission before pytest, with 2.929 GiB finally
+available against the unchanged 3.400 GiB one-worker criterion. Full capture and
+actual artifact bytes are verified in the
+[observation receipt](../evidence/macos_capacity_observation_20261112.json).
+
+The maintainer explicitly postpones further macOS validation and requests
+[#194](https://github.com/uibcdf/sabueso/issues/194) to select a feasible route
+and define resumption. The issue is created with the observed public diagnosis
+and applicable closure criteria. Its scope grants no retry, paid infrastructure,
+CI-matrix change or release waiver. Continue independent Linux/Windows and B7
+work while keeping the Mac qualification gap explicit. Existing CI/governance
+and release requirements remain due; the intermediate `[skip ci]` route is
+unchanged. Retain exact committed head, unchanged input map, editable metadata
+and diagnostic/issue delivery under
+`recovered_work/checkpoint_recovery_20261106/b7-ci-capacity-d4f0171-1/`.
+
 ### Terminal recovery and manual capacity probe (2026-11-12 UTC, #112/#148)
 
 CI43134542677 at `74308ba` is complete: four successful/fourteen failed jobs,

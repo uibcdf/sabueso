@@ -5,6 +5,30 @@ Current working-state checkpoint: **2026-11-12 (UTC)**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## macOS validation deferred under #194
+
+The maintainer asks to defer further macOS validation while a feasible execution
+route is identified. [Sabueso #194](https://github.com/uibcdf/sabueso/issues/194)
+owns the deferred work, resource/cost decision and resumption criteria. Continue
+independent Linux/Windows and B7 work; keep the macOS qualification gap explicit.
+The decision changes no workflow matrix or existing release requirements.
+
+The approved single [diagnostic](https://github.com/uibcdf/sabueso/actions/runs/43154091218)
+at `d4f0171` measures three CPU slots and **7 GiB physical RAM**. Seven samples
+over **30.078 s** stay between **2.923 and 2.949 GiB available**, finally
+**2.929 GiB**. The unchanged one-worker criterion requires **3.400 GiB**:
+2 GiB owned RSS plus the 1.400 GiB host reserve. Every sample is below it.
+
+The [verified observation](evidence/macos_capacity_observation_20261112.json)
+binds the exact source/run/attempt, full six-member receptor capture, ZIP integrity
+and uploaded artifact digest. Artifact JSON equals the logged report. Setup and
+installed smoke/transport succeed, then capacity is `REFUSED` before pytest or
+scratch creation. This is a measured admission mismatch, not a scientific
+assertion failure or a passing matrix. No retry or additional workflow follows.
+
+Resume through #194 after an available route, appropriate resources and actual
+qualification are agreed. B7 independent acceptance and B8 resumption remain open.
+
 ## Completed hosted diagnosis and manual capacity observation — local checks PASS
 
 The authorized `74308ba`
@@ -32,11 +56,11 @@ ceilings, scientific selections and runtime remain fixed.
 
 The [local receipt](evidence/ci_capacity_probe_checkpoint_20261112.json) owns
 complete guard, copied-receiving and combined branch-coverage checks, the actual
-local capacity observation and all 52 protected originals. An actual hosted
-capacity probe needs a separate exact-head authorization. No new remote run,
-retry, issue comment, candidate, schema freeze, staging or release is authorized
-or performed here. Diagnose macOS capacity before proposing another full matrix;
-B7 independent acceptance and B8 resumption remain open.
+local capacity observation and all 52 protected originals. That preparation
+granted no hosted execution. The later single approval, observed refusal and
+explicit deferral are recorded above. No further run, retry, candidate, schema
+freeze, staging or release is authorized by that preparation. B7 independent
+acceptance and B8 resumption remain open.
 
 ## Original-reader scratch and a scoped agent observation — local checks PASS
 

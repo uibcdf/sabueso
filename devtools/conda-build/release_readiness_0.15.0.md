@@ -26,9 +26,13 @@ complete hosted recovery or resume B8.
 
 The completed run supplies a verified full capture and twelve byte-exact
 source-bound codec reports, separately from its failed source/installed matrix.
-A [manual-only capacity observation](../../devguide/TESTS.md#observe-capacity-before-a-full-hosted-recovery)
-is prepared to measure actual macOS headroom before another full recovery.
-It does not start pytest, qualify a platform/package or grant dispatch authority.
+A [single approved capacity observation](../../devguide/evidence/macos_capacity_observation_20261112.json)
+now measures the macOS refusal: 2.929 GiB finally available against a 3.400 GiB
+one-worker criterion. It starts no pytest and qualifies no platform/package.
+The maintainer defers further Mac validation under
+[#194](https://github.com/uibcdf/sabueso/issues/194) while a viable route is
+identified. The missing qualification remains explicit; the deferral changes no
+existing matrix, support claim or release gate.
 Exact final-source CI/governance and all B7/candidate/artifact gates remain due.
 
 ## Required records
@@ -44,7 +48,7 @@ Exact final-source CI/governance and all B7/candidate/artifact gates remain due.
 | Dependencies and public fixtures | Run release dependency preflight and fixture delivery checks, then prove the actual installed public dependency closure. An editable workspace or static metadata check has its own narrower scope. |
 | Schema 0.3.14 | Unpublished and not frozen. Generate its frozen public Card with a preliminary local Conda candidate installed in a clean environment, as the existing schema policy prescribes. Preserve 0.3.13 and earlier. Include the accepted freeze in the final source checkpoint before final staging qualification. |
 | Staging archive | Pending. Record exact source, version/build, channel/label, filename, SHA-256 and producer run/receipt. A diagnostic local wheel is not this public Conda artifact. |
-| Installed platform matrix | Pending for that exact archive. Require Linux, Apple Silicon macOS and Windows, each on Python 3.11–3.14, with installed provenance, public dependency closure and copied public offline receiving outside source checkouts. |
+| Installed platform matrix | Pending for that exact archive. Require Linux, Apple Silicon macOS and Windows, each on Python 3.11–3.14, with installed provenance, public dependency closure and copied public offline receiving outside source checkouts. macOS work is explicitly deferred under #194 until a feasible execution route is agreed; no Mac result or release waiver is supplied by that deferral. |
 | Stable publication | Pending final acceptance. Check the visible release title, tag and package version are exactly `0.15.0`; promote the same tested archive and verify the public coordinate/digest plus a clean public installation. |
 | Archive and coordination | Complete identical-tag Zenodo archival and the release-specific MOLI notice, recording exact public version/source/package coordinates/digest, verification limits and follow-up owners. Update the same notice for later package events. |
 
