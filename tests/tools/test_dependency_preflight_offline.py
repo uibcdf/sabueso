@@ -70,9 +70,9 @@ def source_root(root):
         "      - run: python -m pip install --no-deps --no-build-isolation .ackredit-candidate\n"
     )
     text = workflow.read_text()
-    # This synthetic inventory declares only the first two jobs as source
-    # candidates; leave the additional public-package receiving route independent.
-    assert text.count(step) == 3
+    # The two current environment-installing jobs rehearse source candidates;
+    # the macOS-only codec job is outside the prospective support matrix (#194).
+    assert text.count(step) == 2
     workflow.write_text(text.replace(step, checkout + step, 2))
     assert preflight(root) == []
     return root

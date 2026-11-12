@@ -9,6 +9,29 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Bounded prospective macOS support exception (2026-11-12 UTC, #194/#112)
+
+The maintainer selects the [bounded exception](macos_support_exception.md) for
+prospective 0.15.0 support and subsequent releases while no suitable Mac route
+exists. Review it before every release and require actual qualification before
+restoring the claim. Source and staged-installed matrices retain Linux/Windows
+on Python 3.11–3.14; four Linux public-Ackredit lanes, Ruff, coverage, governance,
+archive identity, public closure and resource guards remain due. The manual Mac
+probe stays unchanged and separately authorized. Published 0.14.0 evidence and
+all historical receipts stay intact. The central registry patch is prepared for
+owner review; adoption remains separately pending its authorized delivery.
+
+The [local receipt](../evidence/macos_support_exception_checkpoint_20261112.json)
+records all 140 selected controls passing, complete event integrity and the
+warning-fatal documentation build. Retain exact pushed head, complete selected
+local events, unchanged Linux/Windows
+step-body comparison, protected input hashes and canonical registry patch under
+`recovered_work/checkpoint_recovery_20261106/b7-macos-support-exception-1/`.
+The intermediate `[skip ci]` route remains authorized; exact-final-head CI and
+governance recovery for the current supported scope remain required before
+qualification. No new dispatch, candidate build, publication or release follows
+from local preparation. Owners #194/#112/#148 retain the remaining gates.
+
 ### Current editable receiving and molecule task (2026-11-12 UTC, #112/#148/#76)
 
 The [selected receipt](../evidence/current_editable_receiving_checkpoint_20261112.json)

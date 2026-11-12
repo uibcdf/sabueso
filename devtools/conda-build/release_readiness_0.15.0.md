@@ -12,9 +12,10 @@ is development-tool validation, not hosted recovery. The old `3c26790` batch has
 failed/cancelled work and cannot qualify later code. The authorized `74308ba`
 batch has verified governance but failed CI: twelve scratch stops, a macOS RAM
 refusal before pytest and missing coverage input. A [local preflight correction](../../devguide/evidence/ci_preflight_capacity_checkpoint_20261112.json)
-records capacity and bounded settling without relaxing limits. Actual macOS
-recovery, exact-final-head CI and all candidate/artifact prerequisites remain
-necessary.
+records capacity and bounded settling without relaxing limits. Under the later
+bounded support exception below, exact-final-head Linux/Windows CI and all
+applicable candidate/artifact prerequisites remain necessary; Mac recovery is
+required for restoring its prospective support claim.
 
 Subsequent source/installed jobs also stop at the fixed 6 GiB scratch ceiling,
 with RAM above the reserve. The local
@@ -31,8 +32,12 @@ now measures the macOS refusal: 2.929 GiB finally available against a 3.400 GiB
 one-worker criterion. It starts no pytest and qualifies no platform/package.
 The maintainer defers further Mac validation under
 [#194](https://github.com/uibcdf/sabueso/issues/194) while a viable route is
-identified. The missing qualification remains explicit; the deferral changes no
-existing matrix, support claim or release gate.
+identified. The subsequent [bounded support decision](../../devguide/pending_proposals/macos_support_exception.md)
+selects Linux and Windows for prospective 0.15.0 support, reviewed before each
+later release. macOS is outside the future supported scope until requalified.
+Required source/staging matrices follow Linux/Windows × Python3.11–3.14; the
+central registry patch is prepared separately for owner review. The earlier
+published 0.14.0 platform receipts and actual Mac refusal remain unchanged.
 Exact final-source CI/governance and all B7/candidate/artifact gates remain due.
 
 ## Required records
@@ -48,7 +53,7 @@ Exact final-source CI/governance and all B7/candidate/artifact gates remain due.
 | Dependencies and public fixtures | Run release dependency preflight and fixture delivery checks, then prove the actual installed public dependency closure. An editable workspace or static metadata check has its own narrower scope. |
 | Schema 0.3.14 | Unpublished and not frozen. Generate its frozen public Card with a preliminary local Conda candidate installed in a clean environment, as the existing schema policy prescribes. Preserve 0.3.13 and earlier. Include the accepted freeze in the final source checkpoint before final staging qualification. |
 | Staging archive | Pending. Record exact source, version/build, channel/label, filename, SHA-256 and producer run/receipt. A diagnostic local wheel is not this public Conda artifact. |
-| Installed platform matrix | Pending for that exact archive. Require Linux, Apple Silicon macOS and Windows, each on Python 3.11–3.14, with installed provenance, public dependency closure and copied public offline receiving outside source checkouts. macOS work is explicitly deferred under #194 until a feasible execution route is agreed; no Mac result or release waiver is supplied by that deferral. |
+| Installed platform matrix | Pending for that exact archive. Require Linux and Windows, each on Python 3.11–3.14, with installed provenance, public dependency closure and copied public offline receiving outside source checkouts. Review and record #194's bounded macOS support exception before this and every later release; confirm its central registry disposition. macOS is outside the future claimed scope until an agreed route and actual source/installed qualification restore it. No omitted lane is relabeled as PASS. |
 | Stable publication | Pending final acceptance. Check the visible release title, tag and package version are exactly `0.15.0`; promote the same tested archive and verify the public coordinate/digest plus a clean public installation. |
 | Archive and coordination | Complete identical-tag Zenodo archival and the release-specific MOLI notice, recording exact public version/source/package coordinates/digest, verification limits and follow-up owners. Update the same notice for later package events. |
 

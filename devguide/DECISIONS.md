@@ -1,5 +1,24 @@
 # Sabueso — Decision Log
 
+## Bound prospective macOS support while continuing Linux/Windows (2026-11-12)
+
+The maintainer selects a temporary supported-OS exception for the development
+line preparing 0.15.0 and later releases while no feasible Mac qualification
+route is available. Linux and Windows retain Python 3.11–3.14 source and exact
+installed-archive gates. Review the exception before every proposed release,
+including 0.16.0; restore macOS only with the measured route, source and installed
+qualification and maintainer decision recorded under #194. The
+[exception record](pending_proposals/macos_support_exception.md) owns scope and
+exit conditions under MolI's existing bounded-exception policy. The central
+registry patch is prepared for owner review; its delivery remains pending.
+
+This supersedes the earlier decision to defer testing without changing future
+platform claims. Required source/staging matrices now omit macOS; its diagnostic
+remains manual-only and needs separate execution authorization. The 16 GiB
+proposal is not an established Sabueso runtime minimum. Preserve the published
+0.14.0 support/evidence and all immutable artifacts. No provider claim, scientific
+behavior, dependency pin, resource limit, B7 acceptance or B8 authorization changes.
+
 ## Defer macOS validation pending a viable execution route (2026-11-12)
 
 After the approved capacity diagnostic and confirmation that the proposed
@@ -10,10 +29,11 @@ records 2.929 GiB finally available against a 3.400 GiB one-worker admission
 requirement; all seven samples over 30.078 s are below the unchanged threshold.
 No pytest starts.
 
-Continue independent Linux/Windows and B7 work. Retain the outstanding Mac source
-and installed-package qualification, and decide its CI/release implications
-explicitly before claiming completion. This deferral changes no existing matrix,
-support claim or release gate, and authorizes no paid infrastructure or new run.
+This first deferral is historical; the later bounded prospective-support
+decision above owns current platform scope. It initially retained the Mac source
+and installed-package qualification and required a separate decision about its
+CI/release implications before claiming completion. That first deferral changed no matrix,
+support claim or release gate and authorized no paid infrastructure or new run.
 Resume when a feasible route, its resource/cost scope and applicable exact-source/
 artifact receiving are agreed under #194. B8 remains unresumed.
 

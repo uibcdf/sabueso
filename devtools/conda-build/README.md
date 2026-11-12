@@ -10,6 +10,15 @@ The unpublished [0.15.0 readiness worksheet](release_readiness_0.15.0.md) prepar
 acceptance and exact-source/artifact handoff. It does not resume candidate
 selection, schema freeze, staging or publication.
 
+For the prospective 0.15.0 line, supported-platform qualification covers Linux
+and Windows on Python 3.11–3.14. The [bounded macOS exception](../../devguide/pending_proposals/macos_support_exception.md)
+under #194 is reviewed before each later release. macOS is outside the future
+supported scope until its source and installed-archive qualification is restored.
+The manual capacity probe grants no platform acceptance. Historical 0.14.0 and
+provider receipts below remain unchanged; exact Linux/Windows candidate gates,
+public closure, archive identity and B7/B8 requirements still apply. Central
+registry adoption is separately pending the owning update.
+
 After every new release, including a source-only release, and each actual package
 publication, create or update one release-specific notice in `uibcdf/moli`.
 Use the [central template](https://github.com/uibcdf/moli/blob/main/devguide/templates/release_publication_notice.md)
@@ -76,7 +85,7 @@ older release receipts remain scoped to the resources present in those artifacts
 the only claimed public route (the `noarch` conda package); Sabueso publishes no wheel. The gate checks artifact
 digest, source channel, public dependency provenance, package version, and
 an API smoke test (a card whose quantities are sealed by `to_dict()` and verified by
-`from_dict()`) in clean Linux, macOS Apple Silicon (arm64) and Windows
+`from_dict()`) in clean Linux and Windows
 environments for Python 3.11–3.14, with the
 public SMonitor, PyUnitWizard and DepDigest builds.
 The installed check also rejects an Ackredit import from a source checkout,
@@ -229,7 +238,7 @@ Before selecting the final candidate:
    publication date.
    Run local gates, inspect exact final-SHA CI/governance and confirm the registry
    coordinate before dispatching the staged build.
-4. Inspect the staged archive and complete Linux/macOS/Windows × Python 3.11–3.14
+4. Inspect the staged archive and complete Linux/Windows × Python 3.11–3.14
    installed gates, including required-provider regressions.
 5. Then publish the stable GitHub release, promote the tested file, verify a clean
    public install and archive the identical tag on Zenodo.

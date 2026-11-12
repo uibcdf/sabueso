@@ -144,8 +144,9 @@ commit messages, issues, pull requests, release notes and documentation.
   dependency, packaging, migration or integration gates. See `devguide/TESTS.md`
   and `MOLI_GUIDE.md#moli-engineering-baseline`.
 - Releases follow the staged route in `devtools/conda-build/README.md`:
-  - the candidate's CI, a staging build, and the installed-package gates on Linux,
-    macOS and Windows;
+  - the candidate's CI, a staging build, and the installed-package gates on every
+    currently claimed platform; see README and the bounded prospective macOS
+    exception under #194;
   - then the GitHub release, promotion to the public channel, a clean public install,
     and the Zenodo archive.
 - After every new Sabueso release, including source-only releases, and every new

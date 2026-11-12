@@ -99,8 +99,15 @@ components:
 conda install -c uibcdf -c conda-forge sabueso
 ```
 
-It runs on Linux, macOS Apple Silicon (arm64) and Windows with Python 3.11–3.14.
-macOS support is currently limited to Apple Silicon (arm64). Intel-based macOS
+It targets Linux and Windows with Python 3.11–3.14 for the development line
+preparing 0.15.0. Prospective macOS support is temporarily suspended under
+[#194](https://github.com/uibcdf/sabueso/issues/194): no suitable qualification
+route is currently available. Review this bounded exception before each later
+release and restore support only after the applicable Apple Silicon source and
+installed-package gates pass. The [exception record](devguide/pending_proposals/macos_support_exception.md)
+owns its exit conditions and pending central registry update. macOS may work but
+is outside this prospective supported scope; `noarch` alone supplies no guarantee.
+The published 0.14.0 macOS qualification above remains unchanged. Intel-based macOS
 (x86_64) is not part of the supported platform matrix. Support may be
 reconsidered if there is demonstrated user demand. `pandas` is optional; install
 it (`conda install -c conda-forge pandas`) to turn tables into DataFrames. Avoid 0.1.0:

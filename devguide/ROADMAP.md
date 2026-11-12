@@ -26,6 +26,11 @@ of complete source coverage, live health, consumer usefulness or human acceptanc
 
 ## Accepted long-term execution stages
 
+Prospective platform scope for the 0.15.0 line is Linux and Windows under the
+[bounded macOS exception](pending_proposals/macos_support_exception.md) in #194.
+Review it before every later release and restore macOS after actual qualification;
+historical 0.14.0 evidence and all remaining B7/B8 dependencies stay distinct.
+
 The maintainer has resumed the complete six-stage program. The stages retain
 their dependencies and separate acceptance requirements; the current 0.15.0
 scope stays fixed. Record an updated developer-guide checkpoint after every

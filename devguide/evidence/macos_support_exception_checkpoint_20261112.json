@@ -1,0 +1,155 @@
+{
+  "state": "BOUNDED_PROSPECTIVE_MACOS_EXCEPTION_LOCAL_GATES_PASS_REGISTRY_DELIVERY_PENDING",
+  "owner": "Sabueso maintainers #194/#112/#148",
+  "review_trigger": "Before every proposed release, including0.16.0, and when a feasible Mac qualification route becomes available",
+  "source_base": "cf6e4e2ff7101921080eb31480d731f547863165",
+  "runtime_under_test": "0.14.0+259.gcf6e4e2",
+  "support_scope": {
+    "prospective_from": "0.15.0 development line; review at each subsequent proposed release",
+    "supported_os": [
+      "linux",
+      "windows"
+    ],
+    "python": [
+      "3.11",
+      "3.12",
+      "3.13",
+      "3.14"
+    ],
+    "macos": "not claimed until the agreed Apple Silicon route and actual source/installed-candidate qualification restore support",
+    "minimum_ram_gib": null,
+    "ram_note": "16GiB was proposed execution headroom, not a demonstrated runtime minimum",
+    "historical014_qualification_unchanged": true
+  },
+  "policy": {
+    "url": "https://github.com/uibcdf/moli/blob/main/devguide/policies/python_ci_policy.md",
+    "blob_sha": "f3da185469efe7b474fd178deba3093b72619081",
+    "rule": "Existing bounded macOS support exception; reason, owner-local issue, README limitation and exit condition. No shared policy changes."
+  },
+  "future_workflow_scope": {
+    "ci_jobs": 14,
+    "source_os_python_cells": 8,
+    "installed_public_ackredit_cells": 4,
+    "pytest_lanes": 12,
+    "staged_installed_os_python_cells": 8,
+    "source_codec_reports": 8,
+    "separate_governance_jobs": 1,
+    "mac_capacity_probe": "Unchanged, manual-only, no execution authorized"
+  },
+  "selected_gate": {
+    "distinct_cases": 140,
+    "counts": {
+      "collected": 140,
+      "deselected": 0,
+      "errors": 0,
+      "executed": 140,
+      "failed": 0,
+      "not_executed": 0,
+      "passed": 140,
+      "reruns": 0,
+      "skipped": 0,
+      "subtests": {},
+      "warnings": 0,
+      "xfailed": 0,
+      "xpassed": 0
+    },
+    "pytest_duration_s": 22.50178266997682,
+    "resources": {
+      "workers": 1,
+      "elapsed_s": 23.121,
+      "peak_owned_rss_bytes": 361787392,
+      "peak_owned_swap_bytes": 0,
+      "minimum_host_available_bytes": 59417718784,
+      "host_reserve_bytes": 17179869184,
+      "peak_owned_scratch_bytes": 4649,
+      "scratch_retained": false
+    },
+    "events_sha256": "170275729bdf4efc750f22f4ca1de7661981c434b06e09fae2c3939b5a2d9b56",
+    "resource_sha256": "d4c0bad05f29443aac5688000c839c1d184a18b04ce7b0680ebe163d1649a884"
+  },
+  "earlier_red_outcomes": {
+    "new_platform_scope_before_changes": "Two new scope controls fail under the old legitimate platform matrix; not scientific assertion failures",
+    "first_full_selected_attempt": "Two failures and four setup errors exposed two old Mac-specific assertions and one new test expectation mistake; fixed before complete140case passing rerun",
+    "earlier_red_add_passing_coverage": false
+  },
+  "preservation": {
+    "state": "PASS",
+    "base": "cf6e4e2ff7101921080eb31480d731f547863165",
+    "unchanged_source_step_bodies": "Every Linux/Windows source step and each full Ackredit/quality/coverage job match the baseline; only source matrix/removed Mac architecture guard and Mac-only codec job differ.",
+    "unchanged_staged_installed_step_bodies": "Exact producer and all installation/closure/receiving steps match the baseline; only Mac rows and their architecture guard removed.",
+    "manual_capacity_workflow_unchanged": true,
+    "published014_release_plan_unchanged": true,
+    "scientific_runtime_and_other_original_inputs_unchanged": 1352,
+    "expected_changed_files_in_prior_scope": [
+      ".github/workflows/ci.yml",
+      "tests/core/test_staged_conda_install_offline.py",
+      "tests/tools/test_ci_pytest_resources_offline.py",
+      "tests/tools/test_dependency_preflight_offline.py"
+    ],
+    "current_inputs": 1360,
+    "bash_bodies_syntax_checked": 34,
+    "protected_source_and_original_inputs_unchanged": 52,
+    "historical_receipts_untouched": true,
+    "scope": "Static preservation and syntax only, not a hosted/platform or installed-package passing result"
+  },
+  "documentation": {
+    "state": "PASS",
+    "exit": 0,
+    "reason": null,
+    "elapsed_s": 26.054,
+    "peak_owned_rss_bytes": 284155904,
+    "minimum_host_available_bytes": 59432853504,
+    "workers": 1,
+    "native_pools": 1,
+    "scope": "Warning-fatal local Sphinx build; notebooks not executed by existing configuration"
+  },
+  "central_registry": {
+    "state": "REVIEWABLE_PATCH_PREPARED_AUTHORIZED_DELIVERY_PENDING",
+    "target": "uibcdf/moli moli.toml components.sabueso only",
+    "base_blob_sha": "721ecf951ea04dfe58161151f59d86deb7a0ec62",
+    "new_claim": [
+      "linux",
+      "windows"
+    ],
+    "os_support_review_state": "excepted",
+    "macos_exception_issue": "uibcdf/sabueso#194",
+    "patch_sha256": "8ec15bfcf1e04faa6fd6beb33e31db424f11e29e78ebef6468b57f35d9aceafc",
+    "validator": {
+      "state": "PASS",
+      "scope": "Proposed remote-registry snapshot checked by the existing local MolI OS-support validator; no central source or registry file was modified",
+      "validator": "/fast_data/home/liliana/repos@uibcdf/moli/devtools/scripts/validate_governance.py",
+      "validator_sha256": "cfc13c69e273e4ae529d67da8c2ec41c6e9881d6e6be6cd38c2b801b0ec0e5de",
+      "proposed_registry_sha256": "26e719cbfba2802a2f6da13d97db48e548ed416c4a57695133ad050885f4efed"
+    },
+    "pr_body_sha256": "424cb8f7efac0c7ed9c273daede9d000998d251e776b98d9d3efa6c80d52bd86"
+  },
+  "owning_issue_update": {
+    "issue": "uibcdf/sabueso#194",
+    "state": "EXACT_LOCAL_DRAFT_AWAITING_PUBLICATION_AUTHORITY",
+    "draft_sha256": "8696d3af9530bb41c96eee2a849edc303b0b2e92284980b25aa55adf4c75c835"
+  },
+  "changed_source_input_hashes": {
+    ".github/workflows/ci.yml": "094e1facd0f41ecfb9f265d264d007e9f99136c56907a846a5673541c5b423d3",
+    ".github/workflows/test_staged_conda_package.yaml": "2038a9ac2a7d71a61ae06dbc6f14c44bc9e86ee9420288a6bb748d4a4b1e9e53",
+    "AGENTS.md": "67d020d6235506f8516df438a05567bc9e007ade82058539a4415c32e5370ca9",
+    "README.md": "baae4324129e5f10f5423c5e3023fec96252274cd9319bb5ba459485bd95cdb0",
+    "devguide/CHECKPOINT.md": "0335274f6a6379c55d44f2c511ac9d5d1cf2b3a57111a112047d06fa74228ceb",
+    "devguide/CONTINUATION_PLAN_20261104.md": "a8f5c608029a46c2ba13ec8079485628c53146d807bda2f09a362b0affa2bfce",
+    "devguide/DECISIONS.md": "2fa10e3d80a74aaf0e5c982da283177144aac85de3d76c82195fc197e27a9f42",
+    "devguide/ROADMAP.md": "0ca6f1cc341731b5885a2493fb16801d2955ca0cd9632a63f893e84d8e7ff9aa",
+    "devguide/TESTS.md": "7c1ea4c14dbc5075eda2a0d974ceeedb2a3c70b43ba8aecca7cc1fc862ab5c0d",
+    "devguide/pending_proposals/deferred_ci.md": "17b13704333c6f96244f5bab43c3238e403fce2e8bf19cc5b6a30f6fe56a9da3",
+    "devguide/pending_proposals/macos_support_exception.md": "2325ddf215407f24d865846ce44ee104ca6b6b896e3fcdc9ed54a69f593082d3",
+    "devtools/conda-build/README.md": "65f7e8784f0010c36a9cc8b4ca8d30890778e4a9fe9a4af5350af10b51c94c8b",
+    "devtools/conda-build/release_readiness_0.15.0.md": "d4083de7e16f567ce2a1a19af31114ef81353463ee989b5f9b7934a54af7052c",
+    "docs/content/user/quickstart.md": "e148d0c733f9f536c35f49be34dd6db227b7d46bcedcde9aa1350b9831501491",
+    "docs/index.md": "7facdab5ce35779c81bedcf2948f2bb72e0d28018fbe7fb058c96e9656958930",
+    "tests/core/test_staged_conda_install_offline.py": "8608a085aa13bee801efd5a08b55590a29bc34efdf616545674a2f0ce3724f37",
+    "tests/tools/test_ci_pytest_resources_offline.py": "44b6f5e799238578a4d89163340e883722c2c64cd5f5de9019e406cf8df8d226",
+    "tests/tools/test_dependency_preflight_offline.py": "35e8fd7a4a9f8ce1005a441ac821c8753e29841bd9ca434426ed52f8d96e5dfa",
+    "tests/tools/test_platform_scope_offline.py": "12e7e0324cbbeef6370ed76d59ba77dbd4e8cc1fe475f83a9858eac91afe473e"
+  },
+  "full_scope_map_sha256": "d0c257fe5a8f679fec8b8bb89d9c3a793448715621c5f6570fc10201865dcaa0",
+  "limits": "Selected local workflow/release controls, TOML OS validator, syntax and documentation only. No full scientific suite, hosted CI/governance, new installed archive, private consumer acceptance, candidate/schema freeze, staging, stable release or paid infrastructure is supplied or launched. Shared provider support, runtime/dependency behavior, resource ceilings and historical artifacts remain unchanged.",
+  "recorded_utc": "2026-11-12T05:27:57.579550+00:00"
+}

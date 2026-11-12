@@ -598,7 +598,7 @@ def test_preflight_only_respects_exact_owned_stop(tmp_path, monkeypatch):
     assert not any(key in data for key in ("command", "scratch", "pytest_exit_code"))
 
 
-def test_manual_capacity_workflow_reuses_the_macos_source_setup():
+def test_manual_capacity_workflow_keeps_architecture_and_common_source_setup():
     workflow_path = ROOT / ".github/workflows/ci_capacity_probe.yml"
     plain = yaml.load(workflow_path.read_text(), Loader=yaml.BaseLoader)
     assert set(plain["on"]) == {"workflow_dispatch"}
@@ -631,6 +631,13 @@ def test_manual_capacity_workflow_reuses_the_macos_source_setup():
             step["run"] = step["run"].strip()
         expected.append(step)
     actual = deepcopy(job["steps"][:-2])
+    architecture = actual.pop(1)
+    assert architecture == {
+        "name": "Verify Apple Silicon macOS runner",
+        "if": "runner.os == 'macOS'",
+        "shell": "bash",
+        "run": 'test "$(uname -m)" = arm64',
+    }
     for step in actual:
         if "run" in step:
             step["run"] = step["run"].strip()

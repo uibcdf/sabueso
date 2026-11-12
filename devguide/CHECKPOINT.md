@@ -5,6 +5,37 @@ Current working-state checkpoint: **2026-11-12 (UTC)**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Prospective macOS support exception — Linux/Windows gates retained
+
+The maintainer selects Linux and Windows for the development line preparing
+0.15.0 while no feasible macOS qualification route is available. The
+[bounded exception](pending_proposals/macos_support_exception.md) is owned by
+[#194](https://github.com/uibcdf/sabueso/issues/194) and reviewed before every
+later release, including 0.16.0. Restore macOS only after an agreed Apple Silicon
+route and applicable source/installed-archive qualification. No 16 GiB runtime
+minimum is established by the earlier proposed execution headroom.
+
+The required source and staging matrices now cover Linux/Windows on Python
+3.11–3.14. CI retains twelve pytest lanes: eight source OS/Python lanes and four
+installed-public-Ackredit Python lanes, plus Ruff and coverage: fourteen jobs
+total, eight source codec reports. The separate manual Mac diagnostic remains
+available only for separately authorized resumption. Published 0.14.0 artifacts,
+twelve-lane evidence and historical claims remain intact. No runtime, dependency,
+scientific selection, shared-machine limit or B7/B8 acceptance is changed.
+
+The [local receipt](evidence/macos_support_exception_checkpoint_20261112.json)
+records all 140 selected platform/resource/dependency/staging/release/codec
+controls passing, warning-fatal Sphinx and 34 Bash-body syntax checks. All remaining
+Linux/Windows step bodies and all 52 protected SOURCE/original inputs are preserved.
+These local checks do not supply passing hosted or installed-candidate evidence.
+
+The central MolI registry patch is prepared separately for owner review; adoption
+is pending until delivered. Exact-final-head CI/governance and exact installed
+Linux/Windows candidate qualification remain due. Local checks and raw receipts
+are retained under
+`recovered_work/checkpoint_recovery_20261106/b7-macos-support-exception-1/`.
+The earlier unchanged-matrix deferral below is superseded for future support scope.
+
 ## Current shared-provider receiving and molecule agent task — selected local checks PASS
 
 The shared Python 3.14 workspace now supplies newer canonical editable providers.
@@ -40,13 +71,14 @@ Exact-final-head hosted CI/governance and installed-platform qualification remai
 due. macOS stays deferred under #194; B8 candidate/schema/staging/publication is
 unresumed. No new remote workflow or issue comment is authorized by this work.
 
-## macOS validation deferred under #194
+## Original macOS validation deferral and diagnostic under #194
 
 The maintainer asks to defer further macOS validation while a feasible execution
 route is identified. [Sabueso #194](https://github.com/uibcdf/sabueso/issues/194)
 owns the deferred work, resource/cost decision and resumption criteria. Continue
 independent Linux/Windows and B7 work; keep the macOS qualification gap explicit.
-The decision changes no workflow matrix or existing release requirements.
+That initial deferral changed no matrix or release requirement; the later bounded
+support decision above now owns prospective scope.
 
 The approved single [diagnostic](https://github.com/uibcdf/sabueso/actions/runs/43154091218)
 at `d4f0171` measures three CPU slots and **7 GiB physical RAM**. Seven samples

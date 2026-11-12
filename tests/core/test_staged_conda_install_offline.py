@@ -78,8 +78,8 @@ def test_staged_matrix_uses_candidate_verifier_and_supported_lanes():
     workflow = WORKFLOW.read_text(encoding="utf-8")
     assert workflow.count("ref: ${{ inputs.candidate_sha }}") == 2
     assert workflow.count('test "$(git rev-parse HEAD)" = "$CANDIDATE_SHA"') == 2
-    assert "os: [ubuntu-latest, macos-26, windows-latest]" in workflow
-    assert 'test "$(uname -m)" = arm64' in workflow
+    assert "os: [ubuntu-latest, windows-latest]" in workflow
+    assert "macos-26" not in workflow
     assert 'python: ["3.11", "3.12", "3.13", "3.14"]' in workflow
     assert "uibcdf/label/staging::sabueso=" in workflow
     assert "uibcdf::smonitor=0.17.0=py_0" in workflow

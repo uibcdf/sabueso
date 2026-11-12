@@ -914,7 +914,7 @@ these technical checks.
 | Large historical exploration admission | The frozen-original cases in `test_card_cell_support_offline.py` and `test_card_regional_reading_offline.py` first assert visible default refusal, then pass explicit encoded/decoded budgets equal to the verified 89,849,893-byte original. Stream gzip copying/hash checks and retain the frozen scientific prohibitions; do not raise production defaults or regenerate the fixture to pass CI. Run these memory-heavy gates serially under an owned resource supervisor, separately if host headroom requires (#178/#167) |
 | Public exploration file transport | `test_exploration_transport_offline.py` plus all affected saved/human/access/agent/navigation, argument/diagnostic/quantity and dependency cases. Exact original JSON, genuine historical producers, real quantities/support, inert outside-checkout read, resealing, strict single-frame/checksum/expansion and visible positive/None limits, optional backend absence, no unintended imports, atomic no-clobber/replace failures and cleanup. All twelve CI routes additionally smoke the installed API outside the checkout; old Python uses pinned public Conda backports.zstd 1.8.0. New runtime needs its own unskipped exact-source full receptor qualification; #179 also checks inert assembly setup in a fresh module-import process and before the agent catalog test (#178/#167) |
 | Saved logical-format admission | `tests/tools/test_exploration_storage_experiment_offline.py`, affected saved literal/scientific/history/shared/filter/chemical, transport, argument and quantity gates, and copied consumers. Admit logical formats @1–@12 and @15 only after recognized wrappers and resource budgets are handled, before inspecting display records. Refuse unknown/experimental or malformed format declarations with the explicit unsupported-format diagnostic. Keep all frozen kernels, genuine original controls and accepted wrapper meanings unchanged; a recognized but malformed historical payload still reaches its original verifier (#148/#112) |
-| Zstandard backend qualification | `tests/tools/test_zstd_backend_offline.py` plus comparison/storage/dependency-preflight cases; actual native 3.14 or pinned backport 1.8.0 on 3.11–3.13, genuine native/backport frames, exact typed original bytes, truncation/checksum/trailing/concatenation/expansion refusal and strict report membership. CI emits twelve OS/Python reports (three additional macOS ARM64 receiving jobs); cross-read all fresh reports with source/tool/backend identity after full exact-head receptor checks. The 18-job CI retains thirteen pytest lanes. No package dependency or public transport adoption (#178) |
+| Zstandard backend qualification | `tests/tools/test_zstd_backend_offline.py` plus comparison/storage/dependency-preflight cases; actual native 3.14 or pinned backport 1.8.0 on 3.11–3.13, genuine native/backport frames, exact typed original bytes, truncation/checksum/trailing/concatenation/expansion refusal and strict report membership. Under the bounded #194 macOS exception, CI emits eight Linux/Windows × Python reports; cross-read all fresh reports with source/tool/backend identity after full exact-head receptor checks. The 14-job CI retains twelve pytest lanes. Historical twelve-platform reports remain separate. No package dependency or public transport adoption (#178) |
 | Compressor comparison methodology | `tests/tools/test_compressor_comparison_offline.py`, experimental storage and accounting cases; actual available-backend byte reconstruction, unavailable status without fallback/zero metrics, strict visible budgets, fresh-worker input binding, seeded complete repeats, duplicate settings, mixed hash/backend/RSS refusal and caller-output preservation. Codec timing excludes original scientific receiving; measure that separately with an inert reader. Linux peaks use VmHWM since exec; record unmeasured/platform-specific alternatives explicitly (#178) |
 | Experimental storage representation | `tests/tools/test_exploration_storage_experiment_offline.py` and `test_exploration_storage_observation_offline.py`; exact typed occurrence reconstruction, literal reference lookalikes, genuine capsule/inert original receiving, unsupported-format refusal, resealed part/scaffold changes, pre-expansion/input refusal, positive/None overrides and preserved caller outputs. Run the engineering CLI over original public readings with an owned memory supervisor; byte equality is separate from original scientific verification and timings are not budgets (#167) |
 | Discoverable navigation previews | `test_card_navigation_preview_offline.py`, all affected human/nature/context/agent/saved/scientific navigation, argument and quantity cases; source-heavy and generic nature contexts, question overflow, actual indices, complete filters/order, no science during display, inert repeat saving, genuine original prefix and resealed unknown policy refusal. Preserve original verifiers; exact-source CI/governance qualification belongs to #148/#112 |
@@ -1218,9 +1218,9 @@ available capacity retained. The mode rejects a forwarded command and never
 overwrites an existing report. Normal execution and its limits are unchanged.
 
 The manual-only `.github/workflows/ci_capacity_probe.yml` has one macOS26/arm64,
-Python3.14 job with a 15-minute outer timeout. It reproduces the normal macOS
-source setup through installed smoke, public fixture checks, codec emission and
-installed transport, then performs only the capacity observation. Native pools
+Python3.14 job with a 15-minute outer timeout. It retains the original Mac
+architecture check and common source setup through installed smoke, fixture
+checks, codec emission and installed transport, then performs only the capacity observation. Native pools
 remain one; the report is uploaded even on refusal. A successful diagnostic
 workflow supplies no scientific, full-CI or candidate qualification. Dispatch
 needs separate exact-head maintainer authorization; do not automatically run the
@@ -1229,8 +1229,9 @@ full matrix afterward or retry a refused probe.
 After changes, run the complete launcher module, the three receiving controls
 above and the launcher/`test_zstd_backend_offline.py` branch-coverage combination.
 Check the new workflow's manual-only trigger, unchanged source setup/environment,
-bounded job, report retention and Bash syntax. Preserve all normal workflow bytes,
-scientific selections and protected originals. The
+bounded job, report retention and Bash syntax. The later #194 support exception
+changes only applicable platform lanes; preserve their scientific selections and
+protected originals. The
 [receipt](evidence/ci_capacity_probe_checkpoint_20261112.json) distinguishes actual
 local checks, old-head twelve-producer codec receiving and pending hosted scope.
 
@@ -1239,8 +1240,11 @@ The later approved single macOS diagnostic records the actual
 maintainer defers further Mac validation under
 [#194](https://github.com/uibcdf/sabueso/issues/194) until a feasible route and
 resumption criteria are agreed. Keep actual Mac qualification pending while
-independent Linux/Windows and B7 work proceeds. Existing workflow matrices,
-support claims, resource limits and release gates stay fixed by this deferral.
+independent Linux/Windows and B7 work proceeds. That first deferral kept matrices
+and support claims fixed. The later [bounded support exception](pending_proposals/macos_support_exception.md)
+removes macOS from prospective support and required source/staging matrices,
+retaining equivalent Linux/Windows gates and every resource limit. Review it at
+each proposed release; the manual probe grants no authority to resume a Mac run.
 
 ### Recovering deferred CI
 
@@ -1274,12 +1278,12 @@ gh-run-receptor watch <run-id> --repo uibcdf/sabueso --profile ci \
 
 Verify both runs' `headSha` against the recorded candidate. Check every job's
 conclusion and full test summary, not just the workflow's overall green status.
-The current CI has eighteen jobs: thirteen pytest lanes (nine public OS/Python
-lanes and four installed public-Ackredit lanes), three additional older-Python
-macOS ARM64 Zstandard receiving jobs, Ruff and coverage publication. Governance
-adds its separate job. Receive all twelve fresh OS/Python backend reports through
-the Zstandard cross-reader gate; the three extra jobs are not extra full pytest
-lanes. A missing, skipped, cancelled or failing applicable job leaves
+The current CI has fourteen jobs under #194's bounded support exception: twelve
+pytest lanes (eight Linux/Windows OS/Python lanes and four installed public-Ackredit
+lanes), Ruff and coverage publication. Governance adds its separate job. Receive
+all eight fresh OS/Python backend reports through the Zstandard cross-reader gate.
+The historical eighteen-job/twelve-report receipts keep their original scope.
+A missing, skipped, cancelled or failing applicable job leaves
 qualification pending. Record run URLs and retained captures in the owning issue
 and checkpoint receipt. If `main` has advanced, these results qualify only the
 recorded candidate; the newer head still needs its own applicable checks.

@@ -504,6 +504,13 @@ gates remain separate. This increment does not resume B8.
 
 ## Three remaining closure fronts
 
+The prospective platform scope is now Linux and Windows under
+[#194's bounded macOS exception](pending_proposals/macos_support_exception.md).
+Review it at every proposed release; restoring macOS needs its actual source and
+installed-package evidence. Preserve historical 0.14.0 claims, supported Python
+minors and all other acceptance/delivery dependencies. Central registry adoption
+is separately pending its owning review.
+
 Use this bounded order to finish the agreed 0.15.0 work. It distinguishes delivered
 implementation from actual acceptance and delivery; neither an increasing test
 count nor a repeated generic "complete B6" instruction measures release progress.

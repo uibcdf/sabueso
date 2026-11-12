@@ -11,9 +11,12 @@ Sabueso is distributed through the `uibcdf` conda channel, for Python 3.11–3.1
 conda install -c uibcdf -c conda-forge 'sabueso>=0.10.0'
 ```
 
-macOS support is currently limited to Apple Silicon (arm64). Intel-based macOS
-(x86_64) is not part of the supported platform matrix. Support may be
-reconsidered if there is demonstrated user demand.
+Published 0.14.0 has recorded Linux, Apple Silicon macOS (arm64) and Windows
+qualification. For the development line preparing 0.15.0, the prospective
+supported scope is Linux and Windows. macOS support is temporarily suspended
+under [#194](https://github.com/uibcdf/sabueso/issues/194), reviewed before each
+later release and restored only after qualification. Intel macOS remains outside
+the supported matrix.
 
 pandas is optional, for tables as DataFrames: `conda install -c conda-forge pandas`. To
 work on Sabueso itself, see *Developers*.
