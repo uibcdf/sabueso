@@ -173,6 +173,131 @@ Mol* nor anywidget forces React, Svelte or Vue. Evaluate table/filter/detail
 complexity, accessibility, reusable components and maintenance before choosing.
 Shared patterns do not make Viewer internals a stable public dependency.
 
+## Refined recommendation and portability requirement — 2026-11-12
+
+The maintainer expresses a preference for an independent Sabueso application and
+requires room to migrate to better infrastructure, with compatibility with
+MolSysViewer and its future direction. **Infrastructure replaceability is a design
+requirement.** The local-browser-first recommendation below, host/framework,
+product name and shared interfaces remain proposals for discussion.
+
+An independent application gives Cards, mixed Decks and entities without molecular
+coordinates a complete home. It can preserve a full workspace, discoverable
+actions, selection/history and source panels without a notebook's cell order or
+kernel interaction becoming part of the researcher's ordinary task. Its costs
+are real: session lifecycle, a frontend build, packaging, input handling and
+application-level integration all become maintained product responsibilities.
+
+The proposed first host is a **local browser application backed by Python**.
+Provide a simple launcher, packaged frontend assets and a dedicated workspace;
+ordinary retained-data browsing should work offline. Jupyter remains useful for
+programmatic work and later embedding of the same components. A native window
+can reuse the frontend when its value justifies its own qualification.
+
+| Choice | Useful advantage | Cost or limitation for this product |
+| --- | --- | --- |
+| Notebook as the primary UI | Existing Python workflows and the most direct supported Viewer transport | Cells, kernel lifetime and notebook setup shape the user experience; a dedicated persistent Deck workspace needs extra design |
+| Independent local browser application | Full workspace and a web frontend that can later serve other hosts; no notebook is needed for ordinary navigation | Python service/transport, local launcher, session recovery and live molecular embedding must be qualified |
+| Native window immediately | Native file/window affordances and a clear desktop entry | Qt/Electron/Tauri each add runtime, packaging and graphics/platform receiving before the first product slice |
+| Sabueso only as a Viewer add-on | Natural contextual knowledge alongside a loaded molecule | Deck/disease exploration and work without coordinates still need their own entry and scientific context |
+
+### Boundaries that make a later migration practical
+
+Keep the scientific core, knowledge-session operations, reusable UI and host
+integration separate. The proposed dependency structure is:
+
+```mermaid
+flowchart LR
+    H[Browser / notebook / optional native host] --> U[Reusable explorer UI]
+    U --> K[Knowledge session interface]
+    K --> S[Sabueso scientific API and saved readers]
+    U --> A[Molecular view adapter]
+    A --> V[MolSysViewer public integration]
+```
+
+- Scientific meaning, quantities, support and saved reading stay with Sabueso's
+  existing Python APIs and versioned formats. GUI and HTTP models must preserve
+  literal types and native quantity codecs; coercing values at a transport
+  boundary must not silently change an original request.
+- A small knowledge-session interface carries exact capture/selection references,
+  bounded pages, operations and outcomes. Public Python and a web adapter use the
+  same application operations. UI components consume that contract instead of
+  parsing private Card storage or calling a particular server framework.
+- A molecular adapter coordinates exact mapped selections and lifecycle with
+  MolSysViewer. The provider owns its scene, picking, numerical buffers and
+  rendering endpoints. Retain its control/data-plane separation rather than
+  wrapping every molecular array in Sabueso JSON responses.
+- Host-specific file dialogs, window controls, startup/shutdown and transport
+  belong in host adapters. Components should not assume notebook globals,
+  Qt objects, a fixed port, a workstation path or a particular rendering device.
+- Persist scientific reading and lightweight workspace/view state separately,
+  with explicit versions and exact references. A framework/widget object is not
+  the archival representation. Future remote execution is a separate deployment
+  decision, with explicit placement and infrastructure-owned resource control.
+
+These boundaries reduce migration cost; changing framework, host or scientific
+semantics still requires work and receiving. Implement only the small boundaries
+needed by the first journey. Broader platform infrastructure is coordinated with
+its owner rather than implemented independently inside this GUI.
+
+### Compatibility with MolSysViewer's future plans
+
+The additional review uses the same clean `0dcdd6ce` source and live #276.
+Current contracts and dated owner decisions take precedence over older vision:
+
+| Provider direction | Status and reference | Sabueso design implication |
+| --- | --- | --- |
+| One workbench and scene model across hosts | Maintained [standalone direction](https://github.com/uibcdf/molsysviewer/blob/0dcdd6ce574d3c99483480cb38c16c1e3cc4782f/devguide/standalone_direction.md) and [transport ownership](https://github.com/uibcdf/molsysviewer/blob/0dcdd6ce574d3c99483480cb38c16c1e3cc4782f/devguide/transport_state_ownership.md) | Consume provider projections/events through an adapter and preserve its authority; sharing a host does not require merging the two products' scientific state |
+| Session on workstation/server/cluster; explicit client or server rendering | [Remote plan](https://github.com/uibcdf/molsysviewer/blob/0dcdd6ce574d3c99483480cb38c16c1e3cc4782f/devguide/remote_rendering_plan.md), retained unsupported preview outside the 1.0 contract | Keep knowledge endpoint and rendering placement separate; support capability negotiation before assuming a local WebGL canvas. Future remote or multiuser support is not delivered by local hosting |
+| Binary transport now; possible windowed structural residency later | [Data plane](https://github.com/uibcdf/molsysviewer/blob/0dcdd6ce574d3c99483480cb38c16c1e3cc4782f/devguide/data_plane_architecture.md); [windowing #55](https://github.com/uibcdf/molsysviewer/blob/0dcdd6ce574d3c99483480cb38c16c1e3cc4782f/devguide/pending_proposals/post_1.0/structure_windowing_and_lazy_materialization.md) remains unimplemented design | Delegate structural transfer/materialization; avoid depending on private buffers or assuming all future frames are resident |
+| Comparison viewports and synchronized cameras | [Multiview #49](https://github.com/uibcdf/molsysviewer/blob/0dcdd6ce574d3c99483480cb38c16c1e3cc4782f/devguide/pending_proposals/post_1.0/multiview_split_screen.md), post-1.0 design | Start with one bounded active molecular scene; let the provider own future viewport composition rather than creating a viewer for every Deck member |
+| Evolved Qt versus Electron or Tauri | [#276](https://github.com/uibcdf/molsysviewer/issues/276) is open for post-1.0 evaluation; no host migration is approved | Preserve a portable frontend and a thin native adapter; compare exact workloads before selecting a shared host |
+| Rust/WASM without a Python desktop backend | Separate long-term possibility in the [v2 vision](https://github.com/uibcdf/molsysviewer/blob/0dcdd6ce574d3c99483480cb38c16c1e3cc4782f/devguide/standalone_v2_evolution_plan.md), explicitly separated by #276 | Treat a future molecular engine or host change as a provider capability/version change. Sabueso's Python Knowledge backend has its own ownership and adoption decision |
+
+Older installer-size, instant-start and host-superiority claims in the v2 vision
+are hypotheses, as #276 explicitly records. They do not select Tauri/WASM or
+establish future compatibility. Coordinate a public live-embedding contract with
+MolSysViewer under #154 once the prototype identifies its exact needs; the
+consumer proposal remains a local handoff pending scoped publication authority.
+
+### Technology and first proof
+
+TypeScript plus a component framework is a reasonable frontend candidate for
+the growing selection/table/detail interactions. [Svelte](https://svelte.dev/docs/svelte/overview)
+offers compiled declarative components; [React](https://react.dev/learn/add-react-to-an-existing-project)
+can mount components within an existing application. Evaluate one bounded screen
+against actual table/accessibility and Viewer mounting needs before adoption.
+No frontend framework, minimum version or benchmark result is selected here.
+
+For a Python web adapter, compare a thin FastAPI service (documented
+[WebSockets](https://fastapi.tiangolo.com/advanced/websockets/) and
+[lifespan](https://fastapi.tiangolo.com/advanced/events/) facilities) with the
+aiohttp integration already used by Viewer. The session and scientific contract
+must remain usable when that server adapter changes. A shared HTTP library alone
+does not establish interoperability.
+
+Native packaging stays a later independent choice. [Tauri](https://v2.tauri.app/concept/process-model/)
+uses system WebViews and supports [external binaries](https://v2.tauri.app/develop/sidecar/),
+including a packaged Python service. [Electron](https://www.electronjs.org/docs/latest/tutorial/process-model)
+uses a Chromium-based process model. Qt has the existing experimental Viewer
+bridge. Measure installer/runtime and WebGL behavior rather than promising
+unmeasured startup or memory improvements.
+
+The first prototype should prove one complete Card/Deck/source journey and one
+exact molecular select/click/close round trip, with responsive bounded work and
+save/reopen. A small second-host mounting check should exercise the boundary
+without building another full application. These observations decide the initial
+stack; remote/multiuser services and all native installers are separate increments.
+
+### Product name proposal
+
+Prefer **Sabueso** as the visible application name, with a descriptive subtitle
+such as "Molecular knowledge explorer". "Sabueso Explorer" can distinguish the
+graphical interface in documentation when needed. Product naming, internal
+module/launcher names and whether optional GUI packaging warrants a separate
+distribution remain separate decisions. No new brand, public command or package
+name is selected by this naming recommendation.
+
 ## Execution after the platform discussion
 
 1. Agree first host, product entry, framework comparison and bounded public tasks;

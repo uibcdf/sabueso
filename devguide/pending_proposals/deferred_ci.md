@@ -21,6 +21,15 @@ CI/governance checkpoint under the existing recovery route. It grants no dispatc
 or release authority and does not qualify the older outstanding code block.
 Git records the final documentation head; no candidate is selected here.
 
+The follow-up from `e06ae09` records the maintainer's infrastructure-portability
+requirement and refines the independent-application recommendation with future
+MolSysViewer plans and naming options. It retains the same documentation-only
+scope, owners and hosted recovery route; runtime, dependencies and provider
+checkouts remain unchanged. Stack and product naming remain under discussion.
+Root format/lint, local governance, diff and scoped link checks pass; provider
+references resolve at the reviewed source. The follow-up claims no new runtime
+or browser/native qualification.
+
 ### Grouped Windows portability and memory scheduling recovery (2026-11-12 UTC)
 
 The [portability correction](../pending_bugs/ci_windows_original_portability.md)

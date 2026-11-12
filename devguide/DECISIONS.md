@@ -1,5 +1,21 @@
 # Sabueso — Decision Log
 
+## Require replaceable infrastructure and MolSysViewer compatibility (2026-11-12)
+
+The maintainer requires the interactive Sabueso design to permit migration to
+better infrastructure and to account for MolSysViewer's current and future
+direction. Preserve scientific APIs and saved Knowledge independently of the
+presentation framework, host and transport; coordinate actual shared contracts
+with their owners. Future-version compatibility still requires explicit receiving.
+
+The [refined proposal](pending_proposals/interactive_exploration_0160.md#refined-recommendation-and-portability-requirement--2026-11-12)
+records the preference for an independent application, a local-browser-first
+recommendation and the additional provider-plan review. #276 keeps Qt/Electron/
+Tauri evaluation open; remote hosting remains a preview and Rust/WASM a separate
+scientific/runtime decision. Host, frontend framework, dependencies, name and
+release scope remain under discussion. This records the design requirement,
+without adopting a provider protocol or implementing new infrastructure.
+
 ## Make interactive Card and Deck exploration the 0.16.0 product objective (2026-11-12)
 
 The maintainer accepts a first complete, bounded interactive exploration

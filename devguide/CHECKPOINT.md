@@ -15,6 +15,17 @@ advances a bounded part of long-term stage 6; the other stages retain their owne
 Host, frontend framework and independent explorer versus add-on placement remain
 the next discussion, before the architecture prototype and implementation.
 
+The maintainer additionally requires infrastructure replaceability and alignment
+with MolSysViewer's future direction. The [refined application proposal](pending_proposals/interactive_exploration_0160.md#refined-recommendation-and-portability-requirement--2026-11-12)
+compares dedicated local hosting with notebooks/native shells and records the
+provider's host-evaluation, remote, data-plane/windowing and viewport plans.
+Local-browser-first hosting and the visible name "Sabueso" are recommendations;
+host/framework, provider contracts and naming are not yet selected.
+This documentation-only follow-up passes root Ruff format/lint, local governance,
+diff checks and scoped links, including nineteen pinned provider source paths.
+Runtime/tests/dependencies remain unchanged from `e06ae09`; no new rendering or
+prototype compatibility result is claimed.
+
 The read-only sibling review uses clean MolSysViewer `0dcdd6ce574d3c99483480cb38c16c1e3cc4782f`
 and live issue reads. It identifies public visualization/interaction building
 blocks, internal Studio patterns, an anywidget notebook transport and experimental
