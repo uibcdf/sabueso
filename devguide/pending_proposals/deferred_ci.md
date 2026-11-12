@@ -9,6 +9,26 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Original-reader archive lifetime (2026-11-12 UTC, #112/#183/#148)
+
+Further actual `74308ba` source/installed reports stop at the fixed 6 GiB scratch
+ceiling with RAM above the reserve. The
+[owning analysis](../pending_bugs/ci_serial_execution_timeout.md#extracted-original-archives-outlive-their-modules--2026-11-12-utc)
+records a separate reproducible contributor: five module-scoped plain tar copies
+remain after their readers close. Release only these derived copies at module
+teardown; explicit debug retention, failed-case outputs, original data, scientific
+assertions, other shared fixtures and all execution limits remain fixed.
+
+Run the complete lifecycle, affected original receiving and installed-payload
+wiring gates. Retain exact selected outcomes, input hashes, actual pushed head,
+outside-checkout editable verification and owned cleanup under
+`recovered_work/checkpoint_recovery_20261106/b7-original-archive-lifetime-1/`.
+The intermediate `[skip ci]` route remains authorized; #112/#148 own mandatory
+exact-final-head recovery. The current `74308ba` authorization supplies no new
+head, retry, overlapping batch or additional issue body. Consolidate the current
+batch's actual outcomes before proposing the next hosted recovery. B7 independent
+acceptance and B8 resumption remain separate.
+
 ### Capacity reporting and bounded preflight settling (2026-11-12 UTC, #112/#148)
 
 The authorized `74308ba` CI43134542677/governance43134667040 batch has actually

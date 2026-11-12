@@ -21,7 +21,7 @@ MANIFEST_SHA = "d0b1d6b281a55fc9a7c4de0dcd7329ace9d16ee426ab0549f5bcb280efcb096c
 
 
 @pytest.fixture(scope="module")
-def original_tar(tmp_path_factory):
+def original_tar(tmp_path_factory, request):
     asset = (
         Path(__file__).with_name("data")
         / "molecule_activity_root_exact_live_sdk218.tar.gz"
@@ -62,7 +62,11 @@ def original_tar(tmp_path_factory):
                     == (manifest["files"][member.name]["sha256"])
                 )
             assert member.size == manifest["files"][member.name]["bytes"]
-    return path
+    try:
+        yield path
+    finally:
+        if request.config.getini("tmp_path_retention_policy") != "all":
+            path.unlink()
 
 
 class ExactGraph(OriginalGraph):

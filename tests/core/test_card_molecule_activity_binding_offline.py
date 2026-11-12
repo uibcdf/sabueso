@@ -258,7 +258,7 @@ class OriginalGraph:
 
 
 @pytest.fixture(scope="module")
-def original_graph(tmp_path_factory):
+def original_graph(tmp_path_factory, request):
     with DATA.open("rb") as stream:
         assert hashlib.file_digest(stream, "sha256").hexdigest() == ENCODED_SHA
     target = tmp_path_factory.mktemp("molecule-quantity-binding") / "original.tar"
@@ -270,9 +270,13 @@ def original_graph(tmp_path_factory):
             output.write(block)
     assert total == 123873280 and decoded.hexdigest() == DECODED_SHA
     original = OriginalGraph(target)
-    yield original
-    original.archive.close()
-    original.cache.clear()
+    try:
+        yield original
+    finally:
+        original.archive.close()
+        original.cache.clear()
+        if request.config.getini("tmp_path_retention_policy") != "all":
+            target.unlink()
 
 
 def block_current(monkeypatch):

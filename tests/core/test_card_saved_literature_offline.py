@@ -201,7 +201,7 @@ def no_network(monkeypatch):
 
 
 @pytest.fixture(scope="module")
-def original(tmp_path_factory):
+def original(tmp_path_factory, request):
     with DATA.open("rb") as stream:
         assert hashlib.file_digest(stream, "sha256").hexdigest() == ENCODED_SHA
     path = tmp_path_factory.mktemp("sdk202-original") / "original.tar"
@@ -214,8 +214,12 @@ def original(tmp_path_factory):
             target.write(chunk)
     assert total == DECODED_BYTES and digest.hexdigest() == DECODED_SHA
     control = Original(path)
-    yield control
-    control.close()
+    try:
+        yield control
+    finally:
+        control.close()
+        if request.config.getini("tmp_path_retention_policy") != "all":
+            path.unlink()
 
 
 def publication(view, ref):

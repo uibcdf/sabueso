@@ -115,3 +115,45 @@ of the actual macOS runner. The complete 96-case copied child retains its own
 scope. Actual successful macOS source receiving, the remaining current jobs and
 any later authorized exact-head recovery remain open. Keep the issue open and
 consolidate observations before another remote request or public update.
+
+## Extracted original archives outlive their modules — 2026-11-12 UTC
+
+Nine subsequently completed source/installed jobs in the same `74308ba` batch
+report `STOPPED` with `owned_scratch_limit`: four Linux source lanes, Windows
+3.13/3.14 and installed 3.11/3.12/3.14. Their actual logs and reports are retained
+with the run. These are stops at the fixed 6 GiB temporary-file safeguard, not
+passing pytest outcomes; RAM remained above the configured host reserve. This
+does not establish that every scientific assertion before interruption passed.
+Other jobs still require their actual outcomes.
+
+A separate real-reader lifecycle regression reproduces five stale extracted
+archives after their owning modules finish: SDK202/205/208/211/218 public inputs,
+2,612,336,640 bytes in total. Module fixtures previously closed their readers but
+left these reproducible plain tar copies until the whole pytest session ended.
+Per-case `tmp_path_retention_policy=failed` cannot reclaim factory-created module
+archives. This is an observed accumulation mechanism; the hosted resource report
+does not identify its complete directory composition or establish this as its
+only contributor.
+
+Those five fixtures now close their readers and unlink only their own generated
+tar after the final dependent consumer finishes. Their existing wrapper fixtures
+forward the real pytest request. `tmp_path_retention_policy=all` retains the
+copies for deliberate debugging. Original compressed inputs, failed-case outputs,
+caller files, other shared/session fixtures and all scientific assertions remain
+unchanged. No guard limit, concurrency policy, timeout or selected case changes.
+
+The complete five-case lifecycle module passes, including genuine complete
+reader/member checks, an intentionally failing child consumer, preserved failure
+diagnostics and the explicit debugging route. Its initial sampled scratch peak is
+1,720,372,496 bytes. The initial negative run remains failed; its five verified
+derived archives were removed after review while its diagnostic records remain.
+The final lifecycle control also exercises all three changed consumer wrappers.
+The broader seven-module exploratory selection is deliberately stopped through
+its own exact stop file after 1,521.541 s: long unchanged full-saving cases dominate
+it. Its actual `STOPPED` disposition and partial event stream remain retained;
+it adds no passing qualification. The complete targeted lifecycle and copied
+payload wiring checks qualify the fixture change, with unchanged scientific
+predicates verified separately by AST. No complete seven-module or full scientific
+suite is claimed for this increment.
+Actual hosted recovery and complete B7/B8 acceptance remain open under #112/#148;
+retain one consolidated update rather than publishing another per-job report.

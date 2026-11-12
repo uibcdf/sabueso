@@ -105,3 +105,29 @@ downstream-consumer results. This kit prepares only the researcher dimension;
 ordinary regressions and stand-in consumers do not close the others. B2 remains
 explicitly deferred. B8 candidate/schema freeze/staging/publication remains
 unresumed and requires its own exact-source/artifact gates and authorization.
+
+## Experienced developer-agent observation — 2026-11-12 UTC
+
+The [recorded public disease task](../evidence/developer_agent_disease_observation_20261112.json)
+is an actual interactive use by the current development agent, with extensive
+implementation/maintainer-answer exposure disclosed. It observes C4 definition,
+hierarchy versus equivalence/related xrefs, an unsupplied parent, bounded literal
+machine reading and separate-process saved source/return navigation. Source
+acquisition and Card construction are forbidden in the fresh saved reader.
+No independent researcher or scientific acceptance is supplied.
+
+The agent reached the same parent and original MONDO assertion through human and
+compact access. It interpreted `context_not_supplied` as missing supplied context,
+not source absence. An observed discovery cost remains: the human definition,
+classification and identity menus have no corresponding named compact topic
+descriptors in this capture; the agent used the declared literal-content route.
+Semantic descriptors or a short bounded example are a proposed improvement under
+#148, not a demonstrated integrity defect or a waived acceptance requirement.
+The exact local draft, raw actions and saved session are retained under
+`recovered_work/checkpoint_recovery_20261106/b7-agent-disease-observation-1/`,
+owned by #148/#112 for B7 review. No new issue comment is authorized or posted.
+
+The broader protein/molecule/specialist agent and real-consumer reviews remain
+unobserved here. A maintainer acceptance decision is pending, alongside the
+independent researcher and scientific results. Interactive elapsed time includes
+thinking/idle time and supplies no workload benchmark.

@@ -127,3 +127,141 @@ def test_04_completed_case_retention(shared):
     assert (failed / "payload").read_text(encoding="utf-8") == "failure diagnosis"
     assert shared.read_text(encoding="utf-8") == "shared"
     assert caller.read_text(encoding="utf-8") == "owned by the caller"
+
+
+@pytest.mark.parametrize("policy", ["failed", "all"])
+def test_original_archives_live_until_module_teardown_and_respect_debug_policy(
+    tmp_path, policy
+):
+    """Use actual frozen readers; never delete failed outputs or compressed inputs."""
+    client = tmp_path / "original-readers"
+    client.mkdir()
+    basetemp = client / "scratch"
+    caller = client / "caller-output.txt"
+    caller.write_text("caller output", encoding="utf-8")
+    factories = [
+        ("test_card_saved_literature_offline", "original", "control.archive.name"),
+    ]
+    if policy == "failed":
+        factories += [
+            (
+                "test_card_molecule_activity_history_offline",
+                "original",
+                "control.archive.name",
+            ),
+            (
+                "test_card_molecule_activity_history_offline",
+                "multifocal_original",
+                "control.archive.name",
+            ),
+            (
+                "test_card_molecule_activity_binding_offline",
+                "original_graph",
+                "control.archive.name",
+            ),
+            (
+                "test_card_molecule_activity_exact_binding_offline",
+                "original_tar",
+                "control",
+            ),
+            (
+                "test_card_saved_molecule_activity_originals_offline",
+                "sdk205_original",
+                "control.archive.name",
+            ),
+            (
+                "test_card_saved_molecule_activity_originals_offline",
+                "sdk208_original",
+                "control.archive.name",
+            ),
+            (
+                "test_card_saved_molecule_activity_offline",
+                "retained_writer",
+                "control.archive.name",
+            ),
+        ]
+    (client / "conftest.py").write_text(
+        "import sys\n"
+        f"sys.path.insert(0, {str(ROOT / 'tests/core')!r})\n"
+        + "\n".join(
+            f"from {module} import {factory} as archive_{index}"
+            for index, (module, factory, _) in enumerate(factories)
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    modules = []
+    for index, (_, _, expression) in enumerate(factories):
+        before = client / f"test_{index:02d}_consumer.py"
+        after = client / f"test_{index:02d}_released.py"
+        record = client / f"archive-{index}.txt"
+        # The final consumer deliberately fails. Its per-case output must survive,
+        # while the reproducible archive's module lifetime still ends normally.
+        intentional = index == len(factories) - 1
+        before.write_text(
+            "from pathlib import Path\n"
+            f"def test_reader(archive_{index}, tmp_path):\n"
+            f"    control = archive_{index}\n"
+            f"    path = Path({expression})\n"
+            "    assert path.is_file() and path.stat().st_size > 0\n"
+            f"    Path({str(record)!r}).write_text(str(path), encoding='utf-8')\n"
+            "    (tmp_path / 'failure-diagnosis.txt').write_text('keep me', encoding='utf-8')\n"
+            + (
+                "    assert False, 'intentional consumer failure'\n"
+                if intentional
+                else ""
+            ),
+            encoding="utf-8",
+        )
+        after.write_text(
+            "from pathlib import Path\n"
+            "def test_archive_lifetime():\n"
+            f"    path = Path(Path({str(record)!r}).read_text(encoding='utf-8'))\n"
+            f"    assert path.exists() is {policy == 'all'!r}\n"
+            f"    assert Path({str(caller)!r}).read_text(encoding='utf-8') == 'caller output'\n",
+            encoding="utf-8",
+        )
+        modules += [str(before), str(after)]
+    assets = ROOT / "tests/core/data"
+    # Reader setup already verifies the complete original digest/member graph.
+    # Retain the immutable compressed input identities around actual child teardown.
+    import hashlib
+
+    originals = {
+        path: hashlib.sha256(path.read_bytes()).hexdigest()
+        for path in assets.glob("*.tar.gz")
+    }
+    environment = dict(os.environ)
+    environment.pop("PYTEST_ADDOPTS", None)
+    environment.pop("PYTEST_PLUGINS", None)
+    environment.pop("PYTHONPATH", None)
+    result = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "pytest",
+            "-c",
+            str(ROOT / "pyproject.toml"),
+            "--basetemp",
+            str(basetemp),
+            "--receptor=llm",
+            "-o",
+            f"tmp_path_retention_policy={policy}",
+            *modules,
+        ],
+        cwd=client,
+        env=environment,
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        timeout=240,
+    )
+    output = result.stdout + result.stderr
+    (client / "child-output.txt").write_text(output, encoding="utf-8")
+    assert result.returncode == 1, output
+    assert f"1 failed, {2 * len(factories) - 1} passed" in output, output
+    assert list(basetemp.rglob("failure-diagnosis.txt"))
+    assert caller.read_text(encoding="utf-8") == "caller output"
+    assert all(
+        hashlib.sha256(p.read_bytes()).hexdigest() == h for p, h in originals.items()
+    )

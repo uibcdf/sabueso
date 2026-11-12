@@ -1,0 +1,116 @@
+{
+  "state": "LOCAL_ORIGINAL_ARCHIVE_LIFETIME_PASS_HOSTED_RECOVERY_OPEN",
+  "owner": "Sabueso maintainers #112/#183/#148",
+  "review_trigger": "Current hosted CI completion, next consolidated recovery or before candidate qualification",
+  "source_base": "b8392970ffaef00f058841afea5b80e48f593c16",
+  "sources": {
+    "tests/core/test_card_saved_literature_offline.py": "bab3cd89b5ef1da80b7310ae77887d39e1dd5e4cdd131b337497a89a6edf6764",
+    "tests/core/test_card_molecule_activity_history_offline.py": "94295e590328467dfd7b6c6f069f9c33b6927c21121447da0fc278b9b8fca649",
+    "tests/core/test_card_molecule_activity_binding_offline.py": "9bd4a21a54cd5142aecff65e4e61c66068fca9270df94a5f94eb9ad321be37f3",
+    "tests/core/test_card_molecule_activity_exact_binding_offline.py": "e6e53b6f55bd5ff4b640375aa3b16a0ee237dff1388c45110ef9ddc536c43a0f",
+    "tests/core/test_card_saved_molecule_activity_originals_offline.py": "12a0ab30a3fc84d66e55c78dacb690d6616251e5e81f4ad71118e0072ec0855f",
+    "tests/core/test_card_saved_molecule_activity_offline.py": "a81b23fcee0a988909672e7811ea90acb2ffff5d9b2aa15c7840a8d89688df39",
+    "tests/tools/test_pytest_scratch_retention_offline.py": "b721cdd19bdfb9d2fe805c9af133b2c58e0ac4b88cd9337df6be41890e95ac71"
+  },
+  "observed_hosted": {
+    "run": "https://github.com/uibcdf/sabueso/actions/runs/43134542677",
+    "head": "74308bada0a9bd2d614ac94245090d1e87cc65c9",
+    "observed_stop": "Nine retained completed source/installed reports: STOPPED/owned_scratch_limit at the fixed 6 GiB ceiling; RAM above the reserve. Other actual outcomes remain separately accountable.",
+    "macos_source": "REFUSED before pytest; actual RAM capacity not retained by the old launcher",
+    "governance": "Verified PASS at 74308ba only"
+  },
+  "negative_reproduction": {
+    "parent_result": "FAILED as expected before fixture correction",
+    "child_result": "6 failed, 4 passed: five archive-release checks failed and one intended consumer failed",
+    "archives_remaining_after_module_teardown": 5,
+    "retained_decoded_archive_bytes": 2612336640,
+    "peak_owned_scratch_bytes": 2612379927,
+    "events_sha256": "5f23fa6ba00122c82b8e5a234e65a22902a1a2a6d5ca660160c33587d3742574",
+    "resource_sha256": "b183d314e29dec788f99b3efbad2dcb996140d97ef84b24cebf3678d5623239a",
+    "cleanup": "Only the five digest-verified derived tar copies were unlinked after review; failed records, generated child sources, caller controls and failed-case diagnosis retained."
+  },
+  "behavior": {
+    "originals": [
+      "SDK202",
+      "SDK205",
+      "SDK208",
+      "SDK211",
+      "SDK218"
+    ],
+    "lifetime": "Close readers and release only each fixture's own extracted plain tar after its final module consumer",
+    "debug_policy_all": "Retain extracted copy",
+    "failed_case_outputs": "Retained by existing pytest failed policy",
+    "compressed_originals_and_caller_outputs": "Unchanged",
+    "other_module_session_fixtures": "Unchanged; no complete elimination of retained scratch claimed"
+  },
+  "local_gates": {
+    "lifetime-final": {
+      "passed": 5,
+      "pytest_s": 59.618,
+      "guarded_s": 60.309,
+      "workers": 1,
+      "peak_owned_rss_bytes": 729047040,
+      "peak_owned_scratch_bytes": 1720398152,
+      "minimum_host_available_bytes": 59134959616,
+      "peak_owned_swap_bytes": 0,
+      "events_sha256": "0357f4f5df28c6f873fedfbb5d977bc395a1cab9e873eee27925a7fcea85ca84",
+      "resource_sha256": "2cea2ff8a7214daecb8cbeda28113b97d3ec2f1944b77caca0cd65e241c3d0f0"
+    },
+    "wiring": {
+      "passed": 1,
+      "pytest_s": 0.644,
+      "guarded_s": 1.261,
+      "workers": 1,
+      "peak_owned_rss_bytes": 129789952,
+      "peak_owned_scratch_bytes": 0,
+      "minimum_host_available_bytes": 59661438976,
+      "peak_owned_swap_bytes": 0,
+      "events_sha256": "cf6f407f8235a7d77ec32be270733f4484595b1323db845f661b5b7e022fc73e",
+      "resource_sha256": "be3634f7a1a1892a1fa9429140f11393fcfba2ba12966837a9b33ad0b6ba95fc"
+    }
+  },
+  "distinct_parent_cases": 6,
+  "actual_real_reader_factories": 5,
+  "actual_changed_wrapper_factories": 3,
+  "real_reader_child_cases": "16 in the normal route plus 2 in explicit debug retention; expected child consumer failures are checked by passing parent tests",
+  "child_counts_are_additive_source_coverage": false,
+  "protected_originals_unchanged": 52,
+  "nonfixture_scientific_assertions": "AST-identical in all six changed original test modules; scope-integrity.json retains exact file inventory",
+  "unchanged": [
+    "scientific/runtime source",
+    "workflows and original selected cases",
+    "native pools",
+    "worker and fixed RSS/scratch/time limits",
+    "host reserves",
+    "schema and frozen resources"
+  ],
+  "scope": "Selected test-fixture lifecycle qualification with all five real immutable reader setups (complete byte/member verification), all three changed wrappers and copied-payload wiring. No completed seven-module or full scientific suite claimed. Not actual hosted/platform/public package recovery, independent B7 acceptance or B8 resumption. No new remote workflow, retry, cancellation, issue comment, tag, build or release authorized/performed.",
+  "broader_exploratory_selection": {
+    "state": "STOPPED_NOT_QUALIFICATION",
+    "selected_cases": 561,
+    "elapsed_s": 1521.541,
+    "peak_owned_rss_bytes": 3274952704,
+    "peak_owned_scratch_bytes": 2539523488,
+    "reason": "Long unchanged historical full-saving cases dominated scope. Explicit own stop bounds the exploration; direct complete reader/wrapper lifetime controls qualify only the changed test-infrastructure behavior.",
+    "events_sha256": "cf779f3869a25daa110898ed2b0ed89ac115e552047f8714b0c4028ee72d7c55",
+    "resource_sha256": "84a24de615a7bcdbee41ad4242cf17e54aec4d2b70f500966e36e36626ab8986",
+    "passing_coverage_added": 0
+  },
+  "documentation_and_quality": {
+    "guide": {
+      "state": "PASS",
+      "scope": "Maintained non-archive guide and changed Markdown local targets; changed-target anchors; changed fenced Python3.11 grammar. No external link or runtime example qualification.",
+      "maintained_markdown_files": 189,
+      "local_path_targets_checked": 1611,
+      "changed_page_anchors_checked": 25,
+      "python_examples_checked": 0,
+      "errors": []
+    },
+    "ruff_all": "PASS",
+    "format_changed_seven": "PASS",
+    "python311_grammar": "PASS",
+    "governance": "PASS",
+    "diff_check": "PASS",
+    "sphinx": "Not repeated: no Sphinx content/config changed; maintained local guide/anchors checked."
+  }
+}

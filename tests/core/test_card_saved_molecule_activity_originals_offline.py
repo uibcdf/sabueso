@@ -522,8 +522,8 @@ _ORIGINAL_CATALOGS = {
 
 
 @pytest.fixture(scope="module")
-def sdk205_original(tmp_path_factory):
-    generator = original.__wrapped__(tmp_path_factory)
+def sdk205_original(tmp_path_factory, request):
+    generator = original.__wrapped__(tmp_path_factory, request)
     yield next(generator)
     try:
         next(generator)
@@ -532,8 +532,8 @@ def sdk205_original(tmp_path_factory):
 
 
 @pytest.fixture(scope="module")
-def sdk208_original(tmp_path_factory):
-    generator = multifocal_original.__wrapped__(tmp_path_factory)
+def sdk208_original(tmp_path_factory, request):
+    generator = multifocal_original.__wrapped__(tmp_path_factory, request)
     yield next(generator)
     try:
         next(generator)

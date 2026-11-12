@@ -15,10 +15,10 @@ from sabueso.core.snapshot import canonical_json
 
 
 @pytest.fixture(scope="module")
-def retained_writer(tmp_path_factory):
+def retained_writer(tmp_path_factory, request):
     from test_card_molecule_activity_binding_offline import original_graph
 
-    generator = original_graph.__wrapped__(tmp_path_factory)
+    generator = original_graph.__wrapped__(tmp_path_factory, request)
     original = next(generator)
     _prepare_retained_writer(original, binding.ROOT_RETURN_EQUALITY)
     yield original

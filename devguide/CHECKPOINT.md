@@ -5,6 +5,35 @@ Current working-state checkpoint: **2026-11-12 (UTC)**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Original-reader scratch and a scoped agent observation — local checks PASS
+
+Further actual `74308ba` jobs stop at the fixed 6 GiB scratch ceiling with RAM
+above the reserve. A separate regression reproduces five extracted original tar
+copies remaining after their modules finish: 2,612,336,640 bytes. The fixtures now
+close readers and unlink only their own derived copy after its last module use.
+Explicit debug retention, failed-case outputs, compressed originals, scientific
+assertions, other shared fixtures and all execution limits remain unchanged.
+
+The [local receipt](evidence/original_archive_lifetime_checkpoint_20261112.json)
+records the complete five-case lifecycle module, covering all five genuine reader
+factories and all three changed consumer wrappers, plus the existing copied
+payload wiring control. The setups retain complete original byte/member checks.
+The broader 561-case exploratory selection is deliberately stopped after
+1,521.541 s as long unchanged historical saving dominates it. Its partial stream
+adds no passing qualification. All 52 protected SOURCE/original files and the
+scientific assertions in the six changed original modules remain intact.
+Actual hosted recovery remains open; this does not repeat a full scientific suite.
+
+The [experienced developer-agent observation](evidence/developer_agent_disease_observation_20261112.json)
+records public disease definition, hierarchy versus identity, missing supplied
+parent context, bounded literal machine reading and separately reopened original
+source/back navigation. Extensive prior developer/maintainer-answer exposure is
+disclosed; broader agent, independent researcher/scientific and real-consumer
+acceptance remain pending. The observed compact-catalog discovery cost has a
+local #148 proposal for review. No new issue comment or hosted run is authorized
+or posted; finish observing the current batch before consolidated recovery. B8
+candidate/schema/staging/publication remains unresumed.
+
 ## Preflight capacity and bounded settling — local checks PASS
 
 The authorized `74308ba` batch has

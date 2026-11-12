@@ -204,7 +204,7 @@ class MultiFocalOriginal(Original):
 
 
 @pytest.fixture(scope="module")
-def multifocal_original(tmp_path_factory):
+def multifocal_original(tmp_path_factory, request):
     with SUPPLEMENT.open("rb") as stream:
         assert hashlib.file_digest(stream, "sha256").hexdigest() == SUPPLEMENT_SHA
     path = tmp_path_factory.mktemp("sdk208-multifocal-original") / "original.tar"
@@ -218,8 +218,12 @@ def multifocal_original(tmp_path_factory):
     assert total == SUPPLEMENT_DECODED_BYTES
     assert digest.hexdigest() == SUPPLEMENT_DECODED_SHA
     control = MultiFocalOriginal(path)
-    yield control
-    control.close()
+    try:
+        yield control
+    finally:
+        control.close()
+        if request.config.getini("tmp_path_retention_policy") != "all":
+            path.unlink()
 
 
 @pytest.mark.parametrize("case", SUPPLEMENT_CASES)
@@ -592,7 +596,7 @@ def test_restored_native_crossing_refuses_foreign_exact_scope(
 
 
 @pytest.fixture(scope="module")
-def original(tmp_path_factory):
+def original(tmp_path_factory, request):
     with DATA.open("rb") as stream:
         assert hashlib.file_digest(stream, "sha256").hexdigest() == ENCODED_SHA
     path = tmp_path_factory.mktemp("sdk205-original") / "original.tar"
@@ -605,8 +609,12 @@ def original(tmp_path_factory):
             target.write(chunk)
     assert total == DECODED_BYTES and digest.hexdigest() == DECODED_SHA
     control = Original(path)
-    yield control
-    control.close()
+    try:
+        yield control
+    finally:
+        control.close()
+        if request.config.getini("tmp_path_retention_policy") != "all":
+            path.unlink()
 
 
 @pytest.mark.parametrize("case", CASES)

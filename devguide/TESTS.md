@@ -818,6 +818,20 @@ add `-o tmp_path_retention_policy=all`. This does not clean caller outputs, froz
 fixtures or independently owned development resources. The lifecycle regression
 is `tests/tools/test_pytest_scratch_retention_offline.py`.
 
+The SDK202/205/208/211/218 plain-tar reader fixtures explicitly release their
+verified, reproducible extracted copy after the final module consumer and reader
+close. Factory-created paths otherwise survive per-case retention. Their wrapper
+fixtures forward the real pytest request; `tmp_path_retention_policy=all` retains
+these copies for deliberate debugging. Failed per-case outputs, compressed
+originals, caller files and other module/session fixtures keep their own lifetime.
+The same lifecycle regression exercises the actual five readers across separate
+child modules, including a failed consumer and retained diagnostic output.
+For a fixture-lifetime change, run that complete module, including all five real
+reader factories and all three changed consumer wrappers, plus the installed
+molecule payload wiring control. Preserve their byte/member/scientific assertions and
+check all 52 protected originals. This is selected test-infrastructure receiving;
+the fixed hosted scratch/RAM limits and final exact-head CI remain necessary.
+
 ## Test kinds
 
 Original literal structure-ligand presentation is qualified by

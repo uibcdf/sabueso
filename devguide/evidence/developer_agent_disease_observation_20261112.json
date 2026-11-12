@@ -1,0 +1,87 @@
+{
+  "state": "EXPERIENCED_DEVELOPER_AGENT_OBSERVATION_RECORDED_ACCEPTANCE_REVIEW_PENDING",
+  "owner": "Sabueso maintainers #148/#112",
+  "review_trigger": "B7 acceptance review or before candidate selection",
+  "actor_and_exposure": "Extensive implementation/test/maintainer-guide exposure, including C4 expected observations. Not an independent, uncoached human or scientific review.",
+  "source_base": "b8392970ffaef00f058841afea5b80e48f593c16",
+  "runtime": "0.14.0+255.gb839297",
+  "runtime_source_unchanged": true,
+  "working_tree_changes": "Original test fixture lifecycle and developer guide only",
+  "public_inputs_unchanged": {
+    "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-ci-bounded-execution-1/researcher-packet/inputs/SOURCE_NOTICE.md": "87de3aeda5fbe3af5b8a04777f676c1e5c6690194b08e9ccfaca2b37c4054c03",
+    "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-ci-bounded-execution-1/researcher-packet/inputs/disease.json": "dd75eab0aa9a6ecec228467b79bc59b77923259fca3a8c84615cc3d4d1c7a5e5",
+    "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-ci-bounded-execution-1/researcher-packet/inputs/molecule.json": "b1fc57c981b81ba70d3a79f4888420dfb11141d2154b0b3afb7d904a9ca05944",
+    "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-ci-bounded-execution-1/researcher-packet/inputs/protein.json": "8306aa747bdd34650701928ba969e80a13cc580b6b9c00b66d73ae540ce5aacb",
+    "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-ci-bounded-execution-1/researcher-packet/inputs/manifest.json": "2d874f68bdd8f72fe0a52424a8251139e230a388b8272c78e7b352825f73191d"
+  },
+  "task": "Find disease definition, distinguish broader-term from source-stated equivalence/related xrefs, open an unsupplied parent, read the same parent through bounded machine locations, save/reopen source and return navigation",
+  "observed": {
+    "human_definition": "Complete source-bound ontology text and reference obtained through the displayed definition cell",
+    "human_parent_count": 4,
+    "first_parent": {
+      "subject_ref": "mondo:MONDO:0014221",
+      "predicate": "subclass_of",
+      "object_ref": "mondo:MONDO:0002908"
+    },
+    "equivalent_identifiers": 8,
+    "related_non_equivalent_identifiers": 3,
+    "unsupplied_parent": "context_not_supplied in LIVE and saved links; no destination Card acquired; back() returns to the retained links",
+    "source_support": "MONDO SA_MONDO_MONDO:0014221_982a0c8a90f9359f, original relationships.subclass_of assertion, source version 2026-09-01 / retrieved fixture",
+    "bounded_machine_parent": "Same subject/predicate/object by discovered literal locations; 8192-byte page ceiling, referenced source assertion list retained",
+    "saved_root": "XV_78dede64abe3a48ebfaa643ffa1040e1479fb3f426e177b65a71a9ffdf39da1f",
+    "saved_digest": "sha256:04929f59fc155fea6189f091948549275c630098da9a46348b47147cda5f3a31",
+    "saved_file_bytes": 5480683,
+    "saved_file_sha256": "sha256:e3703593d8ad47448a44f650a4db48fc05a55b3c34fc82e0ea083712164b83a1",
+    "reopening": "Separate fresh Python process, socket connections and Card __init__/from_dict/from_json forbidden; same parent, original support and missing-parent return trail observed"
+  },
+  "interpretation": "The captured ontology states a broader-term edge. Neither that edge nor related xrefs establish equivalence; unsupplied destination context is not source absence. This is the developer agent interpretation of the supplied public capture, not independent scientific review or medical guidance.",
+  "friction_and_proposal": {
+    "observed": "Human overview offers definition/classification/identity routes; compact catalog advertises associations, content and literature. Parent value was reached via root and literal relationship locations; printing complete human rows repeats support at considerable length.",
+    "hypothesis": "Semantic disease catalog descriptors and a documented bounded definition/parent/identity example could reduce agent discovery cost. This one experienced actor does not establish an uncoached usability rate.",
+    "owner": "Sabueso #148",
+    "status": "Local reviewable handoff; no issue publication authorized/performed"
+  },
+  "resources": {
+    "producer": {
+      "state": "FINISHED",
+      "peak_owned_rss_bytes": 90034176,
+      "minimum_host_available_bytes": 55694950400,
+      "elapsed_s": 270.22,
+      "scope": "Interactive actor observation; no child process, scientific acceptance or pass assertion inferred"
+    },
+    "reader": {
+      "state": "FINISHED",
+      "peak_owned_rss_bytes": 84774912,
+      "minimum_host_available_bytes": 57175326720,
+      "elapsed_s": 45.017,
+      "scope": "Interactive actor observation; no child process, scientific acceptance or pass assertion inferred"
+    },
+    "profile": "Each process one CPU2/native1, 1GiB owned RSS stop,16GiB host reserve,600s finite guard; no child processes. Interactive elapsed includes thinking/idle time; not a workload timing benchmark. Owned swap was not sampled by this lightweight observer."
+  },
+  "raw_evidence_sha256": {
+    "resource-reader.json": "793220130e93d5c79b7aab98d17bc598e969e403d1d5d14e2515b461dc5e7c44",
+    "save-receipt.json": "c5485c9787ba017815865189f464b6e08fce2d587a8ebf8a5f770c7f9a1713b9",
+    "interaction.log": "67dca6663fc1df5c89e5a3dded3a5bfeeb7d9918d62d62437f03f1e97b530f9c",
+    "interaction-reader.log": "b29d53159261736d940521285ac693d2287eb65a8cf354c159cacecc618b03ac",
+    "machine-parent.json": "8c3cfebd5a2d38396dcfcc7d52cebc819c2c028089d4f97b0f87f84fd87e0775",
+    "resource.json": "d55c2096ab2d829e1b005e4f27beb7e992ed4637a3cd4a4bee99ed525d41c594",
+    "machine-root-page.json": "eb554e876bb289695746036f71c4e0f78635dea0319c535264211412d5bbb24e",
+    "content-catalog.json": "70507fb18531f9fdbd47f40089bd37cc3c0403b7b7a151a366c312a5da74353b",
+    "interactive_reader.py": "0b56c1e66f4cc5db5ea43d458d5b14420df04ba789e1a98a70182025f8081917",
+    "reopened-observations.json": "9861d8686ef403fbcff9d0888493e25018fb13f1f9f82b6ee9b63f94e8f7ad01",
+    "topic-catalog.json": "232378604a3c24f7a82c5ac79679d1ef98a2337ecb76620fe9a856ea78096ac0",
+    "python-history-reader": "c93791e6a3d8738004017fcc30acbe6ab52beda04334521a5f2a5858d6988d37",
+    "ownership.json": "20031582cd4764660bf200ba33cc09f3691c4368e661c76f8135f41f9faadee6",
+    "interactive.py": "bf28a20d72453f520abe31b89b47a64eb9ac4f54d31994e7213db3e21a27bafb",
+    "sections-page.json": "6b12d03cdb2de652028b962ebadc403c88a518d9e80d91027ac0bcada2166836",
+    "disease-reading.json": "e3703593d8ad47448a44f650a4db48fc05a55b3c34fc82e0ea083712164b83a1",
+    "relationships-page.json": "253f42e20e6f0d0d3127fe80369f8d283416003ace6bdac89dde1ff2b9f85563"
+  },
+  "scope_limits": [
+    "Only bounded public disease C4 plus visited saved-navigation scope observed",
+    "Extensive prior developer/maintainer exposure disclosed; no independent or uncoached researcher result",
+    "Molecule/protein/specialist agent parity and real downstream-consumer acceptance not attempted",
+    "B7 acceptance decision and B8 candidate/schema/staging/release remain open"
+  ],
+  "recorded_utc": "2026-11-12T03:11:02.139425+00:00"
+}

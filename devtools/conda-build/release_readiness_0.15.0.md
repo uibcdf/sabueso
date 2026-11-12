@@ -16,6 +16,14 @@ records capacity and bounded settling without relaxing limits. Actual macOS
 recovery, exact-final-head CI and all candidate/artifact prerequisites remain
 necessary.
 
+Subsequent source/installed jobs also stop at the fixed 6 GiB scratch ceiling,
+with RAM above the reserve. The local
+[original-reader correction](../../devguide/pending_bugs/ci_serial_execution_timeout.md#extracted-original-archives-outlive-their-modules--2026-11-12-utc)
+releases five reproducible extracted tar copies after their final module use.
+Debug retention, failed outputs, immutable originals, scientific assertions and
+execution limits remain fixed. Its selected local checks cannot establish
+complete hosted recovery or resume B8.
+
 ## Required records
 
 | Record | Current disposition |
