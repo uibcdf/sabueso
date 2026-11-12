@@ -1,5 +1,17 @@
 # Sabueso — Risks and Open Questions
 
+Interactive molecular exploration (#153/#154): the
+[0.16.0 review](pending_proposals/interactive_exploration_0160.md#integration-work-and-provider-handoff)
+identifies an unqualified consumer boundary between exact Card/Deck/source
+positions and a loaded molecular scene. Preserve explicit revision/occurrence
+and atom/residue correspondence, unknown mappings and separate saved Knowledge
+and visual state. MolSysViewer has public selection/annotation building blocks;
+its private Studio internals do not constitute a general supported UI toolkit.
+Sabueso owns the bounded adapter; provider and shared-contract needs retain their
+owners. Resolve host/API and repeated-open/close behavior through the architecture
+discussion/prototype before claiming integration. This is a recorded design need,
+not a newly reproduced provider defect.
+
 B6 human state wording (#148): the genuine public HsTIM isoform view currently
 prints raw basis tokens such as `no_own_coding_bases` and
 `resolved_tissue_values`. This is an observed presentation detail; possible

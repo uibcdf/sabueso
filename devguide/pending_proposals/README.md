@@ -8,6 +8,10 @@ reporting protocol. [CHECKPOINT](../CHECKPOINT.md) and the
 determine current qualification and execution order; this index is not a second
 development queue.
 
+- [Interactive Card/Deck exploration for 0.16.0](interactive_exploration_0160.md)
+  (#154/#153, coordinated with #112/#148): accepted product objective, read-only
+  MolSysViewer review and platform/technology options for the next discussion.
+  Host/framework, adapter qualification and the complete release scope remain open.
 - [Human exploration of Card](card_human_exploration_api.md)
   (#148, coordinated with #112): intuitive progressive navigation, complete
   retained-content access and source-grounded decision assistance. Initial

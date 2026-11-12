@@ -1,5 +1,28 @@
 # Sabueso — Decision Log
 
+## Make interactive Card and Deck exploration the 0.16.0 product objective (2026-11-12)
+
+The maintainer accepts a first complete, bounded interactive exploration
+experience as the objective for 0.16.0: readable Card/Deck orientation, visible
+navigation and selection controls, original source inspection, exact return
+context and molecular representation where applicable. Reuse the functional
+0.15.0 scientific/human/agent foundation. Advance this bounded part of long-term
+stage 6 while preserving the semantic/temporal, interoperability and source
+roadmap owners and dependencies.
+
+The [objective and MolSysViewer review](pending_proposals/interactive_exploration_0160.md)
+are owned by #154/#153, with #148 for Card/researcher continuity and #112 for
+coordination. The maintainer requests review of the sibling MolSysViewer before
+a platform/technology discussion. The review identifies molecular APIs,
+web/anywidget architecture and experimental native hosting; it supplies no new
+rendering or installed integration qualification.
+
+Host, frontend framework, independent explorer versus add-on placement, public
+signatures and the full release contract remain undecided. Discuss them before
+the architecture prototype and implementation. This decision preserves 0.15.0's
+accepted functional scope and separate outstanding delivery/acceptance. It does
+not authorize a release, dependency adoption or shared-contract change.
+
 ## Accept the functional 0.15.0 milestone (2026-11-12)
 
 After reviewing the [21-objective matrix](pending_proposals/functional_inventory_review_0150.md),

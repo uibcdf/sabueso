@@ -1,12 +1,11 @@
 # Sabueso — Integrated continuation plan after the audit
 
-**Immediate priority, 2026-11-12:** follow the [functional 0.15.0 closeout](pending_proposals/functional_closeout_0150.md).
-The maintainer prioritizes conceptual completion and subsequent implementation
-over further publication-process refinement. Reconcile concrete feature gaps,
-essential journeys and consequential defects before preparing the milestone
-decision. The B0–B8 scope and recorded validation/acceptance obligations below
-remain distinct; this scheduling priority claims neither completed acceptance
-nor an automatic release-gate exception.
+**Functional closeout priority, 2026-11-12:** the
+[0.15.0 closeout](pending_proposals/functional_closeout_0150.md) implements the
+maintainer's priority of conceptual completion and subsequent development over
+publication-process refinement. Its functional decision is accepted below.
+The B0–B8 validation, remaining acceptance and delivery obligations retain their
+own recorded scope; the 0.16.0 product objective follows independently.
 
 The [functional inventory reconciliation](pending_proposals/functional_inventory_review_0150.md)
 now closes the implementation mapping of all 21 rows, with no new feature-sized
@@ -16,6 +15,14 @@ user/release disclosure and [accepts the functional milestone](evidence/function
 Prepare the separate milestone/delivery decision and continue independent authorized
 development; do not restart generic B3–B6 continuation lists or imply that technical receiving
 supplies outstanding independent/consumer acceptance or candidate qualification.
+
+**Next product objective, 2026-11-12:** the maintainer accepts
+[interactive Card/Deck exploration for 0.16.0](pending_proposals/interactive_exploration_0160.md),
+with MolSysViewer-backed molecular representation where applicable. This advances
+a bounded part of long-term stage 6 while other stage owners/dependencies remain.
+The read-only MolSysViewer review precedes the next platform/technology discussion;
+no host, framework or full release contract is selected. This does not enlarge
+0.15.0 or supply its outstanding delivery/acceptance.
 
 The [2026-11-06 handoff](WORKSTATION_HANDOFF_20261106.md) preserves the completed
 workstation transfer. Environment restoration and the corrected complete local
@@ -98,8 +105,11 @@ first two stages:
    ownership, identity, units, support and explicit unresolved consumer limits.
 5. Expand scientific coverage, source utilization/health, bibliography,
    acquisition observation and rights through owning scientific/source contracts.
-6. Develop separately scoped Deck navigation, viewer/document export, video and
-   a CLI when needed. These future products are not added to the 0.15.0 gate.
+6. Deliver the accepted bounded interactive Card/Deck objective for 0.16.0,
+   discussing host/framework selection after the MolSysViewer review. Broader
+   document export, video and CLI retain separate future scope. The selected
+   slice advances without requiring all stage 3–5 objectives first, preserving
+   actual dependencies; these products do not expand the 0.15.0 gate.
 
 Advance independent authorized work when a human review or remote runner is
 unavailable; retain its dependent acceptance as open. B2 default review stays
@@ -818,9 +828,10 @@ scientific expansion, broader literature extraction, deferred provider adoption
 and local mirrors. The [Swiss-Prot coverage audit #164](https://github.com/uibcdf/sabueso/issues/164)
 remains a source-utilization review; take an immediately relevant integrity fix
 into the owning block, without making unrestricted source expansion its prerequisite.
-These directions remain useful, but they do not silently enlarge the accepted
-0.15.0 scope. Revisit their priority after the current scientific and human-access
-milestones, or when a concrete dependency makes one necessary.
+These directions do not enlarge the accepted 0.15.0 scope. The maintainer now
+selects a bounded #153/#154 slice as the [0.16.0 product objective](pending_proposals/interactive_exploration_0160.md);
+platform/technology selection remains the next discussion. Broader export, video
+and other directions keep their separate future scope and actual dependencies.
 
 ## Immediate next work session
 

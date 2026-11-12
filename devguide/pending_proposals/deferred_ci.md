@@ -9,6 +9,18 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Interactive 0.16.0 objective and provider review (2026-11-12 UTC)
+
+Documentation-only block from `979908c`, owned by #154/#153/#112, records the
+accepted interactive product objective, read-only MolSysViewer review and the
+pending platform discussion. Production, tests, schemas, dependency manifests and
+provider checkouts are unchanged. Root Ruff format/lint, local governance,
+diff and new/changed-link checks pass; no runtime/rendering result is claimed. The authorized
+`[skip ci]` push defers hosted checks to the next explicitly authorized exact-head
+CI/governance checkpoint under the existing recovery route. It grants no dispatch
+or release authority and does not qualify the older outstanding code block.
+Git records the final documentation head; no candidate is selected here.
+
 ### Grouped Windows portability and memory scheduling recovery (2026-11-12 UTC)
 
 The [portability correction](../pending_bugs/ci_windows_original_portability.md)

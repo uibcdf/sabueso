@@ -21,23 +21,27 @@ anything: the remote repository does not contain the whole local state.
 | What must the complete Card experience deliver? | [Broad exploration inventory](pending_proposals/card_exploration_completion_0150.md) and [observable wow criteria](CONTINUATION_PLAN_20261104.md#required-wow-experience-in-0150) |
 | How can an independent researcher review it? | [Participant invitation and tasks](../docs/content/user/researcher_review.md), [blank worksheet](../docs/_static/researcher_review_worksheet.txt) and [maintainer preparation](pending_proposals/researcher_acceptance_0150.md); the maintainer defers this trial until after 0.15.0, with no independent acceptance claimed |
 | What are the long-term goals and dependencies? | [Accepted six-stage program](ROADMAP.md#accepted-long-term-execution-stages) and [its execution](CONTINUATION_PLAN_20261104.md#accepted-six-stage-program) |
+| What is the next product objective for 0.16.0? | [Interactive Card/Deck exploration and MolSysViewer review](pending_proposals/interactive_exploration_0160.md); the direction is accepted, and host/framework selection is the next discussion |
 | What decisions explain the design? | [DECISIONS](DECISIONS.md), the owning issue and its feature analysis; use the [onboarding history map](ONBOARDING.md#how-the-project-reached-this-point) rather than reading the full log sequentially |
 | How do I change and verify something? | [Root instructions](../AGENTS.md), [API conventions](API_CONVENTIONS.md), [TESTS](TESTS.md) |
 | How do I resume on another machine without losing work? | [Handoff](WORKSTATION_HANDOFF_20261106.md), its manifest and the current checkpoint |
 
 ## Current development boundary
 
-The immediate priority is the [written functional closeout plan](pending_proposals/functional_closeout_0150.md):
-reconcile implemented objectives with concrete remaining gaps, close essential
-journeys, disposition consequential defects and prepare the milestone decision.
-Further publication-process refinement should not dominate that work. This priority
-does not claim completed acceptance, select a tag or waive delivery requirements.
-The [21-row reconciliation](pending_proposals/functional_inventory_review_0150.md)
-now identifies the actual routes, owning tests and remaining limits; its selected
-821-case technical receipt and explicit #192 deferral are recorded in CHECKPOINT.
+The [written functional closeout plan](pending_proposals/functional_closeout_0150.md)
+has reached its implementation decision. The
+[21-row reconciliation](pending_proposals/functional_inventory_review_0150.md)
+identifies actual routes, owning tests and remaining limits; its selected 821-case
+technical receipt and explicit #192 deferral are recorded in CHECKPOINT.
 The maintainer has [accepted the functional milestone](evidence/functional_milestone_acceptance_20261112.json).
 That implementation review is closed; the tag/delivery decision and independent
 acceptance states remain separate, and authorized independent development can continue.
+
+The maintainer now accepts [interactive Card and Deck exploration](pending_proposals/interactive_exploration_0160.md)
+as the 0.16.0 product objective, advancing a bounded part of long-term stage 6.
+The MolSysViewer review supplies the basis for discussing platform, frontend
+technology and molecular integration. Those choices and the complete release
+contract remain open; the accepted 0.15.0 scope and other roadmap goals persist.
 
 The [current overview orientation](pending_proposals/card_orientation.md) exposes
 curated original protein/molecule/disease fields, source versions and exact
@@ -68,10 +72,11 @@ Candidate selection, schema freezing, staging and publication remain
 paused; this documentation update does not authorize them.
 
 The maintainer has resumed the entire [six-stage program](ROADMAP.md#accepted-long-term-execution-stages).
-Complete the rich 0.15.0 profiles, obtain B7 acceptance and authorized B8 delivery,
-then expand semantic/temporal access, real interoperability, scientific/source
-coverage and separately scoped exploration products. The future products do not
-enlarge 0.15.0. Independent authorized work continues while a reviewer or remote
+The functional 0.15.0 profiles are accepted; remaining B7 decisions and authorized
+B8 delivery retain their recorded route. Advance the bounded 0.16.0 interactive
+slice while retaining semantic/temporal, interoperability and scientific/source
+goals and their actual dependencies. These products do not enlarge 0.15.0.
+Independent authorized work continues while a reviewer or remote
 runner is unavailable; dependent acceptance and exact-candidate qualification
 remain open. B2 scientific/default review remains explicitly deferred.
 

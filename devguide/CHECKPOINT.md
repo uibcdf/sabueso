@@ -5,6 +5,29 @@ Current working-state checkpoint: **2026-11-12 (UTC)**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Next product objective: interactive exploration in 0.16.0
+
+The maintainer accepts the [0.16.0 objective and review](pending_proposals/interactive_exploration_0160.md)
+under #154/#153/#148, coordinated by #112: a bounded visual Card/Deck experience
+with source/detail/return continuity and molecular representation through
+MolSysViewer where applicable. The [decision](DECISIONS.md#make-interactive-card-and-deck-exploration-the-0160-product-objective-2026-11-12)
+advances a bounded part of long-term stage 6; the other stages retain their owners.
+Host, frontend framework and independent explorer versus add-on placement remain
+the next discussion, before the architecture prototype and implementation.
+
+The read-only sibling review uses clean MolSysViewer `0dcdd6ce574d3c99483480cb38c16c1e3cc4782f`
+and live issue reads. It identifies public visualization/interaction building
+blocks, internal Studio patterns, an anywidget notebook transport and experimental
+Qt/browser standalone surfaces. Explicit source-to-model mappings and exact
+consumer qualification are still needed. No new runtime, molecular adapter,
+browser/Qt observation or installed integration is delivered by this documentation
+block. Root Ruff format (1,712 files), Ruff lint, local MOLI governance and diff
+checks pass. New/changed links resolve to four local targets, two local anchor
+references and twelve exact provider source paths. These static checks do not
+replace the technical receipts below.
+The accepted functional 0.15.0 milestone and separate delivery/acceptance remain
+as recorded. No new release or dependency adoption is selected.
+
 ## Functional inventory reconciled — 21 rows, 821 selected cases PASS
 
 **The maintainer accepts the functional 0.15.0 milestone.** The
@@ -51,16 +74,16 @@ the existing package workflow, so those actions retain separate scope.
 The older SDK266 CI batch has now finished: five jobs pass and nine fail across
 14 jobs. It qualifies no current source; its terminal capture stays owned by #112.
 
-## Immediate priority: functional 0.15.0 closeout
+<a id="immediate-priority-functional-0150-closeout"></a>
 
-The maintainer now prioritizes conceptual completion and continued development
-over further publication-process refinement. The [written closeout plan](pending_proposals/functional_closeout_0150.md)
-defines the next steps: reconcile the full functional inventory, close the essential
-public journeys, disposition consequential defects such as #192, and record the
-exact delivered scope and remaining limits before preparing a milestone/tag decision.
-The main feature families are implemented at their recorded scopes; final global
-functional closure is still to be demonstrated. No new family is automatically
-added to 0.15.0, and a genuine missing requirement is not silently postponed.
+## Functional 0.15.0 closeout record
+
+The maintainer prioritized conceptual completion and continued development over
+further publication-process refinement. The
+[written closeout plan](pending_proposals/functional_closeout_0150.md) now has its
+accepted 21-row reconciliation and explicit #192 disposition above. The functional
+review is closed. The separate milestone/tag decision and remaining delivery/
+acceptance retain their scope while the 0.16.0 product discussion proceeds.
 
 The code checkpoint remains `9ab6dd7` / SDK268. Its separate post-commit gate
 passes eight owning scratch-lifetime, copied-reader and workflow controls with

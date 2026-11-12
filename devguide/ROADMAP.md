@@ -6,10 +6,11 @@ source/qualification; the [continuation plan](CONTINUATION_PLAN_20261104.md#exec
 owns the active B0–B8 schedule within the accepted long-term stages below.
 New contributors start with [ONBOARDING](ONBOARDING.md).
 The [workstation handoff](WORKSTATION_HANDOFF_20261106.md) preserves the transfer
-procedure and source-machine facts. The immediate priority is the
-[functional 0.15.0 closeout](pending_proposals/functional_closeout_0150.md): turn
-remaining conceptual requirements into concrete dispositions and essential
-journeys before further publication-process refinement. The
+procedure and source-machine facts. The
+[functional 0.15.0 closeout](pending_proposals/functional_closeout_0150.md)
+records its accepted implementation scope; the next product objective is
+[interactive exploration for 0.16.0](pending_proposals/interactive_exploration_0160.md).
+Keep outstanding 0.15.0 delivery/acceptance separate from continued development. The
 [destination action plan](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions)
 retains the received-workspace history and technical follow-up.
 
@@ -20,7 +21,10 @@ gate; #192 is explicitly deferred for 0.15.0. The maintainer
 [accepts this functional milestone](evidence/functional_milestone_acceptance_20261112.json).
 Its implementation review is closed. Prepare the separate milestone/delivery
 decision and continue independent authorized development, preserving outstanding
-acceptance and delivery states. This does not accept the later stages.
+acceptance and delivery states. It does not complete the later stages.
+The maintainer separately accepts [interactive Card/Deck exploration for 0.16.0](pending_proposals/interactive_exploration_0160.md).
+This advances a bounded part of stage 6; platform/technology selection follows
+the MolSysViewer review and remains the next discussion.
 
 ## How the two routes are integrated
 
@@ -44,8 +48,10 @@ Review it before every later release and restore macOS after actual qualificatio
 historical 0.14.0 evidence and all remaining B7/B8 dependencies stay distinct.
 
 The maintainer has resumed the complete six-stage program. The stages retain
-their dependencies and separate acceptance requirements; the current 0.15.0
-functional scope stays fixed. The independent researcher trial is explicitly
+their dependencies and separate acceptance requirements. The accepted 0.16.0
+interactive slice advances part of stage 6 without requiring completion of
+every broader stage 3–5 objective first; a concrete dependency stays due.
+The current 0.15.0 functional scope stays fixed. The independent researcher trial is explicitly
 deferred until after 0.15.0 under its [bounded scheduling decision](pending_proposals/researcher_acceptance_0150.md#post-0150-scheduling-decision--2026-11-12),
 with `not_reviewed` status and no automatic exception for a later version. Other
 B7 dimensions remain due. Record an updated developer-guide checkpoint after every
@@ -60,7 +66,7 @@ these stages.
 | 3 — Expand semantic and temporal knowledge access | Broaden KnowledgeQuery, packets and source-supported temporal questions with explicit unknowns, original support and real consumer receiving; preserve shared MOLI contracts and distinguish stored history from unqueried historical sources |
 | 4 — Expand real interoperability | Complete useful MOLI and MolSysSuite exchanges with their actual consumers, retaining identity, units, support and the ownership of Knowledge, Evidence, geometry and provenance |
 | 5 — Expand scientific coverage and source guarantees | Address scientific/source gaps, source utilization and health, bibliography, acquisition observation and rights through their owning contracts and registry; preserve explicit licensing, unsupported scope and adoption decisions |
-| 6 — Deliver separately scoped exploration products | Develop Deck navigation, interactive viewing/document export, presentation video and a CLI when useful and needed. These remain future projects with their own scope and acceptance; they add no automatic 0.15.0 requirements |
+| 6 — Deliver separately scoped exploration products | The maintainer selects a bounded interactive Card/Deck experience with applicable MolSysViewer integration as the 0.16.0 product objective; host/framework selection is pending. Broader export, presentation video and CLI retain separate future scope. None expands 0.15.0 |
 
 The [continuation plan](CONTINUATION_PLAN_20261104.md#accepted-six-stage-program)
 connects these stages to incremental execution. An unavailable reviewer or queued
@@ -357,7 +363,7 @@ contracts. See the [coordination route](CONTINUATION_PLAN_20261104.md#vertical-p
 | Sources and mirrors | Registry-owned evaluations/deferred triggers, explicit terms/access and current source health; postponed mirrors and unlicensed inputs are not implied new work (#83/#95/#101) |
 | Peptides | Define the scientific/identity/source scope before a source implementation; schema enumeration alone is not delivered peptide science |
 | Interoperability | Actual model/annotation/ligand-deck receiving by MolSysSuite consumers; source knowledge, calculated geometry, Nextia Evidence and provenance retain distinct ownership |
-| Future exploration products | Deck navigation, export/interactive visual inspection and assisted video presentation remain separately scheduled proposals; reuse Card semantics and keep publication authority explicit |
+| Exploration products | Bounded interactive Card/Deck exploration is selected for 0.16.0 (#153/#154), with platform/technology discussion next. Broader export, video and CLI remain separately scheduled; reuse Card semantics and keep publication authority explicit |
 
 The [earlier detailed backlog](archive/ROADMAP_before_onboarding_20261106.md#capability-backlog-and-dependencies)
 preserves every previous capability/owner reference and dated progress record.
