@@ -696,14 +696,21 @@ def _bind_original_machine_requests(explorer):
 def _retained_writer():
     # Import LIVE aliases before guards; temporary forbidden providers must not
     # become permanent aliases in a module imported later.
+    presentations = {}
     for module in (
         "card_molecule_activity_exploration",
         "card_bioactivity_exploration",
         "card_literature_exploration",
     ):
-        importlib.import_module("sabueso.core." + module)
+        presentations[module] = importlib.import_module("sabueso.core." + module).view
     with pytest.MonkeyPatch.context() as guard:
         block_current(guard)
+        # Reenact presentation over retained results only. Scientific providers
+        # stay forbidden; the cache-only adapters below reject unretained calls.
+        for module, view in presentations.items():
+            guard.setattr(
+                importlib.import_module("sabueso.core." + module), "view", view
+            )
         from sabueso.core.card_exploration import CardExplorer
 
         def catalog(explorer):

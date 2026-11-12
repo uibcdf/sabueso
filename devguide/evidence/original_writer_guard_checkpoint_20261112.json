@@ -1,0 +1,133 @@
+{
+  "state": "ORIGINAL_WRITER_SELECTED_RECOVERY_PASS_COMPLETE_RECOVERY_PENDING",
+  "recorded_utc": "2026-11-12T10:06:34.389162+00:00",
+  "owner": [
+    "uibcdf/sabueso#148",
+    "uibcdf/sabueso#112"
+  ],
+  "review_trigger": "Complete owning55 and remaining420 receiving, exact-final-head hosted recovery and B7/candidate review",
+  "source_base": "4d170cea5c6b9163b96ce17c19d2e52b4a76578b",
+  "runtime": "0.14.0+264.g4d170ce",
+  "correction": {
+    "state": "ONE_TEST_HELPER_ONLY",
+    "source_head": "4d170cea5c6b9163b96ce17c19d2e52b4a76578b",
+    "changed_file": "tests/core/test_card_saved_molecule_activity_originals_offline.py",
+    "changed_function": "_retained_writer",
+    "other_source_inputs_unchanged": 1352,
+    "all_other_top_level_ASTs_in_changed_module_unchanged": true,
+    "before_sha256": "12a0ab30a3fc84d66e55c78dacb690d6616251e5e81f4ad71118e0072ec0855f",
+    "after_sha256": "106d836140e57b8a59c0f3ef0a39fb04a6892d8922ed97a3fec4b91dc8012885",
+    "production_inputs_unchanged": 931,
+    "selected_scope": "Two original positive writer/independent-reader cases plus full owning55 and all remaining420 receiving before final checkpoint. Prior three cohort outcomes retain explicit earlier test-input epoch."
+  },
+  "original_complete_failure": {
+    "directory": "recovered_work/checkpoint_recovery_20261106/b7-current-integrated-old_molecule-1",
+    "passed": 11,
+    "failed": 44,
+    "root_causes": 1,
+    "resource_stop": false,
+    "complete_valid_receptor": true
+  },
+  "selected_receiving": {
+    "directory": "recovered_work/checkpoint_recovery_20261106/b7-current-writer-guard-recovery-1",
+    "cases": 2,
+    "counts": {
+      "collected": 2,
+      "deselected": 0,
+      "errors": 0,
+      "executed": 2,
+      "failed": 0,
+      "not_executed": 0,
+      "passed": 2,
+      "reruns": 0,
+      "skipped": 0,
+      "subtests": {},
+      "warnings": 0,
+      "xfailed": 0,
+      "xpassed": 0
+    },
+    "originals": [
+      "sdk208-benz-to-bts",
+      "sdk205-benz"
+    ],
+    "source_inputs_unchanged_during_gate": true,
+    "complete_valid_receptor_and_worker_accounting": true,
+    "closed_report_sha256": "db6a59cf6508613044eea7c5eb19bb58ac42ae2d001e24785976e4bace97e51d",
+    "events_sha256": "f404bb2d3f6a429a7acb5ab1f71b941a06f36c1ec514f53dd8064d34af591e2b",
+    "resources": {
+      "owner": "uibcdf/sabueso#148/#112",
+      "review_trigger": "Complete current source checkpoint; 1 workers,10GiBtotalRSS,native1,host16GiBfloor,3GiBscratch",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "tests/core/test_card_saved_molecule_activity_originals_offline.py::test_complete_original_human_and_machine_file_journey[sdk208-benz-to-bts]",
+        "tests/core/test_card_saved_molecule_activity_originals_offline.py::test_complete_original_human_and_machine_file_journey[sdk205-benz]",
+        "--local-source-inputs",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "--receptor-events=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-current-writer-guard-recovery-1/events.jsonl",
+        "-p",
+        "checkpoint_scope",
+        "--basetemp=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-current-writer-guard-recovery-1/pytest-scratch",
+        "-o",
+        "tmp_path_retention_policy=failed",
+        "-W",
+        "error:unclosed database:ResourceWarning",
+        "-W",
+        "error::pytest.PytestUnraisableExceptionWarning"
+      ],
+      "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 677.77,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 2457468928,
+      "minimum_host_available_bytes": 56990339072,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 2227102719,
+      "limits": {
+        "owned_rss_bytes": 10737418240,
+        "host_available_bytes": 17179869184,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 5400,
+        "owned_scratch_bytes": 3221225472
+      },
+      "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-current-writer-guard-recovery-1/cargo-target"
+    }
+  },
+  "helper_probe": {
+    "state": "RED_REPRODUCED_PROPOSED_HELPER_CORRECTION_GREEN",
+    "incorrectly_blocked_presentation": [
+      "card_molecule_activity_exploration",
+      "card_bioactivity_exploration"
+    ],
+    "unretained_requests_still_refused": 3,
+    "scientific_providers_still_forbidden": 2,
+    "aliases_restored": true,
+    "scope": "Light synthetic helper probe; no original archive execution or product qualification"
+  },
+  "prior_passing_cohorts": {
+    "native": 1553,
+    "ordinary": 8335,
+    "modern_history": 1151,
+    "scope": "Earlier unchanged production/test epoch. Three complete PASS streams; not a complete whole source qualification. The one changed helper and any later combined receipt must remain explicit."
+  },
+  "protected_SOURCE_and_original_inputs_unchanged": 52,
+  "participating_provider_maps_unchanged_in_failed_epoch": 9,
+  "raw_directory": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-3",
+  "limits": [
+    "Full corrected owning55 and remaining420 not yet executed",
+    "No production scientific fix or altered original/test expectation",
+    "No hosted/installed public archive qualification, B7 acceptance or B8 resumption"
+  ]
+}

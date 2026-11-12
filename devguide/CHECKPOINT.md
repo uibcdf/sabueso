@@ -5,6 +5,27 @@ Current working-state checkpoint: **2026-11-12 (UTC)**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Retained original writer — two corrected independent readers PASS
+
+The clean `4d170ce` / SDK264 attempt closes 11,039 native/ordinary/modern-history
+cases, then completes the original molecule-file group with 44 failures and
+eleven passes. Its stricter guard also blocks presentation needed by the cached
+historical writer. The [one-helper correction](pending_bugs/history_guard_isolation.md#original-writer-presentation-under-the-stricter-guard)
+restores that presentation within the writer, retaining forbidden scientific
+providers, acquisition and unretained requests. Independent receivers keep their
+own strict LIVE-UI guard. No production, original input or scientific assertion
+changes; the other 1,352 mapped inputs and all other module ASTs stay fixed.
+
+The [selected receipt](evidence/original_writer_guard_checkpoint_20261112.json)
+records both SDK208 and SDK205 positive files passing with independent readers,
+complete valid receptor accounting and zero warnings/skips/swap. Complete owning
+55-case and remaining 420-case recovery is still pending. Earlier failed streams
+remain unchanged; any combined passing checkpoint must disclose this test-helper
+correction and preserve each phase's actual input epoch. Owners #148/#112 retain
+raw evidence under
+`recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-3/`
+and the fresh continuation under `b7-current-full-checkpoint-4/`.
+
 ## LIVE and historical guard follow-up — selected local recovery PASS
 
 The clean `88b3fb2` recovery closes its native cohort, then completes the ordinary

@@ -73,3 +73,30 @@ that failed control, the original complete ordinary failure and passing gates
 separately. Complete clean-source recovery and exact-head hosted gates remain
 pending; raw evidence belongs to #148/#112 under
 `recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-2/`.
+
+## Original writer presentation under the stricter guard
+
+The clean `4d170ce` / SDK264 attempt closes 1,553 native, 8,335 ordinary and
+1,151 modern-history cases successfully. Its next complete 55-case molecule-file
+cohort reports 44 failures and eleven passes, with one cause and no resource
+stop. The stricter science guard also blocks the molecule/bioactivity `view`
+functions used by the retained-result writer. That writer already replaces
+materialization with exact original-cache lookups, but cannot reach them while
+presentation itself is forbidden. This is a test-helper regression introduced
+by the guard correction; no production scientific defect is observed.
+
+Only `_retained_writer` in the original-file test module changes. It preserves
+the three presentation entry points before installing the science guard and
+restores them within its reenactment scope. Scientific providers, acquisition,
+Card construction and unretained cache requests remain forbidden. Independent
+receivers keep their separate strict LIVE-UI guard. The other 1,352 mapped source
+inputs and every other top-level AST in the changed module remain unchanged;
+the original positive/boundary assertions and frozen inputs are not edited.
+
+The red/green synthetic helper probe, original complete failed stream and exact
+correction map remain under
+`recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-3/`.
+The complete original writer and remaining history/copied receiving must pass
+before this correction supplies a full local code checkpoint. Earlier passing
+cohorts retain their actual input epoch; do not describe a composition across
+this helper correction as one unchanged test-input execution.

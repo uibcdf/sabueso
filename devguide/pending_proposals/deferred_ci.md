@@ -9,6 +9,24 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Original writer presentation correction (2026-11-12 UTC, #148/#112)
+
+The clean `4d170ce` / SDK264 attempt closes three cohorts with 11,039 passes,
+then completes the 55-case original molecule group with eleven passes and
+44 failures from one overstrict test guard. Only `_retained_writer` changes:
+presentation can use exact retained caches while current science, acquisition
+and unretained requests remain forbidden. Production, original inputs, all other
+module ASTs and the other 1,352 mapped source inputs stay unchanged.
+
+The [two corrected positive controls](../evidence/original_writer_guard_checkpoint_20261112.json)
+pass with independent original readers and complete valid receptor accounting.
+Complete owning55 and remaining420 recovery remains due. Retain original failed
+events, correction/source/provider maps and the exact committed/pushed head in
+`recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-4/`.
+The authorized intermediate `[skip ci]` route continues; exact-final-head hosted
+CI/governance, installed-candidate receiving and B7/B8 acceptance remain due.
+No new remote run, issue publication or candidate action is authorized here.
+
 ### LIVE and historical guard follow-up (2026-11-12 UTC, #148/#112)
 
 The clean `88b3fb2` attempt completes its ordinary group with 8,324 passes and
