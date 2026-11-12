@@ -639,3 +639,108 @@ assert knowledge.native_payload["rule"]["rule"] == "card_knowledge_diff@2"
         timeout=90,
     )
     assert result.returncode == 0, result.stdout + result.stderr
+
+
+@pytest.mark.parametrize(
+    "helper,factory,family",
+    [
+        ("test_card_saved_bioactivity_offline", "block_current", "card_bioactivity"),
+        (
+            "test_card_molecule_activity_binding_offline",
+            "block_current",
+            "card_molecule_activity",
+        ),
+        ("test_card_saved_literature_offline", "block_current", "card_literature"),
+        ("test_card_variant_history_offline", "block_current", "card_variant"),
+        ("test_bioactivity_literature_v2_offline", "block_current", "card_literature"),
+        (
+            "test_card_molecule_activity_history_offline",
+            "block_current",
+            "card_molecule_activity",
+        ),
+        (
+            "test_card_protein_context_history_offline",
+            "block_current",
+            "card_protein_context",
+        ),
+        ("test_card_sequence_changes_offline", "offline", "card_variant"),
+        (
+            "test_card_knowledge_comparison_history_offline",
+            "block_current",
+            "card_knowledge_comparison",
+        ),
+        ("test_card_clinical_history_offline", "block_current", "card_clinical"),
+        (
+            "test_card_sequence_change_history_offline",
+            "block_current",
+            "card_sequence_change",
+        ),
+        (
+            "test_card_disease_association_history_offline",
+            "block_current",
+            "card_disease_association",
+        ),
+    ],
+)
+def test_all_materializer_guards_restore_late_imports(
+    tmp_path, helper, factory, family
+):
+    script = r"""
+import importlib
+import inspect
+import sys
+import pytest
+
+sys.path.insert(0, sys.argv[1])
+helper = importlib.import_module(sys.argv[2])
+factory = inspect.unwrap(getattr(helper, sys.argv[3]))
+families = ("card_sequence_change", "card_protein_context", "card_variant",
+            "card_knowledge_comparison", "card_disease_association",
+            "card_molecule_activity", "card_literature", "card_clinical",
+            "card_bioactivity", "card_chemical")
+with pytest.MonkeyPatch.context() as guard:
+    factory(guard)
+    protected = importlib.import_module("sabueso.core." + sys.argv[4] + "_access")
+    with pytest.raises((AssertionError, pytest.fail.Exception)):
+        protected.materialize(None)
+    for family in families:
+        importlib.import_module("sabueso.core." + family + "_access")
+        importlib.import_module("sabueso.core." + family + "_exploration")
+
+unexpected = []
+for name, module in list(sys.modules.items()):
+    if name.startswith("sabueso.core") and module is not None:
+        for attribute, value in vars(module).items():
+            if callable(value) and getattr(value, "__module__", "").startswith("test_"):
+                unexpected.append(name + "." + attribute)
+assert not unexpected, unexpected
+
+from test_card_sequence_changes_offline import synthetic
+from test_card_protein_context_offline import protein, relationship
+assert synthetic().explore().answer("sequence_changes").items()
+left, right = protein(), protein("P52270")
+expected, _ = relationship(left, "associated_with")
+explorer = left.explore(related_cards=[right])
+assert explorer.answer("protein_associations").items()[0].open().native_payload == expected
+assert explorer.answer("variant_tissue_context").native_payload is not None
+knowledge = explorer.answer("knowledge_differences", options={
+    "other_ref": explorer.context["inputs"][1]})
+assert knowledge.native_payload["rule"]["rule"] == "card_knowledge_diff@2"
+"""
+    result = subprocess.run(
+        [
+            sys.executable,
+            "-B",
+            "-c",
+            script,
+            str(Path(__file__).parent),
+            helper,
+            factory,
+            family,
+        ],
+        cwd=tmp_path,
+        capture_output=True,
+        text=True,
+        timeout=90,
+    )
+    assert result.returncode == 0, result.stdout + result.stderr

@@ -329,6 +329,7 @@ def block_current(monkeypatch):
             "_native",
             "options_for_bioactivities",
         ),
+        "card_bioactivity_exploration": ("view", "materialize"),
         "bioactivities": ("bioactivities_view", "resolve_thresholds"),
         "bioactivity_explanation": ("explain_bioactivity", "explain_measurement"),
         "ligands": ("ligands_view",),

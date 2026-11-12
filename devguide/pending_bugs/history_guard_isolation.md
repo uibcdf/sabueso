@@ -42,3 +42,34 @@ pending its fresh recovery. Keep
 the original five failures and scratch stop, the corrected selected gate and
 the eventual full checkpoint separate. #148 owns isolation and #112 coordinates
 integration/CI; no new issue comment or hosted run is authorized by this fix.
+
+## LIVE fixture and wider cold-consumer follow-up
+
+The fresh clean `88b3fb2` attempt completes its 8,335 ordinary cases with 8,324
+passes and eleven failures in the variant exploration module. The LIVE sequence
+fixture patches the variant provider before its presentation module is imported;
+that module retains the temporary function afterwards. There is no resource stop.
+
+The wider audit covers twelve guards/fixtures and ten materializer families,
+also checking all loaded core-module globals for leaked test functions. It finds
+further aliases in saved-bioactivity and mixed bioactivity/literature guards,
+including renamed imports inside the molecule adapter. The molecule history
+guard additionally preloads/guards the bioactivity presentation consumer.
+Affected helpers now import those consumers before installing temporary guards;
+the LIVE sequence fixture explicitly restores its presentation alias too.
+
+The [follow-up receipt](../evidence/guard_alias_followup_checkpoint_20261112.json)
+records **116 cases passing together** with four workers on unchanged mapped
+inputs, including both complete LIVE modules and all cold regressions. Fifteen
+overlapping controls also pass with eighteen byte-identical copied modules,
+external working/scratch directories and no data assets. The copied client is
+removed after verification. No production code, existing scientific test
+predicate, original input or frozen reader changes.
+
+The new control initially expected only `AssertionError`; one existing guard
+uses `pytest.fail.Exception`. Its corrected check accepts those two explicit
+types, and the final unchanged-source selection passes completely. Preserve
+that failed control, the original complete ordinary failure and passing gates
+separately. Complete clean-source recovery and exact-head hosted gates remain
+pending; raw evidence belongs to #148/#112 under
+`recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-2/`.

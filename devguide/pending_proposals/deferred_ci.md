@@ -9,6 +9,23 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### LIVE and historical guard follow-up (2026-11-12 UTC, #148/#112)
+
+The clean `88b3fb2` attempt completes its ordinary group with 8,324 passes and
+eleven test-isolation failures, without a resource stop. The
+[corrected selected receipt](../evidence/guard_alias_followup_checkpoint_20261112.json)
+passes all 116 cases together, plus fifteen overlapping copied controls outside
+checkout. Twelve guards and ten late-imported consumer families are covered,
+including renamed aliases. Production, original inputs and existing scientific
+test predicates remain unchanged; full clean-source recovery is still pending.
+
+Retain exact committed/pushed head, source/provider maps, complete original
+failures, current selected/copy receipts and recovery under
+`recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-2/`.
+The intermediate `[skip ci]` route remains authorized; exact-final-head CI and
+governance, installed-candidate qualification and B7/B8 acceptance remain due.
+No new remote run, publication or candidate action is authorized by this fix.
+
 ### Historical test isolation and original-input lifetime (2026-11-12 UTC)
 
 The fresh `f772e25` attempt is incomplete: two cohorts close 9,888 passing cases,

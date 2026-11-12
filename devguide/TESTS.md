@@ -633,6 +633,14 @@ and caller files remain available. Keep original verification and scientific
 assertions unchanged. The [13-case selected receipt](evidence/history_guard_lifetime_checkpoint_20261112.json)
 is separate from the pending full corrected-source recovery.
 
+The [wider guard follow-up](evidence/guard_alias_followup_checkpoint_20261112.json)
+receives twelve materializer guards/fixtures against ten late-imported consumer
+families, checks that no test function remains in loaded core namespaces, and
+executes actual sequence/association/variant/knowledge questions afterwards. Its
+116-case gate includes both complete LIVE modules; fifteen overlapping copied
+controls require no data assets and run entirely outside checkout. Preserve the
+original order-dependent failures and qualify the complete clean source separately.
+
 ### Current checkpoint partition
 
 The [current packing-source receipt](evidence/packing_full_checkpoint_20261111.json)

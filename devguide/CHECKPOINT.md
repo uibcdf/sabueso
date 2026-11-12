@@ -5,6 +5,25 @@ Current working-state checkpoint: **2026-11-12 (UTC)**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## LIVE and historical guard follow-up — selected local recovery PASS
+
+The clean `88b3fb2` recovery closes its native cohort, then completes the ordinary
+8,335-case group with 8,324 passes and eleven variant-test failures caused by
+another temporary alias retained from a LIVE fixture. There is no resource stop.
+The [wider correction](pending_bugs/history_guard_isolation.md#live-fixture-and-wider-cold-consumer-follow-up)
+now receives all twelve identified materializer guards across ten consumer
+families, including renamed imports, and restores their LIVE consumers.
+
+The [current selected receipt](evidence/guard_alias_followup_checkpoint_20261112.json)
+records **116 cases passing together** with four workers, no warnings/skips/swap,
+complete receptor integrity and exact source/worker accounting. Fifteen overlapping
+cold controls also pass outside checkout with eighteen copied modules and no data
+assets. The original complete ordinary failure and the earlier test-exception
+mismatch remain separate nonpassing records. All 931 production inputs and 52
+protected originals stay unchanged. Full clean-source recovery is still pending;
+retain its exact head/provider/input records under #112/#148 in
+`recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-2/`.
+
 ## Historical test isolation and input lifetimes — targeted local checks PASS
 
 A fresh complete attempt at `f772e25` / SDK262 closes 1,553 native and 8,335

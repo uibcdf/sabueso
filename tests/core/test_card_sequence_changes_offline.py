@@ -29,10 +29,14 @@ def forbidden(*args, **kwargs):
 def offline(monkeypatch):
     monkeypatch.setattr(socket.socket, "connect", forbidden)
     monkeypatch.setattr(socket, "create_connection", forbidden)
-    for module in ("card_variant_access", "card_scientific_access"):
-        monkeypatch.setattr(
-            importlib.import_module("sabueso.core." + module), "materialize", forbidden
-        )
+    targets = (
+        "card_variant_access",
+        "card_variant_exploration",
+        "card_scientific_access",
+    )
+    modules = [importlib.import_module("sabueso.core." + name) for name in targets]
+    for module in modules:
+        monkeypatch.setattr(module, "materialize", forbidden)
 
 
 def mapped(record):
