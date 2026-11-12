@@ -83,3 +83,35 @@ qualification. The original old-head batch authorizes no new head or retry.
 Prepare one concrete request after local checks and record actual approval/run
 identity before dispatch. B7 human/scientific/actual-agent/consumer acceptance and
 B8 candidate/schema/staging/publication remain separate.
+
+## macOS startup refusal and capacity reporting — 2026-11-12 UTC
+
+The authorized `74308ba` batch has verified successful governance, but its
+macOS26/Python3.14 source job `130906598267` refuses before pytest with
+`Insufficient available RAM for one worker plus the host reserve`. The old
+launcher assigns actual RAM and CPU fields after that decision, so its refused
+report cannot establish actual capacity or transient versus persistent pressure.
+Other jobs in the same batch continue; no source assertion failure is inferred.
+
+GitHub lists the standard ARM macOS runner as three M1 CPUs and 7 GB RAM in its
+[hosted-runner reference](https://docs.github.com/en/actions/reference/runners/github-hosted-runners).
+That is a documented machine specification, not the unavailable live-RAM value
+at this refusal. Preserve the actual raw report and log in
+`recovered_work/checkpoint_recovery_20261106/b7-ci-recovery-74308ba-1/`.
+
+The local correction records capacity before the budget decision and adds a
+bounded first-launch settling interval: default 30 s, configurable 0–60 s, at
+most five seconds between observations. Zero disables waiting. An impossible
+physical budget refuses immediately; persistent shortage refuses at the deadline.
+Owned stop files and interruption preserve refusal before pytest. The same
+2 GiB per-worker and host-reserve criteria must fit before launching; no safety
+margin, selected case or scientific predicate is relaxed. This wait is not a
+repeat of pytest or a new remote execution.
+
+The [new receipt](../evidence/ci_preflight_capacity_checkpoint_20261112.json)
+qualifies all 36 current guard controls and three existing wiring/copied-receiving
+controls locally. Synthetic pressure sequences establish behavior, not recovery
+of the actual macOS runner. The complete 96-case copied child retains its own
+scope. Actual successful macOS source receiving, the remaining current jobs and
+any later authorized exact-head recovery remain open. Keep the issue open and
+consolidate observations before another remote request or public update.

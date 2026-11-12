@@ -23,6 +23,7 @@ from pathlib import Path
 import psutil
 
 GIB = 1024**3
+RSS_PER_WORKER = 2 * GIB
 NATIVE_POOLS = (
     "OPENMM_CPU_THREADS",
     "OMP_NUM_THREADS",
@@ -37,15 +38,62 @@ NATIVE_POOLS = (
 )
 
 
+def host_reserve(total, reserve_gib):
+    return max(GIB, math.ceil(total * 0.2), math.ceil(reserve_gib * GIB))
+
+
 def worker_budget(requested, cpu_count, available, total, reserve_gib=0):
     """Keep one exposed CPU and at least 20% physical RAM available when possible."""
-    reserve = max(GIB, math.ceil(total * 0.2), math.ceil(reserve_gib * GIB))
+    reserve = host_reserve(total, reserve_gib)
     maximum = min(requested, max(1, cpu_count - 1))
     for workers in range(maximum, 0, -1):
-        memory_limit = workers * 2 * GIB
+        memory_limit = workers * RSS_PER_WORKER
         if available >= reserve + memory_limit:
             return workers, memory_limit, reserve
     raise ValueError("Insufficient available RAM for one worker plus the host reserve")
+
+
+def preflight_budget(
+    requested, cpu_count, reserve_gib, wait_seconds, stop_file, report
+):
+    """Observe capacity before refusal; wait briefly before the first launch only."""
+    started = time.monotonic()
+    samples = []
+    report.update(
+        preflight_wait_limit_s=wait_seconds,
+        preflight_memory_samples=samples,
+    )
+    while True:
+        elapsed = time.monotonic() - started
+        report["preflight_wait_elapsed_s"] = round(elapsed, 3)
+        if stop_file.exists():
+            raise ValueError("An explicit owned stop request exists during preflight")
+        memory = psutil.virtual_memory()
+        reserve = host_reserve(memory.total, reserve_gib)
+        minimum = reserve + RSS_PER_WORKER
+        report.update(
+            host_total_bytes=memory.total,
+            host_available_before_bytes=memory.available,
+            host_reserve_bytes=reserve,
+            minimum_available_for_one_worker_bytes=minimum,
+        )
+        samples.append(
+            {
+                "elapsed_s": round(elapsed, 3),
+                "available_bytes": memory.available,
+                "total_bytes": memory.total,
+            }
+        )
+        try:
+            workers, memory_limit, reserve = worker_budget(
+                requested, cpu_count, memory.available, memory.total, reserve_gib
+            )
+            return workers, memory_limit, reserve, memory
+        except ValueError:
+            # A physically impossible budget cannot improve by waiting.
+            if memory.total < minimum or elapsed >= wait_seconds:
+                raise
+            time.sleep(min(5, wait_seconds - elapsed))
 
 
 def child_environment(environment, scratch):
@@ -184,12 +232,21 @@ def run(args, report):
         if hasattr(current, "cpu_affinity")
         else list(range(os.cpu_count() or 1))
     )
-    memory = psutil.virtual_memory()
+    report.update(
+        cpu_slots_observed=len(cpus),
+        physical_cores_observed=psutil.cpu_count(logical=False),
+        requested_workers=args.workers,
+    )
     report["host_cpu_percent_before"] = psutil.cpu_percent(interval=0.1)
     report["host_swap_before"] = psutil.swap_memory()._asdict()
     requested = 1 if report["host_cpu_percent_before"] >= 85 else args.workers
-    workers, memory_limit, reserve = worker_budget(
-        requested, len(cpus), memory.available, memory.total, args.reserve_gib
+    workers, memory_limit, reserve, memory = preflight_budget(
+        requested,
+        len(cpus),
+        args.reserve_gib,
+        args.preflight_wait_seconds,
+        stop_file,
+        report,
     )
     parent = Path(
         args.scratch_parent or os.getenv("RUNNER_TEMP", tempfile.gettempdir())
@@ -203,10 +260,6 @@ def run(args, report):
     scratch = Path(tempfile.mkdtemp(prefix="sabueso-ci-pytest-", dir=parent)).resolve()
     report.update(
         workers=workers,
-        cpu_slots_observed=len(cpus),
-        physical_cores_observed=psutil.cpu_count(logical=False),
-        host_total_bytes=memory.total,
-        host_available_before_bytes=memory.available,
         memory_limit_bytes=memory_limit,
         host_reserve_bytes=reserve,
         scratch_limit_bytes=scratch_limit,
@@ -319,6 +372,7 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--workers", type=int, choices=(1, 2, 3), default=3)
     parser.add_argument("--reserve-gib", type=float, default=0)
+    parser.add_argument("--preflight-wait-seconds", type=float, default=30)
     parser.add_argument("--scratch-gib", type=float, default=6)
     parser.add_argument("--scratch-parent")
     parser.add_argument("--seconds", type=float, default=19800)
@@ -330,6 +384,13 @@ def main(argv=None):
         parser.error("Scratch and elapsed limits must be finite and positive")
     if not math.isfinite(args.reserve_gib) or args.reserve_gib < 0:
         parser.error("The optional host reserve must be finite and nonnegative")
+    if (
+        not math.isfinite(args.preflight_wait_seconds)
+        or not 0 <= args.preflight_wait_seconds <= 60
+    ):
+        parser.error(
+            "The preflight wait must be finite and between zero and 60 seconds"
+        )
     # Refuse caller output before starting any process or creating owned scratch.
     with args.report.open("x", encoding="utf-8"):
         pass
@@ -355,6 +416,13 @@ def main(argv=None):
     previous = signal.signal(signal.SIGTERM, interrupted)
     try:
         code = run(args, report)
+    except KeyboardInterrupt:
+        if report["state"] != "PREFLIGHT":
+            raise
+        report.update(
+            state="REFUSED", reason="Preflight interrupted before pytest launch"
+        )
+        code = 130
     except (ValueError, OSError, psutil.Error) as error:
         report.update(state="REFUSED", reason=str(error))
         code = 71

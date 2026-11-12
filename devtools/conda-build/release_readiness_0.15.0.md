@@ -9,8 +9,12 @@ The [bounded CI correction](../../devguide/pending_bugs/ci_serial_execution_time
 addresses an observed four-hour installed-lane timeout while preserving all
 original selections. Its [local receiving](../../devguide/evidence/ci_bounded_execution_checkpoint_20261111.json)
 is development-tool validation, not hosted recovery. The old `3c26790` batch has
-failed/cancelled work and cannot qualify later code. A newly authorized exact-head
-CI/governance batch and all candidate/artifact prerequisites remain necessary.
+failed/cancelled work and cannot qualify later code. The authorized `74308ba`
+batch has verified governance but a macOS RAM refusal before pytest; its other
+jobs remain under observation. A [local preflight correction](../../devguide/evidence/ci_preflight_capacity_checkpoint_20261112.json)
+records capacity and bounded settling without relaxing limits. Actual macOS
+recovery, exact-final-head CI and all candidate/artifact prerequisites remain
+necessary.
 
 ## Required records
 

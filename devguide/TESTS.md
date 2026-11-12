@@ -1168,6 +1168,31 @@ remain intact. The [local receipt](evidence/ci_bounded_execution_checkpoint_2026
 owns actual counts, source hashes and scope. Run one selected gate at a time.
 Exact-head hosted OS/Python/public-provider receiving remains mandatory.
 
+#### Capacity refusal and preflight settling
+
+Before a RAM decision, the launcher records actual CPU slots, physical/available
+RAM, the host reserve and minimum headroom for one worker. Its bounded capacity
+trace distinguishes the initial and final available memory values. A refused
+report therefore remains useful when no worker starts.
+
+`--preflight-wait-seconds` defaults to 30 and accepts finite values from 0 through
+60; zero disables the wait. Check at intervals no longer than five seconds and
+launch once only if the original resource criteria fit. Refuse physically
+impossible budgets immediately and persistent shortages at the deadline. Owned
+stop requests and interruption before launch remain nonpassing, with no pytest
+process or scientific restart. Numerical/native/scratch/time/RSS policies remain
+unchanged. These controls do not certify that a particular hosted runner recovers.
+
+After changes here, run the complete
+`tests/tools/test_ci_pytest_resources_offline.py`, then the existing
+`test_installed_chemical_receiving_provisions_older_python_zstd`,
+`test_installed_molecule_files_deliver_the_complete_original_payload` and
+`test_declared_shared_values_run_without_checkout_files` controls in
+`tests/tools/test_installed_receiving_scope_offline.py`. Read each selected gate's
+actual result. The [capacity receipt](evidence/ci_preflight_capacity_checkpoint_20261112.json)
+records 39 distinct local parent cases and the separate copied96child scope.
+Full hosted/platform/candidate gates remain separate.
+
 ### Recovering deferred CI
 
 Finish a block with an unskipped push and inspect the resulting exact-head CI and

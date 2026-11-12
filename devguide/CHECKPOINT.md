@@ -1,9 +1,41 @@
 # Sabueso — Checkpoint
 
-Current working-state checkpoint: **2026-11-11**. Start with
+Current working-state checkpoint: **2026-11-12 (UTC)**. Start with
 [ONBOARDING](ONBOARDING.md) for project context and the
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
+
+## Preflight capacity and bounded settling — local checks PASS
+
+The authorized `74308ba` batch has
+[verified governance](https://github.com/uibcdf/sabueso/actions/runs/43134667040).
+[CI](https://github.com/uibcdf/sabueso/actions/runs/43134542677) remains in progress;
+its macOS source job refuses before pytest because one worker plus the host RAM
+reserve does not fit. The old report omits the actual RAM/CPU capacity behind
+that decision. No source test ran in that job; a transient or persistent resource
+condition cannot be distinguished from that report.
+
+The launcher now records available/physical RAM, CPU slots, required headroom and
+capacity samples before deciding. It may wait up to 30 seconds before the first
+launch, checking at most every five seconds; `--preflight-wait-seconds` accepts
+0–60, and zero keeps immediate refusal. A physically impossible budget is refused
+immediately. Persistent shortage, an owned stop request or an interrupted wait
+never starts pytest. The original 2 GiB per worker, host reserve, worker ceiling,
+selected scientific arguments, native pools, scratch and process-tree limits stay
+fixed. This is no scientific or worker retry.
+
+The [local receipt](evidence/ci_preflight_capacity_checkpoint_20261112.json)
+records **36 launcher controls** and **three existing receiving/wiring controls**.
+The latter includes the complete **96-case** copied module; child/repeat counts
+add no distinct source coverage. All 52 protected SOURCE/original files remain
+unchanged. Synthetic pressure sequences exercise the wait; the actual macOS
+resource condition and successful hosted recovery remain unmeasured. The new
+local behavior does not qualify an installed platform or the active older head.
+
+Keep the current batch's outcomes, complete its remaining observation and
+consolidate the next authorized recovery under #112/#148. No new remote run,
+retry, issue comment or release is authorized by this local correction. B7
+independent acceptance and B8 resumption remain pending.
 
 ## Bounded CI timeout correction — local checks PASS, hosted recovery pending
 

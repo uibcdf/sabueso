@@ -8,6 +8,7 @@ import sys
 import threading
 import time
 from pathlib import Path
+from types import SimpleNamespace
 
 import psutil
 import pytest
@@ -319,7 +320,146 @@ def test_insufficient_host_headroom_refuses_before_creating_scratch(tmp_path):
     data = json.loads(report.read_text())
     assert result.returncode == 71 and data["state"] == "REFUSED"
     assert "Insufficient available RAM" in data["reason"]
+    assert data["host_total_bytes"] > 0
+    assert 0 < data["host_available_before_bytes"] <= data["host_total_bytes"]
+    assert data["cpu_slots_observed"] >= 1
+    assert data["minimum_available_for_one_worker_bytes"] > data["host_total_bytes"]
+    assert len(data["preflight_memory_samples"]) == 1
     assert "command" not in data and not list(tmp_path.glob("sabueso-ci-pytest-*"))
+
+
+def controlled_preflight(monkeypatch, snapshots, on_sleep=None):
+    clock = {"now": 0}
+    pauses = []
+    remaining = iter(snapshots)
+    current = snapshots[-1]
+
+    def memory():
+        nonlocal current
+        current = next(remaining, current)
+        return SimpleNamespace(total=current[0], available=current[1])
+
+    def sleep(seconds):
+        pauses.append(seconds)
+        clock["now"] += seconds
+        if on_sleep:
+            on_sleep()
+
+    monkeypatch.setattr(RESOURCE, "psutil", SimpleNamespace(virtual_memory=memory))
+    monkeypatch.setattr(
+        RESOURCE,
+        "time",
+        SimpleNamespace(
+            monotonic=lambda: clock["now"],
+            sleep=sleep,
+        ),
+    )
+    return pauses
+
+
+def test_transient_headroom_settles_before_first_launch(monkeypatch, tmp_path):
+    pauses = controlled_preflight(monkeypatch, [(8 * GIB, 2 * GIB), (8 * GIB, 4 * GIB)])
+    report = {}
+    workers, limit, reserve, memory = RESOURCE.preflight_budget(
+        3, 4, 0, 12, tmp_path / "owned.stop", report
+    )
+    assert (workers, limit, reserve) == (1, 2 * GIB, 1717986919)
+    assert memory.available == 4 * GIB
+    assert pauses == [5] and report["preflight_wait_elapsed_s"] == 5
+    assert [s["available_bytes"] for s in report["preflight_memory_samples"]] == [
+        2 * GIB,
+        4 * GIB,
+    ]
+
+
+def test_persistent_headroom_refuses_at_bounded_deadline(monkeypatch, tmp_path):
+    pauses = controlled_preflight(monkeypatch, [(8 * GIB, 2 * GIB)])
+    report = {}
+    with pytest.raises(ValueError, match="Insufficient available RAM"):
+        RESOURCE.preflight_budget(3, 4, 0, 12, tmp_path / "owned.stop", report)
+    assert pauses == [5, 5, 2] and report["preflight_wait_elapsed_s"] == 12
+    assert report["host_total_bytes"] == 8 * GIB
+    assert report["host_available_before_bytes"] == 2 * GIB
+    assert report["host_reserve_bytes"] == 1717986919
+    assert report["minimum_available_for_one_worker_bytes"] == 1717986919 + 2 * GIB
+    assert len(report["preflight_memory_samples"]) == 4
+    assert not list(tmp_path.iterdir())
+
+
+def test_physically_impossible_budget_never_waits(monkeypatch, tmp_path):
+    pauses = controlled_preflight(monkeypatch, [(2 * GIB, 2 * GIB)])
+    report = {}
+    with pytest.raises(ValueError, match="Insufficient available RAM"):
+        RESOURCE.preflight_budget(3, 4, 0, 30, tmp_path / "owned.stop", report)
+    assert pauses == [] and report["preflight_wait_elapsed_s"] == 0
+    assert report["minimum_available_for_one_worker_bytes"] == 3 * GIB
+    assert len(report["preflight_memory_samples"]) == 1
+
+
+def test_zero_grace_preserves_immediate_refusal(monkeypatch, tmp_path):
+    pauses = controlled_preflight(monkeypatch, [(8 * GIB, 2 * GIB)])
+    report = {}
+    with pytest.raises(ValueError, match="Insufficient available RAM"):
+        RESOURCE.preflight_budget(3, 4, 0, 0, tmp_path / "owned.stop", report)
+    assert pauses == [] and report["preflight_wait_elapsed_s"] == 0
+
+
+def test_owned_stop_request_interrupts_preflight_wait(monkeypatch, tmp_path):
+    stop = tmp_path / "owned.stop"
+    pauses = controlled_preflight(
+        monkeypatch,
+        [(8 * GIB, 2 * GIB)],
+        on_sleep=lambda: stop.write_text("Operator stop", encoding="utf-8"),
+    )
+    report = {}
+    with pytest.raises(ValueError, match="stop request.*preflight"):
+        RESOURCE.preflight_budget(3, 4, 0, 30, stop, report)
+    assert pauses == [5] and report["preflight_wait_elapsed_s"] == 5
+    assert len(report["preflight_memory_samples"]) == 1
+
+
+def test_preflight_interrupt_is_reported_without_launching_pytest(
+    monkeypatch, tmp_path
+):
+    def interrupted(*args):
+        raise KeyboardInterrupt
+
+    def forbidden(*args, **kwargs):
+        pytest.fail("An interrupted preflight must not start pytest")
+
+    monkeypatch.setattr(RESOURCE, "preflight_budget", interrupted)
+    monkeypatch.setattr(RESOURCE.subprocess, "Popen", forbidden)
+    report = tmp_path / "resources.json"
+    code = RESOURCE.main(["--report", str(report), "--", "python", "-m", "pytest"])
+    data = json.loads(report.read_text())
+    assert code == 130 and data["state"] == "REFUSED"
+    assert data["reason"] == "Preflight interrupted before pytest launch"
+    assert "scratch" not in data and "command" not in data
+
+
+@pytest.mark.parametrize("limit", ["-1", "nan", "inf", "61"])
+def test_invalid_preflight_wait_never_creates_output(tmp_path, limit):
+    report = tmp_path / "resources.json"
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(LAUNCHER),
+            "--preflight-wait-seconds",
+            limit,
+            "--report",
+            str(report),
+            "--",
+            "python",
+            "-m",
+            "pytest",
+        ],
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        timeout=15,
+    )
+    assert result.returncode == 2 and "preflight wait" in result.stderr
+    assert not report.exists() and not list(tmp_path.iterdir())
 
 
 def test_hosted_profile_does_not_guess_slurm_allocations(tmp_path, monkeypatch):

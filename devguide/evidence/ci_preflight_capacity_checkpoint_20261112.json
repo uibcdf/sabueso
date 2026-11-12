@@ -1,0 +1,95 @@
+{
+  "state": "LOCAL_PREFLIGHT_CAPACITY_PASS_HOSTED_MACOS_UNRESOLVED",
+  "owner": "Sabueso maintainers#112/#148",
+  "review_trigger": "Current CI completion or before next consolidated hosted recovery/candidate",
+  "source_base": "74308bada0a9bd2d614ac94245090d1e87cc65c9",
+  "sources": {
+    "devtools/run_ci_pytest.py": "11a4c6c2ca332f60cbdcc08f8a705fd70ee8f1fe9446bf9556e7b7690d1e3d08",
+    "tests/tools/test_ci_pytest_resources_offline.py": "8ecf305b23d3fec7b70ea74558523cc013423cec10806a080a0720052d78be91"
+  },
+  "observed_hosted": {
+    "run": "https://github.com/uibcdf/sabueso/actions/runs/43134542677",
+    "head": "74308bada0a9bd2d614ac94245090d1e87cc65c9",
+    "governance": "https://github.com/uibcdf/sabueso/actions/runs/43134667040",
+    "governance_full_capture_verified": "PASS",
+    "macos_source_job": 130906598267,
+    "macos_state": "REFUSED before pytest; no actual available/physical RAM values retained by the old launcher",
+    "remaining_ci": "stillactive at last observation; no final passing matrix claimed"
+  },
+  "new_behavior": {
+    "capacity_observed_before_budget_decision": true,
+    "default_preflight_wait_s": 30,
+    "maximum_configurable_wait_s": 60,
+    "sample_pause_at_most_s": 5,
+    "preflight_wait_disable_value": 0,
+    "impossible_physical_budget": "Immediate refusal, no waiting",
+    "persistent_pressure": "Refuse after bounded deadline; preserve final actual capacity and trace",
+    "operator_stop_or_interrupt": "Refuse before first pytest launch; no worker/scientific restart"
+  },
+  "unchanged_policy": {
+    "rss_bytes_per_worker": 2147483648,
+    "maximum_workers": 3,
+    "host_ram_reserve": "max(20%physical,1GiB,explicit larger reserve)",
+    "native_pools": 1,
+    "owned_scratch_default_bytes": 6442450944,
+    "disk_free_margin_bytes": 2147483648,
+    "scientific_arguments_and_selected_case_lists": "unchanged",
+    "unchanged_guard_functions": [
+      "child_environment",
+      "pytest_command",
+      "scratch_bytes",
+      "active_tracked",
+      "sample_tree",
+      "stop_owned"
+    ]
+  },
+  "local_gates": {
+    "complete_guard_module": {
+      "passed": 36,
+      "pytest_s": 20.131,
+      "guarded_s": 20.844,
+      "peak_owned_rss_bytes": 358449152,
+      "minimum_host_available_bytes": 59632132096,
+      "peak_owned_swap_bytes": 0,
+      "resource_sha256": "bb998533584486f0ca73034fffbb05c84f8f25d186485c6bbaaf406a88031d62",
+      "events_sha256": "028ee93191eebad5e78d4ff78ec1079e17d893d9f7a91f7da5351d3c947c55cd"
+    },
+    "existing_workflow_and_copied_receiving": {
+      "passed": 3,
+      "pytest_s": 12.962,
+      "guarded_s": 13.616,
+      "peak_owned_rss_bytes": 283037696,
+      "minimum_host_available_bytes": 58698145792,
+      "peak_owned_swap_bytes": 0,
+      "resource_sha256": "5932e1642ed93ede5d0b17fcaaed12fe04902d7b65c76dd52e486ca69ba73d78",
+      "events_sha256": "ee718a185a803899213467430a24047e5da92c1d4b19771dee22ccc97f782532"
+    }
+  },
+  "distinct_local_parent_cases": 39,
+  "copied_child_module_scope": 96,
+  "copied_child_adds_distinct_source_coverage": false,
+  "protected_source_and_original_files_unchanged": 52,
+  "scope": "Tested first-launch diagnostic/bounded-settling behavior with synthetic capacity sequences and real CLI/child controls, not measured recovery of the actual macOS runner. No reduced safety reserve, new runtime/science/schema/frozen input, full-suite/platform/public closure, B7acceptance or release qualification. No new remote dispatch/retry/cancellation/public comment authorized or performed.",
+  "documentation_checks": {
+    "guide": {
+      "state": "PASS",
+      "scope": "Maintained non-archive guide and changed Markdown local targets; changed-target anchors; changed fenced Python3.11 grammar. No external link or runtime example qualification.",
+      "maintained_markdown_files": 189,
+      "local_path_targets_checked": 1606,
+      "changed_page_anchors_checked": 23,
+      "python_examples_checked": 0,
+      "errors": []
+    },
+    "sphinx_warning_fatal": {
+      "exit_code": 0,
+      "elapsed_s": 27.6,
+      "peak_owned_rss_bytes": 283058176,
+      "peak_owned_swap_bytes": 0
+    },
+    "ruff": "PASS",
+    "format": "PASS",
+    "python311_grammar": "PASS",
+    "local_governance": "PASS",
+    "diff_check": "PASS"
+  }
+}

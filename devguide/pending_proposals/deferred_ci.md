@@ -9,6 +9,31 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Capacity reporting and bounded preflight settling (2026-11-12 UTC, #112/#148)
+
+The authorized `74308ba` CI43134542677/governance43134667040 batch has actually
+started once after the old run completed. Governance passes with full captured
+verification. CI's macOS source job refuses before pytest because RAM headroom
+does not fit; the rest of the current batch remains under observation. No older,
+refused, missing or unfinished result supplies a current passing matrix.
+
+The [local correction](../pending_bugs/ci_serial_execution_timeout.md#macos-startup-refusal-and-capacity-reporting--2026-11-12-utc)
+records capacity before refusal and waits at most the declared first-launch grace
+(default30s, maximum60s) for the same safe budget. All limits, case selections and
+scientific/runtime bytes stay fixed. The
+[receipt](../evidence/ci_preflight_capacity_checkpoint_20261112.json) records 36
+current controls and three existing receiving cases, including the separate full
+96-case child. This is selected local qualification, not a repeated full suite
+or actual macOS capacity/recovery measurement.
+
+Use the authorized intermediate `[skip ci]` route and retain the exact committed/
+pushed head and editable verification in
+`recovered_work/checkpoint_recovery_20261106/b7-ci-preflight-capacity-1/`.
+The prior authorization covers exactly `74308ba` and the one published report;
+it does not grant a new head, retry or further issue material. Collect the rest
+of that batch before proposing a consolidated next scope. #112/#148 own the
+mandatory exact-final-head recovery; B7 and B8 remain separate.
+
 ### Bounded CI timeout correction (2026-11-11, #112/#148)
 
 The old `3c26790` installed Python 3.13 job exceeds its four-hour execution limit;
