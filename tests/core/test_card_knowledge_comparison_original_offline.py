@@ -648,8 +648,8 @@ class DigestingReader:
         return block
 
 
-@pytest.fixture(scope="session")
-def original(tmp_path_factory):
+@pytest.fixture(scope="module")
+def original(tmp_path_factory, request):
     assert CAPSULE.stat().st_size == ENCODED_BYTES
     with CAPSULE.open("rb") as stream:
         assert hashlib.file_digest(stream, "sha256").hexdigest() == ENCODED_SHA256
@@ -679,7 +679,12 @@ def original(tmp_path_factory):
     assert set(result.manifest["cases"]) == set(CASES)
     assert result.manifest["producer_head"] == PRODUCER
     assert result.manifest["producer_version"] == "0.14.0+243.gf6d8e4a"
-    return result
+    try:
+        yield result
+    finally:
+        result.cache.clear()
+        if request.config.getini("tmp_path_retention_policy") != "all":
+            shutil.rmtree(directory)
 
 
 def test_complete_original_members_and_batch_provenance(original):

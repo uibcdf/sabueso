@@ -1,0 +1,484 @@
+{
+  "state": "TARGETED_HISTORY_GUARD_AND_FIXTURE_LIFETIME_PASS_FULL_RECOVERY_PENDING",
+  "recorded_utc": "2026-11-12T07:51:55.312092+00:00",
+  "owner": [
+    "uibcdf/sabueso#148",
+    "uibcdf/sabueso#112"
+  ],
+  "source_base": "f772e25c3dbdd98edf4409d710c4478b00bd45e4",
+  "runtime": "0.14.0+262.gf772e25",
+  "scope": "Test-only correction under the recorded diff; exact clean committed-source full recovery remains pending. No production/scientific rule, immutable original or release-plan change.",
+  "changed_test_files": [
+    "tests/core/test_card_clinical_history_offline.py",
+    "tests/core/test_card_disease_association_original_offline.py",
+    "tests/core/test_card_knowledge_comparison_original_offline.py",
+    "tests/core/test_card_molecule_activity_history_offline.py",
+    "tests/core/test_card_protein_context_original_offline.py",
+    "tests/core/test_card_saved_literature_offline.py",
+    "tests/core/test_card_sequence_change_history_offline.py",
+    "tests/core/test_card_sequence_change_original_offline.py",
+    "tests/core/test_card_variant_original_offline.py",
+    "tests/tools/test_pytest_scratch_retention_offline.py"
+  ],
+  "existing_core_test_function_ASTs_unchanged": 65,
+  "new_regression_functions": [
+    "tests/core/test_card_sequence_change_history_offline.py::test_history_guard_restores_cold_live_consumers"
+  ],
+  "production_inputs_unchanged": 931,
+  "protected_SOURCE_and_original_inputs_unchanged": 52,
+  "targeted_gate": {
+    "directory": "recovered_work/checkpoint_recovery_20261106/b7-current-guard-lifetime-2",
+    "passed": 13,
+    "counts": {
+      "collected": 13,
+      "deselected": 0,
+      "errors": 0,
+      "executed": 13,
+      "failed": 0,
+      "not_executed": 0,
+      "passed": 13,
+      "reruns": 0,
+      "skipped": 0,
+      "subtests": {},
+      "warnings": 0,
+      "xfailed": 0,
+      "xpassed": 0
+    },
+    "source_paths": 1353,
+    "source_maps_identical": true,
+    "complete_receptor_and_worker_accounting": true,
+    "closed_report_sha256": "914c9277e73547c128a40cb4a34a7b38c9c13ed13a61a3a3da97672c003a1351",
+    "events_sha256": "60e62d4bf22ee1127ba042dd40ea07d629f8ad20a748b2e69f32051e645980c1",
+    "resources": {
+      "owner": "uibcdf/sabueso#148/#112",
+      "review_trigger": "Complete current source checkpoint; 1 workers,10GiBtotalRSS,native1,host16GiBfloor,3GiBscratch",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "tests/core/test_card_sequence_change_history_offline.py::test_history_guard_restores_cold_live_consumers",
+        "tests/core/test_card_saved_protein_context_offline.py::test_nonempty_bioactivity_catalog_crossing_keeps_original_protein_question",
+        "tests/core/test_card_saved_protein_context_offline.py::test_observed_variant_and_sequence_questions_survive_protein_context_bundle",
+        "tests/core/test_card_saved_sequence_change_offline.py::test_observed_variant_questions_keep_exact_scope_in_sequence_bundle",
+        "tests/core/test_card_saved_sequence_change_offline.py::test_observed_supplied_disease_question_survives_sequence_bundle",
+        "tests/tools/test_pytest_scratch_retention_offline.py",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "--receptor-events=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-current-guard-lifetime-2/events.jsonl",
+        "-p",
+        "checkpoint_scope",
+        "--basetemp=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-current-guard-lifetime-2/pytest-scratch",
+        "-o",
+        "tmp_path_retention_policy=failed",
+        "-W",
+        "error:unclosed database:ResourceWarning",
+        "-W",
+        "error::pytest.PytestUnraisableExceptionWarning"
+      ],
+      "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": 0,
+      "elapsed_s": 162.43,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 852852736,
+      "minimum_host_available_bytes": 57875267584,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 1720532729,
+      "limits": {
+        "owned_rss_bytes": 10737418240,
+        "host_available_bytes": 17179869184,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 1,
+        "nice": 10,
+        "elapsed_s": 5400,
+        "owned_scratch_bytes": 3221225472
+      },
+      "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-current-guard-lifetime-2/cargo-target"
+    }
+  },
+  "original_full_attempt": {
+    "state": "FAILED_AND_RESOURCE_STOPPED_NOT_QUALIFICATION",
+    "source_head": "f772e25c3dbdd98edf4409d710c4478b00bd45e4",
+    "receptor_complete": false,
+    "receptor_integrity_valid": null,
+    "observed_call_outcomes": {
+      "passed": 1072,
+      "failed": 5
+    },
+    "failed": [
+      {
+        "nodeid": "tests/core/test_card_saved_protein_context_offline.py::test_nonempty_bioactivity_catalog_crossing_keeps_original_protein_question",
+        "exception": "AssertionError: Independent sequence-change reader used current science or acquisition"
+      },
+      {
+        "nodeid": "tests/core/test_card_saved_protein_context_offline.py::test_observed_variant_and_sequence_questions_survive_protein_context_bundle",
+        "exception": "AssertionError: Independent sequence-change reader used current science or acquisition"
+      },
+      {
+        "nodeid": "tests/core/test_card_saved_sequence_change_offline.py::test_observed_variant_questions_keep_exact_scope_in_sequence_bundle[variant_tissue_context]",
+        "exception": "AssertionError: Independent sequence-change reader used current science or acquisition"
+      },
+      {
+        "nodeid": "tests/core/test_card_saved_sequence_change_offline.py::test_observed_variant_questions_keep_exact_scope_in_sequence_bundle[isoform_tissue_context]",
+        "exception": "AssertionError: Independent sequence-change reader used current science or acquisition"
+      },
+      {
+        "nodeid": "tests/core/test_card_saved_sequence_change_offline.py::test_observed_supplied_disease_question_survives_sequence_bundle",
+        "exception": "AssertionError: Independent sequence-change reader used current science or acquisition"
+      }
+    ],
+    "last_five_calls": [
+      "tests/core/test_card_variant_original_offline.py::test_original_clean_producer_rights_scope_and_all_member_bytes",
+      "tests/core/test_card_variant_original_offline.py::test_original_actual_view_access_native_and_machine_graph[bare-isoforms]",
+      "tests/core/test_card_variant_original_offline.py::test_original_actual_view_access_native_and_machine_graph[bare-variants]",
+      "tests/core/test_card_variant_original_offline.py::test_original_actual_view_access_native_and_machine_graph[deferred-values]",
+      "tests/core/test_card_variant_original_offline.py::test_original_actual_view_access_native_and_machine_graph[escaped-source]"
+    ],
+    "resource_stop": {
+      "owner": "uibcdf/sabueso#148/#112",
+      "review_trigger": "Complete current source checkpoint; 4 workers,10GiBtotalRSS,native1,host16GiBfloor,6GiBscratch",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0,1,2,3",
+        "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "@/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-1/modern.args",
+        "--local-source-inputs",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "--receptor-events=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-current-modern-1/events.jsonl",
+        "-p",
+        "checkpoint_scope",
+        "--basetemp=/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-current-modern-1/pytest-scratch",
+        "-o",
+        "tmp_path_retention_policy=failed",
+        "-W",
+        "error:unclosed database:ResourceWarning",
+        "-W",
+        "error::pytest.PytestUnraisableExceptionWarning",
+        "-n",
+        "4",
+        "--dist=worksteal"
+      ],
+      "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+      "exit_code": -15,
+      "elapsed_s": 2035.98,
+      "stop_reason": "owned scratch ceiling",
+      "peak_owned_rss_bytes": 5259034624,
+      "minimum_host_available_bytes": 52898021376,
+      "peak_owned_swap_bytes": 0,
+      "peak_owned_scratch_bytes": 6486823024,
+      "limits": {
+        "owned_rss_bytes": 10737418240,
+        "host_available_bytes": 17179869184,
+        "owned_swap_bytes": 0,
+        "cpu_affinity_count": 4,
+        "nice": 10,
+        "elapsed_s": 5400,
+        "owned_scratch_bytes": 6442450944
+      },
+      "native_build_cache": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-current-modern-1/cargo-target"
+    },
+    "owner": "Sabueso #148/#112",
+    "review_trigger": "Guard fix, disk-aware recovery and source checkpoint"
+  },
+  "red_and_green_reproducer": {
+    "red": {
+      "sequence_materialize_alias_restored": false,
+      "context_derivation_alias_restored": false,
+      "actual_live_attempts": {
+        "sequence_changes": {
+          "state": "FAILED",
+          "type": "AssertionError",
+          "message": "Independent sequence-change reader used current science or acquisition"
+        },
+        "protein_associations": {
+          "state": "FAILED",
+          "type": "AssertionError",
+          "message": "Independent sequence-change reader used current science or acquisition"
+        }
+      },
+      "state": "REPRODUCED_GUARD_LEAK"
+    },
+    "green": {
+      "sequence_materialize_alias_restored": true,
+      "context_derivation_alias_restored": true,
+      "actual_live_attempts": {
+        "sequence_changes": {
+          "state": "PASS",
+          "items": 2
+        },
+        "protein_associations": {
+          "state": "PASS",
+          "items": 1
+        }
+      },
+      "state": "PASS"
+    }
+  },
+  "cold_alias_audits": {
+    "first": [
+      {
+        "helper": "test_card_sequence_change_history_offline",
+        "initial_presentations_loaded": {
+          "card_sequence_change": false,
+          "card_protein_context": false,
+          "card_variant": false,
+          "card_knowledge_comparison": false,
+          "card_disease_association": false,
+          "card_molecule_activity": false,
+          "card_literature": false,
+          "card_clinical": false
+        },
+        "remaining_guard_aliases": []
+      },
+      {
+        "helper": "test_card_protein_context_history_offline",
+        "initial_presentations_loaded": {
+          "card_sequence_change": false,
+          "card_protein_context": false,
+          "card_variant": false,
+          "card_knowledge_comparison": false,
+          "card_disease_association": false,
+          "card_molecule_activity": false,
+          "card_literature": false,
+          "card_clinical": false
+        },
+        "remaining_guard_aliases": []
+      },
+      {
+        "helper": "test_card_knowledge_comparison_history_offline",
+        "initial_presentations_loaded": {
+          "card_sequence_change": false,
+          "card_protein_context": false,
+          "card_variant": false,
+          "card_knowledge_comparison": false,
+          "card_disease_association": false,
+          "card_molecule_activity": false,
+          "card_literature": false,
+          "card_clinical": false
+        },
+        "remaining_guard_aliases": []
+      },
+      {
+        "helper": "test_card_variant_history_offline",
+        "initial_presentations_loaded": {
+          "card_sequence_change": false,
+          "card_protein_context": false,
+          "card_variant": false,
+          "card_knowledge_comparison": false,
+          "card_disease_association": false,
+          "card_molecule_activity": false,
+          "card_literature": false,
+          "card_clinical": false
+        },
+        "remaining_guard_aliases": []
+      },
+      {
+        "helper": "test_card_disease_association_history_offline",
+        "initial_presentations_loaded": {
+          "card_sequence_change": false,
+          "card_protein_context": false,
+          "card_variant": false,
+          "card_knowledge_comparison": false,
+          "card_disease_association": false,
+          "card_molecule_activity": false,
+          "card_literature": false,
+          "card_clinical": false
+        },
+        "remaining_guard_aliases": []
+      },
+      {
+        "helper": "test_card_clinical_history_offline",
+        "initial_presentations_loaded": {
+          "card_sequence_change": false,
+          "card_protein_context": false,
+          "card_variant": false,
+          "card_knowledge_comparison": false,
+          "card_disease_association": false,
+          "card_molecule_activity": false,
+          "card_literature": false,
+          "card_clinical": false
+        },
+        "remaining_guard_aliases": []
+      },
+      {
+        "helper": "test_card_molecule_activity_history_offline",
+        "initial_presentations_loaded": {
+          "card_sequence_change": false,
+          "card_protein_context": false,
+          "card_variant": false,
+          "card_knowledge_comparison": false,
+          "card_disease_association": false,
+          "card_molecule_activity": false,
+          "card_literature": false,
+          "card_clinical": false
+        },
+        "remaining_guard_aliases": [
+          "card_sequence_change.make_derivation",
+          "card_protein_context.make_derivation",
+          "card_knowledge_comparison.make_derivation",
+          "card_disease_association.make_derivation",
+          "card_molecule_activity.materialize"
+        ]
+      },
+      {
+        "helper": "test_card_saved_literature_offline",
+        "initial_presentations_loaded": {
+          "card_sequence_change": false,
+          "card_protein_context": false,
+          "card_variant": false,
+          "card_knowledge_comparison": false,
+          "card_disease_association": false,
+          "card_molecule_activity": false,
+          "card_literature": false,
+          "card_clinical": false
+        },
+        "remaining_guard_aliases": [
+          "card_sequence_change.make_derivation",
+          "card_protein_context.make_derivation",
+          "card_knowledge_comparison.make_derivation",
+          "card_disease_association.make_derivation",
+          "card_molecule_activity.make_derivation"
+        ]
+      }
+    ],
+    "corrected": [
+      {
+        "helper": "test_card_sequence_change_history_offline",
+        "initial_presentations_loaded": {
+          "card_sequence_change": false,
+          "card_protein_context": false,
+          "card_variant": false,
+          "card_knowledge_comparison": false,
+          "card_disease_association": false,
+          "card_molecule_activity": false,
+          "card_literature": false,
+          "card_clinical": false
+        },
+        "remaining_guard_aliases": []
+      },
+      {
+        "helper": "test_card_protein_context_history_offline",
+        "initial_presentations_loaded": {
+          "card_sequence_change": false,
+          "card_protein_context": false,
+          "card_variant": false,
+          "card_knowledge_comparison": false,
+          "card_disease_association": false,
+          "card_molecule_activity": false,
+          "card_literature": false,
+          "card_clinical": false
+        },
+        "remaining_guard_aliases": []
+      },
+      {
+        "helper": "test_card_knowledge_comparison_history_offline",
+        "initial_presentations_loaded": {
+          "card_sequence_change": false,
+          "card_protein_context": false,
+          "card_variant": false,
+          "card_knowledge_comparison": false,
+          "card_disease_association": false,
+          "card_molecule_activity": false,
+          "card_literature": false,
+          "card_clinical": false
+        },
+        "remaining_guard_aliases": []
+      },
+      {
+        "helper": "test_card_variant_history_offline",
+        "initial_presentations_loaded": {
+          "card_sequence_change": false,
+          "card_protein_context": false,
+          "card_variant": false,
+          "card_knowledge_comparison": false,
+          "card_disease_association": false,
+          "card_molecule_activity": false,
+          "card_literature": false,
+          "card_clinical": false
+        },
+        "remaining_guard_aliases": []
+      },
+      {
+        "helper": "test_card_disease_association_history_offline",
+        "initial_presentations_loaded": {
+          "card_sequence_change": false,
+          "card_protein_context": false,
+          "card_variant": false,
+          "card_knowledge_comparison": false,
+          "card_disease_association": false,
+          "card_molecule_activity": false,
+          "card_literature": false,
+          "card_clinical": false
+        },
+        "remaining_guard_aliases": []
+      },
+      {
+        "helper": "test_card_clinical_history_offline",
+        "initial_presentations_loaded": {
+          "card_sequence_change": false,
+          "card_protein_context": false,
+          "card_variant": false,
+          "card_knowledge_comparison": false,
+          "card_disease_association": false,
+          "card_molecule_activity": false,
+          "card_literature": false,
+          "card_clinical": false
+        },
+        "remaining_guard_aliases": []
+      },
+      {
+        "helper": "test_card_molecule_activity_history_offline",
+        "initial_presentations_loaded": {
+          "card_sequence_change": false,
+          "card_protein_context": false,
+          "card_variant": false,
+          "card_knowledge_comparison": false,
+          "card_disease_association": false,
+          "card_molecule_activity": false,
+          "card_literature": false,
+          "card_clinical": false
+        },
+        "remaining_guard_aliases": []
+      },
+      {
+        "helper": "test_card_saved_literature_offline",
+        "initial_presentations_loaded": {
+          "card_sequence_change": false,
+          "card_protein_context": false,
+          "card_variant": false,
+          "card_knowledge_comparison": false,
+          "card_disease_association": false,
+          "card_molecule_activity": false,
+          "card_literature": false,
+          "card_clinical": false
+        },
+        "remaining_guard_aliases": []
+      }
+    ]
+  },
+  "first_selected_gate": "b7-current-guard-lifetime-1:9passed/2failed; local new disease-cache cleanup assumption corrected. Full original failed events and diagnostics retained; no passing substitution.",
+  "fixture_lifetime": "Five extracted member directories/cache and the clinical plain tar are released only after final module use. SDK243 uses module scope. Both failed-case diagnostics and explicit all-policy debugging survive; all compressed original hashes remain fixed.",
+  "evidence_directory": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-1",
+  "review_trigger": "Fresh complete source recovery and B7/candidate review",
+  "limits": [
+    "No complete current full-source passing checkpoint yet",
+    "No hosted run, installed-package/platform, independent researcher/scientist or actual-consumer acceptance",
+    "No candidate/schema freeze/staging/release or new issue publication"
+  ]
+}

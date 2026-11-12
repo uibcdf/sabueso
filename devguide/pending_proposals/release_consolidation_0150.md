@@ -9,16 +9,19 @@ artifact is changed by this document.
 Published 0.14.0 and schema 0.3.13 remain immutable.
 
 The [post-audit continuation plan](../CONTINUATION_PLAN_20261104.md) integrates
-the newly reproduced scientific defects and independent acceptance with the
+the newly reproduced scientific defects and remaining acceptance with the
 existing exploration scope. Its corrections accumulate toward this same 0.15.0
 target. Planning does not select a candidate or resume release consolidation.
 
 **Required experience:** 0.15.0 must deliver the intended "wow" quality of scientific
 usefulness, comprehension and simple Card navigation. The
 [observable criteria and acceptance route](../CONTINUATION_PLAN_20261104.md#required-wow-experience-in-0150)
-apply throughout implementation. Explicit researcher acceptance under #148 is a
-prerequisite for consolidation, alongside scientific, agent, workload and technical
-gates; implemented panels and passing tests alone do not establish that acceptance.
+apply throughout implementation. The maintainer explicitly defers the independent
+researcher session until after 0.15.0; it no longer blocks this version
+and remains `not_reviewed`. The [bounded scheduling decision](researcher_acceptance_0150.md#post-0150-scheduling-decision--2026-11-12)
+requires post-release follow-up and a candidate-bound release limitation. The
+other scientific, actual-agent, workload, consumer and technical gates remain due;
+implemented panels and passing tests alone do not establish that acceptance.
 
 **Scheduling pause, 2026-10-21:** after the
 [saved-consumer usefulness review](pilot_usefulness_review_20261021.md) and assay
@@ -29,15 +32,16 @@ implementation and acceptance before deciding whether to resume consolidation.
 exploration design and its validated human experience before 0.15.0. This includes
 activities, clinical context, variants, sites, comparisons and the remaining
 nature/shared panels in the [completion inventory](card_exploration_completion_0150.md).
-The initial A–D milestone alone is insufficient. Implementation is authorized;
+The initial A–D milestone alone is insufficient. The 2026-11-12 decision above
+supersedes the independent-session timing only. Implementation is authorized;
 release consolidation and publication remain paused.
 Candidate selection, schema freezing, staging builds and publication have not
 started; this proposal authorizes none of them.
 
 The [delivery readiness worksheet](../../devtools/conda-build/release_readiness_0.15.0.md)
 lists the concrete missing acceptance, exact-source, schema, artifact/platform and
-publication records. It prepares maintainer handoff while recruitment and
-functional integration continue; no candidate or publication result is inferred.
+publication records. It prepares maintainer handoff while functional integration
+and the remaining B7 review continue; no candidate or publication result is inferred.
 
 The release would consolidate post-0.14.0 SQLite lifetime integrity, comparative
 genomic/coverage and historical-selector corrections, declared refresh request
@@ -82,8 +86,9 @@ Earlier next-step preparation was authorized on 2026-10-20. The
 [unpublished release-notes draft](../../devtools/conda-build/release_notes_0.15.0.md)
 retains a partial inclusion/compatibility draft. The later maintainer decision
 above fixes the target at 0.15.0 and pauses release consolidation until full
-exploration/human acceptance. The draft does not override that decision or
-select a candidate. `release_plan.toml` still describes published 0.14.0.
+exploration and the remaining B7 acceptance. The independent researcher session
+is explicitly deferred until after this version; its missing result stays visible.
+The draft does not override that decision or select a candidate. `release_plan.toml` still describes published 0.14.0.
 
 | Scope | Proposed treatment |
 | --- | --- |
@@ -106,7 +111,7 @@ installed public dependency closure, staging bytes or final-SHA hosted gates.
 | Gate | Current preparation | Remaining acceptance |
 | --- | --- | --- |
 | Scientific scope | Generic questions, inspectable support and remaining human/source-text needs are recorded; a native assay-context inspection gap has a bounded fix | Scientist usefulness/interpretation is separate from technical qualification |
-| Complete human Card exploration (#148) | Initial A–D mechanisms and public examples exist; broad panel delivery and combined human acceptance are open | Complete the full design inventory, researcher review/polish, compact-access parity and workload qualification before 0.15.0 |
+| Complete Card exploration (#148) | The broad profile inventory, public walkthroughs and source-bound human/agent/saved receipts record current delivery; independent researcher review is deferred until after 0.15.0 and remains `not_reviewed` | Close consequential integration gaps and remaining scientific, actual-agent, workload and consumer acceptance; bind the independent-session deferral to the exact candidate and release limitation |
 | Source candidate | Existing exact-SHA receipts retain historical compatibility and public dependencies; the assay-context block has its own gates | Select the final versioned candidate and verify its exact CI/governance |
 | Dependency boundary | Required runtime floors are unchanged; updated editable support providers have local receiving qualification | Validate the candidate's complete installed public dependency closure |
 | Schema/history | Published schema 0.3.13 and earlier cards/receipts remain original; 0.3.14 remains unpublished | Freeze 0.3.14 from the accepted installed candidate and qualify migration/history |
@@ -124,8 +129,11 @@ Follow the authoritative [staged release route](../../devtools/conda-build/READM
 2. Include the accepted freeze in the final candidate source and verify all
    applicable CI/governance gates on its exact SHA. Build one immutable staging
    artifact. Qualify clean installed-package receiving
-   on Linux, Apple Silicon macOS and Windows, each with Python 3.11–3.14 and declared
-   public dependency provenance. A local editable suite is a separate scope.
+   on Linux and Windows, each with Python 3.11–3.14 and declared public dependency
+   provenance. Review [#194's prospective macOS support exception](macos_support_exception.md)
+   and its central registry disposition; restore that claim only after actual
+   qualification. Published 0.14.0 evidence remains unchanged. A local editable
+   suite is a separate scope.
 3. Record candidate acceptance against the exact source, frozen input and installed
    archive. A changed source or archive requires the affected qualification again.
 4. After final acceptance, publish the release, promote that same tested Conda

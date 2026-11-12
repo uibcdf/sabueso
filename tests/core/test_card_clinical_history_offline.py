@@ -326,7 +326,7 @@ def block_current(monkeypatch):
 
 
 @pytest.fixture(scope="module")
-def original(tmp_path_factory):
+def original(tmp_path_factory, request):
     assert sha(DATA) == ENCODED_SHA
     directory = tmp_path_factory.mktemp("clinical-sdk224")
     raw = directory / "original.tar"
@@ -334,8 +334,12 @@ def original(tmp_path_factory):
         shutil.copyfileobj(source, destination, length=1024 * 1024)
     assert raw.stat().st_size == 117739520 and sha(raw) == DECODED_SHA
     result = Original(raw)
-    yield result
-    result.close()
+    try:
+        yield result
+    finally:
+        result.close()
+        if request.config.getini("tmp_path_retention_policy") != "all":
+            raw.unlink()
 
 
 @pytest.mark.parametrize("name", CASES)

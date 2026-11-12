@@ -1,0 +1,215 @@
+{
+  "state": "EXPERIENCED_DEVELOPER_AGENT_PROTEIN_OBSERVATION_RECORDED_ACCEPTANCE_PENDING",
+  "recorded_utc": "2026-11-12T07:26:15.410022+00:00",
+  "owner": "Sabueso #148/#112",
+  "review_trigger": "B7 actual-agent review or candidate preparation",
+  "source_head": "f772e25c3dbdd98edf4409d710c4478b00bd45e4",
+  "runtime": "0.14.0+262.gf772e25",
+  "actor_and_exposure": "Extensive developer, maintainer-task and expected-answer exposure; not independent or uncoached scientist/researcher/consumer review.",
+  "task_progress": {
+    "C1": "completed for supplied protein and its captured scope",
+    "C2": "completed for original active-site field and experimental 1SUX source; no physical model selection",
+    "C5": "partly_completed: missing function prose, unspecified RCSB version and empty display recovery; not complete source-coverage review",
+    "C6": "completed for this visited protein field/source/structure and bounded literal route"
+  },
+  "public_input": {
+    "prepared_packet": "recovered_work/checkpoint_recovery_20261106/b7-ci-bounded-execution-1/researcher-packet/inputs",
+    "protein_file_sha256": "8306aa747bdd34650701928ba969e80a13cc580b6b9c00b66d73ae540ce5aacb",
+    "snapshot_id": "sha256:1f7cce673d32cdb59e4cd74e69f230478c1ecef2a99a2b1c9d1ac27172ff6cd3",
+    "bytes": 289030
+  },
+  "observation": {
+    "subject": "P52270, Trypanosoma cruzi, retained 251-residue sequence; UniProt source version 120",
+    "function_prose": "not retained; no function inferred from name",
+    "active_site_field": {
+      "source_assertion_ids": [
+        "SA_UniProt_P52270_2a56ee5a4d0b58a3",
+        "SA_UniProt_P52270_2db2df16141729f2"
+      ],
+      "value": [
+        {
+          "description": "Electrophile",
+          "location": {
+            "kind": "sequence",
+            "sequence": {
+              "end": 96,
+              "end_modifier": "EXACT",
+              "indexing": "1-based",
+              "sequence_id": "UniProt:P52270",
+              "start": 96,
+              "start_modifier": "EXACT"
+            }
+          }
+        },
+        {
+          "description": "Proton acceptor",
+          "location": {
+            "kind": "sequence",
+            "sequence": {
+              "end": 168,
+              "end_modifier": "EXACT",
+              "indexing": "1-based",
+              "sequence_id": "UniProt:P52270",
+              "start": 168,
+              "start_modifier": "EXACT"
+            }
+          }
+        }
+      ]
+    },
+    "active_source": {
+      "acquisition": {
+        "method": "database"
+      },
+      "asserted_value": {
+        "description": "Electrophile",
+        "evidences": [
+          {
+            "evidenceCode": "ECO:0000250"
+          }
+        ],
+        "location": {
+          "end": {
+            "modifier": "EXACT",
+            "value": 96
+          },
+          "start": {
+            "modifier": "EXACT",
+            "value": 96
+          }
+        },
+        "type": "Active site"
+      },
+      "field_path": "features_positional.active_site",
+      "id": "SA_UniProt_P52270_2a56ee5a4d0b58a3",
+      "normalized_value": {
+        "description": "Electrophile",
+        "location": {
+          "kind": "sequence",
+          "sequence": {
+            "end": 96,
+            "end_modifier": "EXACT",
+            "indexing": "1-based",
+            "sequence_id": "UniProt:P52270",
+            "start": 96,
+            "start_modifier": "EXACT"
+          }
+        }
+      },
+      "retrieved_at": "fixture",
+      "source": {
+        "name": "UniProt",
+        "record_id": "P52270",
+        "type": "database",
+        "version": "120"
+      },
+      "source_metadata": {
+        "eco": [
+          {
+            "code": "ECO:0000250"
+          }
+        ],
+        "sequence_version": 1,
+        "uniprot_feature": {
+          "description": "Electrophile",
+          "evidences": [
+            {
+              "evidenceCode": "ECO:0000250"
+            }
+          ],
+          "location": {
+            "end": {
+              "modifier": "EXACT",
+              "value": 96
+            },
+            "start": {
+              "modifier": "EXACT",
+              "value": 96
+            }
+          },
+          "type": "Active site"
+        }
+      },
+      "subject_ref": "uniprot:P52270"
+    },
+    "experimental_structure": "1SUX inventory declares X-ray, 2.0 angstrom and chains A/B; sequence coverage does not establish coordinate completeness or choose a model",
+    "structure_source": {
+      "id": "SA_RCSB PDB_1SUX_05b1cab35c73d8ce",
+      "field_path": "relationships.has_structure",
+      "subject_ref": "pdb:1SUX",
+      "source": {
+        "name": "RCSB PDB",
+        "record_id": "1SUX",
+        "type": "database"
+      },
+      "retrieved_at": "fixture",
+      "complete_original_record_sha256": "a8d5c130425692a40418eb0e221bdde094a92234c23f0a1927c1055a70520f40",
+      "hash_encoding": "UTF-8 JSON, sorted keys, ensure_ascii=False, compact separators, allow_nan=False",
+      "complete_original_record": "protein-observation/observations.json: structure_source; identical in reopened-observations.json"
+    },
+    "source_return": "Both exact original source/back routes recovered",
+    "compact_route": "Discovered root.sections.features_positional.active_site via bounded literal pages; same complete human-field values, numbering and original source IDs. Catalog has no dedicated sequence-annotation descriptor.",
+    "interpretation": "The retained UniProt 120 statements describe Electrophile 96 and Proton acceptor 168 on the 1-based UniProt:P52270 sequence. Their source annotation is not measured catalytic geometry or a residue map. The 1SUX inventory declares X-ray, 2.0 angstrom and chains A/B; sequence coverage does not establish coordinate completeness or choose a model. Function prose is not retained and current sources have not been queried. RCSB source version is not supplied in the opened original record; no version is inferred."
+  },
+  "saved_receiving": {
+    "separate_fresh_process": true,
+    "Card_construction_and_network_forbidden": true,
+    "same_original_active_field_sources_and_structure": true,
+    "root_view_ref": "XV_51d8488cc05d78003e62a76365ead1139e08e61e98800b09d1edb7f5b9a0772a",
+    "bundle_digest": "sha256:07b0c07437bfe544d68e95dab991cfeaab07b5aeec904bc2d0390501648414ac",
+    "file_sha256": "42525fafe4c21ef51372bd6b3384277933d58ec50bf05a8d525090acd2d6be95",
+    "file_bytes": 6524492,
+    "back_trail_view_refs": [
+      "XV_51d8488cc05d78003e62a76365ead1139e08e61e98800b09d1edb7f5b9a0772a",
+      "XV_aaaba493d5ca1348b032d1f89efd52074f71abd17e53b834670adf30d5cfd90d",
+      "XV_aaaba493d5ca1348b032d1f89efd52074f71abd17e53b834670adf30d5cfd90d",
+      "XV_54d40ebf2088f7b1403d231925f9c48ef04de57bafe4b4c92ee2583ec3873256",
+      "XV_47d4850ed06996c16d11012d71dc9075bb83c7a4c34681888bc8b8a1d7e182e5"
+    ],
+    "actor_error": "Initially assumed two back calls reached the field; filtered and unfiltered related selections retained extra back steps. Corrected by following the public back trail; same original field and source recovered. No product defect inferred."
+  },
+  "resources": {
+    "producer": {
+      "state": "FINISHED",
+      "peak_owned_rss_bytes": 111648768,
+      "minimum_host_available_bytes": 53189857280,
+      "peak_owned_swap_bytes": 0,
+      "elapsed_s": 173.099,
+      "scope": "Experienced developer-agent interactive observation; elapsed includes thinking, not workload benchmark"
+    },
+    "reader": {
+      "state": "FINISHED",
+      "peak_owned_rss_bytes": 104054784,
+      "minimum_host_available_bytes": 53534126080,
+      "peak_owned_swap_bytes": 0,
+      "elapsed_s": 75.4,
+      "scope": "Experienced developer-agent interactive observation; elapsed includes thinking, not workload benchmark"
+    },
+    "limits": "Each lightweight process one CPU (4), native pools one, 256 MiB owned RSS, 16 GiB host RAM/disk floors, zero owned swap, 900 s. Concurrent source cohort has four workers with estimated combined footprint below 10 GiB. Actor elapsed includes thinking; no benchmark or speedup claim."
+  },
+  "friction": {
+    "observation": "Sequence annotations require literal compact discovery; filter and related-source steps add return selections. Initially assuming two back hops was an actor error; public navigation recovered the exact field.",
+    "hypothesis": "A named sequence-annotation descriptor or clearer return breadcrumbs may reduce discovery/navigation work. This actor does not measure independent usability.",
+    "disposition": "Sanitized local #148 handoff; no new publication authorization or issue comment"
+  },
+  "raw_directory": "recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-1/protein-observation",
+  "raw_evidence_sha256": {
+    "catalog.json": "a26bd33b046caa26cd6efe4b0b9a378b7fed1ab533dce100e5eb4fc164d9047b",
+    "interaction-reader.log": "8d6fdb5e35a995aefe6fbe5d817bc0e56dd77ad0de145a3fa00a8dba47a2c218",
+    "interaction.log": "ce454d371d766c38fd6b93fe18c911ed2f851de3c1b0e584e4b3bc264392a87f",
+    "interactive.py": "f69db3f372bb991db1b524932633709b5991017bfcf6f196fb63c87d46a01a52",
+    "observations.json": "be68dd1fea4fda76b2fa0e239d1db16fc1d9ea52b83b4743f5a2dd0d98d6158f",
+    "orientation.json": "27fe3becc9a2167d7052b1b57f9dfdb42cebde8f77fb43369bf6ea237b70c579",
+    "ownership.json": "6f8bf7a40e325c7066c873412d54ec0ac76711903830b475a286af35b6bc1e93",
+    "protein-session.json": "42525fafe4c21ef51372bd6b3384277933d58ec50bf05a8d525090acd2d6be95",
+    "reopened-observations.json": "ae355d139b9405ffadf77243b54481a49dbd9c738bcb53288d330d4d83cd66f2",
+    "resource-reader.json": "59beb174c00bc04974bf339c892f01fe626480e403d19246bfdb8e1423f45529",
+    "resource.json": "b5c4b30c985a6745b5f91203101db7d7923dbf442e23076800b68ba0d2be0ca4",
+    "save-receipt.json": "94fc6e29201c20c9f7e85c180a314d3fbdf8878e5c330f84756ab752f2708c81"
+  },
+  "limits": [
+    "Public bounded core protein task only; broader comparative/variant/isoform/structure-specialist agent work not attempted",
+    "No scientist, independent researcher, actual-consumer acceptance or B7 closure",
+    "No code/provider mutation, source acquisition, hosted run, candidate, schema freeze or B8 action"
+  ]
+}

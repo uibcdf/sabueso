@@ -3,6 +3,7 @@
 import gzip
 import hashlib
 import json
+import shutil
 import tarfile
 from collections import Counter
 from pathlib import Path
@@ -313,7 +314,7 @@ def _sha(path):
 
 
 @pytest.fixture(scope="module")
-def original(tmp_path_factory):
+def original(tmp_path_factory, request):
     assert _sha(CAPSULE) == ENCODED_SHA256
     digest, size = hashlib.sha256(), 0
     with gzip.open(CAPSULE, "rb") as source:
@@ -344,7 +345,12 @@ def original(tmp_path_factory):
         k: v for k, v in observed.items() if k != "manifest.json"
     } == result.manifest["files"]
     assert observed["manifest.json"]["sha256"] == MANIFEST_SHA256
-    return result
+    try:
+        yield result
+    finally:
+        result.cache.clear()
+        if request.config.getini("tmp_path_retention_policy") != "all":
+            shutil.rmtree(directory)
 
 
 def _root(original, name):

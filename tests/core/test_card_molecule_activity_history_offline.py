@@ -315,6 +315,7 @@ def block_current(monkeypatch):
     targets = {
         "card_molecule_activity_access": (
             "materialize",
+            "make_derivation",
             "options_for_activity_context",
         ),
         "card_molecule_activity_selection_v1": (
@@ -337,6 +338,18 @@ def block_current(monkeypatch):
         "literature": ("literature_view",),
         "literature_explanation": ("explain_literature",),
         "knowledge_state": ("knowledge_state",),
+        "card_molecule_activity_exploration": ("view", "materialize"),
+        "card_sequence_change_access": ("materialize", "make_derivation"),
+        "card_sequence_change_exploration": ("view", "materialize"),
+        "card_protein_context_access": ("materialize", "make_derivation"),
+        "card_protein_context_exploration": ("view", "materialize"),
+        "card_variant_access": ("materialize",),
+        "card_variant_exploration": ("view", "materialize"),
+        "card_knowledge_comparison_access": ("materialize", "make_derivation"),
+        "card_knowledge_comparison_exploration": ("view", "materialize"),
+        "card_knowledge_diff_v2": ("compare", "make_derivation"),
+        "card_disease_association_access": ("materialize", "make_derivation"),
+        "card_disease_association_exploration": ("view", "materialize"),
         "relationship_store": ("make_derivation",),
     }
     modules = {

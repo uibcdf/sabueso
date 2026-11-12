@@ -5,6 +5,38 @@ Current working-state checkpoint: **2026-11-12 (UTC)**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Historical test isolation and input lifetimes — targeted local checks PASS
+
+A fresh complete attempt at `f772e25` / SDK262 closes 1,553 native and 8,335
+ordinary cases successfully. Its modern-history cohort then reports five
+[test-isolation failures](pending_bugs/history_guard_isolation.md) and stops at
+its fixed 6 GiB scratch ceiling. The incomplete stream is not full qualification.
+
+Three historical test helpers now preload and restore their LIVE consumer aliases.
+Five extracted-directory fixtures and the clinical tar reader release derived
+inputs after module use; explicit debugging, failed outputs and all compressed
+originals remain available. SDK243 also uses module scope. The
+[targeted receipt](evidence/history_guard_lifetime_checkpoint_20261112.json) records
+all **13 cases passing**, including the five affected producer cases, three
+fresh-child guard controls and the complete lifecycle module. All 931 production
+inputs, 52 protected originals and 65 existing core test-function ASTs stay fixed.
+A cold audit of eight helpers finds no retained guard aliases after correction.
+Complete corrected-source recovery and hosted qualification remain pending.
+
+The [experienced developer-agent protein observation](evidence/developer_agent_protein_observation_20261112.json)
+adds supplied-protein C1/C2, partial C5 and visited C6 work to the earlier molecule
+and disease observations. Original annotations, source/return routes, 1SUX context
+and bounded literal values survive independent saved reading with Card construction
+and network forbidden. Prior exposure, an actor navigation error and unattempted
+specialist scope remain explicit; this supplies no independent review or benchmark.
+
+Release preparation now follows the accepted post-0.15.0 independent trial and
+prospective Linux/Windows platform scope. Remaining B7 review and exact candidate
+gates retain their scope; B8 is not resumed. Retain the original failure, corrected
+gate, cleanup and current recovery under #112/#148 in
+`recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-1/` and
+its named sibling gates.
+
 ## Independent researcher trial deferred until after 0.15.0
 
 The maintainer explicitly moves the independent/uncoached researcher session to

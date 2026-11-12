@@ -141,6 +141,32 @@ def test_original_archives_live_until_module_teardown_and_respect_debug_policy(
     caller.write_text("caller output", encoding="utf-8")
     factories = [
         ("test_card_saved_literature_offline", "original", "control.archive.name"),
+        (
+            "test_card_knowledge_comparison_original_offline",
+            "original",
+            "control.directory / 'manifest.json'",
+        ),
+        (
+            "test_card_variant_original_offline",
+            "original",
+            "control.directory / 'manifest.json'",
+        ),
+        (
+            "test_card_sequence_change_original_offline",
+            "original",
+            "control.directory / 'manifest.json'",
+        ),
+        (
+            "test_card_protein_context_original_offline",
+            "original",
+            "control.directory / 'manifest.json'",
+        ),
+        (
+            "test_card_disease_association_original_offline",
+            "original",
+            "control.directory / 'manifest.json'",
+        ),
+        ("test_card_clinical_history_offline", "original", "control.archive.name"),
     ]
     if policy == "failed":
         factories += [

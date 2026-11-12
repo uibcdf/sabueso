@@ -617,6 +617,22 @@ For independent timing comparisons, keep the workload isolated and preserve its
 original controls. The old migration 512 MiB/6 GiB and earlier 1 GiB/4 GiB guards
 remain historical scoped controls, not current universal worker/RAM defaults.
 
+Historical guard isolation now has a fresh-child regression in
+`test_card_sequence_change_history_offline.py`, exercising the sequence, molecule
+and literature guards. LIVE calls must fail inside the guard and actual sequence/
+association/variant/comparison answers must work after it is restored. Include
+the full original history/saved and copied-consumer receiving after changing one
+of these guards. The [owning report](pending_bugs/history_guard_isolation.md)
+retains the original order-dependent failures.
+
+`test_pytest_scratch_retention_offline.py` exercises five extracted-directory
+original readers and the clinical tar in both normal and explicit `all` debugging
+modes, alongside the earlier archive wrappers. Only owned derived inputs end with
+their module; compressed originals, setup-failure artifacts, failed-case outputs
+and caller files remain available. Keep original verification and scientific
+assertions unchanged. The [13-case selected receipt](evidence/history_guard_lifetime_checkpoint_20261112.json)
+is separate from the pending full corrected-source recovery.
+
 ### Current checkpoint partition
 
 The [current packing-source receipt](evidence/packing_full_checkpoint_20261111.json)

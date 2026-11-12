@@ -215,3 +215,35 @@ predicates verified separately by AST. No complete seven-module or full scientif
 suite is claimed for this increment.
 Actual hosted recovery and complete B7/B8 acceptance remain open under #112/#148;
 retain one consolidated update rather than publishing another per-job report.
+
+## Extracted member directories and clinical archive lifetime — 2026-11-12 UTC
+
+The fresh local `f772e25` / SDK262 modern-history cohort stops at
+6,486,823,024 sampled scratch bytes against its unchanged 6 GiB ceiling, with
+4.898 GiB peak RSS and at least 49.265 GiB available RAM. Its incomplete stream
+also contains the separate [test-guard isolation failures](history_guard_isolation.md);
+neither the partial calls nor the resource stop qualify the complete source.
+
+The stopped tree contains 335,032 files and 6,485,062,324 bytes. Repeated SDK243
+member directories account for about 517 MB each, SDK230 about 406 MB each,
+with smaller disease/protein/sequence directories and clinical tar copies.
+These factory-created inputs outlive their final module consumer. The SDK243
+fixture additionally has session scope, keeping imported fixture copies alive.
+This is a further local accumulation mechanism, not a measured complete account
+of the earlier hosted stops or a pytest/provider defect.
+
+The five directory readers now release their own extracted directory and decoded
+cache after module use; SDK243 also uses module scope. The clinical reader closes
+its archive and unlinks its derived tar. Explicit `tmp_path_retention_policy=all`
+preserves all six copies. Setup failures, failed per-case outputs, immutable
+compressed inputs and caller outputs remain available. The lifecycle regression
+uses all six real fixtures in both normal and deliberate-debugging modes.
+
+The stopped run's logs, events, inventory and failure records remain under
+`recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-1/`
+and `b7-current-modern-1/`. Twenty-five known derived input directories were
+removed after the owned run terminated and diagnosis finished; symlinks and
+failed per-case outputs were preserved. The first cleanup stopped on a symlink
+assertion; the corrected cleanup skips symlinks and completes. Original compressed
+inputs remain unchanged. Complete corrected-source and hosted recovery are
+separate pending checks; no resource ceiling or scientific predicate is relaxed.

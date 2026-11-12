@@ -8,9 +8,11 @@ packet meanings stay unchanged. Scientific/default review is explicitly pending;
 this is not a released or scientifically accepted correction yet.
 
 **Partial unpublished draft**, initially prepared 2026-10-20 under #112 and
-updated through 2026-11-11. The target is 0.15.0, confirmed on 2026-10-24;
-full Card exploration and actual human acceptance are prerequisites. Release
-consolidation, candidate selection and publication remain paused. The current
+updated through 2026-11-12. The target is 0.15.0, confirmed on 2026-10-24.
+The maintainer explicitly defers the independent/uncoached researcher session
+until after 0.15.0; it remains `not_reviewed` and supplies no participant acceptance.
+Full Card exploration and the other B7 acceptance dimensions retain their scope.
+Release consolidation, candidate selection and publication remain paused. The current
 [scope](../../devguide/pending_proposals/release_consolidation_0150.md) and
 [completion inventory](../../devguide/pending_proposals/card_exploration_completion_0150.md)
 override the earlier preparation order. `release_plan.toml` still describes published
@@ -24,12 +26,17 @@ is established by this draft.
   value/support inspection, contextual source/back navigation and typed compact
   agent access. Unknowns, alternatives and retained conflicts remain explicit.
   The participant tasks, blank worksheet and offline public input preparer are
-  ready for recruitment; actual independent researcher acceptance is pending.
+  preserved for the explicitly deferred post-0.15.0 session; no independent
+  researcher result is claimed. At candidate preparation, bind this limitation
+  to the exact source/archive and retain #148 follow-up.
 
 - Present original molecular representations, native parent/formal-charge
   declarations and selected property records with their units. Method attribution
   follows the exact source field; measured/calculated origin is declared or stays
   unknown. RCSB CCD intake now requests its native integer formal-charge field.
+  Named compact molecule catalog entries `chemical_identity` and `property_context`
+  lead to original literal fields, complete properties and separate source/rule/
+  quality stores; explicit current discovery does not rewrite old saved catalogs.
 
 - Extend structural exploration with source annotations and explicit regional
   questions, original chain gaps/author numbering, native AlphaFold whole/fragment
@@ -190,9 +197,11 @@ installed qualification against the public dependency closure.
 
 ## Explicit remaining scope
 
-Human usefulness review, complete primary assay protocols, experimental
-comparability and source-text acceptance remain open. Illustrative eligibility
-does not establish project model selection, assay equivalence or selectivity.
+The independent researcher session is explicitly scheduled after 0.15.0, with
+its missing acceptance disclosed. Remaining scientific/maintainer review, complete
+primary assay protocols, experimental comparability and source-text acceptance
+retain their own scope. Illustrative eligibility does not establish project model
+selection, assay equivalence or selectivity.
 Broader operation/bibliography coverage, non-protein packet queries, finer terms
 filtering, larger workload budgets and peptide identity remain roadmap work.
 The broad development profiles and saved routes described above are mapped in the
@@ -209,7 +218,11 @@ Obtain recorded B7 acceptance and maintainer resumption using the
 [readiness worksheet](release_readiness_0.15.0.md). Then select the final candidate
 and inspect its exact-SHA CI/governance. Build one
 immutable staging artifact and qualify its installed public dependency closure,
-historical readers and migrations on Linux/macOS arm64/Windows × Python 3.11–3.14.
+historical readers and migrations on Linux/Windows × Python 3.11–3.14.
+The prospective macOS claim is suspended under the [bounded #194 exception](../../devguide/pending_proposals/macos_support_exception.md);
+its central registry adoption remains pending owner review, and restoring macOS
+requires actual source/installed qualification. Historical 0.14.0 evidence remains
+unchanged. Review the exception before each later release.
 Obtain final acceptance, promote the tested bytes, verify a clean public install
 and identical-tag archival. Add actual receipts before changing this draft into
 published release notes. See [the staged route](README.md) and

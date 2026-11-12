@@ -9,6 +9,27 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Historical test isolation and original-input lifetime (2026-11-12 UTC)
+
+The fresh `f772e25` attempt is incomplete: two cohorts close 9,888 passing cases,
+then modern histories expose five guard failures and stop at the fixed scratch
+ceiling. Three helpers now restore cold LIVE aliases; six original-reader
+fixtures retire derived inputs after module use while preserving explicit debug
+copies, failed outputs and all immutable originals. The
+[targeted receipt](../evidence/history_guard_lifetime_checkpoint_20261112.json)
+records 13 complete local passes, stable mapped inputs and valid receptor/worker
+accounting. Existing production/scientific code and core scientific assertions
+remain unchanged. Full corrected-source recovery is still pending.
+
+The accompanying release-preparation prose follows the accepted independent-trial
+deferral and future Linux/Windows scope; the bounded protein agent observation
+retains its narrower source/acceptance limits. The intermediate `[skip ci]` route
+remains authorized. Retain the exact committed/pushed head, provider metadata,
+selected/failed events and recovery under
+`recovered_work/checkpoint_recovery_20261106/b7-current-full-checkpoint-1/`.
+Owners #112/#148 retain exact-final-head CI/governance and installed-candidate
+receiving. No new hosted run, issue publication or B8 action follows from this fix.
+
 ### Independent researcher session deferred until after 0.15.0 (2026-11-12 UTC)
 
 The maintainer's explicit [scheduling decision](researcher_acceptance_0150.md#post-0150-scheduling-decision--2026-11-12)
