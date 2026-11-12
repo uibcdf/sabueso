@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1080" viewBox="0 0 1400 1080" role="img" aria-labelledby="title desc">
+  <title id="title">Sabueso: proposed entry and exploration workspace</title>
+  <desc id="desc">Conceptual layout for Sabueso issue 154, prepared 2026-11-12. Retain for interface review. This is a static design sketch: controls are inactive, no data were queried and the molecular viewer is a placeholder.</desc>
+  <defs>
+    <style>
+      text { font-family: Inter, Arial, sans-serif; fill: #223343; }
+      .label { font-size: 15px; }
+      .small { font-size: 13px; fill: #5e6d7a; }
+      .title { font-size: 27px; font-weight: 700; }
+      .section { font-size: 17px; font-weight: 600; }
+      .accent { fill: #087e8b; }
+      .white { fill: #fff; }
+      .line { stroke: #dae2e8; stroke-width: 1; }
+      .chip { fill: #f2f6f8; stroke: #d9e2e8; }
+    </style>
+  </defs>
+  <rect width="1400" height="1080" fill="#edf2f5"/>
+  <text x="42" y="38" class="section">A. A quiet, welcoming entry</text>
+  <rect x="40" y="55" width="1320" height="285" rx="18" class="white"/>
+  <text x="75" y="96" class="section">Sabueso</text>
+  <text x="1175" y="96" class="small">Open saved work</text>
+  <text x="365" y="143" class="title">What would you like to explore?</text>
+  <rect x="300" y="166" width="675" height="53" rx="10" fill="#fff" stroke="#a8bbc9"/>
+  <text x="321" y="199" class="label">UniProt ID, PDB ID, SMILES or disease identifier</text>
+  <rect x="991" y="166" width="108" height="53" rx="10" fill="#087e8b"/>
+  <text x="1018" y="199" class="label white">Explore</text>
+  <g class="chip">
+    <rect x="300" y="237" width="165" height="35" rx="17"/>
+    <rect x="479" y="237" width="156" height="35" rx="17"/>
+    <rect x="649" y="237" width="165" height="35" rx="17"/>
+    <rect x="828" y="237" width="185" height="35" rx="17"/>
+  </g>
+  <text x="318" y="260" class="small">UniProt: P52270</text>
+  <text x="499" y="260" class="small">PDB: 1SUX</text>
+  <text x="671" y="260" class="small">Paste a SMILES</text>
+  <text x="846" y="260" class="small">MONDO:0014221</text>
+  <text x="300" y="305" class="small">Choose between possible matches • Explore selected sources • Continue saved work</text>
+
+  <text x="42" y="383" class="section">B. A continuous, researcher-controlled workspace</text>
+  <rect x="40" y="402" width="1320" height="610" rx="18" class="white"/>
+  <text x="65" y="443" class="section">Sabueso</text>
+  <text x="210" y="443" class="label">Back  /  Workspace  /  Selected Card</text>
+  <rect x="1025" y="419" width="130" height="36" rx="8" class="chip"/>
+  <rect x="1169" y="419" width="165" height="36" rx="8" class="chip"/>
+  <text x="1043" y="443" class="small">Add a system</text>
+  <text x="1189" y="443" class="small">Save exploration</text>
+  <line x1="40" y1="473" x2="1360" y2="473" class="line"/>
+  <line x1="280" y1="473" x2="280" y2="1012" class="line"/>
+  <line x1="1045" y1="473" x2="1045" y2="1012" class="line"/>
+
+  <text x="65" y="510" class="section">Cards and decks</text>
+  <rect x="57" y="526" width="205" height="63" rx="9" fill="#e6f3f3"/>
+  <text x="71" y="551" class="label accent">Protein · P52270</text>
+  <text x="71" y="574" class="small">Selected Card</text>
+  <text x="71" y="619" class="small">Related items</text>
+  <text x="71" y="647" class="small">My selected deck</text>
+  <line x1="65" y1="674" x2="250" y2="674" class="line"/>
+  <text x="65" y="708" class="section">Explore topics</text>
+  <text x="71" y="744" class="label accent">Overview</text>
+  <text x="71" y="779" class="label">Sequence and sites</text>
+  <text x="71" y="814" class="label">Structures</text>
+  <text x="71" y="849" class="label">Ligands and activity</text>
+  <text x="71" y="884" class="label">Literature</text>
+  <text x="71" y="919" class="label">Sources and gaps</text>
+  <text x="71" y="976" class="small">Topics follow the Card's nature</text>
+
+  <text x="305" y="512" class="title">Understand the selected system</text>
+  <text x="305" y="541" class="small">Protein and organism • information date • sources consulted</text>
+  <rect x="305" y="561" width="710" height="48" rx="9" fill="#f5f8fa"/>
+  <text x="324" y="590" class="label">Find a topic or choose a scientific question</text>
+  <rect x="305" y="627" width="710" height="195" rx="12" fill="#f8fafb" stroke="#d9e2e8"/>
+  <text x="330" y="662" class="section">Molecular and scientific views</text>
+  <rect x="330" y="680" width="445" height="112" rx="8" fill="#fff" stroke="#c9d7df" stroke-dasharray="6 5"/>
+  <text x="361" y="724" class="label">MolSysViewer area</text>
+  <text x="361" y="750" class="small">Choose a structure or model</text>
+  <text x="361" y="774" class="small">Design placeholder: no model is loaded</text>
+  <text x="795" y="710" class="small">Overview</text>
+  <text x="795" y="740" class="small">Sequence</text>
+  <text x="795" y="770" class="small">Tables / relationships</text>
+
+  <text x="305" y="857" class="section">Possible next questions</text>
+  <rect x="305" y="876" width="340" height="43" rx="9" class="chip"/>
+  <rect x="663" y="876" width="352" height="43" rx="9" class="chip"/>
+  <text x="322" y="903" class="label">Inspect annotated sites</text>
+  <text x="680" y="903" class="label">Review measured activity</text>
+  <text x="305" y="954" class="small">Your choice: follow a question, open any topic or inspect a source.</text>
+  <text x="305" y="978" class="small">Explore another Card or return to your Deck without losing your place.</text>
+
+  <text x="1067" y="510" class="section">Details and sources</text>
+  <text x="1067" y="541" class="small">Opens when an item is selected</text>
+  <line x1="1067" y1="565" x2="1334" y2="565" class="line"/>
+  <text x="1067" y="603" class="label">Value, units and context</text>
+  <text x="1067" y="634" class="small">See the full record</text>
+  <text x="1067" y="689" class="label">What supports it?</text>
+  <text x="1067" y="720" class="small">Original source and scope</text>
+  <text x="1067" y="751" class="small">Alternatives and conflicts</text>
+  <text x="1067" y="806" class="label">What remains unknown?</text>
+  <text x="1067" y="837" class="small">Not consulted / unavailable /</text>
+  <text x="1067" y="859" class="small">not stated / missing context</text>
+  <text x="1067" y="923" class="small">Can be collapsed or resized</text>
+  <text x="1067" y="949" class="small">Return preserves your selection</text>
+
+  <text x="43" y="1043" class="small">Concept sketch for #154 / #153 / #148 • All controls are inactive; this is not an implemented interface.</text>
+  <text x="43" y="1066" class="small">No molecular image, scientific result, source query or usability observation is supplied by this illustration.</text>
+</svg>

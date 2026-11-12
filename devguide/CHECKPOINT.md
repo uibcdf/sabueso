@@ -7,6 +7,20 @@ This page owns current state; dated receipt histories are linked below.
 
 ## Next product objective: interactive exploration in 0.16.0
 
+The maintainer's [researcher experience](pending_proposals/interactive_exploration_0160.md#researcher-controlled-assistant-experience--2026-11-12)
+now specifies a light UniProt/PDB/SMILES/disease entry and visually supported,
+researcher-controlled Card/Deck inquiry. The static layout sketch supplies a
+reviewable composition, with no live molecular model or implemented controls.
+Current resolution is reused; PDB record-to-workspace orchestration, free-text
+disease lookup and qualified chemical depiction/model input remain design work.
+Suggestions remain optional and source/model meanings explicit. Stack selection
+and a first bounded integration prototype follow this experience design.
+This documentation/sketch increment passes root Ruff format/lint, governance,
+diff and scoped links (seven local targets, one anchor and nineteen pinned
+provider paths). SVG structure, inertness and a rasterized visual inspection
+pass; these are design-artifact checks. Runtime, tests and dependencies remain
+unchanged from `8602045`, with no new application or scientific-rendering result.
+
 The maintainer accepts the [0.16.0 objective and review](pending_proposals/interactive_exploration_0160.md)
 under #154/#153/#148, coordinated by #112: a bounded visual Card/Deck experience
 with source/detail/return continuity and molecular representation through

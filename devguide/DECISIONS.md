@@ -1,5 +1,21 @@
 # Sabueso — Decision Log
 
+## Center the explorer on researcher-controlled visual inquiry (2026-11-12)
+
+The maintainer specifies a light, accessible entry by UniProt/PDB, a molecule's
+SMILES or a disease, followed by Card/Deck exploration with extensive visual
+support. Assistance should expose useful questions and resources while leaving
+the researcher free to choose topics, routes and depth. Preserve exact support,
+identity/uncertainty and the distinction between retained source knowledge and
+new modeling or project reasoning.
+
+The [experience design](pending_proposals/interactive_exploration_0160.md#researcher-controlled-assistant-experience--2026-11-12)
+and static layout sketch refine this accepted direction under #154/#153/#148.
+PDB entry orchestration, name-search and 2D/3D provider needs retain their actual
+implementation state; #20 owns a scientific structure-entity redesign if needed.
+The sketch is not an implemented application or an acceptance observation.
+Host, framework, dependencies and detailed release scope remain under discussion.
+
 ## Require replaceable infrastructure and MolSysViewer compatibility (2026-11-12)
 
 The maintainer requires the interactive Sabueso design to permit migration to

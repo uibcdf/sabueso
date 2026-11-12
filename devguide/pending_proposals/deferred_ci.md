@@ -30,6 +30,16 @@ Root format/lint, local governance, diff and scoped link checks pass; provider
 references resolve at the reviewed source. The follow-up claims no new runtime
 or browser/native qualification.
 
+The next documentation-only follow-up from `8602045` records researcher-controlled
+visual inquiry, current entry-resolution boundaries and a static SVG layout under
+#154/#153/#148. It preserves the same deferred-hosted route and unchanged runtime,
+tests, dependencies and provider checkouts. The sketch does not claim an
+implemented interface, scientific rendering or researcher acceptance.
+Root format/lint, governance, diff, new/changed links and static SVG checks pass;
+the sketch was rasterized for visual inspection. Its owned temporary raster is
+removed after review; the SVG remains issue-owned design material through the
+first interface review. Runtime compatibility and hosted gates remain separate.
+
 ### Grouped Windows portability and memory scheduling recovery (2026-11-12 UTC)
 
 The [portability correction](../pending_bugs/ci_windows_original_portability.md)

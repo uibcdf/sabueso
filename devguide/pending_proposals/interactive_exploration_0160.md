@@ -68,6 +68,128 @@ Review #192's aggregation meaning/correction before the next release; its
 0.15.0 deferral does not automatically apply to 0.16.0. Reconsider independent
 researcher and platform exceptions under their existing owners as well.
 
+## Researcher-controlled assistant experience — 2026-11-12
+
+The maintainer describes an accessible assistant for drug-design researchers:
+start on a light, uncluttered screen, identify a molecular system or disease,
+then explore Cards/Decks with strong visual support and the freedom to choose
+questions and navigation. This is the accepted experience direction. Screen
+details and the acquisition/visualization additions below remain proposed work.
+
+The [layout sketch](interactive_explorer_experience_0160.svg) illustrates entry
+and workspace organization. It is a static design artifact with inactive controls
+and an explicit molecular-view placeholder, not a working application, scientific
+result or usability observation. Owner #154; retain through the first interface
+review, then replace or archive when an implemented design supersedes it.
+
+### Entry, identity and the first useful reading
+
+Start with a light background, a single prominent exploration field, recognizable
+examples, an optional input-type selector, and opening/resuming saved work.
+Suggest a few starting questions after identification; choosing a goal is optional.
+No schema paths, source-assertion IDs or Python knowledge should be needed.
+
+The interface can unify entry while preserving the distinct underlying meanings:
+
+| Entry | Current scientific behavior | Interface work and honest outcome |
+| --- | --- | --- |
+| UniProt ID | `sabueso.resolve` can produce a protein Card with recorded resolution and selected enrichment | Open the identified Card, with its captured scope and clear routes to further knowledge |
+| PDB ID | Current resolution returns a structure record and source-mapped related proteins, not a StructureCard | Open a structure-focused reading and offer related entity selection and explicit Deck construction; preserve source chain/occurrence context. #20 owns any future core structure-entity redesign |
+| SMILES | A prefixed structure query is matched by PubChem; identity, alternatives, not-found and unsupported outcomes are retained | The input selector can supply the `smiles:` route. Show the original query and source match; a depiction or generated conformer does not establish missing identity or measured geometry |
+| Disease | Supported terminology IDs resolve through source-stated MONDO identity | Open definition, hierarchy and retained associations. Free-text disease-name lookup needs a separate candidate-search contract; it is not supplied by ID resolution |
+
+These findings follow the current [resolution guide](../../docs/content/user/resolving.md),
+[resolver](../../sabueso/tools/resolve.py),
+[PDB resolution](../../sabueso/resolver/entity_resolver.py),
+[molecule guide](../../docs/content/user/molecules.md) and
+[disease resolver](../../sabueso/tools/card/disease.py).
+Keep unique identity, ambiguous candidates, related entities and an explicitly
+selected Deck distinct. A search result does not acquire scientific membership
+merely because its tiles look alike. Let the user select candidates without
+erasing original alternatives or merging identities by similarity.
+
+The initial Explore action declares a bounded acquisition scope using existing
+source/profile semantics. Show progress and partial/failure outcomes, and make
+further source acquisition a visible action. Browsing a retained topic or hovering
+over an item does not silently query every source. A later acquisition creates
+an explicit updated reading rather than changing an old captured answer.
+
+### Workspace and visual continuity
+
+The proposed workspace has three cooperating areas:
+
+- A left navigation area for Cards/Decks and nature-appropriate topics, with
+  search and the exact route back. Keep it collapsible as space requires.
+- A main reading area combining short orientation, questions, tables and visual
+  resources. The researcher can switch between overview, sequence/chemical graph,
+  molecular view, measurements, relationships and literature where supported.
+- An on-demand detail/source panel for the selected item: full value and units,
+  relevant qualifiers, original support, alternatives/conflicts and unknown scope.
+  Source inspection should preserve the originating selection and scroll/filter
+  context instead of replacing the whole workspace.
+
+Protein reading can coordinate sequence annotations, an explicitly selected
+structure/model, sites and source-supported ligand/activity context. Molecular
+clicks and scientific-list selection should address the same qualified mapping.
+An annotation without a valid coordinate mapping remains readable with its reason.
+
+Small-molecule reading should offer an informative 2D representation where a
+qualified depiction path exists, with original chemical identity/properties and
+assay context. 3D uses an available declared structure/model; generating a new
+conformer is an explicit external modeling action with its own basis. The 2D
+depiction/3D input provider routes still need specification and receiving.
+
+Disease reading emphasizes definitions, scoped hierarchy/association views and
+related molecular entities. Relationship graphs show a declared, bounded retained
+scope and edge meaning; graph proximity does not establish identity or causality.
+Decks expose membership basis and let researchers filter, select and compare only
+scientifically supported fields. Comparison need not load every molecular model.
+
+### Assistance with user autonomy
+
+Offer contextual next questions such as "Which structures can I inspect?",
+"Which related molecules have measurements?", "What assay supports this value?"
+or "What information has not been consulted?". Base suggestions on declared
+catalogs and captured capabilities. Keep a source-backed reason or missing-context
+explanation available for each consequential action.
+
+The user can ignore suggestions, open any topic, alter criteria, follow sources,
+add another entity, branch to another Card or return to an exact Deck selection.
+Retain history, useful bookmarks and the ability to save/resume the reading.
+Guidance does not impose a wizard, choose a "best drug", infer missing efficacy,
+silently fetch data or adopt a project conclusion as source knowledge.
+
+Natural-language help may later use the same validated actions and support paths
+through its owning integration. This experience does not require an LLM, select
+an agent/provider or authorize a second scientific engine. Plain navigation
+remains complete and discoverable on its own.
+
+### Consequences for infrastructure and the first prototype
+
+This journey favors a dedicated reusable web interface, Python-owned scientific
+and session operations, asynchronous progress/results and a public molecular
+adapter. Keep native-window and notebook features in host adapters as above.
+TypeScript with a component framework is the proposed frontend direction;
+Svelte/TypeScript and a thin Python service are candidates for the first bounded
+integration prototype, not adopted dependencies. Resolve the live Viewer bridge
+and literal-type/quantity boundaries before committing to a server framework.
+
+Prototype entry → identity/candidates → Card or selected Deck → scientific item
+→ visual selection → source → exact return → save/reopen using public inputs.
+Include a PDB with distinct related entity scope, an ambiguous/unmatched input,
+an absent molecular model and an unqueried/failed source. Measure whether users
+can choose their route and explain what a value/model means, rather than counting
+panels or treating a successful rendering as scientific usability acceptance.
+Independent researcher acceptance retains its actual scheduling/status.
+
+Local owning follow-up: #154/#153 for entry/workspace orchestration and 2D/3D
+integration needs, #148 for Card/source continuity, and #20 for any new scientific
+structure entity. The concrete observations above describe existing boundaries;
+they do not establish newly reproduced provider bugs. Prepare missing provider
+capabilities in their owning issue after the consumer prototype establishes the
+specific contract, within publication authority. No issue update is published by
+this design record.
+
 ## MolSysViewer review: source and method
 
 Read-only review of the clean sibling checkout at
