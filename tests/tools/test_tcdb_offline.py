@@ -286,7 +286,7 @@ def test_supplied_scope_cannot_change_source_kind_exact_case_export_or_revision(
         (b"<html>failed</html>", False),
         (b"", False),
         (b"not gzip", True),
-        (gzip.compress(b"Q39253\t1.A.1.1.1\n")[:-4], True),
+        (gzip.compress(b"Q39253\t1.A.1.1.1\n", mtime=0)[:-4], True),
     ],
 )
 def test_failed_encoding_or_compression_never_becomes_not_listed(

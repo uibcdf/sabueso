@@ -1102,6 +1102,16 @@ receipt. Unknown permission never becomes permission through a successful test.
 
 ## Local checks and CI checkpoints
 
+Collection-time synthetic inputs must be deterministic on every supported Python
+minor. The [gzip clock correction](pending_bugs/ci_gzip_parameter_clock.md)
+sets `mtime=0` in all eight affected parameter decorators: Python 3.14's default
+must not hide an older minor's wall-clock header. Keep malformed-input assertions
+and originals unchanged. The owning 574-case gate additionally runs with different
+legacy gzip clocks per worker and includes `--local-source-inputs`; its initial
+nine-pass/35-skip control is not full original receiving. Hosted recovery still
+needs the corrected exact SHA across the required matrix.
+
+
 Saved chemical reading also exercises optional Zstandard transport. On Python
 3.11–3.13, source, public-Ackredit and staged installed receiving provision the
 same pinned `backports.zstd=1.8.0` qualification backend; Python 3.14 uses its

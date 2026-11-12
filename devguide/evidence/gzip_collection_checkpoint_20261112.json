@@ -1,0 +1,157 @@
+{
+  "state": "DETERMINISTIC_GZIP_PARAMETER_SELECTED_PASS_HOSTED_RECOVERY_PENDING",
+  "recorded_utc": "2026-11-12",
+  "owner": "uibcdf/sabueso#112/#148",
+  "review_trigger": "CI recovery and exact candidate preparation",
+  "source_base": "14a3d1ae5e296173dc43467986596f1aa09d1dd7",
+  "runtime": "0.14.0+266.g14a3d1a",
+  "scope": "Eight synthetic test parameter decorators only; production, original bytes, scientific predicates, limits and provider source unchanged",
+  "changed_test_paths": [
+    "tests/tools/test_hpo_offline.py",
+    "tests/tools/test_interactome3d_offline.py",
+    "tests/tools/test_merops_offline.py",
+    "tests/tools/test_pdbtm_offline.py",
+    "tests/tools/test_probis_offline.py",
+    "tests/tools/test_source_snapshot_offline.py",
+    "tests/tools/test_tcdb_offline.py",
+    "tests/tools/test_threedid_offline.py"
+  ],
+  "changed_source_inputs": 8,
+  "mapped_source_inputs": 1353,
+  "unchanged_production_inputs": 931,
+  "test_body_ASTs_unchanged": true,
+  "original_hosted_failure": {
+    "run_id": 43254731665,
+    "job_id": 131309790775,
+    "job_url": "https://github.com/uibcdf/sabueso/actions/runs/43254731665/job/131309790775",
+    "python": "3.12.16",
+    "cause": "Gzip header wall-clock bytes differ between xdist collected parameter identifiers",
+    "resource_stop": false,
+    "source_suite_complete": false,
+    "other_jobs": "Retain their own eventual results; no passing complete CI claim"
+  },
+  "controlled_red": {
+    "directory": "recovered_work/checkpoint_recovery_20261106/b7-current-gzip-clock-red-1",
+    "counts": {
+      "collected": 44,
+      "deselected": 0,
+      "errors": 1,
+      "executed": 0,
+      "failed": 0,
+      "not_executed": 44,
+      "passed": 0,
+      "reruns": 0,
+      "skipped": 0,
+      "subtests": {},
+      "warnings": 0,
+      "xfailed": 0,
+      "xpassed": 0
+    },
+    "collector_failure": "Different worker clocks with historical gzip default",
+    "actual_test_calls": 0,
+    "complete_integrity_valid_artifact": true,
+    "events_sha256": "863089061bb9d196cce95a06de5492c40e4fe3742c39dc84cc75c5d11d8d199c"
+  },
+  "complete_green": {
+    "directory": "recovered_work/checkpoint_recovery_20261106/b7-current-gzip-complete-green-1",
+    "counts": {
+      "collected": 574,
+      "deselected": 0,
+      "errors": 0,
+      "executed": 574,
+      "failed": 0,
+      "not_executed": 0,
+      "passed": 574,
+      "reruns": 0,
+      "skipped": 0,
+      "subtests": {},
+      "warnings": 0,
+      "xfailed": 0,
+      "xpassed": 0
+    },
+    "workers": 4,
+    "different_legacy_worker_clocks": true,
+    "local_source_inputs_enabled": true,
+    "receptor_worker_call_accounting_verified": true,
+    "all574IDs_equal_preceding_Python314_selection": true,
+    "source_maps_stable": true,
+    "elapsed_s": 15.2,
+    "peak_owned_tree_rss_bytes": 689135616,
+    "peak_owned_swap_bytes": 0,
+    "minimum_host_available_bytes": 58773073920,
+    "events_sha256": "9de9ebcc1120ea8e2b80c5a34763096f4fca42d5550b32084448fed12759d980",
+    "closed_report_sha256": "68d10e2c8afea1e2cec03d61fefbaa98ce2e509ac8ae3b6d55929e20bd734a23"
+  },
+  "earlier_narrow_green": {
+    "directory": "b7-current-gzip-clock-green-1",
+    "passed": 9,
+    "skipped": 35,
+    "limit": "Not complete native receiving; replaced by complete574-case gate, no extra distinct coverage"
+  },
+  "fresh_discovery": {
+    "normal_offline": 11519,
+    "online_deselected": 26,
+    "executed": 0,
+    "all_IDs_equal_preceding_Python314_collection": true,
+    "limit": "Membership only, not complete11519-case passing execution",
+    "events_sha256": "96b6861ea4b26a4ae9399e85e1519f06e9d18a9ddf0a5c2c2ea3be49644556b1"
+  },
+  "protected_originals_and_SOURCE": {
+    "count": 52,
+    "unchanged": true
+  },
+  "provider_epoch": {
+    "editable_origins": 13,
+    "complete_runtime_configuration_maps": 9,
+    "files": 4308,
+    "stable_since_preceding_current_workload_snapshot": true,
+    "pyunitwizard": "0.29.5+2.gcc51c8e",
+    "pyunitwizard_head": "cc51c8e600f78f108bc563edd3221bd8788ead86",
+    "delta_from_earlier_development_block": "current_public_workload_checkpoint_20261112.json records the earlier0.29.4+3 to0.29.5+2 transition, not a provider change by this correction",
+    "fingerprint_sha256": "43d5c5efe25f27ec85032a9b034c07512f84d07d7f4bff2015e03f89e1ef8794"
+  },
+  "raw_directory": "recovered_work/checkpoint_recovery_20261106/b7-ci-gzip-collection-1",
+  "limits": [
+    "Legacy-clock control runs on routinePython3.14, not nativePython3.12 qualification",
+    "Exact corrected-head hostedCI/governance still required; current14a3d1a run is a separate older source",
+    "No source/schema/scientific default or original-verifier change",
+    "No scientist/researcher/actual-consumer acceptance, B8 resumption, candidate, staging or release"
+  ],
+  "static_gates": {
+    "owner": "uibcdf/sabueso#112/#148",
+    "source_base": "14a3d1ae5e296173dc43467986596f1aa09d1dd7",
+    "scope": "Eight synthetic collection decorators and developer-guide/evidence only; no docs/ or docstring changes requiring another Sphinx build",
+    "commands": [
+      {
+        "command": "ruff format --check .",
+        "exit_code": 0,
+        "result": "1707files formatted"
+      },
+      {
+        "command": "ruff check .",
+        "exit_code": 0,
+        "result": "All checks passed"
+      },
+      {
+        "command": "python devtools/moli_governance.py",
+        "exit_code": 0,
+        "result": "Local MOLI governance valid"
+      },
+      {
+        "command": "python tools/fixture_delivery.py --check",
+        "exit_code": 0,
+        "result": "85reviewed public delivery inputs,37protected local-only originals"
+      },
+      {
+        "command": "python check_local_links.py",
+        "exit_code": 0,
+        "result": "294local destinations and2JSON receipts valid"
+      },
+      {
+        "command": "git diff --check",
+        "exit_code": 0,
+        "result": "No whitespace errors"
+      }
+    ]
+  }
+}

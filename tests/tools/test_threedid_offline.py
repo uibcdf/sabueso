@@ -314,7 +314,7 @@ def test_snapshot_metadata_cannot_relabel_native_source_query_or_revision(
         (b"", False),
         (b"<html>failed</html>", False),
         (b"not gzip", True),
-        (gzip.compress(NATIVE.encode())[:-4], True),
+        (gzip.compress(NATIVE.encode(), mtime=0)[:-4], True),
     ],
 )
 def test_unreadable_snapshots_are_not_missing_interactions(tmp_path, raw, compressed):

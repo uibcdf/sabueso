@@ -301,7 +301,7 @@ def test_snapshot_cannot_relabel_source_query_or_revision(tmp_path, key, value):
         (b"\xff", False),
         (b"<html>failed</html>", False),
         (b"not gzip", True),
-        (gzip.compress(NATIVE.encode())[:-4], True),
+        (gzip.compress(NATIVE.encode(), mtime=0)[:-4], True),
     ],
 )
 def test_unreadable_supplied_files_do_not_become_native_not_listed(

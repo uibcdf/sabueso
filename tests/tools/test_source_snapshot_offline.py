@@ -165,7 +165,7 @@ def test_explicit_literal_format_and_empty_file_are_not_guessed_records(tmp_path
     "raw",
     [
         b"not gzip",
-        gzip.compress(b"original")[:-4],
+        gzip.compress(b"original", mtime=0)[:-4],
         b"\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x06",
     ],
 )

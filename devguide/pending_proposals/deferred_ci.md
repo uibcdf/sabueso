@@ -9,6 +9,33 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### SDK266 hosted recovery and deterministic gzip parameters (2026-11-12 UTC)
+
+The maintainer resumes the exact one-time dispatch plan at clean `14a3d1a`.
+[Governance](https://github.com/uibcdf/sabueso/actions/runs/43254791958) passes 1/1,
+with all six full-capture members and nine log members verified. The
+[CI run](https://github.com/uibcdf/sabueso/actions/runs/43254731665) remains in
+progress with a confirmed Linux Python 3.12 collection failure. Its remaining
+jobs keep their own results; this batch supplies no complete passing qualification.
+
+The [gzip clock correction](../pending_bugs/ci_gzip_parameter_clock.md) changes
+eight synthetic decorators, with all 931 production inputs, existing scientific
+test bodies and 52 protected originals fixed. Its [574-case local receipt](../evidence/gzip_collection_checkpoint_20261112.json)
+includes actual distinct legacy worker clocks and complete native inputs.
+Fresh discovery retains all 11,519 prior IDs; it is collection only. The first
+nine-pass/35-skip control and original red/hosted streams remain explicit.
+
+The current three-public-workload/seven-reader observation passes within the
+already accepted structural budget and records the separate PyUnitWizard 0.29.5
+provider epoch. It supplies no broader B7 acceptance or installed-candidate result.
+The checked test-only correction follows the authorized `[skip ci]` route; retain
+its exact committed/pushed identity and source/provider maps in
+`recovered_work/checkpoint_recovery_20261106/b7-ci-gzip-collection-1/`.
+The consumed first dispatch approval grants no retry. Obtain approval for the
+next concrete CI/governance pair on the corrected final SHA; receive all 14 CI jobs,
+separate governance and 8 codec reports through the existing recovery route. B8,
+candidate/freeze/staging/release and issue publication remain unresumed.
+
 ### Complete baseline recovery and subsequent context correction (2026-11-12 UTC)
 
 The [complete baseline](../evidence/pre_context_display_fix_full_checkpoint_20261112.json)

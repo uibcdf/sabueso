@@ -5,6 +5,43 @@ Current working-state checkpoint: **2026-11-12 (UTC)**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Hosted recovery exposed a gzip parameter clock dependency
+
+The maintainer resumes the concrete one-time manual CI/governance plan for
+`14a3d1a` / SDK266. [Governance](https://github.com/uibcdf/sabueso/actions/runs/43254791958)
+passes with its complete full capture verified. The separate
+[CI batch](https://github.com/uibcdf/sabueso/actions/runs/43254731665) has a Linux
+Python 3.12 collection failure: worker-specific gzip timestamps produce different
+test identifiers. Other jobs are still running at this checkpoint; no complete
+passing CI claim is made.
+
+The [test-only correction](pending_bugs/ci_gzip_parameter_clock.md) sets `mtime=0`
+in eight collection-time synthetic parameters. A forced legacy-clock reproduction
+fails before correction, and the complete owning selection passes **574 cases**
+afterwards with different worker clocks, no warnings/skips/owned swap, unchanged
+scientific test bodies and all 52 protected originals. All 931 production inputs
+stay fixed. [Fresh discovery](evidence/gzip_collection_checkpoint_20261112.json)
+retains exactly the same 11,519 normal offline IDs and 26 online exclusions;
+collection is not a new full-suite passing execution. Native older-minor and
+corrected exact-head hosted recovery remain due; no extra run is authorized by
+the first pair's consumed approval.
+
+The [current public workload observation](evidence/current_public_workload_checkpoint_20261112.json)
+passes three walkthroughs and seven separate original saved readings at SDK266.
+The structural maxima are 42.676 s saving, 17.411 s reopening and 484,503,552 bytes
+owned RSS, within the accepted workload-only 60 s / 30 s / 1 GiB provisional
+budget. These are warm nonrandomized observations, not a general speed guarantee.
+The environment now uses PyUnitWizard `0.29.5+2.gcc51c8e`; its one-file provider
+delta from the earlier block and initial fingerprint timing limit are explicit.
+No provider source/install is changed by this work. Scientific, broader agent/
+workload and actual-consumer acceptance remain separate; the independent trial
+stays after 0.15.0 and B8 remains unresumed.
+
+Raw captures, red/green tests, actual sessions and exact source/provider records
+remain owned by #112/#148/#167 under
+`recovered_work/checkpoint_recovery_20261106/b7-hosted-recovery-sdk266-1/`,
+`b7-ci-gzip-collection-1/` and `b7-current-workload-sdk266-1/`.
+
 ## Molecule context navigation and resaving — selected current checks PASS
 
 Saved molecule context filtering/sorting now reuses the exact recorded display

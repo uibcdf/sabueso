@@ -316,7 +316,7 @@ def test_snapshot_identity_revision_and_organism_are_not_rewritten(
         (b"\xff", False),
         (b"<html>failed</html>", False),
         (b"not gzip", True),
-        (gzip.compress(NATIVE.encode())[:-4], True),
+        (gzip.compress(NATIVE.encode(), mtime=0)[:-4], True),
     ],
 )
 def test_unreadable_supplied_file_is_not_not_listed(tmp_path, raw, compressed):

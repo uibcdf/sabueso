@@ -303,7 +303,7 @@ def test_supplied_metadata_cannot_override_source_kind_id_or_release(
         (b"", False),
         (b"<html>blocked</html>", False),
         (b"not gzip", True),
-        (gzip.compress(NATIVE.encode())[:-4], True),
+        (gzip.compress(NATIVE.encode(), mtime=0)[:-4], True),
     ],
 )
 def test_unreadable_snapshots_are_not_missing_matches(tmp_path, raw, compressed):

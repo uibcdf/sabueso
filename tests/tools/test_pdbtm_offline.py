@@ -346,7 +346,7 @@ def test_snapshot_cannot_relabel_source_query_or_revision(tmp_path, key, value):
         (b"<html>failed</html>", False),
         (b"\xff", False),
         (b"not gzip", True),
-        (gzip.compress(NATIVE.encode())[:-4], True),
+        (gzip.compress(NATIVE.encode(), mtime=0)[:-4], True),
     ],
 )
 def test_unreadable_snapshot_does_not_become_negative_membrane_knowledge(

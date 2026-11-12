@@ -307,7 +307,7 @@ def test_supplied_metadata_cannot_change_native_source_kind_case_or_revision(
         (b"<html>blocked</html>", False),
         (b"", False),
         (b"not gzip", True),
-        (gzip.compress(NATIVE.encode())[:-4], True),
+        (gzip.compress(NATIVE.encode(), mtime=0)[:-4], True),
     ],
 )
 def test_unreadable_snapshots_never_become_a_missing_match(tmp_path, raw, compressed):

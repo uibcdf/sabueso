@@ -1,0 +1,616 @@
+{
+  "state": "THREE_PUBLIC_WORKLOADS_PASS_ACCEPTANCE_PENDING",
+  "date": "2026-11-12",
+  "owner": [
+    "uibcdf/sabueso#167",
+    "uibcdf/sabueso#148",
+    "uibcdf/sabueso#112"
+  ],
+  "source_commit": "14a3d1ae5e296173dc43467986596f1aa09d1dd7",
+  "runtime_tree": "7c631bf565a328e0cdee767007816e290edc6756",
+  "runtime": "0.14.0+266.g14a3d1a",
+  "method": {
+    "scope": "Existing three-Card, structural and protein-context public walkthroughs, each with a separate-process saved reader",
+    "instrument": "recovered_work/checkpoint_recovery_20261106/b7-current-workload-sdk266-1/measure.py",
+    "instrument_sha256": "3dc20ee142c43f2cfa8fdca574d3a450dcc4f3ce4fd39173e4aaf00f7f585aa2",
+    "sampling_interval_s": 0.25,
+    "execution": "Sequential; one CPU; native pools one; nice 10",
+    "limits": "4 GiB combined owned process-tree RSS, 16 GiB host available floor, zero owned swap, 2 GiB owned scratch and 600 s per invocation",
+    "timing": "One instrumented nonrandomized warm sample per walkthrough/phase; operation durations include nested calls and must not be summed across operations",
+    "repeat_probe": "One immediate repeated public answer per producer answer; retain exact result/view binding; not an independent cold sample",
+    "response_bytes": "Rendered text UTF-8; agent page uses json.dumps(ensure_ascii=False) with default separators, not a transport-budget measurement",
+    "input_preparation": "Fixture loading/mapping is included in whole-process time but not separately timed",
+    "rendering": "Text rendered by the existing walkthroughs; no notebook/HTML timing claimed",
+    "reader_prohibitions": "Network connections, sabueso.resolve and Card.__init__/from_dict/explore forbidden"
+  },
+  "protected_SOURCE_and_original_testdata_files_unchanged": 52,
+  "workloads": {
+    "core": {
+      "walkthrough": "examples/user_journeys/card_exploration.py",
+      "walkthrough_sha256": "314543b088962d2fda0d8585a7005e10d2ce82100906d8eb5fe4bcd60656408d",
+      "phases": {
+        "produce": {
+          "state": "PASS",
+          "source_modules_and_walkthrough_unchanged": 921,
+          "command": [
+            "nice",
+            "-n",
+            "10",
+            "taskset",
+            "-c",
+            "1",
+            "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+            "-B",
+            "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-current-workload-sdk266-1/measure.py",
+            "core",
+            "produce"
+          ],
+          "resources": {
+            "elapsed_s": 14.34,
+            "peak_owned_rss_bytes": 180752384,
+            "minimum_host_available_bytes": 59317628928,
+            "peak_owned_swap_bytes": 0,
+            "peak_owned_scratch_bytes": 29760949
+          },
+          "operations_inclusive": {
+            "capture": {
+              "calls": 3,
+              "sum_wall_s": 0.04522738402010873,
+              "maximum_wall_s": 0.0410866989986971
+            },
+            "text": {
+              "calls": 42,
+              "sum_wall_s": 0.030956896021962166,
+              "maximum_wall_s": 0.014987743983510882,
+              "maximum_response_utf8_bytes": 5154
+            },
+            "answer": {
+              "calls": 9,
+              "sum_wall_s": 0.00997986801667139,
+              "maximum_wall_s": 0.002913144009653479
+            },
+            "agent_select": {
+              "calls": 1,
+              "sum_wall_s": 0.06166010600281879,
+              "maximum_wall_s": 0.06166010600281879
+            },
+            "view": {
+              "calls": 3,
+              "sum_wall_s": 0.06553052802337334,
+              "maximum_wall_s": 0.06183046300429851
+            },
+            "save": {
+              "calls": 3,
+              "sum_wall_s": 12.685729818069376,
+              "maximum_wall_s": 5.217481250001583
+            }
+          },
+          "immediate_repeat_probes": 9,
+          "observation_sha256": "273949994d082f9a4aa5b652d750beb44ef1f184b5fc7cb7b5c8f8eaea283f30",
+          "complete_log_sha256": "b69c566e5506a5e31cbe485a5f94ef8762672e2e2e753797f6d347af5900f721",
+          "preflight_sha256": "dbda9e1c1130da6ecbfa42595eea7d2fa1cf5666e3ace0866b40eb8da601373a"
+        },
+        "read": {
+          "state": "PASS",
+          "source_modules_and_walkthrough_unchanged": 921,
+          "command": [
+            "nice",
+            "-n",
+            "10",
+            "taskset",
+            "-c",
+            "1",
+            "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+            "-B",
+            "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-current-workload-sdk266-1/measure.py",
+            "core",
+            "read"
+          ],
+          "resources": {
+            "elapsed_s": 8.81,
+            "peak_owned_rss_bytes": 226160640,
+            "minimum_host_available_bytes": 59278995456,
+            "peak_owned_swap_bytes": 0,
+            "peak_owned_scratch_bytes": 29793095
+          },
+          "operations_inclusive": {
+            "read_exploration": {
+              "calls": 3,
+              "sum_wall_s": 7.940239762014244,
+              "maximum_wall_s": 3.6273868539719842
+            },
+            "text": {
+              "calls": 19,
+              "sum_wall_s": 0.022496444755233824,
+              "maximum_wall_s": 0.012892537983134389,
+              "maximum_response_utf8_bytes": 5217
+            },
+            "view": {
+              "calls": 4,
+              "sum_wall_s": 0.0006849890341982245,
+              "maximum_wall_s": 0.00026198901468887925
+            }
+          },
+          "immediate_repeat_probes": 0,
+          "observation_sha256": "4c26d6f592330bf402e2d27b62a961cb1bc1ac6ef3bc994c73a9f1045def0820",
+          "complete_log_sha256": "8159a6374382f8567a5086721f7f4e01611debeffd8f7576b479b7d7aa0068d2",
+          "preflight_sha256": "a2b3feb748a65ec524ffddd82a74ed460b8ed3c13db8ef2c0ba5abf046a0b069"
+        }
+      },
+      "sessions": {
+        "protein.json": {
+          "format": "sabueso.card_exploration@35",
+          "root_view_ref": "XV_e4361f1b94e60fc812fec5d02c080ad725496246133abe86d9a7cc7da8827de2",
+          "bundle_digest": "sha256:1d65de566203cfb41ddae274b9ff49653d244b500191717abb8e68f8d0782abc",
+          "compression": "none",
+          "encoded_bytes": 13299943,
+          "decoded_bytes": 13299943,
+          "encoded_sha256": "sha256:af605456a3d394211711cf9457d6d4b8406c7b575d741d46ffcecfd5d9d1b501",
+          "decoded_sha256": "sha256:af605456a3d394211711cf9457d6d4b8406c7b575d741d46ffcecfd5d9d1b501",
+          "input_pins": [
+            "sabueso:protein:uniprot:P52270@sha256:e722cd3d919e053eb1af777e9e8d3818de52adf5f518bf5008a0e067fb21367f"
+          ],
+          "counts": {
+            "cards": 1,
+            "objects": 62,
+            "views": 107,
+            "locations": 76
+          },
+          "save_wall_s": 5.217481250001583
+        },
+        "molecule.json": {
+          "format": "sabueso.card_exploration@2",
+          "root_view_ref": "XV_c6d84fb3f7644c20c0c76b1f5b621f57022e30319eea56f31c0e9020b0506bbc",
+          "bundle_digest": "sha256:445d3e32021a870490499c898aeb1574d36350193e6eb7c6f65b2be89c711698",
+          "compression": "none",
+          "encoded_bytes": 10420615,
+          "decoded_bytes": 10420615,
+          "encoded_sha256": "sha256:97d32c15ee3e883414ab315f7c0ae8829983b77dc6ccd78edec55727ba445aa7",
+          "decoded_sha256": "sha256:97d32c15ee3e883414ab315f7c0ae8829983b77dc6ccd78edec55727ba445aa7",
+          "input_pins": [
+            "sabueso:small_molecule:inchikey:CULUWZNBISUWAS-UHFFFAOYSA-N@sha256:0d9ec573389fadede11ab69ec011ad563e8b2770ac04b532af25530cd1fa61d4"
+          ],
+          "counts": {
+            "cards": 1,
+            "objects": 514,
+            "views": 712,
+            "locations": 624
+          },
+          "save_wall_s": 4.753496476041619
+        },
+        "disease.json": {
+          "format": "sabueso.card_exploration@1",
+          "root_view_ref": "XV_2ddbaf13e2a1f13e5ee9163809a724e7419dc40bffaac5be39f36346428073b6",
+          "bundle_digest": "sha256:19df66fb6adf8baff209caaef31d27cce3b7541ff2795b438bef37ca271fea62",
+          "compression": "none",
+          "encoded_bytes": 5948380,
+          "decoded_bytes": 5948380,
+          "encoded_sha256": "sha256:13a2c2f7a680629767f6a927c0d082e399d57f8e44c81376fd57e0b3317cb9c2",
+          "decoded_sha256": "sha256:13a2c2f7a680629767f6a927c0d082e399d57f8e44c81376fd57e0b3317cb9c2",
+          "input_pins": [
+            "sabueso:disease:mondo:MONDO:0014221@sha256:9863f3e6f70a3c458307291ce86cc42d49e9fa7323e592fe31ddc9755c6dbff6"
+          ],
+          "counts": {
+            "cards": 1,
+            "objects": 315,
+            "views": 442,
+            "locations": 382
+          },
+          "save_wall_s": 2.714752092026174
+        }
+      }
+    },
+    "structural": {
+      "walkthrough": "examples/user_journeys/structural_source_review.py",
+      "walkthrough_sha256": "2565ff02c0783ade5b209bf5c62d45a1b7e30b5c6a9c2a2ddcb7c6e4d6904981",
+      "phases": {
+        "produce": {
+          "state": "PASS",
+          "source_modules_and_walkthrough_unchanged": 921,
+          "command": [
+            "nice",
+            "-n",
+            "10",
+            "taskset",
+            "-c",
+            "1",
+            "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+            "-B",
+            "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-current-workload-sdk266-1/measure.py",
+            "structural",
+            "produce"
+          ],
+          "resources": {
+            "elapsed_s": 54.12,
+            "peak_owned_rss_bytes": 484503552,
+            "minimum_host_available_bytes": 58953072640,
+            "peak_owned_swap_bytes": 0,
+            "peak_owned_scratch_bytes": 40891297
+          },
+          "operations_inclusive": {
+            "capture": {
+              "calls": 2,
+              "sum_wall_s": 0.06029161298647523,
+              "maximum_wall_s": 0.042457439994905144
+            },
+            "view": {
+              "calls": 2,
+              "sum_wall_s": 0.0063305190415121615,
+              "maximum_wall_s": 0.005344638018868864
+            },
+            "agent_select": {
+              "calls": 5,
+              "sum_wall_s": 0.0880727109615691,
+              "maximum_wall_s": 0.037278611038345844
+            },
+            "agent_page": {
+              "calls": 19,
+              "sum_wall_s": 0.007848274952266365,
+              "maximum_wall_s": 0.0006172030116431415,
+              "maximum_response_utf8_bytes": 6437
+            },
+            "answer": {
+              "calls": 1,
+              "sum_wall_s": 0.0319236540235579,
+              "maximum_wall_s": 0.0319236540235579
+            },
+            "text": {
+              "calls": 5,
+              "sum_wall_s": 0.01863464101916179,
+              "maximum_wall_s": 0.015171988983638585,
+              "maximum_response_utf8_bytes": 2222
+            },
+            "save": {
+              "calls": 2,
+              "sum_wall_s": 52.2778797299834,
+              "maximum_wall_s": 42.676017356978264
+            }
+          },
+          "immediate_repeat_probes": 1,
+          "observation_sha256": "76c3e0c2cff5797ae729f679217beec93bd27d08ec4fec1991465754ddc6dbe6",
+          "complete_log_sha256": "41c214f7058cff281909cb7419645e0fc12363589d071bc3551fe29ba8e36f4f",
+          "preflight_sha256": "2c35581b79b0e85c9c55e99f7178fc3b11f856e4b504a020922c2c7b8bd3f4d9"
+        },
+        "read": {
+          "state": "PASS",
+          "source_modules_and_walkthrough_unchanged": 921,
+          "command": [
+            "nice",
+            "-n",
+            "10",
+            "taskset",
+            "-c",
+            "1",
+            "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+            "-B",
+            "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-current-workload-sdk266-1/measure.py",
+            "structural",
+            "read"
+          ],
+          "resources": {
+            "elapsed_s": 21.4,
+            "peak_owned_rss_bytes": 235511808,
+            "minimum_host_available_bytes": 59268300800,
+            "peak_owned_swap_bytes": 0,
+            "peak_owned_scratch_bytes": 40910243
+          },
+          "operations_inclusive": {
+            "read_exploration": {
+              "calls": 2,
+              "sum_wall_s": 20.40482645202428,
+              "maximum_wall_s": 17.41135344002396
+            },
+            "view": {
+              "calls": 2,
+              "sum_wall_s": 0.000650233996566385,
+              "maximum_wall_s": 0.00040268799057230353
+            },
+            "agent_page": {
+              "calls": 19,
+              "sum_wall_s": 0.008764006954152137,
+              "maximum_wall_s": 0.0007744079921394587,
+              "maximum_response_utf8_bytes": 6438
+            },
+            "answer": {
+              "calls": 1,
+              "sum_wall_s": 0.003097474982496351,
+              "maximum_wall_s": 0.003097474982496351
+            },
+            "agent_select": {
+              "calls": 1,
+              "sum_wall_s": 0.0015870049828663468,
+              "maximum_wall_s": 0.0015870049828663468
+            },
+            "text": {
+              "calls": 5,
+              "sum_wall_s": 0.01481279800646007,
+              "maximum_wall_s": 0.013390420994255692,
+              "maximum_response_utf8_bytes": 2389
+            }
+          },
+          "immediate_repeat_probes": 0,
+          "observation_sha256": "8c0000aa1c0f5b71aae1a1a4c2f1bfae471c0664bb68bf185daab063ba45d559",
+          "complete_log_sha256": "688e17b76d8cfe322022c3c9b0a9f8d4b4eff861eefb03b06f31ee31d2494d7b",
+          "preflight_sha256": "8ad90eee23fa11073d338342ac3e8b8b22d2026b708518b2bff8431d0a8fd9aa"
+        }
+      },
+      "sessions": {
+        "current.json.gz": {
+          "format": "sabueso.card_exploration@36",
+          "root_view_ref": "XV_862416a5888af2f881036f264d33b80576c51f3f828f45bb4f09104f22679268",
+          "bundle_digest": "sha256:8de6ae3cfc22cc1436273a6f4ad5d5ea06d37cde292c753baeb91a9f51cfab4f",
+          "compression": "gzip",
+          "encoded_bytes": 8552724,
+          "decoded_bytes": 25443418,
+          "encoded_sha256": "sha256:7dcd55f188ae759e2e72d87f5a3dfee511aaa7304f3c65881134795d6a331108",
+          "decoded_sha256": "sha256:07817960512a1692e1769fa75c80423e7b4911d9ec75065a90e2415978856cb9",
+          "input_pins": [
+            "sabueso:protein:uniprot:P52270@sha256:4ab9db6fa814199909d2cdaf56a2171f58db6e98e213b25f4a842d3ca31956ee"
+          ],
+          "counts": {
+            "cards": 1,
+            "objects": 1884,
+            "views": 2622,
+            "locations": 2185
+          },
+          "save_wall_s": 42.676017356978264
+        },
+        "historical.json.gz": {
+          "format": "sabueso.card_exploration@13",
+          "root_view_ref": "XV_c366a9ec5487b857ecc8d364e917432927a70fdaf941c6ab1fc211729654908d",
+          "bundle_digest": "sha256:cdd0fbb70d4ea22d823eda3d4dc60d6d26b3445dddd63cbe940b0f3d64df7b23",
+          "compression": "gzip",
+          "encoded_bytes": 1974042,
+          "decoded_bytes": 5740926,
+          "encoded_sha256": "sha256:aecb3a0826f649f480c03075f9ffb498053c57c7200962225cbba9bec9285cfd",
+          "decoded_sha256": "sha256:9de80a2f84b52226ef358d74c066a7f6e9f237ab38ae769154463aebfd6f1ad3",
+          "input_pins": [
+            "sabueso:protein:uniprot:P52270@sha256:e722cd3d919e053eb1af777e9e8d3818de52adf5f518bf5008a0e067fb21367f"
+          ],
+          "counts": {
+            "cards": 1,
+            "objects": 266,
+            "views": 352,
+            "locations": 318
+          },
+          "save_wall_s": 9.601862373005133
+        }
+      }
+    },
+    "protein": {
+      "walkthrough": "examples/user_journeys/protein_context_review.py",
+      "walkthrough_sha256": "08a31efa772f8c539990629baccfe609f173706cec7e0c5908c48fc8f5ac221c",
+      "phases": {
+        "produce": {
+          "state": "PASS",
+          "source_modules_and_walkthrough_unchanged": 921,
+          "command": [
+            "nice",
+            "-n",
+            "10",
+            "taskset",
+            "-c",
+            "1",
+            "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+            "-B",
+            "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-current-workload-sdk266-1/measure.py",
+            "protein",
+            "produce"
+          ],
+          "resources": {
+            "elapsed_s": 24.19,
+            "peak_owned_rss_bytes": 255492096,
+            "minimum_host_available_bytes": 59236544512,
+            "peak_owned_swap_bytes": 0,
+            "peak_owned_scratch_bytes": 45247440
+          },
+          "operations_inclusive": {
+            "capture": {
+              "calls": 2,
+              "sum_wall_s": 0.05298591800965369,
+              "maximum_wall_s": 0.037984881026204675
+            },
+            "text": {
+              "calls": 11,
+              "sum_wall_s": 0.02520557784009725,
+              "maximum_wall_s": 0.01394065999193117,
+              "maximum_response_utf8_bytes": 2665
+            },
+            "answer": {
+              "calls": 7,
+              "sum_wall_s": 0.2132456509862095,
+              "maximum_wall_s": 0.09892394696362317
+            },
+            "agent_select": {
+              "calls": 7,
+              "sum_wall_s": 0.004539479908999056,
+              "maximum_wall_s": 0.0017981530399993062
+            },
+            "agent_page": {
+              "calls": 42,
+              "sum_wall_s": 0.16711301705799997,
+              "maximum_wall_s": 0.011794719030149281,
+              "maximum_response_utf8_bytes": 63180
+            },
+            "save": {
+              "calls": 2,
+              "sum_wall_s": 21.854726327990647,
+              "maximum_wall_s": 16.580077180988155
+            }
+          },
+          "immediate_repeat_probes": 7,
+          "observation_sha256": "65cf3529df3e9eba06e88ff5f49759c9ad5174665aec83f2d7f6114caead7609",
+          "complete_log_sha256": "0b996c182586df3ded3adb09b994513acae53351f0deff40e6789401918eb4c0",
+          "preflight_sha256": "80330cf7602c53cf345d6782264e41579dcfac4cd28a3e4c26e2970d1a2819d5"
+        },
+        "read": {
+          "state": "PASS",
+          "source_modules_and_walkthrough_unchanged": 921,
+          "command": [
+            "nice",
+            "-n",
+            "10",
+            "taskset",
+            "-c",
+            "1",
+            "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+            "-B",
+            "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/b7-current-workload-sdk266-1/measure.py",
+            "protein",
+            "read"
+          ],
+          "resources": {
+            "elapsed_s": 9.57,
+            "peak_owned_rss_bytes": 148963328,
+            "minimum_host_available_bytes": 59332112384,
+            "peak_owned_swap_bytes": 0,
+            "peak_owned_scratch_bytes": 45279757
+          },
+          "operations_inclusive": {
+            "read_exploration": {
+              "calls": 2,
+              "sum_wall_s": 8.45643524301704,
+              "maximum_wall_s": 6.145245192979928
+            },
+            "answer": {
+              "calls": 7,
+              "sum_wall_s": 0.001772946969140321,
+              "maximum_wall_s": 0.0004488200065679848
+            },
+            "agent_select": {
+              "calls": 7,
+              "sum_wall_s": 0.003083696006797254,
+              "maximum_wall_s": 0.0020173670491203666
+            },
+            "agent_page": {
+              "calls": 42,
+              "sum_wall_s": 0.1609522279468365,
+              "maximum_wall_s": 0.007596788986120373,
+              "maximum_response_utf8_bytes": 63181
+            },
+            "text": {
+              "calls": 7,
+              "sum_wall_s": 0.01768453000113368,
+              "maximum_wall_s": 0.011363303987309337,
+              "maximum_response_utf8_bytes": 2756
+            }
+          },
+          "immediate_repeat_probes": 0,
+          "observation_sha256": "f279f67aa3821eee654006f3efc023b7a3a7403c1a8d69930b08d5a099b908a7",
+          "complete_log_sha256": "8cb34709125c807792ee492f88cb31df06f6aecbfdea9f5a4f038a6f69e708b1",
+          "preflight_sha256": "48e50d4982f9bec31fd96cf59dcfe4772391f11078983261464e5c03a6ea5c17"
+        }
+      },
+      "sessions": {
+        "comparisons.json.gz": {
+          "format": "sabueso.card_exploration@36",
+          "root_view_ref": "XV_6f6a151ee83bde7b1323fc74e6bdddb979529881946c00661c97e19f03e63f42",
+          "bundle_digest": "sha256:917f694330eef9e1eee02943b6bde3e54831b8a5f621de16931b0aad7b42a5e1",
+          "compression": "gzip",
+          "encoded_bytes": 2606362,
+          "decoded_bytes": 7815455,
+          "encoded_sha256": "sha256:16c6fdc031a5627ef28457da771734edc108f28ad9a196435da070fd08049f4f",
+          "decoded_sha256": "sha256:5e9688416d807e9e78c0c8bf28d3499640f1d81c51c6c60c26dad94ca32e6b2f",
+          "input_pins": [
+            "sabueso:protein:uniprot:P52270@sha256:fe7b20ce3b88509ffd57d6c8d33bb5764dae5b73d5f87372dc96232b334a5040",
+            "sabueso:protein:uniprot:Q4DV43@sha256:72fb92c4cd99461f46ebf38ced288983b424fa3b2efd6e924f96645c68c74ede"
+          ],
+          "counts": {
+            "cards": 2,
+            "objects": 393,
+            "views": 319,
+            "locations": 594
+          },
+          "save_wall_s": 16.580077180988155
+        },
+        "human_context.json.gz": {
+          "format": "sabueso.card_exploration@36",
+          "root_view_ref": "XV_5f32339ba67b2f9ac6174e4e6d5de7ad7537a99a63459b83feea6ba34bebff66",
+          "bundle_digest": "sha256:1269be1a181eb0bcfaafc9946aea3cfc201b50e667f845caa5ab261771281100",
+          "compression": "gzip",
+          "encoded_bytes": 1670177,
+          "decoded_bytes": 4832595,
+          "encoded_sha256": "sha256:09f3a4e149a48dd5e38e25bf6b287071fee890408a2c94d1c4b7a271ce178418",
+          "decoded_sha256": "sha256:68bcb3bc27119b1320242fc09875328914d46b7679ce8f315327c1643aae130b",
+          "input_pins": [
+            "sabueso:protein:uniprot:P60174@sha256:48ad0a54e7d86891b5aa4883cdd96b23eec8816f767909c8bb24b965179d8c78"
+          ],
+          "counts": {
+            "cards": 1,
+            "objects": 144,
+            "views": 141,
+            "locations": 218
+          },
+          "save_wall_s": 5.274649147002492
+        }
+      }
+    }
+  },
+  "limits_and_next_action": [
+    "Seven complete saved sessions and 17 immediate repeat probes; not a full-profile scaling study or regression attribution",
+    "Core protein uses the public schema 0.3.9 capture; the structural journey separately includes current and historical inputs",
+    "Source acquisition, cold caches, allocation profiling, online health and private consumers are not qualified",
+    "Only this machine/public structural workload has the accepted60s/save,30s/read,1GiBRSS provisional budget; other workload budgets remain unaccepted",
+    "Maintainer workload acceptance remains pending; the independent researcher trial is explicitly after0.15.0 and not_reviewed",
+    "Independent scientist/researcher, actual-agent usefulness and real consumer acceptance remain pending",
+    "Current14a3d1a hosted CI is separately in progress; governance passes. No B8 resumption, candidate selection, schema freeze or release"
+  ],
+  "retained_evidence": {
+    "directory": "recovered_work/checkpoint_recovery_20261106/b7-current-workload-sdk266-1",
+    "owner": "Sabueso maintainers, #167/#148/#112",
+    "review_trigger": "B7 workload review or before candidate preparation",
+    "records": "Observer/controller code, raw calls, complete child logs, preflights, resource receipts and exact session hashes",
+    "temporary_outputs": "Owned generated sessions may be removed after all reader observations and curated hashes are retained; original scientific capsules remain protected"
+  },
+  "provider_epoch": {
+    "editable_origins": 13,
+    "complete_runtime_configuration_maps": 9,
+    "mapped_files": 4308,
+    "maps_and_versions_stable_between_recorded_fingerprints": true,
+    "snapshot_timing_limit": "Initial provider fingerprint was recorded after the two core phases had run, during the structural window; do not infer a frozen-provider proof covering those first two phases",
+    "delta_from_preceding_development_block": {
+      "state": "PROVIDER_EPOCH_DIFF_OBSERVED",
+      "owner": "uibcdf/sabueso#167/#148/#112",
+      "previous": "../b7-context-display-correction-1/providers-post-commit.json",
+      "current": "providers-at-start.json",
+      "changes": [
+        {
+          "component": "pyunitwizard",
+          "changes": {
+            "version": {
+              "previous": "0.29.4+3.g064c7e1",
+              "observed": "0.29.5+2.gcc51c8e"
+            },
+            "head": {
+              "previous": "064c7e1bca9333e2c7ebadccd7ec6fcf97d17046",
+              "observed": "cc51c8e600f78f108bc563edd3221bd8788ead86"
+            },
+            "changed_runtime_config_paths": [
+              "pyunitwizard/_private/forms.py"
+            ]
+          }
+        }
+      ],
+      "scope": "Observed environment difference across the gap between developer sessions; no other process or concurrent mutation is inferred, no provider revert/update performed"
+    },
+    "current_pyunitwizard": "0.29.5+2.gcc51c8e",
+    "current_pyunitwizard_head": "cc51c8e600f78f108bc563edd3221bd8788ead86",
+    "uncontrolled_provider_revert_or_install": false,
+    "before_receipt_sha256": "d1e5d4c86232facd91bb2573ea54c88dab7e9c1c8e0b75a04785b3c44beb3dda",
+    "after_receipt_sha256": "d1e5d4c86232facd91bb2573ea54c88dab7e9c1c8e0b75a04785b3c44beb3dda"
+  },
+  "accepted_structural_budget_observation": {
+    "scope": "Exact existing current/historical public structural walkthrough on this Linux workstation; warm nonrandomized single observation",
+    "maximum_save_s": 42.676017356978264,
+    "maximum_reopen_s": 17.41135344002396,
+    "maximum_owned_rss_bytes": 484503552,
+    "provisional_limits": {
+      "save_s": 60,
+      "reopen_s": 30,
+      "owned_rss_bytes": 1073741824
+    },
+    "observed_within_each_limit": true,
+    "decision": "devguide/DECISIONS.md#agree-a-scoped-provisional-structural-workload-budget-2026-11-11",
+    "limitation": "Does not accept the completeB7 workload dimension or establish a universal runtime/latency guarantee"
+  }
+}

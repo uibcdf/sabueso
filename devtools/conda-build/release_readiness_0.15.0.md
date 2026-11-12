@@ -48,6 +48,16 @@ central registry patch is prepared separately for owner review. The earlier
 published 0.14.0 platform receipts and actual Mac refusal remain unchanged.
 Exact final-source CI/governance and all B7/candidate/artifact gates remain due.
 
+The current SDK266 [hosted CI attempt](https://github.com/uibcdf/sabueso/actions/runs/43254731665)
+has a Linux Python 3.12 collection failure while other jobs continue; separate
+[governance](https://github.com/uibcdf/sabueso/actions/runs/43254791958) passes.
+The [eight-decorator test correction](../../devguide/pending_bugs/ci_gzip_parameter_clock.md)
+passes 574 complete local cases without changing production or original inputs.
+Corrected exact-head hosted recovery remains due. The
+[current three-workload/seven-reader measurement](../../devguide/evidence/current_public_workload_checkpoint_20261112.json)
+meets the accepted structural budget; it records its new PyUnitWizard 0.29.5 epoch
+and timing limits, not complete B7 workload acceptance.
+
 ## Required records
 
 | Record | Current disposition |
