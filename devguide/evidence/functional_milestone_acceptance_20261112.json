@@ -1,0 +1,23 @@
+{
+  "state": "FUNCTIONAL_0150_MILESTONE_ACCEPTED",
+  "recorded_utc": "2026-11-12",
+  "decision_owner": "Sabueso maintainer, explicit current-session decision",
+  "owner_issues": [
+    "uibcdf/sabueso#148",
+    "uibcdf/sabueso#112"
+  ],
+  "reviewed_source": "9af49bc0f518dc7b99248a786eb0e51758595423",
+  "production_tree": "7c631bf565a328e0cdee767007816e290edc6756",
+  "accepted_scope": "All21required profile/shared implementation rows in the committed functional inventory, with the explicit deferred#192limitation and821selected passing cases. No new feature-sized missing family identified.",
+  "inventory": "devguide/pending_proposals/functional_inventory_review_0150.md",
+  "technical_receipt": "devguide/evidence/functional_closeout_checkpoint_20261112.json",
+  "technical_receipt_sha256": "561b94b89a3b01bfa1118daa83cf7e0616a10d5e7b117525685fdc6084dc4ab8",
+  "selected_cases": 821,
+  "bounded_molsysmt_cases": 28,
+  "issue192": "Explicitly deferred for0.15.0, unfixed; original occurrence records and historical results preserved; no new aggregation policy adopted; reassess before later release",
+  "independent_researcher": "Previously deferred until after0.15.0; not_reviewed",
+  "remaining_acceptance": "Existing scientific, broader actual-agent/workload and real-consumer states remain unchanged; this functional acceptance does not supply unperformed reviews",
+  "delivery": "Source/schema/hosted/installed/publication prerequisites retain actual states; no automatic B8 resumption, candidate/tag choice or public package qualification",
+  "current_action": "Record functional closure; prepare the separate exact milestone/delivery decision and continue authorized independent long-term development",
+  "no_tag_or_publication_by_this_record": true
+}

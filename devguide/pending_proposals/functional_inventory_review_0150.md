@@ -1,13 +1,17 @@
 ---
 summary: Reconcile all 21 required 0.15.0 exploration rows with existing routes and concrete limitations.
 issue: uibcdf/sabueso#148
-status: open
+status: accepted
 opened: 2026-11-12
-verification: implementation_review
+verification: functional_scope_accepted
 area: [functional-closeout, exploration]
 ---
 
 # Functional inventory review for 0.15.0
+
+The maintainer [accepts this functional milestone](../evidence/functional_milestone_acceptance_20261112.json)
+at reviewed source `9af49bc`, with #192 explicitly deferred. This closes the
+implementation review, not unperformed independent reviews or delivery gates.
 
 Owner #148, coordinated under #112. This is step 1 of the
 [functional closeout](functional_closeout_0150.md), against source `c8afce3` /
@@ -85,6 +89,6 @@ owns new selected outcomes and their limits.
 | Understandable complete reading | Typed values/units, nature-specific wording, complete literal inspection and scope/conflict reasons | #192 limitation remains visible; subjective clarity is not inferred from test counts |
 | Python and Jupyter | Shared objects, text/HTML rendering, discoverable calls and saved reading | The independent Python-familiarity trial is explicitly deferred |
 
-The implementation reconciliation is complete at this bounded scope. Final
-functional milestone acceptance is a separate maintainer disposition; no tag,
-release, scientific default change or unperformed review is created by this record.
+The implementation reconciliation is complete at this bounded scope and its
+functional milestone is explicitly accepted by the maintainer. No tag, release,
+scientific default change or unperformed review is created by that decision.

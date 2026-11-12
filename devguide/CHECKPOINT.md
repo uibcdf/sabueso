@@ -7,6 +7,12 @@ This page owns current state; dated receipt histories are linked below.
 
 ## Functional inventory reconciled — 21 rows, 821 selected cases PASS
 
+**The maintainer accepts the functional 0.15.0 milestone.** The
+[decision and exact reviewed source](evidence/functional_milestone_acceptance_20261112.json)
+bind the 21-row scope, 821 selected cases and explicit #192 limitation to `9af49bc`.
+The functional review is closed; no new feature-sized implementation block is
+identified. Independent review and delivery states remain separate below.
+
 The [functional matrix](pending_proposals/functional_inventory_review_0150.md)
 now maps all **21 required rows** to actual public topic/question routes, owning
 tests and recorded evidence. No new feature-sized missing family is identified.
@@ -34,8 +40,8 @@ limitation; original occurrences and historical results stay intact. No proposed
 aggregation rule is adopted. #182 remains a separately tracked malformed-inner-input/
 glossary-versioning concern; its stricter prototype is not adopted.
 
-The next step is maintainer review of this concrete functional milestone record
-and its remaining acceptance/qualification states. The independent trial stays
+The next step is the separate milestone/tag and continued-development decision,
+with remaining acceptance/qualification states explicit. The independent trial stays
 after 0.15.0 and `not_reviewed`. Missing scientific, actual-agent, workload and real
 consumer decisions are not supplied by these developer checks. Earlier 288/253
 attempts remain incomplete; no full-source, exact-head hosted, installed-candidate,

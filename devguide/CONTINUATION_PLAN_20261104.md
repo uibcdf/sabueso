@@ -12,8 +12,9 @@ The [functional inventory reconciliation](pending_proposals/functional_inventory
 now closes the implementation mapping of all 21 rows, with no new feature-sized
 missing family identified. Two disjoint current gates pass 821 selected cases,
 including the 28-case MolSysMT scope. The maintainer explicitly defers #192 with
-user/release disclosure. Review this concrete functional milestone record next;
-do not restart generic B3–B6 continuation lists or imply that technical receiving
+user/release disclosure and [accepts the functional milestone](evidence/functional_milestone_acceptance_20261112.json).
+Prepare the separate milestone/delivery decision and continue independent authorized
+development; do not restart generic B3–B6 continuation lists or imply that technical receiving
 supplies outstanding independent/consumer acceptance or candidate qualification.
 
 The [2026-11-06 handoff](WORKSTATION_HANDOFF_20261106.md) preserves the completed

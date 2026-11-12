@@ -35,8 +35,9 @@ does not claim completed acceptance, select a tag or waive delivery requirements
 The [21-row reconciliation](pending_proposals/functional_inventory_review_0150.md)
 now identifies the actual routes, owning tests and remaining limits; its selected
 821-case technical receipt and explicit #192 deferral are recorded in CHECKPOINT.
-The functional milestone record is ready for maintainer review, with independent
-acceptance and delivery states kept separate.
+The maintainer has [accepted the functional milestone](evidence/functional_milestone_acceptance_20261112.json).
+That implementation review is closed; the tag/delivery decision and independent
+acceptance states remain separate, and authorized independent development can continue.
 
 The [current overview orientation](pending_proposals/card_orientation.md) exposes
 curated original protein/molecule/disease fields, source versions and exact

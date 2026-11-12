@@ -1,5 +1,26 @@
 # Sabueso — Decision Log
 
+## Accept the functional 0.15.0 milestone (2026-11-12)
+
+After reviewing the [21-objective matrix](pending_proposals/functional_inventory_review_0150.md),
+its 821 distinct selected passing cases and the explicit #192 limitation, the
+maintainer accepts the functional 0.15.0 milestone. The
+[acceptance record](evidence/functional_milestone_acceptance_20261112.json) binds
+that decision to reviewed source `9af49bc0f518dc7b99248a786eb0e51758595423`
+and its unchanged production tree. No new feature-sized implementation block is
+required by this reconciled inventory. Do not reopen generic B3–B6 continuation
+phrases without a concrete unmet requirement or failing supported journey.
+
+This closes the functional implementation review in step 4 of the
+[closeout plan](pending_proposals/functional_closeout_0150.md). #192 remains
+unfixed and explicitly deferred for 0.15.0; no aggregation candidate is adopted.
+The independent researcher trial remains after 0.15.0 and `not_reviewed`.
+Scientific, broader actual-agent/workload and real-consumer acceptance retain
+their actual states. The decision does not invent those reviews or a passing
+full-source/hosted/installed candidate, select/publish a tag, freeze a schema,
+authorize a public package or resume all of B8. Prepare the separate milestone/
+delivery decision while independent authorized long-term work may continue.
+
 ## Defer grouped ligand investigation flag correction for 0.15.0 (2026-11-12)
 
 During the functional closeout, the maintainer explicitly chooses to postpone

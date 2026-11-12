@@ -98,9 +98,10 @@ they are not counted as new executions. The maintainer accepts #192 as an explic
 the current opaque-parent and structural-refusal tests pass without adopting its
 stricter prototype. No new feature-sized missing family is identified.
 
-Step 4 is recorded for maintainer review of the functional milestone and its
-limits. It does not invent remaining scientific, actual-agent, workload or consumer
-acceptance. Step 5 has a read-only automation check: the existing workflows do not
+Step 4 is complete: the maintainer [accepts the functional milestone](../evidence/functional_milestone_acceptance_20261112.json)
+at reviewed source `9af49bc`, with its explicit #192 limitation. This does not
+invent remaining scientific, actual-agent, workload or consumer acceptance.
+Step 5 has a read-only automation check: the existing workflows do not
 build packages on tag push, while a GitHub Release event can trigger the package
 route. No tag source is selected, no release is created and no route is changed.
 Missing source/candidate gates or prerequisite decisions keep their real status;
@@ -120,6 +121,7 @@ semantic/temporal access expansion, broader real interoperability, scientific/so
 coverage and separately scoped Deck/viewer/export/CLI work. They do not become new
 0.15.0 prerequisites. B2 scientific/default review remains explicitly deferred.
 
-This documentation change runs no scientific exploration, private pilot, test
-suite, hosted workflow, schema freeze, build, tag or publication. It records work
-priority and the bounded next steps, not their completion.
+The functional closeout records its selected test executions and the maintainer's
+bounded acceptance. No online acquisition, private pilot, hosted workflow, schema
+freeze, candidate build, tag or publication is performed by this work. Tag/delivery
+actions and continuation of authorized development retain their separate scope.
