@@ -32,6 +32,11 @@ reconcile implemented objectives with concrete remaining gaps, close essential
 journeys, disposition consequential defects and prepare the milestone decision.
 Further publication-process refinement should not dominate that work. This priority
 does not claim completed acceptance, select a tag or waive delivery requirements.
+The [21-row reconciliation](pending_proposals/functional_inventory_review_0150.md)
+now identifies the actual routes, owning tests and remaining limits; its selected
+821-case technical receipt and explicit #192 deferral are recorded in CHECKPOINT.
+The functional milestone record is ready for maintainer review, with independent
+acceptance and delivery states kept separate.
 
 The [current overview orientation](pending_proposals/card_orientation.md) exposes
 curated original protein/molecule/disease fields, source versions and exact

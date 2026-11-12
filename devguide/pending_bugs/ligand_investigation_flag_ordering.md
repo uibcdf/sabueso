@@ -12,6 +12,32 @@ supersedes: []
 
 # Order-dependent ligand investigation flags
 
+## Explicit 0.15.0 deferral — 2026-11-12
+
+The maintainer chooses to postpone this correction with a visible limitation for
+0.15.0. It is no longer a blocker for the functional milestone of that version;
+the bug remains open and unfixed. The [decision](../DECISIONS.md#defer-grouped-ligand-investigation-flag-correction-for-0150-2026-11-12)
+requires user/release disclosure and reassessment before a later release. No new
+aggregation policy, scientific default or historical-reader change is adopted.
+
+The functional audit now reproduces the effect through `Card.explain_ligand()`:
+the original `crossing_inputs.structure_flags` is `None` for `[False, None]` but
+`False` for `[None, False]`. It also identifies a separate same-family effect in
+`Card.ligand_sites()`: `[True, False]` reports `False`, while `[False, True]`
+reports `True`. That site path overwrites the previous declaration; the crossing
+path retains a positive. These are observations on consistent synthetic source
+assertions, not a measured prevalence or impact estimate for public source data.
+All original input dictionaries stay unchanged during the calls.
+
+The concrete public-boundary control is retained under #192/#148/#112 in
+`recovered_work/checkpoint_recovery_20261106/b7-functional-closeout-1/flag-surface-audit.json`.
+Its additional site observation is retained for owning-issue handoff; the original
+publication approval did not cover a new issue comment. The visible user limitation
+describes both surfaces. Inspect original occurrence/source records when the flag
+matters; a grouped scalar is not a reconciled declaration or a relevance finding.
+
+## Original report and reproduction
+
 Reported as [Sabueso #192](https://github.com/uibcdf/sabueso/issues/192), linked to
 original work #25/#23 and B4/B5 molecule-target context #148. No aggregation
 policy changed.

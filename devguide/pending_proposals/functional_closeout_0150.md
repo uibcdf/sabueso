@@ -40,9 +40,14 @@ every open validation/publication record as a missing conceptual capability.
 | Portable saved reading | Independent original readers, finite retained requests and historical presentation | Can a separate reader recover the observed answer and context without current acquisition or scientific execution? |
 | Bounded MolSysMT integration | The accepted positive/uncertain structural gate has 28 passing destination cases | Are its finite guarantees and unresolved physical context stated accurately? General physical-copy reconciliation is outside this agreed gate. |
 
-These entries summarize existing implementation. Their final disposition must
-reference the owning inventory row, example or receipt; this table creates no new
-scientific result or global acceptance claim.
+The [completed 21-row implementation reconciliation](functional_inventory_review_0150.md)
+now identifies the actual public routes, owning tests, source-bound receipts and
+concrete limitations. It finds no new feature-sized missing family; it does not
+claim independent scientific/usefulness acceptance or a completed candidate gate.
+
+The maintainer explicitly [defers #192 for 0.15.0](../DECISIONS.md#defer-grouped-ligand-investigation-flag-correction-for-0150-2026-11-12)
+with a visible limitation, rather than adopting a new aggregation rule. The bug
+remains unfixed and must be reconsidered before a later release.
 
 ## Execution and exit conditions
 
@@ -58,10 +63,13 @@ scientific result or global acceptance claim.
    agent parity and independent saved reading. Run additional checks for a missing
    demonstration or changed behavior; do not repeat unrelated full suites merely
    to increase test totals. Record exact remaining failures and limitations.
-3. **Disposition consequential correctness defects.** Start with the reproduced
+3. **Disposition consequential correctness defects.** The maintainer has deferred
+   #192 explicitly for 0.15.0, including its public site/explanation observations.
+   Preserve that limitation and its next-release review rather than implementing
+   the discussed policy without adoption. The reproduced
    [order-dependent ligand flag](../pending_bugs/ligand_investigation_flag_ordering.md)
-   (#192). State the aggregation meaning before changing it and preserve genuine
-   historical readings. Review #182's typed glossary/pin concern at the affected
+   (#192) retains its owner. State the aggregation meaning before a later change
+   and preserve genuine historical readings. Review #182's typed glossary/pin concern at the affected
    boundary; its existence is not an automatic instruction to adopt the rejected
    stricter prototype. Fix a required defect or record an explicit owner decision
    and visible limitation; an open issue alone does not establish an accepted deferral.
@@ -78,11 +86,25 @@ scientific result or global acceptance claim.
    Any changed release prerequisite needs its own explicit disposition; this plan
    neither marks missing gates as passing nor creates an exemption by renaming a release.
 
-The conceptual closeout is complete when every required capability has a concrete
-disposition, essential journeys have adequate evidence, and consequential defects
-have an accepted treatment. It is not complete merely because all feature families
-have implementations. The exact-source heavy integrations and hosted recovery
-remain pending at `9ab6dd7`; the earlier stopped attempts remain incomplete.
+## Current execution result
+
+Steps 1–3 now have a concrete [21-row implementation record](functional_inventory_review_0150.md)
+and [technical receiving receipt](../evidence/functional_closeout_checkpoint_20261112.json):
+821 distinct selected cases pass in two disjoint gates, including all 28 bounded
+MolSysMT controls. The existing three public walkthroughs and seven saved readings
+retain their own observations and match the unchanged production/runtime maps;
+they are not counted as new executions. The maintainer accepts #192 as an explicit
+0.15.0 limitation. #182 remains a separate malformed-inner-input/versioning concern;
+the current opaque-parent and structural-refusal tests pass without adopting its
+stricter prototype. No new feature-sized missing family is identified.
+
+Step 4 is recorded for maintainer review of the functional milestone and its
+limits. It does not invent remaining scientific, actual-agent, workload or consumer
+acceptance. Step 5 has a read-only automation check: the existing workflows do not
+build packages on tag push, while a GitHub Release event can trigger the package
+route. No tag source is selected, no release is created and no route is changed.
+Missing source/candidate gates or prerequisite decisions keep their real status;
+the earlier stopped 288/253-case attempts remain incomplete.
 
 ## Separate follow-up
 

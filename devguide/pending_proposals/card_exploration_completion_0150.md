@@ -12,6 +12,13 @@ supersedes: []
 
 # Complete Card exploration before 0.15.0
 
+The [2026-11-12 functional reconciliation](functional_inventory_review_0150.md)
+maps all 21 rows below to actual public routes, owning tests and recorded evidence.
+It identifies concrete limitations instead of treating older generic continuation
+phrases as additional unnamed implementation blocks. #192 is explicitly deferred
+for 0.15.0 with user/release disclosure; independent and candidate acceptance keep
+their own actual states. This reconciles implementation, not final B7 acceptance.
+
 The current [CHECKPOINT](../CHECKPOINT.md) records the complete 11,514-case
 pre-correction baseline and actual public protein/structural/activity/clinical
 developer-agent observations. The subsequently exposed

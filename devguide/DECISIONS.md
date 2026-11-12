@@ -1,5 +1,27 @@
 # Sabueso — Decision Log
 
+## Defer grouped ligand investigation flag correction for 0.15.0 (2026-11-12)
+
+During the functional closeout, the maintainer explicitly chooses to postpone
+[#192](pending_bugs/ligand_investigation_flag_ordering.md) with a visible 0.15.0
+limitation. The correction is not a functional-milestone blocker for this version.
+It remains unimplemented and open: native crossing explanations can change a
+grouped `False`/`None` value with occurrence order, while native site summaries can
+overwrite a positive declaration with a later negative. The new public-boundary
+control is synthetic; prevalence in public source inputs remains unmeasured.
+
+Preserve original per-occurrence declarations, source support and historical
+results. Do not interpret the grouped flag as a reconciled source consensus or
+evidence of biological relevance. Record the limitation in user documentation,
+the release-notes draft and the functional closure record. At tag/candidate
+preparation, bind it to the actual source and published scope.
+
+The discussed conservative aggregation candidate is not adopted by this decision.
+Reconsider #192 before a later proposed release, with an explicit named/versioned
+rule, source-level context, permutation tests and original-reader compatibility.
+The deferral does not automatically extend to 0.16.0. Other integrity findings,
+acceptance dimensions and source/package qualification retain their own scope.
+
 ## Prioritize the conceptual 0.15.0 closeout (2026-11-12)
 
 The maintainer prioritizes the conceptual objectives of 0.15.0 and continued

@@ -229,6 +229,11 @@ others, mostly crystallisation additives and ions, are listed in
 catalytic metal may not be flagged. Pass `structure_ligands="all"` to keep every ligand. Resolve a single molecule with
 `sabueso.resolve_molecule_card("pdb.ligand:BTS")` (or `chembl:<id>`, `inchikey:<key>`).
 
+Grouped investigation flags have a [known occurrence-order limitation](sites_and_interfaces.md#ligand-binding-sites-pdbe-kb)
+explicitly deferred for the 0.15.0 milestone (#192). Inspect original declarations
+and their source support when distinguishing negative from unknown or mixed
+flags; the grouped scalar is not a reconciled relevance assessment.
+
 The readers released in 0.13.0 explain that crossing and a stored site:
 
 ```python

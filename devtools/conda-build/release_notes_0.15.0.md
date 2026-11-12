@@ -19,6 +19,19 @@ override the earlier preparation order. `release_plan.toml` still describes publ
 0.14.0. No candidate artifact, new tag, schema freeze or release qualification
 is established by this draft.
 
+## Explicit milestone limitation: grouped ligand flags (#192)
+
+On 2026-11-12 the maintainer explicitly defers the correction of order-dependent
+grouped ligand investigation flags for 0.15.0. Native crossing explanations can
+confuse `False` and `None`; native site summaries can overwrite a positive with
+a later negative occurrence. Inspect original per-occurrence declarations and
+their source support. The grouped scalar is not a reconciled source consensus or
+biological-relevance finding. Prevalence in public source inputs is unmeasured.
+Original records and historical results remain unchanged; no new aggregation rule
+is adopted. Reassess under #192 before a later release rather than automatically
+carrying the deferral into 0.16.0. Bind this limitation to the actual source/tag
+and publication scope at milestone preparation; those identities remain pending.
+
 ## Intended changes since 0.14.0
 
 - Add nature-specific Card exploration for protein, small-molecule and disease

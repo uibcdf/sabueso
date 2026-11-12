@@ -13,6 +13,13 @@ journeys before further publication-process refinement. The
 [destination action plan](CONTINUATION_PLAN_20261104.md#destination-review-and-next-actions)
 retains the received-workspace history and technical follow-up.
 
+The [current functional reconciliation](pending_proposals/functional_inventory_review_0150.md)
+maps all 21 required profile/shared rows to delivered routes and evidence. Its
+821-case selected technical checkpoint passes, including the bounded MolSysMT
+gate; #192 is explicitly deferred for 0.15.0. The next action is review of the
+functional milestone record, preserving outstanding acceptance and delivery
+states. This does not add a new feature family or accept the later stages.
+
 ## How the two routes are integrated
 
 1. **Foundational route.** The original vision, phases, sources and use cases remain

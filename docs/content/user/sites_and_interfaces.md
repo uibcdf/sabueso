@@ -55,6 +55,16 @@ print(view["classification"])  # rule annotated_site_overlap@3
 Clients: `sabueso.tools.db.pdbe_kb.OnlinePDBeKBClient` and `FixturePDBeKBClient`.
 PDBe-KB data is CC BY 4.0; cite the PDBe-KB consortium paper.
 
+**Known limitation for the 0.15.0 development milestone
+([#192](https://github.com/uibcdf/sabueso/issues/192)):** repeated declarations of
+the same ligand component in a structure can produce an order-dependent grouped
+`subject_of_investigation` flag. The site summary can overwrite a positive with
+a later negative; the crossing explanation can confuse negative and unknown.
+The correction is explicitly deferred for this milestone. Inspect the original
+per-occurrence ligand declarations and their source support when the distinction
+matters; do not treat the grouped flag as a reconciled consensus or biological
+relevance. Original declarations and historical saved results are preserved.
+
 ## Oligomer and interfaces
 
 The examples below describe development behavior planned for 0.15.0: default

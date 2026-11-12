@@ -8,6 +8,14 @@ decision. The B0–B8 scope and recorded validation/acceptance obligations below
 remain distinct; this scheduling priority claims neither completed acceptance
 nor an automatic release-gate exception.
 
+The [functional inventory reconciliation](pending_proposals/functional_inventory_review_0150.md)
+now closes the implementation mapping of all 21 rows, with no new feature-sized
+missing family identified. Two disjoint current gates pass 821 selected cases,
+including the 28-case MolSysMT scope. The maintainer explicitly defers #192 with
+user/release disclosure. Review this concrete functional milestone record next;
+do not restart generic B3–B6 continuation lists or imply that technical receiving
+supplies outstanding independent/consumer acceptance or candidate qualification.
+
 The [2026-11-06 handoff](WORKSTATION_HANDOFF_20261106.md) preserves the completed
 workstation transfer. Environment restoration and the corrected complete local
 offline checkpoint now pass; the

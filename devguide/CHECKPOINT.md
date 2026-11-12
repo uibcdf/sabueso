@@ -5,6 +5,46 @@ Current working-state checkpoint: **2026-11-12 (UTC)**. Start with
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
+## Functional inventory reconciled — 21 rows, 821 selected cases PASS
+
+The [functional matrix](pending_proposals/functional_inventory_review_0150.md)
+now maps all **21 required rows** to actual public topic/question routes, owning
+tests and recorded evidence. No new feature-sized missing family is identified.
+This reconciles implementation; it does not assert universal source coverage,
+arbitrary transitions or independent scientific/usefulness acceptance.
+
+The [current technical receipt](evidence/functional_closeout_checkpoint_20261112.json)
+closes **821 distinct selected cases** in two disjoint gates (452 + 369), including
+all **28 bounded MolSysMT journey cases**. Source/controller/worker/call accounting
+and receptor integrity are complete, with zero warnings/skips/owned swap. Four
+workers peak at 1,720,557,568 bytes RSS with the existing 16 GiB host reserve.
+All 1,357 mapped code/test/configuration inputs, 931 production inputs and 52
+protected originals/SOURCE files remain fixed.
+
+The earlier three public walkthroughs and seven original saved readings are reused
+with their own source/runtime observations: the exact production tree and all nine
+runtime/configuration maps still match. They are not rerun or counted as new cases.
+TopoMT advances seven guide files concurrently; its runtime/configuration tree,
+editable origin and installed version remain unchanged. No provider is modified.
+
+The maintainer explicitly [defers #192 for 0.15.0](DECISIONS.md#defer-grouped-ligand-investigation-flag-correction-for-0150-2026-11-12).
+The bug remains unfixed, including the newly reproduced public site-summary
+positive/negative overwrite. User documentation and the release draft carry that
+limitation; original occurrences and historical results stay intact. No proposed
+aggregation rule is adopted. #182 remains a separately tracked malformed-inner-input/
+glossary-versioning concern; its stricter prototype is not adopted.
+
+The next step is maintainer review of this concrete functional milestone record
+and its remaining acceptance/qualification states. The independent trial stays
+after 0.15.0 and `not_reviewed`. Missing scientific, actual-agent, workload and real
+consumer decisions are not supplied by these developer checks. Earlier 288/253
+attempts remain incomplete; no full-source, exact-head hosted, installed-candidate,
+schema-freeze, tag or publication result is claimed. Current repository automation
+does not build packages on a tag push; publishing a GitHub Release can trigger
+the existing package workflow, so those actions retain separate scope.
+The older SDK266 CI batch has now finished: five jobs pass and nine fail across
+14 jobs. It qualifies no current source; its terminal capture stays owned by #112.
+
 ## Immediate priority: functional 0.15.0 closeout
 
 The maintainer now prioritizes conceptual completion and continued development
