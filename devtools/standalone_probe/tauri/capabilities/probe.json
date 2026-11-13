@@ -1,0 +1,6 @@
+{
+  "identifier": "development-automation-only",
+  "windows": ["probe"],
+  "remote": {"urls": ["http://127.0.0.1:*"]},
+  "permissions": ["wdio-webdriver:default"]
+}

@@ -1,5 +1,18 @@
 # Sabueso — Risks and Open Questions
 
+Standalone host evaluation (#154, MolSysViewer #276/#368): the
+[development probe](pending_proposals/standalone_probe_20261113.md) separates
+working live integration from security startup, hardware rendering and installed
+qualification. Default Electron startup fails in the current Linux profile;
+disabling its sandbox is a lab-only observation, not a product solution. Software
+renderer differences prevent a fair graphics ranking. Tauri adds a real WebKitGTK
+qualification path; neither advertised shell memory nor another WebKit port's
+WebGPU support establishes its full workload behavior. Optional embedded XR
+rejection is observed in the consumed Mol* 5.4.1 path and caught upstream in
+5.13.0; provider receiving/backport remains owner work. Future Rust streaming must
+preserve provider APIs, units and bounded buffers and prove actual canvas delivery
+before claiming throughput or energy benefits. Reassess at the first host choice.
+
 Interactive molecular exploration (#153/#154): the
 [0.16.0 review](pending_proposals/interactive_exploration_0160.md#integration-work-and-provider-handoff)
 identifies an unqualified consumer boundary between exact Card/Deck/source

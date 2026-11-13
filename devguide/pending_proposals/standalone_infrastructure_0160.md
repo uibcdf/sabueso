@@ -1,5 +1,5 @@
 ---
-summary: Critically compare standalone infrastructure and qualify Qt and Electron against the same portable web workspace and live MolSysViewer contract.
+summary: Compare Qt, Electron and Tauri against one portable web workspace and live MolSysViewer contract, separating current rendering from future native data-plane hypotheses.
 issue: uibcdf/sabueso#154
 status: open
 opened: 2026-11-12
@@ -19,11 +19,16 @@ researcher-composable panels and replaceable infrastructure.
 **Second critical review, 2026-11-12:** recommend a reusable TypeScript web
 workspace, a separately owned Python session service and a provider-owned live
 molecular adapter. Compare thin Qt/WebEngine and Electron hosts on the same real
-journey before choosing the production host. Qt is the existing operational
+journey before choosing the production host. The maintainer subsequently adds
+Tauri as an equal current comparison candidate, not a later-only option.
+Qt is the existing operational
 baseline, not the default winner. React/TypeScript and Dockview's MIT core remain
 the leading UI candidates; neither is required by MolSysViewer. These are
 recommendations, not maintainer acceptance, dependency adoption or implemented
-compatibility.
+compatibility. The [development experiment](../../devtools/standalone_probe/README.md)
+now implements this bounded workspace outside the installed Sabueso API. Its
+[technical receipt](standalone_probe_20261113.md) separates measured/calibration
+results, failed startup profiles and outstanding qualification.
 
 Owner #154. Retain this evaluation through the first stack decision, then carry
 accepted contracts and measured limits into the maintained implementation plan.
@@ -63,12 +68,13 @@ WebEngine itself separates rendering/JavaScript from the GUI process. Comparing
 | --- | --- | --- | --- |
 | PySide6 + Qt WebEngine | Python-native application lifecycle and existing live Qt/Chromium experience in MolSysViewer | Native libraries, GUI event-loop/thread ownership, coherent Qt packaging and exact platform qualification; generic consumer embedding remains to qualify | Finalist; existing operational baseline |
 | Electron + Python process | Chromium-based standalone web workspace with native-window APIs; desktop lifecycle fits a web-centered UI and avoids Qt-specific runtime dependencies | Maintain Node/Electron plus Python, process ownership and a new live connector; packaging and resource costs need measurement | Equal finalist; desktop-web product candidate |
-| Tauri + Python sidecar | Native shell using system WebViews; can package an external Python service | Rust/shell layer and Python distribution, platform-specific WebViews, new adapter and WebGL/picking qualification | Later comparison candidate, aligned with Viewer #276 |
+| Tauri + Python sidecar | Native shell using system WebViews; can package an external Python service | Rust/shell layer and Python distribution, platform-specific WebViews, new adapter and WebGL/picking qualification | Equal current candidate, as requested by the maintainer; aligned with Viewer #276 |
 | pywebview + Python | Small Python-facing host API and a JavaScript/Python bridge | Renderer/backend varies by platform; selecting Qt inherits its native dependencies; Viewer integration remains new | Secondary option without a demonstrated advantage over the direct Qt route |
 | Local browser application | Reuses the frontend and keeps native host code small; useful for development and later remote adaptation | Browser/process lifetime, file integration and desktop presentation need deliberate design | Portability control and development host; dedicated window remains the product objective |
 
-These are documented mechanisms and qualitative tradeoffs. No comparable
-Sabueso host benchmark, installer measurement or native-platform receiving exists.
+These are documented mechanisms and qualitative tradeoffs. The development probe
+does not yet establish a comparable hardware benchmark, installer measurement or
+native-platform receiving.
 MolSysViewer/scene-data cost can dominate shell overhead; do not infer whole-app
 memory or startup from a shell's advertised size.
 

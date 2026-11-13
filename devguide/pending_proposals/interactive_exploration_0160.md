@@ -14,11 +14,15 @@ area: [human-exploration, deck, visualization, interoperability]
 The latest [standalone infrastructure evaluation](standalone_infrastructure_0160.md)
 uses the maintainer's confirmed Python/live-MolSysViewer/standalone constraints.
 Its second critical review recommends a portable web UI, separately owned Python
-session service and equal-status Qt/Electron comparison before production host
+session service and equal-status Qt/Electron/Tauri comparison before production host
 selection. This supersedes the earlier Qt-first recommendation. React/TypeScript
 and Dockview remain candidates; earlier browser-first/Svelte discussion below
 likewise records no adopted stack. Host/framework acceptance follows the same
 bounded live-integration evidence, including molecular panel lifetime.
+The [development experiment](standalone_probe_20261113.md) now records actual
+bounded integration observations, failed environment/security profiles and
+remaining qualification. Historical no-execution statements below belong to the
+preceding source/design reviews. No production stack is selected by the probe.
 
 On 2026-11-12 the maintainer accepts a first complete, bounded visual exploration
 experience as the product objective for **0.16.0**. Reuse the accepted functional

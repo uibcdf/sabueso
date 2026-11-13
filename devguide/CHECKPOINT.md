@@ -1,11 +1,32 @@
 # Sabueso — Checkpoint
 
-Current working-state checkpoint: **2026-11-12 (UTC)**. Start with
+Current working-state checkpoint: **2026-11-13 (UTC)**. Start with
 [ONBOARDING](ONBOARDING.md) for project context and the
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
 ## Next product objective: interactive exploration in 0.16.0
+
+The maintainer adds Tauri to the **current** Qt/Electron comparison and requests
+sharing useful conclusions with MolSysViewer. The
+[development probe and method](../devtools/standalone_probe/README.md) now run a
+real public TcTIM/1TCD workspace with original Card/source/save/return and live
+provider-owned molecular state. The [technical receipt](pending_proposals/standalone_probe_20261113.md)
+records calibration scope, sandbox failures, software-renderer differences,
+optional XR rejection and actual versus future WebGPU. Provider embedding request
+[#368](https://github.com/uibcdf/molsysviewer/issues/368) is delivered; consolidate
+host conclusions in [#276](https://github.com/uibcdf/molsysviewer/issues/276).
+Tauri/Rust/Python data-plane and thermal benefits remain hypotheses to measure,
+starting from the existing binary path and provider ownership. No production
+host, public GUI, new scientific API, package or platform support is selected.
+All three final profiles pass sixteen selected checks and twenty retained-panel
+cycles; Tauri uses the maintainer-installed WebKitGTK runtime and closes normally.
+Electron's working profile is explicitly lab-only without its sandbox. WebGPU
+has no adapter in either Chromium software profile and no exposed API in this
+WebKitGTK build; none of these runs qualifies native GPU performance or thermals.
+
+The following entries describe the preceding documentation-only review; their
+absence-of-execution statements apply to those earlier checkpoints.
 
 The maintainer confirms Python backend, live MolSysViewer embedding and standalone
 experience. The [latest infrastructure evaluation](pending_proposals/standalone_infrastructure_0160.md)

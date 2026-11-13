@@ -1,5 +1,23 @@
 # Sabueso — Decision Log
 
+## Include Tauri now and share host findings with MolSysViewer (2026-11-12)
+
+The maintainer requests Tauri as an equal current candidate alongside Qt and
+Electron and proposes evaluating a Tauri/Rust/Python/MolSysViewer architecture.
+Evaluate the existing provider-owned binary path first, then justify any native
+data-plane optimization through measured bottlenecks and provider review.
+Lower total RAM, zero-copy, zero latency and thermal efficiency remain hypotheses.
+PyO3 alone is not process isolation, and future Mol* WebGPU compatibility is
+separate from the consumed WebGL runtime.
+
+The maintainer also explicitly requests sharing the experiment's conclusions in
+MolSysViewer's issue tracker. Use existing host evaluation #276, cross-link the
+delivered embedding request #368 and Sabueso #154, and distinguish exact-profile
+observations from future hypotheses. The [technical receipt](pending_proposals/standalone_probe_20261113.md)
+and [development probe](../devtools/standalone_probe/README.md) retain methods and
+limits. This authorizes evaluation and the technical handoff, not adoption of a
+production host, a provider patch, a package or a release.
+
 ## Require a Python backend, live molecular embedding and standalone experience (2026-11-12)
 
 The maintainer confirms these three infrastructure constraints for interactive

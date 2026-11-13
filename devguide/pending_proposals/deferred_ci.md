@@ -9,6 +9,22 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Development host experiment (2026-11-13 UTC)
+
+From `5516b6d`, #154 owns the isolated `devtools/standalone_probe/` tool and
+its exact Node/Rust development lockfiles, real public integration checks and
+maintained method/technical receipt. Installed Sabueso code, scientific tests,
+schema, Python runtime dependency manifests and provider checkouts are unchanged.
+The tool is Linux development evidence, not a released GUI, default-security,
+hardware-acceleration or installed-platform qualification. Selected local gates
+and exact-profile results are recorded in the
+[technical receipt](standalone_probe_20261113.md). This authorized `[skip ci]`
+checkpoint defers hosted CI/governance to the next explicitly authorized
+exact-head recovery under #154/#112; Git records the final SHA. Before selecting
+a production host or release candidate, run applicable code/integration and
+native/installed gates against that exact candidate. No dispatch is authorized
+here; prior outstanding hosted scope retains its actual state.
+
 ### Interactive 0.16.0 objective and provider review (2026-11-12 UTC)
 
 Documentation-only block from `979908c`, owned by #154/#153/#112, records the

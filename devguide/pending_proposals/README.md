@@ -15,8 +15,12 @@ development queue.
 - [Standalone infrastructure evaluation](standalone_infrastructure_0160.md)
   (#154): Python/live-Viewer/standalone constraints, host and panel-library
   comparison and a second critical review of real Viewer/Mol* ownership and
-  panel lifetime. Recommends the same-journey Qt/Electron comparison and
+  panel lifetime. Recommends the same-journey Qt/Electron/Tauri comparison and
   provider embedding handoff; no dependency or platform choice is adopted.
+- [Standalone development experiment](standalone_probe_20261113.md)
+  (#154, MolSysViewer #276/#368): actual bounded workspace, calibration receipts,
+  default-security/graphics limits, WebGPU review and the controlled
+  Tauri/Rust/Python evaluation route; no production winner is selected.
 - [Human exploration of Card](card_human_exploration_api.md)
   (#148, coordinated with #112): intuitive progressive navigation, complete
   retained-content access and source-grounded decision assistance. Initial
