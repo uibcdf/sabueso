@@ -1,0 +1,681 @@
+{
+  "format": "sabueso.interactive_integrated_checkpoint@1",
+  "owner": "uibcdf/sabueso#154",
+  "source_commit": "e64c2ec41fd59b661f3f68af3359895f6706f330",
+  "scope": "Frozen e64c2ec baseline: S1, S3.1-S3.3, first S4 entry and S5.1. Later optional molecular/layout deltas are received separately; not full 0.16 acceptance.",
+  "source_manifest_sha256": "52b20a927b3bed4ea2220118a9ce6a835fd1f71ad9adeb2b42338803d412b73d",
+  "source_files": 2386,
+  "runtime_sha256": {
+    "frontend/explorer/.gitignore": "4d56952b0fb13bf8f9b6c13a6d4c34a075bac3af447636a1df4335d7576e2f97",
+    "frontend/explorer/README.md": "cdacba0a0de36799cb4b80c42224324f646b03ba85bfac7badb57fdade3ec916",
+    "frontend/explorer/build.mjs": "c6723d59eb4fb942cc00228e6704177aad0454ca6d1abc6c4a1475d8169d8d9c",
+    "frontend/explorer/index.html": "be4705852899de9486e6c01fb0d92ad99301024833c9c7b50b545a3827cc785d",
+    "frontend/explorer/package-lock.json": "e7529d2d599c89014cc2b372d3d6e4c3c78fec0d168c3df509daaafaae189328",
+    "frontend/explorer/package.json": "5d897ddbd6d0ac3f23172feba79f47accee261ea350c46c344730e1566f7f74b",
+    "frontend/explorer/src/app.tsx": "7c69a172c565a13605c89e67e67e3cec580a564fec1f97b63c06fdbf79dd0de5",
+    "frontend/explorer/src/style.css": "b13f77da418c791b90f50a8afc54c54fcca365c18b05736ab3cd4d7d1727c1a6",
+    "frontend/explorer/tsconfig.json": "7b28653f331074801ccc0c4709bd9f8494b964b2c8e9aa28f709afd233a713c2",
+    "sabueso/core/deck.py": "4a1940db4848062a4763e222873e60f0e95801108e620088d3f682d71dceb3b5",
+    "sabueso/core/deck_exploration.py": "286dc2be72cb403766298e185cda2c8c965337bdee169128d4863deb58e11ec7",
+    "sabueso/explorer/__init__.py": "d9f38870c8c8cb9a246e19c53547451343ff05bd8724b52d11b16ea805f07062",
+    "sabueso/explorer/__main__.py": "932b8263334f1f9061c429d2c3104bcb98eb4dcc3f87840b3b4271ff9fa870c3",
+    "sabueso/explorer/_assets/app.css": "ada26a1f553a758503a7c32ba611124d5ef52a5cf97005ceda74eb3ed1227630",
+    "sabueso/explorer/_assets/app.js": "da6fbc6830a55b5ef320ad2861c1a0d4ab167fd7356888e8479681cd3bc7896d",
+    "sabueso/explorer/_assets/index.html": "be4705852899de9486e6c01fb0d92ad99301024833c9c7b50b545a3827cc785d",
+    "sabueso/explorer/_assets/notices.txt": "a238c0f2172b6b9507e352ce97d0065b73c0abe2b076493e6553789f675e0b15",
+    "sabueso/explorer/_deck_session.py": "3b946be0c652ec790a8dd64f84fe38ae6e7f9cd4b7cf2ac319d06630a8e329b8",
+    "sabueso/explorer/_qt.py": "354918fe8c5176fd628f9e375e005d5a60673935d3d22d6af006332b88bfd02d",
+    "sabueso/explorer/_resolution.py": "1e858eda670fc0bad1d3e810a7032055c728a33bce3b6c21c9af3bf924dce770",
+    "sabueso/explorer/_service.py": "94d2643ae9a74b1337ba2fd04d7713f6274bf0d2af714cd2cb123389b620dd66",
+    "sabueso/explorer/_session.py": "0e16a22cd22459400b807e2e6829b87beb51fe79bc379cf3bed409cbb58a47be",
+    "sabueso/tools/deck/__init__.py": "e298d8905cac1dcac0532cadbc07e8b167fb01057fac9dc3a3e6ce71c6fbf922",
+    "sabueso/tools/deck/storage.py": "d90a32f707dcfb3d15dc6a7c38dcf25a8bf50f220de069e4f7b7a00f54b9c480"
+  },
+  "offline": {
+    "mode": "eight completed disjoint pytest invocations",
+    "collected": 10059,
+    "executed_nodes": 10059,
+    "exact_disjoint_union": true,
+    "collection_sha256": "f45cfa1239da4d7b57ba41b55c0ce22e754464592b77dd13c0489a6a9833074e",
+    "groups": [
+      {
+        "index": 0,
+        "events_sha256": "572058814cd01380b442e5477c70b7592485020dd088debe1fe369fea1f1d215",
+        "final": {
+          "artifact_policy": {
+            "dropped_records": 0,
+            "max_bytes": 134217728,
+            "truncated": false
+          },
+          "complete": true,
+          "counts": {
+            "collected": 120,
+            "deselected": 0,
+            "errors": 0,
+            "executed": 120,
+            "failed": 0,
+            "not_executed": 0,
+            "passed": 120,
+            "reruns": 0,
+            "skipped": 0,
+            "subtests": {},
+            "warnings": 0,
+            "xfailed": 0,
+            "xpassed": 0
+          },
+          "duration": 219.58235735696508,
+          "exitstatus": 0,
+          "extensions": {
+            "dropped": 0,
+            "incomplete": false,
+            "recorded": 0
+          },
+          "integrity": {
+            "algorithm": "sha256",
+            "digest": "344f2291de2a83beeb7acd956bac675373a060fd504bc0714a8b624b60629b5a",
+            "records": 361
+          },
+          "invalid_selections": [],
+          "note": "",
+          "outcome": "PASS",
+          "root_causes": 0,
+          "run_id": "03adb7232b534dff885283d129e8c4a3",
+          "schema": "pytest-receptor.events@1",
+          "stop_reason": "",
+          "type": "session_finish"
+        },
+        "integrity_valid": true
+      },
+      {
+        "index": 1,
+        "events_sha256": "6c699cdffe27675077054a238bdefb584e4d0ffb27fcd19d0bf41c2f0641bb99",
+        "final": {
+          "artifact_policy": {
+            "dropped_records": 0,
+            "max_bytes": 134217728,
+            "truncated": false
+          },
+          "complete": true,
+          "counts": {
+            "collected": 58,
+            "deselected": 0,
+            "errors": 0,
+            "executed": 58,
+            "failed": 0,
+            "not_executed": 0,
+            "passed": 58,
+            "reruns": 0,
+            "skipped": 0,
+            "subtests": {},
+            "warnings": 0,
+            "xfailed": 0,
+            "xpassed": 0
+          },
+          "duration": 605.6984524850268,
+          "exitstatus": 0,
+          "extensions": {
+            "dropped": 0,
+            "incomplete": false,
+            "recorded": 0
+          },
+          "integrity": {
+            "algorithm": "sha256",
+            "digest": "8982c92af19e247c255759ec5da4b0ab1f8d4e8e18bbd84cd7d07624eaa0e4f4",
+            "records": 175
+          },
+          "invalid_selections": [],
+          "note": "",
+          "outcome": "PASS",
+          "root_causes": 0,
+          "run_id": "84fc39be88dc4763877c6cdcef14860d",
+          "schema": "pytest-receptor.events@1",
+          "stop_reason": "",
+          "type": "session_finish"
+        },
+        "integrity_valid": true
+      },
+      {
+        "index": 2,
+        "events_sha256": "a638d5534af53b8caac94f4423ed23b7dd004b74f49400529664ae0b3f2c248c",
+        "final": {
+          "artifact_policy": {
+            "dropped_records": 0,
+            "max_bytes": 134217728,
+            "truncated": false
+          },
+          "complete": true,
+          "counts": {
+            "collected": 1589,
+            "deselected": 0,
+            "errors": 0,
+            "executed": 1589,
+            "failed": 0,
+            "not_executed": 0,
+            "passed": 1589,
+            "reruns": 0,
+            "skipped": 0,
+            "subtests": {},
+            "warnings": 5,
+            "xfailed": 0,
+            "xpassed": 0
+          },
+          "duration": 2827.4859135079896,
+          "exitstatus": 0,
+          "extensions": {
+            "dropped": 0,
+            "incomplete": false,
+            "recorded": 215
+          },
+          "integrity": {
+            "algorithm": "sha256",
+            "digest": "395a064f43f01514a1c5639fc457213b8bdc9af71177b59d3800c4003fbc66c4",
+            "records": 4988
+          },
+          "invalid_selections": [],
+          "note": "",
+          "outcome": "PASS",
+          "root_causes": 0,
+          "run_id": "f2f42cc335274782965034dc8437971f",
+          "schema": "pytest-receptor.events@1",
+          "stop_reason": "",
+          "type": "session_finish"
+        },
+        "integrity_valid": true
+      },
+      {
+        "index": 3,
+        "events_sha256": "aefc68878e34e359b140bf86dcbea625ae210c5ef7a8b0936dc033214e54edf1",
+        "final": {
+          "artifact_policy": {
+            "dropped_records": 0,
+            "max_bytes": 134217728,
+            "truncated": false
+          },
+          "complete": true,
+          "counts": {
+            "collected": 1786,
+            "deselected": 0,
+            "errors": 0,
+            "executed": 1786,
+            "failed": 0,
+            "not_executed": 0,
+            "passed": 1786,
+            "reruns": 0,
+            "skipped": 0,
+            "subtests": {},
+            "warnings": 4,
+            "xfailed": 0,
+            "xpassed": 0
+          },
+          "duration": 611.3018001510063,
+          "exitstatus": 0,
+          "extensions": {
+            "dropped": 0,
+            "incomplete": false,
+            "recorded": 338
+          },
+          "integrity": {
+            "algorithm": "sha256",
+            "digest": "0be2476f83958a190e684128c26c70faf622e174338a7e55518afb66e27b49dc",
+            "records": 5701
+          },
+          "invalid_selections": [],
+          "note": "",
+          "outcome": "PASS",
+          "root_causes": 0,
+          "run_id": "1923d025b05943058083320413a6ee37",
+          "schema": "pytest-receptor.events@1",
+          "stop_reason": "",
+          "type": "session_finish"
+        },
+        "integrity_valid": true
+      },
+      {
+        "index": 4,
+        "events_sha256": "e74be3f50485093239ab3b4eb65b8a8b03470beddd9a8a4d2a8a48c554d460be",
+        "final": {
+          "artifact_policy": {
+            "dropped_records": 0,
+            "max_bytes": 134217728,
+            "truncated": false
+          },
+          "complete": true,
+          "counts": {
+            "collected": 1667,
+            "deselected": 0,
+            "errors": 0,
+            "executed": 1667,
+            "failed": 0,
+            "not_executed": 0,
+            "passed": 1666,
+            "reruns": 0,
+            "skipped": 1,
+            "subtests": {},
+            "warnings": 0,
+            "xfailed": 0,
+            "xpassed": 0
+          },
+          "duration": 2023.5357627689955,
+          "exitstatus": 0,
+          "extensions": {
+            "dropped": 0,
+            "incomplete": false,
+            "recorded": 264
+          },
+          "integrity": {
+            "algorithm": "sha256",
+            "digest": "3588e5b8cab788445ccb48fe257932e8edbbeacaa673d76691b726746a7e457f",
+            "records": 5265
+          },
+          "invalid_selections": [],
+          "note": "",
+          "outcome": "PASS",
+          "root_causes": 0,
+          "run_id": "3e4e814ec5644a75bea4a606a717fe8a",
+          "schema": "pytest-receptor.events@1",
+          "stop_reason": "",
+          "type": "session_finish"
+        },
+        "integrity_valid": true
+      },
+      {
+        "index": 5,
+        "events_sha256": "1a2c8ea521a8705f648927c311eeba3633e0d762e81d3656c11dbf001b36e774",
+        "final": {
+          "artifact_policy": {
+            "dropped_records": 0,
+            "max_bytes": 134217728,
+            "truncated": false
+          },
+          "complete": true,
+          "counts": {
+            "collected": 1498,
+            "deselected": 0,
+            "errors": 0,
+            "executed": 1498,
+            "failed": 0,
+            "not_executed": 0,
+            "passed": 1489,
+            "reruns": 0,
+            "skipped": 9,
+            "subtests": {},
+            "warnings": 1,
+            "xfailed": 0,
+            "xpassed": 0
+          },
+          "duration": 459.648566378979,
+          "exitstatus": 0,
+          "extensions": {
+            "dropped": 0,
+            "incomplete": false,
+            "recorded": 188
+          },
+          "integrity": {
+            "algorithm": "sha256",
+            "digest": "feec3100d2e5852f9c5fe68b3da2823e2180738e589940e96e7903db1434f1b2",
+            "records": 4675
+          },
+          "invalid_selections": [],
+          "note": "",
+          "outcome": "PASS",
+          "root_causes": 0,
+          "run_id": "8fc6976832bc4da5ba5c5200b757cbe6",
+          "schema": "pytest-receptor.events@1",
+          "stop_reason": "",
+          "type": "session_finish"
+        },
+        "integrity_valid": true
+      },
+      {
+        "index": 6,
+        "events_sha256": "393dfc2cae046a7c0e8cdc74fa597593f49de4ce4bdf3f7bf78dae8515bdf865",
+        "final": {
+          "artifact_policy": {
+            "dropped_records": 0,
+            "max_bytes": 134217728,
+            "truncated": false
+          },
+          "complete": true,
+          "counts": {
+            "collected": 1783,
+            "deselected": 0,
+            "errors": 0,
+            "executed": 1783,
+            "failed": 0,
+            "not_executed": 0,
+            "passed": 1783,
+            "reruns": 0,
+            "skipped": 0,
+            "subtests": {},
+            "warnings": 1,
+            "xfailed": 0,
+            "xpassed": 0
+          },
+          "duration": 247.52639292000094,
+          "exitstatus": 0,
+          "extensions": {
+            "dropped": 0,
+            "incomplete": false,
+            "recorded": 291
+          },
+          "integrity": {
+            "algorithm": "sha256",
+            "digest": "de168a89071ee4654ea4f453378a0a4c66c7290c8e9f72549540dc8659d1f4aa",
+            "records": 5642
+          },
+          "invalid_selections": [],
+          "note": "",
+          "outcome": "PASS",
+          "root_causes": 0,
+          "run_id": "d402659f0d5743c297b06cfa7c406d0e",
+          "schema": "pytest-receptor.events@1",
+          "stop_reason": "",
+          "type": "session_finish"
+        },
+        "integrity_valid": true
+      },
+      {
+        "index": 7,
+        "events_sha256": "2d44c1057ca865fd4eba118548aa8e24c1b67c6a10c8a81fa7c3f731b5793d44",
+        "final": {
+          "artifact_policy": {
+            "dropped_records": 0,
+            "max_bytes": 134217728,
+            "truncated": false
+          },
+          "complete": true,
+          "counts": {
+            "collected": 1558,
+            "deselected": 0,
+            "errors": 0,
+            "executed": 1558,
+            "failed": 0,
+            "not_executed": 0,
+            "passed": 1558,
+            "reruns": 0,
+            "skipped": 0,
+            "subtests": {},
+            "warnings": 0,
+            "xfailed": 0,
+            "xpassed": 0
+          },
+          "duration": 1861.5400174750248,
+          "exitstatus": 0,
+          "extensions": {
+            "dropped": 0,
+            "incomplete": false,
+            "recorded": 127
+          },
+          "integrity": {
+            "algorithm": "sha256",
+            "digest": "a26790a84dd0e4210ae11cfd3ea2ad6d79d5893acae39a5b53e0a1d5e5191bfd",
+            "records": 4802
+          },
+          "invalid_selections": [],
+          "note": "",
+          "outcome": "PASS",
+          "root_causes": 0,
+          "run_id": "3a9bda5c9bdb4d12b7ffb7cc4ab3f0fe",
+          "schema": "pytest-receptor.events@1",
+          "stop_reason": "",
+          "type": "session_finish"
+        },
+        "integrity_valid": true
+      }
+    ],
+    "totals": {
+      "collected": 10059,
+      "deselected": 0,
+      "errors": 0,
+      "executed": 10059,
+      "failed": 0,
+      "not_executed": 0,
+      "passed": 10049,
+      "reruns": 0,
+      "skipped": 10,
+      "warnings": 11,
+      "xfailed": 0,
+      "xpassed": 0
+    },
+    "skip_scope": "Ten deliberate local-only native-input exclusions; --local-source-inputs was not selected.",
+    "warning_scope": "Eleven expected fixture controls: nine source-failure warnings and two bounded-source truncations."
+  },
+  "selected_gate": "PASS exit=0 | 124 passed | 11.34s",
+  "native_qt": [
+    {
+      "case": "qt-original-file-received",
+      "checks": {
+        "empty_entry_visible": true,
+        "topic_navigation": true,
+        "exact_back": true,
+        "original_source_opened": true,
+        "original_saved_reading_reopened": true,
+        "saved_return_preserved": true,
+        "reading_survives_floating": true,
+        "reading_survives_reset": true,
+        "external_original_file_opened": true,
+        "original_does_not_require_session_save_state": true,
+        "actual_native_capture": true,
+        "input_unchanged": true,
+        "no_script_errors": true
+      },
+      "input_sha256": "960869253e88a048216c151a02cc22895c94b9e3e30d5b587d104f98dff2e4f4",
+      "elapsed_s": 33.089,
+      "peak_summed_rss_bytes": 1159991296,
+      "survivors": []
+    },
+    {
+      "case": "qt-integrated-installed",
+      "checks": {
+        "empty_entry_visible": true,
+        "topic_navigation": true,
+        "exact_back": true,
+        "original_source_opened": true,
+        "original_saved_reading_reopened": true,
+        "saved_return_preserved": true,
+        "reading_survives_floating": true,
+        "reading_survives_reset": true,
+        "external_original_file_opened": true,
+        "original_does_not_require_session_save_state": true,
+        "actual_native_capture": true,
+        "input_unchanged": true,
+        "no_script_errors": true
+      },
+      "input_sha256": "960869253e88a048216c151a02cc22895c94b9e3e30d5b587d104f98dff2e4f4",
+      "elapsed_s": 34.583,
+      "peak_summed_rss_bytes": 1160757248,
+      "survivors": []
+    }
+  ],
+  "artifact": {
+    "wheel_sha256": "d3f00201c42b02c11b7c2eeba3d2f3191eb57ef6b10296a93497c740aa0209b5",
+    "sdist_sha256": "7f89fd7837e5bcbe1897ae5c6830af41716d4445b85c0f5b899ed7f0fb4a8791",
+    "app_assets_source_exact": true
+  },
+  "resources": [
+    {
+      "owner": "uibcdf/sabueso#154",
+      "returncode": 0,
+      "elapsed_s": 2287.549,
+      "stop_reason": "observer received signal 15",
+      "peak_owned_rss_bytes": 5116952576,
+      "minimum_host_available_bytes": 51340144640,
+      "survivors_after_command": [],
+      "limits": {
+        "owned_rss_bytes": 10737418240,
+        "host_available_bytes": 17179869184,
+        "cpu_affinity": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "native_threads": 1
+      },
+      "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+    },
+    {
+      "owner": "uibcdf/sabueso#154",
+      "returncode": 0,
+      "elapsed_s": 7200.324,
+      "stop_reason": "elapsed ceiling",
+      "peak_owned_rss_bytes": 10263863296,
+      "minimum_host_available_bytes": 46339473408,
+      "survivors_after_command": [],
+      "limits": {
+        "owned_rss_bytes": 10737418240,
+        "host_available_bytes": 17179869184,
+        "cpu_affinity": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "native_threads": 1
+      },
+      "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+    },
+    {
+      "owner": "uibcdf/sabueso#154",
+      "returncode": 0,
+      "elapsed_s": 1866.033,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 6359543808,
+      "minimum_host_available_bytes": 50071937024,
+      "survivors_after_command": [],
+      "limits": {
+        "owned_rss_bytes": 10737418240,
+        "host_available_bytes": 17179869184,
+        "cpu_affinity": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "native_threads": 1
+      },
+      "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+    }
+  ],
+  "retained_incomplete_attempts": [
+    "full-offline-deck: elapsed ceiling",
+    "full-offline-deck-received: SIGTERM during server restart",
+    "final-offline-groups / group 2: later SIGTERM, no final verdict; its raw records were not counted",
+    "final-offline-balanced / group 7: elapsed ceiling, incomplete records not counted; only group 7 was repeated"
+  ],
+  "limits": [
+    "All 10,059 offline nodes receive in disjoint invocations; this does not claim a monolithic worker-order result",
+    "Child receiving repeats overlap the parent collection and add no distinct test coverage",
+    "Linux/Xvfb software Qt and unpublished artifact with a shared dependency cohort; no native OS/GPU or public-install qualification",
+    "Stable molecular embedding, cross-member original Deck workspace, richer nature-specific journeys, layout/recovery and researcher acceptance remain open",
+    "Hosted exact-final-source CI/governance and release gates remain due; no workflow or release was selected"
+  ],
+  "cleanup": {
+    "owner": "uibcdf/sabueso#154",
+    "trigger": "S4 integrated and final installed native receiving passed; no active process references",
+    "removed": [
+      "sabueso-explorer-receiving-gny0k1fg",
+      "sabueso-deck-receiving-4gxt8fkn",
+      "sabueso-integrated-receiving-gtasbmiu",
+      "resolution-environment"
+    ],
+    "worktree": "Clean owned S4 worktree removed through git worktree remove",
+    "retained": [
+      "Source-bound evidence and public input/artifact cohorts with #154 and the recorded review trigger",
+      "Frontend build dependencies remain needed for continuing implementation"
+    ],
+    "guard_disposition": "Verified the actual S1 OWNERSHIP filename and the S3/S4 Sabueso #154 owner spelling; earlier guard refusals removed no unverified paths. No remaining cleanup failure.",
+    "final_closeout": {
+      "owner": "uibcdf/sabueso#154",
+      "removed_disposable_scratch": [
+        "application-final-scratch",
+        "application-tests-scratch",
+        "deck-app-received-scratch",
+        "deck-application-scratch",
+        "deck-contract-scratch",
+        "deck-envelope-scratch",
+        "deck-final-selected-scratch",
+        "deck-first-scratch",
+        "deck-xdist-control-scratch",
+        "final-offline-balanced-scratch",
+        "final-offline-completion-scratch",
+        "final-offline-groups-scratch",
+        "final-receiving-scratch",
+        "frontend-install-scratch",
+        "frontend-locked-install-scratch",
+        "full-offline-deck-received-scratch",
+        "full-offline-deck-scratch",
+        "integrated-app-final-scratch",
+        "integrated-app-received-scratch",
+        "integrated-app-selected-scratch",
+        "layout-app-final-scratch",
+        "layout-app-selected-scratch",
+        "layout-build-scratch",
+        "layout-checkpoint-received-scratch",
+        "layout-controls-scratch",
+        "loopback-received-scratch",
+        "molecular-app-final-scratch",
+        "molecular-app-selected-scratch",
+        "molecular-build-scratch",
+        "native-http-guard-probe-scratch",
+        "package-final-scratch",
+        "qt-card-final-scratch",
+        "qt-card-first-scratch",
+        "qt-card-save-received-scratch",
+        "qt-deck-first-scratch",
+        "qt-deck-installed-received-scratch",
+        "qt-empty-card-received-scratch",
+        "qt-entry-final-scratch",
+        "qt-installed-received-scratch",
+        "qt-integrated-installed-scratch",
+        "qt-layout-final-scratch",
+        "qt-layout-first-scratch",
+        "qt-layout-installed-scratch",
+        "qt-layout-missing-model-scratch",
+        "qt-layout-molecular-installed-scratch",
+        "qt-layout-received-scratch",
+        "qt-layout-unknown-version-scratch",
+        "qt-molecular-first-scratch",
+        "qt-molecular-installed-scratch",
+        "qt-molecular-layout-scratch",
+        "qt-molecular-received-scratch",
+        "qt-molecular-unavailable-received-scratch",
+        "qt-molecular-unavailable-scratch",
+        "qt-original-file-final-scratch",
+        "qt-original-file-received-scratch",
+        "qt-original-upload-scratch",
+        "qt-resolution-fixtures-received-scratch",
+        "qt-resolution-fixtures-scratch",
+        "qt-resolution-native-guard-scratch",
+        "s4-entry-final-scratch",
+        "s4-resolution-return-scratch",
+        "s4-resolution-targeted-scratch",
+        "session-first-scratch",
+        "session-received-scratch",
+        "wheel-build-scratch",
+        "qt-deck-installed-scratch"
+      ],
+      "retained": [],
+      "retained_evidence": [
+        "Source/collection hashes, complete receptor artifacts and logs",
+        "Incomplete/failed control logs and native captures",
+        "Unpublished wheel/sdist artifacts, public inputs and report drafts"
+      ],
+      "review_trigger": "First 0.16 provider/UI change or candidate receiving; #154 owns evidence retention",
+      "failures": [],
+      "historical_guard_review": "Historical reported survivor PIDs are absent at final review; owned scratch removed, failed-control logs retained."
+    }
+  }
+}

@@ -21,6 +21,17 @@ planning parent `fb0d09659f8d00685f829d6781e5d256751dac66`;
 
 **Next observable result:** exact source-bound annotation → model selection → original source → Back, including unknown/replaced contexts (S2.2/S2.5), plus cross-member original Deck context/workspace receiving (S3.4). Viewer #368 still owns the supported embedding contract. Original query/Deck/scene recovery, richer entity-specific presentation and acceptance remain open. The [presentation receipt](../evidence/interactive_layout_checkpoint_20261113.json) closes S5.2 at layout-only scope: explicit save, startup restoration and reset keep Knowledge and model state separate. Interrupted full-suite attempts never count as passes; completed source-bound collection receiving has its own receipt.
 
+The [complete frozen baseline receipt](../evidence/interactive_integrated_baseline_20261113.json)
+receives all **10,059 collected offline nodes** at `e64c2ec`: **10,049 passed,
+10 intentional local-only native-input exclusions, zero failures**, and eleven
+expected fixture warnings. Eight disjoint completed invocations have verified
+receptor integrity and an exact collection union; interrupted records were not
+counted. Only the unfinished group was repeated after an elapsed ceiling.
+The later molecular/layout code at `55f3b97` has separate 100-case, actual Qt and
+installed-wheel receiving. This is not a monolithic run of the later source or
+hosted/native-platform qualification. The root editable/headless environment and
+protected inputs remain intact.
+
 The maintainer requests this document as both the implementation plan and its
 granular checkpoint. It owns stage/microstage status for 0.16.0.
 [CHECKPOINT](../CHECKPOINT.md) remains the repository-wide summary and links here;

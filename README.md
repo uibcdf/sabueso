@@ -147,7 +147,7 @@ Start with:
 - `devguide/CHECKPOINT.md` for the current repository baseline, and
   `devguide/ROADMAP.md` for the plan (the foundational plan and the pilot-driven route,
   integrated);
-- `schemas/card_schema_0.3.11.yaml` for the current card schema, and
+- `devguide/SCHEMA.md` for the current versioned schema and compatibility policy, and
   `schemas/card_schema.yaml` for the conceptual draft it grew from.
 
 Common quality gates:

@@ -9,6 +9,20 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Completed frozen offline baseline and optional application deltas (2026-11-13)
+
+The [baseline receipt](../evidence/interactive_integrated_baseline_20261113.json)
+closes all 10,059 collected nodes on `e64c2ec`: 10,049 pass and ten intentional
+local-only native-input exclusions, with zero failures. Eight disjoint completed
+receptor artifacts have verified integrity and exact collection coverage; no
+interrupted records count. The optional molecular/layout source at `55f3b97`
+has separate 100-case, actual Qt and installed-artifact receiving. Scientific
+core hashes remain those of the qualified baseline. This source separation does
+not claim a later-head monolithic run or recover hosted gates. #154/#112 retain
+exact-final-source CI/governance and optional/native qualification before the
+version closeout. This authorized `[skip ci]` documentation checkpoint dispatches
+no workflow and publishes no package, tag or release; Git records its head.
+
 ### Independent presentation persistence (2026-11-13)
 
 From `bc977fd`, #154 owns versioned layout-only save/restoration/reset, strict

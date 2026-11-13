@@ -51,6 +51,17 @@ no Knowledge, query history, model/camera or provider token. Whole original Deck
 query and scene recovery remain separate. The floating-container assertion is
 strengthened and its earlier limitation is retained explicitly.
 
+The [complete frozen baseline receipt](evidence/interactive_integrated_baseline_20261113.json)
+receives all **10,059 collected offline nodes** at `e64c2ec`: **10,049 passed,
+10 intentional local-only native-input exclusions, zero failures**, and eleven
+expected fixture warnings. Eight disjoint completed invocations have verified
+receptor integrity and an exact collection union; interrupted records were not
+counted. Only the unfinished group was repeated after an elapsed ceiling.
+The later molecular/layout code at `55f3b97` has separate 100-case, actual Qt and
+installed-wheel receiving. This is not a monolithic run of the later source or
+hosted/native-platform qualification. The root editable/headless environment and
+protected inputs remain intact.
+
 The [living 0.16.0 implementation plan and checkpoint](pending_proposals/interactive_implementation_0160.md)
 owns granular stage/microstage progress, completion criteria, evidence and the
 next action. S0 architecture/feasibility and the first S1 Card application are
