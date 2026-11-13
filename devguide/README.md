@@ -46,6 +46,13 @@ Implement the first real explorer slice while qualifying provider embedding,
 native delivery and exact dependencies. The complete release contract remains
 open; the accepted 0.15.0 scope and other roadmap goals persist.
 
+The first optional Qt Card application now delivers local topic/search/source/
+Back/save/reopen navigation and movable reading panels. Its
+[implementation checkpoint](pending_proposals/interactive_implementation_0160.md)
+records actual checkout/installed-wheel receiving and the remaining molecular,
+Deck, identifier-entry and acceptance work. This is development implementation,
+not a public GUI installation or platform-support claim.
+
 The [current overview orientation](pending_proposals/card_orientation.md) exposes
 curated original protein/molecule/disease fields, source versions and exact
 value/support locations through `overview().orientation`. Null, empty, missing

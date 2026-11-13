@@ -11,7 +11,11 @@ development queue.
 - [Interactive 0.16.0 implementation plan and checkpoint](interactive_implementation_0160.md)
   (#154/#153/#148): living stage/microstage statuses, objectives, completion checks,
   reusable foundations, provider dependencies and the next concrete task. Resume
-  at S1.1; no product application milestone is claimed from the completed probe.
+  at S2.1/S3.2; S1 Card application and bounded installed artifact receiving now
+  pass independently of the earlier comparison probe.
+- [Deck exploration reuse audit](deck_exploration_contract_0160.md)
+  (#153): existing membership/operations/snapshot/metadata-preserving storage,
+  captured occurrence/revision boundaries and the missing human/agent contract.
 - [Interactive Card/Deck exploration for 0.16.0](interactive_exploration_0160.md)
   (#154/#153, coordinated with #112/#148): accepted product objective, read-only
   MolSysViewer review and accepted PySide6/QWebEngine host with a portable web UI

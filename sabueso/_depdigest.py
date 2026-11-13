@@ -9,6 +9,8 @@ imported when Sabueso is imported.
 from sabueso.core.errors import LibraryNotFoundError
 
 LIBRARIES = {
+    "aiohttp": {"type": "soft", "pypi": "aiohttp", "conda": "aiohttp"},
+    "PySide6": {"type": "soft", "pypi": "PySide6", "conda": "pyside6"},
     # Explicit supplied ModelCIF metadata only; never needed for Card reading.
     "gemmi": {"type": "soft", "pypi": "gemmi", "conda": "gemmi"},
     # Views as DataFrames: sabueso.to_dataframe (#46).

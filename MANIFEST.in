@@ -1,0 +1,6 @@
+include frontend/explorer/package.json
+include frontend/explorer/package-lock.json
+include frontend/explorer/tsconfig.json
+include frontend/explorer/build.mjs
+include frontend/explorer/index.html
+recursive-include frontend/explorer/src *.tsx *.css

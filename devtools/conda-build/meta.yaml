@@ -29,6 +29,8 @@ requirements:
     - depdigest >=0.11.0   # optional dependencies, checked when needed (#46)
     - ackredit >=0.9.0   # published portable attribution contract (#108)
   run_constrained:
+    - pyside6 >=6.11.2   # optional desktop host (#154)
+    - aiohttp >=3.14.5   # optional local exploration service (#154)
     - pandas >=2   # optional: sabueso.to_dataframe (#46)
     - gemmi >=0.7.5   # optional: explicitly supplied native ModelCIF metadata (#148)
 

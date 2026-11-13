@@ -1124,6 +1124,19 @@ in run `42269421773`; retained failure logs and corrected-head CI remain separat
 
 Run each applicable gate separately and read its result:
 
+The optional Card application (#154) adds `tests/explorer/` and
+`tests/core/test_package_data_offline.py`; changes to its Card/session boundary
+also select the owning human and original saved-reading gates. The loopback
+test requires aiohttp and may skip only in a headless closure; a qualified
+application gate provisions its declared optional cohort and verifies no skip.
+Run frontend typecheck/build in `frontend/explorer/`, retain package-data/source
+checks, and receive `devtools/explorer_journey.mjs` through the owned resource
+observers. Its actual Qt/installed-wheel checks complement headless tests;
+Linux/Xvfb software receiving does not qualify native graphics or other OSes.
+See the [S1 receipt](evidence/interactive_card_app_checkpoint_20261113.json) for
+the exact current scope and [implementation plan](pending_proposals/interactive_implementation_0160.md)
+for remaining work and the provider boundary.
+
 Use the Ruff version pinned in `pyproject.toml` and CI. Run its format gate at
 the repository root: it includes Python examples in Markdown, so a Python-only
 path selection does not replace `ruff format --check .`.

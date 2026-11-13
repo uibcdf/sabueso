@@ -9,6 +9,21 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### First optional Qt Card application (2026-11-13)
+
+From `fb0d096`, #154 owns the generic session, separate loopback service, thin Qt
+launcher, compiled React workspace and optional PySide6/aiohttp closure. S1 and
+development artifact receiving are recorded in the
+[source-bound receipt](../evidence/interactive_card_app_checkpoint_20261113.json).
+Applicable local application/native-reader/saved/package/dependency gates, root
+format/lint/governance, frontend type/build and actual checkout/installed-wheel
+Qt receiving pass. Scientific readers, Card schema and protected inputs stay
+unchanged. Full offline and exact-head hosted/core/optional-GUI matrices remain
+due under #154/#112's existing recovery route; this intermediate authorized
+`[skip ci]` checkpoint dispatches no workflow and claims no candidate/platform
+or public GUI qualification. The owning follow-up must receive the actual final
+0.16 code/dependency/asset closure, not substitute these Linux/Xvfb observations.
+
 ### Living 0.16.0 implementation plan (2026-11-13)
 
 From `d6962e8`, #154/#153/#148 gain a single stage/microstage plan and granular

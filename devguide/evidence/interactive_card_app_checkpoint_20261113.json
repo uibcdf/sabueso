@@ -1,0 +1,87 @@
+{
+  "format": "sabueso.interactive_development_checkpoint@1",
+  "owner": "uibcdf/sabueso#154",
+  "planning_parent": "fb0d09659f8d00685f829d6781e5d256751dac66",
+  "scope": "First optional Card application; not 0.16 completion, a public release or a supported-platform qualification",
+  "code_sha256": {
+    "sabueso/explorer/__init__.py": "d9f38870c8c8cb9a246e19c53547451343ff05bd8724b52d11b16ea805f07062",
+    "sabueso/explorer/__main__.py": "7c6d5c704439846780eff218e5a175efcb9de10d7bc5f1e2229cb3c5c9551487",
+    "sabueso/explorer/_assets/app.css": "facde9699a56100387da58c6a19e50c5b15ec7e34044fb1b167644a56c6e99ec",
+    "sabueso/explorer/_assets/app.js": "a00da66cf7c28161543e850e4535ca9dd67a9f177b699f0e868c64c83374c0e3",
+    "sabueso/explorer/_assets/index.html": "be4705852899de9486e6c01fb0d92ad99301024833c9c7b50b545a3827cc785d",
+    "sabueso/explorer/_assets/notices.txt": "a238c0f2172b6b9507e352ce97d0065b73c0abe2b076493e6553789f675e0b15",
+    "sabueso/explorer/_qt.py": "354918fe8c5176fd628f9e375e005d5a60673935d3d22d6af006332b88bfd02d",
+    "sabueso/explorer/_service.py": "1eb670aa09f7d629c02ea3f105777733b956e16842595ce3a2918d688aba1dd7",
+    "sabueso/explorer/_session.py": "c6fef5ae0ceb6468a53a29f7086b5885e6a1f9fc5fbf0b159b2b61b3ce7ef412",
+    "frontend/explorer/src/app.tsx": "76f671cebceb4cf46b65ccfd9689cda283375d337863aa6c1057303f5a155c70",
+    "frontend/explorer/src/style.css": "944e5204aeca5bea206454be6666d9e9d099a53b7f3eab0aaa203bb086737549"
+  },
+  "journeys": [
+    {
+      "case": "qt-original-upload",
+      "checks": {
+        "empty_entry_visible": true,
+        "topic_navigation": true,
+        "exact_back": true,
+        "original_source_opened": true,
+        "original_saved_reading_reopened": true,
+        "saved_return_preserved": true,
+        "reading_survives_floating": true,
+        "reading_survives_reset": true,
+        "actual_native_capture": true,
+        "input_unchanged": true,
+        "no_script_errors": true
+      },
+      "input_sha256": "960869253e88a048216c151a02cc22895c94b9e3e30d5b587d104f98dff2e4f4",
+      "peak_summed_rss_bytes": 1128714240,
+      "owned_survivors": [],
+      "scope": "Actual first Qt Card product slice; owned Linux Xvfb software request; no molecular/native-platform qualification"
+    },
+    {
+      "case": "qt-installed-received",
+      "checks": {
+        "empty_entry_visible": true,
+        "topic_navigation": true,
+        "exact_back": true,
+        "original_source_opened": true,
+        "original_saved_reading_reopened": true,
+        "saved_return_preserved": true,
+        "reading_survives_floating": true,
+        "reading_survives_reset": true,
+        "actual_native_capture": true,
+        "input_unchanged": true,
+        "no_script_errors": true
+      },
+      "input_sha256": "960869253e88a048216c151a02cc22895c94b9e3e30d5b587d104f98dff2e4f4",
+      "peak_summed_rss_bytes": 1135550464,
+      "owned_survivors": [],
+      "scope": "Actual first Qt Card product slice; owned Linux Xvfb software request; no molecular/native-platform qualification"
+    }
+  ],
+  "gates": [
+    {
+      "scope": "Card/exploration/original-save integration before upload transport correction",
+      "passed": 118
+    },
+    {
+      "scope": "Final application, package data and dependency receiving after original-body upload correction",
+      "passed": 43
+    }
+  ],
+  "artifact": {
+    "owner": "uibcdf/sabueso#154",
+    "scope": "Unpublished artifact plus shared dependency cohort; not public/platform qualification",
+    "wheel_sha256": "4cf000c90154ba243245aa4cbb8e8c524777609aa7506ddda19d30409e8f71bc",
+    "sdist_sha256": "607851c6b49457afa1bf37bbf071b34043467e23c1a3b3791216eb44c53f162a",
+    "assets_and_application_sources_match": true,
+    "frontend_source_in_sdist": true,
+    "headless_installed_reading": "PASS",
+    "native_installed_journey": "PASS"
+  },
+  "limits": [
+    "Owned Linux Xvfb software profile",
+    "Shared editable scientific dependencies; unpublished Sabueso artifact separately installed",
+    "No public MolSysViewer embedding or Deck application delivered",
+    "No full offline/hosted/native OS matrix result claimed"
+  ]
+}

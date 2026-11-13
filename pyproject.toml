@@ -31,6 +31,7 @@ classifiers = [
 ]
 
 [project.optional-dependencies]
+explorer = ["PySide6>=6.11.2", "aiohttp>=3.14.5"]
 # Optional at runtime, checked by DepDigest when a function needs it (#46).
 dataframe = ["pandas>=2"]
 modelcif = ["gemmi>=0.7.5"]
@@ -52,7 +53,7 @@ include = ["sabueso*"]
 # Non-Python files the package reads at runtime (uibcdf/sabueso#35). Every such file must
 # be listed here; tests/core/test_package_data_offline.py enforces it.
 [tool.setuptools.package-data]
-sabueso = ["resolver/*.json", "core/_molecule_activity_history_v1/SOURCE.json", "core/_clinical_history_v1/SOURCE.json", "core/_disease_association_history_v1/SOURCE.json", "core/_variant_history_v1/SOURCE.json", "core/_sequence_change_history_v1/SOURCE.json", "core/_protein_context_history_v1/SOURCE.json", "core/_knowledge_comparison_history_v1/SOURCE.json"]
+sabueso = ["explorer/_assets/*.js", "explorer/_assets/*.css", "explorer/_assets/*.html", "explorer/_assets/*.txt", "resolver/*.json", "core/_molecule_activity_history_v1/SOURCE.json", "core/_clinical_history_v1/SOURCE.json", "core/_disease_association_history_v1/SOURCE.json", "core/_variant_history_v1/SOURCE.json", "core/_sequence_change_history_v1/SOURCE.json", "core/_protein_context_history_v1/SOURCE.json", "core/_knowledge_comparison_history_v1/SOURCE.json"]
 
 [tool.pytest.ini_options]
 norecursedirs = [".*", "build", "dist", "recovered_work"]

@@ -7,12 +7,21 @@ This page owns current state; dated receipt histories are linked below.
 
 ## Next product objective: interactive exploration in 0.16.0
 
+The first optional **Qt Card application is implemented**: blank/file entry,
+scrollable topics, local search, source/item navigation, exact Back, finite
+complete-text pages, save/reopen and float/reset controls. The
+[S1 receipt](evidence/interactive_card_app_checkpoint_20261113.json) records 118
+selected integration passes, the final 43-case application/package/dependency
+gate, compiled assets/source packaging and eleven actual Qt checks each from
+the checkout and an installed unpublished wheel. Original-body upload preserves
+numeric types and quantity seals. No molecular/Deck UI, identifier acquisition,
+public release or native-platform qualification is claimed. Resume at S2.1 and
+independent S3.2; S3.1 source audit and S5.4 development artifact receiving pass.
+
 The [living 0.16.0 implementation plan and checkpoint](pending_proposals/interactive_implementation_0160.md)
 owns granular stage/microstage progress, completion criteria, evidence and the
-next action. S0 architecture/feasibility is complete; the product application is
-not implemented. **Resume at S1.1:** extract a generic Card Knowledge session,
-then deliver the first supplied-Card/topic/item/source/Back/save/reopen journey
-in Qt. Molecular, Deck and entry work have existing reusable foundations but
+next action. S0 architecture/feasibility and the first S1 Card application are
+complete within their explicit scopes. Molecular, Deck and identifier-entry work
 retain explicit product work. Update that plan and this summary together as
 implementation advances; preserve experiment versus product qualification.
 

@@ -12,16 +12,20 @@ area: [human-exploration, deck, architecture, standalone, visualization]
 ## Resume here
 
 Checkpoint date: **2026-11-13**. Reviewed implementation baseline:
-`d6962e86d9cc6d294bcb6c3ca162cebacd941986`.
+planning parent `fb0d09659f8d00685f829d6781e5d256751dac66`;
+[application code hashes and receiving](../evidence/interactive_card_app_checkpoint_20261113.json).
 
-**Current position:** architecture selection and bounded feasibility work are
-complete. The product application has not been implemented. Start **S1.1**, then
-finish the first end-to-end Card journey before expanding the interface.
+**Current position:** S0 and S1 are complete at the first development-application
+scope. S3.1 reuse audit and S5.4 development artifact receiving also pass. The
+Qt Card application opens original files, navigates and saves/reopens them.
+Next: **S2.1**, the product molecular adapter; continue **S3.2** independently
+while the stable provider embedding surface remains open under Viewer #368.
 
-**Next observable result:** open a supplied public Card in a dedicated Qt window,
-see its pertinent topics, inspect a scientific item and its original source,
-return to the exact reading, and save/reopen that reading. The application must
-work without a molecular model; S2 adds the live molecular workspace.
+**Delivered observable result:** the first supplied-Card/topic/item/source/Back/
+save/reopen journey works in a dedicated Qt window, including entry from a blank
+window and a separately installed unpublished wheel. **Next observable result:**
+link that reading to an explicitly mapped live molecular view, without copying
+provider internals or silently inventing correspondence.
 
 The maintainer requests this document as both the implementation plan and its
 granular checkpoint. It owns stage/microstage status for 0.16.0.
@@ -76,7 +80,7 @@ a completion percentage from row counts or test totals.
 | Stage | Current state | Exit result |
 | --- | --- | --- |
 | S0 — Direction and feasibility | `done` | Accepted architecture, bounded observations and owner handoff |
-| S1 — First usable Card application | `todo` | Generic supplied-Card → topic → item → source → Back → saved reading in Qt |
+| S1 — First usable Card application | `done` | Generic supplied-Card → topic → item → source → Back → saved reading in Qt |
 | S2 — Molecular workspace | `partial` | Live Viewer integration and layout continuity in the product, not only the probe |
 | S3 — Deck exploration | `partial` | Shared human/agent Deck contract plus exact Deck → Card → source → Deck navigation |
 | S4 — Entry and entity-specific exploration | `partial` | Bounded UniProt/PDB/SMILES/disease entry and useful protein/molecule/disease views |
@@ -111,11 +115,11 @@ reference; [Card exploration](../../sabueso/core/card_exploration.py) and
 
 | ID | State | Deliverable and completion check |
 | --- | --- | --- |
-| S1.1 | `todo` | Extract a generic Knowledge session using `Card.explore()`, existing topic/item/source readers and `read_exploration()`. Define finite application requests and responses with exact result/view/item references. Verify source/Back and saved reopening against the original readers, including invalid or stale references |
-| S1.2 | `todo` | Establish the optional application package, portable frontend and thin Qt launcher with a separately owned Python service. Audit/pin the reused frontend cohort; derive runtime minima from consumed APIs. Verify ordinary Sabueso import/headless use without GUI dependencies |
-| S1.3 | `todo` | Add the light entry screen for opening a supplied Card/saved reading and the first workspace: title/scope, scrollable pertinent-topic index, readable content, source access, Back and clear loading/error/empty states. Preserve complete retained access beyond curated previews |
-| S1.4 | `todo` | Complete the first frozen public protein journey and a changed/unsupported-input control. Opening topics must not acquire sources, mutate the Card or silently change captured scope. Keyboard operation must cover the basic route |
-| S1.5 | `todo` | Run targeted session/argument/quantity/saved-reading gates and one bounded actual Qt journey. Record the exact source/input cohort and a reviewable working demonstration; update this checkpoint before expanding scope |
+| S1.1 | `done` | Extract a generic Knowledge session using `Card.explore()`, existing topic/item/source readers and `read_exploration()`. Define finite application requests and responses with exact result/view/item references. Verify source/Back and saved reopening against the original readers, including invalid or stale references |
+| S1.2 | `done` | Establish the optional application package, portable frontend and thin Qt launcher with a separately owned Python service. Audit/pin the reused frontend cohort; derive runtime minima from consumed APIs. Verify ordinary Sabueso import/headless use without GUI dependencies |
+| S1.3 | `done` | Add the light entry screen for opening a supplied Card/saved reading and the first workspace: title/scope, scrollable pertinent-topic index, readable content, source access, Back and clear loading/error/empty states. Preserve complete retained access beyond curated previews |
+| S1.4 | `done` | Complete the first frozen public protein journey and a changed/unsupported-input control. Opening topics must not acquire sources, mutate the Card or silently change captured scope. Keyboard operation must cover the basic route |
+| S1.5 | `done` | Run targeted session/argument/quantity/saved-reading gates and one bounded actual Qt journey. Record the exact source/input cohort and a reviewable working demonstration; update this checkpoint before expanding scope |
 
 Initial internal placement: `sabueso/explorer/` for the optional application,
 session/service and host/provider adapters; `frontend/explorer/` for web source
@@ -161,7 +165,7 @@ reusable primitives below; the open #153 contract remains the missing product wo
 
 | ID | State | Delivered work, remainder and completion check |
 | --- | --- | --- |
-| S3.1 | `partial` | Existing `Deck` has membership/exclusion explanations, filters/order, snapshots and scientific operations. Initial inspection confirms no general `Deck.explore()` entry. Audit retained/repeated-member and saved-format behavior before specifying the missing #153 contract |
+| S3.1 | `done` | Existing `Deck` has membership/exclusion explanations, filters/order, snapshots and scientific operations. Initial inspection confirms no general `Deck.explore()` entry. The [reuse audit](deck_exploration_contract_0160.md) records mutable/captured boundaries, repeated-member semantics and existing metadata-preserving persistence; S3.2 owns the missing contract |
 | S3.2 | `todo` | Implement the bounded human/agent Deck contract: overview, membership basis, selections, typed discovery, finite pages and exact captured members. Names such as `explore()`/`access()` require the actual API review; GUI code must not invent a competing contract |
 | S3.3 | `todo` | Add the Deck workspace and Deck → selected Card → item → source → exact Deck return, preserving filter, order, selection, repeated occurrence and original revision |
 | S3.4 | `todo` | Exercise public homogeneous/mixed decks, empty selection, missing members, duplicates/revision ambiguity and historical reopening. Keep complete metadata/support access and compact agent retrieval available outside the GUI |
@@ -183,7 +187,7 @@ records the distinct input meanings and gaps.
 | ID | State | Delivered work, remainder and completion check |
 | --- | --- | --- |
 | S4.1 | `partial` | Core UniProt, PDB, prefixed SMILES and disease-ID resolution exists with distinct outcomes. Connect it to bounded explicit acquisition, progress and selected candidates. Test found/ambiguous/not-found/partial/failed results; browsing retained topics performs no background acquisition |
-| S4.2 | `todo` | Present the pertinent protein topics, source-linked sequence/annotations, structures, ligands, changes and associations through the existing Card readers. All retained topics remain discoverable, including uncertain or unsupported scope |
+| S4.2 | `partial` | The generic topic index and native readers now work in the Card application. Qualify the nature-specific protein presentations, source-linked sequence/annotations, structures, ligands, changes and associations. All retained topics remain discoverable, including uncertain or unsupported scope |
 | S4.3 | `todo` | Provide small-molecule identity/representations, scoped properties with units/methods, targets/activity and clinical context; qualify the chosen provider for 2D/available 3D. A generated conformer is explicit modeling, not measured geometry or source identity |
 | S4.4 | `todo` | Provide disease definition/hierarchy and retained target/drug/phenotype associations, with related Cards/Decks and exact return. Supported disease IDs are the initial bounded entry; name search needs an actual candidate-search contract before being offered |
 | S4.5 | `todo` | Complete two multi-entity public journeys: protein → ligand → activity → assay/publication → exact Deck return; and PDB record → source-declared related entity → mapped molecular reading. Qualify any graphs against the retained values/support, without adding scientific conclusions |
@@ -203,7 +207,7 @@ optional GUI/process resources independently owned.
 | S5.1 | `partial` | Card saved exploration and inert independent reading already exist; probe save/reopen passes. Integrate actual user-selected files and exact digest/scope verification, preserving original values, units, source support and historical readers |
 | S5.2 | `todo` | Persist versioned presentation layout separately from Knowledge and provider scene/model references. Restore or explain unavailable context without silently loading a current revision; validate unknown layout versions and reset behavior |
 | S5.3 | `partial` | The probe owns startup/shutdown and bounds experiments. Implement product process lifetime, backend failure/restart, pending-work handling and any supported cancellation without freezing the UI or affecting another session |
-| S5.4 | `todo` | Include the compiled frontend/resources in the optional product closure, qualify headless/GUI boundaries and verify a development launch outside the checkout. Keep Electron/Tauri comparison runtimes out of the shipped Qt closure |
+| S5.4 | `done` | Include the compiled frontend/resources in the optional product closure, qualify headless/GUI boundaries and verify a development launch outside the checkout. Keep Electron/Tauri comparison runtimes out of the shipped Qt closure |
 | S5.5 | `todo` | Measure one representative active/idle/repeated-open session, then agreed larger/varied public cases. Preflight shared resources, run sequential graphics trials and record actual CPU/RAM/graphics and cleanup; do not import an unrelated budget or claim thermal superiority |
 
 Use the existing shared-resource policy and infrastructure owners. This application
@@ -226,8 +230,9 @@ delivers. Start feedback when the first useful slice exists, not only at the end
 
 ## Execution order and immediate handoff
 
-1. Start **S1.1**: extract the generic Card session and test it against the
-   existing readers. Then complete S1.2–S1.5 for a working Qt Card application.
+1. S1.1–S1.5 now deliver the first working Qt Card application. See the
+   [development instructions](../../frontend/explorer/README.md) and exact
+   [receiving record](../evidence/interactive_card_app_checkpoint_20261113.json).
 2. Add S2's live molecular product slice. If a provider contract is blocked,
    record the exact affected row and continue independent S3/S4 work.
 3. Complete the Deck contract/UI and entity-entry journeys, retaining original
@@ -247,11 +252,35 @@ Commits follow the authorized `[skip ci]` batching and
 qualification. Preserve useful measurement evidence with its owner/review trigger
 and remove only owned disposable resources after final use.
 
-No product microstage is marked done by writing this plan. No new runtime
-dependency, public API, schema, supported platform, candidate or release is
-introduced by this checkpoint.
+The initial plan alone marked no product milestone done. The current S1/S5.4
+closures rely on implementation, 118 selected integration cases, a final
+43-case application/package/dependency gate, type/build checks, and eleven
+actual Qt checks each from the checkout and an installed unpublished wheel.
+Optional PySide6/aiohttp and packaged web assets are introduced. No Card schema,
+scientific reader, supported platform, candidate or public release is changed.
 
 Planning-checkpoint verification: root Ruff format/lint, local MOLI governance,
 diff checks and scoped local links pass. All 33 microstage IDs are unique; seven
-stages, allowed states and the S1.1 resumption cursor are consistent. These are
-documentation checks; no product/runtime test result is claimed by this update.
+stages, allowed states and the S1.1 resumption cursor are consistent. These remain documentation checks; the separate linked application receipt
+owns actual runtime receiving and its limits.
+
+## Latest implementation checkpoint — S1
+
+See the [source-bound receipt](../evidence/interactive_card_app_checkpoint_20261113.json).
+Generic session actions retain exact result/page/return identity; finite pages
+expose complete literal text. Raw Card files cross the browser boundary without
+JavaScript numeric reserialization, preserving quantity seals and large integers.
+Private loopback actions require the current revision and exact page item.
+Original saved reading and its digest verifier remain authoritative.
+
+Checkout and installed-wheel Qt journeys each pass eleven selected checks and
+leave no owned descendants. Summed RSS peaks are about 1.05–1.06 GiB in these
+software-profile cases; this is not unique physical memory, a molecular benchmark
+or native platform support. The first failed upload control is retained: JavaScript
+round-tripping changed sealed numeric types; forwarding the original body fixes
+the boundary without weakening verification. Earlier selector/PNG-write races
+were observer errors; no failing control is counted as passing.
+
+S2 stable embedding, S3 Deck contracts/UI, identifier acquisition, 2D/3D chemistry,
+workspace persistence/recovery and researcher/whole-version acceptance remain
+open. Source acquisition is still absent from ordinary application reading.
