@@ -1,5 +1,17 @@
 # Sabueso — Decision Log
 
+## Maintain the 0.16.0 implementation plan as a living checkpoint (2026-11-13)
+
+The maintainer requests a work plan that also records completed/partial work,
+current position, remaining stages/microstages and their objectives. The
+[living implementation plan](pending_proposals/interactive_implementation_0160.md)
+owns that granular status and the next concrete action; CHECKPOINT summarizes
+the repository state and links to it. Link actual artifacts/verification, retain
+specific unfinished work and distinguish reusable core/probe results from product
+implementation. Update the affected status and resumption cursor with each
+implementation checkpoint. This records execution tracking, not completion or
+acceptance of the product milestones.
+
 ## Select PySide6 and QWebEngine for the 0.16.0 explorer (2026-11-13)
 
 After the common live-workspace comparison and bounded graphics/scale controls,

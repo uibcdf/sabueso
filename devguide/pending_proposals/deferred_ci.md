@@ -9,6 +9,16 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Living 0.16.0 implementation plan (2026-11-13)
+
+From `d6962e8`, #154/#153/#148 gain a single stage/microstage plan and granular
+checkpoint, linked from the guide, roadmap and repository checkpoint. This is
+documentation only; application/scientific code, dependencies, schema, fixtures
+and provider checkouts stay unchanged. Applicable local format/lint, governance,
+diff and link checks cover the change. The authorized `[skip ci]` documentation
+checkpoint retains the existing #154/#112 exact-head recovery route; it is not
+hosted or product qualification and dispatches no workflow.
+
 ### Graphics and scale experiment follow-up (2026-11-13 UTC)
 
 From `13f86db`, #154 owns explicit private-host graphics profiles, a tiny

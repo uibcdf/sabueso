@@ -27,6 +27,9 @@ This advances a bounded part of stage 6. The maintainer now selects
 [PySide6 + QWebEngine](pending_proposals/standalone_gpu_scale_20261113.md), a
 portable web workspace and separate Python backend after the common live-host
 comparison. Next implement and qualify the first explorer slice.
+The [living implementation plan](pending_proposals/interactive_implementation_0160.md)
+owns the 0.16.0 stages, microstages, current progress and immediate resumption;
+it preserves the broader roadmap and separate 0.15.0 delivery state.
 
 ## How the two routes are integrated
 

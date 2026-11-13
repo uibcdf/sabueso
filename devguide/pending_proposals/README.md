@@ -8,6 +8,10 @@ reporting protocol. [CHECKPOINT](../CHECKPOINT.md) and the
 determine current qualification and execution order; this index is not a second
 development queue.
 
+- [Interactive 0.16.0 implementation plan and checkpoint](interactive_implementation_0160.md)
+  (#154/#153/#148): living stage/microstage statuses, objectives, completion checks,
+  reusable foundations, provider dependencies and the next concrete task. Resume
+  at S1.1; no product application milestone is claimed from the completed probe.
 - [Interactive Card/Deck exploration for 0.16.0](interactive_exploration_0160.md)
   (#154/#153, coordinated with #112/#148): accepted product objective, read-only
   MolSysViewer review and accepted PySide6/QWebEngine host with a portable web UI

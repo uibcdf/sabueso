@@ -7,6 +7,15 @@ This page owns current state; dated receipt histories are linked below.
 
 ## Next product objective: interactive exploration in 0.16.0
 
+The [living 0.16.0 implementation plan and checkpoint](pending_proposals/interactive_implementation_0160.md)
+owns granular stage/microstage progress, completion criteria, evidence and the
+next action. S0 architecture/feasibility is complete; the product application is
+not implemented. **Resume at S1.1:** extract a generic Card Knowledge session,
+then deliver the first supplied-Card/topic/item/source/Back/save/reopen journey
+in Qt. Molecular, Deck and entry work have existing reusable foundations but
+retain explicit product work. Update that plan and this summary together as
+implementation advances; preserve experiment versus product qualification.
+
 The maintainer selects **PySide6 + QWebEngine** for the 0.16.0 desktop host,
 with a portable web workspace, separate Python backend and provider-owned live
 MolSysViewer adapter. The [decision](DECISIONS.md#select-pyside6-and-qwebengine-for-the-0160-explorer-2026-11-13)

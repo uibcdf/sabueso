@@ -11,6 +11,10 @@ area: [human-exploration, deck, visualization, interoperability]
 
 ## Accepted objective and current decision
 
+The [living implementation plan and checkpoint](interactive_implementation_0160.md)
+now owns execution stages/microstages, progress, completion criteria and the next
+task. This document retains experience requirements and design history.
+
 On 2026-11-13 the maintainer selects **PySide6 + QWebEngine** for the 0.16.0
 desktop host, a portable web workspace and separate Python backend with live
 MolSysViewer embedding. The [decision receipt](standalone_gpu_scale_20261113.md)
@@ -517,6 +521,10 @@ distribution remain separate decisions. No new brand, public command or package
 name is selected by this naming recommendation.
 
 ## Execution after the platform discussion
+
+The following high-level sequence is expanded by the current
+[implementation plan and checkpoint](interactive_implementation_0160.md).
+Host comparison is complete; resume at its S1.1 rather than repeating selection.
 
 1. Agree first host, product entry, framework comparison and bounded public tasks;
    record the decision under #154 before full implementation.
