@@ -8,6 +8,7 @@ type Panel={workspace?:'deck';deck_context?:unknown;revision:string;title:string
   topics:{name:string;description:string;availability?:string}[];items:{ref:string;label:string;kind:string}[];
   offset:number;count:number;has_previous:boolean;has_next:boolean;can_back:boolean;can_save:boolean;can_related:boolean;
   full_text:null|{text:string;offset:number;count:number;has_previous:boolean;has_next:boolean};saved_file:string|null;outcome:{status:string;reason?:string}};
+type Resolution={revision:string;kind:string;query:string;status:string;entity_ref:string|null;has_card:boolean;choices:{ref:string;entity_ref:string}[];original_text:string};
 type Session={panel:Panel;busy:boolean;act:(name:string,extra?:Record<string,unknown>)=>Promise<void>};
 const Context=createContext<Session|null>(null);
 function useSession(){return useContext(Context)!;}
@@ -58,28 +59,50 @@ function Workspace({panel,busy,act}:{panel:Panel;busy:boolean;act:Session['act']
   return <Context.Provider value={{panel,busy,act}}><div className="workspace-tools"><span>Arrange your workspace</span><button onClick={floating}>Float reading</button><button onClick={reset}>Reset layout</button></div>
     <div className="dockview-theme-light dock"><DockviewReact components={components} onReady={ready}/></div></Context.Provider>;
 }
+function ResolutionReport({result,busy,choose}:{result:Resolution;busy:boolean;choose:(ref:string)=>Promise<void>}){
+  return <section className="resolution-report" aria-label="Source query result"><strong>{result.status.replaceAll('_',' ')}</strong> · {result.query}
+    {result.entity_ref&&<p>{result.entity_ref}</p>}
+    {!result.has_card&&<p>{result.kind==='pdb'&&result.status==='resolved'?'This is a PDB structure record. Choose a source-declared protein below to query its Card.':'This query did not produce a Card. Any reading below is the previous retained context.'}</p>}
+    {result.choices.map(item=><button disabled={busy} key={item.ref} onClick={()=>void choose(item.ref)}>Query {item.entity_ref}</button>)}
+    <details><summary>Original resolution, source decisions and acquisition trace</summary><pre>{result.original_text}</pre></details>
+  </section>;
+}
 function App(){
   const [panel,setPanel]=useState<Panel|null>(null),[ready,setReady]=useState(false),[busy,setBusy]=useState(false),[message,setMessage]=useState('Opening your workspace…'),[query,setQuery]=useState(''),[fileMode,setFileMode]=useState<'card'|'deck'>('card');
   const file=useRef<HTMLInputElement>(null);
+  const [resolution,setResolution]=useState<Resolution|null>(null),[entryKind,setEntryKind]=useState('uniprot'),[identifier,setIdentifier]=useState(''),[entryOpen,setEntryOpen]=useState(false),[canReturnQuery,setCanReturnQuery]=useState(false);
   useEffect(()=>{let active=true;async function start(){try{
     const token=new URLSearchParams(location.hash.slice(1)).get('token');history.replaceState(null,'',location.pathname);
     if(token)await api('/auth',{token});
-    const result=await api('/api/panel');if(active){setPanel(result.panel);setReady(true);setMessage('Ready to explore retained knowledge.');}
+    const result=await api('/api/panel');if(active){setPanel(result.panel);setResolution(result.resolution??null);setCanReturnQuery(result.can_return_query??false);setReady(true);setMessage('Ready to explore retained knowledge.');}
   }catch(error){if(active)setMessage(String(error));}}void start();return()=>{active=false;};},[]);
   async function act(name:string,extra:Record<string,unknown>={}){if(!panel||busy)return;setBusy(true);setMessage('Opening the requested reading…');
-    try{const result=await api('/api/action',{name,revision:panel.revision,...extra});setPanel(result.panel);setMessage(name==='save'?(panel.deck_context!==undefined?'Card reading saved. The surrounding Deck workspace is not saved in that file.':'Reading saved. Reopen it to inspect the original capture.'):'Ready.');}
-    catch(error){setMessage(String(error));try{setPanel((await api('/api/panel')).panel);}catch{setMessage('The reading service is unavailable. Reopen the application to continue.');}}
+    try{const result=await api('/api/action',{name,revision:panel.revision,...extra});setPanel(result.panel);setResolution(result.resolution??null);setCanReturnQuery(result.can_return_query??false);setMessage(name==='save'?(panel.deck_context!==undefined?'Card reading saved. The surrounding Deck workspace is not saved in that file.':'Reading saved. Reopen it to inspect the original capture.'):'Ready.');}
+    catch(error){setMessage(String(error));try{const current=await api('/api/panel');setPanel(current.panel);setResolution(current.resolution??null);setCanReturnQuery(current.can_return_query??false);}catch{setMessage('The reading service is unavailable. Reopen the application to continue.');}}
     finally{setBusy(false);}}
   async function openFile(selected:File){setBusy(true);try{
     if(selected.size>16*1024**2)throw new Error('This Card exceeds the 16 MiB opening limit.');
-    const response=await fetch(`/api/${fileMode}`,{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json','X-Sabueso-Revision':panel?.revision??''},body:selected});if(!response.ok){const error=await response.json();throw new Error(error.error??'Could not open the Card.');}const result=await response.json();setPanel(result.panel);setMessage(`${fileMode==='deck'?'Deck':'Card'} opened. Choose where to explore.`);
+    const response=await fetch(`/api/${fileMode}`,{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json','X-Sabueso-Revision':panel?.revision??'','X-Sabueso-Resolution':resolution?.revision??''},body:selected});if(!response.ok){const error=await response.json();throw new Error(error.error??'Could not open the Card.');}const result=await response.json();setPanel(result.panel);setResolution(result.resolution??null);setCanReturnQuery(result.can_return_query??false);setMessage(`${fileMode==='deck'?'Deck':'Card'} opened. Choose where to explore.`);
     }catch(error){setMessage(String(error));}finally{setBusy(false);if(file.current)file.current.value='';}}
+  async function acquire(choice_ref?:string){if(!ready||busy)return;setBusy(true);setMessage('Querying the requested public sources…');
+    try{const revisions={revision:panel?.revision??'',resolution_revision:resolution?.revision??''};
+      const result=await api(choice_ref?'/api/resolve-choice':'/api/resolve',choice_ref?{...revisions,choice_ref}:{...revisions,kind:entryKind,query:identifier});
+      setPanel(result.panel);setResolution(result.resolution);setCanReturnQuery(result.can_return_query??false);setEntryOpen(false);setMessage(result.resolution.has_card?'Card acquired. Further topic navigation reads this capture without refreshing sources.':'Source query finished. Inspect its outcome and original decision.');
+    }catch(error){setMessage(String(error));}finally{setBusy(false);}}
+  async function returnQuery(){if(busy)return;setBusy(true);try{const result=await api('/api/resolve-back',{revision:panel?.revision??'',resolution_revision:resolution?.revision??''});setPanel(result.panel);setResolution(result.resolution);setCanReturnQuery(result.can_return_query);setMessage('Returned to the exact retained query and reading. No source was queried.');}catch(error){setMessage(String(error));}finally{setBusy(false);}}
+  const entry=<form className="entry-form" aria-label="Query public sources" onSubmit={e=>{e.preventDefault();void acquire();}}>
+    <label htmlFor="entry-kind">Start from</label><select id="entry-kind" value={entryKind} disabled={busy} onChange={e=>setEntryKind(e.target.value)}><option value="uniprot">UniProt accession</option><option value="pdb">PDB entry</option><option value="smiles">SMILES</option><option value="disease">Disease identifier</option></select>
+    <label htmlFor="entry-query">{entryKind==='smiles'?'Public molecular structure (SMILES)':'Identifier'}</label><input id="entry-query" maxLength={8192} value={identifier} disabled={busy} onChange={e=>setIdentifier(e.target.value)} placeholder={{uniprot:'P52270',pdb:'1TCD',smiles:'CCO',disease:'MONDO:0014221'}[entryKind]}/>
+    <button className="primary" disabled={!ready||busy||!identifier.trim()}>Query public sources</button>
+    <p className="quiet">{entryKind==='smiles'?'The entered SMILES is sent to PubChem for source-stated identity. UniChem expansion is disabled for this initial query.':entryKind==='disease'?'The disease identifier is sent to MONDO. Disease-name search is not offered yet.':entryKind==='pdb'?'The entry identifier is sent to RCSB PDB. Related proteins are offered for a separate query.':'The accession is sent to UniProt.'} Identity profile only; enrichment is not requested automatically.</p>
+  </form>;
   return <><header><div className="brand"><span className="brand-mark">S</span><div><h1>Sabueso</h1><p>Molecular knowledge explorer</p></div></div>
-    <button disabled={!ready||busy} onClick={()=>{setFileMode('card');file.current?.click();}}>Open Card…</button><button disabled={!ready||busy} onClick={()=>{setFileMode('deck');file.current?.click();}}>Open Deck…</button><input ref={file} type="file" accept={fileMode==='deck'?'.jsonl':'.json,application/json'} hidden onChange={e=>{const f=e.target.files?.[0];if(f)void openFile(f);}}/></header>
+    {canReturnQuery&&<button disabled={busy} onClick={()=>void returnQuery()}>Return to previous query</button>}<button disabled={!ready||busy} onClick={()=>setEntryOpen(!entryOpen)}>New source query</button><button disabled={!ready||busy} onClick={()=>{setFileMode('card');file.current?.click();}}>Open Card…</button><button disabled={!ready||busy} onClick={()=>{setFileMode('deck');file.current?.click();}}>Open Deck…</button><input ref={file} type="file" accept={fileMode==='deck'?'.jsonl':'.json,application/json'} hidden onChange={e=>{const f=e.target.files?.[0];if(f)void openFile(f);}}/></header>
     <div role="status" className={message.startsWith('Error')?'status error':'status'} aria-live="polite">{message}</div>
+    {entryOpen&&panel&&<section className="query-drawer">{entry}</section>}{resolution&&<ResolutionReport result={resolution} busy={busy} choose={ref=>acquire(ref)}/>}
     {!panel?<main className="welcome"><div className="eyebrow">Start an exploration</div><h2>What would you like to learn?</h2>
-      <p>Open a saved Card to explore its knowledge, inspect original sources and follow your own questions.</p>
-      <button className="primary" disabled={!ready||busy} onClick={()=>{setFileMode('card');file.current?.click();}}>Open a Card JSON file</button><p className="quiet">Local reading · No source refresh · No account required</p></main>:
+      <p>Choose an identifier to query public sources, or open a local Card or Deck to explore retained knowledge.</p>{entry}
+      <button className="primary" disabled={!ready||busy} onClick={()=>{setFileMode('card');file.current?.click();}}>Open a Card JSON file</button><p className="quiet">Opening files and browsing topics makes no source queries. No account required.</p></main>:
     <main className="application"><aside><div className="eyebrow">{panel.profile.replaceAll('_',' ')} knowledge</div><h2>{panel.workspace==='deck'?'Choose a member':'Choose a topic'}</h2>
       <form onSubmit={e=>{e.preventDefault();void act('search',{text:query});}}><label htmlFor="search">{panel.workspace==='deck'?'Filter member identifiers or natures':'Search retained content'}</label><div className="search"><input id="search" maxLength={512} value={query} onChange={e=>setQuery(e.target.value)} placeholder="A name, annotation, or term"/><button disabled={busy||!query.trim()}>Search</button></div></form>
       <nav className="topics" aria-label="Card topics">{panel.workspace==='deck'&&<><button onClick={()=>void act('metadata')} disabled={busy}>Original membership and metadata</button><button onClick={()=>void act('sort',{column:'label',descending:false})} disabled={busy}>Order by identifier</button><button onClick={()=>void act('sort',{column:'kind',descending:false})} disabled={busy}>Order by nature</button><button onClick={()=>void act('sort',{column:'label',descending:true})} disabled={busy}>Reverse identifier order</button></>}{panel.topics.map(topic=><button key={topic.name} disabled={busy} onClick={()=>void act('topic',{topic:topic.name})} data-topic={topic.name}>

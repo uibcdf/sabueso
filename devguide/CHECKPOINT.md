@@ -18,15 +18,18 @@ numeric types and quantity seals. The subsequent [Deck receipt](evidence/interac
 adds native captured Deck exploration and the Qt Deck workspace: 76 selected
 passes and eleven real Qt checks each from checkout and installed wheel. Exact
 Deck return retains filters/order and repeated occurrences; #197 corrects unknown
-envelope admission. No molecular UI, identifier acquisition, public release or
-native-platform qualification is claimed at this checkpoint. Resume at S4.1 and
-S2.1; the two interrupted full-suite attempts are not passing qualification.
+envelope admission. The [entry receipt](evidence/interactive_entry_checkpoint_20261113.json) adds
+explicit UniProt/PDB/SMILES/disease-ID entry, source-decision inspection and exact
+query return: 73 selected passes and twelve real Qt checks with public fixtures
+and network forbidden. No molecular UI, public release or native-platform
+qualification is claimed. Resume at S2.1, S3.4 and remaining S4/S5 journeys; the
+two interrupted full-suite attempts are not passing qualification.
 
 The [living 0.16.0 implementation plan and checkpoint](pending_proposals/interactive_implementation_0160.md)
 owns granular stage/microstage progress, completion criteria, evidence and the
 next action. S0 architecture/feasibility and the first S1 Card application are
-complete within their explicit scopes. Molecular and identifier-entry work, cross-member Deck context and independent
-Deck workspace saving retain explicit product work. Update that plan and this summary together as
+complete within their explicit scopes. Molecular integration, richer entity-specific journeys, cross-member Deck context
+and independent Deck workspace saving retain explicit product work. Update that plan and this summary together as
 implementation advances; preserve experiment versus product qualification.
 
 The maintainer selects **PySide6 + QWebEngine** for the 0.16.0 desktop host,

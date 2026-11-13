@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import secrets
+from copy import copy
 from pathlib import Path
 
 from sabueso.core.errors import ArgumentError
@@ -76,6 +77,12 @@ class _Session:
             "saved_file": self.saved[0].name if self.saved else None,
             "outcome": view.outcome,
         }
+
+    def fork(self):
+        """Retain an exact return point while sharing the immutable Card capture."""
+        result = copy(self)
+        result.history = list(self.history)
+        return result
 
     def dispatch(self, request):
         """Admit only finite, exact-current-context application actions."""

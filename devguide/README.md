@@ -50,8 +50,9 @@ The first optional Qt Card application now delivers local topic/search/source/
 Back/save/reopen navigation and movable reading panels. The native Deck contract
 and Qt Deck workspace add repeated occurrences, complete metadata and exact return. Its
 [implementation checkpoint](pending_proposals/interactive_implementation_0160.md)
-records actual checkout/installed-wheel receiving and the remaining molecular,
-cross-member Deck context, identifier-entry and acceptance work. This is development implementation,
+records actual checkout/installed-wheel receiving. Explicit four-kind source
+entry and exact query return now pass with public frozen clients. Molecular,
+cross-member Deck context, richer entity-specific and acceptance work remain. This is development implementation,
 not a public GUI installation or platform-support claim.
 
 The [current overview orientation](pending_proposals/card_orientation.md) exposes

@@ -32,8 +32,13 @@ in complete 4,096-character pages; the Python-reader navigation footer is hidden
 only in the UI preview. Original reader text and saved meanings are unchanged.
 The Deck workspace preserves repeated occurrences, original metadata, literal
 filters/order and exact Card/source/Deck return. Saving a Card reading does not
-save the surrounding Deck workspace. No molecular panel or identifier acquisition
-is delivered at this checkpoint.
+save the surrounding Deck workspace. The entry screen also provides explicit UniProt/PDB/SMILES/disease-ID queries.
+They reuse `identity@1`; the initial SMILES route disables UniChem expansion.
+PDB remains a structure record whose source-declared proteins require a separate
+user query. Original decisions and acquisition traces stay inspectable. Return
+to previous query restores the exact reading without fetching again. Query
+history is in memory, with 32 retained return points; it is not a saved workspace.
+No molecular panel or disease-name search is delivered at this checkpoint.
 
 Card upload sends the selected file body directly. Never parse and reserialize
 sealed Card JSON in JavaScript: it changes integer/float distinctions and large
@@ -53,3 +58,9 @@ Run it through the owned CPU/RAM/GPU observers as in the development probe.
 Its explicit software request is not native GPU, molecular-rendering or platform
 qualification. The private debug/capture switches are development receiving aids,
 not normal product flows.
+
+`devtools/resolution_explorer_journey.mjs` receives the actual four-entry UI
+against declared frozen public clients through `explorer_fixture_service.py`,
+which forbids network access. This is a development receiver, not a product
+offline-mode or source-selection contract. Its source-call audit proves topic
+and return actions do not acquire sources.

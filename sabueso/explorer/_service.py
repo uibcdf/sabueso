@@ -11,6 +11,7 @@ import secrets
 import signal
 import tempfile
 from concurrent.futures import ThreadPoolExecutor
+from copy import copy
 from pathlib import Path
 from urllib.parse import urlsplit
 
@@ -19,6 +20,7 @@ from depdigest import dep_digest
 from sabueso.core.card import Card
 from sabueso.core.errors import ArgumentError, SabuesoError
 from sabueso.explorer._deck_session import _DeckSession
+from sabueso.explorer._resolution import _resolve
 from sabueso.explorer._session import _Session
 
 ASSETS = Path(__file__).parent / "_assets"
@@ -33,13 +35,93 @@ def _web():
 
 
 class _Service:
-    def __init__(self, output_directory, session=None):
+    def __init__(self, output_directory, session=None, resolver=None):
         self.web = _web()
         self.session = session
         self.output_directory = output_directory
         self.origin = None
         self.token = secrets.token_urlsafe(32)
         self.lock = asyncio.Lock()
+        self.resolution = None
+        self.resolver = resolver
+        self.resolution_history = []
+
+    def response(self, panel):
+        return {
+            "panel": panel,
+            "resolution": self.resolution.panel() if self.resolution else None,
+            "can_return_query": bool(self.resolution_history),
+        }
+
+    def resolve(self, body, *, choice=False):
+        fields = {
+            "revision",
+            "resolution_revision",
+            *(("choice_ref",) if choice else ("kind", "query")),
+        }
+        if not isinstance(body, dict) or set(body) != fields:
+            raise ArgumentError("The source query has missing or unexpected arguments.")
+        revision = self.session.revision if self.session else ""
+        previous = self.resolution.revision if self.resolution else ""
+        if body["revision"] != revision or body["resolution_revision"] != previous:
+            raise ArgumentError(
+                "The workspace changed; reload before querying a source."
+            )
+        if len(self.resolution_history) >= 32:
+            raise ArgumentError(
+                "Query history is full; return before querying another source."
+            )
+        if choice:
+            ref = body["choice_ref"]
+            if (
+                not isinstance(ref, str)
+                or not self.resolution
+                or ref not in self.resolution.choices
+            ):
+                raise ArgumentError("Choose a source-declared entity from this result.")
+            item = self.resolution.choices[ref]
+            kind, query = item["kind"], item["query"]
+        else:
+            kind, query = body["kind"], body["query"]
+        result = _resolve(kind, query, self.resolver)
+        # Prepare before committing either context: an invalid answer must not
+        # replace a valid captured reading or its original resolution.
+        session = (
+            _Session.from_card(result.card, self.output_directory)
+            if result.card is not None
+            else None
+        )
+        result.panel()
+        if session is not None:
+            session.panel()
+        if self.session is not None or self.resolution is not None:
+            self.resolution_history.append(
+                (self.session.fork() if self.session else None, self.resolution)
+            )
+        if session is not None:
+            self.session = session
+        self.resolution = result
+        return self.response(self.panel())
+
+    def return_query(self, body):
+        if not isinstance(body, dict) or set(body) != {
+            "revision",
+            "resolution_revision",
+        }:
+            raise ArgumentError("Invalid query return request.")
+        revision = self.session.revision if self.session else ""
+        previous = self.resolution.revision if self.resolution else ""
+        if body["revision"] != revision or body["resolution_revision"] != previous:
+            raise ArgumentError("The workspace changed; reload before returning.")
+        if not self.resolution_history:
+            raise ArgumentError("There is no previous query context.")
+        self.session, original = self.resolution_history.pop()
+        self.resolution = copy(original) if original else None
+        if self.session:
+            self.session.revision = secrets.token_hex(16)
+        if self.resolution:
+            self.resolution.revision = secrets.token_hex(16)
+        return self.response(self.panel())
 
     def panel(self):
         return self.session.panel() if self.session else None
@@ -54,6 +136,8 @@ class _Service:
         session = _Session.from_card(Card.from_dict(data), self.output_directory)
         panel = session.panel()
         self.session = session
+        self.resolution = None
+        self.resolution_history = []
         return panel
 
     def load_deck(self, raw):
@@ -65,6 +149,8 @@ class _Service:
             session = _DeckSession(Deck.from_jsonl(str(path)), self.output_directory)
         panel = session.panel()
         self.session = session
+        self.resolution = None
+        self.resolution_history = []
         return panel
 
     def application(self):
@@ -120,7 +206,7 @@ class _Service:
         async def panel(request):
             async with self.lock:
                 result = await asyncio.to_thread(self.panel)
-            return web.json_response({"panel": result})
+            return web.json_response(self.response(result))
 
         async def action(request):
             body = await request.json()
@@ -128,29 +214,48 @@ class _Service:
                 if self.session is None:
                     raise ArgumentError("Open a Card before exploring it.")
                 result = await asyncio.to_thread(self.session.dispatch, body)
-            return web.json_response({"panel": result})
+            return web.json_response(self.response(result))
 
         async def load(request):
             body = await request.json()
             async with self.lock:
                 revision = self.session.revision if self.session else ""
-                if request.headers.get("X-Sabueso-Revision") != revision:
+                resolution = self.resolution.revision if self.resolution else ""
+                if (
+                    request.headers.get("X-Sabueso-Revision") != revision
+                    or request.headers.get("X-Sabueso-Resolution", "") != resolution
+                ):
                     raise ArgumentError(
                         "The reading changed; reload before opening a Card."
                     )
                 result = await asyncio.to_thread(self.load_card, body)
-            return web.json_response({"panel": result})
+            return web.json_response(self.response(result))
 
         async def load_deck(request):
             raw = await request.read()
             async with self.lock:
                 revision = self.session.revision if self.session else ""
-                if request.headers.get("X-Sabueso-Revision") != revision:
+                resolution = self.resolution.revision if self.resolution else ""
+                if (
+                    request.headers.get("X-Sabueso-Revision") != revision
+                    or request.headers.get("X-Sabueso-Resolution", "") != resolution
+                ):
                     raise ArgumentError(
                         "The reading changed; reload before opening a Deck."
                     )
                 result = await asyncio.to_thread(self.load_deck, raw)
-            return web.json_response({"panel": result})
+            return web.json_response(self.response(result))
+
+        async def resolve(request):
+            body = await request.json()
+            async with self.lock:
+                if request.path.endswith("-back"):
+                    result = await asyncio.to_thread(self.return_query, body)
+                else:
+                    result = await asyncio.to_thread(
+                        self.resolve, body, choice=request.path.endswith("-choice")
+                    )
+            return web.json_response(result)
 
         app.add_routes(
             [
@@ -161,17 +266,20 @@ class _Service:
                 web.post("/api/action", action),
                 web.post("/api/card", load),
                 web.post("/api/deck", load_deck),
+                web.post("/api/resolve", resolve),
+                web.post("/api/resolve-choice", resolve),
+                web.post("/api/resolve-back", resolve),
             ]
         )
         return app
 
 
-async def _run(args):
+async def _run(args, resolver=None):
     stop = asyncio.Event()
     executor = ThreadPoolExecutor(max_workers=1, thread_name_prefix="sabueso-reading")
     loop = asyncio.get_running_loop()
     loop.set_default_executor(executor)
-    service = _Service(args.output_directory)
+    service = _Service(args.output_directory, resolver=resolver)
     runner = None
     try:
         if args.card:

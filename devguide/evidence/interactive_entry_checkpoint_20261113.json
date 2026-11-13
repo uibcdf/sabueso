@@ -1,0 +1,131 @@
+{
+  "format": "sabueso.interactive_entry_checkpoint@1",
+  "owner": "uibcdf/sabueso#154",
+  "scope": "Bounded explicit source-entry development slice; not whole S4 completion or release qualification",
+  "source_sha256": {
+    "sabueso/explorer/_resolution.py": "1e858eda670fc0bad1d3e810a7032055c728a33bce3b6c21c9af3bf924dce770",
+    "sabueso/explorer/_service.py": "4e05a38716e834520ab935af82ef60e103604db37b67b9c64994f75e42ad0645",
+    "sabueso/explorer/_session.py": "0e16a22cd22459400b807e2e6829b87beb51fe79bc379cf3bed409cbb58a47be",
+    "sabueso/explorer/_deck_session.py": "3b946be0c652ec790a8dd64f84fe38ae6e7f9cd4b7cf2ac319d06630a8e329b8",
+    "frontend/explorer/src/app.tsx": "34e7676553bf243b71edc3830e2d8d0fb7a38786f315d1d415787a6019d81af7",
+    "frontend/explorer/src/style.css": "b13f77da418c791b90f50a8afc54c54fcca365c18b05736ab3cd4d7d1727c1a6",
+    "sabueso/explorer/_assets/app.js": "991ac381575c628b15b87d34862d6b8441a57ac64d5cd4e91ff5aafb56248f3e",
+    "sabueso/explorer/_assets/app.css": "ada26a1f553a758503a7c32ba611124d5ef52a5cf97005ceda74eb3ed1227630",
+    "tests/explorer/test_resolution_offline.py": "09d466cda70d26a908de67bf791c6ebc8492b781d17767afe8374ccef5452b46",
+    "devtools/explorer_fixture_service.py": "97050c3b2240ce67e07af5c4038096f69b7bfa9b83c380485facd7a1a847bd4b",
+    "devtools/resolution_explorer_journey.mjs": "18c211faae280b95309f6b86c28c6d684c15bf9d37139e0e515b5c0c85a1845c"
+  },
+  "selected_gate": {
+    "log": "PASS exit=0 | 73 passed | 14.87s",
+    "resources": {
+      "owner": "uibcdf/sabueso#154",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0",
+        "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-implementation-20261113-1/resolution-environment/bin/python",
+        "-m",
+        "pytest",
+        "tests/explorer",
+        "tests/core/test_resolve_offline.py",
+        "tests/core/test_package_data_offline.py",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "-q"
+      ],
+      "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-implementation-20261113-1/resolution-worktree",
+      "returncode": 0,
+      "elapsed_s": 16.456,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 150708224,
+      "minimum_host_available_bytes": 49359257600,
+      "survivors_after_command": [],
+      "limits": {
+        "owned_rss_bytes": 4294967296,
+        "host_available_bytes": 17179869184,
+        "cpu_affinity": [
+          0
+        ],
+        "native_threads": 1
+      },
+      "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+    }
+  },
+  "native_qt": {
+    "checks": {
+      "white_entry_and_four_input_kinds": true,
+      "pdb_is_a_record_without_an_invented_card": true,
+      "explicit_source_related_protein": true,
+      "original_source_and_exact_back": true,
+      "exact_pdb_return_without_acquisition": true,
+      "disease_card_and_topics": true,
+      "source_stated_smiles_identity": true,
+      "not_found_preserves_previous_reading": true,
+      "source_failure_is_distinct_and_preserves_reading": true,
+      "actual_native_capture": true,
+      "only_explicit_source_queries": true,
+      "no_script_errors": true
+    },
+    "source_queries": [
+      {
+        "query": "pdb:1TCD",
+        "options": {
+          "profile": "identity@1"
+        },
+        "status": "resolved"
+      },
+      {
+        "query": "uniprot:P52270",
+        "options": {
+          "profile": "identity@1"
+        },
+        "status": "resolved"
+      },
+      {
+        "query": "MONDO:0014221",
+        "options": {
+          "profile": "identity@1",
+          "entity_type": "disease"
+        },
+        "status": "resolved"
+      },
+      {
+        "query": "smiles:CC[C@@]1(C[C@@H]2C[C@@](C3=C(CCN(C2)C1)C4=CC=CC=C4N3)(C5=C(C=C6C(=C5)[C@]78CCN9[C@H]7[C@@](C=CC9)([C@H]([C@@]([C@@H]8N6C=O)(C(=O)OC)O)OC(=O)C)CC)OC)C(=O)OC)O",
+        "options": {
+          "profile": "identity@1",
+          "unichem": false
+        },
+        "status": "resolved"
+      },
+      {
+        "query": "smiles:C1CC1[Xe]C1CC1CC(=O)OCCCCCCCCCCN",
+        "options": {
+          "profile": "identity@1",
+          "unichem": false
+        },
+        "status": "not_found"
+      },
+      {
+        "query": "uniprot:P00000",
+        "options": {
+          "profile": "identity@1"
+        },
+        "status": "error"
+      }
+    ],
+    "elapsed_s": 24.657,
+    "peak_summed_rss_bytes": 1024671744,
+    "survivors": []
+  },
+  "limits": [
+    "Public frozen source clients with network forbidden; no fresh online service qualification",
+    "Linux/Xvfb software composition; no native GPU or OS matrix claim",
+    "Identity profile only; no disease-name search, automatic source expansion, molecular model or 2D depiction",
+    "Query history remains in memory; only original Card readings have independent saving",
+    "The optional-argument observer fix followed the final Qt receipt; application bytes remain identical"
+  ]
+}

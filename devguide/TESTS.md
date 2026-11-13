@@ -1146,6 +1146,14 @@ legacy envelope admission. Receive `devtools/deck_explorer_journey.mjs` in the
 actual Qt host and installed artifact. No independent Deck saved-reading format
 or automatic cross-member context is admitted by these checks.
 
+The source-entry controller adds `test_resolution_offline.py` and selects native
+`test_resolve_offline.py` and package-data receiving alongside the application.
+Use real public fixture clients with network forbidden. Distinguish all outcomes,
+explicit PDB related-entity choice, no source work during browsing, original
+resolution/trace, exact query return and stale Card/resolution admission. Receive
+`devtools/resolution_explorer_journey.mjs` through the actual Qt host. Its fixture
+service is receiving infrastructure and never a public offline-source contract.
+
 Use the Ruff version pinned in `pyproject.toml` and CI. Run its format gate at
 the repository root: it includes Python examples in Markdown, so a Python-only
 path selection does not replace `ruff format --check .`.

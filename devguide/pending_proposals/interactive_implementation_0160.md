@@ -16,9 +16,9 @@ planning parent `fb0d09659f8d00685f829d6781e5d256751dac66`;
 [application code hashes and receiving](../evidence/interactive_card_app_checkpoint_20261113.json).
 
 **Current position:** S0 and S1, S3.1–S3.3 and S5.4 are delivered at their bounded development scopes. Native `Deck.explore()`/`access()` and the Qt Deck workspace preserve original occurrences, metadata and exact return. See the [Deck receipt](../evidence/interactive_deck_checkpoint_20261113.json).
-Next: **S4.1** explicit identifier entry, alongside **S2.1**'s provider-owned molecular adapter. S3.4 retains cross-member/historical workspace receiving.
+**S4.1** now provides explicit four-kind entry and exact query return at a first bounded scope; its [receipt](../evidence/interactive_entry_checkpoint_20261113.json) records 73 selected passes and twelve real Qt checks. Next: **S2.1** provider-owned molecular adapter, **S3.4** cross-member/original workspace receiving and the remaining nature-specific S4 journeys.
 
-**Delivered observable result:** Card and Deck/topic/item/source/Back journeys work in Qt, including separately installed unpublished artifacts. The two interrupted full offline attempts are preserved and are not passing qualification. **Next observable result:** explicit UniProt/PDB/SMILES/disease entry, then a supported mapped molecular reading without inferred identity.
+**Delivered observable result:** Card and Deck/topic/item/source/Back journeys work in Qt, including separately installed unpublished artifacts. The two interrupted full offline attempts are preserved and are not passing qualification. Explicit UniProt/PDB/SMILES/disease entry also works. **Next observable result:** a supported mapped molecular reading without inferred identity.
 
 The maintainer requests this document as both the implementation plan and its
 granular checkpoint. It owns stage/microstage status for 0.16.0.
@@ -179,11 +179,11 @@ records the distinct input meanings and gaps.
 
 | ID | State | Delivered work, remainder and completion check |
 | --- | --- | --- |
-| S4.1 | `partial` | Core UniProt, PDB, prefixed SMILES and disease-ID resolution exists with distinct outcomes. Connect it to bounded explicit acquisition, progress and selected candidates. Test found/ambiguous/not-found/partial/failed results; browsing retained topics performs no background acquisition |
+| S4.1 | `partial` | The Qt entry reuses native resolution with `identity@1`, explicit source submission, pending/result states, original decisions/trace and separate source-declared PDB protein queries. Found, ambiguous, not-found, unsupported and source-error controls pass; exact query return is source-free. Remaining work: richer progress/cancellation and general candidate-selection/partial-enrichment presentation |
 | S4.2 | `partial` | The generic topic index and native readers now work in the Card application. Qualify the nature-specific protein presentations, source-linked sequence/annotations, structures, ligands, changes and associations. All retained topics remain discoverable, including uncertain or unsupported scope |
-| S4.3 | `todo` | Provide small-molecule identity/representations, scoped properties with units/methods, targets/activity and clinical context; qualify the chosen provider for 2D/available 3D. A generated conformer is explicit modeling, not measured geometry or source identity |
-| S4.4 | `todo` | Provide disease definition/hierarchy and retained target/drug/phenotype associations, with related Cards/Decks and exact return. Supported disease IDs are the initial bounded entry; name search needs an actual candidate-search contract before being offered |
-| S4.5 | `todo` | Complete two multi-entity public journeys: protein → ligand → activity → assay/publication → exact Deck return; and PDB record → source-declared related entity → mapped molecular reading. Qualify any graphs against the retained values/support, without adding scientific conclusions |
+| S4.3 | `partial` | Actual SMILES → PubChem-stated molecule Card and native pertinent-topic index pass in Qt. Retained chemistry/property/activity/clinical readers remain authoritative. Useful source-linked multi-entity presentation and qualified 2D/available 3D remain open; no conformer or measured geometry is invented |
+| S4.4 | `partial` | Supported disease-ID → MONDO Card and pertinent-topic presentation pass in actual Qt. Definition/hierarchy and retained association routes reuse the native readers; complete related Cards/Decks and their original return need receiving. Name search is not offered without a candidate-search contract |
+| S4.5 | `partial` | PDB record → source-declared protein → source → exact original query return passes in Qt. Complete the mapped molecular part and two multi-entity public journeys: protein → ligand → activity → assay/publication → exact Deck return; and PDB record → source-declared related entity → mapped molecular reading. Qualify any graphs against the retained values/support, without adding scientific conclusions |
 
 A PDB result is currently a structure record with related proteins, not a new
 StructureCard; #20 retains that redesign if needed. An ambiguity list is not
@@ -285,3 +285,9 @@ The [source-bound Deck receipt](../evidence/interactive_deck_checkpoint_20261113
 The actual #197 correction rejects unsupported Deck envelope versions before reading members, retaining format 1 and documented legacy routes. It changes no Card schema. The new receiving has positive/negative/legacy controls. A 30-minute full offline attempt reached its time ceiling; the next attempt was interrupted by the server restart after 3,724 positive call records. Neither has a completed verdict. Full final-source/hosted qualification remains due under #154/#112. A native observer's missing optional argument failed before application startup; the corrected observer and installed receiving pass.
 
 S3.4's independent Deck saved workspace, cross-member context, S2 molecular product integration and the remaining S4–S6 scope stay open. Native original Deck persistence and saved individual Card readings remain available with their separate meanings.
+
+## Latest implementation checkpoint — S4 explicit entry and return
+
+The [entry receipt](../evidence/interactive_entry_checkpoint_20261113.json) binds the application bytes, 73 selected application/routing/package cases and twelve actual Qt checks. All six recorded source queries are explicit user actions against public frozen clients; browsing/source/Back/query-return adds none. UI updates and scientific resolution run in separate processes, with one serialized worker. The original resolution and acquisition trace remain inspectable; `ambiguous`, `unsupported`, `not_found` and `error` are not collapsed.
+
+Queries have finite input limits and exact Card/resolution revisions. Earlier reading survives a query that produces no Card. A successful explicit query retains an independent navigation return point; original PDB context is restored without acquiring proteins again. Initial SMILES identity uses PubChem's assertion and an explicit `unichem=False` override, recorded by native profile semantics. Disease-name lookup, generic ambiguity selection, new enrichments, molecule depiction, complete scientific cross-member journeys and durable whole-workspace recovery remain open.

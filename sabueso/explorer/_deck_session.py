@@ -2,6 +2,7 @@
 
 import json
 import secrets
+from copy import copy
 
 from sabueso.core.errors import ArgumentError
 
@@ -20,6 +21,15 @@ class _DeckSession:
         self.cursor = None
         self.previous = []
         self.history = []
+
+    def fork(self):
+        result = copy(self)
+        result.previous = list(self.previous)
+        result.history = [
+            (view, cursor, list(previous)) for view, cursor, previous in self.history
+        ]
+        result.card_session = self.card_session.fork() if self.card_session else None
+        return result
 
     def panel(self):
         if self.card_session is not None:
