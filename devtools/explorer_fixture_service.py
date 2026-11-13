@@ -15,18 +15,17 @@ def main():
     parser.add_argument("--output-directory", type=Path, required=True)
     parser.add_argument("--fixture-directory", type=Path, required=True)
     args = parser.parse_args()
-    import requests
-
     import sabueso
     from sabueso.explorer._service import _run
     from sabueso.resolver import EntityResolver, FixtureRCSBClient, FixtureUniProtClient
+    from sabueso.tools.db import _http
     from sabueso.tools.db.mondo import FixtureMONDOClient
     from sabueso.tools.db.pubchem import FixturePubChemClient
 
     def refuse(*unused, **also_unused):
-        raise RuntimeError("The fixture receiving service forbids network access")
+        raise AssertionError("The fixture receiving service forbids network access")
 
-    requests.sessions.Session.request = refuse
+    _http._urlopen = refuse
     native = EntityResolver(
         FixtureUniProtClient(args.fixture_directory, failing={"P00000"}),
         rcsb_client=FixtureRCSBClient(args.fixture_directory),

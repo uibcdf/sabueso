@@ -9,7 +9,9 @@ from depdigest import dep_digest
 
 
 @dep_digest("PySide6")
-def _window(url, debug_port=None, capture_directory=None, backend=None):
+def _window(
+    url, debug_port=None, capture_directory=None, backend=None, *, molecular_origin=None
+):
     if urlsplit(url).hostname != "127.0.0.1":
         raise ValueError("The window requires its owned loopback service")
     if debug_port is not None:
@@ -26,19 +28,36 @@ def _window(url, debug_port=None, capture_directory=None, backend=None):
     from PySide6.QtWidgets import QApplication
 
     origin = urlsplit(url).netloc
+    allowed = {origin}
+    if molecular_origin:
+        model = urlsplit(molecular_origin)
+        if (
+            model.scheme != "http"
+            or model.hostname != "127.0.0.1"
+            or not model.port
+            or model.username
+            or model.password
+            or model.path
+            or model.query
+            or model.fragment
+        ):
+            raise ValueError("The molecular window requires its owned loopback origin")
+        allowed.add(model.netloc)
 
     class LocalOnly(QWebEngineUrlRequestInterceptor):
         def interceptRequest(self, info):
             address = info.requestUrl()
-            if address.scheme() not in {"http", "data", "about", "blob"} or (
-                address.scheme() == "http" and address.authority() != origin
+            if address.scheme() not in {"http", "ws", "data", "about", "blob"} or (
+                address.scheme() in {"http", "ws"}
+                and address.authority() not in allowed
             ):
                 info.block(True)
 
     class Page(QWebEnginePage):
         def acceptNavigationRequest(self, address, kind, main_frame):
             return address.scheme() == "about" or (
-                address.scheme() == "http" and address.authority() == origin
+                address.scheme() == "http"
+                and address.authority() in ({origin} if main_frame else allowed)
             )
 
     app = QApplication([sys.argv[0]])

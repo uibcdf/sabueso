@@ -9,6 +9,8 @@ imported when Sabueso is imported.
 from sabueso.core.errors import LibraryNotFoundError
 
 LIBRARIES = {
+    # Opt-in development embedding only; #368 owns the supported provider contract.
+    "molsysviewer": {"type": "soft", "pypi": "molsysviewer", "conda": "molsysviewer"},
     "aiohttp": {"type": "soft", "pypi": "aiohttp", "conda": "aiohttp"},
     "PySide6": {"type": "soft", "pypi": "PySide6", "conda": "pyside6"},
     # Explicit supplied ModelCIF metadata only; never needed for Card reading.

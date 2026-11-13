@@ -34,9 +34,14 @@ and atom/residue correspondence, unknown mappings and separate saved Knowledge
 and visual state. MolSysViewer has public selection/annotation building blocks;
 its private Studio internals do not constitute a general supported UI toolkit.
 Sabueso owns the bounded adapter; provider and shared-contract needs retain their
-owners. Resolve host/API and repeated-open/close behavior through the architecture
-discussion/prototype before claiming integration. This is a recorded design need,
-not a newly reproduced provider defect.
+owners. The first product adapter now receives an explicitly experimental live panel
+with unknown Card correspondence; three float/reset cycles preserve its camera
+and viewport. Initial file hashes do not identify a subsequently replaced model.
+Supported embedding (#368), mapped selection, final panel close/reopen and
+background/pending-operation recovery remain unqualified. The iframe delegates
+XR permission only to its owned provider origin; the denied-XR control reproduced
+an unhandled rejection, already tracked in the host review. This consumer
+workaround does not receive a provider Mol* upgrade or graceful-denial fix.
 
 B6 human state wording (#148): the genuine public HsTIM isoform view currently
 prints raw basis tokens such as `no_own_coding_bases` and

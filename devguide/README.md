@@ -42,7 +42,7 @@ The maintainer now accepts [interactive Card and Deck exploration](pending_propo
 as the 0.16.0 product objective, advancing a bounded part of long-term stage 6.
 After the MolSysViewer review and actual host comparison, the maintainer selects
 PySide6 + QWebEngine, a portable web workspace and a separate Python backend.
-Implement the first real explorer slice while qualifying provider embedding,
+Continue the real explorer implementation while qualifying provider embedding,
 native delivery and exact dependencies. The complete release contract remains
 open; the accepted 0.15.0 scope and other roadmap goals persist.
 
@@ -51,8 +51,10 @@ Back/save/reopen navigation and movable reading panels. The native Deck contract
 and Qt Deck workspace add repeated occurrences, complete metadata and exact return. Its
 [implementation checkpoint](pending_proposals/interactive_implementation_0160.md)
 records actual checkout/installed-wheel receiving. Explicit four-kind source
-entry and exact query return now pass with public frozen clients. Molecular,
-cross-member Deck context, richer entity-specific and acceptance work remain. This is development implementation,
+entry and exact query return now pass with public frozen clients. An opt-in
+live model panel now passes actual Qt receiving, with explicitly unestablished
+Card correspondence. Supported mapped molecular integration, cross-member Deck
+context, richer entity-specific and acceptance work remain. This is development implementation,
 not a public GUI installation or platform-support claim.
 
 The [current overview orientation](pending_proposals/card_orientation.md) exposes

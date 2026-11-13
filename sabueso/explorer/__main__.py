@@ -18,6 +18,11 @@ def main():
     )
     inputs.add_argument("--deck", type=Path, help="Open a stored Deck JSONL file")
     parser.add_argument(
+        "--experimental-model",
+        type=Path,
+        help="Development MolSysViewer preview of a supplied local model; no Card correspondence is inferred",
+    )
+    parser.add_argument(
         "--output-directory",
         type=Path,
         required=True,
@@ -26,6 +31,10 @@ def main():
     parser.add_argument("--debug-port", type=int, help=argparse.SUPPRESS)
     parser.add_argument("--capture-directory", type=Path, help=argparse.SUPPRESS)
     args = parser.parse_args()
+    if args.experimental_model and not any((args.card, args.deck, args.reading)):
+        parser.error(
+            "The bounded molecular preview requires --card, --deck or --reading."
+        )
     from ._qt import _window
 
     with tempfile.TemporaryDirectory(prefix="sabueso-explorer-") as directory:
@@ -39,10 +48,10 @@ def main():
             "--output-directory",
             str(args.output_directory.resolve()),
         ]
-        for key in ("card", "reading", "deck"):
+        for key in ("card", "reading", "deck", "experimental_model"):
             path = getattr(args, key)
             if path:
-                command.extend([f"--{key}", str(path.resolve())])
+                command.extend([f"--{key.replace('_', '-')}", str(path.resolve())])
         process = subprocess.Popen(command)
         try:
             deadline = time.monotonic() + 60
@@ -56,11 +65,13 @@ def main():
                         "The reading service did not start within 60 seconds."
                     )
                 time.sleep(0.05)
+            configuration = json.loads(bootstrap.read_text())
             _window(
-                json.loads(bootstrap.read_text())["url"],
+                configuration["url"],
                 args.debug_port,
                 args.capture_directory,
                 process,
+                molecular_origin=configuration.get("molecular_origin"),
             )
         finally:
             if process.poll() is None:

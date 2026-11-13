@@ -9,6 +9,21 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Experimental molecular product panel and native HTTP guard (2026-11-13)
+
+From `e64c2ec`, #154 owns the opt-in live model adapter and Qt layout continuity.
+[The source-bound receipt](../evidence/interactive_molecular_checkpoint_20261113.json)
+records 84 selected cases, actual model/negative/source-entry Qt receiving and
+explicit provider limits. The native HTTP guard now intercepts urllib rather
+than only requests. No scientific core or provider checkout changes. The model
+feature has no admitted published provider floor; supported embedding stays in
+Viewer #368. This authorized intermediate `[skip ci]` checkpoint retains the
+#154/#112 exact-final-source offline/hosted CI/governance recovery route. The
+separately frozen `e64c2ec` complete-collection receipt must keep its source epoch;
+it is not a full-suite run of this later optional application delta. No workflow,
+release, package publication or platform expansion is selected. Git records the
+deferred head.
+
 ### Independent original-file entry (2026-11-13)
 
 From `26e84c6`, #154 owns GUI file selection through the existing original reader. The [receipt](../evidence/interactive_original_file_checkpoint_20261113.json) records 124 integrated selected cases and thirteen actual Qt checks. Formats, scientific semantics and public dependencies stay unchanged. Whole-workspace persistence is not admitted. The authorized `[skip ci]` checkpoint retains the same #154/#112 final-source full offline and exact-head hosted CI/governance recovery route; Git records its deferred head. Resume the final complete disjoint offline collection after interruption; do not reuse incomplete attempts as passing gates. No workflow or publication is selected.

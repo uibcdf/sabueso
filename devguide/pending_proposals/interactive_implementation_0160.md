@@ -15,10 +15,11 @@ Checkpoint date: **2026-11-13**. Reviewed implementation baseline:
 planning parent `fb0d09659f8d00685f829d6781e5d256751dac66`;
 [application code hashes and receiving](../evidence/interactive_card_app_checkpoint_20261113.json).
 
-**Current position:** S0 and S1, S3.1–S3.3, S5.1 and S5.4 are delivered at their bounded development scopes. Native `Deck.explore()`/`access()` and the Qt Deck workspace preserve original occurrences, metadata and exact return. See the [Deck receipt](../evidence/interactive_deck_checkpoint_20261113.json).
-**S4.1** now provides explicit four-kind entry and exact query return at a first bounded scope; its [receipt](../evidence/interactive_entry_checkpoint_20261113.json) records 73 selected passes and twelve real Qt checks. Next: **S2.1** provider-owned molecular adapter, **S3.4** cross-member/original workspace receiving and the remaining nature-specific S4 journeys.
+**Current position:** S0 and S1, S3.1–S3.3, S5.1 and S5.4 are delivered at their bounded development scopes. The native Card/Deck application, explicit four-kind source entry and independently selected original readings have real Qt receiving. The [molecular receipt](../evidence/interactive_molecular_checkpoint_20261113.json) adds an opt-in live product panel through Viewer's experimental public service: 84 selected cases, eleven real molecular Qt checks each from checkout and an installed unpublished wheel, and six model-failure checks. A corrected native HTTP guard also passes twelve actual source-entry checks.
 
-**Delivered observable result:** Card and Deck/topic/item/source/Back journeys work in Qt, including separately installed unpublished artifacts. The two interrupted full offline attempts are preserved and are not passing qualification. Explicit UniProt/PDB/SMILES/disease entry also works. **Next observable result:** a supported mapped molecular reading without inferred identity.
+**Delivered observable result:** read a Card or Deck, navigate topics/items/original sources, return exactly, save/reopen an original reading, and explicitly query supported identifiers. With the received development provider cohort, also open a supplied molecular model, rotate it, float/reset without replacing its viewport, and keep reading original knowledge. The model is always labelled **correspondence not established**. This is not mapped annotation navigation or a supported embedding claim.
+
+**Next observable result:** exact source-bound annotation → model selection → original source → Back, including unknown/replaced contexts (S2.2/S2.5), plus cross-member original Deck context/workspace receiving (S3.4). Viewer #368 still owns the supported embedding contract. Whole layout/query/Deck recovery, richer entity-specific presentation and acceptance remain open. Interrupted full-suite attempts never count as passes; completed source-bound collection receiving has its own receipt.
 
 The maintainer requests this document as both the implementation plan and its
 granular checkpoint. It owns stage/microstage status for 0.16.0.
@@ -138,10 +139,10 @@ rows' experiment evidence, not product acceptance.
 
 | ID | State | Delivered work, remainder and completion check |
 | --- | --- | --- |
-| S2.1 | `partial` | The probe has a live provider adapter and original source mapping. Isolate the product adapter, negotiate actual capabilities/readiness and receive the provider-owned embedding contract under #368; do not ship copied private Viewer internals |
+| S2.1 | `partial` | The product now isolates an opt-in adapter to the experimental public `RemoteSessionService`/`MolSysView`: bounded detached initial input, live readiness/camera observations and owned cleanup pass. The current model has no established Card correspondence. Receive the stable contract under #368 before a supported embedding claim; no private Viewer protocol is copied |
 | S2.2 | `partial` | Probe picking/selection and stale-mapping refusal pass. Implement product selection ↔ reading navigation for exact captured model/occurrence/residue references; test unknown, ambiguous, replaced and reindexed contexts without inferring identity |
-| S2.3 | `partial` | Probe retains camera/selection through 20 layout cycles. Integrate the molecular panel with reading/graph panels, resize/dock/float, optional fixed context and layout reset; verify scene continuity and keyboard-accessible alternatives to dragging |
-| S2.4 | `partial` | Probe independent disposal and public Movie draw acknowledgments work. Receive product hide/show/final-close, pending-operation and surviving-view behavior; qualify background suspension only when the provider supports it |
+| S2.3 | `partial` | The product adds model/reading/context panels and keyboard-addressable Show/Float/Reset buttons. Three real float/reset cycles preserve the iframe, camera and reading, returning all panels to the main grid. The selection was empty, so nonempty mapped selection, graph panels and broader layout receiving remain open |
+| S2.4 | `partial` | The product owns the initial model copy, service and view through application shutdown; successful and rejected-model runs leave no owned survivors. Probe independent disposal and Movie acknowledgments remain experiment evidence. Product panel close/reopen, pending operations, a surviving second view and supported background suspension remain open |
 | S2.5 | `todo` | Demonstrate the actual product's annotation → 3D selection → original source → Back journey, plus a useful no-coordinate Card. Separate native composition, actual renderer, model delivery and user-understanding observations |
 
 #368 is a dependency of a supported molecular embedding claim, not a reason to
@@ -199,9 +200,9 @@ optional GUI/process resources independently owned.
 | --- | --- | --- |
 | S5.1 | `done` | Open an independently selected original Card reading through its existing verifier, preserving original values/units/support, mode and scope. Plain/gzip/zstd inert controls and thirteen actual Qt checks pass; [receipt](../evidence/interactive_original_file_checkpoint_20261113.json). Whole Deck/query/layout restoration remains S3.4/S5.2 |
 | S5.2 | `todo` | Persist versioned presentation layout separately from Knowledge and provider scene/model references. Restore or explain unavailable context without silently loading a current revision; validate unknown layout versions and reset behavior |
-| S5.3 | `partial` | The probe owns startup/shutdown and bounds experiments. Implement product process lifetime, backend failure/restart, pending-work handling and any supported cancellation without freezing the UI or affecting another session |
+| S5.3 | `partial` | The product owns a separate service process, startup deadline, bounded shutdown and optional model cleanup; rejected molecular input keeps the Card usable. Backend failure/restart, pending work, cancellation, atomic bootstrap handoff and Windows event-loop shutdown receiving remain open |
 | S5.4 | `done` | Include the compiled frontend/resources in the optional product closure, qualify headless/GUI boundaries and verify a development launch outside the checkout. Keep Electron/Tauri comparison runtimes out of the shipped Qt closure |
-| S5.5 | `todo` | Measure one representative active/idle/repeated-open session, then agreed larger/varied public cases. Preflight shared resources, run sequential graphics trials and record actual CPU/RAM/graphics and cleanup; do not import an unrelated budget or claim thermal superiority |
+| S5.5 | `partial` | One actual public molecular session and failed-input control have bounded RSS/CPU-affinity/cleanup receipts. Measure active/idle/repeated-open behavior and agreed larger/varied public cases. Preflight shared resources, run sequential graphics trials and record actual CPU/RAM/graphics and cleanup; do not import an unrelated budget or claim thermal superiority |
 
 Use the existing shared-resource policy and infrastructure owners. This application
 does not implement a new scheduler, reserve the host or require operational Slurm
@@ -245,7 +246,9 @@ Commits follow the authorized `[skip ci]` batching and
 qualification. Preserve useful measurement evidence with its owner/review trigger
 and remove only owned disposable resources after final use.
 
-The initial plan alone marked no product milestone done. The current S1/S5.4
+The initial plan alone marked no product milestone done. The later molecular slice remains experimental and partial; its initial input digest is not active-model or Card identity. The prior requests-only fixture guard did not intercept native urllib: the new guard regression and twelve-check Qt rerun correct that limit, without an observed live-source leak.
+
+The current S1/S5.4
 closures rely on implementation, 118 selected integration cases, a final
 43-case application/package/dependency gate, type/build checks, and eleven
 actual Qt checks each from the checkout and an installed unpublished wheel.

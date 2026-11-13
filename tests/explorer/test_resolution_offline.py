@@ -21,12 +21,12 @@ LOOKUPS = json.loads((DATA / "pubchem/structures.json").read_text())["lookups"]
 
 @pytest.fixture
 def resolver(monkeypatch):
-    import requests
+    from sabueso.tools.db import _http
 
     def refuse(*args, **kwargs):
         raise AssertionError("An offline application action attempted a network call")
 
-    monkeypatch.setattr(requests.sessions.Session, "request", refuse)
+    monkeypatch.setattr(_http, "_urlopen", refuse)
     native = EntityResolver(
         FixtureUniProtClient(DATA), rcsb_client=FixtureRCSBClient(DATA)
     )
@@ -249,3 +249,9 @@ def test_real_loopback_rejects_stale_duplicate_queries_and_foreign_origin(
             assert len(resolver.calls) == 1
 
     asyncio.run(run())
+
+
+def test_fixture_cohort_blocks_the_actual_native_http_path(resolver):
+    with pytest.raises(AssertionError, match="network call"):
+        sabueso.resolve("uniprot:P52270", profile="identity@1")
+    assert resolver.calls == []

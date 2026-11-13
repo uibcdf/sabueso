@@ -24,6 +24,7 @@ def test_loopback_auth_origin_card_admission_and_stale_requests(tmp_path):
         ) as client:
             service.origin = str(client.make_url("/")).rstrip("/")
             assert (await client.get("/api/panel")).status == 403
+            assert (await client.get("/api/molecular")).status == 403
             assert (
                 await client.post(
                     "/auth",
@@ -40,6 +41,9 @@ def test_loopback_auth_origin_card_admission_and_stale_requests(tmp_path):
             cookie = response.cookies["sabueso_explorer"]
             assert cookie["httponly"] and cookie["samesite"] == "Strict"
             assert (await (await client.get("/api/panel")).json())["panel"] is None
+            assert (await (await client.get("/api/molecular")).json())[
+                "molecular"
+            ] is None
             card = Card(meta={"entity_type": "protein"})
             card.unknown_stored["synthetic"] = {
                 "text": "<script>window.injected=true</script>",

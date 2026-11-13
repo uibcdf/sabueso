@@ -1153,6 +1153,10 @@ explicit PDB related-entity choice, no source work during browsing, original
 resolution/trace, exact query return and stale Card/resolution admission. Receive
 `devtools/resolution_explorer_journey.mjs` through the actual Qt host. Its fixture
 service is receiving infrastructure and never a public offline-source contract.
+Intercept the native HTTP hub (`sabueso.tools.db._http._urlopen`), not only
+requests: the native clients use urllib. The guard regression exercises that
+actual path before any network call. Earlier requests-only guards did not prove
+this stronger interception; no live request was observed in those fixture runs.
 
 Original-file application entry selects `test_reading_upload_offline.py` alongside
 the owning session/HTTP/original-storage tests. Plain/gzip/zstd bodies must receive
@@ -1160,6 +1164,17 @@ through `read_exploration` without Card construction or source access; retain ex
 literal numeric/quantity/false/null values and reject malformed/stale inputs. Run
 the native journey with `--receive-uploaded-reading` to prove a user-selected
 original works independently of the current session's Save state.
+
+The experimental molecular adapter selects `test_molecular_admission_offline.py`
+with the application, resolver and package-data gates. Receive detached input
+capture/hash, encoded/decoded byte limits, unsupported/empty/invalid input and
+owned disposal. Run `molecular_explorer_journey.mjs` in actual Qt with the exact
+editable Viewer/MolSysMT cohort and one public input, plus `--unavailable`.
+Require real canvas/readiness, camera and iframe continuity, return to the main
+grid, readable original sources and no script errors; do not count unchanged
+empty selection as receiving mapped or nonempty selection. Keep the failed XR
+permissions control and the corrected iframe delegation. Installed artifact,
+headless optional imports and provider-lifetime limits remain separate checks.
 
 Use the Ruff version pinned in `pyproject.toml` and CI. Run its format gate at
 the repository root: it includes Python examples in Markdown, so a Python-only

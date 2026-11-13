@@ -45,12 +45,14 @@ class _Service:
         self.resolution = None
         self.resolver = resolver
         self.resolution_history = []
+        self.molecular = None
 
     def response(self, panel):
         return {
             "panel": panel,
             "resolution": self.resolution.panel() if self.resolution else None,
             "can_return_query": bool(self.resolution_history),
+            "molecular": self.molecular.descriptor() if self.molecular else None,
         }
 
     def resolve(self, body, *, choice=False):
@@ -195,6 +197,10 @@ class _Service:
                 "connect-src 'self'; img-src 'self' data:; font-src 'self'; "
                 "frame-ancestors 'none'; base-uri 'none'; form-action 'none'"
             )
+            if self.molecular and self.molecular.origin:
+                response.headers["Content-Security-Policy"] += (
+                    f"; frame-src {self.molecular.origin}"
+                )
             return response
 
         app = web.Application(middlewares=[boundary], client_max_size=16 * 1024**2)
@@ -273,6 +279,11 @@ class _Service:
                     )
             return web.json_response(result)
 
+        async def molecular(request):
+            return web.json_response(
+                {"molecular": self.molecular.descriptor() if self.molecular else None}
+            )
+
         app.add_routes(
             [
                 web.get("/", asset),
@@ -286,6 +297,7 @@ class _Service:
                 web.post("/api/resolve", resolve),
                 web.post("/api/resolve-choice", resolve),
                 web.post("/api/resolve-back", resolve),
+                web.get("/api/molecular", molecular),
             ]
         )
         return app
@@ -314,6 +326,21 @@ async def _run(args, resolver=None):
             if args.deck.stat().st_size > 16 * 1024**2:
                 raise ArgumentError("This Deck exceeds the 16 MiB opening limit.")
             await asyncio.to_thread(service.load_deck, args.deck.read_bytes())
+        model = getattr(args, "experimental_model", None)
+        if model:
+            from sabueso.explorer._molecular import _Molecular
+
+            service.molecular = _Molecular(model)
+            try:
+                await service.molecular.start()
+            except Exception as error:
+                service.molecular.error = str(error)
+                try:
+                    await service.molecular.close()
+                except Exception as cleanup_error:
+                    service.molecular.error += (
+                        f"; molecular cleanup failed: {cleanup_error}"
+                    )
         runner = service.web.AppRunner(service.application(), access_log=None)
         await runner.setup()
         site = service.web.TCPSite(runner, "127.0.0.1", 0)
@@ -324,15 +351,29 @@ async def _run(args, resolver=None):
             args.bootstrap, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600
         )
         with os.fdopen(descriptor, "w", encoding="utf-8") as output:
-            json.dump({"url": f"{service.origin}/#token={service.token}"}, output)
+            json.dump(
+                {
+                    "url": f"{service.origin}/#token={service.token}",
+                    "molecular_origin": service.molecular.origin
+                    if service.molecular
+                    else None,
+                },
+                output,
+            )
         for signum in (signal.SIGTERM, signal.SIGINT):
             loop.add_signal_handler(signum, stop.set)
         await stop.wait()
     finally:
-        if runner:
-            await runner.cleanup()
-        args.bootstrap.unlink(missing_ok=True)
-        executor.shutdown(wait=True)
+        try:
+            if runner:
+                await runner.cleanup()
+        finally:
+            try:
+                if service.molecular:
+                    await service.molecular.close()
+            finally:
+                args.bootstrap.unlink(missing_ok=True)
+                executor.shutdown(wait=True)
 
 
 def _main():
@@ -341,6 +382,7 @@ def _main():
     inputs.add_argument("--card", type=Path)
     inputs.add_argument("--reading", type=Path)
     inputs.add_argument("--deck", type=Path)
+    parser.add_argument("--experimental-model", type=Path)
     parser.add_argument("--output-directory", type=Path, required=True)
     parser.add_argument("--bootstrap", type=Path, required=True)
     asyncio.run(_run(parser.parse_args()))

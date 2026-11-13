@@ -39,7 +39,7 @@ PDB remains a structure record whose source-declared proteins require a separate
 user query. Original decisions and acquisition traces stay inspectable. Return
 to previous query restores the exact reading without fetching again. Query
 history is in memory, with 32 retained return points; it is not a saved workspace.
-No molecular panel or disease-name search is delivered at this checkpoint.
+Disease-name search is not offered without a candidate-search contract.
 
 Card upload sends the selected file body directly. Never parse and reserialize
 sealed Card JSON in JavaScript: it changes integer/float distinctions and large
@@ -65,3 +65,29 @@ against declared frozen public clients through `explorer_fixture_service.py`,
 which forbids network access. This is a development receiver, not a product
 offline-mode or source-selection contract. Its source-call audit proves topic
 and return actions do not acquire sources.
+
+The explicit development-only `--experimental-model /path/to/model.bcif.gz`
+option adds a live MolSysViewer panel alongside an initial `--card`, `--deck`
+or `--reading`. PDB/ENT, mmCIF and BinaryCIF, optionally gzip-compressed, are
+accepted up to 16 MiB encoded and 64 MiB decoded. These input-byte caps do not
+bound parsed model RAM. MolSysViewer and MolSysMT own parsing, geometry,
+transport and rendering, including their existing Rust code. Use the exact local
+editable provider cohort recorded in the molecular receipt; no published minimum
+or supported embedding contract is claimed until Viewer #368 is received.
+
+The panel exposes actual initial readiness and can float/reset without replacing
+its live viewport. It always says that correspondence with the current Card is
+not established. The displayed name/digest describe the captured initial input,
+not current model identity: the provider's own controls may replace the model.
+No annotation-to-atom mapping, scientific identity, inferred structure or linked
+selection is created by opening a file. Closing/reopening the panel, whole-scene
+recovery and background suspension retain separate provider receiving work.
+Optional-model startup failure leaves the original knowledge reading available.
+The adapter owns an immutable temporary input copy until application shutdown.
+
+`devtools/molecular_explorer_journey.mjs` receives real drawing, public camera
+observation, three float/reset cycles, main-grid return and source navigation.
+Its `--unavailable` control receives a rejected empty synthetic file without
+losing the Card. Linux/Xvfb software drawing remains separate from hardware,
+platform, long-session or large-model qualification. XR permission is delegated
+only to the owned model iframe; there is no arbitrary external embed action.

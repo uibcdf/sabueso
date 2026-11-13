@@ -21,18 +21,30 @@ Deck return retains filters/order and repeated occurrences; #197 corrects unknow
 envelope admission. The [entry receipt](evidence/interactive_entry_checkpoint_20261113.json) adds
 explicit UniProt/PDB/SMILES/disease-ID entry, source-decision inspection and exact
 query return: 73 selected passes and twelve real Qt checks with public fixtures
-and network forbidden. No molecular UI, public release or native-platform
-qualification is claimed. Resume at S2.1, S3.4 and remaining S4/S5 journeys; the
-two interrupted full-suite attempts are not passing qualification.
+and actual fixture clients. Its earlier requests-only network guard did not
+intercept native urllib; the corrected guard and twelve-check Qt rerun are
+recorded in the molecular receipt below. No live request was observed.
+Interrupted full-suite attempts are not passing qualification.
 [Original-file receiving](evidence/interactive_original_file_checkpoint_20261113.json)
 adds file-selected original reading: 124 integrated cases and thirteen actual Qt
 checks pass, with plain/gzip/zstd and inert quantity/type controls. S5.1 is complete
 at Card-reading scope; Deck/query/layout persistence remains open.
 
+The [experimental molecular product receipt](evidence/interactive_molecular_checkpoint_20261113.json)
+adds an opt-in live MolSysViewer panel with explicit unknown Card correspondence.
+Eighty-four selected cases, eleven actual molecular Qt checks each from checkout
+and an installed unpublished wheel, six failed-model checks and the twelve-check
+corrected source-entry journey pass. Float/reset
+retains the viewport and camera and returns panels to the main grid. Initial
+input byte caps do not bound parsed model RAM; the digest is not current model
+identity. Viewer #368, mapped navigation, panel close/reopen/recovery, varied
+workloads and independent acceptance remain open. No public GUI, native-platform
+or stable embedding qualification is claimed.
+
 The [living 0.16.0 implementation plan and checkpoint](pending_proposals/interactive_implementation_0160.md)
 owns granular stage/microstage progress, completion criteria, evidence and the
 next action. S0 architecture/feasibility and the first S1 Card application are
-complete within their explicit scopes. Molecular integration, richer entity-specific journeys, cross-member Deck context
+complete within their explicit scopes. Supported mapped molecular integration, richer entity-specific journeys, cross-member Deck context
 and independent Deck workspace saving retain explicit product work. Update that plan and this summary together as
 implementation advances; preserve experiment versus product qualification.
 
@@ -41,7 +53,7 @@ with a portable web workspace, separate Python backend and provider-owned live
 MolSysViewer adapter. The [decision](DECISIONS.md#select-pyside6-and-qwebengine-for-the-0160-explorer-2026-11-13)
 closes the exploratory host comparison. Electron and Tauri remain alternatives,
 not parallel product implementations. Reuse existing provider Rust capabilities;
-next implement/qualify the first real explorer slice and its lifetime/mapping
+continue qualifying the implemented explorer slices and their lifetime/mapping
 boundaries. Exact dependency versions, packaging/native qualification and a
 public GUI remain separate work.
 

@@ -1,0 +1,162 @@
+{
+  "format": "sabueso.experimental_molecular_checkpoint@1",
+  "owner": "uibcdf/sabueso#154",
+  "baseline_commit": "e64c2ec41fd59b661f3f68af3359895f6706f330",
+  "scope": "First opt-in experimental product model panel plus native HTTP receiving-guard correction; no stable embedding or mapped Card identity",
+  "code_sha256": {
+    "sabueso/explorer/_molecular.py": "c48891270e16e357886de018e62efed3830789399a1c9ce9c61945230490a612",
+    "sabueso/explorer/_service.py": "9754c2b74d4aa8a5a0eb9a065dae4e0359e66231ae227cf46fab826ed31a0d54",
+    "sabueso/explorer/_qt.py": "7b85fe1d2c8c30fc2254055dc4cd041886f1be65a3b9cea7eda775ff0df6b74f",
+    "sabueso/explorer/__main__.py": "13e6fc8829e6dd3b15c8523dac1b21a6dcdcd0ec4f3119c417f61c9a1d412891",
+    "sabueso/_depdigest.py": "01b4c2cb5a10ac20622e989a3260a4c59f81872de38b7dc2291e5688bee2e542",
+    "frontend/explorer/src/app.tsx": "3c1a74a55753cad7077d2f97c3813f0a3e40abe5ca24c8ca4523c1ea389926d5",
+    "frontend/explorer/src/style.css": "e6a850504611ee2cb083307be73fc867830e1ad2853991f9f629d26dbe334cd4",
+    "sabueso/explorer/_assets/app.js": "42de7edbd5e45cc9ea0903c89c56b653d663eb9e2436a33d9fe1d25529763e8b",
+    "sabueso/explorer/_assets/app.css": "4cedc4682dc952e5ae10e91be93bea8befe75c2ae5b9edfaa5ecab7ab071c7ac",
+    "devtools/molecular_explorer_journey.mjs": "0f5efd59c7a7198ba569faba3f145c24cf059715f13a9fb6b13236d80d3a74f3",
+    "devtools/explorer_fixture_service.py": "6d6b6180d743ffeb4eb1e9d9f37700cfc154adba123cac1b40344ed50a89c381",
+    "tests/explorer/test_molecular_admission_offline.py": "14316a2f0696cfe6cc597533e92c99bf6ddb60d68002fb9ace6d94a503741b5f",
+    "tests/explorer/test_resolution_offline.py": "cb9aac843a47580c96284d9035ee6d94f4cfda18cd83ef81791acb82140e3866",
+    "tests/explorer/test_service_offline.py": "0f7512a7950328d791dbb175ed6195913fc5205f4c4551df0df393c7776134c8"
+  },
+  "provider_sources": {
+    "molsysviewer": "0dcdd6ce574d3c99483480cb38c16c1e3cc4782f",
+    "molsysmt": "ff25f120243319ca9515009b4971e24a2eb0dc22"
+  },
+  "native_qt": [
+    {
+      "case": "qt-molecular-received",
+      "checks": {
+        "real_canvas_and_renderer": true,
+        "reset_returns_to_main_grid": true,
+        "same_live_viewport": true,
+        "camera_survives_layout": true,
+        "selection_survives_layout": true,
+        "no_inferred_correspondence": true,
+        "reading_survives_layout": true,
+        "original_source_remains_readable": true,
+        "native_capture": true,
+        "original_inputs_unchanged": true,
+        "no_script_errors": true
+      },
+      "elapsed_s": 42.021,
+      "peak_summed_rss_bytes": 1824374784,
+      "survivors": [],
+      "input_sha256": {
+        "card": "960869253e88a048216c151a02cc22895c94b9e3e30d5b587d104f98dff2e4f4",
+        "model": "6f15f9412a97e38ffb01e0aec8ffa6016ac5d1ddf50042e0129583caf65be125"
+      },
+      "graphics": {
+        "webgl": true,
+        "width": 470,
+        "height": 553,
+        "renderer": "ANGLE (Mesa, llvmpipe (LLVM 21.1.8 256 bits), OpenGL 4.5)",
+        "error": 0
+      }
+    },
+    {
+      "case": "qt-molecular-unavailable-received",
+      "checks": {
+        "failed_model_keeps_knowledge": true,
+        "failure_is_visible": true,
+        "original_source_remains_readable": true,
+        "native_capture": true,
+        "original_inputs_unchanged": true,
+        "no_script_errors": true
+      },
+      "elapsed_s": 17.02,
+      "peak_summed_rss_bytes": 1058500608,
+      "survivors": [],
+      "input_sha256": {
+        "card": "960869253e88a048216c151a02cc22895c94b9e3e30d5b587d104f98dff2e4f4",
+        "model": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "graphics": null
+    },
+    {
+      "case": "qt-resolution-native-guard",
+      "checks": {
+        "white_entry_and_four_input_kinds": true,
+        "pdb_is_a_record_without_an_invented_card": true,
+        "explicit_source_related_protein": true,
+        "original_source_and_exact_back": true,
+        "exact_pdb_return_without_acquisition": true,
+        "disease_card_and_topics": true,
+        "source_stated_smiles_identity": true,
+        "not_found_preserves_previous_reading": true,
+        "source_failure_is_distinct_and_preserves_reading": true,
+        "actual_native_capture": true,
+        "only_explicit_source_queries": true,
+        "no_script_errors": true
+      },
+      "elapsed_s": 17.816,
+      "peak_summed_rss_bytes": 1008459776,
+      "survivors": [],
+      "input_sha256": null,
+      "graphics": null
+    },
+    {
+      "case": "qt-molecular-installed",
+      "checks": {
+        "real_canvas_and_renderer": true,
+        "reset_returns_to_main_grid": true,
+        "same_live_viewport": true,
+        "camera_survives_layout": true,
+        "selection_survives_layout": true,
+        "no_inferred_correspondence": true,
+        "reading_survives_layout": true,
+        "original_source_remains_readable": true,
+        "native_capture": true,
+        "original_inputs_unchanged": true,
+        "no_script_errors": true
+      },
+      "elapsed_s": 31.157,
+      "peak_summed_rss_bytes": 1835167744,
+      "survivors": [],
+      "input_sha256": {
+        "card": "960869253e88a048216c151a02cc22895c94b9e3e30d5b587d104f98dff2e4f4",
+        "model": "6f15f9412a97e38ffb01e0aec8ffa6016ac5d1ddf50042e0129583caf65be125"
+      },
+      "graphics": {
+        "webgl": true,
+        "width": 470,
+        "height": 553,
+        "renderer": "ANGLE (Mesa, llvmpipe (LLVM 21.1.8 256 bits), OpenGL 4.5)",
+        "error": 0
+      }
+    }
+  ],
+  "native_selection_limit": "The observed selection remained empty. This does not receive nonempty selection, picking or annotation-to-model correspondence.",
+  "retained_failed_controls": [
+    {
+      "case": "qt-molecular-first",
+      "result": "Actual drawing and layout camera continuity passed, but XR permissions produced an unhandled SecurityError; reset also retained panels within a floating group. Both corrected in the consumer and rerun."
+    },
+    {
+      "case": "qt-molecular-unavailable",
+      "result": "Harness passed six checks, but observer received SIGTERM; not an uninterrupted resource qualification. The repeated control completed without interruption."
+    }
+  ],
+  "http_guard_correction": {
+    "observation": "Earlier fixture clients were actually supplied, but their requests-only guard did not intercept the native urllib hub. No live HTTP request was observed.",
+    "correction": "Patch sabueso.tools.db._http._urlopen; the regression invokes the native online path and refuses it before a network call. Repeat the 12-check real Qt fixture journey.",
+    "source_calls": 6
+  },
+  "limits": [
+    "Exact local editable provider source cohort; RemoteSessionService remains experimental and Viewer #368 stays open.",
+    "Initial captured model bytes and digest never establish Card/current-model identity; provider controls can replace the model.",
+    "16 MiB encoded and 64 MiB decoded input caps do not bound parsed model RAM.",
+    "One public model; Linux/Xvfb explicit software rendering only. No native OS/GPU, sustained thermal, large-model or public-install qualification.",
+    "Three float/reset cycles retain the live iframe and camera; final panel close/reopen, background suspension and pending-operation recovery remain open.",
+    "Scientific core, Card formats, source policy and sibling checkouts are unchanged by this delta. Hosted exact-final-source gates remain due under #154/#112."
+  ],
+  "selected_gate": "PASS exit=0 | 84 passed | 11.19s",
+  "selected_peak_summed_rss_bytes": 140337152,
+  "artifact": {
+    "wheel_sha256": "f88d1ac718d323ddf0876322cc8a0bf0ae97038e30a12ac30cdb29bdc2ab4443",
+    "sdist_sha256": "1a533d86566e6d8017058c65510ca5fc6ebf70cfc5e3012bb13d2b97c9ca1e08",
+    "runtime_assets_source_exact": true,
+    "scope": "Unpublished dirty development wheel with byte-identical runtime/assets, shared provider dependency cohort, receiving outside every source checkout; not a public or clean dependency closure.",
+    "headless_import": "Installed package and adapter import from owned wheel target without importing GUI, aiohttp or molecular providers."
+  }
+}
