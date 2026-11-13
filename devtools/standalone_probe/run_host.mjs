@@ -14,6 +14,13 @@ const args = process.argv.slice(2);
 const value = name => args[args.indexOf(name) + 1];
 const host = value('--host');
 const labNoSandbox = args.includes('--lab-no-sandbox');
+const graphicsOnly=args.includes('--graphics-only');
+const scaleOnly=args.includes('--scale-only');
+if(graphicsOnly && scaleOnly)throw new Error('Select a single diagnostic scope');
+const graphicsProfile=args.includes('--graphics-profile')?value('--graphics-profile'):'software';
+const profiles=JSON.parse(fs.readFileSync(path.join(here,'graphics_profiles.json'),'utf8'));
+const requestedGraphics=profiles[graphicsProfile];
+if(!requestedGraphics?.hosts.includes(host))throw new Error('Unsupported graphics profile for this host');
 if (!['qt', 'electron', 'tauri'].includes(host)) throw new Error('Expected qt, electron or tauri');
 const inputs = path.resolve(value('--inputs'));
 const output = path.resolve(value('--output'));
@@ -22,7 +29,10 @@ fs.mkdirSync(output, {recursive: false});
 const privateBootstrap = path.join(output, 'bootstrap-private.json');
 const children = [];
 const report = {format: 'sabueso.standalone_host_observation@1', host,
-  scope: 'Linux Xvfb; explicitly requested software rendering; development editable cohort',
+  kind:graphicsOnly?'graphics_capability_diagnostic':(scaleOnly?'molecular_scale_diagnostic':'molecular_integration_journey'),
+  product_qualification:false,
+  scope: 'Linux owned Xvfb; development editable cohort; inspect requested and observed graphics separately',
+  requested_graphics:{name:graphicsProfile,...requestedGraphics},
   chromium_sandbox: labNoSandbox ? 'disabled explicitly for trusted local experiment only' : 'default configuration',
   checks: {}, timings: {}, phases: [], errors: [], external_requests: [], state: 'running'};
 let browser;
@@ -114,7 +124,10 @@ try {
   let display = '';
   xvfb.stdio[3].on('data', data => {display += data.toString();});
   await until(() => /^\d+\n/.test(display), 'owned Xvfb display');
-  const env = {...renderEnv, DISPLAY: `:${display.trim()}`, QT_QPA_PLATFORM: 'xcb'};
+  const env = {...process.env, LIBGL_DRIVERS_PATH:'/usr/lib/x86_64-linux-gnu/dri',
+    DISPLAY: `:${display.trim()}`, QT_QPA_PLATFORM: 'xcb'};
+  for(const name of requestedGraphics.unset_env)delete env[name];
+  Object.assign(env,requestedGraphics.set_env);
   if (args.includes('--system-sandbox-helper')) {
     if (labNoSandbox || args.includes('--namespace-sandbox')) throw new Error('Conflicting sandbox profiles');
     const helper = '/opt/google/chrome/chrome-sandbox';
@@ -123,7 +136,8 @@ try {
     env.CHROME_DEVEL_SANDBOX = helper;
     report.chromium_sandbox = 'existing system SUID helper; no global configuration change';
   }
-  const backend = launch(python, [path.join(here, 'backend.py'), '--inputs', inputs,
+  const backend = launch(python, graphicsOnly?[path.join(here,'graphics_backend.py'),'--bootstrap',privateBootstrap]:
+    [path.join(here, 'backend.py'), '--inputs', inputs,
     '--output', path.join(output, 'backend'), '--bootstrap', privateBootstrap], 'backend', env);
   await until(() => {
     if (backend.exitCode !== null) throw new Error(`Backend exited ${backend.exitCode}; inspect retained log`);
@@ -139,14 +153,14 @@ try {
   let native;
   if (host === 'qt') {
     native = launch(python, [path.join(here, 'qt_host.py'), '--bootstrap', privateBootstrap,
-      '--cdp-port', String(cdpPort), '--software', '--capture-dir',output,
+      '--cdp-port', String(cdpPort), '--graphics-profile',graphicsProfile,'--capture-dir',output,
       ...(labNoSandbox ? ['--lab-no-sandbox'] : [])], 'native-host', env);
   } else if (host === 'electron') {
     const electron = (await import('electron')).default;
     native = launch(electron, [...(args.includes('--namespace-sandbox') ? ['--disable-setuid-sandbox'] : []),
       ...(labNoSandbox ? ['--no-sandbox'] : []),
       path.join(here, 'electron_host.mjs'), '--bootstrap', privateBootstrap,
-      '--cdp-port', String(cdpPort), '--profile', path.join(output, 'electron-profile'), '--software',
+      '--cdp-port', String(cdpPort), '--profile', path.join(output, 'electron-profile'), '--graphics-profile',graphicsProfile,
       ...(args.includes('--namespace-sandbox') ? ['--namespace-sandbox'] : [])], 'native-host', env);
   } else {
     const nativeEnv = {...env,SABUESO_PROBE_BOOTSTRAP:privateBootstrap,TAURI_WEBDRIVER_PORT:String(cdpPort),
@@ -176,6 +190,18 @@ try {
     const url = new URL(request.url());
     if (['http:', 'https:'].includes(url.protocol) && url.hostname !== '127.0.0.1') report.external_requests.push(clean(request.url()));
   });
+  if(graphicsOnly) {
+    await page.waitForFunction(()=>document.documentElement.dataset.graphicsReady==='true',null,{timeout:30000});
+    const diagnostic=await page.evaluate(()=>window.__sabuesoGraphicsDiagnostic);
+    report.graphics=diagnostic.graphics;report.webgpu=diagnostic.webgpu;
+    report.errors.push(...diagnostic.errors);
+    report.checks.real_diagnostic_triangle_drawn=!!diagnostic.graphics?.webgl && diagnostic.graphics.sampled_colors>10 && diagnostic.graphics.error===0;
+    report.molecular_model_loaded=false;
+    await screenshot('initial-workspace');
+    await phase('diagnostic_visible_settled',5000);
+    if(!report.checks.real_diagnostic_triangle_drawn)throw new Error('Diagnostic triangle was not drawn');
+    report.state='passed_graphics_diagnostic';
+  } else {
   await page.waitForFunction(() => document.documentElement.dataset.probeReady === 'true', null, {timeout: 60000});
   report.timings.host_to_usable_card_ms = performance.now() - hostStarted;
   report.timings.full_cohort_to_usable_card_ms = performance.now() - started;
@@ -218,6 +244,34 @@ try {
   report.checks.real_model_drawn = true;
   await screenshot('initial-workspace');
 
+  if(scaleOnly) {
+    const copies=Number(value('--scale-copies')),structures=Number(value('--scale-structures'));
+    await page.evaluate(({copies,structures})=>{
+      window.__scaleProbeResult=null;
+      fetch('/api/action',{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({name:'scale_control',copies,structures})})
+        .then(async response=>{const body=await response.json();if(!response.ok)throw new Error(JSON.stringify(body));return body;})
+        .then(body=>{window.__scaleProbeResult=body;},error=>{window.__scaleProbeResult={error:String(error)};});
+    },{copies,structures});
+    await delay(100);
+    const pending=await page.evaluate(()=>window.__scaleProbeResult===null);
+    const layoutStarted=performance.now();
+    await click('Float reading');
+    const floated=await page.evaluate(()=>window.__sabuesoProbe.api.getPanel('reading').api.location.type==='floating');
+    await click('Dock reading');
+    report.layout_during_scale={request_pending_at_start:pending,floating_action_accepted:floated,elapsed_s:(performance.now()-layoutStarted)/1000};
+    await page.waitForFunction(()=>window.__scaleProbeResult!==null,null,{timeout:120000});
+    const result=await page.evaluate(()=>window.__scaleProbeResult);
+    if(result.error)throw new Error(result.error);
+    report.scale=result.scale;
+    report.checks.scale_native_dimensions=report.scale.n_atoms===inputManifest.atom_count*copies && report.scale.n_structures===structures;
+    report.checks.scale_draws_acknowledged=report.scale.draws.length===3;
+    report.checks.scale_coordinate_buffers_observed=report.scale.outbound_buffers.coordinate_buffer_bytes>=report.scale.n_atoms*structures*12;
+    report.checks.scale_does_not_reuse_original_card_mapping=report.scale.card_mapping_admitted===false;
+    await screenshot('scale-workspace');
+    if(!Object.values(report.checks).every(Boolean))throw new Error('A scale diagnostic failed');
+    report.state='passed_scale_diagnostic';
+  } else {
   await clickElement(page.locator('[data-topic="sequence"]'));
   const reading = await page.evaluate(() => window.__sabuesoProbe.getState().panel);
   await clickElement(page.getByRole('button', {name: 'Sources / questions', exact: true}).first());
@@ -318,6 +372,8 @@ try {
   report.state = 'passed_selected_journey';
   report.product_qualification = false;
   report.qualification_limit = 'Development-only selected checks; browser errors and native GPU/platform acceptance remain separate';
+  }
+  }
 } catch (error) {
   report.state = 'failed';
   report.errors.push(clean(error.stack));
@@ -325,7 +381,7 @@ try {
     try {await page.screenshot({path: path.join(output, 'failure.png'), timeout: 5000});} catch {}
   }
 } finally {
-  if (page) {
+  if (page && !graphicsOnly) {
     try {report.final_integration_state = await state();} catch {}
   }
   if (browser) {try {await browser.close();} catch {}}
@@ -344,5 +400,5 @@ try {
   report.child_exit_states = children.map(c => ({exit_code: c.exitCode, signal: c.signalCode}));
   fs.writeFileSync(path.join(output, 'observation.json'), clean(JSON.stringify(report, null, 2)) + '\n');
   console.log(JSON.stringify({host, state: report.state, checks: report.checks, timings: report.timings, graphics: report.graphics}));
-  if (report.state !== 'passed_selected_journey') process.exitCode = 1;
+  if (!['passed_selected_journey','passed_graphics_diagnostic','passed_scale_diagnostic'].includes(report.state)) process.exitCode = 1;
 }

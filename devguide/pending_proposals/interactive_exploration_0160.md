@@ -11,6 +11,16 @@ area: [human-exploration, deck, visualization, interoperability]
 
 ## Accepted objective and current decision
 
+On 2026-11-13 the maintainer selects **PySide6 + QWebEngine** for the 0.16.0
+desktop host, a portable web workspace and separate Python backend with live
+MolSysViewer embedding. The [decision receipt](standalone_gpu_scale_20261113.md)
+records measurements, limits and reassessment triggers. Reuse existing provider
+Rust paths. Next implement the real explorer slice; repeated host comparison is
+not a prerequisite. The React/TypeScript/Dockview probe supplies a starting
+workspace; exact production dependency versions and delivery remain to qualify.
+
+The following review history records the alternatives before that decision.
+
 The latest [standalone infrastructure evaluation](standalone_infrastructure_0160.md)
 uses the maintainer's confirmed Python/live-MolSysViewer/standalone constraints.
 Its second critical review recommends a portable web UI, separately owned Python
@@ -42,10 +52,10 @@ existing Card semantics and researcher feedback; #112 coordinates delivery.
 This document records the maintainer decision and review locally. No new issue
 comment or provider change is published by it.
 
-The maintainer requests a review of MolSysViewer **before discussing and choosing
-the platform and technology**. Hosting, frontend framework, public method names,
-distribution and the complete release contract remain undecided. The next action
-is that discussion, followed by a small architecture comparison prototype.
+The maintainer requested a review of MolSysViewer **before discussing and choosing
+the platform and technology**. That review and host comparison are complete;
+the accepted host is above. Public method names, exact production dependencies,
+distribution and the complete release contract retain their implementation scope.
 
 This advances a bounded part of long-term stage 6. Semantic queries, temporal
 knowledge, real interoperability and scientific/source coverage retain their

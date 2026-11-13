@@ -10,17 +10,22 @@ development queue.
 
 - [Interactive Card/Deck exploration for 0.16.0](interactive_exploration_0160.md)
   (#154/#153, coordinated with #112/#148): accepted product objective, read-only
-  MolSysViewer review and platform/technology options for the next discussion.
-  Host/framework, adapter qualification and the complete release scope remain open.
+  MolSysViewer review and accepted PySide6/QWebEngine host with a portable web UI
+  and Python backend. Adapter qualification and the complete release scope remain open.
 - [Standalone infrastructure evaluation](standalone_infrastructure_0160.md)
   (#154): Python/live-Viewer/standalone constraints, host and panel-library
   comparison and a second critical review of real Viewer/Mol* ownership and
-  panel lifetime. Recommends the same-journey Qt/Electron/Tauri comparison and
-  provider embedding handoff; no dependency or platform choice is adopted.
+  panel lifetime. Retains the historical Qt/Electron/Tauri comparison, provider
+  handoff and now accepted Qt host; exact dependencies/platform receiving remain due.
 - [Standalone development experiment](standalone_probe_20261113.md)
   (#154, MolSysViewer #276/#368): actual bounded workspace, calibration receipts,
   default-security/graphics limits, WebGPU review and the controlled
-  Tauri/Rust/Python evaluation route; no production winner is selected.
+  Tauri/Rust/Python evaluation route; its initial no-selection state is historical.
+- [NVIDIA graphics and bounded scale follow-up](standalone_gpu_scale_20261113.md)
+  (#154, MolSysViewer #276/#368/#55): real graphics/device observations, exact
+  binary chunks and primary-canvas draw acknowledgements up to 63,728 synthetic
+  atoms × 32 structures; accepted Qt host for 0.16.0, current alternative order
+  and reassessment triggers, without a performance/thermal ranking or shipping claim.
 - [Human exploration of Card](card_human_exploration_api.md)
   (#148, coordinated with #112): intuitive progressive navigation, complete
   retained-content access and source-grounded decision assistance. Initial

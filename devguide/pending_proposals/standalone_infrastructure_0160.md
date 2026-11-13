@@ -16,6 +16,14 @@ MolSysViewer representations, and a standalone user experience. Preserve the
 [accepted experience](interactive_exploration_0160.md#researcher-controlled-assistant-experience--2026-11-12),
 researcher-composable panels and replaceable infrastructure.
 
+**Accepted host, 2026-11-13:** use PySide6 + QWebEngine for 0.16.0, a portable
+web workspace, separate Python backend and live provider-owned MolSysViewer
+adapter. The [decision and measured rationale](standalone_gpu_scale_20261113.md)
+close the comparison; Electron is the second alternative and Tauri the third.
+Reuse Rust already in the providers, without a second Sabueso scientific engine.
+Native/installed receiving and the first product slice remain due. The dated
+review and original experiment plan below preserve the pre-decision alternatives.
+
 **Second critical review, 2026-11-12:** recommend a reusable TypeScript web
 workspace, a separately owned Python session service and a provider-owned live
 molecular adapter. Compare thin Qt/WebEngine and Electron hosts on the same real
@@ -32,6 +40,12 @@ results, failed startup profiles and outstanding qualification.
 
 Owner #154. Retain this evaluation through the first stack decision, then carry
 accepted contracts and measured limits into the maintained implementation plan.
+
+The subsequent [graphics/scale receipt](standalone_gpu_scale_20261113.md) receives
+NVIDIA rendering and exact binary/draw controls on larger synthetic cohorts.
+The accepted integration-risk order is **Qt, Electron, Tauri**. Qt is selected
+for 0.16.0; this is not a speed ranking. Alternatives and the workspace remain
+replaceable, with explicit reassessment triggers in the decision receipt.
 
 The earlier Qt-first recommendation over-weighted sharing a host with Viewer.
 Its whole-window factory is not a ready embeddable Sabueso workspace, and its
@@ -66,9 +80,9 @@ WebEngine itself separates rendering/JavaScript from the GUI process. Comparing
 
 | Host | Advantage for this use case | Work/cost still due | Proposed disposition |
 | --- | --- | --- | --- |
-| PySide6 + Qt WebEngine | Python-native application lifecycle and existing live Qt/Chromium experience in MolSysViewer | Native libraries, GUI event-loop/thread ownership, coherent Qt packaging and exact platform qualification; generic consumer embedding remains to qualify | Finalist; existing operational baseline |
-| Electron + Python process | Chromium-based standalone web workspace with native-window APIs; desktop lifecycle fits a web-centered UI and avoids Qt-specific runtime dependencies | Maintain Node/Electron plus Python, process ownership and a new live connector; packaging and resource costs need measurement | Equal finalist; desktop-web product candidate |
-| Tauri + Python sidecar | Native shell using system WebViews; can package an external Python service | Rust/shell layer and Python distribution, platform-specific WebViews, new adapter and WebGL/picking qualification | Equal current candidate, as requested by the maintainer; aligned with Viewer #276 |
+| PySide6 + Qt WebEngine | Python-native application lifecycle and existing live Qt/Chromium experience in MolSysViewer | Native libraries, GUI event-loop/thread ownership, coherent Qt packaging and exact platform qualification; generic consumer embedding remains to qualify | Accepted host for 0.16.0 |
+| Electron + Python process | Chromium-based standalone web workspace with native-window APIs; desktop lifecycle fits a web-centered UI and avoids Qt-specific runtime dependencies | Maintain Node/Electron plus Python, process ownership and a new live connector; packaging and resource costs need measurement | Second alternative; revisit for a concrete unmet requirement |
+| Tauri + Python sidecar | Native shell using system WebViews; can package an external Python service | Rust/shell layer and Python distribution, platform-specific WebViews, new adapter and WebGL/picking qualification | Third alternative; retain measured receiving and provider coordination |
 | pywebview + Python | Small Python-facing host API and a JavaScript/Python bridge | Renderer/backend varies by platform; selecting Qt inherits its native dependencies; Viewer integration remains new | Secondary option without a demonstrated advantage over the direct Qt route |
 | Local browser application | Reuses the frontend and keeps native host code small; useful for development and later remote adaptation | Browser/process lifetime, file integration and desktop presentation need deliberate design | Portability control and development host; dedicated window remains the product objective |
 
@@ -224,7 +238,7 @@ deliberate implementation and receiving. Keep orchestration small; do not turn
 
 ```mermaid
 flowchart LR
-    H["Thin Qt or Electron host"] --> UI["Portable web workspace"]
+    H["Thin PySide6 / QWebEngine host"] --> UI["Portable web workspace"]
     UI <-->|"Sabueso application API"| K["Python Knowledge session"]
     UI --> V["Provider-owned live Viewer adapter"]
     V <-->|"Viewer-owned transport"| P["Python MolSysView authority"]
@@ -309,7 +323,12 @@ duplicating #276's existing host comparison. This section is a reviewable local
 maintainer handoff, not an external publication or a reproduced provider bug.
 A shared MolI contract, if needed, requires its own owner review.
 
-## Bounded decision experiment
+## Original bounded decision experiment plan
+
+Historical pre-decision plan. The first experiment and graphics/scale follow-up
+above include all three hosts; the accepted Qt decision ends this comparison.
+Further measurements qualify the real product or answer a named reassessment
+trigger, rather than requiring every experiment below before implementation.
 
 1. Review the provider-owned embedding contract and define one portable UI
    slice. Use a public frozen Card/Deck and an explicitly mapped public molecular

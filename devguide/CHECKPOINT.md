@@ -7,6 +7,28 @@ This page owns current state; dated receipt histories are linked below.
 
 ## Next product objective: interactive exploration in 0.16.0
 
+The maintainer selects **PySide6 + QWebEngine** for the 0.16.0 desktop host,
+with a portable web workspace, separate Python backend and provider-owned live
+MolSysViewer adapter. The [decision](DECISIONS.md#select-pyside6-and-qwebengine-for-the-0160-explorer-2026-11-13)
+closes the exploratory host comparison. Electron and Tauri remain alternatives,
+not parallel product implementations. Reuse existing provider Rust capabilities;
+next implement/qualify the first real explorer slice and its lifetime/mapping
+boundaries. Exact dependency versions, packaging/native qualification and a
+public GUI remain separate work.
+
+The [graphics/scale follow-up](pending_proposals/standalone_gpu_scale_20261113.md)
+now receives all three hosts at 63,728 synthetic atoms and 32 identical structures:
+seven scale checks each, exact 24,471,552 coordinate bytes in two chunks, and
+public Movie draw barriers for indices 0/31/0. Qt/Electron identify NVIDIA
+ANGLE/Vulkan under owned Xvfb; Tauri has owned NVIDIA contexts with a masked
+WebGL label. Summed-RSS peaks are 2.46–2.62 GiB, with no final owned survivors;
+these single, different profiles do not establish a performance/thermal ranking.
+Original Card/input bytes and unadmitted synthetic mappings stay protected.
+The accepted integration-risk order is Qt, then Electron, then Tauri; it is not
+a speed ranking. Existing byte copies/eager residency,
+default Electron security and native/installed/future-engine receiving retain
+their owner-local scope. No additional system package or provider patch is added.
+
 The maintainer adds Tauri to the **current** Qt/Electron comparison and requests
 sharing useful conclusions with MolSysViewer. The
 [development probe and method](../devtools/standalone_probe/README.md) now run a
@@ -17,8 +39,9 @@ optional XR rejection and actual versus future WebGPU. Provider embedding reques
 [#368](https://github.com/uibcdf/molsysviewer/issues/368) is delivered; consolidate
 host conclusions in [#276](https://github.com/uibcdf/molsysviewer/issues/276).
 Tauri/Rust/Python data-plane and thermal benefits remain hypotheses to measure,
-starting from the existing binary path and provider ownership. No production
-host, public GUI, new scientific API, package or platform support is selected.
+starting from the existing binary path and provider ownership. That first probe
+selected no host; the subsequent maintainer decision above does. It delivers no
+public GUI, new scientific API, package or platform support.
 All three final profiles pass sixteen selected checks and twenty retained-panel
 cycles; Tauri uses the maintainer-installed WebKitGTK runtime and closes normally.
 Electron's working profile is explicitly lab-only without its sandbox. WebGPU

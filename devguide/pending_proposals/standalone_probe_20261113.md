@@ -9,6 +9,11 @@ area: [architecture, standalone, visualization, interoperability]
 
 # Standalone experiment: scope and receiving
 
+This is the first phase's receipt. The later
+[NVIDIA/scale follow-up](standalone_gpu_scale_20261113.md) adds new, separately
+scoped hardware/device and synthetic-load observations. Its existence does not
+turn the original software-profile timings into a hardware comparison.
+
 Owner #154; provider coordination in [MolSysViewer #276](https://github.com/uibcdf/molsysviewer/issues/276)
 and the delivered [live embedding request #368](https://github.com/uibcdf/molsysviewer/issues/368).
 The maintainer explicitly requests sharing this experiment's conclusions with

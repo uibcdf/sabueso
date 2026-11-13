@@ -1,5 +1,16 @@
 # Sabueso — Risks and Open Questions
 
+The [NVIDIA/scale follow-up](pending_proposals/standalone_gpu_scale_20261113.md)
+now observes working Qt/Electron ANGLE/Vulkan rendering and Tauri graphics
+contexts, exact fragmented binary delivery and existing public Movie draw
+acknowledgements. The 63,728-atom synthetic copies overlap and conformations
+repeat; they do not qualify realistic large systems, sustained rendering or
+thermal efficiency. Tauri's WebKit label still hides WebGL device identity;
+Electron's working local profile bypasses its sandbox. The maintainer selects
+Qt for 0.16.0 under #154; Electron and Tauri remain second/third alternatives,
+not a performance ranking. Future
+residency semantics stay in Viewer #55 and supported embedding in #368.
+
 Standalone host evaluation (#154, MolSysViewer #276/#368): the
 [development probe](pending_proposals/standalone_probe_20261113.md) separates
 working live integration from security startup, hardware rendering and installed
@@ -11,7 +22,9 @@ WebGPU support establishes its full workload behavior. Optional embedded XR
 rejection is observed in the consumed Mol* 5.4.1 path and caught upstream in
 5.13.0; provider receiving/backport remains owner work. Future Rust streaming must
 preserve provider APIs, units and bounded buffers and prove actual canvas delivery
-before claiming throughput or energy benefits. Reassess at the first host choice.
+before claiming throughput or energy benefits. Reassess if Qt misses a required
+platform/capability or workload budget, a provider change creates a measured
+compatibility gap, or an alternative demonstrates a material equivalent-scope gain.
 
 Interactive molecular exploration (#153/#154): the
 [0.16.0 review](pending_proposals/interactive_exploration_0160.md#integration-work-and-provider-handoff)

@@ -9,6 +9,20 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Graphics and scale experiment follow-up (2026-11-13 UTC)
+
+From `13f86db`, #154 owns explicit private-host graphics profiles, a tiny
+diagnostic, NVIDIA context observation and bounded synthetic scale controls.
+Public scientific library code, schema, source fixtures, runtime manifests and
+provider checkouts remain unchanged. The [receipt](standalone_gpu_scale_20261113.md)
+records applicable local checks, source/input preservation, actual receiving and
+the missing native/installed/thermal scope. The authorized `[skip ci]` checkpoint
+retains the existing exact-head CI/governance recovery route under #154/#112;
+Git records the deferred final head. Hosted checks are not claimed or dispatched,
+and no candidate, platform support or package/release publication is selected.
+The maintainer separately accepts Qt as the 0.16.0 development host; this is not
+installed or hosted qualification.
+
 ### Development host experiment (2026-11-13 UTC)
 
 From `5516b6d`, #154 owns the isolated `devtools/standalone_probe/` tool and

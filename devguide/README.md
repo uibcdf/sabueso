@@ -21,7 +21,7 @@ anything: the remote repository does not contain the whole local state.
 | What must the complete Card experience deliver? | [Broad exploration inventory](pending_proposals/card_exploration_completion_0150.md) and [observable wow criteria](CONTINUATION_PLAN_20261104.md#required-wow-experience-in-0150) |
 | How can an independent researcher review it? | [Participant invitation and tasks](../docs/content/user/researcher_review.md), [blank worksheet](../docs/_static/researcher_review_worksheet.txt) and [maintainer preparation](pending_proposals/researcher_acceptance_0150.md); the maintainer defers this trial until after 0.15.0, with no independent acceptance claimed |
 | What are the long-term goals and dependencies? | [Accepted six-stage program](ROADMAP.md#accepted-long-term-execution-stages) and [its execution](CONTINUATION_PLAN_20261104.md#accepted-six-stage-program) |
-| What is the next product objective for 0.16.0? | [Interactive Card/Deck exploration and MolSysViewer review](pending_proposals/interactive_exploration_0160.md); the direction is accepted, and host/framework selection is the next discussion |
+| What is the next product objective for 0.16.0? | [Interactive Card/Deck exploration](pending_proposals/interactive_exploration_0160.md), with [PySide6/QWebEngine selected](pending_proposals/standalone_gpu_scale_20261113.md), a portable web workspace, Python backend and live MolSysViewer |
 | What decisions explain the design? | [DECISIONS](DECISIONS.md), the owning issue and its feature analysis; use the [onboarding history map](ONBOARDING.md#how-the-project-reached-this-point) rather than reading the full log sequentially |
 | How do I change and verify something? | [Root instructions](../AGENTS.md), [API conventions](API_CONVENTIONS.md), [TESTS](TESTS.md) |
 | How do I resume on another machine without losing work? | [Handoff](WORKSTATION_HANDOFF_20261106.md), its manifest and the current checkpoint |
@@ -39,9 +39,11 @@ acceptance states remain separate, and authorized independent development can co
 
 The maintainer now accepts [interactive Card and Deck exploration](pending_proposals/interactive_exploration_0160.md)
 as the 0.16.0 product objective, advancing a bounded part of long-term stage 6.
-The MolSysViewer review supplies the basis for discussing platform, frontend
-technology and molecular integration. Those choices and the complete release
-contract remain open; the accepted 0.15.0 scope and other roadmap goals persist.
+After the MolSysViewer review and actual host comparison, the maintainer selects
+PySide6 + QWebEngine, a portable web workspace and a separate Python backend.
+Implement the first real explorer slice while qualifying provider embedding,
+native delivery and exact dependencies. The complete release contract remains
+open; the accepted 0.15.0 scope and other roadmap goals persist.
 
 The [current overview orientation](pending_proposals/card_orientation.md) exposes
 curated original protein/molecule/disease fields, source versions and exact

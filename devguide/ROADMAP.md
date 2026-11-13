@@ -23,8 +23,10 @@ Its implementation review is closed. Prepare the separate milestone/delivery
 decision and continue independent authorized development, preserving outstanding
 acceptance and delivery states. It does not complete the later stages.
 The maintainer separately accepts [interactive Card/Deck exploration for 0.16.0](pending_proposals/interactive_exploration_0160.md).
-This advances a bounded part of stage 6; platform/technology selection follows
-the MolSysViewer review and remains the next discussion.
+This advances a bounded part of stage 6. The maintainer now selects
+[PySide6 + QWebEngine](pending_proposals/standalone_gpu_scale_20261113.md), a
+portable web workspace and separate Python backend after the common live-host
+comparison. Next implement and qualify the first explorer slice.
 
 ## How the two routes are integrated
 
@@ -66,7 +68,7 @@ these stages.
 | 3 — Expand semantic and temporal knowledge access | Broaden KnowledgeQuery, packets and source-supported temporal questions with explicit unknowns, original support and real consumer receiving; preserve shared MOLI contracts and distinguish stored history from unqueried historical sources |
 | 4 — Expand real interoperability | Complete useful MOLI and MolSysSuite exchanges with their actual consumers, retaining identity, units, support and the ownership of Knowledge, Evidence, geometry and provenance |
 | 5 — Expand scientific coverage and source guarantees | Address scientific/source gaps, source utilization and health, bibliography, acquisition observation and rights through their owning contracts and registry; preserve explicit licensing, unsupported scope and adoption decisions |
-| 6 — Deliver separately scoped exploration products | The maintainer selects a bounded interactive Card/Deck experience with applicable MolSysViewer integration as the 0.16.0 product objective; host/framework selection is pending. Broader export, presentation video and CLI retain separate future scope. None expands 0.15.0 |
+| 6 — Deliver separately scoped exploration products | The maintainer selects a bounded interactive Card/Deck experience with live MolSysViewer, PySide6/QWebEngine hosting, portable web UI and separate Python backend for 0.16.0. Implement/qualify the first slice. Broader export, presentation video and CLI retain separate future scope. None expands 0.15.0 |
 
 The [continuation plan](CONTINUATION_PLAN_20261104.md#accepted-six-stage-program)
 connects these stages to incremental execution. An unavailable reviewer or queued
@@ -363,7 +365,7 @@ contracts. See the [coordination route](CONTINUATION_PLAN_20261104.md#vertical-p
 | Sources and mirrors | Registry-owned evaluations/deferred triggers, explicit terms/access and current source health; postponed mirrors and unlicensed inputs are not implied new work (#83/#95/#101) |
 | Peptides | Define the scientific/identity/source scope before a source implementation; schema enumeration alone is not delivered peptide science |
 | Interoperability | Actual model/annotation/ligand-deck receiving by MolSysSuite consumers; source knowledge, calculated geometry, Nextia Evidence and provenance retain distinct ownership |
-| Exploration products | Bounded interactive Card/Deck exploration is selected for 0.16.0 (#153/#154), with platform/technology discussion next. Broader export, video and CLI remain separately scheduled; reuse Card semantics and keep publication authority explicit |
+| Exploration products | Bounded interactive Card/Deck exploration is selected for 0.16.0 (#153/#154), with PySide6/QWebEngine, a portable web UI, separate Python backend and live MolSysViewer. Implement/qualify the first slice. Broader export, video and CLI remain separately scheduled; reuse Card semantics and keep publication authority explicit |
 
 The [earlier detailed backlog](archive/ROADMAP_before_onboarding_20261106.md#capability-backlog-and-dependencies)
 preserves every previous capability/owner reference and dated progress record.

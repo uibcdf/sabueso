@@ -1,5 +1,42 @@
 # Sabueso — Decision Log
 
+## Select PySide6 and QWebEngine for the 0.16.0 explorer (2026-11-13)
+
+After the common live-workspace comparison and bounded graphics/scale controls,
+the maintainer accepts **PySide6 + QWebEngine** as Sabueso's desktop host for
+0.16.0. Keep a portable web workspace, a separate Python Knowledge session and a
+provider-owned live MolSysViewer adapter. This supersedes the open host choice
+in the preceding design reviews; Electron is the second alternative and Tauri
+the third by current integration risk, not measured speed.
+
+The [experiment](pending_proposals/standalone_probe_20261113.md) and
+[graphics/scale follow-up](pending_proposals/standalone_gpu_scale_20261113.md)
+record actual profiles, failures and limits. All three preserve the selected
+live journey; all pass a 63,728-atom/32-identical-structure synthetic control.
+Their summed-RSS peaks are about 2.46–2.62 GiB, without a demonstrated whole-app
+Tauri memory advantage or an inherent Electron memory penalty. Qt offers Python
+host continuity and working Chromium graphics without adding a Node runtime or
+a Sabueso-owned Rust shell. Qt packaging, lifecycle and browser updates still
+need maintained qualification. Chromium guarantees neither WebGPU nor flawless
+graphics on every driver/session.
+
+Reuse Rust already present in MolSysMT/MolSysViewer through their supported
+interfaces. Sabueso adds no competing scientific parser or Rust engine. Optimize
+provider paths only after attributing preparation, residency, copy/transport and
+draw costs. PyO3 and binary transport do not guarantee zero latency or end-to-end
+zero-copy.
+
+Close the exploratory host comparison and implement the first real explorer
+slice under #154/#153/#148. Reassess the host when Qt fails a required supported
+platform/capability or agreed workload budget, a provider engine change creates
+a measured compatibility gap, or another host demonstrates a material benefit
+at equivalent scientific/security scope. Realistic varied workloads, sustained
+resources and native/installed receiving remain implementation/delivery work,
+not reasons to keep this choice undecided. Share the conclusions in Sabueso
+#154 and MolSysViewer #276, cross-linking embedding #368 and residency #55.
+This selects a development architecture, not exact dependency minima, platform
+support, a package/release or an implemented public GUI.
+
 ## Include Tauri now and share host findings with MolSysViewer (2026-11-12)
 
 The maintainer requests Tauri as an equal current candidate alongside Qt and

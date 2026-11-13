@@ -16,6 +16,9 @@ def main():
     parser.add_argument("--bootstrap", type=Path, required=True)
     parser.add_argument("--cdp-port", type=int, required=True)
     parser.add_argument("--software", action="store_true")
+    parser.add_argument(
+        "--graphics-profile", choices=("software", "default", "angle-vulkan")
+    )
     parser.add_argument("--capture-dir", type=Path)
     parser.add_argument("--lab-no-sandbox", action="store_true")
     args = parser.parse_args()
@@ -23,15 +26,15 @@ def main():
         os.environ["QTWEBENGINE_DISABLE_SANDBOX"] = "1"
     os.environ["QTWEBENGINE_REMOTE_DEBUGGING"] = f"127.0.0.1:{args.cdp_port}"
     flags = ["--num-raster-threads=1"]
-    if args.software:
-        flags += [
-            "--use-gl=angle",
-            "--use-angle=swiftshader",
-            "--enable-unsafe-swiftshader",
-            "--disable-gpu-compositing",
-        ]
+    profile_name = args.graphics_profile or ("software" if args.software else "default")
+    if args.software and profile_name != "software":
+        raise ValueError("Conflicting graphics profile requests")
+    profiles = json.loads(
+        (Path(__file__).parent / "graphics_profiles.json").read_text()
+    )
+    flags += ["--" + flag for flag in profiles[profile_name]["chromium_switches"]]
     os.environ["QTWEBENGINE_CHROMIUM_FLAGS"] = " ".join(flags)
-    from PySide6.QtCore import QTimer, QUrl
+    from PySide6.QtCore import QCoreApplication, QEvent, QTimer, QUrl
     from PySide6.QtWebEngineCore import (
         QWebEnginePage,
         QWebEngineProfile,
@@ -78,6 +81,7 @@ def main():
             "initial-workspace",
             "selected-workspace",
             "final-workspace",
+            "scale-workspace",
             "failure",
         }:
             raise ValueError("Unknown native capture phase")
@@ -94,9 +98,9 @@ def main():
     view.close()
     page.deleteLater()
     view.deleteLater()
-    app.processEvents()
+    QCoreApplication.sendPostedEvents(None, QEvent.DeferredDelete)
     profile.deleteLater()
-    app.processEvents()
+    QCoreApplication.sendPostedEvents(None, QEvent.DeferredDelete)
 
 
 if __name__ == "__main__":

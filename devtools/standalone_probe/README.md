@@ -42,13 +42,60 @@ pointer events are not used as native picking evidence. This adds different
 automation overhead; journey wall times are not a host-performance ranking.
 The observer never fabricates molecular events or changes provider scene state.
 
-All hosts record actual WebGL renderer and browser WebGPU adapter availability
+All hosts record the browser-reported WebGL renderer and WebGPU adapter availability
 without enabling experimental WebGPU flags. Browser support does not mean the
 consumed MolSysViewer/Mol* uses WebGPU. Canvas checks and screenshots are separate
 from hardware acceleration, native platform qualification or human acceptance.
 Qt additionally captures its actual QWidget composition: a CDP screenshot alone
 does not prove final Qt composition. Tauri's browser diagnostic samples pixels
 until the first nonuniform draw, then stops pixel readbacks.
+WebKitGTK can return fixed renderer/vendor labels; they do not identify hardware.
+
+## Graphics profiles and synthetic scale controls
+
+`--graphics-profile software` preserves the original experiment's default.
+`default` clears the listed software/driver overrides in the owned child and
+leaves renderer selection to the host. `angle-vulkan` explicitly requests
+Chromium's ANGLE/Vulkan path with CPU window composition and an NVIDIA driver
+filter, for Qt/Electron only. These are requests, not hardware certificates;
+none enables unsafe WebGPU flags. Xvfb itself retains its separate software
+setup. No desktop, driver, AppArmor or system setting is changed.
+
+`--graphics-only` loads a tiny WebGL2 triangle instead of the scientific backend.
+It records a different diagnostic kind and cannot qualify a molecular journey.
+`--scale-only --scale-copies 16 --scale-structures 32` loads a synthetic cohort
+through public MolSysMT and Viewer APIs. Allowed copy counts are 1/4/16 and
+structure counts 1/8/32. The copies overlap and the conformations are identical:
+there is no physical assembly or molecular-dynamics claim. Original Card/input
+bytes remain fixed and the previous Card-to-scene correspondence is refused.
+The original source/picking/save/return journey is a separate scope.
+
+Scale preparation uses a single Python worker. A task-local observer wraps only
+the owned channel's public `send` method, forwards messages/buffers unchanged and
+counts the actual buffers against their `structural_arrays` descriptors. This
+measures the API boundary, not network/GPU bytes or end-to-end zero-copy.
+Public `movie.capture_baseline_async()` and `movie.seek_async()` provide the
+primary-canvas draw barrier, including seeks to the last structure and back.
+The frame-change callback alone is an authority-state notification. Draw-ack
+round trips are not FPS, GPU execution time or physical display presentation.
+The control also attempts local float/dock actions while the scale request is
+pending; their recorded time includes automation overhead.
+
+Wrap a trial with `gpu_observer.py --output <fresh-json> -- <command>`, inside
+`run_bounded.py`. It matches NVIDIA graphics contexts only to discovered command
+descendants using PID and creation time, refreshing the tree around queries.
+Unmatched contexts are unattributed; they do not prove foreign activity. GPU
+context presence alone does not establish which device rendered WebGL.
+The observer stops only its own command tree above 2048 MB of summed per-GPU
+framebuffer usage reported by `nvidia-smi pmon`, below a 20% selected-GPU memory
+reserve, above 80 Celsius, or when observation fails. These are sampled controls,
+not enforced reservations. CLI columns are specific to the observed driver;
+this is not a general resource-management service. A lowered
+`--framebuffer-stop-mb 1` is available only as a small safety-control experiment.
+`pmon`'s reported MB are retained without guessing a byte conversion; the device
+query's memory columns report MiB. Older exploratory @1 GPU records used a
+misleading `_mib` key for the same raw `pmon` values and are not converted or
+rewritten. Whole-device temperature/power remains unattributed on a shared host.
 
 ## Controlled development execution
 

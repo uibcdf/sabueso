@@ -21,6 +21,7 @@ from importlib.metadata import distribution, version
 from pathlib import Path
 
 from aiohttp import web
+from scale_case import BufferObservation, run_scale_case
 
 HERE = Path(__file__).resolve().parent
 
@@ -155,6 +156,7 @@ class Probe:
         self.independent = None
         self.origin = None
         self.timings = {}
+        self.buffers = None
 
     def authorized(self, request):
         token = request.cookies.get(self.cookie_name, "")
@@ -283,6 +285,11 @@ class Probe:
                     await service.close()
                     view.close()
                     self.independent = None
+                elif name == "scale_control":
+                    result = await run_scale_case(
+                        self, payload.get("copies"), payload.get("structures")
+                    )
+                    return web.json_response({"scale": result})
                 elif name == "replace_model_control":
                     if len(self.selection) < 3:
                         raise ValueError(
@@ -348,6 +355,7 @@ async def run(args):
     loop.set_default_executor(executor)
     probe = Probe(args.inputs, args.output)
     probe.service = RemoteSessionService(render_on="client")
+    probe.buffers = BufferObservation(probe.service.channel)
     probe.view = MolSysView(transport=probe.service.channel)
     runner = None
     try:
@@ -424,6 +432,7 @@ async def run(args):
         probe.view.off_click(probe.on_click)
         await probe.service.close()
         probe.view.close()
+        probe.buffers.close()
         if runner:
             await runner.cleanup()
         args.bootstrap.unlink(missing_ok=True)
