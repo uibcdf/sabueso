@@ -1137,6 +1137,15 @@ See the [S1 receipt](evidence/interactive_card_app_checkpoint_20261113.json) for
 the exact current scope and [implementation plan](pending_proposals/interactive_implementation_0160.md)
 for remaining work and the provider boundary.
 
+The native Deck contract (#153) adds `test_deck_exploration_offline.py`,
+`test_deck_envelope_admission_offline.py` and the application Deck session tests.
+Select native Deck/membership/schema/storage controls alongside `tests/explorer/`.
+Require detached capture, duplicate occurrences, exact source/selection/return,
+complete metadata, byte-bounded pages, stale/foreign cursors and strict current/
+legacy envelope admission. Receive `devtools/deck_explorer_journey.mjs` in the
+actual Qt host and installed artifact. No independent Deck saved-reading format
+or automatic cross-member context is admitted by these checks.
+
 Use the Ruff version pinned in `pyproject.toml` and CI. Run its format gate at
 the repository root: it includes Python examples in Markdown, so a Python-only
 path selection does not replace `ruff format --check .`.

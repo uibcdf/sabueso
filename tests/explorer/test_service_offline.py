@@ -93,6 +93,38 @@ def test_loopback_auth_origin_card_admission_and_stale_requests(tmp_path):
             assert (await client.get("/assets/private.json")).status == 404
             assert (await client.get("/")).status == 200
             assert (await client.get("/assets/app.js")).status == 200
+            from sabueso.core.deck import Deck
+
+            deck_path = tmp_path / "original-deck.jsonl"
+            Deck(
+                [card, card],
+                meta={"extension": {"number": 1.0, "large": 9007199254740993}},
+            ).to_jsonl(str(deck_path))
+            response = await client.post(
+                "/api/deck",
+                data=deck_path.read_bytes(),
+                headers={
+                    "Origin": service.origin,
+                    "X-Sabueso-Revision": current["revision"],
+                    "Content-Type": "application/jsonl",
+                },
+            )
+            assert response.status == 200
+            deck_panel = (await response.json())["panel"]
+            assert deck_panel["workspace"] == "deck" and deck_panel["count"] == 2
+            assert deck_panel["items"][0]["ref"] != deck_panel["items"][1]["ref"]
+            original_meta = service.session.current.inspect()
+            assert type(original_meta["extension"]["number"]) is float
+            assert original_meta["extension"]["large"] == 9007199254740993
+            response = await client.post(
+                "/api/deck",
+                data=deck_path.read_bytes(),
+                headers={
+                    "Origin": service.origin,
+                    "X-Sabueso-Revision": current["revision"],
+                },
+            )
+            assert response.status == 400
 
     asyncio.run(run())
 

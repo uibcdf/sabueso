@@ -14,15 +14,19 @@ complete-text pages, save/reopen and float/reset controls. The
 selected integration passes, the final 43-case application/package/dependency
 gate, compiled assets/source packaging and eleven actual Qt checks each from
 the checkout and an installed unpublished wheel. Original-body upload preserves
-numeric types and quantity seals. No molecular/Deck UI, identifier acquisition,
-public release or native-platform qualification is claimed. Resume at S2.1 and
-independent S3.2; S3.1 source audit and S5.4 development artifact receiving pass.
+numeric types and quantity seals. The subsequent [Deck receipt](evidence/interactive_deck_checkpoint_20261113.json)
+adds native captured Deck exploration and the Qt Deck workspace: 76 selected
+passes and eleven real Qt checks each from checkout and installed wheel. Exact
+Deck return retains filters/order and repeated occurrences; #197 corrects unknown
+envelope admission. No molecular UI, identifier acquisition, public release or
+native-platform qualification is claimed at this checkpoint. Resume at S4.1 and
+S2.1; the two interrupted full-suite attempts are not passing qualification.
 
 The [living 0.16.0 implementation plan and checkpoint](pending_proposals/interactive_implementation_0160.md)
 owns granular stage/microstage progress, completion criteria, evidence and the
 next action. S0 architecture/feasibility and the first S1 Card application are
-complete within their explicit scopes. Molecular, Deck and identifier-entry work
-retain explicit product work. Update that plan and this summary together as
+complete within their explicit scopes. Molecular and identifier-entry work, cross-member Deck context and independent
+Deck workspace saving retain explicit product work. Update that plan and this summary together as
 implementation advances; preserve experiment versus product qualification.
 
 The maintainer selects **PySide6 + QWebEngine** for the 0.16.0 desktop host,

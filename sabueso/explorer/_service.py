@@ -9,6 +9,7 @@ import json
 import os
 import secrets
 import signal
+import tempfile
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from urllib.parse import urlsplit
@@ -17,6 +18,7 @@ from depdigest import dep_digest
 
 from sabueso.core.card import Card
 from sabueso.core.errors import ArgumentError, SabuesoError
+from sabueso.explorer._deck_session import _DeckSession
 from sabueso.explorer._session import _Session
 
 ASSETS = Path(__file__).parent / "_assets"
@@ -50,6 +52,17 @@ class _Service:
         ):
             raise ArgumentError("Choose a serialized Sabueso Card JSON file.")
         session = _Session.from_card(Card.from_dict(data), self.output_directory)
+        panel = session.panel()
+        self.session = session
+        return panel
+
+    def load_deck(self, raw):
+        from sabueso.core.deck import Deck
+
+        with tempfile.TemporaryDirectory(prefix="sabueso-deck-input-") as directory:
+            path = Path(directory) / "input.jsonl"
+            path.write_bytes(raw)
+            session = _DeckSession(Deck.from_jsonl(str(path)), self.output_directory)
         panel = session.panel()
         self.session = session
         return panel
@@ -128,6 +141,17 @@ class _Service:
                 result = await asyncio.to_thread(self.load_card, body)
             return web.json_response({"panel": result})
 
+        async def load_deck(request):
+            raw = await request.read()
+            async with self.lock:
+                revision = self.session.revision if self.session else ""
+                if request.headers.get("X-Sabueso-Revision") != revision:
+                    raise ArgumentError(
+                        "The reading changed; reload before opening a Deck."
+                    )
+                result = await asyncio.to_thread(self.load_deck, raw)
+            return web.json_response({"panel": result})
+
         app.add_routes(
             [
                 web.get("/", asset),
@@ -136,6 +160,7 @@ class _Service:
                 web.get("/api/panel", panel),
                 web.post("/api/action", action),
                 web.post("/api/card", load),
+                web.post("/api/deck", load_deck),
             ]
         )
         return app
@@ -160,6 +185,10 @@ async def _run(args):
             service.session = await asyncio.to_thread(
                 _Session.from_saved, args.reading, args.output_directory
             )
+        elif args.deck:
+            if args.deck.stat().st_size > 16 * 1024**2:
+                raise ArgumentError("This Deck exceeds the 16 MiB opening limit.")
+            await asyncio.to_thread(service.load_deck, args.deck.read_bytes())
         runner = service.web.AppRunner(service.application(), access_log=None)
         await runner.setup()
         site = service.web.TCPSite(runner, "127.0.0.1", 0)
@@ -186,6 +215,7 @@ def _main():
     inputs = parser.add_mutually_exclusive_group()
     inputs.add_argument("--card", type=Path)
     inputs.add_argument("--reading", type=Path)
+    inputs.add_argument("--deck", type=Path)
     parser.add_argument("--output-directory", type=Path, required=True)
     parser.add_argument("--bootstrap", type=Path, required=True)
     asyncio.run(_run(parser.parse_args()))

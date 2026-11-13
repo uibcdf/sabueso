@@ -9,6 +9,10 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Native Deck explorer and admission correction (2026-11-13)
+
+From `1b0403e`, #153/#154 own the captured Deck human/agent contract, Qt workspace and installed-artifact receiving. #197 owns strict envelope-version admission. The [Deck receipt](../evidence/interactive_deck_checkpoint_20261113.json) records selected/native gates and both incomplete full-suite attempts, with original Card semantics unchanged. The authorized `[skip ci]` checkpoint retains #154/#112's exact-final-head CI/governance recovery route. Full offline receiving must finish on the integrated source before full checkpoint claims; no workflow dispatch, release or platform expansion is selected. Git records the deferred final head.
+
 ### First optional Qt Card application (2026-11-13)
 
 From `fb0d096`, #154 owns the generic session, separate loopback service, thin Qt

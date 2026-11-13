@@ -524,7 +524,8 @@ name is selected by this naming recommendation.
 
 The following high-level sequence is expanded by the current
 [implementation plan and checkpoint](interactive_implementation_0160.md).
-Host comparison is complete; resume at its S1.1 rather than repeating selection.
+Host comparison is complete. Follow the living checkpoint’s current resumption
+cursor; the initial S1.1 Card application has been delivered.
 
 1. Agree first host, product entry, framework comparison and bounded public tasks;
    record the decision under #154 before full implementation.

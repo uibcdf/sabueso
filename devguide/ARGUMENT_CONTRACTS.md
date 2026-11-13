@@ -824,3 +824,20 @@ ArgDigest digester. Only `card_knowledge_diff@1` (unchanged default) and explici
 native rule independently validates one-to-one positive integer map pairs and
 bounds where sequence lengths are stated, including when digestion is skipped.
 The older rule and the shared `residue_map` digester retain their existing scope.
+
+## Captured Deck exploration (#153)
+
+`Deck.explore()` and `Deck.access()` capture supplied members without source
+acquisition. `DeckView.member()` uses the dedicated `member_ref` digester for
+opaque `DM_` occurrence handles; `select()` uses `member_refs`, preserving
+ordered distinct occurrences and refusing a duplicate request for one handle.
+These handles do not replace Card or SourceAssertion identities.
+
+`filter(text)`, `sort(column, descending=...)` and finite
+`page(limit=..., max_bytes=..., cursor=...)` reuse existing argument digesters.
+Deck sorting accepts only declared identifier/nature presentation keys
+`label`/`kind`, never a heterogeneous scientific quantity comparison. The native
+page additionally admits 1–1000 records and 1024–1048576 encoded UTF-8 bytes;
+foreign or selection-mismatched cursors are refused. Member metadata too large
+for one page is explicitly deferred with its exact handle. Full capture memory
+is independent of the response budget. See the [contract](pending_proposals/deck_exploration_contract_0160.md).

@@ -15,17 +15,10 @@ Checkpoint date: **2026-11-13**. Reviewed implementation baseline:
 planning parent `fb0d09659f8d00685f829d6781e5d256751dac66`;
 [application code hashes and receiving](../evidence/interactive_card_app_checkpoint_20261113.json).
 
-**Current position:** S0 and S1 are complete at the first development-application
-scope. S3.1 reuse audit and S5.4 development artifact receiving also pass. The
-Qt Card application opens original files, navigates and saves/reopens them.
-Next: **S2.1**, the product molecular adapter; continue **S3.2** independently
-while the stable provider embedding surface remains open under Viewer #368.
+**Current position:** S0 and S1, S3.1–S3.3 and S5.4 are delivered at their bounded development scopes. Native `Deck.explore()`/`access()` and the Qt Deck workspace preserve original occurrences, metadata and exact return. See the [Deck receipt](../evidence/interactive_deck_checkpoint_20261113.json).
+Next: **S4.1** explicit identifier entry, alongside **S2.1**'s provider-owned molecular adapter. S3.4 retains cross-member/historical workspace receiving.
 
-**Delivered observable result:** the first supplied-Card/topic/item/source/Back/
-save/reopen journey works in a dedicated Qt window, including entry from a blank
-window and a separately installed unpublished wheel. **Next observable result:**
-link that reading to an explicitly mapped live molecular view, without copying
-provider internals or silently inventing correspondence.
+**Delivered observable result:** Card and Deck/topic/item/source/Back journeys work in Qt, including separately installed unpublished artifacts. The two interrupted full offline attempts are preserved and are not passing qualification. **Next observable result:** explicit UniProt/PDB/SMILES/disease entry, then a supported mapped molecular reading without inferred identity.
 
 The maintainer requests this document as both the implementation plan and its
 granular checkpoint. It owns stage/microstage status for 0.16.0.
@@ -165,10 +158,10 @@ reusable primitives below; the open #153 contract remains the missing product wo
 
 | ID | State | Delivered work, remainder and completion check |
 | --- | --- | --- |
-| S3.1 | `done` | Existing `Deck` has membership/exclusion explanations, filters/order, snapshots and scientific operations. Initial inspection confirms no general `Deck.explore()` entry. The [reuse audit](deck_exploration_contract_0160.md) records mutable/captured boundaries, repeated-member semantics and existing metadata-preserving persistence; S3.2 owns the missing contract |
-| S3.2 | `todo` | Implement the bounded human/agent Deck contract: overview, membership basis, selections, typed discovery, finite pages and exact captured members. Names such as `explore()`/`access()` require the actual API review; GUI code must not invent a competing contract |
-| S3.3 | `todo` | Add the Deck workspace and Deck → selected Card → item → source → exact Deck return, preserving filter, order, selection, repeated occurrence and original revision |
-| S3.4 | `todo` | Exercise public homogeneous/mixed decks, empty selection, missing members, duplicates/revision ambiguity and historical reopening. Keep complete metadata/support access and compact agent retrieval available outside the GUI |
+| S3.1 | `done` | Existing `Deck` has membership/exclusion explanations, filters/order, snapshots and scientific operations. The initial reuse audit found no general `Deck.explore()` entry; S3.2 now supplies it. The [reuse audit](deck_exploration_contract_0160.md) records mutable/captured boundaries, repeated-member semantics and existing metadata-preserving persistence; S3.2 owns the missing contract |
+| S3.2 | `done` | Native `Deck.explore()`/`access()` implement the bounded human/agent contract: overview, membership basis, selections, typed discovery, finite pages and exact captured members. Original capture and typed pages are shared by GUI and agents; [contract and limits](deck_exploration_contract_0160.md) |
+| S3.3 | `done` | Qt Deck → selected Card → item → source → exact Deck return preserves filter, order, repeated occurrence and original revision. Eleven actual Qt checks pass from checkout and installed wheel; [receiving](../evidence/interactive_deck_checkpoint_20261113.json) |
+| S3.4 | `partial` | Public/synthetic mixed members, empty/duplicate/revision/metadata controls and native original-envelope admission pass. Cross-member related capture and independent Deck workspace saving/reopening remain open; original Card saved meanings stay unchanged |
 
 Do not display heterogeneous scientific quantities in a forced universal
 comparison. Reuse existing scientific operations and named/versioned rules.
@@ -281,6 +274,14 @@ round-tripping changed sealed numeric types; forwarding the original body fixes
 the boundary without weakening verification. Earlier selector/PNG-write races
 were observer errors; no failing control is counted as passing.
 
-S2 stable embedding, S3 Deck contracts/UI, identifier acquisition, 2D/3D chemistry,
+At the S1 checkpoint, S2 stable embedding, S3 Deck contracts/UI, identifier acquisition, 2D/3D chemistry,
 workspace persistence/recovery and researcher/whole-version acceptance remain
 open. Source acquisition is still absent from ordinary application reading.
+
+## Latest implementation checkpoint — S3 native Deck and application
+
+The [source-bound Deck receipt](../evidence/interactive_deck_checkpoint_20261113.json) records 76 selected passes and eleven real Qt checks each from checkout and an installed unpublished wheel. The native contract detaches original metadata/Cards, keeps repeated occurrences distinct, exposes byte/record-bounded typed pages and restores exact filter/order/selection. No global scientific quantity comparison or automatic acquisition is introduced.
+
+The actual #197 correction rejects unsupported Deck envelope versions before reading members, retaining format 1 and documented legacy routes. It changes no Card schema. The new receiving has positive/negative/legacy controls. A 30-minute full offline attempt reached its time ceiling; the next attempt was interrupted by the server restart after 3,724 positive call records. Neither has a completed verdict. Full final-source/hosted qualification remains due under #154/#112. A native observer's missing optional argument failed before application startup; the corrected observer and installed receiving pass.
+
+S3.4's independent Deck saved workspace, cross-member context, S2 molecular product integration and the remaining S4–S6 scope stay open. Native original Deck persistence and saved individual Card readings remain available with their separate meanings.

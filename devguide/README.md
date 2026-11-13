@@ -47,10 +47,11 @@ native delivery and exact dependencies. The complete release contract remains
 open; the accepted 0.15.0 scope and other roadmap goals persist.
 
 The first optional Qt Card application now delivers local topic/search/source/
-Back/save/reopen navigation and movable reading panels. Its
+Back/save/reopen navigation and movable reading panels. The native Deck contract
+and Qt Deck workspace add repeated occurrences, complete metadata and exact return. Its
 [implementation checkpoint](pending_proposals/interactive_implementation_0160.md)
 records actual checkout/installed-wheel receiving and the remaining molecular,
-Deck, identifier-entry and acceptance work. This is development implementation,
+cross-member Deck context, identifier-entry and acceptance work. This is development implementation,
 not a public GUI installation or platform-support claim.
 
 The [current overview orientation](pending_proposals/card_orientation.md) exposes

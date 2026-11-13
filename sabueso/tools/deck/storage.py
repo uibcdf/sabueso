@@ -24,6 +24,7 @@ from typing import Any, Dict, List, Tuple
 
 from sabueso._private.argdigest import arg_digest
 from sabueso._private.argdigest.argument.table import digest_table
+from sabueso.core.errors import StorageError
 
 DECK_HEADER = "sabueso_deck"
 DECK_FORMAT = 1
@@ -60,14 +61,33 @@ def _read_deck_jsonl(path: str | Path) -> Tuple[Dict[str, Any], List[dict]]:
     """``(meta, payloads)``, unverified; meta is empty without a header."""
     meta: Dict[str, Any] = {}
     cards: List[dict] = []
+    header_seen = False
     with Path(path).open("r", encoding="utf-8") as f:
         for line in f:
             line = line.strip()
             if not line:
                 continue
             data = json.loads(line)
-            if not cards and not meta and set(data) == {DECK_HEADER}:
-                meta = data[DECK_HEADER].get("meta") or {}
+            if not isinstance(data, dict):
+                raise StorageError("A Deck JSONL record must be an object.")
+            if set(data) == {DECK_HEADER}:
+                if header_seen or cards:
+                    raise StorageError(
+                        "A Deck header must appear once before its members."
+                    )
+                header_seen = True
+                envelope = data[DECK_HEADER]
+                if (
+                    not isinstance(envelope, dict)
+                    or type(envelope.get("format")) is not int
+                    or envelope["format"] != DECK_FORMAT
+                ):
+                    raise StorageError(
+                        "Unsupported Deck envelope format; only format 1 is interpreted. Header-free legacy files remain readable."
+                    )
+                meta = envelope.get("meta", {})
+                if not isinstance(meta, dict):
+                    raise StorageError("Deck metadata must be an object.")
                 continue
             cards.append(data)
     return meta, cards
@@ -159,10 +179,18 @@ def _read_deck_sqlite(
         meta: Dict[str, Any] = {}
         if cur.fetchone():
             cur.execute(
-                f"SELECT meta_json FROM {META_TABLE} WHERE deck_table=?", (table,)
+                f"SELECT format, meta_json FROM {META_TABLE} WHERE deck_table=?",
+                (table,),
             )
             row = cur.fetchone()
-            meta = json.loads(row[0]) if row else {}
+            if row:
+                if type(row[0]) is not int or row[0] != DECK_FORMAT:
+                    raise StorageError(
+                        "Unsupported Deck SQLite metadata format; only format 1 is interpreted."
+                    )
+                meta = json.loads(row[1])
+                if not isinstance(meta, dict):
+                    raise StorageError("Deck metadata must be an object.")
     return meta, cards
 
 

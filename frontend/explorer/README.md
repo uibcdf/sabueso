@@ -1,6 +1,6 @@
 # Explorer frontend development
 
-This is the first optional Qt-hosted Card application under Sabueso #154.
+This is the optional Qt-hosted Card/Deck development application under Sabueso #154.
 The [living plan](../../devguide/pending_proposals/interactive_implementation_0160.md)
 owns implemented versus remaining product scope. This is not a released GUI or
 a verified public installation route.
@@ -20,7 +20,8 @@ python -m sabueso.explorer --output-directory /path/to/new-readings
 
 Open a Card JSON through the file chooser. `--card /path/to/card.json` preloads a
 Card; `--reading /path/to/reading.json.gz` opens an existing original exploration
-through its ordinary verifier. The two inputs are mutually exclusive. This
+through its ordinary verifier. `--deck /path/to/deck.jsonl` opens the original Deck envelope; all three inputs
+are mutually exclusive. This
 requires an actual graphical session; the automated receiver owns its Xvfb.
 No sandbox bypass or automatic source acquisition is introduced.
 
@@ -29,7 +30,10 @@ exact Back, finite item/text pages, save/reopen and float/reset controls are
 implemented. All natures use the existing Card readers. Scalar text is available
 in complete 4,096-character pages; the Python-reader navigation footer is hidden
 only in the UI preview. Original reader text and saved meanings are unchanged.
-No molecular panel, Deck exploration or identifier acquisition is delivered yet.
+The Deck workspace preserves repeated occurrences, original metadata, literal
+filters/order and exact Card/source/Deck return. Saving a Card reading does not
+save the surrounding Deck workspace. No molecular panel or identifier acquisition
+is delivered at this checkpoint.
 
 Card upload sends the selected file body directly. Never parse and reserialize
 sealed Card JSON in JavaScript: it changes integer/float distinctions and large

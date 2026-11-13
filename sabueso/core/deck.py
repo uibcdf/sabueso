@@ -40,6 +40,18 @@ class Deck:
 
         return deepcopy(self._acquisition_trace)
 
+    @arg_digest()
+    def explore(self, skip_digestion=False):
+        """Capture ordered occurrences, original metadata and source-free Card readers."""
+        from .deck_exploration import DeckExplorer
+
+        return DeckExplorer(self)
+
+    @arg_digest()
+    def access(self, skip_digestion=False):
+        """Typed finite Deck member pages over one detached captured context."""
+        return self.explore().access
+
     def add(self, card: Any, basis: Dict[str, Any] | None = None) -> None:
         """Add a card; ``basis`` records why it belongs (a query, a rule, a curator)."""
         self.cards.append(card)

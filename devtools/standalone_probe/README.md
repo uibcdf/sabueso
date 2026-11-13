@@ -120,8 +120,8 @@ python devtools/standalone_probe/run_bounded.py \
 Use `--host electron` for Electron. The runner owns its Xvfb display and child
 processes and expects Linux; Windows and macOS are not qualified by this tool.
 The local observer samples all discovered owned descendants, limits CPU affinity
-to at most four cores, sets native pools to one thread, lowers priority, stops
-above 4 GiB summed RSS or below 16 GiB host available RAM, detects owned swap,
+to explicit small core counts, sets native pools to one thread, lowers priority, stops
+above the selected summed-RSS ceiling (4 GiB by default) or below 16 GiB host available RAM, detects owned swap,
 sets an elapsed ceiling and terminates only its own processes. Check load,
 memory pressure, swap activity, scheduler applicability and other jobs first.
 It is an observer, **not a resource reservation or enforced memory cgroup**;
@@ -180,3 +180,11 @@ sessions, worktrees or unrelated temporary directories. `node_modules`, `dist`,
 Rust targets, downloaded packages and extracted native prerequisites are disposable
 only after their final verification use. Keep retained evidence outside this source
 directory so its before/after hash check remains meaningful.
+
+The original host comparison uses at most four affinity slots and 4 GiB summed
+RSS. A separately requested full-code receiving profile may explicitly select
+`--cpus 8 --rss-gib 10` under the maintainer's workstation budget after resource
+preflight. Defaults remain two CPU slots and 4 GiB; the 16 GiB host-available
+floor and owned-swap/elapsed controls remain. This profile is not a reservation,
+not a change to original measurements, and not permission for automatic or
+unlimited pytest parallelism.

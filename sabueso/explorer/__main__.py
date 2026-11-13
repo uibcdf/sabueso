@@ -16,6 +16,7 @@ def main():
     inputs.add_argument(
         "--reading", type=Path, help="Open an original saved exploration"
     )
+    inputs.add_argument("--deck", type=Path, help="Open a stored Deck JSONL file")
     parser.add_argument(
         "--output-directory",
         type=Path,
@@ -38,7 +39,7 @@ def main():
             "--output-directory",
             str(args.output_directory.resolve()),
         ]
-        for key in ("card", "reading"):
+        for key in ("card", "reading", "deck"):
             path = getattr(args, key)
             if path:
                 command.extend([f"--{key}", str(path.resolve())])

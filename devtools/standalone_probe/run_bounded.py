@@ -13,7 +13,8 @@ import psutil
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--output-root", type=Path, required=True)
-parser.add_argument("--cpus", type=int, choices=(1, 2, 4), default=2)
+parser.add_argument("--cpus", type=int, choices=(1, 2, 4, 8), default=2)
+parser.add_argument("--rss-gib", type=int, choices=(4, 10), default=4)
 parser.add_argument("name")
 parser.add_argument("--cwd", default=str(Path.cwd()))
 parser.add_argument("--seconds", type=int, default=600)
@@ -29,7 +30,7 @@ if not command:
 log_path, report_path = BASE / f"{args.name}.log", BASE / f"{args.name}-resources.json"
 if log_path.exists() or report_path.exists():
     raise SystemExit("Refusing to overwrite prior observations")
-limit, reserve = 4 * 1024**3, 16 * 1024**3
+limit, reserve = args.rss_gib * 1024**3, 16 * 1024**3
 if psutil.virtual_memory().available < limit + reserve:
     raise SystemExit("Deferred: insufficient shared-memory headroom")
 if psutil.disk_usage("/tmp").free < 4 * 1024**3:

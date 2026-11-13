@@ -6,7 +6,7 @@ import crypto from 'node:crypto';
 import {spawn} from 'node:child_process';
 import {setTimeout as delay} from 'node:timers/promises';
 import {connectNative} from './standalone_probe/cdp_driver.mjs';
-const args=process.argv.slice(2), option=name=>args[args.indexOf(name)+1];
+const args=process.argv.slice(2), option=name=>{const index=args.indexOf(name);return index<0?undefined:args[index+1];};
 const output=path.resolve(option('--output')),card=path.resolve(option('--card'));
 fs.mkdirSync(output,{recursive:false});
 const hash=file=>crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');

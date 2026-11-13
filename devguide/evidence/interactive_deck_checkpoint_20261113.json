@@ -1,0 +1,96 @@
+{
+  "format": "sabueso.interactive_deck_checkpoint@1",
+  "owner": "uibcdf/sabueso#153",
+  "parent": "1b0403eaa2ff44282ad40d868f70f6e4f1666ce3",
+  "scope": "First native captured Deck contract and Qt navigation; not full S3 or 0.16 completion",
+  "source_sha256": {
+    "sabueso/core/deck.py": "4a1940db4848062a4763e222873e60f0e95801108e620088d3f682d71dceb3b5",
+    "sabueso/core/deck_exploration.py": "286dc2be72cb403766298e185cda2c8c965337bdee169128d4863deb58e11ec7",
+    "sabueso/tools/deck/storage.py": "d90a32f707dcfb3d15dc6a7c38dcf25a8bf50f220de069e4f7b7a00f54b9c480",
+    "sabueso/_private/argdigest/argument/member_ref.py": "a84eca8a59a2494da712e40f39fc07ff83f608b03ac8377ef81c4c63c8b610d6",
+    "sabueso/_private/argdigest/argument/member_refs.py": "7d11446f4af0484450ef91b1718dd16455b6e9f18435ebf839f19e9c0ee25f9d",
+    "sabueso/explorer/_deck_session.py": "4e1849e517c1ce41523c8a1cb62b77168bac7c4e36ae23df259b99acc36ace44",
+    "sabueso/explorer/_service.py": "59ea7691c26276295795ed5d4e2df0102f19e32e02fc9337181eaa48e5350e40",
+    "sabueso/explorer/__main__.py": "932b8263334f1f9061c429d2c3104bcb98eb4dcc3f87840b3b4271ff9fa870c3",
+    "frontend/explorer/src/app.tsx": "9803a7ad7041846f5e9bfc64c1045f22ac22e5e5e2f9f97bd804621df4503e06",
+    "sabueso/explorer/_assets/app.js": "8f758a8b0761529471765623dcf24caee5cf91e9f771e34d65878ac7aaeba7e8",
+    "tests/core/test_deck_exploration_offline.py": "1a4320c7ef9e002717d13486db085d4d313093db3befdc764c358c8bd3ae9a7e",
+    "tests/core/test_deck_envelope_admission_offline.py": "cad0134339c97a11630023b26b7e0a115c6c0c000665b00ec8a4dd8c505e8923",
+    "tests/explorer/test_deck_session_offline.py": "bb3163b8b909b4600e983ffa853e4fb8ba0a44fc7def73a7e39fc15791bf4790"
+  },
+  "selected_gate": "PASS exit=0 | 76 passed | 8.12s",
+  "native_qt": [
+    {
+      "case": "qt-deck-first",
+      "checks": {
+        "three_distinct_occurrences": true,
+        "literal_member_filter": true,
+        "card_opened_from_selected_occurrence": true,
+        "original_source_opened": true,
+        "exact_filtered_deck_return": true,
+        "exact_ordered_deck_return": true,
+        "original_metadata_inspectable": true,
+        "metadata_back_preserves_members": true,
+        "actual_native_capture": true,
+        "input_unchanged": true,
+        "no_script_errors": true
+      },
+      "elapsed_s": 16.934,
+      "peak_summed_rss_bytes": 1000554496,
+      "survivors": []
+    },
+    {
+      "case": "qt-deck-installed-received",
+      "checks": {
+        "three_distinct_occurrences": true,
+        "literal_member_filter": true,
+        "card_opened_from_selected_occurrence": true,
+        "original_source_opened": true,
+        "exact_filtered_deck_return": true,
+        "exact_ordered_deck_return": true,
+        "original_metadata_inspectable": true,
+        "metadata_back_preserves_members": true,
+        "actual_native_capture": true,
+        "input_unchanged": true,
+        "no_script_errors": true
+      },
+      "elapsed_s": 15.624,
+      "peak_summed_rss_bytes": 971730944,
+      "survivors": []
+    }
+  ],
+  "artifact": {
+    "wheel_sha256": "d13f52996b698962389a41f55a704bb6e85b91a081a2d62cf88320879f730f57",
+    "sdist_sha256": "8e377a125ee245c80798f6d8bf0d7c3c316cf2fa39e213c8d196bfc6d73ad960",
+    "new_sources_exact": true
+  },
+  "full_offline_attempts": [
+    {
+      "case": "full-offline-deck",
+      "returncode": 0,
+      "elapsed_s": 1800.291,
+      "stop_reason": "elapsed ceiling",
+      "peak_owned_rss_bytes": 8554217472,
+      "survivors_after_command": [],
+      "qualification": "INCOMPLETE, not a passing full-suite result"
+    },
+    {
+      "case": "full-offline-deck-received",
+      "returncode": 0,
+      "elapsed_s": 1106.797,
+      "stop_reason": "observer received signal 15",
+      "peak_owned_rss_bytes": 8345419776,
+      "survivors_after_command": [],
+      "qualification": "INCOMPLETE, not a passing full-suite result"
+    }
+  ],
+  "correction": "https://github.com/uibcdf/sabueso/issues/197",
+  "limits": [
+    "Card readers and scientific policies are reused, without Card schema or provider changes",
+    "Finite page bytes do not bound whole-Deck capture RAM",
+    "Membership retains the original Card-ID-keyed scope; duplicate occurrences are not merged",
+    "Cross-member related captures and an independent Deck saved-reading format remain open",
+    "Unpublished installed artifact shares the existing dependency cohort; no public/native-platform claim",
+    "Exact final-source full offline and hosted qualification remain due"
+  ]
+}
