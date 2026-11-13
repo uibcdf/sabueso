@@ -51,6 +51,18 @@ no Knowledge, query history, model/camera or provider token. Whole original Deck
 query and scene recovery remain separate. The floating-container assertion is
 strengthened and its earlier limitation is retained explicitly.
 
+The [cross-member checkpoint](evidence/interactive_cross_member_checkpoint_20261113.json)
+now supplies every original Deck Card to the native context readers without a
+second capture. The new delta passes **565 distinct selected cases**, with
+integrity-verified receptor records. Public MONDO child → supplied parent → original source → saved
+Card reading → exact Deck return passes, including missing-parent and repeated
+entry controls from checkout and a separate installed-wheel environment.
+The installed model/layout regression also passes. Entry occurrence and current
+focal Card stay separate. Equal
+names/sequences never supply identity; revisions remain explicit choices.
+S3.4 remains partial because independent original Deck workspace persistence is
+not delivered. Existing Card formats/rules and provider implementations are fixed.
+
 The [complete frozen baseline receipt](evidence/interactive_integrated_baseline_20261113.json)
 receives all **10,059 collected offline nodes** at `e64c2ec`: **10,049 passed,
 10 intentional local-only native-input exclusions, zero failures**, and eleven
@@ -65,8 +77,8 @@ protected inputs remain intact.
 The [living 0.16.0 implementation plan and checkpoint](pending_proposals/interactive_implementation_0160.md)
 owns granular stage/microstage progress, completion criteria, evidence and the
 next action. S0 architecture/feasibility and the first S1 Card application are
-complete within their explicit scopes. Supported mapped molecular integration, richer entity-specific journeys, cross-member Deck context
-and independent Deck workspace saving retain explicit product work. Update that plan and this summary together as
+complete within their explicit scopes. Supported mapped molecular integration, richer entity-specific journeys
+and independent original Deck workspace saving retain explicit product work. Update that plan and this summary together as
 implementation advances; preserve experiment versus product qualification.
 
 The maintainer selects **PySide6 + QWebEngine** for the 0.16.0 desktop host,

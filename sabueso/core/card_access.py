@@ -290,8 +290,25 @@ class CardAccess:
 
     @arg_digest()
     def __init__(self, card, related_cards=(), skip_digestion=False):
-        self._captures, self._inputs = _capture_cards(card, related_cards)
-        self._focal_key = self._inputs[0]
+        captures, inputs = _capture_cards(card, related_cards)
+        self._initialize_capture(captures, inputs, inputs[0])
+
+    @classmethod
+    def _from_captures(cls, captures, inputs, focal_key):
+        """Reuse a trusted pool returned by _capture_cards, without recapturing it.
+
+        This is an internal composition boundary, not admission of stored or
+        caller-provided dictionaries. Each reader owns its operational state.
+        """
+        reader = object.__new__(cls)
+        reader._initialize_capture(captures, inputs, focal_key)
+        return reader
+
+    def _initialize_capture(self, captures, inputs, focal_key):
+        if focal_key not in inputs or focal_key not in captures:
+            raise ArgumentError("The focal Card does not belong to this capture.")
+        self._captures, self._inputs = captures, inputs
+        self._focal_key = focal_key
         self._mode = "live"
         self._metadata_refs = set()
         self._exploration_session = None

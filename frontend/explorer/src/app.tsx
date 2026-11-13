@@ -4,7 +4,7 @@ import {DockviewReact, themeLight, type DockviewApi, type DockviewReadyEvent, ty
 import 'dockview-react/dist/styles/dockview.css';
 import './style.css';
 
-type Panel={workspace?:'deck';deck_context?:unknown;revision:string;title:string;text:string;mode:string;profile:string;result_ref:string;view_ref:string;
+type Panel={workspace?:'deck';deck_context?:{scope:'entry_occurrence';entry_position:number};revision:string;title:string;text:string;mode:string;profile:string;result_ref:string;view_ref:string;
   topics:{name:string;description:string;availability?:string}[];items:{ref:string;label:string;kind:string}[];
   offset:number;count:number;has_previous:boolean;has_next:boolean;can_back:boolean;can_save:boolean;can_related:boolean;
   full_text:null|{text:string;offset:number;count:number;has_previous:boolean;has_next:boolean};saved_file:string|null;outcome:{status:string;reason?:string}};
@@ -29,12 +29,13 @@ function preview(text:string){
 function Reading(){
   const {panel,busy,act}=useSession();
   return <article className="reading" data-view-ref={panel.view_ref} data-result-ref={panel.result_ref}>
+    {panel.deck_context&&<p className="deck-entry" data-testid="deck-entry">Deck entry: occurrence {panel.deck_context.entry_position+1}. Return to Deck keeps your original selection.</p>}
     <div className="eyebrow">{panel.mode==='saved'?'Original saved reading':'Captured knowledge'}</div>
     <h2>{panel.title}</h2><pre className="reading-text" data-testid="reading-text">{preview(panel.text)}</pre>
     {panel.full_text&&<section aria-label="Complete retained text"><h3>Complete retained text</h3><pre className="reading-text" data-testid="full-text">{panel.full_text.text}</pre>
       <nav className="pagination" aria-label="Complete text pages"><button disabled={busy||!panel.full_text.has_previous} onClick={()=>void act('text_page',{offset:panel.full_text!.offset-4096})}>Previous text</button>
       <span>{panel.full_text.count} characters · starting at {panel.full_text.offset}</span><button disabled={busy||!panel.full_text.has_next} onClick={()=>void act('text_page',{offset:panel.full_text!.offset+4096})}>Next text</button></nav></section>}
-    {panel.items.length>0&&<section aria-label="Explore this reading" className="items">{panel.items.map(item=><div className="item" key={item.ref}>
+    {panel.items.length>0&&<section aria-label="Explore this reading" className="items">{panel.items.map(item=><div className="item" key={item.ref} data-item-ref={item.ref}>
       <div><span className="kind">{item.kind.replaceAll('_',' ')}</span><strong>{item.label}</strong></div>
       <div className="item-actions"><button disabled={busy} onClick={()=>void act('open',{item_ref:item.ref})}>Open</button>
       <button disabled={busy||!panel.can_related} onClick={()=>void act('related',{item_ref:item.ref})}>Sources / questions</button></div>
@@ -94,7 +95,7 @@ function App(){
   useEffect(()=>{if(!molecular?.client_url)return;let stopped=false,pending=false;const poll=async()=>{if(pending||stopped)return;pending=true;try{const result=await api('/api/molecular');if(!stopped)setMolecular(result.molecular);}catch{}finally{pending=false;}};const timer=setInterval(()=>void poll(),1000);return()=>{stopped=true;clearInterval(timer);};},[molecular?.client_url]);
   async function saveLayout(workspace:SerializedDockview){if(busy)return;setBusy(true);try{const result=await api('/api/layout',{format:'sabueso.presentation_layout@1',renderer:'dockview@8.9.0',workspace});setPresentation(result);setMessage('Presentation layout saved. This does not save Knowledge, query history or the molecular scene.');}catch(error){setMessage(String(error));}finally{setBusy(false);}}
   async function act(name:string,extra:Record<string,unknown>={}){if(!panel||busy)return;setBusy(true);setMessage('Opening the requested reading…');
-    try{const result=await api('/api/action',{name,revision:panel.revision,...extra});setPanel(result.panel);setMolecular(result.molecular??null);setResolution(result.resolution??null);setCanReturnQuery(result.can_return_query??false);setMessage(name==='save'?(panel.deck_context!==undefined?'Card reading saved. The surrounding Deck workspace is not saved in that file.':'Reading saved. Reopen it to inspect the original capture.'):'Ready.');}
+    try{const result=await api('/api/action',{name,revision:panel.revision,...extra});setPanel(result.panel);setMolecular(result.molecular??null);setResolution(result.resolution??null);setCanReturnQuery(result.can_return_query??false);setMessage(name==='save'?(panel.deck_context!==undefined?'Card reading and captured Cards saved. Deck membership, selection and layout are not saved in this file.':'Reading saved. Reopen it to inspect the original capture.'):'Ready.');}
     catch(error){setMessage(String(error));try{const current=await api('/api/panel');setPanel(current.panel);setResolution(current.resolution??null);setCanReturnQuery(current.can_return_query??false);}catch{setMessage('The reading service is unavailable. Reopen the application to continue.');}}
     finally{setBusy(false);}}
   async function openFile(selected:File){setBusy(true);try{

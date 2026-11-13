@@ -54,8 +54,10 @@ records actual checkout/installed-wheel receiving. Explicit four-kind source
 entry and exact query return now pass with public frozen clients. An opt-in
 live model panel now passes actual Qt receiving, with explicitly unestablished
 Card correspondence. Presentation layouts now save/restore independently of Knowledge and the model,
-including explicit unavailable-context fallback. Supported mapped molecular
-integration, original cross-member Deck/query/scene recovery, richer
+including explicit unavailable-context fallback. Supplied Deck members now share
+one validated Card context pool, enabling source-declared related-Card navigation
+and exact entry/Deck return without choosing an identity or revision. Supported mapped molecular
+integration, independent original Deck/query/scene recovery, richer
 entity-specific and acceptance work remain. This is development implementation,
 not a public GUI installation or platform-support claim.
 

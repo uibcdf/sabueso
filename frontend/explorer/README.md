@@ -33,7 +33,8 @@ in complete 4,096-character pages; the Python-reader navigation footer is hidden
 only in the UI preview. Original reader text and saved meanings are unchanged.
 The Deck workspace preserves repeated occurrences, original metadata, literal
 filters/order and exact Card/source/Deck return. Saving a Card reading does not
-save the surrounding Deck workspace. The entry screen also provides explicit UniProt/PDB/SMILES/disease-ID queries.
+save the surrounding Deck workspace or its membership metadata. The Card file
+retains its supplied captured Cards, under the existing original-reader format. The entry screen also provides explicit UniProt/PDB/SMILES/disease-ID queries.
 They reuse `identity@1`; the initial SMILES route disables UniChem expansion.
 PDB remains a structure record whose source-declared proteins require a separate
 user query. Original decisions and acquisition traces stay inspectable. Return
@@ -103,3 +104,13 @@ silently replacing the saved file; Save layout is explicit. An unreadable existi
 presentation or symlink is never overwritten. Native popout windows are not
 admitted by this first presentation format. The separate Knowledge and model
 state is never reconstructed from panel labels.
+
+Within an opened Deck, native related-Card navigation now has all original member
+captures available. A relationship can open a supplied Card even when that member
+is outside the current display filter. Membership, matching names or sequences
+never establish identity; native support, exact pins and revision choices remain
+visible. The entry banner describes the original Deck occurrence, while the topic
+index and reading follow the actual current Card. Return to Deck preserves the
+original filter/order/page; following a destination never selects an arbitrary
+occurrence for it. The `--cross-member` development receiver uses a public MONDO
+Chagas disease/parent Deck and checks the entire original-source/save/return flow.

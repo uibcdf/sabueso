@@ -366,15 +366,11 @@ class DeckExplorer:
         }
 
     def _open(self, position, origin):
-        from .card import Card
+        from .card_access import CardAccess
+        from .card_exploration import CardExplorer
 
         key = self._inputs[position]
         if key not in self._readers:
-            capture = self._captures[key]
-            explorer = Card.from_dict(deepcopy(capture.data)).explore()
-            if explorer.context["snapshot_id"] != capture.snapshot:
-                raise StorageError(
-                    "Opening this member would change its captured Card state."
-                )
-            self._readers[key] = explorer
+            access = CardAccess._from_captures(self._captures, self._inputs, key)
+            self._readers[key] = CardExplorer._from_access(access)
         return DeckCardContext(self._readers[key], self._member_refs[position], origin)

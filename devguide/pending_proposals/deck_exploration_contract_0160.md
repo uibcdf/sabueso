@@ -35,9 +35,8 @@ Requirements under #153 (implementation status follows below):
 - A bounded independent saved Deck reading, or explicit references to existing
   saved Cards plus retained Deck context, with a versioned admission rule.
 
-Next S3.2 specifies and implements these return types and limits before adding
-GUI-only Deck behavior. Public names such as `Deck.explore()`/`access()` remain
-API candidates until that implementation review. Require homogeneous and mixed
+S3.2 implemented these native return types and limits before the first Qt Deck
+workflow. `Deck.explore()` and `access()` are now development APIs. Require homogeneous and mixed
 public walkthroughs, repeated IDs/revisions, original quantity/support retention
 and inert reopening after the live Deck changes. No new shared MOLI contract or
 provider implementation is selected by this audit.
@@ -72,9 +71,9 @@ It supports member paging, literal filtering, identifier/nature order, complete
 Deck metadata, Card/topic/source reading and exact outer return. Saving a selected
 Card preserves that Card reading; the UI explicitly states that its surrounding
 Deck workspace is not saved. `DeckView.capabilities` exposes `save=False` until a
-proper independent Deck reading contract is delivered. Cross-entity related-Card
-context, independent saved Deck reading and broader acceptance remain due; this
-first contract does not promise them.
+proper independent Deck reading contract is delivered. Cross-member related-Card
+context is now received below. Independent saved Deck reading and broader
+acceptance remain due.
 
 ## Persisted-envelope admission
 
@@ -85,3 +84,40 @@ format 1, metadata-object shape and JSONL header placement before interpretation
 Version-1 data and documented header-free/table-free legacy routes retain their
 meaning; unknown/malformed declarations are refused without rewriting the input.
 This does not change Card schema or claim a patched public package.
+
+## Captured cross-member context
+
+Opening any member now supplies the entire original Deck capture pool to the
+native Card readers. The input order and repeated occurrences remain exactly as
+captured, including when the chosen focal Card is not the first input or the
+current Deck display excludes a related Card. The internal access/reader factories
+reuse the already validated snapshots: opening or following a member does not
+construct Cards, serialize them again, migrate them or acquire sources. Each
+root reader retains its own operational state; a repeated identical Card state
+can reuse its reader without merging its Deck occurrences.
+
+Deck membership supplies context, **not identity**. Native source-supported
+relationship/identity navigation remains authoritative. Equal names/sequences do
+not create destinations, missing support and unsupplied targets stay explicit,
+and multiple snapshots require a choice. Exact pins and source-record references
+never fall back to a different revision. The public MONDO child/parent journey
+and synthetic refusal/ambiguity controls are recorded in the
+[cross-member receipt](../evidence/interactive_cross_member_checkpoint_20261113.json).
+
+The application keeps `deck_context.card` and `member_ref` as the original entry
+context. `scope="entry_occurrence"` and zero-based `entry_position` make that
+meaning explicit; `current_card` separately describes the actual current reading,
+including an unavailable destination with no Card pin. The UI shows the original
+entry occurrence and Return to Deck preserves the exact selection/order/page.
+The user can inspect a related Card and its sources, save/reopen that original
+Card reading and return without assigning the destination to an arbitrary Deck
+occurrence. These application fields are not new scientific entity identifiers.
+
+A saved Card reading includes the whole supplied captured Card context under the
+existing native original-reader format. It does **not** save original Deck
+membership metadata, exclusions, operations, presentation selection/history or
+layout. The UI states that limit. Independently opening that file supplies its
+original Card reading, not a reconstructed Deck workspace. No new Card or saved
+Card format, scientific rule or provider dependency is introduced. Capturing a
+Deck still materializes all inputs; page bounds and shared input storage do not
+bound total capture or derived-result memory.

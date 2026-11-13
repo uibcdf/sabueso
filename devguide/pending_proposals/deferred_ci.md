@@ -9,6 +9,21 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Captured cross-member Deck context (2026-11-13)
+
+From `d4bec2f`, #153/#154 own shared validated Card-pool composition, native
+source-backed related-Card navigation and separate original entry/current-reading
+application context. [The receipt](../evidence/interactive_cross_member_checkpoint_20261113.json)
+binds 565 distinct selected passes, actual checkout/installed Qt journeys,
+headless original-file reopening and installed molecular regression to the
+source/input/artifact cohort. Existing scientific/default/identity rules, Card
+schemas and saved formats remain fixed; capture/reader initialization is
+refactored and related inputs are supplied from the original Deck pool. Full
+offline results on earlier `e64c2ec` do not qualify this later changed source.
+This authorized intermediate `[skip ci]` checkpoint retains #153/#154/#112's
+exact-final-source full/candidate and hosted CI/governance recovery route. No
+workflow, release, tag, dependency adoption or public package is selected.
+
 ### Completed frozen offline baseline and optional application deltas (2026-11-13)
 
 The [baseline receipt](../evidence/interactive_integrated_baseline_20261113.json)
@@ -16,8 +31,9 @@ closes all 10,059 collected nodes on `e64c2ec`: 10,049 pass and ten intentional
 local-only native-input exclusions, with zero failures. Eight disjoint completed
 receptor artifacts have verified integrity and exact collection coverage; no
 interrupted records count. The optional molecular/layout source at `55f3b97`
-has separate 100-case, actual Qt and installed-artifact receiving. Scientific
-core hashes remain those of the qualified baseline. This source separation does
+has separate 100-case, actual Qt and installed-artifact receiving. At that `55f3b97` checkpoint, scientific
+core hashes remained those of the qualified baseline. The later cross-member
+constructor/composition delta has its own selected receiving above. This source separation does
 not claim a later-head monolithic run or recover hosted gates. #154/#112 retain
 exact-final-source CI/governance and optional/native qualification before the
 version closeout. This authorized `[skip ci]` documentation checkpoint dispatches

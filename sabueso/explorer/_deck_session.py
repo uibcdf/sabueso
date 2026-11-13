@@ -17,6 +17,7 @@ class _DeckSession:
         self.revision = secrets.token_hex(16)
         self.card_session = None
         self.visit = None
+        self.entry_position = None
         self.metadata_open = False
         self.cursor = None
         self.previous = []
@@ -35,7 +36,14 @@ class _DeckSession:
         if self.card_session is not None:
             panel = self.card_session.panel()
             panel.update(
-                revision=self.revision, can_back=True, deck_context=self.visit.context
+                revision=self.revision,
+                can_back=True,
+                deck_context={
+                    **self.visit.context,
+                    "scope": "entry_occurrence",
+                    "entry_position": self.entry_position,
+                    "current_card": self.card_session.current.context,
+                },
             )
             return panel
         page = self.current.page(limit=40, max_bytes=1048576, cursor=self.cursor)
@@ -87,6 +95,7 @@ class _DeckSession:
                 if set(request) != {"name", "revision"}:
                     raise ArgumentError("Unexpected Deck return arguments.")
                 self.card_session = self.visit = None
+                self.entry_position = None
             else:
                 self.card_session.dispatch(
                     {**request, "revision": self.card_session.revision}
@@ -118,9 +127,11 @@ class _DeckSession:
                 not in {row["ref"] for row in self.panel()["items"]}
             ):
                 raise ArgumentError("Choose an occurrence from the current Deck page.")
-            visit = self.current.member(request["item_ref"]).open()
+            member = self.current.member(request["item_ref"])
+            visit = member.open()
             reader = _Session(visit.overview(), self.output_directory)
             self.visit, self.card_session = visit, reader
+            self.entry_position = member.position
         elif name == "metadata":
             self.metadata_open = True
         elif name == "back":

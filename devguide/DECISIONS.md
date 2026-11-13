@@ -1,5 +1,22 @@
 # Sabueso — Decision Log
 
+## Compose Deck context from one validated Card pool (2026-11-13)
+
+Under #153/#154, a Deck supplies its captured Cards to the existing native Card
+navigation rules. Keep one validated detached pool and its original input order;
+create reader-owned operational state without reconstructing or serializing Cards
+when opening a member. Native source/identity support, exact pins and explicit
+revision choices remain authoritative. Being in one Deck does not establish
+identity, merge occurrences or justify a scientific association.
+
+Keep the original Deck entry occurrence/return point separate from the current
+focal Card reached through a source-declared relationship. A saved Card reading
+retains its original supplied Card context, while original Deck metadata,
+selection/history and layout require their own future persistence contract.
+Standalone Card construction and existing saved formats retain their meaning.
+See the [contract](pending_proposals/deck_exploration_contract_0160.md#captured-cross-member-context)
+and [receiving](evidence/interactive_cross_member_checkpoint_20261113.json).
+
 ## Maintain the 0.16.0 implementation plan as a living checkpoint (2026-11-13)
 
 The maintainer requests a work plan that also records completed/partial work,

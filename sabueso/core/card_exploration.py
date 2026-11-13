@@ -2083,7 +2083,17 @@ class CardExplorer:
 
     @arg_digest()
     def __init__(self, card, related_cards=(), skip_digestion=False):
-        self._access = CardAccess(card, related_cards)
+        self._initialize_reader(CardAccess(card, related_cards))
+
+    @classmethod
+    def _from_access(cls, access):
+        """Bind a new reader session to trusted captured access owned by Sabueso."""
+        explorer = object.__new__(cls)
+        explorer._initialize_reader(access)
+        return explorer
+
+    def _initialize_reader(self, access):
+        self._access = access
         self._coverage_result = None
         self._origin = None
         self._navigation_cache = {}

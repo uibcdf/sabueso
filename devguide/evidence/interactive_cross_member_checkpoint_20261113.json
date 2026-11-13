@@ -1,0 +1,290 @@
+{
+  "format": "sabueso.cross_member_checkpoint@1",
+  "owner": "uibcdf/sabueso#153",
+  "consumer_owner": "uibcdf/sabueso#154",
+  "baseline_commit": "d4bec2fb2713472b252c0b3c5ce9dd63f2d96c4a",
+  "scope": "Captured cross-member Card context and exact Deck entry/current-reading/return separation; independent Deck saved workspace remains open",
+  "code_sha256": {
+    "sabueso/core/card_access.py": "d00e9059ac6f9911775e034c9bb5d3db88215933df5cb84ff2c4f079dba7a06d",
+    "sabueso/core/card_exploration.py": "fe0a2cb76739a447e6e5ccaaaa217e7ca38773147833ac151155697cf3488661",
+    "sabueso/core/deck_exploration.py": "ec7b2ea1f6cda312f918c29c777a96a4c23cbb464c55ac8d72ed7d7b7e8b7c34",
+    "sabueso/explorer/_deck_session.py": "ad4e06ddfa0b4bd8f0491c059010f70d73633808a2f49f1a3174cf57de933b90",
+    "frontend/explorer/src/app.tsx": "3f51b08806e18927578c2da2186025ef810e079d5fbdd844c23456d693ff59eb",
+    "frontend/explorer/src/style.css": "788f35f2384006f9fc21d66028918edd187aa6738459c70392d63c0f7d5fb797",
+    "sabueso/explorer/_assets/app.js": "540bd955816fbccbbf831b9847951f6eb722f2ce920729fe390c7306093251fe",
+    "sabueso/explorer/_assets/app.css": "f801f80df21c454790035d2cfdc9af8ef7294c0b74fd2f59f63c9e583f3d9cd0",
+    "devtools/deck_explorer_journey.mjs": "cc730f61f59a38a62c37805d8e4fd6802e63e38aecc83bd6f8a7dc4680009cb0",
+    "tests/core/test_deck_context_navigation_offline.py": "0a91834b6f0f223f02a8898f96af85396a2853eee3922004fe980ffa3d7cdc15",
+    "tests/explorer/test_deck_context_offline.py": "08f66cb8f21fa37fa15209590f4880476f57fb5572d610459fbd5ce0d6e19403"
+  },
+  "inputs": {
+    "source": "Existing public MONDO fixture; original declaration/license in temp_data/NOTICE.md. No new source acquisition.",
+    "members": [
+      "sabueso:disease:mondo:MONDO:0000940@sha256:192542e48f2766c05e4757d0e4a7eb13d8d0a508ccfaca5f885e452ff689f4e7",
+      "sabueso:disease:mondo:MONDO:0001444@sha256:f9937da5f788b23ef44cfed1af19e00d47c9e7ca029577b3a03bdea6bfa57ee0",
+      "sabueso:disease:mondo:MONDO:0001444@sha256:f9937da5f788b23ef44cfed1af19e00d47c9e7ca029577b3a03bdea6bfa57ee0"
+    ],
+    "deck_sha256": "f05c62aae4154101fc9169af24002d5e8a0f21cf6febad7964fd79f009ccd205",
+    "source_fixture_sha256": "117fdc8d65e900feb4aaa0dc71336df423a57e43b5b6991185eef11bb8636fe3"
+  },
+  "selected": {
+    "owner": "uibcdf/sabueso#153",
+    "gates": [
+      {
+        "name": "cross-member-verified",
+        "counts": {
+          "collected": 31,
+          "deselected": 0,
+          "errors": 0,
+          "executed": 31,
+          "failed": 0,
+          "not_executed": 0,
+          "passed": 31,
+          "reruns": 0,
+          "skipped": 0,
+          "subtests": {},
+          "warnings": 0,
+          "xfailed": 0,
+          "xpassed": 0
+        },
+        "nodes": 31,
+        "events_sha256": "82173bef1f5f7bb9266156b7451c810eea8eb9a10babe4f9fc2562287364d3dd",
+        "duration_s": 82.24478469206952,
+        "peak_summed_rss_bytes": 135536640,
+        "resource_limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0
+          ],
+          "native_threads": 1
+        },
+        "integrity_valid": true
+      },
+      {
+        "name": "shared-capture-regressions",
+        "counts": {
+          "collected": 278,
+          "deselected": 0,
+          "errors": 0,
+          "executed": 278,
+          "failed": 0,
+          "not_executed": 0,
+          "passed": 278,
+          "reruns": 0,
+          "skipped": 0,
+          "subtests": {},
+          "warnings": 0,
+          "xfailed": 0,
+          "xpassed": 0
+        },
+        "nodes": 278,
+        "events_sha256": "d5208ea3976a8bcbacf10a0942bf5e59f4d0cd43b4466bf7364e8af6f2752a00",
+        "duration_s": 43.38854235096369,
+        "peak_summed_rss_bytes": 756273152,
+        "resource_limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "native_threads": 1
+        },
+        "integrity_valid": true
+      },
+      {
+        "name": "focal-profile-regressions",
+        "counts": {
+          "collected": 150,
+          "deselected": 0,
+          "errors": 0,
+          "executed": 150,
+          "failed": 0,
+          "not_executed": 0,
+          "passed": 150,
+          "reruns": 0,
+          "skipped": 0,
+          "subtests": {},
+          "warnings": 0,
+          "xfailed": 0,
+          "xpassed": 0
+        },
+        "nodes": 150,
+        "events_sha256": "108eebf7e28069e386b54fa1a74b31f1801d814a5126a1fe0708f84338aeeb04",
+        "duration_s": 225.5541622529272,
+        "peak_summed_rss_bytes": 1853919232,
+        "resource_limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "native_threads": 1
+        },
+        "integrity_valid": true
+      },
+      {
+        "name": "application-final",
+        "counts": {
+          "collected": 119,
+          "deselected": 0,
+          "errors": 0,
+          "executed": 119,
+          "failed": 0,
+          "not_executed": 0,
+          "passed": 119,
+          "reruns": 0,
+          "skipped": 0,
+          "subtests": {},
+          "warnings": 0,
+          "xfailed": 0,
+          "xpassed": 0
+        },
+        "nodes": 119,
+        "events_sha256": "16e733f2f9baa245b821ea140b71c66d42a5690ee69ab1fced92284a59de9615",
+        "duration_s": 35.31293600599747,
+        "peak_summed_rss_bytes": 156925952,
+        "resource_limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0
+          ],
+          "native_threads": 1
+        },
+        "integrity_valid": true
+      }
+    ],
+    "distinct_nodes": 565,
+    "scope": "Distinct nodes across selected native/application/scientific/original regression scopes; overlapping tests counted once."
+  },
+  "native_qt": [
+    {
+      "case": "qt-cross-member-final",
+      "checks": {
+        "three_distinct_occurrences": true,
+        "repeated_entry_is_explicit": true,
+        "source_declared_parent_opens_supplied_card": true,
+        "entry_and_current_card_stay_distinct": true,
+        "destination_owns_original_source": true,
+        "exact_destination_source_return": true,
+        "saved_scope_is_explicit": true,
+        "original_related_reading_reopens": true,
+        "exact_cross_card_back": true,
+        "unsupplied_parent_stays_unknown": true,
+        "exact_filtered_deck_return": true,
+        "exact_ordered_deck_return": true,
+        "original_occurrences_retained": true,
+        "actual_native_capture": true,
+        "input_unchanged": true,
+        "no_script_errors": true
+      },
+      "input_sha256": "f05c62aae4154101fc9169af24002d5e8a0f21cf6febad7964fd79f009ccd205",
+      "elapsed_s": 22.274,
+      "peak_summed_rss_bytes": 1004605440,
+      "survivors": []
+    },
+    {
+      "case": "qt-cross-member-installed",
+      "checks": {
+        "three_distinct_occurrences": true,
+        "repeated_entry_is_explicit": true,
+        "source_declared_parent_opens_supplied_card": true,
+        "entry_and_current_card_stay_distinct": true,
+        "destination_owns_original_source": true,
+        "exact_destination_source_return": true,
+        "saved_scope_is_explicit": true,
+        "original_related_reading_reopens": true,
+        "exact_cross_card_back": true,
+        "unsupplied_parent_stays_unknown": true,
+        "exact_filtered_deck_return": true,
+        "exact_ordered_deck_return": true,
+        "original_occurrences_retained": true,
+        "actual_native_capture": true,
+        "input_unchanged": true,
+        "no_script_errors": true
+      },
+      "input_sha256": "f05c62aae4154101fc9169af24002d5e8a0f21cf6febad7964fd79f009ccd205",
+      "elapsed_s": 20.926,
+      "peak_summed_rss_bytes": 1006768128,
+      "survivors": []
+    },
+    {
+      "case": "qt-model-regression-installed",
+      "checks": {
+        "real_canvas_and_renderer": true,
+        "actual_floating_group_observed": true,
+        "reset_returns_to_main_grid": true,
+        "same_live_viewport": true,
+        "camera_survives_layout": true,
+        "selection_survives_layout": true,
+        "no_inferred_correspondence": true,
+        "reading_survives_layout": true,
+        "molecular_presentation_saved_without_scene": true,
+        "saving_layout_keeps_live_model": true,
+        "original_source_remains_readable": true,
+        "native_capture": true,
+        "original_inputs_unchanged": true,
+        "no_script_errors": true
+      },
+      "input_sha256": {
+        "card": "960869253e88a048216c151a02cc22895c94b9e3e30d5b587d104f98dff2e4f4",
+        "model": "6f15f9412a97e38ffb01e0aec8ffa6016ac5d1ddf50042e0129583caf65be125"
+      },
+      "elapsed_s": 30.001,
+      "peak_summed_rss_bytes": 1822306304,
+      "survivors": []
+    }
+  ],
+  "artifact": {
+    "wheel_sha256": "14de33ba09f1a5cbf780dccb8f1914c4d57598a3e94091b82bee79dd03695823",
+    "sdist_sha256": "7b0aa38f36987aa0de3424059032665c8544887d6ffcd62f0e04da212d180969",
+    "runtime_assets_source_exact": true,
+    "scope": "Separate noneditable wheel environment and /tmp cwd, with shared development dependencies; not a clean public dependency closure."
+  },
+  "installed_headless": "A fresh installed noneditable package outside checkout reopens the actual saved related-Card file with Card construction/current recapture forbidden, exact ordered input pins and unchanged bytes; GUI/providers remain unimported.",
+  "retained_preliminary_controls": [
+    "First native test assumed a CardItem.source_assertion_ids property; corrected to the original relationship support list. No product defect inferred.",
+    "Next return assertion omitted the explicit filter view in its native link path; corrected to retain that exact origin.",
+    "Scientific focal parity initially compared different declared input orders. The oracle now uses existing public navigation with the same input order; no context or scientific fields are normalized away."
+  ],
+  "limits": [
+    "565 distinct selected nodes, deduplicated across complete integrity-verified receptor gates; not a new full offline or hosted run.",
+    "Public GUI case is a supplied MONDO child/parent Deck; mixed-nature and revision/identity refusals also have synthetic controls. No automatic source acquisition or new identity rule.",
+    "Original Card files include the supplied Card capture pool, not Deck membership/metadata, selection/history, layout or a reconstructed Deck workspace.",
+    "Capturing still materializes all Cards; shared data and bounded pages are not total capture/derived-memory guarantees.",
+    "Linux/Xvfb software and an unpublished wheel in a separate environment with shared dependencies do not qualify native platforms, public installation or stable molecular embedding.",
+    "Card schemas, native scientific/default/identity rules, existing saved formats and sibling provider sources are unchanged. Exact-final-source hosted and full candidate gates remain due under #153/#154/#112."
+  ],
+  "cleanup": {
+    "owner": "uibcdf/sabueso#153/#154",
+    "removed_scratch": [
+      "application-final-scratch",
+      "build-artifacts-scratch",
+      "cross-member-final-scratch",
+      "cross-member-received-scratch",
+      "cross-member-verified-scratch",
+      "focal-profile-regressions-scratch",
+      "native-cross-member-first-scratch",
+      "qt-cross-member-final-scratch",
+      "qt-cross-member-first-scratch",
+      "qt-cross-member-installed-scratch",
+      "qt-model-regression-installed-scratch",
+      "shared-capture-regressions-scratch"
+    ],
+    "installed_receiving_environment": "Owned noneditable /tmp environment and cwd removed after final use",
+    "retained": [
+      "Source/input hashes, complete receptor artifacts/logs",
+      "Unpublished wheel/sdist and actual native captures",
+      "Public prepared Deck and preliminary test-expectation controls"
+    ],
+    "review_trigger": "Next context/provider change or 0.16 candidate receiving",
+    "failures": []
+  }
+}

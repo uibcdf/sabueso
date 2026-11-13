@@ -29,6 +29,35 @@ try{
   if(args.includes('--empty')){await page.waitForFunction(()=>!!document.querySelector('.welcome button:not(:disabled)'));result.checks.empty_entry_visible=true;const {root}=await page.send('DOM.getDocument');const {nodeId}=await page.send('DOM.querySelector',{nodeId:root.nodeId,selector:'input[type=file]'});await page.send('DOM.setFileInputFiles',{nodeId,files:[card]});}
   await page.waitForFunction(()=>!!document.querySelector('[data-view-ref]'),null,{timeout:60000});
   const current=()=>page.evaluate(()=>({ref:document.querySelector('[data-view-ref]').dataset.viewRef,result:document.querySelector('[data-view-ref]').dataset.resultRef,text:document.querySelector('[data-testid="reading-text"]').textContent}));
+  if(args.includes('--cross-member')){
+    const manifest=JSON.parse(fs.readFileSync(option('--manifest'),'utf8')),parentPin=manifest.members[0],childPin=manifest.members[2];
+    const state=()=>page.evaluate(async()=>await(await fetch('/api/panel')).json());
+    async function clickItem(item,related=false){const before=await current();await page.locator('[data-item-ref="'+item.ref+'"] .item-actions button:nth-child('+(related?2:1)+')').click();await page.waitForFunction(ref=>document.querySelector('[data-view-ref]').dataset.viewRef!==ref,before.ref);}
+    async function parentRoute(){const before=await current();await page.locator('[data-topic="classification"]').click();await page.waitForFunction(ref=>document.querySelector('[data-view-ref]').dataset.viewRef!==ref,before.ref);const classification=await state();const row=classification.panel.items.find(i=>i.label.includes('mondo:MONDO:0000940'));if(!row)throw new Error('Missing source-declared parent row');await clickItem(row,true);const links=await state();await clickItem(links.panel.items.find(i=>i.label.startsWith('Object')&&i.label.includes('mondo:MONDO:0000940')));return {classification,links};}
+    const root=await current();result.checks.three_distinct_occurrences=(await state()).panel.items.length===3;
+    await page.getByRole('button',{name:'Order by identifier'}).click();await page.waitForFunction(ref=>document.querySelector('[data-view-ref]').dataset.viewRef!==ref,root.ref);const ordered=await current();
+    await page.locator('#search').focus();await page.send('Input.insertText',{text:'0001444'});await page.keyboard.press('Enter');await page.waitForFunction(()=>document.querySelectorAll('.items .item').length===2);const selected=await state();
+    await clickItem(selected.panel.items[1]);const entry=await state();result.checks.repeated_entry_is_explicit=entry.panel.deck_context.entry_position===2&&await page.evaluate(()=>document.querySelector('[data-testid="deck-entry"]').textContent.includes('occurrence 3'));
+    const route=await parentRoute(),destination=await state();
+    result.checks.source_declared_parent_opens_supplied_card=destination.panel.deck_context.current_card.card_ref===parentPin;
+    result.checks.entry_and_current_card_stay_distinct=destination.panel.deck_context.card.card_ref===childPin&&destination.panel.deck_context.entry_position===2&&destination.panel.deck_context.member_ref===entry.panel.deck_context.member_ref;
+    await page.locator('[data-topic="sources"]').click();await page.waitForFunction(ref=>document.querySelector('[data-view-ref]').dataset.viewRef!==ref,destination.panel.view_ref);const sources=await state();await clickItem(sources.panel.items[0]);
+    result.checks.destination_owns_original_source=(await current()).text.includes('asserted_value')&&(await state()).panel.deck_context.current_card.card_ref===parentPin;
+    await page.getByRole('button',{name:'Back'}).click();await page.waitForFunction(ref=>document.querySelector('[data-view-ref]').dataset.viewRef===ref,sources.panel.view_ref);await page.getByRole('button',{name:'Back'}).click();await page.waitForFunction(ref=>document.querySelector('[data-view-ref]').dataset.viewRef===ref,destination.panel.view_ref);
+    result.checks.exact_destination_source_return=true;
+    await page.getByRole('button',{name:'Save reading'}).click();await page.waitForFunction(()=>document.querySelector('[role="status"]').textContent.includes('captured Cards saved'));result.checks.saved_scope_is_explicit=true;
+    await page.getByRole('button',{name:'Reopen saved'}).click();await page.waitForFunction(()=>document.querySelector('[data-view-ref] .eyebrow').textContent==='Original saved reading');
+    result.checks.original_related_reading_reopens=(await state()).panel.deck_context.current_card.card_ref===parentPin&&(await state()).panel.deck_context.entry_position===2;
+    await page.getByRole('button',{name:'Back'}).click();await page.waitForFunction(ref=>document.querySelector('[data-view-ref]').dataset.viewRef===ref,destination.panel.view_ref);await page.getByRole('button',{name:'Back'}).click();await page.waitForFunction(ref=>document.querySelector('[data-view-ref]').dataset.viewRef===ref,route.links.panel.view_ref);
+    result.checks.exact_cross_card_back=true;
+    await page.getByRole('button',{name:'Back'}).click();await page.waitForFunction(ref=>document.querySelector('[data-view-ref]').dataset.viewRef===ref,route.classification.panel.view_ref);
+    const missing=(await state()).panel.items.find(i=>i.label.includes('mondo:MONDO:0100120'));await clickItem(missing,true);await clickItem((await state()).panel.items.find(i=>i.label.startsWith('Object')&&i.label.includes('mondo:MONDO:0100120')));
+    const unavailable=await state();result.checks.unsupplied_parent_stays_unknown=unavailable.panel.outcome.status==='context_not_supplied'&&unavailable.panel.deck_context.current_card.card_ref===null;
+    await page.getByRole('button',{name:'Return to Deck'}).click();await page.waitForFunction(ref=>document.querySelector('[data-view-ref]').dataset.viewRef===ref,selected.panel.view_ref);result.checks.exact_filtered_deck_return=JSON.stringify((await state()).panel.items)===JSON.stringify(selected.panel.items);
+    await page.getByRole('button',{name:'Back'}).click();await page.waitForFunction(ref=>document.querySelector('[data-view-ref]').dataset.viewRef===ref,ordered.ref);result.checks.exact_ordered_deck_return=true;
+    await page.getByRole('button',{name:'Back'}).click();await page.waitForFunction(ref=>document.querySelector('[data-view-ref]').dataset.viewRef===ref,root.ref);result.checks.original_occurrences_retained=(await state()).panel.items.length===3;
+    await clickItem((await state()).panel.items[2]);await parentRoute();result.scope='Actual Qt public MONDO child/parent/source/original-save/exact-Deck return, plus unsupplied-context control; Linux/Xvfb software only';
+  }else{
   const root=await current();
   result.checks.three_distinct_occurrences=await page.evaluate(()=>document.querySelectorAll('.items .item').length===3);
   await page.getByRole('button',{name:'Order by nature'}).click();await page.waitForFunction(ref=>document.querySelector('[data-view-ref]').dataset.viewRef!==ref,root.ref);
@@ -53,6 +82,7 @@ try{
   result.checks.original_metadata_inspectable=true;
   await page.getByRole('button',{name:'Back'}).click();await page.waitForFunction(()=>document.querySelectorAll('.items .item').length===3);
   result.checks.metadata_back_preserves_members=true;
+  }
   await page.screenshot({path:path.join(output,'renderer.png')});
   fs.writeFileSync(path.join(output,'capture-request'),'capture');await until(()=>fs.existsSync(path.join(output,'native.png')) && fs.statSync(path.join(output,'native.png')).size>1000,'native composition capture');
   result.checks.actual_native_capture=fs.statSync(path.join(output,'native.png')).size>1000;

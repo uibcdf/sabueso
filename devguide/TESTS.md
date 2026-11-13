@@ -1143,8 +1143,22 @@ Select native Deck/membership/schema/storage controls alongside `tests/explorer/
 Require detached capture, duplicate occurrences, exact source/selection/return,
 complete metadata, byte-bounded pages, stale/foreign cursors and strict current/
 legacy envelope admission. Receive `devtools/deck_explorer_journey.mjs` in the
-actual Qt host and installed artifact. No independent Deck saved-reading format
-or automatic cross-member context is admitted by these checks.
+actual Qt host and installed artifact. No independent original Deck saved-reading
+format is admitted. Cross-member composition has its own receiving below.
+
+Cross-member composition selects complete `test_deck_context_navigation_offline.py`
+and `tests/explorer/test_deck_context_offline.py` alongside the existing Deck,
+Card access/exploration/context/saved/nature, argument, quantity and affected
+protein/molecule/disease profile gates. Require one validated shared pool, no
+Card reconstruction/recapture during opening, original ordered/duplicate inputs,
+nonfirst scientific focal parity, separate root-reader operational state, native
+source/identity support, explicit revision choices, exact pins/source records,
+unknown targets and inert original Card reopening. App entry occurrence must not
+be reassigned when the focal Card changes. Receive the public MONDO workflow in
+`deck_explorer_journey.mjs --cross-member --manifest <inputs.json>` with the
+prepared three-occurrence fixture Deck, including original-source/save/Back and
+missing-target controls. Repeat checkout and installed-wheel routes. Whole Deck
+workflow saving and public/native-platform qualification remain separate.
 
 The source-entry controller adds `test_resolution_offline.py` and selects native
 `test_resolve_offline.py` and package-data receiving alongside the application.

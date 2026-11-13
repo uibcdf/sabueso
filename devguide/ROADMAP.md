@@ -29,7 +29,9 @@ portable web workspace and separate Python backend after the common live-host
 comparison. The first Card and Deck application slices now work locally;
 explicit identifier entry also works, and the experimental live model panel has
 actual Qt receiving. Presentation layout save/restore is separate from
-Knowledge/model state. Continue source-bound model mapping, original Deck/query/
+Knowledge/model state. Cross-member source-bound Card navigation now works inside
+the captured Deck with exact entry/selection return. Continue model mapping and
+independent original Deck/query/
 scene recovery and remaining acceptance.
 The [living implementation plan](pending_proposals/interactive_implementation_0160.md)
 owns the 0.16.0 stages, microstages, current progress and immediate resumption;
