@@ -28,7 +28,7 @@ Interrupted full-suite attempts are not passing qualification.
 [Original-file receiving](evidence/interactive_original_file_checkpoint_20261113.json)
 adds file-selected original reading: 124 integrated cases and thirteen actual Qt
 checks pass, with plain/gzip/zstd and inert quantity/type controls. S5.1 is complete
-at Card-reading scope; Deck/query persistence remains open, while presentation-only
+at Card-reading scope; original Deck persistence is received below and query persistence remains open, while presentation-only
 layout persistence is received below.
 
 The [experimental molecular product receipt](evidence/interactive_molecular_checkpoint_20261113.json)
@@ -47,8 +47,7 @@ adds explicit layout save, startup restoration and default reset, with 100
 selected application/resolver/package cases. Actual Qt receives original-reading
 continuity, floating placement, live-model saving and missing-model/unknown-format
 fallbacks. S5.2 is complete at layout-only scope: the saved presentation contains
-no Knowledge, query history, model/camera or provider token. Whole original Deck,
-query and scene recovery remain separate. The floating-container assertion is
+no Knowledge, query history, model/camera or provider token. Original Deck, query and scene recovery have separate scopes; Deck-selection recovery is received below. The floating-container assertion is
 strengthened and its earlier limitation is retained explicitly.
 
 The [cross-member checkpoint](evidence/interactive_cross_member_checkpoint_20261113.json)
@@ -60,8 +59,19 @@ entry controls from checkout and a separate installed-wheel environment.
 The installed model/layout regression also passes. Entry occurrence and current
 focal Card stay separate. Equal
 names/sequences never supply identity; revisions remain explicit choices.
-S3.4 remains partial because independent original Deck workspace persistence is
-not delivered. Existing Card formats/rules and provider implementations are fixed.
+At that checkpoint S3.4 remained partial; original Deck-selection persistence is now received below. Existing Card formats/rules and provider implementations are fixed.
+
+The [original Deck reading receipt](evidence/interactive_deck_saved_checkpoint_20261113.json)
+adds versioned independent saving/reopening with unchanged native Card bundles.
+Complete metadata, ordered/repeated/anonymous inputs, distinct revisions and exact
+selection/order/Back survive; the Qt file also restores metadata mode, pages and
+nonlinear Deck history. The 439 distinct selected cases pass; actual checkout (14 checks), separate-process startup (17) and noneditable
+installed-wheel (17) routes pass, with fresh inert receiving outside the checkout.
+S3.4 and S3 are delivered at this bounded Deck-selection scope. Focused Card UI
+history, source-query history, layout and molecular scene retain separate meanings.
+Unvisited science stays `not_saved`; large-Deck component duplication remains a
+measured-workload follow-up under #153. Selected/current-source results do not
+replace final full/candidate or hosted gates.
 
 The [complete frozen baseline receipt](evidence/interactive_integrated_baseline_20261113.json)
 receives all **10,059 collected offline nodes** at `e64c2ec`: **10,049 passed,
@@ -78,7 +88,7 @@ The [living 0.16.0 implementation plan and checkpoint](pending_proposals/interac
 owns granular stage/microstage progress, completion criteria, evidence and the
 next action. S0 architecture/feasibility and the first S1 Card application are
 complete within their explicit scopes. Supported mapped molecular integration, richer entity-specific journeys
-and independent original Deck workspace saving retain explicit product work. Update that plan and this summary together as
+and original query/scene recovery retain explicit product work. Update that plan and this summary together as
 implementation advances; preserve experiment versus product qualification.
 
 The maintainer selects **PySide6 + QWebEngine** for the 0.16.0 desktop host,

@@ -1,0 +1,260 @@
+{
+  "format": "sabueso.original_deck_checkpoint@1",
+  "owner": "uibcdf/sabueso#153",
+  "consumer_owner": "uibcdf/sabueso#154",
+  "baseline_commit": "1783508913013ce1770f726bcbc3d1e2606cca95",
+  "scope": "Independent original Deck-selection reading with unchanged Card bundles; outer application pages/metadata/nonlinear Back history",
+  "code_sha256": {
+    "sabueso/__init__.py": "463cf96aeb37e42267956e6c423547a639935d43f6ecb8fbd1df50e951baa7e8",
+    "sabueso/core/deck_exploration.py": "958738009badb6216981b6cc2a263b5cef6cbbe46b1fe970a91f8e77a6b43bfe",
+    "sabueso/core/deck_exploration_storage.py": "f503d001820c8a9a22e77e10d21a117b9a76469f83311b13fc71b6eb2ae39623",
+    "sabueso/explorer/_deck_session.py": "7b74ab6b4010ae569e4a840f3fa7537f529bd6323c8d90c63fda8d942d4b9f8a",
+    "sabueso/explorer/_service.py": "10e940d58ae6ad7f06b4a98e659c5be7db4688aea1d10fd86ee53b22282700a0",
+    "frontend/explorer/src/app.tsx": "c5e71b8fd0ac475dd148b836e6be6e2f6771c9d844a3a679fffcc7a72af6cc09",
+    "sabueso/explorer/_assets/app.js": "91169e735a73d64401466e9a92ef183e26100f14138cabf01229f3650e874c72",
+    "devtools/deck_explorer_journey.mjs": "c0c55c62e0feeb3c1a6a30a06bb8b03dd60fd8237bea9d8c47dded7db4684529",
+    "tests/core/test_deck_saved_exploration_offline.py": "6e7236b97ff7e55a908303c154a1dff50feb1971b1cea5abe0476bbd829cf241",
+    "tests/explorer/test_deck_saved_offline.py": "0ac73f62cf8fddaa53af86be4d82f7533700e4e08c9f37015a19c059b9219a73",
+    "tests/explorer/test_deck_session_offline.py": "5e9d99ff63432107c00f9747c02f02b1307d0685ea439b1b875c8de03f851499"
+  },
+  "selected_gates": [
+    {
+      "name": "native-final",
+      "counts": {
+        "collected": 20,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 20,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 20,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "integrity_valid": true,
+      "events_sha256": "acc74ad8c3cf34c473b15e1d6a7cf82e6e71bf6f3f8355e4c958b0377349eeaa",
+      "duration_s": 85.48161295999307,
+      "peak_summed_rss_bytes": 233263104,
+      "limits": {
+        "owned_rss_bytes": 4294967296,
+        "host_available_bytes": 17179869184,
+        "cpu_affinity": [
+          0
+        ],
+        "native_threads": 1
+      }
+    },
+    {
+      "name": "application-received",
+      "counts": {
+        "collected": 87,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 87,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 87,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "integrity_valid": true,
+      "events_sha256": "fa8fb14b02e7b4e924d04e3c12795bf8f14dded5e03624f3df2f9c251f2459ea",
+      "duration_s": 27.589994387933984,
+      "peak_summed_rss_bytes": 179154944,
+      "limits": {
+        "owned_rss_bytes": 4294967296,
+        "host_available_bytes": 17179869184,
+        "cpu_affinity": [
+          0
+        ],
+        "native_threads": 1
+      }
+    },
+    {
+      "name": "regression-selected",
+      "counts": {
+        "collected": 332,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 332,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 332,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "integrity_valid": true,
+      "events_sha256": "ee0097a7bb361662887d23f866e41c3bf3d6edd2467a701590d4d51673a7f18d",
+      "duration_s": 56.33995898498688,
+      "peak_summed_rss_bytes": 1011916800,
+      "limits": {
+        "owned_rss_bytes": 4294967296,
+        "host_available_bytes": 17179869184,
+        "cpu_affinity": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "native_threads": 1
+      }
+    }
+  ],
+  "distinct_selected_nodes": 439,
+  "native_qt": [
+    {
+      "case": "qt-save-source",
+      "checks": {
+        "three_original_occurrences": true,
+        "saved_scope_explicit": true,
+        "in_place_reopening_preserves_metadata": true,
+        "independent_upload_is_original": true,
+        "exact_saved_selection": true,
+        "original_member_occurrence": true,
+        "original_source_readable": true,
+        "exact_saved_deck_return": true,
+        "original_ordered_back": true,
+        "original_root_back": true,
+        "saved_file_unchanged": true,
+        "actual_native_capture": true,
+        "input_unchanged": true,
+        "no_script_errors": true
+      },
+      "input_sha256": "f05c62aae4154101fc9169af24002d5e8a0f21cf6febad7964fd79f009ccd205",
+      "saved_sha256": "1f0c558de4a3655bc5af05a4fc06afcc86b61875d2536e93e0f0a7eae7fe25ac",
+      "elapsed_s": 17.78,
+      "peak_summed_rss_bytes": 996376576,
+      "survivors": []
+    },
+    {
+      "case": "qt-save-startup",
+      "checks": {
+        "independent_startup_is_original": true,
+        "independent_startup_retains_metadata": true,
+        "independent_startup_retains_selection": true,
+        "three_original_occurrences": true,
+        "saved_scope_explicit": true,
+        "in_place_reopening_preserves_metadata": true,
+        "independent_upload_is_original": true,
+        "exact_saved_selection": true,
+        "original_member_occurrence": true,
+        "original_source_readable": true,
+        "exact_saved_deck_return": true,
+        "original_ordered_back": true,
+        "original_root_back": true,
+        "saved_file_unchanged": true,
+        "actual_native_capture": true,
+        "input_unchanged": true,
+        "no_script_errors": true
+      },
+      "input_sha256": "1f0c558de4a3655bc5af05a4fc06afcc86b61875d2536e93e0f0a7eae7fe25ac",
+      "saved_sha256": "4bb2dfd4abe3bc9c43982c2e20978763172687f1e1e132b4f98387eafcf66328",
+      "elapsed_s": 18.993,
+      "peak_summed_rss_bytes": 1000370176,
+      "survivors": []
+    },
+    {
+      "case": "qt-save-installed-final",
+      "checks": {
+        "independent_startup_is_original": true,
+        "independent_startup_retains_metadata": true,
+        "independent_startup_retains_selection": true,
+        "three_original_occurrences": true,
+        "saved_scope_explicit": true,
+        "in_place_reopening_preserves_metadata": true,
+        "independent_upload_is_original": true,
+        "exact_saved_selection": true,
+        "original_member_occurrence": true,
+        "original_source_readable": true,
+        "exact_saved_deck_return": true,
+        "original_ordered_back": true,
+        "original_root_back": true,
+        "saved_file_unchanged": true,
+        "actual_native_capture": true,
+        "input_unchanged": true,
+        "no_script_errors": true
+      },
+      "input_sha256": "1f0c558de4a3655bc5af05a4fc06afcc86b61875d2536e93e0f0a7eae7fe25ac",
+      "saved_sha256": "4bb2dfd4abe3bc9c43982c2e20978763172687f1e1e132b4f98387eafcf66328",
+      "elapsed_s": 17.878,
+      "peak_summed_rss_bytes": 1002876928,
+      "survivors": []
+    }
+  ],
+  "artifact": {
+    "wheel_sha256": "67863feca1d8cb35e029dd9e014efabd52d269d28bf3343c11e6eae0ca4b02dd",
+    "sdist_sha256": "cf80fa4a4291fdbb9dea29d501f687980b3cd1549c7a80c4168576a2da195a7e",
+    "runtime_assets_exact": true,
+    "sdist_frontend_lock_exact": true,
+    "scope": "Unpublished development artifacts; tests are repository checks, not an installed test closure; shared dependencies are not a clean public closure"
+  },
+  "installed_headless": {
+    "scope": "Fresh installed original Deck receiving outside checkout, without current Card/Deck construction or recapture; optional GUI/providers unimported",
+    "package": "/tmp/sabueso-deck-saving-receiving-5eaamvmi/environment/lib/python3.14/site-packages/sabueso/__init__.py",
+    "file_sha256": "1f0c558de4a3655bc5af05a4fc06afcc86b61875d2536e93e0f0a7eae7fe25ac",
+    "view_ref": "DV_9a4faeb1451675ad69f6e521782170d167f9b9ede5326be503439874996f0fe3",
+    "selected_occurrences": [
+      1,
+      2
+    ],
+    "original_input_count": 3,
+    "input_unchanged": true
+  },
+  "resource_policy": "Direct bounded observer without an operational Slurm allocation; at most four pytest workers, native pools one, owned RSS ceiling 4 GiB per receiving, preserve 16 GiB host available; no resource reservation.",
+  "retained_preliminary_controls": [
+    "An initial command used an unsupported receptor flag; corrected to --receptor-events. It is not a passing test run.",
+    "The first verifier compared the original Card overview to the current saved catalog. It now receives the actual original overview without generating a current catalog.",
+    "The sandbox refused local test sockets; the complete qualified application rerun used authorized loopback access.",
+    "One receiver command had a placeholder file path; it started no application and was corrected.",
+    "An artifact check incorrectly assumed repository tests were included in the sdist. Runtime/assets and declared frontend source/lock were received; installed tests are not claimed."
+  ],
+  "limits": [
+    "439 distinct selected nodes with integrity-verified complete receptor artifacts; not a new full offline suite or hosted run.",
+    "First source/source-startup GUI receipts precede the final wording correction; the final installed Qt receipt verifies the exact shipped frontend assets. Python runtime stayed fixed across that correction.",
+    "Linux/Xvfb software, a development wheel and shared dependencies do not establish native platforms, graphics performance or clean public installation.",
+    "Original Card bundles can duplicate the entire pool per distinct focal Card; logical/encoded/decoded ceilings do not guarantee a whole-process memory bound. Large Deck workloads need measurement under #153.",
+    "Saving occurs from the outer Deck view. Focused Card UI history, source queries, layout and molecular scene are separate and are not restored by this file.",
+    "Unvisited scientific views remain not_saved under the original Card verifier; saving does not run unvisited analyses. Card schemas/scientific rules/old Card formats/existing Deck payload storage/providers/public dependencies stay unchanged.",
+    "Exact-final-head full/candidate and hosted CI/governance remain due under #153/#154/#112. No workflow, tag, release or public package is selected."
+  ],
+  "cleanup": {
+    "owner": "uibcdf/sabueso#153/#154",
+    "removed": [
+      "native-first-scratch",
+      "native-final-scratch",
+      "qt-save-source-scratch",
+      "build-artifacts-scratch",
+      "native-verified-scratch",
+      "qt-save-installed-scratch",
+      "native-received-scratch",
+      "application-received-scratch",
+      "application-first-scratch",
+      "build-final-scratch",
+      "qt-save-installed-final-scratch",
+      "regression-selected-scratch",
+      "qt-save-independent-scratch",
+      "qt-save-startup-scratch",
+      "unused (empty failed-receiver output)"
+    ],
+    "installed_environment_removed": "/tmp/sabueso-deck-saving-receiving-5eaamvmi",
+    "retained": [
+      "public prepared originals and saved Deck files",
+      "complete receptor/resource logs and preliminary controls",
+      "unpublished intermediate/final artifacts and actual native captures"
+    ],
+    "review_trigger": "Next saved-format/context change or 0.16 candidate review",
+    "failures": []
+  }
+}

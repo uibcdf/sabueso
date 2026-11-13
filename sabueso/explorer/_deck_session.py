@@ -3,6 +3,7 @@
 import json
 import secrets
 from copy import copy
+from pathlib import Path
 
 from sabueso.core.errors import ArgumentError
 
@@ -22,6 +23,76 @@ class _DeckSession:
         self.cursor = None
         self.previous = []
         self.history = []
+        self.saved = None
+
+    @classmethod
+    def from_saved(cls, path, output_directory, expected_digest=None):
+        from sabueso import read_deck_exploration
+
+        current = read_deck_exploration(path, expected_digest=expected_digest)
+        session = object.__new__(cls)
+        session.explorer, session.current = current._owner, current
+        session.output_directory = output_directory
+        session.revision = secrets.token_hex(16)
+        session.card_session = session.visit = session.entry_position = None
+        session.metadata_open = False
+        session.cursor, session.previous, session.history = None, [], []
+        session.saved = (Path(path), expected_digest) if expected_digest else None
+        application = session.explorer._saved_application
+        if application:
+            session.metadata_open = application["metadata_open"]
+            session.current, session.cursor, session.previous = session._page_state(
+                application["current"]
+            )
+            session.history = [
+                session._page_state(state) for state in application["history"]
+            ]
+        else:
+            trail, origin = [], current._origin
+            while origin is not None:
+                trail.append((origin, None, []))
+                origin = origin._origin
+            session.history = list(reversed(trail))
+        return session
+
+    def _page_state(self, state):
+        view = self.explorer._saved_views[state["view_ref"]]
+        cursor, previous = None, []
+        while True:
+            page = view.page(limit=40, max_bytes=1048576, cursor=cursor)
+            if page["offset"] == state["offset"]:
+                return view, cursor, previous
+            previous.append(cursor)
+            cursor = page["next_cursor"]
+
+    def _save(self):
+        from sabueso.core.deck_exploration_storage import save_deck_exploration
+
+        def state(view, cursor):
+            return {
+                "view_ref": view.view_ref,
+                "offset": view.page(limit=40, max_bytes=1048576, cursor=cursor)[
+                    "offset"
+                ],
+            }
+
+        application = {
+            "format": "sabueso.deck_application@1",
+            "metadata_open": self.metadata_open,
+            "current": state(self.current, self.cursor),
+            "history": [state(view, cursor) for view, cursor, _ in self.history],
+        }
+        output = Path(self.output_directory)
+        output.mkdir(parents=True, exist_ok=True)
+        path = output / f"deck-reading-{secrets.token_hex(12)}.json.gz"
+        receipt = save_deck_exploration(
+            self.current,
+            path,
+            compression="gzip",
+            application=application,
+            additional=[view for view, _, _ in self.history],
+        )
+        self.saved = (path, receipt["bundle_digest"])
 
     def fork(self):
         result = copy(self)
@@ -59,7 +130,7 @@ class _DeckSession:
             "full_text": None,
             "result_ref": self.explorer.context["capture_ref"],
             "view_ref": self.current.view_ref,
-            "mode": "live",
+            "mode": self.explorer.mode,
             "profile": "deck",
             "topics": [],
             "items": []
@@ -77,9 +148,9 @@ class _DeckSession:
             "has_previous": bool(self.previous) and not self.metadata_open,
             "has_next": page["next_cursor"] is not None and not self.metadata_open,
             "can_back": bool(self.history) or self.metadata_open,
-            "can_save": False,
+            "can_save": True,
             "can_related": False,
-            "saved_file": None,
+            "saved_file": self.saved[0].name if self.saved else None,
             "outcome": {
                 "status": "ok" if self.current.context["selected_count"] else "empty",
                 "reason": None,
@@ -111,6 +182,8 @@ class _DeckSession:
             "metadata": set(),
             "deck_next": set(),
             "deck_previous": set(),
+            "save": set(),
+            "reopen": set(),
         }
         if (
             not isinstance(name, str)
@@ -119,7 +192,16 @@ class _DeckSession:
         ):
             raise ArgumentError("Unknown or malformed Deck action.")
         destination = None
-        if name == "open":
+        if name == "save":
+            self._save()
+        elif name == "reopen":
+            if self.saved is None:
+                raise ArgumentError("Save this Deck reading before reopening it.")
+            reopened = self.from_saved(
+                self.saved[0], self.output_directory, self.saved[1]
+            )
+            self.__dict__.update(reopened.__dict__)
+        elif name == "open":
             if (
                 self.metadata_open
                 or not isinstance(request["item_ref"], str)

@@ -23,13 +23,46 @@ try{
   await until(()=>/^\d+\n/.test(display),'Xvfb');env.DISPLAY=`:${display.trim()}`;
   const server=net.createServer();await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
   const port=server.address().port;await new Promise(resolve=>server.close(resolve));
-  launch(option('--python')||'python',['-m','sabueso.explorer',...(args.includes('--empty')?[]:['--deck',card]),'--output-directory',path.join(output,'readings'),'--debug-port',String(port),'--capture-directory',output],'application',env);
+  launch(option('--python')||'python',['-m','sabueso.explorer',...(args.includes('--empty')?[]:[args.includes('--reading')?'--reading':'--deck',card]),'--output-directory',path.join(output,'readings'),'--debug-port',String(port),'--capture-directory',output],'application',env);
   await until(async()=>{try{browser=await connectNative(`http://127.0.0.1:${port}`);return true;}catch{return false;}},'actual Qt application');
   const page=browser.contexts()[0].pages()[0];page.on('pageerror',error=>result.errors.push(String(error)));
   if(args.includes('--empty')){await page.waitForFunction(()=>!!document.querySelector('.welcome button:not(:disabled)'));result.checks.empty_entry_visible=true;const {root}=await page.send('DOM.getDocument');const {nodeId}=await page.send('DOM.querySelector',{nodeId:root.nodeId,selector:'input[type=file]'});await page.send('DOM.setFileInputFiles',{nodeId,files:[card]});}
   await page.waitForFunction(()=>!!document.querySelector('[data-view-ref]'),null,{timeout:60000});
   const current=()=>page.evaluate(()=>({ref:document.querySelector('[data-view-ref]').dataset.viewRef,result:document.querySelector('[data-view-ref]').dataset.resultRef,text:document.querySelector('[data-testid="reading-text"]').textContent}));
-  if(args.includes('--cross-member')){
+  if(args.includes('--saved-workspace')){
+    const state=()=>page.evaluate(async()=>await(await fetch('/api/panel')).json());
+    const read=await state();
+    if(args.includes('--reading')){
+      result.checks.independent_startup_is_original=read.panel.mode==='saved'&&read.panel.workspace==='deck';
+      result.checks.independent_startup_retains_metadata=read.panel.title==='Original Deck metadata'&&read.panel.text.includes('MONDO');
+      await page.getByRole('button',{name:'Back'}).click();await page.waitForFunction(()=>document.querySelectorAll('.items .item').length===2);
+      result.checks.independent_startup_retains_selection=true;
+      await page.getByRole('button',{name:'Overview'}).click();await page.waitForFunction(()=>document.querySelectorAll('.items .item').length===3);
+    }
+    const root=await current();result.checks.three_original_occurrences=(await state()).panel.items.length===3;
+    await page.getByRole('button',{name:'Order by identifier'}).click();await page.waitForFunction(ref=>document.querySelector('[data-view-ref]').dataset.viewRef!==ref,root.ref);const ordered=await current();
+    await page.locator('#search').focus();await page.send('Input.insertText',{text:'0001444'});await page.keyboard.press('Enter');await page.waitForFunction(()=>document.querySelectorAll('.items .item').length===2);const selected=await state();
+    await page.getByRole('button',{name:'Original membership and metadata'}).click();await page.waitForFunction(()=>document.querySelector('h2').textContent!==''&&document.querySelector('[data-testid="reading-text"]').textContent.includes('MONDO'));const metadata=await state();
+    await page.getByRole('button',{name:'Save Deck reading'}).click();await page.waitForFunction(()=>document.querySelector('[role="status"]').textContent.includes('Deck reading saved:'));
+    const saved=await state(),file=path.join(output,'readings',saved.panel.saved_file);result.saved_file=file;result.saved_sha256=hash(file);
+    result.checks.saved_scope_explicit=await page.evaluate(()=>document.querySelector('[role="status"]').textContent.includes('molecular scene are not included'));
+    await page.getByRole('button',{name:'Reopen saved'}).click();await page.waitForFunction(()=>document.querySelector('[data-view-ref] .eyebrow').textContent==='Original saved reading');
+    result.checks.in_place_reopening_preserves_metadata=(await state()).panel.text===metadata.panel.text;
+    await page.getByRole('button',{name:'Open reading…'}).click();const {root:dom}=await page.send('DOM.getDocument');const {nodeId}=await page.send('DOM.querySelector',{nodeId:dom.nodeId,selector:'input[type=file]'});const before=(await state()).panel.revision;
+    await page.send('DOM.setFileInputFiles',{nodeId,files:[file]});await page.waitForFunction(async revision=>(await(await fetch('/api/panel')).json()).panel.revision!==revision,before);
+    const uploaded=await state();result.checks.independent_upload_is_original=uploaded.panel.mode==='saved'&&uploaded.panel.view_ref===metadata.panel.view_ref&&uploaded.panel.text===metadata.panel.text;
+    await page.getByRole('button',{name:'Back'}).click();await page.waitForFunction(()=>document.querySelectorAll('.items .item').length===2);
+    result.checks.exact_saved_selection=JSON.stringify((await state()).panel.items)===JSON.stringify(selected.panel.items);
+    await page.locator('[data-item-ref="'+selected.panel.items[1].ref+'"] .item-actions button').first().click();await page.waitForFunction(()=>!!document.querySelector('[data-topic="sources"]'));
+    result.checks.original_member_occurrence=(await state()).panel.mode==='saved'&&(await state()).panel.deck_context.entry_position===2;
+    const member=await current();await page.locator('[data-topic="sources"]').click();await page.waitForFunction(ref=>document.querySelector('[data-view-ref]').dataset.viewRef!==ref,member.ref);const sources=await current();await page.getByRole('button',{name:'Open'}).first().click();await page.waitForFunction(ref=>document.querySelector('[data-view-ref]').dataset.viewRef!==ref,sources.ref);
+    result.checks.original_source_readable=(await current()).text.includes('asserted_value');
+    await page.getByRole('button',{name:'Return to Deck'}).click();await page.waitForFunction(ref=>document.querySelector('[data-view-ref]').dataset.viewRef===ref,selected.panel.view_ref);result.checks.exact_saved_deck_return=true;
+    await page.getByRole('button',{name:'Back'}).click();await page.waitForFunction(ref=>document.querySelector('[data-view-ref]').dataset.viewRef===ref,ordered.ref);result.checks.original_ordered_back=true;
+    await page.getByRole('button',{name:'Back'}).click();await page.waitForFunction(ref=>document.querySelector('[data-view-ref]').dataset.viewRef===ref,root.ref);result.checks.original_root_back=(await state()).panel.items.length===3;
+    result.checks.saved_file_unchanged=hash(file)===result.saved_sha256;
+    result.scope='Actual Qt original Deck save/reopen and independent file upload/startup; exact metadata, repeated occurrences, source and Back; Linux/Xvfb software only';
+  }else if(args.includes('--cross-member')){
     const manifest=JSON.parse(fs.readFileSync(option('--manifest'),'utf8')),parentPin=manifest.members[0],childPin=manifest.members[2];
     const state=()=>page.evaluate(async()=>await(await fetch('/api/panel')).json());
     async function clickItem(item,related=false){const before=await current();await page.locator('[data-item-ref="'+item.ref+'"] .item-actions button:nth-child('+(related?2:1)+')').click();await page.waitForFunction(ref=>document.querySelector('[data-view-ref]').dataset.viewRef!==ref,before.ref);}

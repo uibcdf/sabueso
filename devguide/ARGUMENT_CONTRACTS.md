@@ -42,6 +42,14 @@ and each complete view. Refusal explains the exact override. See
 [the shared-state contract](pending_proposals/shared_view_state_persistence.md).
 
 
+Original Deck reading (#153) reuses the same path/overwrite/compression and
+encoded/decoded/logical budget digesters for `DeckView.save`, and the same
+path/expected-digest/window/budget digesters for `read_deck_exploration`.
+Backend preflight remains active with skipped digestion. The separate envelope
+admits only version 1 literal Deck selection operations and original Card
+components; it creates no new Card schema, quantity codec or scientific selector.
+See the [saved Deck contract](pending_proposals/deck_exploration_contract_0160.md#independent-original-deck-reading).
+
 The live `assembly_generation` exploration topic reuses existing `options`,
 `fields`, `where`, `item_refs`, `order_by` and scalar display arguments. Its options
 call the existing exact structure/relationship digesters and native positive/None

@@ -15,6 +15,7 @@ from sabueso._private.smonitor import PACKAGE_ROOT as _SMONITOR_PACKAGE_ROOT
 from sabueso.core.attribution import attribution
 from sabueso.core.card_exploration_storage import read_exploration
 from sabueso.core.curation_store import CurationStore
+from sabueso.core.deck_exploration_storage import read_deck_exploration
 from sabueso.core.errors import (
     ConnectorError,
     ResolverError,
@@ -63,6 +64,7 @@ _ensure_smonitor_configured(_SMONITOR_PACKAGE_ROOT)
 
 __all__ = [
     "read_exploration",
+    "read_deck_exploration",
     "extract_literature_mentions",
     "attribution",
     "create_protein_card_from_file",

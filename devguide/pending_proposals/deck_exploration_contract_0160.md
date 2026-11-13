@@ -12,8 +12,7 @@ area: [deck, human-exploration, interoperability]
 This completes the initial source inventory in S3.1 of the
 [implementation checkpoint](interactive_implementation_0160.md). The native human/agent contract and its first Qt workflow are now implemented
 in development; final checkpoint qualification is recorded in the living plan.
-No independent saved Deck exploration format is implemented. The existing #153
-request owns that remaining contract; no duplicate feature issue is needed.
+Independent original Deck reading is now implemented at the explicit selection scope below. The existing #153 request retains broader performance/usability acceptance; no duplicate feature issue is needed.
 
 | Existing surface | Reuse and boundary |
 | --- | --- |
@@ -70,10 +69,7 @@ The Qt application accepts stored JSONL Decks through `--deck` or the file choos
 It supports member paging, literal filtering, identifier/nature order, complete
 Deck metadata, Card/topic/source reading and exact outer return. Saving a selected
 Card preserves that Card reading; the UI explicitly states that its surrounding
-Deck workspace is not saved. `DeckView.capabilities` exposes `save=False` until a
-proper independent Deck reading contract is delivered. Cross-member related-Card
-context is now received below. Independent saved Deck reading and broader
-acceptance remain due.
+Deck workspace is not saved by that Card file. `DeckView.save()` and the separate Save Deck reading action now preserve the outer Deck reading through the versioned contract below. Cross-member related-Card context is also received below; broader acceptance remains due.
 
 ## Persisted-envelope admission
 
@@ -121,3 +117,54 @@ original Card reading, not a reconstructed Deck workspace. No new Card or saved
 Card format, scientific rule or provider dependency is introduced. Capturing a
 Deck still materializes all inputs; page bounds and shared input storage do not
 bound total capture or derived-result memory.
+
+
+## Independent original Deck reading
+
+`DeckView.save(path, compression="none" | "gzip" | "zstd", ...)` and public
+`sabueso.read_deck_exploration(path, expected_digest=None, ...)` deliver
+`sabueso.deck_exploration@1`. This is a reading envelope, distinct from existing
+Deck JSONL/SQLite data storage and from original Card files. It retains complete
+Deck metadata (membership, exclusions, operations and extensions), all ordered
+input occurrences, anonymous members, distinct revisions and the selected view's
+original request/return chain. `mode` exposes `live` or `saved` without changing
+original context handles. Literal filtering/selection/order remains available
+in saved mode over original captured values; no current scientific analysis runs.
+
+Each distinct focal Card uses its unchanged native original-reading bundle.
+Existing Card verifiers own values, units, support, scientific interpretations
+and retained navigation. The envelope verifies the exact common input order,
+complete capture-pool agreement, focal/overview identity and Deck metadata/member
+binding. Version 1 independently checks its closed literal operation grammar,
+positions and exact parent/view references. It never constructs a Card/Deck,
+migrates knowledge or invokes current Deck selection/scientific readers.
+Unvisited scientific interpretations retain the native `not_saved` meaning;
+saving a Deck does not silently calculate them. Original Card overviews remain
+original even when the current route catalog differs. Resaving reuses the
+verified Card bundles without reinterpreting them.
+
+The application offers Save Deck reading from the outer Deck view. It also
+retains the metadata panel, exact page and finite nonlinear Deck Back history
+under `sabueso.deck_application@1`. Open reading and `--reading` admit the same
+original Deck file independently, before replacing an existing session. Card
+views still use Save reading for their original within-Card scope. A Deck file
+does not restore a focused Card UI trail, source-query history, presentation
+layout, model identity, camera or molecular scene; those are separate states.
+
+Writes are validated and atomic; refusal leaves an existing destination intact.
+Shared ArgDigest path/digest/compression/positive-budget contracts also hold with
+`skip_digestion=True`. Defaults are 64 MiB encoded/decoded, 8 MiB codec window
+and 256 MiB logical receiving work. The logical envelope budget conservatively
+counts its physical JSON plus each Card's independently measured logical content.
+Byte ceilings do not bound Python materialization/RSS. Version 1 can duplicate
+the capture pool across distinct focal Card components; large-Deck scaling needs
+measurement and reassessment under #153 before performance claims. This deliberate
+composition preserves Card verification rather than introducing another Card codec.
+
+The [receipt](../evidence/interactive_deck_saved_checkpoint_20261113.json) separates
+selected regressions, public MONDO Qt save/source/return, independent process
+startup, noneditable installed receiving and the remaining platform/acceptance
+limits. Unknown versions, malformed/duplicate JSON, rebound inputs/metadata/views,
+foreign pages, missing components, digest mismatch and budget overflow are refused
+without rewriting the original. No Card schema, scientific rule, provider source
+or public dependency changes.

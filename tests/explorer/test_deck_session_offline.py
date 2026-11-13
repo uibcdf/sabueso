@@ -89,7 +89,7 @@ def test_paging_and_metadata_return_do_not_change_selection(tmp_path):
     "action",
     [
         {"name": []},
-        {"name": "save"},
+        {"name": "reopen"},
         {"name": "open", "item_ref": []},
         {"name": "open", "item_ref": "foreign"},
         {"name": "deck_next"},

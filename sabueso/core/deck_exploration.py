@@ -33,6 +33,7 @@ class DeckCardContext:
     explorer: object
     member_ref: str
     _origin: object
+    _saved_overview: object = None
 
     @property
     def context(self):
@@ -47,7 +48,11 @@ class DeckCardContext:
         return self.explorer.access
 
     def overview(self):
-        return self.explorer.overview()
+        return (
+            self._saved_overview
+            if self._saved_overview is not None
+            else self.explorer.overview()
+        )
 
     def back(self):
         return self._origin
@@ -107,6 +112,10 @@ class DeckView:
     _request: object = None
 
     @property
+    def mode(self):
+        return self._owner.mode
+
+    @property
     def capabilities(self):
         return {
             "page": True,
@@ -115,8 +124,8 @@ class DeckView:
             "filter": "literal identifier/nature",
             "sort": ["label", "kind"],
             "inspect": True,
-            "save": False,
-            "saved_deck_reading": False,
+            "save": True,
+            "saved_deck_reading": self._owner.mode == "saved",
         }
 
     @property
@@ -279,6 +288,35 @@ class DeckView:
         """Complete captured Deck metadata, including extensions and exclusions."""
         return self._owner.metadata
 
+    @arg_digest()
+    def save(
+        self,
+        path,
+        *,
+        overwrite=False,
+        compression="none",
+        max_encoded_bytes=67108864,
+        max_decoded_bytes=67108864,
+        max_logical_bytes=268435456,
+        skip_digestion=False,
+    ):
+        """Save original Deck context with independently verified Card readings.
+
+        Card files retain their native meaning. Layouts and molecular scenes are
+        not saved. Size ceilings do not bound JSON/reader materialization memory.
+        """
+        from .deck_exploration_storage import save_deck_exploration
+
+        return save_deck_exploration(
+            self,
+            path,
+            overwrite=overwrite,
+            compression=compression,
+            max_encoded_bytes=max_encoded_bytes,
+            max_decoded_bytes=max_decoded_bytes,
+            max_logical_bytes=max_logical_bytes,
+        )
+
     def back(self):
         return self._origin if self._origin is not None else self
 
@@ -303,6 +341,15 @@ class DeckExplorer:
             self._captures, self._inputs = _capture_cards(cards[0], cards[1:])
         else:
             self._captures, self._inputs = {}, ()
+        self._initialize_capture(self._metadata, self._captures, self._inputs)
+
+    def _initialize_capture(self, metadata, captures, inputs):
+        self._metadata, self._captures, self._inputs = metadata, captures, tuple(inputs)
+        self.mode = "live"
+        self._saved_bundles = None
+        self._saved_overviews = {}
+        self._saved_application = None
+        self._saved_views = {}
         members = [
             {
                 "card_ref": self._captures[key].pin,
@@ -318,11 +365,11 @@ class DeckExplorer:
         self._snapshot = deck_snapshot_id(self._metadata, pins) if all(pins) else None
         self._member_refs = tuple(
             _ref("DM_", {"capture_ref": self._capture_ref, "position": position})
-            for position in range(len(cards))
+            for position in range(len(self._inputs))
         )
         self._tokens, self._cursors = {}, {}
         self._readers = {}
-        self._root = DeckView(self, tuple(range(len(cards))))
+        self._root = DeckView(self, tuple(range(len(self._inputs))))
 
     @property
     def context(self):
@@ -373,4 +420,9 @@ class DeckExplorer:
         if key not in self._readers:
             access = CardAccess._from_captures(self._captures, self._inputs, key)
             self._readers[key] = CardExplorer._from_access(access)
-        return DeckCardContext(self._readers[key], self._member_refs[position], origin)
+        return DeckCardContext(
+            self._readers[key],
+            self._member_refs[position],
+            origin,
+            self._saved_overviews.get(key),
+        )

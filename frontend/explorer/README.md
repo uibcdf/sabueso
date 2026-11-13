@@ -114,3 +114,27 @@ index and reading follow the actual current Card. Return to Deck preserves the
 original filter/order/page; following a destination never selects an arbitrary
 occurrence for it. The `--cross-member` development receiver uses a public MONDO
 Chagas disease/parent Deck and checks the entire original-source/save/return flow.
+
+
+Save Deck reading (from the outer member/metadata view) now writes an independent
+original Deck reading. It retains complete Deck metadata, all original member
+occurrences/revisions, the current selection/order, metadata mode, page and Deck
+Back history. Open reading or `--reading` can reopen that file in another process.
+Member readings use the unchanged verified original Card format; scientific
+interpretations not visited before saving remain explicitly `not_saved`.
+
+```python
+import sabueso
+
+selected = deck.explore().overview().sort("label").filter("protein")
+selected.save("deck-reading.json.gz", compression="gzip")
+original = sabueso.read_deck_exploration("deck-reading.json.gz")
+assert original.mode == "saved"
+```
+
+This saves the outer Deck reading. A focused Card UI trail, source queries, layout
+and molecular scene are not included. Use Save reading while inside a Card for
+its original within-Card scope; Save layout remains presentation only. The first
+Deck envelope can repeat shared capture data across distinct focal Card bundles,
+so bounded pages do not imply bounded capture or archive memory. Large-Deck
+budgets and original-format receiving remain owned by #153.

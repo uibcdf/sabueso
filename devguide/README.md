@@ -56,8 +56,8 @@ live model panel now passes actual Qt receiving, with explicitly unestablished
 Card correspondence. Presentation layouts now save/restore independently of Knowledge and the model,
 including explicit unavailable-context fallback. Supplied Deck members now share
 one validated Card context pool, enabling source-declared related-Card navigation
-and exact entry/Deck return without choosing an identity or revision. Supported mapped molecular
-integration, independent original Deck/query/scene recovery, richer
+and exact entry/Deck return without choosing an identity or revision. Independent original Deck readings now retain full metadata, occurrences, selection and Deck Back/page state through unchanged Card bundles. Supported mapped molecular
+integration, independent query/scene recovery, richer
 entity-specific and acceptance work remain. This is development implementation,
 not a public GUI installation or platform-support claim.
 

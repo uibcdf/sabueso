@@ -1,5 +1,21 @@
 # Sabueso — Decision Log
 
+## Compose original Deck readings from native Card bundles (2026-11-13)
+
+Under #153/#154, use `sabueso.deck_exploration@1` for an independent original
+Deck reading. Keep the existing JSONL/SQLite payload formats and all original
+Card formats unchanged. Native Card verification owns values/units/support and
+retained scientific views. The Deck envelope separately binds full metadata,
+ordered occurrences, exact capture agreement and versioned literal selection/
+return semantics. It reopens without Card/Deck construction or current analysis.
+The optional `sabueso.deck_application@1` state restores only the outer Deck's
+metadata mode, page and nonlinear Back history. Focused Card UI history, source
+queries, layout and molecular scene remain distinct. Expose original scope and
+`not_saved` science explicitly. Preserve atomic writes and deliberate byte/logical
+budgets; measure distinct-focal component duplication before large-Deck claims.
+See [the contract](pending_proposals/deck_exploration_contract_0160.md#independent-original-deck-reading)
+and [receipt](evidence/interactive_deck_saved_checkpoint_20261113.json).
+
 ## Compose Deck context from one validated Card pool (2026-11-13)
 
 Under #153/#154, a Deck supplies its captured Cards to the existing native Card
@@ -12,7 +28,7 @@ identity, merge occurrences or justify a scientific association.
 Keep the original Deck entry occurrence/return point separate from the current
 focal Card reached through a source-declared relationship. A saved Card reading
 retains its original supplied Card context, while original Deck metadata,
-selection/history and layout require their own future persistence contract.
+selection/history require their own persistence contract (now delivered above); layout remains separate.
 Standalone Card construction and existing saved formats retain their meaning.
 See the [contract](pending_proposals/deck_exploration_contract_0160.md#captured-cross-member-context)
 and [receiving](evidence/interactive_cross_member_checkpoint_20261113.json).

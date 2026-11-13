@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import asyncio
 import hmac
+import io
 import json
 import os
 import secrets
@@ -18,7 +19,7 @@ from urllib.parse import urlsplit
 from depdigest import dep_digest
 
 from sabueso.core.card import Card
-from sabueso.core.errors import ArgumentError, SabuesoError
+from sabueso.core.errors import ArgumentError, SabuesoError, StorageError
 from sabueso.explorer._deck_session import _DeckSession
 from sabueso.explorer._layout import LIMIT as LAYOUT_LIMIT
 from sabueso.explorer._layout import _Layout
@@ -160,10 +161,27 @@ class _Service:
         return panel
 
     def load_reading(self, raw):
+        from sabueso.core import exploration_transport as transport
+        from sabueso.core.card_exploration_storage import _unique
+        from sabueso.core.deck_exploration_storage import FORMAT as DECK_FORMAT
+
+        decoded, _ = transport.read(
+            io.BytesIO(raw),
+            encoded_limit=transport.BYTE_LIMIT,
+            decoded_limit=transport.BYTE_LIMIT,
+            window_limit=transport.WINDOW_LIMIT,
+        )
+        try:
+            data = json.loads(decoded.decode("utf-8"), object_pairs_hook=_unique)
+        except (ValueError, UnicodeError, RecursionError) as exc:
+            raise StorageError("Cannot read this original saved reading.") from exc
+        deck_reading = isinstance(data, dict) and data.get("format") == DECK_FORMAT
+        del decoded, data
         with tempfile.TemporaryDirectory(prefix="sabueso-reading-input-") as directory:
             path = Path(directory) / "original.json"
             path.write_bytes(raw)
-            session = _Session.from_saved(path, self.output_directory)
+            reader = _DeckSession if deck_reading else _Session
+            session = reader.from_saved(path, self.output_directory)
         panel = session.panel()
         self.session = session
         self.resolution = None
@@ -338,9 +356,9 @@ async def _run(args, resolver=None):
             )
             await asyncio.to_thread(service.load_card, data)
         elif args.reading:
-            service.session = await asyncio.to_thread(
-                _Session.from_saved, args.reading, args.output_directory
-            )
+            if args.reading.stat().st_size > 64 * 1024**2:
+                raise ArgumentError("This reading exceeds the 64 MiB opening limit.")
+            await asyncio.to_thread(service.load_reading, args.reading.read_bytes())
         elif args.deck:
             if args.deck.stat().st_size > 16 * 1024**2:
                 raise ArgumentError("This Deck exceeds the 16 MiB opening limit.")

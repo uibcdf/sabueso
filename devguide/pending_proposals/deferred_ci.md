@@ -9,6 +9,19 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Independent original Deck readings (2026-11-13)
+
+From `1783508`, #153/#154 own the separate version-1 Deck reading envelope and
+its Qt save/upload/startup receiving. [The receipt](../evidence/interactive_deck_saved_checkpoint_20261113.json)
+records selected original-Card/Deck/transport/argument/quantity/application
+regressions, actual native and noneditable installed journeys, source/artifact
+hashes and limits. Original Card formats/scientific rules, existing Deck payload
+storage, providers and public dependencies remain unchanged. The authorized
+intermediate `[skip ci]` head retains #153/#154/#112's exact-final-source full/
+candidate and hosted CI/governance recovery route; Git and the owning issue record
+the final SHA. No workflow, release, tag or public package is selected. Earlier
+full-suite results do not qualify this later source.
+
 ### Captured cross-member Deck context (2026-11-13)
 
 From `d4bec2f`, #153/#154 own shared validated Card-pool composition, native

@@ -1143,8 +1143,8 @@ Select native Deck/membership/schema/storage controls alongside `tests/explorer/
 Require detached capture, duplicate occurrences, exact source/selection/return,
 complete metadata, byte-bounded pages, stale/foreign cursors and strict current/
 legacy envelope admission. Receive `devtools/deck_explorer_journey.mjs` in the
-actual Qt host and installed artifact. No independent original Deck saved-reading
-format is admitted. Cross-member composition has its own receiving below.
+actual Qt host and installed artifact. Independent original Deck saved-reading
+receiving follows below. Cross-member composition has its own receiving below.
 
 Cross-member composition selects complete `test_deck_context_navigation_offline.py`
 and `tests/explorer/test_deck_context_offline.py` alongside the existing Deck,
@@ -1159,6 +1159,21 @@ be reassigned when the focal Card changes. Receive the public MONDO workflow in
 prepared three-occurrence fixture Deck, including original-source/save/Back and
 missing-target controls. Repeat checkout and installed-wheel routes. Whole Deck
 workflow saving and public/native-platform qualification remain separate.
+
+Original Deck persistence selects complete `test_deck_saved_exploration_offline.py`
+and `tests/explorer/test_deck_saved_offline.py`, all application tests, existing
+Deck/context/envelope, Card original-reading/context, transport, argument, quantity
+and package-data gates. Verify inert independent reopening, original overview,
+all occurrences/anonymous/revised inputs, metadata/extensions, exact selection/
+Back, empty scope, plain/gzip/zstd, resaving, closed/resealed admission and atomic
+budget failures, including skipped digestion. App receiving restores exact pages,
+metadata and nonlinear history and rejects foreign contexts before replacing a
+reading. Receive `deck_explorer_journey.mjs --saved-workspace` with the public
+three-occurrence MONDO Deck, then repeat `--reading --saved-workspace` on its
+actual saved file in another process and a noneditable wheel environment outside
+the checkout. Preserve original Card saved formats and distinguish unvisited
+`not_saved` science from complete literal capture access. No layout/query/scene
+restoration or public/native-platform qualification is implied.
 
 The source-entry controller adds `test_resolution_offline.py` and selects native
 `test_resolve_offline.py` and package-data receiving alongside the application.
