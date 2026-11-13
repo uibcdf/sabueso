@@ -9,16 +9,19 @@ This page owns current state; dated receipt histories are linked below.
 
 The maintainer confirms Python backend, live MolSysViewer embedding and standalone
 experience. The [latest infrastructure evaluation](pending_proposals/standalone_infrastructure_0160.md)
-compares Qt, Electron, Tauri, pywebview and browser hosting, with Qt/WebEngine
-recommended for the first integration and a React/Dockview candidate workspace.
-These remain recommendations. The current Viewer Qt host is experimental and
-its complete-window factory does not establish a qualified generic embedding
-contract. The local provider handoff records that concrete need. No runtime,
-dependency or provider change, graphics run or installed compatibility is supplied.
-Root Ruff format (1,713 files), lint, local governance, diff and scoped links
-pass: eight local targets, one anchor and twenty-one exact provider source paths.
-Runtime/test/dependency trees remain unchanged from `4d7336f`; no host comparison
-benchmark or new scientific/runtime acceptance is claimed.
+now contains a second critical source/primary-documentation review. It replaces
+the Qt-first presumption with a same-journey Qt/Electron comparison, keeping a
+portable web workspace, Python session authority and provider-owned live
+embedding. React/TypeScript and Dockview remain UI candidates. Viewer already
+admits injected transports; its experimental Qt factory is a complete window,
+not qualified generic embedding. The provider handoff adds explicit panel
+visibility/lifetime semantics. Mol* 5.4.1, published 5.13.0 and the upstream v6
+prototype remain distinct; no upgrade or v6 compatibility is selected.
+These are recommendations. No runtime/dependency/provider change, graphics
+execution, benchmark or installed compatibility is supplied. Documentation
+validation and deferred-hosted scope are recorded in the owning
+[CI record](pending_proposals/deferred_ci.md). Runtime/test/dependency trees
+remain unchanged from `4d7336f`; functional 0.15.0 acceptance is unaffected.
 
 The [topic-index/panel refinement](pending_proposals/interactive_exploration_0160.md#first-layer-topic-index-and-composable-panels)
 records the requested scrollable first-layer topic tiles and user-composable
@@ -51,8 +54,9 @@ under #154/#153/#148, coordinated by #112: a bounded visual Card/Deck experience
 with source/detail/return continuity and molecular representation through
 MolSysViewer where applicable. The [decision](DECISIONS.md#make-interactive-card-and-deck-exploration-the-0160-product-objective-2026-11-12)
 advances a bounded part of long-term stage 6; the other stages retain their owners.
-Host, frontend framework and independent explorer versus add-on placement remain
-the next discussion, before the architecture prototype and implementation.
+The dedicated Sabueso experience, Python backend and live molecular embedding
+now constrain the design; exact host/framework and provider contracts remain
+under discussion before the architecture prototype and implementation.
 
 The maintainer additionally requires infrastructure replaceability and alignment
 with MolSysViewer's future direction. The [refined application proposal](pending_proposals/interactive_exploration_0160.md#refined-recommendation-and-portability-requirement--2026-11-12)

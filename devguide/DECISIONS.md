@@ -8,11 +8,14 @@ MolSysViewer session, and the product offers a standalone experience. Preserve t
 user-controlled workspace and future infrastructure replaceability.
 
 The [host/stack evaluation](pending_proposals/standalone_infrastructure_0160.md)
-recommends Qt/WebEngine with a portable TypeScript UI for the first bounded
-integration, evaluates React/Dockview and retains Electron as the principal host
-alternative. These are recommendations, not accepted dependencies, a qualified
-embedding API or a final stack decision. Current Viewer Qt experimental status,
-provider ownership and separate package/platform qualification remain explicit.
+now includes the maintainer-requested second critical review. It recommends a
+portable web workspace and separately owned Python session service, with Qt and
+Electron compared on the same live integration before choosing a production
+host. This supersedes the earlier Qt-first recommendation; injected Viewer
+transports and its whole-window factory do not establish a Qt-only embedding
+contract. React/TypeScript and Dockview remain candidates, not accepted
+dependencies. Provider ownership, experimental/preview limits and separate
+package/platform qualification remain explicit. The review adopts no stack.
 
 ## Expose the Card topic index and allow composable exploration panels (2026-11-12)
 

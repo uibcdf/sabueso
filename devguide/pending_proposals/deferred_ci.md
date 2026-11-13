@@ -59,6 +59,23 @@ Root format/lint, governance, diff and scoped link checks pass. Provider source
 paths resolve at their exact reviewed revision; no runtime test is replaced by
 these documentation checks. No temporary computation resources were created.
 
+The second critical infrastructure review from `a4d8526` revisits that Qt-first
+recommendation under #154. It records injected Viewer transports, the
+whole-window embedding gap, separate Mol* 5.x/v6-development scope and panel
+visibility/lifetime requirements, then proposes the same real journey in thin
+Qt and Electron hosts. The Python/web/Viewer ownership boundaries remain
+recommendations, not new dependencies or adopted shared contracts. Production,
+tests, schemas, dependency manifests and provider checkouts remain unchanged.
+Root Ruff format (1,713 files), lint, local governance and diff checks pass;
+links across the six changed Markdown files resolve to 237 local targets,
+34 anchors and 24 exact MolSysViewer source paths. Additional Mol*/Dockview
+references resolve in the reviewed versioned upstream source. The authorized
+`[skip ci]` push retains the same scope. Deferred hosted recovery remains the
+next explicitly authorized exact-head CI/governance checkpoint; this review
+grants no dispatch/publication authority or new scientific/platform acceptance.
+No prototype, package install, graphics run or temporary computation resource
+is created by the review.
+
 ### Grouped Windows portability and memory scheduling recovery (2026-11-12 UTC)
 
 The [portability correction](../pending_bugs/ci_windows_original_portability.md)

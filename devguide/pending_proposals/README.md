@@ -14,8 +14,9 @@ development queue.
   Host/framework, adapter qualification and the complete release scope remain open.
 - [Standalone infrastructure evaluation](standalone_infrastructure_0160.md)
   (#154): Python/live-Viewer/standalone constraints, host and panel-library
-  comparison, a Qt/web first-prototype recommendation and provider embedding
-  handoff. No dependency or platform choice is adopted by the review.
+  comparison and a second critical review of real Viewer/Mol* ownership and
+  panel lifetime. Recommends the same-journey Qt/Electron comparison and
+  provider embedding handoff; no dependency or platform choice is adopted.
 - [Human exploration of Card](card_human_exploration_api.md)
   (#148, coordinated with #112): intuitive progressive navigation, complete
   retained-content access and source-grounded decision assistance. Initial
