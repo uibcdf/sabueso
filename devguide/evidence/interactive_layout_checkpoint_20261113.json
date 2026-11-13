@@ -1,0 +1,166 @@
+{
+  "format": "sabueso.presentation_checkpoint@1",
+  "owner": "uibcdf/sabueso#154",
+  "baseline_commit": "bc977fd845b5c4a7cdfd2bf1f30e7b3197f7e25e",
+  "scope": "Versioned in-page presentation only, separate from Knowledge and provider scene state",
+  "code_sha256": {
+    "sabueso/explorer/_layout.py": "83ff00cc24e9d0fe22210ffa61908fa45d1982774ac0097bd554d26f286ad072",
+    "sabueso/explorer/_service.py": "948660d3f93ccf78395a9aa57400cd5b9b4591fc852e01c382b88597ec9d1235",
+    "frontend/explorer/src/app.tsx": "07c1fc2c86523fd3c6b27ca4b35933f04dec1a6601147d672a3281f1271a3c3d",
+    "sabueso/explorer/_assets/app.js": "9c05ffe00c9f7f85150ddee05fe740b1bffd7bd116348066326ab844385fea9e",
+    "tests/explorer/test_layout_offline.py": "9545ccaf86ca8cbae840462e9232246d8364a8d9172e2f648d59a8c0264fd8db",
+    "devtools/explorer_journey.mjs": "b985b0d08deaf226b3e9412299cfe9f724f75ed4fa19d6cfc1b9906ed5c1b4f5",
+    "devtools/molecular_explorer_journey.mjs": "0fb741ff94ca3e613753bdec719f97fe779a5b1e343115fccac5b2d877111f0b"
+  },
+  "selected_gate": "PASS exit=0 | 100 passed | 10.00s",
+  "native_qt": [
+    {
+      "case": "qt-layout-final",
+      "checks": {
+        "topic_navigation": true,
+        "exact_back": true,
+        "original_source_opened": true,
+        "original_saved_reading_reopened": true,
+        "saved_return_preserved": true,
+        "reading_survives_floating": true,
+        "reading_survives_reset": true,
+        "external_original_file_opened": true,
+        "original_does_not_require_session_save_state": true,
+        "presentation_saved_separately": true,
+        "layout_reload_preserves_exact_reading": true,
+        "saved_presentation_unchanged": true,
+        "floating_position_restored": true,
+        "reset_uses_default_instead_of_saved_float": true,
+        "actual_native_capture": true,
+        "input_unchanged": true,
+        "no_script_errors": true
+      },
+      "elapsed_s": 37.029,
+      "peak_summed_rss_bytes": 1168166912,
+      "survivors": []
+    },
+    {
+      "case": "qt-molecular-layout",
+      "checks": {
+        "real_canvas_and_renderer": true,
+        "actual_floating_group_observed": true,
+        "reset_returns_to_main_grid": true,
+        "same_live_viewport": true,
+        "camera_survives_layout": true,
+        "selection_survives_layout": true,
+        "no_inferred_correspondence": true,
+        "reading_survives_layout": true,
+        "molecular_presentation_saved_without_scene": true,
+        "saving_layout_keeps_live_model": true,
+        "original_source_remains_readable": true,
+        "native_capture": true,
+        "original_inputs_unchanged": true,
+        "no_script_errors": true
+      },
+      "elapsed_s": 32.728,
+      "peak_summed_rss_bytes": 1845587968,
+      "survivors": []
+    },
+    {
+      "case": "qt-layout-missing-model",
+      "checks": {
+        "no_model_is_silently_opened": true,
+        "default_layout_explains_unavailable_context": true,
+        "original_source_remains_readable": true,
+        "native_capture": true,
+        "original_inputs_unchanged": true,
+        "no_script_errors": true
+      },
+      "elapsed_s": 14.818,
+      "peak_summed_rss_bytes": 958607360,
+      "survivors": []
+    },
+    {
+      "case": "qt-layout-unknown-version",
+      "checks": {
+        "no_model_is_silently_opened": true,
+        "default_layout_explains_unavailable_context": true,
+        "original_source_remains_readable": true,
+        "native_capture": true,
+        "original_inputs_unchanged": true,
+        "no_script_errors": true
+      },
+      "elapsed_s": 15.077,
+      "peak_summed_rss_bytes": 968413184,
+      "survivors": []
+    },
+    {
+      "case": "qt-layout-installed",
+      "checks": {
+        "topic_navigation": true,
+        "exact_back": true,
+        "original_source_opened": true,
+        "original_saved_reading_reopened": true,
+        "saved_return_preserved": true,
+        "reading_survives_floating": true,
+        "reading_survives_reset": true,
+        "external_original_file_opened": true,
+        "original_does_not_require_session_save_state": true,
+        "presentation_saved_separately": true,
+        "layout_reload_preserves_exact_reading": true,
+        "saved_presentation_unchanged": true,
+        "floating_position_restored": true,
+        "reset_uses_default_instead_of_saved_float": true,
+        "reopen_closed_knowledge_preserves_reading": true,
+        "actual_native_capture": true,
+        "input_unchanged": true,
+        "no_script_errors": true
+      },
+      "elapsed_s": 34.969,
+      "peak_summed_rss_bytes": 1162477568,
+      "survivors": []
+    },
+    {
+      "case": "qt-layout-molecular-installed",
+      "checks": {
+        "real_canvas_and_renderer": true,
+        "actual_floating_group_observed": true,
+        "reset_returns_to_main_grid": true,
+        "same_live_viewport": true,
+        "camera_survives_layout": true,
+        "selection_survives_layout": true,
+        "no_inferred_correspondence": true,
+        "reading_survives_layout": true,
+        "molecular_presentation_saved_without_scene": true,
+        "saving_layout_keeps_live_model": true,
+        "original_source_remains_readable": true,
+        "native_capture": true,
+        "original_inputs_unchanged": true,
+        "no_script_errors": true
+      },
+      "elapsed_s": 30.011,
+      "peak_summed_rss_bytes": 1837064192,
+      "survivors": []
+    }
+  ],
+  "controls": [
+    "Unknown format/renderer, foreign panel/component, scientific params, duplicated/foreign/invalid group references, nonfinite/deep/oversized input and symlinks preserve prior bytes.",
+    "Real renderer reload restores the exact reading and saved floating arrangement; Reset uses defaults.",
+    "Live model saving retains the same viewport and one client registration.",
+    "Missing model and unknown presentation format explain fallback without opening an unrequested model."
+  ],
+  "retained_failed_controls": [
+    "qt-layout-first: initial validator assumed numeric orientation; actual public Dockview enum is string. Corrected before integration.",
+    "qt-layout-received: save succeeded, but CDP observer evaluated the destroyed pre-reload context. Observer now waits for the new context and restored status; not treated as a product failure."
+  ],
+  "receiving_correction": "The original molecular reset assertion queried an absent CSS class. Current receiving observes the real dv-groupview-floating container before and after reset; the earlier screenshot had separately been reviewed as docked.",
+  "limits": [
+    "Presentation format sabueso.presentation_layout@1 is limited to 64 KiB and dockview@8.9.0; it admits only known in-page panels and finite layout data.",
+    "No Card, source query/history, molecular model/camera, provider token or scientific params is restored from a layout.",
+    "Whole Deck/query/scene persistence, restart/cancellation, mapped molecular navigation and researcher acceptance remain open.",
+    "Linux/Xvfb software rendering and unpublished local artifacts with shared dependencies do not qualify native OS/GPU, public installation or stable Viewer embedding.",
+    "The full offline baseline retains source e64c2ec; the later optional adapter/layout deltas have independent selected/native/artifact receiving. Hosted exact-final-source gates remain due."
+  ],
+  "artifact": {
+    "wheel_sha256": "149559ee23a494c9757897c12475ddb31b16f034d1b5a50fbe27e46145388111",
+    "sdist_sha256": "80e87787582df9153ad6f01221c72959e08fbac3e6d63b85d07b3cee2e693e48",
+    "runtime_assets_source_exact": true,
+    "scope": "Unpublished dirty development wheel, byte-identical runtime/assets, shared editable provider cohort, loaded outside all source checkouts. Not a clean public dependency or platform qualification.",
+    "headless_import": "Installed Sabueso and presentation helper loaded outside checkout with PySide6/aiohttp/Viewer/MolSysMT absent from imported modules."
+  }
+}

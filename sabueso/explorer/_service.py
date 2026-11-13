@@ -20,6 +20,8 @@ from depdigest import dep_digest
 from sabueso.core.card import Card
 from sabueso.core.errors import ArgumentError, SabuesoError
 from sabueso.explorer._deck_session import _DeckSession
+from sabueso.explorer._layout import LIMIT as LAYOUT_LIMIT
+from sabueso.explorer._layout import _Layout
 from sabueso.explorer._resolution import _resolve
 from sabueso.explorer._session import _Session
 
@@ -46,6 +48,7 @@ class _Service:
         self.resolver = resolver
         self.resolution_history = []
         self.molecular = None
+        self.layout = _Layout(output_directory)
 
     def response(self, panel):
         return {
@@ -53,6 +56,7 @@ class _Service:
             "resolution": self.resolution.panel() if self.resolution else None,
             "can_return_query": bool(self.resolution_history),
             "molecular": self.molecular.descriptor() if self.molecular else None,
+            "presentation": self.layout.read(),
         }
 
     def resolve(self, body, *, choice=False):
@@ -284,6 +288,20 @@ class _Service:
                 {"molecular": self.molecular.descriptor() if self.molecular else None}
             )
 
+        async def layout(request):
+            raw = await request.read()
+            if len(raw) > LAYOUT_LIMIT:
+                raise ArgumentError("The presentation layout exceeds 64 KiB.")
+            try:
+                body = json.loads(raw)
+            except RecursionError as error:
+                raise ArgumentError(
+                    "The presentation layout is too deeply nested."
+                ) from error
+            async with self.lock:
+                result = await asyncio.to_thread(self.layout.save, body)
+            return web.json_response(result)
+
         app.add_routes(
             [
                 web.get("/", asset),
@@ -298,6 +316,7 @@ class _Service:
                 web.post("/api/resolve-choice", resolve),
                 web.post("/api/resolve-back", resolve),
                 web.get("/api/molecular", molecular),
+                web.post("/api/layout", layout),
             ]
         )
         return app

@@ -9,6 +9,20 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Independent presentation persistence (2026-11-13)
+
+From `bc977fd`, #154 owns versioned layout-only save/restoration/reset, strict
+in-page panel admission and explicit unavailable-context fallback. The
+[receipt](../evidence/interactive_layout_checkpoint_20261113.json) binds 100
+selected cases, actual Qt journeys and unpublished artifact receiving to the
+changed source. Its corrected floating-container observation replaces an
+insufficient earlier assertion; historical source epochs remain explicit.
+No Knowledge, source policy, Card format, scientific provider or shared runtime
+dependency changes. This intermediate `[skip ci]` checkpoint retains the same
+#154/#112 exact-final-source CI/governance and appropriate offline/optional-GUI
+recovery route. The frozen `e64c2ec` complete-collection receipt is a separate
+baseline, not a later-source monolithic run. No workflow or publication selected.
+
 ### Experimental molecular product panel and native HTTP guard (2026-11-13)
 
 From `e64c2ec`, #154 owns the opt-in live model adapter and Qt layout continuity.

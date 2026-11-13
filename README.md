@@ -131,6 +131,14 @@ pip install --no-deps --editable .
 
 ## Development
 
+The optional [development explorer](frontend/explorer/README.md) now provides
+Qt Card/Deck/source navigation, explicit identifier entry, original saved reading
+and separate presentation layouts. Its opt-in molecular panel uses Viewer's
+experimental public service and establishes no Card/model identity. The
+[0.16.0 implementation checkpoint](devguide/pending_proposals/interactive_implementation_0160.md)
+records received scope and remaining work; this is not a public GUI release or
+installation route.
+
 Start with:
 
 - `AGENTS.md` and `MOLI_GUIDE.md` for governance;

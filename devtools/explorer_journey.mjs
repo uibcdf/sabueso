@@ -58,6 +58,24 @@ try{
     const received=await current();result.checks.external_original_file_opened=received.result===saved.result&&received.text.includes('Saved exploration');
     result.checks.original_does_not_require_session_save_state=await page.evaluate(()=>[...document.querySelectorAll('.actions button')].find(b=>b.textContent==='Reopen saved').disabled);
   }
+  if(args.includes('--receive-layout')){
+    const layoutReading=await current();
+    await page.getByRole('button',{name:'Float reading'}).click();
+    await page.getByRole('button',{name:'Save layout'}).click();await page.waitForFunction(()=>document.querySelector('[role=status]').textContent.includes('Presentation layout saved'));
+    const stored=await page.evaluate(async()=>await(await fetch('/api/panel')).json());
+    result.checks.presentation_saved_separately=stored.presentation.layout.format==='sabueso.presentation_layout@1'&&!JSON.stringify(stored.presentation.layout).includes('asserted_value');
+    await page.send('Page.reload');await until(async()=>{try{return await page.evaluate(()=>!!document.querySelector('[data-view-ref]')&&document.querySelector('[role=status]')?.textContent.includes('Presentation layout restored'));}catch(error){if(String(error).includes('Cannot find context with specified id'))return false;throw error;}},'new renderer context and restored presentation');
+    result.checks.layout_reload_preserves_exact_reading=(await current()).ref===layoutReading.ref;
+    const restored=await page.evaluate(async()=>await(await fetch('/api/panel')).json());
+    result.checks.saved_presentation_unchanged=JSON.stringify(restored.presentation.layout)===JSON.stringify(stored.presentation.layout);
+    result.checks.floating_position_restored=await page.evaluate(()=>!!document.querySelector('.dv-groupview-floating'));
+    await page.getByRole('button',{name:'Reset layout'}).click();await delay(200);
+    result.checks.reset_uses_default_instead_of_saved_float=await page.evaluate(()=>!document.querySelector('.dv-groupview-floating'));
+    await page.locator('[aria-label="Close Knowledge"]').click();await until(()=>page.evaluate(()=>!document.querySelector('[data-view-ref]')),'closed Knowledge panel');
+    await page.getByRole('button',{name:'Float reading'}).click();await page.waitForFunction(()=>!!document.querySelector('[data-view-ref]'));
+    result.checks.reopen_closed_knowledge_preserves_reading=(await current()).ref===layoutReading.ref;
+    await page.getByRole('button',{name:'Reset layout'}).click();await delay(200);
+  }
   await page.screenshot({path:path.join(output,'renderer.png')});
   fs.writeFileSync(path.join(output,'capture-request'),'capture');await until(()=>fs.existsSync(path.join(output,'native.png')) && fs.statSync(path.join(output,'native.png')).size>1000,'native composition capture');
   result.checks.actual_native_capture=fs.statSync(path.join(output,'native.png')).size>1000;

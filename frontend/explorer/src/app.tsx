@@ -1,6 +1,6 @@
 import {createContext, useContext, useEffect, useRef, useState} from 'react';
 import {createRoot} from 'react-dom/client';
-import {DockviewReact, themeLight, type DockviewApi, type DockviewReadyEvent} from 'dockview-react';
+import {DockviewReact, themeLight, type DockviewApi, type DockviewReadyEvent, type SerializedDockview} from 'dockview-react';
 import 'dockview-react/dist/styles/dockview.css';
 import './style.css';
 
@@ -10,6 +10,7 @@ type Panel={workspace?:'deck';deck_context?:unknown;revision:string;title:string
   full_text:null|{text:string;offset:number;count:number;has_previous:boolean;has_next:boolean};saved_file:string|null;outcome:{status:string;reason?:string}};
 type Resolution={revision:string;kind:string;query:string;status:string;entity_ref:string|null;has_card:boolean;choices:{ref:string;entity_ref:string}[];original_text:string};
 type Molecular={status:string;error:string|null;initial_file_name:string;initial_input_digest:string;client_url:string|null;correspondence:'not_established';initial_renderer_ready:boolean|null;initial_structure_received:boolean|null;active_selection_indices:number[]|null};
+type Presentation={layout:null|{format:string;renderer:string;workspace:SerializedDockview};error:string|null};
 const MolecularContext=createContext<Molecular|null>(null);
 type Session={panel:Panel;busy:boolean;act:(name:string,extra?:Record<string,unknown>)=>Promise<void>};
 const Context=createContext<Session|null>(null);
@@ -53,18 +54,22 @@ function Orientation(){const {panel}=useSession();return <article className="rea
 function MolecularSummary(){const model=useContext(MolecularContext);return model?<><p>Initial model input: {model.initial_file_name}</p><p>Correspondence with this Card: not established.</p>{model.error&&<p role="alert">Molecular preview unavailable: {model.error}</p>}</>:<p>No molecular model is linked in this application session. Your Card remains fully readable.</p>;}
 function MolecularView(){const model=useContext(MolecularContext);return <section className="molecular-panel"><div className="molecular-caption"><strong>Experimental molecular preview</strong><span>Correspondence with the current Card: not established.</span>{model&&<span>{model.initial_file_name} · {Array.isArray(model.active_selection_indices)?model.active_selection_indices.length+' selected atoms':'Selection not reported'}</span>}</div>{model?.client_url?<iframe title="Live local molecular model" data-testid="molecular-frame" allow="xr-spatial-tracking" src={model.client_url}/>:<p>Molecular preview unavailable.</p>}</section>;}
 const components={reading:Reading,orientation:Orientation,molecular:MolecularView};
-function Workspace({panel,busy,act,molecular}:{panel:Panel;busy:boolean;act:Session['act'];molecular:Molecular|null}){
+function Workspace({panel,busy,act,molecular,presentation,saveLayout,notice}:{panel:Panel;busy:boolean;act:Session['act'];molecular:Molecular|null;presentation:Presentation;saveLayout:(layout:SerializedDockview)=>Promise<void>;notice:(message:string)=>void}){
   const dock=useRef<DockviewApi|null>(null);
-  function ready(event:DockviewReadyEvent){dock.current=event.api;
+  function ready(event:DockviewReadyEvent,restore=true){dock.current=event.api;
+    if(restore&&presentation.layout){const state=presentation.layout.workspace;
+      if(state.panels.molecular&&!molecular?.client_url)notice('The saved layout needs a molecular panel that is unavailable. Opened the default reading layout; no model was loaded.');
+      else try{event.api.fromJSON(state);notice('Presentation layout restored. Knowledge and model state are opened separately.');return;}catch{event.api.clear();notice('The saved presentation could not be restored. Opened the default layout.');}}
+    else if(restore&&presentation.error)notice('Saved presentation unavailable: '+presentation.error+' Opened the default layout.');
     event.api.addPanel({id:'reading',component:'reading',title:'Knowledge',renderer:'always'});
     if(molecular?.client_url){event.api.addPanel({id:'molecular',component:'molecular',title:'Molecular model',renderer:'always',position:{referencePanel:'reading',direction:'left'},initialWidth:470});event.api.addPanel({id:'orientation',component:'orientation',title:'Context',position:{referencePanel:'reading',direction:'below'},initialHeight:210});}
     else event.api.addPanel({id:'orientation',component:'orientation',title:'Context',position:{referencePanel:'reading',direction:'right'},initialWidth:300});}
-  function floating(){const p=dock.current?.getPanel('reading');if(p)dock.current?.addFloatingGroup(p,{width:720,height:550,position:{left:90,top:90}});}
+  function floating(){const a=dock.current;if(!a)return;const p=a.getPanel('reading')??a.addPanel({id:'reading',component:'reading',title:'Knowledge',renderer:'always'});a.addFloatingGroup(p,{width:720,height:550,position:{left:90,top:90}});}
   function showModel(){const a=dock.current;if(!a||!molecular?.client_url)return;const p=a.getPanel('molecular')??a.addPanel({id:'molecular',component:'molecular',title:'Molecular model',renderer:'always',position:{referencePanel:'reading',direction:'left'}});p.api.setActive();}
   function floatModel(){showModel();const a=dock.current,p=a?.getPanel('molecular');if(a&&p)a.addFloatingGroup(p,{width:720,height:580,position:{left:45,top:45}});}
-  function reset(){const a=dock.current;if(!a)return;const m=a.getPanel('molecular');if(m){const root=a.addGroup({direction:'left'});m.api.moveTo({group:root,position:'center'});const r=a.getPanel('reading')??a.addPanel({id:'reading',component:'reading',title:'Knowledge',renderer:'always'});r.api.moveTo({group:m.api.group,position:'right'});const c=a.getPanel('orientation')??a.addPanel({id:'orientation',component:'orientation',title:'Context'});c.api.moveTo({group:r.api.group,position:'bottom'});}else{a.clear();ready({api:a} as DockviewReadyEvent);}}
+  function reset(){const a=dock.current;if(!a)return;const m=a.getPanel('molecular');if(m){const root=a.addGroup({direction:'left'});m.api.moveTo({group:root,position:'center'});const r=a.getPanel('reading')??a.addPanel({id:'reading',component:'reading',title:'Knowledge',renderer:'always'});r.api.moveTo({group:m.api.group,position:'right'});const c=a.getPanel('orientation')??a.addPanel({id:'orientation',component:'orientation',title:'Context'});c.api.moveTo({group:r.api.group,position:'bottom'});}else{a.clear();ready({api:a} as DockviewReadyEvent,false);}}
 
-  return <MolecularContext.Provider value={molecular}><Context.Provider value={{panel,busy,act}}><div className="workspace-tools"><span>Arrange your workspace</span>{molecular?.client_url&&<><button onClick={showModel}>Show model</button><button onClick={floatModel}>Float model</button></>}<button onClick={floating}>Float reading</button><button onClick={reset}>Reset layout</button></div>
+  return <MolecularContext.Provider value={molecular}><Context.Provider value={{panel,busy,act}}><div className="workspace-tools"><span>Arrange your workspace</span><button disabled={busy} onClick={()=>{if(dock.current)void saveLayout(dock.current.toJSON());}}>Save layout</button>{molecular?.client_url&&<><button onClick={showModel}>Show model</button><button onClick={floatModel}>Float model</button></>}<button onClick={floating}>Float reading</button><button onClick={reset}>Reset layout</button></div>
     <div className="dockview-theme-light dock"><DockviewReact theme={themeLight} components={components} onReady={ready}/></div></Context.Provider></MolecularContext.Provider>;
 }
 function ResolutionReport({result,busy,choose}:{result:Resolution;busy:boolean;choose:(ref:string)=>Promise<void>}){
@@ -79,13 +84,15 @@ function App(){
   const [panel,setPanel]=useState<Panel|null>(null),[ready,setReady]=useState(false),[busy,setBusy]=useState(false),[message,setMessage]=useState('Opening your workspace…'),[query,setQuery]=useState(''),[fileMode,setFileMode]=useState<'card'|'deck'|'reading'>('card');
   const file=useRef<HTMLInputElement>(null);
   const [molecular,setMolecular]=useState<Molecular|null>(null);
+  const [presentation,setPresentation]=useState<Presentation>({layout:null,error:null});
   const [resolution,setResolution]=useState<Resolution|null>(null),[entryKind,setEntryKind]=useState('uniprot'),[identifier,setIdentifier]=useState(''),[entryOpen,setEntryOpen]=useState(false),[canReturnQuery,setCanReturnQuery]=useState(false);
   useEffect(()=>{let active=true;async function start(){try{
     const token=new URLSearchParams(location.hash.slice(1)).get('token');history.replaceState(null,'',location.pathname);
     if(token)await api('/auth',{token});
-    const result=await api('/api/panel');if(active){setPanel(result.panel);setMolecular(result.molecular??null);setResolution(result.resolution??null);setCanReturnQuery(result.can_return_query??false);setReady(true);setMessage('Ready to explore retained knowledge.');}
+    const result=await api('/api/panel');if(active){setPresentation(result.presentation??{layout:null,error:null});setPanel(result.panel);setMolecular(result.molecular??null);setResolution(result.resolution??null);setCanReturnQuery(result.can_return_query??false);setReady(true);setMessage('Ready to explore retained knowledge.');}
   }catch(error){if(active)setMessage(String(error));}}void start();return()=>{active=false;};},[]);
   useEffect(()=>{if(!molecular?.client_url)return;let stopped=false,pending=false;const poll=async()=>{if(pending||stopped)return;pending=true;try{const result=await api('/api/molecular');if(!stopped)setMolecular(result.molecular);}catch{}finally{pending=false;}};const timer=setInterval(()=>void poll(),1000);return()=>{stopped=true;clearInterval(timer);};},[molecular?.client_url]);
+  async function saveLayout(workspace:SerializedDockview){if(busy)return;setBusy(true);try{const result=await api('/api/layout',{format:'sabueso.presentation_layout@1',renderer:'dockview@8.9.0',workspace});setPresentation(result);setMessage('Presentation layout saved. This does not save Knowledge, query history or the molecular scene.');}catch(error){setMessage(String(error));}finally{setBusy(false);}}
   async function act(name:string,extra:Record<string,unknown>={}){if(!panel||busy)return;setBusy(true);setMessage('Opening the requested reading…');
     try{const result=await api('/api/action',{name,revision:panel.revision,...extra});setPanel(result.panel);setMolecular(result.molecular??null);setResolution(result.resolution??null);setCanReturnQuery(result.can_return_query??false);setMessage(name==='save'?(panel.deck_context!==undefined?'Card reading saved. The surrounding Deck workspace is not saved in that file.':'Reading saved. Reopen it to inspect the original capture.'):'Ready.');}
     catch(error){setMessage(String(error));try{const current=await api('/api/panel');setPanel(current.panel);setResolution(current.resolution??null);setCanReturnQuery(current.can_return_query??false);}catch{setMessage('The reading service is unavailable. Reopen the application to continue.');}}
@@ -119,6 +126,6 @@ function App(){
         <strong>{topic.name.replaceAll('_',' ')}</strong><span>{topic.description}</span>{topic.availability==='not_saved'&&<em>Not saved in this original reading</em>}</button>)}</nav></aside>
       <section className="main-reading" aria-label="Knowledge workspace"><nav className="actions" aria-label="Reading navigation"><button disabled={busy||!panel.can_back} onClick={()=>void act('back')}>Back</button><button disabled={busy} onClick={()=>void act('overview')}>Overview</button><span/>{panel.deck_context!==undefined&&<button disabled={busy} onClick={()=>void act('deck')}>Return to Deck</button>}
         <button disabled={busy||!panel.can_save} onClick={()=>void act('save')}>Save reading</button><button disabled={busy||!panel.saved_file} onClick={()=>void act('reopen')}>Reopen saved</button></nav>
-        <Workspace panel={panel} busy={busy} act={act} molecular={molecular}/></section></main>}</>;
+        <Workspace panel={panel} busy={busy} act={act} molecular={molecular} presentation={presentation} saveLayout={saveLayout} notice={setMessage}/></section></main>}</>;
 }
 createRoot(document.getElementById('root')!).render(<App/>);

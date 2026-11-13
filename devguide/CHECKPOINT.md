@@ -28,7 +28,8 @@ Interrupted full-suite attempts are not passing qualification.
 [Original-file receiving](evidence/interactive_original_file_checkpoint_20261113.json)
 adds file-selected original reading: 124 integrated cases and thirteen actual Qt
 checks pass, with plain/gzip/zstd and inert quantity/type controls. S5.1 is complete
-at Card-reading scope; Deck/query/layout persistence remains open.
+at Card-reading scope; Deck/query persistence remains open, while presentation-only
+layout persistence is received below.
 
 The [experimental molecular product receipt](evidence/interactive_molecular_checkpoint_20261113.json)
 adds an opt-in live MolSysViewer panel with explicit unknown Card correspondence.
@@ -40,6 +41,15 @@ input byte caps do not bound parsed model RAM; the digest is not current model
 identity. Viewer #368, mapped navigation, panel close/reopen/recovery, varied
 workloads and independent acceptance remain open. No public GUI, native-platform
 or stable embedding qualification is claimed.
+
+The [presentation checkpoint](evidence/interactive_layout_checkpoint_20261113.json)
+adds explicit layout save, startup restoration and default reset, with 100
+selected application/resolver/package cases. Actual Qt receives original-reading
+continuity, floating placement, live-model saving and missing-model/unknown-format
+fallbacks. S5.2 is complete at layout-only scope: the saved presentation contains
+no Knowledge, query history, model/camera or provider token. Whole original Deck,
+query and scene recovery remain separate. The floating-container assertion is
+strengthened and its earlier limitation is retained explicitly.
 
 The [living 0.16.0 implementation plan and checkpoint](pending_proposals/interactive_implementation_0160.md)
 owns granular stage/microstage progress, completion criteria, evidence and the

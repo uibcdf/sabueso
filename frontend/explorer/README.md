@@ -91,3 +91,15 @@ Its `--unavailable` control receives a rejected empty synthetic file without
 losing the Card. Linux/Xvfb software drawing remains separate from hardware,
 platform, long-session or large-model qualification. XR permission is delegated
 only to the owned model iframe; there is no arbitrary external embed action.
+
+Save layout stores only the current in-page presentation in
+`presentation-layout.json` beside the chosen output readings. The versioned
+64 KiB envelope admits the three received panels, finite layout data and the
+exact Dockview cohort; it contains no Card, source query, model/camera state or
+provider session token. On startup it can arrange a separately opened reading.
+A missing model, unsupported version or invalid layout explains the fallback to
+the default arrangement. Reset layout restores the default arrangement without
+silently replacing the saved file; Save layout is explicit. An unreadable existing
+presentation or symlink is never overwritten. Native popout windows are not
+admitted by this first presentation format. The separate Knowledge and model
+state is never reconstructed from panel labels.

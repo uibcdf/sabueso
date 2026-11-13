@@ -28,8 +28,9 @@ This advances a bounded part of stage 6. The maintainer now selects
 portable web workspace and separate Python backend after the common live-host
 comparison. The first Card and Deck application slices now work locally;
 explicit identifier entry also works, and the experimental live model panel has
-actual Qt receiving. Continue source-bound model mapping, workspace recovery and
-remaining acceptance.
+actual Qt receiving. Presentation layout save/restore is separate from
+Knowledge/model state. Continue source-bound model mapping, original Deck/query/
+scene recovery and remaining acceptance.
 The [living implementation plan](pending_proposals/interactive_implementation_0160.md)
 owns the 0.16.0 stages, microstages, current progress and immediate resumption;
 it preserves the broader roadmap and separate 0.15.0 delivery state.

@@ -1176,6 +1176,18 @@ empty selection as receiving mapped or nonempty selection. Keep the failed XR
 permissions control and the corrected iframe delegation. Installed artifact,
 headless optional imports and provider-lifetime limits remain separate checks.
 
+Presentation persistence selects `test_layout_offline.py` with application,
+resolver and package-data gates. Preserve atomic writes and prior bytes on unknown
+version/renderer, foreign components, scientific params, bad references,
+nonfinite/oversized/deep input and symlink refusals. Receive actual Qt
+`explorer_journey.mjs --receive-layout --receive-uploaded-reading`: save/reload
+keeps the exact reading and floating layout; Reset restores the default. Repeat
+live-model saving without viewport reattachment, missing-model and unknown-layout
+fallbacks, and installed-wheel startup. A layout is presentation only: no captured
+Card, query history, model identity or camera is restored by it. The corrected
+floating assertion observes `.dv-groupview-floating` both before and after reset;
+the earlier absent-class assertion alone was insufficient.
+
 Use the Ruff version pinned in `pyproject.toml` and CI. Run its format gate at
 the repository root: it includes Python examples in Markdown, so a Python-only
 path selection does not replace `ruff format --check .`.

@@ -53,8 +53,10 @@ and Qt Deck workspace add repeated occurrences, complete metadata and exact retu
 records actual checkout/installed-wheel receiving. Explicit four-kind source
 entry and exact query return now pass with public frozen clients. An opt-in
 live model panel now passes actual Qt receiving, with explicitly unestablished
-Card correspondence. Supported mapped molecular integration, cross-member Deck
-context, richer entity-specific and acceptance work remain. This is development implementation,
+Card correspondence. Presentation layouts now save/restore independently of Knowledge and the model,
+including explicit unavailable-context fallback. Supported mapped molecular
+integration, original cross-member Deck/query/scene recovery, richer
+entity-specific and acceptance work remain. This is development implementation,
 not a public GUI installation or platform-support claim.
 
 The [current overview orientation](pending_proposals/card_orientation.md) exposes
