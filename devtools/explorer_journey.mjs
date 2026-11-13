@@ -51,6 +51,13 @@ try{
   result.checks.reading_survives_floating=(await current()).ref===saved.ref;
   await page.getByRole('button',{name:'Reset layout'}).click();await delay(200);
   result.checks.reading_survives_reset=(await current()).ref===saved.ref;
+  if(args.includes('--receive-uploaded-reading')){
+    const directory=path.join(output,'readings'),name=fs.readdirSync(directory).find(n=>n.endsWith('.json.gz'));if(!name)throw new Error('No original saved file to receive');
+    await page.getByRole('button',{name:'Open reading…',exact:true}).click();const {root}=await page.send('DOM.getDocument');const {nodeId}=await page.send('DOM.querySelector',{nodeId:root.nodeId,selector:'input[type=file]'});await page.send('DOM.setFileInputFiles',{nodeId,files:[path.join(directory,name)]});
+    await page.waitForFunction(()=>document.querySelector('[role="status"]').textContent.includes('Original reading opened'));
+    const received=await current();result.checks.external_original_file_opened=received.result===saved.result&&received.text.includes('Saved exploration');
+    result.checks.original_does_not_require_session_save_state=await page.evaluate(()=>[...document.querySelectorAll('.actions button')].find(b=>b.textContent==='Reopen saved').disabled);
+  }
   await page.screenshot({path:path.join(output,'renderer.png')});
   fs.writeFileSync(path.join(output,'capture-request'),'capture');await until(()=>fs.existsSync(path.join(output,'native.png')) && fs.statSync(path.join(output,'native.png')).size>1000,'native composition capture');
   result.checks.actual_native_capture=fs.statSync(path.join(output,'native.png')).size>1000;

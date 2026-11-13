@@ -139,6 +139,7 @@ def test_invalid_inputs_make_no_acquisitions(kind, query, resolver):
 def test_explicit_choice_keeps_prior_reading_until_a_card_is_received(
     tmp_path, resolver
 ):
+    pytest.importorskip("aiohttp")
     service = _Service(tmp_path, resolver=resolver)
     result = service.resolve(
         {

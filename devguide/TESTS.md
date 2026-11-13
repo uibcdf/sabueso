@@ -1154,6 +1154,13 @@ resolution/trace, exact query return and stale Card/resolution admission. Receiv
 `devtools/resolution_explorer_journey.mjs` through the actual Qt host. Its fixture
 service is receiving infrastructure and never a public offline-source contract.
 
+Original-file application entry selects `test_reading_upload_offline.py` alongside
+the owning session/HTTP/original-storage tests. Plain/gzip/zstd bodies must receive
+through `read_exploration` without Card construction or source access; retain exact
+literal numeric/quantity/false/null values and reject malformed/stale inputs. Run
+the native journey with `--receive-uploaded-reading` to prove a user-selected
+original works independently of the current session's Save state.
+
 Use the Ruff version pinned in `pyproject.toml` and CI. Run its format gate at
 the repository root: it includes Python examples in Markdown, so a Python-only
 path selection does not replace `ruff format --check .`.

@@ -1,0 +1,42 @@
+{
+  "format": "sabueso.original_file_application_checkpoint@1",
+  "owner": "uibcdf/sabueso#154",
+  "parent": "26e84c6",
+  "scope": "Original Card reading chosen from a file, independently of the current application session",
+  "source_sha256": {
+    "sabueso/explorer/_service.py": "94d2643ae9a74b1337ba2fd04d7713f6274bf0d2af714cd2cb123389b620dd66",
+    "frontend/explorer/src/app.tsx": "7c69a172c565a13605c89e67e67e3cec580a564fec1f97b63c06fdbf79dd0de5",
+    "sabueso/explorer/_assets/app.js": "da6fbc6830a55b5ef320ad2861c1a0d4ab167fd7356888e8479681cd3bc7896d",
+    "tests/explorer/test_reading_upload_offline.py": "8374672f3ac7ab1ac420f26fe3cb61c85bf9ce0c6b97135c376e29844e998485",
+    "devtools/explorer_journey.mjs": "61c4c75a767af2e78a69f7b4c7b6ab7b7c6d3ddfed8e11cf267bc99c346267c4"
+  },
+  "selected_gate": "PASS exit=0 | 124 passed | 11.34s",
+  "native_qt": {
+    "checks": {
+      "empty_entry_visible": true,
+      "topic_navigation": true,
+      "exact_back": true,
+      "original_source_opened": true,
+      "original_saved_reading_reopened": true,
+      "saved_return_preserved": true,
+      "reading_survives_floating": true,
+      "reading_survives_reset": true,
+      "external_original_file_opened": true,
+      "original_does_not_require_session_save_state": true,
+      "actual_native_capture": true,
+      "input_unchanged": true,
+      "no_script_errors": true
+    },
+    "input_sha256": "960869253e88a048216c151a02cc22895c94b9e3e30d5b587d104f98dff2e4f4",
+    "elapsed_s": 33.089,
+    "peak_summed_rss_bytes": 1159991296,
+    "survivors": []
+  },
+  "limits": [
+    "Existing read_exploration transport and semantic verifier remain unchanged",
+    "Input is capped at 16 MiB encoded in the application; ordinary Python reader limits retain their meaning",
+    "Plain/gzip/zstd and exact literal quantity/type controls pass without Card construction",
+    "Opening a Card reading restores neither the surrounding Deck nor whole query/layout workspace",
+    "Full final-source offline and hosted receiving remain separate; no native-platform/public-package claim"
+  ]
+}

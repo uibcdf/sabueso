@@ -9,6 +9,10 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Independent original-file entry (2026-11-13)
+
+From `26e84c6`, #154 owns GUI file selection through the existing original reader. The [receipt](../evidence/interactive_original_file_checkpoint_20261113.json) records 124 integrated selected cases and thirteen actual Qt checks. Formats, scientific semantics and public dependencies stay unchanged. Whole-workspace persistence is not admitted. The authorized `[skip ci]` checkpoint retains the same #154/#112 final-source full offline and exact-head hosted CI/governance recovery route; Git records its deferred head. Resume the final complete disjoint offline collection after interruption; do not reuse incomplete attempts as passing gates. No workflow or publication is selected.
+
 ### Explicit source entry and exact return (2026-11-13)
 
 From the S3 checkpoint `dd765e9`, #154 owns native four-kind source entry and exact source-free query return. The [entry receipt](../evidence/interactive_entry_checkpoint_20261113.json) records 73 selected passes and twelve actual Qt checks against frozen public sources with network forbidden. No provider, Card schema or source policy changes. The authorized `[skip ci]` head retains #154/#112's exact-final-source full offline and hosted CI/governance recovery route, with no workflow/publication selected. These selected results do not recover the interrupted full-suite attempts.

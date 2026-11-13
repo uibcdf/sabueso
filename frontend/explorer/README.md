@@ -19,7 +19,8 @@ python -m sabueso.explorer --output-directory /path/to/new-readings
 ```
 
 Open a Card JSON through the file chooser. `--card /path/to/card.json` preloads a
-Card; `--reading /path/to/reading.json.gz` opens an existing original exploration
+Card; Open reading chooses an existing original file (plain/gzip/zstd), while
+`--reading /path/to/reading.json.gz` preloads an original exploration
 through its ordinary verifier. `--deck /path/to/deck.jsonl` opens the original Deck envelope; all three inputs
 are mutually exclusive. This
 requires an actual graphical session; the automated receiver owns its Xvfb.

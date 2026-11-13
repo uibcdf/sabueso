@@ -24,6 +24,10 @@ query return: 73 selected passes and twelve real Qt checks with public fixtures
 and network forbidden. No molecular UI, public release or native-platform
 qualification is claimed. Resume at S2.1, S3.4 and remaining S4/S5 journeys; the
 two interrupted full-suite attempts are not passing qualification.
+[Original-file receiving](evidence/interactive_original_file_checkpoint_20261113.json)
+adds file-selected original reading: 124 integrated cases and thirteen actual Qt
+checks pass, with plain/gzip/zstd and inert quantity/type controls. S5.1 is complete
+at Card-reading scope; Deck/query/layout persistence remains open.
 
 The [living 0.16.0 implementation plan and checkpoint](pending_proposals/interactive_implementation_0160.md)
 owns granular stage/microstage progress, completion criteria, evidence and the

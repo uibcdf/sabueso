@@ -153,6 +153,17 @@ class _Service:
         self.resolution_history = []
         return panel
 
+    def load_reading(self, raw):
+        with tempfile.TemporaryDirectory(prefix="sabueso-reading-input-") as directory:
+            path = Path(directory) / "original.json"
+            path.write_bytes(raw)
+            session = _Session.from_saved(path, self.output_directory)
+        panel = session.panel()
+        self.session = session
+        self.resolution = None
+        self.resolution_history = []
+        return panel
+
     def application(self):
         web = self.web
 
@@ -241,9 +252,14 @@ class _Service:
                     or request.headers.get("X-Sabueso-Resolution", "") != resolution
                 ):
                     raise ArgumentError(
-                        "The reading changed; reload before opening a Deck."
+                        "The reading changed; reload before opening this file."
                     )
-                result = await asyncio.to_thread(self.load_deck, raw)
+                loader = (
+                    self.load_reading
+                    if request.path.endswith("/reading")
+                    else self.load_deck
+                )
+                result = await asyncio.to_thread(loader, raw)
             return web.json_response(self.response(result))
 
         async def resolve(request):
@@ -266,6 +282,7 @@ class _Service:
                 web.post("/api/action", action),
                 web.post("/api/card", load),
                 web.post("/api/deck", load_deck),
+                web.post("/api/reading", load_deck),
                 web.post("/api/resolve", resolve),
                 web.post("/api/resolve-choice", resolve),
                 web.post("/api/resolve-back", resolve),

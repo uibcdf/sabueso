@@ -68,7 +68,7 @@ function ResolutionReport({result,busy,choose}:{result:Resolution;busy:boolean;c
   </section>;
 }
 function App(){
-  const [panel,setPanel]=useState<Panel|null>(null),[ready,setReady]=useState(false),[busy,setBusy]=useState(false),[message,setMessage]=useState('Opening your workspace…'),[query,setQuery]=useState(''),[fileMode,setFileMode]=useState<'card'|'deck'>('card');
+  const [panel,setPanel]=useState<Panel|null>(null),[ready,setReady]=useState(false),[busy,setBusy]=useState(false),[message,setMessage]=useState('Opening your workspace…'),[query,setQuery]=useState(''),[fileMode,setFileMode]=useState<'card'|'deck'|'reading'>('card');
   const file=useRef<HTMLInputElement>(null);
   const [resolution,setResolution]=useState<Resolution|null>(null),[entryKind,setEntryKind]=useState('uniprot'),[identifier,setIdentifier]=useState(''),[entryOpen,setEntryOpen]=useState(false),[canReturnQuery,setCanReturnQuery]=useState(false);
   useEffect(()=>{let active=true;async function start(){try{
@@ -81,8 +81,8 @@ function App(){
     catch(error){setMessage(String(error));try{const current=await api('/api/panel');setPanel(current.panel);setResolution(current.resolution??null);setCanReturnQuery(current.can_return_query??false);}catch{setMessage('The reading service is unavailable. Reopen the application to continue.');}}
     finally{setBusy(false);}}
   async function openFile(selected:File){setBusy(true);try{
-    if(selected.size>16*1024**2)throw new Error('This Card exceeds the 16 MiB opening limit.');
-    const response=await fetch(`/api/${fileMode}`,{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json','X-Sabueso-Revision':panel?.revision??'','X-Sabueso-Resolution':resolution?.revision??''},body:selected});if(!response.ok){const error=await response.json();throw new Error(error.error??'Could not open the Card.');}const result=await response.json();setPanel(result.panel);setResolution(result.resolution??null);setCanReturnQuery(result.can_return_query??false);setMessage(`${fileMode==='deck'?'Deck':'Card'} opened. Choose where to explore.`);
+    if(selected.size>16*1024**2)throw new Error('This input exceeds the 16 MiB opening limit.');
+    const response=await fetch(`/api/${fileMode}`,{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json','X-Sabueso-Revision':panel?.revision??'','X-Sabueso-Resolution':resolution?.revision??''},body:selected});if(!response.ok){const error=await response.json();throw new Error(error.error??'Could not open the Card.');}const result=await response.json();setPanel(result.panel);setResolution(result.resolution??null);setCanReturnQuery(result.can_return_query??false);setMessage(`${fileMode==='deck'?'Deck':fileMode==='reading'?'Original reading':'Card'} opened. Choose where to explore.`);
     }catch(error){setMessage(String(error));}finally{setBusy(false);if(file.current)file.current.value='';}}
   async function acquire(choice_ref?:string){if(!ready||busy)return;setBusy(true);setMessage('Querying the requested public sources…');
     try{const revisions={revision:panel?.revision??'',resolution_revision:resolution?.revision??''};
@@ -97,7 +97,7 @@ function App(){
     <p className="quiet">{entryKind==='smiles'?'The entered SMILES is sent to PubChem for source-stated identity. UniChem expansion is disabled for this initial query.':entryKind==='disease'?'The disease identifier is sent to MONDO. Disease-name search is not offered yet.':entryKind==='pdb'?'The entry identifier is sent to RCSB PDB. Related proteins are offered for a separate query.':'The accession is sent to UniProt.'} Identity profile only; enrichment is not requested automatically.</p>
   </form>;
   return <><header><div className="brand"><span className="brand-mark">S</span><div><h1>Sabueso</h1><p>Molecular knowledge explorer</p></div></div>
-    {canReturnQuery&&<button disabled={busy} onClick={()=>void returnQuery()}>Return to previous query</button>}<button disabled={!ready||busy} onClick={()=>setEntryOpen(!entryOpen)}>New source query</button><button disabled={!ready||busy} onClick={()=>{setFileMode('card');file.current?.click();}}>Open Card…</button><button disabled={!ready||busy} onClick={()=>{setFileMode('deck');file.current?.click();}}>Open Deck…</button><input ref={file} type="file" accept={fileMode==='deck'?'.jsonl':'.json,application/json'} hidden onChange={e=>{const f=e.target.files?.[0];if(f)void openFile(f);}}/></header>
+    {canReturnQuery&&<button disabled={busy} onClick={()=>void returnQuery()}>Return to previous query</button>}<button disabled={!ready||busy} onClick={()=>setEntryOpen(!entryOpen)}>New source query</button><button disabled={!ready||busy} onClick={()=>{setFileMode('card');file.current?.click();}}>Open Card…</button><button disabled={!ready||busy} onClick={()=>{setFileMode('deck');file.current?.click();}}>Open Deck…</button><button disabled={!ready||busy} onClick={()=>{setFileMode('reading');file.current?.click();}}>Open reading…</button><input ref={file} type="file" accept={fileMode==='deck'?'.jsonl':fileMode==='reading'?'.json,.gz,.zst,application/json':'.json,application/json'} hidden onChange={e=>{const f=e.target.files?.[0];if(f)void openFile(f);}}/></header>
     <div role="status" className={message.startsWith('Error')?'status error':'status'} aria-live="polite">{message}</div>
     {entryOpen&&panel&&<section className="query-drawer">{entry}</section>}{resolution&&<ResolutionReport result={resolution} busy={busy} choose={ref=>acquire(ref)}/>}
     {!panel?<main className="welcome"><div className="eyebrow">Start an exploration</div><h2>What would you like to learn?</h2>
