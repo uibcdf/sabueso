@@ -28,6 +28,7 @@ class _Queries:
             key: job[key] for key in ("ref", "kind", "query", "state", "phase", "error")
         } | {
             "worker_running": job["thread"].is_alive(),
+            "protein_source": job["protein_source"],
             "original_revision": job["revisions"][0],
             "original_resolution_revision": job["revisions"][1],
             "cancellation_scope": "Discard the result; an active provider request may finish",
@@ -41,11 +42,13 @@ class _Queries:
                 "One source query is still running; wait for it before starting another."
             )
         kind, query = self.service._query_request(body, choice=choice)
+        options = self.service._source_options(body)
         loop = asyncio.get_running_loop()
         job = {
             "ref": secrets.token_hex(16),
             "kind": kind,
             "query": query,
+            "protein_source": body.get("protein_source", "identity"),
             "state": "running",
             "phase": "querying_sources",
             "error": None,
@@ -56,7 +59,7 @@ class _Queries:
 
         def worker():
             try:
-                prepared = self.service._prepare_resolution(kind, query)
+                prepared = self.service._prepare_resolution(kind, query, **options)
             except Exception as error:
                 if not self.closed.is_set():
                     loop.call_soon_threadsafe(self._finished, job, None, error)

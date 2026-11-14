@@ -35,7 +35,7 @@ try{
     await page.evaluate(value=>{const e=document.querySelector('#entry-kind');Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype,'value').set.call(e,value);e.dispatchEvent(new Event('change',{bubbles:true}));},kind);
     await page.locator('#entry-query').focus();await page.send('Input.dispatchKeyEvent',{type:'keyDown',key:'a',code:'KeyA',modifiers:2,windowsVirtualKeyCode:65});await page.send('Input.dispatchKeyEvent',{type:'keyUp',key:'a',code:'KeyA',modifiers:2,windowsVirtualKeyCode:65});await page.send('Input.insertText',{text});
   }
-  async function query(kind,text,expected){await input(kind,text);const before=(await state()).resolution?.revision;
+  async function query(kind,text,expected,proteinSource='identity'){await input(kind,text);if(kind==='uniprot')await page.evaluate(value=>{const e=document.querySelector('#protein-source');Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype,'value').set.call(e,value);e.dispatchEvent(new Event('change',{bubbles:true}));},proteinSource);const before=(await state()).resolution?.revision;
     await page.getByRole('button',{name:'Query public sources',exact:true}).click();
     await page.waitForFunction(async old=>{const s=await(await fetch('/api/panel')).json();return s.resolution&&s.resolution.revision!==old;},before);
     await page.waitForFunction(()=>!document.querySelector('header button')?.disabled);
@@ -69,6 +69,26 @@ try{
     const callsBeforeReturn=fs.readFileSync(path.join(output,'readings','source-calls.jsonl'),'utf8');await page.getByRole('button',{name:'Return to previous query',exact:true}).click();await page.waitForFunction(()=>document.querySelector('[aria-label="Source query result"] strong')?.textContent==='ambiguous');
     const previous=await state(),choicePairs=choices=>choices.map(c=>[c.ref,c.entity_ref]);result.checks.exact_original_ambiguity_and_candidates_return=previous.resolution.original_text===original.resolution.original_text&&JSON.stringify(choicePairs(previous.resolution.choices))===JSON.stringify(choicePairs(original.resolution.choices))&&fs.readFileSync(path.join(output,'readings','source-calls.jsonl'),'utf8')===callsBeforeReturn;
   }
+  if(args.includes('--receive-enrichment')){
+    const identity=await query('uniprot','P52270','resolved');
+    const family=await query('uniprot','P52270','resolved','interpro');
+    result.checks.explicit_interpro_access=family.resolution.source_access.rows.some(r=>r.source==='InterPro'&&r.outcome==='received'&&r.access==='fixture')&&!family.resolution.source_access.rows.some(r=>r.source==='AlphaFold DB');
+    await page.locator('.source-access summary').click();
+    result.checks.original_access_scope_is_visible=await page.evaluate(()=>document.querySelector('.source-access').open&&document.querySelector('.source-access').textContent.includes('scientific outcomes'));
+    const predicted=await query('uniprot','P52270','resolved','alphafold');
+    result.checks.explicit_prediction_access=predicted.resolution.source_access.rows.some(r=>r.source==='AlphaFold DB'&&r.outcome==='received')&&!predicted.resolution.source_access.rows.some(r=>r.source==='InterPro');
+    result.checks.no_automatic_model_or_mapping=predicted.molecular===null;
+    await page.locator('[data-topic="predicted_structures"]').click();await page.waitForFunction(()=>document.querySelector('[data-view-ref] h2').textContent.toLowerCase().includes('predicted'));
+    result.checks.predicted_records_are_readable=(await state()).panel.items.length>0;
+    const beforeSave=await state(),beforeCalls=fs.readFileSync(path.join(output,'readings','source-calls.jsonl'),'utf8');
+    await page.getByRole('button',{name:'Save workspace',exact:true}).click();await page.waitForFunction(()=>document.querySelector('[role=status]').textContent.includes('Workspace saved:'),null,{timeout:120000});
+    await page.getByRole('button',{name:'Reopen workspace',exact:true}).click();await page.waitForFunction(()=>document.querySelector('[role=status]').textContent.includes('Original workspace reopened'),null,{timeout:120000});
+    result.checks.enrichment_original_report_and_reading_reopen=(await state()).resolution.original_text===predicted.resolution.original_text&&(await state()).panel.view_ref===beforeSave.panel.view_ref;
+    await page.getByRole('button',{name:'Return to previous query',exact:true}).click();await page.waitForFunction(ref=>document.querySelector('[data-view-ref]').dataset.viewRef===ref,family.panel.view_ref);
+    result.checks.enrichment_exact_source_and_capture_return=(await state()).resolution.original_text===family.resolution.original_text;
+    await page.getByRole('button',{name:'Return to previous query',exact:true}).click();await page.waitForFunction(ref=>document.querySelector('[data-view-ref]').dataset.viewRef===ref,identity.panel.view_ref);
+    result.checks.enrichment_original_identity_return_without_query=(await state()).resolution.original_text===identity.resolution.original_text&&fs.readFileSync(path.join(output,'readings','source-calls.jsonl'),'utf8')===beforeCalls;
+  }
   if(args.includes('--receive-workspace')){
     const beforeWorkspace=await state(),beforeCalls=fs.readFileSync(path.join(output,'readings','source-calls.jsonl'),'utf8');
     await page.getByRole('button',{name:'Save workspace'}).click();await page.waitForFunction(()=>document.querySelector('[role=status]').textContent.includes('Workspace saved:'));
@@ -101,7 +121,7 @@ try{
   await page.screenshot({path:path.join(output,'renderer.png')});fs.writeFileSync(path.join(output,'capture-request'),'capture');
   await until(()=>fs.existsSync(path.join(output,'native.png'))&&fs.statSync(path.join(output,'native.png')).size>1000,'native composition capture');result.checks.actual_native_capture=true;
   const calls=fs.readFileSync(path.join(output,'readings','source-calls.jsonl'),'utf8').trim().split('\n').map(JSON.parse);
-  result.source_calls=calls;result.checks.only_explicit_source_queries=calls.length===6+(args.includes('--receive-cancellation')?2:0)+(args.includes('--receive-candidates')?2:0);
+  result.source_calls=calls;result.checks.only_explicit_source_queries=calls.length===6+(args.includes('--receive-cancellation')?2:0)+(args.includes('--receive-candidates')?2:0)+(args.includes('--receive-enrichment')?3:0);
   if(args.includes('--receive-pending-close')){
     const readings=path.join(output,'readings');fs.writeFileSync(path.join(readings,'pause-next-query'),'pause');await input('uniprot','P52270');await page.waitForFunction(()=>!document.querySelector('#entry-query').disabled);await page.getByRole('button',{name:'Query public sources',exact:true}).click();await until(()=>fs.existsSync(path.join(readings,'query-waiting')),'owned pending source query');
     result.checks.pending_query_is_observed_before_close=(await state()).query_job.worker_running===true;

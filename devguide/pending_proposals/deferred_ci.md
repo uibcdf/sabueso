@@ -9,6 +9,18 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Explicit protein source scope and observed access (2026-11-13)
+
+From `7519c1a`, #154 owns selected InterPro/AlphaFold query scope through existing
+registered enrichers, original access previews and exact capture/query return.
+[The receipt](../evidence/interactive_source_enrichment_checkpoint_20261113.json)
+records source/installed/native gates and artifact bytes. Core/schema/provider
+implementations, dependencies and native saved formats remain unchanged. This
+intermediate `[skip ci]` checkpoint retains exact-final-source full/candidate and
+hosted CI/governance recovery under #154/#153/#112; Git and the consolidated issue
+report own the final SHA. No workflow dispatch, release, package publication or
+platform acceptance is authorized or claimed.
+
 ### Explicit source candidates and usable reading space (2026-11-13)
 
 From `796d20e`, #154 owns exact source-candidate/alternative follow-up, retained

@@ -65,6 +65,9 @@ Its public protein/BTS/activity/assay/publication journey has actual Qt receivin
 [source-candidate follow-up](pending_proposals/interactive_source_candidates_0160.md)
 now preserves ambiguity and original source context through explicit record
 queries and saving, with usable reading space while queries run;
+[explicit protein source scope](pending_proposals/interactive_source_enrichment_0160.md)
+adds InterPro sites or AlphaFold prediction records as new captures, with observed
+access outcomes and exact original return;
 [human review materials](pending_proposals/interactive_researcher_review_0160.md)
 are prepared, with actual acceptance still open. This is development implementation,
 not a public GUI installation or platform-support claim.

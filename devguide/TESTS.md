@@ -1822,3 +1822,29 @@ SOURCE resources. The [saved receipt](evidence/knowledge_comparison_saved_checkp
 owns distinct source counts and limits; copied/diagnostic repetitions add no source
 coverage. Full suite, expanded historical, exact-candidate/hosted/platform and B7
 acceptance remain separate; B2 review deferred and B8/release unresumed.
+
+
+### Explicit source-enrichment application receiving
+
+`tests/explorer/test_enrichment_offline.py` adds the two exact registered protein
+routes, invalid/cross-nature admission, failure versus absence, inert saved originals,
+background adoption and bounded literal source-access/version previews. Run with
+the other application cases and published receptor; expected warning controls
+exercise the actual native source failure. Scientific readers/mappings are reused,
+not replaced by an application parser.
+
+The source-entry Qt receiver's `--receive-enrichment` adds real selection of
+identity, InterPro and AlphaFold, native prediction reading, saved query reports
+and exact source-free return. Combine with candidate/workspace/cancellation controls
+and receive the noneditable wheel outside the checkout. Synthetic waits and
+fixture queries do not measure live-source latency. The
+[receipt](evidence/interactive_source_enrichment_checkpoint_20261113.json)
+keeps original/failure/resource/artifact boundaries explicit.
+
+
+The molecular Qt receiver accepts bounded development-only `--layout-cycles`
+(1–20) and `--observe-idle-seconds` (0–30). Its wall-clock phases can be joined to
+owned observer samples to report sampled CPU seconds/core equivalents and summed
+RSS. Keep idle settling, layout retention, actual provider creation/disposal,
+software rendering and native graphics qualification separate. No resource
+threshold is accepted merely because a bounded run completes.

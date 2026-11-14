@@ -30,7 +30,15 @@ live-model regression also passes. The genuine pre-change `796d20e` original
 workspace receives inertly and unchanged. This extends S4.1 without resolving an
 identity automatically or completing the remaining enrichment/molecular scope.
 
-**Next observable result:** exact source-bound annotation → model selection → original source → Back, including unknown/replaced contexts (S2.2/S2.5), plus qualified chemical depiction and provider lifetime/scene recovery. Viewer #368 still owns the supported embedding/current-model contract. Broader candidate/enrichment presentation, workload agreements and human acceptance remain open. Owned reading-service loss, explicit restart and pending-query shutdown now receive in actual Qt. The [presentation receipt](../evidence/interactive_layout_checkpoint_20261113.json) closes S5.2 at layout-only scope. The whole-workspace receipt does not close remaining scopes or authorize a release. Interrupted attempts never count as passes.
+The [explicit source increment](interactive_source_enrichment_0160.md) now adds
+UniProt plus either InterPro sites or AlphaFold prediction records, selected by
+the researcher, using existing registered enrichers. New captures retain exact
+query return and inert original saving. Bounded source-access observations expose
+outcome, fixture/live route and version/basis without claiming scientific coverage.
+Additional source failures remain distinct from absence. This extends S4.1/S4.2;
+arbitrary source controls, mapped 3D and whole-stage acceptance remain open.
+
+**Next observable result:** exact source-bound annotation → model selection → original source → Back, including unknown/replaced contexts (S2.2/S2.5), plus qualified chemical depiction and provider lifetime/scene recovery. Viewer #368 still owns the supported embedding/current-model contract. Broader source controls/presentation, workload agreements and human acceptance remain open. Owned reading-service loss, explicit restart and pending-query shutdown now receive in actual Qt. The [presentation receipt](../evidence/interactive_layout_checkpoint_20261113.json) closes S5.2 at layout-only scope. The whole-workspace receipt does not close remaining scopes or authorize a release. Interrupted attempts never count as passes.
 
 The [complete frozen baseline receipt](../evidence/interactive_integrated_baseline_20261113.json)
 receives all **10,059 collected offline nodes** at `e64c2ec`: **10,049 passed,
@@ -202,8 +210,8 @@ records the distinct input meanings and gaps.
 
 | ID | State | Delivered work, remainder and completion check |
 | --- | --- | --- |
-| S4.1 | `partial` | Explicit native `identity@1` entry has one background worker, cancellation/discard, continued reading and stale-result adoption. UniProt candidates/alternatives and PubChem source-record follow-ups now receive with original context, exact saved ambiguity return and no implicit identity choice. The form folds after submission and reading space stays usable. Historical choices remain original. Broader enrichment acquisition/presentation remains; cancellation does not promise interruption of provider HTTP |
-| S4.2 | `partial` | Source-linked original overview fields, readable versions, exact sequence strips and native annotation/value tables now receive in Qt. Text positions establish no residue/model mapping. Structures/ligands/changes/associations stay available through the native topic index; broader nature-specific receiving and mapped annotation visuals remain |
+| S4.1 | `partial` | Explicit native `identity@1` entry has one background worker, cancellation/discard, continued reading and stale-result adoption. UniProt candidates/alternatives and PubChem source-record follow-ups now receive with original context, exact saved ambiguity return and no implicit identity choice. The form folds after submission and reading space stays usable. Historical choices remain original. Explicit additional InterPro sites or AlphaFold prediction records now create new protein captures; bounded original source-access outcomes and exact saved return are retained. Broader source controls/presentation remains; cancellation does not promise interruption of provider HTTP |
+| S4.2 | `partial` | Source-linked original overview fields, readable versions, exact sequence strips and native annotation/value tables now receive in Qt. Text positions establish no residue/model mapping. Structures/ligands/changes/associations stay available through the native topic index; explicitly acquired AlphaFold records receive as predictions without automatically downloading coordinates; broader nature-specific receiving and mapped annotation visuals remain |
 | S4.3 | `partial` | Actual SMILES → PubChem-stated Card, original chemical/property values with units and a source-bound BTS → supplied target → native activity → assay/publication journey pass. Qualified 2D/available 3D remain open; no conformer or measured geometry is invented |
 | S4.4 | `partial` | Disease-ID → MONDO, original overview fields, current-page retained relationship graph, exact edge/source/Back and source-declared parent Card receiving pass. Graphs preserve native support/derivation scope. Broader disease/protein/molecule journeys and richer visual comparisons remain. Name search is not offered without a candidate-search contract |
 | S4.5 | `partial` | Protein → source-bound BTS identity → native activity quantity → original assay/full publication → exact repeated/filtered Deck return now passes in real Qt, including original workspace saving/reopening. PDB record → source-declared protein → source → exact query return also passes. The PDB/entity → mapped molecular reading remains dependent on S2/#368; graphs add no scientific conclusions |
@@ -224,7 +232,7 @@ optional GUI/process resources independently owned.
 | S5.2 | `done` | Versioned 64 KiB presentation-only persistence admits the three known panels and exact Dockview cohort. Real save/reload preserves reading/float arrangement; Reset uses defaults, live-model saving keeps the viewport, and missing-model/unknown-version controls explain fallback. Unknown originals and symlinks are never overwritten; no Knowledge, query history or scene is restored. [Receipt and limits](../evidence/interactive_layout_checkpoint_20261113.json) |
 | S5.3 | `partial` | Actual installed Qt now receives controlled owned-service loss, the surviving reading/window, visible error and explicit original-workspace restart with exact Back. A synthetic pending query closes with its owned service in about 2.24 s; no result is adopted and its bootstrap retires. Cancellation/stale-result handling and atomic/private caller-safe bootstrap pass. Model pending-operation/lifetime receiving remains under S2/#368 and native Windows shutdown is unqualified; unsaved crash recovery is not claimed |
 | S5.4 | `done` | Include the compiled frontend/resources in the optional product closure, qualify headless/GUI boundaries and verify a development launch outside the checkout. Keep Electron/Tauri comparison runtimes out of the shipped Qt closure |
-| S5.5 | `partial` | One actual public molecular session and failed-input control have bounded RSS/CPU-affinity/cleanup receipts. Measure active/idle/repeated-open behavior and agreed larger/varied public cases. Preflight shared resources, run sequential graphics trials and record actual CPU/RAM/graphics and cleanup; do not import an unrelated budget or claim thermal superiority |
+| S5.5 | `partial` | The [source/resource increment](interactive_source_enrichment_0160.md#bounded-product-resource-observations) receives two sequential installed public model profiles, 12 float/reset cycles each and short idle/active windows, with 14 checks each and about 1.76/1.86 GiB summed-RSS peaks. Renderer is llvmpipe; the AF fragment is deliberately unrelated to the Card. Failed-input controls retain earlier receipts. Repeated provider creation/disposal, longer settled sessions and agreed scaling cases remain. Preflight shared resources, run sequential graphics trials and record actual CPU/RAM/graphics and cleanup; do not import an unrelated budget or claim thermal superiority |
 
 Use the existing shared-resource policy and infrastructure owners. This application
 does not implement a new scheduler, reserve the host or require operational Slurm
@@ -240,9 +248,30 @@ delivers. Start feedback when the first useful slice exists, not only at the end
 | ID | State | Deliverable and completion check |
 | --- | --- | --- |
 | S6.1 | `partial` | [Public input preparation, uncoached tasks and worksheet](interactive_researcher_review_0160.md) are prepared and preparation runs without network. Maintainer and independent researcher observations remain `not_reviewed`; record understanding/navigation/accessibility, including molecular limits. The 0.15.0 deferral does not waive 0.16.0 review |
-| S6.2 | `partial` | Actual source-bound rich Card/query/mixed scientific Deck workloads now have bounded checkout/installed observations. The latest installed mixed workspace saves in about 84 s and reopens in 25 s in its received two-CPU profile; the earlier cohort observed 87/25 s. This is not an agreed budget or a native-platform/scaling claim. Agree workload-specific targets and repeat varied molecular/idle/lifetime measurements before provider optimizations |
+| S6.2 | `partial` | Actual source-bound rich Card/query/mixed scientific Deck workloads now have bounded checkout/installed observations. The latest installed mixed workspace saves in about 84 s and reopens in 25 s in its received two-CPU profile; the earlier cohort observed 87/25 s. This is not an agreed budget or a native-platform/scaling claim. Two installed molecular profiles now add short idle/active and repeated-layout observations; these do not establish a settled idle budget or repeated provider lifetime. Agree workload-specific targets and complete longer/lifetime measurements before provider optimizations |
 | S6.3 | `todo` | Reconcile every accepted 0.16.0 journey against implementation, regressions, original saved compatibility and visible limits. Reconsider #192's meaning/correction and the #194 macOS exception before the version decision; neither 0.15.0 deferral silently extends |
 | S6.4 | `todo` | Record functional-milestone acceptance separately from exact-source CI, installed artifacts, supported platforms and publication. Complete the applicable existing release route only for the authorized candidate and actual claimed GUI/core scope |
+
+## Current closeout ledger
+
+The 33 microstages currently contain **17 done, 13 partial and 3 todo**. This is
+an unweighted status count, not a percentage of implementation effort or readiness.
+Several partial rows already contain working application behavior but depend on
+provider contracts or acceptance; their labels must not be promoted by automated
+checks alone.
+
+| Remaining front | Concrete next result | Owner / dependency | Can proceed locally? |
+| --- | --- | --- | --- |
+| Molecular correspondence and supported embedding (S2) | Versioned current-model/occurrence identity and supported selection/lifetime route, then actual annotation → selection → source → Back | Viewer #368; Sabueso #154; initial input hash cannot establish active identity | Consumer refusal/lifetime/resource work can continue; exact mapped product journey awaits the provider contract |
+| Chemical depiction and nature-specific presentation (S4) | Source-bound 2D representation through a provider-owned supported surface; richer public protein/molecule/disease receiving | #154; concrete Viewer proposal retained for explicit publication approval | Public retained readers and source controls can continue; no chemical renderer or provider patch is silently adopted |
+| Resource and recovery breadth (S5/S6.2) | Varied public model idle/active observations, repeated product/provider lifetime and native-platform receiving; agreed workload targets | #154/#153/#112 | Bounded local measurements can continue; measurements do not themselves establish budgets |
+| Human review (S6.1) | Maintainer and independent researcher complete the prepared tasks/worksheet | Maintainer/researcher, #154/#153 | Materials are prepared; human observations cannot be supplied by an agent |
+| Scientific/platform decisions (S6.3) | Decide #192 aggregation semantics and reconsider #194's macOS exception for this version | Maintainer, #192/#194 | Preserve the explicit current limitations while decisions are pending |
+| Version decision and delivery (S6.4) | Functional scope acceptance followed by the authorized exact-source CI/candidate/platform/publication route | Maintainer, #154/#112 | No release/tag/CI dispatch is implied by implementation authority |
+
+This ledger reconciles the present scope without claiming completion of S6.3:
+#192/#194 and complete journey acceptance are still decisions to receive. The
+original stage rows and their evidence retain authority over each delivered scope.
 
 ## Execution order and immediate handoff
 

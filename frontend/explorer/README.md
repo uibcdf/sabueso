@@ -55,6 +55,15 @@ controls need more vertical space. `--receive-candidates` adds the explicitly
 synthetic ambiguity control to the source receiver; no identity between its CCO
 control and the queried public compound is asserted.
 
+For UniProt entry, Query scope optionally asks InterPro for source-mapped sites
+or AlphaFold DB for prediction records, using the existing native enrichers.
+The default remains identity-only; each choice creates a new capture with exact
+Return to previous query. A candidate button stays identity-only. The bounded
+Observed source access section shows original access outcomes/route/version/basis,
+including fixture or failed access; native coverage/quality owns scientific scope.
+No coordinate download or molecular mapping follows from an AlphaFold query.
+`--receive-enrichment` adds these public fixture routes to the Qt receiver.
+
 Queries run in one background worker while the current reading stays available.
 Cancel query discards the result; an active provider request may still finish.
 A result arriving after you change readings waits for explicit Open result.

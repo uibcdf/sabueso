@@ -43,6 +43,63 @@ def _query(kind, text):
     raise ArgumentError("Choose UniProt, PDB, SMILES or a disease identifier.")
 
 
+PROTEIN_SOURCES = {
+    "identity": {},
+    "interpro": {"family_sites": True},
+    "alphafold": {"predicted_structures": True},
+}
+
+
+def _protein_options(kind, source):
+    """One explicit additional source route; no arbitrary resolver options."""
+    if not isinstance(source, str) or source not in PROTEIN_SOURCES:
+        raise ArgumentError("Choose identity, InterPro sites or AlphaFold DB models.")
+    if source != "identity" and kind != "uniprot":
+        raise ArgumentError("Additional protein sources require a UniProt accession.")
+    return dict(PROTEIN_SOURCES[source])
+
+
+def source_access_preview(resolution):
+    """Bounded literal access observations, distinct from scientific coverage."""
+    from sabueso.core.card_exploration_render import preview
+
+    trace = resolution.acquisition
+    records = trace.get("records", []) if isinstance(trace, dict) else []
+    if not isinstance(records, list):
+        records = []
+
+    def version(record):
+        value = record.get("source_version")
+        if isinstance(value, dict):
+            text = preview(value["value"], 100) if "value" in value else "Not retained"
+            basis = (
+                preview(value["basis"], 80)
+                if "basis" in value
+                else "Basis not retained"
+            )
+            return f"{text} ({basis})"
+        return preview(value, 160) if "source_version" in record else "Not retained"
+
+    return {
+        "count": len(records),
+        "rows": [
+            {
+                key: preview(record[key], 160) if key in record else "Not retained"
+                for key in (
+                    "source",
+                    "operation",
+                    "outcome",
+                    "access",
+                )
+            }
+            | {"source_version": version(record)}
+            for record in records[:16]
+            if isinstance(record, dict)
+        ],
+        "scope": "Observed source access only; inspect original coverage and quality for scientific outcomes",
+    }
+
+
 class _Resolution:
     def __init__(self, kind, query, card, resolution):
         self.kind = kind
@@ -80,8 +137,9 @@ class _Resolution:
         }
 
 
-def _resolve(kind, query, resolver=None):
+def _resolve(kind, query, resolver=None, *, protein_source="identity"):
     canonical, options = _query(kind, query)
+    options.update(_protein_options(kind, protein_source))
     if resolver is None:
         from sabueso import resolve
 

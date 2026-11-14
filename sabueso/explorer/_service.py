@@ -84,12 +84,14 @@ class _Service:
         self.workspace_saved = None
 
     def response(self, panel):
+        from ._resolution import source_access_preview
         from ._source_choices import choice_details
 
         resolution = self.resolution.panel() if self.resolution else None
         if resolution is not None:
             # Presentation-only descriptions never enter the original query wire.
             resolution["choice_details"] = choice_details(self.resolution)
+            resolution["source_access"] = source_access_preview(self.resolution)
         return {
             "panel": panel,
             "resolution": resolution,
@@ -108,7 +110,10 @@ class _Service:
             "resolution_revision",
             *(("choice_ref",) if choice else ("kind", "query")),
         }
-        if not isinstance(body, dict) or set(body) != fields:
+        if not isinstance(body, dict) or set(body) not in (
+            fields,
+            fields | ({"protein_source"} if not choice else set()),
+        ):
             raise ArgumentError("The source query has missing or unexpected arguments.")
         revision = self.session.revision if self.session else ""
         previous = self.resolution.revision if self.resolution else ""
@@ -132,13 +137,19 @@ class _Service:
             kind, query = item["kind"], item["query"]
         else:
             kind, query = body["kind"], body["query"]
-        from ._resolution import _query
+        from ._resolution import _protein_options, _query
 
+        _protein_options(kind, body.get("protein_source", "identity"))
         _query(kind, query)  # Grammar before launching work; no source access.
         return kind, query
 
-    def _prepare_resolution(self, kind, query):
-        result = _resolve(kind, query, self.resolver)
+    @staticmethod
+    def _source_options(body):
+        source = body.get("protein_source", "identity")
+        return {"protein_source": source} if source != "identity" else {}
+
+    def _prepare_resolution(self, kind, query, *, protein_source="identity"):
+        result = _resolve(kind, query, self.resolver, protein_source=protein_source)
         # Prepare before committing either context: an invalid answer must not
         # replace a valid captured reading or its original resolution.
         session = (
@@ -165,7 +176,9 @@ class _Service:
         if self.queries.job and self.queries.job["thread"].is_alive():
             raise ArgumentError("A source query is already running.")
         kind, query = self._query_request(body, choice=choice)
-        return self._adopt_resolution(*self._prepare_resolution(kind, query))
+        return self._adopt_resolution(
+            *self._prepare_resolution(kind, query, **self._source_options(body))
+        )
 
     def return_query(self, body):
         if not isinstance(body, dict) or set(body) != {

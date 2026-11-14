@@ -35,7 +35,7 @@ scene recovery and broader lifecycle receiving and remaining acceptance. The [ri
 now supplies original query/inner Card/Deck history saving, nonblocking queries,
 native value/sequence/graph presentation and an actually received public
 protein/BTS/activity/assay/publication/exact Deck journey. Chemical depiction,
-broader candidate/enrichment presentation and supported model mapping remain open; prepared
+broader source controls/presentation and supported model mapping remain open; prepared
 human review materials are not acceptance.
 The [living implementation plan](pending_proposals/interactive_implementation_0160.md)
 owns the 0.16.0 stages, microstages, current progress and immediate resumption;

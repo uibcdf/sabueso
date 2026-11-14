@@ -1,0 +1,422 @@
+{
+  "format": "sabueso.interactive_source_enrichment_checkpoint@1",
+  "owner": "uibcdf/sabueso#154/#153/#112",
+  "baseline_commit": "7519c1aa110330c91342d29bb4c60a5d68f6130c",
+  "scope": "Optional explicit InterPro/AlphaFold entry, native original capture/source access and bounded installed product resource observations; no scientific/default/schema/provider/dependency/platform/release change",
+  "code_sha256": {
+    "sabueso/explorer/_qt.py": "7b85fe1d2c8c30fc2254055dc4cd041886f1be65a3b9cea7eda775ff0df6b74f",
+    "sabueso/explorer/_session.py": "11f8b265b8b37b86c52b9bc08da6922f4a3be9d7a449fb78a984d936421b1032",
+    "sabueso/explorer/_molecular.py": "c48891270e16e357886de018e62efed3830789399a1c9ce9c61945230490a612",
+    "sabueso/explorer/_service.py": "32ba4b0c70f05393f1567e839a8263a33aacff41da16cc873e86dcc62bb92f05",
+    "sabueso/explorer/_deck_session.py": "dc2e241c03275db5dc0f6ae7edec264e37481e1f44cf55b772fd4dd97ca2b92f",
+    "sabueso/explorer/_source_choices.py": "8a24d01b6f0b85ebe5b4c4f75789aff7e9c0c519f43c23aa86c82f65554e58a3",
+    "sabueso/explorer/_presentation.py": "7501d2864a77130c55bf1eb499b3381888db8d2df4b3eff222c9ddac1be3aedf",
+    "sabueso/explorer/__init__.py": "d9f38870c8c8cb9a246e19c53547451343ff05bd8724b52d11b16ea805f07062",
+    "sabueso/explorer/_layout.py": "83ff00cc24e9d0fe22210ffa61908fa45d1982774ac0097bd554d26f286ad072",
+    "sabueso/explorer/__main__.py": "13e6fc8829e6dd3b15c8523dac1b21a6dcdcd0ec4f3119c417f61c9a1d412891",
+    "sabueso/explorer/_workspace.py": "6e56c57b59dfcf4de545347ecee95d03d3e5e17a96c7d13854ff743e810145c0",
+    "sabueso/explorer/_queries.py": "650cc4f9ed563b80e285e962cb3c7c74cd7e205f7a816d685ff97ee73b9ae469",
+    "sabueso/explorer/_resolution.py": "7b089a2503b232fc37f6568e5baccb5b829daadf66c5595eae1eabae7f6bdf3f",
+    "sabueso/explorer/_assets/app.js": "f09a906bf884027ad51a4c4ea5e22a2c6a5c38f49c36d6ba74a6e76939293b6f",
+    "sabueso/explorer/_assets/app.css": "e737cca0966a606ac47db85e48599c4ed26ca9b601ad9b78c453c17593d6507b",
+    "sabueso/explorer/_assets/notices.txt": "a238c0f2172b6b9507e352ce97d0065b73c0abe2b076493e6553789f675e0b15",
+    "sabueso/explorer/_assets/index.html": "be4705852899de9486e6c01fb0d92ad99301024833c9c7b50b545a3827cc785d",
+    "sabueso/core/card_exploration_storage.py": "9bf7dfd3758e5a1a41577124ad9f36593a55ba46da2b67ee717824985df52814",
+    "sabueso/core/deck_exploration_storage.py": "c71d93916c38e14e0076964f65a4d39f470031b8ac185eacf3013c76676ee62d",
+    "sabueso/core/_variant_history_v1/SOURCE.json": "b55ee3cd34ef6f7efdca561ce4b06fbacb8ea4f3ca67f7bb2d362cb82f3a6998",
+    "sabueso/core/_sequence_change_history_v1/SOURCE.json": "c7a43ebf63201757abfede8ec0eee1820199ff53bfbf8fd93e4506372aa7c8c0",
+    "sabueso/core/_molecule_activity_history_v1/SOURCE.json": "14d59d034aa795516bc3258f11f8a4f8caaa1b5b38b3c30bfb273f8cfddde797",
+    "sabueso/core/_protein_context_history_v1/SOURCE.json": "de78272c691573e26e04c6028cd7a375616c7c2e51d0e43d7623462bbcf40823",
+    "sabueso/core/_disease_association_history_v1/SOURCE.json": "a927a304b67df6144995c9d5f21e44ff4a34a98e8023221e47361f3dfe53feef",
+    "sabueso/core/_knowledge_comparison_history_v1/SOURCE.json": "cf1f610bff358f89a432484952ddeec7eec3d661615035ead720ea7eb202dd8a",
+    "sabueso/core/_clinical_history_v1/SOURCE.json": "00688c256d6aee51ebc97d752fdd641f7317c5d399ae8dd84db0ee4dc7e60650",
+    "frontend/explorer/src/app.tsx": "083ae5fc3a9a6e633bfe7e7528bb622ec928987e06940fc967ad2905e8e1147f",
+    "devtools/resolution_explorer_journey.mjs": "77078180d95814d2bbbc15809438c466f72b03f001e3daf8c406bc697ab97b96",
+    "devtools/molecular_explorer_journey.mjs": "ebcf2e3e8cf77d3aa8891be3582b62b9633acae1ad61595e3a33f7e6ac21f185",
+    "devtools/explorer_fixture_service.py": "85d6831d65b2f24d41ae6c88548d04a23d5160d7432c4b8c29e160fb68a665e9",
+    "tests/explorer/test_enrichment_offline.py": "6bb35ec877cd043da7c97698434222e0e6609e4f4b10ce20bfb30b7ec377e885"
+  },
+  "selected_gates": [
+    {
+      "name": "enrichment-final-source",
+      "counts": {
+        "collected": 154,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 154,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 154,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 2,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "duration_s": 39.19007066101767,
+      "events_sha256": "34990f4b57d1552ad55cdf790b1cb88fbbf0994eb4176ac7af93b641188a5efd",
+      "integrity_valid": true,
+      "resources": {
+        "peak_owned_rss_bytes": 898732032,
+        "minimum_host_available_bytes": 54522523648,
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "native_threads": 1
+        },
+        "survivors_after_command": []
+      }
+    },
+    {
+      "name": "enrichment-installed-application",
+      "counts": {
+        "collected": 153,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 153,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 153,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 2,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "duration_s": 40.83613469300326,
+      "events_sha256": "a42b81703721e28349da9a84d0e0d322786b87a882b01074f8bcbb9e224955fe",
+      "integrity_valid": true,
+      "resources": {
+        "peak_owned_rss_bytes": 880857088,
+        "minimum_host_available_bytes": 53959520256,
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "native_threads": 1
+        },
+        "survivors_after_command": []
+      }
+    }
+  ],
+  "installed_scope": "Copied runtime cases outside checkout, published receptor1.2.0; one frontend source inspection excluded; actual source-only check unchanged. Test import-spacing cleanup after source gate is included by installed receiving, with all copied test bytes verified.",
+  "artifact_proof": {
+    "wheel": {
+      "name": "sabueso-0.14.0+291.g7519c1a.dirty-py3-none-any.whl",
+      "sha256": "1ae90450b8c6b43e94d7878bfdac0aa5d74e2421791afd2f4d0e9722ec20ffa2"
+    },
+    "sdist": {
+      "name": "sabueso-0.14.0+291.g7519c1a.dirty.tar.gz",
+      "sha256": "dfff87fdba64fbb22514896b3b82bcd3c0b1854277d75cf1849e070891e22171"
+    },
+    "runtime_original_SOURCE_and_installed_bytes_equal": [
+      "sabueso/explorer/_qt.py",
+      "sabueso/explorer/_session.py",
+      "sabueso/explorer/_molecular.py",
+      "sabueso/explorer/_service.py",
+      "sabueso/explorer/_deck_session.py",
+      "sabueso/explorer/_source_choices.py",
+      "sabueso/explorer/_presentation.py",
+      "sabueso/explorer/__init__.py",
+      "sabueso/explorer/_layout.py",
+      "sabueso/explorer/__main__.py",
+      "sabueso/explorer/_workspace.py",
+      "sabueso/explorer/_queries.py",
+      "sabueso/explorer/_resolution.py",
+      "sabueso/explorer/_assets/app.js",
+      "sabueso/explorer/_assets/app.css",
+      "sabueso/explorer/_assets/notices.txt",
+      "sabueso/explorer/_assets/index.html",
+      "sabueso/core/card_exploration_storage.py",
+      "sabueso/core/deck_exploration_storage.py",
+      "sabueso/core/_variant_history_v1/SOURCE.json",
+      "sabueso/core/_sequence_change_history_v1/SOURCE.json",
+      "sabueso/core/_molecule_activity_history_v1/SOURCE.json",
+      "sabueso/core/_protein_context_history_v1/SOURCE.json",
+      "sabueso/core/_disease_association_history_v1/SOURCE.json",
+      "sabueso/core/_knowledge_comparison_history_v1/SOURCE.json",
+      "sabueso/core/_clinical_history_v1/SOURCE.json"
+    ],
+    "installed_module": "/tmp/sabueso-rich-0160-nm9zuzua/env/lib/python3.14/site-packages/sabueso/__init__.py",
+    "sabueso_version": "0.14.0+291.g7519c1a.dirty",
+    "receptor_version": "1.2.0",
+    "editable": false,
+    "genuine_sdk796d20e_workspace_inert_and_unchanged": true,
+    "genuine_prior_file_sha256": "7739fc19d16e8e5bd07ab69afcfc57d87206dd09f6c9362c927433208e65c277",
+    "scope": "Diagnostic unpublished wheel with shared dependencies; not public/candidate/platform qualification"
+  },
+  "native_qt": [
+    {
+      "name": "qt-enrichment-received",
+      "checks_passed": 40,
+      "completed_explicit_queries": 13,
+      "pending_query_close_seconds": 2.401629213,
+      "receipt_sha256": "02d574f84428cf27c870ebb12fa17b079f80a19d8ce66d670f9f23f2e0b6c8d5",
+      "native_capture_sha256": "99d2cecbc0a07eee4a80ce33f495d47a779eec378f795a4252e548d3c532531f",
+      "elapsed_s": 55.377,
+      "peak_owned_rss_bytes": 1192542208,
+      "minimum_host_available_bytes": 54007472128,
+      "survivors_after_command": []
+    },
+    {
+      "name": "qt-enrichment-installed",
+      "checks_passed": 40,
+      "completed_explicit_queries": 13,
+      "pending_query_close_seconds": 2.443261919999997,
+      "receipt_sha256": "5f73ae5c228dfa5e9d31c3e2583bef53729a3a77aff6af1cf30b3a11c508dded",
+      "native_capture_sha256": "99d2cecbc0a07eee4a80ce33f495d47a779eec378f795a4252e548d3c532531f",
+      "elapsed_s": 55.237,
+      "peak_owned_rss_bytes": 1211031552,
+      "minimum_host_available_bytes": 53959589888,
+      "survivors_after_command": []
+    }
+  ],
+  "resource_observations": {
+    "owner": "uibcdf/sabueso#154/#153/#112",
+    "scope": "Installed unpublished wheel, Linux/Xvfb/ANGLE llvmpipe software profile; sampled summed process RSS/CPU, not unique physical memory, GPU/thermal/scaling/native-platform or agreed budgets",
+    "profile": {
+      "cpus": 2,
+      "rss_ceiling_gib": 4,
+      "host_reserve_gib": 16,
+      "layout_cycles": 12,
+      "idle_seconds_each": 10
+    },
+    "cases": [
+      {
+        "name": "qt-idle-1tcd",
+        "input_sha256": {
+          "card": "8c35824c761d38be0c4c586336b04c0ce0670367cdb58fa0a9776dbd1d192eeb",
+          "model": "6f15f9412a97e38ffb01e0aec8ffa6016ac5d1ddf50042e0129583caf65be125"
+        },
+        "graphics": {
+          "webgl": true,
+          "width": 470,
+          "height": 553,
+          "renderer": "ANGLE (Mesa, llvmpipe (LLVM 21.1.8 256 bits), OpenGL 4.5)",
+          "error": 0
+        },
+        "checks_passed": 14,
+        "lifecycle": {
+          "cycles": 12,
+          "registrations_before": 1,
+          "registrations_after": 1
+        },
+        "elapsed_s": 62.248,
+        "peak_owned_rss_bytes": 1892315136,
+        "minimum_host_available_bytes": 54055018496,
+        "phases": [
+          {
+            "phase": "idle_before_interaction",
+            "sampled_seconds": 9.869,
+            "cpu_seconds": 0.9,
+            "average_cpu_cores": 0.091,
+            "peak_summed_rss_bytes": 1687232512,
+            "rss_change_bytes": -12517376,
+            "samples": 37
+          },
+          {
+            "phase": "rotation_and_layout_cycles",
+            "sampled_seconds": 18.364,
+            "cpu_seconds": 23.37,
+            "average_cpu_cores": 1.273,
+            "peak_summed_rss_bytes": 1889587200,
+            "rss_change_bytes": 144072704,
+            "samples": 68
+          },
+          {
+            "phase": "idle_after_interaction",
+            "sampled_seconds": 9.858,
+            "cpu_seconds": 2.11,
+            "average_cpu_cores": 0.214,
+            "peak_summed_rss_bytes": 1892315136,
+            "rss_change_bytes": -29134848,
+            "samples": 37
+          }
+        ],
+        "receipt_sha256": "c58fe766969f96a42123272323346c7f972ee401674986c4a59a56332142d776",
+        "resources_sha256": "1da51fdc1701bd2406ee8f62b09d4e7b91427660709c42bcc7f44dafe910bafa"
+      },
+      {
+        "name": "qt-idle-af-fragment",
+        "input_sha256": {
+          "card": "8c35824c761d38be0c4c586336b04c0ce0670367cdb58fa0a9776dbd1d192eeb",
+          "model": "74da31b7a0153ef2c90dc8f60fe07edaa83ba50049bf06e6f4eb113ece1963ef"
+        },
+        "graphics": {
+          "webgl": true,
+          "width": 470,
+          "height": 553,
+          "renderer": "ANGLE (Mesa, llvmpipe (LLVM 21.1.8 256 bits), OpenGL 4.5)",
+          "error": 0
+        },
+        "checks_passed": 14,
+        "lifecycle": {
+          "cycles": 12,
+          "registrations_before": 1,
+          "registrations_after": 1
+        },
+        "elapsed_s": 65.656,
+        "peak_owned_rss_bytes": 1996099584,
+        "minimum_host_available_bytes": 53950570496,
+        "phases": [
+          {
+            "phase": "idle_before_interaction",
+            "sampled_seconds": 9.59,
+            "cpu_seconds": 1.0,
+            "average_cpu_cores": 0.104,
+            "peak_summed_rss_bytes": 1812430848,
+            "rss_change_bytes": -3076096,
+            "samples": 36
+          },
+          {
+            "phase": "rotation_and_layout_cycles",
+            "sampled_seconds": 20.192,
+            "cpu_seconds": 28.79,
+            "average_cpu_cores": 1.426,
+            "peak_summed_rss_bytes": 1996099584,
+            "rss_change_bytes": 151007232,
+            "samples": 75
+          },
+          {
+            "phase": "idle_after_interaction",
+            "sampled_seconds": 9.606,
+            "cpu_seconds": 1.99,
+            "average_cpu_cores": 0.207,
+            "peak_summed_rss_bytes": 1970651136,
+            "rss_change_bytes": -23719936,
+            "samples": 36
+          }
+        ],
+        "receipt_sha256": "a7e9447d9a18d2ee49425e05a43c008d83d462cbe88ce510b6012e73069de3c6",
+        "resources_sha256": "35687e25cc18706b0f9b9cd59fd5d5ee1f867fe9da6132f1d7cf1584ff70b982"
+      }
+    ],
+    "limits": [
+      "Same live iframe retained through float/reset, not repeated provider creation/disposal",
+      "Initial model digest is not active-model or Card identity; AF fragment is deliberately unrelated to P52270 reading",
+      "Short idle windows include ordinary polling and post-interaction settling; no leak, thermal or idle-budget conclusion",
+      "Retained allocations after layout require longer settled/repeated-lifetime observations before attributing cause",
+      "Two selected renderer/layout cohorts keep provider bytes unchanged and do not establish supported embedding"
+    ]
+  },
+  "native_core_unchanged": {
+    "sabueso/core/_clinical_history_v1/SOURCE.json": "00688c256d6aee51ebc97d752fdd641f7317c5d399ae8dd84db0ee4dc7e60650",
+    "sabueso/core/_disease_association_history_v1/SOURCE.json": "a927a304b67df6144995c9d5f21e44ff4a34a98e8023221e47361f3dfe53feef",
+    "sabueso/core/_knowledge_comparison_history_v1/SOURCE.json": "cf1f610bff358f89a432484952ddeec7eec3d661615035ead720ea7eb202dd8a",
+    "sabueso/core/_molecule_activity_history_v1/SOURCE.json": "14d59d034aa795516bc3258f11f8a4f8caaa1b5b38b3c30bfb273f8cfddde797",
+    "sabueso/core/_protein_context_history_v1/SOURCE.json": "de78272c691573e26e04c6028cd7a375616c7c2e51d0e43d7623462bbcf40823",
+    "sabueso/core/_sequence_change_history_v1/SOURCE.json": "c7a43ebf63201757abfede8ec0eee1820199ff53bfbf8fd93e4506372aa7c8c0",
+    "sabueso/core/_variant_history_v1/SOURCE.json": "b55ee3cd34ef6f7efdca561ce4b06fbacb8ea4f3ca67f7bb2d362cb82f3a6998",
+    "sabueso/core/card_exploration_storage.py": "9bf7dfd3758e5a1a41577124ad9f36593a55ba46da2b67ee717824985df52814",
+    "sabueso/core/deck_exploration_storage.py": "c71d93916c38e14e0076964f65a4d39f470031b8ac185eacf3013c76676ee62d"
+  },
+  "native_core_tree": "8dcf3e314c34571da29b4fb22962df2a23e18e7b",
+  "prior_core_receipt": {
+    "path": "interactive_rich_workspace_checkpoint_20261113.json",
+    "sha256": "b36f1d9e291e0dcc680649a862502eb55038b2fdbe9ebf02c082eec5a5a9bb94",
+    "scope": "Native core bytes unchanged; prior 672 selected native-case receipt retains its source epoch and is not a later-head full-suite claim"
+  },
+  "genuine_prior_original": {
+    "source_sha": "796d20e581fd250e4d2fff801df6b44a052f18a6",
+    "file_sha256": "7739fc19d16e8e5bd07ab69afcfc57d87206dd09f6c9362c927433208e65c277",
+    "current_installed_receiving": "Card construction and source resolver forbidden; exact original report, choice pairs and file bytes retained; no GUI/provider import"
+  },
+  "failed_controls": [
+    {
+      "name": "enrichment-application",
+      "state": "failed",
+      "finding": "One test assumed lowercase false; native original preview retains False.152othercasespass, not complete qualification."
+    },
+    {
+      "name": "enrichment-qualified-application",
+      "state": "failed",
+      "finding": "One test assumed null without retained marker; native preview retains null (retained).153othercasespass, not complete qualification."
+    },
+    {
+      "name": "qt-enrichment-checkout",
+      "state": "failed",
+      "finding": "Observer called unsupported getByText; corrected to existing locator API before completed receiving."
+    }
+  ],
+  "earlier_epochs": [
+    "enrichment-focused15passes",
+    "enrichment-final-application153passes before final source-version presentation"
+  ],
+  "limits": [
+    "Explicit extra source is available only for UniProt; candidate queries remain identity-only",
+    "Operation selection is finite, not a provider response/RAM/retry quota; active provider HTTP cannot be promised interrupted",
+    "Native Card quality owns enrichment request_options/outcome; source-access preview is provenance and not scientific coverage or Evidence",
+    "No new coordinate download, inferred identity/mapping, chemical depiction or arbitrary source engine",
+    "Synthetic ambiguity with CCO establishes no identity with the queried compound; frozen/source-speed/native graphics scopes remain separate",
+    "No current-head full-suite, hosted/candidate/platform/public release or human acceptance claim",
+    "Viewer #368 remains open; new source-bound2D proposal is retained locally pending concrete publication authority"
+  ],
+  "preflight": {
+    "owner": "uibcdf/sabueso#154/#153/#112",
+    "baseline": "7519c1aa110330c91342d29bb4c60a5d68f6130c",
+    "host_available_bytes": 55300853760,
+    "cpu_count": 20,
+    "slurm_allocation": null,
+    "execution": "Direct bounded runs; Slurm not operationally adopted",
+    "estimated_profile": "4 workers and one-thread native pools for ~150 application cases; expected <2 GiB, observed ceiling4GiB; graphics sequential2CPUs4GiB",
+    "host_reserve_bytes": 17179869184,
+    "swap_delta_one_second": {
+      "in": 0,
+      "out": 0
+    }
+  },
+  "local_evidence_root": "recovered_work/checkpoint_recovery_20261106/interactive-enrichment-20261113-1",
+  "retention": {
+    "owner": "#154/#153/#112",
+    "review_trigger": "Next affected implementation/provider/candidate checkpoint; retain artifacts/proofs/originals/complete streams/native captures/failed controls; retire disposable scratch after final use"
+  },
+  "deferred_ci": "Authorized intermediate [skip ci]; exact-final-source full/candidate and hosted CI/governance recovery remains due under #154/#153/#112",
+  "local_quality": {
+    "ruff_format": "1770 files already formatted",
+    "ruff_check": "passed",
+    "moli_governance": "passed",
+    "diff_check": "passed",
+    "scoped_local_markdown_targets": 581,
+    "missing_targets": [],
+    "current_code_hashes_verified": 31,
+    "frontend_typecheck": "passed",
+    "frontend_build": "passed"
+  },
+  "cleanup": {
+    "owner": "uibcdf/sabueso#154/#153/#112",
+    "removed_owned_disposable_paths": [
+      "recovered_work/checkpoint_recovery_20261106/interactive-enrichment-20261113-1/enrichment-qualified-application-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-enrichment-20261113-1/qt-enrichment-installed-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-enrichment-20261113-1/enrichment-final-application-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-enrichment-20261113-1/enrichment-installed-application-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-enrichment-20261113-1/enrichment-application-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-enrichment-20261113-1/qt-idle-1tcd-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-enrichment-20261113-1/qt-enrichment-checkout-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-enrichment-20261113-1/enrichment-final-source-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-enrichment-20261113-1/qt-idle-af-fragment-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-enrichment-20261113-1/enrichment-focused-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-enrichment-20261113-1/enrichment-build-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-enrichment-20261113-1/qt-enrichment-received-scratch",
+      "/tmp/sabueso-rich-0160-nm9zuzua",
+      "recovered_work/checkpoint_recovery_20261106/interactive-candidates-20261113-1/qt-candidate-journey-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-candidates-20261113-1/qt-candidate-received-scratch"
+    ],
+    "retained": "Genuine prior original, current built wheel/sdist and byte/import proofs, complete source/installed event streams, native captures, failed controls and sampled resource receipts",
+    "retention_review_trigger": "Next affected implementation/provider/candidate checkpoint",
+    "cleanup_failures": [],
+    "shared_environment": "Unchanged; deleted only the task-owned isolated wheel/receptor receiving environment after its final use"
+  }
+}

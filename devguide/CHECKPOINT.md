@@ -7,6 +7,19 @@ This page owns current state; dated receipt histories are linked below.
 
 ## Next product objective: interactive exploration in 0.16.0
 
+The [explicit source-enrichment increment](pending_proposals/interactive_source_enrichment_0160.md)
+adds researcher-selected InterPro sites or AlphaFold DB prediction records to a
+fresh UniProt capture, with identity-only remaining the default. Original access
+observations show their source, outcome, route and version/basis separately from
+scientific coverage. Source failure is retained as failure, and saved reopening/
+exact return never requery. [Its receipt](evidence/interactive_source_enrichment_checkpoint_20261113.json)
+owns 154 source application cases, 153 installed runtime cases, 40 Qt checks each
+from checkout/installed wheel and failed controls. Two further installed molecular
+profiles pass 14 checks each, twelve layout cycles and bounded idle/active
+observations, with peaks about 1.76/1.86 GiB on the software renderer. Coordinates,
+mapping, arbitrary source options and automatic broad enrichment remain excluded;
+S4, provider integration and human/version acceptance remain open.
+
 The [subsequent source-candidate increment](pending_proposals/interactive_source_candidates_0160.md)
 now exposes explicit UniProt candidates/alternatives and PubChem CID follow-up,
 with bounded original source context and exact ambiguity return through saving.

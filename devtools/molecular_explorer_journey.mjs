@@ -7,12 +7,14 @@ import {spawn} from 'node:child_process';
 import {setTimeout as delay} from 'node:timers/promises';
 import {connectNative} from './standalone_probe/cdp_driver.mjs';
 const args=process.argv.slice(2),option=name=>{const i=args.indexOf(name);return i<0?undefined:args[i+1];};
+const idleSeconds=Number(option('--observe-idle-seconds')??0),layoutCycles=Number(option('--layout-cycles')??3);
+if(!Number.isInteger(idleSeconds)||idleSeconds<0||idleSeconds>30||!Number.isInteger(layoutCycles)||layoutCycles<1||layoutCycles>20)throw new Error('Use an integer idle window of 0–30 seconds and 1–20 layout cycles');
 const output=path.resolve(option('--output')),card=path.resolve(option('--card')),model=path.resolve(option('--model'));
 fs.mkdirSync(output,{recursive:false});
 if(option('--presentation-source')){fs.mkdirSync(path.join(output,'readings'));fs.copyFileSync(option('--presentation-source'),path.join(output,'readings','presentation-layout.json'));}
 const hash=file=>crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
 const hashes={card:hash(card),model:hash(model)},children=[],logs=[];
-const result={format:'sabueso.molecular_explorer_journey@1',scope:'Actual experimental Qt/Viewer product panel; Linux/Xvfb software rendering; no mapped Card identity, stable embedding or native platform qualification',checks:{},errors:[]};
+const result={format:'sabueso.molecular_explorer_journey@1',scope:'Actual experimental Qt/Viewer product panel; Linux/Xvfb software rendering; no mapped Card identity, stable embedding or native platform qualification',checks:{},errors:[],resource_phases:[]};
 async function until(fn,label){const end=Date.now()+60000;while(Date.now()<end){if(await fn())return;await delay(100);}throw new Error('Timed out: '+label);}
 function launch(command,parameters,name,env){const log=fs.openSync(path.join(output,name+'.log'),'wx');logs.push(log);const child=spawn(command,parameters,{env,cwd:option('--application-root')?path.resolve(option('--application-root')):undefined,stdio:['ignore',log,log,'pipe']});children.push(child);return child;}
 let browser;
@@ -40,6 +42,8 @@ try{
     const canvas=frame.locator('canvas').first();await canvas.waitFor();
     result.graphics=await canvas.evaluate(canvas=>{const gl=canvas.getContext('webgl2')||canvas.getContext('webgl');if(!gl)return {webgl:false};const debug=gl.getExtension('WEBGL_debug_renderer_info');return {webgl:true,width:gl.drawingBufferWidth,height:gl.drawingBufferHeight,renderer:gl.getParameter(debug?debug.UNMASKED_RENDERER_WEBGL:gl.RENDERER),error:gl.getError()};});
     result.checks.real_canvas_and_renderer=result.graphics.webgl&&result.graphics.width>0&&result.graphics.height>0&&result.graphics.error===0;
+    if(idleSeconds){const start=Date.now()/1000;await delay(idleSeconds*1000);result.resource_phases.push({name:'idle_before_interaction',start_wall_s:start,end_wall_s:Date.now()/1000,scope:'Original product/provider polling retained; no deliberate interaction or animation; software profile'});}
+    const activeStart=Date.now()/1000;
     const box=await canvas.boundingBox(),x=box.x+box.width/2,y=box.y+box.height/2;
     await page.send('Input.dispatchMouseEvent',{type:'mousePressed',x,y,button:'left',buttons:1,clickCount:1});
     for(let i=1;i<=6;i++)await page.send('Input.dispatchMouseEvent',{type:'mouseMoved',x:x+i*8,y:y+i*3,button:'left',buttons:1});
@@ -47,11 +51,13 @@ try{
     await until(async()=>!!(await state()).molecular.camera_snapshot,'public camera observation');await delay(500);
     const before=(await state()).molecular;
     await page.evaluate(()=>{const f=document.querySelector('[data-testid=molecular-frame]');f.dataset.receivedLifetime='retained';});
-    for(let i=0;i<3;i++){await page.getByRole('button',{name:'Float model'}).click();await delay(200);if(i===0)result.checks.actual_floating_group_observed=await page.evaluate(()=>!!document.querySelector('.dv-groupview-floating'));await page.getByRole('button',{name:'Reset layout'}).click();await delay(200);}
+    for(let i=0;i<layoutCycles;i++){await page.getByRole('button',{name:'Float model'}).click();await delay(200);if(i===0)result.checks.actual_floating_group_observed=await page.evaluate(()=>!!document.querySelector('.dv-groupview-floating'));await page.getByRole('button',{name:'Reset layout'}).click();await delay(200);}
+    result.resource_phases.push({name:'rotation_and_layout_cycles',start_wall_s:activeStart,end_wall_s:Date.now()/1000,scope:'One deliberate camera rotation and repeated float/reset; not repeated provider creation/disposal'});
+    if(idleSeconds){const start=Date.now()/1000;await delay(idleSeconds*1000);result.resource_phases.push({name:'idle_after_interaction',start_wall_s:start,end_wall_s:Date.now()/1000,scope:'Same viewport retained after layout cycles; software profile'});}
     const after=(await state()).molecular;
     result.checks.reset_returns_to_main_grid=await page.evaluate(()=>document.querySelectorAll('.dv-groupview-floating').length===0);
     const camera=c=>Object.fromEntries(['position','target','up','mode','fov','radius','radiusMax'].map(k=>[k,c[k]]));
-    result.lifecycle={cycles:3,registrations_before:before.client_registrations,registrations_after:after.client_registrations,camera_before:before.camera_snapshot,camera_after:after.camera_snapshot};
+    result.lifecycle={cycles:layoutCycles,registrations_before:before.client_registrations,registrations_after:after.client_registrations,camera_before:before.camera_snapshot,camera_after:after.camera_snapshot};
     result.checks.same_live_viewport=before.client_registrations===after.client_registrations&&await page.evaluate(()=>document.querySelector('[data-testid=molecular-frame]').dataset.receivedLifetime==='retained');
     result.checks.camera_survives_layout=JSON.stringify(camera(before.camera_snapshot))===JSON.stringify(camera(after.camera_snapshot));
     result.checks.selection_survives_layout=JSON.stringify(before.active_selection_indices)===JSON.stringify(after.active_selection_indices);

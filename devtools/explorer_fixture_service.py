@@ -74,6 +74,14 @@ def main():
             options["mondo_client"] = FixtureMONDOClient(args.fixture_directory)
         else:
             options["resolver"] = native
+        if options.get("family_sites"):
+            from sabueso.tools.db.interpro import FixtureInterProClient
+
+            options["interpro_client"] = FixtureInterProClient(args.fixture_directory)
+        if options.get("predicted_structures"):
+            from sabueso.tools.db.alphafold import FixtureAlphaFoldClient
+
+            options["alphafold_client"] = FixtureAlphaFoldClient(args.fixture_directory)
         card, result = sabueso.resolve(query, **options)
         with calls.open("a", encoding="utf-8") as output:
             output.write(json.dumps({**recorded, "status": result.status}) + "\n")
