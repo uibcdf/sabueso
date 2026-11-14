@@ -2,6 +2,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import net from 'node:net';
+import crypto from 'node:crypto';
 import {spawn} from 'node:child_process';
 import {setTimeout as delay} from 'node:timers/promises';
 import {connectNative} from './standalone_probe/cdp_driver.mjs';
@@ -118,10 +119,55 @@ try{
     const callsBeforeReturn=fs.readFileSync(path.join(readings,'source-calls.jsonl'),'utf8');await page.getByRole('button',{name:'Return to previous query'}).click();await page.waitForFunction(ref=>document.querySelector('[data-view-ref]').dataset.viewRef===ref,previous.panel.view_ref);
     result.checks.ready_result_exact_query_return=fs.readFileSync(path.join(readings,'source-calls.jsonl'),'utf8')===callsBeforeReturn;
   }
+  if(args.includes('--receive-partial-source')){
+    const control=path.join(output,'readings','fail-interpro-control');fs.writeFileSync(control,'Explicit synthetic InterPro failure control; not a live-source observation');
+    let partial;try{partial=await query('uniprot','P52270','resolved','interpro');}finally{fs.unlinkSync(control);}
+    result.checks.failed_enrichment_preserves_resolved_identity=partial.panel.profile==='protein'&&partial.resolution.source_access.outcome_counts.failed===1&&partial.resolution.source_access.outcome_counts.received===1;
+    result.checks.partial_source_access_outcome_is_visible=await page.evaluate(()=>document.querySelector('[aria-label="Original source access outcomes"]')?.textContent.includes('failed: 1')&&document.querySelector('[aria-label="Original source access outcomes"]').textContent.includes('scientific scope'));
+  }
+  if(args.includes('--receive-obsolete-choice')){
+    const original=await query('disease','MONDO:0000002','obsolete');
+    result.checks.obsolete_term_keeps_explicit_choice=original.resolution.choices.length===1&&await page.evaluate(()=>document.querySelector('[aria-label="Source query result"]').textContent.includes('original term and its meaning are not rewritten'));
+    await page.getByRole('button',{name:'Query sabueso:disease:mondo:MONDO:0009299',exact:true}).click();await page.waitForFunction(async()=>{const s=await(await fetch('/api/panel')).json();return s.resolution?.status==='resolved'&&s.resolution.query==='mondo:MONDO:0009299';});
+    result.checks.obsolete_replacement_opens_separate_disease=(await state()).panel.profile==='disease';
+    await page.getByRole('button',{name:'Save workspace',exact:true}).click();await page.waitForFunction(()=>document.querySelector('[role=status]').textContent.includes('Workspace saved:'),null,{timeout:120000});await page.getByRole('button',{name:'Reopen workspace',exact:true}).click();await page.waitForFunction(()=>document.querySelector('[role=status]').textContent.includes('Original workspace reopened'),null,{timeout:120000});
+    const count=fs.readFileSync(path.join(output,'readings','source-calls.jsonl'),'utf8');await page.getByRole('button',{name:'Return to previous query',exact:true}).click();await page.waitForFunction(()=>document.querySelector('[aria-label="Source query result"] strong')?.textContent==='obsolete');
+    const returned=await state(),pairs=choices=>choices.map(row=>[row.ref,row.entity_ref]);result.checks.saved_obsolete_original_and_choices_return=returned.resolution.original_text===original.resolution.original_text&&JSON.stringify(pairs(returned.resolution.choices))===JSON.stringify(pairs(original.resolution.choices));
+    result.checks.obsolete_return_keeps_prior_reading=returned.panel.view_ref===original.panel.view_ref;
+    result.checks.obsolete_return_never_requeries=fs.readFileSync(path.join(output,'readings','source-calls.jsonl'),'utf8')===count;
+  }
+  if(args.includes('--receive-record-links')){
+    const inputs=path.resolve(option('--record-inputs')),hash=file=>crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
+    const manifest=JSON.parse(fs.readFileSync(path.join(inputs,'inputs.json'))),beforeInputs=Object.fromEntries(Object.keys(manifest.files).map(name=>[name,hash(path.join(inputs,name))]));
+    async function upload(mode,name){await page.getByRole('button',{name:mode==='deck'?'Open Deck…':'Open Card…',exact:true}).click();const {root}=await page.send('DOM.getDocument'),{nodeId}=await page.send('DOM.querySelector',{nodeId:root.nodeId,selector:'input[type=file]'}),before=(await state()).panel?.revision;await page.send('DOM.setFileInputFiles',{nodeId,files:[path.join(inputs,name)]});await page.waitForFunction(async ref=>(await(await fetch('/api/panel')).json()).panel?.revision!==ref,before);return await state();}
+    async function openItem(item,related=false){if(!item)throw new Error('Missing retained item for referenced-record journey');const ref=(await state()).panel.view_ref;await page.locator('[data-item-ref="'+item.ref+'"] .item-actions button:nth-child('+(related?2:1)+')').click();await page.waitForFunction(ref=>document.querySelector('[data-view-ref]').dataset.viewRef!==ref,ref);return await state();}
+    async function searchRetained(text){const before=(await state()).panel.view_ref;await page.locator('#search').click();await page.send('Input.dispatchKeyEvent',{type:'keyDown',key:'a',code:'KeyA',modifiers:2,windowsVirtualKeyCode:65});await page.send('Input.dispatchKeyEvent',{type:'keyUp',key:'a',code:'KeyA',modifiers:2,windowsVirtualKeyCode:65});await page.send('Input.insertText',{text});await page.getByRole('button',{name:'Search',exact:true}).click();await page.waitForFunction(ref=>document.querySelector('[data-view-ref]').dataset.viewRef!==ref,before);}
+    async function queryLink(reference){const previous=await state(),item=previous.panel.items.find(row=>row.query_record?.reference===reference);if(!item)throw new Error('No admitted current-page record query for '+reference);const prior=previous.resolution?.revision;
+      await page.locator('[data-item-ref="'+item.ref+'"] .item-actions button:nth-child(3)').click();await page.waitForFunction(async old=>{const s=await(await fetch('/api/panel')).json();return s.resolution&&s.resolution.revision!==old;},prior);await page.waitForFunction(()=>!document.querySelector('header button').disabled);return {previous,current:await state()};}
+    async function returnLink(previous){const count=fs.readFileSync(path.join(output,'readings','source-calls.jsonl'),'utf8');await page.getByRole('button',{name:'Return to previous query',exact:true}).click();await page.waitForFunction(ref=>document.querySelector('[data-view-ref]').dataset.viewRef===ref,previous.panel.view_ref);return fs.readFileSync(path.join(output,'readings','source-calls.jsonl'),'utf8')===count;}
+    await upload('card','protein-card.json');await searchRetained('BTS');
+    let reading=await state();await openItem(reading.panel.items.find(row=>row.label==='pdb.ligand:BTS'),true);const ligand=await queryLink('pdb.ligand:BTS');
+    result.checks.protein_reference_queries_new_ccd_card=ligand.current.panel.profile==='small_molecule'&&ligand.current.resolution.kind==='pdb_ligand'&&ligand.current.resolution.query==='pdb.ligand:BTS';
+    const sourceRef=ligand.current.panel.view_ref;await page.locator('[data-topic="sources"]').click();await page.waitForFunction(ref=>document.querySelector('[data-view-ref]').dataset.viewRef!==ref,sourceRef);await openItem((await state()).panel.items[0]);result.checks.new_ligand_original_source_is_readable=(await state()).panel.text.includes('asserted_value');
+    result.checks.protein_exact_retained_reference_return=await returnLink(ligand.previous);
+    await upload('card','molecule-card.json');let before=(await state()).panel.view_ref;await page.locator('[data-topic="content"]').click();await page.waitForFunction(ref=>document.querySelector('[data-view-ref]').dataset.viewRef!==ref,before);await openItem((await state()).panel.items.find(row=>row.label==='Relationships'));
+    reading=await state();await openItem(reading.panel.items.find(row=>row.label==='investigated_for → mondo:MONDO:0001444'),true);const condition=await queryLink('mondo:MONDO:0001444');
+    result.checks.compound_declared_condition_queries_disease=condition.current.panel.profile==='disease'&&condition.current.resolution.query==='mondo:MONDO:0001444';
+    result.checks.compound_condition_original_return=await returnLink(condition.previous);
+    await upload('deck','public-deck.jsonl');await searchRetained('MONDO');await page.waitForFunction(()=>document.querySelectorAll('.items>.item').length===2);const selection=await state();await openItem(selection.panel.items[1]);
+    result.checks.repeated_disease_entry_stays_explicit=(await state()).panel.deck_context.entry_position===3;
+    before=(await state()).panel.view_ref;await page.locator('[data-topic="classification"]').click();await page.waitForFunction(ref=>document.querySelector('[data-view-ref]').dataset.viewRef!==ref,before);reading=await state();await openItem(reading.panel.items.find(row=>row.label.includes('mondo:MONDO:0000940')),true);
+    const parent=await queryLink('mondo:MONDO:0000940');result.checks.unsupplied_parent_is_explicit_new_capture=parent.current.panel.profile==='disease'&&parent.current.panel.deck_context===undefined&&parent.current.resolution.query==='mondo:MONDO:0000940';
+    await page.getByRole('button',{name:'Save workspace',exact:true}).click();await page.waitForFunction(()=>document.querySelector('[role=status]').textContent.includes('Workspace saved:'),null,{timeout:120000});await page.getByRole('button',{name:'Reopen workspace',exact:true}).click();await page.waitForFunction(()=>document.querySelector('[role=status]').textContent.includes('Original workspace reopened'),null,{timeout:120000});result.checks.fresh_record_report_reopens_as_original=(await state()).resolution.original_text===parent.current.resolution.original_text&&(await state()).resolution.mode==='saved';
+    result.checks.saved_query_returns_exact_repeated_card=await returnLink(parent.previous)&&(await state()).panel.deck_context.entry_position===3;
+    await page.getByRole('button',{name:'Return to Deck',exact:true}).click();await page.waitForFunction(ref=>document.querySelector('[data-view-ref]').dataset.viewRef===ref,selection.panel.view_ref);result.checks.record_query_preserves_deck_selection=JSON.stringify((await state()).panel.items)===JSON.stringify(selection.panel.items);
+    result.checks.public_original_inputs_unchanged=Object.keys(beforeInputs).every(name=>hash(path.join(inputs,name))===beforeInputs[name]);result.record_input_sha256=beforeInputs;
+  }
+  await page.evaluate(()=>window.getSelection()?.removeAllRanges());
   await page.screenshot({path:path.join(output,'renderer.png')});fs.writeFileSync(path.join(output,'capture-request'),'capture');
   await until(()=>fs.existsSync(path.join(output,'native.png'))&&fs.statSync(path.join(output,'native.png')).size>1000,'native composition capture');result.checks.actual_native_capture=true;
   const calls=fs.readFileSync(path.join(output,'readings','source-calls.jsonl'),'utf8').trim().split('\n').map(JSON.parse);
-  result.source_calls=calls;result.checks.only_explicit_source_queries=calls.length===6+(args.includes('--receive-cancellation')?2:0)+(args.includes('--receive-candidates')?2:0)+(args.includes('--receive-enrichment')?3:0);
+  result.source_calls=calls;result.checks.only_explicit_source_queries=calls.length===6+(args.includes('--receive-cancellation')?2:0)+(args.includes('--receive-candidates')?2:0)+(args.includes('--receive-enrichment')?3:0)+(args.includes('--receive-record-links')?3:0)+(args.includes('--receive-partial-source')?1:0)+(args.includes('--receive-obsolete-choice')?2:0);
   if(args.includes('--receive-pending-close')){
     const readings=path.join(output,'readings');fs.writeFileSync(path.join(readings,'pause-next-query'),'pause');await input('uniprot','P52270');await page.waitForFunction(()=>!document.querySelector('#entry-query').disabled);await page.getByRole('button',{name:'Query public sources',exact:true}).click();await until(()=>fs.existsSync(path.join(readings,'query-waiting')),'owned pending source query');
     result.checks.pending_query_is_observed_before_close=(await state()).query_job.worker_running===true;

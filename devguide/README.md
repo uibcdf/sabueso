@@ -68,6 +68,11 @@ queries and saving, with usable reading space while queries run;
 [explicit protein source scope](pending_proposals/interactive_source_enrichment_0160.md)
 adds InterPro sites or AlphaFold prediction records as new captures, with observed
 access outcomes and exact original return;
+[referenced-record queries](pending_proposals/interactive_record_queries_0160.md)
+add fresh explicit cross-entity acquisition, MONDO obsolete choices and exact
+original/Deck return; S4.1/S4.2 close at their bounded entry/protein presentation
+scopes, while [Viewer receiving requirements](pending_proposals/interactive_viewer_receiving_0160.md)
+concretize the remaining molecular dependency;
 [human review materials](pending_proposals/interactive_researcher_review_0160.md)
 are prepared, with actual acceptance still open. This is development implementation,
 not a public GUI installation or platform-support claim.

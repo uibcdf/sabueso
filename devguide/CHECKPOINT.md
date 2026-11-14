@@ -7,6 +7,22 @@ This page owns current state; dated receipt histories are linked below.
 
 ## Next product objective: interactive exploration in 0.16.0
 
+The [referenced-record checkpoint](pending_proposals/interactive_record_queries_0160.md)
+adds fresh explicit queries from exact current native links: public protein → BTS,
+compound → declared disease and repeated disease → MONDO parent, with original
+workspace saving and exact Card/Deck return. MONDO obsolete replacements also
+remain separate choices; source-access failures have a visible summary. S4.1 and
+S4.2 now close against their original bounded entry/protein-presentation criteria.
+[The receipt](evidence/interactive_record_queries_checkpoint_20261113.json) owns
+186 source application cases, 185 installed runtime cases, 58 actual Qt checks
+each from checkout/installed wheel, 14 installed model regression checks and
+failed controls. The plan now has
+19 done, 11 partial and 3 todo microstages, without treating counts as effort/readiness.
+The [Viewer receiving handoff](pending_proposals/interactive_viewer_receiving_0160.md)
+concretizes #368's model/index/event/lifetime requirements without adopting an
+unsupported API or changing the provider. Mapped 3D, chemical 2D, complete disease
+associations, workload/human/version acceptance and delivery remain open.
+
 The [explicit source-enrichment increment](pending_proposals/interactive_source_enrichment_0160.md)
 adds researcher-selected InterPro sites or AlphaFold DB prediction records to a
 fresh UniProt capture, with identity-only remaining the default. Original access

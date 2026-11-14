@@ -43,6 +43,7 @@ class _Session:
             relationship_graph,
             text_kind,
         )
+        from ._record_queries import item_query
 
         view = self.current
         items = view.items()
@@ -85,6 +86,7 @@ class _Session:
                     "label": item.label,
                     "kind": item.kind,
                     "preview": item_preview(item),
+                    "query_record": item_query(view, item),
                 }
                 for item in visible
             ],

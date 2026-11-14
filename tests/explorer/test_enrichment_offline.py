@@ -214,6 +214,10 @@ def test_additional_source_failure_is_visible_and_does_not_become_absence(
     observations = result["resolution"]["source_access"]["rows"]
     (failed,) = [r for r in observations if r["source"] == name]
     assert failed["outcome"] == "failed" and failed["access"] == "fixture"
+    assert result["resolution"]["source_access"]["outcome_counts"] == {
+        "received": 1,
+        "failed": 1,
+    }
     assert "scientific outcomes" in result["resolution"]["source_access"]["scope"]
 
 
@@ -234,6 +238,7 @@ def test_source_access_preview_is_bounded_ephemeral_and_preserves_false():
     ]
     result = source_access_preview(SimpleNamespace(acquisition={"records": records}))
     assert result["count"] == 20 and len(result["rows"]) == 16
+    assert result["outcome_counts"] == {"empty": 20}
     assert result["rows"][0]["source_version"] == "False"
     assert records[0]["source_version"] is False
 

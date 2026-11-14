@@ -64,6 +64,17 @@ including fixture or failed access; native coverage/quality owns scientific scop
 No coordinate download or molecular mapping follows from an AlphaFold query.
 `--receive-enrichment` adds these public fixture routes to the Qt receiver.
 
+Native subject/object/entity links can offer Query referenced record as a new
+explicit identity-only source query. Current-page item/revision admission stays
+in Python; the browser supplies no destination override. UniProt/PDB/component/
+PubChem/MONDO routes are finite, and pinned revisions, names, URLs or overloaded
+ChEMBL references are refused. Original Card/Deck context stays in query return
+history. MONDO obsolete-term choices similarly query a separately declared
+replacement/consideration without rewriting the old term. The source-access
+outcome summary stays visible even when identity resolves but another access fails.
+`--receive-record-links --record-inputs <prepared-public-inputs>`,
+`--receive-partial-source` and `--receive-obsolete-choice` extend the Qt receiver.
+
 Queries run in one background worker while the current reading stays available.
 Cancel query discards the result; an active provider request may still finish.
 A result arriving after you change readings waits for explicit Open result.

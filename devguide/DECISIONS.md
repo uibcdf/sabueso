@@ -1,5 +1,16 @@
 # Sabueso — Decision Log
 
+## Query native referenced records without rebinding originals (2026-11-13)
+
+Under #154/#153, a current native subject/object/entity link can offer a separate
+identity-only source query. Python rechecks exact page/item/revisions and the
+record's declared nature; names, pins, foreign targets and overloaded namespaces
+are not query instructions. Keep native source-free navigation and new acquisition
+separate, preserving original query/Card/Deck return and immutable saved inputs.
+MONDO obsolete replacements/considerations follow the same explicit-query meaning;
+no replacement rewrites the old term. Current action/access previews are outside
+the original wire. See [scope, criteria and receiving](pending_proposals/interactive_record_queries_0160.md).
+
 ## Treat source candidates as explicit new queries (2026-11-13)
 
 Under #154, expose exact supported UniProt candidates/alternatives and PubChem
@@ -7,7 +18,7 @@ candidate-record references as separate source-query actions. Preserve the
 original ambiguity/preference and exact return point; a follow-up does not select
 an identity or merge candidates. Current bounded descriptions stay outside the
 original report wire. Saved choices retain their original source basis, typed
-values and occurrence order; historical files gain no retrofitted buttons.
+values and occurrence order; historical query choices are not expanded on reopening.
 See the [implementation and scope](pending_proposals/interactive_source_candidates_0160.md).
 
 ## Compose original application workspaces over native readers (2026-11-13)

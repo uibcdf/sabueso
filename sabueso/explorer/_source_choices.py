@@ -38,6 +38,21 @@ def declared_choices(kind, original):
             choice = _protein(record)
             if choice is not None:
                 result.append(choice)
+    elif kind == "disease" and original.get("status") == "obsolete":
+        from ._record_queries import reference_query
+
+        for record in original.get("candidates", []):
+            if not isinstance(record, dict):
+                continue
+            destination = reference_query(record.get("entity_ref"))
+            if destination is not None and destination["kind"] == "disease":
+                result.append(
+                    {
+                        **destination,
+                        "entity_ref": record["entity_ref"],
+                        "basis": deepcopy(record),
+                    }
+                )
     elif kind == "smiles" and original.get("status") == "ambiguous":
         decision = original.get("decision", {})
         candidates = (
@@ -76,6 +91,15 @@ def choice_details(resolution):
             if isinstance(structure, dict) and "retrieved_at" in structure:
                 context.append(
                     "Source observation: " + preview(structure["retrieved_at"], 240)
+                )
+        elif choice["kind"] == "disease":
+            title = "MONDO-declared replacement or consideration"
+            basis = choice["basis"].get("basis", {})
+            if isinstance(basis, dict):
+                context.extend(
+                    key.replace("_", " ") + ": " + preview(basis[key], 120)
+                    for key in ("stated_by", "replaced_by", "consider")
+                    if key in basis
                 )
         elif resolution.kind == "pdb":
             title = "Source-declared related protein"

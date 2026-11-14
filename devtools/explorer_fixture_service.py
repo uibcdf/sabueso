@@ -70,6 +70,10 @@ def main():
         recorded = {"query": query, "options": dict(options)}
         if query.startswith(("smiles:", "pubchem:")):
             options["pubchem_client"] = CandidateClient(args.fixture_directory)
+        elif query.startswith("pdb.ligand:"):
+            from sabueso.tools.db.pdb_ccd import FixtureCCDClient
+
+            options["ccd_client"] = FixtureCCDClient(args.fixture_directory)
         elif options.get("entity_type") == "disease":
             options["mondo_client"] = FixtureMONDOClient(args.fixture_directory)
         else:
@@ -77,7 +81,12 @@ def main():
         if options.get("family_sites"):
             from sabueso.tools.db.interpro import FixtureInterProClient
 
-            options["interpro_client"] = FixtureInterProClient(args.fixture_directory)
+            options["interpro_client"] = FixtureInterProClient(
+                args.fixture_directory,
+                failing={"P52270"}
+                if (args.output_directory / "fail-interpro-control").exists()
+                else set(),
+            )
         if options.get("predicted_structures"):
             from sabueso.tools.db.alphafold import FixtureAlphaFoldClient
 

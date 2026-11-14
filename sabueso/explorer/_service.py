@@ -104,15 +104,21 @@ class _Service:
             else None,
         }
 
-    def _query_request(self, body, *, choice=False):
+    def _query_request(self, body, *, choice=False, link=False):
         fields = {
             "revision",
             "resolution_revision",
-            *(("choice_ref",) if choice else ("kind", "query")),
+            *(
+                ("item_ref",)
+                if link
+                else ("choice_ref",)
+                if choice
+                else ("kind", "query")
+            ),
         }
         if not isinstance(body, dict) or set(body) not in (
             fields,
-            fields | ({"protein_source"} if not choice else set()),
+            fields | ({"protein_source"} if not choice and not link else set()),
         ):
             raise ArgumentError("The source query has missing or unexpected arguments.")
         revision = self.session.revision if self.session else ""
@@ -125,7 +131,12 @@ class _Service:
             raise ArgumentError(
                 "Query history is full; return before querying another source."
             )
-        if choice:
+        if link:
+            from ._record_queries import current_item_query
+
+            item = current_item_query(self.session, body["item_ref"])
+            kind, query = item["kind"], item["query"]
+        elif choice:
             ref = body["choice_ref"]
             if (
                 not isinstance(ref, str)
@@ -435,7 +446,9 @@ class _Service:
                 else:
                     result = {
                         "query_job": self.queries.start(
-                            body, choice=request.path.endswith("-choice")
+                            body,
+                            choice=request.path.endswith("-choice"),
+                            link=request.path.endswith("-link"),
                         )
                     }
             return web.json_response(result)
@@ -483,6 +496,7 @@ class _Service:
                 web.get("/api/query", query_job),
                 web.post("/api/query-start", query_job),
                 web.post("/api/query-choice", query_job),
+                web.post("/api/query-link", query_job),
                 web.post("/api/query-cancel", query_job),
                 web.post("/api/query-open", query_job),
                 web.post("/api/workspace-save", workspace),

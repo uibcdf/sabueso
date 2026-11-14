@@ -34,8 +34,10 @@ the captured Deck with exact entry/selection return. Independent original Deck r
 scene recovery and broader lifecycle receiving and remaining acceptance. The [rich workspace increment](pending_proposals/interactive_workspace_persistence_0160.md)
 now supplies original query/inner Card/Deck history saving, nonblocking queries,
 native value/sequence/graph presentation and an actually received public
-protein/BTS/activity/assay/publication/exact Deck journey. Chemical depiction,
-broader source controls/presentation and supported model mapping remain open; prepared
+protein/BTS/activity/assay/publication/exact Deck journey. Bounded entry/protein
+presentation now close through explicit referenced-record
+queries and exact original return. Complete disease associations, chemical depiction
+and supported model mapping remain open; prepared
 human review materials are not acceptance.
 The [living implementation plan](pending_proposals/interactive_implementation_0160.md)
 owns the 0.16.0 stages, microstages, current progress and immediate resumption;

@@ -1,0 +1,362 @@
+{
+  "format": "sabueso.interactive_record_queries_checkpoint@1",
+  "owner": "uibcdf/sabueso#154/#153/#112",
+  "baseline_commit": "7fbda41f0ba7fa111dbe8fedbb3a2cc518b66022",
+  "scope": "Explicit native current-link fresh queries, obsolete MONDO choices, visible original access outcomes and bounded entry/protein presentation reconciliation; concrete provider receiving handoff only",
+  "code_sha256": {
+    "sabueso/explorer/_qt.py": "7b85fe1d2c8c30fc2254055dc4cd041886f1be65a3b9cea7eda775ff0df6b74f",
+    "sabueso/explorer/_session.py": "7e5c2a2a7f2b187492e827107e06480c53a80378eed84811c02b8d3b5f5abe4a",
+    "sabueso/explorer/_molecular.py": "c48891270e16e357886de018e62efed3830789399a1c9ce9c61945230490a612",
+    "sabueso/explorer/_service.py": "f8260e11b3af4db7d32de7aa9e573f792067e9f5954ac8429deec9bd9de582ac",
+    "sabueso/explorer/_deck_session.py": "dc2e241c03275db5dc0f6ae7edec264e37481e1f44cf55b772fd4dd97ca2b92f",
+    "sabueso/explorer/_source_choices.py": "208d0d02395d4b6eb55d2645ff469cb7e13099a8a4a487b2695ea39b4657e559",
+    "sabueso/explorer/_presentation.py": "7501d2864a77130c55bf1eb499b3381888db8d2df4b3eff222c9ddac1be3aedf",
+    "sabueso/explorer/__init__.py": "d9f38870c8c8cb9a246e19c53547451343ff05bd8724b52d11b16ea805f07062",
+    "sabueso/explorer/_layout.py": "83ff00cc24e9d0fe22210ffa61908fa45d1982774ac0097bd554d26f286ad072",
+    "sabueso/explorer/__main__.py": "13e6fc8829e6dd3b15c8523dac1b21a6dcdcd0ec4f3119c417f61c9a1d412891",
+    "sabueso/explorer/_workspace.py": "474afdd8591ce205c56869a1a955b754cdc481e82d5d917e4f9f763e7442e8d1",
+    "sabueso/explorer/_queries.py": "a56330d66e7476b4d8e034884c1bf2ec9c763867701c605259ecba3d31e8bf11",
+    "sabueso/explorer/_resolution.py": "7a165ba64694d64f9cda93a12315b77533b1f2e51d7302b68baaf36df6cc9ac9",
+    "sabueso/explorer/_assets/app.js": "cb1f6f3b202d2b21a7b615139c76ed8169d9e5c9ca7cda85f3fab4e0561f6065",
+    "sabueso/explorer/_assets/app.css": "e737cca0966a606ac47db85e48599c4ed26ca9b601ad9b78c453c17593d6507b",
+    "sabueso/explorer/_assets/notices.txt": "a238c0f2172b6b9507e352ce97d0065b73c0abe2b076493e6553789f675e0b15",
+    "sabueso/explorer/_assets/index.html": "be4705852899de9486e6c01fb0d92ad99301024833c9c7b50b545a3827cc785d",
+    "sabueso/core/card_exploration_storage.py": "9bf7dfd3758e5a1a41577124ad9f36593a55ba46da2b67ee717824985df52814",
+    "sabueso/core/deck_exploration_storage.py": "c71d93916c38e14e0076964f65a4d39f470031b8ac185eacf3013c76676ee62d",
+    "sabueso/core/_variant_history_v1/SOURCE.json": "b55ee3cd34ef6f7efdca561ce4b06fbacb8ea4f3ca67f7bb2d362cb82f3a6998",
+    "sabueso/core/_sequence_change_history_v1/SOURCE.json": "c7a43ebf63201757abfede8ec0eee1820199ff53bfbf8fd93e4506372aa7c8c0",
+    "sabueso/core/_molecule_activity_history_v1/SOURCE.json": "14d59d034aa795516bc3258f11f8a4f8caaa1b5b38b3c30bfb273f8cfddde797",
+    "sabueso/core/_protein_context_history_v1/SOURCE.json": "de78272c691573e26e04c6028cd7a375616c7c2e51d0e43d7623462bbcf40823",
+    "sabueso/core/_disease_association_history_v1/SOURCE.json": "a927a304b67df6144995c9d5f21e44ff4a34a98e8023221e47361f3dfe53feef",
+    "sabueso/core/_knowledge_comparison_history_v1/SOURCE.json": "cf1f610bff358f89a432484952ddeec7eec3d661615035ead720ea7eb202dd8a",
+    "sabueso/core/_clinical_history_v1/SOURCE.json": "00688c256d6aee51ebc97d752fdd641f7317c5d399ae8dd84db0ee4dc7e60650",
+    "sabueso/explorer/_record_queries.py": "c3c214d566af6cdbd324bf7fc06cdcb4894f264adb9c67c830a0c09807433e2a",
+    "frontend/explorer/src/app.tsx": "b4e8faa117c9d3b475123f20de6d72dd351cd2ef9c462652d1facc5fe7abce4a",
+    "frontend/explorer/src/style.css": "71941acb533b70b71601fcf92845ac2b7bdfdbcebc48719fb72576066e6aee0f",
+    "devtools/resolution_explorer_journey.mjs": "14409d5d55bb59ed4e4bc8f5f19c8fdde646299b3f3e53ec3a99dcc7e9f7b9a3",
+    "devtools/explorer_fixture_service.py": "6f70daaa44b46ae9c68035f9472bd4aa45a8ecf0313edc76e935a319f4e85582",
+    "tests/explorer/test_record_queries_offline.py": "be02626c8e30bf5e0611846970a271fbb95b9dba64ca673fdd1c8a4eee336508",
+    "tests/explorer/test_candidates_offline.py": "1505f4ca8c60fbb7e47341f36678a35eeaf1592d0ebe352ed350381042842f4c",
+    "tests/explorer/test_enrichment_offline.py": "0499f6d36a37850f0cc54ce943238ef4fafe4a187a1b5d065d6b9a125757ba3c"
+  },
+  "selected_gates": [
+    {
+      "name": "records-complete-application",
+      "counts": {
+        "collected": 186,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 186,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 186,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 2,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "duration_s": 49.07588963396847,
+      "events_sha256": "41b5b7f0f22d21c5ab9d34a5647789a9e331a17803b8e345884539d50f74d7ea",
+      "integrity_valid": true,
+      "resources": {
+        "peak_owned_rss_bytes": 927633408,
+        "minimum_host_available_bytes": 53729484800,
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "native_threads": 1
+        },
+        "survivors_after_command": []
+      }
+    },
+    {
+      "name": "records-installed-application",
+      "counts": {
+        "collected": 185,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 185,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 185,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 2,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "duration_s": 48.01627537200693,
+      "events_sha256": "1cdfd104310bf6634e2ef35afb26624a4738a7b6c3cf1b6459c2b0ff8e4cda66",
+      "integrity_valid": true,
+      "resources": {
+        "peak_owned_rss_bytes": 915316736,
+        "minimum_host_available_bytes": 53581508608,
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "native_threads": 1
+        },
+        "survivors_after_command": []
+      }
+    }
+  ],
+  "installed_scope": "Noneditable unpublished wheel and copied byte-identical runtime tests/fixtures outside checkout; published pytest-receptor1.2.0. Only source frontend inspection is excluded; no shared environment replaced.",
+  "artifact_proof": {
+    "wheel": {
+      "name": "sabueso-0.14.0+292.g7fbda41.dirty-py3-none-any.whl",
+      "sha256": "970d68e57f493c6d1c1e67d26217ebb275cf5235fe3a9b7e83345db9cbec5ffd"
+    },
+    "sdist": {
+      "name": "sabueso-0.14.0+292.g7fbda41.dirty.tar.gz",
+      "sha256": "1175567c3832f12d3a266826596783e73a5fa1c77879181bbffb0a1b5b7193ff"
+    },
+    "runtime_original_SOURCE_and_installed_bytes_equal": [
+      "sabueso/explorer/_qt.py",
+      "sabueso/explorer/_session.py",
+      "sabueso/explorer/_molecular.py",
+      "sabueso/explorer/_service.py",
+      "sabueso/explorer/_deck_session.py",
+      "sabueso/explorer/_source_choices.py",
+      "sabueso/explorer/_presentation.py",
+      "sabueso/explorer/__init__.py",
+      "sabueso/explorer/_layout.py",
+      "sabueso/explorer/__main__.py",
+      "sabueso/explorer/_workspace.py",
+      "sabueso/explorer/_queries.py",
+      "sabueso/explorer/_resolution.py",
+      "sabueso/explorer/_assets/app.js",
+      "sabueso/explorer/_assets/app.css",
+      "sabueso/explorer/_assets/notices.txt",
+      "sabueso/explorer/_assets/index.html",
+      "sabueso/core/card_exploration_storage.py",
+      "sabueso/core/deck_exploration_storage.py",
+      "sabueso/core/_variant_history_v1/SOURCE.json",
+      "sabueso/core/_sequence_change_history_v1/SOURCE.json",
+      "sabueso/core/_molecule_activity_history_v1/SOURCE.json",
+      "sabueso/core/_protein_context_history_v1/SOURCE.json",
+      "sabueso/core/_disease_association_history_v1/SOURCE.json",
+      "sabueso/core/_knowledge_comparison_history_v1/SOURCE.json",
+      "sabueso/core/_clinical_history_v1/SOURCE.json",
+      "sabueso/explorer/_record_queries.py"
+    ],
+    "installed_module": "/tmp/sabueso-records-0160-jk7ygwf7/env/lib/python3.14/site-packages/sabueso/__init__.py",
+    "sabueso_version": "0.14.0+292.g7fbda41.dirty",
+    "receptor_version": "1.2.0",
+    "editable": false,
+    "genuine_sdk796d20e_workspace_inert_and_unchanged": true,
+    "genuine_prior_file_sha256": "7739fc19d16e8e5bd07ab69afcfc57d87206dd09f6c9362c927433208e65c277",
+    "scope": "Diagnostic unpublished wheel with shared dependencies; not public/candidate/platform qualification"
+  },
+  "native_qt": [
+    {
+      "name": "qt-records-complete",
+      "checks_passed": 58,
+      "completed_explicit_queries": 19,
+      "pending_query_close_seconds": 2.4896910130000034,
+      "receipt_sha256": "b9776c784250ecb0f41d866cdde61ce7fab970e8f687130a7cc1891ee57db48e",
+      "native_capture_sha256": "a3424fd91d799e17ae38d474eddb6012706611ffd62d69510654f61139de4c5b",
+      "elapsed_s": 93.278,
+      "peak_owned_rss_bytes": 1275117568,
+      "minimum_host_available_bytes": 53729484800,
+      "survivors_after_command": []
+    },
+    {
+      "name": "qt-records-installed",
+      "checks_passed": 58,
+      "completed_explicit_queries": 19,
+      "pending_query_close_seconds": 2.498233106,
+      "receipt_sha256": "315b3fe1b034a9e68c48c5d4e5bc71699f15fcc4da551542975c4acaf4e36905",
+      "native_capture_sha256": "0fa8d235c0089917ae88ee2607524271ddceeee027531eb32dc74f63edfb93cf",
+      "elapsed_s": 92.33,
+      "peak_owned_rss_bytes": 1260560384,
+      "minimum_host_available_bytes": 53581398016,
+      "survivors_after_command": []
+    },
+    {
+      "name": "qt-records-model-regression",
+      "checks_passed": 14,
+      "completed_explicit_queries": 0,
+      "pending_query_close_seconds": null,
+      "receipt_sha256": "1559c88f0eddcb09adcb924d54951df5c794549265bb43f41aa35834d40272c3",
+      "native_capture_sha256": "93c2b6a9a31ecffc833cdecb9a72dc488d340847a63c6cd9e72d5f5e5cd9fd8c",
+      "elapsed_s": 29.808,
+      "peak_owned_rss_bytes": 1845325824,
+      "minimum_host_available_bytes": 53535686656,
+      "survivors_after_command": []
+    }
+  ],
+  "public_input_manifest": {
+    "owner": "uibcdf/sabueso#154/#153",
+    "scope": "Existing public frozen fixtures; temp_data/NOTICE.md; no new acquisition or new scientific fixture",
+    "molecule_original_sha256": "3ed9b8732adbd6276ae5737bde75d9ebe4eefd05a090e68884cad94ee3bb5fea",
+    "files": {
+      "protein-card.json": {
+        "sha256": "b66519fc27a618b575f0b77203666af07c9bb1b992b4f70a29906974c6451ab6",
+        "bytes": 124900
+      },
+      "disease-card.json": {
+        "sha256": "ac96faf6f6fd6969b330fde6191ec8292e17b64b889c0ee332053ad3f9238529",
+        "bytes": 7716
+      },
+      "molecule-card.json": {
+        "sha256": "3ed9b8732adbd6276ae5737bde75d9ebe4eefd05a090e68884cad94ee3bb5fea",
+        "bytes": 55447
+      },
+      "public-deck.jsonl": {
+        "sha256": "153c2df4918fce43244fa22005e98ddfed31afed2d65916948f23e27cb11ba06",
+        "bytes": 211260
+      }
+    },
+    "deck_members": [
+      "sabueso:protein:uniprot:P52270@sha256:e40323937cf8dcce0036733fef07841368a22f20d61ed2c7d6bc23742e580dec",
+      "sabueso:small_molecule:inchikey:CULUWZNBISUWAS-UHFFFAOYSA-N@sha256:beebe78715dff954180b48c530dd545fdd422a94283f37c9c154f9d02c6b33a7",
+      "sabueso:disease:mondo:MONDO:0001444@sha256:f9937da5f788b23ef44cfed1af19e00d47c9e7ca029577b3a03bdea6bfa57ee0",
+      "sabueso:disease:mondo:MONDO:0001444@sha256:f9937da5f788b23ef44cfed1af19e00d47c9e7ca029577b3a03bdea6bfa57ee0"
+    ]
+  },
+  "genuine_prior_original": {
+    "source_sha": "796d20e581fd250e4d2fff801df6b44a052f18a6",
+    "file_sha256": "7739fc19d16e8e5bd07ab69afcfc57d87206dd09f6c9362c927433208e65c277",
+    "receiving": "Current installed reader, Card construction/resolve forbidden, exact report/choices/file bytes retained, no GUI/provider imports"
+  },
+  "native_core_unchanged": {
+    "sabueso/core/_clinical_history_v1/SOURCE.json": "00688c256d6aee51ebc97d752fdd641f7317c5d399ae8dd84db0ee4dc7e60650",
+    "sabueso/core/_disease_association_history_v1/SOURCE.json": "a927a304b67df6144995c9d5f21e44ff4a34a98e8023221e47361f3dfe53feef",
+    "sabueso/core/_knowledge_comparison_history_v1/SOURCE.json": "cf1f610bff358f89a432484952ddeec7eec3d661615035ead720ea7eb202dd8a",
+    "sabueso/core/_molecule_activity_history_v1/SOURCE.json": "14d59d034aa795516bc3258f11f8a4f8caaa1b5b38b3c30bfb273f8cfddde797",
+    "sabueso/core/_protein_context_history_v1/SOURCE.json": "de78272c691573e26e04c6028cd7a375616c7c2e51d0e43d7623462bbcf40823",
+    "sabueso/core/_sequence_change_history_v1/SOURCE.json": "c7a43ebf63201757abfede8ec0eee1820199ff53bfbf8fd93e4506372aa7c8c0",
+    "sabueso/core/_variant_history_v1/SOURCE.json": "b55ee3cd34ef6f7efdca561ce4b06fbacb8ea4f3ca67f7bb2d362cb82f3a6998",
+    "sabueso/core/card_exploration_storage.py": "9bf7dfd3758e5a1a41577124ad9f36593a55ba46da2b67ee717824985df52814",
+    "sabueso/core/deck_exploration_storage.py": "c71d93916c38e14e0076964f65a4d39f470031b8ac185eacf3013c76676ee62d"
+  },
+  "native_core_tree": "8dcf3e314c34571da29b4fb22962df2a23e18e7b",
+  "prior_core_receipt": {
+    "path": "interactive_rich_workspace_checkpoint_20261113.json",
+    "sha256": "b36f1d9e291e0dcc680649a862502eb55038b2fdbe9ebf02c082eec5a5a9bb94",
+    "scope": "Native core bytes unchanged; prior 672 selected native-case receipt retains its source epoch and is not a later-head full-suite claim"
+  },
+  "failed_controls": [
+    {
+      "name": "records-public-inputs",
+      "finding": "Task-owned preparation used nonexistent sabueso.Card alias; corrected to public core Card import before any input publication",
+      "counts_as_pass": false
+    },
+    {
+      "name": "qt-records-checkout",
+      "finding": "Observer expected typed object_ref preview on literal native rows; selected actual original relationship label instead, without modifying native science",
+      "counts_as_pass": false
+    }
+  ],
+  "earlier_epochs": [
+    "records-focused25passes",
+    "records-application181passes before visible access summary",
+    "records-final-application181passes before obsolete choices/type hardening",
+    "qt-records-received53checks before obsolete-choice increment"
+  ],
+  "plan_status": {
+    "microstages": 33,
+    "counts": {
+      "done": 19,
+      "partial": 11,
+      "todo": 3
+    },
+    "closed_at_bounded_scope": [
+      "S4.1",
+      "S4.2"
+    ],
+    "basis": "Reconciled against original fb0d096 finite entry/protein-presentation criteria; no human/whole-stage acceptance or unlimited source-control expansion inferred"
+  },
+  "provider_handoff": {
+    "path": "devguide/pending_proposals/interactive_viewer_receiving_0160.md",
+    "provider_head": "0dcdd6ce574d3c99483480cb38c16c1e3cc4782f",
+    "existing_issue": "uibcdf/molsysviewer#368",
+    "issue_state_at_review": "open; two existing consumer comments",
+    "scope": "Prepared consumer requirements; no provider API/implementation/dependency adoption or new provider publication"
+  },
+  "limits": [
+    "Only exact native current-page subject/object/entity links with unambiguous admitted namespaces are fresh-query actions",
+    "Pinned revisions, overloaded ChEMBL references, nature mismatches, literal lookalikes and foreign/stale/off-page items are not routed",
+    "Source access is provenance, not scientific coverage, SourceAssertions or Evidence; native scientific meanings/support/quantities are unchanged",
+    "Fresh record queries do not merge identity or silently rewrite historical inputs; late adoption retains the current reading at adoption",
+    "Experimental model correspondence remains not established; no source query downloads coordinates automatically",
+    "No current-head full-suite, hosted/candidate/platform/public release or human acceptance claim",
+    "Chemical depiction, complete disease associations, mapped structure and broader lifetime/workload/acceptance remain open",
+    "Long pinned Deck labels are an observed presentation detail; proposed compact source names/IDs are a usability hypothesis under #153/#154, not a measured human failure"
+  ],
+  "preflight": {
+    "owner": "uibcdf/sabueso#154/#153/#112",
+    "baseline": "7fbda41f0ba7fa111dbe8fedbb3a2cc518b66022",
+    "slurm": "/usr/bin/srun",
+    "allocation": null,
+    "execution": "Direct bounded; Slurm not operationally adopted",
+    "available_ram_bytes": 55277826048,
+    "total_ram_bytes": 64978440192,
+    "physical_cores": 20,
+    "load": [
+      1.462890625,
+      0.9814453125,
+      0.830078125
+    ],
+    "cpu_usage_percent": 11.2,
+    "memory_pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=5831163\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5687522\n",
+    "tmp_free_bytes": 26506969088,
+    "plan": "4workers/4GiB application,2CPU/4GiB graphics; single-thread native pools; reserve16GiB; ~1\u20132GiB expected per profile; serialize graphics"
+  },
+  "local_evidence_root": "recovered_work/checkpoint_recovery_20261106/interactive-record-queries-20261113-1",
+  "retention": {
+    "owner": "#154/#153/#112",
+    "review_trigger": "Next affected implementation/provider/candidate checkpoint; preserve public inputs/originals/artifacts/proofs/complete streams/native and failed receipts; retire owned scratch/environment after final use"
+  },
+  "deferred_ci": "Authorized intermediate [skip ci]; exact-final-source full/candidate and hosted CI/governance recovery remains due under #154/#153/#112",
+  "cleanup": {
+    "owner": "uibcdf/sabueso#154/#153/#112",
+    "removed_owned_disposable_paths": [
+      "recovered_work/checkpoint_recovery_20261106/interactive-record-queries-20261113-1/records-complete-application-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-record-queries-20261113-1/records-public-inputs-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-record-queries-20261113-1/records-prepared-public-inputs-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-record-queries-20261113-1/records-final-application-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-record-queries-20261113-1/records-application-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-record-queries-20261113-1/qt-records-checkout-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-record-queries-20261113-1/qt-records-model-regression-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-record-queries-20261113-1/qt-records-received-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-record-queries-20261113-1/qt-records-installed-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-record-queries-20261113-1/records-installed-application-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-record-queries-20261113-1/records-focused-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-record-queries-20261113-1/qt-records-complete-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-record-queries-20261113-1/records-build-scratch",
+      "/tmp/sabueso-records-0160-jk7ygwf7"
+    ],
+    "cleanup_failures": [],
+    "retained": "Prepared public original inputs, genuine prior original reference/proof, current wheel/sdist, complete event streams, native/failed captures and receipts, public source-call audits",
+    "review_trigger": "Next affected implementation/provider/candidate checkpoint",
+    "shared_environment": "Not replaced; deleted only task-owned isolated qualification environment after final use"
+  },
+  "local_quality": {
+    "ruff_format": "1774 files already formatted",
+    "ruff_check": "passed",
+    "moli_governance": "passed",
+    "diff_check": "passed",
+    "local_markdown_targets": 732,
+    "missing_targets": [],
+    "current_code_hashes_verified": 34,
+    "frontend_typecheck": "passed",
+    "frontend_build": "passed",
+    "unique_microstage_ids": 33
+  }
+}

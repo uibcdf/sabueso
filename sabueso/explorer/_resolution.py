@@ -32,6 +32,13 @@ def _query(kind, text):
                 "Choose an exact positive PubChem CID of at most 20 digits."
             )
         return f"pubchem:{value}", {"unichem": False}
+    if kind == "pdb_ligand":
+        value = text.removeprefix("pdb.ligand:")
+        if not re.fullmatch(r"[A-Za-z0-9]{1,5}", value):
+            raise ArgumentError(
+                "Choose a PDB chemical-component identifier of 1–5 characters."
+            )
+        return f"pdb.ligand:{value.upper()}", {"unichem": False}
     if kind == "disease":
         from sabueso.tools.db.mondo import normalize
 
@@ -80,7 +87,15 @@ def source_access_preview(resolution):
             return f"{text} ({basis})"
         return preview(value, 160) if "source_version" in record else "Not retained"
 
+    from collections import Counter
+
+    outcomes = Counter(
+        record["outcome"] if isinstance(record.get("outcome"), str) else "not_retained"
+        for record in records
+        if isinstance(record, dict)
+    )
     return {
+        "outcome_counts": dict(outcomes),
         "count": len(records),
         "rows": [
             {

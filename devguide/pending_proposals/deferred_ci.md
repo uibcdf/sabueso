@@ -9,6 +9,20 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Retained-record queries and bounded S4.1/S4.2 completion (2026-11-13)
+
+From `7fbda41`, #154 owns explicit current-page native link acquisition, preserved
+original/query/Deck return, obsolete MONDO choices and visible access outcomes.
+[The receipt](../evidence/interactive_record_queries_checkpoint_20261113.json)
+binds source/installed/native/original/artifact receiving and failed controls.
+S4.1/S4.2 close only at their original entry/protein presentation scopes; #368's
+[consumer handoff](interactive_viewer_receiving_0160.md) keeps molecular integration
+open. Core, schema, scientific/default/provider bytes and runtime dependency minima
+remain unchanged. The authorized intermediate `[skip ci]` head retains exact-final-
+source full/candidate and hosted CI/governance recovery under #154/#153/#112; Git
+and the consolidated owning-issue update record its SHA. No remote workflow,
+release, tag, new platform or package publication is authorized or claimed.
+
 ### Explicit protein source scope and observed access (2026-11-13)
 
 From `7519c1a`, #154 owns selected InterPro/AlphaFold query scope through existing

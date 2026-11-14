@@ -217,3 +217,60 @@ def test_source_preference_alternative_is_a_new_query_not_a_replacement():
 def test_pubchem_candidate_grammar_is_finite_and_does_not_query_sources(value):
     with pytest.raises(ArgumentError):
         _query("pubchem", value)
+
+
+@pytest.mark.parametrize("saved", [False, True])
+def test_obsolete_mondo_choice_is_an_explicit_new_query_and_preserves_original(
+    tmp_path, monkeypatch, saved
+):
+    from sabueso.tools.db import _http
+    from sabueso.tools.db.mondo import FixtureMONDOClient
+
+    monkeypatch.setattr(
+        _http, "_urlopen", lambda *a, **k: pytest.fail("No live source")
+    )
+    calls = []
+
+    def resolve(query, **options):
+        calls.append(query)
+        return sabueso.resolve(query, **options, mondo_client=FixtureMONDOClient(DATA))
+
+    service = _Service(tmp_path, resolver=resolve)
+    original = service.resolve(
+        {
+            "kind": "disease",
+            "query": "MONDO:0000002",
+            "revision": "",
+            "resolution_revision": "",
+        }
+    )
+    assert original["resolution"]["status"] == "obsolete" and original["panel"] is None
+    (choice,) = original["resolution"]["choices"]
+    assert choice["entity_ref"] == "sabueso:disease:mondo:MONDO:0009299"
+    assert (
+        "replacement"
+        in original["resolution"]["choice_details"][choice["ref"]]["title"]
+    )
+    if saved:
+        path = tmp_path / "obsolete.json.gz"
+        save_workspace(service, path, compression="gzip")
+        service.session, service.resolution, service.resolution_history = (
+            read_workspace(path, tmp_path)
+        )
+    choose(service, choice["ref"])
+    assert (
+        service.resolution.kind == "disease" and service.panel()["profile"] == "disease"
+    )
+    assert calls == ["MONDO:0000002", "mondo:MONDO:0009299"]
+    service.return_query(
+        {
+            "revision": service.session.revision,
+            "resolution_revision": service.resolution.revision,
+        }
+    )
+    assert (
+        service.resolution.panel()["original_text"]
+        == original["resolution"]["original_text"]
+    )
+    assert service.resolution.panel()["choices"] == original["resolution"]["choices"]
+    assert len(calls) == 2

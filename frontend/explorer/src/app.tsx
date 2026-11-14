@@ -9,15 +9,15 @@ type Preview={cells:PreviewCell[];cell_count:number;complete:boolean};
 type Overview={profile:string;fields:{path:string;label:string;state:string;text:string;can_open:boolean;support_state:string;sources:{state:string;text:string}[]}[]};
 type Graph={rule:string;scope:string;edges:{item_ref:string;subject_ref:string;predicate:string;object_ref:string}[]};
 type Panel={workspace?:'deck';deck_context?:{scope:'entry_occurrence';entry_position:number};revision:string;title:string;text:string;mode:string;profile:string;result_ref:string;view_ref:string;
-  topics:{name:string;description:string;availability?:string}[];items:{ref:string;label:string;kind:string;preview?:Preview}[];orientation?:Overview|null;graph?:Graph|null;grain?:string|null;trail?:{index:number;title:string}[];
+  topics:{name:string;description:string;availability?:string}[];items:{ref:string;label:string;kind:string;preview?:Preview;query_record?:{reference:string;role:string;kind:string;query:string}|null}[];orientation?:Overview|null;graph?:Graph|null;grain?:string|null;trail?:{index:number;title:string}[];
   offset:number;count:number;has_previous:boolean;has_next:boolean;can_back:boolean;can_save:boolean;can_related:boolean;
   full_text:null|{kind?:'text'|'sequence';text:string;offset:number;count:number;has_previous:boolean;has_next:boolean};saved_file:string|null;outcome:{status:string;reason?:string}};
 type QueryJob={ref:string;kind:string;query:string;state:'running'|'ready'|'failed'|'cancelled'|'opened';phase:string;error:string|null;worker_running:boolean;protein_source?:string;original_revision:string;original_resolution_revision:string};
-type Resolution={revision:string;kind:string;query:string;status:string;entity_ref:string|null;has_card:boolean;choices:{ref:string;entity_ref:string}[];choice_details?:Record<string,{title:string;context:string[]}>;source_access?:{count:number;rows:{source:string;operation:string;outcome:string;access:string;source_version:string}[];scope:string};original_text:string};
+type Resolution={revision:string;kind:string;query:string;status:string;entity_ref:string|null;has_card:boolean;choices:{ref:string;entity_ref:string}[];choice_details?:Record<string,{title:string;context:string[]}>;source_access?:{count:number;outcome_counts?:Record<string,number>;rows:{source:string;operation:string;outcome:string;access:string;source_version:string}[];scope:string};original_text:string};
 type Molecular={status:string;error:string|null;initial_file_name:string;initial_input_digest:string;client_url:string|null;correspondence:'not_established';initial_renderer_ready:boolean|null;initial_structure_received:boolean|null;active_selection_indices:number[]|null};
 type Presentation={layout:null|{format:string;renderer:string;workspace:SerializedDockview};error:string|null};
 const MolecularContext=createContext<Molecular|null>(null);
-type Session={panel:Panel;busy:boolean;act:(name:string,extra?:Record<string,unknown>)=>Promise<void>};
+type Session={panel:Panel;busy:boolean;act:(name:string,extra?:Record<string,unknown>)=>Promise<void>;queryBusy:boolean;queryRecord:(ref:string)=>Promise<void>};
 const Context=createContext<Session|null>(null);
 function useSession(){return useContext(Context)!;}
 async function api(path:string,body?:unknown){
@@ -43,7 +43,7 @@ function SourceGraph({graph}:{graph:Graph}){
     {graph.edges.map(edge=><div className="graph-edge" key={edge.item_ref}><span className="graph-node">{edge.subject_ref}</span><button disabled={busy} onClick={()=>void act('open',{item_ref:edge.item_ref})}><span aria-hidden="true">→ </span>{edge.predicate.replaceAll('_',' ')}<span aria-hidden="true"> →</span></button><span className="graph-node">{edge.object_ref}</span></div>)}</section>;
 }
 function Reading(){
-  const {panel,busy,act}=useSession(),[display,setDisplay]=useState<'cards'|'table'|'graph'>('cards');
+  const {panel,busy,act,queryBusy,queryRecord}=useSession(),[display,setDisplay]=useState<'cards'|'table'|'graph'>('cards');
   const [expanded,setExpanded]=useState(true);
   const data=panel.orientation,primary=data?.fields[0],mode=display==='graph'&&!panel.graph?'cards':display;
   return <article className="reading" data-view-ref={panel.view_ref} data-result-ref={panel.result_ref}>
@@ -66,7 +66,7 @@ function Reading(){
       {panel.items.map(item=><div className="item" key={item.ref} data-item-ref={item.ref}>
         <div className="item-body"><span className="kind">{item.kind.replaceAll('_',' ')}</span><strong>{item.label}</strong>
           {item.preview&&(expanded||mode==='table')&&<><div className="cell-grid">{item.preview.cells.map(cell=><ValueCell key={cell.column} cell={cell} itemRef={item.ref}/>)}</div>{!item.preview.complete&&<p className="quiet">Showing {item.preview.cells.length} of {item.preview.cell_count} fields. Open the item for its complete retained content.</p>}</>}
-        </div><div className="item-actions"><button disabled={busy} onClick={()=>void act('open',{item_ref:item.ref})}>Open</button><button disabled={busy||!panel.can_related} onClick={()=>void act('related',{item_ref:item.ref})}>Sources / questions</button></div>
+        </div><div className="item-actions"><button disabled={busy} onClick={()=>void act('open',{item_ref:item.ref})}>Open</button><button disabled={busy||!panel.can_related} onClick={()=>void act('related',{item_ref:item.ref})}>Sources / questions</button>{item.query_record&&<button disabled={busy||queryBusy} title={'Query a fresh record for '+item.query_record.reference+'; keep this original reading'} onClick={()=>void queryRecord(item.ref)}>Query referenced record</button>}</div>
       </div>)}</section>}
     <nav className="pagination" aria-label="Reading pages"><button disabled={busy||!panel.has_previous} onClick={()=>void(panel.workspace==='deck'?act('deck_previous'):act('page',{offset:panel.offset-40}))}>Previous page</button>
       <span>{panel.count?`${panel.offset+1}–${panel.offset+panel.items.length} of ${panel.count} items`:'No retained items in this reading'}</span><button disabled={busy||!panel.has_next} onClick={()=>void(panel.workspace==='deck'?act('deck_next'):act('page',{offset:panel.offset+40}))}>Next page</button></nav>
@@ -82,7 +82,7 @@ function Orientation(){const {panel}=useSession();return <article className="rea
 function MolecularSummary(){const model=useContext(MolecularContext);return model?<><p>Initial model input: {model.initial_file_name}</p><p>Correspondence with this Card: not established.</p>{model.error&&<p role="alert">Molecular preview unavailable: {model.error}</p>}</>:<p>No molecular model is linked in this application session. Your Card remains fully readable.</p>;}
 function MolecularView(){const model=useContext(MolecularContext);return <section className="molecular-panel"><div className="molecular-caption"><strong>Experimental molecular preview</strong><span>Correspondence with the current Card: not established.</span>{model&&<span>{model.initial_file_name} · {Array.isArray(model.active_selection_indices)?model.active_selection_indices.length+' selected atoms':'Selection not reported'}</span>}</div>{model?.client_url?<iframe title="Live local molecular model" data-testid="molecular-frame" allow="xr-spatial-tracking" src={model.client_url}/>:<p>Molecular preview unavailable.</p>}</section>;}
 const components={reading:Reading,orientation:Orientation,molecular:MolecularView};
-function Workspace({panel,busy,act,molecular,presentation,saveLayout,notice}:{panel:Panel;busy:boolean;act:Session['act'];molecular:Molecular|null;presentation:Presentation;saveLayout:(layout:SerializedDockview)=>Promise<void>;notice:(message:string)=>void}){
+function Workspace({panel,busy,act,queryBusy,queryRecord,molecular,presentation,saveLayout,notice}:{panel:Panel;busy:boolean;act:Session['act'];queryBusy:boolean;queryRecord:Session['queryRecord'];molecular:Molecular|null;presentation:Presentation;saveLayout:(layout:SerializedDockview)=>Promise<void>;notice:(message:string)=>void}){
   const dock=useRef<DockviewApi|null>(null);
   function ready(event:DockviewReadyEvent,restore=true){dock.current=event.api;
     if(restore&&presentation.layout){const state=presentation.layout.workspace;
@@ -97,13 +97,14 @@ function Workspace({panel,busy,act,molecular,presentation,saveLayout,notice}:{pa
   function floatModel(){showModel();const a=dock.current,p=a?.getPanel('molecular');if(a&&p)a.addFloatingGroup(p,{width:720,height:580,position:{left:45,top:45}});}
   function reset(){const a=dock.current;if(!a)return;const m=a.getPanel('molecular');if(m){const root=a.addGroup({direction:'left'});m.api.moveTo({group:root,position:'center'});const r=a.getPanel('reading')??a.addPanel({id:'reading',component:'reading',title:'Knowledge',renderer:'always'});r.api.moveTo({group:m.api.group,position:'right'});const c=a.getPanel('orientation')??a.addPanel({id:'orientation',component:'orientation',title:'Context'});c.api.moveTo({group:r.api.group,position:'bottom'});}else{a.clear();ready({api:a} as DockviewReadyEvent,false);}}
 
-  return <MolecularContext.Provider value={molecular}><Context.Provider value={{panel,busy,act}}><div className="workspace-tools"><span>Arrange your workspace</span><button disabled={busy} onClick={()=>{if(dock.current)void saveLayout(dock.current.toJSON());}}>Save layout</button>{molecular?.client_url&&<><button onClick={showModel}>Show model</button><button onClick={floatModel}>Float model</button></>}<button onClick={floating}>Float reading</button><button onClick={reset}>Reset layout</button></div>
+  return <MolecularContext.Provider value={molecular}><Context.Provider value={{panel,busy,act,queryBusy,queryRecord}}><div className="workspace-tools"><span>Arrange your workspace</span><button disabled={busy} onClick={()=>{if(dock.current)void saveLayout(dock.current.toJSON());}}>Save layout</button>{molecular?.client_url&&<><button onClick={showModel}>Show model</button><button onClick={floatModel}>Float model</button></>}<button onClick={floating}>Float reading</button><button onClick={reset}>Reset layout</button></div>
     <div className="dockview-theme-light dock"><DockviewReact theme={themeLight} components={components} onReady={ready}/></div></Context.Provider></MolecularContext.Provider>;
 }
 function ResolutionReport({result,busy,choose}:{result:Resolution;busy:boolean;choose:(ref:string)=>Promise<void>}){
   return <section className="resolution-report" aria-label="Source query result"><strong>{result.status.replaceAll('_',' ')}</strong> · {result.query}
     {(result as Resolution&{mode?:string}).mode==='saved'&&<p className="quiet">Original saved source-query report. No source was queried by reopening it.</p>}{result.entity_ref&&<p>{result.entity_ref}</p>}
     {!result.has_card&&<p>{result.kind==='pdb'&&result.status==='resolved'?'This is a PDB structure record. Choose a source-declared protein below to query its Card.':'This query did not produce a Card. Any reading below is the previous retained context.'}</p>}
+    {result.status==='obsolete'&&<p>This terminology record is obsolete. A declared replacement or consideration can be queried separately; the original term and its meaning are not rewritten.</p>}
     {result.status==='ambiguous'&&<p>No candidate has been selected. A follow-up starts a separate source query and keeps this original ambiguity report. It does not merge candidates or settle their identity.</p>}
     {!!result.choices.length&&<div className="source-choices" aria-label="Explicit source follow-up queries">{result.choices.slice(0,32).map(item=><div className="source-choice" key={item.ref}>
       <strong>{result.choice_details?.[item.ref]?.title??'Source-declared follow-up'}</strong>
@@ -111,6 +112,7 @@ function ResolutionReport({result,busy,choose}:{result:Resolution;busy:boolean;c
       <button disabled={busy} onClick={()=>void choose(item.ref)}>Query {item.entity_ref}</button>
     </div>)}</div>}
     {result.choices.length>32&&<p>Showing the first 32 supported follow-up queries. The complete original report below retains all candidates and their bases.</p>}
+    {result.source_access?.outcome_counts&&<p className="source-outcomes" aria-label="Original source access outcomes">Source access: {Object.entries(result.source_access.outcome_counts).slice(0,8).map(([outcome,count])=>`${outcome.replaceAll('_',' ')}: ${count}`).join(' · ')}. Access observations; coverage and quality retain scientific scope.</p>}
     {!!result.source_access?.rows.length&&<details className="source-access"><summary>Observed source access ({result.source_access.count})</summary><p>{result.source_access.scope}. These are the original query observations, including after reopening; browsing makes no source request.</p><ul>{result.source_access.rows.map((row,index)=><li key={index}><strong>{row.source}</strong>: {row.outcome} · {row.operation} · {row.access} · version {row.source_version}</li>)}</ul>{result.source_access.count>16&&<p>Showing the first 16 observations. All retained records remain in the complete original report below.</p>}</details>}
     <details><summary>Original resolution, source decisions and acquisition trace</summary><pre>{result.original_text}</pre></details>
   </section>;
@@ -161,6 +163,9 @@ function App(){
       const result=await api(choice_ref?'/api/query-choice':'/api/query-start',choice_ref?{...revisions,choice_ref}:{...revisions,kind:entryKind,query:identifier,...(entryKind==='uniprot'?{protein_source:proteinSource}:{})});
       setJob(result.query_job);setEntryOpen(false);setMessage('Querying sources in the background. Your current reading remains available.');
     }catch(error){setMessage(String(error));}finally{setBusy(false);}}
+  async function queryRecord(item_ref:string){if(!ready||busy||queryActive||!panel)return;setBusy(true);
+    try{const result=await api('/api/query-link',{item_ref,revision:panel.revision,resolution_revision:resolution?.revision??''});setJob(result.query_job);setEntryOpen(false);setMessage('Querying the referenced source record as a new capture. This original reading remains available; no identity is merged.');}
+    catch(error){setMessage(String(error));}finally{setBusy(false);}}
   async function returnQuery(){if(busy)return;setBusy(true);try{const result=await api('/api/resolve-back',{revision:panel?.revision??'',resolution_revision:resolution?.revision??''});setPanel(result.panel);setMolecular(result.molecular??null);setResolution(result.resolution);setCanReturnQuery(result.can_return_query);setMessage('Returned to the exact retained query and reading. No source was queried.');}catch(error){setMessage(String(error));}finally{setBusy(false);}}
   const entry=<form className="entry-form" aria-label="Query public sources" onSubmit={e=>{e.preventDefault();void acquire();}}>
     <label htmlFor="entry-kind">Start from</label><select id="entry-kind" value={entryKind} disabled={busy||queryActive} onChange={e=>setEntryKind(e.target.value)}><option value="uniprot">UniProt accession</option><option value="pdb">PDB entry</option><option value="smiles">SMILES</option><option value="disease">Disease identifier</option></select>
@@ -184,6 +189,6 @@ function App(){
         <strong>{topic.name.replaceAll('_',' ')}</strong><span>{topic.description}</span>{topic.availability==='not_saved'&&<em>Not saved in this original reading</em>}</button>)}</nav></aside>
       <section className="main-reading" aria-label="Knowledge workspace"><nav className="actions" aria-label="Reading navigation"><button disabled={busy||!panel.can_back} onClick={()=>void act('back')}>Back</button><button disabled={busy} onClick={()=>void act('overview')}>Overview</button><span/>{panel.deck_context!==undefined&&<button disabled={busy} onClick={()=>void act('deck')}>Return to Deck</button>}
         <button disabled={busy||!panel.can_save} onClick={()=>void act('save')}>{panel.workspace==='deck'?'Save Deck reading':'Save reading'}</button><button disabled={busy||!panel.saved_file} onClick={()=>void act('reopen')}>Reopen saved</button></nav>
-        <Workspace panel={panel} busy={busy} act={act} molecular={molecular} presentation={presentation} saveLayout={saveLayout} notice={setMessage}/></section></main>}</>;
+        <Workspace panel={panel} busy={busy} act={act} queryBusy={queryActive} queryRecord={queryRecord} molecular={molecular} presentation={presentation} saveLayout={saveLayout} notice={setMessage}/></section></main>}</>;
 }
 createRoot(document.getElementById('root')!).render(<App/>);

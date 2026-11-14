@@ -1848,3 +1848,24 @@ owned observer samples to report sampled CPU seconds/core equivalents and summed
 RSS. Keep idle settling, layout retention, actual provider creation/disposal,
 software rendering and native graphics qualification separate. No resource
 threshold is accepted merely because a bounded run completes.
+
+
+### Referenced-record queries and bounded entry/protein closeout
+
+Run `tests/explorer/test_record_queries_offline.py`, the MONDO obsolete-choice
+controls in `test_candidates_offline.py` and all application cases with the
+published receptor. Include current-page/native-role admission, off-page/stale/
+foreign inputs, contradictory Card nature, pinned revisions, overloaded ChEMBL
+namespaces, actual loopback/origin/capability, original links/whole workspace and
+repeated Deck return. Native scientific readers, saved Card formats and source
+clients remain unchanged.
+
+Receive `resolution_explorer_journey.mjs --receive-record-links --record-inputs
+<prepared-public-inputs> --receive-partial-source --receive-obsolete-choice` with
+the candidate/enrichment/workspace/cancellation controls in actual Qt, from checkout
+and a noneditable installed artifact. Public protein/BTS, compound/condition and
+repeated disease/parent inputs must keep their original bytes and source meanings;
+synthetic source failure is labelled separately. Verify the complete query-call
+audit and pending owned shutdown. Typecheck/build/package/import/resource checks
+retain their existing scope. The [receipt](evidence/interactive_record_queries_checkpoint_20261113.json)
+owns the actual cohort, original compatibility and failures.

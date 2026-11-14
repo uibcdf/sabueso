@@ -88,7 +88,8 @@ class _OriginalResolution:
                 },
             )
             and panel["format"] == "sabueso.explorer_resolution@1"
-            and panel["kind"] in ("uniprot", "pdb", "smiles", "disease", "pubchem")
+            and panel["kind"]
+            in ("uniprot", "pdb", "smiles", "disease", "pubchem", "pdb_ligand")
             and isinstance(panel["query"], str)
             and 0 < len(panel["query"]) <= 8300
             and isinstance(panel["revision"], str)

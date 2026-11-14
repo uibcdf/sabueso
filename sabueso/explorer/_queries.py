@@ -34,14 +34,14 @@ class _Queries:
             "cancellation_scope": "Discard the result; an active provider request may finish",
         }
 
-    def start(self, body, *, choice=False):
+    def start(self, body, *, choice=False, link=False):
         if self.closed.is_set():
             raise ArgumentError("The source-query service is closing.")
         if self.job and self.job["thread"].is_alive():
             raise ArgumentError(
                 "One source query is still running; wait for it before starting another."
             )
-        kind, query = self.service._query_request(body, choice=choice)
+        kind, query = self.service._query_request(body, choice=choice, link=link)
         options = self.service._source_options(body)
         loop = asyncio.get_running_loop()
         job = {

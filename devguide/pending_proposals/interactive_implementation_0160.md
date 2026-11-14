@@ -15,7 +15,7 @@ Checkpoint date: **2026-11-13**. Reviewed implementation baseline:
 planning parent `fb0d09659f8d00685f829d6781e5d256751dac66`;
 [application code hashes and receiving](../evidence/interactive_card_app_checkpoint_20261113.json).
 
-**Current position:** S0 and S1, S3.1–S3.4, S5.1, S5.2 and S5.4 are delivered at their bounded development scopes. The native Card/Deck application, explicit four-kind source entry and independently selected original readings have real Qt receiving. The [molecular receipt](../evidence/interactive_molecular_checkpoint_20261113.json) adds an opt-in live product panel through Viewer's experimental public service: 84 selected cases, eleven real molecular Qt checks each from checkout and an installed unpublished wheel, and six model-failure checks. A corrected native HTTP guard also passes twelve actual source-entry checks.
+**Current position:** S0 and S1, S3.1–S3.4, S4.1–S4.2, S5.1, S5.2 and S5.4 are delivered at their bounded development scopes. The native Card/Deck application, explicit four-kind source entry and independently selected original readings have real Qt receiving. The [molecular receipt](../evidence/interactive_molecular_checkpoint_20261113.json) adds an opt-in live product panel through Viewer's experimental public service: 84 selected cases, eleven real molecular Qt checks each from checkout and an installed unpublished wheel, and six model-failure checks. A corrected native HTTP guard also passes twelve actual source-entry checks.
 
 **Delivered observable result:** read a Card or Deck, follow source-declared relationships to supplied related Cards, inspect their original sources, return to the exact entry occurrence/Deck selection, save/reopen original Card and Deck readings, and explicitly query supported identifiers. With the received development provider cohort, also open a supplied molecular model, rotate it, float/reset without replacing its viewport, and keep reading original knowledge. The model is always labelled **correspondence not established**. This is not mapped annotation navigation or a supported embedding claim.
 
@@ -38,7 +38,18 @@ outcome, fixture/live route and version/basis without claiming scientific covera
 Additional source failures remain distinct from absence. This extends S4.1/S4.2;
 arbitrary source controls, mapped 3D and whole-stage acceptance remain open.
 
-**Next observable result:** exact source-bound annotation → model selection → original source → Back, including unknown/replaced contexts (S2.2/S2.5), plus qualified chemical depiction and provider lifetime/scene recovery. Viewer #368 still owns the supported embedding/current-model contract. Broader source controls/presentation, workload agreements and human acceptance remain open. Owned reading-service loss, explicit restart and pending-query shutdown now receive in actual Qt. The [presentation receipt](../evidence/interactive_layout_checkpoint_20261113.json) closes S5.2 at layout-only scope. The whole-workspace receipt does not close remaining scopes or authorize a release. Interrupted attempts never count as passes.
+The [referenced-record increment](interactive_record_queries_0160.md) now receives
+protein → BTS, compound → declared disease and repeated disease → parent queries,
+with original saving and exact query/Deck return. MONDO obsolete replacements
+remain explicit separate choices. Source access failures are visible independently
+of resolved identity. S4.1/S4.2 close against the original bounded entry/protein
+presentation criteria, with source/installed receiving in the linked receipt;
+chemical depiction, complete disease associations and mapped structure remain open.
+The [concrete Viewer handoff](interactive_viewer_receiving_0160.md) now specifies
+current-model/index/event identity, source correspondence and lifetime controls;
+it does not select a provider API or close #368.
+
+**Next observable result:** exact source-bound annotation → model selection → original source → Back, including unknown/replaced contexts (S2.2/S2.5), plus qualified chemical depiction and provider lifetime/scene recovery. Viewer #368 still owns the supported embedding/current-model contract. Complete disease-association journeys, chemical depiction, workload agreements and human acceptance remain open; arbitrary source controls remain a future extension. Owned reading-service loss, explicit restart and pending-query shutdown now receive in actual Qt. The [presentation receipt](../evidence/interactive_layout_checkpoint_20261113.json) closes S5.2 at layout-only scope. The whole-workspace receipt does not close remaining scopes or authorize a release. Interrupted attempts never count as passes.
 
 The [complete frozen baseline receipt](../evidence/interactive_integrated_baseline_20261113.json)
 receives all **10,059 collected offline nodes** at `e64c2ec`: **10,049 passed,
@@ -210,10 +221,10 @@ records the distinct input meanings and gaps.
 
 | ID | State | Delivered work, remainder and completion check |
 | --- | --- | --- |
-| S4.1 | `partial` | Explicit native `identity@1` entry has one background worker, cancellation/discard, continued reading and stale-result adoption. UniProt candidates/alternatives and PubChem source-record follow-ups now receive with original context, exact saved ambiguity return and no implicit identity choice. The form folds after submission and reading space stays usable. Historical choices remain original. Explicit additional InterPro sites or AlphaFold prediction records now create new protein captures; bounded original source-access outcomes and exact saved return are retained. Broader source controls/presentation remains; cancellation does not promise interruption of provider HTTP |
-| S4.2 | `partial` | Source-linked original overview fields, readable versions, exact sequence strips and native annotation/value tables now receive in Qt. Text positions establish no residue/model mapping. Structures/ligands/changes/associations stay available through the native topic index; explicitly acquired AlphaFold records receive as predictions without automatically downloading coordinates; broader nature-specific receiving and mapped annotation visuals remain |
+| S4.1 | `done` | Bounded UniProt/PDB/SMILES/disease-ID entry, one explicit background worker, progress/cancel/discard and late-result adoption receive with distinct positive/ambiguous/not-found/failed and partially successful source outcomes. UniProt/PubChem choices and MONDO obsolete replacements remain separate explicit queries, preserving originals. Current-page retained links can request fresh records without identity merging. [Criteria reconciliation and receiving](interactive_record_queries_0160.md#reconcile-the-bounded-s4-criteria). Arbitrary source controls are an extension; active provider HTTP interruption is not promised |
+| S4.2 | `done` | The pertinent native protein catalog exposes source-linked sequence/annotations, structures, ligands, changes and associations, with original overview/value/unit cells, source inspection and exact return. Uncertain/unsupported/original-not-saved scope stays discoverable; source-selected InterPro/AlphaFold records retain their native meaning. Public nature-specific and cross-Card receiving bind this presentation scope. [Original criteria reconciliation](interactive_record_queries_0160.md#reconcile-the-bounded-s4-criteria); mapped annotation visuals retain S2 ownership |
 | S4.3 | `partial` | Actual SMILES → PubChem-stated Card, original chemical/property values with units and a source-bound BTS → supplied target → native activity → assay/publication journey pass. Qualified 2D/available 3D remain open; no conformer or measured geometry is invented |
-| S4.4 | `partial` | Disease-ID → MONDO, original overview fields, current-page retained relationship graph, exact edge/source/Back and source-declared parent Card receiving pass. Graphs preserve native support/derivation scope. Broader disease/protein/molecule journeys and richer visual comparisons remain. Name search is not offered without a candidate-search contract |
+| S4.4 | `partial` | Disease-ID → MONDO, original overview fields, current-page retained relationship graph, exact edge/source/Back and source-declared parent Card receiving pass. Graphs preserve native support/derivation scope. Explicit fresh disease-parent queries and a compound’s declared condition now also receive through exact original/Deck return. Complete retained target/drug/phenotype association journeys and richer comparisons remain. Name search is not offered without a candidate-search contract |
 | S4.5 | `partial` | Protein → source-bound BTS identity → native activity quantity → original assay/full publication → exact repeated/filtered Deck return now passes in real Qt, including original workspace saving/reopening. PDB record → source-declared protein → source → exact query return also passes. The PDB/entity → mapped molecular reading remains dependent on S2/#368; graphs add no scientific conclusions |
 
 A PDB result is currently a structure record with related proteins, not a new
@@ -254,7 +265,7 @@ delivers. Start feedback when the first useful slice exists, not only at the end
 
 ## Current closeout ledger
 
-The 33 microstages currently contain **17 done, 13 partial and 3 todo**. This is
+The 33 microstages currently contain **19 done, 11 partial and 3 todo**. This is
 an unweighted status count, not a percentage of implementation effort or readiness.
 Several partial rows already contain working application behavior but depend on
 provider contracts or acceptance; their labels must not be promoted by automated
