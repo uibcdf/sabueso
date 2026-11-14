@@ -1194,6 +1194,40 @@ literal numeric/quantity/false/null values and reject malformed/stale inputs. Ru
 the native journey with `--receive-uploaded-reading` to prove a user-selected
 original works independently of the current session's Save state.
 
+Rich retained presentation and whole-workspace composition select complete
+`tests/explorer/test_presentation_offline.py`, `test_queries_offline.py`,
+`test_workspace_offline.py` and `test_bootstrap_offline.py`, with the application,
+native Card/Deck/transport, human/agent/source/quantity/argument and package gates.
+Preserve original field locations, states/units, exact backend-cell filters,
+sequence text versus coordinate scope and literal current-page graph edges.
+Receive pending reading, cancellation without promised HTTP interruption,
+no queue, stale adoption refusal and exact query return. Source-choice basis,
+resealed foreign nodes/pages/components and failed atomic writes must leave the
+prior reading intact. Independently reopen plain/gzip/zstd workspaces with current
+Cards/acquisition/GUI imports forbidden; inspect actual wheel/sdist/runtime bytes.
+Receive `resolution_explorer_journey.mjs --receive-workspace --receive-cancellation`
+and `deck_explorer_journey.mjs --receive-scientific --manifest <inputs.json>` in
+actual Qt, then `--reading --resume-scientific` on its saved file in another
+execution. Repeat with a noneditable wheel outside the checkout. The public
+scientific route covers protein/BTS/native quantity/assay/full publication/exact
+repeated Deck return; pending jobs/layout/model scenes are separate scopes.
+Receive `explorer_journey.mjs --receive-recovery` on a bounded public Card:
+identify only the launcher's direct owned service child, stop it, retain the
+window/reading and visible failure, then explicitly restart the application from
+the saved original workspace and receive Back. The Linux `/proc` selection is
+receiving infrastructure, not a product process-search feature. Add
+`--receive-pending-close` to the source receiver to receive service shutdown with
+one observed synthetic pending query; distinguish its unfinished request from
+the completed-call audit and any provider HTTP cancellation claim.
+
+The capture-order correction also selects complete
+`test_card_capture_order_saved_offline.py`, original molecule activity and older
+Card saved/transport/shared-value tests. Canonical JSON key order must not reorder
+the original capture factory's first-input order; preserve repeated occurrences,
+all original wires and frozen verifiers. Resealing a changed input order must
+still fail. Record the failed mixed-Deck original receiving and its corrected
+scientific Qt route, rather than counting an earlier failed receipt as passing.
+
 The experimental molecular adapter selects `test_molecular_admission_offline.py`
 with the application, resolver and package-data gates. Receive detached input
 capture/hash, encoded/decoded byte limits, unsupported/empty/invalid input and

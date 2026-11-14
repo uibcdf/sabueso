@@ -1,0 +1,846 @@
+{
+  "format": "sabueso.interactive_rich_workspace_checkpoint@1",
+  "owner": "uibcdf/sabueso#154",
+  "native_owner": "uibcdf/sabueso#153",
+  "coordination_owner": "uibcdf/sabueso#112",
+  "baseline_commit": "bed46052c5fd392c9be1a8993b454b7f554f4ef8",
+  "scope": "Rich retained presentation, one nonblocking source query, original application workspace composition and owned service failure/restart receiving; bounded development implementation, not whole-version acceptance",
+  "code_sha256": {
+    "devtools/deck_explorer_journey.mjs": "243c76f2dc93e6d5a1089ee2dddcc49253940ad7127f2e82b25581755b8bb087",
+    "devtools/explorer_fixture_service.py": "250945b6f3b9d232f93ba01a75fff6dd661baa3cc1817dcd509b834ca142b9ed",
+    "devtools/explorer_journey.mjs": "98926ee203af04c149793a4e3ee8b1da5e437a10d4a5b3f607e3d65bc3f8af59",
+    "devtools/prepare_explorer_walkthrough.py": "58fbb8c54cb365f233ce57cca6184889ed6da949d5c974ea9d4563899fac2e4c",
+    "devtools/resolution_explorer_journey.mjs": "b625f8cebb453659a7a06b22f131acbf60952b030b2598879c13ac3ac43ee2d9",
+    "frontend/explorer/src/app.tsx": "89c2732a36b5ba4669e50089415470d8c4cafb670b1121e7806ef6d7f099de58",
+    "frontend/explorer/src/style.css": "cbb0a85e5bd8e0d3b139c8e253d9d3cb1691e4f338618c70aafea3909833f625",
+    "sabueso/core/_clinical_history_v1/SOURCE.json": "00688c256d6aee51ebc97d752fdd641f7317c5d399ae8dd84db0ee4dc7e60650",
+    "sabueso/core/_disease_association_history_v1/SOURCE.json": "a927a304b67df6144995c9d5f21e44ff4a34a98e8023221e47361f3dfe53feef",
+    "sabueso/core/_knowledge_comparison_history_v1/SOURCE.json": "cf1f610bff358f89a432484952ddeec7eec3d661615035ead720ea7eb202dd8a",
+    "sabueso/core/_molecule_activity_history_v1/SOURCE.json": "14d59d034aa795516bc3258f11f8a4f8caaa1b5b38b3c30bfb273f8cfddde797",
+    "sabueso/core/_protein_context_history_v1/SOURCE.json": "de78272c691573e26e04c6028cd7a375616c7c2e51d0e43d7623462bbcf40823",
+    "sabueso/core/_sequence_change_history_v1/SOURCE.json": "c7a43ebf63201757abfede8ec0eee1820199ff53bfbf8fd93e4506372aa7c8c0",
+    "sabueso/core/_variant_history_v1/SOURCE.json": "b55ee3cd34ef6f7efdca561ce4b06fbacb8ea4f3ca67f7bb2d362cb82f3a6998",
+    "sabueso/core/card_exploration_storage.py": "9bf7dfd3758e5a1a41577124ad9f36593a55ba46da2b67ee717824985df52814",
+    "sabueso/core/deck_exploration_storage.py": "c71d93916c38e14e0076964f65a4d39f470031b8ac185eacf3013c76676ee62d",
+    "sabueso/explorer/__init__.py": "d9f38870c8c8cb9a246e19c53547451343ff05bd8724b52d11b16ea805f07062",
+    "sabueso/explorer/__main__.py": "13e6fc8829e6dd3b15c8523dac1b21a6dcdcd0ec4f3119c417f61c9a1d412891",
+    "sabueso/explorer/_assets/app.css": "bb3e573764b9012af8ea5665a89753a33d3b3835a7e35d6cbfb1b3554f8be016",
+    "sabueso/explorer/_assets/app.js": "52721b3f15d73d34f1746ab9dd34934cad41688fa8de639a58939b0aad839910",
+    "sabueso/explorer/_assets/index.html": "be4705852899de9486e6c01fb0d92ad99301024833c9c7b50b545a3827cc785d",
+    "sabueso/explorer/_assets/notices.txt": "a238c0f2172b6b9507e352ce97d0065b73c0abe2b076493e6553789f675e0b15",
+    "sabueso/explorer/_deck_session.py": "dc2e241c03275db5dc0f6ae7edec264e37481e1f44cf55b772fd4dd97ca2b92f",
+    "sabueso/explorer/_layout.py": "83ff00cc24e9d0fe22210ffa61908fa45d1982774ac0097bd554d26f286ad072",
+    "sabueso/explorer/_molecular.py": "c48891270e16e357886de018e62efed3830789399a1c9ce9c61945230490a612",
+    "sabueso/explorer/_presentation.py": "7501d2864a77130c55bf1eb499b3381888db8d2df4b3eff222c9ddac1be3aedf",
+    "sabueso/explorer/_qt.py": "7b85fe1d2c8c30fc2254055dc4cd041886f1be65a3b9cea7eda775ff0df6b74f",
+    "sabueso/explorer/_queries.py": "1b21581c0668282d61e99f4d167a0c65cbd6ba88dccb881cb7e5703cd02e9a33",
+    "sabueso/explorer/_resolution.py": "1e858eda670fc0bad1d3e810a7032055c728a33bce3b6c21c9af3bf924dce770",
+    "sabueso/explorer/_service.py": "809f6a48601da613e20ba49234b13e63df3bdbb1d6bb6bba3ad86c438bbef2f6",
+    "sabueso/explorer/_session.py": "11f8b265b8b37b86c52b9bc08da6922f4a3be9d7a449fb78a984d936421b1032",
+    "sabueso/explorer/_workspace.py": "055b9ff24010faab97b3a75b0c80b1e5ee64d3b8c168ec098b26d858619ff0ab",
+    "tests/core/test_card_capture_order_saved_offline.py": "1d0e68e203c91eab77ce52d2fadaed46d6732b2cfd0573a1fdebb65b6c6b0bde",
+    "tests/explorer/test_bootstrap_offline.py": "215baa9566d2320a8a55dfdfc91b144000d426cd569701ba97d71dcd05b9b5d6",
+    "tests/explorer/test_deck_context_offline.py": "08f66cb8f21fa37fa15209590f4880476f57fb5572d610459fbd5ce0d6e19403",
+    "tests/explorer/test_deck_saved_offline.py": "0ac73f62cf8fddaa53af86be4d82f7533700e4e08c9f37015a19c059b9219a73",
+    "tests/explorer/test_deck_session_offline.py": "5e9d99ff63432107c00f9747c02f02b1307d0685ea439b1b875c8de03f851499",
+    "tests/explorer/test_layout_offline.py": "9545ccaf86ca8cbae840462e9232246d8364a8d9172e2f648d59a8c0264fd8db",
+    "tests/explorer/test_molecular_admission_offline.py": "14316a2f0696cfe6cc597533e92c99bf6ddb60d68002fb9ace6d94a503741b5f",
+    "tests/explorer/test_presentation_offline.py": "1496f99e1234cab3a23b3ab52bbfb4805630ff310d18f2dfa56d2859cd703dd9",
+    "tests/explorer/test_queries_offline.py": "2cfd68df5ad56dd93fce8f4ec40d4220f6ae8f185c9705bd892f538b05a33a4f",
+    "tests/explorer/test_reading_upload_offline.py": "8374672f3ac7ab1ac420f26fe3cb61c85bf9ce0c6b97135c376e29844e998485",
+    "tests/explorer/test_resolution_offline.py": "cb9aac843a47580c96284d9035ee6d94f4cfda18cd83ef81791acb82140e3866",
+    "tests/explorer/test_service_offline.py": "0f7512a7950328d791dbb175ed6195913fc5205f4c4551df0df393c7776134c8",
+    "tests/explorer/test_session_offline.py": "7e18b6c1d81cec7c2b58653c735cd769beda82d789e7df210079e2214db09592",
+    "tests/explorer/test_workspace_offline.py": "f3cee8e0f16df5d7bd5f20ad0851543641d986621fa49b529524abdb67ebb2f4"
+  },
+  "source_gate_distinct_cases": 793,
+  "selected_gates": [
+    {
+      "name": "published-native-regressions",
+      "counts": {
+        "collected": 661,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 661,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 661,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "duration_s": 281.575142081012,
+      "events_sha256": "01ff9993b5d325d916d3df45e6c7208cb23c054d938a0d213b77e4d8eea1c5e0",
+      "integrity_valid": true,
+      "peak_summed_rss_bytes": 1864093696,
+      "minimum_host_available_bytes": 53490774016,
+      "limits": {
+        "owned_rss_bytes": 4294967296,
+        "host_available_bytes": 17179869184,
+        "cpu_affinity": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "native_threads": 1
+      },
+      "owned_survivors": []
+    },
+    {
+      "name": "published-original-molecule",
+      "counts": {
+        "collected": 11,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 11,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 11,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "duration_s": 477.4285303889774,
+      "events_sha256": "c0f89f06a6bff43e7003b44591f516b2d7bd2b8dd4ff9e7bdde609936ab4eeb7",
+      "integrity_valid": true,
+      "peak_summed_rss_bytes": 8392302592,
+      "minimum_host_available_bytes": 47093420032,
+      "limits": {
+        "owned_rss_bytes": 10737418240,
+        "host_available_bytes": 17179869184,
+        "cpu_affinity": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "native_threads": 1
+      },
+      "owned_survivors": []
+    },
+    {
+      "name": "published-application-final",
+      "counts": {
+        "collected": 121,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 121,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 121,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "duration_s": 35.433133612037636,
+      "events_sha256": "f65c4db623773f786868871059d281eceece160a186ce97b9d59f027a062f444",
+      "integrity_valid": true,
+      "peak_summed_rss_bytes": 841568256,
+      "minimum_host_available_bytes": 54141825024,
+      "limits": {
+        "owned_rss_bytes": 4294967296,
+        "host_available_bytes": 17179869184,
+        "cpu_affinity": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "native_threads": 1
+      },
+      "owned_survivors": []
+    },
+    {
+      "name": "installed-application-final",
+      "counts": {
+        "collected": 123,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 123,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 123,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "duration_s": 35.105545873055235,
+      "events_sha256": "05f2fbeedf1f1436915cb38cea9ba4472c57c0b0d5be0a851c9e753c644fba4e",
+      "integrity_valid": true,
+      "peak_summed_rss_bytes": 862138368,
+      "minimum_host_available_bytes": 53704855552,
+      "limits": {
+        "owned_rss_bytes": 4294967296,
+        "host_available_bytes": 17179869184,
+        "cpu_affinity": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "native_threads": 1
+      },
+      "owned_survivors": []
+    }
+  ],
+  "installed_scope": "123 runtime cases outside checkout; one frontend source-inspection case deselected and received in the source gate. Noneditable unpublished wheel, shared native dependencies, pinned public pytest-receptor 1.2.0, Python 3.14.10, pytest 9.2.0 and xdist 3.8.0.",
+  "artifact_inspection": {
+    "wheel": {
+      "name": "sabueso-0.14.0+289.gbed4605.dirty-py3-none-any.whl",
+      "sha256": "c5989742485f7a951e3b2d047cc36de92c7ef0fe24fe850f4000076d24394917"
+    },
+    "sdist": {
+      "name": "sabueso-0.14.0+289.gbed4605.dirty.tar.gz",
+      "sha256": "979784c4401b1bff65314086bf798fc5a69c0593e1d48b2f48becc9d81d9cca1"
+    },
+    "byte_identical_runtime_files": [
+      "sabueso/core/card_exploration_storage.py",
+      "sabueso/core/deck_exploration_storage.py",
+      "sabueso/explorer/_qt.py",
+      "sabueso/explorer/_session.py",
+      "sabueso/explorer/_molecular.py",
+      "sabueso/explorer/_service.py",
+      "sabueso/explorer/_deck_session.py",
+      "sabueso/explorer/_presentation.py",
+      "sabueso/explorer/__init__.py",
+      "sabueso/explorer/_layout.py",
+      "sabueso/explorer/__main__.py",
+      "sabueso/explorer/_workspace.py",
+      "sabueso/explorer/_queries.py",
+      "sabueso/explorer/_resolution.py",
+      "sabueso/explorer/_assets/app.js",
+      "sabueso/explorer/_assets/app.css",
+      "sabueso/explorer/_assets/notices.txt",
+      "sabueso/explorer/_assets/index.html",
+      "sabueso/core/_variant_history_v1/SOURCE.json",
+      "sabueso/core/_sequence_change_history_v1/SOURCE.json",
+      "sabueso/core/_molecule_activity_history_v1/SOURCE.json",
+      "sabueso/core/_protein_context_history_v1/SOURCE.json",
+      "sabueso/core/_disease_association_history_v1/SOURCE.json",
+      "sabueso/core/_knowledge_comparison_history_v1/SOURCE.json",
+      "sabueso/core/_clinical_history_v1/SOURCE.json"
+    ],
+    "source_bound": true,
+    "scope": "Current unpublished diagnostic artifact after unavailable-context correction; shared dependencies, no candidate/public installation claim"
+  },
+  "installed_import_proof": {
+    "python": "3.14.10",
+    "prefix": "/tmp/sabueso-rich-0160-nm9zuzua/env",
+    "sabueso_module": "/tmp/sabueso-rich-0160-nm9zuzua/env/lib/python3.14/site-packages/sabueso/__init__.py",
+    "sabueso_editable": false,
+    "wheel_sha256": "c5989742485f7a951e3b2d047cc36de92c7ef0fe24fe850f4000076d24394917",
+    "shared_dependencies": true,
+    "public_receptor_version": "1.2.0",
+    "public_receptor_module": "/tmp/sabueso-rich-0160-nm9zuzua/env/lib/python3.14/site-packages/pytest_receptor/__init__.py",
+    "earlier_development_receptor": {
+      "version": "1.2.3+2.ga02820f",
+      "module": "/fast_data/home/liliana/repos@uibcdf/pytest-receptor/pytest_receptor/__init__.py",
+      "scope": "Development observations only; final gate uses isolated published 1.2.0"
+    },
+    "scope": "Current diagnostic wheel, including unavailable destination correction; shared native dependencies; not public-install/candidate evidence"
+  },
+  "provider_cohort": {
+    "molsysmt": {
+      "version": "0.23.0+904.gff25f1202",
+      "editable": true,
+      "checkout": "/fast_data/home/liliana/repos@uibcdf/molsysmt",
+      "sha": "ff25f120243319ca9515009b4971e24a2eb0dc22",
+      "clean": true,
+      "module": "/fast_data/home/liliana/repos@uibcdf/molsysmt/molsysmt/__init__.py"
+    },
+    "molsysviewer": {
+      "version": "0.24.0+409.g0dcdd6ce",
+      "editable": true,
+      "checkout": "/fast_data/home/liliana/repos@uibcdf/molsysviewer",
+      "sha": "0dcdd6ce574d3c99483480cb38c16c1e3cc4782f",
+      "clean": true,
+      "module": "/fast_data/home/liliana/repos@uibcdf/molsysviewer/molsysviewer/__init__.py"
+    },
+    "argdigest": {
+      "version": "0.17.1+6.g7be790b",
+      "editable": true,
+      "checkout": "/fast_data/home/liliana/repos@uibcdf/argdigest",
+      "sha": "7be790b7334e16715fceebbfa8a2b400edf768bb",
+      "clean": true,
+      "module": "/fast_data/home/liliana/repos@uibcdf/argdigest/argdigest/__init__.py"
+    },
+    "pyunitwizard": {
+      "version": "0.29.5+2.gcc51c8e",
+      "editable": true,
+      "checkout": "/fast_data/home/liliana/repos@uibcdf/pyunitwizard",
+      "sha": "cc51c8e600f78f108bc563edd3221bd8788ead86",
+      "clean": true,
+      "module": "/fast_data/home/liliana/repos@uibcdf/pyunitwizard/pyunitwizard/__init__.py"
+    },
+    "smonitor": {
+      "version": "0.23.0+3.g4a4cd1e",
+      "editable": true,
+      "checkout": "/fast_data/home/liliana/repos@uibcdf/smonitor",
+      "sha": "4a4cd1e415ea57e50c22925c36c2e727772fb3ab",
+      "clean": true,
+      "module": "/fast_data/home/liliana/repos@uibcdf/smonitor/smonitor/__init__.py"
+    },
+    "depdigest": {
+      "version": "0.15.2+3.g5e93eaf",
+      "editable": true,
+      "checkout": "/fast_data/home/liliana/repos@uibcdf/depdigest",
+      "sha": "5e93eaff314fe7cddf4eee89842977023b3a8b00",
+      "clean": true,
+      "module": "/fast_data/home/liliana/repos@uibcdf/depdigest/depdigest/__init__.py"
+    },
+    "ackredit": {
+      "version": "0.12.2+2.g0bb26ec",
+      "editable": true,
+      "checkout": "/fast_data/home/liliana/repos@uibcdf/ackredit",
+      "sha": "0bb26ecb42edcfc0984469ff20c9ff93f8fd7f56",
+      "clean": true,
+      "module": "/fast_data/home/liliana/repos@uibcdf/ackredit/ackredit/__init__.py"
+    },
+    "pytest-receptor": {
+      "version": "1.2.0"
+    },
+    "PySide6": {
+      "version": "6.11.2",
+      "module": "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/lib/python3.14/site-packages/PySide6/__init__.py"
+    },
+    "aiohttp": {
+      "version": "3.14.5",
+      "editable": false,
+      "module": "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/lib/python3.14/site-packages/aiohttp/__init__.py"
+    },
+    "rdkit": {
+      "version": "2026.9.2",
+      "editable": false,
+      "module": "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/lib/python3.14/site-packages/rdkit/__init__.py"
+    }
+  },
+  "inputs": {
+    "owner": "uibcdf/sabueso#154/#153",
+    "source": "Existing reviewed public fixtures, temp_data/NOTICE.md",
+    "members": [
+      "sabueso:protein:uniprot:P52270@sha256:6830ac9118d2a7acc6d3e0fd3301cc1cb6acee290fd939231fd2667d441f1b47",
+      "sabueso:small_molecule:inchikey:XBNHRNFODJOFRU-UHFFFAOYSA-N@sha256:73c5c059a128de3a40acd6835731cd4e62dcd0d5c1d90b0bf2427b4a4b29895e",
+      "sabueso:small_molecule:inchikey:CULUWZNBISUWAS-UHFFFAOYSA-N@sha256:beebe78715dff954180b48c530dd545fdd422a94283f37c9c154f9d02c6b33a7",
+      "sabueso:disease:mondo:MONDO:0001444@sha256:f9937da5f788b23ef44cfed1af19e00d47c9e7ca029577b3a03bdea6bfa57ee0",
+      "sabueso:protein:uniprot:P52270@sha256:6830ac9118d2a7acc6d3e0fd3301cc1cb6acee290fd939231fd2667d441f1b47"
+    ],
+    "cards": {
+      "protein": {
+        "pin": "sabueso:protein:uniprot:P52270@sha256:6830ac9118d2a7acc6d3e0fd3301cc1cb6acee290fd939231fd2667d441f1b47",
+        "sha256": "8c35824c761d38be0c4c586336b04c0ce0670367cdb58fa0a9776dbd1d192eeb"
+      },
+      "ligand": {
+        "pin": "sabueso:small_molecule:inchikey:XBNHRNFODJOFRU-UHFFFAOYSA-N@sha256:73c5c059a128de3a40acd6835731cd4e62dcd0d5c1d90b0bf2427b4a4b29895e",
+        "sha256": "52098cba29aa1c068dde7dca8d636f60dee833a283d884e51677e479da146e43"
+      },
+      "molecule": {
+        "pin": "sabueso:small_molecule:inchikey:CULUWZNBISUWAS-UHFFFAOYSA-N@sha256:beebe78715dff954180b48c530dd545fdd422a94283f37c9c154f9d02c6b33a7",
+        "sha256": "3ed9b8732adbd6276ae5737bde75d9ebe4eefd05a090e68884cad94ee3bb5fea"
+      },
+      "disease": {
+        "pin": "sabueso:disease:mondo:MONDO:0001444@sha256:f9937da5f788b23ef44cfed1af19e00d47c9e7ca029577b3a03bdea6bfa57ee0",
+        "sha256": "ac96faf6f6fd6969b330fde6191ec8292e17b64b889c0ee332053ad3f9238529"
+      }
+    },
+    "deck_sha256": "290d722ae0f224158a6bf9c66f5079eefb49cd7be2d6daf98eec5726d57517b5"
+  },
+  "review_input_preparation": {
+    "manifest": {
+      "owner": "uibcdf/sabueso#154/#153",
+      "source": "Existing reviewed public fixtures; temp_data/NOTICE.md",
+      "members": [
+        "sabueso:protein:uniprot:P52270@sha256:067965e7456933615264dd4d3a65f98c86120d4325133c0e1366ba2b327e5877",
+        "sabueso:small_molecule:inchikey:XBNHRNFODJOFRU-UHFFFAOYSA-N@sha256:73c5c059a128de3a40acd6835731cd4e62dcd0d5c1d90b0bf2427b4a4b29895e",
+        "sabueso:small_molecule:inchikey:CULUWZNBISUWAS-UHFFFAOYSA-N@sha256:beebe78715dff954180b48c530dd545fdd422a94283f37c9c154f9d02c6b33a7",
+        "sabueso:disease:mondo:MONDO:0001444@sha256:f9937da5f788b23ef44cfed1af19e00d47c9e7ca029577b3a03bdea6bfa57ee0",
+        "sabueso:protein:uniprot:P52270@sha256:067965e7456933615264dd4d3a65f98c86120d4325133c0e1366ba2b327e5877"
+      ],
+      "cards": {
+        "protein": {
+          "pin": "sabueso:protein:uniprot:P52270@sha256:067965e7456933615264dd4d3a65f98c86120d4325133c0e1366ba2b327e5877",
+          "sha256": "b720470b7cc020acde17c232876c6e613a81667353c64232513585d8023a7b42"
+        },
+        "ligand": {
+          "pin": "sabueso:small_molecule:inchikey:XBNHRNFODJOFRU-UHFFFAOYSA-N@sha256:73c5c059a128de3a40acd6835731cd4e62dcd0d5c1d90b0bf2427b4a4b29895e",
+          "sha256": "52098cba29aa1c068dde7dca8d636f60dee833a283d884e51677e479da146e43"
+        },
+        "molecule": {
+          "pin": "sabueso:small_molecule:inchikey:CULUWZNBISUWAS-UHFFFAOYSA-N@sha256:beebe78715dff954180b48c530dd545fdd422a94283f37c9c154f9d02c6b33a7",
+          "sha256": "3ed9b8732adbd6276ae5737bde75d9ebe4eefd05a090e68884cad94ee3bb5fea"
+        },
+        "disease": {
+          "pin": "sabueso:disease:mondo:MONDO:0001444@sha256:f9937da5f788b23ef44cfed1af19e00d47c9e7ca029577b3a03bdea6bfa57ee0",
+          "sha256": "ac96faf6f6fd6969b330fde6191ec8292e17b64b889c0ee332053ad3f9238529"
+        }
+      },
+      "deck_sha256": "74662c4c8042dbfa269753e81015c4878a70192e9343e3ef5d044ee48b0e90b6"
+    },
+    "network": "Native HTTP hub and sockets forbidden",
+    "human_status": "Prepared; maintainer and independent review not_reviewed"
+  },
+  "native_qt": [
+    {
+      "name": "qt-final-protein",
+      "scope": "Actual Qt nature-specific original overview, native cell values/units, sequence or source graph, source and exact history; Linux/Xvfb only",
+      "checks": {
+        "native_profile_overview": true,
+        "original_overview_field_opens": true,
+        "exact_trail_return": true,
+        "sequence_preserves_exact_text": true,
+        "sequence_positions_scope_explicit": true,
+        "native_annotation_cells_visible": true,
+        "original_source_remains_accessible": true,
+        "native_return_overview_retained": true,
+        "actual_native_capture": true,
+        "input_unchanged": true,
+        "no_script_errors": true
+      },
+      "receipt_sha256": "cb1f3554be2baf5080cc084376ec8e9e837dbfd3201c23c03526f3e970d42c45",
+      "elapsed_s": 15.803,
+      "peak_summed_rss_bytes": 1001930752,
+      "limits": {
+        "owned_rss_bytes": 4294967296,
+        "host_available_bytes": 17179869184,
+        "cpu_affinity": [
+          4,
+          5
+        ],
+        "native_threads": 1
+      },
+      "owned_survivors": [],
+      "renderer_png_sha256": "e50ef52d928caf4f5c58e1d47eef9aaec97e4b6375b00220cf2bf2a399e2bce4",
+      "native_png_sha256": "ffc203f01e69e16dff7d7067df7d02139e778b68072ebe07d60d546b0c5c2aed"
+    },
+    {
+      "name": "qt-final-molecule-received",
+      "scope": "Actual Qt nature-specific original overview, native cell values/units, sequence or source graph, source and exact history; Linux/Xvfb only",
+      "checks": {
+        "native_profile_overview": true,
+        "original_overview_field_opens": true,
+        "exact_trail_return": true,
+        "native_property_cells_visible": true,
+        "property_unit_retained": true,
+        "original_source_remains_accessible": true,
+        "native_return_overview_retained": true,
+        "actual_native_capture": true,
+        "input_unchanged": true,
+        "no_script_errors": true
+      },
+      "receipt_sha256": "4757ac9fc8af5a6fe3f083a854f3bc9caae64ec62795b1b4278f2d3df2b95d09",
+      "elapsed_s": 15.82,
+      "peak_summed_rss_bytes": 969740288,
+      "limits": {
+        "owned_rss_bytes": 4294967296,
+        "host_available_bytes": 17179869184,
+        "cpu_affinity": [
+          4,
+          5
+        ],
+        "native_threads": 1
+      },
+      "owned_survivors": [],
+      "renderer_png_sha256": "7ce4d8873274069d1b9cee7c742616d1088ff4304b04000ca8cf23365605cd6e",
+      "native_png_sha256": "979fee8d0bcdf2c92a4d64970ef9141df0332db891a5ef5b5c6b734905c78617"
+    },
+    {
+      "name": "qt-final-disease",
+      "scope": "Actual Qt nature-specific original overview, native cell values/units, sequence or source graph, source and exact history; Linux/Xvfb only",
+      "checks": {
+        "native_profile_overview": true,
+        "original_overview_field_opens": true,
+        "exact_trail_return": true,
+        "source_graph_preserves_native_reading": true,
+        "source_graph_has_exact_page_edges": true,
+        "graph_record_back_exact": true,
+        "original_source_remains_accessible": true,
+        "native_return_overview_retained": true,
+        "actual_native_capture": true,
+        "input_unchanged": true,
+        "no_script_errors": true
+      },
+      "receipt_sha256": "9f01b05e50838f8b39de09019185fe93a3f5de429f2c286659a3b2d02eed10d5",
+      "elapsed_s": 15.085,
+      "peak_summed_rss_bytes": 963022848,
+      "limits": {
+        "owned_rss_bytes": 4294967296,
+        "host_available_bytes": 17179869184,
+        "cpu_affinity": [
+          4,
+          5
+        ],
+        "native_threads": 1
+      },
+      "owned_survivors": [],
+      "renderer_png_sha256": "abbe183955e5cf446109ff7cd2a0f8f1c7e384a7afbf858fd02d95428b6ad987",
+      "native_png_sha256": "7ab1ba5a33c4e8c8ee8269c0c230cd058ba48e568c5428a03001fb1c841571f6"
+    },
+    {
+      "name": "qt-final-source-history",
+      "scope": "Actual Qt source-entry UI with native resolution against public frozen sources and network forbidden; no live-source/native-platform qualification",
+      "checks": {
+        "white_entry_and_four_input_kinds": true,
+        "pdb_is_a_record_without_an_invented_card": true,
+        "explicit_source_related_protein": true,
+        "original_source_and_exact_back": true,
+        "exact_pdb_return_without_acquisition": true,
+        "disease_card_and_topics": true,
+        "source_stated_smiles_identity": true,
+        "not_found_preserves_previous_reading": true,
+        "source_failure_is_distinct_and_preserves_reading": true,
+        "workspace_exact_reading": true,
+        "workspace_original_query_report": true,
+        "workspace_source_history_retained": true,
+        "workspace_independent_upload": true,
+        "workspace_reopening_does_not_query_sources": true,
+        "reading_remains_available_during_query": true,
+        "cancelled_result_does_not_replace_reading": true,
+        "changed_reading_waits_for_explicit_adoption": true,
+        "explicit_ready_result_opens": true,
+        "ready_result_exact_query_return": true,
+        "actual_native_capture": true,
+        "only_explicit_source_queries": true,
+        "pending_query_is_observed_before_close": true,
+        "owned_pending_service_closes_within_deadline": true,
+        "closed_service_retires_its_bootstrap": true,
+        "no_script_errors": true
+      },
+      "receipt_sha256": "fc61b4f09fab5b1eec902218f7ef321378bac9f0aaa6ff3c8dba5139f8b5f2f6",
+      "elapsed_s": 26.143,
+      "peak_summed_rss_bytes": 1079771136,
+      "limits": {
+        "owned_rss_bytes": 4294967296,
+        "host_available_bytes": 17179869184,
+        "cpu_affinity": [
+          4,
+          5
+        ],
+        "native_threads": 1
+      },
+      "owned_survivors": [],
+      "pending_service_close_elapsed_s": 2.2381202430000013,
+      "pending_query_disposition": "One additional explicit synthetic query was pending at owned service shutdown; no result was adopted. Completed-call audit above excludes this unfinished request. This receives process-owned worker lifetime, not provider HTTP cancellation.",
+      "renderer_png_sha256": "422c8583f0ec8a98e8f19790b2c87c1a35e2af318fb621d56efc1e87349968fe",
+      "native_png_sha256": "b5f552a2f27550d2c287f143eb3c1c123d61012eb4c10db8dc338a69b655323c"
+    },
+    {
+      "name": "qt-final-molecular",
+      "scope": "Actual experimental Qt/Viewer product panel; Linux/Xvfb software rendering; no mapped Card identity, stable embedding or native platform qualification",
+      "checks": {
+        "real_canvas_and_renderer": true,
+        "actual_floating_group_observed": true,
+        "reset_returns_to_main_grid": true,
+        "same_live_viewport": true,
+        "camera_survives_layout": true,
+        "selection_survives_layout": true,
+        "no_inferred_correspondence": true,
+        "reading_survives_layout": true,
+        "molecular_presentation_saved_without_scene": true,
+        "saving_layout_keeps_live_model": true,
+        "original_source_remains_readable": true,
+        "native_capture": true,
+        "original_inputs_unchanged": true,
+        "no_script_errors": true
+      },
+      "receipt_sha256": "f944b284cb0303c8e721e30a92a1c2314043c0273f3d9124c708fa91dd25751f",
+      "elapsed_s": 30.04,
+      "peak_summed_rss_bytes": 1854935040,
+      "limits": {
+        "owned_rss_bytes": 4294967296,
+        "host_available_bytes": 17179869184,
+        "cpu_affinity": [
+          4,
+          5
+        ],
+        "native_threads": 1
+      },
+      "owned_survivors": [],
+      "lifecycle": {
+        "cycles": 3,
+        "registrations_before": 1,
+        "registrations_after": 1,
+        "camera_before": {
+          "mode": "perspective",
+          "fov": 0.7853981633974483,
+          "position": [
+            -69.85248718667987,
+            83.86933625489456,
+            148.79390329357108
+          ],
+          "up": [
+            0.09331779028693811,
+            0.9650058286423981,
+            -0.24506232003749867
+          ],
+          "target": [
+            14.994602336176236,
+            52.05167768382352,
+            55.81150165467509
+          ],
+          "radius": 42.22834525959202,
+          "radiusMax": 90.06599132130826,
+          "fog": 15,
+          "clipFar": true,
+          "minNear": 1,
+          "minFar": 0
+        },
+        "camera_after": {
+          "mode": "perspective",
+          "fov": 0.7853981633974483,
+          "position": [
+            -69.85248718667987,
+            83.86933625489456,
+            148.79390329357108
+          ],
+          "up": [
+            0.09331779028693811,
+            0.9650058286423981,
+            -0.24506232003749867
+          ],
+          "target": [
+            14.994602336176236,
+            52.05167768382352,
+            55.81150165467509
+          ],
+          "radius": 42.22834525959202,
+          "radiusMax": 90.06599132130826,
+          "fog": 15,
+          "clipFar": true,
+          "minNear": 1,
+          "minFar": 0
+        }
+      },
+      "graphics": {
+        "webgl": true,
+        "width": 470,
+        "height": 553,
+        "renderer": "ANGLE (Mesa, llvmpipe (LLVM 21.1.8 256 bits), OpenGL 4.5)",
+        "error": 0
+      },
+      "renderer_png_sha256": "bf8dc007f4f36190b68009cd219114132c44fa3be145de0a6849d0435e6351dc",
+      "native_png_sha256": "cafef53dc99e7c2d7c1fd3fb03da55dc3f3da42cddcb4abac016620a81d139e9"
+    },
+    {
+      "name": "qt-final-scientific",
+      "scope": "Actual Qt public P52270 to source-bound BTS identity, native activity quantity, original assay/full publication, whole workspace reopening and exact repeated Deck entry return; Linux/Xvfb software only",
+      "checks": {
+        "five_explicit_input_occurrences": true,
+        "repeated_protein_entry": true,
+        "source_identity_opens_supplied_ligand": true,
+        "entry_occurrence_stays_protein": true,
+        "original_activity_quantity_has_unit": true,
+        "original_assay_context_opens": true,
+        "original_full_publication_opens": true,
+        "original_publication_and_entry_restore": true,
+        "original_scientific_back_survives_reopening": true,
+        "exact_filtered_deck_return": true,
+        "all_original_occurrences_survive": true,
+        "actual_native_capture": true,
+        "input_unchanged": true,
+        "no_script_errors": true
+      },
+      "receipt_sha256": "5f9d0834446cdf15d8d2b7fbc7408d4be89a68321cb5f4770cd5d3626e34c8f0",
+      "elapsed_s": 129.206,
+      "peak_summed_rss_bytes": 1337937920,
+      "limits": {
+        "owned_rss_bytes": 4294967296,
+        "host_available_bytes": 17179869184,
+        "cpu_affinity": [
+          4,
+          5
+        ],
+        "native_threads": 1
+      },
+      "owned_survivors": [],
+      "save_workspace_elapsed_s": 83.711184295,
+      "reopen_workspace_elapsed_s": 24.81449184100001,
+      "renderer_png_sha256": "5f2526635c396b7bbdc53666e06a47bbe69d8986bf43a5a08c4e7fa5e25751ae",
+      "native_png_sha256": "701271ac9e8a2f2373a493617c2959d4788119103ff9f40cb56992694ecf0f7e"
+    },
+    {
+      "name": "qt-installed-recovery-received",
+      "scope": "Actual first Qt Card product slice; owned Linux Xvfb software request; no molecular/native-platform qualification; controlled owned service loss and explicit saved-workspace application restart, without automatic unsaved recovery",
+      "checks": {
+        "topic_navigation": true,
+        "exact_back": true,
+        "original_source_opened": true,
+        "original_saved_reading_reopened": true,
+        "saved_return_preserved": true,
+        "reading_survives_floating": true,
+        "reading_survives_reset": true,
+        "qt_window_survives_service_failure": true,
+        "service_failure_explained_and_reading_retained": true,
+        "explicit_restart_restores_original_workspace": true,
+        "restart_preserves_saved_file": true,
+        "original_back_available_after_restart": true,
+        "actual_native_capture": true,
+        "input_unchanged": true,
+        "no_script_errors": true
+      },
+      "receipt_sha256": "c0d41d7fa5dd51ac29ad239ff61d28aa692bbab1a0053be0573b943c3dd4c544",
+      "elapsed_s": 25.959,
+      "peak_summed_rss_bytes": 1005502464,
+      "limits": {
+        "owned_rss_bytes": 4294967296,
+        "host_available_bytes": 17179869184,
+        "cpu_affinity": [
+          4,
+          5
+        ],
+        "native_threads": 1
+      },
+      "owned_survivors": [],
+      "renderer_png_sha256": "e7b13add28df50fbd0ef6790b87f0481d1e9f55a6004095990d6cf7498c1ec39",
+      "native_png_sha256": "e5fb5459e3e14011ac237170522b4f0a6145113ce0dc483ef4524a8452531865"
+    },
+    {
+      "name": "qt-final-independent-workspace",
+      "scope": "Actual independent Qt startup from original whole workspace; publication, exact Card trail, repeated Deck occurrence, filtered selection and Deck Back; Linux/Xvfb software only",
+      "checks": {
+        "independent_startup_is_original": true,
+        "original_publication_and_entry_retained": true,
+        "exact_scientific_trail_retained": true,
+        "exact_filtered_deck_and_occurrences": true,
+        "original_deck_history_retained": true,
+        "actual_native_capture": true,
+        "input_unchanged": true,
+        "no_script_errors": true
+      },
+      "receipt_sha256": "15ca9df86f5f6348c28f2809e85250e89e2a003f612a551eb52f46eaeeedaaf8",
+      "elapsed_s": 41.355,
+      "peak_summed_rss_bytes": 1271349248,
+      "limits": {
+        "owned_rss_bytes": 4294967296,
+        "host_available_bytes": 17179869184,
+        "cpu_affinity": [
+          4,
+          5
+        ],
+        "native_threads": 1
+      },
+      "owned_survivors": [],
+      "renderer_png_sha256": "a373926383b38bfc9a50ef18656feb9013556f0dbf64fbceb59632c20f1ef0f8",
+      "native_png_sha256": "54931586524bb1ef89e7958060904cd10e3fe38fa7aea2f864bda6eea42c9f97"
+    }
+  ],
+  "failed_or_earlier_epochs": [
+    {
+      "name": "presentation-first/second/application",
+      "disposition": "Retained original test expectation and opaque sequence-location failures; corrected before owning current receiving"
+    },
+    {
+      "name": "qt-protein-presentation/qt-query-workspace/qt-final-molecule",
+      "disposition": "Receiver synchronization failures retained; wait for the actual visible reading/control/rendered table before acting"
+    },
+    {
+      "name": "qt-scientific-deck",
+      "disposition": "Real mixed-pool native original refusal: canonical JSON Card-key order differed from original first-input occurrence order. Restore original capture order; frozen scientific predicates/formats unchanged"
+    },
+    {
+      "name": "qt-installed-scientific",
+      "disposition": "Save exceeded receiver timeout with shared CPU affinity. Separate bounded affinity receiving passed; earlier 87/25-second workload is not the latest artifact receipt"
+    },
+    {
+      "name": "regression-selected",
+      "disposition": "Interrupted by observed SIGTERM, without session_finish; 667 positive call records are not a completed gate or counted in final totals"
+    },
+    {
+      "name": "earlier development pytest gates",
+      "disposition": "Shared environment imports editable pytest-receptor 1.2.3+2.ga02820f. Retain development observations; all final source/installed gates above use isolated published pinned 1.2.0 without changing the shared tool environment"
+    },
+    {
+      "name": "qt-installed-recovery",
+      "disposition": "Larger protein source reading correctly refused by unchanged native 64 MiB decoded budget before fault injection; no recovery pass claimed. Bounded public disease recovery receives the actual service loss/restart"
+    },
+    {
+      "name": "unavailable original destination",
+      "disposition": "The workspace reader must use its verified internal native owner for logical accounting even when no public explorer is exposed. New complete owning case preserves uncertainty and exact Back"
+    }
+  ],
+  "limits": [
+    "No mapped annotation/model identity or supported embedding claim; Viewer #368 remains open. Empty selection continuity is not nonempty mapped picking receiving.",
+    "Pending query discard/process lifetime does not promise interruption of provider HTTP. No automatic unsaved recovery or model/scene/layout restoration in the workspace.",
+    "Whole workspace admission: 64 MiB encoded/decoded, 8 MiB codec window, 256 MiB logical, up to 1024 components and 32 query return points; not RSS bounds. GUI file chooser still 16 MiB.",
+    "Distinct focal native Deck components can repeat captured data. Save/reopen workload budgets remain unagreed; larger source-only native formats can hit the existing decoded guard.",
+    "Linux/Xvfb software and shared dependency receiving are not native GPU, thermal, Windows/macOS, clean-public-install, hosted exact-head CI or candidate/release qualification.",
+    "Source schema, quantities, scientific defaults, frozen native verifiers and provider checkouts unchanged. #192 semantic decision and #194 version-specific platform review remain open.",
+    "2D provider proposal remains a local draft after automatic publication rejection; explicit destination/material approval is pending. No provider issue claimed as delivered."
+  ],
+  "local_evidence_root": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1",
+  "cleanup": {
+    "owner": "uibcdf/sabueso#154/#153",
+    "removed_owned_disposable_paths": [
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/qt-installed-scientific-received-scratch",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/query-first-scratch",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/presentation-received-scratch",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/qt-final-molecular-scratch",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/workspace-first-scratch",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/qt-installed-recovery-received-scratch",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/bootstrap-receiving-scratch",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/qt-final-protein-scratch",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/presentation-smoke-scratch",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/regression-molecule-saved-scratch",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/qt-final-scientific-scratch",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/qt-molecule-presentation-scratch",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/installed-application-final-scratch",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/qt-final-independent-workspace-scratch",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/presentation-app-final-scratch",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/integrated-application-scratch",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/qt-query-workspace-received-scratch",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/qt-scientific-deck-received-scratch",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/qt-protein-received-scratch",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/published-application-final-scratch",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/prepare-public-scratch",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/qt-final-source-history-scratch",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/capture-order-received-scratch",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/qt-final-disease-scratch",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/qt-final-molecule-received-scratch",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/published-receptor-smoke-scratch",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/qt-installed-independent-workspace-scratch",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/published-original-molecule-scratch",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/qt-disease-presentation-scratch",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/published-native-regressions-scratch",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/qt-source-jobs-scratch",
+      "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/installed-env"
+    ],
+    "active_owned_jobs": [],
+    "retained": [
+      "Native captures, complete receptor streams, failure logs and original workspace files",
+      "Diagnostic artifacts and copied receiving environment /tmp/sabueso-rich-0160-nm9zuzua for the next implementation checkpoint",
+      "Failed scratch retained with existing owner/review trigger; provider 2D draft pending approval"
+    ],
+    "review_trigger": "Next affected runtime/provider checkpoint or candidate closeout; receiving environment remains needed for the next authorized implementation slice"
+  },
+  "local_quality": {
+    "root_ruff_format": "passed",
+    "root_ruff_lint": "passed",
+    "moli_governance": "passed",
+    "git_diff_check": "passed",
+    "current_installed_runtime_and_all_original_SOURCE_bytes": "verified",
+    "scoped_local_markdown_targets": {
+      "checked": 771,
+      "missing": 0
+    }
+  },
+  "retention": {
+    "owner": "#154/#153/#112",
+    "review_trigger": "Next affected runtime/provider/candidate checkpoint; keep original files, complete receptor streams, failure receipts and native captures; remove only retired owned scratch/environments after last use"
+  },
+  "deferred_ci": "Authorized intermediate [skip ci]; exact-final-source CI/governance/full/candidate recovery stays due under #154/#153/#112; no workflow dispatched or package/tag/release published"
+}

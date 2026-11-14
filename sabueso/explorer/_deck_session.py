@@ -30,6 +30,12 @@ class _DeckSession:
         from sabueso import read_deck_exploration
 
         current = read_deck_exploration(path, expected_digest=expected_digest)
+        session = cls._from_view(current, output_directory)
+        session.saved = (Path(path), expected_digest) if expected_digest else None
+        return session
+
+    @classmethod
+    def _from_view(cls, current, output_directory):
         session = object.__new__(cls)
         session.explorer, session.current = current._owner, current
         session.output_directory = output_directory
@@ -37,7 +43,7 @@ class _DeckSession:
         session.card_session = session.visit = session.entry_position = None
         session.metadata_open = False
         session.cursor, session.previous, session.history = None, [], []
-        session.saved = (Path(path), expected_digest) if expected_digest else None
+        session.saved = None
         application = session.explorer._saved_application
         if application:
             session.metadata_open = application["metadata_open"]
@@ -65,7 +71,7 @@ class _DeckSession:
             previous.append(cursor)
             cursor = page["next_cursor"]
 
-    def _save(self):
+    def _save(self, path=None):
         from sabueso.core.deck_exploration_storage import save_deck_exploration
 
         def state(view, cursor):
@@ -82,9 +88,11 @@ class _DeckSession:
             "current": state(self.current, self.cursor),
             "history": [state(view, cursor) for view, cursor, _ in self.history],
         }
-        output = Path(self.output_directory)
-        output.mkdir(parents=True, exist_ok=True)
-        path = output / f"deck-reading-{secrets.token_hex(12)}.json.gz"
+        independent = path is None
+        if independent:
+            output = Path(self.output_directory)
+            output.mkdir(parents=True, exist_ok=True)
+            path = output / f"deck-reading-{secrets.token_hex(12)}.json.gz"
         receipt = save_deck_exploration(
             self.current,
             path,
@@ -92,7 +100,9 @@ class _DeckSession:
             application=application,
             additional=[view for view, _, _ in self.history],
         )
-        self.saved = (path, receipt["bundle_digest"])
+        if independent:
+            self.saved = (path, receipt["bundle_digest"])
+        return receipt
 
     def fork(self):
         result = copy(self)

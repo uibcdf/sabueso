@@ -34,6 +34,24 @@ def main():
     calls = args.output_directory / "source-calls.jsonl"
 
     def resolve(query, **options):
+        # Explicit synthetic latency fence for the cancellation receiver. It is
+        # not a source-performance measurement or a production service option.
+        pause = args.output_directory / "pause-next-query"
+        if pause.exists():
+            import time
+
+            pause.unlink()
+            waiting = args.output_directory / "query-waiting"
+            release = args.output_directory / "release-query"
+            release.unlink(missing_ok=True)
+            waiting.write_text("Synthetic fixture wait\n")
+            deadline = time.monotonic() + 30
+            while not release.exists():
+                if time.monotonic() > deadline:
+                    raise TimeoutError("The receiving latency fence was not released")
+                time.sleep(0.02)
+            waiting.unlink()
+            release.unlink()
         recorded = {"query": query, "options": dict(options)}
         if query.startswith("smiles:"):
             options["pubchem_client"] = FixturePubChemClient(args.fixture_directory)

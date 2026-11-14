@@ -31,7 +31,12 @@ explicit identifier entry also works, and the experimental live model panel has
 actual Qt receiving. Presentation layout save/restore is separate from
 Knowledge/model state. Cross-member source-bound Card navigation now works inside
 the captured Deck with exact entry/selection return. Independent original Deck readings now preserve metadata, occurrences and Deck selection/page/Back state. Continue model mapping and
-independent original query/scene recovery and remaining acceptance.
+scene recovery and broader lifecycle receiving and remaining acceptance. The [rich workspace increment](pending_proposals/interactive_workspace_persistence_0160.md)
+now supplies original query/inner Card/Deck history saving, nonblocking queries,
+native value/sequence/graph presentation and an actually received public
+protein/BTS/activity/assay/publication/exact Deck journey. Chemical depiction,
+general candidate presentation and supported model mapping remain open; prepared
+human review materials are not acceptance.
 The [living implementation plan](pending_proposals/interactive_implementation_0160.md)
 owns the 0.16.0 stages, microstages, current progress and immediate resumption;
 it preserves the broader roadmap and separate 0.15.0 delivery state.

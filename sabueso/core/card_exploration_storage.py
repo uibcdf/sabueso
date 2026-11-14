@@ -571,7 +571,7 @@ def _retain_machine_views(root):
     return added
 
 
-def _prepare(root):
+def _prepare(root, *, _navigation_refs=None):
     _require(
         admitted_view(root),
         "Saving derived structures/coverage or their originating trail requires a historical verifier not yet implemented. Save a supported literal/field view or inspect capabilities.",
@@ -739,6 +739,10 @@ def _prepare(root):
     _require(
         id(root) in ids, "The root view is not registered in its captured context."
     )
+    if _navigation_refs is not None:
+        # App-owned history may refer to these exact native nodes. This map is
+        # returned out of band and never changes the original Card file.
+        _navigation_refs.update(ids)
     records = {ids[id(view)]: _freeze_view(view, ids) for view in eligible}
     access = root._explorer.access
     objects, locations = _objects_for(access, list(records.values()))
@@ -996,6 +1000,7 @@ def save_exploration(
     max_encoded_bytes=transport.BYTE_LIMIT,
     max_decoded_bytes=transport.BYTE_LIMIT,
     max_logical_bytes=268435456,
+    _navigation_refs=None,
 ):
     if (
         not isinstance(path, (str, os.PathLike))
@@ -1011,7 +1016,11 @@ def save_exploration(
     from .card_display_filter_v2 import needed, wrap
     from .card_exploration_shared_values_v1 import pack, sealed_size
 
-    logical = _prepare(view)
+    logical = (
+        _prepare(view)
+        if _navigation_refs is None
+        else _prepare(view, _navigation_refs=_navigation_refs)
+    )
     if logical["format"] in (
         "sabueso.card_exploration@31",
         "sabueso.card_exploration@33",
@@ -1216,6 +1225,7 @@ def _restore(
     owned=False,
     max_logical_bytes=268435456,
     component_limit=67108864,
+    _navigation_nodes=None,
 ):
     from .card_display_filter_v2 import FORMAT as FILTER_FORMAT
     from .card_display_filter_v2 import RULE as FILTER_RULE
@@ -1385,7 +1395,11 @@ def _restore(
             retained_filters = filter_report is not None
         with verification(FILTER_RULE if retained_filters else None):
             view = _restore_checked(
-                bundle, expected_digest, owned=owned, representation=representation
+                bundle,
+                expected_digest,
+                owned=owned,
+                representation=representation,
+                _navigation_nodes=_navigation_nodes,
             )
         if filter_report is not None:
             view._explorer._session["validation"].update(filter_report)
@@ -1396,7 +1410,9 @@ def _restore(
         raise StorageError(f"Saved exploration validation failed: {exc}") from exc
 
 
-def _restore_checked(bundle, expected_digest, *, owned=False, representation=None):
+def _restore_checked(
+    bundle, expected_digest, *, owned=False, representation=None, _navigation_nodes=None
+):
     # Only the file decoder and fresh private serializer transfer ownership.
     # Direct internal callers keep the original defensive state-copy boundary.
     _require(type(owned) is bool, "Internal bundle ownership requires a boolean.")
@@ -1584,6 +1600,13 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
         bool(bundle["inputs"]) and all(key in captures for key in bundle["inputs"]),
         "Saved inputs do not bind captured Cards.",
     )
+    # _capture_cards retains first-input occurrence order. JSON object key
+    # order is not that provenance: canonical encoding sorts the Card keys.
+    # Restore the existing capture-factory order before independent predicates
+    # inspect the pool, without changing any scientific wire or verifier.
+    captures = {
+        key: captures[key] for key in dict.fromkeys([*bundle["inputs"], *captures])
+    }
     session = {
         "format": bundle["format"],
         "views": {},
@@ -2668,6 +2691,8 @@ def _restore_checked(bundle, expected_digest, *, owned=False, representation=Non
     _require(
         root.view_ref == bundle["root_view_ref"], "Saved root view binding differs."
     )
+    if _navigation_nodes is not None:
+        _navigation_nodes.update(nodes)
     if representation is not None:
         session["validation"].update(representation)
     if bundle["format"] == "sabueso.card_exploration@15":

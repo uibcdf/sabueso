@@ -29,7 +29,45 @@ try{
   if(args.includes('--empty')){await page.waitForFunction(()=>!!document.querySelector('.welcome button:not(:disabled)'));result.checks.empty_entry_visible=true;const {root}=await page.send('DOM.getDocument');const {nodeId}=await page.send('DOM.querySelector',{nodeId:root.nodeId,selector:'input[type=file]'});await page.send('DOM.setFileInputFiles',{nodeId,files:[card]});}
   await page.waitForFunction(()=>!!document.querySelector('[data-view-ref]'),null,{timeout:60000});
   const current=()=>page.evaluate(()=>({ref:document.querySelector('[data-view-ref]').dataset.viewRef,result:document.querySelector('[data-view-ref]').dataset.resultRef,text:document.querySelector('[data-testid="reading-text"]').textContent}));
-  if(args.includes('--saved-workspace')){
+  if(args.includes('--resume-scientific')){
+    const state=()=>page.evaluate(async()=>await(await fetch('/api/panel')).json());
+    const resumed=await state();result.checks.independent_startup_is_original=resumed.panel.mode==='saved';
+    result.checks.original_publication_and_entry_retained=resumed.panel.title.includes('35189560')&&resumed.panel.deck_context.entry_position===4;
+    const before=await current();await page.getByRole('button',{name:'Back',exact:true}).click();await page.waitForFunction(ref=>document.querySelector('[data-view-ref]').dataset.viewRef!==ref,before.ref);
+    result.checks.exact_scientific_trail_retained=(await state()).panel.items.some(i=>i.label.startsWith('Full original target publication context'));
+    await page.getByRole('button',{name:'Return to Deck',exact:true}).click();await page.waitForFunction(()=>document.querySelectorAll('.items .item').length===2);
+    result.checks.exact_filtered_deck_and_occurrences=(await state()).panel.items.every(i=>i.label.includes('P52270'));
+    await page.getByRole('button',{name:'Back',exact:true}).click();await page.waitForFunction(()=>document.querySelectorAll('.items .item').length===5);
+    result.checks.original_deck_history_retained=true;
+    result.scope='Actual independent Qt startup from original whole workspace; publication, exact Card trail, repeated Deck occurrence, filtered selection and Deck Back; Linux/Xvfb software only';
+  }else if(args.includes('--receive-scientific')){
+    const manifest=JSON.parse(fs.readFileSync(option('--manifest'),'utf8'));
+    const state=()=>page.evaluate(async()=>await(await fetch('/api/panel')).json());
+    async function clickItem(item,related=false){if(!item)throw new Error('Missing original scientific destination');const before=await current();await page.locator('[data-item-ref="'+item.ref+'"] .item-actions button:nth-child('+(related?2:1)+')').click();await page.waitForFunction(ref=>document.querySelector('[data-view-ref]').dataset.viewRef!==ref,before.ref);return await state();}
+    async function back(ref){await page.getByRole('button',{name:'Back',exact:true}).click();await page.waitForFunction(old=>document.querySelector('[data-view-ref]').dataset.viewRef===old,ref);}
+    const root=await current();result.checks.five_explicit_input_occurrences=(await state()).panel.items.length===5;
+    await page.locator('#search').focus();await page.send('Input.insertText',{text:'protein'});await page.keyboard.press('Enter');await page.waitForFunction(()=>document.querySelectorAll('.items .item').length===2);const selected=await state();
+    const entry=await clickItem(selected.panel.items[1]);result.checks.repeated_protein_entry=entry.panel.deck_context.entry_position===4;
+    await page.locator('#search').focus();await page.send('Input.dispatchKeyEvent',{type:'keyDown',key:'a',code:'KeyA',modifiers:2,windowsVirtualKeyCode:65});await page.send('Input.dispatchKeyEvent',{type:'keyUp',key:'a',code:'KeyA',modifiers:2,windowsVirtualKeyCode:65});await page.send('Input.insertText',{text:'BTS'});await page.keyboard.press('Enter');await page.waitForFunction(()=>document.querySelector('[data-view-ref] h2').textContent==='Literal search');
+    const search=await state(),entity=search.panel.items.find(i=>i.label==='pdb.ligand:BTS');await clickItem(entity,true);const links=await state();
+    const ligand=await clickItem(links.panel.items.find(i=>i.label==='Entity · pdb.ligand:BTS'));
+    result.checks.source_identity_opens_supplied_ligand=ligand.panel.profile==='small_molecule'&&ligand.panel.deck_context.current_card.card_ref===manifest.cards.ligand.pin;
+    result.checks.entry_occurrence_stays_protein=ligand.panel.deck_context.card.card_ref===manifest.cards.protein.pin&&ligand.panel.deck_context.entry_position===4;
+    await page.locator('[data-topic="activity_context"]').click();await page.waitForFunction(ref=>document.querySelector('[data-view-ref]').dataset.viewRef!==ref,ligand.panel.view_ref);
+    let p=await state();const groups=await clickItem(p.panel.items[0]);const records=await clickItem(groups.panel.items[0]);
+    result.checks.original_activity_quantity_has_unit=records.panel.items[0].preview.cells.some(c=>c.quantity?.unit==='nanomolar');
+    const context=await clickItem(records.panel.items[0],true),assay=context.panel.items.find(i=>i.label==='Retained original target assay context');
+    const assayReading=await clickItem(assay);result.checks.original_assay_context_opens=assayReading.panel.text.includes('CHEMBL5138431');await back(context.panel.view_ref);
+    p=await state();const publication=p.panel.items.find(i=>i.label.startsWith('Full original target publication context')&&i.label.includes('35189560'));const paper=await clickItem(publication);
+    result.checks.original_full_publication_opens=paper.panel.text.includes('35189560')&&paper.panel.deck_context.current_card.card_ref===manifest.cards.ligand.pin;
+    const saveStarted=performance.now();await page.getByRole('button',{name:'Save workspace',exact:true}).click();await page.waitForFunction(()=>document.querySelector('[role=status]').textContent.includes('Workspace saved:'),null,{timeout:120000});result.save_workspace_elapsed_s=(performance.now()-saveStarted)/1000;const saved=await state();result.saved_workspace=path.join(output,'readings',saved.workspace_saved_file);
+    const reopenStarted=performance.now();await page.getByRole('button',{name:'Reopen workspace',exact:true}).click();await page.waitForFunction(()=>document.querySelector('[role=status]').textContent.includes('Original workspace reopened'),null,{timeout:120000});result.reopen_workspace_elapsed_s=(performance.now()-reopenStarted)/1000;const reopened=await state();
+    result.checks.original_publication_and_entry_restore=reopened.panel.mode==='saved'&&reopened.panel.view_ref===paper.panel.view_ref&&reopened.panel.deck_context.entry_position===4;
+    await back(context.panel.view_ref);result.checks.original_scientific_back_survives_reopening=true;
+    await page.getByRole('button',{name:'Return to Deck',exact:true}).click();await page.waitForFunction(ref=>document.querySelector('[data-view-ref]').dataset.viewRef===ref,selected.panel.view_ref);result.checks.exact_filtered_deck_return=JSON.stringify((await state()).panel.items)===JSON.stringify(selected.panel.items);
+    await back(root.ref);result.checks.all_original_occurrences_survive=(await state()).panel.items.length===5;
+    result.scope='Actual Qt public P52270 to source-bound BTS identity, native activity quantity, original assay/full publication, whole workspace reopening and exact repeated Deck entry return; Linux/Xvfb software only';
+  }else if(args.includes('--saved-workspace')){
     const state=()=>page.evaluate(async()=>await(await fetch('/api/panel')).json());
     const read=await state();
     if(args.includes('--reading')){

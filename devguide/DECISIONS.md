@@ -1,5 +1,18 @@
 # Sabueso — Decision Log
 
+## Compose original application workspaces over native readers (2026-11-13)
+
+Under the authorized #154/#153 implementation scope, use a separate
+`sabueso.explorer_workspace@1` envelope for exact Card UI trails/pages, original
+Deck context and literal source-query reports/history. Native Card/Deck formats
+and their independent scientific verifiers remain authoritative. Bind existing
+native navigation IDs out of band; never reconstruct positions by matching
+titles or contents. Keep pending jobs, provider tokens, layout and model/scene
+outside this envelope. Original reopening is inert, bounded and explicit, with
+atomic writes and no implicit source acquisition. This is an implementation
+decision, not human acceptance or a scientific/schema/release change. See the
+[scope and receiving guide](pending_proposals/interactive_workspace_persistence_0160.md).
+
 ## Compose original Deck readings from native Card bundles (2026-11-13)
 
 Under #153/#154, use `sabueso.deck_exploration@1` for an independent original

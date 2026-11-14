@@ -57,8 +57,13 @@ Card correspondence. Presentation layouts now save/restore independently of Know
 including explicit unavailable-context fallback. Supplied Deck members now share
 one validated Card context pool, enabling source-declared related-Card navigation
 and exact entry/Deck return without choosing an identity or revision. Independent original Deck readings now retain full metadata, occurrences, selection and Deck Back/page state through unchanged Card bundles. Supported mapped molecular
-integration, independent query/scene recovery, richer
-entity-specific and acceptance work remain. This is development implementation,
+integration, scene recovery and broader lifecycle receiving, chemical depiction and acceptance work remain.
+The [rich workspace increment](pending_proposals/interactive_workspace_persistence_0160.md)
+now adds readable native values/units, sequence strips/relationship graphs,
+nonblocking source queries and original whole query/Card/Deck history saving.
+Its public protein/BTS/activity/assay/publication journey has actual Qt receiving;
+[human review materials](pending_proposals/interactive_researcher_review_0160.md)
+are prepared, with actual acceptance still open. This is development implementation,
 not a public GUI installation or platform-support claim.
 
 The [current overview orientation](pending_proposals/card_orientation.md) exposes

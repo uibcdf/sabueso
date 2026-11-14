@@ -7,6 +7,31 @@ This page owns current state; dated receipt histories are linked below.
 
 ## Next product objective: interactive exploration in 0.16.0
 
+The [rich presentation/whole-workspace increment](pending_proposals/interactive_workspace_persistence_0160.md)
+now adds readable original overview fields/source versions, native cell cards and
+tables with units, exact sequence strips, current-page relationship graphs and
+breadcrumbs. Source queries run without blocking reading, with explicit
+cancellation/discard and late-result adoption. Original whole workspaces retain
+Card trails/pages, Deck entry/selection/history and original source-query return
+points; layout, pending jobs and molecular scene remain separate. The public
+P52270 → source-bound BTS → native activity → original assay/full publication →
+exact repeated Deck return passes through saving/reopening in actual Qt and a
+noneditable installed diagnostic wheel. The [source-bound receipt](evidence/interactive_rich_workspace_checkpoint_20261113.json)
+owns qualification and failed controls. The new [human review materials](pending_proposals/interactive_researcher_review_0160.md)
+are prepared; actual reviews and workload budget agreement remain open. Native
+capture-order restoration and atomic/private bootstrap cleanup correct two
+defects exposed by this work without changing scientific rules or Card formats.
+All **793 distinct selected source cases** and **123 installed runtime cases**
+pass through the pinned published receptor with verified complete streams.
+Eight current-wheel native profiles receive nature-specific presentation,
+source/query history, molecular layout regression, scientific source/Deck return,
+independent startup and controlled service-loss/restart. A pending synthetic
+query closes with its service in about 2.24 s. Latest mixed-workspace save/reopen
+is about 84/25 s on its two-CPU profile; no workload budget is accepted by these
+observations. Initial capacity, source-only 64 MiB admission and receiver-race
+failures remain explicit in the receipt. This is selected changed-source
+receiving, not a new full-suite, platform, hosted or candidate claim.
+
 The first optional **Qt Card application is implemented**: blank/file entry,
 scrollable topics, local search, source/item navigation, exact Back, finite
 complete-text pages, save/reopen and float/reset controls. The
@@ -28,7 +53,7 @@ Interrupted full-suite attempts are not passing qualification.
 [Original-file receiving](evidence/interactive_original_file_checkpoint_20261113.json)
 adds file-selected original reading: 124 integrated cases and thirteen actual Qt
 checks pass, with plain/gzip/zstd and inert quantity/type controls. S5.1 is complete
-at Card-reading scope; original Deck persistence is received below and query persistence remains open, while presentation-only
+at Card-reading scope; original Deck persistence is received below and query persistence is now received in the whole-workspace increment above, while presentation-only
 layout persistence is received below.
 
 The [experimental molecular product receipt](evidence/interactive_molecular_checkpoint_20261113.json)
@@ -88,7 +113,7 @@ The [living 0.16.0 implementation plan and checkpoint](pending_proposals/interac
 owns granular stage/microstage progress, completion criteria, evidence and the
 next action. S0 architecture/feasibility and the first S1 Card application are
 complete within their explicit scopes. Supported mapped molecular integration, richer entity-specific journeys
-and original query/scene recovery retain explicit product work. Update that plan and this summary together as
+and scene recovery and broader lifecycle receiving retain explicit product work. Richer entry/candidate and chemical depiction work remains; original query recovery is now received above. Update that plan and this summary together as
 implementation advances; preserve experiment versus product qualification.
 
 The maintainer selects **PySide6 + QWebEngine** for the 0.16.0 desktop host,

@@ -386,6 +386,7 @@ def _restore(
             "Application root differs from the saved selection.",
         )
     owner._saved_application, owner._saved_views = bundle["application"], views
+    owner._logical_receiving_bytes = logical
     return views[bundle["root_view_ref"]]
 
 

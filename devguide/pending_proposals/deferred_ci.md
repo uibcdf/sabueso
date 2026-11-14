@@ -9,6 +9,22 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Rich retained presentation and original whole workspaces (2026-11-13)
+
+From `bed4605`, #154/#153 own native original field/cell/sequence/relationship
+presentation, one nonblocking explicit source-query worker and separately
+versioned original whole-workspace composition. The [receipt](../evidence/interactive_rich_workspace_checkpoint_20261113.json)
+binds runtime/artifact hashes, original-reader and application regressions,
+actual checkout/noneditable Qt journeys and failed controls. Capture-order
+restoration preserves original input occurrences through canonical JSON without
+changing frozen scientific verifiers or Card formats. Bootstrap handoff/cleanup
+protects pre-existing caller files. No provider code, dependency minima, schema,
+public platform or release changes. Public review materials are prepared; human
+acceptance and workload agreements remain open. The authorized intermediate
+`[skip ci]` checkpoint retains exact-final-source full/candidate and hosted
+CI/governance recovery under #154/#153/#112. Git and the consolidated issue report
+record the final SHA; no workflow dispatch or publication is selected.
+
 ### Independent original Deck readings (2026-11-13)
 
 From `1783508`, #153/#154 own the separate version-1 Deck reading envelope and

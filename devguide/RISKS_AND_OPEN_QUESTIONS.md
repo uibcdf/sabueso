@@ -1,5 +1,15 @@
 # Sabueso — Risks and Open Questions
 
+Whole interactive workspaces (#154/#153) now retain original readings and query
+history through native verification. Distinct focal Deck components still repeat
+the capture pool, and repeated independent validation can dominate save/reopen
+latency. The public mixed scientific journey exposes this cost; workload budgets
+and optimization receiving remain open. Encoded/logical limits do not bound RSS.
+Source-query cancellation discards a result but does not interrupt already active
+provider HTTP. Explicit saved reopening is available; automatic unsaved crash
+recovery is not delivered. See the [scope/limits](pending_proposals/interactive_workspace_persistence_0160.md)
+and [source-bound receipt](evidence/interactive_rich_workspace_checkpoint_20261113.json).
+
 The [NVIDIA/scale follow-up](pending_proposals/standalone_gpu_scale_20261113.md)
 now observes working Qt/Electron ANGLE/Vulkan rendering and Tauri graphics
 contexts, exact fragmented binary delivery and existing public Movie draw

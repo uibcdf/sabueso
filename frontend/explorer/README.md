@@ -39,8 +39,16 @@ They reuse `identity@1`; the initial SMILES route disables UniChem expansion.
 PDB remains a structure record whose source-declared proteins require a separate
 user query. Original decisions and acquisition traces stay inspectable. Return
 to previous query restores the exact reading without fetching again. Query
-history is in memory, with 32 retained return points; it is not a saved workspace.
+history has 32 retained return points and can now be included by Save workspace.
 Disease-name search is not offered without a candidate-search contract.
+
+Queries run in one background worker while the current reading stays available.
+Cancel query discards the result; an active provider request may still finish.
+A result arriving after you change readings waits for explicit Open result.
+There is no queue of source requests. Rich original overviews, bounded native
+cell tables, source versions, sequence strips and retained-relationship graphs
+complement the complete native readers. Sequence positions index the original
+text only and establish no model/residue correspondence.
 
 Card upload sends the selected file body directly. Never parse and reserialize
 sealed Card JSON in JavaScript: it changes integer/float distinctions and large
@@ -138,3 +146,35 @@ its original within-Card scope; Save layout remains presentation only. The first
 Deck envelope can repeat shared capture data across distinct focal Card bundles,
 so bounded pages do not imply bounded capture or archive memory. Large-Deck
 budgets and original-format receiving remain owned by #153.
+
+Save workspace composes original Card/Deck readings with the exact inner Card
+trail/pages, outer Deck selection/Back and source-query history. Reopen workspace
+verifies the last saved digest; Open reading or `--reading` can independently
+open the file in another execution. Saved source-query decisions are labelled
+original reports. Reopening never constructs current Cards or queries sources;
+unvisited science remains `not_saved`.
+
+Pending queries, layout, model/camera/scene and provider tokens are not saved.
+Use a separately saved layout and explicitly supplied model when needed.
+Workspace admission is bounded to 64 MiB encoded/decoded and 256 MiB logical
+receiving; the file chooser currently limits inputs to 16 MiB. Distinct native
+Deck components can repeat captured data, so larger scientific workspaces may
+spend substantial time in original verification. This is explicit saving, not
+automatic crash recovery. The [format/scope guide](../../devguide/pending_proposals/interactive_workspace_persistence_0160.md)
+and source-bound receipt own measured limits.
+
+The scientific receiving route is
+`deck_explorer_journey.mjs --receive-scientific --manifest <inputs.json>` on the
+prepared public five-occurrence P52270/BTS/molecule/MONDO Deck. It receives native
+assay/full-publication context and exact source-bound return through whole
+workspace saving. `--reading --resume-scientific` receives independent startup
+from that actual saved file. The source-entry receiver's `--receive-workspace
+--receive-cancellation` uses explicit synthetic latency fences to receive
+reading/cancel/stale-result behavior; it makes no source-speed claim.
+Its `--receive-pending-close` control receives the owned service closing with
+one additional unfinished synthetic query. The generic receiver's
+`--receive-recovery` uses a bounded public Card, positively identifies only its
+own launcher's direct service child on Linux, receives visible service loss
+with the reading/window retained, and explicitly restarts from the saved
+workspace. These are controlled receiving actions, not automatic recovery or
+general process-management features.

@@ -4,10 +4,15 @@ import {DockviewReact, themeLight, type DockviewApi, type DockviewReadyEvent, ty
 import 'dockview-react/dist/styles/dockview.css';
 import './style.css';
 
+type PreviewCell={column:string;text:string;state:string;reason:string|null;filterable:boolean;quantity:null|{field:string;unit:string;record:unknown}};
+type Preview={cells:PreviewCell[];cell_count:number;complete:boolean};
+type Overview={profile:string;fields:{path:string;label:string;state:string;text:string;can_open:boolean;support_state:string;sources:{state:string;text:string}[]}[]};
+type Graph={rule:string;scope:string;edges:{item_ref:string;subject_ref:string;predicate:string;object_ref:string}[]};
 type Panel={workspace?:'deck';deck_context?:{scope:'entry_occurrence';entry_position:number};revision:string;title:string;text:string;mode:string;profile:string;result_ref:string;view_ref:string;
-  topics:{name:string;description:string;availability?:string}[];items:{ref:string;label:string;kind:string}[];
+  topics:{name:string;description:string;availability?:string}[];items:{ref:string;label:string;kind:string;preview?:Preview}[];orientation?:Overview|null;graph?:Graph|null;grain?:string|null;trail?:{index:number;title:string}[];
   offset:number;count:number;has_previous:boolean;has_next:boolean;can_back:boolean;can_save:boolean;can_related:boolean;
-  full_text:null|{text:string;offset:number;count:number;has_previous:boolean;has_next:boolean};saved_file:string|null;outcome:{status:string;reason?:string}};
+  full_text:null|{kind?:'text'|'sequence';text:string;offset:number;count:number;has_previous:boolean;has_next:boolean};saved_file:string|null;outcome:{status:string;reason?:string}};
+type QueryJob={ref:string;kind:string;query:string;state:'running'|'ready'|'failed'|'cancelled'|'opened';phase:string;error:string|null;worker_running:boolean;original_revision:string;original_resolution_revision:string};
 type Resolution={revision:string;kind:string;query:string;status:string;entity_ref:string|null;has_card:boolean;choices:{ref:string;entity_ref:string}[];original_text:string};
 type Molecular={status:string;error:string|null;initial_file_name:string;initial_input_digest:string;client_url:string|null;correspondence:'not_established';initial_renderer_ready:boolean|null;initial_structure_received:boolean|null;active_selection_indices:number[]|null};
 type Presentation={layout:null|{format:string;renderer:string;workspace:SerializedDockview};error:string|null};
@@ -26,23 +31,45 @@ function preview(text:string){
   if(lines.at(-1)==='Full values: rows(), native_payload. Start: explorer.topics().' && lines.at(-2)?.startsWith('items()[i]'))return lines.slice(0,-2).join('\n');
   return text;
 }
+function ValueCell({cell,itemRef}:{cell:PreviewCell;itemRef:string}){
+  const {busy,act}=useSession();return <div className="value-cell"><span className="cell-label">{cell.column.replaceAll('_',' ')}</span>
+    <span className="cell-value">{cell.text}</span><span className="cell-state" title={cell.reason??undefined}>{cell.state.replaceAll('_',' ')}</span>
+    {cell.quantity&&<span className="unit-label">{cell.quantity.unit}</span>}
+    {cell.filterable&&<button className="cell-filter" disabled={busy} title={'Keep rows with the same '+cell.column} onClick={()=>void act('filter_cell',{item_ref:itemRef,column:cell.column})}>Keep same value</button>}
+    {cell.reason&&<span className="cell-reason">{cell.reason}</span>}</div>;
+}
+function SourceGraph({graph}:{graph:Graph}){
+  const {busy,act}=useSession();return <section className="relationship-graph" aria-label="Retained relationship graph"><h3>Retained relationships</h3><p className="quiet">{graph.scope}. Each connection opens its original retained record.</p>
+    {graph.edges.map(edge=><div className="graph-edge" key={edge.item_ref}><span className="graph-node">{edge.subject_ref}</span><button disabled={busy} onClick={()=>void act('open',{item_ref:edge.item_ref})}><span aria-hidden="true">→ </span>{edge.predicate.replaceAll('_',' ')}<span aria-hidden="true"> →</span></button><span className="graph-node">{edge.object_ref}</span></div>)}</section>;
+}
 function Reading(){
-  const {panel,busy,act}=useSession();
+  const {panel,busy,act}=useSession(),[display,setDisplay]=useState<'cards'|'table'|'graph'>('cards');
+  const [expanded,setExpanded]=useState(true);
+  const data=panel.orientation,primary=data?.fields[0],mode=display==='graph'&&!panel.graph?'cards':display;
   return <article className="reading" data-view-ref={panel.view_ref} data-result-ref={panel.result_ref}>
     {panel.deck_context&&<p className="deck-entry" data-testid="deck-entry">Deck entry: occurrence {panel.deck_context.entry_position+1}. Return to Deck keeps your original selection.</p>}
     <div className="eyebrow">{panel.mode==='saved'?'Original saved reading':'Captured knowledge'}</div>
-    <h2>{panel.title}</h2><pre className="reading-text" data-testid="reading-text">{preview(panel.text)}</pre>
-    {panel.full_text&&<section aria-label="Complete retained text"><h3>Complete retained text</h3><pre className="reading-text" data-testid="full-text">{panel.full_text.text}</pre>
+    {!!panel.trail?.length&&<nav className="reading-trail" aria-label="Reading trail">{panel.trail.slice(-5).map(point=><button key={point.index} disabled={busy} onClick={()=>void act('back_to',{history_index:point.index})}>{point.title}</button>)}</nav>}
+    <h2>{primary?.state==='retained'?primary.text:panel.title}</h2>
+    {data&&<section className="overview-fields" aria-label="Original entity overview">{data.fields.map(field=><div className="overview-field" key={field.path}>
+      <span className="cell-label">{field.label}</span><strong>{field.state.startsWith('retained')?field.text:field.state.replaceAll('_',' ')}</strong><span className="cell-state">{field.state.replaceAll('_',' ')}</span>
+      <span className="quiet">{field.sources.length?field.sources.map(source=>source.text).join(' · '):field.support_state.replaceAll('_',' ')}</span>
+      <button disabled={busy||!field.can_open} onClick={()=>void act('orientation_field',{path:field.path})}>Inspect original field</button></div>)}</section>}
+    <details className="original-reading" open={!data&&(!panel.items.length||!!panel.full_text)}><summary>Original reading and scope</summary><pre className="reading-text" data-testid="reading-text">{preview(panel.text)}</pre></details>
+    {panel.full_text&&<section aria-label="Complete retained text"><h3>{panel.full_text.kind==='sequence'?'Retained primary sequence':'Complete retained text'}</h3>
+      {panel.full_text.kind==='sequence'?<><p className="quiet">Positions below index the retained sequence text. They are not mapped structure or isoform coordinates.</p><div className="sequence-strip" data-testid="sequence-strip">{Array.from({length:Math.ceil(panel.full_text.text.length/60)},(_,i)=><div className="sequence-line" key={i}><span>{panel.full_text!.offset+i*60+1}</span><code>{panel.full_text!.text.slice(i*60,i*60+60).match(/.{1,10}/g)?.join(' ')}</code></div>)}</div></>:<pre className="reading-text" data-testid="full-text">{panel.full_text.text}</pre>}
       <nav className="pagination" aria-label="Complete text pages"><button disabled={busy||!panel.full_text.has_previous} onClick={()=>void act('text_page',{offset:panel.full_text!.offset-4096})}>Previous text</button>
       <span>{panel.full_text.count} characters · starting at {panel.full_text.offset}</span><button disabled={busy||!panel.full_text.has_next} onClick={()=>void act('text_page',{offset:panel.full_text!.offset+4096})}>Next text</button></nav></section>}
-    {panel.items.length>0&&<section aria-label="Explore this reading" className="items">{panel.items.map(item=><div className="item" key={item.ref} data-item-ref={item.ref}>
-      <div><span className="kind">{item.kind.replaceAll('_',' ')}</span><strong>{item.label}</strong></div>
-      <div className="item-actions"><button disabled={busy} onClick={()=>void act('open',{item_ref:item.ref})}>Open</button>
-      <button disabled={busy||!panel.can_related} onClick={()=>void act('related',{item_ref:item.ref})}>Sources / questions</button></div>
-    </div>)}</section>}
+    {panel.items.some(item=>item.preview)&&<div className="display-controls" role="group" aria-label="Reading presentation"><button disabled={busy} aria-pressed={mode==='cards'} onClick={()=>setDisplay('cards')}>Cards</button><button disabled={busy} aria-pressed={mode==='table'} onClick={()=>setDisplay('table')}>Table</button>{panel.graph&&<button disabled={busy} aria-pressed={mode==='graph'} onClick={()=>setDisplay('graph')}>Relationship graph</button>}<button disabled={busy} aria-pressed={expanded} onClick={()=>setExpanded(!expanded)}>{expanded?'Compact values':'Show values'}</button></div>}
+    {panel.grain&&<p className="quiet">{panel.grain}</p>}
+    {mode==='graph'&&panel.graph?<SourceGraph graph={panel.graph}/>:panel.items.length>0&&<section aria-label="Explore this reading" className={'items '+(mode==='table'?'table-items':'')}>
+      {panel.items.map(item=><div className="item" key={item.ref} data-item-ref={item.ref}>
+        <div className="item-body"><span className="kind">{item.kind.replaceAll('_',' ')}</span><strong>{item.label}</strong>
+          {item.preview&&(expanded||mode==='table')&&<><div className="cell-grid">{item.preview.cells.map(cell=><ValueCell key={cell.column} cell={cell} itemRef={item.ref}/>)}</div>{!item.preview.complete&&<p className="quiet">Showing {item.preview.cells.length} of {item.preview.cell_count} fields. Open the item for its complete retained content.</p>}</>}
+        </div><div className="item-actions"><button disabled={busy} onClick={()=>void act('open',{item_ref:item.ref})}>Open</button><button disabled={busy||!panel.can_related} onClick={()=>void act('related',{item_ref:item.ref})}>Sources / questions</button></div>
+      </div>)}</section>}
     <nav className="pagination" aria-label="Reading pages"><button disabled={busy||!panel.has_previous} onClick={()=>void(panel.workspace==='deck'?act('deck_previous'):act('page',{offset:panel.offset-40}))}>Previous page</button>
-      <span>{panel.count?`${panel.offset+1}–${panel.offset+panel.items.length} of ${panel.count} items`:'No retained items in this reading'}</span>
-      <button disabled={busy||!panel.has_next} onClick={()=>void(panel.workspace==='deck'?act('deck_next'):act('page',{offset:panel.offset+40}))}>Next page</button></nav>
+      <span>{panel.count?`${panel.offset+1}–${panel.offset+panel.items.length} of ${panel.count} items`:'No retained items in this reading'}</span><button disabled={busy||!panel.has_next} onClick={()=>void(panel.workspace==='deck'?act('deck_next'):act('page',{offset:panel.offset+40}))}>Next page</button></nav>
   </article>;
 }
 function Orientation(){const {panel}=useSession();return <article className="reading orientation"><div className="eyebrow">Your context</div><h2>Explore at your own pace</h2>
@@ -75,7 +102,7 @@ function Workspace({panel,busy,act,molecular,presentation,saveLayout,notice}:{pa
 }
 function ResolutionReport({result,busy,choose}:{result:Resolution;busy:boolean;choose:(ref:string)=>Promise<void>}){
   return <section className="resolution-report" aria-label="Source query result"><strong>{result.status.replaceAll('_',' ')}</strong> · {result.query}
-    {result.entity_ref&&<p>{result.entity_ref}</p>}
+    {(result as Resolution&{mode?:string}).mode==='saved'&&<p className="quiet">Original saved source-query report. No source was queried by reopening it.</p>}{result.entity_ref&&<p>{result.entity_ref}</p>}
     {!result.has_card&&<p>{result.kind==='pdb'&&result.status==='resolved'?'This is a PDB structure record. Choose a source-declared protein below to query its Card.':'This query did not produce a Card. Any reading below is the previous retained context.'}</p>}
     {result.choices.map(item=><button disabled={busy} key={item.ref} onClick={()=>void choose(item.ref)}>Query {item.entity_ref}</button>)}
     <details><summary>Original resolution, source decisions and acquisition trace</summary><pre>{result.original_text}</pre></details>
@@ -85,14 +112,34 @@ function App(){
   const [panel,setPanel]=useState<Panel|null>(null),[ready,setReady]=useState(false),[busy,setBusy]=useState(false),[message,setMessage]=useState('Opening your workspace…'),[query,setQuery]=useState(''),[fileMode,setFileMode]=useState<'card'|'deck'|'reading'>('card');
   const file=useRef<HTMLInputElement>(null);
   const [molecular,setMolecular]=useState<Molecular|null>(null);
+  const [job,setJob]=useState<QueryJob|null>(null),attemptedJobs=useRef(new Set<string>());
+  const [workspaceSaved,setWorkspaceSaved]=useState<string|null>(null);
+  const queryActive=!!job?.worker_running||job?.state==='running';
+  const queryWatch=!!job&&(job.worker_running||job.state==='running'||job.state==='ready');
   const [presentation,setPresentation]=useState<Presentation>({layout:null,error:null});
   const [resolution,setResolution]=useState<Resolution|null>(null),[entryKind,setEntryKind]=useState('uniprot'),[identifier,setIdentifier]=useState(''),[entryOpen,setEntryOpen]=useState(false),[canReturnQuery,setCanReturnQuery]=useState(false);
   useEffect(()=>{let active=true;async function start(){try{
     const token=new URLSearchParams(location.hash.slice(1)).get('token');history.replaceState(null,'',location.pathname);
     if(token)await api('/auth',{token});
-    const result=await api('/api/panel');if(active){setPresentation(result.presentation??{layout:null,error:null});setPanel(result.panel);setMolecular(result.molecular??null);setResolution(result.resolution??null);setCanReturnQuery(result.can_return_query??false);setReady(true);setMessage('Ready to explore retained knowledge.');}
+    const result=await api('/api/panel');if(active){setPresentation(result.presentation??{layout:null,error:null});setJob(result.query_job??null);setWorkspaceSaved(result.workspace_saved_file??null);setPanel(result.panel);setMolecular(result.molecular??null);setResolution(result.resolution??null);setCanReturnQuery(result.can_return_query??false);setReady(true);setMessage('Ready to explore retained knowledge.');}
   }catch(error){if(active)setMessage(String(error));}}void start();return()=>{active=false;};},[]);
   useEffect(()=>{if(!molecular?.client_url)return;let stopped=false,pending=false;const poll=async()=>{if(pending||stopped)return;pending=true;try{const result=await api('/api/molecular');if(!stopped)setMolecular(result.molecular);}catch{}finally{pending=false;}};const timer=setInterval(()=>void poll(),1000);return()=>{stopped=true;clearInterval(timer);};},[molecular?.client_url]);
+  function applyReading(result:any){setWorkspaceSaved(result.workspace_saved_file??null);setPanel(result.panel);setMolecular(result.molecular??null);setResolution(result.resolution??null);setCanReturnQuery(result.can_return_query??false);}
+  useEffect(()=>{if(!job||!queryWatch)return;let stopped=false,pending=false;
+    async function poll(){if(pending||stopped)return;pending=true;try{const response=await api('/api/query');const current:QueryJob|null=response.query_job;if(!current||stopped)return;setJob(current);
+      if(current.state==='ready'&&!attemptedJobs.current.has(current.ref)){attemptedJobs.current.add(current.ref);
+        try{const result=await api('/api/query-open',{job_ref:current.ref,revision:current.original_revision,resolution_revision:current.original_resolution_revision});if(!stopped){applyReading(result);setJob(result.query_job);setEntryOpen(false);setMessage(result.resolution?.has_card?'Card acquired. Further browsing reads this capture without refreshing sources.':'Source query finished. Inspect its original outcome.');}}
+        catch{if(!stopped)setMessage('Source result ready. Your reading changed; choose Open result when you want to inspect it.');}}
+      else if(current.state==='failed'&&!stopped)setMessage(current.error??'Source query failed. Your previous reading remains available.');
+    }catch(error){if(!stopped)setMessage(String(error));}finally{pending=false;}}
+    const timer=setInterval(()=>void poll(),500);void poll();return()=>{stopped=true;clearInterval(timer);};
+  },[job?.ref,queryWatch]);
+  async function cancelQuery(){if(!job)return;try{const result=await api('/api/query-cancel',{job_ref:job.ref});setJob(result.query_job);setMessage(result.query_job.worker_running?'Result discarded. An active source request may finish; browsing remains available.':'Query result discarded.');}catch(error){setMessage(String(error));}}
+  async function openQueryResult(){if(!job||busy)return;setBusy(true);try{const result=await api('/api/query-open',{job_ref:job.ref,revision:panel?.revision??'',resolution_revision:resolution?.revision??''});applyReading(result);setJob(result.query_job);setEntryOpen(false);setMessage('Opened the retained source result. No new source query was made.');}catch(error){setMessage(String(error));}finally{setBusy(false);}}
+  async function workspaceAction(reopen=false){if(busy)return;setBusy(true);setMessage(reopen?'Reopening the original workspace…':'Saving the current readings and source-query history…');
+    try{const result=await api(reopen?'/api/workspace-reopen':'/api/workspace-save',{revision:panel?.revision??'',resolution_revision:resolution?.revision??''});applyReading(result);
+      setMessage(reopen?'Original workspace reopened. No sources queried; layout and molecular model are separate.':'Workspace saved: original readings, Card/Deck navigation and source-query history. Pending queries, layout and molecular scene are not included.');}
+    catch(error){setMessage(String(error));}finally{setBusy(false);}}
   async function saveLayout(workspace:SerializedDockview){if(busy)return;setBusy(true);try{const result=await api('/api/layout',{format:'sabueso.presentation_layout@1',renderer:'dockview@8.9.0',workspace});setPresentation(result);setMessage('Presentation layout saved. This does not save Knowledge, query history or the molecular scene.');}catch(error){setMessage(String(error));}finally{setBusy(false);}}
   async function act(name:string,extra:Record<string,unknown>={}){if(!panel||busy)return;setBusy(true);setMessage('Opening the requested reading…');
     try{const result=await api('/api/action',{name,revision:panel.revision,...extra});setPanel(result.panel);setMolecular(result.molecular??null);setResolution(result.resolution??null);setCanReturnQuery(result.can_return_query??false);setMessage(name==='save'?(panel.workspace==='deck'?'Deck reading saved: original members, metadata, selection and Back history. Layout, source queries and molecular scene are not included.':panel.deck_context!==undefined?'Card reading and captured Cards saved. Deck membership, selection and layout are not saved in this file.':'Reading saved. Reopen it to inspect the original capture.'):'Ready.');}
@@ -100,24 +147,26 @@ function App(){
     finally{setBusy(false);}}
   async function openFile(selected:File){setBusy(true);try{
     if(selected.size>16*1024**2)throw new Error('This input exceeds the 16 MiB opening limit.');
-    const response=await fetch(`/api/${fileMode}`,{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json','X-Sabueso-Revision':panel?.revision??'','X-Sabueso-Resolution':resolution?.revision??''},body:selected});if(!response.ok){const error=await response.json();throw new Error(error.error??'Could not open the Card.');}const result=await response.json();setPanel(result.panel);setMolecular(result.molecular??null);setResolution(result.resolution??null);setCanReturnQuery(result.can_return_query??false);setMessage(`${fileMode==='deck'?'Deck':fileMode==='reading'?'Original reading':'Card'} opened. Choose where to explore.`);
+    const response=await fetch(`/api/${fileMode}`,{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json','X-Sabueso-Revision':panel?.revision??'','X-Sabueso-Resolution':resolution?.revision??''},body:selected});if(!response.ok){const error=await response.json();throw new Error(error.error??'Could not open the Card.');}const result=await response.json();applyReading(result);setMessage(`${fileMode==='deck'?'Deck':fileMode==='reading'?'Original reading':'Card'} opened. Choose where to explore.`);
     }catch(error){setMessage(String(error));}finally{setBusy(false);if(file.current)file.current.value='';}}
-  async function acquire(choice_ref?:string){if(!ready||busy)return;setBusy(true);setMessage('Querying the requested public sources…');
+  async function acquire(choice_ref?:string){if(!ready||busy||queryActive)return;setBusy(true);setMessage('Starting the requested public-source query…');
     try{const revisions={revision:panel?.revision??'',resolution_revision:resolution?.revision??''};
-      const result=await api(choice_ref?'/api/resolve-choice':'/api/resolve',choice_ref?{...revisions,choice_ref}:{...revisions,kind:entryKind,query:identifier});
-      setPanel(result.panel);setMolecular(result.molecular??null);setResolution(result.resolution);setCanReturnQuery(result.can_return_query??false);setEntryOpen(false);setMessage(result.resolution.has_card?'Card acquired. Further topic navigation reads this capture without refreshing sources.':'Source query finished. Inspect its outcome and original decision.');
+      const result=await api(choice_ref?'/api/query-choice':'/api/query-start',choice_ref?{...revisions,choice_ref}:{...revisions,kind:entryKind,query:identifier});
+      setJob(result.query_job);setMessage('Querying sources in the background. Your current reading remains available.');
     }catch(error){setMessage(String(error));}finally{setBusy(false);}}
   async function returnQuery(){if(busy)return;setBusy(true);try{const result=await api('/api/resolve-back',{revision:panel?.revision??'',resolution_revision:resolution?.revision??''});setPanel(result.panel);setMolecular(result.molecular??null);setResolution(result.resolution);setCanReturnQuery(result.can_return_query);setMessage('Returned to the exact retained query and reading. No source was queried.');}catch(error){setMessage(String(error));}finally{setBusy(false);}}
   const entry=<form className="entry-form" aria-label="Query public sources" onSubmit={e=>{e.preventDefault();void acquire();}}>
-    <label htmlFor="entry-kind">Start from</label><select id="entry-kind" value={entryKind} disabled={busy} onChange={e=>setEntryKind(e.target.value)}><option value="uniprot">UniProt accession</option><option value="pdb">PDB entry</option><option value="smiles">SMILES</option><option value="disease">Disease identifier</option></select>
-    <label htmlFor="entry-query">{entryKind==='smiles'?'Public molecular structure (SMILES)':'Identifier'}</label><input id="entry-query" maxLength={8192} value={identifier} disabled={busy} onChange={e=>setIdentifier(e.target.value)} placeholder={{uniprot:'P52270',pdb:'1TCD',smiles:'CCO',disease:'MONDO:0014221'}[entryKind]}/>
-    <button className="primary" disabled={!ready||busy||!identifier.trim()}>Query public sources</button>
+    <label htmlFor="entry-kind">Start from</label><select id="entry-kind" value={entryKind} disabled={busy||queryActive} onChange={e=>setEntryKind(e.target.value)}><option value="uniprot">UniProt accession</option><option value="pdb">PDB entry</option><option value="smiles">SMILES</option><option value="disease">Disease identifier</option></select>
+    <label htmlFor="entry-query">{entryKind==='smiles'?'Public molecular structure (SMILES)':'Identifier'}</label><input id="entry-query" maxLength={8192} value={identifier} disabled={busy||queryActive} onChange={e=>setIdentifier(e.target.value)} placeholder={{uniprot:'P52270',pdb:'1TCD',smiles:'CCO',disease:'MONDO:0014221'}[entryKind]}/>
+    <button className="primary" disabled={!ready||busy||queryActive||!identifier.trim()}>Query public sources</button>
     <p className="quiet">{entryKind==='smiles'?'The entered SMILES is sent to PubChem for source-stated identity. UniChem expansion is disabled for this initial query.':entryKind==='disease'?'The disease identifier is sent to MONDO. Disease-name search is not offered yet.':entryKind==='pdb'?'The entry identifier is sent to RCSB PDB. Related proteins are offered for a separate query.':'The accession is sent to UniProt.'} Identity profile only; enrichment is not requested automatically.</p>
   </form>;
   return <><header><div className="brand"><span className="brand-mark">S</span><div><h1>Sabueso</h1><p>Molecular knowledge explorer</p></div></div>
-    {canReturnQuery&&<button disabled={busy} onClick={()=>void returnQuery()}>Return to previous query</button>}<button disabled={!ready||busy} onClick={()=>setEntryOpen(!entryOpen)}>New source query</button><button disabled={!ready||busy} onClick={()=>{setFileMode('card');file.current?.click();}}>Open Card…</button><button disabled={!ready||busy} onClick={()=>{setFileMode('deck');file.current?.click();}}>Open Deck…</button><button disabled={!ready||busy} onClick={()=>{setFileMode('reading');file.current?.click();}}>Open reading…</button><input ref={file} type="file" accept={fileMode==='deck'?'.jsonl':fileMode==='reading'?'.json,.gz,.zst,application/json':'.json,application/json'} hidden onChange={e=>{const f=e.target.files?.[0];if(f)void openFile(f);}}/></header>
+    {canReturnQuery&&<button disabled={busy} onClick={()=>void returnQuery()}>Return to previous query</button>}<button disabled={!ready||busy} onClick={()=>setEntryOpen(!entryOpen)}>New source query</button><button disabled={!ready||busy} onClick={()=>{setFileMode('card');file.current?.click();}}>Open Card…</button><button disabled={!ready||busy} onClick={()=>{setFileMode('deck');file.current?.click();}}>Open Deck…</button><button disabled={!ready||busy} onClick={()=>{setFileMode('reading');file.current?.click();}}>Open reading…</button><button disabled={!ready||busy||(!panel&&!resolution)} onClick={()=>void workspaceAction()}>Save workspace</button>{workspaceSaved&&<button disabled={busy} onClick={()=>void workspaceAction(true)}>Reopen workspace</button>}<input ref={file} type="file" accept={fileMode==='deck'?'.jsonl':fileMode==='reading'?'.json,.gz,.zst,application/json':'.json,application/json'} hidden onChange={e=>{const f=e.target.files?.[0];if(f)void openFile(f);}}/></header>
     <div role="status" className={message.startsWith('Error')?'status error':'status'} aria-live="polite">{message}</div>
-    {entryOpen&&panel&&<section className="query-drawer">{entry}</section>}{resolution&&<ResolutionReport result={resolution} busy={busy} choose={ref=>acquire(ref)}/>}
+    {job&&job.state!=='opened'&&<section className="query-progress" aria-label="Source query progress"><div><strong>{job.state==='running'?'Querying public sources':job.state==='ready'?'Source result ready':job.state==='cancelled'?'Result discarded':'Source query failed'}</strong><span>{job.query}</span><span>{job.worker_running?'A provider request is still running. Your current reading remains available.':job.state==='ready'?'Ready to open the retained answer.':job.error??'No pending result will replace your reading.'}</span></div>
+      {(job.state==='running'||job.state==='ready')&&<button onClick={()=>void cancelQuery()}>Cancel query</button>}{job.state==='ready'&&<button disabled={busy} onClick={()=>void openQueryResult()}>Open result</button>}</section>}
+    {entryOpen&&panel&&<section className="query-drawer">{entry}</section>}{resolution&&<ResolutionReport result={resolution} busy={busy||queryActive} choose={ref=>acquire(ref)}/>}
     {!panel?<main className="welcome"><div className="eyebrow">Start an exploration</div><h2>What would you like to learn?</h2>
       <p>Choose an identifier to query public sources, or open a local Card or Deck to explore retained knowledge.</p>{entry}
       <button className="primary" disabled={!ready||busy} onClick={()=>{setFileMode('card');file.current?.click();}}>Open a Card JSON file</button><p className="quiet">Opening files and browsing topics makes no source queries. No account required.</p></main>:

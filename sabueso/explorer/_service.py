@@ -23,11 +23,41 @@ from sabueso.core.errors import ArgumentError, SabuesoError, StorageError
 from sabueso.explorer._deck_session import _DeckSession
 from sabueso.explorer._layout import LIMIT as LAYOUT_LIMIT
 from sabueso.explorer._layout import _Layout
+from sabueso.explorer._queries import _Queries
 from sabueso.explorer._resolution import _resolve
 from sabueso.explorer._session import _Session
 
 ASSETS = Path(__file__).parent / "_assets"
 COOKIE = "sabueso_explorer"
+
+
+def _publish_bootstrap(path, configuration):
+    """Expose only a complete, private descriptor without replacing a caller file."""
+    path = Path(path)
+    descriptor, temporary = tempfile.mkstemp(
+        dir=path.parent, prefix=".sabueso-bootstrap-"
+    )
+    try:
+        with os.fdopen(descriptor, "w", encoding="utf-8") as output:
+            json.dump(configuration, output)
+            output.flush()
+            os.fsync(output.fileno())
+            owned = os.fstat(output.fileno())
+        os.link(temporary, path)
+        return owned.st_dev, owned.st_ino
+    finally:
+        Path(temporary).unlink(missing_ok=True)
+
+
+def _remove_bootstrap(path, owned):
+    if owned is None:
+        return
+    try:
+        current = path.lstat()
+    except FileNotFoundError:
+        return
+    if (current.st_dev, current.st_ino) == owned:
+        path.unlink()
 
 
 @dep_digest("aiohttp")
@@ -50,6 +80,8 @@ class _Service:
         self.resolution_history = []
         self.molecular = None
         self.layout = _Layout(output_directory)
+        self.queries = _Queries(self)
+        self.workspace_saved = None
 
     def response(self, panel):
         return {
@@ -58,9 +90,13 @@ class _Service:
             "can_return_query": bool(self.resolution_history),
             "molecular": self.molecular.descriptor() if self.molecular else None,
             "presentation": self.layout.read(),
+            "query_job": self.queries.descriptor(),
+            "workspace_saved_file": self.workspace_saved[0].name
+            if self.workspace_saved
+            else None,
         }
 
-    def resolve(self, body, *, choice=False):
+    def _query_request(self, body, *, choice=False):
         fields = {
             "revision",
             "resolution_revision",
@@ -90,6 +126,12 @@ class _Service:
             kind, query = item["kind"], item["query"]
         else:
             kind, query = body["kind"], body["query"]
+        from ._resolution import _query
+
+        _query(kind, query)  # Grammar before launching work; no source access.
+        return kind, query
+
+    def _prepare_resolution(self, kind, query):
         result = _resolve(kind, query, self.resolver)
         # Prepare before committing either context: an invalid answer must not
         # replace a valid captured reading or its original resolution.
@@ -101,6 +143,9 @@ class _Service:
         result.panel()
         if session is not None:
             session.panel()
+        return result, session
+
+    def _adopt_resolution(self, result, session):
         if self.session is not None or self.resolution is not None:
             self.resolution_history.append(
                 (self.session.fork() if self.session else None, self.resolution)
@@ -109,6 +154,12 @@ class _Service:
             self.session = session
         self.resolution = result
         return self.response(self.panel())
+
+    def resolve(self, body, *, choice=False):
+        if self.queries.job and self.queries.job["thread"].is_alive():
+            raise ArgumentError("A source query is already running.")
+        kind, query = self._query_request(body, choice=choice)
+        return self._adopt_resolution(*self._prepare_resolution(kind, query))
 
     def return_query(self, body):
         if not isinstance(body, dict) or set(body) != {
@@ -165,6 +216,9 @@ class _Service:
         from sabueso.core.card_exploration_storage import _unique
         from sabueso.core.deck_exploration_storage import FORMAT as DECK_FORMAT
 
+        from ._workspace import FORMAT as WORKSPACE_FORMAT
+        from ._workspace import read_workspace
+
         decoded, _ = transport.read(
             io.BytesIO(raw),
             encoded_limit=transport.BYTE_LIMIT,
@@ -176,17 +230,61 @@ class _Service:
         except (ValueError, UnicodeError, RecursionError) as exc:
             raise StorageError("Cannot read this original saved reading.") from exc
         deck_reading = isinstance(data, dict) and data.get("format") == DECK_FORMAT
+        workspace = isinstance(data, dict) and data.get("format") == WORKSPACE_FORMAT
         del decoded, data
         with tempfile.TemporaryDirectory(prefix="sabueso-reading-input-") as directory:
             path = Path(directory) / "original.json"
             path.write_bytes(raw)
-            reader = _DeckSession if deck_reading else _Session
-            session = reader.from_saved(path, self.output_directory)
-        panel = session.panel()
+            if workspace:
+                session, resolution, history = read_workspace(
+                    path, self.output_directory
+                )
+            else:
+                reader = _DeckSession if deck_reading else _Session
+                session = reader.from_saved(path, self.output_directory)
+                resolution, history = None, []
+        panel = session.panel() if session else None
         self.session = session
-        self.resolution = None
-        self.resolution_history = []
+        self.resolution, self.resolution_history = resolution, history
+        self.workspace_saved = None
         return panel
+
+    def workspace(self, body, *, reopen=False):
+        if not isinstance(body, dict) or set(body) != {
+            "revision",
+            "resolution_revision",
+        }:
+            raise ArgumentError("Malformed workspace action.")
+        current = self.session.revision if self.session else ""
+        resolution = self.resolution.revision if self.resolution else ""
+        if body["revision"] != current or body["resolution_revision"] != resolution:
+            raise ArgumentError(
+                "The workspace changed; reload before saving or reopening it."
+            )
+        if reopen:
+            from ._workspace import read_workspace
+
+            if self.workspace_saved is None:
+                raise ArgumentError("Save this workspace before reopening it.")
+            session, resolution, history = read_workspace(
+                self.workspace_saved[0], self.output_directory, self.workspace_saved[1]
+            )
+            panel = session.panel() if session else None
+            self.session, self.resolution, self.resolution_history = (
+                session,
+                resolution,
+                history,
+            )
+        else:
+            from ._workspace import save_workspace
+
+            output = Path(self.output_directory)
+            output.mkdir(parents=True, exist_ok=True)
+            path = output / f"workspace-{secrets.token_hex(12)}.json.gz"
+            receipt = save_workspace(self, path)
+            self.workspace_saved = (path, receipt["bundle_digest"])
+            panel = self.panel()
+        return self.response(panel)
 
     def application(self):
         web = self.web
@@ -306,6 +404,36 @@ class _Service:
                 {"molecular": self.molecular.descriptor() if self.molecular else None}
             )
 
+        async def query_job(request):
+            if request.method == "GET":
+                return web.json_response({"query_job": self.queries.descriptor()})
+            body = await request.json()
+            async with self.lock:
+                if request.path.endswith("-cancel"):
+                    result = {"query_job": self.queries.cancel(body)}
+                elif request.path.endswith("-open"):
+                    result = await asyncio.to_thread(self.queries.open, body)
+                else:
+                    result = {
+                        "query_job": self.queries.start(
+                            body, choice=request.path.endswith("-choice")
+                        )
+                    }
+            return web.json_response(result)
+
+        async def close_queries(application):
+            await self.queries.close()
+
+        app.on_cleanup.append(close_queries)
+
+        async def workspace(request):
+            body = await request.json()
+            async with self.lock:
+                result = await asyncio.to_thread(
+                    self.workspace, body, reopen=request.path.endswith("-reopen")
+                )
+            return web.json_response(result)
+
         async def layout(request):
             raw = await request.read()
             if len(raw) > LAYOUT_LIMIT:
@@ -333,6 +461,13 @@ class _Service:
                 web.post("/api/resolve", resolve),
                 web.post("/api/resolve-choice", resolve),
                 web.post("/api/resolve-back", resolve),
+                web.get("/api/query", query_job),
+                web.post("/api/query-start", query_job),
+                web.post("/api/query-choice", query_job),
+                web.post("/api/query-cancel", query_job),
+                web.post("/api/query-open", query_job),
+                web.post("/api/workspace-save", workspace),
+                web.post("/api/workspace-reopen", workspace),
                 web.get("/api/molecular", molecular),
                 web.post("/api/layout", layout),
             ]
@@ -346,7 +481,7 @@ async def _run(args, resolver=None):
     loop = asyncio.get_running_loop()
     loop.set_default_executor(executor)
     service = _Service(args.output_directory, resolver=resolver)
-    runner = None
+    runner, bootstrap_owned = None, None
     try:
         if args.card:
             if args.card.stat().st_size > 16 * 1024**2:
@@ -384,19 +519,15 @@ async def _run(args, resolver=None):
         await site.start()
         port = site._server.sockets[0].getsockname()[1]
         service.origin = f"http://127.0.0.1:{port}"
-        descriptor = os.open(
-            args.bootstrap, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600
+        bootstrap_owned = _publish_bootstrap(
+            args.bootstrap,
+            {
+                "url": f"{service.origin}/#token={service.token}",
+                "molecular_origin": service.molecular.origin
+                if service.molecular
+                else None,
+            },
         )
-        with os.fdopen(descriptor, "w", encoding="utf-8") as output:
-            json.dump(
-                {
-                    "url": f"{service.origin}/#token={service.token}",
-                    "molecular_origin": service.molecular.origin
-                    if service.molecular
-                    else None,
-                },
-                output,
-            )
         for signum in (signal.SIGTERM, signal.SIGINT):
             loop.add_signal_handler(signum, stop.set)
         await stop.wait()
@@ -409,7 +540,7 @@ async def _run(args, resolver=None):
                 if service.molecular:
                     await service.molecular.close()
             finally:
-                args.bootstrap.unlink(missing_ok=True)
+                _remove_bootstrap(args.bootstrap, bootstrap_owned)
                 executor.shutdown(wait=True)
 
 

@@ -22,7 +22,7 @@ try{
   const server=net.createServer();await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
   const port=server.address().port;await new Promise(resolve=>server.close(resolve));
   const python=option('--python')||'python',bootstrap=path.join(output,'bootstrap.json');
-  launch(python,['devtools/explorer_fixture_service.py','--bootstrap',bootstrap,'--output-directory',path.join(output,'readings'),'--fixture-directory',fixtures],'fixture-service',env);
+  const fixtureService=launch(python,['devtools/explorer_fixture_service.py','--bootstrap',bootstrap,'--output-directory',path.join(output,'readings'),'--fixture-directory',fixtures],'fixture-service',env);
   await until(()=>fs.existsSync(bootstrap),'fixture service bootstrap');
   launch(python,['-c',"import json,sys;from pathlib import Path;from sabueso.explorer._qt import _window;_window(json.loads(Path(sys.argv[1]).read_text())['url'],int(sys.argv[2]),Path(sys.argv[3]))",bootstrap,String(port),output],'application',env);
   await until(async()=>{try{browser=await connectNative(`http://127.0.0.1:${port}`);return true;}catch{return false;}},'actual Qt application');
@@ -58,10 +58,47 @@ try{
   const absent=JSON.parse(fs.readFileSync(path.join(fixtures,'pubchem','structures.json'))).lookups[3].query;
   const missing=await query('smiles',absent,'not_found');result.checks.not_found_preserves_previous_reading=missing.panel.view_ref===molecule.panel.view_ref;
   const error=await query('uniprot','P00000','error');result.checks.source_failure_is_distinct_and_preserves_reading=error.panel.view_ref===molecule.panel.view_ref;
+  if(args.includes('--receive-workspace')){
+    const beforeWorkspace=await state(),beforeCalls=fs.readFileSync(path.join(output,'readings','source-calls.jsonl'),'utf8');
+    await page.getByRole('button',{name:'Save workspace'}).click();await page.waitForFunction(()=>document.querySelector('[role=status]').textContent.includes('Workspace saved:'));
+    const saved=await state(),file=path.join(output,'readings',saved.workspace_saved_file);result.workspace_file=file;
+    await page.getByRole('button',{name:'Reopen workspace'}).click();await page.waitForFunction(()=>document.querySelector('[role=status]').textContent.includes('Original workspace reopened'));
+    const reopened=await state();result.checks.workspace_exact_reading=reopened.panel.view_ref===beforeWorkspace.panel.view_ref&&reopened.panel.mode==='saved';
+    result.checks.workspace_original_query_report=reopened.resolution.original_text===beforeWorkspace.resolution.original_text&&reopened.resolution.mode==='saved';
+    result.checks.workspace_source_history_retained=reopened.can_return_query===true;
+    await page.getByRole('button',{name:'Open reading…'}).click();const {root}=await page.send('DOM.getDocument');const {nodeId}=await page.send('DOM.querySelector',{nodeId:root.nodeId,selector:'input[type=file]'});await page.send('DOM.setFileInputFiles',{nodeId,files:[file]});await page.waitForFunction(()=>document.querySelector('[role=status]').textContent.includes('Original reading opened'));
+    result.checks.workspace_independent_upload=(await state()).panel.view_ref===beforeWorkspace.panel.view_ref;
+    result.checks.workspace_reopening_does_not_query_sources=fs.readFileSync(path.join(output,'readings','source-calls.jsonl'),'utf8')===beforeCalls;
+  }
+  if(args.includes('--receive-cancellation')){
+    const readings=path.join(output,'readings'),pause=path.join(readings,'pause-next-query'),waiting=path.join(readings,'query-waiting'),release=path.join(readings,'release-query');
+    async function delayed(){await input('uniprot','P52270');await page.waitForFunction(()=>!document.querySelector('#entry-query').disabled&&![...document.querySelectorAll('button')].find(b=>b.textContent==='Query public sources').disabled);fs.writeFileSync(pause,'pause');await page.getByRole('button',{name:'Query public sources'}).click();await until(()=>fs.existsSync(waiting),'synthetic source wait');await page.waitForFunction(()=>!!document.querySelector('[aria-label="Source query progress"]'));}
+    const beforeDelay=await state();await delayed();
+    const initial=(await state()).panel.view_ref;await page.locator('[data-topic="sources"]').click();await page.waitForFunction(ref=>document.querySelector('[data-view-ref]').dataset.viewRef!==ref,initial);const browsing=await state();
+    result.checks.reading_remains_available_during_query=browsing.query_job.state==='running'&&fs.existsSync(waiting);
+    await page.getByRole('button',{name:'Cancel query'}).click();await page.waitForFunction(()=>document.querySelector('[aria-label="Source query progress"]').textContent.includes('Result discarded'));
+    fs.writeFileSync(release,'release');await page.waitForFunction(async()=>!(await(await fetch('/api/query')).json()).query_job.worker_running);
+    const cancelled=await state();result.checks.cancelled_result_does_not_replace_reading=cancelled.panel.view_ref===browsing.panel.view_ref&&cancelled.resolution.original_text===beforeDelay.resolution.original_text;
+    await delayed();const origin=(await state()).panel.view_ref;await page.getByRole('button',{name:'Overview'}).click();await page.waitForFunction(ref=>document.querySelector('[data-view-ref]').dataset.viewRef!==ref,origin);const previous=await state();fs.writeFileSync(release,'release');
+    await page.waitForFunction(()=>!![...document.querySelectorAll('button')].find(b=>b.textContent==='Open result'));
+    result.checks.changed_reading_waits_for_explicit_adoption=(await state()).panel.view_ref===previous.panel.view_ref;
+    await page.getByRole('button',{name:'Open result'}).click();await page.waitForFunction(async()=>{const s=await(await fetch('/api/panel')).json();return s.panel.profile==='protein'&&s.query_job.state==='opened';});result.checks.explicit_ready_result_opens=true;
+    const callsBeforeReturn=fs.readFileSync(path.join(readings,'source-calls.jsonl'),'utf8');await page.getByRole('button',{name:'Return to previous query'}).click();await page.waitForFunction(ref=>document.querySelector('[data-view-ref]').dataset.viewRef===ref,previous.panel.view_ref);
+    result.checks.ready_result_exact_query_return=fs.readFileSync(path.join(readings,'source-calls.jsonl'),'utf8')===callsBeforeReturn;
+  }
   await page.screenshot({path:path.join(output,'renderer.png')});fs.writeFileSync(path.join(output,'capture-request'),'capture');
   await until(()=>fs.existsSync(path.join(output,'native.png'))&&fs.statSync(path.join(output,'native.png')).size>1000,'native composition capture');result.checks.actual_native_capture=true;
   const calls=fs.readFileSync(path.join(output,'readings','source-calls.jsonl'),'utf8').trim().split('\n').map(JSON.parse);
-  result.source_calls=calls;result.checks.only_explicit_source_queries=calls.length===6;
+  result.source_calls=calls;result.checks.only_explicit_source_queries=calls.length===(args.includes('--receive-cancellation')?8:6);
+  if(args.includes('--receive-pending-close')){
+    const readings=path.join(output,'readings');fs.writeFileSync(path.join(readings,'pause-next-query'),'pause');await input('uniprot','P52270');await page.waitForFunction(()=>!document.querySelector('#entry-query').disabled);await page.getByRole('button',{name:'Query public sources',exact:true}).click();await until(()=>fs.existsSync(path.join(readings,'query-waiting')),'owned pending source query');
+    result.checks.pending_query_is_observed_before_close=(await state()).query_job.worker_running===true;
+    const started=performance.now();fixtureService.kill('SIGTERM');await Promise.race([new Promise(resolve=>fixtureService.once('exit',resolve)),delay(8000)]);
+    result.pending_service_close_elapsed_s=(performance.now()-started)/1000;result.checks.owned_pending_service_closes_within_deadline=fixtureService.exitCode!==null||fixtureService.signalCode!==null;
+    result.checks.closed_service_retires_its_bootstrap=!fs.existsSync(bootstrap);
+    result.pending_query_disposition='One additional explicit synthetic query was pending at owned service shutdown; no result was adopted. Completed-call audit above excludes this unfinished request. This receives process-owned worker lifetime, not provider HTTP cancellation.';
+    if(!result.checks.owned_pending_service_closes_within_deadline)throw new Error('Owned fixture service did not stop within its shutdown deadline');
+  }
   result.checks.no_script_errors=result.errors.length===0;
   if(!Object.values(result.checks).every(Boolean))throw new Error('A selected product check failed');
   result.state='passed';

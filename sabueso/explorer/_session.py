@@ -37,13 +37,22 @@ class _Session:
         return cls(read_exploration(path), output_directory)
 
     def panel(self):
+        from ._presentation import (
+            item_preview,
+            orientation,
+            relationship_graph,
+            text_kind,
+        )
+
         view = self.current
         items = view.items()
+        visible = items[self.offset : self.offset + PAGE_SIZE]
         topics = self.explorer.topics().native_payload if self.explorer else {}
         native = view.native_payload
         full_text = None
         if isinstance(native, str):
             full_text = {
+                "kind": text_kind(view),
                 "text": native[self.text_offset : self.text_offset + TEXT_SIZE],
                 "offset": self.text_offset,
                 "count": len(native),
@@ -63,9 +72,21 @@ class _Session:
             "topics": [
                 {"name": key, **descriptor} for key, descriptor in topics.items()
             ],
+            "orientation": orientation(view),
+            "graph": relationship_graph(visible),
+            "trail": [
+                {"index": index, "title": prior.title}
+                for index, (prior, _, _) in enumerate(self.history)
+            ],
+            "grain": view.schema.get("grain"),
             "items": [
-                {"ref": item.item_ref, "label": item.label, "kind": item.kind}
-                for item in items[self.offset : self.offset + PAGE_SIZE]
+                {
+                    "ref": item.item_ref,
+                    "label": item.label,
+                    "kind": item.kind,
+                    "preview": item_preview(item),
+                }
+                for item in visible
             ],
             "offset": self.offset,
             "count": len(items),
@@ -100,6 +121,9 @@ class _Session:
             "overview": set(),
             "save": set(),
             "reopen": set(),
+            "filter_cell": {"item_ref", "column"},
+            "back_to": {"history_index"},
+            "orientation_field": {"path"},
         }
         if not isinstance(name, str) or name not in fields:
             raise ArgumentError("Unknown exploration action.")
@@ -108,7 +132,7 @@ class _Session:
         if request["revision"] != self.revision:
             raise ArgumentError("The reading changed; reload before acting again.")
         if (
-            name not in {"page", "text_page", "back", "save"}
+            name not in {"page", "text_page", "back", "back_to", "save"}
             and len(self.history) >= HISTORY_LIMIT
         ):
             raise ArgumentError(
@@ -137,6 +161,15 @@ class _Session:
             ):
                 raise ArgumentError("Invalid page in the current reading.")
             self.offset = offset
+        elif name == "back_to":
+            index = request["history_index"]
+            if type(index) is not int or not 0 <= index < len(self.history):
+                raise ArgumentError(
+                    "Choose an exact retained point in this reading trail."
+                )
+            self.current, self.offset, self.text_offset = self.history[index]
+            self.history = self.history[:index]
+            self.explorer = self.current.explorer
         elif name == "back":
             if not self.history:
                 raise ArgumentError("There is no previous reading.")
@@ -153,7 +186,7 @@ class _Session:
             if self.saved is None:
                 raise ArgumentError("Save a reading before reopening it.")
             destination = read_exploration(self.saved[0], expected_digest=self.saved[1])
-        elif name in {"open", "related"}:
+        elif name in {"open", "related", "filter_cell"}:
             ref = request["item_ref"]
             visible = self.current.items()[self.offset : self.offset + PAGE_SIZE]
             if not isinstance(ref, str) or ref not in {
@@ -161,7 +194,32 @@ class _Session:
             }:
                 raise ArgumentError("Choose an item from the current page.")
             item = self.current.item(ref)
-            destination = item.open() if name == "open" else item.related()
+            if name == "filter_cell":
+                column = request["column"]
+                if not isinstance(column, str) or column not in item.cells:
+                    raise ArgumentError("Choose an original cell from this reading.")
+                destination = self.current.filter(
+                    column, equals=item.cells[column].value
+                )
+            else:
+                destination = item.open() if name == "open" else item.related()
+        elif name == "orientation_field":
+            from sabueso.core.card_orientation_v1 import reading
+
+            context = reading(self.current, source_limit=0, copy_values=False)
+            path = request["path"]
+            matches = (
+                [field for field in context["fields"] if field["path"] == path]
+                if context
+                else []
+            )
+            if (
+                not isinstance(path, str)
+                or len(matches) != 1
+                or matches[0]["field_location"] is None
+            ):
+                raise ArgumentError("Choose a retained field from this Card overview.")
+            destination = self.explorer.inspect(locator=matches[0]["field_location"])
         else:
             if self.explorer is None:
                 raise ArgumentError("This reading has no navigable Card context.")
