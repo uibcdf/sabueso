@@ -9,6 +9,20 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Retained disease scope, support and bounded S4.4 completion (2026-11-13)
+
+From `4220e6f`, #154/#153 own native disease association presentation, original
+Support, exact related-Card/Deck return and compact member/membership orientation.
+[The receipt](../evidence/interactive_disease_associations_checkpoint_20261113.json)
+binds source/installed/native receiving, original compatibility, current artifacts
+and the corrected receiver's failed original-scope assumption. S4.4 closes only
+at its original bounded retained-information presentation criterion. Native core,
+schema, scientific/default/provider bytes and runtime dependencies remain fixed.
+The authorized intermediate `[skip ci]` head retains exact-final-source full/
+candidate and hosted CI/governance recovery under #154/#153/#112; Git and the
+consolidated owning-issue report record its final SHA. No workflow dispatch,
+release, tag, public package or new platform acceptance is authorized or claimed.
+
 ### Retained-record queries and bounded S4.1/S4.2 completion (2026-11-13)
 
 From `7fbda41`, #154 owns explicit current-page native link acquisition, preserved

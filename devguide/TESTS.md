@@ -1869,3 +1869,28 @@ synthetic source failure is labelled separately. Verify the complete query-call
 audit and pending owned shutdown. Typecheck/build/package/import/resource checks
 retain their existing scope. The [receipt](evidence/interactive_record_queries_checkpoint_20261113.json)
 owns the actual cohort, original compatibility and failures.
+
+### Retained disease associations and Deck orientation
+
+Run `tests/explorer/test_disease_associations_offline.py` with all application
+cases through the published receptor. It receives native matched/input/context/
+exclusion scope, selected-row counts, all source/identity/support cells, exact
+current-page graph direction and native Support. Include public protein and
+indication controls, missing contexts, literal lookalikes, stale/foreign actions,
+inert original workspace reopening, unvisited `not_saved` scope and exact repeated
+Deck return. Compact member labels must retain complete pins; bounded membership
+previews must preserve typed literal values and point to full original metadata.
+
+Prepare inputs with `devtools/prepare_disease_walkthrough.py --help`, using only
+declared frozen public clients. Its separate fictitious phenotype control tests
+literal display/support and makes no scientific coverage claim. Receive
+`devtools/disease_explorer_journey.mjs` in real Qt from checkout and a noneditable
+installed wheel, including the source-produced native target/drug Decks. Inspect
+native captures and zero-query audits; keep public and synthetic images separate.
+Also receive source-entry and live-model/layout regressions after shared frontend
+changes. Record incomplete original topics as `not_saved`; explicitly open the
+unchanged input Deck for an unvisited live-input topic rather than weakening its
+original reader. The [receipt](evidence/interactive_disease_associations_checkpoint_20261113.json)
+binds artifacts, original compatibility, resources and failed receiver controls.
+These are selected changed-source checks, not live-source, human or platform
+acceptance or a full current-head suite.

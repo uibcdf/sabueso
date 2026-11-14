@@ -1,5 +1,17 @@
 # Sabueso — Decision Log
 
+## Project native disease associations without adding scientific conclusions (2026-11-13)
+
+Under #154/#153, expose the existing disease reader's captured scope, finite
+source/identity/support cells and native `item.explain()` in the application.
+`retained_disease_association_graph@1` projects only exact current-page matched
+statement endpoints and preserves source direction and support; it never turns
+context rows or missing endpoints into edges. Keep original selected versus
+captured counts distinct, and retain `not_saved` instead of recomputing historical
+scope. Compact Deck labels and literal bounded membership previews keep full
+original references, complete metadata and repeated-occurrence semantics.
+See [scope, criteria reconciliation and receiving](pending_proposals/interactive_disease_associations_0160.md).
+
 ## Query native referenced records without rebinding originals (2026-11-13)
 
 Under #154/#153, a current native subject/object/entity link can offer a separate

@@ -1,5 +1,19 @@
 # Sabueso — Risks and Open Questions
 
+Disease presentation (#154/#153): the retained scope, original Support and
+compact Deck membership now receive in actual Qt. At the received 1280×900 size,
+the scope header precedes graph controls and the graph can require scrolling.
+A more compact summary is a concrete human-review candidate; no researcher
+failure or preferred layout is established. Public protein/indication receiving
+and a separately labelled fictitious phenotype control do not establish complete
+disease/source coverage. See the [bounded receipt](evidence/interactive_disease_associations_checkpoint_20261113.json).
+
+Packaging follow-up (#112/#154): the current diagnostic wheel/sdist build succeeds,
+but setuptools warns that the existing table-shaped `project.license` is
+deprecated and reports a 2027-02-18 migration deadline. Review conversion to SPDX
+metadata with the applicable packaging gates before that dependency change;
+this observation does not qualify a public build or change dependencies.
+
 Whole interactive workspaces (#154/#153) now retain original readings and query
 history through native verification. Distinct focal Deck components still repeat
 the capture pool, and repeated independent validation can dominate save/reopen

@@ -53,10 +53,14 @@ def _cell(item, name, cell):
 def item_preview(item):
     cells = item.cells
     names = [name for name in cells if name not in ("label", "kind", "type")]
+    from ._association_presentation import applies
+
+    # Keep the finite native identity/support cells beside source/channel.
+    limit = 11 if applies(item._view) else CELL_LIMIT
     return {
-        "cells": [_cell(item, name, cells[name]) for name in names[:CELL_LIMIT]],
+        "cells": [_cell(item, name, cells[name]) for name in names[:limit]],
         "cell_count": len(names),
-        "complete": len(names) <= CELL_LIMIT,
+        "complete": len(names) <= limit,
     }
 
 

@@ -10,6 +10,36 @@ from sabueso.core.errors import ArgumentError
 from ._session import _Session
 
 
+def _member_presentation(item):
+    """Compact declared IDs and a bounded literal original membership preview."""
+    reference = item.get("card_ref")
+    nature = item.get("nature")
+    label = None
+    if (
+        isinstance(reference, str)
+        and reference.startswith("sabueso:")
+        and isinstance(nature, str)
+    ):
+        label = (
+            nature.replace("_", " ")
+            + " · "
+            + reference.partition("@")[0].split(":", 2)[-1]
+        )
+    basis = item.get("membership")
+    if not isinstance(basis, dict):
+        return {"display_label": label, "membership_preview": None}
+    raw = json.dumps(basis.get("value"), ensure_ascii=False, indent=2)
+    return {
+        "display_label": label,
+        "membership_preview": {
+            "state": basis.get("state"),
+            "scope": basis.get("scope"),
+            "text": raw[:2048],
+            "complete": len(raw) <= 2048,
+        },
+    }
+
+
 class _DeckSession:
     def __init__(self, deck, output_directory):
         self.explorer = deck.explore()
@@ -150,6 +180,7 @@ class _DeckSession:
                     "ref": item["member_ref"],
                     "label": item.get("card_ref") or f"Member {item['position'] + 1}",
                     "kind": f"occurrence {item['position'] + 1}",
+                    **_member_presentation(item),
                 }
                 for item in page["items"]
             ],

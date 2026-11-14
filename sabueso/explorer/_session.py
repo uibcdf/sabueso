@@ -37,6 +37,8 @@ class _Session:
         return cls(read_exploration(path), output_directory)
 
     def panel(self):
+        from ._association_presentation import graph as association_graph
+        from ._association_presentation import scope as association_scope
         from ._presentation import (
             item_preview,
             orientation,
@@ -74,7 +76,8 @@ class _Session:
                 {"name": key, **descriptor} for key, descriptor in topics.items()
             ],
             "orientation": orientation(view),
-            "graph": relationship_graph(visible),
+            "graph": association_graph(view, visible) or relationship_graph(visible),
+            "association_scope": association_scope(view, native),
             "trail": [
                 {"index": index, "title": prior.title}
                 for index, (prior, _, _) in enumerate(self.history)
@@ -97,6 +100,7 @@ class _Session:
             "can_back": bool(self.history),
             "can_save": view.capabilities["save"],
             "can_related": view.capabilities["related"],
+            "can_explain": view.capabilities["explain"],
             "saved_file": self.saved[0].name if self.saved else None,
             "outcome": view.outcome,
         }
@@ -116,6 +120,7 @@ class _Session:
             "topic": {"topic"},
             "open": {"item_ref"},
             "related": {"item_ref"},
+            "explain": {"item_ref"},
             "search": {"text"},
             "page": {"offset"},
             "text_page": {"offset"},
@@ -188,7 +193,7 @@ class _Session:
             if self.saved is None:
                 raise ArgumentError("Save a reading before reopening it.")
             destination = read_exploration(self.saved[0], expected_digest=self.saved[1])
-        elif name in {"open", "related", "filter_cell"}:
+        elif name in {"open", "related", "explain", "filter_cell"}:
             ref = request["item_ref"]
             visible = self.current.items()[self.offset : self.offset + PAGE_SIZE]
             if not isinstance(ref, str) or ref not in {
@@ -204,7 +209,13 @@ class _Session:
                     column, equals=item.cells[column].value
                 )
             else:
-                destination = item.open() if name == "open" else item.related()
+                destination = (
+                    item.open()
+                    if name == "open"
+                    else item.explain()
+                    if name == "explain"
+                    else item.related()
+                )
         elif name == "orientation_field":
             from sabueso.core.card_orientation_v1 import reading
 

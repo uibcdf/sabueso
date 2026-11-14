@@ -7,6 +7,22 @@ This page owns current state; dated receipt histories are linked below.
 
 ## Next product objective: interactive exploration in 0.16.0
 
+The [retained-disease checkpoint](pending_proposals/interactive_disease_associations_0160.md)
+adds visible native association scope, complete finite source/identity/support
+cells, literal current-page graphs and original Support. Public disease → protein
+and indication → compound journeys preserve exact supplied context and repeated
+Deck return through saving/reopening. Native target/drug Decks show why members
+were included; compact labels keep complete original pinned references. A separate
+fictitious phenotype control asserts no relationship about a real system.
+Unvisited original topics remain `not_saved`; the application never calculates
+missing historical scope. [Its receipt](evidence/interactive_disease_associations_checkpoint_20261113.json)
+owns **196 source application cases, 195 installed runtime cases, 34 actual Qt
+checks each from checkout/installed wheel, 58 installed source-entry and 14
+installed model regression checks**, artifact/original and failed-control receiving. S4.4 closes at the original bounded retained-presentation criterion:
+the plan now has **20 done, 10 partial and 3 todo** microstages, an unweighted
+count rather than effort or readiness. Chemical 2D, supported mapped 3D, broader
+lifecycle/workload receiving, human/version decisions and delivery remain open.
+
 The [referenced-record checkpoint](pending_proposals/interactive_record_queries_0160.md)
 adds fresh explicit queries from exact current native links: public protein → BTS,
 compound → declared disease and repeated disease → MONDO parent, with original
@@ -16,12 +32,13 @@ S4.2 now close against their original bounded entry/protein-presentation criteri
 [The receipt](evidence/interactive_record_queries_checkpoint_20261113.json) owns
 186 source application cases, 185 installed runtime cases, 58 actual Qt checks
 each from checkout/installed wheel, 14 installed model regression checks and
-failed controls. The plan now has
+failed controls. That earlier checkpoint recorded
 19 done, 11 partial and 3 todo microstages, without treating counts as effort/readiness.
 The [Viewer receiving handoff](pending_proposals/interactive_viewer_receiving_0160.md)
 concretizes #368's model/index/event/lifetime requirements without adopting an
-unsupported API or changing the provider. Mapped 3D, chemical 2D, complete disease
-associations, workload/human/version acceptance and delivery remain open.
+unsupported API or changing the provider. Mapped 3D, chemical 2D,
+workload/human/version acceptance and delivery remain open; the later disease
+presentation checkpoint above now closes S4.4.
 
 The [explicit source-enrichment increment](pending_proposals/interactive_source_enrichment_0160.md)
 adds researcher-selected InterPro sites or AlphaFold DB prediction records to a

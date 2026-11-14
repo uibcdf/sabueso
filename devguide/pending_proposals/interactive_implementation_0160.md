@@ -15,7 +15,7 @@ Checkpoint date: **2026-11-13**. Reviewed implementation baseline:
 planning parent `fb0d09659f8d00685f829d6781e5d256751dac66`;
 [application code hashes and receiving](../evidence/interactive_card_app_checkpoint_20261113.json).
 
-**Current position:** S0 and S1, S3.1–S3.4, S4.1–S4.2, S5.1, S5.2 and S5.4 are delivered at their bounded development scopes. The native Card/Deck application, explicit four-kind source entry and independently selected original readings have real Qt receiving. The [molecular receipt](../evidence/interactive_molecular_checkpoint_20261113.json) adds an opt-in live product panel through Viewer's experimental public service: 84 selected cases, eleven real molecular Qt checks each from checkout and an installed unpublished wheel, and six model-failure checks. A corrected native HTTP guard also passes twelve actual source-entry checks.
+**Current position:** S0 and S1, S3.1–S3.4, S4.1–S4.2, S4.4, S5.1, S5.2 and S5.4 are delivered at their bounded development scopes. The native Card/Deck application, explicit four-kind source entry and independently selected original readings have real Qt receiving. The [molecular receipt](../evidence/interactive_molecular_checkpoint_20261113.json) adds an opt-in live product panel through Viewer's experimental public service: 84 selected cases, eleven real molecular Qt checks each from checkout and an installed unpublished wheel, and six model-failure checks. A corrected native HTTP guard also passes twelve actual source-entry checks.
 
 **Delivered observable result:** read a Card or Deck, follow source-declared relationships to supplied related Cards, inspect their original sources, return to the exact entry occurrence/Deck selection, save/reopen original Card and Deck readings, and explicitly query supported identifiers. With the received development provider cohort, also open a supplied molecular model, rotate it, float/reset without replacing its viewport, and keep reading original knowledge. The model is always labelled **correspondence not established**. This is not mapped annotation navigation or a supported embedding claim.
 
@@ -44,12 +44,23 @@ with original saving and exact query/Deck return. MONDO obsolete replacements
 remain explicit separate choices. Source access failures are visible independently
 of resolved identity. S4.1/S4.2 close against the original bounded entry/protein
 presentation criteria, with source/installed receiving in the linked receipt;
-chemical depiction, complete disease associations and mapped structure remain open.
+chemical depiction and mapped structure remain open; the later retained-disease
+presentation increment below receives S4.4.
 The [concrete Viewer handoff](interactive_viewer_receiving_0160.md) now specifies
 current-model/index/event identity, source correspondence and lifetime controls;
 it does not select a provider API or close #368.
 
-**Next observable result:** exact source-bound annotation → model selection → original source → Back, including unknown/replaced contexts (S2.2/S2.5), plus qualified chemical depiction and provider lifetime/scene recovery. Viewer #368 still owns the supported embedding/current-model contract. Complete disease-association journeys, chemical depiction, workload agreements and human acceptance remain open; arbitrary source controls remain a future extension. Owned reading-service loss, explicit restart and pending-query shutdown now receive in actual Qt. The [presentation receipt](../evidence/interactive_layout_checkpoint_20261113.json) closes S5.2 at layout-only scope. The whole-workspace receipt does not close remaining scopes or authorize a release. Interrupted attempts never count as passes.
+The [retained-disease increment](interactive_disease_associations_0160.md) now
+receives public protein/indication associations, their native scope, original
+support and exact related-Card/Deck return. Source-produced target/drug Decks expose
+complete membership; compact member labels keep full pins and repeated occurrences.
+A separately labelled fictitious phenotype control tests literal direction without
+asserting a real relationship. Unvisited original topics remain `not_saved`.
+[Source/installed application and actual Qt receiving](../evidence/interactive_disease_associations_checkpoint_20261113.json)
+close S4.4 against its original bounded presentation criterion, separately from
+source completeness, workload budgets and human acceptance.
+
+**Next observable result:** exact source-bound annotation → model selection → original source → Back, including unknown/replaced contexts (S2.2/S2.5), plus qualified chemical depiction and provider lifetime/scene recovery. Viewer #368 still owns the supported embedding/current-model contract. Chemical depiction, workload agreements and human acceptance remain open; arbitrary source controls remain a future extension. Owned reading-service loss, explicit restart and pending-query shutdown now receive in actual Qt. The [presentation receipt](../evidence/interactive_layout_checkpoint_20261113.json) closes S5.2 at layout-only scope. The whole-workspace receipt does not close remaining scopes or authorize a release. Interrupted attempts never count as passes.
 
 The [complete frozen baseline receipt](../evidence/interactive_integrated_baseline_20261113.json)
 receives all **10,059 collected offline nodes** at `e64c2ec`: **10,049 passed,
@@ -224,7 +235,7 @@ records the distinct input meanings and gaps.
 | S4.1 | `done` | Bounded UniProt/PDB/SMILES/disease-ID entry, one explicit background worker, progress/cancel/discard and late-result adoption receive with distinct positive/ambiguous/not-found/failed and partially successful source outcomes. UniProt/PubChem choices and MONDO obsolete replacements remain separate explicit queries, preserving originals. Current-page retained links can request fresh records without identity merging. [Criteria reconciliation and receiving](interactive_record_queries_0160.md#reconcile-the-bounded-s4-criteria). Arbitrary source controls are an extension; active provider HTTP interruption is not promised |
 | S4.2 | `done` | The pertinent native protein catalog exposes source-linked sequence/annotations, structures, ligands, changes and associations, with original overview/value/unit cells, source inspection and exact return. Uncertain/unsupported/original-not-saved scope stays discoverable; source-selected InterPro/AlphaFold records retain their native meaning. Public nature-specific and cross-Card receiving bind this presentation scope. [Original criteria reconciliation](interactive_record_queries_0160.md#reconcile-the-bounded-s4-criteria); mapped annotation visuals retain S2 ownership |
 | S4.3 | `partial` | Actual SMILES → PubChem-stated Card, original chemical/property values with units and a source-bound BTS → supplied target → native activity → assay/publication journey pass. Qualified 2D/available 3D remain open; no conformer or measured geometry is invented |
-| S4.4 | `partial` | Disease-ID → MONDO, original overview fields, current-page retained relationship graph, exact edge/source/Back and source-declared parent Card receiving pass. Graphs preserve native support/derivation scope. Explicit fresh disease-parent queries and a compound’s declared condition now also receive through exact original/Deck return. Complete retained target/drug/phenotype association journeys and richer comparisons remain. Name search is not offered without a candidate-search contract |
+| S4.4 | `done` | Disease definition/hierarchy and current-page retained associations now expose native scope, all source/identity/support cells, exact graph direction and original Support. Public protein/indication and native target/drug Deck journeys, plus a separately labelled fictitious phenotype control, receive through saving/reopening and exact related-Card/repeated Deck return. [Original criterion reconciliation](interactive_disease_associations_0160.md#reconcile-the-bounded-s44-criterion). Unvisited originals remain `not_saved`; no global source coverage, clinical judgment, name-search contract or human acceptance is claimed |
 | S4.5 | `partial` | Protein → source-bound BTS identity → native activity quantity → original assay/full publication → exact repeated/filtered Deck return now passes in real Qt, including original workspace saving/reopening. PDB record → source-declared protein → source → exact query return also passes. The PDB/entity → mapped molecular reading remains dependent on S2/#368; graphs add no scientific conclusions |
 
 A PDB result is currently a structure record with related proteins, not a new
@@ -265,7 +276,7 @@ delivers. Start feedback when the first useful slice exists, not only at the end
 
 ## Current closeout ledger
 
-The 33 microstages currently contain **19 done, 11 partial and 3 todo**. This is
+The 33 microstages currently contain **20 done, 10 partial and 3 todo**. This is
 an unweighted status count, not a percentage of implementation effort or readiness.
 Several partial rows already contain working application behavior but depend on
 provider contracts or acceptance; their labels must not be promoted by automated
@@ -274,7 +285,7 @@ checks alone.
 | Remaining front | Concrete next result | Owner / dependency | Can proceed locally? |
 | --- | --- | --- | --- |
 | Molecular correspondence and supported embedding (S2) | Versioned current-model/occurrence identity and supported selection/lifetime route, then actual annotation → selection → source → Back | Viewer #368; Sabueso #154; initial input hash cannot establish active identity | Consumer refusal/lifetime/resource work can continue; exact mapped product journey awaits the provider contract |
-| Chemical depiction and nature-specific presentation (S4) | Source-bound 2D representation through a provider-owned supported surface; richer public protein/molecule/disease receiving | #154; concrete Viewer proposal retained for explicit publication approval | Public retained readers and source controls can continue; no chemical renderer or provider patch is silently adopted |
+| Chemical depiction and nature-specific presentation (S4) | Source-bound 2D representation through a provider-owned supported surface; broader visual polish and user receiving | #154; concrete Viewer proposal retained for explicit publication approval | Public retained readers and source controls can continue; no chemical renderer or provider patch is silently adopted |
 | Resource and recovery breadth (S5/S6.2) | Varied public model idle/active observations, repeated product/provider lifetime and native-platform receiving; agreed workload targets | #154/#153/#112 | Bounded local measurements can continue; measurements do not themselves establish budgets |
 | Human review (S6.1) | Maintainer and independent researcher complete the prepared tasks/worksheet | Maintainer/researcher, #154/#153 | Materials are prepared; human observations cannot be supplied by an agent |
 | Scientific/platform decisions (S6.3) | Decide #192 aggregation semantics and reconsider #194's macOS exception for this version | Maintainer, #192/#194 | Preserve the explicit current limitations while decisions are pending |

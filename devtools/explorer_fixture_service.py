@@ -15,6 +15,7 @@ def main():
     parser.add_argument("--output-directory", type=Path, required=True)
     parser.add_argument("--fixture-directory", type=Path, required=True)
     parser.add_argument("--synthetic-candidates", action="store_true")
+    parser.add_argument("--deck", type=Path)
     args = parser.parse_args()
     import sabueso
     from sabueso.explorer._service import _run
@@ -96,7 +97,7 @@ def main():
             output.write(json.dumps({**recorded, "status": result.status}) + "\n")
         return card, result
 
-    args.card = args.reading = args.deck = None
+    args.card = args.reading = None
     asyncio.run(_run(args, resolver=resolve))
 
 

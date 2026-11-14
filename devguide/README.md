@@ -73,6 +73,11 @@ add fresh explicit cross-entity acquisition, MONDO obsolete choices and exact
 original/Deck return; S4.1/S4.2 close at their bounded entry/protein presentation
 scopes, while [Viewer receiving requirements](pending_proposals/interactive_viewer_receiving_0160.md)
 concretize the remaining molecular dependency;
+[retained disease associations](pending_proposals/interactive_disease_associations_0160.md)
+add original scope/support, public protein/indication and native target/drug Deck
+journeys with exact return, and compact Deck labels with full pins. S4.4 closes
+at bounded retained-presentation scope, with a separately labelled fictitious
+phenotype control and unvisited original topics still `not_saved`;
 [human review materials](pending_proposals/interactive_researcher_review_0160.md)
 are prepared, with actual acceptance still open. This is development implementation,
 not a public GUI installation or platform-support claim.

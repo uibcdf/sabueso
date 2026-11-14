@@ -1,0 +1,652 @@
+{
+  "format": "sabueso.interactive_disease_associations_checkpoint@1",
+  "owner": "uibcdf/sabueso#154/#153/#112",
+  "baseline_commit": "4220e6ffcd3b9931fa3cbe3a20a540db60538b8b",
+  "scope": "Native retained disease association scope/support/graph, compact Deck labels and original membership, exact related-Card/Deck return; S4.4 bounded presentation reconciliation",
+  "code_sha256": {
+    "sabueso/explorer/_qt.py": "7b85fe1d2c8c30fc2254055dc4cd041886f1be65a3b9cea7eda775ff0df6b74f",
+    "sabueso/explorer/_session.py": "521687245ec5386574817c5ebfaf661347dd3abdc71722f0769f369539296b30",
+    "sabueso/explorer/_molecular.py": "c48891270e16e357886de018e62efed3830789399a1c9ce9c61945230490a612",
+    "sabueso/explorer/_service.py": "f8260e11b3af4db7d32de7aa9e573f792067e9f5954ac8429deec9bd9de582ac",
+    "sabueso/explorer/_deck_session.py": "81bc949b4db90ab2896b234dc4ee93e1c6cb2baa587d36df191d17c162c0616e",
+    "sabueso/explorer/_source_choices.py": "208d0d02395d4b6eb55d2645ff469cb7e13099a8a4a487b2695ea39b4657e559",
+    "sabueso/explorer/_presentation.py": "2b0434795de70337eedfe4636dd6a6e2dd9d58fce82d50ffd3ca3c1f0b309c95",
+    "sabueso/explorer/__init__.py": "d9f38870c8c8cb9a246e19c53547451343ff05bd8724b52d11b16ea805f07062",
+    "sabueso/explorer/_layout.py": "83ff00cc24e9d0fe22210ffa61908fa45d1982774ac0097bd554d26f286ad072",
+    "sabueso/explorer/__main__.py": "13e6fc8829e6dd3b15c8523dac1b21a6dcdcd0ec4f3119c417f61c9a1d412891",
+    "sabueso/explorer/_workspace.py": "474afdd8591ce205c56869a1a955b754cdc481e82d5d917e4f9f763e7442e8d1",
+    "sabueso/explorer/_queries.py": "a56330d66e7476b4d8e034884c1bf2ec9c763867701c605259ecba3d31e8bf11",
+    "sabueso/explorer/_resolution.py": "7a165ba64694d64f9cda93a12315b77533b1f2e51d7302b68baaf36df6cc9ac9",
+    "sabueso/explorer/_assets/app.js": "8088f31e4f26992236b816f13c91c6e7e3fe8a22493c74efbe46a6d866953270",
+    "sabueso/explorer/_assets/app.css": "80eb9cd196035397a1b68ba54968c6130dd012f1975430cf840da00cb68517b0",
+    "sabueso/explorer/_assets/notices.txt": "a238c0f2172b6b9507e352ce97d0065b73c0abe2b076493e6553789f675e0b15",
+    "sabueso/explorer/_assets/index.html": "be4705852899de9486e6c01fb0d92ad99301024833c9c7b50b545a3827cc785d",
+    "sabueso/core/card_exploration_storage.py": "9bf7dfd3758e5a1a41577124ad9f36593a55ba46da2b67ee717824985df52814",
+    "sabueso/core/deck_exploration_storage.py": "c71d93916c38e14e0076964f65a4d39f470031b8ac185eacf3013c76676ee62d",
+    "sabueso/core/_variant_history_v1/SOURCE.json": "b55ee3cd34ef6f7efdca561ce4b06fbacb8ea4f3ca67f7bb2d362cb82f3a6998",
+    "sabueso/core/_sequence_change_history_v1/SOURCE.json": "c7a43ebf63201757abfede8ec0eee1820199ff53bfbf8fd93e4506372aa7c8c0",
+    "sabueso/core/_molecule_activity_history_v1/SOURCE.json": "14d59d034aa795516bc3258f11f8a4f8caaa1b5b38b3c30bfb273f8cfddde797",
+    "sabueso/core/_protein_context_history_v1/SOURCE.json": "de78272c691573e26e04c6028cd7a375616c7c2e51d0e43d7623462bbcf40823",
+    "sabueso/core/_disease_association_history_v1/SOURCE.json": "a927a304b67df6144995c9d5f21e44ff4a34a98e8023221e47361f3dfe53feef",
+    "sabueso/core/_knowledge_comparison_history_v1/SOURCE.json": "cf1f610bff358f89a432484952ddeec7eec3d661615035ead720ea7eb202dd8a",
+    "sabueso/core/_clinical_history_v1/SOURCE.json": "00688c256d6aee51ebc97d752fdd641f7317c5d399ae8dd84db0ee4dc7e60650",
+    "sabueso/explorer/_record_queries.py": "c3c214d566af6cdbd324bf7fc06cdcb4894f264adb9c67c830a0c09807433e2a",
+    "sabueso/explorer/_association_presentation.py": "590c8f44e26ff59af5509d82f1d7278aa9d0a31dd4fd1fc812904c36626bd034",
+    "frontend/explorer/src/app.tsx": "1fd37d65bd43b3d6cbca343131105528a03af7fccaf1b00b196ed04df3740874",
+    "frontend/explorer/src/style.css": "bd10ab44665d85162797573a746eeff7b8903bde4c805f2c1bed2adaa7f3b451",
+    "devtools/explorer_fixture_service.py": "3d0776e082c62fa446d1d2081d7826d2c32b612f9f25ae05352437b07058a4b9",
+    "devtools/prepare_disease_walkthrough.py": "d715ee50c187841bbabce960d35b4237bccb1e4a31993c221b283dec6902ae5f",
+    "devtools/disease_explorer_journey.mjs": "3f39eb3a465631af35b9e7390a7c940a9a4654b132033c9833e1b3f971ba3f5d",
+    "devtools/resolution_explorer_journey.mjs": "14409d5d55bb59ed4e4bc8f5f19c8fdde646299b3f3e53ec3a99dcc7e9f7b9a3",
+    "devtools/molecular_explorer_journey.mjs": "ebcf2e3e8cf77d3aa8891be3582b62b9633acae1ad61595e3a33f7e6ac21f185",
+    "tests/explorer/test_disease_associations_offline.py": "d75490aa01226f2c49fd4450361d74177c010a930fe7fab71c21428756e78491"
+  },
+  "selected_gates": [
+    {
+      "name": "disease-final-application",
+      "counts": {
+        "collected": 196,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 196,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 196,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 6,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "duration_s": 86.92326054209843,
+      "events_sha256": "134fd514741a1d46e7e5652314359c937c9f81c20188cef35699923b723d9b27",
+      "integrity_valid": true,
+      "complete": true,
+      "resources": {
+        "elapsed_s": 87.649,
+        "peak_owned_rss_bytes": 1076658176,
+        "minimum_host_available_bytes": 52917846016,
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "native_threads": 1
+        },
+        "survivors_after_command": []
+      }
+    },
+    {
+      "name": "disease-installed-application",
+      "counts": {
+        "collected": 195,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 195,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 195,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 6,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "duration_s": 72.91752165497746,
+      "events_sha256": "613dfce87c61b6552aa3fe89d6660b6a72db9402e8153c28b24fc21083a2342d",
+      "integrity_valid": true,
+      "complete": true,
+      "resources": {
+        "elapsed_s": 73.541,
+        "peak_owned_rss_bytes": 1118826496,
+        "minimum_host_available_bytes": 52908396544,
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "native_threads": 1
+        },
+        "survivors_after_command": []
+      }
+    }
+  ],
+  "installed_scope": "Noneditable unpublished diagnostic wheel and 19 byte-identical copied Python test/helper files outside checkout; only source frontend inspection omitted. Published pytest-receptor 1.2.0 override; shared editable environment unchanged.",
+  "copied_tests_proof_sha256": "4c416eb3f8355c2ccd33ac83121d21315c63c1962a28349cb53bb9ebddb6d668",
+  "artifact_proof": {
+    "wheel": {
+      "name": "sabueso-0.14.0+293.g4220e6f.dirty-py3-none-any.whl",
+      "sha256": "97a29bda1d0e39371e442bebc57ae188680247340eeac7a7e663874688b793bc"
+    },
+    "sdist": {
+      "name": "sabueso-0.14.0+293.g4220e6f.dirty.tar.gz",
+      "sha256": "28ae2acfd1f7acbdcf88d9ae978b2ca6c44d27a3408f8995e0b5760b3a367492"
+    },
+    "runtime_original_SOURCE_and_installed_bytes_equal": [
+      "sabueso/explorer/_qt.py",
+      "sabueso/explorer/_session.py",
+      "sabueso/explorer/_molecular.py",
+      "sabueso/explorer/_service.py",
+      "sabueso/explorer/_deck_session.py",
+      "sabueso/explorer/_source_choices.py",
+      "sabueso/explorer/_presentation.py",
+      "sabueso/explorer/__init__.py",
+      "sabueso/explorer/_layout.py",
+      "sabueso/explorer/__main__.py",
+      "sabueso/explorer/_workspace.py",
+      "sabueso/explorer/_queries.py",
+      "sabueso/explorer/_resolution.py",
+      "sabueso/explorer/_assets/app.js",
+      "sabueso/explorer/_assets/app.css",
+      "sabueso/explorer/_assets/notices.txt",
+      "sabueso/explorer/_assets/index.html",
+      "sabueso/core/card_exploration_storage.py",
+      "sabueso/core/deck_exploration_storage.py",
+      "sabueso/core/_variant_history_v1/SOURCE.json",
+      "sabueso/core/_sequence_change_history_v1/SOURCE.json",
+      "sabueso/core/_molecule_activity_history_v1/SOURCE.json",
+      "sabueso/core/_protein_context_history_v1/SOURCE.json",
+      "sabueso/core/_disease_association_history_v1/SOURCE.json",
+      "sabueso/core/_knowledge_comparison_history_v1/SOURCE.json",
+      "sabueso/core/_clinical_history_v1/SOURCE.json",
+      "sabueso/explorer/_record_queries.py",
+      "sabueso/explorer/_association_presentation.py"
+    ],
+    "installed_module": "/tmp/sabueso-disease-0160-vwppw0bh/env/lib/python3.14/site-packages/sabueso/__init__.py",
+    "sabueso_version": "0.14.0+293.g4220e6f.dirty",
+    "receptor_version": "1.2.0",
+    "editable": false,
+    "genuine_sdk796d20e_workspace_inert_and_unchanged": true,
+    "genuine_prior_file_sha256": "7739fc19d16e8e5bd07ab69afcfc57d87206dd09f6c9362c927433208e65c277",
+    "scope": "Diagnostic unpublished wheel with shared dependencies; not public/candidate/platform qualification"
+  },
+  "build": {
+    "elapsed_s": 9.337,
+    "peak_owned_rss_bytes": 75137024,
+    "minimum_host_available_bytes": 54436818944,
+    "limits": {
+      "owned_rss_bytes": 4294967296,
+      "host_available_bytes": 17179869184,
+      "cpu_affinity": [
+        0,
+        1
+      ],
+      "native_threads": 1
+    },
+    "survivors_after_command": []
+  },
+  "native_qt": [
+    {
+      "name": "qt-disease-received",
+      "receipt_sha256": "9c21768c92df0a6fde366e1c2ce8c3cf89af613ce20d8bade8513111d67ad716",
+      "checks": {
+        "original_five_occurrences": true,
+        "compact_labels_keep_complete_refs": true,
+        "membership_scope_is_visible": true,
+        "repeated_disease_occurrence": true,
+        "native_scope_visible": true,
+        "exclusions_and_identity_limits_visible": true,
+        "support_identity_cells_not_truncated": true,
+        "graph_is_presentation_only": true,
+        "graph_exact_page_and_support": true,
+        "graph_original_item_back": true,
+        "filter_preserves_captured_scope": true,
+        "original_support_opens": true,
+        "original_support_reopens": true,
+        "original_scope_and_graph_restore": true,
+        "exact_supplied_protein_opens": true,
+        "exact_filtered_deck_return": true,
+        "unvisited_saved_scope_is_not_recomputed": true,
+        "public_indication_keeps_direction": true,
+        "exact_supplied_compound_opens": true,
+        "indication_exact_deck_return": true,
+        "actual_public_native_capture": true,
+        "targets_native_membership_available": true,
+        "targets_complete_original_rule_and_support": true,
+        "targets_member_source_access": true,
+        "targets_exact_deck_return": true,
+        "drugs_native_membership_available": true,
+        "drugs_complete_original_rule_and_support": true,
+        "drugs_member_source_access": true,
+        "drugs_exact_deck_return": true,
+        "missing_context_is_not_global_absence": true,
+        "synthetic_phenotype_is_explicit": true,
+        "navigation_performs_no_source_queries": true,
+        "original_inputs_unchanged": true,
+        "no_script_errors": true
+      },
+      "resources": {
+        "elapsed_s": 69.161,
+        "peak_owned_rss_bytes": 1256820736,
+        "minimum_host_available_bytes": 52916645888,
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            4,
+            5
+          ],
+          "native_threads": 1
+        },
+        "survivors_after_command": []
+      },
+      "save_workspace_s": 32.078863905,
+      "reopen_workspace_s": 11.080238156,
+      "scope": "Real Qt, native public retained protein/indication and disease-derived Decks, plus separately labelled fictitious phenotype control; Linux/Xvfb software, no live-source/platform/human qualification",
+      "captures_sha256": {
+        "synthetic-phenotype-control.png": "42f025fcda1cbc7e0c695d7ab770ee8f30bc96b2b4d48f282893ffb3caa89d19",
+        "native.png": "bb5dd86d20146e8f3f1937e79116c191bc99de5ea8258c491a44bcb30b273cea",
+        "public-renderer.png": "314c217c9183d3216bbc3c4acfcb6473e3d680b453c20d798df22449fdceeeb9"
+      }
+    },
+    {
+      "name": "qt-disease-installed",
+      "receipt_sha256": "af43a3e32d66e2598bb34b79df6c8db52d5754eb03ccd0fa9a670ffa4991fed0",
+      "checks": {
+        "original_five_occurrences": true,
+        "compact_labels_keep_complete_refs": true,
+        "membership_scope_is_visible": true,
+        "repeated_disease_occurrence": true,
+        "native_scope_visible": true,
+        "exclusions_and_identity_limits_visible": true,
+        "support_identity_cells_not_truncated": true,
+        "graph_is_presentation_only": true,
+        "graph_exact_page_and_support": true,
+        "graph_original_item_back": true,
+        "filter_preserves_captured_scope": true,
+        "original_support_opens": true,
+        "original_support_reopens": true,
+        "original_scope_and_graph_restore": true,
+        "exact_supplied_protein_opens": true,
+        "exact_filtered_deck_return": true,
+        "unvisited_saved_scope_is_not_recomputed": true,
+        "public_indication_keeps_direction": true,
+        "exact_supplied_compound_opens": true,
+        "indication_exact_deck_return": true,
+        "actual_public_native_capture": true,
+        "targets_native_membership_available": true,
+        "targets_complete_original_rule_and_support": true,
+        "targets_member_source_access": true,
+        "targets_exact_deck_return": true,
+        "drugs_native_membership_available": true,
+        "drugs_complete_original_rule_and_support": true,
+        "drugs_member_source_access": true,
+        "drugs_exact_deck_return": true,
+        "missing_context_is_not_global_absence": true,
+        "synthetic_phenotype_is_explicit": true,
+        "navigation_performs_no_source_queries": true,
+        "original_inputs_unchanged": true,
+        "no_script_errors": true
+      },
+      "resources": {
+        "elapsed_s": 67.953,
+        "peak_owned_rss_bytes": 1301823488,
+        "minimum_host_available_bytes": 52908396544,
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            4,
+            5
+          ],
+          "native_threads": 1
+        },
+        "survivors_after_command": []
+      },
+      "save_workspace_s": 31.598001755,
+      "reopen_workspace_s": 10.717243643000002,
+      "scope": "Real Qt, native public retained protein/indication and disease-derived Decks, plus separately labelled fictitious phenotype control; Linux/Xvfb software, no live-source/platform/human qualification",
+      "captures_sha256": {
+        "synthetic-phenotype-control.png": "42f025fcda1cbc7e0c695d7ab770ee8f30bc96b2b4d48f282893ffb3caa89d19",
+        "native.png": "bb5dd86d20146e8f3f1937e79116c191bc99de5ea8258c491a44bcb30b273cea",
+        "public-renderer.png": "314c217c9183d3216bbc3c4acfcb6473e3d680b453c20d798df22449fdceeeb9"
+      }
+    },
+    {
+      "name": "qt-disease-entry-regression",
+      "receipt_sha256": "578700f47ecd03329337898eac53dd0ed2db862269f534201be73c21f26027f2",
+      "checks": {
+        "white_entry_and_four_input_kinds": true,
+        "pdb_is_a_record_without_an_invented_card": true,
+        "explicit_source_related_protein": true,
+        "original_source_and_exact_back": true,
+        "exact_pdb_return_without_acquisition": true,
+        "disease_card_and_topics": true,
+        "source_stated_smiles_identity": true,
+        "not_found_preserves_previous_reading": true,
+        "source_failure_is_distinct_and_preserves_reading": true,
+        "ambiguity_preserves_previous_reading": true,
+        "explicit_source_candidates_visible": true,
+        "original_candidate_context_visible": true,
+        "candidate_opens_separate_record_query": true,
+        "candidate_report_reopens_original": true,
+        "exact_original_ambiguity_and_candidates_return": true,
+        "explicit_interpro_access": true,
+        "original_access_scope_is_visible": true,
+        "explicit_prediction_access": true,
+        "no_automatic_model_or_mapping": true,
+        "predicted_records_are_readable": true,
+        "enrichment_original_report_and_reading_reopen": true,
+        "enrichment_exact_source_and_capture_return": true,
+        "enrichment_original_identity_return_without_query": true,
+        "workspace_exact_reading": true,
+        "workspace_original_query_report": true,
+        "workspace_source_history_retained": true,
+        "workspace_independent_upload": true,
+        "workspace_reopening_does_not_query_sources": true,
+        "submitted_form_leaves_reading_space": true,
+        "reading_remains_available_during_query": true,
+        "cancelled_result_does_not_replace_reading": true,
+        "changed_reading_waits_for_explicit_adoption": true,
+        "explicit_ready_result_opens": true,
+        "ready_result_exact_query_return": true,
+        "failed_enrichment_preserves_resolved_identity": true,
+        "partial_source_access_outcome_is_visible": true,
+        "obsolete_term_keeps_explicit_choice": true,
+        "obsolete_replacement_opens_separate_disease": true,
+        "saved_obsolete_original_and_choices_return": true,
+        "obsolete_return_keeps_prior_reading": true,
+        "obsolete_return_never_requeries": true,
+        "protein_reference_queries_new_ccd_card": true,
+        "new_ligand_original_source_is_readable": true,
+        "protein_exact_retained_reference_return": true,
+        "compound_declared_condition_queries_disease": true,
+        "compound_condition_original_return": true,
+        "repeated_disease_entry_stays_explicit": true,
+        "unsupplied_parent_is_explicit_new_capture": true,
+        "fresh_record_report_reopens_as_original": true,
+        "saved_query_returns_exact_repeated_card": true,
+        "record_query_preserves_deck_selection": true,
+        "public_original_inputs_unchanged": true,
+        "actual_native_capture": true,
+        "only_explicit_source_queries": true,
+        "pending_query_is_observed_before_close": true,
+        "owned_pending_service_closes_within_deadline": true,
+        "closed_service_retires_its_bootstrap": true,
+        "no_script_errors": true
+      },
+      "resources": {
+        "elapsed_s": 84.045,
+        "peak_owned_rss_bytes": 1286643712,
+        "minimum_host_available_bytes": 53889617920,
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            4,
+            5
+          ],
+          "native_threads": 1
+        },
+        "survivors_after_command": []
+      },
+      "save_workspace_s": null,
+      "reopen_workspace_s": null,
+      "scope": "Actual Qt source-entry UI with native resolution against public frozen sources and network forbidden; no live-source/native-platform qualification",
+      "captures_sha256": {
+        "renderer.png": "4bc53b8327030f68a330ee4578c0dfb2c503067e60bece6d6a2209c1850eb845",
+        "native.png": "7f53481f90050a8cd03bf1648c00c4080ca977153f97eff965fedd8c9ba76f2b"
+      }
+    },
+    {
+      "name": "qt-disease-model-regression",
+      "receipt_sha256": "ec1bcddd55aad0c300a508a5b839edb915474cdc2e22c153f4c0386c0e8434cc",
+      "checks": {
+        "real_canvas_and_renderer": true,
+        "actual_floating_group_observed": true,
+        "reset_returns_to_main_grid": true,
+        "same_live_viewport": true,
+        "camera_survives_layout": true,
+        "selection_survives_layout": true,
+        "no_inferred_correspondence": true,
+        "reading_survives_layout": true,
+        "molecular_presentation_saved_without_scene": true,
+        "saving_layout_keeps_live_model": true,
+        "original_source_remains_readable": true,
+        "native_capture": true,
+        "original_inputs_unchanged": true,
+        "no_script_errors": true
+      },
+      "resources": {
+        "elapsed_s": 29.909,
+        "peak_owned_rss_bytes": 1855823872,
+        "minimum_host_available_bytes": 53345533952,
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1
+          ],
+          "native_threads": 1
+        },
+        "survivors_after_command": []
+      },
+      "save_workspace_s": null,
+      "reopen_workspace_s": null,
+      "scope": "Actual experimental Qt/Viewer product panel; Linux/Xvfb software rendering; no mapped Card identity, stable embedding or native platform qualification",
+      "captures_sha256": {
+        "renderer.png": "2d93391ce2a831305bb1d0e6054722827d041b9cbb67f13e24d083cdd8fb1fa4",
+        "native.png": "315aa3bcf44b29a6e2485908ac4344233bd980a333bb830b4a297164f6aa9ee4"
+      }
+    }
+  ],
+  "public_input_manifest": {
+    "owner": "uibcdf/sabueso#154/#153",
+    "scope": "Existing public frozen responses in temp_data/NOTICE.md; no new acquisition or new scientific fixture. synthetic-phenotype-control.json is separately labelled, with fictitious identifiers and a synthetic source; no scientific claim.",
+    "files": {
+      "protein-card.json": {
+        "sha256": "f0111f6b6d58f3d10ee163c520562f8d8ce1e08b09cf99f93c2278ea31393d49",
+        "bytes": 260236
+      },
+      "public-disease-deck.jsonl": {
+        "sha256": "5ae175038d9c12f40a0fb1146e6fddc20b94b3187533c5a56254557276cc8c42",
+        "bytes": 323255
+      },
+      "chagas-card.json": {
+        "sha256": "ac96faf6f6fd6969b330fde6191ec8292e17b64b889c0ee332053ad3f9238529",
+        "bytes": 7716
+      },
+      "drugs-deck.jsonl": {
+        "sha256": "efac02396aa48f1a080e92c755c190a542ce15ae836d0c8d7d1e65c1f694dad9",
+        "bytes": 33122
+      },
+      "disease-card.json": {
+        "sha256": "20e6de6c701af140479341e39fc20cd9d0edda92e99a41e3729453d9bfd5da3e",
+        "bytes": 8534
+      },
+      "molecule-card.json": {
+        "sha256": "a4cc9bd07628903d1be85c9769c49abed7fdd394571c4ccaf1a3268bce6ff286",
+        "bytes": 15449
+      },
+      "synthetic-phenotype-control.json": {
+        "sha256": "8a4746938c0d3ea16a0d1b646afa69e6fdb33ce4090b0da2120d301ccd5de4da",
+        "bytes": 1202
+      },
+      "targets-deck.jsonl": {
+        "sha256": "122528fca4fdadb9616d919d6c2cdeb375b299058abfdecb352d5f345db6c636",
+        "bytes": 438643
+      }
+    },
+    "deck_members": [
+      "sabueso:disease:mondo:MONDO:0014221@sha256:9863f3e6f70a3c458307291ce86cc42d49e9fa7323e592fe31ddc9755c6dbff6",
+      "sabueso:protein:uniprot:P60174@sha256:12a235f7cdda73bca13dc2d0b829185528e78e3b27691f1a67df0f84109bf163",
+      "sabueso:small_molecule:inchikey:CULUWZNBISUWAS-UHFFFAOYSA-N@sha256:80162d0672202e7f2e472f30ca265ada1be1c4c0f44077b6ab54b2514509df82",
+      "sabueso:disease:mondo:MONDO:0001444@sha256:f9937da5f788b23ef44cfed1af19e00d47c9e7ca029577b3a03bdea6bfa57ee0",
+      "sabueso:disease:mondo:MONDO:0014221@sha256:9863f3e6f70a3c458307291ce86cc42d49e9fa7323e592fe31ddc9755c6dbff6"
+    ]
+  },
+  "preparation": {
+    "elapsed_s": 1.51,
+    "peak_owned_rss_bytes": 74326016,
+    "minimum_host_available_bytes": 54600196096,
+    "limits": {
+      "owned_rss_bytes": 4294967296,
+      "host_available_bytes": 17179869184,
+      "cpu_affinity": [
+        0,
+        1
+      ],
+      "native_threads": 1
+    },
+    "survivors_after_command": []
+  },
+  "genuine_prior_original": {
+    "path": "recovered_work/checkpoint_recovery_20261106/interactive-candidates-20261113-1/original-query-workspace-sdk796d20e.json.gz",
+    "sha256": "7739fc19d16e8e5bd07ab69afcfc57d87206dd09f6c9362c927433208e65c277",
+    "inert_and_unchanged": true,
+    "Card_construction_and_queries_forbidden": true
+  },
+  "native_core_unchanged": {
+    "sabueso/core/_clinical_history_v1/SOURCE.json": "00688c256d6aee51ebc97d752fdd641f7317c5d399ae8dd84db0ee4dc7e60650",
+    "sabueso/core/_disease_association_history_v1/SOURCE.json": "a927a304b67df6144995c9d5f21e44ff4a34a98e8023221e47361f3dfe53feef",
+    "sabueso/core/_knowledge_comparison_history_v1/SOURCE.json": "cf1f610bff358f89a432484952ddeec7eec3d661615035ead720ea7eb202dd8a",
+    "sabueso/core/_molecule_activity_history_v1/SOURCE.json": "14d59d034aa795516bc3258f11f8a4f8caaa1b5b38b3c30bfb273f8cfddde797",
+    "sabueso/core/_protein_context_history_v1/SOURCE.json": "de78272c691573e26e04c6028cd7a375616c7c2e51d0e43d7623462bbcf40823",
+    "sabueso/core/_sequence_change_history_v1/SOURCE.json": "c7a43ebf63201757abfede8ec0eee1820199ff53bfbf8fd93e4506372aa7c8c0",
+    "sabueso/core/_variant_history_v1/SOURCE.json": "b55ee3cd34ef6f7efdca561ce4b06fbacb8ea4f3ca67f7bb2d362cb82f3a6998",
+    "sabueso/core/card_exploration_storage.py": "9bf7dfd3758e5a1a41577124ad9f36593a55ba46da2b67ee717824985df52814",
+    "sabueso/core/deck_exploration_storage.py": "c71d93916c38e14e0076964f65a4d39f470031b8ac185eacf3013c76676ee62d"
+  },
+  "native_core_tree": "8dcf3e314c34571da29b4fb22962df2a23e18e7b",
+  "prior_core_receipt": {
+    "path": "interactive_rich_workspace_checkpoint_20261113.json",
+    "sha256": "b36f1d9e291e0dcc680649a862502eb55038b2fdbe9ebf02c082eec5a5a9bb94",
+    "scope": "Native core bytes unchanged; prior 672 selected native-case receipt retains its source epoch and is not a later-head full-suite claim"
+  },
+  "previous_checkpoint": {
+    "path": "devguide/evidence/interactive_record_queries_checkpoint_20261113.json",
+    "sha256": "9f48becfdd6d7053969f444df3625bf7e4e1b3cd6c5e3168f38124f9e4b59e50",
+    "scope": "Retains its own source epoch and provider/qualification limits"
+  },
+  "failed_controls": [
+    {
+      "name": "qt-disease-checkout",
+      "receipt_sha256": "67c68e043300cdf32c6101e43ae9d4cd627228d7ebfbb0df37257a5c6c7c0df1",
+      "state": "failed",
+      "disposition": "Receiver expected unvisited Chagas associations after original TIM-workspace reopening; product correctly returned not_saved. Corrected receiver explicitly asserts this boundary and reopens unchanged supplied input Deck. No scientific/original reader changed; failed records/capture retained."
+    }
+  ],
+  "earlier_epochs": [
+    {
+      "name": "disease-focused",
+      "selected_passes": 8,
+      "scope": "Earlier source epoch, not final 196-case gate"
+    },
+    {
+      "name": "disease-application",
+      "selected_passes": 195,
+      "scope": "Before the unvisited-original regression, not final 196-case gate"
+    }
+  ],
+  "plan_status": {
+    "states": {
+      "done": 20,
+      "partial": 10,
+      "todo": 3
+    },
+    "S4.4": "done at bounded original retained-information presentation criterion",
+    "scope": "Public disease definition/hierarchy/protein/indication and native target/drug Decks; phenotype display branch has separately labelled fictitious identifiers, no real-system coverage claim",
+    "counts_are_effort_or_readiness": false,
+    "human_review": "not_reviewed"
+  },
+  "limits": [
+    "Source assertions, identity rules, derivations, scientific readers, units, schemas, frozen originals, provider implementations and dependencies unchanged",
+    "Graph edges project exact native matched current-page statement endpoints and retain source/channel/identity/support; context-only rows and unknown endpoints remain in original reading",
+    "Captured input counts and current selection counts are distinct; repeated Deck occurrences do not multiply source facts",
+    "Original Support and saved reopening perform no acquisition; unvisited original topics remain not_saved",
+    "Native target/drug membership is source association or indication, not validated target, efficacy, causality or a clinical judgment",
+    "Compact labels and membership previews keep complete pins/full original metadata; improved human usability is not measured",
+    "Source-bounded enrichment intentionally truncates Open Targets/ClinVar; expected warnings and exclusions remain visible; no complete/live source coverage claim",
+    "Software Linux/Xvfb Qt receiving with shared development dependencies, no native GPU or platform/public-install qualification",
+    "Save/reopen around 32/11 seconds for this disease workspace on two CPUs is an observation, not an accepted workload budget",
+    "S2 mapped correspondence/#368, S4.3 chemical depiction, S4.5 mapped journey, broader lifetime/resource receiving and S6 human/scientific/platform/version decisions remain open",
+    "Association scope header precedes graph controls and the graph can require scrolling in the received 1280x900 layout; a more compact summary is a concrete S6 review candidate, not an observed human failure",
+    "No current-head full suite, exact-source hosted/candidate acceptance, tag, release or public package claim"
+  ],
+  "preflight": {
+    "owner": "uibcdf/sabueso#154/#153/#112",
+    "baseline": "4220e6ffcd3b9931fa3cbe3a20a540db60538b8b",
+    "slurm": "/usr/bin/srun",
+    "allocation": null,
+    "execution": "Direct bounded; Slurm not operationally adopted",
+    "total_ram_bytes": 64978440192,
+    "available_ram_bytes": 55143170048,
+    "cpu_physical": 20,
+    "load": [
+      1.37939453125,
+      1.298828125,
+      1.52099609375
+    ],
+    "cpu_usage_percent": 7.3,
+    "memory_pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=5831535\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5687888\n",
+    "tmp_free_bytes": 26451914752,
+    "plan": "Start one representative public preparation at2CPU/4GiB;4workers/4GiB application and sequential2CPU/4GiB graphics, native pools1;reserve16GiB"
+  },
+  "local_evidence_root": "recovered_work/checkpoint_recovery_20261106/interactive-disease-associations-20261113-1",
+  "retention": {
+    "owner": "uibcdf/sabueso#154/#153/#112",
+    "review_trigger": "Next affected implementation/provider/candidate checkpoint",
+    "retain": "Public prepared originals, separate synthetic controls, complete event streams, artifact files, passed/failed receipts and captures, source-call audits and compatibility proofs"
+  },
+  "deferred_ci": {
+    "record": "devguide/pending_proposals/deferred_ci.md",
+    "owners": [
+      "#154",
+      "#153",
+      "#112"
+    ],
+    "scope": "Exact final-source full/candidate and hosted CI/governance recovery",
+    "status": "not_dispatched; authorized intermediate skip-ci push only"
+  },
+  "local_quality": {
+    "ruff_format": "1778 files already formatted",
+    "ruff_check": "passed",
+    "moli_governance": "passed",
+    "diff_check": "passed",
+    "frontend_typecheck": "passed before final receiving; code bound above",
+    "frontend_build": "passed before final receiving; assets bound to wheel/sdist/source above",
+    "unique_microstage_ids": 33,
+    "local_markdown_targets": 806,
+    "missing_targets": [],
+    "current_code_hashes_verified": 36
+  },
+  "cleanup": {
+    "owner": "uibcdf/sabueso#154/#153/#112",
+    "removed_owned_disposable_paths": [
+      "recovered_work/checkpoint_recovery_20261106/interactive-disease-associations-20261113-1/disease-public-inputs-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-disease-associations-20261113-1/disease-complete-public-inputs-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-disease-associations-20261113-1/disease-focused-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-disease-associations-20261113-1/disease-application-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-disease-associations-20261113-1/disease-final-application-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-disease-associations-20261113-1/disease-build-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-disease-associations-20261113-1/qt-disease-checkout-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-disease-associations-20261113-1/qt-disease-received-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-disease-associations-20261113-1/disease-installed-application-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-disease-associations-20261113-1/qt-disease-installed-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-disease-associations-20261113-1/qt-disease-entry-regression-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-disease-associations-20261113-1/qt-disease-model-regression-scratch",
+      "/tmp/sabueso-disease-0160-vwppw0bh"
+    ],
+    "approximate_removed_file_bytes": 136888703,
+    "cleanup_failures": [],
+    "retained": "Prepared public original inputs, separately labelled fictitious phenotype control, wheel/sdist, complete event streams, native/failed captures and receipts, source-call audits and original compatibility proofs",
+    "review_trigger": "Next affected implementation/provider/candidate checkpoint",
+    "shared_environment": "Unchanged; only task-owned isolated receiving environment removed after last proof"
+  },
+  "packaging_followup": {
+    "owner": "uibcdf/sabueso#112/#154",
+    "observation": "Build succeeds; setuptools warns legacy table-shaped project.license is deprecated and reports a 2027-02-18 deadline",
+    "disposition": "Review SPDX metadata and qualify packaging before the dependency change; no metadata/dependency edit in this block"
+  }
+}

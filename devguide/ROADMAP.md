@@ -36,8 +36,10 @@ now supplies original query/inner Card/Deck history saving, nonblocking queries,
 native value/sequence/graph presentation and an actually received public
 protein/BTS/activity/assay/publication/exact Deck journey. Bounded entry/protein
 presentation now close through explicit referenced-record
-queries and exact original return. Complete disease associations, chemical depiction
-and supported model mapping remain open; prepared
+queries and exact original return. The [retained-disease presentation](pending_proposals/interactive_disease_associations_0160.md)
+now also closes S4.4's bounded association/related-Card/Deck reading criterion,
+with native scope/support, source-produced membership and separate public/synthetic
+controls. Chemical depiction and supported model mapping remain open; prepared
 human review materials are not acceptance.
 The [living implementation plan](pending_proposals/interactive_implementation_0160.md)
 owns the 0.16.0 stages, microstages, current progress and immediate resumption;
