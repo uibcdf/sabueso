@@ -1,5 +1,17 @@
 # Sabueso — Decision Log
 
+## Reopen only the captured initial model at its admitted origin (2026-11-14)
+
+Under #154, distinguish releasing the experimental molecular runtime from final
+application shutdown. Preserve the detached initial input for explicit reopening;
+create fresh provider objects/capabilities without restoring scene, camera or
+selection. Keep the exact admitted loopback origin through the existing public
+port argument; an occupied origin produces a visible retryable failure rather
+than broadening host/CSP access. A separate lifecycle revision/lock admits current
+commands without rebinding scientific model identity or holding the reading lock.
+Final shutdown retires the owned input. Provider-wide lifetime and supported
+mapping remain under Viewer #368. See [scope and receiving](pending_proposals/interactive_model_lifetime_0160.md).
+
 ## Project native disease associations without adding scientific conclusions (2026-11-13)
 
 Under #154/#153, expose the existing disease reader's captured scope, finite

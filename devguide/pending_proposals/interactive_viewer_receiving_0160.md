@@ -93,6 +93,6 @@ refusal logic; they cannot qualify real picking, renderer acknowledgement or lif
    long-session, workload-budget and human acceptance remain distinct.
 
 Source-bound chemical 2D depiction is a separate capability/ownership proposal;
-its prepared concrete draft still awaits publication authorization. Neither it
+its prepared proposal is now [Viewer #387](https://github.com/uibcdf/molsysviewer/issues/387). Neither it
 nor this handoff authorizes sibling implementation, an extra dependency, a provider
 release, a new shared protocol or removal of the current visible limitations.

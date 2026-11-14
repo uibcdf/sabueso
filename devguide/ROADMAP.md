@@ -41,6 +41,11 @@ now also closes S4.4's bounded association/related-Card/Deck reading criterion,
 with native scope/support, source-produced membership and separate public/synthetic
 controls. Chemical depiction and supported model mapping remain open; prepared
 human review materials are not acceptance.
+The [model lifetime increment](pending_proposals/interactive_model_lifetime_0160.md)
+now receives explicit initial-copy runtime close/reopen and an independently
+surviving Qt window, extending partial S2.4/S5.3 without claiming general provider
+pending/background disposal or scene recovery. Source-bound chemical 2D is now
+reported under [Viewer #387](https://github.com/uibcdf/molsysviewer/issues/387).
 The [living implementation plan](pending_proposals/interactive_implementation_0160.md)
 owns the 0.16.0 stages, microstages, current progress and immediate resumption;
 it preserves the broader roadmap and separate 0.15.0 delivery state.

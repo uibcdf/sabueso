@@ -1,0 +1,743 @@
+{
+  "format": "sabueso.interactive_model_lifetime_checkpoint@1",
+  "owner": "uibcdf/sabueso#154/#153/#112",
+  "baseline_commit": "8fc42b9b85574db881b108dbe2c07c6f930bae1d",
+  "scope": "Owned experimental model runtime close/reopen, fixed-origin/initial-copy integrity, independent surviving Qt window and corrected reopened reading layout; S2.4/S5.3 stay partial",
+  "code_sha256": {
+    "sabueso/explorer/_qt.py": "7b85fe1d2c8c30fc2254055dc4cd041886f1be65a3b9cea7eda775ff0df6b74f",
+    "sabueso/explorer/_session.py": "521687245ec5386574817c5ebfaf661347dd3abdc71722f0769f369539296b30",
+    "sabueso/explorer/_molecular.py": "a9ded2e47fad16cc83af3f5f78e5463334357e84f82d4c4da0dc24692f607c72",
+    "sabueso/explorer/_service.py": "b900a45373ba86d1961a86872968c0adee376f9c0040ff6f05d0793c3972704b",
+    "sabueso/explorer/_deck_session.py": "81bc949b4db90ab2896b234dc4ee93e1c6cb2baa587d36df191d17c162c0616e",
+    "sabueso/explorer/_source_choices.py": "208d0d02395d4b6eb55d2645ff469cb7e13099a8a4a487b2695ea39b4657e559",
+    "sabueso/explorer/_presentation.py": "2b0434795de70337eedfe4636dd6a6e2dd9d58fce82d50ffd3ca3c1f0b309c95",
+    "sabueso/explorer/__init__.py": "d9f38870c8c8cb9a246e19c53547451343ff05bd8724b52d11b16ea805f07062",
+    "sabueso/explorer/_layout.py": "83ff00cc24e9d0fe22210ffa61908fa45d1982774ac0097bd554d26f286ad072",
+    "sabueso/explorer/__main__.py": "13e6fc8829e6dd3b15c8523dac1b21a6dcdcd0ec4f3119c417f61c9a1d412891",
+    "sabueso/explorer/_workspace.py": "474afdd8591ce205c56869a1a955b754cdc481e82d5d917e4f9f763e7442e8d1",
+    "sabueso/explorer/_queries.py": "a56330d66e7476b4d8e034884c1bf2ec9c763867701c605259ecba3d31e8bf11",
+    "sabueso/explorer/_resolution.py": "7a165ba64694d64f9cda93a12315b77533b1f2e51d7302b68baaf36df6cc9ac9",
+    "sabueso/explorer/_assets/app.js": "9c3ebfc81824ebe66fc36b2643751e1d6021eeb59dce001501858536eafc42af",
+    "sabueso/explorer/_assets/app.css": "80eb9cd196035397a1b68ba54968c6130dd012f1975430cf840da00cb68517b0",
+    "sabueso/explorer/_assets/notices.txt": "a238c0f2172b6b9507e352ce97d0065b73c0abe2b076493e6553789f675e0b15",
+    "sabueso/explorer/_assets/index.html": "be4705852899de9486e6c01fb0d92ad99301024833c9c7b50b545a3827cc785d",
+    "sabueso/core/card_exploration_storage.py": "9bf7dfd3758e5a1a41577124ad9f36593a55ba46da2b67ee717824985df52814",
+    "sabueso/core/deck_exploration_storage.py": "c71d93916c38e14e0076964f65a4d39f470031b8ac185eacf3013c76676ee62d",
+    "sabueso/core/_variant_history_v1/SOURCE.json": "b55ee3cd34ef6f7efdca561ce4b06fbacb8ea4f3ca67f7bb2d362cb82f3a6998",
+    "sabueso/core/_sequence_change_history_v1/SOURCE.json": "c7a43ebf63201757abfede8ec0eee1820199ff53bfbf8fd93e4506372aa7c8c0",
+    "sabueso/core/_molecule_activity_history_v1/SOURCE.json": "14d59d034aa795516bc3258f11f8a4f8caaa1b5b38b3c30bfb273f8cfddde797",
+    "sabueso/core/_protein_context_history_v1/SOURCE.json": "de78272c691573e26e04c6028cd7a375616c7c2e51d0e43d7623462bbcf40823",
+    "sabueso/core/_disease_association_history_v1/SOURCE.json": "a927a304b67df6144995c9d5f21e44ff4a34a98e8023221e47361f3dfe53feef",
+    "sabueso/core/_knowledge_comparison_history_v1/SOURCE.json": "cf1f610bff358f89a432484952ddeec7eec3d661615035ead720ea7eb202dd8a",
+    "sabueso/core/_clinical_history_v1/SOURCE.json": "00688c256d6aee51ebc97d752fdd641f7317c5d399ae8dd84db0ee4dc7e60650",
+    "sabueso/explorer/_record_queries.py": "c3c214d566af6cdbd324bf7fc06cdcb4894f264adb9c67c830a0c09807433e2a",
+    "sabueso/explorer/_association_presentation.py": "590c8f44e26ff59af5509d82f1d7278aa9d0a31dd4fd1fc812904c36626bd034",
+    "frontend/explorer/src/app.tsx": "1d347e57f0e76d0d4f28107866dbb0348d8b31111df75b27757613f1d8bb2d30",
+    "frontend/explorer/src/style.css": "bd10ab44665d85162797573a746eeff7b8903bde4c805f2c1bed2adaa7f3b451",
+    "devtools/explorer_fixture_service.py": "3d0776e082c62fa446d1d2081d7826d2c32b612f9f25ae05352437b07058a4b9",
+    "devtools/prepare_disease_walkthrough.py": "d715ee50c187841bbabce960d35b4237bccb1e4a31993c221b283dec6902ae5f",
+    "devtools/disease_explorer_journey.mjs": "3f39eb3a465631af35b9e7390a7c940a9a4654b132033c9833e1b3f971ba3f5d",
+    "devtools/resolution_explorer_journey.mjs": "14409d5d55bb59ed4e4bc8f5f19c8fdde646299b3f3e53ec3a99dcc7e9f7b9a3",
+    "devtools/molecular_explorer_journey.mjs": "8b54d3bdada706ac0dd7d7523a84c99828d6bbf5cab302928d9b41171fdfb118",
+    "tests/explorer/test_disease_associations_offline.py": "d75490aa01226f2c49fd4450361d74177c010a930fe7fab71c21428756e78491",
+    "tests/explorer/test_molecular_lifetime_offline.py": "523cacc7de1ccd4ffabea14b75aff8f45381afb63712162469e9fe59ae17ba7f"
+  },
+  "selected_gates": [
+    {
+      "name": "model-lifetime-final-application",
+      "counts": {
+        "collected": 202,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 202,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 202,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 6,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "duration_s": 82.1122299580602,
+      "events_sha256": "79964c1553eb5a2ea90a26712215ead26ff6fb3849cbf661b59cba734cdb0f14",
+      "integrity_valid": true,
+      "complete": true,
+      "resources": {
+        "elapsed_s": 82.805,
+        "peak_owned_rss_bytes": 1093865472,
+        "minimum_host_available_bytes": 50049474560,
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "native_threads": 1
+        },
+        "survivors_after_command": []
+      },
+      "provider_cohort": "Before independent MolSysMT fast-forward: ff25f120; Viewer 0dcdd6ce"
+    },
+    {
+      "name": "model-lifetime-final-installed-application",
+      "counts": {
+        "collected": 201,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 201,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 201,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 6,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "duration_s": 81.78629138099495,
+      "events_sha256": "f21165c79231fb5f7b8dad0e10f3d9166378f86534abb95e0a094b345cd94e82",
+      "integrity_valid": true,
+      "complete": true,
+      "resources": {
+        "elapsed_s": 82.587,
+        "peak_owned_rss_bytes": 1079373824,
+        "minimum_host_available_bytes": 50350698496,
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "native_threads": 1
+        },
+        "survivors_after_command": []
+      },
+      "provider_cohort": "Before independent MolSysMT fast-forward: ff25f120; Viewer 0dcdd6ce"
+    }
+  ],
+  "installed_scope": "Noneditable diagnostic unpublished wheel and 20 byte-identical copied Python test/helper files outside checkout; published pytest-receptor 1.2.0 override. Source-only frontend inspection omitted; shared editable environment unchanged.",
+  "copied_tests_proof_sha256": "fb171cf0aa7f6eb7c327863bdf10f7965aebac1d0cbdf037c49f9af627cbef1f",
+  "artifact_proof": {
+    "wheel": {
+      "name": "sabueso-0.14.0+294.g8fc42b9.dirty-py3-none-any.whl",
+      "sha256": "80dddc48028f90224c59dd74c19ea34a26e684c6bd12a276bab4b4f3a513fc71"
+    },
+    "sdist": {
+      "name": "sabueso-0.14.0+294.g8fc42b9.dirty.tar.gz",
+      "sha256": "ea0fd97b124f8893252cd9da59904894c4b411ba4301cc81868516a62552836c"
+    },
+    "runtime_original_SOURCE_and_installed_bytes_equal": [
+      "sabueso/explorer/_qt.py",
+      "sabueso/explorer/_session.py",
+      "sabueso/explorer/_molecular.py",
+      "sabueso/explorer/_service.py",
+      "sabueso/explorer/_deck_session.py",
+      "sabueso/explorer/_source_choices.py",
+      "sabueso/explorer/_presentation.py",
+      "sabueso/explorer/__init__.py",
+      "sabueso/explorer/_layout.py",
+      "sabueso/explorer/__main__.py",
+      "sabueso/explorer/_workspace.py",
+      "sabueso/explorer/_queries.py",
+      "sabueso/explorer/_resolution.py",
+      "sabueso/explorer/_assets/app.js",
+      "sabueso/explorer/_assets/app.css",
+      "sabueso/explorer/_assets/notices.txt",
+      "sabueso/explorer/_assets/index.html",
+      "sabueso/core/card_exploration_storage.py",
+      "sabueso/core/deck_exploration_storage.py",
+      "sabueso/core/_variant_history_v1/SOURCE.json",
+      "sabueso/core/_sequence_change_history_v1/SOURCE.json",
+      "sabueso/core/_molecule_activity_history_v1/SOURCE.json",
+      "sabueso/core/_protein_context_history_v1/SOURCE.json",
+      "sabueso/core/_disease_association_history_v1/SOURCE.json",
+      "sabueso/core/_knowledge_comparison_history_v1/SOURCE.json",
+      "sabueso/core/_clinical_history_v1/SOURCE.json",
+      "sabueso/explorer/_record_queries.py",
+      "sabueso/explorer/_association_presentation.py"
+    ],
+    "installed_module": "/tmp/sabueso-model-0160-adaky_ft/env/lib/python3.14/site-packages/sabueso/__init__.py",
+    "sabueso_version": "0.14.0+294.g8fc42b9.dirty",
+    "receptor_version": "1.2.0",
+    "editable": false,
+    "genuine_sdk796d20e_workspace_inert_and_unchanged": true,
+    "genuine_prior_file_sha256": "7739fc19d16e8e5bd07ab69afcfc57d87206dd09f6c9362c927433208e65c277",
+    "scope": "Diagnostic unpublished wheel with shared dependencies; not public/candidate/platform qualification"
+  },
+  "build": {
+    "elapsed_s": 9.593,
+    "peak_owned_rss_bytes": 74919936,
+    "minimum_host_available_bytes": 53787377664,
+    "limits": {
+      "owned_rss_bytes": 4294967296,
+      "host_available_bytes": 17179869184,
+      "cpu_affinity": [
+        0,
+        1
+      ],
+      "native_threads": 1
+    },
+    "survivors_after_command": []
+  },
+  "native_qt": [
+    {
+      "name": "qt-model-lifetime-layout",
+      "receipt_sha256": "b55704fe9adaa3f236defa1e123c4f34617582bb606c4d50c2c4d58414297f58",
+      "checks": {
+        "real_canvas_and_renderer": true,
+        "actual_floating_group_observed": true,
+        "reset_returns_to_main_grid": true,
+        "same_live_viewport": true,
+        "camera_survives_layout": true,
+        "selection_survives_layout": true,
+        "no_inferred_correspondence": true,
+        "reading_survives_layout": true,
+        "molecular_presentation_saved_without_scene": true,
+        "saving_layout_keeps_live_model": true,
+        "caller_mutation_is_separate": true,
+        "closed_runtime_releases_view": true,
+        "closed_origin_is_not_listening": true,
+        "independent_live_view_survives_close": true,
+        "closed_view_keeps_reading": true,
+        "reload_does_not_open_model": true,
+        "closed_reading_reload_keeps_exact_context": true,
+        "occupied_origin_is_visible": true,
+        "failed_reopen_preserves_reading": true,
+        "reopened_layout_keeps_reading_space": true,
+        "old_runtime_capability_is_refused": true,
+        "new_runtime_retains_initial_copy": true,
+        "new_runtime_is_explicit": true,
+        "new_runtime_actually_draws": true,
+        "three_distinct_runtime_cycles": true,
+        "independent_camera_and_selection_retained": true,
+        "caller_was_not_reread": true,
+        "original_source_remains_readable": true,
+        "native_capture": true,
+        "original_inputs_unchanged": true,
+        "no_script_errors": true
+      },
+      "resources": {
+        "elapsed_s": 67.373,
+        "peak_owned_rss_bytes": 3678613504,
+        "minimum_host_available_bytes": 50051223552,
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            4,
+            5,
+            6,
+            7
+          ],
+          "native_threads": 1
+        },
+        "survivors_after_command": []
+      },
+      "runtime_cycles": [
+        {
+          "cycle": 1,
+          "closed_listener_retired": true,
+          "independent_view_retained": true,
+          "new_runtime_draws": true,
+          "initial_copy_binding": true,
+          "stale_capability_refused": true
+        },
+        {
+          "cycle": 2,
+          "closed_listener_retired": true,
+          "independent_view_retained": true,
+          "new_runtime_draws": true,
+          "initial_copy_binding": true,
+          "stale_capability_refused": true
+        },
+        {
+          "cycle": 3,
+          "closed_listener_retired": true,
+          "independent_view_retained": true,
+          "new_runtime_draws": true,
+          "initial_copy_binding": true,
+          "stale_capability_refused": true
+        }
+      ],
+      "input_sha256": {
+        "card": "b66519fc27a618b575f0b77203666af07c9bb1b992b4f70a29906974c6451ab6",
+        "model": "6f15f9412a97e38ffb01e0aec8ffa6016ac5d1ddf50042e0129583caf65be125"
+      },
+      "scope": "Actual experimental Qt/Viewer product panel; Linux/Xvfb software rendering; no mapped Card identity, stable embedding or native platform qualification",
+      "molsysmt_commit_prefix": "ff25f120",
+      "molsysviewer_commit": "0dcdd6ce574d3c99483480cb38c16c1e3cc4782f",
+      "observed_receiver_sha256": "4c743e5977aae6db9e5bb3b16622f3aeb432f79a6811267b11565057767240f0",
+      "captures_sha256": {
+        "renderer.png": "754c94833fdf83523040a7172e51a9045180a777d8b314aa0264ffa2b614dc30",
+        "native.png": "c3b685e129e3165caa015d7fda90499f403cbdfcbb02627db7f97a3c9d847758"
+      }
+    },
+    {
+      "name": "qt-model-lifetime-final-installed",
+      "receipt_sha256": "f40ba6581000cd6c1e550bba7bd985b34764f0f2ae55bb7b38c8f1e2f2dff093",
+      "checks": {
+        "real_canvas_and_renderer": true,
+        "actual_floating_group_observed": true,
+        "reset_returns_to_main_grid": true,
+        "same_live_viewport": true,
+        "camera_survives_layout": true,
+        "selection_survives_layout": true,
+        "no_inferred_correspondence": true,
+        "reading_survives_layout": true,
+        "molecular_presentation_saved_without_scene": true,
+        "saving_layout_keeps_live_model": true,
+        "caller_mutation_is_separate": true,
+        "closed_runtime_releases_view": true,
+        "closed_origin_is_not_listening": true,
+        "independent_live_view_survives_close": true,
+        "closed_view_keeps_reading": true,
+        "reload_does_not_open_model": true,
+        "closed_reading_reload_keeps_exact_context": true,
+        "occupied_origin_is_visible": true,
+        "failed_reopen_preserves_reading": true,
+        "reopened_layout_keeps_reading_space": true,
+        "old_runtime_capability_is_refused": true,
+        "new_runtime_retains_initial_copy": true,
+        "new_runtime_is_explicit": true,
+        "new_runtime_actually_draws": true,
+        "three_distinct_runtime_cycles": true,
+        "independent_camera_and_selection_retained": true,
+        "caller_was_not_reread": true,
+        "original_source_remains_readable": true,
+        "native_capture": true,
+        "original_inputs_unchanged": true,
+        "no_script_errors": true
+      },
+      "resources": {
+        "elapsed_s": 66.543,
+        "peak_owned_rss_bytes": 3675729920,
+        "minimum_host_available_bytes": 50352820224,
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            4,
+            5,
+            6,
+            7
+          ],
+          "native_threads": 1
+        },
+        "survivors_after_command": []
+      },
+      "runtime_cycles": [
+        {
+          "cycle": 1,
+          "closed_listener_retired": true,
+          "independent_view_retained": true,
+          "new_runtime_draws": true,
+          "initial_copy_binding": true,
+          "stale_capability_refused": true
+        },
+        {
+          "cycle": 2,
+          "closed_listener_retired": true,
+          "independent_view_retained": true,
+          "new_runtime_draws": true,
+          "initial_copy_binding": true,
+          "stale_capability_refused": true
+        },
+        {
+          "cycle": 3,
+          "closed_listener_retired": true,
+          "independent_view_retained": true,
+          "new_runtime_draws": true,
+          "initial_copy_binding": true,
+          "stale_capability_refused": true
+        }
+      ],
+      "input_sha256": {
+        "card": "b66519fc27a618b575f0b77203666af07c9bb1b992b4f70a29906974c6451ab6",
+        "model": "6f15f9412a97e38ffb01e0aec8ffa6016ac5d1ddf50042e0129583caf65be125"
+      },
+      "scope": "Actual experimental Qt/Viewer product panel; Linux/Xvfb software rendering; no mapped Card identity, stable embedding or native platform qualification",
+      "molsysmt_commit_prefix": "ff25f120",
+      "molsysviewer_commit": "0dcdd6ce574d3c99483480cb38c16c1e3cc4782f",
+      "observed_receiver_sha256": "4c743e5977aae6db9e5bb3b16622f3aeb432f79a6811267b11565057767240f0",
+      "captures_sha256": {
+        "renderer.png": "abdf19b44f38f9f558f071f4b1cd0a7c211312ca1cdf93e75540c76650cf2a7b",
+        "native.png": "377f0e3cd40518028f85d06d422705b555da3fc0eb2446b355e0a806bc694490"
+      }
+    },
+    {
+      "name": "qt-model-lifetime-final-unavailable",
+      "receipt_sha256": "6477773155a28c9210534fd9055add95d5b9f9f610ac45e38b97151cd351482f",
+      "checks": {
+        "failed_model_keeps_knowledge": true,
+        "failure_is_visible": true,
+        "original_source_remains_readable": true,
+        "native_capture": true,
+        "original_inputs_unchanged": true,
+        "no_script_errors": true
+      },
+      "resources": {
+        "elapsed_s": 19.221,
+        "peak_owned_rss_bytes": 1294774272,
+        "minimum_host_available_bytes": 53267034112,
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1
+          ],
+          "native_threads": 1
+        },
+        "survivors_after_command": []
+      },
+      "runtime_cycles": [],
+      "input_sha256": {
+        "card": "b66519fc27a618b575f0b77203666af07c9bb1b992b4f70a29906974c6451ab6",
+        "model": "7b11a5b03afab9ac543c211bf41006312c80a23c710416cd3eaa36b272093f64"
+      },
+      "scope": "Actual experimental Qt/Viewer product panel; Linux/Xvfb software rendering; no mapped Card identity, stable embedding or native platform qualification",
+      "molsysmt_commit_prefix": "27ba3d4c",
+      "molsysviewer_commit": "0dcdd6ce574d3c99483480cb38c16c1e3cc4782f",
+      "observed_receiver_sha256": "4c743e5977aae6db9e5bb3b16622f3aeb432f79a6811267b11565057767240f0",
+      "captures_sha256": {
+        "renderer.png": "8e437a3057feadff86b6216a533af4f7739f8fcd1dba68b677fbd0a38acf36f3",
+        "native.png": "e8145a3fad20c77bb4b1453b2272293d7c93c7b895c81adb4e61de8c4ac5e467"
+      }
+    },
+    {
+      "name": "qt-model-lifetime-current-received",
+      "receipt_sha256": "987274b80ede60242ee162157d689ec855c43b94a7172ede057df22d047ca1ec",
+      "checks": {
+        "real_canvas_and_renderer": true,
+        "actual_floating_group_observed": true,
+        "reset_returns_to_main_grid": true,
+        "same_live_viewport": true,
+        "camera_survives_layout": true,
+        "selection_survives_layout": true,
+        "no_inferred_correspondence": true,
+        "reading_survives_layout": true,
+        "molecular_presentation_saved_without_scene": true,
+        "saving_layout_keeps_live_model": true,
+        "caller_mutation_is_separate": true,
+        "closed_runtime_releases_view": true,
+        "closed_origin_is_not_listening": true,
+        "independent_live_view_survives_close": true,
+        "closed_view_keeps_reading": true,
+        "reload_does_not_open_model": true,
+        "closed_reading_reload_keeps_exact_context": true,
+        "occupied_origin_is_visible": true,
+        "failed_reopen_preserves_reading": true,
+        "reopened_layout_keeps_reading_space": true,
+        "old_runtime_capability_is_refused": true,
+        "new_runtime_retains_initial_copy": true,
+        "new_runtime_is_explicit": true,
+        "new_runtime_actually_draws": true,
+        "three_distinct_runtime_cycles": true,
+        "independent_camera_and_selection_retained": true,
+        "caller_was_not_reread": true,
+        "original_source_remains_readable": true,
+        "native_capture": true,
+        "original_inputs_unchanged": true,
+        "no_script_errors": true
+      },
+      "resources": {
+        "elapsed_s": 62.201,
+        "peak_owned_rss_bytes": 3656794112,
+        "minimum_host_available_bytes": 51447382016,
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "native_threads": 1
+        },
+        "survivors_after_command": []
+      },
+      "runtime_cycles": [
+        {
+          "cycle": 1,
+          "closed_listener_retired": true,
+          "independent_view_retained": true,
+          "new_runtime_draws": true,
+          "initial_copy_binding": true,
+          "stale_capability_refused": true
+        },
+        {
+          "cycle": 2,
+          "closed_listener_retired": true,
+          "independent_view_retained": true,
+          "new_runtime_draws": true,
+          "initial_copy_binding": true,
+          "stale_capability_refused": true
+        },
+        {
+          "cycle": 3,
+          "closed_listener_retired": true,
+          "independent_view_retained": true,
+          "new_runtime_draws": true,
+          "initial_copy_binding": true,
+          "stale_capability_refused": true
+        }
+      ],
+      "input_sha256": {
+        "card": "b66519fc27a618b575f0b77203666af07c9bb1b992b4f70a29906974c6451ab6",
+        "model": "6f15f9412a97e38ffb01e0aec8ffa6016ac5d1ddf50042e0129583caf65be125"
+      },
+      "scope": "Actual experimental Qt/Viewer product panel; Linux/Xvfb software rendering; no mapped Card identity, stable embedding or native platform qualification",
+      "molsysmt_commit_prefix": "27ba3d4c",
+      "molsysviewer_commit": "0dcdd6ce574d3c99483480cb38c16c1e3cc4782f",
+      "observed_receiver_sha256": "6d0344934c9a21fd20867a768b1cd2c6258bd5472c82dbc43026a4c8f9aa302c",
+      "captures_sha256": {
+        "renderer.png": "6b1a57cee8597075e57eeffd44e714de723de2e2444be3fcae0cf5fc54483106",
+        "native.png": "f93e3d20b16b07f0b7c24aee51885fddc3a5f5310328d2e700f9a321ba0150b9"
+      }
+    }
+  ],
+  "receiver_nonexecuting_delta": "One trailing space removed after current-provider receiving; exact observed receiver copies retained with per-cohort hashes. Product runtime and package bytes unchanged.",
+  "provider_cohorts": {
+    "molsysviewer": {
+      "commit": "0dcdd6ce574d3c99483480cb38c16c1e3cc4782f",
+      "runtime_tree": "ffdd59076a366d6c27f9e70718bb93dfae2544bc",
+      "editable_metadata_version": "0.24.0+409.g0dcdd6ce",
+      "module_origin": "/fast_data/home/liliana/repos@uibcdf/molsysviewer/molsysviewer/__init__.py",
+      "direct_url": {
+        "dir_info": {
+          "editable": true
+        },
+        "url": "file:///fast_data/home/liliana/repos%40uibcdf/molsysviewer"
+      },
+      "clean": true
+    },
+    "molsysmt": {
+      "commit": "27ba3d4c8d63a6a40a2d77f0190309ff15f4deef",
+      "runtime_tree": "a2d86cefc0b1e94b8b6ad30d772679ce90fe0569",
+      "editable_metadata_version": "0.23.0+904.gff25f1202",
+      "module_origin": "/fast_data/home/liliana/repos@uibcdf/molsysmt/molsysmt/__init__.py",
+      "direct_url": {
+        "dir_info": {
+          "editable": true
+        },
+        "url": "file:///fast_data/home/liliana/repos%40uibcdf/molsysmt"
+      },
+      "clean": true
+    },
+    "molsysmt_update": {
+      "old_commit": "ff25f120243319ca9515009b4971e24a2eb0dc22",
+      "reflog": "27ba3d4c8 HEAD@{2026-11-14 10:45:37 -0600} pull --ff-only origin main: Fast-forward",
+      "scope": "Independent fast-forward after initial final source/installed/native gates; separate current-provider native receiving, no sibling edits/adoption/minimum or publication claim"
+    }
+  },
+  "provider_boundary": "Initial selected/source/installed/native gates finished before the independent MolSysMT update. The later native/current-provider and unavailable controls receive 27ba3d4c separately; no earlier core/full-suite receipt is promoted to the new provider cohort.",
+  "genuine_prior_original": {
+    "sha256": "7739fc19d16e8e5bd07ab69afcfc57d87206dd09f6c9362c927433208e65c277",
+    "inert_and_unchanged": true,
+    "Card_construction_and_source_queries_forbidden": true
+  },
+  "native_core_unchanged": {
+    "sabueso/core/_clinical_history_v1/SOURCE.json": "00688c256d6aee51ebc97d752fdd641f7317c5d399ae8dd84db0ee4dc7e60650",
+    "sabueso/core/_disease_association_history_v1/SOURCE.json": "a927a304b67df6144995c9d5f21e44ff4a34a98e8023221e47361f3dfe53feef",
+    "sabueso/core/_knowledge_comparison_history_v1/SOURCE.json": "cf1f610bff358f89a432484952ddeec7eec3d661615035ead720ea7eb202dd8a",
+    "sabueso/core/_molecule_activity_history_v1/SOURCE.json": "14d59d034aa795516bc3258f11f8a4f8caaa1b5b38b3c30bfb273f8cfddde797",
+    "sabueso/core/_protein_context_history_v1/SOURCE.json": "de78272c691573e26e04c6028cd7a375616c7c2e51d0e43d7623462bbcf40823",
+    "sabueso/core/_sequence_change_history_v1/SOURCE.json": "c7a43ebf63201757abfede8ec0eee1820199ff53bfbf8fd93e4506372aa7c8c0",
+    "sabueso/core/_variant_history_v1/SOURCE.json": "b55ee3cd34ef6f7efdca561ce4b06fbacb8ea4f3ca67f7bb2d362cb82f3a6998",
+    "sabueso/core/card_exploration_storage.py": "9bf7dfd3758e5a1a41577124ad9f36593a55ba46da2b67ee717824985df52814",
+    "sabueso/core/deck_exploration_storage.py": "c71d93916c38e14e0076964f65a4d39f470031b8ac185eacf3013c76676ee62d"
+  },
+  "native_core_tree": "8dcf3e314c34571da29b4fb22962df2a23e18e7b",
+  "previous_checkpoint": {
+    "path": "devguide/evidence/interactive_disease_associations_checkpoint_20261113.json",
+    "sha256": "e361c929c0fa2240136904f9b088c5f4cda1c0c5f90980ece00ee58f777ddaf2",
+    "scope": "Retains its own source and provider epochs; no later full-suite claim"
+  },
+  "prior_core_receipt": {
+    "path": "interactive_rich_workspace_checkpoint_20261113.json",
+    "sha256": "b36f1d9e291e0dcc680649a862502eb55038b2fdbe9ebf02c082eec5a5a9bb94",
+    "scope": "Native core bytes unchanged; prior 672 selected native-case receipt retains its source epoch and is not a later-head full-suite claim"
+  },
+  "failed_controls": [
+    {
+      "name": "qt-model-lifetime-current-provider",
+      "receipt_sha256": "b4a73113582caefd8a95efe6ab66b9e192f76ae382c01670535113e5e7487fd6",
+      "reason": "Observer queried the second window API before its session authentication completed; received a 403 text instead of JSON",
+      "disposition": "Wait for authenticated reading before API observation. Corrected current-provider run passes; no observed provider regression. Raw receipt retained privately with expired task capability, never copied into public report."
+    },
+    {
+      "name": "6-GiB observer profile",
+      "reason": "Argument parser rejected unsupported --rss-gib 6 before any task started",
+      "disposition": "Used admitted monitored 4-GiB profile; not counted as execution or a pass"
+    }
+  ],
+  "earlier_epochs": [
+    {
+      "name": "model-lifetime-application",
+      "passed": 202,
+      "scope": "Before reopened-layout correction; not final source gate"
+    },
+    {
+      "name": "model-lifetime-installed-application",
+      "passed": 201,
+      "scope": "Before reopened-layout correction; not final installed gate"
+    },
+    {
+      "name": "qt-model-lifetime-checkout/installed",
+      "checks_each": 30,
+      "scope": "Functional passes before native visual review exposed three narrow columns; no reading-width check yet. Prior artifacts/receipts/captures retained separately"
+    },
+    {
+      "name": "qt-model-lifetime-unavailable",
+      "checks": 6,
+      "scope": "Earlier diagnostic artifact; final unavailable receiving separate"
+    }
+  ],
+  "plan_status": {
+    "states": {
+      "done": 20,
+      "partial": 10,
+      "todo": 3
+    },
+    "S2.4": "partial; actual owned release/reopen/independent native-window survival now received",
+    "S5.3": "partial; retained reading available during owned pending close, broader semantics remain open",
+    "human_review": "not_reviewed",
+    "counts_are_effort_or_readiness": false
+  },
+  "provider_reporting": {
+    "disease_summary": "https://github.com/uibcdf/sabueso/issues/154#issuecomment-6880506906",
+    "chemical_2d_proposal": "https://github.com/uibcdf/molsysviewer/issues/387",
+    "prepared_2d_body_sha256": "594a23f18efb94c1a8cb917d953e68f814282e296c8b6499d21b44038253261a",
+    "authority": "Maintainer explicitly authorizes technical issue reporting in UIBCDF repositories; third-party destinations retain prior explicit permission requirements",
+    "embedding_owner": "https://github.com/uibcdf/molsysviewer/issues/368",
+    "scope": "Issue delivery and experiment receiving, not provider implementation/adoption or supported embedding"
+  },
+  "limits": [
+    "Scientific core/schema/identity/defaults/units and native saved formats unchanged; providers and dependencies not edited by this task",
+    "Lifecycle revisions identify application transitions, not current scientific model/occurrence/index identity; correspondence remains not_established",
+    "Fresh reopen preserves initial captured bytes and admitted origin; camera, selection and scene are not restored",
+    "Occupied origin is a visible retryable error, not a reason to broaden native/CSP access; failed cleanup retains references until explicit retry/final shutdown",
+    "Independent native windows use independent provider services/views, not shared-session multi-view ownership",
+    "Empty selection receiving does not qualify nonempty mapped selection/picking",
+    "General provider pending/callback disposal, background suspension, scene recovery and supported embedding/current-model hooks remain open under #368",
+    "Synchronous provider parsing/setup runs in the service process; large-model read responsiveness and async preparation are unqualified",
+    "Reading-width check applies to the received 1280x900 default reopened layout; no human accessibility/usefulness verdict",
+    "Summed RSS is sampled and can count shared pages; two small public-model windows under Xvfb/llvmpipe are not native GPU, thermal or large-scale qualification",
+    "No current-head full suite, exact-source hosted/candidate/platform/human acceptance, tag, release or public-package claim"
+  ],
+  "preflight": {
+    "owner": "uibcdf/sabueso#154/#153/#112",
+    "python": "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+    "memory": {
+      "total": 64978440192,
+      "available": 54570778624,
+      "percent": 16.0,
+      "used": 10407661568,
+      "free": 24244207616,
+      "active": 25069477888,
+      "inactive": 10306756608,
+      "buffers": 4813688832,
+      "cached": 32336216064,
+      "shared": 6139973632,
+      "slab": 4138549248
+    },
+    "cpu_physical": 20,
+    "cpu_logical": 20,
+    "cpu_percent": 5.4,
+    "swap_activity_bytes": {
+      "in": 0,
+      "out": 0
+    },
+    "memory_pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=5833295\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5689643\n",
+    "slurm_status": "read-only status timed out; no job submitted",
+    "slurm_job": null,
+    "profile": "Shared direct host; max 8 CPU/10 GiB aggregate. Four-worker application tests <=4 GiB plus double Qt profile 4 CPU/4 GiB on separate affinities. Prior measured single-view peaks ~1.7 GiB; initial double-view estimate <4 GiB, monitored. Reserve >=16 GiB; no reservation.",
+    "tmp_disk_available": 25974800384
+  },
+  "local_evidence_root": "recovered_work/checkpoint_recovery_20261106/interactive-model-lifetime-20261114-1",
+  "retention": {
+    "owner": "uibcdf/sabueso#154/#153/#112",
+    "review_trigger": "Next affected provider/current-model/candidate checkpoint",
+    "retain": "Final and earlier diagnostic artifacts, exact original hashes, complete event streams, native/failed captures and receipts, sanitized reports and private raw observer failure"
+  },
+  "deferred_ci": {
+    "record": "devguide/pending_proposals/deferred_ci.md",
+    "owners": [
+      "#154",
+      "#153",
+      "#112"
+    ],
+    "status": "not_dispatched; authorized intermediate skip-ci checkpoint",
+    "scope": "Exact final-source full/candidate and hosted CI/governance recovery"
+  },
+  "local_quality": {
+    "ruff_format": "1780 files already formatted",
+    "ruff_check": "passed",
+    "moli_governance": "passed",
+    "diff_check": "passed",
+    "frontend_typecheck": "passed after layout correction",
+    "frontend_build": "passed; final asset bytes agree with artifacts/install",
+    "unique_microstage_ids": 33,
+    "local_markdown_targets": 816,
+    "missing_targets": [],
+    "current_code_hashes_verified": 37
+  },
+  "cleanup": {
+    "owner": "uibcdf/sabueso#154/#153/#112",
+    "removed_owned_disposable_paths": [
+      "recovered_work/checkpoint_recovery_20261106/interactive-model-lifetime-20261114-1/model-lifetime-focused-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-model-lifetime-20261114-1/qt-model-lifetime-checkout-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-model-lifetime-20261114-1/qt-model-lifetime-installed-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-model-lifetime-20261114-1/model-lifetime-final-build-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-model-lifetime-20261114-1/model-lifetime-build-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-model-lifetime-20261114-1/qt-model-lifetime-final-installed-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-model-lifetime-20261114-1/qt-model-lifetime-current-received-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-model-lifetime-20261114-1/qt-model-lifetime-unavailable-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-model-lifetime-20261114-1/model-lifetime-final-application-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-model-lifetime-20261114-1/model-lifetime-installed-application-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-model-lifetime-20261114-1/qt-model-lifetime-layout-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-model-lifetime-20261114-1/qt-model-lifetime-current-provider-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-model-lifetime-20261114-1/model-lifetime-application-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-model-lifetime-20261114-1/model-lifetime-final-installed-application-scratch",
+      "recovered_work/checkpoint_recovery_20261106/interactive-model-lifetime-20261114-1/qt-model-lifetime-final-unavailable-scratch",
+      "/tmp/sabueso-model-0160-adaky_ft"
+    ],
+    "approximate_removed_file_bytes": 173172098,
+    "cleanup_failures": [],
+    "retained": "Final/earlier diagnostic artifacts and receipts, original hashes, complete streams, passed/failed native captures, exact receiver editions and sanitized issue drafts. Raw failed observer receipt retained privately; no live task services/capabilities remain.",
+    "review_trigger": "Next affected provider/current-model/candidate checkpoint",
+    "shared_environment": "Not replaced; only task-owned isolated receiving environment removed"
+  },
+  "provider_temporal_receiving": {
+    "model-lifetime-final-application": {
+      "first_sample_wall_s": 1794674508.475093,
+      "last_sample_wall_s": 1794674591.0134964,
+      "before_provider_update": true
+    },
+    "model-lifetime-final-installed-application": {
+      "first_sample_wall_s": 1794674650.7450874,
+      "last_sample_wall_s": 1794674733.066152,
+      "before_provider_update": true
+    },
+    "qt-model-lifetime-layout": {
+      "first_sample_wall_s": 1794674509.4372807,
+      "last_sample_wall_s": 1794674576.5434592,
+      "before_provider_update": true
+    },
+    "qt-model-lifetime-final-installed": {
+      "first_sample_wall_s": 1794674650.591394,
+      "last_sample_wall_s": 1794674716.8674443,
+      "before_provider_update": true
+    }
+  }
+}

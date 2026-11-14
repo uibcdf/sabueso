@@ -11,7 +11,7 @@ area: [human-exploration, deck, architecture, standalone, visualization]
 
 ## Resume here
 
-Checkpoint date: **2026-11-13**. Reviewed implementation baseline:
+Checkpoint date: **2026-11-14**. Reviewed implementation baseline:
 planning parent `fb0d09659f8d00685f829d6781e5d256751dac66`;
 [application code hashes and receiving](../evidence/interactive_card_app_checkpoint_20261113.json).
 
@@ -59,6 +59,16 @@ asserting a real relationship. Unvisited original topics remain `not_saved`.
 [Source/installed application and actual Qt receiving](../evidence/interactive_disease_associations_checkpoint_20261113.json)
 close S4.4 against its original bounded presentation criterion, separately from
 source completeness, workload budgets and human acceptance.
+
+The [owned model lifetime increment](interactive_model_lifetime_0160.md) adds
+explicit Close model / Reopen initial model, fresh runtime capabilities from the
+same captured input and fixed admitted origin, occupied-port failure/retry and
+an independently surviving real Qt view. Reading stays independently available
+during owned pending close. This extends S2.4/S5.3 without claiming scene recovery,
+nonempty mapped selection or provider-wide pending/background lifetime semantics.
+The source-bound receipt owns exact source/installed receiving. Chemical 2D is
+now reported to [Viewer #387](https://github.com/uibcdf/molsysviewer/issues/387);
+provider implementation and adoption remain open.
 
 **Next observable result:** exact source-bound annotation → model selection → original source → Back, including unknown/replaced contexts (S2.2/S2.5), plus qualified chemical depiction and provider lifetime/scene recovery. Viewer #368 still owns the supported embedding/current-model contract. Chemical depiction, workload agreements and human acceptance remain open; arbitrary source controls remain a future extension. Owned reading-service loss, explicit restart and pending-query shutdown now receive in actual Qt. The [presentation receipt](../evidence/interactive_layout_checkpoint_20261113.json) closes S5.2 at layout-only scope. The whole-workspace receipt does not close remaining scopes or authorize a release. Interrupted attempts never count as passes.
 
@@ -194,7 +204,7 @@ rows' experiment evidence, not product acceptance.
 | S2.1 | `partial` | The product now isolates an opt-in adapter to the experimental public `RemoteSessionService`/`MolSysView`: bounded detached initial input, live readiness/camera observations and owned cleanup pass. The current model has no established Card correspondence. Receive the stable contract under #368 before a supported embedding claim; no private Viewer protocol is copied |
 | S2.2 | `partial` | Probe picking/selection and stale-mapping refusal pass. Implement product selection ↔ reading navigation for exact captured model/occurrence/residue references; test unknown, ambiguous, replaced and reindexed contexts without inferring identity |
 | S2.3 | `partial` | The product adds model/reading/context panels and keyboard-addressable Show/Float/Reset buttons. Three real float/reset cycles preserve the iframe, camera and reading, returning all panels to the main grid. The selection was empty, so nonempty mapped selection, graph panels and broader layout receiving remain open |
-| S2.4 | `partial` | The product owns the initial model copy, service and view through application shutdown; successful and rejected-model runs leave no owned survivors. Probe independent disposal and Movie acknowledgments remain experiment evidence. Product panel close/reopen, pending operations, a surviving second view and supported background suspension remain open |
+| S2.4 | `partial` | [Owned model lifetime receiving](interactive_model_lifetime_0160.md) adds three actual runtime release/reopen/draw cycles from the same initial copy, fixed-origin failure/retry, retired listeners and old capabilities, and an independently surviving Qt view. Knowledge and pending-close reading remain independently usable; final shutdown retires the copy. Fresh reopening does not restore scene/camera/selection. General provider pending callbacks, shared-session multi-view semantics and supported background suspension remain open under #368 |
 | S2.5 | `todo` | Demonstrate the actual product's annotation → 3D selection → original source → Back journey, plus a useful no-coordinate Card. Separate native composition, actual renderer, model delivery and user-understanding observations |
 
 #368 is a dependency of a supported molecular embedding claim, not a reason to
@@ -252,7 +262,7 @@ optional GUI/process resources independently owned.
 | --- | --- | --- |
 | S5.1 | `done` | Independent original Card reading and Deck selection restoration retain their earlier receipts. The [whole-workspace receipt](../evidence/interactive_rich_workspace_checkpoint_20261113.json) now adds exact inner Card trails/pages, Deck occurrence/selection/Back and original source-query reports/return points, composing unchanged native formats. Plain/gzip/zstd reopening is inert; pending jobs, scene and layout stay separate |
 | S5.2 | `done` | Versioned 64 KiB presentation-only persistence admits the three known panels and exact Dockview cohort. Real save/reload preserves reading/float arrangement; Reset uses defaults, live-model saving keeps the viewport, and missing-model/unknown-version controls explain fallback. Unknown originals and symlinks are never overwritten; no Knowledge, query history or scene is restored. [Receipt and limits](../evidence/interactive_layout_checkpoint_20261113.json) |
-| S5.3 | `partial` | Actual installed Qt now receives controlled owned-service loss, the surviving reading/window, visible error and explicit original-workspace restart with exact Back. A synthetic pending query closes with its owned service in about 2.24 s; no result is adopted and its bootstrap retires. Cancellation/stale-result handling and atomic/private caller-safe bootstrap pass. Model pending-operation/lifetime receiving remains under S2/#368 and native Windows shutdown is unqualified; unsaved crash recovery is not claimed |
+| S5.3 | `partial` | Actual installed Qt now receives controlled owned-service loss, the surviving reading/window, visible error and explicit original-workspace restart with exact Back. A synthetic pending query closes with its owned service in about 2.24 s; no result is adopted and its bootstrap retires. Cancellation/stale-result handling and atomic/private caller-safe bootstrap pass. Owned model close/reopen and independent-window survival now receive; general model pending-operation/lifetime receiving remains under S2/#368 and native Windows shutdown is unqualified; unsaved crash recovery is not claimed |
 | S5.4 | `done` | Include the compiled frontend/resources in the optional product closure, qualify headless/GUI boundaries and verify a development launch outside the checkout. Keep Electron/Tauri comparison runtimes out of the shipped Qt closure |
 | S5.5 | `partial` | The [source/resource increment](interactive_source_enrichment_0160.md#bounded-product-resource-observations) receives two sequential installed public model profiles, 12 float/reset cycles each and short idle/active windows, with 14 checks each and about 1.76/1.86 GiB summed-RSS peaks. Renderer is llvmpipe; the AF fragment is deliberately unrelated to the Card. Failed-input controls retain earlier receipts. Repeated provider creation/disposal, longer settled sessions and agreed scaling cases remain. Preflight shared resources, run sequential graphics trials and record actual CPU/RAM/graphics and cleanup; do not import an unrelated budget or claim thermal superiority |
 
@@ -285,7 +295,7 @@ checks alone.
 | Remaining front | Concrete next result | Owner / dependency | Can proceed locally? |
 | --- | --- | --- | --- |
 | Molecular correspondence and supported embedding (S2) | Versioned current-model/occurrence identity and supported selection/lifetime route, then actual annotation → selection → source → Back | Viewer #368; Sabueso #154; initial input hash cannot establish active identity | Consumer refusal/lifetime/resource work can continue; exact mapped product journey awaits the provider contract |
-| Chemical depiction and nature-specific presentation (S4) | Source-bound 2D representation through a provider-owned supported surface; broader visual polish and user receiving | #154; concrete Viewer proposal retained for explicit publication approval | Public retained readers and source controls can continue; no chemical renderer or provider patch is silently adopted |
+| Chemical depiction and nature-specific presentation (S4) | Source-bound 2D representation through a provider-owned supported surface; broader visual polish and user receiving | #154; [Viewer #387](https://github.com/uibcdf/molsysviewer/issues/387) now owns the prepared depiction proposal | Public retained readers and source controls can continue; no chemical renderer or provider patch is silently adopted |
 | Resource and recovery breadth (S5/S6.2) | Varied public model idle/active observations, repeated product/provider lifetime and native-platform receiving; agreed workload targets | #154/#153/#112 | Bounded local measurements can continue; measurements do not themselves establish budgets |
 | Human review (S6.1) | Maintainer and independent researcher complete the prepared tasks/worksheet | Maintainer/researcher, #154/#153 | Materials are prepared; human observations cannot be supplied by an agent |
 | Scientific/platform decisions (S6.3) | Decide #192 aggregation semantics and reconsider #194's macOS exception for this version | Maintainer, #192/#194 | Preserve the explicit current limitations while decisions are pending |

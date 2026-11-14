@@ -1,11 +1,29 @@
 # Sabueso — Checkpoint
 
-Current working-state checkpoint: **2026-11-13 (UTC)**. Start with
+Current working-state checkpoint: **2026-11-14 (UTC)**. Start with
 [ONBOARDING](ONBOARDING.md) for project context and the
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
 ## Next product objective: interactive exploration in 0.16.0
+
+The [owned molecular lifetime increment](pending_proposals/interactive_model_lifetime_0160.md)
+adds explicit runtime close/reopen from the unchanged initial capture, fixed
+admitted origin, fresh capabilities, retired listeners and occupied-port
+failure/retry. Three actual cycles preserve Knowledge and an independently owned
+Qt renderer. This extends partial S2.4/S5.3; reopening is a fresh view without
+scene/camera/selection recovery. General provider pending/background semantics,
+nonempty mapped selection and supported correspondence remain open. The
+[receipt](evidence/interactive_model_lifetime_checkpoint_20261114.json) owns
+202 source application cases, 201 installed runtime cases and 31 actual Qt checks
+each from checkout/installed wheel, plus six failed-input controls. An independent
+MolSysMT update receives a separate 31-check installed native profile; source and
+provider epochs remain distinct. The earlier disease summary is
+[published in #154](https://github.com/uibcdf/sabueso/issues/154#issuecomment-6880506906),
+and [Viewer #387](https://github.com/uibcdf/molsysviewer/issues/387) now receives
+the prepared 2D capability proposal. Issue delivery does not implement depiction.
+The living plan remains **20 done, 10 partial and 3 todo**, without treating those
+counts as effort/readiness or claiming whole-version acceptance.
 
 The [retained-disease checkpoint](pending_proposals/interactive_disease_associations_0160.md)
 adds visible native association scope, complete finite source/identity/support

@@ -79,6 +79,7 @@ class _Service:
         self.resolver = resolver
         self.resolution_history = []
         self.molecular = None
+        self.molecular_lock = asyncio.Lock()
         self.layout = _Layout(output_directory)
         self.queries = _Queries(self)
         self.workspace_saved = None
@@ -347,9 +348,9 @@ class _Service:
                 "connect-src 'self'; img-src 'self' data:; font-src 'self'; "
                 "frame-ancestors 'none'; base-uri 'none'; form-action 'none'"
             )
-            if self.molecular and self.molecular.origin:
+            if self.molecular and self.molecular.allowed_origin:
                 response.headers["Content-Security-Policy"] += (
-                    f"; frame-src {self.molecular.origin}"
+                    f"; frame-src {self.molecular.allowed_origin}"
                 )
             return response
 
@@ -434,6 +435,25 @@ class _Service:
                 {"molecular": self.molecular.descriptor() if self.molecular else None}
             )
 
+        async def molecular_action(request):
+            body = await request.json()
+            async with self.molecular_lock:
+                model = self.molecular
+                if (
+                    model is None
+                    or not isinstance(body, dict)
+                    or set(body) != {"lifecycle_revision"}
+                    or body["lifecycle_revision"] != model.revision
+                ):
+                    raise ArgumentError(
+                        "The molecular panel changed; reload its controls."
+                    )
+                if request.path.endswith("-reopen"):
+                    await model.reopen()
+                else:
+                    await model.close_preview()
+                return web.json_response({"molecular": model.descriptor()})
+
         async def query_job(request):
             if request.method == "GET":
                 return web.json_response({"query_job": self.queries.descriptor()})
@@ -502,6 +522,8 @@ class _Service:
                 web.post("/api/workspace-save", workspace),
                 web.post("/api/workspace-reopen", workspace),
                 web.get("/api/molecular", molecular),
+                web.post("/api/molecular-close", molecular_action),
+                web.post("/api/molecular-reopen", molecular_action),
                 web.post("/api/layout", layout),
             ]
         )

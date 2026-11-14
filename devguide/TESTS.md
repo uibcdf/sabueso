@@ -1894,3 +1894,31 @@ original reader. The [receipt](evidence/interactive_disease_associations_checkpo
 binds artifacts, original compatibility, resources and failed receiver controls.
 These are selected changed-source checks, not live-source, human or platform
 acceptance or a full current-head suite.
+
+### Owned experimental molecular runtime lifetime
+
+Run `tests/explorer/test_molecular_lifetime_offline.py` with all application
+cases and the published receptor. Receive initial-copy/fixed-origin integrity,
+fresh runtime capabilities, stale/foreign/malformed requests, failure/retry and
+cleanup ownership. The real-loopback pending-close control must keep the reading
+and its actions available; synthetic providers alone do not qualify actual drawing
+or independent native-window survival.
+
+Receive `devtools/molecular_explorer_journey.mjs --receive-layout --receive-lifetime`
+from checkout and a noneditable installed wheel. This starts two actual Qt windows,
+receives three complete runtime disposal/reopen/draw cycles, checks the surviving
+independent camera/selection, closed-page reload, occupied-port failure/retry and
+rejected old capabilities. Mutate only the receiver's task-owned caller copy;
+keep the declared public model and Card byte-identical. The reopened view uses
+the initial copy and does not restore scene/camera/selection. An empty selection
+cannot qualify nonempty selection/picking. Close/reopen uses only the exact
+previously admitted origin, without broadening native/CSP policy.
+
+Allow for both windows in the resource estimate; the initial double-window
+software profile uses four CPUs and a monitored 4 GiB ceiling, separately from
+the four-worker 4 GiB application gate. Stop owned work if host reserve or its
+ceiling is crossed. Record actual memory, listeners, current and stale capabilities,
+original compatibility and complete event streams. The [receipt](evidence/interactive_model_lifetime_checkpoint_20261114.json)
+owns the actual cohort and limits; general provider pending/background lifetime,
+shared-session multi-view behavior, supported mapping, platform and human acceptance
+remain separate.

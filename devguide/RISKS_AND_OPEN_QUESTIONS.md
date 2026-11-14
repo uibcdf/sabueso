@@ -8,11 +8,14 @@ failure or preferred layout is established. Public protein/indication receiving
 and a separately labelled fictitious phenotype control do not establish complete
 disease/source coverage. See the [bounded receipt](evidence/interactive_disease_associations_checkpoint_20261113.json).
 
-Packaging follow-up (#112/#154): the current diagnostic wheel/sdist build succeeds,
-but setuptools warns that the existing table-shaped `project.license` is
-deprecated and reports a 2027-02-18 migration deadline. Review conversion to SPDX
-metadata with the applicable packaging gates before that dependency change;
-this observation does not qualify a public build or change dependencies.
+Owned molecular runtime close/reopen (#154) now receives three actual cycles,
+fixed-origin failure/retry, retired listeners/capabilities and an independently
+surviving Qt window. The corrected reopened layout keeps Context below Knowledge
+instead of three narrow columns. General provider pending/callback lifetime,
+shared-session views, background suspension and nonempty mapped selection remain
+open. A lifecycle revision is not current scientific model/index identity.
+Synchronous provider parsing is not qualified for large-model read responsiveness.
+See the [scope and current-provider cohorts](pending_proposals/interactive_model_lifetime_0160.md).
 
 Whole interactive workspaces (#154/#153) now retain original readings and query
 history through native verification. Distinct focal Deck components still repeat
@@ -61,8 +64,9 @@ Sabueso owns the bounded adapter; provider and shared-contract needs retain thei
 owners. The first product adapter now receives an explicitly experimental live panel
 with unknown Card correspondence; three float/reset cycles preserve its camera
 and viewport. Initial file hashes do not identify a subsequently replaced model.
-Supported embedding (#368), mapped selection, final panel close/reopen and
-background/pending-operation recovery remain unqualified. The iframe delegates
+Supported embedding (#368), mapped selection and general provider
+background/pending-operation recovery remain unqualified. Owned initial-copy
+runtime close/reopen now has the separate receiving scope above. The iframe delegates
 XR permission only to its owned provider origin; the denied-XR control reproduced
 an unhandled rejection, already tracked in the host review. This consumer
 workaround does not receive a provider Mol* upgrade or graceful-denial fix.
@@ -93,7 +97,9 @@ The backend's stated migration date is a warning, not a reproduced enforcement
 failure. Preserve the MIT licence and source-rights contracts. A concrete report
 is retained for private maintainer handoff in
 `b5-package-artifact-build-1/license-metadata-issue112-draft-1.md` under
-`recovered_work/checkpoint_recovery_20261106/`; publication authorization is pending.
+`recovered_work/checkpoint_recovery_20261106/`. The current observation is also
+[reported in #154](https://github.com/uibcdf/sabueso/issues/154#issuecomment-6880506906);
+#112/#35 retain packaging ownership, and no metadata conversion is implemented.
 
 Native reference context (#148): the current original focal UniProt sequence
 assertions retain entry/sequence versions and checksums but omit the sequence

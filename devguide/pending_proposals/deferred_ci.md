@@ -9,6 +9,21 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Owned molecular runtime close/reopen (2026-11-14)
+
+From `8fc42b9`, #154/#153 own explicit model runtime release/reopen from the
+initial capture, fixed-origin admission and independently available Knowledge.
+[The receipt](../evidence/interactive_model_lifetime_checkpoint_20261114.json)
+binds source/installed application and actual double-window Qt receiving, original
+compatibility and artifact bytes. General provider pending/background semantics,
+supported mapping, human/workload/platform acceptance remain open. Native core,
+schema, scientific/default bytes and dependency minima stay fixed. Receiving
+records actual provider heads; it does not assume earlier provider cohorts.
+The authorized intermediate `[skip ci]` checkpoint retains exact-final-source
+full/candidate and hosted CI/governance recovery under #154/#153/#112; Git and
+the owning-issue summary record its final SHA. No workflow dispatch, release,
+tag or public package publication is authorized or claimed.
+
 ### Retained disease scope, support and bounded S4.4 completion (2026-11-13)
 
 From `4220e6f`, #154/#153 own native disease association presentation, original
