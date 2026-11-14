@@ -1,0 +1,390 @@
+{
+  "format": "sabueso.interactive_source_candidates_checkpoint@1",
+  "owner": "uibcdf/sabueso#154",
+  "baseline_commit": "796d20e581fd250e4d2fff801df6b44a052f18a6",
+  "scope": "Explicit source-candidate/alternative queries, original ambiguity and saved-choice preservation, bounded source descriptions and actual reading-space correction; not S4/S6 or whole-version acceptance",
+  "code_sha256": {
+    "devtools/explorer_fixture_service.py": "29c58373b9ac1782c414e788c37dc36845c34bc9631c07b0623e19cefb957d23",
+    "devtools/resolution_explorer_journey.mjs": "ceedf03fcaf9117778db52d545893a62b1f1bc3213d7ebc8280824fa1217a185",
+    "frontend/explorer/src/app.tsx": "7e53eed1f0040efad2ba2aa2efe5b0228ffdba215653897cb532e51bfb535773",
+    "frontend/explorer/src/style.css": "71941acb533b70b71601fcf92845ac2b7bdfdbcebc48719fb72576066e6aee0f",
+    "sabueso/core/_clinical_history_v1/SOURCE.json": "00688c256d6aee51ebc97d752fdd641f7317c5d399ae8dd84db0ee4dc7e60650",
+    "sabueso/core/_disease_association_history_v1/SOURCE.json": "a927a304b67df6144995c9d5f21e44ff4a34a98e8023221e47361f3dfe53feef",
+    "sabueso/core/_knowledge_comparison_history_v1/SOURCE.json": "cf1f610bff358f89a432484952ddeec7eec3d661615035ead720ea7eb202dd8a",
+    "sabueso/core/_molecule_activity_history_v1/SOURCE.json": "14d59d034aa795516bc3258f11f8a4f8caaa1b5b38b3c30bfb273f8cfddde797",
+    "sabueso/core/_protein_context_history_v1/SOURCE.json": "de78272c691573e26e04c6028cd7a375616c7c2e51d0e43d7623462bbcf40823",
+    "sabueso/core/_sequence_change_history_v1/SOURCE.json": "c7a43ebf63201757abfede8ec0eee1820199ff53bfbf8fd93e4506372aa7c8c0",
+    "sabueso/core/_variant_history_v1/SOURCE.json": "b55ee3cd34ef6f7efdca561ce4b06fbacb8ea4f3ca67f7bb2d362cb82f3a6998",
+    "sabueso/core/card_exploration_storage.py": "9bf7dfd3758e5a1a41577124ad9f36593a55ba46da2b67ee717824985df52814",
+    "sabueso/core/deck_exploration_storage.py": "c71d93916c38e14e0076964f65a4d39f470031b8ac185eacf3013c76676ee62d",
+    "sabueso/explorer/__init__.py": "d9f38870c8c8cb9a246e19c53547451343ff05bd8724b52d11b16ea805f07062",
+    "sabueso/explorer/__main__.py": "13e6fc8829e6dd3b15c8523dac1b21a6dcdcd0ec4f3119c417f61c9a1d412891",
+    "sabueso/explorer/_assets/app.css": "e737cca0966a606ac47db85e48599c4ed26ca9b601ad9b78c453c17593d6507b",
+    "sabueso/explorer/_assets/app.js": "53523318c5fe44dd5efb2148d9ce28c6ca0b9bb4997ebb3055979dfbdb0f19de",
+    "sabueso/explorer/_assets/index.html": "be4705852899de9486e6c01fb0d92ad99301024833c9c7b50b545a3827cc785d",
+    "sabueso/explorer/_assets/notices.txt": "a238c0f2172b6b9507e352ce97d0065b73c0abe2b076493e6553789f675e0b15",
+    "sabueso/explorer/_deck_session.py": "dc2e241c03275db5dc0f6ae7edec264e37481e1f44cf55b772fd4dd97ca2b92f",
+    "sabueso/explorer/_layout.py": "83ff00cc24e9d0fe22210ffa61908fa45d1982774ac0097bd554d26f286ad072",
+    "sabueso/explorer/_molecular.py": "c48891270e16e357886de018e62efed3830789399a1c9ce9c61945230490a612",
+    "sabueso/explorer/_presentation.py": "7501d2864a77130c55bf1eb499b3381888db8d2df4b3eff222c9ddac1be3aedf",
+    "sabueso/explorer/_qt.py": "7b85fe1d2c8c30fc2254055dc4cd041886f1be65a3b9cea7eda775ff0df6b74f",
+    "sabueso/explorer/_queries.py": "1b21581c0668282d61e99f4d167a0c65cbd6ba88dccb881cb7e5703cd02e9a33",
+    "sabueso/explorer/_resolution.py": "ad8ddbddeeaf396c3bb2929944bccf277979d4591463bf18643066bad223bb83",
+    "sabueso/explorer/_service.py": "4b899eb4c81706ff718cf432921f3392c3d3666da65ded130e5e5cb4e64caf02",
+    "sabueso/explorer/_session.py": "11f8b265b8b37b86c52b9bc08da6922f4a3be9d7a449fb78a984d936421b1032",
+    "sabueso/explorer/_source_choices.py": "8a24d01b6f0b85ebe5b4c4f75789aff7e9c0c519f43c23aa86c82f65554e58a3",
+    "sabueso/explorer/_workspace.py": "6e56c57b59dfcf4de545347ecee95d03d3e5e17a96c7d13854ff743e810145c0",
+    "tests/explorer/test_candidates_offline.py": "624151549a0795b0dbd45824d3b0aae4e06684992ff485a3f1e7078a7af92b5e"
+  },
+  "selected_gates": [
+    {
+      "name": "candidates-final-application",
+      "counts": {
+        "collected": 135,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 135,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 135,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "duration_s": 38.64897361595649,
+      "events_sha256": "a16018ecd8d98c224af6437d06def06123eee728cb13f02dde9b30e24f7bf35d",
+      "integrity_valid": true,
+      "resources": {
+        "peak_owned_rss_bytes": 837885952,
+        "minimum_host_available_bytes": 54043045888,
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "native_threads": 1
+        },
+        "survivors_after_command": []
+      }
+    },
+    {
+      "name": "candidates-installed-application",
+      "counts": {
+        "collected": 134,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 134,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 134,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "duration_s": 38.1935357330367,
+      "events_sha256": "b31077aa3f7e4c61dcf04193e4e6dbf6ed09c9bb52059104b9c69edafa964333",
+      "integrity_valid": true,
+      "resources": {
+        "peak_owned_rss_bytes": 825688064,
+        "minimum_host_available_bytes": 54005637120,
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "native_threads": 1
+        },
+        "survivors_after_command": []
+      }
+    }
+  ],
+  "installed_scope": "Noneditable unpublished diagnostic wheel outside checkout, shared native dependencies, published pinned pytest-receptor 1.2.0. One source-only asset inspection is deselected from the 134-case installed gate and passes in the 135-case source gate.",
+  "artifact_proof": {
+    "wheel": {
+      "name": "sabueso-0.14.0+290.g796d20e.dirty-py3-none-any.whl",
+      "sha256": "877113ed1369633a38406d07ee472fc8d90ec4b4d66238840f78ce7ce0a597dc"
+    },
+    "sdist": {
+      "name": "sabueso-0.14.0+290.g796d20e.dirty.tar.gz",
+      "sha256": "6511d56e379aede9167bad5221651df5e60c68dc8fefe0736e51bb2413362bbb"
+    },
+    "runtime_original_SOURCE_and_installed_bytes_equal": [
+      "sabueso/explorer/_qt.py",
+      "sabueso/explorer/_session.py",
+      "sabueso/explorer/_molecular.py",
+      "sabueso/explorer/_service.py",
+      "sabueso/explorer/_deck_session.py",
+      "sabueso/explorer/_source_choices.py",
+      "sabueso/explorer/_presentation.py",
+      "sabueso/explorer/__init__.py",
+      "sabueso/explorer/_layout.py",
+      "sabueso/explorer/__main__.py",
+      "sabueso/explorer/_workspace.py",
+      "sabueso/explorer/_queries.py",
+      "sabueso/explorer/_resolution.py",
+      "sabueso/explorer/_assets/app.js",
+      "sabueso/explorer/_assets/app.css",
+      "sabueso/explorer/_assets/notices.txt",
+      "sabueso/explorer/_assets/index.html",
+      "sabueso/core/card_exploration_storage.py",
+      "sabueso/core/deck_exploration_storage.py",
+      "sabueso/core/_variant_history_v1/SOURCE.json",
+      "sabueso/core/_sequence_change_history_v1/SOURCE.json",
+      "sabueso/core/_molecule_activity_history_v1/SOURCE.json",
+      "sabueso/core/_protein_context_history_v1/SOURCE.json",
+      "sabueso/core/_disease_association_history_v1/SOURCE.json",
+      "sabueso/core/_knowledge_comparison_history_v1/SOURCE.json",
+      "sabueso/core/_clinical_history_v1/SOURCE.json"
+    ],
+    "installed_module": "/tmp/sabueso-rich-0160-nm9zuzua/env/lib/python3.14/site-packages/sabueso/__init__.py",
+    "sabueso_version": "0.14.0+290.g796d20e.dirty",
+    "receptor_version": "1.2.0",
+    "editable": false,
+    "genuine_sdk796d20e_workspace_inert_and_unchanged": true,
+    "scope": "Diagnostic unpublished wheel with shared dependencies, not public/candidate/platform qualification"
+  },
+  "genuine_prior_original": {
+    "source_sha": "796d20e581fd250e4d2fff801df6b44a052f18a6",
+    "scope": "Genuine original whole workspace before candidate implementation; native PDB public fixture query and retained source-declared protein choice; no current Card",
+    "workspace_sha256": "7739fc19d16e8e5bd07ab69afcfc57d87206dd09f6c9362c927433208e65c277",
+    "bundle_digest": "sha256:e07579bc0e9b5fb550a3cad06a2b71934ea75049867b9bf53ca3b6d0c9287791",
+    "original_report": "{\n  \"resolution\": {\n    \"status\": \"resolved\",\n    \"entity_ref\": \"pdb:1TCD\",\n    \"qualifiers\": {\n      \"record_type\": \"structure\"\n    },\n    \"candidates\": [],\n    \"alternatives\": [],\n    \"policy\": null,\n    \"identity_links\": [],\n    \"source_assertions\": [],\n    \"related\": [\n      {\n        \"entity_ref\": \"sabueso:protein:uniprot:P52270\",\n        \"predicate\": \"has_structure\",\n        \"polymer_entities\": [\n          \"1\"\n        ]\n      }\n    ],\n    \"decision\": {\n      \"query\": {\n        \"identifier\": \"pdb:1TCD\",\n        \"name\": null,\n        \"organism\": null,\n        \"include_subtaxa\": false,\n        \"entity_type\": null\n      },\n      \"rules\": [\n        \"pdb_entry\"\n      ],\n      \"sources\": [\n        {\n          \"name\": \"RCSB PDB\",\n          \"record\": \"1TCD\",\n          \"retrieved_at\": \"fixture\"\n        }\n      ],\n      \"sabueso_version\": \"0.14.0+289.gbed4605.dirty\",\n      \"route\": {\n        \"entity_type\": \"protein\",\n        \"tool\": \"resolve_protein_card\",\n        \"basis\": \"default\"\n      },\n      \"profile\": {\n        \"name\": \"identity@1\",\n        \"options\": {},\n        \"overridden\": []\n      }\n    }\n  },\n  \"acquisition_trace\": {\n    \"format\": \"sabueso.acquisition_trace@1\",\n    \"id\": \"sabueso:acquisition-trace:296cd8d6-42c6-4711-a575-cb14e6ef0999\",\n    \"coverage\": {\n      \"sources\": [\n        \"UniProt\",\n        \"Europe PMC\",\n        \"RCSB PDB\",\n        \"ChEMBL\",\n        \"PubChem\",\n        \"PubChem BioAssay\",\n        \"BindingDB\",\n        \"PDB CCD\",\n        \"UniChem\",\n        \"PDBe-KB\",\n        \"AlphaFold DB\",\n        \"InterPro\",\n        \"MONDO\",\n        \"Open Targets\",\n        \"Orphanet\",\n        \"DISEASES\",\n        \"ClinVar\",\n        \"MedGen\",\n        \"ClinicalTrials.gov\",\n        \"NCBI Taxonomy\",\n        \"GTEx\",\n        \"OMA\",\n        \"gnomAD\",\n        \"AAindex\",\n        \"DisProt\",\n        \"UniParc\",\n        \"AlphaMissense\",\n        \"MobiDB\",\n        \"SIFTS\",\n        \"PDBe Validation\",\n        \"EPPIC\",\n        \"PDB-REDO\",\n        \"GlyGen\",\n        \"AlphaFill\",\n        \"LIGYSIS\",\n        \"IntAct\",\n        \"AmyPro\",\n        \"SWISS-MODEL Repository\"\n      ],\n      \"boundary\": \"built_in_entry_search_mentions_annotations_structure_chemical_clients\",\n      \"other_sources_and_custom_clients\": \"not_observed\"\n    },\n    \"result_status\": \"resolved\",\n    \"records\": [\n      {\n        \"format\": \"sabueso.source_acquisition@1\",\n        \"id\": \"sabueso:source-acquisition:edc205fd-d343-496d-8d87-e4d46536a7b7\",\n        \"source\": \"RCSB PDB\",\n        \"operation\": \"structure\",\n        \"query\": {\n          \"pdb_id\": \"1TCD\"\n        },\n        \"producer\": {\n          \"name\": \"sabueso\",\n          \"version\": \"0.14.0+289.gbed4605.dirty\",\n          \"version_basis\": \"runtime_package_metadata\"\n        },\n        \"started_at\": \"2026-11-14T01:24:39+00:00\",\n        \"outcome\": \"received\",\n        \"count\": 1,\n        \"entries\": [\n          {\n            \"pdb_id\": \"1TCD\",\n            \"outcome\": \"received\",\n            \"retrieved_at\": \"fixture\",\n            \"source_version\": {\n              \"value\": null,\n              \"basis\": \"not_stated\"\n            },\n            \"revision_metadata\": {},\n            \"primary_citation\": {\n              \"journal_abbrev\": \"J.Mol.Biol.\",\n              \"pdbx_database_id_DOI\": \"10.1006/jmbi.1998.2094\",\n              \"pdbx_database_id_PubMed\": 9761683,\n              \"title\": \"Differences in the intersubunit contacts in triosephosphate isomerase from two closely related pathogenic trypanosomes.\",\n              \"year\": 1998\n            },\n            \"response_identity\": {\n              \"basis\": \"decoded_entry\",\n              \"hash\": \"sha256:b8018edbf6bff34db8acbd9c4f868e0049ba1eef8a32b19ff593e295c92c8fb7\"\n            }\n          }\n        ],\n        \"completed_ids\": [\n          \"1TCD\"\n        ],\n        \"source_version\": {\n          \"value\": null,\n          \"basis\": \"not_stated\"\n        },\n        \"retrieved_at\": \"fixture\",\n        \"response_identity\": {\n          \"basis\": \"decoded_client_result\",\n          \"hash\": \"sha256:b8018edbf6bff34db8acbd9c4f868e0049ba1eef8a32b19ff593e295c92c8fb7\"\n        },\n        \"finished_at\": \"2026-11-14T01:24:39+00:00\",\n        \"requests\": [],\n        \"access\": \"fixture\",\n        \"network_attempts\": 0,\n        \"received_responses\": 0,\n        \"bibliography\": [\n          {\n            \"id\": \"software:sabueso:0.14.0+289.gbed4605.dirty\",\n            \"type\": \"software\",\n            \"title\": \"Sabueso\",\n            \"authors\": [\n              \"Prada-Gracia, Diego\",\n              \"Moreno-Vargas, Liliana M.\"\n            ],\n            \"version\": \"0.14.0+289.gbed4605.dirty\",\n            \"doi\": \"10.5281/zenodo.22937375\",\n            \"url\": \"https://github.com/uibcdf/sabueso\"\n          },\n          {\n            \"id\": \"doi:10.1093/nar/gkae1091\",\n            \"type\": \"article\",\n            \"title\": \"Updated resources for exploring experimentally-determined PDB structures and Computed Structure Models at the RCSB Protein Data Bank\",\n            \"authors\": [\n              \"Burley, Stephen K\",\n              \"Bhatt, Rusham\",\n              \"Bhikadiya, Charmi\",\n              \"Bi, Chunxiao\",\n              \"Biester, Alison\",\n              \"Biswas, Pratyoy\",\n              \"Bittrich, Sebastian\",\n              \"Blaumann, Santiago\",\n              \"Brown, Ronald\",\n              \"Chao, Henry\",\n              \"Chithari, Vivek Reddy\",\n              \"Craig, Paul A\",\n              \"Crichlow, Gregg V\",\n              \"Duarte, Jose M\",\n              \"Dutta, Shuchismita\",\n              \"Feng, Zukang\",\n              \"Flatt, Justin W\",\n              \"Ghosh, Sutapa\",\n              \"Goodsell, David S\",\n              \"Green, Rachel Kramer\",\n              \"Guranovic, Vladimir\",\n              \"Henry, Jeremy\",\n              \"Hudson, Brian P\",\n              \"Joy, Michael\",\n              \"Kaelber, Jason T\",\n              \"Khokhriakov, Igor\",\n              \"Lai, Jhih-Siang\",\n              \"Lawson, Catherine L\",\n              \"Liang, Yuhe\",\n              \"Myers-Turnbull, Douglas\",\n              \"Peisach, Ezra\",\n              \"Persikova, Irina\",\n              \"Piehl, Dennis W\",\n              \"Pingale, Aditya\",\n              \"Rose, Yana\",\n              \"Sagendorf, Jared\",\n              \"Sali, Andrej\",\n              \"Segura, Joan\",\n              \"Sekharan, Monica\",\n              \"Shao, Chenghua\",\n              \"Smith, James\",\n              \"Trumbull, Michael\",\n              \"Vallat, Brinda\",\n              \"Voigt, Maria\",\n              \"Webb, Ben\",\n              \"Whetstone, Shamara\",\n              \"Wu-Wu, Amy\",\n              \"Xing, Tongji\",\n              \"Young, Jasmine Y\",\n              \"Zalevsky, Arthur\",\n              \"Zardecki, Christine\"\n            ],\n            \"year\": 2025,\n            \"journal\": \"Nucleic Acids Research\",\n            \"volume\": \"53\",\n            \"number\": \"D1\",\n            \"pages\": \"D564-D574\",\n            \"doi\": \"10.1093/nar/gkae1091\",\n            \"url\": \"https://doi.org/10.1093/nar/gkae1091\"\n          },\n          {\n            \"id\": \"sabueso:rcsb-primary-citation:sha256:10a1233daf19b6e9da231994ce6a1ed7b4d2e165009b72b9f9f5767dffb84af9\",\n            \"type\": \"article\",\n            \"title\": \"Differences in the intersubunit contacts in triosephosphate isomerase from two closely related pathogenic trypanosomes.\",\n            \"year\": 1998,\n            \"journal\": \"J.Mol.Biol.\",\n            \"doi\": \"10.1006/jmbi.1998.2094\",\n            \"url\": \"https://doi.org/10.1006/jmbi.1998.2094\"\n          }\n        ],\n        \"bibliography_gaps\": [\n          {\n            \"pdb_id\": \"1TCD\",\n            \"citation_id\": \"sabueso:rcsb-primary-citation:sha256:10a1233daf19b6e9da231994ce6a1ed7b4d2e165009b72b9f9f5767dffb84af9\",\n            \"reason\": \"primary_citation_metadata_not_stated\",\n            \"fields\": [\n              \"authors\"\n            ]\n          }\n        ],\n        \"provider\": {\n          \"status\": \"available\",\n          \"version\": \"0.12.2+2.g0bb26ec\",\n          \"attribution\": {\n            \"schema\": \"ackredit.attribution@1\",\n            \"name\": \"sabueso.source_access\",\n            \"context\": {\n              \"id\": \"sabueso:source-acquisition:edc205fd-d343-496d-8d87-e4d46536a7b7\",\n              \"producer\": {\n                \"name\": \"sabueso\",\n                \"version\": \"0.14.0+289.gbed4605.dirty\",\n                \"version_basis\": \"runtime_package_metadata\"\n              },\n              \"source\": \"RCSB PDB\",\n              \"operation\": \"structure\",\n              \"query\": {\n                \"pdb_id\": \"1TCD\"\n              },\n              \"outcome\": \"received\",\n              \"access\": \"fixture\",\n              \"retrieved_at\": \"fixture\",\n              \"source_version\": {\n                \"value\": null,\n                \"basis\": \"not_stated\"\n              },\n              \"network_attempts\": 0,\n              \"requests\": [],\n              \"entries\": [\n                {\n                  \"pdb_id\": \"1TCD\",\n                  \"outcome\": \"received\",\n                  \"retrieved_at\": \"fixture\",\n                  \"source_version\": {\n                    \"value\": null,\n                    \"basis\": \"not_stated\"\n                  },\n                  \"revision_metadata\": {},\n                  \"primary_citation\": {\n                    \"journal_abbrev\": \"J.Mol.Biol.\",\n                    \"pdbx_database_id_DOI\": \"10.1006/jmbi.1998.2094\",\n                    \"pdbx_database_id_PubMed\": 9761683,\n                    \"title\": \"Differences in the intersubunit contacts in triosephosphate isomerase from two closely related pathogenic trypanosomes.\",\n                    \"year\": 1998\n                  },\n                  \"response_identity\": {\n                    \"basis\": \"decoded_entry\",\n                    \"hash\": \"sha256:b8018edbf6bff34db8acbd9c4f868e0049ba1eef8a32b19ff593e295c92c8fb7\"\n                  }\n                }\n              ],\n              \"completed_ids\": [\n                \"1TCD\"\n              ]\n            },\n            \"items\": [\n              {\n                \"id\": \"software:sabueso:0.14.0+289.gbed4605.dirty\",\n                \"type\": \"software\",\n                \"title\": \"Sabueso\",\n                \"authors\": [\n                  \"Prada-Gracia, Diego\",\n                  \"Moreno-Vargas, Liliana M.\"\n                ],\n                \"version\": \"0.14.0+289.gbed4605.dirty\",\n                \"doi\": \"10.5281/zenodo.22937375\",\n                \"url\": \"https://github.com/uibcdf/sabueso\"\n              },\n              {\n                \"id\": \"sabueso:source-access:sha256:fe02d140b1f95a64c7dc803f1a60f4cc90d9c8b0f2295a0402c0406720043bdd\",\n                \"type\": \"dataset\",\n                \"title\": \"RCSB PDB structure access\"\n              },\n              {\n                \"id\": \"doi:10.1093/nar/gkae1091\",\n                \"type\": \"article\",\n                \"title\": \"Updated resources for exploring experimentally-determined PDB structures and Computed Structure Models at the RCSB Protein Data Bank\",\n                \"authors\": [\n                  \"Burley, Stephen K\",\n                  \"Bhatt, Rusham\",\n                  \"Bhikadiya, Charmi\",\n                  \"Bi, Chunxiao\",\n                  \"Biester, Alison\",\n                  \"Biswas, Pratyoy\",\n                  \"Bittrich, Sebastian\",\n                  \"Blaumann, Santiago\",\n                  \"Brown, Ronald\",\n                  \"Chao, Henry\",\n                  \"Chithari, Vivek Reddy\",\n                  \"Craig, Paul A\",\n                  \"Crichlow, Gregg V\",\n                  \"Duarte, Jose M\",\n                  \"Dutta, Shuchismita\",\n                  \"Feng, Zukang\",\n                  \"Flatt, Justin W\",\n                  \"Ghosh, Sutapa\",\n                  \"Goodsell, David S\",\n                  \"Green, Rachel Kramer\",\n                  \"Guranovic, Vladimir\",\n                  \"Henry, Jeremy\",\n                  \"Hudson, Brian P\",\n                  \"Joy, Michael\",\n                  \"Kaelber, Jason T\",\n                  \"Khokhriakov, Igor\",\n                  \"Lai, Jhih-Siang\",\n                  \"Lawson, Catherine L\",\n                  \"Liang, Yuhe\",\n                  \"Myers-Turnbull, Douglas\",\n                  \"Peisach, Ezra\",\n                  \"Persikova, Irina\",\n                  \"Piehl, Dennis W\",\n                  \"Pingale, Aditya\",\n                  \"Rose, Yana\",\n                  \"Sagendorf, Jared\",\n                  \"Sali, Andrej\",\n                  \"Segura, Joan\",\n                  \"Sekharan, Monica\",\n                  \"Shao, Chenghua\",\n                  \"Smith, James\",\n                  \"Trumbull, Michael\",\n                  \"Vallat, Brinda\",\n                  \"Voigt, Maria\",\n                  \"Webb, Ben\",\n                  \"Whetstone, Shamara\",\n                  \"Wu-Wu, Amy\",\n                  \"Xing, Tongji\",\n                  \"Young, Jasmine Y\",\n                  \"Zalevsky, Arthur\",\n                  \"Zardecki, Christine\"\n                ],\n                \"year\": 2025,\n                \"journal\": \"Nucleic Acids Research\",\n                \"volume\": \"53\",\n                \"number\": \"D1\",\n                \"pages\": \"D564-D574\",\n                \"doi\": \"10.1093/nar/gkae1091\",\n                \"url\": \"https://doi.org/10.1093/nar/gkae1091\"\n              },\n              {\n                \"id\": \"sabueso:rcsb-primary-citation:sha256:10a1233daf19b6e9da231994ce6a1ed7b4d2e165009b72b9f9f5767dffb84af9\",\n                \"type\": \"article\",\n                \"title\": \"Differences in the intersubunit contacts in triosephosphate isomerase from two closely related pathogenic trypanosomes.\",\n                \"year\": 1998,\n                \"journal\": \"J.Mol.Biol.\",\n                \"doi\": \"10.1006/jmbi.1998.2094\",\n                \"url\": \"https://doi.org/10.1006/jmbi.1998.2094\"\n              }\n            ],\n            \"uses\": [\n              {\n                \"item_id\": \"software:sabueso:0.14.0+289.gbed4605.dirty\",\n                \"used_by\": \"sabueso.source_access\",\n                \"roles\": [\n                  \"executed_software\"\n                ],\n                \"context\": {\n                  \"id\": \"sabueso:source-acquisition:edc205fd-d343-496d-8d87-e4d46536a7b7\",\n                  \"producer\": {\n                    \"name\": \"sabueso\",\n                    \"version\": \"0.14.0+289.gbed4605.dirty\",\n                    \"version_basis\": \"runtime_package_metadata\"\n                  },\n                  \"source\": \"RCSB PDB\",\n                  \"operation\": \"structure\",\n                  \"query\": {\n                    \"pdb_id\": \"1TCD\"\n                  },\n                  \"outcome\": \"received\",\n                  \"access\": \"fixture\",\n                  \"retrieved_at\": \"fixture\",\n                  \"source_version\": {\n                    \"value\": null,\n                    \"basis\": \"not_stated\"\n                  },\n                  \"network_attempts\": 0,\n                  \"requests\": [],\n                  \"entries\": [\n                    {\n                      \"pdb_id\": \"1TCD\",\n                      \"outcome\": \"received\",\n                      \"retrieved_at\": \"fixture\",\n                      \"source_version\": {\n                        \"value\": null,\n                        \"basis\": \"not_stated\"\n                      },\n                      \"revision_metadata\": {},\n                      \"primary_citation\": {\n                        \"journal_abbrev\": \"J.Mol.Biol.\",\n                        \"pdbx_database_id_DOI\": \"10.1006/jmbi.1998.2094\",\n                        \"pdbx_database_id_PubMed\": 9761683,\n                        \"title\": \"Differences in the intersubunit contacts in triosephosphate isomerase from two closely related pathogenic trypanosomes.\",\n                        \"year\": 1998\n                      },\n                      \"response_identity\": {\n                        \"basis\": \"decoded_entry\",\n                        \"hash\": \"sha256:b8018edbf6bff34db8acbd9c4f868e0049ba1eef8a32b19ff593e295c92c8fb7\"\n                      }\n                    }\n                  ],\n                  \"completed_ids\": [\n                    \"1TCD\"\n                  ]\n                }\n              },\n              {\n                \"item_id\": \"sabueso:source-access:sha256:fe02d140b1f95a64c7dc803f1a60f4cc90d9c8b0f2295a0402c0406720043bdd\",\n                \"used_by\": \"sabueso.source_access\",\n                \"roles\": [\n                  \"resource_access\"\n                ],\n                \"context\": {\n                  \"id\": \"sabueso:source-acquisition:edc205fd-d343-496d-8d87-e4d46536a7b7\",\n                  \"producer\": {\n                    \"name\": \"sabueso\",\n                    \"version\": \"0.14.0+289.gbed4605.dirty\",\n                    \"version_basis\": \"runtime_package_metadata\"\n                  },\n                  \"source\": \"RCSB PDB\",\n                  \"operation\": \"structure\",\n                  \"query\": {\n                    \"pdb_id\": \"1TCD\"\n                  },\n                  \"outcome\": \"received\",\n                  \"access\": \"fixture\",\n                  \"retrieved_at\": \"fixture\",\n                  \"source_version\": {\n                    \"value\": null,\n                    \"basis\": \"not_stated\"\n                  },\n                  \"network_attempts\": 0,\n                  \"requests\": [],\n                  \"entries\": [\n                    {\n                      \"pdb_id\": \"1TCD\",\n                      \"outcome\": \"received\",\n                      \"retrieved_at\": \"fixture\",\n                      \"source_version\": {\n                        \"value\": null,\n                        \"basis\": \"not_stated\"\n                      },\n                      \"revision_metadata\": {},\n                      \"primary_citation\": {\n                        \"journal_abbrev\": \"J.Mol.Biol.\",\n                        \"pdbx_database_id_DOI\": \"10.1006/jmbi.1998.2094\",\n                        \"pdbx_database_id_PubMed\": 9761683,\n                        \"title\": \"Differences in the intersubunit contacts in triosephosphate isomerase from two closely related pathogenic trypanosomes.\",\n                        \"year\": 1998\n                      },\n                      \"response_identity\": {\n                        \"basis\": \"decoded_entry\",\n                        \"hash\": \"sha256:b8018edbf6bff34db8acbd9c4f868e0049ba1eef8a32b19ff593e295c92c8fb7\"\n                      }\n                    }\n                  ],\n                  \"completed_ids\": [\n                    \"1TCD\"\n                  ]\n                }\n              },\n              {\n                \"item_id\": \"doi:10.1093/nar/gkae1091\",\n                \"used_by\": \"sabueso.source_access\",\n                \"roles\": [\n                  \"resource_description\"\n                ],\n                \"context\": {\n                  \"id\": \"sabueso:source-acquisition:edc205fd-d343-496d-8d87-e4d46536a7b7\",\n                  \"producer\": {\n                    \"name\": \"sabueso\",\n                    \"version\": \"0.14.0+289.gbed4605.dirty\",\n                    \"version_basis\": \"runtime_package_metadata\"\n                  },\n                  \"source\": \"RCSB PDB\",\n                  \"operation\": \"structure\",\n                  \"query\": {\n                    \"pdb_id\": \"1TCD\"\n                  },\n                  \"outcome\": \"received\",\n                  \"access\": \"fixture\",\n                  \"retrieved_at\": \"fixture\",\n                  \"source_version\": {\n                    \"value\": null,\n                    \"basis\": \"not_stated\"\n                  },\n                  \"network_attempts\": 0,\n                  \"requests\": [],\n                  \"entries\": [\n                    {\n                      \"pdb_id\": \"1TCD\",\n                      \"outcome\": \"received\",\n                      \"retrieved_at\": \"fixture\",\n                      \"source_version\": {\n                        \"value\": null,\n                        \"basis\": \"not_stated\"\n                      },\n                      \"revision_metadata\": {},\n                      \"primary_citation\": {\n                        \"journal_abbrev\": \"J.Mol.Biol.\",\n                        \"pdbx_database_id_DOI\": \"10.1006/jmbi.1998.2094\",\n                        \"pdbx_database_id_PubMed\": 9761683,\n                        \"title\": \"Differences in the intersubunit contacts in triosephosphate isomerase from two closely related pathogenic trypanosomes.\",\n                        \"year\": 1998\n                      },\n                      \"response_identity\": {\n                        \"basis\": \"decoded_entry\",\n                        \"hash\": \"sha256:b8018edbf6bff34db8acbd9c4f868e0049ba1eef8a32b19ff593e295c92c8fb7\"\n                      }\n                    }\n                  ],\n                  \"completed_ids\": [\n                    \"1TCD\"\n                  ]\n                }\n              },\n              {\n                \"item_id\": \"sabueso:rcsb-primary-citation:sha256:10a1233daf19b6e9da231994ce6a1ed7b4d2e165009b72b9f9f5767dffb84af9\",\n                \"used_by\": \"sabueso.source_access\",\n                \"roles\": [\n                  \"structure_primary_citation\"\n                ],\n                \"context\": {\n                  \"id\": \"sabueso:source-acquisition:edc205fd-d343-496d-8d87-e4d46536a7b7\",\n                  \"producer\": {\n                    \"name\": \"sabueso\",\n                    \"version\": \"0.14.0+289.gbed4605.dirty\",\n                    \"version_basis\": \"runtime_package_metadata\"\n                  },\n                  \"source\": \"RCSB PDB\",\n                  \"operation\": \"structure\",\n                  \"query\": {\n                    \"pdb_id\": \"1TCD\"\n                  },\n                  \"outcome\": \"received\",\n                  \"access\": \"fixture\",\n                  \"retrieved_at\": \"fixture\",\n                  \"source_version\": {\n                    \"value\": null,\n                    \"basis\": \"not_stated\"\n                  },\n                  \"network_attempts\": 0,\n                  \"requests\": [],\n                  \"entries\": [\n                    {\n                      \"pdb_id\": \"1TCD\",\n                      \"outcome\": \"received\",\n                      \"retrieved_at\": \"fixture\",\n                      \"source_version\": {\n                        \"value\": null,\n                        \"basis\": \"not_stated\"\n                      },\n                      \"revision_metadata\": {},\n                      \"primary_citation\": {\n                        \"journal_abbrev\": \"J.Mol.Biol.\",\n                        \"pdbx_database_id_DOI\": \"10.1006/jmbi.1998.2094\",\n                        \"pdbx_database_id_PubMed\": 9761683,\n                        \"title\": \"Differences in the intersubunit contacts in triosephosphate isomerase from two closely related pathogenic trypanosomes.\",\n                        \"year\": 1998\n                      },\n                      \"response_identity\": {\n                        \"basis\": \"decoded_entry\",\n                        \"hash\": \"sha256:b8018edbf6bff34db8acbd9c4f868e0049ba1eef8a32b19ff593e295c92c8fb7\"\n                      }\n                    }\n                  ],\n                  \"completed_ids\": [\n                    \"1TCD\"\n                  ]\n                }\n              }\n            ],\n            \"usage_tree\": {\n              \"sabueso.source_access\": {\n                \"items\": [\n                  \"doi:10.1093/nar/gkae1091\",\n                  \"sabueso:rcsb-primary-citation:sha256:10a1233daf19b6e9da231994ce6a1ed7b4d2e165009b72b9f9f5767dffb84af9\",\n                  \"sabueso:source-access:sha256:fe02d140b1f95a64c7dc803f1a60f4cc90d9c8b0f2295a0402c0406720043bdd\",\n                  \"software:sabueso:0.14.0+289.gbed4605.dirty\"\n                ],\n                \"children\": []\n              }\n            }\n          }\n        }\n      }\n    ]\n  }\n}",
+    "choices": [
+      {
+        "ref": "7edc48ff336a6bef8905a328cbe43f1c",
+        "entity_ref": "sabueso:protein:uniprot:P52270"
+      }
+    ]
+  },
+  "genuine_prior_original_receiving": "Verified with current installed wheel outside checkout, current Card construction/resolve forbidden, exact report/choices/file bytes unchanged, no PySide6/aiohttp/Viewer/MolSysMT imports",
+  "native_core_unchanged": {
+    "sabueso/core/_clinical_history_v1/SOURCE.json": "00688c256d6aee51ebc97d752fdd641f7317c5d399ae8dd84db0ee4dc7e60650",
+    "sabueso/core/_disease_association_history_v1/SOURCE.json": "a927a304b67df6144995c9d5f21e44ff4a34a98e8023221e47361f3dfe53feef",
+    "sabueso/core/_knowledge_comparison_history_v1/SOURCE.json": "cf1f610bff358f89a432484952ddeec7eec3d661615035ead720ea7eb202dd8a",
+    "sabueso/core/_molecule_activity_history_v1/SOURCE.json": "14d59d034aa795516bc3258f11f8a4f8caaa1b5b38b3c30bfb273f8cfddde797",
+    "sabueso/core/_protein_context_history_v1/SOURCE.json": "de78272c691573e26e04c6028cd7a375616c7c2e51d0e43d7623462bbcf40823",
+    "sabueso/core/_sequence_change_history_v1/SOURCE.json": "c7a43ebf63201757abfede8ec0eee1820199ff53bfbf8fd93e4506372aa7c8c0",
+    "sabueso/core/_variant_history_v1/SOURCE.json": "b55ee3cd34ef6f7efdca561ce4b06fbacb8ea4f3ca67f7bb2d362cb82f3a6998",
+    "sabueso/core/card_exploration_storage.py": "9bf7dfd3758e5a1a41577124ad9f36593a55ba46da2b67ee717824985df52814",
+    "sabueso/core/deck_exploration_storage.py": "c71d93916c38e14e0076964f65a4d39f470031b8ac185eacf3013c76676ee62d"
+  },
+  "prior_core_receipt": {
+    "path": "interactive_rich_workspace_checkpoint_20261113.json",
+    "sha256": "b36f1d9e291e0dcc680649a862502eb55038b2fdbe9ebf02c082eec5a5a9bb94",
+    "scope": "Native core bytes unchanged; prior 672 selected native-case receipt retains its source epoch and is not a later-head full-suite claim"
+  },
+  "native_qt": [
+    {
+      "name": "qt-candidate-space-received",
+      "scope": "Actual Qt source-entry UI with native resolution against public frozen sources and network forbidden; no live-source/native-platform qualification",
+      "checks": {
+        "white_entry_and_four_input_kinds": true,
+        "pdb_is_a_record_without_an_invented_card": true,
+        "explicit_source_related_protein": true,
+        "original_source_and_exact_back": true,
+        "exact_pdb_return_without_acquisition": true,
+        "disease_card_and_topics": true,
+        "source_stated_smiles_identity": true,
+        "not_found_preserves_previous_reading": true,
+        "source_failure_is_distinct_and_preserves_reading": true,
+        "ambiguity_preserves_previous_reading": true,
+        "explicit_source_candidates_visible": true,
+        "original_candidate_context_visible": true,
+        "candidate_opens_separate_record_query": true,
+        "candidate_report_reopens_original": true,
+        "exact_original_ambiguity_and_candidates_return": true,
+        "workspace_exact_reading": true,
+        "workspace_original_query_report": true,
+        "workspace_source_history_retained": true,
+        "workspace_independent_upload": true,
+        "workspace_reopening_does_not_query_sources": true,
+        "submitted_form_leaves_reading_space": true,
+        "reading_remains_available_during_query": true,
+        "cancelled_result_does_not_replace_reading": true,
+        "changed_reading_waits_for_explicit_adoption": true,
+        "explicit_ready_result_opens": true,
+        "ready_result_exact_query_return": true,
+        "actual_native_capture": true,
+        "only_explicit_source_queries": true,
+        "pending_query_is_observed_before_close": true,
+        "owned_pending_service_closes_within_deadline": true,
+        "closed_service_retires_its_bootstrap": true,
+        "no_script_errors": true
+      },
+      "receipt_sha256": "477444cbaeb7c9b616ad35b6be1001865d069fcf109326c7c27fd254870834db",
+      "native_png_sha256": "298b3e091ef7026f994a8996258aa0f7e25cc2a00de2f0bbcc714743ea00b920",
+      "elapsed_s": 34.822,
+      "peak_owned_rss_bytes": 1108635648,
+      "limits": {
+        "owned_rss_bytes": 4294967296,
+        "host_available_bytes": 17179869184,
+        "cpu_affinity": [
+          4,
+          5
+        ],
+        "native_threads": 1
+      },
+      "survivors_after_command": []
+    },
+    {
+      "name": "qt-candidate-installed",
+      "scope": "Actual Qt source-entry UI with native resolution against public frozen sources and network forbidden; no live-source/native-platform qualification",
+      "checks": {
+        "white_entry_and_four_input_kinds": true,
+        "pdb_is_a_record_without_an_invented_card": true,
+        "explicit_source_related_protein": true,
+        "original_source_and_exact_back": true,
+        "exact_pdb_return_without_acquisition": true,
+        "disease_card_and_topics": true,
+        "source_stated_smiles_identity": true,
+        "not_found_preserves_previous_reading": true,
+        "source_failure_is_distinct_and_preserves_reading": true,
+        "ambiguity_preserves_previous_reading": true,
+        "explicit_source_candidates_visible": true,
+        "original_candidate_context_visible": true,
+        "candidate_opens_separate_record_query": true,
+        "candidate_report_reopens_original": true,
+        "exact_original_ambiguity_and_candidates_return": true,
+        "workspace_exact_reading": true,
+        "workspace_original_query_report": true,
+        "workspace_source_history_retained": true,
+        "workspace_independent_upload": true,
+        "workspace_reopening_does_not_query_sources": true,
+        "submitted_form_leaves_reading_space": true,
+        "reading_remains_available_during_query": true,
+        "cancelled_result_does_not_replace_reading": true,
+        "changed_reading_waits_for_explicit_adoption": true,
+        "explicit_ready_result_opens": true,
+        "ready_result_exact_query_return": true,
+        "actual_native_capture": true,
+        "only_explicit_source_queries": true,
+        "pending_query_is_observed_before_close": true,
+        "owned_pending_service_closes_within_deadline": true,
+        "closed_service_retires_its_bootstrap": true,
+        "no_script_errors": true
+      },
+      "receipt_sha256": "355b3b4c5e3682be74d3d2327fdeea345ef5b5abf89da6e60a7703240c0383a6",
+      "native_png_sha256": "e4ee155fe50b48237be81527a4c0bb1698a8c0886e034ade38330e2d4229d165",
+      "elapsed_s": 34.342,
+      "peak_owned_rss_bytes": 1111117824,
+      "limits": {
+        "owned_rss_bytes": 4294967296,
+        "host_available_bytes": 17179869184,
+        "cpu_affinity": [
+          4,
+          5
+        ],
+        "native_threads": 1
+      },
+      "survivors_after_command": []
+    },
+    {
+      "name": "qt-candidate-model-regression",
+      "scope": "Actual experimental Qt/Viewer product panel; Linux/Xvfb software rendering; no mapped Card identity, stable embedding or native platform qualification",
+      "checks": {
+        "real_canvas_and_renderer": true,
+        "actual_floating_group_observed": true,
+        "reset_returns_to_main_grid": true,
+        "same_live_viewport": true,
+        "camera_survives_layout": true,
+        "selection_survives_layout": true,
+        "no_inferred_correspondence": true,
+        "reading_survives_layout": true,
+        "molecular_presentation_saved_without_scene": true,
+        "saving_layout_keeps_live_model": true,
+        "original_source_remains_readable": true,
+        "native_capture": true,
+        "original_inputs_unchanged": true,
+        "no_script_errors": true
+      },
+      "receipt_sha256": "79459d48c586ae502e8bcb6003ffc52e73e673aae32e4576178a2ecc97d180e5",
+      "native_png_sha256": "d82c1c643ee487b828d0b7c7afbc3462655778b4fa66cf632195b9a0aaa89b47",
+      "elapsed_s": 29.43,
+      "peak_owned_rss_bytes": 1840680960,
+      "limits": {
+        "owned_rss_bytes": 4294967296,
+        "host_available_bytes": 17179869184,
+        "cpu_affinity": [
+          4,
+          5
+        ],
+        "native_threads": 1
+      },
+      "survivors_after_command": []
+    }
+  ],
+  "failed_controls": [
+    {
+      "name": "candidate-first",
+      "finding": "44 positive cases and one sandbox loopback refusal; not a passing gate. Final bounded gate has required loopback permission."
+    },
+    {
+      "name": "candidates-application",
+      "finding": "Development-receptor observation only. Final current source/installed gates use published pinned 1.2.0."
+    },
+    {
+      "name": "qt-candidate-journey",
+      "finding": "Receiver initially compared dictionary key ordering after canonical saving instead of exact ordered reference pairs; corrected without altering original report values."
+    },
+    {
+      "name": "qt-candidate-received",
+      "finding": "Real pointer navigation failed because form/report/progress left almost no reading height. Product now folds submitted form, names its toggle state and preserves minimum reading space/outer scrolling; corrected checkout/installed controls pass."
+    }
+  ],
+  "synthetic_scope": "CCO ambiguity and CID candidate list are explicitly fabricated receiving controls. The chosen compound uses actual public frozen response 3717450. No chemical identity between CCO and the compound is asserted; no new source fixture or scientific conclusion is published.",
+  "limits": [
+    "Only source-declared supported UniProt candidates/alternatives, PDB proteins and PubChem CID follow-ups. Unsupported references stay literal; up to 32 buttons displayed. No similarity/name merge or automatic candidate selection.",
+    "Current choice_details are presentation-only and never enter original report wire. Historical saved choices remain exact; no newer follow-ups are retrofitted.",
+    "Initial selector remains four kinds. Broader enrichment acquisition/presentation, supported mapped molecular integration, chemical depiction and human/workload/platform/version acceptance remain open.",
+    "Linux/Xvfb software and shared-dependency receiving do not qualify native graphics, thermal behavior, a clean public install or a supported provider embedding contract. Model selection remained empty; mapped/nonempty picking not received.",
+    "No scientific default/rule, Card schema, native Card/Deck format, provider code or runtime dependency minimum changed. No workflow, release, tag or public package published."
+  ],
+  "local_evidence_root": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-candidates-20261113-1",
+  "retention": {
+    "owner": "#154/#153/#112",
+    "review_trigger": "Next affected implementation/provider/candidate checkpoint; retain genuine original, artifacts, complete streams and failed/native receipts, retire owned scratch after final use"
+  },
+  "deferred_ci": "Authorized intermediate [skip ci]; exact-final-source full/candidate and hosted CI/governance recovery remains due under #154/#153/#112",
+  "local_quality": {
+    "ruff_format": "1768 files already formatted",
+    "ruff_check": "passed",
+    "moli_governance": "passed",
+    "diff_check": "passed",
+    "scoped_local_markdown_targets": 711,
+    "missing_targets": [],
+    "current_code_hashes_verified": 31
+  },
+  "cleanup": {
+    "owner": "uibcdf/sabueso#154/#153/#112",
+    "removed_owned_disposable_paths": [
+      "candidates-application-scratch",
+      "candidates-final-application-scratch",
+      "candidates-installed-application-scratch",
+      "candidates-published-application-scratch",
+      "qt-candidate-installed-scratch",
+      "qt-candidate-model-regression-scratch",
+      "qt-candidate-space-received-scratch"
+    ],
+    "retained": "Genuine prior original, built artifacts and proofs, complete streams, failed/native receipts and captures. Failed scratch remains for diagnosis.",
+    "temporary_environment": {
+      "path": "/tmp/sabueso-rich-0160-nm9zuzua",
+      "purpose": "Reusable public pytest-receptor 1.2.0 overlay and installed artifact receiving for the next source-enrichment implementation block",
+      "review_trigger": "Next implementation checkpoint or task closeout; delete after final receiving use"
+    },
+    "cleanup_failures": []
+  }
+}

@@ -42,6 +42,19 @@ to previous query restores the exact reading without fetching again. Query
 history has 32 retained return points and can now be included by Save workspace.
 Disease-name search is not offered without a candidate-search contract.
 
+An ambiguous UniProt result or a resolved native preference can now offer exact
+source-declared candidates/alternatives. An ambiguous SMILES result can offer
+explicit PubChem CID record queries. These are new queries; they do not settle
+the original identity or merge candidates. Available original organism/review/
+length/observation context accompanies up to 32 visible follow-up buttons; the
+full original report remains inspectable. Whole-workspace saving retains the
+original ambiguity and exact return point, including the chosen record report.
+The form folds after an accepted submission, its toggle describes its state,
+and minimum reading height/outer scrolling preserve pointer access when query
+controls need more vertical space. `--receive-candidates` adds the explicitly
+synthetic ambiguity control to the source receiver; no identity between its CCO
+control and the queried public compound is asserted.
+
 Queries run in one background worker while the current reading stays available.
 Cancel query discards the result; an active provider request may still finish.
 A result arriving after you change readings waits for explicit Open result.

@@ -25,6 +25,13 @@ def _query(kind, text):
         return f"pdb:{value}", {}
     if kind == "smiles":
         return f"smiles:{text.removeprefix('smiles:')}", {"unichem": False}
+    if kind == "pubchem":
+        value = text.removeprefix("pubchem:")
+        if not re.fullmatch(r"[1-9][0-9]{0,19}", value):
+            raise ArgumentError(
+                "Choose an exact positive PubChem CID of at most 20 digits."
+            )
+        return f"pubchem:{value}", {"unichem": False}
     if kind == "disease":
         from sabueso.tools.db.mondo import normalize
 
@@ -45,20 +52,12 @@ class _Resolution:
         self.original = resolution.to_dict()
         self.acquisition = resolution.acquisition_trace
         self.choices = {}
-        # Only these source-declared neighbours have a bounded supported follow-up.
-        # Candidate lists of other natures remain visible in the original decision.
-        if kind == "pdb":
-            for item in resolution.related:
-                ref = item.get("entity_ref", "")
-                prefix = "sabueso:protein:uniprot:"
-                if ref.startswith(prefix):
-                    token = secrets.token_hex(16)
-                    self.choices[token] = {
-                        "entity_ref": ref,
-                        "query": ref.removeprefix(prefix),
-                        "kind": "uniprot",
-                        "basis": item,
-                    }
+        from ._source_choices import declared_choices
+
+        self.choices = {
+            secrets.token_hex(16): value
+            for value in declared_choices(kind, self.original)
+        }
 
     def panel(self):
         return {

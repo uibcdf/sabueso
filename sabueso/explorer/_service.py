@@ -84,9 +84,15 @@ class _Service:
         self.workspace_saved = None
 
     def response(self, panel):
+        from ._source_choices import choice_details
+
+        resolution = self.resolution.panel() if self.resolution else None
+        if resolution is not None:
+            # Presentation-only descriptions never enter the original query wire.
+            resolution["choice_details"] = choice_details(self.resolution)
         return {
             "panel": panel,
-            "resolution": self.resolution.panel() if self.resolution else None,
+            "resolution": resolution,
             "can_return_query": bool(self.resolution_history),
             "molecular": self.molecular.descriptor() if self.molecular else None,
             "presentation": self.layout.read(),

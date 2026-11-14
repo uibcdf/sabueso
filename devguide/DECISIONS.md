@@ -1,5 +1,15 @@
 # Sabueso — Decision Log
 
+## Treat source candidates as explicit new queries (2026-11-13)
+
+Under #154, expose exact supported UniProt candidates/alternatives and PubChem
+candidate-record references as separate source-query actions. Preserve the
+original ambiguity/preference and exact return point; a follow-up does not select
+an identity or merge candidates. Current bounded descriptions stay outside the
+original report wire. Saved choices retain their original source basis, typed
+values and occurrence order; historical files gain no retrofitted buttons.
+See the [implementation and scope](pending_proposals/interactive_source_candidates_0160.md).
+
 ## Compose original application workspaces over native readers (2026-11-13)
 
 Under the authorized #154/#153 implementation scope, use a separate

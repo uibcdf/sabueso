@@ -7,6 +7,19 @@ This page owns current state; dated receipt histories are linked below.
 
 ## Next product objective: interactive exploration in 0.16.0
 
+The [subsequent source-candidate increment](pending_proposals/interactive_source_candidates_0160.md)
+now exposes explicit UniProt candidates/alternatives and PubChem CID follow-up,
+with bounded original source context and exact ambiguity return through saving.
+No candidate is selected or merged by browsing. All **135 application cases**,
+**134 installed runtime cases**, **32 real Qt checks each from checkout and
+installed wheel**, and a **14-check model/layout regression** pass on its recorded
+cohort. A genuine original workspace from `796d20e` reopens inertly and unchanged.
+The form/reading-height correction fixes an observed pointer-navigation failure
+when query controls occupied nearly the whole window. [The receipt](evidence/interactive_source_candidates_checkpoint_20261113.json)
+owns source/artifact boundaries and failed controls; the prior core receipt below
+retains its own source epoch. Broader enrichment, mapped molecular integration
+and human/whole-version acceptance remain open.
+
 The [rich presentation/whole-workspace increment](pending_proposals/interactive_workspace_persistence_0160.md)
 now adds readable original overview fields/source versions, native cell cards and
 tables with units, exact sequence strips, current-page relationship graphs and

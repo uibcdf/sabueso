@@ -88,7 +88,7 @@ class _OriginalResolution:
                 },
             )
             and panel["format"] == "sabueso.explorer_resolution@1"
-            and panel["kind"] in ("uniprot", "pdb", "smiles", "disease")
+            and panel["kind"] in ("uniprot", "pdb", "smiles", "disease", "pubchem")
             and isinstance(panel["query"], str)
             and 0 < len(panel["query"]) <= 8300
             and isinstance(panel["revision"], str)
@@ -108,6 +108,10 @@ class _OriginalResolution:
             "Query report differs from its retained native answer.",
         )
         self.choices = {}
+        from ._source_choices import declared_choices
+
+        declared = declared_choices(panel["kind"], original["resolution"])
+        cursor = 0
         _require(
             isinstance(record["choices"], list), "Invalid original source choices."
         )
@@ -120,24 +124,16 @@ class _OriginalResolution:
                 "Invalid source choice reference.",
             )
             value = row["value"]
+            matches = [
+                i
+                for i in range(cursor, len(declared))
+                if canonical_json(declared[i]) == canonical_json(value)
+            ]
             _require(
-                panel["kind"] == "pdb"
-                and _keys(value, {"entity_ref", "query", "kind", "basis"})
-                and isinstance(value["entity_ref"], str)
-                and isinstance(value["query"], str)
-                and value["entity_ref"] == "sabueso:protein:uniprot:" + value["query"]
-                and value["kind"] == "uniprot"
-                and isinstance(value["basis"], dict)
-                and value["basis"] in original["resolution"].get("related", [])
-                and value["basis"].get("entity_ref") == value["entity_ref"],
-                "A saved choice lacks its original source-declared basis.",
+                matches,
+                "A saved choice lacks its original source-declared basis or occurrence order.",
             )
-            from ._resolution import _query
-
-            try:
-                _query("uniprot", value["query"])
-            except ArgumentError as error:
-                raise StorageError("Invalid original source choice query.") from error
+            cursor = matches[0] + 1
             self.choices[row["ref"]] = deepcopy(value)
         _require(
             panel["choices"]

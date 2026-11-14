@@ -1187,6 +1187,21 @@ requests: the native clients use urllib. The guard regression exercises that
 actual path before any network call. Earlier requests-only guards did not prove
 this stronger interception; no live request was observed in those fixture runs.
 
+Candidate follow-up adds complete `test_candidates_offline.py`, all application
+and original workspace cases. Require explicit source-record queries, no
+automatic identity choice, immutable original ambiguity/preference, duplicate
+occurrences, unsupported-reference retention and exact source-free return.
+Resealed source-basis/query/order changes must fail. Current descriptions are
+presentation-only and preserve retained null/False/zero; they never enter the
+original report. Receive a genuine pre-change workspace inertly without current
+Cards or network. Run the source Qt receiver with `--receive-candidates` alongside
+workspace/cancellation/pending-close controls; its `CCO` ambiguity is explicitly
+synthetic, not a public chemical identity assertion. Require real pointer access
+to topics while the form is folded after submission and a useful reading height.
+Repeat with a noneditable wheel outside checkout and the pinned published
+receptor; retain model/layout regression after shared CSS changes. Runtime and
+all original SOURCE bytes must agree across source, sdist, wheel and install.
+
 Original-file application entry selects `test_reading_upload_offline.py` alongside
 the owning session/HTTP/original-storage tests. Plain/gzip/zstd bodies must receive
 through `read_exploration` without Card construction or source access; retain exact

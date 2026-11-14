@@ -21,7 +21,16 @@ planning parent `fb0d09659f8d00685f829d6781e5d256751dac66`;
 
 **Latest increment:** [rich retained presentation and original whole workspaces](interactive_workspace_persistence_0160.md) add source-linked overview fields, native cell cards/tables/units, sequence strips, current-page relationship graphs, exact breadcrumbs and nonblocking source queries with explicit cancellation/adoption. The public protein → source-bound BTS → native activity → original assay/full publication → exact repeated Deck return now passes in actual Qt, including whole-workspace saving/reopening. The [receipt](../evidence/interactive_rich_workspace_checkpoint_20261113.json) separates source epochs, installed receiving and failed controls. Original query history and inner Card trails now persist separately from layout and molecular scene.
 
-**Next observable result:** exact source-bound annotation → model selection → original source → Back, including unknown/replaced contexts (S2.2/S2.5), plus qualified chemical depiction and provider lifetime/scene recovery. Viewer #368 still owns the supported embedding/current-model contract. General candidate/partial-enrichment presentation, workload agreements and human acceptance remain open. Owned reading-service loss, explicit restart and pending-query shutdown now receive in actual Qt. The [presentation receipt](../evidence/interactive_layout_checkpoint_20261113.json) closes S5.2 at layout-only scope. The whole-workspace receipt does not close remaining scopes or authorize a release. Interrupted attempts never count as passes.
+The subsequent [candidate checkpoint](interactive_source_candidates_0160.md)
+adds explicit UniProt candidate/alternative and PubChem record queries, bounded
+original source context, exact saved ambiguity return and a corrected usable
+reading area during queries. All 135 application cases, 134 installed runtime
+cases and 32 real Qt checks each from checkout/installed wheel pass; a 14-check
+live-model regression also passes. The genuine pre-change `796d20e` original
+workspace receives inertly and unchanged. This extends S4.1 without resolving an
+identity automatically or completing the remaining enrichment/molecular scope.
+
+**Next observable result:** exact source-bound annotation → model selection → original source → Back, including unknown/replaced contexts (S2.2/S2.5), plus qualified chemical depiction and provider lifetime/scene recovery. Viewer #368 still owns the supported embedding/current-model contract. Broader candidate/enrichment presentation, workload agreements and human acceptance remain open. Owned reading-service loss, explicit restart and pending-query shutdown now receive in actual Qt. The [presentation receipt](../evidence/interactive_layout_checkpoint_20261113.json) closes S5.2 at layout-only scope. The whole-workspace receipt does not close remaining scopes or authorize a release. Interrupted attempts never count as passes.
 
 The [complete frozen baseline receipt](../evidence/interactive_integrated_baseline_20261113.json)
 receives all **10,059 collected offline nodes** at `e64c2ec`: **10,049 passed,
@@ -193,7 +202,7 @@ records the distinct input meanings and gaps.
 
 | ID | State | Delivered work, remainder and completion check |
 | --- | --- | --- |
-| S4.1 | `partial` | Explicit native `identity@1` source entry now has one background worker, visible query phase, cancellation/discard, no queue, continued reading and stale-result explicit adoption. Exact source-free query return and whole original query-history persistence receive in actual Qt. General candidate-selection and partial-enrichment presentation remain; cancellation does not promise interruption of provider HTTP |
+| S4.1 | `partial` | Explicit native `identity@1` entry has one background worker, cancellation/discard, continued reading and stale-result adoption. UniProt candidates/alternatives and PubChem source-record follow-ups now receive with original context, exact saved ambiguity return and no implicit identity choice. The form folds after submission and reading space stays usable. Historical choices remain original. Broader enrichment acquisition/presentation remains; cancellation does not promise interruption of provider HTTP |
 | S4.2 | `partial` | Source-linked original overview fields, readable versions, exact sequence strips and native annotation/value tables now receive in Qt. Text positions establish no residue/model mapping. Structures/ligands/changes/associations stay available through the native topic index; broader nature-specific receiving and mapped annotation visuals remain |
 | S4.3 | `partial` | Actual SMILES → PubChem-stated Card, original chemical/property values with units and a source-bound BTS → supplied target → native activity → assay/publication journey pass. Qualified 2D/available 3D remain open; no conformer or measured geometry is invented |
 | S4.4 | `partial` | Disease-ID → MONDO, original overview fields, current-page retained relationship graph, exact edge/source/Back and source-declared parent Card receiving pass. Graphs preserve native support/derivation scope. Broader disease/protein/molecule journeys and richer visual comparisons remain. Name search is not offered without a candidate-search contract |

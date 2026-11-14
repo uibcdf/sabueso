@@ -62,6 +62,9 @@ The [rich workspace increment](pending_proposals/interactive_workspace_persisten
 now adds readable native values/units, sequence strips/relationship graphs,
 nonblocking source queries and original whole query/Card/Deck history saving.
 Its public protein/BTS/activity/assay/publication journey has actual Qt receiving;
+[source-candidate follow-up](pending_proposals/interactive_source_candidates_0160.md)
+now preserves ambiguity and original source context through explicit record
+queries and saving, with usable reading space while queries run;
 [human review materials](pending_proposals/interactive_researcher_review_0160.md)
 are prepared, with actual acceptance still open. This is development implementation,
 not a public GUI installation or platform-support claim.

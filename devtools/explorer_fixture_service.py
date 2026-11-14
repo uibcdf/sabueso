@@ -14,6 +14,7 @@ def main():
     parser.add_argument("--bootstrap", type=Path, required=True)
     parser.add_argument("--output-directory", type=Path, required=True)
     parser.add_argument("--fixture-directory", type=Path, required=True)
+    parser.add_argument("--synthetic-candidates", action="store_true")
     args = parser.parse_args()
     import sabueso
     from sabueso.explorer._service import _run
@@ -32,6 +33,20 @@ def main():
     )
     args.output_directory.mkdir(parents=True, exist_ok=False)
     calls = args.output_directory / "source-calls.jsonl"
+
+    class CandidateClient(FixturePubChemClient):
+        def structure(self, notation, structure):
+            if (
+                args.synthetic_candidates
+                and notation == "smiles"
+                and structure == "CCO"
+            ):
+                return {
+                    "retrieved_at": "Synthetic ambiguity receiving control; no chemical identity with CCO is asserted",
+                    "cids": ["3717450", "999999999"],
+                    "fault": None,
+                }
+            return super().structure(notation, structure)
 
     def resolve(query, **options):
         # Explicit synthetic latency fence for the cancellation receiver. It is
@@ -53,8 +68,8 @@ def main():
             waiting.unlink()
             release.unlink()
         recorded = {"query": query, "options": dict(options)}
-        if query.startswith("smiles:"):
-            options["pubchem_client"] = FixturePubChemClient(args.fixture_directory)
+        if query.startswith(("smiles:", "pubchem:")):
+            options["pubchem_client"] = CandidateClient(args.fixture_directory)
         elif options.get("entity_type") == "disease":
             options["mondo_client"] = FixtureMONDOClient(args.fixture_directory)
         else:

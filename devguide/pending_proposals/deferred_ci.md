@@ -9,6 +9,20 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Explicit source candidates and usable reading space (2026-11-13)
+
+From `796d20e`, #154 owns exact source-candidate/alternative follow-up, retained
+ambiguity/query history and the observed form/reading-height correction. The
+[receipt](../evidence/interactive_source_candidates_checkpoint_20261113.json)
+binds 135 source application cases, 134 installed runtime cases, checkout/
+installed Qt and model regression, genuine pre-change workspace receiving and
+actual artifact bytes. Scientific core/provider bytes and native Card/Deck
+formats remain unchanged; the prior core receipt keeps its own source epoch.
+This intermediate `[skip ci]` checkpoint retains #154/#153/#112's exact-final-
+source full/candidate and hosted CI/governance recovery. Git/issue records own
+the final SHA. No workflow, dependency adoption, platform claim or publication
+is selected; human and whole-version acceptance remain open.
+
 ### Rich retained presentation and original whole workspaces (2026-11-13)
 
 From `bed4605`, #154/#153 own native original field/cell/sequence/relationship
