@@ -69,6 +69,13 @@ nonempty mapped selection or provider-wide pending/background lifetime semantics
 The source-bound receipt owns exact source/installed receiving. Chemical 2D is
 now reported to [Viewer #387](https://github.com/uibcdf/molsysviewer/issues/387);
 provider implementation and adoption remain open.
+The maintainer now prefers a separate reusable MolSysSketcher proposal over
+adding general 2D capability to the 3D Viewer core. The
+[component/engine evaluation](interactive_2d_component_0160.md) separates
+MolSysMT/RDKit science from visual scene and extensibility, under
+[MolSysSuite #199](https://github.com/uibcdf/molsyssuite/issues/199).
+Only source screening has run; bounded prototypes and final engine/member
+admission remain pending. S4.3 and main-plan states are unchanged.
 
 **Next observable result:** exact source-bound annotation → model selection → original source → Back, including unknown/replaced contexts (S2.2/S2.5), plus qualified chemical depiction and provider lifetime/scene recovery. Viewer #368 still owns the supported embedding/current-model contract. Chemical depiction, workload agreements and human acceptance remain open; arbitrary source controls remain a future extension. Owned reading-service loss, explicit restart and pending-query shutdown now receive in actual Qt. The [presentation receipt](../evidence/interactive_layout_checkpoint_20261113.json) closes S5.2 at layout-only scope. The whole-workspace receipt does not close remaining scopes or authorize a release. Interrupted attempts never count as passes.
 
@@ -295,7 +302,7 @@ checks alone.
 | Remaining front | Concrete next result | Owner / dependency | Can proceed locally? |
 | --- | --- | --- | --- |
 | Molecular correspondence and supported embedding (S2) | Versioned current-model/occurrence identity and supported selection/lifetime route, then actual annotation → selection → source → Back | Viewer #368; Sabueso #154; initial input hash cannot establish active identity | Consumer refusal/lifetime/resource work can continue; exact mapped product journey awaits the provider contract |
-| Chemical depiction and nature-specific presentation (S4) | Source-bound 2D representation through a provider-owned supported surface; broader visual polish and user receiving | #154; [Viewer #387](https://github.com/uibcdf/molsysviewer/issues/387) now owns the prepared depiction proposal | Public retained readers and source controls can continue; no chemical renderer or provider patch is silently adopted |
+| Chemical depiction and nature-specific presentation (S4) | Source-bound 2D representation through a provider-owned supported surface; broader visual polish and user receiving | #154; [MolSysSuite #199](https://github.com/uibcdf/molsyssuite/issues/199) owns the separate-component evaluation; Viewer #387 retains the original request | Public retained readers and source controls can continue; no chemical renderer or provider patch is silently adopted |
 | Resource and recovery breadth (S5/S6.2) | Varied public model idle/active observations, repeated product/provider lifetime and native-platform receiving; agreed workload targets | #154/#153/#112 | Bounded local measurements can continue; measurements do not themselves establish budgets |
 | Human review (S6.1) | Maintainer and independent researcher complete the prepared tasks/worksheet | Maintainer/researcher, #154/#153 | Materials are prepared; human observations cannot be supplied by an agent |
 | Scientific/platform decisions (S6.3) | Decide #192 aggregation semantics and reconsider #194's macOS exception for this version | Maintainer, #192/#194 | Preserve the explicit current limitations while decisions are pending |

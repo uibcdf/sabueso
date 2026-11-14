@@ -45,7 +45,12 @@ The [model lifetime increment](pending_proposals/interactive_model_lifetime_0160
 now receives explicit initial-copy runtime close/reopen and an independently
 surviving Qt window, extending partial S2.4/S5.3 without claiming general provider
 pending/background disposal or scene recovery. Source-bound chemical 2D is now
-reported under [Viewer #387](https://github.com/uibcdf/molsysviewer/issues/387).
+reported under [Viewer #387](https://github.com/uibcdf/molsysviewer/issues/387). The subsequent
+[MolSysSketcher proposal](pending_proposals/interactive_2d_component_0160.md) now
+routes reusable 2D ownership and engine evaluation to
+[MolSysSuite #199](https://github.com/uibcdf/molsyssuite/issues/199), separately
+from chemical science supplied through MolSysMT/RDKit. This is a source-screened
+proposal, not member admission or an implemented 2D product.
 The [living implementation plan](pending_proposals/interactive_implementation_0160.md)
 owns the 0.16.0 stages, microstages, current progress and immediate resumption;
 it preserves the broader roadmap and separate 0.15.0 delivery state.

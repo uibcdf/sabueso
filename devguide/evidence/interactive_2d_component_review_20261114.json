@@ -1,0 +1,137 @@
+{
+  "format": "sabueso.interactive_2d_component_design_review@1",
+  "owner": "uibcdf/sabueso#154; shared proposal uibcdf/molsyssuite#199",
+  "baseline_commit": "dd996c0c0b33115adf8e09cb48c0cff2f65d2a16",
+  "scope": "Documentation/source inspection and shared ownership proposal only: MolSysSketcher with separate scientific providers and extensible 2D scene",
+  "shared_proposal": "https://github.com/uibcdf/molsyssuite/issues/199",
+  "proposal_body_sha256": "5b28a3e39eb03ca28616863e3cd266c6f137049c463e58b034e7a6f8ee62b3ca",
+  "original_consumer_request": "https://github.com/uibcdf/molsysviewer/issues/387",
+  "proposed_split": {
+    "science": "MolSysMT and supported providers including RDKit; domain methods remain with domain owners",
+    "scene": "Proposed MolSysSketcher over an existing visual toolkit",
+    "knowledge": "Sabueso retains original source assertions and identities; calculated overlays do not silently enter Card Knowledge",
+    "three_dimensional": "MolSysViewer and Mol* remain separate"
+  },
+  "candidate_source_inspection": [
+    {
+      "candidate": "RDKit.js / RDKit drawing",
+      "sources": [
+        "https://github.com/rdkit/rdkit-js/blob/master/readme.md",
+        "https://github.com/rdkit/rdkit/tree/master/Code/MinimalLib",
+        "https://rdkitjs.com/docs/interfaces/Mol.html"
+      ],
+      "observation": "WASM MinimalLib exposes a subset of RDKit and SVG/canvas drawing; high-level UI is application work. Source/build is in RDKit core, separate from the docs repository. Native/WASM chemistry parity requires explicit receiving."
+    },
+    {
+      "candidate": "Butlerov",
+      "commit": "e4e64ae461832ce63bfeb5ff260ac8501edbac80",
+      "sources": [
+        "https://github.com/eizemazal/butlerov/blob/e4e64ae461832ce63bfeb5ff260ac8501edbac80/packages/core/package.json",
+        "https://github.com/eizemazal/butlerov/blob/e4e64ae461832ce63bfeb5ff260ac8501edbac80/packages/core/src/controller/MoleculeEditor.ts"
+      ],
+      "observation": "Source TypeScript/Konva editor, declared core source version 0.1.6, runtime dependency Konva, MIT declaration. No measured runtime, supported custom extension or complete chemistry claim."
+    },
+    {
+      "candidate": "Kekule.js",
+      "commit": "336b6271b9a394b7cc8a48ec0aa12f7d85167a27",
+      "sources": [
+        "https://github.com/partridgejiang/Kekule.js/blob/336b6271b9a394b7cc8a48ec0aa12f7d85167a27/src/render/2d/kekule.render.renderer2D.js",
+        "https://partridgejiang.github.io/Kekule.js/documents/tutorial/content/chemViewer.html"
+      ],
+      "observation": "Source has drawing primitives and renderer registration; viewer documentation separates interaction/editing. Third-party extension stability not yet received; distinct from JSME."
+    },
+    {
+      "candidate": "OpenChemLib.js",
+      "commit": "a365da1d195d55cc942d40561be179ddb6301efb",
+      "sources": [
+        "https://github.com/cheminfo/openchemlib-js/blob/a365da1d195d55cc942d40561be179ddb6301efb/lib/index.d.ts",
+        "https://github.com/cheminfo/openchemlib-js"
+      ],
+      "observation": "SVG/molecular APIs and CanvasEditor; readOnly ignores user interactions and edits mutate supplied models. Distribution derives from Java/GWT; supported selectable nonmutating scene not yet received."
+    },
+    {
+      "candidate": "Ketcher/Indigo",
+      "sources": [
+        "https://github.com/epam/ketcher",
+        "https://github.com/epam/ketcher/blob/master/documentation/api.md"
+      ],
+      "observation": "Embeddable editor with an Indigo-backed standalone route; no assumed equivalence to RDKit scientific semantics or received custom scene API."
+    },
+    {
+      "candidate": "SmilesDrawer",
+      "sources": [
+        "https://reymond-group.github.io/smilesDrawer/getting-started/"
+      ],
+      "observation": "SVG drawing and atom highlighting; fastest/lightest or full scene/interaction fit not measured."
+    },
+    {
+      "candidate": "ChemDoodle Web Components",
+      "sources": [
+        "https://web.chemdoodle.com/installation/license"
+      ],
+      "observation": "Published GPLv3/proprietary route; exact artifact redistribution/branding compatibility is pending review, no legal adoption conclusion."
+    },
+    {
+      "candidate": "JSME",
+      "sources": [
+        "https://jsme-editor.github.io/",
+        "https://jsme-editor.github.io/dist/doc.html"
+      ],
+      "observation": "Distinct editor project; actual source/build and extension scope require separate screening before a candidate decision."
+    }
+  ],
+  "prototype_direction": {
+    "scientific_reference": "Proposed MolSysMT/RDKit, subject to supported API qualification",
+    "initial_interactive_trials": [
+      "Butlerov",
+      "Kekule.js"
+    ],
+    "conditional_third": "Ketcher/Indigo after source/API screening",
+    "reference": "Bounded RDKit depiction without a fourth full application",
+    "alternatives": "OpenChemLib.js / SmilesDrawer if capability or effort warrants substitution",
+    "status": "Architectural hypothesis; not an executed or selected winner"
+  },
+  "trial_states": {
+    "D0": "done: source-screened proposal",
+    "D1": "todo: bounded prototypes",
+    "D2": "todo: common behavior/fidelity/extension receiving",
+    "D3": "todo: engine/component decision and admission"
+  },
+  "main_plan_states": {
+    "done": 20,
+    "partial": 10,
+    "todo": 3
+  },
+  "not_executed": [
+    "No engine benchmark or UI/renderer trial",
+    "No new engine packages installed",
+    "No new repository or registry/member admission",
+    "No dependency/minimum/API/scientific/schema/runtime change",
+    "No platform/publication or S4.3 completion claim"
+  ],
+  "prior_runtime_receipt": {
+    "path": "devguide/evidence/interactive_model_lifetime_checkpoint_20261114.json",
+    "sha256": "3cf90f643f67a0f6bddb71914b590b9b0086110bb2f2cc1492cfc6ee6829dc28",
+    "unchanged_runtime_code_hashes_verified": 37,
+    "scope": "Retains exact runtime/source/provider cohorts; this review does not extend runtime qualification"
+  },
+  "coordination": "Read-only --no-fetch member inspection; unrelated work preserved. Local attention status is not an engine test failure. Raw workspace status retained privately.",
+  "retention": {
+    "owner": "uibcdf/sabueso#154 / uibcdf/molsyssuite#199",
+    "local_root": "recovered_work/checkpoint_recovery_20261106/interactive-2d-component-design-20261114-1",
+    "review_trigger": "Maintainer/suite ownership review and first bounded engine prototype",
+    "scope": "Source review/proposal records retained; no task runtime, checkout or qualification environment created"
+  },
+  "deferred_ci": "Documentation skip-ci checkpoint only; #154/#153/#112 retain final-source full/candidate/hosted recovery",
+  "local_quality": {
+    "ruff_format": "1781 files already formatted",
+    "ruff_check": "passed",
+    "moli_governance": "passed",
+    "diff_check": "passed",
+    "local_markdown_targets": 845,
+    "missing_targets": [],
+    "main_microstage_ids": 33,
+    "unchanged_runtime_hashes": 37,
+    "pytest": "Not rerun: documentation/source inspection only; prior runtime receipt retains its cohorts"
+  }
+}

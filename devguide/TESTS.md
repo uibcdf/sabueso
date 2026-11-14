@@ -1922,3 +1922,24 @@ original compatibility and complete event streams. The [receipt](evidence/intera
 owns the actual cohort and limits; general provider pending/background lifetime,
 shared-session multi-view behavior, supported mapping, platform and human acceptance
 remain separate.
+
+
+### Reusable 2D component evaluation
+
+The [MolSysSketcher proposal](pending_proposals/interactive_2d_component_0160.md)
+owns source-screening and staged prototype criteria, with shared ownership under
+MolSysSuite #199. Source inspection qualifies neither rendering nor interaction.
+Select two or three minimal prototypes in one common host before a production
+engine/component decision; actual source/build/license and optional-dependency
+closure are part of that receiving.
+
+Reuse existing MolSysMT/RDKit science and exact source inputs. Compare supplied
+2D layout with engine-owned layout; verify explicit atom/bond mappings for a
+calculated-property overlay, method/options/version and units. Receive supported
+selection/events, anchored custom shapes, read-only enforcement, resize/redraw,
+replacement/reindex invalidation and disposal on the same public controls. Record
+public hooks versus private patches and the minimum required suite-owned code.
+Show actual browser/Qt output and retain chemical/unknown/failure scope. Do not
+claim engine superiority, source identity, 3D geometry or completed S4.3 from an
+attractive static diagram. No engine prototype or new runtime is executed by the
+initial documentation review.

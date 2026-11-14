@@ -7,6 +7,16 @@ This page owns current state; dated receipt histories are linked below.
 
 ## Next product objective: interactive exploration in 0.16.0
 
+The maintainer now proposes a separate reusable **MolSysSketcher** for 2D scenes,
+with chemical science supplied through MolSysMT/RDKit and the chosen visual
+toolkit behind an extensible scene/interaction layer. The
+[source-screened proposal and trial stages](pending_proposals/interactive_2d_component_0160.md)
+route shared ownership to [MolSysSuite #199](https://github.com/uibcdf/molsyssuite/issues/199)
+and retain [Viewer #387](https://github.com/uibcdf/molsysviewer/issues/387) as the
+earlier consumer request. Candidate engine execution and final component admission
+remain pending; no repository, package or new dependency is created by this review.
+S4.3 and the 20 done / 10 partial / 3 todo main-plan counts remain unchanged.
+
 The [owned molecular lifetime increment](pending_proposals/interactive_model_lifetime_0160.md)
 adds explicit runtime close/reopen from the unchanged initial capture, fixed
 admitted origin, fresh capabilities, retired listeners and occupied-port

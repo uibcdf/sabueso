@@ -11,8 +11,13 @@ development queue.
 - [Interactive 0.16.0 implementation plan and checkpoint](interactive_implementation_0160.md)
   (#154/#153/#148): living stage/microstage statuses, objectives, completion checks,
   reusable foundations, provider dependencies and the next concrete task. Resume
-  at S2.1/S3.2; S1 Card application and bounded installed artifact receiving now
-  pass independently of the earlier comparison probe.
+  at its current closeout ledger; bounded Card/Deck/entry/disease presentation
+  and installed receiving are distinct from remaining mapped molecular and
+  acceptance work.
+- [Reusable 2D component proposal and trial protocol](interactive_2d_component_0160.md)
+  (#154, MolSysSuite #199): proposed MolSysSketcher ownership, separate
+  MolSysMT/RDKit science and visual scene, source-screened candidates and bounded
+  extensibility/interaction receiving. Engine execution/adoption remain pending.
 - [Deck exploration reuse audit](deck_exploration_contract_0160.md)
   (#153): existing membership/operations/snapshot/metadata-preserving storage,
   captured occurrence/revision boundaries and the missing human/agent contract.

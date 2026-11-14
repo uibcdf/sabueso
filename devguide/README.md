@@ -82,7 +82,9 @@ phenotype control and unvisited original topics still `not_saved`;
 adds fresh views from the same initial copy, fixed-origin failure/retry and an
 independently surviving real Qt window. General provider pending/background and
 mapped model contracts remain open. [Viewer #387](https://github.com/uibcdf/molsysviewer/issues/387)
-now owns the source-bound chemical 2D proposal;
+records the source-bound chemical 2D need; the later [MolSysSketcher proposal](pending_proposals/interactive_2d_component_0160.md)
+now routes independent component/engine evaluation to [MolSysSuite #199](https://github.com/uibcdf/molsyssuite/issues/199),
+with RDKit/MolSysMT science separate from visual scene and no engine adopted;
 [human review materials](pending_proposals/interactive_researcher_review_0160.md)
 are prepared, with actual acceptance still open. This is development implementation,
 not a public GUI installation or platform-support claim.

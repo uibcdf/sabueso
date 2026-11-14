@@ -93,6 +93,9 @@ refusal logic; they cannot qualify real picking, renderer acknowledgement or lif
    long-session, workload-budget and human acceptance remain distinct.
 
 Source-bound chemical 2D depiction is a separate capability/ownership proposal;
-its prepared proposal is now [Viewer #387](https://github.com/uibcdf/molsysviewer/issues/387). Neither it
+its original request is [Viewer #387](https://github.com/uibcdf/molsysviewer/issues/387).
+The maintainer now proposes independent MolSysSketcher ownership under
+[MolSysSuite #199](https://github.com/uibcdf/molsyssuite/issues/199); this does not
+add general 2D rendering to the 3D Viewer core. Neither it
 nor this handoff authorizes sibling implementation, an extra dependency, a provider
 release, a new shared protocol or removal of the current visible limitations.

@@ -1,5 +1,16 @@
 # Sabueso — Risks and Open Questions
 
+Reusable 2D component (#154, MolSysSuite #199): separating MolSysSketcher's scene
+from MolSysMT/RDKit science offers reuse but adds a component/API maintenance
+boundary. A graphical toolkit may import, reorder or reinterpret its own model;
+array position or equal labels cannot bind scientific annotations. Keep explicit
+atom/bond mappings, model generations and calculation scope; invalidate stale
+results/events after chemical edits. Source access, public extension hooks,
+fork/patch effort and license closure still require executed evaluation. The
+[source-screened trial protocol](pending_proposals/interactive_2d_component_0160.md)
+does not select an engine or admit a new member. Domain computations stay in
+their owners, and calculated visual overlays remain distinct from source facts.
+
 Disease presentation (#154/#153): the retained scope, original Support and
 compact Deck membership now receive in actual Qt. At the received 1280×900 size,
 the scope header precedes graph controls and the graph can require scrolling.

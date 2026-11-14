@@ -9,6 +9,18 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Independent 2D component and scientific/visual split (2026-11-14)
+
+From `dd996c0`, the [MolSysSketcher proposal](interactive_2d_component_0160.md)
+records source screening, separate MolSysMT/RDKit science and visual scene,
+and the bounded comparison protocol under MolSysSuite #199. This is documentation
+and internal issue coordination only: no engine execution, installation, runtime,
+dependency, schema, registry, component admission or release change. Applicable
+format/lint/governance/link checks qualify the documentation; the prior exact
+runtime receipt retains its own source/provider cohorts. The authorized `[skip ci]`
+push preserves #154/#153/#112's final-source full/candidate/hosted recovery route;
+it neither dispatches CI nor supplies missing acceptance.
+
 ### Owned molecular runtime close/reopen (2026-11-14)
 
 From `8fc42b9`, #154/#153 own explicit model runtime release/reopen from the

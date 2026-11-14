@@ -1,5 +1,17 @@
 # Sabueso — Decision Log
 
+## Separate 2D component evaluation from chemical-provider selection (2026-11-14)
+
+For the current investigation, follow the maintainer's preference for a reusable
+MolSysSketcher proposal outside MolSysViewer's 3D core. Evaluate the visual scene,
+custom shapes and interaction independently of chemical science, reusing
+MolSysMT/RDKit or the relevant domain owner for qualified calculations and exact
+atom/index mappings. RDKit may supply graph/layout/annotation resources to another
+renderer; explicit correspondence and provenance are prerequisites. This commits
+the investigation direction, not formal component admission, a repository or
+engine adoption. See the [proposal and trial protocol](pending_proposals/interactive_2d_component_0160.md)
+and [suite owner review](https://github.com/uibcdf/molsyssuite/issues/199).
+
 ## Reopen only the captured initial model at its admitted origin (2026-11-14)
 
 Under #154, distinguish releasing the experimental molecular runtime from final
