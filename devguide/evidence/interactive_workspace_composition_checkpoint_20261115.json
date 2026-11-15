@@ -1,0 +1,731 @@
+{
+  "format": "sabueso.interactive_workspace_composition_checkpoint@1",
+  "owner": "uibcdf/sabueso#153",
+  "coordination_owners": [
+    "uibcdf/sabueso#154",
+    "uibcdf/sabueso#112"
+  ],
+  "base_commit": "7278d7762cedd1d77d4e05ae8e845a244ed1ee09",
+  "scope": "Private in-memory native packet preparation; complete independent final admission and atomic publication; bounded 0.16 implementation increment",
+  "code_sha256": {
+    "devtools/measure_explorer_workspace.py": "f23f3d1596def94a033daa6f2d014810fb8caccf4042e80c6f968f4354586384",
+    "sabueso/explorer/_workspace.py": "84f3c23b3b4cb0d7216e8b763b11a2343236a22abef743687c45816813d61fbd",
+    "sabueso/explorer/_deck_session.py": "7b65196019d0f2a04569fac255e5f3dd6b20c3a94b25209f6d3d86c10737003f",
+    "sabueso/core/card_exploration_storage.py": "ded6cfc512de97a667278b023d48f9c4e20ff66914e46879a968622fbdd66bd7",
+    "sabueso/core/deck_exploration_storage.py": "69eafde545d4f1fd84b9660515f636d9d0a146b0a86400c8c6600acad0b50c71",
+    "tests/explorer/test_composition_offline.py": "61b3196f47871735d8ccca1a1a44f8848a675e5a1ebffacc2884bf11ee74ed6a"
+  },
+  "unchanged_verifier_and_semantic_declarations": {
+    "sabueso/core/card_exploration_storage.py:_prepare": true,
+    "sabueso/core/card_exploration_storage.py:_restore": true,
+    "sabueso/core/card_exploration_storage.py:_restore_checked": true,
+    "sabueso/core/deck_exploration_storage.py:_restore": true,
+    "sabueso/core/deck_exploration_storage.py:_positions": true,
+    "sabueso/core/deck_exploration_storage.py:_application": true,
+    "sabueso/explorer/_workspace.py:_restore": true,
+    "sabueso/explorer/_workspace.py:_Receiver": true,
+    "sabueso/explorer/_workspace.py:_OriginalResolution": true
+  },
+  "unchanged_frozen_SOURCE_sha256": {
+    "sabueso/core/_variant_history_v1/SOURCE.json": "b55ee3cd34ef6f7efdca561ce4b06fbacb8ea4f3ca67f7bb2d362cb82f3a6998",
+    "sabueso/core/_sequence_change_history_v1/SOURCE.json": "c7a43ebf63201757abfede8ec0eee1820199ff53bfbf8fd93e4506372aa7c8c0",
+    "sabueso/core/_molecule_activity_history_v1/SOURCE.json": "14d59d034aa795516bc3258f11f8a4f8caaa1b5b38b3c30bfb273f8cfddde797",
+    "sabueso/core/_protein_context_history_v1/SOURCE.json": "de78272c691573e26e04c6028cd7a375616c7c2e51d0e43d7623462bbcf40823",
+    "sabueso/core/_disease_association_history_v1/SOURCE.json": "a927a304b67df6144995c9d5f21e44ff4a34a98e8023221e47361f3dfe53feef",
+    "sabueso/core/_knowledge_comparison_history_v1/SOURCE.json": "cf1f610bff358f89a432484952ddeec7eec3d661615035ead720ea7eb202dd8a",
+    "sabueso/core/_clinical_history_v1/SOURCE.json": "00688c256d6aee51ebc97d752fdd641f7317c5d399ae8dd84db0ee4dc7e60650"
+  },
+  "paired_unprofiled": {
+    "before": {
+      "format": "sabueso.explorer_workspace_cost_observation@1",
+      "owner": "uibcdf/sabueso#154/#153",
+      "source_head": "7278d7762cedd1d77d4e05ae8e845a244ed1ee09",
+      "code_sha256": {
+        "devtools/measure_explorer_workspace.py": "f23f3d1596def94a033daa6f2d014810fb8caccf4042e80c6f968f4354586384",
+        "sabueso/explorer/_workspace.py": "474afdd8591ce205c56869a1a955b754cdc481e82d5d917e4f9f763e7442e8d1",
+        "sabueso/explorer/_deck_session.py": "81bc949b4db90ab2896b234dc4ee93e1c6cb2baa587d36df191d17c162c0616e",
+        "sabueso/core/card_exploration_storage.py": "9bf7dfd3758e5a1a41577124ad9f36593a55ba46da2b67ee717824985df52814",
+        "sabueso/core/deck_exploration_storage.py": "c71d93916c38e14e0076964f65a4d39f470031b8ac185eacf3013c76676ee62d"
+      },
+      "python": "3.14.10",
+      "input_deck_sha256": "290d722ae0f224158a6bf9c66f5079eefb49cd7be2d6daf98eec5726d57517b5",
+      "save_seconds": 94.27705207199324,
+      "reopen_seconds": 29.72507374593988,
+      "save_profiled": false,
+      "receipt": {
+        "path": "/tmp/sabueso-workspace-composition-20261115-uvueqhma/baseline/workspace.json.gz",
+        "bundle_digest": "sha256:8e2ecd456e9b35745ae81fd4feffc3b9974fcb23798c4b6e5792952d9d902b9e",
+        "transport": {
+          "format": "exploration_transport@1",
+          "compression": "gzip",
+          "encoded_bytes": 8303821,
+          "decoded_bytes": 31652045,
+          "encoded_sha256": "sha256:83677c29c26d3676f23009e5df884bbf05bbc872a6e2ace9517f1035ce2398af",
+          "decoded_sha256": "sha256:9d9d8f22414b9efa6288e2812a84664f65c99e0418561dd643671a421a00ed21",
+          "backend": {
+            "module": "zlib",
+            "version": "1.3.2",
+            "level": 6
+          }
+        }
+      },
+      "saved_sha256": "83677c29c26d3676f23009e5df884bbf05bbc872a6e2ace9517f1035ce2398af",
+      "native_publication_digest": "sha256:0e0cfc421a489f2fed85b733c75f2d192a5e8e105ff9718af8a1fb24858189bb",
+      "native_context_digest": "sha256:16ed7b5a9c43119d455b234faed531115599994db62c586af3e4197b499affb4",
+      "checks": {
+        "source_bound_ligand_and_repeated_entry": true,
+        "native_quantity_assay_and_publication": true,
+        "inert_original_reopening_and_exact_trail": true,
+        "exact_filtered_deck_and_original_back": true,
+        "unchanged_input_and_saved_bytes": true
+      },
+      "limits": "One in-process observation; no Qt, fresh-process, installed-artifact, scaling or accepted-budget claim"
+    },
+    "after": {
+      "format": "sabueso.explorer_workspace_cost_observation@1",
+      "owner": "uibcdf/sabueso#154/#153",
+      "source_head": "7278d7762cedd1d77d4e05ae8e845a244ed1ee09",
+      "code_sha256": {
+        "devtools/measure_explorer_workspace.py": "f23f3d1596def94a033daa6f2d014810fb8caccf4042e80c6f968f4354586384",
+        "sabueso/explorer/_workspace.py": "84f3c23b3b4cb0d7216e8b763b11a2343236a22abef743687c45816813d61fbd",
+        "sabueso/explorer/_deck_session.py": "7b65196019d0f2a04569fac255e5f3dd6b20c3a94b25209f6d3d86c10737003f",
+        "sabueso/core/card_exploration_storage.py": "ded6cfc512de97a667278b023d48f9c4e20ff66914e46879a968622fbdd66bd7",
+        "sabueso/core/deck_exploration_storage.py": "69eafde545d4f1fd84b9660515f636d9d0a146b0a86400c8c6600acad0b50c71"
+      },
+      "python": "3.14.10",
+      "input_deck_sha256": "290d722ae0f224158a6bf9c66f5079eefb49cd7be2d6daf98eec5726d57517b5",
+      "save_seconds": 57.92603149008937,
+      "reopen_seconds": 29.66175404097885,
+      "save_profiled": false,
+      "receipt": {
+        "path": "/tmp/sabueso-workspace-composition-20261115-uvueqhma/optimized/workspace.json.gz",
+        "bundle_digest": "sha256:4cfa362f20b61bb843df3c88d839555ebbee069ecc73a7b0eb40e83400545cb3",
+        "transport": {
+          "format": "exploration_transport@1",
+          "compression": "gzip",
+          "encoded_bytes": 8308236,
+          "decoded_bytes": 31652045,
+          "encoded_sha256": "sha256:d8a922f30260a1fbc1e153856461502f1ee19608caecb60e975474452c7fecff",
+          "decoded_sha256": "sha256:3886bf97fd8070a8dd529d94cd38fc4acdf94b707d3c20056054149957a71598",
+          "backend": {
+            "module": "zlib",
+            "version": "1.3.2",
+            "level": 6
+          }
+        }
+      },
+      "saved_sha256": "d8a922f30260a1fbc1e153856461502f1ee19608caecb60e975474452c7fecff",
+      "native_publication_digest": "sha256:0e0cfc421a489f2fed85b733c75f2d192a5e8e105ff9718af8a1fb24858189bb",
+      "native_context_digest": "sha256:16ed7b5a9c43119d455b234faed531115599994db62c586af3e4197b499affb4",
+      "checks": {
+        "source_bound_ligand_and_repeated_entry": true,
+        "native_quantity_assay_and_publication": true,
+        "inert_original_reopening_and_exact_trail": true,
+        "exact_filtered_deck_and_original_back": true,
+        "unchanged_input_and_saved_bytes": true
+      },
+      "limits": "One in-process observation; no Qt, fresh-process, installed-artifact, scaling or accepted-budget claim"
+    },
+    "save_elapsed_reduction_percent": 38.557655105873444,
+    "same_input_and_native_publication_context_digests": true,
+    "limits": "Individual unprofiled observations with equal input, two-CPU affinity and single-thread native libraries; not an agreed budget or scaling distribution"
+  },
+  "profile": {
+    "current_card_restore_calls": 5,
+    "previous_instrumented_card_restore_calls": 14,
+    "current_save_profiled_seconds": 124.18154235801194,
+    "scope": "cProfile confirms call counts, not comparable latency; overlaps independent functional receiving"
+  },
+  "distinct_selected_source_cases": 856,
+  "selected_gates": [
+    {
+      "name": "native-regressions",
+      "counts": {
+        "collected": 648,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 648,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 648,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "complete": true,
+      "integrity_valid": true,
+      "events_sha256": "448b1c3b76641a6298e99ea8f135e3302f0b3a855e30d1355c11bbde9f1eb591",
+      "duration_s": 933.5523508558981,
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1,2,3",
+          "python",
+          "-m",
+          "pytest",
+          "tests/core/test_card_saved_exploration_offline.py",
+          "tests/core/test_card_saved_science_offline.py",
+          "tests/core/test_card_saved_chemical_offline.py",
+          "tests/core/test_card_saved_bioactivity_offline.py",
+          "tests/core/test_card_saved_assembly_offline.py",
+          "tests/core/test_card_capture_order_saved_offline.py",
+          "tests/core/test_deck_saved_exploration_offline.py",
+          "tests/core/test_deck_context_navigation_offline.py",
+          "tests/core/test_exploration_transport_offline.py",
+          "tests/core/test_exploration_shared_values_offline.py",
+          "tests/core/test_quantities_offline.py",
+          "tests/core/test_argument_contracts_offline.py",
+          "tests/core/test_card_access_offline.py",
+          "tests/core/test_card_human_labels_offline.py",
+          "tests/core/test_package_data_offline.py",
+          "-m",
+          "not online",
+          "-n",
+          "4",
+          "--dist=load",
+          "--receptor=llm",
+          "--receptor-events=/tmp/sabueso-workspace-composition-20261115-uvueqhma/native-regressions.jsonl"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "returncode": 0,
+        "elapsed_s": 934.447,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 3759771648,
+        "minimum_host_available_bytes": 43996221440,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 10737418240,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      }
+    },
+    {
+      "name": "application-received",
+      "counts": {
+        "collected": 208,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 208,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 208,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 4,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "complete": true,
+      "integrity_valid": true,
+      "events_sha256": "67a10995a9fdc170cbebb540586474cda7b614135d010c72715b177edd134736",
+      "duration_s": 175.83873142499942,
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1",
+          "python",
+          "-m",
+          "pytest",
+          "tests/explorer",
+          "-m",
+          "not online",
+          "--receptor=llm",
+          "--receptor-events=/tmp/sabueso-workspace-composition-20261115-uvueqhma/application-received.jsonl"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "returncode": 0,
+        "elapsed_s": 176.921,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 325001216,
+        "minimum_host_available_bytes": 43996221440,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      }
+    },
+    {
+      "name": "installed-application",
+      "counts": {
+        "collected": 207,
+        "deselected": 1,
+        "errors": 0,
+        "executed": 207,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 207,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 4,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "complete": true,
+      "integrity_valid": true,
+      "events_sha256": "1a866ef183aab69cd2f8658a9d0ffa0fa85539888a0c569077cbc949814d92e3",
+      "duration_s": 182.73824010102544,
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1",
+          "/tmp/sabueso-workspace-composition-20261115-uvueqhma/installed-env/bin/python",
+          "-m",
+          "pytest",
+          "tests/explorer",
+          "--deselect=tests/explorer/test_service_offline.py::test_frontend_assets_declared_and_contain_no_comparison_runtime",
+          "-m",
+          "not online",
+          "--receptor=llm",
+          "--receptor-events=/tmp/sabueso-workspace-composition-20261115-uvueqhma/installed-application.jsonl"
+        ],
+        "cwd": "/tmp/sabueso-workspace-composition-20261115-uvueqhma/client",
+        "returncode": 0,
+        "elapsed_s": 183.803,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 331034624,
+        "minimum_host_available_bytes": 47475761152,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      }
+    },
+    {
+      "name": "composition-focused",
+      "counts": {
+        "collected": 6,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 6,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 6,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "complete": true,
+      "integrity_valid": true,
+      "events_sha256": "0a2fa3d41c48060ec780c2fd2db436c3a3372b82ec866143e130e289e1ac422c",
+      "duration_s": 4.697741673095152,
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1",
+          "python",
+          "-m",
+          "pytest",
+          "tests/explorer/test_composition_offline.py",
+          "-m",
+          "not online",
+          "--receptor=llm",
+          "--receptor-events=/tmp/sabueso-workspace-composition-20261115-uvueqhma/composition-focused.jsonl"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "returncode": 0,
+        "elapsed_s": 5.537,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 118353920,
+        "minimum_host_available_bytes": 49941147648,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      }
+    }
+  ],
+  "expected_application_warnings": "Four public-fixture observations: truncated Open Targets and ClinVar captures; deliberate InterPro and AlphaFold failure controls. Same warnings in source and installed scopes.",
+  "copied_python_files": 21,
+  "copied_fixture_files": 325,
+  "artifact_proof": {
+    "wheel": {
+      "name": "sabueso-0.14.0+297.g7278d77.dirty-py3-none-any.whl",
+      "sha256": "f106458434dd30169218085e31d9f3b292427d5c2390da0916bc26f704fda400"
+    },
+    "sdist": {
+      "name": "sabueso-0.14.0+297.g7278d77.dirty.tar.gz",
+      "sha256": "b6f9969220cc424cd5c98020130447b6342138be6aac67c740fb2e3104860ce7"
+    },
+    "installed_module": "/tmp/sabueso-workspace-composition-20261115-uvueqhma/installed-env/lib/python3.14/site-packages/sabueso/__init__.py",
+    "installed_version": "0.14.0+297.g7278d77.dirty",
+    "editable": false,
+    "runtime_original_SOURCE_and_installed_bytes_equal": {
+      "sabueso/explorer/_qt.py": "7b85fe1d2c8c30fc2254055dc4cd041886f1be65a3b9cea7eda775ff0df6b74f",
+      "sabueso/explorer/_session.py": "521687245ec5386574817c5ebfaf661347dd3abdc71722f0769f369539296b30",
+      "sabueso/explorer/_molecular.py": "a9ded2e47fad16cc83af3f5f78e5463334357e84f82d4c4da0dc24692f607c72",
+      "sabueso/explorer/_service.py": "b900a45373ba86d1961a86872968c0adee376f9c0040ff6f05d0793c3972704b",
+      "sabueso/explorer/_deck_session.py": "7b65196019d0f2a04569fac255e5f3dd6b20c3a94b25209f6d3d86c10737003f",
+      "sabueso/explorer/_source_choices.py": "208d0d02395d4b6eb55d2645ff469cb7e13099a8a4a487b2695ea39b4657e559",
+      "sabueso/explorer/_presentation.py": "2b0434795de70337eedfe4636dd6a6e2dd9d58fce82d50ffd3ca3c1f0b309c95",
+      "sabueso/explorer/__init__.py": "d9f38870c8c8cb9a246e19c53547451343ff05bd8724b52d11b16ea805f07062",
+      "sabueso/explorer/_association_presentation.py": "590c8f44e26ff59af5509d82f1d7278aa9d0a31dd4fd1fc812904c36626bd034",
+      "sabueso/explorer/_record_queries.py": "c3c214d566af6cdbd324bf7fc06cdcb4894f264adb9c67c830a0c09807433e2a",
+      "sabueso/explorer/_layout.py": "83ff00cc24e9d0fe22210ffa61908fa45d1982774ac0097bd554d26f286ad072",
+      "sabueso/explorer/__main__.py": "13e6fc8829e6dd3b15c8523dac1b21a6dcdcd0ec4f3119c417f61c9a1d412891",
+      "sabueso/explorer/_workspace.py": "84f3c23b3b4cb0d7216e8b763b11a2343236a22abef743687c45816813d61fbd",
+      "sabueso/explorer/_queries.py": "a56330d66e7476b4d8e034884c1bf2ec9c763867701c605259ecba3d31e8bf11",
+      "sabueso/explorer/_resolution.py": "7a165ba64694d64f9cda93a12315b77533b1f2e51d7302b68baaf36df6cc9ac9",
+      "sabueso/explorer/_assets/app.js": "9c3ebfc81824ebe66fc36b2643751e1d6021eeb59dce001501858536eafc42af",
+      "sabueso/explorer/_assets/app.css": "80eb9cd196035397a1b68ba54968c6130dd012f1975430cf840da00cb68517b0",
+      "sabueso/explorer/_assets/notices.txt": "a238c0f2172b6b9507e352ce97d0065b73c0abe2b076493e6553789f675e0b15",
+      "sabueso/explorer/_assets/index.html": "be4705852899de9486e6c01fb0d92ad99301024833c9c7b50b545a3827cc785d",
+      "sabueso/core/card_exploration_storage.py": "ded6cfc512de97a667278b023d48f9c4e20ff66914e46879a968622fbdd66bd7",
+      "sabueso/core/deck_exploration_storage.py": "69eafde545d4f1fd84b9660515f636d9d0a146b0a86400c8c6600acad0b50c71",
+      "sabueso/core/_variant_history_v1/SOURCE.json": "b55ee3cd34ef6f7efdca561ce4b06fbacb8ea4f3ca67f7bb2d362cb82f3a6998",
+      "sabueso/core/_sequence_change_history_v1/SOURCE.json": "c7a43ebf63201757abfede8ec0eee1820199ff53bfbf8fd93e4506372aa7c8c0",
+      "sabueso/core/_molecule_activity_history_v1/SOURCE.json": "14d59d034aa795516bc3258f11f8a4f8caaa1b5b38b3c30bfb273f8cfddde797",
+      "sabueso/core/_protein_context_history_v1/SOURCE.json": "de78272c691573e26e04c6028cd7a375616c7c2e51d0e43d7623462bbcf40823",
+      "sabueso/core/_disease_association_history_v1/SOURCE.json": "a927a304b67df6144995c9d5f21e44ff4a34a98e8023221e47361f3dfe53feef",
+      "sabueso/core/_knowledge_comparison_history_v1/SOURCE.json": "cf1f610bff358f89a432484952ddeec7eec3d661615035ead720ea7eb202dd8a",
+      "sabueso/core/_clinical_history_v1/SOURCE.json": "00688c256d6aee51ebc97d752fdd641f7317c5d399ae8dd84db0ee4dc7e60650"
+    },
+    "genuine_prechange_workspace_inert_and_unchanged": true,
+    "original_sha256": "83677c29c26d3676f23009e5df884bbf05bbc872a6e2ace9517f1035ce2398af",
+    "original_native_content_and_exact_back": true,
+    "no_optional_graphics_or_scientific_provider_imports": true,
+    "scope": "Noneditable unpublished diagnostic artifact with shared editable dependencies; not clean public/candidate/platform qualification"
+  },
+  "previous_producer_comparison": {
+    "base_commit": "7278d7762cedd1d77d4e05ae8e845a244ed1ee09",
+    "scope": "Fixed live Card/navigation instances and literal original Deck packets; previous function bodies, unchanged native verifiers. Fresh independent captures and repeated live Deck overview creation are deliberately not treated as byte-identical identities. The Deck reference's initial seed invokes the separately byte-received current public Card saver.",
+    "checks": {
+      "card": {
+        "byte_identical": true,
+        "before_sha256": "8c3659b57bf91f4345251617f436f69344696b7579468a6c38e6ba788a203906",
+        "after_sha256": "8c3659b57bf91f4345251617f436f69344696b7579468a6c38e6ba788a203906"
+      },
+      "deck": {
+        "byte_identical": true,
+        "before_sha256": "c8de89f629024f888a2e47b0f2464121970281618b65102755ee27964f22cf15",
+        "after_sha256": "c8de89f629024f888a2e47b0f2464121970281618b65102755ee27964f22cf15"
+      },
+      "workspace_card": {
+        "byte_identical": true,
+        "before_sha256": "57941df525504961cd0f61b4313268d1dd9bcb223a7271d1c8e4daf65b6e2435",
+        "after_sha256": "57941df525504961cd0f61b4313268d1dd9bcb223a7271d1c8e4daf65b6e2435"
+      },
+      "workspace_deck": {
+        "byte_identical": true,
+        "before_sha256": "dcaf28eb3cc6fb79f70e0a717aad040f80abf6d93a25851aee06609e27c61a61",
+        "after_sha256": "dcaf28eb3cc6fb79f70e0a717aad040f80abf6d93a25851aee06609e27c61a61"
+      }
+    }
+  },
+  "actual_qt_receiving": [
+    {
+      "name": "qt-source-received",
+      "receiving": {
+        "format": "sabueso.deck_explorer_journey@1",
+        "scope": "Actual Qt public P52270 to source-bound BTS identity, native activity quantity, original assay/full publication, whole workspace reopening and exact repeated Deck entry return; Linux/Xvfb software only",
+        "checks": {
+          "five_explicit_input_occurrences": true,
+          "repeated_protein_entry": true,
+          "source_identity_opens_supplied_ligand": true,
+          "entry_occurrence_stays_protein": true,
+          "original_activity_quantity_has_unit": true,
+          "original_assay_context_opens": true,
+          "original_full_publication_opens": true,
+          "original_publication_and_entry_restore": true,
+          "original_scientific_back_survives_reopening": true,
+          "exact_filtered_deck_return": true,
+          "all_original_occurrences_survive": true,
+          "actual_native_capture": true,
+          "input_unchanged": true,
+          "no_script_errors": true
+        },
+        "errors": [],
+        "save_workspace_elapsed_s": 60.210700887,
+        "saved_workspace": "/tmp/sabueso-workspace-composition-20261115-uvueqhma/qt-source-received-output/readings/workspace-c208b652537505c2142f29cc.json.gz",
+        "reopen_workspace_elapsed_s": 29.316450954,
+        "input_sha256": "290d722ae0f224158a6bf9c66f5079eefb49cd7be2d6daf98eec5726d57517b5",
+        "state": "passed"
+      },
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1",
+          "node",
+          "devtools/deck_explorer_journey.mjs",
+          "--output",
+          "/tmp/sabueso-workspace-composition-20261115-uvueqhma/qt-source-received-output",
+          "--deck",
+          "recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/public-mixed-deck.jsonl",
+          "--manifest",
+          "recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/inputs.json",
+          "--receive-scientific"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "returncode": 0,
+        "elapsed_s": 112.373,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 1404837888,
+        "minimum_host_available_bytes": 44547350528,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      }
+    },
+    {
+      "name": "qt-original",
+      "receiving": {
+        "format": "sabueso.deck_explorer_journey@1",
+        "scope": "Actual independent Qt startup from original whole workspace; publication, exact Card trail, repeated Deck occurrence, filtered selection and Deck Back; Linux/Xvfb software only",
+        "checks": {
+          "independent_startup_is_original": true,
+          "original_publication_and_entry_retained": true,
+          "exact_scientific_trail_retained": true,
+          "exact_filtered_deck_and_occurrences": true,
+          "original_deck_history_retained": true,
+          "actual_native_capture": true,
+          "input_unchanged": true,
+          "no_script_errors": true
+        },
+        "errors": [],
+        "input_sha256": "83677c29c26d3676f23009e5df884bbf05bbc872a6e2ace9517f1035ce2398af",
+        "state": "passed"
+      },
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1,2,3",
+          "node",
+          "devtools/deck_explorer_journey.mjs",
+          "--output",
+          "/tmp/sabueso-workspace-composition-20261115-uvueqhma/qt-original-output",
+          "--deck",
+          "/tmp/sabueso-workspace-composition-20261115-uvueqhma/baseline/workspace.json.gz",
+          "--reading",
+          "--resume-scientific"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "returncode": 0,
+        "elapsed_s": 46.193,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 1294598144,
+        "minimum_host_available_bytes": 48615084032,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      }
+    },
+    {
+      "name": "qt-installed",
+      "receiving": {
+        "format": "sabueso.deck_explorer_journey@1",
+        "scope": "Actual Qt public P52270 to source-bound BTS identity, native activity quantity, original assay/full publication, whole workspace reopening and exact repeated Deck entry return; Linux/Xvfb software only",
+        "checks": {
+          "five_explicit_input_occurrences": true,
+          "repeated_protein_entry": true,
+          "source_identity_opens_supplied_ligand": true,
+          "entry_occurrence_stays_protein": true,
+          "original_activity_quantity_has_unit": true,
+          "original_assay_context_opens": true,
+          "original_full_publication_opens": true,
+          "original_publication_and_entry_restore": true,
+          "original_scientific_back_survives_reopening": true,
+          "exact_filtered_deck_return": true,
+          "all_original_occurrences_survive": true,
+          "actual_native_capture": true,
+          "input_unchanged": true,
+          "no_script_errors": true
+        },
+        "errors": [],
+        "save_workspace_elapsed_s": 60.094077889999994,
+        "saved_workspace": "/tmp/sabueso-workspace-composition-20261115-uvueqhma/qt-installed-output/readings/workspace-6736896e9f4cfe598c1b6657.json.gz",
+        "reopen_workspace_elapsed_s": 28.811088801000004,
+        "input_sha256": "290d722ae0f224158a6bf9c66f5079eefb49cd7be2d6daf98eec5726d57517b5",
+        "state": "passed"
+      },
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1",
+          "node",
+          "devtools/deck_explorer_journey.mjs",
+          "--output",
+          "/tmp/sabueso-workspace-composition-20261115-uvueqhma/qt-installed-output",
+          "--python",
+          "/tmp/sabueso-workspace-composition-20261115-uvueqhma/installed-env/bin/python",
+          "--application-root",
+          "/tmp/sabueso-workspace-composition-20261115-uvueqhma/client",
+          "--deck",
+          "recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/public-mixed-deck.jsonl",
+          "--manifest",
+          "recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/inputs.json",
+          "--receive-scientific"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "returncode": 0,
+        "elapsed_s": 112.168,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 1417801728,
+        "minimum_host_available_bytes": 47476019200,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      }
+    }
+  ],
+  "failed_or_interrupted_controls": [
+    {
+      "name": "composition-smoke",
+      "meaning": "One new byte-comparison control wrongly compared repeated live Deck overview instances; 21 passes plus one failure do not qualify this gate. Corrected to literal original Deck packets; final 208-case gate includes all six new controls."
+    },
+    {
+      "name": "previous-producer",
+      "meaning": "Fresh independent captures have different scoped location identities. Corrected control fixes live Card/navigation instances and uses literal original Deck packets; all four previous/current publisher routes are byte-identical within that stated scope."
+    },
+    {
+      "name": "qt-source",
+      "meaning": "Sandbox denied Xvfb display socket creation before application launch; no product journey ran. Scoped host receiving succeeds without global socket changes."
+    },
+    {
+      "name": "application",
+      "meaning": "Sandbox denied local HTTP socket creation. Only this owned observer was stopped with SIGTERM; final unrestricted-local gate passes all 208 cases. The interrupted artifact is not qualification."
+    }
+  ],
+  "compressed_failed_log_proofs": {
+    "qt-source-output/xvfb.log": {
+      "sha256": "f9bd8efd774ba05274508a394c0a502addeccec7b2961e9d012423ec48b5c6b6",
+      "bytes": 18932670
+    }
+  },
+  "observed_follow_up": {
+    "owner": "uibcdf/sabueso#154",
+    "observation": "The developer Qt receiver waited its 60 s startup timeout after Xvfb failed to create sockets, retaining a large repeated diagnostic log.",
+    "proposal": "Detect owned display-server early exit and bound repetitive startup logs; nonblocking, not a product runtime defect."
+  },
+  "raw_evidence_root": "recovered_work/checkpoint_recovery_20261106/interactive-workspace-composition-20261115-1",
+  "retention": "Owner #153/#154; retain useful receipts, unchanged originals, diagnostic artifacts and failed controls until an affected persistence change or 0.16 candidate review",
+  "limits": [
+    "No schema, original wire format, frozen scientific verifier, dependency or supported-platform change",
+    "Diagnostic unpublished wheel with shared editable dependencies; not clean public installation or candidate qualification",
+    "No full offline or hosted exact-final-source CI claim; deferred under #153/#154/#112",
+    "Main plan remains 20 done, 10 partial and 3 todo; S6.2 workload/human acceptance and provider dependencies remain open"
+  ],
+  "final_local_checks": {
+    "local_link_targets_checked": 773,
+    "missing": [],
+    "stage_states": {
+      "done": 20,
+      "partial": 10,
+      "todo": 3,
+      "blocked": 0
+    },
+    "source_hashes_unchanged_since_receiving": true,
+    "ruff_format_root": "pass",
+    "ruff_lint_root": "pass",
+    "local_moli_governance": "pass",
+    "diff_check": "pass",
+    "concurrent_whole_run_sampled_peak_rss_upper_bound_bytes": 5512998912,
+    "aggregate_scope": "Conservative sum of whole-run sampled tree peaks for overlapping owned execution windows; not a continuous or reserved-memory guarantee"
+  },
+  "cleanup": {
+    "owner": "uibcdf/sabueso#153/#154",
+    "removed_owned_paths": [
+      "/tmp/sabueso-workspace-composition-20261115-uvueqhma"
+    ],
+    "shared_environment_modified": false,
+    "retained_evidence_root": "recovered_work/checkpoint_recovery_20261106/interactive-workspace-composition-20261115-1",
+    "cleanup_failures": [],
+    "runtime_paths_in_raw_receipts": "Historical; verified outputs are retained under the evidence root, and temporary receiving environments are retired"
+  }
+}

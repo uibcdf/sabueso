@@ -1,5 +1,15 @@
 # Sabueso — Decision Log
 
+## Prepare native packets in memory and verify at publication (2026-11-15)
+
+Under #153/#154, separate private Card/Deck packet preparation from publication.
+Enclosing composition reuses those unverified packets with the former canonical
+JSON boundaries. Every public save independently restores its complete envelope
+before creating the destination's temporary file; all native component, focal,
+navigation, byte/logical and atomic checks remain mandatory. Do not introduce a
+validation-bypass flag or global cache. Keep original formats and scientific
+verifier bodies fixed. See the [receiving and cost observations](pending_proposals/interactive_workspace_cost_0160.md).
+
 ## Continue Sabueso independently of the separate 2D team (2026-11-15)
 
 The maintainer assigns MolSysSketcher implementation to another team after its

@@ -16,8 +16,10 @@ from copy import deepcopy
 from pathlib import Path
 
 from sabueso.core import exploration_transport as transport
+from sabueso.core.card_exploration_storage import _prepare_bundle as prepare_card_bundle
 from sabueso.core.card_exploration_storage import _restore as restore_card
-from sabueso.core.card_exploration_storage import _unique, save_exploration
+from sabueso.core.card_exploration_storage import _unique
+from sabueso.core.deck_exploration_storage import _prepare_bundle as prepare_deck_bundle
 from sabueso.core.errors import ArgumentError, StorageError
 from sabueso.core.snapshot import SNAPSHOT_ID, canonical_json, digest
 
@@ -157,15 +159,15 @@ class _OriginalResolution:
 
 
 class _Composer:
-    def __init__(self, directory):
-        self.directory = directory
+    def __init__(self):
         self.cards, self.decks, self.native = {}, {}, {}
         self.physical = 0
 
     def _retain(self, target, bundle):
-        key = digest(canonical_json(bundle))
+        raw = canonical_json(bundle)
+        key = digest(raw)
         if key not in target:
-            self.physical += len(canonical_json(bundle).encode("utf-8"))
+            self.physical += len(raw.encode("utf-8"))
             transport._check("max_decoded_bytes", self.physical, LIMIT)
             target[key] = bundle
         return key
@@ -174,10 +176,14 @@ class _Composer:
         session = view._explorer._session
         group = id(session)
         if group not in self.native:
-            path = self.directory / "card.json"
             references = {}
-            save_exploration(view, path, overwrite=True, _navigation_refs=references)
-            bundle = json.loads(path.read_bytes(), object_pairs_hook=_unique)
+            packet = prepare_card_bundle(
+                view,
+                max_decoded_bytes=LIMIT,
+                max_logical_bytes=LOGICAL_LIMIT,
+                _navigation_refs=references,
+            )
+            bundle = json.loads(canonical_json(packet), object_pairs_hook=_unique)
             key = self._retain(self.cards, bundle)
             self.native[group] = key, references
         key, references = self.native[group]
@@ -211,9 +217,15 @@ class _Composer:
         if isinstance(session, _Session):
             return self.card_session(session)
         _require(isinstance(session, _DeckSession), "Unsupported application context.")
-        path = self.directory / "deck.json.gz"
-        session._save(path)
-        key = self._retain(self.decks, _decode(path.read_bytes()))
+        packet = prepare_deck_bundle(
+            session.current,
+            max_decoded_bytes=LIMIT,
+            max_logical_bytes=LOGICAL_LIMIT,
+            application=session._application_state(),
+            additional=[view for view, _, _ in session.history],
+        )
+        bundle = json.loads(canonical_json(packet), object_pairs_hook=_unique)
+        key = self._retain(self.decks, bundle)
         return {
             "kind": "deck",
             "component": key,
@@ -236,24 +248,21 @@ def save_workspace(service, path, *, overwrite=False, compression="gzip"):
     ):
         raise ArgumentError("Use a nonempty workspace path and boolean overwrite.")
     codec, backend = transport.encoder(compression)
-    with tempfile.TemporaryDirectory(
-        prefix="sabueso-workspace-components-"
-    ) as directory:
-        composer = _Composer(Path(directory))
-        current = composer.context(service.session, service.resolution)
-        history = [
-            composer.context(session, resolution)
-            for session, resolution in service.resolution_history
-        ]
-        bundle = _seal(
-            {
-                "format": FORMAT,
-                "cards": composer.cards,
-                "decks": composer.decks,
-                "current": current,
-                "history": history,
-            }
-        )
+    composer = _Composer()
+    current = composer.context(service.session, service.resolution)
+    history = [
+        composer.context(session, resolution)
+        for session, resolution in service.resolution_history
+    ]
+    bundle = _seal(
+        {
+            "format": FORMAT,
+            "cards": composer.cards,
+            "decks": composer.decks,
+            "current": current,
+            "history": history,
+        }
+    )
     raw = canonical_json(bundle).encode("utf-8")
     transport._check("max_decoded_bytes", len(raw), LIMIT)
     _restore(bundle, service.output_directory, bundle["bundle_digest"])

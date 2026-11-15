@@ -15,12 +15,15 @@ Card/Deck readers, source assertions or scientific rules. The
 [source-bound receipt](../evidence/interactive_rich_workspace_checkpoint_20261113.json)
 owns actual qualification, failed controls and resource observations.
 
-The later [workspace cost diagnostic](interactive_workspace_cost_0160.md)
-reproduces the same public scientific route without Qt or source acquisition,
-records exact native content/Back checks, and identifies nested serialization
-and verification as an optimization target. Its 98.92/26.88 s observation is a
-separate backend/dependency epoch, not a regression claim against the earlier
-installed Qt cohort, an accepted budget or an implemented optimization.
+The later [workspace cost and composition increment](interactive_workspace_cost_0160.md)
+prepares unchanged native packets in memory, retaining canonical JSON boundaries
+and mandatory independent complete-envelope verification before atomic publication.
+It removes intermediate Card/Deck files and redundant nested admission, without
+introducing a validation cache or public bypass. The matched public backend save
+drops from 94.28 to 57.93 s; checkout/installed Qt and genuine pre-change original
+receiving preserve exact content and Back. These observations do not establish
+a workload budget or general scaling claim; the initial 98.92/26.88 s diagnostic
+retains its separate epoch in the linked record.
 
 ## Researcher-visible behavior
 

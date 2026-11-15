@@ -20,16 +20,20 @@ as prerequisites for future 2D integration. Shared coordination stays under
 owns the separate supported 3D correspondence. S4.3 and the 20 done / 10 partial /
 3 todo main-plan counts remain unchanged.
 
-The [workspace cost diagnostic](pending_proposals/interactive_workspace_cost_0160.md)
-now reproduces the public protein/BTS/activity/publication save/reopen route
-without source acquisition: **98.92 s / 26.88 s**, about **0.41 GiB** peak sampled
-owned RSS in a two-CPU backend profile. Exact native content, repeated/filtered
-Deck return and original Back survive; the 16-case workspace regression passes
-with a complete published-receptor artifact. A separate instrumented profile
-identifies nested serialization/verification work for investigation, without
-removing validation or claiming a runtime optimization. The failed initial
-banner comparison is retained separately. [The receipt](evidence/interactive_workspace_cost_checkpoint_20261115.json)
-records scope and limits; S6.2 remains partial and its workload budget is unagreed.
+The [guarded workspace composition increment](pending_proposals/interactive_workspace_cost_0160.md)
+now prepares unchanged native packets in memory and independently verifies the
+complete final envelope before atomic publication. The matched public workload
+saves in **57.93 s versus 94.28 s** (38.6% less time), with reopening unchanged at
+about **29.7 s**; sampled backend RSS rises from about 0.39 to 0.45 GiB. Instrumented
+Card receiving calls fall from 14 to 5. No original verifier or public validation
+bypass is introduced. **648 native and 208 application cases pass**, plus 207
+noneditable installed cases. Checkout and installed Qt each pass 14 complete
+scientific-journey checks; a fresh Qt process and a headless installed reader also
+receive the genuine pre-change workspace. [The receipt](evidence/interactive_workspace_composition_checkpoint_20261115.json)
+binds exact bytes, original identity controls, artifacts, failed/interrupted
+receivers and resources. S6.2 and its workload-budget/human acceptance stay open;
+the initial [diagnostic receipt](evidence/interactive_workspace_cost_checkpoint_20261115.json)
+retains its earlier scope.
 
 The [owned molecular lifetime increment](pending_proposals/interactive_model_lifetime_0160.md)
 adds explicit runtime close/reopen from the unchanged initial capture, fixed

@@ -196,6 +196,10 @@ spend substantial time in original verification. This is explicit saving, not
 automatic crash recovery. The [format/scope guide](../../devguide/pending_proposals/interactive_workspace_persistence_0160.md)
 and source-bound receipt own measured limits.
 
+Whole-workspace saving now composes native packets in memory, without intermediate
+Card/Deck files. Complete independent original verification remains mandatory
+before atomic publication; original formats and scientific meanings stay fixed.
+
 The developer diagnostic `devtools/measure_explorer_workspace.py` measures the
 prepared public mixed-Deck save/reopen route without opening Qt or acquiring
 sources. It verifies exact native content and original Back navigation. Run it

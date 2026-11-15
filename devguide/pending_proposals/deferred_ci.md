@@ -9,6 +9,21 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Guarded native workspace composition (2026-11-15)
+
+From `7278d77`, #153/#154 split internal native packet preparation from final
+publication. Every public Card/Deck/workspace save still independently verifies
+its complete original envelope before atomic writing; no cache, bypass flag,
+schema, original format, scientific verifier or dependency change is introduced.
+The [receipt](../evidence/interactive_workspace_composition_checkpoint_20261115.json)
+binds 648 native and 208 application cases, 207 noneditable installed cases,
+source/installed Qt, original-producer controls and genuine pre-change reading.
+Paired save time drops from 94.28 to 57.93 s; budgets and whole-version acceptance
+stay open. Applicable local format/lint/governance/link checks qualify this
+intermediate `[skip ci]` checkpoint. Git and the owning issue record the final
+SHA; exact-final-source full/candidate and hosted CI/governance recovery remain
+under #153/#154/#112. No remote workflow, release or package publication is selected.
+
 ### Separate-team handoff and workspace cost diagnostic (2026-11-15)
 
 From `5224379`, #154/#153 record the separate MolSysSketcher development team and

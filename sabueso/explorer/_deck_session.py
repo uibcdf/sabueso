@@ -101,9 +101,7 @@ class _DeckSession:
             previous.append(cursor)
             cursor = page["next_cursor"]
 
-    def _save(self, path=None):
-        from sabueso.core.deck_exploration_storage import save_deck_exploration
-
+    def _application_state(self):
         def state(view, cursor):
             return {
                 "view_ref": view.view_ref,
@@ -112,12 +110,16 @@ class _DeckSession:
                 ],
             }
 
-        application = {
+        return {
             "format": "sabueso.deck_application@1",
             "metadata_open": self.metadata_open,
             "current": state(self.current, self.cursor),
             "history": [state(view, cursor) for view, cursor, _ in self.history],
         }
+
+    def _save(self, path=None):
+        from sabueso.core.deck_exploration_storage import save_deck_exploration
+
         independent = path is None
         if independent:
             output = Path(self.output_directory)
@@ -127,7 +129,7 @@ class _DeckSession:
             self.current,
             path,
             compression="gzip",
-            application=application,
+            application=self._application_state(),
             additional=[view for view, _, _ in self.history],
         )
         if independent:

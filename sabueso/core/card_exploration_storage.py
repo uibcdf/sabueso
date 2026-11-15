@@ -991,28 +991,18 @@ def _seal(bundle):
     return bundle
 
 
-def save_exploration(
+def _prepare_bundle(
     view,
-    path,
     *,
-    overwrite=False,
-    compression="none",
-    max_encoded_bytes=transport.BYTE_LIMIT,
     max_decoded_bytes=transport.BYTE_LIMIT,
     max_logical_bytes=268435456,
     _navigation_refs=None,
 ):
-    if (
-        not isinstance(path, (str, os.PathLike))
-        or not str(path)
-        or type(overwrite) is not bool
-    ):
-        raise ArgumentError("save requires a nonempty file path and boolean overwrite.")
-    transport.compression_option(compression)
-    transport.byte_budget("max_encoded_bytes", max_encoded_bytes)
-    transport.byte_budget("max_decoded_bytes", max_decoded_bytes)
-    transport.byte_budget("max_logical_bytes", max_logical_bytes)
-    codec, backend = transport.encoder(compression)
+    """Prepare an unverified native packet for an enclosing atomic save.
+
+    This is not an admission surface. The publisher must independently restore
+    the complete containing envelope before writing any destination bytes.
+    """
     from .card_display_filter_v2 import needed, wrap
     from .card_exploration_shared_values_v1 import pack, sealed_size
 
@@ -1080,6 +1070,37 @@ def save_exploration(
         outer = wrap(bundle)
         transport._check("max_decoded_bytes", sealed_size(outer), max_decoded_bytes)
         bundle = _seal(outer)
+    return bundle
+
+
+def save_exploration(
+    view,
+    path,
+    *,
+    overwrite=False,
+    compression="none",
+    max_encoded_bytes=transport.BYTE_LIMIT,
+    max_decoded_bytes=transport.BYTE_LIMIT,
+    max_logical_bytes=268435456,
+    _navigation_refs=None,
+):
+    if (
+        not isinstance(path, (str, os.PathLike))
+        or not str(path)
+        or type(overwrite) is not bool
+    ):
+        raise ArgumentError("save requires a nonempty file path and boolean overwrite.")
+    transport.compression_option(compression)
+    transport.byte_budget("max_encoded_bytes", max_encoded_bytes)
+    transport.byte_budget("max_decoded_bytes", max_decoded_bytes)
+    transport.byte_budget("max_logical_bytes", max_logical_bytes)
+    codec, backend = transport.encoder(compression)
+    bundle = _prepare_bundle(
+        view,
+        max_decoded_bytes=max_decoded_bytes,
+        max_logical_bytes=max_logical_bytes,
+        _navigation_refs=_navigation_refs,
+    )
     _restore(
         bundle,
         bundle["bundle_digest"],

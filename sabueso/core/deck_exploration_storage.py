@@ -16,6 +16,7 @@ from pathlib import Path
 from sabueso._private.argdigest import arg_digest
 
 from . import exploration_transport as transport
+from .card_exploration_storage import _prepare_bundle as _prepare_card_bundle
 from .card_exploration_storage import _restore as _restore_card
 from .card_exploration_storage import _unique
 from .deck_exploration import DeckExplorer, DeckView
@@ -62,6 +63,50 @@ def _views(view, additional):
     return list(records.values())
 
 
+def _prepare_bundle(
+    view,
+    *,
+    max_decoded_bytes=transport.BYTE_LIMIT,
+    max_logical_bytes=268435456,
+    application=None,
+    additional=(),
+):
+    """Compose unverified native packets; the enclosing publisher owns admission."""
+    owner = view._owner
+    cards = {}
+    if owner._saved_bundles is not None:
+        cards = owner._saved_bundles
+    else:
+        total = 0
+        for position, key in enumerate(owner._inputs):
+            if key in cards:
+                continue
+            packet = _prepare_card_bundle(
+                owner._open(position, owner.overview()).overview(),
+                max_decoded_bytes=max_decoded_bytes,
+                max_logical_bytes=max_logical_bytes,
+            )
+            raw = canonical_json(packet).encode("utf-8")
+            total += len(raw)
+            transport._check("max_decoded_bytes", total, max_decoded_bytes)
+            # Keep the former native-file JSON boundary, without intermediate
+            # files or admission that the complete envelope repeats below.
+            cards[key] = json.loads(raw, object_pairs_hook=_unique)
+    bundle = _seal(
+        {
+            "format": FORMAT,
+            "metadata": owner.metadata,
+            "inputs": list(owner._inputs),
+            "capture_ref": owner._capture_ref,
+            "cards": cards,
+            "views": _views(view, additional),
+            "root_view_ref": view.view_ref,
+            "application": application,
+        }
+    )
+    return bundle
+
+
 def save_deck_exploration(
     view,
     path,
@@ -87,44 +132,12 @@ def save_deck_exploration(
     ):
         transport.byte_budget(name, value)
     codec, backend = transport.encoder(compression)
-    owner = view._owner
-    cards = {}
-    if owner._saved_bundles is not None:
-        cards = owner._saved_bundles
-    else:
-        # Public Card saving owns preparation/verification. Only disposable local
-        # components are written; no alternate Card wire codec is introduced.
-        with tempfile.TemporaryDirectory(
-            prefix="sabueso-deck-components-"
-        ) as directory:
-            total = 0
-            for position, key in enumerate(owner._inputs):
-                if key in cards:
-                    continue
-                component = Path(directory) / "card.json"
-                owner._open(position, owner.overview()).overview().save(
-                    component,
-                    overwrite=True,
-                    max_encoded_bytes=max_decoded_bytes,
-                    max_decoded_bytes=max_decoded_bytes,
-                    max_logical_bytes=max_logical_bytes,
-                )
-                total += component.stat().st_size
-                transport._check("max_decoded_bytes", total, max_decoded_bytes)
-                cards[key] = json.loads(
-                    component.read_bytes(), object_pairs_hook=_unique
-                )
-    bundle = _seal(
-        {
-            "format": FORMAT,
-            "metadata": owner.metadata,
-            "inputs": list(owner._inputs),
-            "capture_ref": owner._capture_ref,
-            "cards": cards,
-            "views": _views(view, additional),
-            "root_view_ref": view.view_ref,
-            "application": application,
-        }
+    bundle = _prepare_bundle(
+        view,
+        max_decoded_bytes=max_decoded_bytes,
+        max_logical_bytes=max_logical_bytes,
+        application=application,
+        additional=additional,
     )
     raw = canonical_json(bundle).encode("utf-8")
     transport._check("max_decoded_bytes", len(raw), max_decoded_bytes)

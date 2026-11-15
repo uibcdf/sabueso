@@ -62,9 +62,11 @@ The [rich workspace increment](pending_proposals/interactive_workspace_persisten
 now adds readable native values/units, sequence strips/relationship graphs,
 nonblocking source queries and original whole query/Card/Deck history saving.
 Its public protein/BTS/activity/assay/publication journey has actual Qt receiving;
-[the later cost diagnostic](pending_proposals/interactive_workspace_cost_0160.md)
-adds reproducible backend save/reopen observations and exact native-content/Back
-checks while the 2D team works; it is not an optimization or an accepted budget;
+[guarded native composition](pending_proposals/interactive_workspace_cost_0160.md)
+now removes intermediate files and repeated nested admission while preserving
+mandatory complete-envelope verification before atomic publication. The matched
+public save takes 38.6% less time, with exact native-content/Back, historical and
+installed Qt receiving; no workload budget or whole-version acceptance is implied;
 [source-candidate follow-up](pending_proposals/interactive_source_candidates_0160.md)
 now preserves ambiguity and original source context through explicit record
 queries and saving, with usable reading space while queries run;

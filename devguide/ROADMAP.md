@@ -57,6 +57,10 @@ consumer surface. Design and repository preparation do not qualify an implemente
 The [living implementation plan](pending_proposals/interactive_implementation_0160.md)
 owns the 0.16.0 stages, microstages, current progress and immediate resumption;
 it preserves the broader roadmap and separate 0.15.0 delivery state.
+Independent [workspace composition work](pending_proposals/interactive_workspace_cost_0160.md)
+now reduces the matched public save from 94.28 to 57.93 s while preserving final
+original verification and exact navigation. Broader workload/human acceptance
+and the separate visual-provider dependencies remain open.
 
 ## How the two routes are integrated
 

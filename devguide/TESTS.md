@@ -1256,6 +1256,21 @@ historical-admission or human receiving. An observation is not a timing test or
 an accepted budget. The original-reading banner is expected to differ from live
 display text; native content and navigation are compared independently.
 
+Guarded in-memory composition also selects complete
+`tests/explorer/test_composition_offline.py`: unchanged embedded native packets
+and four resealed-component injection controls covering Card, Deck and both
+workspace publisher routes. Every final publisher must reject before touching
+caller bytes. Byte identity requires the same original navigation instances;
+independent captures and repeated live Deck overview creation have distinct
+scopes. Include native Card/Deck original, shared-value, transport, quantity,
+argument and package-data gates, then the full application selection. Receive the
+actual scientific Qt route from checkout and a noneditable wheel, and reopen a
+genuine pre-change workspace independently with construction/acquisition and
+optional graphics imports forbidden. The [composition receipt](evidence/interactive_workspace_composition_checkpoint_20261115.json)
+owns exact selectors, artifact bytes and failed controls. Local HTTP/Qt receiving
+needs permission to create owned loopback/display sockets; sandbox denial is not
+a passing product test and must not be fixed by changing global socket ownership.
+
 The experimental molecular adapter selects `test_molecular_admission_offline.py`
 with the application, resolver and package-data gates. Receive detached input
 capture/hash, encoded/decoded byte limits, unsupported/empty/invalid input and

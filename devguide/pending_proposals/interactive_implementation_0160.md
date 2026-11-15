@@ -289,16 +289,16 @@ delivers. Start feedback when the first useful slice exists, not only at the end
 | ID | State | Deliverable and completion check |
 | --- | --- | --- |
 | S6.1 | `partial` | [Public input preparation, uncoached tasks and worksheet](interactive_researcher_review_0160.md) are prepared and preparation runs without network. Maintainer and independent researcher observations remain `not_reviewed`; record understanding/navigation/accessibility, including molecular limits. The 0.15.0 deferral does not waive 0.16.0 review |
-| S6.2 | `partial` | Actual source-bound rich Card/query/mixed scientific Deck workloads now have bounded checkout/installed observations. The latest installed mixed workspace saves in about 84 s and reopens in 25 s in its received two-CPU profile; the earlier cohort observed 87/25 s. This is not an agreed budget or a native-platform/scaling claim. Two installed molecular profiles now add short idle/active and repeated-layout observations; these do not establish a settled idle budget or repeated provider lifetime. Agree workload-specific targets and complete longer/lifetime measurements before provider optimizations |
+| S6.2 | `partial` | Guarded in-memory composition reduces the matched public backend save from 94.28 to 57.93 s, with read/verify unchanged at about 29.7 s; current checkout/installed Qt observes about 60/29 s. The earlier installed 84/25 s cohort retains its own epoch. Native originals, resealed refusals and exact Deck return receive; no workload budget or scaling claim is established. Two installed molecular profiles retain short idle/active and repeated-layout observations. Agree targets and complete settled-session/repeated-provider lifetime measurements |
 | S6.3 | `todo` | Reconcile every accepted 0.16.0 journey against implementation, regressions, original saved compatibility and visible limits. Reconsider #192's meaning/correction and the #194 macOS exception before the version decision; neither 0.15.0 deferral silently extends |
 | S6.4 | `todo` | Record functional-milestone acceptance separately from exact-source CI, installed artifacts, supported platforms and publication. Complete the applicable existing release route only for the authorized candidate and actual claimed GUI/core scope |
 
-S6.2 now also has a reproducible [backend workspace cost diagnostic](interactive_workspace_cost_0160.md):
-98.92 s save, 26.88 s reopen, about 0.41 GiB sampled owned RSS, exact native-content
-and repeated/filtered Deck Back receiving, plus 16 passing workspace regressions.
-The preliminary instrumented profile identifies nested serialization/verification
-work for investigation. It does not establish a budget, a runtime optimization
-or new Qt/installed qualification; S6.2 remains partial.
+S6.2's [composition receipt and cost observations](interactive_workspace_cost_0160.md)
+now bind 648 native and 208 source application cases, 207 installed cases,
+checkout/installed Qt and genuine pre-change original receiving. Internal packet
+preparation removes repeated nested admission; every final publisher still runs
+its complete original verifiers. Exact scientific/native content, source scope
+and navigation are unchanged. This bounded improvement does not close S6.2.
 
 ## Current closeout ledger
 
@@ -323,11 +323,12 @@ original stage rows and their evidence retain authority over each delivered scop
 
 ## Execution order and immediate handoff
 
-Current independent cursor (2026-11-15): MolSysSketcher implementation belongs
-to its separate team. Continue from the measured workspace cost under #153/#154;
-investigate repeated composition/verification work while retaining all original
-admission guarantees. Supported mapped 3D and chemical depiction remain parallel
-provider dependencies, not reasons to suspend independent Sabueso development.
+Current independent cursor (2026-11-15): guarded workspace composition now has
+selected native/application/artifact/Qt receiving under #153/#154. Continue S5.5
+and S6.2's repeated owned-runtime and settled-session observations on varied public
+inputs, retaining current provider-contract limits and explicit workload targets.
+MolSysSketcher belongs to its separate team. Supported mapped 3D and chemical
+depiction remain parallel dependencies, not reasons to suspend independent work.
 
 1. S1.1–S1.5 now deliver the first working Qt Card application. See the
    [development instructions](../../frontend/explorer/README.md) and exact
