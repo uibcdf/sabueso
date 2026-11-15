@@ -7,6 +7,22 @@ This page owns current state; dated receipt histories are linked below.
 
 ## Next product objective: interactive exploration in 0.16.0
 
+The [extended model observations](pending_proposals/interactive_model_lifetime_0160.md#extended-bounded-observations-2026-11-15)
+now receive two sequential noneditable installed profiles, with **eight runtime
+cycles and 32 checks each**, twelve layout cycles, two 60 s idle windows and
+per-cycle closed/opened resource observations. Public 1TCD and an explicitly
+unrelated AlphaFold Q8WZ42 fragment peak at about **3.41/3.54 GiB** with a second
+independent Qt view retained. No owned process or captured-model directory remains
+after shutdown. RSS retention is quantified and remains unclassified; finite
+windows neither prove nor exclude a leak. Four Node launch/log controls and twelve
+existing molecular Python cases pass. The receiver now fails promptly on early
+owned-child exit and bounds each child's output to 256 KiB. Shipped runtime/SOURCE
+bytes are unchanged, so the earlier received wheel is reused after hash checks.
+[The receipt](evidence/interactive_model_stability_checkpoint_20261115.json) keeps
+Viewer `0dcdd6ce` / MolSysMT `6deb0200`, the source pilot, installed observations
+and resource limits distinct. S5.5/S6.2 and supported provider/human acceptance
+remain partial; the main plan still has **20 done, 10 partial and 3 todo**.
+
 The maintainer has assigned **MolSysSketcher** to a separate development team.
 Its local repository now contains the staged design for an owned TypeScript 2D
 scene, with molecular and interaction views as equally important pillars and

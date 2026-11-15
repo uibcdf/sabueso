@@ -80,3 +80,10 @@ This extends S5.5/S6.2 with varied input and idle/active observations. It does n
 receive repeated provider construction/disposal, long sessions, nonempty mapped
 selection, native driver/platform support or a stable embedding contract. Keep
 those remaining checks and workload agreement open under #154/#368.
+
+The later [extended lifetime receiving](interactive_model_lifetime_0160.md#extended-bounded-observations-2026-11-15)
+now adds two 60 s idle windows and eight actual disposal/reopen/draw cycles per
+public input, with a surviving independent Qt window and per-phase RSS/CPU
+observations. Its source/provider cohort and scope remain separate from these
+earlier short single-window observations. General long-session/scaling, supported
+mapping/lifetime and workload acceptance remain open.

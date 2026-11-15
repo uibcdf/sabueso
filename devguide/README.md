@@ -86,7 +86,11 @@ phenotype control and unvisited original topics still `not_saved`;
 [owned molecular runtime close/reopen](pending_proposals/interactive_model_lifetime_0160.md)
 adds fresh views from the same initial copy, fixed-origin failure/retry and an
 independently surviving real Qt window. General provider pending/background and
-mapped model contracts remain open. [Viewer #387](https://github.com/uibcdf/molsysviewer/issues/387)
+mapped model contracts remain open. The later
+[eight-cycle resource observations](pending_proposals/interactive_model_lifetime_0160.md#extended-bounded-observations-2026-11-15)
+add two public installed profiles, one-minute idle windows, per-cycle RSS/CPU and
+bounded/early-failure receiving logs. Retained RSS is recorded without a leak or
+general scaling verdict. [Viewer #387](https://github.com/uibcdf/molsysviewer/issues/387)
 records the source-bound chemical 2D need; the later [MolSysSketcher consumer handoff](pending_proposals/interactive_2d_component_0160.md)
 now records the separate development team and owned-scene design under
 [MolSysSuite #199](https://github.com/uibcdf/molsyssuite/issues/199),

@@ -1951,15 +1951,36 @@ owns the actual cohort and limits; general provider pending/background lifetime,
 shared-session multi-view behavior, supported mapping, platform and human acceptance
 remain separate.
 
+For repeated-runtime and longer idle observations, use explicit bounded
+`--runtime-cycles`, `--runtime-settle-seconds`, `--layout-cycles` and
+`--observe-idle-seconds` values. The receiver caps them at 12, 10 s, 20 and 120 s;
+defaults retain the original three-cycle/no-explicit-idle route. Phase journals
+preserve started/completed windows if an execution stops. Correlate each complete
+phase with the observer's sampled summed RSS and cumulative owned CPU; distinguish
+single-window idle from two-window closed/opened checkpoints. Record actual
+generations, retired listeners/capabilities, surviving independent view and native
+draw/readiness. Finite RSS changes do not establish or exclude a memory leak;
+larger-scale and workload-budget acceptance remain explicit.
+
+Run `node --test devtools/standalone_probe/test_owned_process.mjs` for the new
+owned-child guards. Its synthetic display-server failure must end promptly with
+a structured failed receipt, drain both output streams within one byte budget and
+preserve truncation metadata. Real Node child pipes and Qt/HTTP sockets need the
+local IPC-enabled execution context; restricted attempts are not qualification.
+The helper is receiving infrastructure and changes no shipped application bytes.
+Reuse a received diagnostic wheel only after checking that all inspected runtime
+and SOURCE hashes still match the current checkout; record its exact digest and
+shared provider cohort separately from editable version metadata.
+
 
 ### Reusable 2D component evaluation
 
-The [MolSysSketcher proposal](pending_proposals/interactive_2d_component_0160.md)
-owns source-screening and staged prototype criteria, with shared ownership under
-MolSysSuite #199. Source inspection qualifies neither rendering nor interaction.
-Select two or three minimal prototypes in one common host before a production
-engine/component decision; actual source/build/license and optional-dependency
-closure are part of that receiving.
+The [MolSysSketcher consumer handoff](pending_proposals/interactive_2d_component_0160.md)
+records the separate team's owned-scene design and equal molecular/interaction
+pillars under MolSysSuite #199. The earlier renderer-comparison queue is historical.
+Sabueso receives a supported provider surface after implementation and admission;
+source inspection alone qualifies neither rendering nor interaction. Record exact
+provider source/build/licence, supported capabilities and optional dependencies.
 
 Reuse existing MolSysMT/RDKit science and exact source inputs. Compare supplied
 2D layout with engine-owned layout; verify explicit atom/bond mappings for a

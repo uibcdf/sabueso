@@ -3,20 +3,31 @@ import fs from 'node:fs';
 import path from 'node:path';
 import net from 'node:net';
 import crypto from 'node:crypto';
-import {spawn} from 'node:child_process';
 import {setTimeout as delay} from 'node:timers/promises';
 import {connectNative} from './standalone_probe/cdp_driver.mjs';
+import {launchOwned} from './standalone_probe/owned_process.mjs';
 const args=process.argv.slice(2),option=name=>{const i=args.indexOf(name);return i<0?undefined:args[i+1];};
 const idleSeconds=Number(option('--observe-idle-seconds')??0),layoutCycles=Number(option('--layout-cycles')??3);
-if(!Number.isInteger(idleSeconds)||idleSeconds<0||idleSeconds>30||!Number.isInteger(layoutCycles)||layoutCycles<1||layoutCycles>20)throw new Error('Use an integer idle window of 0–30 seconds and 1–20 layout cycles');
+const runtimeCycles=Number(option('--runtime-cycles')??3),runtimeSettleSeconds=Number(option('--runtime-settle-seconds')??0);
+if(!Number.isInteger(idleSeconds)||idleSeconds<0||idleSeconds>120||!Number.isInteger(layoutCycles)||layoutCycles<1||layoutCycles>20)throw new Error('Use an integer idle window of 0–120 seconds and 1–20 layout cycles');
+if(!Number.isInteger(runtimeCycles)||runtimeCycles<1||runtimeCycles>12||!Number.isInteger(runtimeSettleSeconds)||runtimeSettleSeconds<0||runtimeSettleSeconds>10)throw new Error('Use 1–12 runtime cycles and a 0–10 second runtime settle window');
 const output=path.resolve(option('--output')),card=path.resolve(option('--card')),model=path.resolve(option('--model'));
 fs.mkdirSync(output,{recursive:false});
 if(option('--presentation-source')){fs.mkdirSync(path.join(output,'readings'));fs.copyFileSync(option('--presentation-source'),path.join(output,'readings','presentation-layout.json'));}
 const hash=file=>crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
-const hashes={card:hash(card),model:hash(model)},children=[],logs=[];
+const hashes={card:hash(card),model:hash(model)},children=[],ownedProcesses=[];
 const result={format:'sabueso.molecular_explorer_journey@1',scope:'Actual experimental Qt/Viewer product panel; Linux/Xvfb software rendering; no mapped Card identity, stable embedding or native platform qualification',checks:{},errors:[],resource_phases:[]};
-async function until(fn,label){const end=Date.now()+60000;while(Date.now()<end){if(await fn())return;await delay(100);}throw new Error('Timed out: '+label);}
-function launch(command,parameters,name,env){const log=fs.openSync(path.join(output,name+'.log'),'wx');logs.push(log);const child=spawn(command,parameters,{env,cwd:option('--application-root')?path.resolve(option('--application-root')):undefined,stdio:['ignore',log,log,'pipe']});children.push(child);return child;}
+result.receiving_parameters={idle_seconds:idleSeconds,layout_cycles:layoutCycles,runtime_cycles:runtimeCycles,runtime_settle_seconds:runtimeSettleSeconds};
+function assertChildren(label){for(const owned of ownedProcesses)owned.assertRunning(label);}
+async function until(fn,label){const end=Date.now()+60000;while(Date.now()<end){assertChildren(label);if(await fn())return;await delay(100);}throw new Error('Timed out: '+label);}
+function launch(command,parameters,name,env){const owned=launchOwned(command,parameters,{name,logPath:path.join(output,name+'.log'),env,cwd:option('--application-root')?path.resolve(option('--application-root')):undefined});ownedProcesses.push(owned);children.push(owned.child);return owned.child;}
+async function observe(name,seconds,scope){
+  if(!seconds)return;
+  const phase={name,start_wall_s:Date.now()/1000,end_wall_s:null,scope};result.resource_phases.push(phase);
+  fs.appendFileSync(path.join(output,'phase-events.jsonl'),JSON.stringify({event:'started',...phase})+'\n');
+  for(let remaining=seconds;remaining>0;remaining-=Math.min(5,remaining)){await delay(Math.min(5,remaining)*1000);assertChildren(name);}
+  phase.end_wall_s=Date.now()/1000;fs.appendFileSync(path.join(output,'phase-events.jsonl'),JSON.stringify({event:'completed',...phase})+'\n');
+}
 let browser,independentBrowser;
 try{
   const env={...process.env,LIBGL_ALWAYS_SOFTWARE:'1',LIBGL_DRIVERS_PATH:'/usr/lib/x86_64-linux-gnu/dri',QT_QPA_PLATFORM:'xcb',QTWEBENGINE_CHROMIUM_FLAGS:'--use-gl=angle --use-angle=swiftshader --enable-unsafe-swiftshader --disable-gpu-compositing --num-raster-threads=1'};
@@ -43,7 +54,7 @@ try{
     const canvas=frame.locator('canvas').first();await canvas.waitFor();
     result.graphics=await canvas.evaluate(canvas=>{const gl=canvas.getContext('webgl2')||canvas.getContext('webgl');if(!gl)return {webgl:false};const debug=gl.getExtension('WEBGL_debug_renderer_info');return {webgl:true,width:gl.drawingBufferWidth,height:gl.drawingBufferHeight,renderer:gl.getParameter(debug?debug.UNMASKED_RENDERER_WEBGL:gl.RENDERER),error:gl.getError()};});
     result.checks.real_canvas_and_renderer=result.graphics.webgl&&result.graphics.width>0&&result.graphics.height>0&&result.graphics.error===0;
-    if(idleSeconds){const start=Date.now()/1000;await delay(idleSeconds*1000);result.resource_phases.push({name:'idle_before_interaction',start_wall_s:start,end_wall_s:Date.now()/1000,scope:'Original product/provider polling retained; no deliberate interaction or animation; software profile'});}
+    await observe('idle_before_interaction',idleSeconds,'Original product/provider polling retained; no deliberate interaction or animation; software profile');
     const activeStart=Date.now()/1000;
     const box=await canvas.boundingBox(),x=box.x+box.width/2,y=box.y+box.height/2;
     await page.send('Input.dispatchMouseEvent',{type:'mousePressed',x,y,button:'left',buttons:1,clickCount:1});
@@ -54,7 +65,7 @@ try{
     await page.evaluate(()=>{const f=document.querySelector('[data-testid=molecular-frame]');f.dataset.receivedLifetime='retained';});
     for(let i=0;i<layoutCycles;i++){await page.getByRole('button',{name:'Float model'}).click();await delay(200);if(i===0)result.checks.actual_floating_group_observed=await page.evaluate(()=>!!document.querySelector('.dv-groupview-floating'));await page.getByRole('button',{name:'Reset layout'}).click();await delay(200);}
     result.resource_phases.push({name:'rotation_and_layout_cycles',start_wall_s:activeStart,end_wall_s:Date.now()/1000,scope:'One deliberate camera rotation and repeated float/reset; not repeated provider creation/disposal'});
-    if(idleSeconds){const start=Date.now()/1000;await delay(idleSeconds*1000);result.resource_phases.push({name:'idle_after_interaction',start_wall_s:start,end_wall_s:Date.now()/1000,scope:'Same viewport retained after layout cycles; software profile'});}
+    await observe('idle_after_interaction',idleSeconds,'Same viewport retained after layout cycles; software profile');
     const after=(await state()).molecular;
     result.checks.reset_returns_to_main_grid=await page.evaluate(()=>document.querySelectorAll('.dv-groupview-floating').length===0);
     const camera=c=>Object.fromEntries(['position','target','up','mode','fov','radius','radiusMax'].map(k=>[k,c[k]]));
@@ -83,14 +94,17 @@ try{
     fs.writeFileSync(callerInput,'changed task-owned caller input after capture');
     result.checks.caller_mutation_is_separate=hash(callerInput)!==hashes.model&&hash(model)===hashes.model;
     result.runtime_cycles=[];
-    for(let cycle=0;cycle<3;cycle++){
+    for(let cycle=0;cycle<runtimeCycles;cycle++){
       const before=(await state()).molecular;
+      const closeStart=performance.now();
       await page.getByRole('button',{name:'Close model',exact:true}).click();await until(async()=>{const m=(await state()).molecular;return m.status==='closed'&&m.can_reopen&&!m.client_url;},'owned runtime closed');
+      const closeElapsed=(performance.now()-closeStart)/1000;
       result.checks.closed_runtime_releases_view=await page.evaluate(()=>!document.querySelector('[data-testid=molecular-frame]'));
       result.checks.closed_origin_is_not_listening=await fetch(origin+'/session/client',{signal:AbortSignal.timeout(2000)}).then(()=>false,()=>true);
       const during=(await peerState()).molecular;
       result.checks.independent_live_view_survives_close=during.client_url===peerBefore.client_url&&during.initial_renderer_ready&&during.client_registrations===peerBefore.client_registrations&&await peerFrame.locator('canvas').first().evaluate(c=>c.width>0&&c.height>0);
       result.checks.closed_view_keeps_reading=await page.evaluate(ref=>document.querySelector('[data-view-ref]').dataset.viewRef===ref,original);
+      await observe('runtime_'+(cycle+1)+'_closed',runtimeSettleSeconds,'Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim');
       if(cycle===0){
         await page.locator('[data-topic="sources"]').click();await page.waitForFunction(ref=>document.querySelector('[data-view-ref]').dataset.viewRef!==ref,original);await page.getByRole('button',{name:'Back',exact:true}).click();await page.waitForFunction(ref=>document.querySelector('[data-view-ref]').dataset.viewRef===ref,original);
         await page.send('Page.reload');await delay(500);await until(async()=>{try{return await page.evaluate(()=>!!document.querySelector('[data-view-ref]'));}catch{return false;}},'closed-runtime reading reload');
@@ -99,6 +113,7 @@ try{
         const blocker=net.createServer();await new Promise((resolve,reject)=>{blocker.once('error',reject);blocker.listen(Number(new URL(origin).port),'127.0.0.1',resolve);});
         try{await page.getByRole('button',{name:'Reopen initial model',exact:true}).click();await until(async()=>{const m=(await state()).molecular;return m.status==='unavailable'&&m.can_reopen;},'occupied-port failure');result.checks.occupied_origin_is_visible=await page.evaluate(()=>!!document.querySelector('[role=alert]'));result.checks.failed_reopen_preserves_reading=await page.evaluate(ref=>document.querySelector('[data-view-ref]').dataset.viewRef===ref,original);}finally{await new Promise(resolve=>blocker.close(resolve));}
       }
+      const reopenStart=performance.now();
       await page.getByRole('button',{name:'Reopen initial model',exact:true}).click();await page.waitForFunction(()=>document.querySelector('[role=status]').textContent.includes('Initial model reopened as a fresh view'));
       await page.getByRole('button',{name:'Show model',exact:true}).click();
       await page.waitForFunction(()=>{const r=document.querySelector('.reading[data-view-ref]').getBoundingClientRect(),c=document.querySelector('.orientation').getBoundingClientRect();return r.width>=400&&Math.abs(c.left-r.left)<5&&c.top>r.top;});result.checks.reopened_layout_keeps_reading_space=true;
@@ -111,10 +126,14 @@ try{
       result.checks.new_runtime_retains_initial_copy=new URL(current.client_url).origin===origin&&current.initial_input_digest==='sha256:'+hashes.model&&current.correspondence==='not_established';
       result.checks.new_runtime_is_explicit=current.client_url!==before.client_url&&current.lifecycle_revision!==before.lifecycle_revision&&await page.evaluate(()=>document.querySelector('[role=status]').textContent.includes('Camera, selection and scene were not restored'));
       result.checks.new_runtime_actually_draws=await freshFrame.locator('canvas').first().evaluate(c=>{const gl=c.getContext('webgl2')||c.getContext('webgl');return !!gl&&gl.drawingBufferWidth>0&&gl.drawingBufferHeight>0&&gl.getError()===0;});
-      result.runtime_cycles.push({cycle:cycle+1,closed_listener_retired:result.checks.closed_origin_is_not_listening,independent_view_retained:result.checks.independent_live_view_survives_close,new_runtime_draws:result.checks.new_runtime_actually_draws,initial_copy_binding:result.checks.new_runtime_retains_initial_copy,stale_capability_refused:result.checks.old_runtime_capability_is_refused});
+      const reopenElapsed=(performance.now()-reopenStart)/1000;
+      await observe('runtime_'+(cycle+1)+'_opened',runtimeSettleSeconds,'Fresh initial-copy viewport is ready; independent Qt view remains; software profile');
+      const heartbeat=await page.evaluate(async()=>{const start=performance.now(),response=await fetch('/api/panel',{signal:AbortSignal.timeout(5000)});return {status:response.status,panel:(await response.json()).panel,elapsed_s:(performance.now()-start)/1000};});
+      result.checks.knowledge_service_usable_after_reopen=heartbeat.status===200&&heartbeat.panel.view_ref===original;
+      result.runtime_cycles.push({cycle:cycle+1,closed_listener_retired:result.checks.closed_origin_is_not_listening,independent_view_retained:result.checks.independent_live_view_survives_close,new_runtime_draws:result.checks.new_runtime_actually_draws,initial_copy_binding:result.checks.new_runtime_retains_initial_copy,stale_capability_refused:result.checks.old_runtime_capability_is_refused,timings:{close_elapsed_s:closeElapsed,reopen_to_draw_elapsed_s:reopenElapsed,settled_knowledge_response_s:heartbeat.elapsed_s}});
       if(!Object.values(result.runtime_cycles.at(-1)).every(Boolean)||!Object.values(result.checks).every(Boolean))throw new Error('A runtime lifetime cycle failed');
     }
-    result.checks.three_distinct_runtime_cycles=result.runtime_cycles.length===3;
+    result.checks[runtimeCycles===3?'three_distinct_runtime_cycles':'requested_runtime_cycles_completed']=result.runtime_cycles.length===runtimeCycles;
     const peerAfter=(await peerState()).molecular;
     result.checks.independent_camera_and_selection_retained=JSON.stringify(peerAfter.camera_snapshot)===JSON.stringify(peerBefore.camera_snapshot)&&JSON.stringify(peerAfter.active_selection_indices)===JSON.stringify(peerBefore.active_selection_indices);
     result.checks.caller_was_not_reread=hash(callerInput)!==hashes.model&&hash(model)===hashes.model;
@@ -126,6 +145,6 @@ try{
   if(!Object.values(result.checks).every(Boolean))throw new Error('A selected product check failed');result.state='passed';
 }catch(error){result.state='failed';result.errors.push(String(error));if(browser)try{const p=browser.contexts()[0].pages()[0];result.failure=await p.evaluate(async()=>({text:document.body.innerText,molecular:await(await fetch('/api/molecular')).json()}));await p.screenshot({path:path.join(output,'failure.png')});}catch{}}
 finally{
-  if(independentBrowser)await independentBrowser.close();if(browser)await browser.close();for(const child of [...children].reverse()){if(child.exitCode!==null||child.signalCode!==null)continue;child.kill('SIGTERM');await Promise.race([new Promise(resolve=>child.once('exit',resolve)),delay(10000)]);if(child.exitCode===null&&child.signalCode===null)child.kill('SIGKILL');}for(const log of logs)fs.closeSync(log);
+  if(independentBrowser)await independentBrowser.close();if(browser)await browser.close();for(const child of [...children].reverse()){if(!child.pid||child.exitCode!==null||child.signalCode!==null)continue;child.kill('SIGTERM');await Promise.race([new Promise(resolve=>child.once('exit',resolve)),delay(10000)]);if(child.exitCode===null&&child.signalCode===null)child.kill('SIGKILL');}result.owned_logs=ownedProcesses.map(owned=>owned.closeLog());
   fs.writeFileSync(path.join(output,'receipt.json'),JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));if(result.state!=='passed')process.exitCode=1;
 }

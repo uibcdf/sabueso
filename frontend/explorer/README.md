@@ -122,8 +122,10 @@ its live viewport. It always says that correspondence with the current Card is
 not established. The displayed name/digest describe the captured initial input,
 not current model identity: the provider's own controls may replace the model.
 No annotation-to-atom mapping, scientific identity, inferred structure or linked
-selection is created by opening a file. Closing/reopening the panel, whole-scene
-recovery and background suspension retain separate provider receiving work.
+selection is created by opening a file. Close model releases the owned runtime;
+Reopen initial model creates a fresh view from its retained initial copy, without
+restoring camera, selection or scene. Whole-scene recovery, supported background
+suspension and shared-session semantics retain separate provider receiving work.
 Optional-model startup failure leaves the original knowledge reading available.
 The adapter owns an immutable temporary input copy until application shutdown.
 
@@ -133,6 +135,19 @@ Its `--unavailable` control receives a rejected empty synthetic file without
 losing the Card. Linux/Xvfb software drawing remains separate from hardware,
 platform, long-session or large-model qualification. XR permission is delegated
 only to the owned model iframe; there is no arbitrary external embed action.
+
+The lifetime receiver accepts `--runtime-cycles 1..12`,
+`--runtime-settle-seconds 0..10`, `--layout-cycles 1..20` and
+`--observe-idle-seconds 0..120`. Defaults retain three runtime/layout cycles and
+no explicit settling/idle window. Resource phases distinguish single-window idle,
+layout activity and closed/opened checkpoints with an independently owned second
+window. Heartbeats after readiness check the Knowledge service; they do not
+qualify responsiveness during synchronous provider parsing. Run graphics trials
+sequentially with the existing bounded observer and actual shared-resource preflight.
+The receiver diagnoses early owned-child exit and drains stdout/stderr into a
+256 KiB log budget per child, with explicit truncation metadata. The synthetic
+launcher controls use `node --test devtools/standalone_probe/test_owned_process.mjs`
+in the local IPC-enabled receiving environment.
 
 Save layout stores only the current in-page presentation in
 `presentation-layout.json` beside the chosen output readings. The versioned

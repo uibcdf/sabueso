@@ -61,6 +61,11 @@ Independent [workspace composition work](pending_proposals/interactive_workspace
 now reduces the matched public save from 94.28 to 57.93 s while preserving final
 original verification and exact navigation. Broader workload/human acceptance
 and the separate visual-provider dependencies remain open.
+The [extended lifetime observations](pending_proposals/interactive_model_lifetime_0160.md#extended-bounded-observations-2026-11-15)
+now add eight actual runtime cycles per public model with an independent Qt view,
+one-minute idle phases and recorded RSS retention. Source/installed runtime bytes
+remain fixed; finite observations do not close general lifetime, scaling or human
+acceptance, or establish a memory-leak verdict.
 
 ## How the two routes are integrated
 

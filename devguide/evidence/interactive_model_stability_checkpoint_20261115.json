@@ -1,0 +1,2091 @@
+{
+  "format": "sabueso.interactive_model_stability_checkpoint@1",
+  "owner": "uibcdf/sabueso#154",
+  "coordination_owners": [
+    "uibcdf/sabueso#153",
+    "uibcdf/sabueso#112"
+  ],
+  "provider_follow_up": "uibcdf/molsysviewer#368",
+  "base_commit": "7d3e914b4bed54adebfc7c265c53d82b264d9bbe",
+  "scope": "Receiving-only bounded runtime/idle extension; unchanged shipped application and native SOURCE bytes",
+  "new_receiving_code_sha256": {
+    "devtools/molecular_explorer_journey.mjs": "6567e6dd8fc87b9f7a5c1b7d25e1fc1e3b10689936df199f58aab3fe660e1497",
+    "devtools/standalone_probe/owned_process.mjs": "bdba473d91fb8776dba40a6fe3418f2bac8d99c77ddc9ff0b3636c749821a9d6",
+    "devtools/standalone_probe/test_owned_process.mjs": "9fee2944926e1bcfb6956926658a1fdd1c369cec713e4486673d652f0aa9273a",
+    "devtools/standalone_probe/cdp_driver.mjs": "c7be8ee8287e0dde73931c2f01d28392b1424b34b640df7b8e6a690265e31995",
+    "devtools/standalone_probe/run_bounded.py": "c465a3e4fd799208abbfbfa8eeba336760687085e59af763b8ebe6cef621a290"
+  },
+  "provider_cohort": {
+    "sabueso": {
+      "import": "/fast_data/home/liliana/repos@uibcdf/sabueso/sabueso/__init__.py",
+      "metadata_version": "0.14.0+289.gbed4605.dirty",
+      "head": "7d3e914b4bed54adebfc7c265c53d82b264d9bbe",
+      "status": " M devtools/molecular_explorer_journey.mjs\n?? devtools/standalone_probe/owned_process.mjs\n?? devtools/standalone_probe/test_owned_process.mjs\n",
+      "origin": {
+        "dir_info": {
+          "editable": true
+        },
+        "url": "file:///fast_data/home/liliana/repos%40uibcdf/sabueso"
+      }
+    },
+    "molsysviewer": {
+      "import": "/fast_data/home/liliana/repos@uibcdf/molsysviewer/molsysviewer/__init__.py",
+      "metadata_version": "0.24.0+409.g0dcdd6ce",
+      "head": "0dcdd6ce574d3c99483480cb38c16c1e3cc4782f",
+      "status": "",
+      "origin": {
+        "dir_info": {
+          "editable": true
+        },
+        "url": "file:///fast_data/home/liliana/repos%40uibcdf/molsysviewer"
+      }
+    },
+    "molsysmt": {
+      "import": "/fast_data/home/liliana/repos@uibcdf/molsysmt/molsysmt/__init__.py",
+      "metadata_version": "0.23.0+904.gff25f1202",
+      "head": "6deb0200cd7e384128eded46caaf751a57e65bc6",
+      "status": "",
+      "origin": {
+        "dir_info": {
+          "editable": true
+        },
+        "url": "file:///fast_data/home/liliana/repos%40uibcdf/molsysmt"
+      }
+    }
+  },
+  "provider_checkout_heads_unchanged_through_receiving": true,
+  "provider_scope": "Actual local checkouts; Viewer origin/main has newer commits not adopted in this task. Editable distribution versions may name older installation commits. No provider files were changed.",
+  "reused_runtime": {
+    "base_receipt": "devguide/evidence/interactive_workspace_composition_checkpoint_20261115.json",
+    "source_and_wheel_runtime_unchanged": true,
+    "artifact_proof": {
+      "wheel": {
+        "name": "sabueso-0.14.0+297.g7278d77.dirty-py3-none-any.whl",
+        "sha256": "f106458434dd30169218085e31d9f3b292427d5c2390da0916bc26f704fda400"
+      },
+      "sdist": {
+        "name": "sabueso-0.14.0+297.g7278d77.dirty.tar.gz",
+        "sha256": "b6f9969220cc424cd5c98020130447b6342138be6aac67c740fb2e3104860ce7"
+      },
+      "installed_module": "/tmp/sabueso-workspace-composition-20261115-uvueqhma/installed-env/lib/python3.14/site-packages/sabueso/__init__.py",
+      "installed_version": "0.14.0+297.g7278d77.dirty",
+      "editable": false,
+      "runtime_original_SOURCE_and_installed_bytes_equal": {
+        "sabueso/explorer/_qt.py": "7b85fe1d2c8c30fc2254055dc4cd041886f1be65a3b9cea7eda775ff0df6b74f",
+        "sabueso/explorer/_session.py": "521687245ec5386574817c5ebfaf661347dd3abdc71722f0769f369539296b30",
+        "sabueso/explorer/_molecular.py": "a9ded2e47fad16cc83af3f5f78e5463334357e84f82d4c4da0dc24692f607c72",
+        "sabueso/explorer/_service.py": "b900a45373ba86d1961a86872968c0adee376f9c0040ff6f05d0793c3972704b",
+        "sabueso/explorer/_deck_session.py": "7b65196019d0f2a04569fac255e5f3dd6b20c3a94b25209f6d3d86c10737003f",
+        "sabueso/explorer/_source_choices.py": "208d0d02395d4b6eb55d2645ff469cb7e13099a8a4a487b2695ea39b4657e559",
+        "sabueso/explorer/_presentation.py": "2b0434795de70337eedfe4636dd6a6e2dd9d58fce82d50ffd3ca3c1f0b309c95",
+        "sabueso/explorer/__init__.py": "d9f38870c8c8cb9a246e19c53547451343ff05bd8724b52d11b16ea805f07062",
+        "sabueso/explorer/_association_presentation.py": "590c8f44e26ff59af5509d82f1d7278aa9d0a31dd4fd1fc812904c36626bd034",
+        "sabueso/explorer/_record_queries.py": "c3c214d566af6cdbd324bf7fc06cdcb4894f264adb9c67c830a0c09807433e2a",
+        "sabueso/explorer/_layout.py": "83ff00cc24e9d0fe22210ffa61908fa45d1982774ac0097bd554d26f286ad072",
+        "sabueso/explorer/__main__.py": "13e6fc8829e6dd3b15c8523dac1b21a6dcdcd0ec4f3119c417f61c9a1d412891",
+        "sabueso/explorer/_workspace.py": "84f3c23b3b4cb0d7216e8b763b11a2343236a22abef743687c45816813d61fbd",
+        "sabueso/explorer/_queries.py": "a56330d66e7476b4d8e034884c1bf2ec9c763867701c605259ecba3d31e8bf11",
+        "sabueso/explorer/_resolution.py": "7a165ba64694d64f9cda93a12315b77533b1f2e51d7302b68baaf36df6cc9ac9",
+        "sabueso/explorer/_assets/app.js": "9c3ebfc81824ebe66fc36b2643751e1d6021eeb59dce001501858536eafc42af",
+        "sabueso/explorer/_assets/app.css": "80eb9cd196035397a1b68ba54968c6130dd012f1975430cf840da00cb68517b0",
+        "sabueso/explorer/_assets/notices.txt": "a238c0f2172b6b9507e352ce97d0065b73c0abe2b076493e6553789f675e0b15",
+        "sabueso/explorer/_assets/index.html": "be4705852899de9486e6c01fb0d92ad99301024833c9c7b50b545a3827cc785d",
+        "sabueso/core/card_exploration_storage.py": "ded6cfc512de97a667278b023d48f9c4e20ff66914e46879a968622fbdd66bd7",
+        "sabueso/core/deck_exploration_storage.py": "69eafde545d4f1fd84b9660515f636d9d0a146b0a86400c8c6600acad0b50c71",
+        "sabueso/core/_variant_history_v1/SOURCE.json": "b55ee3cd34ef6f7efdca561ce4b06fbacb8ea4f3ca67f7bb2d362cb82f3a6998",
+        "sabueso/core/_sequence_change_history_v1/SOURCE.json": "c7a43ebf63201757abfede8ec0eee1820199ff53bfbf8fd93e4506372aa7c8c0",
+        "sabueso/core/_molecule_activity_history_v1/SOURCE.json": "14d59d034aa795516bc3258f11f8a4f8caaa1b5b38b3c30bfb273f8cfddde797",
+        "sabueso/core/_protein_context_history_v1/SOURCE.json": "de78272c691573e26e04c6028cd7a375616c7c2e51d0e43d7623462bbcf40823",
+        "sabueso/core/_disease_association_history_v1/SOURCE.json": "a927a304b67df6144995c9d5f21e44ff4a34a98e8023221e47361f3dfe53feef",
+        "sabueso/core/_knowledge_comparison_history_v1/SOURCE.json": "cf1f610bff358f89a432484952ddeec7eec3d661615035ead720ea7eb202dd8a",
+        "sabueso/core/_clinical_history_v1/SOURCE.json": "00688c256d6aee51ebc97d752fdd641f7317c5d399ae8dd84db0ee4dc7e60650"
+      },
+      "genuine_prechange_workspace_inert_and_unchanged": true,
+      "original_sha256": "83677c29c26d3676f23009e5df884bbf05bbc872a6e2ace9517f1035ce2398af",
+      "original_native_content_and_exact_back": true,
+      "no_optional_graphics_or_scientific_provider_imports": true,
+      "scope": "Noneditable unpublished diagnostic artifact with shared editable dependencies; not clean public/candidate/platform qualification"
+    },
+    "wheel_path": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-workspace-composition-20261115-1/artifacts/sabueso-0.14.0+297.g7278d77.dirty-py3-none-any.whl"
+  },
+  "no_new_artifact_build_or_dependency_adoption": true,
+  "selected_python_gate": {
+    "counts": {
+      "collected": 12,
+      "deselected": 0,
+      "errors": 0,
+      "executed": 12,
+      "failed": 0,
+      "not_executed": 0,
+      "passed": 12,
+      "reruns": 0,
+      "skipped": 0,
+      "subtests": {},
+      "warnings": 0,
+      "xfailed": 0,
+      "xpassed": 0
+    },
+    "complete": true,
+    "integrity_valid": true,
+    "events_sha256": "69bd53941db6de27e5c1b0847f856dc11b7b529ca44f5419c88558ae2fa90c7a",
+    "resources": {
+      "owner": "uibcdf/sabueso#154",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0,1",
+        "python",
+        "-m",
+        "pytest",
+        "tests/explorer/test_molecular_lifetime_offline.py",
+        "tests/explorer/test_molecular_admission_offline.py",
+        "-m",
+        "not online",
+        "--receptor=llm",
+        "--receptor-events=/tmp/sabueso-model-stability-20261115-9hvf85g5/molecular-unit.jsonl"
+      ],
+      "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+      "returncode": 0,
+      "elapsed_s": 2.138,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 94220288,
+      "minimum_host_available_bytes": 48827678720,
+      "survivors_after_command": [],
+      "limits": {
+        "owned_rss_bytes": 4294967296,
+        "host_available_bytes": 17179869184,
+        "cpu_affinity": [
+          0,
+          1
+        ],
+        "native_threads": 1
+      },
+      "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+    }
+  },
+  "node_controls": {
+    "passed": 4,
+    "failed": 0,
+    "log_sha256": "8aca1fa7ac0ad4c80badc5ea40ffbe8df485f2f5c2238294b6c373674808372e",
+    "cases": [
+      "early child exit",
+      "bounded combined stdout/stderr and idempotent close",
+      "structured spawn failure",
+      "prompt synthetic display failure with bounded receiver log"
+    ],
+    "resources": {
+      "owner": "uibcdf/sabueso#154",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0,1",
+        "node",
+        "--test",
+        "devtools/standalone_probe/test_owned_process.mjs"
+      ],
+      "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+      "returncode": 0,
+      "elapsed_s": 2.132,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 187367424,
+      "minimum_host_available_bytes": 48828448768,
+      "survivors_after_command": [],
+      "limits": {
+        "owned_rss_bytes": 4294967296,
+        "host_available_bytes": 17179869184,
+        "cpu_affinity": [
+          0,
+          1
+        ],
+        "native_threads": 1
+      },
+      "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+    },
+    "scope": "Local IPC-enabled Node built-in tests; synthetic failure creates no real product session"
+  },
+  "actual_native_receiving": [
+    {
+      "name": "pilot",
+      "receiving": {
+        "format": "sabueso.molecular_explorer_journey@1",
+        "scope": "Actual experimental Qt/Viewer product panel; Linux/Xvfb software rendering; no mapped Card identity, stable embedding or native platform qualification",
+        "checks": {
+          "real_canvas_and_renderer": true,
+          "actual_floating_group_observed": true,
+          "reset_returns_to_main_grid": true,
+          "same_live_viewport": true,
+          "camera_survives_layout": true,
+          "selection_survives_layout": true,
+          "no_inferred_correspondence": true,
+          "reading_survives_layout": true,
+          "molecular_presentation_saved_without_scene": true,
+          "saving_layout_keeps_live_model": true,
+          "caller_mutation_is_separate": true,
+          "closed_runtime_releases_view": true,
+          "closed_origin_is_not_listening": true,
+          "independent_live_view_survives_close": true,
+          "closed_view_keeps_reading": true,
+          "reload_does_not_open_model": true,
+          "closed_reading_reload_keeps_exact_context": true,
+          "occupied_origin_is_visible": true,
+          "failed_reopen_preserves_reading": true,
+          "reopened_layout_keeps_reading_space": true,
+          "old_runtime_capability_is_refused": true,
+          "new_runtime_retains_initial_copy": true,
+          "new_runtime_is_explicit": true,
+          "new_runtime_actually_draws": true,
+          "knowledge_service_usable_after_reopen": true,
+          "three_distinct_runtime_cycles": true,
+          "independent_camera_and_selection_retained": true,
+          "caller_was_not_reread": true,
+          "original_source_remains_readable": true,
+          "native_capture": true,
+          "original_inputs_unchanged": true,
+          "no_script_errors": true
+        },
+        "errors": [],
+        "resource_phases": [
+          {
+            "name": "idle_before_interaction",
+            "start_wall_s": 1794759593.899,
+            "end_wall_s": 1794759598.902,
+            "scope": "Original product/provider polling retained; no deliberate interaction or animation; software profile"
+          },
+          {
+            "name": "rotation_and_layout_cycles",
+            "start_wall_s": 1794759598.903,
+            "end_wall_s": 1794759605.277,
+            "scope": "One deliberate camera rotation and repeated float/reset; not repeated provider creation/disposal"
+          },
+          {
+            "name": "idle_after_interaction",
+            "start_wall_s": 1794759605.277,
+            "end_wall_s": 1794759610.283,
+            "scope": "Same viewport retained after layout cycles; software profile"
+          },
+          {
+            "name": "runtime_1_closed",
+            "start_wall_s": 1794759623.547,
+            "end_wall_s": 1794759624.547,
+            "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim"
+          },
+          {
+            "name": "runtime_1_opened",
+            "start_wall_s": 1794759631.066,
+            "end_wall_s": 1794759632.067,
+            "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile"
+          },
+          {
+            "name": "runtime_2_closed",
+            "start_wall_s": 1794759632.293,
+            "end_wall_s": 1794759633.294,
+            "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim"
+          },
+          {
+            "name": "runtime_2_opened",
+            "start_wall_s": 1794759638.129,
+            "end_wall_s": 1794759639.129,
+            "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile"
+          },
+          {
+            "name": "runtime_3_closed",
+            "start_wall_s": 1794759639.333,
+            "end_wall_s": 1794759640.334,
+            "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim"
+          },
+          {
+            "name": "runtime_3_opened",
+            "start_wall_s": 1794759645.12,
+            "end_wall_s": 1794759646.122,
+            "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile"
+          }
+        ],
+        "receiving_parameters": {
+          "idle_seconds": 5,
+          "layout_cycles": 3,
+          "runtime_cycles": 3,
+          "runtime_settle_seconds": 1
+        },
+        "graphics": {
+          "webgl": true,
+          "width": 470,
+          "height": 553,
+          "renderer": "ANGLE (Mesa, llvmpipe (LLVM 21.1.8 256 bits), OpenGL 4.5)",
+          "error": 0
+        },
+        "lifecycle": {
+          "cycles": 3,
+          "registrations_before": 1,
+          "registrations_after": 1,
+          "camera_before": {
+            "mode": "perspective",
+            "fov": 0.7853981633974483,
+            "position": [
+              -69.85248718667987,
+              83.86933625489456,
+              148.79390329357108
+            ],
+            "up": [
+              0.09331779028693811,
+              0.9650058286423981,
+              -0.24506232003749867
+            ],
+            "target": [
+              14.994602336176236,
+              52.05167768382352,
+              55.81150165467509
+            ],
+            "radius": 42.22834525959202,
+            "radiusMax": 90.06599132130826,
+            "fog": 15,
+            "clipFar": true,
+            "minNear": 1,
+            "minFar": 0
+          },
+          "camera_after": {
+            "mode": "perspective",
+            "fov": 0.7853981633974483,
+            "position": [
+              -69.85248718667987,
+              83.86933625489456,
+              148.79390329357108
+            ],
+            "up": [
+              0.09331779028693811,
+              0.9650058286423981,
+              -0.24506232003749867
+            ],
+            "target": [
+              14.994602336176236,
+              52.05167768382352,
+              55.81150165467509
+            ],
+            "radius": 42.22834525959202,
+            "radiusMax": 90.06599132130826,
+            "fog": 15,
+            "clipFar": true,
+            "minNear": 1,
+            "minFar": 0
+          }
+        },
+        "runtime_cycles": [
+          {
+            "cycle": 1,
+            "closed_listener_retired": true,
+            "independent_view_retained": true,
+            "new_runtime_draws": true,
+            "initial_copy_binding": true,
+            "stale_capability_refused": true,
+            "timings": {
+              "close_elapsed_s": 0.12386298700000042,
+              "reopen_to_draw_elapsed_s": 5.045346240000006,
+              "settled_knowledge_response_s": 0.016800000071525573
+            }
+          },
+          {
+            "cycle": 2,
+            "closed_listener_retired": true,
+            "independent_view_retained": true,
+            "new_runtime_draws": true,
+            "initial_copy_binding": true,
+            "stale_capability_refused": true,
+            "timings": {
+              "close_elapsed_s": 0.11916982999999891,
+              "reopen_to_draw_elapsed_s": 4.834648047000003,
+              "settled_knowledge_response_s": 0.020699999928474426
+            }
+          },
+          {
+            "cycle": 3,
+            "closed_listener_retired": true,
+            "independent_view_retained": true,
+            "new_runtime_draws": true,
+            "initial_copy_binding": true,
+            "stale_capability_refused": true,
+            "timings": {
+              "close_elapsed_s": 0.12035965900000156,
+              "reopen_to_draw_elapsed_s": 4.785030710999999,
+              "settled_knowledge_response_s": 0.018700000047683716
+            }
+          }
+        ],
+        "input_sha256": {
+          "card": "8c35824c761d38be0c4c586336b04c0ce0670367cdb58fa0a9776dbd1d192eeb",
+          "model": "6f15f9412a97e38ffb01e0aec8ffa6016ac5d1ddf50042e0129583caf65be125"
+        },
+        "state": "passed",
+        "owned_logs": [
+          {
+            "name": "xvfb",
+            "byte_limit": 262144,
+            "retained_bytes": 1015,
+            "suppressed_bytes": 0,
+            "startup_error": null
+          },
+          {
+            "name": "application",
+            "byte_limit": 262144,
+            "retained_bytes": 5864,
+            "suppressed_bytes": 0,
+            "startup_error": null
+          },
+          {
+            "name": "independent",
+            "byte_limit": 262144,
+            "retained_bytes": 5061,
+            "suppressed_bytes": 0,
+            "startup_error": null
+          }
+        ]
+      },
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1,2,3",
+          "node",
+          "devtools/molecular_explorer_journey.mjs",
+          "--output",
+          "/tmp/sabueso-model-stability-20261115-9hvf85g5/pilot-output",
+          "--card",
+          "recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/protein-card.json",
+          "--model",
+          "temp_data/rcsb_structural_context/coordinates/1tcd.bcif.gz",
+          "--receive-layout",
+          "--receive-lifetime",
+          "--runtime-cycles",
+          "3",
+          "--runtime-settle-seconds",
+          "1",
+          "--layout-cycles",
+          "3",
+          "--observe-idle-seconds",
+          "5"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "returncode": 0,
+        "elapsed_s": 79.002,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 3637469184,
+        "minimum_host_available_bytes": 46488616960,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      },
+      "scope": "Source pilot/calibration"
+    },
+    {
+      "name": "installed-1tcd",
+      "receiving": {
+        "format": "sabueso.molecular_explorer_journey@1",
+        "scope": "Actual experimental Qt/Viewer product panel; Linux/Xvfb software rendering; no mapped Card identity, stable embedding or native platform qualification",
+        "checks": {
+          "real_canvas_and_renderer": true,
+          "actual_floating_group_observed": true,
+          "reset_returns_to_main_grid": true,
+          "same_live_viewport": true,
+          "camera_survives_layout": true,
+          "selection_survives_layout": true,
+          "no_inferred_correspondence": true,
+          "reading_survives_layout": true,
+          "molecular_presentation_saved_without_scene": true,
+          "saving_layout_keeps_live_model": true,
+          "caller_mutation_is_separate": true,
+          "closed_runtime_releases_view": true,
+          "closed_origin_is_not_listening": true,
+          "independent_live_view_survives_close": true,
+          "closed_view_keeps_reading": true,
+          "reload_does_not_open_model": true,
+          "closed_reading_reload_keeps_exact_context": true,
+          "occupied_origin_is_visible": true,
+          "failed_reopen_preserves_reading": true,
+          "reopened_layout_keeps_reading_space": true,
+          "old_runtime_capability_is_refused": true,
+          "new_runtime_retains_initial_copy": true,
+          "new_runtime_is_explicit": true,
+          "new_runtime_actually_draws": true,
+          "knowledge_service_usable_after_reopen": true,
+          "requested_runtime_cycles_completed": true,
+          "independent_camera_and_selection_retained": true,
+          "caller_was_not_reread": true,
+          "original_source_remains_readable": true,
+          "native_capture": true,
+          "original_inputs_unchanged": true,
+          "no_script_errors": true
+        },
+        "errors": [],
+        "resource_phases": [
+          {
+            "name": "idle_before_interaction",
+            "start_wall_s": 1794760228.738,
+            "end_wall_s": 1794760288.756,
+            "scope": "Original product/provider polling retained; no deliberate interaction or animation; software profile"
+          },
+          {
+            "name": "rotation_and_layout_cycles",
+            "start_wall_s": 1794760288.756,
+            "end_wall_s": 1794760310.063,
+            "scope": "One deliberate camera rotation and repeated float/reset; not repeated provider creation/disposal"
+          },
+          {
+            "name": "idle_after_interaction",
+            "start_wall_s": 1794760310.063,
+            "end_wall_s": 1794760370.105,
+            "scope": "Same viewport retained after layout cycles; software profile"
+          },
+          {
+            "name": "runtime_1_closed",
+            "start_wall_s": 1794760383.591,
+            "end_wall_s": 1794760386.592,
+            "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim"
+          },
+          {
+            "name": "runtime_1_opened",
+            "start_wall_s": 1794760392.664,
+            "end_wall_s": 1794760395.665,
+            "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile"
+          },
+          {
+            "name": "runtime_2_closed",
+            "start_wall_s": 1794760395.873,
+            "end_wall_s": 1794760398.873,
+            "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim"
+          },
+          {
+            "name": "runtime_2_opened",
+            "start_wall_s": 1794760403.01,
+            "end_wall_s": 1794760406.01,
+            "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile"
+          },
+          {
+            "name": "runtime_3_closed",
+            "start_wall_s": 1794760406.16,
+            "end_wall_s": 1794760409.161,
+            "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim"
+          },
+          {
+            "name": "runtime_3_opened",
+            "start_wall_s": 1794760413.999,
+            "end_wall_s": 1794760416.999,
+            "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile"
+          },
+          {
+            "name": "runtime_4_closed",
+            "start_wall_s": 1794760417.205,
+            "end_wall_s": 1794760420.206,
+            "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim"
+          },
+          {
+            "name": "runtime_4_opened",
+            "start_wall_s": 1794760424.871,
+            "end_wall_s": 1794760427.873,
+            "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile"
+          },
+          {
+            "name": "runtime_5_closed",
+            "start_wall_s": 1794760428.023,
+            "end_wall_s": 1794760431.023,
+            "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim"
+          },
+          {
+            "name": "runtime_5_opened",
+            "start_wall_s": 1794760435.234,
+            "end_wall_s": 1794760438.234,
+            "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile"
+          },
+          {
+            "name": "runtime_6_closed",
+            "start_wall_s": 1794760438.387,
+            "end_wall_s": 1794760441.388,
+            "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim"
+          },
+          {
+            "name": "runtime_6_opened",
+            "start_wall_s": 1794760445.158,
+            "end_wall_s": 1794760448.159,
+            "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile"
+          },
+          {
+            "name": "runtime_7_closed",
+            "start_wall_s": 1794760448.39,
+            "end_wall_s": 1794760451.391,
+            "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim"
+          },
+          {
+            "name": "runtime_7_opened",
+            "start_wall_s": 1794760455.269,
+            "end_wall_s": 1794760458.271,
+            "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile"
+          },
+          {
+            "name": "runtime_8_closed",
+            "start_wall_s": 1794760458.426,
+            "end_wall_s": 1794760461.426,
+            "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim"
+          },
+          {
+            "name": "runtime_8_opened",
+            "start_wall_s": 1794760465.992,
+            "end_wall_s": 1794760468.992,
+            "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile"
+          }
+        ],
+        "receiving_parameters": {
+          "idle_seconds": 60,
+          "layout_cycles": 12,
+          "runtime_cycles": 8,
+          "runtime_settle_seconds": 3
+        },
+        "graphics": {
+          "webgl": true,
+          "width": 470,
+          "height": 553,
+          "renderer": "ANGLE (Mesa, llvmpipe (LLVM 21.1.8 256 bits), OpenGL 4.5)",
+          "error": 0
+        },
+        "lifecycle": {
+          "cycles": 12,
+          "registrations_before": 1,
+          "registrations_after": 1,
+          "camera_before": {
+            "mode": "perspective",
+            "fov": 0.7853981633974483,
+            "position": [
+              -69.85248718667987,
+              83.86933625489456,
+              148.79390329357108
+            ],
+            "up": [
+              0.09331779028693811,
+              0.9650058286423981,
+              -0.24506232003749867
+            ],
+            "target": [
+              14.994602336176236,
+              52.05167768382352,
+              55.81150165467509
+            ],
+            "radius": 42.22834525959202,
+            "radiusMax": 90.06599132130826,
+            "fog": 15,
+            "clipFar": true,
+            "minNear": 1,
+            "minFar": 0
+          },
+          "camera_after": {
+            "mode": "perspective",
+            "fov": 0.7853981633974483,
+            "position": [
+              -69.85248718667987,
+              83.86933625489456,
+              148.79390329357108
+            ],
+            "up": [
+              0.09331779028693811,
+              0.9650058286423981,
+              -0.24506232003749867
+            ],
+            "target": [
+              14.994602336176236,
+              52.05167768382352,
+              55.81150165467509
+            ],
+            "radius": 42.22834525959202,
+            "radiusMax": 90.06599132130826,
+            "fog": 15,
+            "clipFar": true,
+            "minNear": 1,
+            "minFar": 0
+          }
+        },
+        "runtime_cycles": [
+          {
+            "cycle": 1,
+            "closed_listener_retired": true,
+            "independent_view_retained": true,
+            "new_runtime_draws": true,
+            "initial_copy_binding": true,
+            "stale_capability_refused": true,
+            "timings": {
+              "close_elapsed_s": 0.06550360600001295,
+              "reopen_to_draw_elapsed_s": 4.517008696000004,
+              "settled_knowledge_response_s": 0.01960000002384186
+            }
+          },
+          {
+            "cycle": 2,
+            "closed_listener_retired": true,
+            "independent_view_retained": true,
+            "new_runtime_draws": true,
+            "initial_copy_binding": true,
+            "stale_capability_refused": true,
+            "timings": {
+              "close_elapsed_s": 0.1248788979999954,
+              "reopen_to_draw_elapsed_s": 4.1365082890000195,
+              "settled_knowledge_response_s": 0.021
+            }
+          },
+          {
+            "cycle": 3,
+            "closed_listener_retired": true,
+            "independent_view_retained": true,
+            "new_runtime_draws": true,
+            "initial_copy_binding": true,
+            "stale_capability_refused": true,
+            "timings": {
+              "close_elapsed_s": 0.06938157800000044,
+              "reopen_to_draw_elapsed_s": 4.837415898999985,
+              "settled_knowledge_response_s": 0.019300000071525575
+            }
+          },
+          {
+            "cycle": 4,
+            "closed_listener_retired": true,
+            "independent_view_retained": true,
+            "new_runtime_draws": true,
+            "initial_copy_binding": true,
+            "stale_capability_refused": true,
+            "timings": {
+              "close_elapsed_s": 0.08425220399998944,
+              "reopen_to_draw_elapsed_s": 4.664750352999981,
+              "settled_knowledge_response_s": 0.018699999928474428
+            }
+          },
+          {
+            "cycle": 5,
+            "closed_listener_retired": true,
+            "independent_view_retained": true,
+            "new_runtime_draws": true,
+            "initial_copy_binding": true,
+            "stale_capability_refused": true,
+            "timings": {
+              "close_elapsed_s": 0.07505704600000172,
+              "reopen_to_draw_elapsed_s": 4.210647362999996,
+              "settled_knowledge_response_s": 0.018200000047683716
+            }
+          },
+          {
+            "cycle": 6,
+            "closed_listener_retired": true,
+            "independent_view_retained": true,
+            "new_runtime_draws": true,
+            "initial_copy_binding": true,
+            "stale_capability_refused": true,
+            "timings": {
+              "close_elapsed_s": 0.07716593999997713,
+              "reopen_to_draw_elapsed_s": 3.7697801480000197,
+              "settled_knowledge_response_s": 0.017600000023841857
+            }
+          },
+          {
+            "cycle": 7,
+            "closed_listener_retired": true,
+            "independent_view_retained": true,
+            "new_runtime_draws": true,
+            "initial_copy_binding": true,
+            "stale_capability_refused": true,
+            "timings": {
+              "close_elapsed_s": 0.11430382299999474,
+              "reopen_to_draw_elapsed_s": 3.878214982000005,
+              "settled_knowledge_response_s": 0.017900000095367432
+            }
+          },
+          {
+            "cycle": 8,
+            "closed_listener_retired": true,
+            "independent_view_retained": true,
+            "new_runtime_draws": true,
+            "initial_copy_binding": true,
+            "stale_capability_refused": true,
+            "timings": {
+              "close_elapsed_s": 0.07719309300000896,
+              "reopen_to_draw_elapsed_s": 4.565412191000011,
+              "settled_knowledge_response_s": 0.0185
+            }
+          }
+        ],
+        "input_sha256": {
+          "card": "8c35824c761d38be0c4c586336b04c0ce0670367cdb58fa0a9776dbd1d192eeb",
+          "model": "6f15f9412a97e38ffb01e0aec8ffa6016ac5d1ddf50042e0129583caf65be125"
+        },
+        "state": "passed",
+        "owned_logs": [
+          {
+            "name": "xvfb",
+            "byte_limit": 262144,
+            "retained_bytes": 1015,
+            "suppressed_bytes": 0,
+            "startup_error": null
+          },
+          {
+            "name": "application",
+            "byte_limit": 262144,
+            "retained_bytes": 5864,
+            "suppressed_bytes": 0,
+            "startup_error": null
+          },
+          {
+            "name": "independent",
+            "byte_limit": 262144,
+            "retained_bytes": 5061,
+            "suppressed_bytes": 0,
+            "startup_error": null
+          }
+        ]
+      },
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1,2,3",
+          "node",
+          "devtools/molecular_explorer_journey.mjs",
+          "--output",
+          "/tmp/sabueso-model-stability-20261115-9hvf85g5/installed-1tcd-output",
+          "--python",
+          "/tmp/sabueso-model-stability-20261115-9hvf85g5/installed-env/bin/python",
+          "--application-root",
+          "/tmp/sabueso-model-stability-20261115-9hvf85g5/client",
+          "--card",
+          "recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/protein-card.json",
+          "--model",
+          "temp_data/rcsb_structural_context/coordinates/1tcd.bcif.gz",
+          "--receive-layout",
+          "--receive-lifetime",
+          "--runtime-cycles",
+          "8",
+          "--runtime-settle-seconds",
+          "3",
+          "--layout-cycles",
+          "12",
+          "--observe-idle-seconds",
+          "60"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "returncode": 0,
+        "elapsed_s": 267.311,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 3665420288,
+        "minimum_host_available_bytes": 46231384064,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 10737418240,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      },
+      "scope": "Noneditable installed diagnostic runtime; shared editable providers"
+    },
+    {
+      "name": "installed-af",
+      "receiving": {
+        "format": "sabueso.molecular_explorer_journey@1",
+        "scope": "Actual experimental Qt/Viewer product panel; Linux/Xvfb software rendering; no mapped Card identity, stable embedding or native platform qualification",
+        "checks": {
+          "real_canvas_and_renderer": true,
+          "actual_floating_group_observed": true,
+          "reset_returns_to_main_grid": true,
+          "same_live_viewport": true,
+          "camera_survives_layout": true,
+          "selection_survives_layout": true,
+          "no_inferred_correspondence": true,
+          "reading_survives_layout": true,
+          "molecular_presentation_saved_without_scene": true,
+          "saving_layout_keeps_live_model": true,
+          "caller_mutation_is_separate": true,
+          "closed_runtime_releases_view": true,
+          "closed_origin_is_not_listening": true,
+          "independent_live_view_survives_close": true,
+          "closed_view_keeps_reading": true,
+          "reload_does_not_open_model": true,
+          "closed_reading_reload_keeps_exact_context": true,
+          "occupied_origin_is_visible": true,
+          "failed_reopen_preserves_reading": true,
+          "reopened_layout_keeps_reading_space": true,
+          "old_runtime_capability_is_refused": true,
+          "new_runtime_retains_initial_copy": true,
+          "new_runtime_is_explicit": true,
+          "new_runtime_actually_draws": true,
+          "knowledge_service_usable_after_reopen": true,
+          "requested_runtime_cycles_completed": true,
+          "independent_camera_and_selection_retained": true,
+          "caller_was_not_reread": true,
+          "original_source_remains_readable": true,
+          "native_capture": true,
+          "original_inputs_unchanged": true,
+          "no_script_errors": true
+        },
+        "errors": [],
+        "resource_phases": [
+          {
+            "name": "idle_before_interaction",
+            "start_wall_s": 1794760679.846,
+            "end_wall_s": 1794760739.891,
+            "scope": "Original product/provider polling retained; no deliberate interaction or animation; software profile"
+          },
+          {
+            "name": "rotation_and_layout_cycles",
+            "start_wall_s": 1794760739.892,
+            "end_wall_s": 1794760762.813,
+            "scope": "One deliberate camera rotation and repeated float/reset; not repeated provider creation/disposal"
+          },
+          {
+            "name": "idle_after_interaction",
+            "start_wall_s": 1794760762.813,
+            "end_wall_s": 1794760822.857,
+            "scope": "Same viewport retained after layout cycles; software profile"
+          },
+          {
+            "name": "runtime_1_closed",
+            "start_wall_s": 1794760837.65,
+            "end_wall_s": 1794760840.65,
+            "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim"
+          },
+          {
+            "name": "runtime_1_opened",
+            "start_wall_s": 1794760849.837,
+            "end_wall_s": 1794760852.838,
+            "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile"
+          },
+          {
+            "name": "runtime_2_closed",
+            "start_wall_s": 1794760853.075,
+            "end_wall_s": 1794760856.076,
+            "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim"
+          },
+          {
+            "name": "runtime_2_opened",
+            "start_wall_s": 1794760862.856,
+            "end_wall_s": 1794760865.856,
+            "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile"
+          },
+          {
+            "name": "runtime_3_closed",
+            "start_wall_s": 1794760866,
+            "end_wall_s": 1794760869.001,
+            "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim"
+          },
+          {
+            "name": "runtime_3_opened",
+            "start_wall_s": 1794760875.548,
+            "end_wall_s": 1794760878.551,
+            "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile"
+          },
+          {
+            "name": "runtime_4_closed",
+            "start_wall_s": 1794760878.702,
+            "end_wall_s": 1794760881.702,
+            "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim"
+          },
+          {
+            "name": "runtime_4_opened",
+            "start_wall_s": 1794760888.414,
+            "end_wall_s": 1794760891.416,
+            "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile"
+          },
+          {
+            "name": "runtime_5_closed",
+            "start_wall_s": 1794760891.566,
+            "end_wall_s": 1794760894.567,
+            "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim"
+          },
+          {
+            "name": "runtime_5_opened",
+            "start_wall_s": 1794760900.93,
+            "end_wall_s": 1794760903.931,
+            "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile"
+          },
+          {
+            "name": "runtime_6_closed",
+            "start_wall_s": 1794760904.083,
+            "end_wall_s": 1794760907.083,
+            "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim"
+          },
+          {
+            "name": "runtime_6_opened",
+            "start_wall_s": 1794760913.266,
+            "end_wall_s": 1794760916.269,
+            "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile"
+          },
+          {
+            "name": "runtime_7_closed",
+            "start_wall_s": 1794760916.416,
+            "end_wall_s": 1794760919.416,
+            "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim"
+          },
+          {
+            "name": "runtime_7_opened",
+            "start_wall_s": 1794760925.405,
+            "end_wall_s": 1794760928.406,
+            "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile"
+          },
+          {
+            "name": "runtime_8_closed",
+            "start_wall_s": 1794760928.549,
+            "end_wall_s": 1794760931.549,
+            "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim"
+          },
+          {
+            "name": "runtime_8_opened",
+            "start_wall_s": 1794760938.068,
+            "end_wall_s": 1794760941.069,
+            "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile"
+          }
+        ],
+        "receiving_parameters": {
+          "idle_seconds": 60,
+          "layout_cycles": 12,
+          "runtime_cycles": 8,
+          "runtime_settle_seconds": 3
+        },
+        "graphics": {
+          "webgl": true,
+          "width": 470,
+          "height": 553,
+          "renderer": "ANGLE (Mesa, llvmpipe (LLVM 21.1.8 256 bits), OpenGL 4.5)",
+          "error": 0
+        },
+        "lifecycle": {
+          "cycles": 12,
+          "registrations_before": 1,
+          "registrations_after": 1,
+          "camera_before": {
+            "mode": "perspective",
+            "fov": 0.7853981633974483,
+            "position": [
+              -193.31169448013262,
+              76.39306060689499,
+              199.8924878496912
+            ],
+            "up": [
+              0.09331779028693812,
+              0.9650058286423981,
+              -0.24506232003749867
+            ],
+            "target": [
+              -4.775931269142717,
+              5.692149402773795,
+              -6.720469138747089
+            ],
+            "radius": 93.83413558940859,
+            "radiusMax": 93.83413558940859,
+            "fog": 15,
+            "clipFar": true,
+            "minNear": 1,
+            "minFar": 0
+          },
+          "camera_after": {
+            "mode": "perspective",
+            "fov": 0.7853981633974483,
+            "position": [
+              -193.31169448013262,
+              76.39306060689499,
+              199.8924878496912
+            ],
+            "up": [
+              0.09331779028693812,
+              0.9650058286423981,
+              -0.24506232003749867
+            ],
+            "target": [
+              -4.775931269142717,
+              5.692149402773795,
+              -6.720469138747089
+            ],
+            "radius": 93.83413558940859,
+            "radiusMax": 93.83413558940859,
+            "fog": 15,
+            "clipFar": true,
+            "minNear": 1,
+            "minFar": 0
+          }
+        },
+        "runtime_cycles": [
+          {
+            "cycle": 1,
+            "closed_listener_retired": true,
+            "independent_view_retained": true,
+            "new_runtime_draws": true,
+            "initial_copy_binding": true,
+            "stale_capability_refused": true,
+            "timings": {
+              "close_elapsed_s": 0.11009143800000311,
+              "reopen_to_draw_elapsed_s": 6.541160066000011,
+              "settled_knowledge_response_s": 0.018
+            }
+          },
+          {
+            "cycle": 2,
+            "closed_listener_retired": true,
+            "independent_view_retained": true,
+            "new_runtime_draws": true,
+            "initial_copy_binding": true,
+            "stale_capability_refused": true,
+            "timings": {
+              "close_elapsed_s": 0.12339209500001744,
+              "reopen_to_draw_elapsed_s": 6.779522705999989,
+              "settled_knowledge_response_s": 0.016899999976158143
+            }
+          },
+          {
+            "cycle": 3,
+            "closed_listener_retired": true,
+            "independent_view_retained": true,
+            "new_runtime_draws": true,
+            "initial_copy_binding": true,
+            "stale_capability_refused": true,
+            "timings": {
+              "close_elapsed_s": 0.07219449200000963,
+              "reopen_to_draw_elapsed_s": 6.546637438000006,
+              "settled_knowledge_response_s": 0.0175
+            }
+          },
+          {
+            "cycle": 4,
+            "closed_listener_retired": true,
+            "independent_view_retained": true,
+            "new_runtime_draws": true,
+            "initial_copy_binding": true,
+            "stale_capability_refused": true,
+            "timings": {
+              "close_elapsed_s": 0.07700775399999112,
+              "reopen_to_draw_elapsed_s": 6.711602770999976,
+              "settled_knowledge_response_s": 0.017100000023841856
+            }
+          },
+          {
+            "cycle": 5,
+            "closed_listener_retired": true,
+            "independent_view_retained": true,
+            "new_runtime_draws": true,
+            "initial_copy_binding": true,
+            "stale_capability_refused": true,
+            "timings": {
+              "close_elapsed_s": 0.07609907799999928,
+              "reopen_to_draw_elapsed_s": 6.3635307179999945,
+              "settled_knowledge_response_s": 0.017399999976158143
+            }
+          },
+          {
+            "cycle": 6,
+            "closed_listener_retired": true,
+            "independent_view_retained": true,
+            "new_runtime_draws": true,
+            "initial_copy_binding": true,
+            "stale_capability_refused": true,
+            "timings": {
+              "close_elapsed_s": 0.07824991700000829,
+              "reopen_to_draw_elapsed_s": 6.183126159000007,
+              "settled_knowledge_response_s": 0.017
+            }
+          },
+          {
+            "cycle": 7,
+            "closed_listener_retired": true,
+            "independent_view_retained": true,
+            "new_runtime_draws": true,
+            "initial_copy_binding": true,
+            "stale_capability_refused": true,
+            "timings": {
+              "close_elapsed_s": 0.07473010700001032,
+              "reopen_to_draw_elapsed_s": 5.988186954000004,
+              "settled_knowledge_response_s": 0.018300000071525574
+            }
+          },
+          {
+            "cycle": 8,
+            "closed_listener_retired": true,
+            "independent_view_retained": true,
+            "new_runtime_draws": true,
+            "initial_copy_binding": true,
+            "stale_capability_refused": true,
+            "timings": {
+              "close_elapsed_s": 0.06798023200000171,
+              "reopen_to_draw_elapsed_s": 6.51826275200001,
+              "settled_knowledge_response_s": 0.01660000002384186
+            }
+          }
+        ],
+        "input_sha256": {
+          "card": "8c35824c761d38be0c4c586336b04c0ce0670367cdb58fa0a9776dbd1d192eeb",
+          "model": "74da31b7a0153ef2c90dc8f60fe07edaa83ba50049bf06e6f4eb113ece1963ef"
+        },
+        "state": "passed",
+        "owned_logs": [
+          {
+            "name": "xvfb",
+            "byte_limit": 262144,
+            "retained_bytes": 1015,
+            "suppressed_bytes": 0,
+            "startup_error": null
+          },
+          {
+            "name": "application",
+            "byte_limit": 262144,
+            "retained_bytes": 5864,
+            "suppressed_bytes": 0,
+            "startup_error": null
+          },
+          {
+            "name": "independent",
+            "byte_limit": 262144,
+            "retained_bytes": 5061,
+            "suppressed_bytes": 0,
+            "startup_error": null
+          }
+        ]
+      },
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1,2,3",
+          "node",
+          "devtools/molecular_explorer_journey.mjs",
+          "--output",
+          "/tmp/sabueso-model-stability-20261115-9hvf85g5/installed-af-output",
+          "--python",
+          "/tmp/sabueso-model-stability-20261115-9hvf85g5/installed-env/bin/python",
+          "--application-root",
+          "/tmp/sabueso-model-stability-20261115-9hvf85g5/client",
+          "--card",
+          "recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/protein-card.json",
+          "--model",
+          "temp_data/alphafold_archive/AF-Q8WZ42-F2-model_v6.cif.gz",
+          "--receive-layout",
+          "--receive-lifetime",
+          "--runtime-cycles",
+          "8",
+          "--runtime-settle-seconds",
+          "3",
+          "--layout-cycles",
+          "12",
+          "--observe-idle-seconds",
+          "60"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "returncode": 0,
+        "elapsed_s": 289.747,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 3804856320,
+        "minimum_host_available_bytes": 45575495680,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 10737418240,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      },
+      "scope": "Noneditable installed diagnostic runtime; shared editable providers"
+    }
+  ],
+  "total_extended_runtime_cycles": 16,
+  "phase_observations": {
+    "format": "sabueso.model_resource_phase_observation@1",
+    "owner": "uibcdf/sabueso#154",
+    "observations": [
+      {
+        "name": "installed-1tcd",
+        "peak_summed_rss_bytes": 3665420288,
+        "minimum_host_available_bytes": 46231384064,
+        "elapsed_s": 267.311,
+        "phases": [
+          {
+            "name": "idle_before_interaction",
+            "scope": "Original product/provider polling retained; no deliberate interaction or animation; software profile",
+            "sample_count": 217,
+            "sampled_duration_s": 59.94660520553589,
+            "median_summed_rss_bytes": 1758998528,
+            "minimum_summed_rss_bytes": 1750347776,
+            "maximum_summed_rss_bytes": 1765879808,
+            "first_quarter_median_rss_bytes": 1753057280.0,
+            "last_quarter_median_rss_bytes": 1764378624.0,
+            "mean_owned_cpu_cores": 0.07740221458898411
+          },
+          {
+            "name": "rotation_and_layout_cycles",
+            "scope": "One deliberate camera rotation and repeated float/reset; not repeated provider creation/disposal",
+            "sample_count": 76,
+            "sampled_duration_s": 20.891381978988647,
+            "median_summed_rss_bytes": 1869862912.0,
+            "minimum_summed_rss_bytes": 1766912000,
+            "maximum_summed_rss_bytes": 1894932480,
+            "first_quarter_median_rss_bytes": 1839165440,
+            "last_quarter_median_rss_bytes": 1887170560,
+            "mean_owned_cpu_cores": 1.3632415523608514
+          },
+          {
+            "name": "idle_after_interaction",
+            "scope": "Same viewport retained after layout cycles; software profile",
+            "sample_count": 216,
+            "sampled_duration_s": 59.70675325393677,
+            "median_summed_rss_bytes": 1855555584.0,
+            "minimum_summed_rss_bytes": 1849405440,
+            "maximum_summed_rss_bytes": 1899438080,
+            "first_quarter_median_rss_bytes": 1856075776.0,
+            "last_quarter_median_rss_bytes": 1857781760.0,
+            "mean_owned_cpu_cores": 0.10451079082228543
+          },
+          {
+            "name": "runtime_1_closed",
+            "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim",
+            "sample_count": 11,
+            "sampled_duration_s": 2.807400941848755,
+            "median_summed_rss_bytes": 3481186304,
+            "minimum_summed_rss_bytes": 3479240704,
+            "maximum_summed_rss_bytes": 3483119616,
+            "first_quarter_median_rss_bytes": 3482773504.0,
+            "last_quarter_median_rss_bytes": 3479279616.0,
+            "mean_owned_cpu_cores": 0.14248053921951737
+          },
+          {
+            "name": "runtime_1_opened",
+            "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile",
+            "sample_count": 11,
+            "sampled_duration_s": 2.823352098464966,
+            "median_summed_rss_bytes": 3583213568,
+            "minimum_summed_rss_bytes": 3574837248,
+            "maximum_summed_rss_bytes": 3589324800,
+            "first_quarter_median_rss_bytes": 3589220352.0,
+            "last_quarter_median_rss_bytes": 3575408640.0,
+            "mean_owned_cpu_cores": 0.17355256550056367
+          },
+          {
+            "name": "runtime_2_closed",
+            "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim",
+            "sample_count": 11,
+            "sampled_duration_s": 2.821838855743408,
+            "median_summed_rss_bytes": 3567652864,
+            "minimum_summed_rss_bytes": 3567235072,
+            "maximum_summed_rss_bytes": 3568345088,
+            "first_quarter_median_rss_bytes": 3568267264.0,
+            "last_quarter_median_rss_bytes": 3567699968.0,
+            "mean_owned_cpu_cores": 0.09568228867869388
+          },
+          {
+            "name": "runtime_2_opened",
+            "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile",
+            "sample_count": 10,
+            "sampled_duration_s": 2.5425424575805664,
+            "median_summed_rss_bytes": 3588022272.0,
+            "minimum_summed_rss_bytes": 3585683456,
+            "maximum_summed_rss_bytes": 3591057408,
+            "first_quarter_median_rss_bytes": 3590815744.0,
+            "last_quarter_median_rss_bytes": 3585703936.0,
+            "mean_owned_cpu_cores": 0.1966535498784906
+          },
+          {
+            "name": "runtime_3_closed",
+            "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim",
+            "sample_count": 10,
+            "sampled_duration_s": 2.544292688369751,
+            "median_summed_rss_bytes": 3577192448.0,
+            "minimum_summed_rss_bytes": 3576987648,
+            "maximum_summed_rss_bytes": 3577401344,
+            "first_quarter_median_rss_bytes": 3577012224.0,
+            "last_quarter_median_rss_bytes": 3577380864.0,
+            "mean_owned_cpu_cores": 0.10218950091256972
+          },
+          {
+            "name": "runtime_3_opened",
+            "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile",
+            "sample_count": 10,
+            "sampled_duration_s": 2.5405161380767822,
+            "median_summed_rss_bytes": 3597275136.0,
+            "minimum_summed_rss_bytes": 3593961472,
+            "maximum_summed_rss_bytes": 3601567744,
+            "first_quarter_median_rss_bytes": 3600013312.0,
+            "last_quarter_median_rss_bytes": 3594520576.0,
+            "mean_owned_cpu_cores": 0.3188328496953329
+          },
+          {
+            "name": "runtime_4_closed",
+            "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim",
+            "sample_count": 11,
+            "sampled_duration_s": 2.8189139366149902,
+            "median_summed_rss_bytes": 3584126976,
+            "minimum_summed_rss_bytes": 3583823872,
+            "maximum_summed_rss_bytes": 3584843776,
+            "first_quarter_median_rss_bytes": 3584808960.0,
+            "last_quarter_median_rss_bytes": 3584243712.0,
+            "mean_owned_cpu_cores": 0.12416129327462956
+          },
+          {
+            "name": "runtime_4_opened",
+            "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile",
+            "sample_count": 11,
+            "sampled_duration_s": 2.8147294521331787,
+            "median_summed_rss_bytes": 3600519168,
+            "minimum_summed_rss_bytes": 3597189120,
+            "maximum_summed_rss_bytes": 3603607552,
+            "first_quarter_median_rss_bytes": 3603486720.0,
+            "last_quarter_median_rss_bytes": 3597207552.0,
+            "mean_owned_cpu_cores": 0.1882951839646023
+          },
+          {
+            "name": "runtime_5_closed",
+            "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim",
+            "sample_count": 10,
+            "sampled_duration_s": 2.519136428833008,
+            "median_summed_rss_bytes": 3586594816.0,
+            "minimum_summed_rss_bytes": 3586342912,
+            "maximum_summed_rss_bytes": 3587461120,
+            "first_quarter_median_rss_bytes": 3586902016.0,
+            "last_quarter_median_rss_bytes": 3586719744.0,
+            "mean_owned_cpu_cores": 0.09130112897718354
+          },
+          {
+            "name": "runtime_5_opened",
+            "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile",
+            "sample_count": 11,
+            "sampled_duration_s": 2.803164005279541,
+            "median_summed_rss_bytes": 3619008512,
+            "minimum_summed_rss_bytes": 3615088640,
+            "maximum_summed_rss_bytes": 3621953536,
+            "first_quarter_median_rss_bytes": 3621740544.0,
+            "last_quarter_median_rss_bytes": 3615535104.0,
+            "mean_owned_cpu_cores": 0.23544822877182792
+          },
+          {
+            "name": "runtime_6_closed",
+            "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim",
+            "sample_count": 10,
+            "sampled_duration_s": 2.518311023712158,
+            "median_summed_rss_bytes": 3607812096.0,
+            "minimum_summed_rss_bytes": 3607556096,
+            "maximum_summed_rss_bytes": 3608621056,
+            "first_quarter_median_rss_bytes": 3608594432.0,
+            "last_quarter_median_rss_bytes": 3607928832.0,
+            "mean_owned_cpu_cores": 0.09927288474141027
+          },
+          {
+            "name": "runtime_6_opened",
+            "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile",
+            "sample_count": 11,
+            "sampled_duration_s": 2.7895638942718506,
+            "median_summed_rss_bytes": 3608854528,
+            "minimum_summed_rss_bytes": 3606122496,
+            "maximum_summed_rss_bytes": 3614400512,
+            "first_quarter_median_rss_bytes": 3613210624.0,
+            "last_quarter_median_rss_bytes": 3606185984.0,
+            "mean_owned_cpu_cores": 0.250935281115942
+          },
+          {
+            "name": "runtime_7_closed",
+            "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim",
+            "sample_count": 11,
+            "sampled_duration_s": 2.7988908290863037,
+            "median_summed_rss_bytes": 3597537280,
+            "minimum_summed_rss_bytes": 3597271040,
+            "maximum_summed_rss_bytes": 3599310848,
+            "first_quarter_median_rss_bytes": 3599224832.0,
+            "last_quarter_median_rss_bytes": 3597602816.0,
+            "mean_owned_cpu_cores": 0.10003962894523005
+          },
+          {
+            "name": "runtime_7_opened",
+            "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile",
+            "sample_count": 11,
+            "sampled_duration_s": 2.798161745071411,
+            "median_summed_rss_bytes": 3611447296,
+            "minimum_summed_rss_bytes": 3609104384,
+            "maximum_summed_rss_bytes": 3615354880,
+            "first_quarter_median_rss_bytes": 3614980096.0,
+            "last_quarter_median_rss_bytes": 3609176064.0,
+            "mean_owned_cpu_cores": 0.2644593370284689
+          },
+          {
+            "name": "runtime_8_closed",
+            "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim",
+            "sample_count": 11,
+            "sampled_duration_s": 2.808889150619507,
+            "median_summed_rss_bytes": 3600801792,
+            "minimum_summed_rss_bytes": 3600572416,
+            "maximum_summed_rss_bytes": 3601575936,
+            "first_quarter_median_rss_bytes": 3601557504.0,
+            "last_quarter_median_rss_bytes": 3600971776.0,
+            "mean_owned_cpu_cores": 0.12104429251863344
+          },
+          {
+            "name": "runtime_8_opened",
+            "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile",
+            "sample_count": 11,
+            "sampled_duration_s": 2.790790557861328,
+            "median_summed_rss_bytes": 3618566144,
+            "minimum_summed_rss_bytes": 3614183424,
+            "maximum_summed_rss_bytes": 3621494784,
+            "first_quarter_median_rss_bytes": 3621408768.0,
+            "last_quarter_median_rss_bytes": 3615264768.0,
+            "mean_owned_cpu_cores": 0.2508249850667479
+          }
+        ],
+        "opened_cycle_8_minus_1_median_rss_bytes": 35352576,
+        "closed_cycle_8_minus_1_median_rss_bytes": 119615488,
+        "cycle_timings": [
+          {
+            "cycle": 1,
+            "closed_listener_retired": true,
+            "independent_view_retained": true,
+            "new_runtime_draws": true,
+            "initial_copy_binding": true,
+            "stale_capability_refused": true,
+            "timings": {
+              "close_elapsed_s": 0.06550360600001295,
+              "reopen_to_draw_elapsed_s": 4.517008696000004,
+              "settled_knowledge_response_s": 0.01960000002384186
+            }
+          },
+          {
+            "cycle": 2,
+            "closed_listener_retired": true,
+            "independent_view_retained": true,
+            "new_runtime_draws": true,
+            "initial_copy_binding": true,
+            "stale_capability_refused": true,
+            "timings": {
+              "close_elapsed_s": 0.1248788979999954,
+              "reopen_to_draw_elapsed_s": 4.1365082890000195,
+              "settled_knowledge_response_s": 0.021
+            }
+          },
+          {
+            "cycle": 3,
+            "closed_listener_retired": true,
+            "independent_view_retained": true,
+            "new_runtime_draws": true,
+            "initial_copy_binding": true,
+            "stale_capability_refused": true,
+            "timings": {
+              "close_elapsed_s": 0.06938157800000044,
+              "reopen_to_draw_elapsed_s": 4.837415898999985,
+              "settled_knowledge_response_s": 0.019300000071525575
+            }
+          },
+          {
+            "cycle": 4,
+            "closed_listener_retired": true,
+            "independent_view_retained": true,
+            "new_runtime_draws": true,
+            "initial_copy_binding": true,
+            "stale_capability_refused": true,
+            "timings": {
+              "close_elapsed_s": 0.08425220399998944,
+              "reopen_to_draw_elapsed_s": 4.664750352999981,
+              "settled_knowledge_response_s": 0.018699999928474428
+            }
+          },
+          {
+            "cycle": 5,
+            "closed_listener_retired": true,
+            "independent_view_retained": true,
+            "new_runtime_draws": true,
+            "initial_copy_binding": true,
+            "stale_capability_refused": true,
+            "timings": {
+              "close_elapsed_s": 0.07505704600000172,
+              "reopen_to_draw_elapsed_s": 4.210647362999996,
+              "settled_knowledge_response_s": 0.018200000047683716
+            }
+          },
+          {
+            "cycle": 6,
+            "closed_listener_retired": true,
+            "independent_view_retained": true,
+            "new_runtime_draws": true,
+            "initial_copy_binding": true,
+            "stale_capability_refused": true,
+            "timings": {
+              "close_elapsed_s": 0.07716593999997713,
+              "reopen_to_draw_elapsed_s": 3.7697801480000197,
+              "settled_knowledge_response_s": 0.017600000023841857
+            }
+          },
+          {
+            "cycle": 7,
+            "closed_listener_retired": true,
+            "independent_view_retained": true,
+            "new_runtime_draws": true,
+            "initial_copy_binding": true,
+            "stale_capability_refused": true,
+            "timings": {
+              "close_elapsed_s": 0.11430382299999474,
+              "reopen_to_draw_elapsed_s": 3.878214982000005,
+              "settled_knowledge_response_s": 0.017900000095367432
+            }
+          },
+          {
+            "cycle": 8,
+            "closed_listener_retired": true,
+            "independent_view_retained": true,
+            "new_runtime_draws": true,
+            "initial_copy_binding": true,
+            "stale_capability_refused": true,
+            "timings": {
+              "close_elapsed_s": 0.07719309300000896,
+              "reopen_to_draw_elapsed_s": 4.565412191000011,
+              "settled_knowledge_response_s": 0.0185
+            }
+          }
+        ],
+        "limits": "Sampled summed process-tree RSS counts shared pages in each process; phase CPU uses cumulative owned process CPU deltas. Finite windows neither prove nor exclude a leak, unique physical RAM or thermal behavior."
+      },
+      {
+        "name": "installed-af",
+        "peak_summed_rss_bytes": 3804856320,
+        "minimum_host_available_bytes": 45575495680,
+        "elapsed_s": 289.747,
+        "phases": [
+          {
+            "name": "idle_before_interaction",
+            "scope": "Original product/provider polling retained; no deliberate interaction or animation; software profile",
+            "sample_count": 218,
+            "sampled_duration_s": 59.61909103393555,
+            "median_summed_rss_bytes": 1813704704.0,
+            "minimum_summed_rss_bytes": 1809137664,
+            "maximum_summed_rss_bytes": 1821396992,
+            "first_quarter_median_rss_bytes": 1810755584.0,
+            "last_quarter_median_rss_bytes": 1819832320.0,
+            "mean_owned_cpu_cores": 0.08168524403077476
+          },
+          {
+            "name": "rotation_and_layout_cycles",
+            "scope": "One deliberate camera rotation and repeated float/reset; not repeated provider creation/disposal",
+            "sample_count": 84,
+            "sampled_duration_s": 22.767247915267944,
+            "median_summed_rss_bytes": 1945716736.0,
+            "minimum_summed_rss_bytes": 1822539776,
+            "maximum_summed_rss_bytes": 2001068032,
+            "first_quarter_median_rss_bytes": 1891897344,
+            "last_quarter_median_rss_bytes": 1962405888,
+            "mean_owned_cpu_cores": 1.4990832500713487
+          },
+          {
+            "name": "idle_after_interaction",
+            "scope": "Same viewport retained after layout cycles; software profile",
+            "sample_count": 218,
+            "sampled_duration_s": 59.81180930137634,
+            "median_summed_rss_bytes": 1936578560.0,
+            "minimum_summed_rss_bytes": 1929256960,
+            "maximum_summed_rss_bytes": 1990119424,
+            "first_quarter_median_rss_bytes": 1938362368.0,
+            "last_quarter_median_rss_bytes": 1938423808.0,
+            "mean_owned_cpu_cores": 0.11419149629106491
+          },
+          {
+            "name": "runtime_1_closed",
+            "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim",
+            "sample_count": 11,
+            "sampled_duration_s": 2.774341106414795,
+            "median_summed_rss_bytes": 3576213504,
+            "minimum_summed_rss_bytes": 3573260288,
+            "maximum_summed_rss_bytes": 3578056704,
+            "first_quarter_median_rss_bytes": 3578003456.0,
+            "last_quarter_median_rss_bytes": 3573583872.0,
+            "mean_owned_cpu_cores": 0.10813378329951609
+          },
+          {
+            "name": "runtime_1_opened",
+            "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile",
+            "sample_count": 10,
+            "sampled_duration_s": 2.498758316040039,
+            "median_summed_rss_bytes": 3671257088.0,
+            "minimum_summed_rss_bytes": 3670835200,
+            "maximum_summed_rss_bytes": 3677360128,
+            "first_quarter_median_rss_bytes": 3676960768.0,
+            "last_quarter_median_rss_bytes": 3670853632.0,
+            "mean_owned_cpu_cores": 0.14006956885477365
+          },
+          {
+            "name": "runtime_2_closed",
+            "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim",
+            "sample_count": 11,
+            "sampled_duration_s": 2.774007797241211,
+            "median_summed_rss_bytes": 3643314176,
+            "minimum_summed_rss_bytes": 3642896384,
+            "maximum_summed_rss_bytes": 3644010496,
+            "first_quarter_median_rss_bytes": 3643992064.0,
+            "last_quarter_median_rss_bytes": 3643430912.0,
+            "mean_owned_cpu_cores": 0.08651742083735035
+          },
+          {
+            "name": "runtime_2_opened",
+            "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile",
+            "sample_count": 11,
+            "sampled_duration_s": 2.7745814323425293,
+            "median_summed_rss_bytes": 3688751104,
+            "minimum_summed_rss_bytes": 3687469056,
+            "maximum_summed_rss_bytes": 3688845312,
+            "first_quarter_median_rss_bytes": 3688747008.0,
+            "last_quarter_median_rss_bytes": 3687532544.0,
+            "mean_owned_cpu_cores": 0.14416588943373657
+          },
+          {
+            "name": "runtime_3_closed",
+            "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim",
+            "sample_count": 11,
+            "sampled_duration_s": 2.77290415763855,
+            "median_summed_rss_bytes": 3661496320,
+            "minimum_summed_rss_bytes": 3661221888,
+            "maximum_summed_rss_bytes": 3662102528,
+            "first_quarter_median_rss_bytes": 3662041088.0,
+            "last_quarter_median_rss_bytes": 3661588480.0,
+            "mean_owned_cpu_cores": 0.11179614670273678
+          },
+          {
+            "name": "runtime_3_opened",
+            "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile",
+            "sample_count": 11,
+            "sampled_duration_s": 2.7745814323425293,
+            "median_summed_rss_bytes": 3730145280,
+            "minimum_summed_rss_bytes": 3729276928,
+            "maximum_summed_rss_bytes": 3735212032,
+            "first_quarter_median_rss_bytes": 3733972992.0,
+            "last_quarter_median_rss_bytes": 3729336320.0,
+            "mean_owned_cpu_cores": 0.1621866256129581
+          },
+          {
+            "name": "runtime_4_closed",
+            "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim",
+            "sample_count": 10,
+            "sampled_duration_s": 2.494969129562378,
+            "median_summed_rss_bytes": 3703058432.0,
+            "minimum_summed_rss_bytes": 3702751232,
+            "maximum_summed_rss_bytes": 3703271424,
+            "first_quarter_median_rss_bytes": 3702775808.0,
+            "last_quarter_median_rss_bytes": 3703271424.0,
+            "mean_owned_cpu_cores": 0.07214518122377127
+          },
+          {
+            "name": "runtime_4_opened",
+            "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile",
+            "sample_count": 11,
+            "sampled_duration_s": 2.7758986949920654,
+            "median_summed_rss_bytes": 3743023104,
+            "minimum_summed_rss_bytes": 3740553216,
+            "maximum_summed_rss_bytes": 3748589568,
+            "first_quarter_median_rss_bytes": 3747166208.0,
+            "last_quarter_median_rss_bytes": 3740733440.0,
+            "mean_owned_cpu_cores": 0.15490478841167057
+          },
+          {
+            "name": "runtime_5_closed",
+            "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim",
+            "sample_count": 11,
+            "sampled_duration_s": 2.7766644954681396,
+            "median_summed_rss_bytes": 3716444160,
+            "minimum_summed_rss_bytes": 3716030464,
+            "maximum_summed_rss_bytes": 3717144576,
+            "first_quarter_median_rss_bytes": 3717031936.0,
+            "last_quarter_median_rss_bytes": 3716495360.0,
+            "mean_owned_cpu_cores": 0.09003608480896089
+          },
+          {
+            "name": "runtime_5_opened",
+            "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile",
+            "sample_count": 11,
+            "sampled_duration_s": 2.7707157135009766,
+            "median_summed_rss_bytes": 3749027840,
+            "minimum_summed_rss_bytes": 3748016128,
+            "maximum_summed_rss_bytes": 3754917888,
+            "first_quarter_median_rss_bytes": 3754899456.0,
+            "last_quarter_median_rss_bytes": 3748071424.0,
+            "mean_owned_cpu_cores": 0.14436703052966054
+          },
+          {
+            "name": "runtime_6_closed",
+            "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim",
+            "sample_count": 11,
+            "sampled_duration_s": 2.774994373321533,
+            "median_summed_rss_bytes": 3708342272,
+            "minimum_summed_rss_bytes": 3708063744,
+            "maximum_summed_rss_bytes": 3708669952,
+            "first_quarter_median_rss_bytes": 3708082176.0,
+            "last_quarter_median_rss_bytes": 3708610560.0,
+            "mean_owned_cpu_cores": 0.10810832731199291
+          },
+          {
+            "name": "runtime_6_opened",
+            "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile",
+            "sample_count": 11,
+            "sampled_duration_s": 2.7779037952423096,
+            "median_summed_rss_bytes": 3741716480,
+            "minimum_summed_rss_bytes": 3740700672,
+            "maximum_summed_rss_bytes": 3747090432,
+            "first_quarter_median_rss_bytes": 3747045376.0,
+            "last_quarter_median_rss_bytes": 3741208576.0,
+            "mean_owned_cpu_cores": 0.19799101788261758
+          },
+          {
+            "name": "runtime_7_closed",
+            "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim",
+            "sample_count": 11,
+            "sampled_duration_s": 2.7800486087799072,
+            "median_summed_rss_bytes": 3714359296,
+            "minimum_summed_rss_bytes": 3714060288,
+            "maximum_summed_rss_bytes": 3715125248,
+            "first_quarter_median_rss_bytes": 3715096576.0,
+            "last_quarter_median_rss_bytes": 3714541568.0,
+            "mean_owned_cpu_cores": 0.09712060398775055
+          },
+          {
+            "name": "runtime_7_opened",
+            "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile",
+            "sample_count": 11,
+            "sampled_duration_s": 2.7810747623443604,
+            "median_summed_rss_bytes": 3745316864,
+            "minimum_summed_rss_bytes": 3741790208,
+            "maximum_summed_rss_bytes": 3747684352,
+            "first_quarter_median_rss_bytes": 3747459072.0,
+            "last_quarter_median_rss_bytes": 3742294016.0,
+            "mean_owned_cpu_cores": 0.23372259128052916
+          },
+          {
+            "name": "runtime_8_closed",
+            "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim",
+            "sample_count": 11,
+            "sampled_duration_s": 2.7855172157287598,
+            "median_summed_rss_bytes": 3715514368,
+            "minimum_summed_rss_bytes": 3715186688,
+            "maximum_summed_rss_bytes": 3716202496,
+            "first_quarter_median_rss_bytes": 3715694592.0,
+            "last_quarter_median_rss_bytes": 3715698688.0,
+            "mean_owned_cpu_cores": 0.10051993160156243
+          },
+          {
+            "name": "runtime_8_opened",
+            "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile",
+            "sample_count": 11,
+            "sampled_duration_s": 2.7724854946136475,
+            "median_summed_rss_bytes": 3721609216,
+            "minimum_summed_rss_bytes": 3720019968,
+            "maximum_summed_rss_bytes": 3726843904,
+            "first_quarter_median_rss_bytes": 3725291520.0,
+            "last_quarter_median_rss_bytes": 3720089600.0,
+            "mean_owned_cpu_cores": 0.1731298507900426
+          }
+        ],
+        "opened_cycle_8_minus_1_median_rss_bytes": 50352128.0,
+        "closed_cycle_8_minus_1_median_rss_bytes": 139300864,
+        "cycle_timings": [
+          {
+            "cycle": 1,
+            "closed_listener_retired": true,
+            "independent_view_retained": true,
+            "new_runtime_draws": true,
+            "initial_copy_binding": true,
+            "stale_capability_refused": true,
+            "timings": {
+              "close_elapsed_s": 0.11009143800000311,
+              "reopen_to_draw_elapsed_s": 6.541160066000011,
+              "settled_knowledge_response_s": 0.018
+            }
+          },
+          {
+            "cycle": 2,
+            "closed_listener_retired": true,
+            "independent_view_retained": true,
+            "new_runtime_draws": true,
+            "initial_copy_binding": true,
+            "stale_capability_refused": true,
+            "timings": {
+              "close_elapsed_s": 0.12339209500001744,
+              "reopen_to_draw_elapsed_s": 6.779522705999989,
+              "settled_knowledge_response_s": 0.016899999976158143
+            }
+          },
+          {
+            "cycle": 3,
+            "closed_listener_retired": true,
+            "independent_view_retained": true,
+            "new_runtime_draws": true,
+            "initial_copy_binding": true,
+            "stale_capability_refused": true,
+            "timings": {
+              "close_elapsed_s": 0.07219449200000963,
+              "reopen_to_draw_elapsed_s": 6.546637438000006,
+              "settled_knowledge_response_s": 0.0175
+            }
+          },
+          {
+            "cycle": 4,
+            "closed_listener_retired": true,
+            "independent_view_retained": true,
+            "new_runtime_draws": true,
+            "initial_copy_binding": true,
+            "stale_capability_refused": true,
+            "timings": {
+              "close_elapsed_s": 0.07700775399999112,
+              "reopen_to_draw_elapsed_s": 6.711602770999976,
+              "settled_knowledge_response_s": 0.017100000023841856
+            }
+          },
+          {
+            "cycle": 5,
+            "closed_listener_retired": true,
+            "independent_view_retained": true,
+            "new_runtime_draws": true,
+            "initial_copy_binding": true,
+            "stale_capability_refused": true,
+            "timings": {
+              "close_elapsed_s": 0.07609907799999928,
+              "reopen_to_draw_elapsed_s": 6.3635307179999945,
+              "settled_knowledge_response_s": 0.017399999976158143
+            }
+          },
+          {
+            "cycle": 6,
+            "closed_listener_retired": true,
+            "independent_view_retained": true,
+            "new_runtime_draws": true,
+            "initial_copy_binding": true,
+            "stale_capability_refused": true,
+            "timings": {
+              "close_elapsed_s": 0.07824991700000829,
+              "reopen_to_draw_elapsed_s": 6.183126159000007,
+              "settled_knowledge_response_s": 0.017
+            }
+          },
+          {
+            "cycle": 7,
+            "closed_listener_retired": true,
+            "independent_view_retained": true,
+            "new_runtime_draws": true,
+            "initial_copy_binding": true,
+            "stale_capability_refused": true,
+            "timings": {
+              "close_elapsed_s": 0.07473010700001032,
+              "reopen_to_draw_elapsed_s": 5.988186954000004,
+              "settled_knowledge_response_s": 0.018300000071525574
+            }
+          },
+          {
+            "cycle": 8,
+            "closed_listener_retired": true,
+            "independent_view_retained": true,
+            "new_runtime_draws": true,
+            "initial_copy_binding": true,
+            "stale_capability_refused": true,
+            "timings": {
+              "close_elapsed_s": 0.06798023200000171,
+              "reopen_to_draw_elapsed_s": 6.51826275200001,
+              "settled_knowledge_response_s": 0.01660000002384186
+            }
+          }
+        ],
+        "limits": "Sampled summed process-tree RSS counts shared pages in each process; phase CPU uses cumulative owned process CPU deltas. Finite windows neither prove nor exclude a leak, unique physical RAM or thermal behavior."
+      }
+    ]
+  },
+  "filesystem_after_native_shutdown": {
+    "pilot": {
+      "model_copy_directories": [],
+      "launcher_bootstrap_directories": []
+    },
+    "installed-1tcd": {
+      "model_copy_directories": [],
+      "launcher_bootstrap_directories": []
+    },
+    "installed-af": {
+      "model_copy_directories": [],
+      "launcher_bootstrap_directories": []
+    }
+  },
+  "operational_findings": {
+    "no_owned_survivors_or_captured_input_directories": true,
+    "positive_retained_rss_observed": "Opened phase median grows approximately 34/48 MiB; closed phase median grows approximately 114/133 MiB between cycles one and eight.",
+    "interpretation": "Finite sampled retention does not classify or exclude a leak. The first cycle also includes occupied-origin failure/retry and page reload; allocator/process warmup and receiver overhead are included.",
+    "attribution_limits": "Two independently owned Qt applications are not shared-session multi-view. Summed RSS double-counts shared pages; no unique-RAM, GPU, thermal or native-platform inference. Knowledge heartbeats occur after readiness, not during synchronous provider parsing."
+  },
+  "preliminary_restricted_controls": "Initial Node child-pipe runs inside the restricted execution context did not deliver usable captured output and are excluded. All four final controls pass with local IPC enabled; no global socket or OS configuration was changed.",
+  "raw_evidence_root": "recovered_work/checkpoint_recovery_20261106/interactive-model-stability-20261115-1",
+  "retention": "Owner #154/#368; retain useful observations, exact identities and raw receipts until an affected lifecycle change or 0.16 candidate review. Temporary runtime paths in receipts are historical after cleanup.",
+  "limits": [
+    "Each long profile lasts about 4.5-4.8 minutes; no general long-session or larger-model qualification",
+    "Main plan remains 20 done, 10 partial and 3 todo; workload agreement and human acceptance remain open",
+    "Stable embedding/current-model/mapping, nonempty selection, pending callback/background and shared-session contracts remain under Viewer #368",
+    "Prior product/source/artifact qualification retains its own exact epoch; no new full-suite, hosted CI, release, public installation or platform claim"
+  ],
+  "task_resource_cleanup": {
+    "owned_temporary_root": "/tmp/sabueso-model-stability-20261115-9hvf85g5",
+    "removed": true,
+    "matching_owned_processes_before_removal": [],
+    "retained_evidence": "recovered_work/checkpoint_recovery_20261106/interactive-model-stability-20261115-1",
+    "scope": "Exact task-owned receiving environment, copies and scratch; shared environment, siblings and unrelated temporary paths untouched"
+  },
+  "final_local_gates": {
+    "node_syntax_changed_receivers": {
+      "exit_code": 0,
+      "files": [
+        "devtools/molecular_explorer_journey.mjs",
+        "devtools/standalone_probe/owned_process.mjs",
+        "devtools/standalone_probe/test_owned_process.mjs"
+      ]
+    },
+    "ruff_format": {
+      "exit_code": 0,
+      "files_already_formatted": 1784
+    },
+    "ruff_check": {
+      "exit_code": 0
+    },
+    "moli_governance": {
+      "exit_code": 0
+    },
+    "git_diff_check": {
+      "exit_code": 0
+    },
+    "relative_document_links": {
+      "missing": []
+    },
+    "plan_rows": {
+      "total": 33,
+      "done": 20,
+      "partial": 10,
+      "todo": 3
+    },
+    "runtime_hashes_equal": 28,
+    "receiving_code_hashes_equal": 5
+  }
+}

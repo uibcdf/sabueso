@@ -273,7 +273,7 @@ optional GUI/process resources independently owned.
 | S5.2 | `done` | Versioned 64 KiB presentation-only persistence admits the three known panels and exact Dockview cohort. Real save/reload preserves reading/float arrangement; Reset uses defaults, live-model saving keeps the viewport, and missing-model/unknown-version controls explain fallback. Unknown originals and symlinks are never overwritten; no Knowledge, query history or scene is restored. [Receipt and limits](../evidence/interactive_layout_checkpoint_20261113.json) |
 | S5.3 | `partial` | Actual installed Qt now receives controlled owned-service loss, the surviving reading/window, visible error and explicit original-workspace restart with exact Back. A synthetic pending query closes with its owned service in about 2.24 s; no result is adopted and its bootstrap retires. Cancellation/stale-result handling and atomic/private caller-safe bootstrap pass. Owned model close/reopen and independent-window survival now receive; general model pending-operation/lifetime receiving remains under S2/#368 and native Windows shutdown is unqualified; unsaved crash recovery is not claimed |
 | S5.4 | `done` | Include the compiled frontend/resources in the optional product closure, qualify headless/GUI boundaries and verify a development launch outside the checkout. Keep Electron/Tauri comparison runtimes out of the shipped Qt closure |
-| S5.5 | `partial` | The [source/resource increment](interactive_source_enrichment_0160.md#bounded-product-resource-observations) receives two sequential installed public model profiles, 12 float/reset cycles each and short idle/active windows, with 14 checks each and about 1.76/1.86 GiB summed-RSS peaks. Renderer is llvmpipe; the AF fragment is deliberately unrelated to the Card. Failed-input controls retain earlier receipts. Repeated provider creation/disposal, longer settled sessions and agreed scaling cases remain. Preflight shared resources, run sequential graphics trials and record actual CPU/RAM/graphics and cleanup; do not import an unrelated budget or claim thermal superiority |
+| S5.5 | `partial` | [Extended lifetime receiving](interactive_model_lifetime_0160.md#extended-bounded-observations-2026-11-15) adds two sequential installed public profiles, eight disposal/reopen/draw cycles and 32 checks each, twelve layout cycles and two 60 s single-window idle phases. Peak summed RSS is about 3.41/3.54 GiB with an independent second Qt view; all owned processes/input copies retire. Retained per-cycle RSS is quantified without a leak verdict. Earlier 14-check single-window profiles retain their own scope. Renderer is llvmpipe and the AF fragment remains unrelated to the Card. Larger scales, substantially longer sessions, workload targets and native-platform receiving remain |
 
 Use the existing shared-resource policy and infrastructure owners. This application
 does not implement a new scheduler, reserve the host or require operational Slurm
@@ -324,9 +324,11 @@ original stage rows and their evidence retain authority over each delivered scop
 ## Execution order and immediate handoff
 
 Current independent cursor (2026-11-15): guarded workspace composition now has
-selected native/application/artifact/Qt receiving under #153/#154. Continue S5.5
-and S6.2's repeated owned-runtime and settled-session observations on varied public
-inputs, retaining current provider-contract limits and explicit workload targets.
+selected native/application/artifact/Qt receiving under #153/#154. S5.5 now also
+receives eight runtime cycles on each of two public installed profiles and longer
+idle windows, with retained RSS and current provider limits recorded explicitly.
+Remaining S5.5/S6.2 work needs declared larger-scale/session targets and resource
+attribution; automated measurements do not settle human acceptance or leak status.
 MolSysSketcher belongs to its separate team. Supported mapped 3D and chemical
 depiction remain parallel dependencies, not reasons to suspend independent work.
 

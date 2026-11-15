@@ -9,6 +9,22 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Extended molecular lifetime receiving and bounded launch logs (2026-11-15)
+
+From `7d3e914`, #154 extends the molecular developer receiver with explicit bounded
+runtime/idle/settling controls, per-cycle timings and phase journals. Owned-child
+early-exit and output-budget controls pass four synthetic Node cases; twelve
+existing admission/lifetime Python cases pass through the published receptor.
+The [receipt](../evidence/interactive_model_stability_checkpoint_20261115.json)
+receives two sequential installed 32-check/eight-cycle public profiles and a
+separate source pilot, recording retained RSS without a leak verdict. Inspected
+shipped runtime/SOURCE bytes match the earlier received wheel; no application,
+dependency, schema, provider or platform-support change is introduced. Applicable
+syntax/format/lint/governance/link checks qualify this intermediate `[skip ci]`
+checkpoint. Git and the owning issue record its final SHA. Exact-final-source
+full/candidate and hosted recovery remain under #154/#153/#112; no workflow,
+release or public package publication is selected.
+
 ### Guarded native workspace composition (2026-11-15)
 
 From `7278d77`, #153/#154 split internal native packet preparation from final
