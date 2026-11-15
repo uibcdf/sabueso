@@ -1137,6 +1137,24 @@ See the [S1 receipt](evidence/interactive_card_app_checkpoint_20261113.json) for
 the exact current scope and [implementation plan](pending_proposals/interactive_implementation_0160.md)
 for remaining work and the provider boundary.
 
+For heading/history presentation changes, select the complete application and
+package-data gate, frontend typecheck/build and actual Qt nature-specific source
+navigation. `explorer_journey.mjs --receive-navigation` and the same flag on
+`molecular_explorer_journey.mjs` receive complete-title disclosure with Enter,
+older-history expansion/selection with Enter, exact native source/view/result/text
+and parent Back, disclosure reset and measured reading overflow. Include a narrow
+live-model split and installed protein/molecule/disease presentation. Receive a
+genuine original workspace and a saved Deck in fresh installed processes; keep
+headless original reading inert and complete verifiers unchanged.
+
+The installed runtime application gate excludes only
+`test_frontend_assets_declared_and_contain_no_comparison_runtime`, whose
+`Path(__file__)` lookup intentionally requires the source tree. Run it in the
+source gate and independently check exact sdist frontend source plus wheel/
+installed compiled assets. Do not hide its absence as a runtime skip or call a
+failed copied source-placement trial a passing installed gate. Retain complete
+receptor streams and exact selected node counts for both scopes.
+
 The native Deck contract (#153) adds `test_deck_exploration_offline.py`,
 `test_deck_envelope_admission_offline.py` and the application Deck session tests.
 Select native Deck/membership/schema/storage controls alongside `tests/explorer/`.

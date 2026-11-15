@@ -11,15 +11,26 @@ area: [human-exploration, deck, architecture, standalone, visualization]
 
 ## Resume here
 
-Checkpoint date: **2026-11-14**. Reviewed implementation baseline:
-planning parent `fb0d09659f8d00685f829d6781e5d256751dac66`;
-[application code hashes and receiving](../evidence/interactive_card_app_checkpoint_20261113.json).
+Checkpoint date: **2026-11-15**. Current navigation/inventory increment starts from
+`c778768925ef7dfd75b790b2d1682705dfac4a70`; its
+[receipt](../evidence/interactive_reading_navigation_checkpoint_20261115.json)
+binds final code/artifacts and actual receiving. The initial planning parent
+`fb0d09659f8d00685f829d6781e5d256751dac66` and
+[first application receipt](../evidence/interactive_card_app_checkpoint_20261113.json)
+retain their historical scope.
+
+**Current navigation increment:** [readable headings and complete indexed history](interactive_reading_navigation_0160.md)
+add full-title disclosure and keyboard access to older reading points, with exact
+native source/Back preserved. The [twenty-journey functional inventory](functional_inventory_review_0160.md)
+starts S6.3 reconciliation, explicitly retaining missing provider, human and
+version decisions. The main ledger now has **20 done, 11 partial and 2 todo**;
+these counts do not measure effort or acceptance.
 
 **Current position:** S0 and S1, S3.1–S3.4, S4.1–S4.2, S4.4, S5.1, S5.2 and S5.4 are delivered at their bounded development scopes. The native Card/Deck application, explicit four-kind source entry and independently selected original readings have real Qt receiving. The [molecular receipt](../evidence/interactive_molecular_checkpoint_20261113.json) adds an opt-in live product panel through Viewer's experimental public service: 84 selected cases, eleven real molecular Qt checks each from checkout and an installed unpublished wheel, and six model-failure checks. A corrected native HTTP guard also passes twelve actual source-entry checks.
 
 **Delivered observable result:** read a Card or Deck, follow source-declared relationships to supplied related Cards, inspect their original sources, return to the exact entry occurrence/Deck selection, save/reopen original Card and Deck readings, and explicitly query supported identifiers. With the received development provider cohort, also open a supplied molecular model, rotate it, float/reset without replacing its viewport, and keep reading original knowledge. The model is always labelled **correspondence not established**. This is not mapped annotation navigation or a supported embedding claim.
 
-**Latest increment:** [rich retained presentation and original whole workspaces](interactive_workspace_persistence_0160.md) add source-linked overview fields, native cell cards/tables/units, sequence strips, current-page relationship graphs, exact breadcrumbs and nonblocking source queries with explicit cancellation/adoption. The public protein → source-bound BTS → native activity → original assay/full publication → exact repeated Deck return now passes in actual Qt, including whole-workspace saving/reopening. The [receipt](../evidence/interactive_rich_workspace_checkpoint_20261113.json) separates source epochs, installed receiving and failed controls. Original query history and inner Card trails now persist separately from layout and molecular scene.
+**Rich workspace foundation:** [retained presentation and original whole workspaces](interactive_workspace_persistence_0160.md) add source-linked overview fields, native cell cards/tables/units, sequence strips, current-page relationship graphs, exact breadcrumbs and nonblocking source queries with explicit cancellation/adoption. The public protein → source-bound BTS → native activity → original assay/full publication → exact repeated Deck return now passes in actual Qt, including whole-workspace saving/reopening. The [receipt](../evidence/interactive_rich_workspace_checkpoint_20261113.json) separates source epochs, installed receiving and failed controls. Original query history and inner Card trails now persist separately from layout and molecular scene.
 
 The subsequent [candidate checkpoint](interactive_source_candidates_0160.md)
 adds explicit UniProt candidate/alternative and PubChem record queries, bounded
@@ -290,7 +301,7 @@ delivers. Start feedback when the first useful slice exists, not only at the end
 | --- | --- | --- |
 | S6.1 | `partial` | [Public input preparation, uncoached tasks and worksheet](interactive_researcher_review_0160.md) are prepared and preparation runs without network. Maintainer and independent researcher observations remain `not_reviewed`; record understanding/navigation/accessibility, including molecular limits. The 0.15.0 deferral does not waive 0.16.0 review |
 | S6.2 | `partial` | Guarded composition reduces the matched backend save from 94.28 to 57.93 s, with read/verify about 29.7 s and native original/refusal/Deck receiving. Separate installed model profiles now receive eight cycles on two public inputs and twelve cycles over 611.49 s on 1TCD, with longer idle windows and bounded OS-memory attribution. Larger mmCIF cases expose MolSysMT #763 rather than a resource ceiling. Agree workload/session targets, receive the provider fix and complete broader scaling/native/human observations; no workload budget or general scaling claim is established |
-| S6.3 | `todo` | Reconcile every accepted 0.16.0 journey against implementation, regressions, original saved compatibility and visible limits. Reconsider #192's meaning/correction and the #194 macOS exception before the version decision; neither 0.15.0 deferral silently extends |
+| S6.3 | `partial` | The [twenty-journey inventory](functional_inventory_review_0160.md) maps accepted behavior to implementation, regressions, original saved compatibility and explicit remainders. Complete mapped 3D/2D receiving and actual human observations, reconsider #192 aggregation and #194 macOS scope, then receive the version decision; no 0.15.0 deferral silently extends |
 | S6.4 | `todo` | Record functional-milestone acceptance separately from exact-source CI, installed artifacts, supported platforms and publication. Complete the applicable existing release route only for the authorized candidate and actual claimed GUI/core scope |
 
 S6.2's [composition receipt and cost observations](interactive_workspace_cost_0160.md)
@@ -302,7 +313,7 @@ and navigation are unchanged. This bounded improvement does not close S6.2.
 
 ## Current closeout ledger
 
-The 33 microstages currently contain **20 done, 10 partial and 3 todo**. This is
+The 33 microstages currently contain **20 done, 11 partial and 2 todo**. This is
 an unweighted status count, not a percentage of implementation effort or readiness.
 Several partial rows already contain working application behavior but depend on
 provider contracts or acceptance; their labels must not be promoted by automated
@@ -317,8 +328,9 @@ checks alone.
 | Scientific/platform decisions (S6.3) | Decide #192 aggregation semantics and reconsider #194's macOS exception for this version | Maintainer, #192/#194 | Preserve the explicit current limitations while decisions are pending |
 | Version decision and delivery (S6.4) | Functional scope acceptance followed by the authorized exact-source CI/candidate/platform/publication route | Maintainer, #154/#112 | No release/tag/CI dispatch is implied by implementation authority |
 
-This ledger reconciles the present scope without claiming completion of S6.3:
-#192/#194 and complete journey acceptance are still decisions to receive. The
+The [functional inventory](functional_inventory_review_0160.md) starts partial
+S6.3 without claiming completion: #192/#194 and complete journey acceptance are
+still decisions to receive. The
 original stage rows and their evidence retain authority over each delivered scope.
 
 ## Execution order and immediate handoff
@@ -331,9 +343,14 @@ The next [longer-session increment](interactive_model_scale_0160.md) receives tw
 1TCD cycles and reported-family OS-memory changes, while larger public mmCIF cases
 fail provider conversion under MolSysMT #763. Receive the reviewed provider fix
 before claiming their rendering or scale; workload targets, broader sessions and
-human acceptance remain open. Long literal source headings in split reading are
-a separate navigation-polish follow-up; automated measurements settle neither
-human acceptance nor leak status.
+human acceptance remain open. The [navigation increment](interactive_reading_navigation_0160.md)
+now receives compact/full headings and older exact trail points through keyboard
+controls. The [functional inventory](functional_inventory_review_0160.md) starts
+S6.3; provider, scientific/platform and human decisions retain their own owners.
+Automated measurements settle neither human acceptance nor leak status.
+Next local UI work: receive scroll/focus restoration across Card/source/history
+changes, since the narrow-panel capture can finish below its heading. Exact native
+return is already received; the scroll/focus interaction remains separate.
 MolSysSketcher belongs to its separate team. Supported mapped 3D and chemical
 depiction remain parallel dependencies, not reasons to suspend independent work.
 

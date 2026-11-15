@@ -23,6 +23,7 @@ anything: the remote repository does not contain the whole local state.
 | What are the long-term goals and dependencies? | [Accepted six-stage program](ROADMAP.md#accepted-long-term-execution-stages) and [its execution](CONTINUATION_PLAN_20261104.md#accepted-six-stage-program) |
 | What is the next product objective for 0.16.0? | [Interactive Card/Deck exploration](pending_proposals/interactive_exploration_0160.md), with [PySide6/QWebEngine selected](pending_proposals/standalone_gpu_scale_20261113.md), a portable web workspace, Python backend and live MolSysViewer |
 | How do we implement 0.16.0, and where do we resume? | [Living implementation plan and checkpoint](pending_proposals/interactive_implementation_0160.md): stage/microstage states, exit criteria, evidence, dependencies and the next concrete task |
+| Which accepted 0.16.0 journeys work, and what remains? | [Twenty-journey functional inventory](pending_proposals/functional_inventory_review_0160.md): implementation, receiving, original compatibility and provider/human/version remainders; this starts partial S6.3 without accepting the version |
 | What decisions explain the design? | [DECISIONS](DECISIONS.md), the owning issue and its feature analysis; use the [onboarding history map](ONBOARDING.md#how-the-project-reached-this-point) rather than reading the full log sequentially |
 | How do I change and verify something? | [Root instructions](../AGENTS.md), [API conventions](API_CONVENTIONS.md), [TESTS](TESTS.md) |
 | How do I resume on another machine without losing work? | [Handoff](WORKSTATION_HANDOFF_20261106.md), its manifest and the current checkpoint |
@@ -47,7 +48,13 @@ native delivery and exact dependencies. The complete release contract remains
 open; the accepted 0.15.0 scope and other roadmap goals persist.
 
 The first optional Qt Card application now delivers local topic/search/source/
-Back/save/reopen navigation and movable reading panels. The native Deck contract
+Back/save/reopen navigation and movable reading panels. The
+[navigation increment](pending_proposals/interactive_reading_navigation_0160.md)
+adds compact/full headings and keyboard access to all older backend-retained
+trail points, preserving exact source/native return. The
+[functional inventory](pending_proposals/functional_inventory_review_0160.md)
+starts partial S6.3; the current ledger is 20 done, 11 partial and 2 todo.
+The native Deck contract
 and Qt Deck workspace add repeated occurrences, complete metadata and exact return. Its
 [implementation checkpoint](pending_proposals/interactive_implementation_0160.md)
 records actual checkout/installed-wheel receiving. Explicit four-kind source

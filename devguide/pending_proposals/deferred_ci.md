@@ -9,6 +9,21 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Reading navigation and first 0.16 functional inventory (2026-11-15)
+
+From `c778768`, #154 adds compact/full headings, wrapping and keyboard access to
+older backend-retained exact history points. The
+[receipt](../evidence/interactive_reading_navigation_checkpoint_20261115.json)
+binds 210 source application/package cases, 207 copied installed runtime cases,
+typecheck/build, actual Qt navigation/presentation, final artifact/source closure
+and genuine original receiving. Early elapsed and copied source-placement failures
+remain separate. The [twenty-journey inventory](functional_inventory_review_0160.md)
+starts partial S6.3 without accepting the version. Local syntax/format/lint/
+governance/link checks qualify this intermediate `[skip ci]` checkpoint. No native
+reader, schema, dependency or provider changes. Git and #154 record the final SHA;
+exact-final-source full/candidate/hosted recovery remains under #154/#153/#112.
+No workflow, release or public package publication is selected.
+
 ### Larger-model diagnosis and longer-session receiving (2026-11-15)
 
 From `b411909`, #154 adds optional owned-process RSS/USS/PSS observations and

@@ -1,0 +1,927 @@
+{
+  "format": "sabueso.interactive_reading_navigation_checkpoint@1",
+  "owner": "uibcdf/sabueso#154",
+  "coordination": [
+    "uibcdf/sabueso#153",
+    "uibcdf/sabueso#112"
+  ],
+  "base_commit": "c778768925ef7dfd75b790b2d1682705dfac4a70",
+  "scope": "Portable heading/history presentation and first functional inventory; native readers, schemas and provider interfaces unchanged",
+  "source_sha256": {
+    "frontend/explorer/src/app.tsx": "65bf322fa04daafa5a7220c83c397299beed527ccc93e28b120ddbe9c630c150",
+    "frontend/explorer/src/style.css": "ff9afa49fbd61730566f34cab046d57fb15897c0928876c3e3f271ab23cbdbc9",
+    "frontend/explorer/src/reading_navigation.tsx": "9cc6a62d1baba7af3266aac423c96d3f86ca98c207651696f414b70aba9b2141",
+    "devtools/explorer_journey.mjs": "cafa8abdb8ac9bf7395a78e5496512e12176645920495311394843563545ed06",
+    "devtools/molecular_explorer_journey.mjs": "2b163154e2b45d4aef8c66145fed0483c8845de04332b055220f3fd4a7aca1f7",
+    "devtools/standalone_probe/receive_navigation.mjs": "0a0319bb26a4d8685f6d6a34fb78fca1b03147c51febe73fbb99e72be788bc1f",
+    "devtools/standalone_probe/run_bounded.py": "f3cb4617bedbcfb555977d423419acc07efe63a525ba8a0be6f755622de7bf38",
+    "devtools/deck_explorer_journey.mjs": "243c76f2dc93e6d5a1089ee2dddcc49253940ad7127f2e82b25581755b8bb087"
+  },
+  "python_gates": [
+    {
+      "name": "application-final",
+      "complete": true,
+      "integrity_valid": true,
+      "counts": {
+        "collected": 210,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 210,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 210,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 4,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "events_sha256": "95759351bf0f85431107e7d4e8df899ac24941cc05ccd8bfb228a0e5f57fdd1f",
+      "receptor": "1.2.0",
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1",
+          "python",
+          "-m",
+          "pytest",
+          "tests/explorer",
+          "tests/core/test_package_data_offline.py",
+          "-m",
+          "not online",
+          "--receptor=llm",
+          "--receptor-events=/tmp/sabueso-reading-navigation-20261115-eydzp1vo/application-final.jsonl"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "returncode": 0,
+        "elapsed_s": 203.47,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 364220416,
+        "minimum_host_available_bytes": 45475512320,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      }
+    },
+    {
+      "name": "installed-runtime-final",
+      "complete": true,
+      "integrity_valid": true,
+      "counts": {
+        "collected": 207,
+        "deselected": 1,
+        "errors": 0,
+        "executed": 207,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 207,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 4,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "events_sha256": "6dd8caeffa425d4868afebc7f6738edc15f6b4b30c1d0be1a301ea6318515a51",
+      "receptor": "1.2.0",
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1",
+          "/tmp/sabueso-reading-navigation-20261115-eydzp1vo/installed-env/bin/python",
+          "-m",
+          "pytest",
+          "tests/explorer",
+          "-k",
+          "not frontend_assets_declared_and_contain_no_comparison_runtime",
+          "-m",
+          "not online",
+          "--receptor=llm",
+          "--receptor-events=/tmp/sabueso-reading-navigation-20261115-eydzp1vo/installed-runtime-final.jsonl"
+        ],
+        "cwd": "/tmp/sabueso-reading-navigation-20261115-eydzp1vo/client",
+        "returncode": 0,
+        "elapsed_s": 182.259,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 354463744,
+        "minimum_host_available_bytes": 45468213248,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      }
+    }
+  ],
+  "native_qt": [
+    {
+      "name": "qt-protein-final",
+      "checks": {
+        "native_profile_overview": true,
+        "original_overview_field_opens": true,
+        "exact_trail_return": true,
+        "sequence_preserves_exact_text": true,
+        "sequence_positions_scope_explicit": true,
+        "native_annotation_cells_visible": true,
+        "original_source_remains_accessible": true,
+        "native_return_overview_retained": true,
+        "heading_retains_exact_full_title": true,
+        "heading_is_compact": true,
+        "full_title_opens_with_keyboard": true,
+        "reading_needs_no_horizontal_scroll": true,
+        "all_exact_history_points_available": true,
+        "earlier_history_opens_with_keyboard": true,
+        "earlier_return_preserves_exact_occurrence": true,
+        "earlier_source_parent_back_is_exact": true,
+        "native_reading_is_unchanged": true,
+        "disclosure_resets_on_new_reading": true,
+        "actual_native_capture": true,
+        "input_unchanged": true,
+        "no_script_errors": true
+      },
+      "navigation": {
+        "source_title": "ChEMBL \u00b7 CHEMBL1049665 \u00b7 relationships.has_bioactivity.assay",
+        "source_view_ref": "XV_7c083b6fb4f6b192df7d56a771fc140b2e48645e58333111083405cb71598837",
+        "source_result_ref": "XR_765fad7ed4d30ed0758ee25752f9ffd5696b175dc3ce98156f1a1fd0940141e9",
+        "long_title": true,
+        "reading_dimensions": {
+          "width": 638,
+          "scroll_width": 638
+        }
+      },
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1,2,3",
+          "node",
+          "devtools/explorer_journey.mjs",
+          "--output",
+          "/tmp/sabueso-reading-navigation-20261115-eydzp1vo/qt-protein-final-output",
+          "--card",
+          "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/protein-card.json",
+          "--receive-presentation",
+          "--receive-navigation"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "returncode": 0,
+        "elapsed_s": 20.499,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 1045987328,
+        "minimum_host_available_bytes": 46335975424,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      },
+      "receipt_sha256": "60dd1c03c9a5a123aa16db596be47bcaf7ee860c84003c1520cb9d248999d1eb",
+      "input_sha256": "8c35824c761d38be0c4c586336b04c0ce0670367cdb58fa0a9776dbd1d192eeb",
+      "no_owned_model_or_launcher_residue": true
+    },
+    {
+      "name": "qt-installed-protein",
+      "checks": {
+        "native_profile_overview": true,
+        "original_overview_field_opens": true,
+        "exact_trail_return": true,
+        "sequence_preserves_exact_text": true,
+        "sequence_positions_scope_explicit": true,
+        "native_annotation_cells_visible": true,
+        "original_source_remains_accessible": true,
+        "native_return_overview_retained": true,
+        "heading_retains_exact_full_title": true,
+        "heading_is_compact": true,
+        "full_title_opens_with_keyboard": true,
+        "reading_needs_no_horizontal_scroll": true,
+        "all_exact_history_points_available": true,
+        "earlier_history_opens_with_keyboard": true,
+        "earlier_return_preserves_exact_occurrence": true,
+        "earlier_source_parent_back_is_exact": true,
+        "native_reading_is_unchanged": true,
+        "disclosure_resets_on_new_reading": true,
+        "actual_native_capture": true,
+        "input_unchanged": true,
+        "no_script_errors": true
+      },
+      "navigation": {
+        "source_title": "ChEMBL \u00b7 CHEMBL1049665 \u00b7 relationships.has_bioactivity.assay",
+        "source_view_ref": "XV_7c083b6fb4f6b192df7d56a771fc140b2e48645e58333111083405cb71598837",
+        "source_result_ref": "XR_765fad7ed4d30ed0758ee25752f9ffd5696b175dc3ce98156f1a1fd0940141e9",
+        "long_title": true,
+        "reading_dimensions": {
+          "width": 638,
+          "scroll_width": 638
+        }
+      },
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1,2,3",
+          "node",
+          "devtools/explorer_journey.mjs",
+          "--output",
+          "/tmp/sabueso-reading-navigation-20261115-eydzp1vo/qt-installed-protein-output",
+          "--python",
+          "/tmp/sabueso-reading-navigation-20261115-eydzp1vo/installed-env/bin/python",
+          "--application-root",
+          "/tmp/sabueso-reading-navigation-20261115-eydzp1vo/client",
+          "--card",
+          "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/protein-card.json",
+          "--receive-presentation",
+          "--receive-navigation"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "returncode": 0,
+        "elapsed_s": 20.271,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 1045757952,
+        "minimum_host_available_bytes": 45468213248,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      },
+      "receipt_sha256": "60dd1c03c9a5a123aa16db596be47bcaf7ee860c84003c1520cb9d248999d1eb",
+      "input_sha256": "8c35824c761d38be0c4c586336b04c0ce0670367cdb58fa0a9776dbd1d192eeb",
+      "no_owned_model_or_launcher_residue": true
+    },
+    {
+      "name": "qt-installed-molecule",
+      "checks": {
+        "native_profile_overview": true,
+        "original_overview_field_opens": true,
+        "exact_trail_return": true,
+        "native_property_cells_visible": true,
+        "property_unit_retained": true,
+        "original_source_remains_accessible": true,
+        "native_return_overview_retained": true,
+        "heading_retains_exact_full_title": true,
+        "heading_is_compact": true,
+        "full_title_opens_with_keyboard": true,
+        "reading_needs_no_horizontal_scroll": true,
+        "all_exact_history_points_available": true,
+        "earlier_history_opens_with_keyboard": true,
+        "earlier_return_preserves_exact_occurrence": true,
+        "earlier_source_parent_back_is_exact": true,
+        "native_reading_is_unchanged": true,
+        "disclosure_resets_on_new_reading": true,
+        "actual_native_capture": true,
+        "input_unchanged": true,
+        "no_script_errors": true
+      },
+      "navigation": {
+        "source_title": "ChEMBL \u00b7 drug_indication:108801 \u00b7 relationships.investigated_for",
+        "source_view_ref": "XV_2844e7dbf504c56be048df31122fd5c6fce4fd747b8c7b8f0a643440b2b661b1",
+        "source_result_ref": "XR_58a9b55c5034ef39d145251a43c073b0a3be9ecc629823f5d4fc83a6ca245f81",
+        "long_title": true,
+        "reading_dimensions": {
+          "width": 638,
+          "scroll_width": 638
+        }
+      },
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1,2,3",
+          "node",
+          "devtools/explorer_journey.mjs",
+          "--output",
+          "/tmp/sabueso-reading-navigation-20261115-eydzp1vo/qt-installed-molecule-output",
+          "--python",
+          "/tmp/sabueso-reading-navigation-20261115-eydzp1vo/installed-env/bin/python",
+          "--application-root",
+          "/tmp/sabueso-reading-navigation-20261115-eydzp1vo/client",
+          "--card",
+          "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/molecule-card.json",
+          "--receive-presentation",
+          "--receive-navigation"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "returncode": 0,
+        "elapsed_s": 19.085,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 1020772352,
+        "minimum_host_available_bytes": 45917810688,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      },
+      "receipt_sha256": "8373e24f0ad0f32dd9e4c6b1f44167aa3e01a8bc000903de5a86b2f21f94fc98",
+      "input_sha256": "3ed9b8732adbd6276ae5737bde75d9ebe4eefd05a090e68884cad94ee3bb5fea",
+      "no_owned_model_or_launcher_residue": true
+    },
+    {
+      "name": "qt-installed-disease",
+      "checks": {
+        "native_profile_overview": true,
+        "original_overview_field_opens": true,
+        "exact_trail_return": true,
+        "source_graph_preserves_native_reading": true,
+        "source_graph_has_exact_page_edges": true,
+        "graph_record_back_exact": true,
+        "original_source_remains_accessible": true,
+        "native_return_overview_retained": true,
+        "heading_retains_exact_full_title": true,
+        "heading_is_compact": true,
+        "full_title_opens_with_keyboard": true,
+        "reading_needs_no_horizontal_scroll": true,
+        "all_exact_history_points_available": true,
+        "earlier_history_opens_with_keyboard": true,
+        "earlier_return_preserves_exact_occurrence": true,
+        "earlier_source_parent_back_is_exact": true,
+        "native_reading_is_unchanged": true,
+        "disclosure_resets_on_new_reading": true,
+        "actual_native_capture": true,
+        "input_unchanged": true,
+        "no_script_errors": true
+      },
+      "navigation": {
+        "source_title": "MONDO \u00b7 MONDO:0001444 \u00b7 annotations.disease_subsets",
+        "source_view_ref": "XV_794b698227f3f2e9335dac93d8eef5dbe95f55a8aba5523b3c2b6b8a14c278a4",
+        "source_result_ref": "XR_512b89f90ecf215669ca69a0cb09d02b9f8dc68c5399253d28dfbe176ae8df32",
+        "long_title": true,
+        "reading_dimensions": {
+          "width": 638,
+          "scroll_width": 638
+        }
+      },
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1,2,3",
+          "node",
+          "devtools/explorer_journey.mjs",
+          "--output",
+          "/tmp/sabueso-reading-navigation-20261115-eydzp1vo/qt-installed-disease-output",
+          "--python",
+          "/tmp/sabueso-reading-navigation-20261115-eydzp1vo/installed-env/bin/python",
+          "--application-root",
+          "/tmp/sabueso-reading-navigation-20261115-eydzp1vo/client",
+          "--card",
+          "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/disease-card.json",
+          "--receive-presentation",
+          "--receive-navigation"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "returncode": 0,
+        "elapsed_s": 18.649,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 989528064,
+        "minimum_host_available_bytes": 45680119808,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      },
+      "receipt_sha256": "ea030ffd79027e899fb78ad53e7763046f2c422200d2d69312b5b17abf9f626b",
+      "input_sha256": "ac96faf6f6fd6969b330fde6191ec8292e17b64b889c0ee332053ad3f9238529",
+      "no_owned_model_or_launcher_residue": true
+    },
+    {
+      "name": "qt-installed-model-final",
+      "checks": {
+        "real_canvas_and_renderer": true,
+        "actual_floating_group_observed": true,
+        "reset_returns_to_main_grid": true,
+        "same_live_viewport": true,
+        "camera_survives_layout": true,
+        "selection_survives_layout": true,
+        "no_inferred_correspondence": true,
+        "reading_survives_layout": true,
+        "molecular_presentation_saved_without_scene": true,
+        "saving_layout_keeps_live_model": true,
+        "original_source_remains_readable": true,
+        "heading_retains_exact_full_title": true,
+        "heading_is_compact": true,
+        "full_title_opens_with_keyboard": true,
+        "reading_needs_no_horizontal_scroll": true,
+        "all_exact_history_points_available": true,
+        "earlier_history_opens_with_keyboard": true,
+        "earlier_return_preserves_exact_occurrence": true,
+        "earlier_source_parent_back_is_exact": true,
+        "native_reading_is_unchanged": true,
+        "disclosure_resets_on_new_reading": true,
+        "navigation_keeps_live_model": true,
+        "native_capture": true,
+        "original_inputs_unchanged": true,
+        "no_script_errors": true
+      },
+      "navigation": {
+        "source_title": "ChEMBL \u00b7 CHEMBL1049665 \u00b7 relationships.has_bioactivity.assay",
+        "source_view_ref": "XV_7c083b6fb4f6b192df7d56a771fc140b2e48645e58333111083405cb71598837",
+        "source_result_ref": "XR_765fad7ed4d30ed0758ee25752f9ffd5696b175dc3ce98156f1a1fd0940141e9",
+        "long_title": true,
+        "reading_dimensions": {
+          "width": 462,
+          "scroll_width": 462
+        }
+      },
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1,2,3",
+          "node",
+          "devtools/molecular_explorer_journey.mjs",
+          "--output",
+          "/tmp/sabueso-reading-navigation-20261115-eydzp1vo/qt-installed-model-final-output",
+          "--python",
+          "/tmp/sabueso-reading-navigation-20261115-eydzp1vo/installed-env/bin/python",
+          "--application-root",
+          "/tmp/sabueso-reading-navigation-20261115-eydzp1vo/client",
+          "--card",
+          "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/protein-card.json",
+          "--model",
+          "/fast_data/home/liliana/repos@uibcdf/sabueso/temp_data/rcsb_structural_context/coordinates/1tcd.bcif.gz",
+          "--receive-layout",
+          "--receive-navigation"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "returncode": 0,
+        "elapsed_s": 37.05,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 1847111680,
+        "minimum_host_available_bytes": 45386575872,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      },
+      "receipt_sha256": "76b842cacd7651ca7e751b0703b2e9054c62ecd082144413fa0d471ecd43a03e",
+      "input_sha256": {
+        "card": "8c35824c761d38be0c4c586336b04c0ce0670367cdb58fa0a9776dbd1d192eeb",
+        "model": "6f15f9412a97e38ffb01e0aec8ffa6016ac5d1ddf50042e0129583caf65be125"
+      },
+      "no_owned_model_or_launcher_residue": true
+    },
+    {
+      "name": "qt-installed-original-deck",
+      "checks": {
+        "independent_startup_is_original": true,
+        "independent_startup_retains_metadata": true,
+        "independent_startup_retains_selection": true,
+        "three_original_occurrences": true,
+        "saved_scope_explicit": true,
+        "in_place_reopening_preserves_metadata": true,
+        "independent_upload_is_original": true,
+        "exact_saved_selection": true,
+        "original_member_occurrence": true,
+        "original_source_readable": true,
+        "exact_saved_deck_return": true,
+        "original_ordered_back": true,
+        "original_root_back": true,
+        "saved_file_unchanged": true,
+        "actual_native_capture": true,
+        "input_unchanged": true,
+        "no_script_errors": true
+      },
+      "navigation": null,
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1,2,3",
+          "node",
+          "devtools/deck_explorer_journey.mjs",
+          "--output",
+          "/tmp/sabueso-reading-navigation-20261115-eydzp1vo/qt-installed-original-deck-output",
+          "--python",
+          "/tmp/sabueso-reading-navigation-20261115-eydzp1vo/installed-env/bin/python",
+          "--application-root",
+          "/tmp/sabueso-reading-navigation-20261115-eydzp1vo/client",
+          "--deck",
+          "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-deck-saving-20261113-1/qt-save-source-output/readings/deck-reading-0ea6ed1e9055657f29096787.json.gz",
+          "--reading",
+          "--saved-workspace"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "returncode": 0,
+        "elapsed_s": 19.244,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 1013809152,
+        "minimum_host_available_bytes": 45878501376,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      },
+      "receipt_sha256": "35b82ecb8d5a01338473d85ddbfb10a86f789a54f1a7deb8c0551b3ba66b5410",
+      "input_sha256": "1f0c558de4a3655bc5af05a4fc06afcc86b61875d2536e93e0f0a7eae7fe25ac",
+      "no_owned_model_or_launcher_residue": true
+    }
+  ],
+  "artifact": {
+    "wheel": {
+      "name": "sabueso-0.14.0+300.gc778768.dirty-py3-none-any.whl",
+      "sha256": "88a7df097921b633b86f8fa35ec46776177cb6c0dbcd45afde0a194f0964a044"
+    },
+    "sdist": {
+      "name": "sabueso-0.14.0+300.gc778768.dirty.tar.gz",
+      "sha256": "a141b71e23139cbddfbc8ed5e08150ff23e61eb7da81452a25e88c611bf39f33"
+    },
+    "installed_module": "/tmp/sabueso-reading-navigation-20261115-eydzp1vo/installed-env/lib/python3.14/site-packages/sabueso/__init__.py",
+    "installed_version": "0.14.0+300.gc778768.dirty",
+    "editable": false,
+    "runtime_original_SOURCE_and_installed_bytes_equal": {
+      "sabueso/explorer/_qt.py": "7b85fe1d2c8c30fc2254055dc4cd041886f1be65a3b9cea7eda775ff0df6b74f",
+      "sabueso/explorer/_session.py": "521687245ec5386574817c5ebfaf661347dd3abdc71722f0769f369539296b30",
+      "sabueso/explorer/_molecular.py": "a9ded2e47fad16cc83af3f5f78e5463334357e84f82d4c4da0dc24692f607c72",
+      "sabueso/explorer/_service.py": "b900a45373ba86d1961a86872968c0adee376f9c0040ff6f05d0793c3972704b",
+      "sabueso/explorer/_deck_session.py": "7b65196019d0f2a04569fac255e5f3dd6b20c3a94b25209f6d3d86c10737003f",
+      "sabueso/explorer/_source_choices.py": "208d0d02395d4b6eb55d2645ff469cb7e13099a8a4a487b2695ea39b4657e559",
+      "sabueso/explorer/_presentation.py": "2b0434795de70337eedfe4636dd6a6e2dd9d58fce82d50ffd3ca3c1f0b309c95",
+      "sabueso/explorer/__init__.py": "d9f38870c8c8cb9a246e19c53547451343ff05bd8724b52d11b16ea805f07062",
+      "sabueso/explorer/_association_presentation.py": "590c8f44e26ff59af5509d82f1d7278aa9d0a31dd4fd1fc812904c36626bd034",
+      "sabueso/explorer/_record_queries.py": "c3c214d566af6cdbd324bf7fc06cdcb4894f264adb9c67c830a0c09807433e2a",
+      "sabueso/explorer/_layout.py": "83ff00cc24e9d0fe22210ffa61908fa45d1982774ac0097bd554d26f286ad072",
+      "sabueso/explorer/__main__.py": "13e6fc8829e6dd3b15c8523dac1b21a6dcdcd0ec4f3119c417f61c9a1d412891",
+      "sabueso/explorer/_workspace.py": "84f3c23b3b4cb0d7216e8b763b11a2343236a22abef743687c45816813d61fbd",
+      "sabueso/explorer/_queries.py": "a56330d66e7476b4d8e034884c1bf2ec9c763867701c605259ecba3d31e8bf11",
+      "sabueso/explorer/_resolution.py": "7a165ba64694d64f9cda93a12315b77533b1f2e51d7302b68baaf36df6cc9ac9",
+      "sabueso/explorer/_assets/app.js": "fcb78330fb51a36ba6f742442769a8101e6f31dd75465de6f57919f3c13319f3",
+      "sabueso/explorer/_assets/app.css": "a8ea9f9d968865189bb9b2620912c79da7704fc422df059571b74235306f6f1c",
+      "sabueso/explorer/_assets/notices.txt": "a238c0f2172b6b9507e352ce97d0065b73c0abe2b076493e6553789f675e0b15",
+      "sabueso/explorer/_assets/index.html": "be4705852899de9486e6c01fb0d92ad99301024833c9c7b50b545a3827cc785d",
+      "sabueso/core/card_exploration_storage.py": "ded6cfc512de97a667278b023d48f9c4e20ff66914e46879a968622fbdd66bd7",
+      "sabueso/core/deck_exploration_storage.py": "69eafde545d4f1fd84b9660515f636d9d0a146b0a86400c8c6600acad0b50c71",
+      "sabueso/core/_variant_history_v1/SOURCE.json": "b55ee3cd34ef6f7efdca561ce4b06fbacb8ea4f3ca67f7bb2d362cb82f3a6998",
+      "sabueso/core/_sequence_change_history_v1/SOURCE.json": "c7a43ebf63201757abfede8ec0eee1820199ff53bfbf8fd93e4506372aa7c8c0",
+      "sabueso/core/_molecule_activity_history_v1/SOURCE.json": "14d59d034aa795516bc3258f11f8a4f8caaa1b5b38b3c30bfb273f8cfddde797",
+      "sabueso/core/_protein_context_history_v1/SOURCE.json": "de78272c691573e26e04c6028cd7a375616c7c2e51d0e43d7623462bbcf40823",
+      "sabueso/core/_disease_association_history_v1/SOURCE.json": "a927a304b67df6144995c9d5f21e44ff4a34a98e8023221e47361f3dfe53feef",
+      "sabueso/core/_knowledge_comparison_history_v1/SOURCE.json": "cf1f610bff358f89a432484952ddeec7eec3d661615035ead720ea7eb202dd8a",
+      "sabueso/core/_clinical_history_v1/SOURCE.json": "00688c256d6aee51ebc97d752fdd641f7317c5d399ae8dd84db0ee4dc7e60650"
+    },
+    "genuine_prechange_workspace_inert_and_unchanged": true,
+    "original_sha256": "83677c29c26d3676f23009e5df884bbf05bbc872a6e2ace9517f1035ce2398af",
+    "original_native_content_and_exact_back": true,
+    "no_optional_graphics_or_scientific_provider_imports": true,
+    "scope": "Noneditable unpublished diagnostic artifact with shared editable dependencies; not clean public/candidate/platform qualification"
+  },
+  "exact_sdist_frontend_source": {
+    "frontend/explorer/src/reading_navigation.tsx": "9cc6a62d1baba7af3266aac423c96d3f86ca98c207651696f414b70aba9b2141",
+    "frontend/explorer/src/app.tsx": "65bf322fa04daafa5a7220c83c397299beed527ccc93e28b120ddbe9c630c150",
+    "frontend/explorer/src/style.css": "ff9afa49fbd61730566f34cab046d57fb15897c0928876c3e3f271ab23cbdbc9",
+    "frontend/explorer/package.json": "5d897ddbd6d0ac3f23172feba79f47accee261ea350c46c344730e1566f7f74b",
+    "frontend/explorer/package-lock.json": "e7529d2d599c89014cc2b372d3d6e4c3c78fec0d168c3df509daaafaae189328"
+  },
+  "build_gates": {
+    "typecheck-final": {
+      "owner": "uibcdf/sabueso#154",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0,1",
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso/frontend/explorer",
+      "returncode": 0,
+      "elapsed_s": 3.037,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 403640320,
+      "minimum_host_available_bytes": 46102491136,
+      "survivors_after_command": [],
+      "limits": {
+        "owned_rss_bytes": 4294967296,
+        "host_available_bytes": 17179869184,
+        "cpu_affinity": [
+          0,
+          1
+        ],
+        "native_threads": 1
+      },
+      "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+    },
+    "frontend-build-final": {
+      "owner": "uibcdf/sabueso#154",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0,1,2,3",
+        "npm",
+        "run",
+        "build"
+      ],
+      "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso/frontend/explorer",
+      "returncode": 0,
+      "elapsed_s": 0.757,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 126750720,
+      "minimum_host_available_bytes": 47000633344,
+      "survivors_after_command": [],
+      "limits": {
+        "owned_rss_bytes": 4294967296,
+        "host_available_bytes": 17179869184,
+        "cpu_affinity": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "native_threads": 1
+      },
+      "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+    },
+    "artifact-build-final": {
+      "owner": "uibcdf/sabueso#154",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0,1",
+        "python",
+        "-m",
+        "build",
+        "--no-isolation",
+        "--outdir",
+        "/tmp/sabueso-reading-navigation-20261115-eydzp1vo/artifacts"
+      ],
+      "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+      "returncode": 0,
+      "elapsed_s": 9.592,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 75141120,
+      "minimum_host_available_bytes": 46594088960,
+      "survivors_after_command": [],
+      "limits": {
+        "owned_rss_bytes": 4294967296,
+        "host_available_bytes": 17179869184,
+        "cpu_affinity": [
+          0,
+          1
+        ],
+        "native_threads": 1
+      },
+      "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+    }
+  },
+  "copied_tests": {
+    "tests/explorer/test_record_queries_offline.py": "be02626c8e30bf5e0611846970a271fbb95b9dba64ca673fdd1c8a4eee336508",
+    "tests/explorer/test_deck_session_offline.py": "5e9d99ff63432107c00f9747c02f02b1307d0685ea439b1b875c8de03f851499",
+    "tests/explorer/test_molecular_lifetime_offline.py": "523cacc7de1ccd4ffabea14b75aff8f45381afb63712162469e9fe59ae17ba7f",
+    "tests/explorer/test_molecular_admission_offline.py": "14316a2f0696cfe6cc597533e92c99bf6ddb60d68002fb9ace6d94a503741b5f",
+    "tests/explorer/test_resolution_offline.py": "cb9aac843a47580c96284d9035ee6d94f4cfda18cd83ef81791acb82140e3866",
+    "tests/explorer/test_session_offline.py": "7e18b6c1d81cec7c2b58653c735cd769beda82d789e7df210079e2214db09592",
+    "tests/explorer/test_workspace_offline.py": "f3cee8e0f16df5d7bd5f20ad0851543641d986621fa49b529524abdb67ebb2f4",
+    "tests/explorer/test_enrichment_offline.py": "0499f6d36a37850f0cc54ce943238ef4fafe4a187a1b5d065d6b9a125757ba3c",
+    "tests/explorer/test_layout_offline.py": "9545ccaf86ca8cbae840462e9232246d8364a8d9172e2f648d59a8c0264fd8db",
+    "tests/explorer/test_presentation_offline.py": "1496f99e1234cab3a23b3ab52bbfb4805630ff310d18f2dfa56d2859cd703dd9",
+    "tests/explorer/test_queries_offline.py": "2cfd68df5ad56dd93fce8f4ec40d4220f6ae8f185c9705bd892f538b05a33a4f",
+    "tests/explorer/test_bootstrap_offline.py": "215baa9566d2320a8a55dfdfc91b144000d426cd569701ba97d71dcd05b9b5d6",
+    "tests/explorer/test_deck_context_offline.py": "08f66cb8f21fa37fa15209590f4880476f57fb5572d610459fbd5ce0d6e19403",
+    "tests/explorer/test_candidates_offline.py": "1505f4ca8c60fbb7e47341f36678a35eeaf1592d0ebe352ed350381042842f4c",
+    "tests/explorer/test_composition_offline.py": "61b3196f47871735d8ccca1a1a44f8848a675e5a1ebffacc2884bf11ee74ed6a",
+    "tests/explorer/test_reading_upload_offline.py": "8374672f3ac7ab1ac420f26fe3cb61c85bf9ce0c6b97135c376e29844e998485",
+    "tests/explorer/test_disease_associations_offline.py": "d75490aa01226f2c49fd4450361d74177c010a930fe7fab71c21428756e78491",
+    "tests/explorer/test_deck_saved_offline.py": "0ac73f62cf8fddaa53af86be4d82f7533700e4e08c9f37015a19c059b9219a73",
+    "tests/explorer/test_service_offline.py": "0f7512a7950328d791dbb175ed6195913fc5205f4c4551df0df393c7776134c8",
+    "devtools/prepare_disease_walkthrough.py": "d715ee50c187841bbabce960d35b4237bccb1e4a31993c221b283dec6902ae5f",
+    "devtools/explorer_fixture_service.py": "3d0776e082c62fa446d1d2081d7826d2c32b612f9f25ae05352437b07058a4b9"
+  },
+  "copied_fixtures": {
+    "count": 325,
+    "manifest_sha256": "c7ef6a21a9d32400fcfbe111c810ba4c682c62e5c0de9a3c0a7cda1f14de7cba"
+  },
+  "provider_cohort": {
+    "molsysviewer": {
+      "path": "/fast_data/home/liliana/repos@uibcdf/molsysviewer",
+      "head": "0dcdd6ce574d3c99483480cb38c16c1e3cc4782f",
+      "status": ""
+    },
+    "molsysmt": {
+      "path": "/fast_data/home/liliana/repos@uibcdf/molsysmt",
+      "head": "6deb0200cd7e384128eded46caaf751a57e65bc6",
+      "status": ""
+    }
+  },
+  "provider_heads_clean_and_unchanged": true,
+  "functional_inventory": {
+    "file": "devguide/pending_proposals/functional_inventory_review_0160.md",
+    "journeys": 20,
+    "S6.3": "partial",
+    "main_microstages": {
+      "total": 33,
+      "done": 20,
+      "partial": 11,
+      "todo": 2
+    },
+    "acceptance": "not_claimed"
+  },
+  "preliminary_receiving": {
+    "qt-protein-pilot": "Passing initial 72-code-point heading calibration, no compact long-title check; final 48-point route received separately",
+    "application_and_installed_application": "Initial 180 s elapsed ceilings; incomplete records do not count as final passes",
+    "installed-application-final": "207 passes and one source-tree declaration placement failure; source-only case passes in 210-case source gate and exact sdist/resources are independently verified",
+    "qt-installed-model": "Passing 24-check profile before additional post-navigation client-retention assertion; final 25-check profile is authoritative",
+    "artifact_policy": "Pilot artifact is disposable after final artifact qualification; final wheel/sdist are retained by exact digest"
+  },
+  "limits": [
+    "Linux/Xvfb software Qt and declared public sources only; no GPU, other native platform, clean public installation or human accessibility acceptance",
+    "All older points means every backend-retained point under its unchanged finite history policy, not reconstruction of discarded history",
+    "Mapped 3D/2D, MolSysMT #763, workload/human/#192/#194/version decisions and exact-final-source full/candidate/hosted recovery stay open",
+    "Diagnostic artifacts contain the qualified runtime/frontend epoch; later documentation changes do not claim a complete source/candidate release"
+  ],
+  "raw_evidence_root": "recovered_work/checkpoint_recovery_20261106/interactive-reading-navigation-20261115-1",
+  "retention": "Owner #154/#153/#112; retain final artifacts, original identities and completed/failed receivers until the next affected navigation change or 0.16 candidate review",
+  "observed_local_ui_follow_up": {
+    "owner": "uibcdf/sabueso#154",
+    "observation": "Final narrow-panel native capture is vertically scrolled below its heading after source/history navigation",
+    "interpretation": "Exact native identity/history return is verified; scroll/focus restoration across reading changes is not qualified",
+    "next_action": "Receive and refine scroll/focus restoration without altering native view/history identity"
+  },
+  "installed_imports": {
+    "sabueso": {
+      "module": "/tmp/sabueso-reading-navigation-20261115-eydzp1vo/installed-env/lib/python3.14/site-packages/sabueso/__init__.py",
+      "version_metadata": "0.14.0+300.gc778768.dirty",
+      "direct_url": {
+        "archive_info": {
+          "hash": "sha256=88a7df097921b633b86f8fa35ec46776177cb6c0dbcd45afde0a194f0964a044",
+          "hashes": {
+            "sha256": "88a7df097921b633b86f8fa35ec46776177cb6c0dbcd45afde0a194f0964a044"
+          }
+        },
+        "url": "file:///tmp/sabueso-reading-navigation-20261115-eydzp1vo/artifacts/sabueso-0.14.0%2B300.gc778768.dirty-py3-none-any.whl"
+      }
+    },
+    "molsysviewer": {
+      "module": "/fast_data/home/liliana/repos@uibcdf/molsysviewer/molsysviewer/__init__.py",
+      "version_metadata": "0.24.0+409.g0dcdd6ce",
+      "direct_url": {
+        "dir_info": {
+          "editable": true
+        },
+        "url": "file:///fast_data/home/liliana/repos%40uibcdf/molsysviewer"
+      }
+    },
+    "molsysmt": {
+      "module": "/fast_data/home/liliana/repos@uibcdf/molsysmt/molsysmt/__init__.py",
+      "version_metadata": "0.23.0+904.gff25f1202",
+      "direct_url": {
+        "dir_info": {
+          "editable": true
+        },
+        "url": "file:///fast_data/home/liliana/repos%40uibcdf/molsysmt"
+      }
+    },
+    "optional_runtime_versions": {
+      "PySide6": "6.11.2",
+      "aiohttp": "3.14.5"
+    }
+  },
+  "cleanup": {
+    "owned_temporary_root": "/tmp/sabueso-reading-navigation-20261115-eydzp1vo",
+    "removed": true,
+    "matching_owned_processes_before_removal": [],
+    "verified_retained_files": 100,
+    "disposed": "Isolated environment, copied test/fixture client, duplicate baseline, pilot builds and completed native scratch",
+    "scope": "Shared environment, frontend node_modules, protected originals, sibling checkouts and unrelated temporary paths untouched"
+  },
+  "final_local_gates": {
+    "ruff_format": {
+      "exit_code": 0,
+      "files_already_formatted": 1789
+    },
+    "ruff_check": {
+      "exit_code": 0
+    },
+    "moli_governance": {
+      "exit_code": 0
+    },
+    "git_diff_check": {
+      "exit_code": 0
+    },
+    "node_syntax": {
+      "exit_code": 0,
+      "files": [
+        "devtools/explorer_journey.mjs",
+        "devtools/molecular_explorer_journey.mjs",
+        "devtools/standalone_probe/receive_navigation.mjs"
+      ]
+    },
+    "relative_document_links": {
+      "missing": []
+    },
+    "main_plan": {
+      "done": 20,
+      "partial": 11,
+      "todo": 2
+    },
+    "source_hashes_matched": 8
+  }
+}

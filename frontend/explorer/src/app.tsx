@@ -3,6 +3,7 @@ import {createRoot} from 'react-dom/client';
 import {DockviewReact, themeLight, type DockviewApi, type DockviewReadyEvent, type SerializedDockview} from 'dockview-react';
 import 'dockview-react/dist/styles/dockview.css';
 import './style.css';
+import {ReadingHeading,ReadingTrail} from './reading_navigation';
 
 type PreviewCell={column:string;text:string;state:string;reason:string|null;filterable:boolean;quantity:null|{field:string;unit:string;record:unknown}};
 type Preview={cells:PreviewCell[];cell_count:number;complete:boolean};
@@ -51,8 +52,8 @@ function Reading(){
   return <article className="reading" data-view-ref={panel.view_ref} data-result-ref={panel.result_ref}>
     {panel.deck_context&&<p className="deck-entry" data-testid="deck-entry">Deck entry: occurrence {panel.deck_context.entry_position+1}. Return to Deck keeps your original selection.</p>}
     <div className="eyebrow">{panel.mode==='saved'?'Original saved reading':'Captured knowledge'}</div>
-    {!!panel.trail?.length&&<nav className="reading-trail" aria-label="Reading trail">{panel.trail.slice(-5).map(point=><button key={point.index} disabled={busy} onClick={()=>void act('back_to',{history_index:point.index})}>{point.title}</button>)}</nav>}
-    <h2>{primary?.state==='retained'?primary.text:panel.title}</h2>
+    <ReadingTrail key={'trail-'+panel.view_ref} points={panel.trail??[]} busy={busy} select={index=>void act('back_to',{history_index:index})}/>
+    <ReadingHeading key={'heading-'+panel.view_ref} title={primary?.state==='retained'?primary.text:panel.title}/>
     {panel.association_scope&&<AssociationSummary scope={panel.association_scope}/>}
     {data&&<section className="overview-fields" aria-label="Original entity overview">{data.fields.map(field=><div className="overview-field" key={field.path}>
       <span className="cell-label">{field.label}</span><strong>{field.state.startsWith('retained')?field.text:field.state.replaceAll('_',' ')}</strong><span className="cell-state">{field.state.replaceAll('_',' ')}</span>

@@ -6,6 +6,7 @@ import crypto from 'node:crypto';
 import {spawn} from 'node:child_process';
 import {setTimeout as delay} from 'node:timers/promises';
 import {connectNative} from './standalone_probe/cdp_driver.mjs';
+import {receiveNavigation} from './standalone_probe/receive_navigation.mjs';
 const args=process.argv.slice(2), option=name=>{const index=args.indexOf(name);return index<0?undefined:args[index+1];};
 const output=path.resolve(option('--output')),card=path.resolve(option('--card'));
 fs.mkdirSync(output,{recursive:false});
@@ -136,6 +137,7 @@ try{
     const previous=restored.panel.trail.at(-1);if(!previous)throw new Error('No retained trail to receive after restart');await page.getByRole('button',{name:'Back',exact:true}).click();await page.waitForFunction(ref=>document.querySelector('[data-view-ref]').dataset.viewRef!==ref,retained.ref);result.checks.original_back_available_after_restart=true;
     result.scope+='; controlled owned service loss and explicit saved-workspace application restart, without automatic unsaved recovery';
   }
+  if(args.includes('--receive-navigation'))await receiveNavigation(page,result);
   await page.screenshot({path:path.join(output,'renderer.png')});
   fs.writeFileSync(path.join(output,'capture-request'),'capture');await until(()=>fs.existsSync(path.join(output,'native.png')) && fs.statSync(path.join(output,'native.png')).size>1000,'native composition capture');
   result.checks.actual_native_capture=fs.statSync(path.join(output,'native.png')).size>1000;

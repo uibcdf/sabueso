@@ -71,6 +71,12 @@ adds twelve installed 1TCD cycles and OS process-memory observations. Larger
 public 3WU2/5XNL conversion exposes provider-owned entity-index collisions under
 MolSysMT #763; those cases remain failed, with native Knowledge/failure isolation
 received separately. Scaling and acceptance remain open.
+The [navigation increment](pending_proposals/interactive_reading_navigation_0160.md)
+adds full-title disclosure and all older indexed return points through actual
+keyboard controls. The [functional inventory](pending_proposals/functional_inventory_review_0160.md)
+now starts partial S6.3, linking twenty accepted journeys to actual implementation
+and receiving. Provider/human/scientific-platform/version decisions stay open;
+the updated ledger is 20 done, 11 partial and 2 todo, not a readiness percentage.
 
 ## How the two routes are integrated
 

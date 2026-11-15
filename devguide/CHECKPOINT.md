@@ -7,6 +7,19 @@ This page owns current state; dated receipt histories are linked below.
 
 ## Next product objective: interactive exploration in 0.16.0
 
+The [reading-navigation increment](pending_proposals/interactive_reading_navigation_0160.md)
+now wraps long source headings, preserves complete titles in a keyboard disclosure
+and exposes every older backend-retained history point beyond the five recent
+buttons. Indexed source/view/result/text and parent Back remain exact; no native
+reader, schema, scientific value or provider changes. **210 source application/
+package-data cases and 207 copied installed runtime cases pass** through complete
+published-receptor streams. Final native Qt profiles and exact artifact/original
+compatibility are bound by [the receipt](evidence/interactive_reading_navigation_checkpoint_20261115.json).
+The [twenty-journey inventory](pending_proposals/functional_inventory_review_0160.md)
+starts S6.3 reconciliation, retaining actual mapped-3D/2D, human, workload and
+#192/#194 decisions. S6.3 is now partial, so the main ledger has **20 done,
+11 partial and 2 todo**; this is no version acceptance or release claim.
+
 The [larger-model/longer-session increment](pending_proposals/interactive_model_scale_0160.md)
 receives **twelve cycles and 32 checks over 611.49 s** in the noneditable
 installed 1TCD control, peaking at **3.54 GiB** with about 41 GiB minimum host

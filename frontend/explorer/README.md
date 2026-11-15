@@ -89,6 +89,15 @@ integers, invalidating original quantity seals. Python verifies the original
 Card. Stale application revisions, foreign page items, malformed actions and
 tampered original readings are refused without silently choosing another scope.
 
+Long displayed headings now keep a compact beginning/end and offer Full reading
+title as a native disclosure usable with Enter. All older backend-retained return
+points are available through Earlier readings, beyond the five recent trail
+buttons. Complete original titles remain readable; navigation sends the exact
+history index and never selects a point by its display label. These controls do
+not change original text, scientific values or saved formats. Use the developer
+receivers' `--receive-navigation` to check full-title/older-history keyboard
+operation, exact source/parent return and measured horizontal overflow in Qt.
+
 The Qt window and the Python service have separate lifetimes. One worker
 serializes Knowledge actions; the GUI remains independent. Optional imports go
 through DepDigest. The presently received development floors are PySide6 6.11.2
