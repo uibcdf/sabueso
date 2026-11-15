@@ -10,11 +10,13 @@ import time
 from pathlib import Path
 
 import psutil
+from memory_observation import observe_process_memory
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--output-root", type=Path, required=True)
 parser.add_argument("--cpus", type=int, choices=(1, 2, 4, 8), default=2)
 parser.add_argument("--rss-gib", type=int, choices=(4, 10), default=4)
+parser.add_argument("--memory-details-seconds", type=int, choices=(0, 5, 15), default=0)
 parser.add_argument("name")
 parser.add_argument("--cwd", default=str(Path.cwd()))
 parser.add_argument("--seconds", type=int, default=600)
@@ -61,6 +63,8 @@ command = ["nice", "-n", "10", "taskset", "-c", ",".join(map(str, cpus)), *comma
 tracked = {}
 cpu_observed = {}
 samples = []
+memory_details = []
+last_memory_detail = None
 peak, minimum, stop_reason = 0, psutil.virtual_memory().available, None
 started = last_print = time.monotonic()
 stop_requested = None
@@ -112,6 +116,12 @@ with log_path.open("x", encoding="utf-8") as log:
                 "owned_cpu_s": sum(cpu_observed.values()),
             }
         )
+        if args.memory_details_seconds and (
+            last_memory_detail is None
+            or time.monotonic() - last_memory_detail >= args.memory_details_seconds
+        ):
+            memory_details.append(observe_process_memory(tracked))
+            last_memory_detail = time.monotonic()
         if stop_requested:
             stop_reason = stop_requested
         elif rss > limit:
@@ -187,9 +197,15 @@ report = {
     },
     "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct",
     "samples": samples,
+    "memory_details": memory_details,
 }
 report_path.write_text(json.dumps(report, indent=2) + "\n")
-print(json.dumps({k: v for k, v in report.items() if k != "samples"}), flush=True)
+print(
+    json.dumps(
+        {k: v for k, v in report.items() if k not in {"samples", "memory_details"}}
+    ),
+    flush=True,
+)
 if returncode or stop_reason or survivors:
     print(log_path.read_text(encoding="utf-8")[-6000:], flush=True)
 sys.exit(returncode if returncode else int(bool(stop_reason or survivors)))

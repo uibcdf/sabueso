@@ -129,6 +129,20 @@ short-lived descendants and transient peaks can escape sampling. Summed RSS can
 double-count shared pages; it is not PSS or unique physical memory. Never treat
 these limits as permission to ignore host pressure.
 
+For opt-in Linux process-memory detail, put `--memory-details-seconds 5` or `15`
+before the trial name. The default `0` keeps detailed sampling disabled. Reports
+retain PID/creation-time identities and available RSS/USS/PSS fields, without
+command lines or capabilities. Unavailable fields remain null; an incomplete
+total is never reported as zero or a partial sum. Roles describe reported argv:
+forked Qt workers can retain zygote arguments, so those rows do not establish
+actual renderer-versus-zygote ownership. The Python service combines Knowledge
+and Viewer, and browser samples combine iframe content; neither is provider-heap
+attribution. PSS/USS are non-atomic OS samples and exclude GPU allocations.
+Keep these slower snapshots separate from the 250 ms resource guard and record
+their overhead/availability rather than inferring unique whole-machine RAM.
+`tests/tools/test_owned_process_memory_offline.py` protects missing-field meaning,
+reused-PID exclusion, role disclosure limits and a real current-process sample.
+
 Normal Chromium/WebKit sandbox startup is a separate gate. A sandbox failure must
 be retained as a failed default-profile observation. `--lab-no-sandbox` is an
 explicit option for a trusted local calibration and is never an automatic fallback

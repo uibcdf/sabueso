@@ -9,6 +9,21 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Larger-model diagnosis and longer-session receiving (2026-11-15)
+
+From `b411909`, #154 adds optional owned-process RSS/USS/PSS observations and
+prompt receiver failure on an unavailable provider. The
+[receipt](../evidence/interactive_model_scale_checkpoint_20261115.json) records
+five memory-observer and twelve molecular Python cases through the published
+receptor, four Node controls, twelve installed 1TCD runtime cycles/32 checks and
+six actual Qt failure-isolation checks. Failed 3WU2/5XNL conversion is reported
+under MolSysMT #763, separately from successful rendering. Shipped runtime/SOURCE
+and received wheel bytes remain unchanged; no provider or dependency update is
+adopted. Applicable syntax/format/lint/governance/link checks qualify this
+intermediate `[skip ci]` checkpoint; Git and #154 retain the final SHA. Exact-head
+full/candidate/hosted recovery stays under #154/#153/#112, without a release or
+manual workflow dispatch.
+
 ### Extended molecular lifetime receiving and bounded launch logs (2026-11-15)
 
 From `7d3e914`, #154 extends the molecular developer receiver with explicit bounded

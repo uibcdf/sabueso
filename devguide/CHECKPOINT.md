@@ -7,6 +7,21 @@ This page owns current state; dated receipt histories are linked below.
 
 ## Next product objective: interactive exploration in 0.16.0
 
+The [larger-model/longer-session increment](pending_proposals/interactive_model_scale_0160.md)
+receives **twelve cycles and 32 checks over 611.49 s** in the noneditable
+installed 1TCD control, peaking at **3.54 GiB** with about 41 GiB minimum host
+available. Per-process OS observations locate the largest retained-memory change
+in grouped WebEngine workers without diagnosing a leak. Two larger public
+mmCIF inputs, 3WU2/5XNL, fail direct provider conversion before rendering;
+[MolSysMT #763](https://github.com/uibcdf/molsysmt/issues/763) owns the reproduced
+entity-index collision. An actual Qt 3WU2 failure-isolation journey passes six
+checks, preserving Knowledge/source access. The receiver now detects terminal
+provider failure promptly. Five memory-observer, twelve molecular Python and
+four Node controls pass. [Its receipt](evidence/interactive_model_scale_checkpoint_20261115.json)
+records unchanged shipped runtime/wheel/provider identities, successful and failed
+scopes and remaining limits. Larger-model rendering and S5.5/S6.2 stay partial;
+the main ledger remains **20 done, 10 partial and 3 todo**.
+
 The [extended model observations](pending_proposals/interactive_model_lifetime_0160.md#extended-bounded-observations-2026-11-15)
 now receive two sequential noneditable installed profiles, with **eight runtime
 cycles and 32 checks each**, twelve layout cycles, two 60 s idle windows and

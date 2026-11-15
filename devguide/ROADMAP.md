@@ -66,6 +66,11 @@ now add eight actual runtime cycles per public model with an independent Qt view
 one-minute idle phases and recorded RSS retention. Source/installed runtime bytes
 remain fixed; finite observations do not close general lifetime, scaling or human
 acceptance, or establish a memory-leak verdict.
+The [longer-session/large-input increment](pending_proposals/interactive_model_scale_0160.md)
+adds twelve installed 1TCD cycles and OS process-memory observations. Larger
+public 3WU2/5XNL conversion exposes provider-owned entity-index collisions under
+MolSysMT #763; those cases remain failed, with native Knowledge/failure isolation
+received separately. Scaling and acceptance remain open.
 
 ## How the two routes are integrated
 

@@ -1,0 +1,2325 @@
+{
+  "format": "sabueso.interactive_model_scale_checkpoint@1",
+  "owner": "uibcdf/sabueso#154",
+  "base_commit": "b411909341276c49c6f8b3585be5c10f24c621a8",
+  "provider_issue": "https://github.com/uibcdf/molsysmt/issues/763",
+  "embedding_owner": "https://github.com/uibcdf/molsysviewer/issues/368",
+  "receiving_code_sha256": {
+    "devtools/molecular_explorer_journey.mjs": "bdf700b36b14453b57c46c0e22a51a04c015dc46dac5b4f45033875d1b0d563f",
+    "devtools/standalone_probe/run_bounded.py": "f3cb4617bedbcfb555977d423419acc07efe63a525ba8a0be6f755622de7bf38",
+    "devtools/standalone_probe/memory_observation.py": "d59148a2e5b6384008cd4779dac821f00738ee3fe759958716bd59fe1a70be77",
+    "tests/tools/test_owned_process_memory_offline.py": "8624b738e8a96c97f82ac4d249e59b71151123f939149723729499f8f1c1cca9",
+    "devtools/standalone_probe/owned_process.mjs": "bdba473d91fb8776dba40a6fe3418f2bac8d99c77ddc9ff0b3636c749821a9d6",
+    "devtools/standalone_probe/cdp_driver.mjs": "c7be8ee8287e0dde73931c2f01d28392b1424b34b640df7b8e6a690265e31995"
+  },
+  "provider_cohort": {
+    "sabueso": {
+      "path": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+      "head": "b411909341276c49c6f8b3585be5c10f24c621a8",
+      "status": ""
+    },
+    "molsysviewer": {
+      "path": "/fast_data/home/liliana/repos@uibcdf/molsysviewer",
+      "head": "0dcdd6ce574d3c99483480cb38c16c1e3cc4782f",
+      "status": ""
+    },
+    "molsysmt": {
+      "path": "/fast_data/home/liliana/repos@uibcdf/molsysmt",
+      "head": "6deb0200cd7e384128eded46caaf751a57e65bc6",
+      "status": ""
+    }
+  },
+  "providers_unchanged_through_receiving": true,
+  "installed_imports": {
+    "sabueso": {
+      "path": "/tmp/sabueso-model-scale-20261115-jmf8uyvh/installed-env/lib/python3.14/site-packages/sabueso/__init__.py",
+      "version": "0.14.0+297.g7278d77.dirty",
+      "direct_url": {
+        "archive_info": {
+          "hash": "sha256=f106458434dd30169218085e31d9f3b292427d5c2390da0916bc26f704fda400",
+          "hashes": {
+            "sha256": "f106458434dd30169218085e31d9f3b292427d5c2390da0916bc26f704fda400"
+          }
+        },
+        "url": "file:///fast_data/home/liliana/repos%40uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-workspace-composition-20261115-1/artifacts/sabueso-0.14.0%2B297.g7278d77.dirty-py3-none-any.whl"
+      }
+    },
+    "molsysviewer": {
+      "path": "/fast_data/home/liliana/repos@uibcdf/molsysviewer/molsysviewer/__init__.py",
+      "version": "0.24.0+409.g0dcdd6ce",
+      "direct_url": {
+        "dir_info": {
+          "editable": true
+        },
+        "url": "file:///fast_data/home/liliana/repos%40uibcdf/molsysviewer"
+      }
+    },
+    "molsysmt": {
+      "path": "/fast_data/home/liliana/repos@uibcdf/molsysmt/molsysmt/__init__.py",
+      "version": "0.23.0+904.gff25f1202",
+      "direct_url": {
+        "dir_info": {
+          "editable": true
+        },
+        "url": "file:///fast_data/home/liliana/repos%40uibcdf/molsysmt"
+      }
+    }
+  },
+  "reused_runtime": {
+    "prior_receipt": "devguide/evidence/interactive_model_stability_checkpoint_20261115.json",
+    "inspected_unchanged_runtime": {
+      "sabueso/explorer/_qt.py": "7b85fe1d2c8c30fc2254055dc4cd041886f1be65a3b9cea7eda775ff0df6b74f",
+      "sabueso/explorer/_session.py": "521687245ec5386574817c5ebfaf661347dd3abdc71722f0769f369539296b30",
+      "sabueso/explorer/_molecular.py": "a9ded2e47fad16cc83af3f5f78e5463334357e84f82d4c4da0dc24692f607c72",
+      "sabueso/explorer/_service.py": "b900a45373ba86d1961a86872968c0adee376f9c0040ff6f05d0793c3972704b",
+      "sabueso/explorer/_deck_session.py": "7b65196019d0f2a04569fac255e5f3dd6b20c3a94b25209f6d3d86c10737003f",
+      "sabueso/explorer/_source_choices.py": "208d0d02395d4b6eb55d2645ff469cb7e13099a8a4a487b2695ea39b4657e559",
+      "sabueso/explorer/_presentation.py": "2b0434795de70337eedfe4636dd6a6e2dd9d58fce82d50ffd3ca3c1f0b309c95",
+      "sabueso/explorer/__init__.py": "d9f38870c8c8cb9a246e19c53547451343ff05bd8724b52d11b16ea805f07062",
+      "sabueso/explorer/_association_presentation.py": "590c8f44e26ff59af5509d82f1d7278aa9d0a31dd4fd1fc812904c36626bd034",
+      "sabueso/explorer/_record_queries.py": "c3c214d566af6cdbd324bf7fc06cdcb4894f264adb9c67c830a0c09807433e2a",
+      "sabueso/explorer/_layout.py": "83ff00cc24e9d0fe22210ffa61908fa45d1982774ac0097bd554d26f286ad072",
+      "sabueso/explorer/__main__.py": "13e6fc8829e6dd3b15c8523dac1b21a6dcdcd0ec4f3119c417f61c9a1d412891",
+      "sabueso/explorer/_workspace.py": "84f3c23b3b4cb0d7216e8b763b11a2343236a22abef743687c45816813d61fbd",
+      "sabueso/explorer/_queries.py": "a56330d66e7476b4d8e034884c1bf2ec9c763867701c605259ecba3d31e8bf11",
+      "sabueso/explorer/_resolution.py": "7a165ba64694d64f9cda93a12315b77533b1f2e51d7302b68baaf36df6cc9ac9",
+      "sabueso/explorer/_assets/app.js": "9c3ebfc81824ebe66fc36b2643751e1d6021eeb59dce001501858536eafc42af",
+      "sabueso/explorer/_assets/app.css": "80eb9cd196035397a1b68ba54968c6130dd012f1975430cf840da00cb68517b0",
+      "sabueso/explorer/_assets/notices.txt": "a238c0f2172b6b9507e352ce97d0065b73c0abe2b076493e6553789f675e0b15",
+      "sabueso/explorer/_assets/index.html": "be4705852899de9486e6c01fb0d92ad99301024833c9c7b50b545a3827cc785d",
+      "sabueso/core/card_exploration_storage.py": "ded6cfc512de97a667278b023d48f9c4e20ff66914e46879a968622fbdd66bd7",
+      "sabueso/core/deck_exploration_storage.py": "69eafde545d4f1fd84b9660515f636d9d0a146b0a86400c8c6600acad0b50c71",
+      "sabueso/core/_variant_history_v1/SOURCE.json": "b55ee3cd34ef6f7efdca561ce4b06fbacb8ea4f3ca67f7bb2d362cb82f3a6998",
+      "sabueso/core/_sequence_change_history_v1/SOURCE.json": "c7a43ebf63201757abfede8ec0eee1820199ff53bfbf8fd93e4506372aa7c8c0",
+      "sabueso/core/_molecule_activity_history_v1/SOURCE.json": "14d59d034aa795516bc3258f11f8a4f8caaa1b5b38b3c30bfb273f8cfddde797",
+      "sabueso/core/_protein_context_history_v1/SOURCE.json": "de78272c691573e26e04c6028cd7a375616c7c2e51d0e43d7623462bbcf40823",
+      "sabueso/core/_disease_association_history_v1/SOURCE.json": "a927a304b67df6144995c9d5f21e44ff4a34a98e8023221e47361f3dfe53feef",
+      "sabueso/core/_knowledge_comparison_history_v1/SOURCE.json": "cf1f610bff358f89a432484952ddeec7eec3d661615035ead720ea7eb202dd8a",
+      "sabueso/core/_clinical_history_v1/SOURCE.json": "00688c256d6aee51ebc97d752fdd641f7317c5d399ae8dd84db0ee4dc7e60650"
+    },
+    "wheel": {
+      "name": "sabueso-0.14.0+297.g7278d77.dirty-py3-none-any.whl",
+      "sha256": "f106458434dd30169218085e31d9f3b292427d5c2390da0916bc26f704fda400",
+      "path": "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-workspace-composition-20261115-1/artifacts/sabueso-0.14.0+297.g7278d77.dirty-py3-none-any.whl"
+    }
+  },
+  "python_gates": [
+    {
+      "name": "memory-controls-final",
+      "complete": true,
+      "integrity_valid": true,
+      "counts": {
+        "collected": 5,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 5,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 5,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "receptor": "1.2.0",
+      "artifact_sha256": "e78464dcc15f7f39684c4dfcb4628155d83dcf14b0ed05d1d489c04f0957d7de",
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1",
+          "python",
+          "-m",
+          "pytest",
+          "tests/tools/test_owned_process_memory_offline.py",
+          "-m",
+          "not online",
+          "--receptor=llm",
+          "--receptor-events=/tmp/sabueso-model-scale-20261115-jmf8uyvh/memory-controls-final.jsonl"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "returncode": 0,
+        "elapsed_s": 0.789,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 53420032,
+        "minimum_host_available_bytes": 48044457984,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      }
+    },
+    {
+      "name": "molecular-regression",
+      "complete": true,
+      "integrity_valid": true,
+      "counts": {
+        "collected": 12,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 12,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 12,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "receptor": "1.2.0",
+      "artifact_sha256": "4678637ad293d8549f66533879ed19df170323322f7413e1cf45f9a63b7cf071",
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1",
+          "python",
+          "-m",
+          "pytest",
+          "tests/explorer/test_molecular_lifetime_offline.py",
+          "tests/explorer/test_molecular_admission_offline.py",
+          "-m",
+          "not online",
+          "--receptor=llm",
+          "--receptor-events=/tmp/sabueso-model-scale-20261115-jmf8uyvh/molecular-regression.jsonl"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "returncode": 0,
+        "elapsed_s": 1.327,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 94183424,
+        "minimum_host_available_bytes": 46816342016,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      }
+    }
+  ],
+  "node_controls": {
+    "passed": 4,
+    "failed": 0,
+    "resources": {
+      "owner": "uibcdf/sabueso#154",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0,1",
+        "node",
+        "--test",
+        "devtools/standalone_probe/test_owned_process.mjs"
+      ],
+      "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+      "returncode": 0,
+      "elapsed_s": 1.331,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 187326464,
+      "minimum_host_available_bytes": 46817509376,
+      "survivors_after_command": [],
+      "limits": {
+        "owned_rss_bytes": 4294967296,
+        "host_available_bytes": 17179869184,
+        "cpu_affinity": [
+          0,
+          1
+        ],
+        "native_threads": 1
+      },
+      "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+    },
+    "log_sha256": "575ac9c66ee16676db761f2af7cc8a67c3adfcafd0ee0b5aa2427c2f516acdbd"
+  },
+  "larger_inputs": [
+    {
+      "pdb": "3WU2",
+      "url": "https://files.rcsb.org/download/3WU2.cif.gz",
+      "entry_url": "https://data.rcsb.org/rest/v1/core/entry/3WU2",
+      "retrieved_utc": "2026-11-15T17:59:09.484018+00:00",
+      "encoded_bytes": 1403413,
+      "decoded_bytes": 6185581,
+      "sha256": "308668f3ad989ce025b310e9693e47668df6504c8b0809151c383f23f29989b6",
+      "declared_deposited_atoms": 54036,
+      "meaning": "Unmodified deposited public coordinates; no biological-assembly expansion or Card correspondence; development input, not new frozen fixture"
+    },
+    {
+      "pdb": "5XNL",
+      "url": "https://files.rcsb.org/download/5XNL.cif.gz",
+      "entry_url": "https://data.rcsb.org/rest/v1/core/entry/5XNL",
+      "retrieved_utc": "2026-11-15T17:59:10.872712+00:00",
+      "encoded_bytes": 2529055,
+      "decoded_bytes": 11380481,
+      "sha256": "c8e32cae7b6b6950784560b49be64f6c0e343de88183ae235ddde602777c357e",
+      "declared_deposited_atoms": 98986,
+      "meaning": "Unmodified deposited public coordinates; no biological-assembly expansion or Card correspondence; development input, not new frozen fixture"
+    }
+  ],
+  "provider_failures": [
+    {
+      "owner": "uibcdf/sabueso#154",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0,1",
+        "python",
+        "/tmp/sabueso-model-scale-20261115-jmf8uyvh/load_repro.py",
+        "/tmp/sabueso-model-scale-20261115-jmf8uyvh/inputs/3WU2.cif.gz"
+      ],
+      "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+      "returncode": 1,
+      "elapsed_s": 6.218,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 406589440,
+      "minimum_host_available_bytes": 47298048000,
+      "survivors_after_command": [],
+      "limits": {
+        "owned_rss_bytes": 4294967296,
+        "host_available_bytes": 17179869184,
+        "cpu_affinity": [
+          0,
+          1
+        ],
+        "native_threads": 1
+      },
+      "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+    },
+    {
+      "owner": "uibcdf/sabueso#154",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0,1",
+        "python",
+        "/tmp/sabueso-model-scale-20261115-jmf8uyvh/convert_repro.py",
+        "/tmp/sabueso-model-scale-20261115-jmf8uyvh/inputs/3WU2.cif.gz"
+      ],
+      "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+      "returncode": 1,
+      "elapsed_s": 3.517,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 231538688,
+      "minimum_host_available_bytes": 47290109952,
+      "survivors_after_command": [],
+      "limits": {
+        "owned_rss_bytes": 4294967296,
+        "host_available_bytes": 17179869184,
+        "cpu_affinity": [
+          0,
+          1
+        ],
+        "native_threads": 1
+      },
+      "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+    },
+    {
+      "owner": "uibcdf/sabueso#154",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0,1",
+        "python",
+        "/tmp/sabueso-model-scale-20261115-jmf8uyvh/convert_repro.py",
+        "/tmp/sabueso-model-scale-20261115-jmf8uyvh/inputs/5XNL.cif.gz"
+      ],
+      "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+      "returncode": 1,
+      "elapsed_s": 5.145,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 289947648,
+      "minimum_host_available_bytes": 46832689152,
+      "survivors_after_command": [],
+      "limits": {
+        "owned_rss_bytes": 4294967296,
+        "host_available_bytes": 17179869184,
+        "cpu_affinity": [
+          0,
+          1
+        ],
+        "native_threads": 1
+      },
+      "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+    }
+  ],
+  "entity_index_replay": [
+    {
+      "pdb": "3WU2",
+      "mapping": {
+        "1": 0,
+        "2": 1,
+        "3": 2,
+        "4": 3,
+        "5": 4,
+        "6": 5,
+        "7": 6,
+        "8": 7,
+        "9": 8,
+        "10": 9,
+        "11": 10,
+        "12": 11,
+        "13": 12,
+        "14": 13,
+        "15": 14,
+        "16": 15,
+        "17": 16,
+        "18": 17,
+        "19": 18,
+        "20": 19,
+        "21": 20,
+        "22": 21,
+        "23": 22,
+        "24": 23,
+        "25": 23,
+        "26": 24,
+        "27": 25,
+        "28": 26,
+        "29": 27,
+        "30": 25,
+        "31": 28,
+        "32": 29,
+        "33": 26,
+        "34": 24,
+        "35": 29,
+        "36": 25,
+        "37": 28,
+        "38": 30,
+        "39": 28,
+        "40": 30,
+        "41": 28
+      },
+      "collisions": [
+        {
+          "atom_row": 41552,
+          "new_entity_id": "25",
+          "assigned_index": 23,
+          "earlier_entity_ids": [
+            "24"
+          ]
+        },
+        {
+          "atom_row": 41871,
+          "new_entity_id": "30",
+          "assigned_index": 25,
+          "earlier_entity_ids": [
+            "27"
+          ]
+        },
+        {
+          "atom_row": 43229,
+          "new_entity_id": "33",
+          "assigned_index": 26,
+          "earlier_entity_ids": [
+            "28"
+          ]
+        },
+        {
+          "atom_row": 44341,
+          "new_entity_id": "34",
+          "assigned_index": 24,
+          "earlier_entity_ids": [
+            "26"
+          ]
+        },
+        {
+          "atom_row": 44703,
+          "new_entity_id": "35",
+          "assigned_index": 29,
+          "earlier_entity_ids": [
+            "32"
+          ]
+        },
+        {
+          "atom_row": 45030,
+          "new_entity_id": "36",
+          "assigned_index": 25,
+          "earlier_entity_ids": [
+            "27",
+            "30"
+          ]
+        },
+        {
+          "atom_row": 45382,
+          "new_entity_id": "37",
+          "assigned_index": 28,
+          "earlier_entity_ids": [
+            "31"
+          ]
+        },
+        {
+          "atom_row": 45598,
+          "new_entity_id": "39",
+          "assigned_index": 28,
+          "earlier_entity_ids": [
+            "31",
+            "37"
+          ]
+        },
+        {
+          "atom_row": 45939,
+          "new_entity_id": "40",
+          "assigned_index": 30,
+          "earlier_entity_ids": [
+            "38"
+          ]
+        },
+        {
+          "atom_row": 51053,
+          "new_entity_id": "41",
+          "assigned_index": 28,
+          "earlier_entity_ids": [
+            "31",
+            "37",
+            "39"
+          ]
+        }
+      ],
+      "unique_entity_ids": 41,
+      "unique_assigned_indices": 31
+    },
+    {
+      "pdb": "5XNL",
+      "mapping": {
+        "1": 0,
+        "2": 1,
+        "3": 2,
+        "4": 3,
+        "5": 4,
+        "6": 5,
+        "7": 6,
+        "8": 7,
+        "9": 8,
+        "10": 1,
+        "11": 2,
+        "12": 3,
+        "13": 4,
+        "14": 5,
+        "15": 6,
+        "16": 1,
+        "17": 2,
+        "18": 3,
+        "19": 4,
+        "20": 5,
+        "21": 6,
+        "22": 7,
+        "23": 8,
+        "24": 1,
+        "25": 2,
+        "26": 3,
+        "27": 4,
+        "28": 5,
+        "29": 6,
+        "30": 7,
+        "31": 6,
+        "32": 8,
+        "33": 9,
+        "34": 10,
+        "35": 4,
+        "36": 7,
+        "37": 8,
+        "38": 9,
+        "39": 8,
+        "40": 8,
+        "41": 9,
+        "42": 9
+      },
+      "collisions": [
+        {
+          "atom_row": 21867,
+          "new_entity_id": "10",
+          "assigned_index": 1,
+          "earlier_entity_ids": [
+            "2"
+          ]
+        },
+        {
+          "atom_row": 22319,
+          "new_entity_id": "11",
+          "assigned_index": 2,
+          "earlier_entity_ids": [
+            "3"
+          ]
+        },
+        {
+          "atom_row": 22597,
+          "new_entity_id": "12",
+          "assigned_index": 3,
+          "earlier_entity_ids": [
+            "4"
+          ]
+        },
+        {
+          "atom_row": 22853,
+          "new_entity_id": "13",
+          "assigned_index": 4,
+          "earlier_entity_ids": [
+            "5"
+          ]
+        },
+        {
+          "atom_row": 23159,
+          "new_entity_id": "14",
+          "assigned_index": 5,
+          "earlier_entity_ids": [
+            "6"
+          ]
+        },
+        {
+          "atom_row": 23470,
+          "new_entity_id": "15",
+          "assigned_index": 6,
+          "earlier_entity_ids": [
+            "7"
+          ]
+        },
+        {
+          "atom_row": 25394,
+          "new_entity_id": "16",
+          "assigned_index": 1,
+          "earlier_entity_ids": [
+            "2",
+            "10"
+          ]
+        },
+        {
+          "atom_row": 27264,
+          "new_entity_id": "17",
+          "assigned_index": 2,
+          "earlier_entity_ids": [
+            "3",
+            "11"
+          ]
+        },
+        {
+          "atom_row": 28698,
+          "new_entity_id": "18",
+          "assigned_index": 3,
+          "earlier_entity_ids": [
+            "4",
+            "12"
+          ]
+        },
+        {
+          "atom_row": 29732,
+          "new_entity_id": "19",
+          "assigned_index": 4,
+          "earlier_entity_ids": [
+            "5",
+            "13"
+          ]
+        },
+        {
+          "atom_row": 31567,
+          "new_entity_id": "20",
+          "assigned_index": 5,
+          "earlier_entity_ids": [
+            "6",
+            "14"
+          ]
+        },
+        {
+          "atom_row": 33256,
+          "new_entity_id": "21",
+          "assigned_index": 6,
+          "earlier_entity_ids": [
+            "7",
+            "15"
+          ]
+        },
+        {
+          "atom_row": 33517,
+          "new_entity_id": "22",
+          "assigned_index": 7,
+          "earlier_entity_ids": [
+            "8"
+          ]
+        },
+        {
+          "atom_row": 33936,
+          "new_entity_id": "23",
+          "assigned_index": 8,
+          "earlier_entity_ids": [
+            "9"
+          ]
+        },
+        {
+          "atom_row": 35880,
+          "new_entity_id": "24",
+          "assigned_index": 1,
+          "earlier_entity_ids": [
+            "2",
+            "10",
+            "16"
+          ]
+        },
+        {
+          "atom_row": 72688,
+          "new_entity_id": "25",
+          "assigned_index": 2,
+          "earlier_entity_ids": [
+            "3",
+            "11",
+            "17"
+          ]
+        },
+        {
+          "atom_row": 72734,
+          "new_entity_id": "26",
+          "assigned_index": 3,
+          "earlier_entity_ids": [
+            "4",
+            "12",
+            "18"
+          ]
+        },
+        {
+          "atom_row": 73409,
+          "new_entity_id": "27",
+          "assigned_index": 4,
+          "earlier_entity_ids": [
+            "5",
+            "13",
+            "19"
+          ]
+        },
+        {
+          "atom_row": 73493,
+          "new_entity_id": "28",
+          "assigned_index": 5,
+          "earlier_entity_ids": [
+            "6",
+            "14",
+            "20"
+          ]
+        },
+        {
+          "atom_row": 73537,
+          "new_entity_id": "29",
+          "assigned_index": 6,
+          "earlier_entity_ids": [
+            "7",
+            "15",
+            "21"
+          ]
+        },
+        {
+          "atom_row": 73581,
+          "new_entity_id": "30",
+          "assigned_index": 7,
+          "earlier_entity_ids": [
+            "8",
+            "22"
+          ]
+        },
+        {
+          "atom_row": 76074,
+          "new_entity_id": "31",
+          "assigned_index": 6,
+          "earlier_entity_ids": [
+            "7",
+            "15",
+            "21",
+            "29"
+          ]
+        },
+        {
+          "atom_row": 76135,
+          "new_entity_id": "32",
+          "assigned_index": 8,
+          "earlier_entity_ids": [
+            "9",
+            "23"
+          ]
+        },
+        {
+          "atom_row": 76328,
+          "new_entity_id": "35",
+          "assigned_index": 4,
+          "earlier_entity_ids": [
+            "5",
+            "13",
+            "19",
+            "27"
+          ]
+        },
+        {
+          "atom_row": 76556,
+          "new_entity_id": "36",
+          "assigned_index": 7,
+          "earlier_entity_ids": [
+            "8",
+            "22",
+            "30"
+          ]
+        },
+        {
+          "atom_row": 76606,
+          "new_entity_id": "37",
+          "assigned_index": 8,
+          "earlier_entity_ids": [
+            "9",
+            "23",
+            "32"
+          ]
+        },
+        {
+          "atom_row": 76654,
+          "new_entity_id": "38",
+          "assigned_index": 9,
+          "earlier_entity_ids": [
+            "33"
+          ]
+        },
+        {
+          "atom_row": 78068,
+          "new_entity_id": "39",
+          "assigned_index": 8,
+          "earlier_entity_ids": [
+            "9",
+            "23",
+            "32",
+            "37"
+          ]
+        },
+        {
+          "atom_row": 79658,
+          "new_entity_id": "40",
+          "assigned_index": 8,
+          "earlier_entity_ids": [
+            "9",
+            "23",
+            "32",
+            "37",
+            "39"
+          ]
+        },
+        {
+          "atom_row": 80071,
+          "new_entity_id": "41",
+          "assigned_index": 9,
+          "earlier_entity_ids": [
+            "33",
+            "38"
+          ]
+        },
+        {
+          "atom_row": 97910,
+          "new_entity_id": "42",
+          "assigned_index": 9,
+          "earlier_entity_ids": [
+            "33",
+            "38",
+            "41"
+          ]
+        }
+      ],
+      "unique_entity_ids": 42,
+      "unique_assigned_indices": 11
+    }
+  ],
+  "native_trials": [
+    {
+      "name": "installed-3wu2-pilot",
+      "state": "failed",
+      "checks": {},
+      "parameters": {
+        "idle_seconds": 5,
+        "layout_cycles": 3,
+        "runtime_cycles": 3,
+        "runtime_settle_seconds": 0
+      },
+      "errors": [
+        "Error: Timed out: provider renderer and structure acknowledgments"
+      ],
+      "input_sha256": null,
+      "runtime_cycles": [],
+      "graphics": null,
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1,2,3",
+          "node",
+          "devtools/molecular_explorer_journey.mjs",
+          "--output",
+          "/tmp/sabueso-model-scale-20261115-jmf8uyvh/installed-3wu2-pilot-output",
+          "--python",
+          "/tmp/sabueso-model-scale-20261115-jmf8uyvh/installed-env/bin/python",
+          "--application-root",
+          "/tmp/sabueso-model-scale-20261115-jmf8uyvh/client",
+          "--card",
+          "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/protein-card.json",
+          "--model",
+          "/tmp/sabueso-model-scale-20261115-jmf8uyvh/inputs/3WU2.cif.gz",
+          "--receive-layout",
+          "--layout-cycles",
+          "3",
+          "--observe-idle-seconds",
+          "5"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "returncode": 1,
+        "elapsed_s": 81.328,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 1282117632,
+        "minimum_host_available_bytes": 46675640320,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      },
+      "receipt_sha256": "5bc9c1797181b3e75a07e77f42557e544d07a956e5faa492603454540fa9fd5a",
+      "retained_model_or_launcher_directories": []
+    },
+    {
+      "name": "installed-3wu2-early-refusal",
+      "state": "failed",
+      "checks": {},
+      "parameters": {
+        "idle_seconds": 5,
+        "layout_cycles": 3,
+        "runtime_cycles": 3,
+        "runtime_settle_seconds": 0
+      },
+      "errors": [
+        "Error: Molecular runtime unavailable during provider renderer and structure acknowledgments: 31"
+      ],
+      "input_sha256": null,
+      "runtime_cycles": [],
+      "graphics": null,
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1,2,3",
+          "node",
+          "devtools/molecular_explorer_journey.mjs",
+          "--output",
+          "/tmp/sabueso-model-scale-20261115-jmf8uyvh/installed-3wu2-early-refusal-output",
+          "--python",
+          "/tmp/sabueso-model-scale-20261115-jmf8uyvh/installed-env/bin/python",
+          "--application-root",
+          "/tmp/sabueso-model-scale-20261115-jmf8uyvh/client",
+          "--card",
+          "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/protein-card.json",
+          "--model",
+          "/tmp/sabueso-model-scale-20261115-jmf8uyvh/inputs/3WU2.cif.gz",
+          "--receive-layout",
+          "--layout-cycles",
+          "3",
+          "--observe-idle-seconds",
+          "5"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "returncode": 1,
+        "elapsed_s": 21.285,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 1252990976,
+        "minimum_host_available_bytes": 47848026112,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      },
+      "receipt_sha256": "d6806ec7bf411fa0aa3c7c90df749849aa831a73b8660d7422c79e9d9b6dc51a",
+      "retained_model_or_launcher_directories": []
+    },
+    {
+      "name": "installed-1tcd-long",
+      "state": "passed",
+      "checks": {
+        "real_canvas_and_renderer": true,
+        "actual_floating_group_observed": true,
+        "reset_returns_to_main_grid": true,
+        "same_live_viewport": true,
+        "camera_survives_layout": true,
+        "selection_survives_layout": true,
+        "no_inferred_correspondence": true,
+        "reading_survives_layout": true,
+        "molecular_presentation_saved_without_scene": true,
+        "saving_layout_keeps_live_model": true,
+        "caller_mutation_is_separate": true,
+        "closed_runtime_releases_view": true,
+        "closed_origin_is_not_listening": true,
+        "independent_live_view_survives_close": true,
+        "closed_view_keeps_reading": true,
+        "reload_does_not_open_model": true,
+        "closed_reading_reload_keeps_exact_context": true,
+        "occupied_origin_is_visible": true,
+        "failed_reopen_preserves_reading": true,
+        "reopened_layout_keeps_reading_space": true,
+        "old_runtime_capability_is_refused": true,
+        "new_runtime_retains_initial_copy": true,
+        "new_runtime_is_explicit": true,
+        "new_runtime_actually_draws": true,
+        "knowledge_service_usable_after_reopen": true,
+        "requested_runtime_cycles_completed": true,
+        "independent_camera_and_selection_retained": true,
+        "caller_was_not_reread": true,
+        "original_source_remains_readable": true,
+        "native_capture": true,
+        "original_inputs_unchanged": true,
+        "no_script_errors": true
+      },
+      "parameters": {
+        "idle_seconds": 120,
+        "layout_cycles": 20,
+        "runtime_cycles": 12,
+        "runtime_settle_seconds": 10
+      },
+      "errors": [],
+      "input_sha256": {
+        "card": "8c35824c761d38be0c4c586336b04c0ce0670367cdb58fa0a9776dbd1d192eeb",
+        "model": "6f15f9412a97e38ffb01e0aec8ffa6016ac5d1ddf50042e0129583caf65be125"
+      },
+      "runtime_cycles": [
+        {
+          "cycle": 1,
+          "closed_listener_retired": true,
+          "independent_view_retained": true,
+          "new_runtime_draws": true,
+          "initial_copy_binding": true,
+          "stale_capability_refused": true,
+          "timings": {
+            "close_elapsed_s": 0.15030771600001025,
+            "reopen_to_draw_elapsed_s": 4.109245777000033,
+            "settled_knowledge_response_s": 0.024
+          }
+        },
+        {
+          "cycle": 2,
+          "closed_listener_retired": true,
+          "independent_view_retained": true,
+          "new_runtime_draws": true,
+          "initial_copy_binding": true,
+          "stale_capability_refused": true,
+          "timings": {
+            "close_elapsed_s": 0.11883270899998025,
+            "reopen_to_draw_elapsed_s": 4.033244196999993,
+            "settled_knowledge_response_s": 0.01960000002384186
+          }
+        },
+        {
+          "cycle": 3,
+          "closed_listener_retired": true,
+          "independent_view_retained": true,
+          "new_runtime_draws": true,
+          "initial_copy_binding": true,
+          "stale_capability_refused": true,
+          "timings": {
+            "close_elapsed_s": 0.07442360099998768,
+            "reopen_to_draw_elapsed_s": 4.656558189000003,
+            "settled_knowledge_response_s": 0.01859999990463257
+          }
+        },
+        {
+          "cycle": 4,
+          "closed_listener_retired": true,
+          "independent_view_retained": true,
+          "new_runtime_draws": true,
+          "initial_copy_binding": true,
+          "stale_capability_refused": true,
+          "timings": {
+            "close_elapsed_s": 0.08818848599999911,
+            "reopen_to_draw_elapsed_s": 4.51212805900001,
+            "settled_knowledge_response_s": 0.017799999952316285
+          }
+        },
+        {
+          "cycle": 5,
+          "closed_listener_retired": true,
+          "independent_view_retained": true,
+          "new_runtime_draws": true,
+          "initial_copy_binding": true,
+          "stale_capability_refused": true,
+          "timings": {
+            "close_elapsed_s": 0.08421724999998696,
+            "reopen_to_draw_elapsed_s": 4.081427396000014,
+            "settled_knowledge_response_s": 0.0195
+          }
+        },
+        {
+          "cycle": 6,
+          "closed_listener_retired": true,
+          "independent_view_retained": true,
+          "new_runtime_draws": true,
+          "initial_copy_binding": true,
+          "stale_capability_refused": true,
+          "timings": {
+            "close_elapsed_s": 0.12094988299999386,
+            "reopen_to_draw_elapsed_s": 4.451696973000013,
+            "settled_knowledge_response_s": 0.017200000047683715
+          }
+        },
+        {
+          "cycle": 7,
+          "closed_listener_retired": true,
+          "independent_view_retained": true,
+          "new_runtime_draws": true,
+          "initial_copy_binding": true,
+          "stale_capability_refused": true,
+          "timings": {
+            "close_elapsed_s": 0.12028299799998057,
+            "reopen_to_draw_elapsed_s": 3.8766237480000125,
+            "settled_knowledge_response_s": 0.017700000047683715
+          }
+        },
+        {
+          "cycle": 8,
+          "closed_listener_retired": true,
+          "independent_view_retained": true,
+          "new_runtime_draws": true,
+          "initial_copy_binding": true,
+          "stale_capability_refused": true,
+          "timings": {
+            "close_elapsed_s": 0.12053427299996838,
+            "reopen_to_draw_elapsed_s": 4.890997053999977,
+            "settled_knowledge_response_s": 0.018100000023841857
+          }
+        },
+        {
+          "cycle": 9,
+          "closed_listener_retired": true,
+          "independent_view_retained": true,
+          "new_runtime_draws": true,
+          "initial_copy_binding": true,
+          "stale_capability_refused": true,
+          "timings": {
+            "close_elapsed_s": 0.07162685699999566,
+            "reopen_to_draw_elapsed_s": 3.8590610660000237,
+            "settled_knowledge_response_s": 0.018100000023841857
+          }
+        },
+        {
+          "cycle": 10,
+          "closed_listener_retired": true,
+          "independent_view_retained": true,
+          "new_runtime_draws": true,
+          "initial_copy_binding": true,
+          "stale_capability_refused": true,
+          "timings": {
+            "close_elapsed_s": 0.12601799500000196,
+            "reopen_to_draw_elapsed_s": 4.74081310499995,
+            "settled_knowledge_response_s": 0.017799999952316285
+          }
+        },
+        {
+          "cycle": 11,
+          "closed_listener_retired": true,
+          "independent_view_retained": true,
+          "new_runtime_draws": true,
+          "initial_copy_binding": true,
+          "stale_capability_refused": true,
+          "timings": {
+            "close_elapsed_s": 0.1141677170000039,
+            "reopen_to_draw_elapsed_s": 4.831104267999995,
+            "settled_knowledge_response_s": 0.017799999952316285
+          }
+        },
+        {
+          "cycle": 12,
+          "closed_listener_retired": true,
+          "independent_view_retained": true,
+          "new_runtime_draws": true,
+          "initial_copy_binding": true,
+          "stale_capability_refused": true,
+          "timings": {
+            "close_elapsed_s": 0.12010380599997006,
+            "reopen_to_draw_elapsed_s": 4.360917482999969,
+            "settled_knowledge_response_s": 0.016800000071525573
+          }
+        }
+      ],
+      "graphics": {
+        "webgl": true,
+        "width": 470,
+        "height": 553,
+        "renderer": "ANGLE (Mesa, llvmpipe (LLVM 21.1.8 256 bits), OpenGL 4.5)",
+        "error": 0
+      },
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1,2,3",
+          "node",
+          "devtools/molecular_explorer_journey.mjs",
+          "--output",
+          "/tmp/sabueso-model-scale-20261115-jmf8uyvh/installed-1tcd-long-output",
+          "--python",
+          "/tmp/sabueso-model-scale-20261115-jmf8uyvh/installed-env/bin/python",
+          "--application-root",
+          "/tmp/sabueso-model-scale-20261115-jmf8uyvh/client",
+          "--card",
+          "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/protein-card.json",
+          "--model",
+          "/fast_data/home/liliana/repos@uibcdf/sabueso/temp_data/rcsb_structural_context/coordinates/1tcd.bcif.gz",
+          "--receive-layout",
+          "--receive-lifetime",
+          "--runtime-cycles",
+          "12",
+          "--runtime-settle-seconds",
+          "10",
+          "--layout-cycles",
+          "20",
+          "--observe-idle-seconds",
+          "120"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "returncode": 0,
+        "elapsed_s": 611.493,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 3805192192,
+        "minimum_host_available_bytes": 44019208192,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 10737418240,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      },
+      "receipt_sha256": "dc59e91092e9fed5c3460f82451390d4d704d757696150e52d9a9e0555f05162",
+      "retained_model_or_launcher_directories": []
+    },
+    {
+      "name": "installed-3wu2-unavailable",
+      "state": "passed",
+      "checks": {
+        "failed_model_keeps_knowledge": true,
+        "failure_is_visible": true,
+        "original_source_remains_readable": true,
+        "native_capture": true,
+        "original_inputs_unchanged": true,
+        "no_script_errors": true
+      },
+      "parameters": {
+        "idle_seconds": 0,
+        "layout_cycles": 3,
+        "runtime_cycles": 3,
+        "runtime_settle_seconds": 0
+      },
+      "errors": [],
+      "input_sha256": {
+        "card": "8c35824c761d38be0c4c586336b04c0ce0670367cdb58fa0a9776dbd1d192eeb",
+        "model": "308668f3ad989ce025b310e9693e47668df6504c8b0809151c383f23f29989b6"
+      },
+      "runtime_cycles": [],
+      "graphics": null,
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1,2,3",
+          "node",
+          "devtools/molecular_explorer_journey.mjs",
+          "--output",
+          "/tmp/sabueso-model-scale-20261115-jmf8uyvh/installed-3wu2-unavailable-output",
+          "--python",
+          "/tmp/sabueso-model-scale-20261115-jmf8uyvh/installed-env/bin/python",
+          "--application-root",
+          "/tmp/sabueso-model-scale-20261115-jmf8uyvh/client",
+          "--card",
+          "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/protein-card.json",
+          "--model",
+          "/tmp/sabueso-model-scale-20261115-jmf8uyvh/inputs/3WU2.cif.gz",
+          "--unavailable"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "returncode": 0,
+        "elapsed_s": 21.786,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 1270185984,
+        "minimum_host_available_bytes": 47063060480,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      },
+      "receipt_sha256": "615437b1ff299373849148a0aa34a42758ecf6ee767d0db924f69d44a7da94c6",
+      "retained_model_or_launcher_directories": []
+    }
+  ],
+  "long_session_phase_analysis": {
+    "scope": "Complete snapshots only inside each phase; counts and missingness retained; reported-argv families do not isolate provider heaps or physical RAM",
+    "raw_analysis_sha256": "454010c04a4c6230ecdfecaedfd29d7fa4a7d44807de7d15afbacb16187031c8",
+    "phase_summaries": [
+      {
+        "name": "idle_before_interaction",
+        "start_wall_s": 1794766092.769,
+        "end_wall_s": 1794766212.807,
+        "scope": "Original product/provider polling retained; no deliberate interaction or animation; software profile",
+        "rss_sample_count": 433,
+        "median_summed_rss_bytes": 1761906688,
+        "mean_owned_cpu_cores": 0.07816917878019224,
+        "process_memory_snapshots": 23,
+        "process_memory_totals": {
+          "rss_bytes": {
+            "complete_samples": 23,
+            "median": 1761996800
+          },
+          "uss_bytes": {
+            "complete_samples": 23,
+            "median": 1319788544
+          },
+          "pss_bytes": {
+            "complete_samples": 23,
+            "median": 1488366592
+          }
+        }
+      },
+      {
+        "name": "rotation_and_layout_cycles",
+        "start_wall_s": 1794766212.807,
+        "end_wall_s": 1794766247.845,
+        "scope": "One deliberate camera rotation and repeated float/reset; not repeated provider creation/disposal",
+        "rss_sample_count": 127,
+        "median_summed_rss_bytes": 1888530432,
+        "mean_owned_cpu_cores": 1.3656941899473183,
+        "process_memory_snapshots": 6,
+        "process_memory_totals": {
+          "rss_bytes": {
+            "complete_samples": 6,
+            "median": 1883033600.0
+          },
+          "uss_bytes": {
+            "complete_samples": 6,
+            "median": 1449435136.0
+          },
+          "pss_bytes": {
+            "complete_samples": 6,
+            "median": 1611620352.0
+          }
+        }
+      },
+      {
+        "name": "idle_after_interaction",
+        "start_wall_s": 1794766247.845,
+        "end_wall_s": 1794766367.892,
+        "scope": "Same viewport retained after layout cycles; software profile",
+        "rss_sample_count": 432,
+        "median_summed_rss_bytes": 1903456256.0,
+        "mean_owned_cpu_cores": 0.09068510832009778,
+        "process_memory_snapshots": 23,
+        "process_memory_totals": {
+          "rss_bytes": {
+            "complete_samples": 23,
+            "median": 1903083520
+          },
+          "uss_bytes": {
+            "complete_samples": 23,
+            "median": 1483952128
+          },
+          "pss_bytes": {
+            "complete_samples": 23,
+            "median": 1636869120
+          }
+        }
+      },
+      {
+        "name": "runtime_1_closed",
+        "start_wall_s": 1794766381.063,
+        "end_wall_s": 1794766391.064,
+        "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim",
+        "rss_sample_count": 36,
+        "median_summed_rss_bytes": 3529568256.0,
+        "mean_owned_cpu_cores": 0.11996290856870011,
+        "process_memory_snapshots": 2,
+        "process_memory_totals": {
+          "rss_bytes": {
+            "complete_samples": 2,
+            "median": 3529201664.0
+          },
+          "uss_bytes": {
+            "complete_samples": 2,
+            "median": 2269966336.0
+          },
+          "pss_bytes": {
+            "complete_samples": 2,
+            "median": 2706627584.0
+          }
+        }
+      },
+      {
+        "name": "runtime_1_opened",
+        "start_wall_s": 1794766396.677,
+        "end_wall_s": 1794766406.681,
+        "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile",
+        "rss_sample_count": 36,
+        "median_summed_rss_bytes": 3623174144.0,
+        "mean_owned_cpu_cores": 0.16297579854636132,
+        "process_memory_snapshots": 1,
+        "process_memory_totals": {
+          "rss_bytes": {
+            "complete_samples": 1,
+            "median": 3622383616
+          },
+          "uss_bytes": {
+            "complete_samples": 1,
+            "median": 2352107520
+          },
+          "pss_bytes": {
+            "complete_samples": 1,
+            "median": 2794202112
+          }
+        }
+      },
+      {
+        "name": "runtime_2_closed",
+        "start_wall_s": 1794766406.92,
+        "end_wall_s": 1794766416.922,
+        "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim",
+        "rss_sample_count": 36,
+        "median_summed_rss_bytes": 3616477184.0,
+        "mean_owned_cpu_cores": 0.11339829196602924,
+        "process_memory_snapshots": 1,
+        "process_memory_totals": {
+          "rss_bytes": {
+            "complete_samples": 1,
+            "median": 3615498240
+          },
+          "uss_bytes": {
+            "complete_samples": 1,
+            "median": 2358484992
+          },
+          "pss_bytes": {
+            "complete_samples": 1,
+            "median": 2793944064
+          }
+        }
+      },
+      {
+        "name": "runtime_2_opened",
+        "start_wall_s": 1794766420.956,
+        "end_wall_s": 1794766430.961,
+        "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile",
+        "rss_sample_count": 35,
+        "median_summed_rss_bytes": 3637202944,
+        "mean_owned_cpu_cores": 0.17754910607065816,
+        "process_memory_snapshots": 2,
+        "process_memory_totals": {
+          "rss_bytes": {
+            "complete_samples": 2,
+            "median": 3637336064.0
+          },
+          "uss_bytes": {
+            "complete_samples": 2,
+            "median": 2366902272.0
+          },
+          "pss_bytes": {
+            "complete_samples": 2,
+            "median": 2809048064.0
+          }
+        }
+      },
+      {
+        "name": "runtime_3_closed",
+        "start_wall_s": 1794766431.113,
+        "end_wall_s": 1794766441.113,
+        "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim",
+        "rss_sample_count": 36,
+        "median_summed_rss_bytes": 3625961472.0,
+        "mean_owned_cpu_cores": 0.09862794386291121,
+        "process_memory_snapshots": 2,
+        "process_memory_totals": {
+          "rss_bytes": {
+            "complete_samples": 2,
+            "median": 3625181184.0
+          },
+          "uss_bytes": {
+            "complete_samples": 2,
+            "median": 2365947904.0
+          },
+          "pss_bytes": {
+            "complete_samples": 2,
+            "median": 2799869952.0
+          }
+        }
+      },
+      {
+        "name": "runtime_3_opened",
+        "start_wall_s": 1794766445.769,
+        "end_wall_s": 1794766455.773,
+        "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile",
+        "rss_sample_count": 36,
+        "median_summed_rss_bytes": 3646451712.0,
+        "mean_owned_cpu_cores": 0.16422776792753907,
+        "process_memory_snapshots": 2,
+        "process_memory_totals": {
+          "rss_bytes": {
+            "complete_samples": 2,
+            "median": 3646199808.0
+          },
+          "uss_bytes": {
+            "complete_samples": 2,
+            "median": 2371942400.0
+          },
+          "pss_bytes": {
+            "complete_samples": 2,
+            "median": 2794646016.0
+          }
+        }
+      },
+      {
+        "name": "runtime_4_closed",
+        "start_wall_s": 1794766455.992,
+        "end_wall_s": 1794766465.994,
+        "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim",
+        "rss_sample_count": 36,
+        "median_summed_rss_bytes": 3636201472.0,
+        "mean_owned_cpu_cores": 0.09811671608305318,
+        "process_memory_snapshots": 2,
+        "process_memory_totals": {
+          "rss_bytes": {
+            "complete_samples": 2,
+            "median": 3635726336.0
+          },
+          "uss_bytes": {
+            "complete_samples": 2,
+            "median": 2375034880.0
+          },
+          "pss_bytes": {
+            "complete_samples": 2,
+            "median": 2791810048.0
+          }
+        }
+      },
+      {
+        "name": "runtime_4_opened",
+        "start_wall_s": 1794766470.507,
+        "end_wall_s": 1794766480.508,
+        "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile",
+        "rss_sample_count": 36,
+        "median_summed_rss_bytes": 3694854144.0,
+        "mean_owned_cpu_cores": 0.20605059025236186,
+        "process_memory_snapshots": 2,
+        "process_memory_totals": {
+          "rss_bytes": {
+            "complete_samples": 2,
+            "median": 3698524160.0
+          },
+          "uss_bytes": {
+            "complete_samples": 2,
+            "median": 2420930560.0
+          },
+          "pss_bytes": {
+            "complete_samples": 2,
+            "median": 2845659648.0
+          }
+        }
+      },
+      {
+        "name": "runtime_5_closed",
+        "start_wall_s": 1794766480.668,
+        "end_wall_s": 1794766490.67,
+        "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim",
+        "rss_sample_count": 36,
+        "median_summed_rss_bytes": 3646181376.0,
+        "mean_owned_cpu_cores": 0.10181215164969003,
+        "process_memory_snapshots": 2,
+        "process_memory_totals": {
+          "rss_bytes": {
+            "complete_samples": 2,
+            "median": 3645351936.0
+          },
+          "uss_bytes": {
+            "complete_samples": 2,
+            "median": 2384627712.0
+          },
+          "pss_bytes": {
+            "complete_samples": 2,
+            "median": 2800483328.0
+          }
+        }
+      },
+      {
+        "name": "runtime_5_opened",
+        "start_wall_s": 1794766494.752,
+        "end_wall_s": 1794766504.755,
+        "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile",
+        "rss_sample_count": 35,
+        "median_summed_rss_bytes": 3665727488,
+        "mean_owned_cpu_cores": 0.15874437175573292,
+        "process_memory_snapshots": 2,
+        "process_memory_totals": {
+          "rss_bytes": {
+            "complete_samples": 2,
+            "median": 3666395136.0
+          },
+          "uss_bytes": {
+            "complete_samples": 2,
+            "median": 2387927040.0
+          },
+          "pss_bytes": {
+            "complete_samples": 2,
+            "median": 2830062592.0
+          }
+        }
+      },
+      {
+        "name": "runtime_6_closed",
+        "start_wall_s": 1794766504.994,
+        "end_wall_s": 1794766514.995,
+        "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim",
+        "rss_sample_count": 35,
+        "median_summed_rss_bytes": 3649683456,
+        "mean_owned_cpu_cores": 0.09807206429548393,
+        "process_memory_snapshots": 2,
+        "process_memory_totals": {
+          "rss_bytes": {
+            "complete_samples": 2,
+            "median": 3650084864.0
+          },
+          "uss_bytes": {
+            "complete_samples": 2,
+            "median": 2390493184.0
+          },
+          "pss_bytes": {
+            "complete_samples": 2,
+            "median": 2823252480.0
+          }
+        }
+      },
+      {
+        "name": "runtime_6_opened",
+        "start_wall_s": 1794766519.446,
+        "end_wall_s": 1794766529.448,
+        "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile",
+        "rss_sample_count": 36,
+        "median_summed_rss_bytes": 3687712768.0,
+        "mean_owned_cpu_cores": 0.17074331168097484,
+        "process_memory_snapshots": 1,
+        "process_memory_totals": {
+          "rss_bytes": {
+            "complete_samples": 1,
+            "median": 3686322176
+          },
+          "uss_bytes": {
+            "complete_samples": 1,
+            "median": 2413305856
+          },
+          "pss_bytes": {
+            "complete_samples": 1,
+            "median": 2852852736
+          }
+        }
+      },
+      {
+        "name": "runtime_7_closed",
+        "start_wall_s": 1794766529.646,
+        "end_wall_s": 1794766539.647,
+        "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim",
+        "rss_sample_count": 36,
+        "median_summed_rss_bytes": 3675820032.0,
+        "mean_owned_cpu_cores": 0.09672785766523287,
+        "process_memory_snapshots": 1,
+        "process_memory_totals": {
+          "rss_bytes": {
+            "complete_samples": 1,
+            "median": 3675713536
+          },
+          "uss_bytes": {
+            "complete_samples": 1,
+            "median": 2419007488
+          },
+          "pss_bytes": {
+            "complete_samples": 1,
+            "median": 2850399232
+          }
+        }
+      },
+      {
+        "name": "runtime_7_opened",
+        "start_wall_s": 1794766543.524,
+        "end_wall_s": 1794766553.525,
+        "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile",
+        "rss_sample_count": 36,
+        "median_summed_rss_bytes": 3677382656.0,
+        "mean_owned_cpu_cores": 0.17923870349229368,
+        "process_memory_snapshots": 2,
+        "process_memory_totals": {
+          "rss_bytes": {
+            "complete_samples": 2,
+            "median": 3679039488.0
+          },
+          "uss_bytes": {
+            "complete_samples": 2,
+            "median": 2404661248.0
+          },
+          "pss_bytes": {
+            "complete_samples": 2,
+            "median": 2844894208.0
+          }
+        }
+      },
+      {
+        "name": "runtime_8_closed",
+        "start_wall_s": 1794766553.763,
+        "end_wall_s": 1794766563.763,
+        "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim",
+        "rss_sample_count": 35,
+        "median_summed_rss_bytes": 3665625088,
+        "mean_owned_cpu_cores": 0.09171165866350692,
+        "process_memory_snapshots": 2,
+        "process_memory_totals": {
+          "rss_bytes": {
+            "complete_samples": 2,
+            "median": 3665936384.0
+          },
+          "uss_bytes": {
+            "complete_samples": 2,
+            "median": 2405664768.0
+          },
+          "pss_bytes": {
+            "complete_samples": 2,
+            "median": 2828264448.0
+          }
+        }
+      },
+      {
+        "name": "runtime_8_opened",
+        "start_wall_s": 1794766568.654,
+        "end_wall_s": 1794766578.657,
+        "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile",
+        "rss_sample_count": 35,
+        "median_summed_rss_bytes": 3709812736,
+        "mean_owned_cpu_cores": 0.15444732936393638,
+        "process_memory_snapshots": 2,
+        "process_memory_totals": {
+          "rss_bytes": {
+            "complete_samples": 2,
+            "median": 3709485056.0
+          },
+          "uss_bytes": {
+            "complete_samples": 2,
+            "median": 2430939136.0
+          },
+          "pss_bytes": {
+            "complete_samples": 2,
+            "median": 2855629312.0
+          }
+        }
+      },
+      {
+        "name": "runtime_9_closed",
+        "start_wall_s": 1794766578.809,
+        "end_wall_s": 1794766588.811,
+        "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim",
+        "rss_sample_count": 35,
+        "median_summed_rss_bytes": 3693740032,
+        "mean_owned_cpu_cores": 0.09630499184764699,
+        "process_memory_snapshots": 2,
+        "process_memory_totals": {
+          "rss_bytes": {
+            "complete_samples": 2,
+            "median": 3694487552.0
+          },
+          "uss_bytes": {
+            "complete_samples": 2,
+            "median": 2433759232.0
+          },
+          "pss_bytes": {
+            "complete_samples": 2,
+            "median": 2849427456.0
+          }
+        }
+      },
+      {
+        "name": "runtime_9_opened",
+        "start_wall_s": 1794766592.67,
+        "end_wall_s": 1794766602.673,
+        "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile",
+        "rss_sample_count": 35,
+        "median_summed_rss_bytes": 3759796224,
+        "mean_owned_cpu_cores": 0.16674879761670602,
+        "process_memory_snapshots": 2,
+        "process_memory_totals": {
+          "rss_bytes": {
+            "complete_samples": 2,
+            "median": 3762675712.0
+          },
+          "uss_bytes": {
+            "complete_samples": 2,
+            "median": 2488692736.0
+          },
+          "pss_bytes": {
+            "complete_samples": 2,
+            "median": 2911007744.0
+          }
+        }
+      },
+      {
+        "name": "runtime_10_closed",
+        "start_wall_s": 1794766602.918,
+        "end_wall_s": 1794766612.919,
+        "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim",
+        "rss_sample_count": 36,
+        "median_summed_rss_bytes": 3752972288.0,
+        "mean_owned_cpu_cores": 0.0961140469726118,
+        "process_memory_snapshots": 2,
+        "process_memory_totals": {
+          "rss_bytes": {
+            "complete_samples": 2,
+            "median": 3752065024.0
+          },
+          "uss_bytes": {
+            "complete_samples": 2,
+            "median": 2491521024.0
+          },
+          "pss_bytes": {
+            "complete_samples": 2,
+            "median": 2907119616.0
+          }
+        }
+      },
+      {
+        "name": "runtime_10_opened",
+        "start_wall_s": 1794766617.66,
+        "end_wall_s": 1794766627.662,
+        "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile",
+        "rss_sample_count": 36,
+        "median_summed_rss_bytes": 3747031040.0,
+        "mean_owned_cpu_cores": 0.17192553712588604,
+        "process_memory_snapshots": 2,
+        "process_memory_totals": {
+          "rss_bytes": {
+            "complete_samples": 2,
+            "median": 3746830336.0
+          },
+          "uss_bytes": {
+            "complete_samples": 2,
+            "median": 2472470528.0
+          },
+          "pss_bytes": {
+            "complete_samples": 2,
+            "median": 2894976000.0
+          }
+        }
+      },
+      {
+        "name": "runtime_11_closed",
+        "start_wall_s": 1794766627.854,
+        "end_wall_s": 1794766637.856,
+        "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim",
+        "rss_sample_count": 35,
+        "median_summed_rss_bytes": 3735498752,
+        "mean_owned_cpu_cores": 0.09173349478085599,
+        "process_memory_snapshots": 2,
+        "process_memory_totals": {
+          "rss_bytes": {
+            "complete_samples": 2,
+            "median": 3735973888.0
+          },
+          "uss_bytes": {
+            "complete_samples": 2,
+            "median": 2458810368.0
+          },
+          "pss_bytes": {
+            "complete_samples": 2,
+            "median": 2895120384.0
+          }
+        }
+      },
+      {
+        "name": "runtime_11_opened",
+        "start_wall_s": 1794766642.688,
+        "end_wall_s": 1794766652.691,
+        "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile",
+        "rss_sample_count": 36,
+        "median_summed_rss_bytes": 3730857984.0,
+        "mean_owned_cpu_cores": 0.16572320736728394,
+        "process_memory_snapshots": 2,
+        "process_memory_totals": {
+          "rss_bytes": {
+            "complete_samples": 2,
+            "median": 3730835456.0
+          },
+          "uss_bytes": {
+            "complete_samples": 2,
+            "median": 2456645632.0
+          },
+          "pss_bytes": {
+            "complete_samples": 2,
+            "median": 2879130624.0
+          }
+        }
+      },
+      {
+        "name": "runtime_12_closed",
+        "start_wall_s": 1794766652.886,
+        "end_wall_s": 1794766662.888,
+        "scope": "Owned preview released; independent Qt view and retained Knowledge remain; no pending-provider-operation claim",
+        "rss_sample_count": 36,
+        "median_summed_rss_bytes": 3720157184.0,
+        "mean_owned_cpu_cores": 0.10961279780847864,
+        "process_memory_snapshots": 1,
+        "process_memory_totals": {
+          "rss_bytes": {
+            "complete_samples": 1,
+            "median": 3718922240
+          },
+          "uss_bytes": {
+            "complete_samples": 1,
+            "median": 2460717056
+          },
+          "pss_bytes": {
+            "complete_samples": 1,
+            "median": 2875174912
+          }
+        }
+      },
+      {
+        "name": "runtime_12_opened",
+        "start_wall_s": 1794766667.249,
+        "end_wall_s": 1794766677.25,
+        "scope": "Fresh initial-copy viewport is ready; independent Qt view remains; software profile",
+        "rss_sample_count": 35,
+        "median_summed_rss_bytes": 3737845760,
+        "mean_owned_cpu_cores": 0.14951253122595565,
+        "process_memory_snapshots": 2,
+        "process_memory_totals": {
+          "rss_bytes": {
+            "complete_samples": 2,
+            "median": 3739547648.0
+          },
+          "uss_bytes": {
+            "complete_samples": 2,
+            "median": 2464757760.0
+          },
+          "pss_bytes": {
+            "complete_samples": 2,
+            "median": 2896279040.0
+          }
+        }
+      }
+    ],
+    "first_last_reported_families": {
+      "opened": {
+        "first": {
+          "display": {
+            "rss_bytes": {
+              "complete_samples": 1,
+              "median": 75198464
+            },
+            "uss_bytes": {
+              "complete_samples": 1,
+              "median": 16015360
+            },
+            "pss_bytes": {
+              "complete_samples": 1,
+              "median": 35403776
+            }
+          },
+          "knowledge_and_molecular_service": {
+            "rss_bytes": {
+              "complete_samples": 1,
+              "median": 764776448
+            },
+            "uss_bytes": {
+              "complete_samples": 1,
+              "median": 592105472
+            },
+            "pss_bytes": {
+              "complete_samples": 1,
+              "median": 663661568
+            }
+          },
+          "qt_application": {
+            "rss_bytes": {
+              "complete_samples": 1,
+              "median": 1494822912
+            },
+            "uss_bytes": {
+              "complete_samples": 1,
+              "median": 946798592
+            },
+            "pss_bytes": {
+              "complete_samples": 1,
+              "median": 1152891904
+            }
+          },
+          "receiver": {
+            "rss_bytes": {
+              "complete_samples": 1,
+              "median": 92254208
+            },
+            "uss_bytes": {
+              "complete_samples": 1,
+              "median": 80474112
+            },
+            "pss_bytes": {
+              "complete_samples": 1,
+              "median": 81896448
+            }
+          },
+          "webengine_workers_reported_argv": {
+            "rss_bytes": {
+              "complete_samples": 1,
+              "median": 1195331584
+            },
+            "uss_bytes": {
+              "complete_samples": 1,
+              "median": 716713984
+            },
+            "pss_bytes": {
+              "complete_samples": 1,
+              "median": 860348416
+            }
+          }
+        },
+        "last": {
+          "display": {
+            "rss_bytes": {
+              "complete_samples": 2,
+              "median": 75198464.0
+            },
+            "uss_bytes": {
+              "complete_samples": 2,
+              "median": 16015360.0
+            },
+            "pss_bytes": {
+              "complete_samples": 2,
+              "median": 35324928.0
+            }
+          },
+          "knowledge_and_molecular_service": {
+            "rss_bytes": {
+              "complete_samples": 2,
+              "median": 776851456.0
+            },
+            "uss_bytes": {
+              "complete_samples": 2,
+              "median": 603619328.0
+            },
+            "pss_bytes": {
+              "complete_samples": 2,
+              "median": 665459712.0
+            }
+          },
+          "qt_application": {
+            "rss_bytes": {
+              "complete_samples": 2,
+              "median": 1505587200.0
+            },
+            "uss_bytes": {
+              "complete_samples": 2,
+              "median": 955645952.0
+            },
+            "pss_bytes": {
+              "complete_samples": 2,
+              "median": 1160755200.0
+            }
+          },
+          "receiver": {
+            "rss_bytes": {
+              "complete_samples": 2,
+              "median": 99172352.0
+            },
+            "uss_bytes": {
+              "complete_samples": 2,
+              "median": 87392256.0
+            },
+            "pss_bytes": {
+              "complete_samples": 2,
+              "median": 88517632.0
+            }
+          },
+          "webengine_workers_reported_argv": {
+            "rss_bytes": {
+              "complete_samples": 2,
+              "median": 1282738176.0
+            },
+            "uss_bytes": {
+              "complete_samples": 2,
+              "median": 802084864.0
+            },
+            "pss_bytes": {
+              "complete_samples": 2,
+              "median": 946221568.0
+            }
+          }
+        },
+        "sampled_rss_median_change_bytes": 114671616.0
+      },
+      "closed": {
+        "first": {
+          "display": {
+            "rss_bytes": {
+              "complete_samples": 2,
+              "median": 75198464.0
+            },
+            "uss_bytes": {
+              "complete_samples": 2,
+              "median": 16015360.0
+            },
+            "pss_bytes": {
+              "complete_samples": 2,
+              "median": 35403264.0
+            }
+          },
+          "knowledge_and_molecular_service": {
+            "rss_bytes": {
+              "complete_samples": 2,
+              "median": 762916864.0
+            },
+            "uss_bytes": {
+              "complete_samples": 2,
+              "median": 590245888.0
+            },
+            "pss_bytes": {
+              "complete_samples": 2,
+              "median": 661801472.0
+            }
+          },
+          "qt_application": {
+            "rss_bytes": {
+              "complete_samples": 2,
+              "median": 1475958784.0
+            },
+            "uss_bytes": {
+              "complete_samples": 2,
+              "median": 933539840.0
+            },
+            "pss_bytes": {
+              "complete_samples": 2,
+              "median": 1136888320.0
+            }
+          },
+          "receiver": {
+            "rss_bytes": {
+              "complete_samples": 2,
+              "median": 91422720.0
+            },
+            "uss_bytes": {
+              "complete_samples": 2,
+              "median": 79642624.0
+            },
+            "pss_bytes": {
+              "complete_samples": 2,
+              "median": 81064448.0
+            }
+          },
+          "webengine_workers_reported_argv": {
+            "rss_bytes": {
+              "complete_samples": 2,
+              "median": 1123704832.0
+            },
+            "uss_bytes": {
+              "complete_samples": 2,
+              "median": 650522624.0
+            },
+            "pss_bytes": {
+              "complete_samples": 2,
+              "median": 791470080.0
+            }
+          }
+        },
+        "last": {
+          "display": {
+            "rss_bytes": {
+              "complete_samples": 1,
+              "median": 75198464
+            },
+            "uss_bytes": {
+              "complete_samples": 1,
+              "median": 16015360
+            },
+            "pss_bytes": {
+              "complete_samples": 1,
+              "median": 35300352
+            }
+          },
+          "knowledge_and_molecular_service": {
+            "rss_bytes": {
+              "complete_samples": 1,
+              "median": 775774208
+            },
+            "uss_bytes": {
+              "complete_samples": 1,
+              "median": 601980928
+            },
+            "pss_bytes": {
+              "complete_samples": 1,
+              "median": 655879168
+            }
+          },
+          "qt_application": {
+            "rss_bytes": {
+              "complete_samples": 1,
+              "median": 1497763840
+            },
+            "uss_bytes": {
+              "complete_samples": 1,
+              "median": 956395520
+            },
+            "pss_bytes": {
+              "complete_samples": 1,
+              "median": 1156915200
+            }
+          },
+          "receiver": {
+            "rss_bytes": {
+              "complete_samples": 1,
+              "median": 98557952
+            },
+            "uss_bytes": {
+              "complete_samples": 1,
+              "median": 86777856
+            },
+            "pss_bytes": {
+              "complete_samples": 1,
+              "median": 87854080
+            }
+          },
+          "webengine_workers_reported_argv": {
+            "rss_bytes": {
+              "complete_samples": 1,
+              "median": 1271627776
+            },
+            "uss_bytes": {
+              "complete_samples": 1,
+              "median": 799547392
+            },
+            "pss_bytes": {
+              "complete_samples": 1,
+              "median": 939226112
+            }
+          }
+        },
+        "sampled_rss_median_change_bytes": 190588928.0
+      }
+    }
+  },
+  "preliminary_controls": {
+    "initial_memory_gate": "passed before explicit inherited-zygote clarification; final five-case gate is recorded separately",
+    "initial_observer_invocation": "exit 127 from misplaced CLI options; no tests executed; corrected final gate passes"
+  },
+  "limits": [
+    "No successful native conversion or drawing of the two larger mmCIF inputs; provider-owned defect #763 remains open",
+    "Longer finite 1TCD trial is not general long-session/scaling or leak qualification; cycle one also contains deliberate failure/retry and page reload",
+    "Process snapshots use reported argv; Knowledge/Viewer and browser frames remain combined; non-atomic OS sampling is not provider heap, GPU or unique physical-RAM accounting",
+    "Two short lightweight controls overlap the first idle window; shared-host CPU is not an isolated benchmark",
+    "Inspected shipped runtime/SOURCE bytes and prior wheel are unchanged; no new package, dependency adoption, full suite, hosted CI, release or platform qualification",
+    "Main plan stays 20 done, 10 partial and 3 todo; supported provider contracts, budgets, human and version acceptance remain open"
+  ],
+  "raw_evidence_root": "recovered_work/checkpoint_recovery_20261106/interactive-model-scale-20261115-1",
+  "retention": "Owner #154/#153/#112; retain exact public files, failed repros and complete receivers until the next affected parser/lifetime change or 0.16 candidate review",
+  "temporary_cleanup": {
+    "owned_temporary_root": "/tmp/sabueso-model-scale-20261115-jmf8uyvh",
+    "removed": true,
+    "matching_owned_processes_before_removal": [],
+    "verified_retained_files": 70,
+    "scope": "Exact owned scale/stability environment and scratch only; shared environment, sibling checkouts and unrelated temporary paths untouched"
+  },
+  "final_local_gates": {
+    "ruff_format": {
+      "exit_code": 0,
+      "files_already_formatted": 1787
+    },
+    "ruff_check": {
+      "exit_code": 0
+    },
+    "moli_governance": {
+      "exit_code": 0
+    },
+    "git_diff_check": {
+      "exit_code": 0
+    },
+    "node_syntax": {
+      "exit_code": 0
+    },
+    "relative_document_links": {
+      "missing": []
+    },
+    "main_plan": {
+      "done": 20,
+      "partial": 10,
+      "todo": 3
+    },
+    "receiving_source_hashes_matched": 6
+  }
+}

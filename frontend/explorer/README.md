@@ -136,6 +136,10 @@ losing the Card. Linux/Xvfb software drawing remains separate from hardware,
 platform, long-session or large-model qualification. XR permission is delegated
 only to the owned model iframe; there is no arbitrary external embed action.
 
+The receiver ends promptly if an expected renderer instead reports a terminal
+unavailable state; its failed receipt preserves that provider diagnosis. This
+does not convert a failed model load into successful rendering receiving.
+
 The lifetime receiver accepts `--runtime-cycles 1..12`,
 `--runtime-settle-seconds 0..10`, `--layout-cycles 1..20` and
 `--observe-idle-seconds 0..120`. Defaults retain three runtime/layout cycles and

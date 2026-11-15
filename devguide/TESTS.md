@@ -1871,7 +1871,7 @@ keeps original/failure/resource/artifact boundaries explicit.
 
 
 The molecular Qt receiver accepts bounded development-only `--layout-cycles`
-(1–20) and `--observe-idle-seconds` (0–30). Its wall-clock phases can be joined to
+(1–20) and `--observe-idle-seconds` (0–120). Its wall-clock phases can be joined to
 owned observer samples to report sampled CPU seconds/core equivalents and summed
 RSS. Keep idle settling, layout retention, actual provider creation/disposal,
 software rendering and native graphics qualification separate. No resource
@@ -1971,6 +1971,19 @@ The helper is receiving infrastructure and changes no shipped application bytes.
 Reuse a received diagnostic wheel only after checking that all inspected runtime
 and SOURCE hashes still match the current checkout; record its exact digest and
 shared provider cohort separately from editable version metadata.
+
+The bounded observer's optional `--memory-details-seconds 5` or `15` samples
+owned PID/creation-time pairs with RSS/USS/PSS and reported-argv roles. Run
+`tests/tools/test_owned_process_memory_offline.py` through the receptor. Require
+missing/denied fields and incomplete totals to stay explicit, reject recycled
+PIDs, avoid storing command lines/capabilities, and include a real OS sample.
+Forked Qt workers can inherit zygote argv; group labels do not prove actual
+renderer ownership. The service combines Knowledge and Viewer, and OS snapshots
+cannot isolate provider heaps, GPU memory or atomically account for the tree.
+Correlate only complete snapshots inside declared phase windows; retain counts,
+missingness and first/last checkpoint medians alongside the summed-RSS guard.
+Larger public inputs that fail provider conversion remain failed attempts; do
+not clean, filter or replace their atoms to manufacture a successful scale case.
 
 
 ### Reusable 2D component evaluation

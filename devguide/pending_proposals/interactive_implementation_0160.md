@@ -273,7 +273,7 @@ optional GUI/process resources independently owned.
 | S5.2 | `done` | Versioned 64 KiB presentation-only persistence admits the three known panels and exact Dockview cohort. Real save/reload preserves reading/float arrangement; Reset uses defaults, live-model saving keeps the viewport, and missing-model/unknown-version controls explain fallback. Unknown originals and symlinks are never overwritten; no Knowledge, query history or scene is restored. [Receipt and limits](../evidence/interactive_layout_checkpoint_20261113.json) |
 | S5.3 | `partial` | Actual installed Qt now receives controlled owned-service loss, the surviving reading/window, visible error and explicit original-workspace restart with exact Back. A synthetic pending query closes with its owned service in about 2.24 s; no result is adopted and its bootstrap retires. Cancellation/stale-result handling and atomic/private caller-safe bootstrap pass. Owned model close/reopen and independent-window survival now receive; general model pending-operation/lifetime receiving remains under S2/#368 and native Windows shutdown is unqualified; unsaved crash recovery is not claimed |
 | S5.4 | `done` | Include the compiled frontend/resources in the optional product closure, qualify headless/GUI boundaries and verify a development launch outside the checkout. Keep Electron/Tauri comparison runtimes out of the shipped Qt closure |
-| S5.5 | `partial` | [Extended lifetime receiving](interactive_model_lifetime_0160.md#extended-bounded-observations-2026-11-15) adds two sequential installed public profiles, eight disposal/reopen/draw cycles and 32 checks each, twelve layout cycles and two 60 s single-window idle phases. Peak summed RSS is about 3.41/3.54 GiB with an independent second Qt view; all owned processes/input copies retire. Retained per-cycle RSS is quantified without a leak verdict. Earlier 14-check single-window profiles retain their own scope. Renderer is llvmpipe and the AF fragment remains unrelated to the Card. Larger scales, substantially longer sessions, workload targets and native-platform receiving remain |
+| S5.5 | `partial` | Earlier [eight-cycle public profiles](interactive_model_lifetime_0160.md#extended-bounded-observations-2026-11-15) now have a separate [twelve-cycle/611.49 s installed 1TCD control](interactive_model_scale_0160.md), with 32 checks, twenty layout cycles, two 120 s idle windows and process-memory observations. Peak summed RSS is 3.54 GiB; retained USS/PSS grows most in grouped WebEngine workers without a leak verdict. Two larger public mmCIF inputs fail before rendering under MolSysMT #763; actual Qt failure isolation passes six checks. All owned processes/input copies retire. Renderer is llvmpipe, no Card correspondence is inferred, and agreed workload/native-platform receiving and broader scaling stay open |
 
 Use the existing shared-resource policy and infrastructure owners. This application
 does not implement a new scheduler, reserve the host or require operational Slurm
@@ -289,7 +289,7 @@ delivers. Start feedback when the first useful slice exists, not only at the end
 | ID | State | Deliverable and completion check |
 | --- | --- | --- |
 | S6.1 | `partial` | [Public input preparation, uncoached tasks and worksheet](interactive_researcher_review_0160.md) are prepared and preparation runs without network. Maintainer and independent researcher observations remain `not_reviewed`; record understanding/navigation/accessibility, including molecular limits. The 0.15.0 deferral does not waive 0.16.0 review |
-| S6.2 | `partial` | Guarded in-memory composition reduces the matched public backend save from 94.28 to 57.93 s, with read/verify unchanged at about 29.7 s; current checkout/installed Qt observes about 60/29 s. The earlier installed 84/25 s cohort retains its own epoch. Native originals, resealed refusals and exact Deck return receive; no workload budget or scaling claim is established. Two installed molecular profiles retain short idle/active and repeated-layout observations. Agree targets and complete settled-session/repeated-provider lifetime measurements |
+| S6.2 | `partial` | Guarded composition reduces the matched backend save from 94.28 to 57.93 s, with read/verify about 29.7 s and native original/refusal/Deck receiving. Separate installed model profiles now receive eight cycles on two public inputs and twelve cycles over 611.49 s on 1TCD, with longer idle windows and bounded OS-memory attribution. Larger mmCIF cases expose MolSysMT #763 rather than a resource ceiling. Agree workload/session targets, receive the provider fix and complete broader scaling/native/human observations; no workload budget or general scaling claim is established |
 | S6.3 | `todo` | Reconcile every accepted 0.16.0 journey against implementation, regressions, original saved compatibility and visible limits. Reconsider #192's meaning/correction and the #194 macOS exception before the version decision; neither 0.15.0 deferral silently extends |
 | S6.4 | `todo` | Record functional-milestone acceptance separately from exact-source CI, installed artifacts, supported platforms and publication. Complete the applicable existing release route only for the authorized candidate and actual claimed GUI/core scope |
 
@@ -327,8 +327,13 @@ Current independent cursor (2026-11-15): guarded workspace composition now has
 selected native/application/artifact/Qt receiving under #153/#154. S5.5 now also
 receives eight runtime cycles on each of two public installed profiles and longer
 idle windows, with retained RSS and current provider limits recorded explicitly.
-Remaining S5.5/S6.2 work needs declared larger-scale/session targets and resource
-attribution; automated measurements do not settle human acceptance or leak status.
+The next [longer-session increment](interactive_model_scale_0160.md) receives twelve
+1TCD cycles and reported-family OS-memory changes, while larger public mmCIF cases
+fail provider conversion under MolSysMT #763. Receive the reviewed provider fix
+before claiming their rendering or scale; workload targets, broader sessions and
+human acceptance remain open. Long literal source headings in split reading are
+a separate navigation-polish follow-up; automated measurements settle neither
+human acceptance nor leak status.
 MolSysSketcher belongs to its separate team. Supported mapped 3D and chemical
 depiction remain parallel dependencies, not reasons to suspend independent work.
 

@@ -20,6 +20,7 @@ const result={format:'sabueso.molecular_explorer_journey@1',scope:'Actual experi
 result.receiving_parameters={idle_seconds:idleSeconds,layout_cycles:layoutCycles,runtime_cycles:runtimeCycles,runtime_settle_seconds:runtimeSettleSeconds};
 function assertChildren(label){for(const owned of ownedProcesses)owned.assertRunning(label);}
 async function until(fn,label){const end=Date.now()+60000;while(Date.now()<end){assertChildren(label);if(await fn())return;await delay(100);}throw new Error('Timed out: '+label);}
+async function rendererReady(state,label){await until(async()=>{const m=(await state()).molecular;if(m?.status==='unavailable')throw new Error('Molecular runtime unavailable during '+label+': '+m.error);return m?.initial_renderer_ready&&m.initial_structure_received;},label);}
 function launch(command,parameters,name,env){const owned=launchOwned(command,parameters,{name,logPath:path.join(output,name+'.log'),env,cwd:option('--application-root')?path.resolve(option('--application-root')):undefined});ownedProcesses.push(owned);children.push(owned.child);return owned.child;}
 async function observe(name,seconds,scope){
   if(!seconds)return;
@@ -49,7 +50,7 @@ try{
     result.checks.failed_model_keeps_knowledge=current.status==='unavailable'&&!current.client_url;
     result.checks.failure_is_visible=await page.evaluate(()=>document.querySelector('[role=alert]')?.textContent.includes('Molecular preview unavailable'));
   }else{
-    await until(async()=>{const m=(await state()).molecular;return m?.initial_renderer_ready&&m.initial_structure_received;},'provider renderer and structure acknowledgments');
+    await rendererReady(state,'provider renderer and structure acknowledgments');
     const frame=page.frames().find(f=>f!==page.mainFrame()&&f.url().includes('/session/client'));if(!frame)throw new Error('No live Viewer frame');
     const canvas=frame.locator('canvas').first();await canvas.waitFor();
     result.graphics=await canvas.evaluate(canvas=>{const gl=canvas.getContext('webgl2')||canvas.getContext('webgl');if(!gl)return {webgl:false};const debug=gl.getExtension('WEBGL_debug_renderer_info');return {webgl:true,width:gl.drawingBufferWidth,height:gl.drawingBufferHeight,renderer:gl.getParameter(debug?debug.UNMASKED_RENDERER_WEBGL:gl.RENDERER),error:gl.getError()};});
@@ -88,7 +89,7 @@ try{
     await until(async()=>{try{independentBrowser=await connectNative('http://127.0.0.1:'+peerPort);return true;}catch{return false;}},'independently owned Qt window');
     const peer=independentBrowser.contexts()[0].pages()[0];peer.on('pageerror',error=>result.errors.push('Independent: '+String(error)));await peer.waitForFunction(()=>!!document.querySelector('[data-view-ref]'));
     const peerState=()=>peer.evaluate(async()=>await(await fetch('/api/molecular')).json());
-    await until(async()=>{const m=(await peerState()).molecular;return m?.initial_renderer_ready&&m.initial_structure_received;},'independent live renderer');
+    await rendererReady(peerState,'independent live renderer');
     const peerFrame=peer.frames().filter(f=>f!==peer.mainFrame()&&f.url().includes('/session/client')).at(-1);await peerFrame.locator('canvas').first().waitFor();
     const peerBefore=(await peerState()).molecular,origin=new URL((await state()).molecular.client_url).origin;
     fs.writeFileSync(callerInput,'changed task-owned caller input after capture');
@@ -117,7 +118,7 @@ try{
       await page.getByRole('button',{name:'Reopen initial model',exact:true}).click();await page.waitForFunction(()=>document.querySelector('[role=status]').textContent.includes('Initial model reopened as a fresh view'));
       await page.getByRole('button',{name:'Show model',exact:true}).click();
       await page.waitForFunction(()=>{const r=document.querySelector('.reading[data-view-ref]').getBoundingClientRect(),c=document.querySelector('.orientation').getBoundingClientRect();return r.width>=400&&Math.abs(c.left-r.left)<5&&c.top>r.top;});result.checks.reopened_layout_keeps_reading_space=true;
-      await until(async()=>{const m=(await state()).molecular;return m?.initial_renderer_ready&&m.initial_structure_received;},'new initial-copy runtime');
+      await rendererReady(state,'new initial-copy runtime');
       const current=(await state()).molecular;
       const freshFrame=page.frames().filter(f=>f!==page.mainFrame()&&f.url().includes('/session/client')).at(-1);await freshFrame.locator('canvas').first().waitFor();
       const oldToken=new URLSearchParams(new URL(before.client_url).hash.slice(1)).get('token');
