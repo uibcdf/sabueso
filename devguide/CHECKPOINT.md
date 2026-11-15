@@ -1,21 +1,35 @@
 # Sabueso — Checkpoint
 
-Current working-state checkpoint: **2026-11-14 (UTC)**. Start with
+Current working-state checkpoint: **2026-11-15 (UTC)**. Start with
 [ONBOARDING](ONBOARDING.md) for project context and the
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
 ## Next product objective: interactive exploration in 0.16.0
 
-The maintainer now proposes a separate reusable **MolSysSketcher** for 2D scenes,
-with chemical science supplied through MolSysMT/RDKit and the chosen visual
-toolkit behind an extensible scene/interaction layer. The
-[source-screened proposal and trial stages](pending_proposals/interactive_2d_component_0160.md)
-route shared ownership to [MolSysSuite #199](https://github.com/uibcdf/molsyssuite/issues/199)
-and retain [Viewer #387](https://github.com/uibcdf/molsysviewer/issues/387) as the
-earlier consumer request. Candidate engine execution and final component admission
-remain pending; no repository, package or new dependency is created by this review.
-S4.3 and the 20 done / 10 partial / 3 todo main-plan counts remain unchanged.
+The maintainer has assigned **MolSysSketcher** to a separate development team.
+Its local repository now contains the staged design for an owned TypeScript 2D
+scene, with molecular and interaction views as equally important pillars and
+chemical science delegated to qualified providers. This supersedes the earlier
+renderer-comparison direction; it is not a working or adopted dependency.
+Sabueso continues independently on workspace durability, performance and
+researcher navigation. The [consumer handoff](pending_proposals/interactive_2d_component_0160.md)
+retains exact source/input mappings, read-only exploration and provider lifecycle
+as prerequisites for future 2D integration. Shared coordination stays under
+[MolSysSuite #199](https://github.com/uibcdf/molsyssuite/issues/199); Viewer #368
+owns the separate supported 3D correspondence. S4.3 and the 20 done / 10 partial /
+3 todo main-plan counts remain unchanged.
+
+The [workspace cost diagnostic](pending_proposals/interactive_workspace_cost_0160.md)
+now reproduces the public protein/BTS/activity/publication save/reopen route
+without source acquisition: **98.92 s / 26.88 s**, about **0.41 GiB** peak sampled
+owned RSS in a two-CPU backend profile. Exact native content, repeated/filtered
+Deck return and original Back survive; the 16-case workspace regression passes
+with a complete published-receptor artifact. A separate instrumented profile
+identifies nested serialization/verification work for investigation, without
+removing validation or claiming a runtime optimization. The failed initial
+banner comparison is retained separately. [The receipt](evidence/interactive_workspace_cost_checkpoint_20261115.json)
+records scope and limits; S6.2 remains partial and its workload budget is unagreed.
 
 The [owned molecular lifetime increment](pending_proposals/interactive_model_lifetime_0160.md)
 adds explicit runtime close/reopen from the unchanged initial capture, fixed

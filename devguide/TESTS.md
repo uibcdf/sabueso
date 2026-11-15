@@ -1243,6 +1243,19 @@ all original wires and frozen verifiers. Resealing a changed input order must
 still fail. Record the failed mixed-Deck original receiving and its corrected
 scientific Qt route, rather than counting an earlier failed receipt as passing.
 
+For a reproducible backend-only cost observation of that public mixed-Deck route,
+use `devtools/measure_explorer_workspace.py --inputs <prepared-public-inputs>
+--output-directory <new-owned-directory>` after `prepare_explorer_walkthrough.py`.
+Run through the bounded observer with two CPUs, a 4 GiB owned-RSS ceiling and
+a finite elapsed limit. The diagnostic records save/reopen timing, exact native
+publication/context digests, original repeated/filtered Deck return and unchanged
+input/saved bytes; source acquisition and Card/Deck construction during reopening
+are forbidden. `--profile-save` adds cProfile overhead and must not be compared
+with unprofiled timings. It does not replace Qt, independent-process, installed,
+historical-admission or human receiving. An observation is not a timing test or
+an accepted budget. The original-reading banner is expected to differ from live
+display text; native content and navigation are compared independently.
+
 The experimental molecular adapter selects `test_molecular_admission_offline.py`
 with the application, resolver and package-data gates. Receive detached input
 capture/hash, encoded/decoded byte limits, unsupported/empty/invalid input and

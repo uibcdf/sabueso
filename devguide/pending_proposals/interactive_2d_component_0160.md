@@ -1,16 +1,55 @@
 ---
-summary: Evaluate a reusable MolSysSketcher 2D component with separate chemical science and extensible scene ownership.
+summary: Track the separately developed MolSysSketcher dependency and Sabueso's source-bound 2D receiving requirements.
 issue: uibcdf/sabueso#154
 status: open
 opened: 2026-11-14
-verification: source_inspected_design_proposal
+verification: consumer_design_handoff
 area: [human-exploration, visualization, interoperability, architecture]
 blocked_by: [uibcdf/molsyssuite#199]
 ---
 
-# Reusable molecular 2D component: MolSysSketcher proposal
+# Reusable molecular 2D component: MolSysSketcher consumer handoff
 
-## Direction and current boundary
+## Current decision and independent work (2026-11-15)
+
+The maintainer assigns MolSysSketcher to another development team. Its local
+repository at `../molsyssketcher` contains the reviewed staged design for an owned
+TypeScript scene, initially SVG, with molecular and interaction views as equal
+product pillars. Scientific preparation remains delegated to qualified providers;
+chemical editing is staged after exploration. The design supersedes the earlier
+renderer-selection experiment recorded below. It does not constitute an
+implemented, published or admitted dependency. Shared coordination remains in
+[MolSysSuite #199](https://github.com/uibcdf/molsyssuite/issues/199).
+
+Sabueso resumes independent workspace durability, measured performance and
+researcher navigation. Do not implement a second 2D engine here while waiting.
+S4.3 stays partial until a supported provider surface receives the actual
+source-bound journey. Integration should first receive:
+
+- One retained molecular declaration, its exact input/capture identity and
+  provider capabilities; unsupported preparation remains visible.
+- Read-only zoom/pan/selection with explicit stable atom/bond mappings, generation
+  and stale-event refusal; no chemical mutation or automatic conformer creation.
+- Return from the visual selection to its original retained source and Back,
+  without inferring correspondence from order, labels or coordinates.
+- Owned replacement/disposal, host resizing, keyboard access and bounded resource
+  observations in the actual Qt host; a picture alone does not qualify the route.
+
+Interaction views use domain-owned results and explicit coverage/method/units;
+their equal importance in MolSysSketcher does not authorize Sabueso to calculate
+interactions or import project conclusions as knowledge. Coordinated 2D/3D
+selection also needs qualified mappings on the separate Viewer #368 surface.
+Dependency admission, artifacts and concrete API receiving follow the provider
+team's implemented contract; no speculative adapter is committed here.
+
+## Historical source screening (superseded execution direction)
+
+The remaining sections preserve the initial alternatives and their inspected
+basis. Their proposed prototype order and D1–D3 are historical, not Sabueso's
+current execution queue. Use the handoff above and the provider's living design
+for new work.
+
+### Original direction and boundary
 
 The maintainer proposes a separate reusable **MolSysSketcher** component rather
 than placing general 2D depiction in MolSysViewer's 3D core. Sabueso is the first
@@ -20,7 +59,7 @@ The [living plan](interactive_implementation_0160.md) still owns Sabueso S4.3.
 The shared ownership/evaluation proposal is
 [MolSysSuite #199](https://github.com/uibcdf/molsyssuite/issues/199).
 
-This is a proposed suite component and comparison protocol, not a created or
+At that screening checkpoint this was a proposed comparison protocol, not a created or
 registered repository, chosen engine, new dependency or implemented 2D product.
 The earlier [Viewer #387](https://github.com/uibcdf/molsysviewer/issues/387)
 records the consumer need; its ownership direction needs the separate suite
@@ -35,7 +74,7 @@ The proposed division is:
 | --- | --- |
 | Molecular model, chemical interpretation, scientific operations and explicit atom/index mappings | MolSysMT and its supported chemical providers, including RDKit; inventory actual public capabilities before adoption |
 | Specialized interaction or pharmacophore definitions/results | The relevant domain component; drawing a feature does not transfer its scientific ownership |
-| 2D scene, overlays/shapes, selection, navigation, presentation state, events and supported embedding | MolSysSketcher, over an existing rendering/layout implementation |
+| 2D scene, overlays/shapes, selection, navigation, presentation state, events and supported embedding | MolSysSketcher; the original existing-toolkit hypothesis is superseded by the owned-scene design above |
 | Card/source knowledge, original assertions, conflict/ambiguity and investigator navigation | Sabueso |
 | 3D molecular representation and its existing scene | MolSysViewer, with explicit mappings for any coordinated 2D/3D selection |
 

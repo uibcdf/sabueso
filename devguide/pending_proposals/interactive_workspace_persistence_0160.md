@@ -15,6 +15,13 @@ Card/Deck readers, source assertions or scientific rules. The
 [source-bound receipt](../evidence/interactive_rich_workspace_checkpoint_20261113.json)
 owns actual qualification, failed controls and resource observations.
 
+The later [workspace cost diagnostic](interactive_workspace_cost_0160.md)
+reproduces the same public scientific route without Qt or source acquisition,
+records exact native content/Back checks, and identifies nested serialization
+and verification as an optimization target. Its 98.92/26.88 s observation is a
+separate backend/dependency epoch, not a regression claim against the earlier
+installed Qt cohort, an accepted budget or an implemented optimization.
+
 ## Researcher-visible behavior
 
 Protein, small-molecule and disease overviews now show the original curated

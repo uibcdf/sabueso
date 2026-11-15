@@ -1,0 +1,187 @@
+{
+  "format": "sabueso.interactive_workspace_cost_checkpoint@1",
+  "owner": "uibcdf/sabueso#153",
+  "coordination_owners": [
+    "uibcdf/sabueso#154",
+    "uibcdf/sabueso#112"
+  ],
+  "base_commit": "5224379ffb5a44ad5252a11aa4b426ccab798c8c",
+  "scope": "Backend-only public mixed-Deck diagnostic and separate-team consumer handoff; no product runtime change or optimization",
+  "unprofiled_observation": {
+    "format": "sabueso.explorer_workspace_cost_observation@1",
+    "owner": "uibcdf/sabueso#154/#153",
+    "source_head": "5224379ffb5a44ad5252a11aa4b426ccab798c8c",
+    "code_sha256": {
+      "devtools/measure_explorer_workspace.py": "f23f3d1596def94a033daa6f2d014810fb8caccf4042e80c6f968f4354586384",
+      "sabueso/explorer/_workspace.py": "474afdd8591ce205c56869a1a955b754cdc481e82d5d917e4f9f763e7442e8d1",
+      "sabueso/explorer/_deck_session.py": "81bc949b4db90ab2896b234dc4ee93e1c6cb2baa587d36df191d17c162c0616e",
+      "sabueso/core/card_exploration_storage.py": "9bf7dfd3758e5a1a41577124ad9f36593a55ba46da2b67ee717824985df52814",
+      "sabueso/core/deck_exploration_storage.py": "c71d93916c38e14e0076964f65a4d39f470031b8ac185eacf3013c76676ee62d"
+    },
+    "python": "3.14.10",
+    "input_deck_sha256": "290d722ae0f224158a6bf9c66f5079eefb49cd7be2d6daf98eec5726d57517b5",
+    "save_seconds": 98.92270514392294,
+    "reopen_seconds": 26.882331468048505,
+    "save_profiled": false,
+    "receipt": {
+      "path": "/tmp/sabueso-workspace-profile-20261115-a4ya1swz/received/workspace.json.gz",
+      "bundle_digest": "sha256:e904fc1d31a03690126ae9320488ecbdbdd15e3dcbc0156b876ff1881f488e76",
+      "transport": {
+        "format": "exploration_transport@1",
+        "compression": "gzip",
+        "encoded_bytes": 8301578,
+        "decoded_bytes": 31652045,
+        "encoded_sha256": "sha256:a64fba3afcc2045a5c87730e42d41979bde7eed381ded9bcef230317121859dd",
+        "decoded_sha256": "sha256:6a7d553f961b08d2a376c2ae2074bfbf19e630c2ad63f96b59d87abc5e7e0d2f",
+        "backend": {
+          "module": "zlib",
+          "version": "1.3.2",
+          "level": 6
+        }
+      }
+    },
+    "saved_sha256": "a64fba3afcc2045a5c87730e42d41979bde7eed381ded9bcef230317121859dd",
+    "native_publication_digest": "sha256:0e0cfc421a489f2fed85b733c75f2d192a5e8e105ff9718af8a1fb24858189bb",
+    "native_context_digest": "sha256:16ed7b5a9c43119d455b234faed531115599994db62c586af3e4197b499affb4",
+    "checks": {
+      "source_bound_ligand_and_repeated_entry": true,
+      "native_quantity_assay_and_publication": true,
+      "inert_original_reopening_and_exact_trail": true,
+      "exact_filtered_deck_and_original_back": true,
+      "unchanged_input_and_saved_bytes": true
+    },
+    "limits": "One in-process observation; no Qt, fresh-process, installed-artifact, scaling or accepted-budget claim"
+  },
+  "resources": {
+    "owner": "uibcdf/sabueso#154",
+    "command": [
+      "nice",
+      "-n",
+      "10",
+      "taskset",
+      "-c",
+      "0,1",
+      "python",
+      "devtools/measure_explorer_workspace.py",
+      "--inputs",
+      "recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1",
+      "--output-directory",
+      "/tmp/sabueso-workspace-profile-20261115-a4ya1swz/received"
+    ],
+    "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+    "returncode": 0,
+    "elapsed_s": 130.896,
+    "stop_reason": null,
+    "peak_owned_rss_bytes": 438214656,
+    "minimum_host_available_bytes": 49195986944,
+    "survivors_after_command": [],
+    "limits": {
+      "owned_rss_bytes": 4294967296,
+      "host_available_bytes": 17179869184,
+      "cpu_affinity": [
+        0,
+        1
+      ],
+      "native_threads": 1
+    },
+    "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+  },
+  "profile": {
+    "instrumentation": "Preliminary task-owned cProfile script; substantial overhead; not a comparable unprofiled timing or a receiving of the later --profile-save option",
+    "save_profiled_seconds": 199.39490879001096,
+    "function_total_calls": 243656528,
+    "selected_calls": {
+      "card_exploration_storage.py:save_exploration": {
+        "calls": 5,
+        "cumulative_profiled_seconds": 117.20703133900001
+      },
+      "card_exploration_storage.py:_restore": {
+        "calls": 14,
+        "cumulative_profiled_seconds": 115.24386607000001
+      },
+      "deck_exploration_storage.py:save_deck_exploration": {
+        "calls": 1,
+        "cumulative_profiled_seconds": 90.378870804
+      },
+      "deck_exploration_storage.py:_restore": {
+        "calls": 2,
+        "cumulative_profiled_seconds": 52.090514064000004
+      }
+    },
+    "interpretation": "Nested native serialization and verification dominate this profile. Repeated restore calls are observed; no validation-removal or safe-cache equivalence is established."
+  },
+  "selected_regression": {
+    "selector": "tests/explorer/test_workspace_offline.py",
+    "counts": {
+      "collected": 16,
+      "deselected": 0,
+      "errors": 0,
+      "executed": 16,
+      "failed": 0,
+      "not_executed": 0,
+      "passed": 16,
+      "reruns": 0,
+      "skipped": 0,
+      "subtests": {},
+      "warnings": 0,
+      "xfailed": 0,
+      "xpassed": 0
+    },
+    "complete": true,
+    "integrity_valid": true,
+    "events_sha256": "13b0c60000405b65b1511c1b1c7d606c72879a7caa3dd687c1f13b8fe6e41e00",
+    "published_receptor": "1.2.0 in a task-local overlay; shared environment unchanged",
+    "overlap": "This baseline regression briefly overlapped the preliminary profile; timings are not independent performance samples."
+  },
+  "dependencies_observed_after_receiving": {
+    "sabueso": "0.14.0+289.gbed4605.dirty",
+    "smonitor": "0.23.0+3.g4a4cd1e",
+    "argdigest": "0.17.1+6.g7be790b",
+    "pyunitwizard": "0.29.5+2.gcc51c8e",
+    "depdigest": "0.15.2+3.g5e93eaf",
+    "ackredit": "0.12.2+2.g0bb26ec",
+    "pytest": "9.2.0"
+  },
+  "failed_receiver": {
+    "resource_record": "recovered_work/checkpoint_recovery_20261106/interactive-workspace-cost-20261115-1/observations/unprofiled-resources.json",
+    "result": "Saved and reopened but rejected an expected saved-reading banner difference in the measurement harness; not a passing observation or a product defect",
+    "diagnosis_record": "recovered_work/checkpoint_recovery_20261106/interactive-workspace-cost-20261115-1/observations/inspect-difference.log",
+    "correction": "Compare original node/result references, page state and complete native payload digests; also check exact filtered Deck items and Back. Final received observation passes.",
+    "failed_timing_claim": "No separate timing report survived that first attempt; do not infer save/reopen times from its total elapsed time."
+  },
+  "retained_verified_workspace": "recovered_work/checkpoint_recovery_20261106/interactive-workspace-cost-20261115-1/received/workspace.json.gz",
+  "raw_evidence_root": "recovered_work/checkpoint_recovery_20261106/interactive-workspace-cost-20261115-1",
+  "retention": "Retain under #153/#154 until an affected persistence optimization or 0.16 candidate review; task-local runtime paths in raw receipts are historical and retired at cleanup",
+  "limitations": [
+    "One unprofiled observation, not an accepted budget or a scaling distribution",
+    "No new Qt/native-platform, fresh-process or installed-artifact receiving",
+    "No source acquisition, current Card/Deck construction during reopening or scientific behavior change",
+    "No new full-suite, candidate, release, dependency adoption or hosted CI claim",
+    "S4.3 remains partial awaiting the separate MolSysSketcher team; main-plan stage counts remain unchanged"
+  ],
+  "cleanup": {
+    "owner": "uibcdf/sabueso#153/#154",
+    "removed_owned_paths": [
+      "/tmp/sabueso-workspace-profile-20261115-a4ya1swz"
+    ],
+    "shared_environment_modified": false,
+    "retained_evidence_root": "recovered_work/checkpoint_recovery_20261106/interactive-workspace-cost-20261115-1",
+    "cleanup_failures": []
+  },
+  "document_gates": {
+    "ruff_format_root": "pass",
+    "ruff_lint_root": "pass",
+    "local_moli_governance": "pass",
+    "diff_check": "pass",
+    "local_links_and_stage_states": {
+      "existing_local_link_targets": 768,
+      "missing": [],
+      "stage_states": {
+        "done": 20,
+        "partial": 10,
+        "todo": 3,
+        "blocked": 0
+      }
+    }
+  }
+}

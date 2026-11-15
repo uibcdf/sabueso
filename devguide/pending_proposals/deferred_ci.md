@@ -9,6 +9,21 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Separate-team handoff and workspace cost diagnostic (2026-11-15)
+
+From `5224379`, #154/#153 record the separate MolSysSketcher development team and
+the supported consumer boundary, then add a reproducible backend-only public
+mixed-Deck cost diagnostic. The [receipt](../evidence/interactive_workspace_cost_checkpoint_20261115.json)
+owns the corrected unprofiled journey, preliminary instrumented profile, failed
+banner comparison and complete 16-case published-receptor regression. Product
+runtime, scientific/schema/native-format bytes, dependencies and GUI assets are
+unchanged; no performance improvement or new Qt/artifact/full-suite qualification
+is claimed. Applicable local format/lint/governance/link checks qualify this
+increment. The authorized intermediate `[skip ci]` push retains exact-final-source
+full/candidate and hosted CI/governance recovery under #154/#153/#112; Git and the
+owning issue record its final SHA. No workflow dispatch, release or package
+publication is selected.
+
 ### Independent 2D component and scientific/visual split (2026-11-14)
 
 From `dd996c0`, the [MolSysSketcher proposal](interactive_2d_component_0160.md)

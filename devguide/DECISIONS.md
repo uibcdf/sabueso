@@ -1,5 +1,16 @@
 # Sabueso — Decision Log
 
+## Continue Sabueso independently of the separate 2D team (2026-11-15)
+
+The maintainer assigns MolSysSketcher implementation to another team after its
+design review. Its owned TypeScript scene and equal molecular/interaction pillars
+supersede the initial visual-toolkit comparison direction below. Keep Sabueso's
+2D work at the consumer boundary until a supported, admitted provider surface is
+available; exact source/input mappings, read-only interaction and lifecycle must
+receive before S4.3 closes. Continue independent workspace, performance and
+navigation work. See the [consumer handoff](pending_proposals/interactive_2d_component_0160.md)
+and [shared owner](https://github.com/uibcdf/molsyssuite/issues/199).
+
 ## Separate 2D component evaluation from chemical-provider selection (2026-11-14)
 
 For the current investigation, follow the maintainer's preference for a reusable

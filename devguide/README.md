@@ -62,6 +62,9 @@ The [rich workspace increment](pending_proposals/interactive_workspace_persisten
 now adds readable native values/units, sequence strips/relationship graphs,
 nonblocking source queries and original whole query/Card/Deck history saving.
 Its public protein/BTS/activity/assay/publication journey has actual Qt receiving;
+[the later cost diagnostic](pending_proposals/interactive_workspace_cost_0160.md)
+adds reproducible backend save/reopen observations and exact native-content/Back
+checks while the 2D team works; it is not an optimization or an accepted budget;
 [source-candidate follow-up](pending_proposals/interactive_source_candidates_0160.md)
 now preserves ambiguity and original source context through explicit record
 queries and saving, with usable reading space while queries run;
@@ -82,9 +85,12 @@ phenotype control and unvisited original topics still `not_saved`;
 adds fresh views from the same initial copy, fixed-origin failure/retry and an
 independently surviving real Qt window. General provider pending/background and
 mapped model contracts remain open. [Viewer #387](https://github.com/uibcdf/molsysviewer/issues/387)
-records the source-bound chemical 2D need; the later [MolSysSketcher proposal](pending_proposals/interactive_2d_component_0160.md)
-now routes independent component/engine evaluation to [MolSysSuite #199](https://github.com/uibcdf/molsyssuite/issues/199),
-with RDKit/MolSysMT science separate from visual scene and no engine adopted;
+records the source-bound chemical 2D need; the later [MolSysSketcher consumer handoff](pending_proposals/interactive_2d_component_0160.md)
+now records the separate development team and owned-scene design under
+[MolSysSuite #199](https://github.com/uibcdf/molsyssuite/issues/199),
+with provider-owned science separate from both molecular and interaction views.
+Sabueso continues independent workspace/navigation work while the supported 2D
+surface is developed; no renderer is duplicated or dependency adopted here;
 [human review materials](pending_proposals/interactive_researcher_review_0160.md)
 are prepared, with actual acceptance still open. This is development implementation,
 not a public GUI installation or platform-support claim.
