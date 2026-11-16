@@ -11,17 +11,22 @@ area: [human-exploration, deck, architecture, standalone, visualization]
 
 ## Resume here
 
-Checkpoint date: **2026-11-15**. Current navigation/inventory increment starts from
-`c778768925ef7dfd75b790b2d1682705dfac4a70`; its
-[receipt](../evidence/interactive_reading_navigation_checkpoint_20261115.json)
-binds final code/artifacts and actual receiving. The initial planning parent
+Checkpoint date: **2026-11-16 (UTC)**. Current reading-position increment starts from
+`061bde3112ba499ea4bd998fb9b7fe9561f4755b`; its
+[receipt](../evidence/interactive_reading_position_checkpoint_20261115.json)
+binds final code/artifacts and actual receiving, preserving the preceding
+[navigation/inventory receipt](../evidence/interactive_reading_navigation_checkpoint_20261115.json).
+The initial planning parent
 `fb0d09659f8d00685f829d6781e5d256751dac66` and
 [first application receipt](../evidence/interactive_card_app_checkpoint_20261113.json)
 retain their historical scope.
 
 **Current navigation increment:** [readable headings and complete indexed history](interactive_reading_navigation_0160.md)
 add full-title disclosure and keyboard access to older reading points, with exact
-native source/Back preserved. The [twenty-journey functional inventory](functional_inventory_review_0160.md)
+native source/Back preserved. The [position follow-up](interactive_reading_position_0160.md)
+adds fresh top/heading, matching parent scroll/control, occurrence/page separation
+and a pending-response focus guard, using only bounded ephemeral state.
+The [twenty-journey functional inventory](functional_inventory_review_0160.md)
 starts S6.3 reconciliation, explicitly retaining missing provider, human and
 version decisions. The main ledger now has **20 done, 11 partial and 2 todo**;
 these counts do not measure effort or acceptance.
@@ -348,9 +353,12 @@ now receives compact/full headings and older exact trail points through keyboard
 controls. The [functional inventory](functional_inventory_review_0160.md) starts
 S6.3; provider, scientific/platform and human decisions retain their own owners.
 Automated measurements settle neither human acceptance nor leak status.
-Next local UI work: receive scroll/focus restoration across Card/source/history
-changes, since the narrow-panel capture can finish below its heading. Exact native
-return is already received; the scroll/focus interaction remains separate.
+The [position/focus increment](interactive_reading_position_0160.md) now receives
+the narrow-panel follow-up: fresh top/heading, matching parent scroll/control,
+page and repeated-Deck-occurrence scope, and a pending-response focus guard.
+Positions stay ephemeral; actual human accessibility and broader query/restart
+presentation continuity are not supplied by these controls. Continue the prepared
+researcher review and receive the supported provider surfaces in their own epochs.
 MolSysSketcher belongs to its separate team. Supported mapped 3D and chemical
 depiction remain parallel dependencies, not reasons to suspend independent work.
 

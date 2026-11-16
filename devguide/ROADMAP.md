@@ -77,6 +77,11 @@ keyboard controls. The [functional inventory](pending_proposals/functional_inven
 now starts partial S6.3, linking twenty accepted journeys to actual implementation
 and receiving. Provider/human/scientific-platform/version decisions stay open;
 the updated ledger is 20 done, 11 partial and 2 todo, not a readiness percentage.
+The [reading-position follow-up](pending_proposals/interactive_reading_position_0160.md)
+now restores matching parent scroll/control and starts new readings at their
+heading, with bounded ephemeral state and a pending-response focus guard. Native
+page/Deck occurrence keys and installed receiving preserve original context;
+this does not replace human accessibility review or the remaining provider work.
 
 ## How the two routes are integrated
 

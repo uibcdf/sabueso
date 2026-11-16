@@ -52,6 +52,10 @@ Back/save/reopen navigation and movable reading panels. The
 [navigation increment](pending_proposals/interactive_reading_navigation_0160.md)
 adds compact/full headings and keyboard access to all older backend-retained
 trail points, preserving exact source/native return. The
+[position increment](pending_proposals/interactive_reading_position_0160.md)
+adds fresh-reading heading focus, exact parent scroll/control return and protection
+of focus moved by the user during a pending action, with separate page/Deck occurrence
+keys. These positions are transient and never change original readings. The
 [functional inventory](pending_proposals/functional_inventory_review_0160.md)
 starts partial S6.3; the current ledger is 20 done, 11 partial and 2 todo.
 The native Deck contract

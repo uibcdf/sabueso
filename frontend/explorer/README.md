@@ -98,6 +98,17 @@ not change original text, scientific values or saved formats. Use the developer
 receivers' `--receive-navigation` to check full-title/older-history keyboard
 operation, exact source/parent return and measured horizontal overflow in Qt.
 
+Reading scroll and last qualified control now have session-local memory keyed by
+native reading/page/history and declared Deck occurrence. New visits start at the
+top; Back and indexed returns restore a matching position/control when available.
+Hidden/missing controls fall back to the reading container, and layout changes
+can clamp scroll. A response does not steal focus from another active control.
+The cache is bounded to 256 points and is cleared for new file/query contexts;
+it is not saved across application executions. `--receive-position` adds real
+source/page/Back controls, an explicit synthetic response-order focus control and
+original repeated-Deck-occurrence receiving. Scientific readers and saved formats
+remain unchanged.
+
 The Qt window and the Python service have separate lifetimes. One worker
 serializes Knowledge actions; the GUI remains independent. Optional imports go
 through DepDigest. The presently received development floors are PySide6 6.11.2

@@ -6,6 +6,7 @@ import crypto from 'node:crypto';
 import {spawn} from 'node:child_process';
 import {setTimeout as delay} from 'node:timers/promises';
 import {connectNative} from './standalone_probe/cdp_driver.mjs';
+import {receiveDeckPosition} from './standalone_probe/receive_position.mjs';
 const args=process.argv.slice(2), option=name=>{const index=args.indexOf(name);return index<0?undefined:args[index+1];};
 const output=path.resolve(option('--output')),card=path.resolve(option('--deck'));
 fs.mkdirSync(output,{recursive:false});
@@ -154,6 +155,7 @@ try{
   await page.getByRole('button',{name:'Back'}).click();await page.waitForFunction(()=>document.querySelectorAll('.items .item').length===3);
   result.checks.metadata_back_preserves_members=true;
   }
+  if(args.includes('--receive-position'))await receiveDeckPosition(page,result);
   await page.screenshot({path:path.join(output,'renderer.png')});
   fs.writeFileSync(path.join(output,'capture-request'),'capture');await until(()=>fs.existsSync(path.join(output,'native.png')) && fs.statSync(path.join(output,'native.png')).size>1000,'native composition capture');
   result.checks.actual_native_capture=fs.statSync(path.join(output,'native.png')).size>1000;

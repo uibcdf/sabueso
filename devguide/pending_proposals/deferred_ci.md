@@ -9,6 +9,20 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Transient reading position and focus (2026-11-15)
+
+From `061bde3`, #154 adds fresh reading top/heading, matching parent scroll/control,
+page/declared Deck-occurrence separation and a pending-response focus guard. The
+[receipt](../evidence/interactive_reading_position_checkpoint_20261115.json)
+records the failed baseline, 210 source and 207 installed Python cases at their
+actual payload epoch, the final Python byte bridge, source-archive rebuild and
+final installed Qt/artifact/original controls. Positions remain bounded and
+unsaved; no native schema, scientific/provider or dependency change is introduced.
+Applicable local syntax/type/build/format/lint/governance/link gates qualify this
+intermediate `[skip ci]` checkpoint. Git and #154 record the final SHA; the exact
+final-source full/candidate and hosted CI/governance recovery stays under
+#154/#153/#112. No workflow dispatch, release or public publication is selected.
+
 ### Reading navigation and first 0.16 functional inventory (2026-11-15)
 
 From `c778768`, #154 adds compact/full headings, wrapping and keyboard access to

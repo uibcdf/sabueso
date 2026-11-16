@@ -7,6 +7,7 @@ import {spawn} from 'node:child_process';
 import {setTimeout as delay} from 'node:timers/promises';
 import {connectNative} from './standalone_probe/cdp_driver.mjs';
 import {receiveNavigation} from './standalone_probe/receive_navigation.mjs';
+import {receivePosition} from './standalone_probe/receive_position.mjs';
 const args=process.argv.slice(2), option=name=>{const index=args.indexOf(name);return index<0?undefined:args[index+1];};
 const output=path.resolve(option('--output')),card=path.resolve(option('--card'));
 fs.mkdirSync(output,{recursive:false});
@@ -138,6 +139,7 @@ try{
     result.scope+='; controlled owned service loss and explicit saved-workspace application restart, without automatic unsaved recovery';
   }
   if(args.includes('--receive-navigation'))await receiveNavigation(page,result);
+  if(args.includes('--receive-position'))await receivePosition(page,result);
   await page.screenshot({path:path.join(output,'renderer.png')});
   fs.writeFileSync(path.join(output,'capture-request'),'capture');await until(()=>fs.existsSync(path.join(output,'native.png')) && fs.statSync(path.join(output,'native.png')).size>1000,'native composition capture');
   result.checks.actual_native_capture=fs.statSync(path.join(output,'native.png')).size>1000;

@@ -7,6 +7,7 @@ import {setTimeout as delay} from 'node:timers/promises';
 import {connectNative} from './standalone_probe/cdp_driver.mjs';
 import {launchOwned} from './standalone_probe/owned_process.mjs';
 import {receiveNavigation} from './standalone_probe/receive_navigation.mjs';
+import {receivePosition} from './standalone_probe/receive_position.mjs';
 const args=process.argv.slice(2),option=name=>{const i=args.indexOf(name);return i<0?undefined:args[i+1];};
 const idleSeconds=Number(option('--observe-idle-seconds')??0),layoutCycles=Number(option('--layout-cycles')??3);
 const runtimeCycles=Number(option('--runtime-cycles')??3),runtimeSettleSeconds=Number(option('--runtime-settle-seconds')??0);
@@ -147,6 +148,12 @@ try{
     await receiveNavigation(page,result);
     const current=(await state()).molecular;
     if(prior?.client_url)result.checks.navigation_keeps_live_model=current.client_url===prior.client_url&&current.client_registrations===prior.client_registrations&&current.initial_renderer_ready&&current.initial_structure_received&&current.initial_input_digest===prior.initial_input_digest;
+  }
+  if(args.includes('--receive-position')){
+    const prior=(await state()).molecular;
+    await receivePosition(page,result);
+    const current=(await state()).molecular;
+    if(prior?.client_url)result.checks.position_keeps_live_model=current.client_url===prior.client_url&&current.client_registrations===prior.client_registrations&&current.initial_renderer_ready&&current.initial_structure_received&&current.initial_input_digest===prior.initial_input_digest;
   }
   await page.screenshot({path:path.join(output,'renderer.png')});fs.writeFileSync(path.join(output,'capture-request'),'capture');await until(()=>fs.existsSync(path.join(output,'native.png'))&&fs.statSync(path.join(output,'native.png')).size>1000,'native composition');result.checks.native_capture=true;
   result.checks.original_inputs_unchanged=hash(card)===hashes.card&&hash(model)===hashes.model;result.input_sha256=hashes;result.checks.no_script_errors=!result.errors.length;

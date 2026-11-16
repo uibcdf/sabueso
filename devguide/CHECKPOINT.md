@@ -1,11 +1,23 @@
 # Sabueso — Checkpoint
 
-Current working-state checkpoint: **2026-11-15 (UTC)**. Start with
+Current working-state checkpoint: **2026-11-16 (UTC)**. Start with
 [ONBOARDING](ONBOARDING.md) for project context and the
 [workstation handoff](WORKSTATION_HANDOFF_20261106.md) for moving this checkout.
 This page owns current state; dated receipt histories are linked below.
 
 ## Next product objective: interactive exploration in 0.16.0
+
+The [reading-position increment](pending_proposals/interactive_reading_position_0160.md)
+now starts fresh readings at their heading and restores matching parent scroll
+and keyboard control on return. The transient, bounded cache distinguishes native
+Card pins, Deck occurrences, pages and retained history; it is never saved as
+Knowledge. Actual installed Qt controls cover source/Back, second-page return,
+repeated original Deck entries and focus retained by a user typing during a pending
+response. [Its receipt](evidence/interactive_reading_position_checkpoint_20261115.json)
+separates earlier Python-gate payloads, final artifact/Qt receiving and failed
+baseline controls. Native original readings and the live model remain intact.
+This closes the local scroll/focus follow-up without changing the main ledger
+or supplying human accessibility, supported mapped 3D, chemical 2D or version acceptance.
 
 The [reading-navigation increment](pending_proposals/interactive_reading_navigation_0160.md)
 now wraps long source headings, preserves complete titles in a keyboard disclosure

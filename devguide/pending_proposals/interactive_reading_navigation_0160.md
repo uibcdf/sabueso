@@ -65,6 +65,10 @@ source/history navigation. Exact native return is received; scroll-position and
 focus restoration across reading changes are not. Receive and refine those UI
 behaviors next under #154 without treating them as a source-identity failure.
 
+The subsequent [position/focus increment](interactive_reading_position_0160.md)
+now receives that bounded behavior. The original capture and its unqualified
+scroll observation above retain their earlier epoch and are not rewritten.
+
 Run the complete source application/package-data gate with the published receptor.
 The installed runtime gate selects the copied complete application modules and
 excludes only the existing source-tree frontend-declaration check. That check

@@ -1155,6 +1155,24 @@ installed compiled assets. Do not hide its absence as a runtime skip or call a
 failed copied source-placement trial a passing installed gate. Retain complete
 receptor streams and exact selected node counts for both scopes.
 
+For reading-position changes, add `--receive-position` to the Card/model
+receivers and the original three-occurrence Deck receiver. Reproduce the old
+new-view scroll/focus failure before changing the frontend. Receive top/heading
+on a fresh visit, exact parent scroll/native item focus on Back, repeated-visit
+reset and a separate item-page offset. Hold one actual response unchanged only
+as an explicitly synthetic delivery-order control; type in Search while pending
+and verify the response does not steal that focus or text. Original Deck receiving
+must distinguish declared repeated entry occurrences, not matching labels.
+Model receiving must keep its client/registration/readiness while navigating.
+
+Position memory remains ephemeral and bounded; missing/hidden controls and
+changed layouts may fall back/clamp without changing native identity. Reopening
+a saved workspace does not deserialize scroll/focus. Verify complete frontend
+source closure and rebuild the compiled resources from the final sdist; retain
+exact runtime byte bridges when a source-only correction changes a diagnostic
+artifact epoch. Installed/native/original gates use their actual file/digest;
+prototype and draft failures remain distinct from final receiving.
+
 The native Deck contract (#153) adds `test_deck_exploration_offline.py`,
 `test_deck_envelope_admission_offline.py` and the application Deck session tests.
 Select native Deck/membership/schema/storage controls alongside `tests/explorer/`.

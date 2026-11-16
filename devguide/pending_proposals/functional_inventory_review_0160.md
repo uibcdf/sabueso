@@ -29,7 +29,7 @@ provider, artifact and platform epochs, not every later commit.
 | F02 — Discover pertinent topics | `implemented`: scrollable native topic index, descriptions, local search and complete access beyond curated previews | [Native/source query and presentation receiving](../evidence/interactive_rich_workspace_checkpoint_20261113.json); [navigation increment](interactive_reading_navigation_0160.md). No acquisition follows from ordinary browsing |
 | F03 — Read values, units and scope | `implemented`: source-linked original overview, native bounded cell cards/tables, quantity units and visible retained/unknown/missing states | [Presentation tests](../../tests/explorer/test_presentation_offline.py), [rich receipt](../evidence/interactive_rich_workspace_checkpoint_20261113.json). Previews retain explicit limits; original readers own complete values and scientific meaning |
 | F04 — Inspect complete original sources | `implemented`: native items, original scope, complete text pages, source statements and Support remain available | [Application session tests](../../tests/explorer/test_session_offline.py), [navigation receipt](../evidence/interactive_reading_navigation_checkpoint_20261115.json). Compact headings disclose the complete original heading; neither labels nor display position select a source |
-| F05 — Navigate and return exactly | `implemented`: Back, Overview, exact indexed trail return and keyboard access to older points beyond the five recent buttons | [Navigation increment and real Qt checks](interactive_reading_navigation_0160.md), [backend presentation/history controls](../../tests/explorer/test_presentation_offline.py). Native results, history indices and original text remain authoritative; human accessibility review stays open |
+| F05 — Navigate and return exactly | `implemented`: Back, Overview, exact indexed trail return, older-point keyboard access and transient parent scroll/control return | [Navigation increment](interactive_reading_navigation_0160.md), [position/focus receiving](interactive_reading_position_0160.md), [backend presentation/history controls](../../tests/explorer/test_presentation_offline.py). Native results, history indices and original text remain authoritative; human accessibility review stays open |
 | F06 — Explore a Deck | `implemented`: original membership/metadata, filters/order, repeated occurrences, supplied related Cards and exact Card/source/Deck return | [Deck contract](deck_exploration_contract_0160.md), [cross-member receipt](../evidence/interactive_cross_member_checkpoint_20261113.json), [original Deck receipt](../evidence/interactive_deck_saved_checkpoint_20261113.json). A shared label or sequence establishes no identity or membership |
 | F07 — Enter identifiers and retain ambiguity | `implemented`: explicit UniProt/PDB/SMILES/MONDO-ID queries, candidate/alternative follow-up and original query return | [Candidate receipt](../evidence/interactive_source_candidates_checkpoint_20261113.json), [referenced-record receipt](../evidence/interactive_record_queries_checkpoint_20261113.json). PDB is a structure record with related proteins; disease free-text search and arbitrary source controls are outside the delivered bounded entry |
 | F08 — Choose further acquisition | `implemented`: identity-only default, explicit InterPro/AlphaFold scope, observed source outcomes and one background query with cancellation/discard/late-result adoption | [Source-enrichment receipt](../evidence/interactive_source_enrichment_checkpoint_20261113.json), [query tests](../../tests/explorer/test_queries_offline.py). An active provider HTTP request may finish after discard; fixture delays do not measure live source speed |
@@ -49,10 +49,12 @@ provider, artifact and platform epochs, not every later commit.
 ## Immediate order and completion boundary
 
 The navigation increment completes the concrete long-heading/older-trail polish
-item, with original-reference and keyboard receiving. The narrow-panel native
-capture also records vertical scroll below the heading; scroll/focus restoration
-across reading changes remains a concrete local usability follow-up. Keep
-the native scientist/agent/saved contracts
+item, with original-reference and keyboard receiving. The later
+[position/focus increment](interactive_reading_position_0160.md) receives fresh
+top/heading and matching parent scroll/control on Back, with separate page/Deck
+occurrence scope and a pending-response focus guard. The cache is ephemeral;
+actual human accessibility and cross-query/cross-execution position recovery stay
+separate. Keep the native scientist/agent/saved contracts
 shared. Do not replace open provider requirements with a consumer imitation.
 
 Receive the reviewed MolSysMT #763 correction and the supported Viewer #368

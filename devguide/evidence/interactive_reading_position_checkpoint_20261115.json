@@ -1,0 +1,1454 @@
+{
+  "format": "sabueso.interactive_reading_position_checkpoint@1",
+  "owner": "uibcdf/sabueso#154",
+  "coordination": [
+    "uibcdf/sabueso#153",
+    "uibcdf/sabueso#112"
+  ],
+  "started_local_date": "2026-11-15 America/Mexico_City",
+  "completed_at": "2026-11-16T00:35:38.193908+00:00",
+  "base_commit": "061bde3112ba499ea4bd998fb9b7fe9561f4755b",
+  "scope": "Bounded transient frontend scroll/focus; native schemas/readers, scientific values, provider interfaces and dependencies unchanged",
+  "source_sha256": {
+    "frontend/explorer/src/app.tsx": "e3814d61e63414b0a2a24a1fa0ee1f76df663c5d9d4054a4e49689c62d85ca67",
+    "frontend/explorer/src/style.css": "3160f08981a690c7775c39ce2431c3c88de7a90505067a11573341197de2f1c3",
+    "frontend/explorer/src/reading_navigation.tsx": "3648ad020ef4da15d8b46a14d3f2249a9dc1f2b234a2edc24b47103ef597aaad",
+    "frontend/explorer/src/reading_position.tsx": "47ee1efc89411773d9559315d408d2c1d6554f5dd3958844dc57330eee6d8cad",
+    "devtools/explorer_journey.mjs": "a45bcf6ecd4084fe9867a04ca0acf9533e8fee6b6f5e764dd39e9a55f73fec7d",
+    "devtools/deck_explorer_journey.mjs": "ebfeff4cc783d61a6a72f657ef2fe88d491a14adbc3ff9e7f3a626ce1f75ea2f",
+    "devtools/molecular_explorer_journey.mjs": "926224209add704581637df5d6f1783a4ccddede96683a168edd4090e0063a06",
+    "devtools/standalone_probe/receive_position.mjs": "9ef22761f78c43a3d997b9bfb1f5e0a113aac904fbfeb3d62b6a6af917ab42fe",
+    "devtools/standalone_probe/receive_navigation.mjs": "0a0319bb26a4d8685f6d6a34fb78fca1b03147c51febe73fbb99e72be788bc1f",
+    "sabueso/explorer/_assets/app.js": "22db7fe7f13512e6d1c3d06d24b9528c56e709e6185f46af339a271d65ba2341",
+    "sabueso/explorer/_assets/app.css": "a44a4d21141f9c5c97e2d975ac93a86061b6172c3e2e3ec7a4ccdf796822db73",
+    "sabueso/explorer/_assets/notices.txt": "a238c0f2172b6b9507e352ce97d0065b73c0abe2b076493e6553789f675e0b15",
+    "sabueso/explorer/_assets/index.html": "be4705852899de9486e6c01fb0d92ad99301024833c9c7b50b545a3827cc785d"
+  },
+  "python_gates": [
+    {
+      "name": "application",
+      "complete": true,
+      "integrity_valid": true,
+      "counts": {
+        "collected": 210,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 210,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 210,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 4,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "events_sha256": "18e76f532c4f20b9ff597268882b6b635fc88ff1495b9f225e53cb7bf4c09f9c",
+      "receptor": "1.2.0",
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1",
+          "python",
+          "-m",
+          "pytest",
+          "tests/explorer",
+          "tests/core/test_package_data_offline.py",
+          "-m",
+          "not online",
+          "--receptor=llm",
+          "--receptor-events=/tmp/sabueso-reading-position-20261115-o542v78d/application.jsonl"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "returncode": 0,
+        "elapsed_s": 186.544,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 333979648,
+        "minimum_host_available_bytes": 40013144064,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      },
+      "payload_epoch": "Initial product frontend; final Python/scientific bytes equal through two explicit bridges"
+    },
+    {
+      "name": "installed-runtime",
+      "complete": true,
+      "integrity_valid": true,
+      "counts": {
+        "collected": 207,
+        "deselected": 1,
+        "errors": 0,
+        "executed": 207,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 207,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 4,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "events_sha256": "96c156f84a4e490f153abbff1fc7c089151d264e7997bed200bbb75004e8d7d8",
+      "receptor": "1.2.0",
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1",
+          "/tmp/sabueso-reading-position-20261115-o542v78d/installed-env/bin/python",
+          "-m",
+          "pytest",
+          "tests/explorer",
+          "-k",
+          "not frontend_assets_declared_and_contain_no_comparison_runtime",
+          "-m",
+          "not online",
+          "--receptor=llm",
+          "--receptor-events=/tmp/sabueso-reading-position-20261115-o542v78d/installed-runtime.jsonl"
+        ],
+        "cwd": "/tmp/sabueso-reading-position-20261115-o542v78d/client",
+        "returncode": 0,
+        "elapsed_s": 185.54,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 326479872,
+        "minimum_host_available_bytes": 43381297152,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      },
+      "payload_epoch": "Initial product frontend; final Python/scientific bytes equal through two explicit bridges"
+    },
+    {
+      "name": "frontend-declaration-final",
+      "complete": true,
+      "integrity_valid": true,
+      "counts": {
+        "collected": 1,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 1,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 1,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "events_sha256": "f152a3ae0610578c159fb14e5245d54a843859d7ff8f3a53de5b28dd2892c46e",
+      "receptor": "1.2.0",
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1",
+          "env",
+          "PYTHONPATH=/tmp/sabueso-reading-position-20261115-o542v78d/published-receptor",
+          "python",
+          "-m",
+          "pytest",
+          "tests/explorer/test_service_offline.py::test_frontend_assets_declared_and_contain_no_comparison_runtime",
+          "-m",
+          "not online",
+          "--receptor=llm",
+          "--receptor-events=/tmp/sabueso-reading-position-20261115-o542v78d/frontend-declaration-final.jsonl"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "returncode": 0,
+        "elapsed_s": 1.006,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 66727936,
+        "minimum_host_available_bytes": 43641860096,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      },
+      "payload_epoch": "Final compiled assets"
+    }
+  ],
+  "final_installed_qt": [
+    {
+      "name": "qt-final-protein",
+      "receipt": "recovered_work/checkpoint_recovery_20261106/interactive-reading-position-20261115-1/qt-final-protein-output/receipt.json",
+      "receipt_sha256": "7bdddbadc8873a68024e1221c24bf953b1906041761a3d1b4b36250b7cc18b2a",
+      "check_count": 33,
+      "checks": {
+        "native_profile_overview": true,
+        "original_overview_field_opens": true,
+        "exact_trail_return": true,
+        "sequence_preserves_exact_text": true,
+        "sequence_positions_scope_explicit": true,
+        "native_annotation_cells_visible": true,
+        "original_source_remains_accessible": true,
+        "native_return_overview_retained": true,
+        "heading_retains_exact_full_title": true,
+        "heading_is_compact": true,
+        "full_title_opens_with_keyboard": true,
+        "reading_needs_no_horizontal_scroll": true,
+        "all_exact_history_points_available": true,
+        "earlier_history_opens_with_keyboard": true,
+        "earlier_return_preserves_exact_occurrence": true,
+        "earlier_source_parent_back_is_exact": true,
+        "native_reading_is_unchanged": true,
+        "disclosure_resets_on_new_reading": true,
+        "position_control_is_scrolled_parent": true,
+        "new_reading_starts_at_top": true,
+        "new_reading_focuses_heading": true,
+        "back_restores_parent_scroll": true,
+        "back_restores_original_item_focus": true,
+        "position_return_keeps_native_reading": true,
+        "new_visit_is_not_a_stale_scroll_return": true,
+        "position_preserves_exact_child": true,
+        "page_change_starts_at_heading": true,
+        "page_bound_return_keeps_exact_offset": true,
+        "page_bound_return_keeps_position_and_control": true,
+        "pending_response_does_not_steal_search_focus": true,
+        "actual_native_capture": true,
+        "input_unchanged": true,
+        "no_script_errors": true
+      },
+      "position": {
+        "source_item_ref": "XI_6a5de2f54d0767119e6c593a8b73c7271018787de4ae062cf3cbe8516d67c03d",
+        "parent_view_ref": "XV_8ec55c97c24a22f0570d10dc341af803fe374e3d60f5b49bcee2ebc2b5b9d3fd",
+        "parent": {
+          "top": 790,
+          "left": 0,
+          "focused_item": "XI_6a5de2f54d0767119e6c593a8b73c7271018787de4ae062cf3cbe8516d67c03d",
+          "heading_focused": false,
+          "reading_focused": false
+        },
+        "opened": {
+          "top": 0,
+          "left": 0,
+          "focused_item": null,
+          "heading_focused": true,
+          "reading_focused": false
+        },
+        "restored": {
+          "top": 790,
+          "left": 0,
+          "focused_item": "XI_6a5de2f54d0767119e6c593a8b73c7271018787de4ae062cf3cbe8516d67c03d",
+          "heading_focused": false,
+          "reading_focused": false
+        },
+        "repeated": {
+          "top": 0,
+          "left": 0,
+          "focused_item": null,
+          "heading_focused": true,
+          "reading_focused": false
+        },
+        "page": {
+          "offset": 40,
+          "before": {
+            "top": 695,
+            "left": 0,
+            "focused_item": "XI_48920161df681c912342cb9f63f8472d3da5dc31af9aa0840ac1308e31ba9285",
+            "heading_focused": false,
+            "reading_focused": false
+          },
+          "after": {
+            "top": 695,
+            "left": 0,
+            "focused_item": "XI_48920161df681c912342cb9f63f8472d3da5dc31af9aa0840ac1308e31ba9285",
+            "heading_focused": false,
+            "reading_focused": false
+          }
+        },
+        "focus_race_scope": "One actual native action response held unchanged in the browser; synthetic scheduling, not source/server latency"
+      },
+      "input_sha256": "8c35824c761d38be0c4c586336b04c0ce0670367cdb58fa0a9776dbd1d192eeb",
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1,2,3",
+          "node",
+          "devtools/explorer_journey.mjs",
+          "--output",
+          "/tmp/sabueso-reading-position-20261115-o542v78d/qt-final-protein-output",
+          "--python",
+          "/tmp/sabueso-reading-position-20261115-o542v78d/installed-env/bin/python",
+          "--application-root",
+          "/tmp/sabueso-reading-position-20261115-o542v78d/client",
+          "--card",
+          "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/protein-card.json",
+          "--receive-presentation",
+          "--receive-navigation",
+          "--receive-position"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "returncode": 0,
+        "elapsed_s": 22.94,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 1081913344,
+        "minimum_host_available_bytes": 42784358400,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      }
+    },
+    {
+      "name": "qt-final-molecule",
+      "receipt": "recovered_work/checkpoint_recovery_20261106/interactive-reading-position-20261115-1/qt-final-molecule-output/receipt.json",
+      "receipt_sha256": "88c4ad8f0907e77570d6baf328396764dd81585d1f1147d3afd203d636a77357",
+      "check_count": 29,
+      "checks": {
+        "native_profile_overview": true,
+        "original_overview_field_opens": true,
+        "exact_trail_return": true,
+        "native_property_cells_visible": true,
+        "property_unit_retained": true,
+        "original_source_remains_accessible": true,
+        "native_return_overview_retained": true,
+        "heading_retains_exact_full_title": true,
+        "heading_is_compact": true,
+        "full_title_opens_with_keyboard": true,
+        "reading_needs_no_horizontal_scroll": true,
+        "all_exact_history_points_available": true,
+        "earlier_history_opens_with_keyboard": true,
+        "earlier_return_preserves_exact_occurrence": true,
+        "earlier_source_parent_back_is_exact": true,
+        "native_reading_is_unchanged": true,
+        "disclosure_resets_on_new_reading": true,
+        "position_control_is_scrolled_parent": true,
+        "new_reading_starts_at_top": true,
+        "new_reading_focuses_heading": true,
+        "back_restores_parent_scroll": true,
+        "back_restores_original_item_focus": true,
+        "position_return_keeps_native_reading": true,
+        "new_visit_is_not_a_stale_scroll_return": true,
+        "position_preserves_exact_child": true,
+        "pending_response_does_not_steal_search_focus": true,
+        "actual_native_capture": true,
+        "input_unchanged": true,
+        "no_script_errors": true
+      },
+      "position": {
+        "source_item_ref": "XI_b9c87bf610cdbdee1af4ee31e24904456a040bbc55126d6d5f3dfcc121a5c080",
+        "parent_view_ref": "XV_81b123a943f1d160295ea4426ad5482143f463e76290b3f76815f1ff2d3c9bd9",
+        "parent": {
+          "top": 695,
+          "left": 0,
+          "focused_item": "XI_b9c87bf610cdbdee1af4ee31e24904456a040bbc55126d6d5f3dfcc121a5c080",
+          "heading_focused": false,
+          "reading_focused": false
+        },
+        "opened": {
+          "top": 0,
+          "left": 0,
+          "focused_item": null,
+          "heading_focused": true,
+          "reading_focused": false
+        },
+        "restored": {
+          "top": 695,
+          "left": 0,
+          "focused_item": "XI_b9c87bf610cdbdee1af4ee31e24904456a040bbc55126d6d5f3dfcc121a5c080",
+          "heading_focused": false,
+          "reading_focused": false
+        },
+        "repeated": {
+          "top": 0,
+          "left": 0,
+          "focused_item": null,
+          "heading_focused": true,
+          "reading_focused": false
+        },
+        "focus_race_scope": "One actual native action response held unchanged in the browser; synthetic scheduling, not source/server latency"
+      },
+      "input_sha256": "3ed9b8732adbd6276ae5737bde75d9ebe4eefd05a090e68884cad94ee3bb5fea",
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1,2,3",
+          "node",
+          "devtools/explorer_journey.mjs",
+          "--output",
+          "/tmp/sabueso-reading-position-20261115-o542v78d/qt-final-molecule-output",
+          "--python",
+          "/tmp/sabueso-reading-position-20261115-o542v78d/installed-env/bin/python",
+          "--application-root",
+          "/tmp/sabueso-reading-position-20261115-o542v78d/client",
+          "--card",
+          "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/molecule-card.json",
+          "--receive-presentation",
+          "--receive-navigation",
+          "--receive-position"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "returncode": 0,
+        "elapsed_s": 20.327,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 1048113152,
+        "minimum_host_available_bytes": 43236061184,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      }
+    },
+    {
+      "name": "qt-final-disease-complete",
+      "receipt": "recovered_work/checkpoint_recovery_20261106/interactive-reading-position-20261115-1/qt-final-disease-complete-output/receipt.json",
+      "receipt_sha256": "586b48603879f796e95ef4a3b70ee3bb3f246ed258a47990c0bc9ab7ed3f4a7d",
+      "check_count": 30,
+      "checks": {
+        "native_profile_overview": true,
+        "original_overview_field_opens": true,
+        "exact_trail_return": true,
+        "source_graph_preserves_native_reading": true,
+        "source_graph_has_exact_page_edges": true,
+        "graph_record_back_exact": true,
+        "original_source_remains_accessible": true,
+        "native_return_overview_retained": true,
+        "heading_retains_exact_full_title": true,
+        "heading_is_compact": true,
+        "full_title_opens_with_keyboard": true,
+        "reading_needs_no_horizontal_scroll": true,
+        "all_exact_history_points_available": true,
+        "earlier_history_opens_with_keyboard": true,
+        "earlier_return_preserves_exact_occurrence": true,
+        "earlier_source_parent_back_is_exact": true,
+        "native_reading_is_unchanged": true,
+        "disclosure_resets_on_new_reading": true,
+        "position_control_is_scrolled_parent": true,
+        "new_reading_starts_at_top": true,
+        "new_reading_focuses_heading": true,
+        "back_restores_parent_scroll": true,
+        "back_restores_original_item_focus": true,
+        "position_return_keeps_native_reading": true,
+        "new_visit_is_not_a_stale_scroll_return": true,
+        "position_preserves_exact_child": true,
+        "pending_response_does_not_steal_search_focus": true,
+        "actual_native_capture": true,
+        "input_unchanged": true,
+        "no_script_errors": true
+      },
+      "position": {
+        "source_item_ref": "XI_d60a08a7911a2136068e92466133e508129bd6759668cc6344e31530848b2c52",
+        "parent_view_ref": "XV_d30da0956ca01f5f7f98c1f2cd82e973fa833e6fee3b7f10697af6b53e2ee53d",
+        "parent": {
+          "top": 740,
+          "left": 0,
+          "focused_item": "XI_d60a08a7911a2136068e92466133e508129bd6759668cc6344e31530848b2c52",
+          "heading_focused": false,
+          "reading_focused": false
+        },
+        "opened": {
+          "top": 0,
+          "left": 0,
+          "focused_item": null,
+          "heading_focused": true,
+          "reading_focused": false
+        },
+        "restored": {
+          "top": 740,
+          "left": 0,
+          "focused_item": "XI_d60a08a7911a2136068e92466133e508129bd6759668cc6344e31530848b2c52",
+          "heading_focused": false,
+          "reading_focused": false
+        },
+        "repeated": {
+          "top": 0,
+          "left": 0,
+          "focused_item": null,
+          "heading_focused": true,
+          "reading_focused": false
+        },
+        "focus_race_scope": "One actual native action response held unchanged in the browser; synthetic scheduling, not source/server latency"
+      },
+      "input_sha256": "ac96faf6f6fd6969b330fde6191ec8292e17b64b889c0ee332053ad3f9238529",
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1,2,3",
+          "node",
+          "devtools/explorer_journey.mjs",
+          "--output",
+          "/tmp/sabueso-reading-position-20261115-o542v78d/qt-final-disease-complete-output",
+          "--python",
+          "/tmp/sabueso-reading-position-20261115-o542v78d/installed-env/bin/python",
+          "--application-root",
+          "/tmp/sabueso-reading-position-20261115-o542v78d/client",
+          "--card",
+          "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/disease-card.json",
+          "--receive-presentation",
+          "--receive-navigation",
+          "--receive-position"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "returncode": 0,
+        "elapsed_s": 20.182,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 998756352,
+        "minimum_host_available_bytes": 42844794880,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      }
+    },
+    {
+      "name": "qt-final-deck",
+      "receipt": "recovered_work/checkpoint_recovery_20261106/interactive-reading-position-20261115-1/qt-final-deck-output/receipt.json",
+      "receipt_sha256": "e1cceea2ef6d685937669dc1c56419ee1f0ceddcdc035a77beb301f3fa3a8d4d",
+      "check_count": 22,
+      "checks": {
+        "independent_startup_is_original": true,
+        "independent_startup_retains_metadata": true,
+        "independent_startup_retains_selection": true,
+        "three_original_occurrences": true,
+        "saved_scope_explicit": true,
+        "in_place_reopening_preserves_metadata": true,
+        "independent_upload_is_original": true,
+        "exact_saved_selection": true,
+        "original_member_occurrence": true,
+        "original_source_readable": true,
+        "exact_saved_deck_return": true,
+        "original_ordered_back": true,
+        "original_root_back": true,
+        "saved_file_unchanged": true,
+        "deck_return_focus_1": true,
+        "deck_return_focus_2": true,
+        "repeated_card_positions_use_declared_occurrences": true,
+        "repeated_card_entry_starts_at_top": true,
+        "deck_position_preserves_outer_reading": true,
+        "actual_native_capture": true,
+        "input_unchanged": true,
+        "no_script_errors": true
+      },
+      "position": {
+        "visits": [
+          {
+            "entry": 1,
+            "card_ref": "sabueso:disease:mondo:MONDO:0001444@sha256:f9937da5f788b23ef44cfed1af19e00d47c9e7ca029577b3a03bdea6bfa57ee0",
+            "view_ref": "XV_5f8ed682ba7f0d0de92df36a638d07654702cbb34c3e4ab1448ed1793e6118c5",
+            "initial": {
+              "top": 0,
+              "heading": true
+            },
+            "away": 365
+          },
+          {
+            "entry": 2,
+            "card_ref": "sabueso:disease:mondo:MONDO:0001444@sha256:f9937da5f788b23ef44cfed1af19e00d47c9e7ca029577b3a03bdea6bfa57ee0",
+            "view_ref": "XV_5f8ed682ba7f0d0de92df36a638d07654702cbb34c3e4ab1448ed1793e6118c5",
+            "initial": {
+              "top": 0,
+              "heading": true
+            },
+            "away": 365
+          }
+        ]
+      },
+      "input_sha256": "1f0c558de4a3655bc5af05a4fc06afcc86b61875d2536e93e0f0a7eae7fe25ac",
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1,2,3",
+          "node",
+          "devtools/deck_explorer_journey.mjs",
+          "--output",
+          "/tmp/sabueso-reading-position-20261115-o542v78d/qt-final-deck-output",
+          "--python",
+          "/tmp/sabueso-reading-position-20261115-o542v78d/installed-env/bin/python",
+          "--application-root",
+          "/tmp/sabueso-reading-position-20261115-o542v78d/client",
+          "--deck",
+          "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-deck-saving-20261113-1/qt-save-source-output/readings/deck-reading-0ea6ed1e9055657f29096787.json.gz",
+          "--reading",
+          "--saved-workspace",
+          "--receive-position"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "returncode": 0,
+        "elapsed_s": 20.411,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 1016008704,
+        "minimum_host_available_bytes": 43272519680,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      }
+    },
+    {
+      "name": "qt-final-model",
+      "receipt": "recovered_work/checkpoint_recovery_20261106/interactive-reading-position-20261115-1/qt-final-model-output/receipt.json",
+      "receipt_sha256": "ffb7c7322cf7a28f2d6a0f2fdfd39fed085eba35fb3487f72960599d2b207881",
+      "check_count": 38,
+      "checks": {
+        "real_canvas_and_renderer": true,
+        "actual_floating_group_observed": true,
+        "reset_returns_to_main_grid": true,
+        "same_live_viewport": true,
+        "camera_survives_layout": true,
+        "selection_survives_layout": true,
+        "no_inferred_correspondence": true,
+        "reading_survives_layout": true,
+        "molecular_presentation_saved_without_scene": true,
+        "saving_layout_keeps_live_model": true,
+        "original_source_remains_readable": true,
+        "heading_retains_exact_full_title": true,
+        "heading_is_compact": true,
+        "full_title_opens_with_keyboard": true,
+        "reading_needs_no_horizontal_scroll": true,
+        "all_exact_history_points_available": true,
+        "earlier_history_opens_with_keyboard": true,
+        "earlier_return_preserves_exact_occurrence": true,
+        "earlier_source_parent_back_is_exact": true,
+        "native_reading_is_unchanged": true,
+        "disclosure_resets_on_new_reading": true,
+        "navigation_keeps_live_model": true,
+        "position_control_is_scrolled_parent": true,
+        "new_reading_starts_at_top": true,
+        "new_reading_focuses_heading": true,
+        "back_restores_parent_scroll": true,
+        "back_restores_original_item_focus": true,
+        "position_return_keeps_native_reading": true,
+        "new_visit_is_not_a_stale_scroll_return": true,
+        "position_preserves_exact_child": true,
+        "page_change_starts_at_heading": true,
+        "page_bound_return_keeps_exact_offset": true,
+        "page_bound_return_keeps_position_and_control": true,
+        "pending_response_does_not_steal_search_focus": true,
+        "position_keeps_live_model": true,
+        "native_capture": true,
+        "original_inputs_unchanged": true,
+        "no_script_errors": true
+      },
+      "position": {
+        "source_item_ref": "XI_6a5de2f54d0767119e6c593a8b73c7271018787de4ae062cf3cbe8516d67c03d",
+        "parent_view_ref": "XV_8ec55c97c24a22f0570d10dc341af803fe374e3d60f5b49bcee2ebc2b5b9d3fd",
+        "parent": {
+          "top": 1208,
+          "left": 0,
+          "focused_item": "XI_6a5de2f54d0767119e6c593a8b73c7271018787de4ae062cf3cbe8516d67c03d",
+          "heading_focused": false,
+          "reading_focused": false
+        },
+        "opened": {
+          "top": 0,
+          "left": 0,
+          "focused_item": null,
+          "heading_focused": true,
+          "reading_focused": false
+        },
+        "restored": {
+          "top": 1208,
+          "left": 0,
+          "focused_item": "XI_6a5de2f54d0767119e6c593a8b73c7271018787de4ae062cf3cbe8516d67c03d",
+          "heading_focused": false,
+          "reading_focused": false
+        },
+        "repeated": {
+          "top": 0,
+          "left": 0,
+          "focused_item": null,
+          "heading_focused": true,
+          "reading_focused": false
+        },
+        "page": {
+          "offset": 40,
+          "before": {
+            "top": 1208,
+            "left": 0,
+            "focused_item": "XI_48920161df681c912342cb9f63f8472d3da5dc31af9aa0840ac1308e31ba9285",
+            "heading_focused": false,
+            "reading_focused": false
+          },
+          "after": {
+            "top": 1208,
+            "left": 0,
+            "focused_item": "XI_48920161df681c912342cb9f63f8472d3da5dc31af9aa0840ac1308e31ba9285",
+            "heading_focused": false,
+            "reading_focused": false
+          }
+        },
+        "focus_race_scope": "One actual native action response held unchanged in the browser; synthetic scheduling, not source/server latency"
+      },
+      "input_sha256": {
+        "card": "8c35824c761d38be0c4c586336b04c0ce0670367cdb58fa0a9776dbd1d192eeb",
+        "model": "6f15f9412a97e38ffb01e0aec8ffa6016ac5d1ddf50042e0129583caf65be125"
+      },
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1,2,3",
+          "node",
+          "devtools/molecular_explorer_journey.mjs",
+          "--output",
+          "/tmp/sabueso-reading-position-20261115-o542v78d/qt-final-model-output",
+          "--python",
+          "/tmp/sabueso-reading-position-20261115-o542v78d/installed-env/bin/python",
+          "--application-root",
+          "/tmp/sabueso-reading-position-20261115-o542v78d/client",
+          "--card",
+          "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/protein-card.json",
+          "--model",
+          "/fast_data/home/liliana/repos@uibcdf/sabueso/temp_data/rcsb_structural_context/coordinates/1tcd.bcif.gz",
+          "--receive-layout",
+          "--receive-navigation",
+          "--receive-position"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "returncode": 0,
+        "elapsed_s": 38.708,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 1886547968,
+        "minimum_host_available_bytes": 42149617664,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      }
+    }
+  ],
+  "artifact_original_proof": {
+    "wheel": {
+      "name": "sabueso-0.14.0+301.g061bde3.dirty-py3-none-any.whl",
+      "sha256": "e93d4cdf4d5490ebe32ca20497b15f8b6fc7dcd5a4151de17b0b062f015d47ec"
+    },
+    "sdist": {
+      "name": "sabueso-0.14.0+301.g061bde3.dirty.tar.gz",
+      "sha256": "26dd4898db96f7a84e161aa194d280ca2facabf618582e6e63cc5a17968be5e7"
+    },
+    "installed_module": "/tmp/sabueso-reading-position-20261115-o542v78d/installed-env/lib/python3.14/site-packages/sabueso/__init__.py",
+    "installed_version": "0.14.0+301.g061bde3.dirty",
+    "editable": false,
+    "runtime_original_SOURCE_and_installed_bytes_equal": {
+      "sabueso/explorer/_qt.py": "7b85fe1d2c8c30fc2254055dc4cd041886f1be65a3b9cea7eda775ff0df6b74f",
+      "sabueso/explorer/_session.py": "521687245ec5386574817c5ebfaf661347dd3abdc71722f0769f369539296b30",
+      "sabueso/explorer/_molecular.py": "a9ded2e47fad16cc83af3f5f78e5463334357e84f82d4c4da0dc24692f607c72",
+      "sabueso/explorer/_service.py": "b900a45373ba86d1961a86872968c0adee376f9c0040ff6f05d0793c3972704b",
+      "sabueso/explorer/_deck_session.py": "7b65196019d0f2a04569fac255e5f3dd6b20c3a94b25209f6d3d86c10737003f",
+      "sabueso/explorer/_source_choices.py": "208d0d02395d4b6eb55d2645ff469cb7e13099a8a4a487b2695ea39b4657e559",
+      "sabueso/explorer/_presentation.py": "2b0434795de70337eedfe4636dd6a6e2dd9d58fce82d50ffd3ca3c1f0b309c95",
+      "sabueso/explorer/__init__.py": "d9f38870c8c8cb9a246e19c53547451343ff05bd8724b52d11b16ea805f07062",
+      "sabueso/explorer/_association_presentation.py": "590c8f44e26ff59af5509d82f1d7278aa9d0a31dd4fd1fc812904c36626bd034",
+      "sabueso/explorer/_record_queries.py": "c3c214d566af6cdbd324bf7fc06cdcb4894f264adb9c67c830a0c09807433e2a",
+      "sabueso/explorer/_layout.py": "83ff00cc24e9d0fe22210ffa61908fa45d1982774ac0097bd554d26f286ad072",
+      "sabueso/explorer/__main__.py": "13e6fc8829e6dd3b15c8523dac1b21a6dcdcd0ec4f3119c417f61c9a1d412891",
+      "sabueso/explorer/_workspace.py": "84f3c23b3b4cb0d7216e8b763b11a2343236a22abef743687c45816813d61fbd",
+      "sabueso/explorer/_queries.py": "a56330d66e7476b4d8e034884c1bf2ec9c763867701c605259ecba3d31e8bf11",
+      "sabueso/explorer/_resolution.py": "7a165ba64694d64f9cda93a12315b77533b1f2e51d7302b68baaf36df6cc9ac9",
+      "sabueso/explorer/_assets/app.js": "22db7fe7f13512e6d1c3d06d24b9528c56e709e6185f46af339a271d65ba2341",
+      "sabueso/explorer/_assets/app.css": "a44a4d21141f9c5c97e2d975ac93a86061b6172c3e2e3ec7a4ccdf796822db73",
+      "sabueso/explorer/_assets/notices.txt": "a238c0f2172b6b9507e352ce97d0065b73c0abe2b076493e6553789f675e0b15",
+      "sabueso/explorer/_assets/index.html": "be4705852899de9486e6c01fb0d92ad99301024833c9c7b50b545a3827cc785d",
+      "sabueso/core/card_exploration_storage.py": "ded6cfc512de97a667278b023d48f9c4e20ff66914e46879a968622fbdd66bd7",
+      "sabueso/core/deck_exploration_storage.py": "69eafde545d4f1fd84b9660515f636d9d0a146b0a86400c8c6600acad0b50c71",
+      "sabueso/core/_variant_history_v1/SOURCE.json": "b55ee3cd34ef6f7efdca561ce4b06fbacb8ea4f3ca67f7bb2d362cb82f3a6998",
+      "sabueso/core/_sequence_change_history_v1/SOURCE.json": "c7a43ebf63201757abfede8ec0eee1820199ff53bfbf8fd93e4506372aa7c8c0",
+      "sabueso/core/_molecule_activity_history_v1/SOURCE.json": "14d59d034aa795516bc3258f11f8a4f8caaa1b5b38b3c30bfb273f8cfddde797",
+      "sabueso/core/_protein_context_history_v1/SOURCE.json": "de78272c691573e26e04c6028cd7a375616c7c2e51d0e43d7623462bbcf40823",
+      "sabueso/core/_disease_association_history_v1/SOURCE.json": "a927a304b67df6144995c9d5f21e44ff4a34a98e8023221e47361f3dfe53feef",
+      "sabueso/core/_knowledge_comparison_history_v1/SOURCE.json": "cf1f610bff358f89a432484952ddeec7eec3d661615035ead720ea7eb202dd8a",
+      "sabueso/core/_clinical_history_v1/SOURCE.json": "00688c256d6aee51ebc97d752fdd641f7317c5d399ae8dd84db0ee4dc7e60650"
+    },
+    "genuine_prechange_workspace_inert_and_unchanged": true,
+    "original_sha256": "83677c29c26d3676f23009e5df884bbf05bbc872a6e2ace9517f1035ce2398af",
+    "original_native_content_and_exact_back": true,
+    "no_optional_graphics_or_scientific_provider_imports": true,
+    "scope": "Noneditable unpublished diagnostic artifact with shared editable dependencies; not clean public/candidate/platform qualification"
+  },
+  "source_closure": {
+    "final_sdist_build_reproduces_shipped_assets": true,
+    "assets": {
+      "app.js": "22db7fe7f13512e6d1c3d06d24b9528c56e709e6185f46af339a271d65ba2341",
+      "app.css": "a44a4d21141f9c5c97e2d975ac93a86061b6172c3e2e3ec7a4ccdf796822db73",
+      "notices.txt": "a238c0f2172b6b9507e352ce97d0065b73c0abe2b076493e6553789f675e0b15",
+      "index.html": "be4705852899de9486e6c01fb0d92ad99301024833c9c7b50b545a3827cc785d"
+    },
+    "dependency_scope": "Existing pinned node_modules read through an owned symlink; no network/install and no clean dependency-resolution claim"
+  },
+  "payload_bridges": {
+    "extension_only_correction": {
+      "runtime_files_equal": 954,
+      "initial_wheel_sha256": "544fc4aa282d3dd2a345dcd9c4fb7f29136ea262ea8d19600f6a7a8f913d4e50",
+      "final_wheel_sha256": "21d0426d54843f66500f18f8fae8f739e1fb14ea6cc458323081c68956fd62d9",
+      "scope": "All package runtime payload files equal across the frontend source-extension correction; completed runtime gates retain their actual file epoch",
+      "sdist_rebuild_assets_sha256": {
+        "app.js": "5ee1135e3cca7bdb67eafc3c89b10a56c8ff6911349c47865f972e77753b40a2",
+        "app.css": "a44a4d21141f9c5c97e2d975ac93a86061b6172c3e2e3ec7a4ccdf796822db73",
+        "index.html": "be4705852899de9486e6c01fb0d92ad99301024833c9c7b50b545a3827cc785d",
+        "notices.txt": "a238c0f2172b6b9507e352ce97d0065b73c0abe2b076493e6553789f675e0b15"
+      }
+    },
+    "final_explicit_card_pin_key": {
+      "qualified_earlier_wheel_sha256": "21d0426d54843f66500f18f8fae8f739e1fb14ea6cc458323081c68956fd62d9",
+      "final_wheel_sha256": "e93d4cdf4d5490ebe32ca20497b15f8b6fc7dcd5a4151de17b0b062f015d47ec",
+      "compared_runtime_files": 954,
+      "byte_identical_files": 953,
+      "changed": [
+        "sabueso/explorer/_assets/app.js"
+      ],
+      "all_python_and_scientific_payloads_equal": true,
+      "scope": "Earlier 210/207 Python gates retain their actual epoch; final frontend/card-key refinement received separately on the final installed artifact."
+    }
+  },
+  "completed_build_and_original_gates": {
+    "typecheck-scoped": {
+      "owner": "uibcdf/sabueso#154",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0,1",
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso/frontend/explorer",
+      "returncode": 0,
+      "elapsed_s": 3.035,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 408289280,
+      "minimum_host_available_bytes": 43322519552,
+      "survivors_after_command": [],
+      "limits": {
+        "owned_rss_bytes": 4294967296,
+        "host_available_bytes": 17179869184,
+        "cpu_affinity": [
+          0,
+          1
+        ],
+        "native_threads": 1
+      },
+      "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+    },
+    "build-scoped": {
+      "owner": "uibcdf/sabueso#154",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0,1",
+        "npm",
+        "run",
+        "build"
+      ],
+      "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso/frontend/explorer",
+      "returncode": 0,
+      "elapsed_s": 1.008,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 170287104,
+      "minimum_host_available_bytes": 43408789504,
+      "survivors_after_command": [],
+      "limits": {
+        "owned_rss_bytes": 4294967296,
+        "host_available_bytes": 17179869184,
+        "cpu_affinity": [
+          0,
+          1
+        ],
+        "native_threads": 1
+      },
+      "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+    },
+    "artifact-build-scoped": {
+      "owner": "uibcdf/sabueso#154",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0,1",
+        "python",
+        "-m",
+        "build",
+        "--no-isolation",
+        "--outdir",
+        "/tmp/sabueso-reading-position-20261115-o542v78d/artifacts"
+      ],
+      "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+      "returncode": 0,
+      "elapsed_s": 9.086,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 74919936,
+      "minimum_host_available_bytes": 43343540224,
+      "survivors_after_command": [],
+      "limits": {
+        "owned_rss_bytes": 4294967296,
+        "host_available_bytes": 17179869184,
+        "cpu_affinity": [
+          0,
+          1
+        ],
+        "native_threads": 1
+      },
+      "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+    },
+    "sdist-final-build": {
+      "owner": "uibcdf/sabueso#154",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0,1",
+        "npm",
+        "run",
+        "build"
+      ],
+      "cwd": "/tmp/sabueso-reading-position-20261115-o542v78d/sdist-final/sabueso-0.14.0+301.g061bde3.dirty/frontend/explorer",
+      "returncode": 0,
+      "elapsed_s": 1.009,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 168562688,
+      "minimum_host_available_bytes": 43270283264,
+      "survivors_after_command": [],
+      "limits": {
+        "owned_rss_bytes": 4294967296,
+        "host_available_bytes": 17179869184,
+        "cpu_affinity": [
+          0,
+          1
+        ],
+        "native_threads": 1
+      },
+      "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+    },
+    "artifact-original-scoped": {
+      "owner": "uibcdf/sabueso#154",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0,1",
+        "env",
+        "PYTHONPATH=/tmp/sabueso-reading-position-20261115-o542v78d/published-receptor",
+        "/tmp/sabueso-reading-position-20261115-o542v78d/installed-env/bin/python",
+        "/tmp/sabueso-reading-position-20261115-o542v78d/receive_artifact.py"
+      ],
+      "cwd": "/tmp/sabueso-reading-position-20261115-o542v78d/client",
+      "returncode": 0,
+      "elapsed_s": 29.699,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 356958208,
+      "minimum_host_available_bytes": 42149617664,
+      "survivors_after_command": [],
+      "limits": {
+        "owned_rss_bytes": 4294967296,
+        "host_available_bytes": 17179869184,
+        "cpu_affinity": [
+          0,
+          1
+        ],
+        "native_threads": 1
+      },
+      "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+    }
+  },
+  "failed_or_interrupted_controls": {
+    "qt-position-baseline": {
+      "scope": "Unmodified product: inherited child scroll, lost heading/item focus; four actual failed checks",
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1,2,3",
+          "node",
+          "devtools/explorer_journey.mjs",
+          "--output",
+          "/tmp/sabueso-reading-position-20261115-o542v78d/qt-position-baseline-output",
+          "--card",
+          "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/protein-card.json",
+          "--receive-presentation",
+          "--receive-position"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "returncode": 1,
+        "elapsed_s": 18.912,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 1028562944,
+        "minimum_host_available_bytes": 41377759232,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      },
+      "failed_checks": [
+        "new_reading_starts_at_top",
+        "new_reading_focuses_heading",
+        "back_restores_original_item_focus",
+        "new_visit_is_not_a_stale_scroll_return"
+      ],
+      "position": {
+        "source_item_ref": "XI_6a5de2f54d0767119e6c593a8b73c7271018787de4ae062cf3cbe8516d67c03d",
+        "parent_view_ref": "XV_8ec55c97c24a22f0570d10dc341af803fe374e3d60f5b49bcee2ebc2b5b9d3fd",
+        "parent": {
+          "top": 790,
+          "left": 0,
+          "focused_item": "XI_6a5de2f54d0767119e6c593a8b73c7271018787de4ae062cf3cbe8516d67c03d",
+          "heading_focused": false,
+          "reading_focused": false
+        },
+        "opened": {
+          "top": 847,
+          "left": 0,
+          "focused_item": null,
+          "heading_focused": false,
+          "reading_focused": false
+        },
+        "restored": {
+          "top": 790,
+          "left": 0,
+          "focused_item": null,
+          "heading_focused": false,
+          "reading_focused": false
+        },
+        "repeated": {
+          "top": 847,
+          "left": 0,
+          "focused_item": null,
+          "heading_focused": false,
+          "reading_focused": false
+        }
+      }
+    },
+    "typecheck": {
+      "scope": "Draft hook wiring/DOM iterable errors; corrected before final typecheck",
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1,2,3",
+          "npm",
+          "run",
+          "typecheck"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso/frontend/explorer",
+        "returncode": 2,
+        "elapsed_s": 3.034,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 419540992,
+        "minimum_host_available_bytes": 39262429184,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      }
+    },
+    "typecheck-wired": {
+      "scope": "Draft DOM iterable assumption; Array.from correction received",
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1,2,3",
+          "npm",
+          "run",
+          "typecheck"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso/frontend/explorer",
+        "returncode": 2,
+        "elapsed_s": 3.035,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 426000384,
+        "minimum_host_available_bytes": 40146546688,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      }
+    },
+    "qt-installed-deck": {
+      "scope": "Receiver selected parent/child at positions 0/2; repeated child declared at 1/2; unchanged protected fixture, receiver corrected",
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1,2,3",
+          "node",
+          "devtools/deck_explorer_journey.mjs",
+          "--output",
+          "/tmp/sabueso-reading-position-20261115-o542v78d/qt-installed-deck-output",
+          "--python",
+          "/tmp/sabueso-reading-position-20261115-o542v78d/installed-env/bin/python",
+          "--application-root",
+          "/tmp/sabueso-reading-position-20261115-o542v78d/client",
+          "--deck",
+          "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-deck-saving-20261113-1/qt-save-source-output/readings/deck-reading-0ea6ed1e9055657f29096787.json.gz",
+          "--reading",
+          "--saved-workspace",
+          "--receive-position"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "returncode": 1,
+        "elapsed_s": 20.551,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 1019043840,
+        "minimum_host_available_bytes": 42852794368,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      },
+      "failed_checks": [
+        "repeated_card_positions_use_declared_occurrences"
+      ]
+    },
+    "qt-final-disease": {
+      "scope": "All native checks passed but observer received TERM; no source attributed, not counted as a completed observed gate; uninterrupted repeat qualified separately",
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1,2,3",
+          "node",
+          "devtools/explorer_journey.mjs",
+          "--output",
+          "/tmp/sabueso-reading-position-20261115-o542v78d/qt-final-disease-output",
+          "--python",
+          "/tmp/sabueso-reading-position-20261115-o542v78d/installed-env/bin/python",
+          "--application-root",
+          "/tmp/sabueso-reading-position-20261115-o542v78d/client",
+          "--card",
+          "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/disease-card.json",
+          "--receive-presentation",
+          "--receive-navigation",
+          "--receive-position"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "returncode": 0,
+        "elapsed_s": 11.2,
+        "stop_reason": "observer received signal 15",
+        "peak_owned_rss_bytes": 1009164288,
+        "minimum_host_available_bytes": 43110813696,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      },
+      "failed_checks": []
+    }
+  },
+  "participants": {
+    "sabueso": {
+      "module": "/tmp/sabueso-reading-position-20261115-o542v78d/installed-env/lib/python3.14/site-packages/sabueso/__init__.py",
+      "version_metadata": "0.14.0+301.g061bde3.dirty",
+      "direct_url": {
+        "archive_info": {
+          "hash": "sha256=e93d4cdf4d5490ebe32ca20497b15f8b6fc7dcd5a4151de17b0b062f015d47ec",
+          "hashes": {
+            "sha256": "e93d4cdf4d5490ebe32ca20497b15f8b6fc7dcd5a4151de17b0b062f015d47ec"
+          }
+        },
+        "url": "file:///tmp/sabueso-reading-position-20261115-o542v78d/artifacts/sabueso-0.14.0%2B301.g061bde3.dirty-py3-none-any.whl"
+      }
+    },
+    "molsysviewer": {
+      "module": "/fast_data/home/liliana/repos@uibcdf/molsysviewer/molsysviewer/__init__.py",
+      "version_metadata": "0.24.0+409.g0dcdd6ce",
+      "direct_url": {
+        "dir_info": {
+          "editable": true
+        },
+        "url": "file:///fast_data/home/liliana/repos%40uibcdf/molsysviewer"
+      }
+    },
+    "molsysmt": {
+      "module": "/fast_data/home/liliana/repos@uibcdf/molsysmt/molsysmt/__init__.py",
+      "version_metadata": "0.23.0+904.gff25f1202",
+      "direct_url": {
+        "dir_info": {
+          "editable": true
+        },
+        "url": "file:///fast_data/home/liliana/repos%40uibcdf/molsysmt"
+      }
+    },
+    "optional_runtime_versions": {
+      "PySide6": "6.11.2",
+      "aiohttp": "3.14.5"
+    }
+  },
+  "provider_cohort": {
+    "molsysviewer": {
+      "path": "/fast_data/home/liliana/repos@uibcdf/molsysviewer",
+      "head": "0dcdd6ce574d3c99483480cb38c16c1e3cc4782f",
+      "status": ""
+    },
+    "molsysmt": {
+      "path": "/fast_data/home/liliana/repos@uibcdf/molsysmt",
+      "head": "6deb0200cd7e384128eded46caaf751a57e65bc6",
+      "status": ""
+    }
+  },
+  "provider_feedback": {
+    "issue": "https://github.com/uibcdf/molsysmt/issues/763",
+    "observed_state": "open",
+    "owner_triage": "https://github.com/uibcdf/molsysmt/issues/763#issuecomment-6903936071",
+    "scope": "Owner confirms independent and unchanged public-input reproduction; correction under receiving. No provider code, dependency or fix adopted in this increment."
+  },
+  "resource_policy": {
+    "physical_bytes": 64978440192,
+    "available_bytes": 41463267328,
+    "affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+    ],
+    "load": [
+      3.861328125,
+      2.90673828125,
+      2.185546875
+    ],
+    "memory_pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=6064269\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5919519\n",
+    "slurm_allocation": null,
+    "execution": "Direct local; no operational scheduler selected; graphics sequential, native threads one, no more than 8 CPU and 10 GiB aggregate owned RSS; preserve at least 16 GiB host available"
+  },
+  "raw_evidence": {
+    "path": "recovered_work/checkpoint_recovery_20261106/interactive-reading-position-20261115-1",
+    "owner": "uibcdf/sabueso#154",
+    "review_trigger": "Next affected reading/navigation change or 0.16 candidate; retain negative controls and exact diagnostic artifacts until superseded",
+    "scope": "Public frozen/synthetic developer controls; no confidential pilot content"
+  },
+  "cleanup": {
+    "status": "complete",
+    "removed_exact_owned_root": "/tmp/sabueso-reading-position-20261115-o542v78d",
+    "logical_disposable_bytes": 198076832,
+    "retained_manifest": "recovered_work/checkpoint_recovery_20261106/interactive-reading-position-20261115-1/retained-sha256.json",
+    "verified_retained_files": 171,
+    "active_owned_processes_at_closeout": 0,
+    "shared_node_modules_symlink_target_preserved": true,
+    "other_tasks_siblings_and_originals_untouched": true,
+    "completed_at": "2026-11-16T00:36:54.906870+00:00"
+  },
+  "local_gates": {
+    "status": "passed",
+    "format": "ruff format --check .: 1790 files already formatted",
+    "lint": "ruff check .: all checks passed",
+    "governance": "python devtools/moli_governance.py: valid",
+    "node_syntax": [
+      "devtools/explorer_journey.mjs",
+      "devtools/molecular_explorer_journey.mjs",
+      "devtools/deck_explorer_journey.mjs",
+      "devtools/standalone_probe/receive_position.mjs"
+    ],
+    "markdown_links_checked": 710,
+    "functional_inventory_rows": 20,
+    "source_hashes_rechecked": 13,
+    "scope": "Source/runtime checks passed before documentation closeout; no executable source changed subsequently. Final diff checked separately."
+  },
+  "plan": {
+    "main_rows": 33,
+    "done": 20,
+    "partial": 11,
+    "todo": 2,
+    "functional_inventory_rows": 20,
+    "remaining": "Supported mapped 3D, separate MolSysSketcher 2D, usable reviewed MolSysMT correction, human/workload/native-platform/#192/#194/version decisions"
+  },
+  "limits": [
+    "256 LRU presentation points in one execution; no persisted source/query/restart scroll or disclosure/display state replay",
+    "Clamped scroll and reading-container fallback when layout/control differs; native references remain authoritative",
+    "Pending-response focus control holds one real unchanged action response with synthetic scheduling, not source/server latency",
+    "Real graphics use Linux/Xvfb software-rendered Qt; no GPU scaling, nonempty mapped molecular picking or human accessibility acceptance",
+    "Noneditable unpublished diagnostic wheel/sdist with shared editable dependencies; no clean public/platform/candidate qualification",
+    "Earlier Python gates keep actual file epoch. Final compiled assets, package source closure, original workspace and five Qt profiles received separately",
+    "Exact-final-source full/candidate and hosted CI/governance recovery retained under #154/#153/#112; no workflow/release/public package publication"
+  ]
+}
