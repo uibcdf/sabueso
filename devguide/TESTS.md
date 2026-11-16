@@ -1173,6 +1173,25 @@ exact runtime byte bridges when a source-only correction changes a diagnostic
 artifact epoch. Installed/native/original gates use their actual file/digest;
 prototype and draft failures remain distinct from final receiving.
 
+Experimental MolSysSketcher host receiving uses
+`devtools/standalone_probe/sketcher_qt.mjs --package <unpacked-package> --corpus <prepared-json> --output <new-directory>`
+under the shared-resource observer. Build/pack an exact provider source archive
+outside its checkout, using the declared tools; retain source/artifact/module/
+fixture hashes and its license. Load only the exported ESM surface in the existing
+Sabueso Qt window. Receive native/renderer captures, declared context/counts,
+label metrics, actual pointer/keyboard/wheel/drag, independent instances,
+failed replacement, stale generation refusal, resize/reparenting, export,
+disposal and fresh remount. Use the same explicit system Mesa path as existing
+Qt receivers; retain failed launch/draft scopes separately.
+
+The frozen real-RDKit-prepared corpus is not a new execution of chemical
+preparation or a product source-Card journey. Its loopback probe server is not
+the authenticated product service. Preserve original bytes and each view's own
+reference; qualify supported preparation, actual Card/source/Back, Interaction
+View, 3D correspondence and public/admitted delivery separately under Sketcher #6.
+If product runtime is untouched, record its byte bridge to existing application/
+scientific receipts rather than rerunning unrelated suites.
+
 The native Deck contract (#153) adds `test_deck_exploration_offline.py`,
 `test_deck_envelope_admission_offline.py` and the application Deck session tests.
 Select native Deck/membership/schema/storage controls alongside `tests/explorer/`.

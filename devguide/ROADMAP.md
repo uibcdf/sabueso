@@ -54,6 +54,12 @@ and interaction views, separately from provider-owned scientific calculations.
 Sabueso continues independent workspace/navigation work while awaiting a supported
 consumer surface. Design and repository preparation do not qualify an implemented
 2D product or adopt a dependency.
+The subsequent [actual Qt probe](pending_proposals/interactive_2d_component_0160.md#first-actual-qt-molecular-surface-receiving)
+receives the provider's finite experimental molecular surface through a packed
+ESM artifact. Direct consumer requirements now live in
+[MolSysSketcher #6](https://github.com/uibcdf/molsyssketcher/issues/6). This advances
+host receiving while source-Card integration, Interaction View and supported
+admission/delivery retain their separate acceptance.
 The [living implementation plan](pending_proposals/interactive_implementation_0160.md)
 owns the 0.16.0 stages, microstages, current progress and immediate resumption;
 it preserves the broader roadmap and separate 0.15.0 delivery state.

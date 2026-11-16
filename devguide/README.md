@@ -112,6 +112,11 @@ now records the separate development team and owned-scene design under
 with provider-owned science separate from both molecular and interaction views.
 Sabueso continues independent workspace/navigation work while the supported 2D
 surface is developed; no renderer is duplicated or dependency adopted here;
+the [first Sketcher Qt probe](pending_proposals/interactive_2d_component_0160.md#first-actual-qt-molecular-surface-receiving)
+now receives the experimental packed molecular surface with 27 checks over twelve
+frozen real-provider preparations. [Sketcher #6](https://github.com/uibcdf/molsyssketcher/issues/6)
+owns direct consumer requirements; actual source-Card integration and supported
+delivery remain open;
 [human review materials](pending_proposals/interactive_researcher_review_0160.md)
 are prepared, with actual acceptance still open. This is development implementation,
 not a public GUI installation or platform-support claim.

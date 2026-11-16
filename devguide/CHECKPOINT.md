@@ -7,6 +7,16 @@ This page owns current state; dated receipt histories are linked below.
 
 ## Next product objective: interactive exploration in 0.16.0
 
+The [MolSysSketcher consumer handoff](pending_proposals/interactive_2d_component_0160.md)
+now has a direct provider issue, [MolSysSketcher #6](https://github.com/uibcdf/molsyssketcher/issues/6),
+and first actual Qt receiving: **27 checks over twelve frozen real-RDKit-prepared
+controls** pass through a private packed experimental ESM artifact. Two independent
+views receive pointer/keyboard, wheel/drag, context, replacement and disposal.
+[The receipt](evidence/interactive_sketcher_qt_checkpoint_20261116.json) binds
+source, package, failed launches and resource scope. This remains a separate
+developer probe; actual source-Card integration, Interaction View, 3D correspondence,
+supported delivery and adoption stay open. Product runtime bytes are unchanged.
+
 The [reading-position increment](pending_proposals/interactive_reading_position_0160.md)
 now starts fresh readings at their heading and restores matching parent scroll
 and keyboard control on return. The transient, bounded cache distinguishes native
@@ -64,10 +74,11 @@ and resource limits distinct. S5.5/S6.2 and supported provider/human acceptance
 remain partial; the main plan still has **20 done, 10 partial and 3 todo**.
 
 The maintainer has assigned **MolSysSketcher** to a separate development team.
-Its local repository now contains the staged design for an owned TypeScript 2D
-scene, with molecular and interaction views as equally important pillars and
-chemical science delegated to qualified providers. This supersedes the earlier
-renderer-comparison direction; it is not a working or adopted dependency.
+Its local repository contains the staged design and first finite experimental
+TypeScript molecular surface, with molecular and interaction views as equally
+important pillars and chemical science delegated to qualified providers. This
+supersedes the earlier renderer-comparison direction. The isolated Qt receiving
+above does not adopt a supported product dependency or qualify Interaction View.
 Sabueso continues independently on workspace durability, performance and
 researcher navigation. The [consumer handoff](pending_proposals/interactive_2d_component_0160.md)
 retains exact source/input mappings, read-only exploration and provider lifecycle

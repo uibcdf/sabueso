@@ -1,0 +1,562 @@
+{
+  "format": "sabueso.interactive_sketcher_qt_checkpoint@1",
+  "owner": "uibcdf/sabueso#154",
+  "provider_issue": "https://github.com/uibcdf/molsyssketcher/issues/6",
+  "suite_coordination": "https://github.com/uibcdf/molsyssuite/issues/199",
+  "base_commit": "2e5d1ca76fd0d90b9381e1db924f31b2117da580",
+  "completed_at": "2026-11-16T00:58:56.015599+00:00",
+  "scope": "Isolated packed experimental molecular surface in actual Sabueso Qt host; developer receiving, no product or dependency adoption",
+  "source_sha256": {
+    "devtools/standalone_probe/sketcher_qt.mjs": "6b98977e1b6c10a1805571a2b42d99167d1ca6e0c5e31cd9de8d4a9f11a79404",
+    "devtools/standalone_probe/sketcher_host.mjs": "d3da85e2346c8d575a5d311106db490f4e78ba59b0d317971cec1cff5494a131",
+    "devtools/standalone_probe/sketcher_host.html": "28a41c9a2febf290e5de3f4f0afa0952570fa70d13b0dbc7cd73339b5c62a556",
+    "devtools/standalone_probe/cdp_driver.mjs": "c7be8ee8287e0dde73931c2f01d28392b1424b34b640df7b8e6a690265e31995",
+    "devtools/standalone_probe/owned_process.mjs": "bdba473d91fb8776dba40a6fe3418f2bac8d99c77ddc9ff0b3636c749821a9d6",
+    "devtools/standalone_probe/run_bounded.py": "f3cb4617bedbcfb555977d423419acc07efe63a525ba8a0be6f755622de7bf38",
+    "sabueso/explorer/_qt.py": "7b85fe1d2c8c30fc2254055dc4cd041886f1be65a3b9cea7eda775ff0df6b74f"
+  },
+  "provider_source": {
+    "head": "bda182df54091ebf0138695f22aed5ffeb4d3a5f",
+    "checkout_clean_before_and_after": true,
+    "unchanged_archive_sha256": "059ebdd954f24666dccb2f96eb87648f3c375708e499f057d4f69e520bc80cf5",
+    "inputs_sha256": {
+      "package.json": "e9abeac262df62176d975e432839529050a7b9350f3e27c63523cea8d25b3de7",
+      "package-lock.json": "a6e52d4cf5817848a2a859e22621674af56d9d226a0ebe5c47f2eb3777268455",
+      "tsconfig.json": "f784c4d2752bd7f15cb555fc4b42e84f251338db59f3b09bdb702de3444c8ca9",
+      "LICENSE": "d6b3d25cd8419ae93aca985e654059c070eefb50a8606f2312bc7c471b2d21e6",
+      "tests/data/rdkit-corpus.json": "8df7a8af419a2c005a4485f9b83c72e20134eec34f127e4b804666b1e5eca5e8",
+      "tests/data/rdkit-prepared.json": "d0c6dfc70a7e2a6fbf18ccb04020a3a4f6b3916c1baeb187910c5a92f685e48e"
+    },
+    "route": "Exact Git archive built/packed in owned temporary root; existing pinned node_modules read through an owned symlink; no provider patch or install"
+  },
+  "package": {
+    "name": "uibcdf-molsyssketcher-0.0.0.tgz",
+    "sha256": "40613dba8496ee89c214828a592791281a10248b8527df2c23f7f5fa4e8a8c94",
+    "contents": [
+      "package/LICENSE",
+      "package/dist/controller.js",
+      "package/dist/diagnostics.js",
+      "package/dist/documents.js",
+      "package/dist/geometry.js",
+      "package/dist/index.js",
+      "package/dist/json.js",
+      "package/dist/scene.js",
+      "package/dist/svg.js",
+      "package/dist/types.js",
+      "package/dist/view.js",
+      "package/dist/viewport.js",
+      "package/package.json",
+      "package/README.md",
+      "package/dist/controller.d.ts",
+      "package/dist/diagnostics.d.ts",
+      "package/dist/documents.d.ts",
+      "package/dist/geometry.d.ts",
+      "package/dist/index.d.ts",
+      "package/dist/json.d.ts",
+      "package/dist/scene.d.ts",
+      "package/dist/svg.d.ts",
+      "package/dist/types.d.ts",
+      "package/dist/view.d.ts",
+      "package/dist/viewport.d.ts"
+    ],
+    "public_entry": "package/dist/index.js",
+    "scope": "Private 0.0.0 diagnostic tarball, built from exact source archive using pinned existing node_modules; not a published dependency or clean solve"
+  },
+  "participants": {
+    "python": "/fast_data/home/liliana/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+    "version": "3.14.10 | packaged by conda-forge | (main, Oct 26 2026, 11:35:38) [GCC 15.3.0]",
+    "sabueso": {
+      "path": "/fast_data/home/liliana/repos@uibcdf/sabueso/sabueso/__init__.py",
+      "direct_url": {
+        "dir_info": {
+          "editable": true
+        },
+        "url": "file:///fast_data/home/liliana/repos%40uibcdf/sabueso"
+      }
+    },
+    "PySide6": "6.11.2",
+    "Node": "v24.22.1",
+    "npm": "11.19.1"
+  },
+  "qt": {
+    "state": "passed",
+    "check_count": 27,
+    "checks": {
+      "two_independent_real_svg_views": true,
+      "twelve_prepared_controls_received": true,
+      "declared_atom_and_bond_counts_retained": true,
+      "measured_labels_match_native_svg_boxes": true,
+      "original_context_and_exact_selection_retained": true,
+      "independent_view_survives_all_replacements": true,
+      "real_keyboard_selects_declared_atom": true,
+      "real_pointer_selects_exact_atom": true,
+      "real_hover_carries_exact_context": true,
+      "real_wheel_changes_viewport": true,
+      "real_drag_pans_without_selecting": true,
+      "zoom_changed": true,
+      "pan_changed": true,
+      "source_unchanged_during_navigation": true,
+      "failed_replacement_preserves_accepted": true,
+      "stale_generation_refused": true,
+      "reparent_and_resize_retains_document": true,
+      "export_retains_source_and_nonphysical_scope": true,
+      "owned_disposal_removes_only_one_view": true,
+      "disposed_replace_is_refused": true,
+      "retired_svg_emits_no_selection": true,
+      "fresh_remount_draws_without_restarting_qt": true,
+      "each_drawing_exposes_its_own_original": true,
+      "all_views_release_their_svg": true,
+      "prepared_input_file_unchanged": true,
+      "no_browser_script_errors": true,
+      "observed_requests_stay_on_owned_origin": true
+    },
+    "cases": [
+      {
+        "id": "methanol",
+        "atoms": 2,
+        "bonds": 1,
+        "glyph_count": 2,
+        "max_glyph_error": 0
+      },
+      {
+        "id": "benzene",
+        "atoms": 6,
+        "bonds": 6,
+        "glyph_count": 0,
+        "max_glyph_error": 0
+      },
+      {
+        "id": "salt",
+        "atoms": 2,
+        "bonds": 0,
+        "glyph_count": 4,
+        "max_glyph_error": 1.9073486257070726e-07
+      },
+      {
+        "id": "isotope",
+        "atoms": 2,
+        "bonds": 1,
+        "glyph_count": 6,
+        "max_glyph_error": 1.9073486612342094e-07
+      },
+      {
+        "id": "explicit-hydrogen",
+        "atoms": 3,
+        "bonds": 2,
+        "glyph_count": 2,
+        "max_glyph_error": 1.6997682834585248e-06
+      },
+      {
+        "id": "tetra-a",
+        "atoms": 6,
+        "bonds": 5,
+        "glyph_count": 6,
+        "max_glyph_error": 1.6997683331965163e-06
+      },
+      {
+        "id": "tetra-b",
+        "atoms": 6,
+        "bonds": 5,
+        "glyph_count": 6,
+        "max_glyph_error": 1.6997683331965163e-06
+      },
+      {
+        "id": "alkene-a",
+        "atoms": 4,
+        "bonds": 3,
+        "glyph_count": 2,
+        "max_glyph_error": 3.0026694730622694e-07
+      },
+      {
+        "id": "alkene-b",
+        "atoms": 4,
+        "bonds": 3,
+        "glyph_count": 2,
+        "max_glyph_error": 8.498841452819761e-07
+      },
+      {
+        "id": "pyrrole",
+        "atoms": 5,
+        "bonds": 5,
+        "glyph_count": 2,
+        "max_glyph_error": 1.113280823972218e-06
+      },
+      {
+        "id": "fused",
+        "atoms": 10,
+        "bonds": 11,
+        "glyph_count": 0,
+        "max_glyph_error": 0
+      },
+      {
+        "id": "macrocycle",
+        "atoms": 12,
+        "bonds": 12,
+        "glyph_count": 0,
+        "max_glyph_error": 0
+      }
+    ],
+    "browser": {
+      "protocolVersion": "1.3",
+      "product": "Sabueso/",
+      "revision": "@aa324b3754009b927f7db643b2e837d6a5383b04",
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) QtWebEngine/6.11.2 Chrome/140.0.0.0 Safari/537.36",
+      "jsVersion": "14.0.365.10"
+    },
+    "module_sha256": {
+      "/sketcher/controller.js": "fb590639f6f897772ddb1d84c177a1ffc5b8468d03914921538445c42df99fce",
+      "/sketcher/diagnostics.js": "86d3e739e11068a2531ba2414ff0426fb9c94baf04b6e7264f3cd48d03e0dae0",
+      "/sketcher/documents.js": "90c52682c5d0420eb78774cba580582805c3a02266be41b303ec49e23bbccb06",
+      "/sketcher/geometry.js": "a0b066b36024ab81250f05973084698619f12747b9479f0481b7015a6c37d5a6",
+      "/sketcher/index.js": "2b6eb36f229b8710ea8b913ef751153aac5a4ab0c3210e46da5a29328667f115",
+      "/sketcher/json.js": "df19caccc830252a9afbca940ed732c77628bd97a394a005c20e604841901ba7",
+      "/sketcher/scene.js": "4e290d3e3bc5128b5831a9a5200f7c804c172120bcd3c940cacc14083e7fe931",
+      "/sketcher/svg.js": "d4850b76eb924a9dbecaf39f8ba2215aad4f5f9189176ce584540f8d12e98765",
+      "/sketcher/types.js": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+      "/sketcher/view.js": "85f9e5b077d45ca2602166b4498d813677c766c2c3c060172611afd19db880f6",
+      "/sketcher/viewport.js": "5c6c227ee36d0860893cd33ad22df57f24838b91406bcf2f48cfaf56b1c939f3"
+    },
+    "corpus_sha256": "d0c6dfc70a7e2a6fbf18ccb04020a3a4f6b3916c1baeb187910c5a92f685e48e",
+    "receipt_sha256": "fd6c5dbf7d31233068002596c634209f3531d2b324fe86029f1af69ff2d0bc8c",
+    "raw_receipt": "recovered_work/checkpoint_recovery_20261106/molsyssketcher-consumer-handoff-20261116-1/qt-final/receipt.json",
+    "native_capture": "recovered_work/checkpoint_recovery_20261106/molsyssketcher-consumer-handoff-20261116-1/qt-final/native.png",
+    "owned_logs": [
+      {
+        "name": "xvfb",
+        "byte_limit": 262144,
+        "retained_bytes": 2030,
+        "suppressed_bytes": 0,
+        "startup_error": null
+      },
+      {
+        "name": "qt",
+        "byte_limit": 262144,
+        "retained_bytes": 1392,
+        "suppressed_bytes": 0,
+        "startup_error": null
+      }
+    ],
+    "resources": {
+      "owner": "uibcdf/sabueso#154",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0,1,2,3",
+        "node",
+        "devtools/standalone_probe/sketcher_qt.mjs",
+        "--package",
+        "/tmp/sabueso-sketcher-qt-20261116-319829ub/packed/package",
+        "--corpus",
+        "/tmp/sabueso-sketcher-qt-20261116-319829ub/source/tests/data/rdkit-prepared.json",
+        "--output",
+        "/tmp/sabueso-sketcher-qt-20261116-319829ub/qt-final"
+      ],
+      "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+      "returncode": 0,
+      "elapsed_s": 9.283,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 871583744,
+      "minimum_host_available_bytes": 42710843392,
+      "survivors_after_command": [],
+      "limits": {
+        "owned_rss_bytes": 4294967296,
+        "host_available_bytes": 17179869184,
+        "cpu_affinity": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "native_threads": 1
+      },
+      "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+    }
+  },
+  "completed_build_gates": {
+    "sketcher-build-cwd": {
+      "owner": "uibcdf/sabueso#154",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0,1",
+        "npm",
+        "run",
+        "build"
+      ],
+      "cwd": "/tmp/sabueso-sketcher-qt-20261116-319829ub/source",
+      "returncode": 0,
+      "elapsed_s": 5.062,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 445116416,
+      "minimum_host_available_bytes": 42737201152,
+      "survivors_after_command": [],
+      "limits": {
+        "owned_rss_bytes": 4294967296,
+        "host_available_bytes": 17179869184,
+        "cpu_affinity": [
+          0,
+          1
+        ],
+        "native_threads": 1
+      },
+      "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+    },
+    "sketcher-pack": {
+      "owner": "uibcdf/sabueso#154",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0,1",
+        "npm",
+        "pack",
+        "--ignore-scripts",
+        "--offline",
+        "--pack-destination",
+        "/tmp/sabueso-sketcher-qt-20261116-319829ub"
+      ],
+      "cwd": "/tmp/sabueso-sketcher-qt-20261116-319829ub/source",
+      "returncode": 0,
+      "elapsed_s": 1.007,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 101277696,
+      "minimum_host_available_bytes": 43067772928,
+      "survivors_after_command": [],
+      "limits": {
+        "owned_rss_bytes": 4294967296,
+        "host_available_bytes": 17179869184,
+        "cpu_affinity": [
+          0,
+          1
+        ],
+        "native_threads": 1
+      },
+      "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+    }
+  },
+  "earlier_attempts": {
+    "sketcher-build": {
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1",
+          "node",
+          "/tmp/sabueso-sketcher-qt-20261116-319829ub/source/devtools/build.mjs"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "returncode": 1,
+        "elapsed_s": 0.756,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 130883584,
+        "minimum_host_available_bytes": 42631684096,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      },
+      "disposition": "Invoked build script from Sabueso cwd; tsconfig.json unavailable. Corrected consumer command cwd, no provider modification."
+    },
+    "sketcher-qt-pilot": {
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1,2,3",
+          "node",
+          "devtools/standalone_probe/sketcher_qt.mjs",
+          "--package",
+          "/tmp/sabueso-sketcher-qt-20261116-319829ub/packed/package",
+          "--corpus",
+          "/tmp/sabueso-sketcher-qt-20261116-319829ub/source/tests/data/rdkit-prepared.json",
+          "--output",
+          "/tmp/sabueso-sketcher-qt-20261116-319829ub/qt-pilot"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "returncode": 1,
+        "elapsed_s": 22.353,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 707637248,
+        "minimum_host_available_bytes": 42797309952,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      },
+      "disposition": "Initial environment omitted the established system Mesa driver path; Qt aborted with GLX/EGL initialization messages before drawing checks. No provider defect inferred."
+    },
+    "sketcher-qt-native": {
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1,2,3",
+          "node",
+          "devtools/standalone_probe/sketcher_qt.mjs",
+          "--package",
+          "/tmp/sabueso-sketcher-qt-20261116-319829ub/packed/package",
+          "--corpus",
+          "/tmp/sabueso-sketcher-qt-20261116-319829ub/source/tests/data/rdkit-prepared.json",
+          "--output",
+          "/tmp/sabueso-sketcher-qt-20261116-319829ub/qt-native"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "returncode": 0,
+        "elapsed_s": 9.231,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 869208064,
+        "minimum_host_available_bytes": 42735923200,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      },
+      "disposition": "Preliminary 23 checks pass with matching driver environment. Per-view source badge and additional actual wheel/drag/count controls received separately in final 27-check run."
+    },
+    "approval_service": {
+      "disposition": "One final launch request was not executed because automatic review returned Bad Request; identical-scope retry completed review and executed normally. No bypass or safety rejection."
+    }
+  },
+  "runtime_byte_bridge": {
+    "base_commit": "2e5d1ca76fd0d90b9381e1db924f31b2117da580",
+    "tracked_package_files_equal": 954,
+    "full_manifest": "recovered_work/checkpoint_recovery_20261106/molsyssketcher-consumer-handoff-20261116-1/runtime-unchanged.json",
+    "manifest_sha256": "b5816085548e2952475b19f82d4b121feae490467df803256154ffb2c4178f34",
+    "scope": "Prior product/native/scientific receipts retain exact payload and cohort; no new unrelated Python/full-suite run"
+  },
+  "resource_preflight": {
+    "owner": "uibcdf/sabueso#154; uibcdf/molsyssketcher#6",
+    "provider_source": "bda182df54091ebf0138695f22aed5ffeb4d3a5f",
+    "provider_clean_before": true,
+    "source_acquisition": "Read exact git archive into owned temporary root, shared node_modules read via owned symlink; no provider edits or installs",
+    "physical_bytes": 64978440192,
+    "available_bytes": 42673618944,
+    "cpu_affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+    ],
+    "swap_activity_interval_s": 0.4,
+    "swap_in_out_delta": [
+      0,
+      0
+    ],
+    "memory_pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=6073569\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5928818\n",
+    "slurm_allocation": null,
+    "execution": "Direct local, no operational scheduler selected; sequential graphics 4 CPUs/4 GiB ceiling, native threads one; preserve 16 GiB host available; no exclusive reservation",
+    "tmp_free_bytes": 15958380544
+  },
+  "raw_evidence": {
+    "path": "recovered_work/checkpoint_recovery_20261106/molsyssketcher-consumer-handoff-20261116-1",
+    "owner": "uibcdf/sabueso#154 and uibcdf/molsyssketcher#6",
+    "review_trigger": "Next affected provider/Qt integration or supported source-Card milestone; retain exact diagnostic artifact, corpus and negative launch controls until superseded"
+  },
+  "cleanup": {
+    "status": "complete",
+    "removed_exact_owned_root": "/tmp/sabueso-sketcher-qt-20261116-319829ub",
+    "pointer_removed": "/tmp/sabueso-sketcher-qt-current.txt",
+    "active_owned_processes_at_closeout": 0,
+    "retained_manifest": "recovered_work/checkpoint_recovery_20261106/molsyssketcher-consumer-handoff-20261116-1/retained-sha256.json",
+    "verified_retained_files_before_closeout": 41,
+    "provider_node_modules_target_preserved": true,
+    "provider_checkout_and_shared_environment_unchanged": true,
+    "completed_at": "2026-11-16T01:01:24.841509+00:00"
+  },
+  "local_gates": {
+    "status": "passed",
+    "commands": [
+      "ruff format --check .",
+      "ruff check .",
+      "python devtools/moli_governance.py",
+      "node --check devtools/standalone_probe/sketcher_qt.mjs",
+      "node --check devtools/standalone_probe/sketcher_host.mjs",
+      "git diff --check"
+    ],
+    "changed_markdown_links_checked": 709,
+    "main_plan_rows": 33,
+    "main_states": {
+      "done": 20,
+      "partial": 11,
+      "todo": 2
+    },
+    "functional_inventory_rows": 20,
+    "exact_receiving_sources_rechecked": true
+  },
+  "plan": {
+    "done": 20,
+    "partial": 11,
+    "todo": 2,
+    "F15": "Pending in product; bounded experimental host receiving only",
+    "next": "Receive supported attributed preparation/module surface and actual source-Card/source/Back integration under Sketcher #6; Interaction View and exact 2D/3D mappings remain separate requirements"
+  },
+  "limits": [
+    "Twelve frozen synthetic SMILES controls prepared earlier by real RDKit; chemistry provider not re-executed and scientific validation not supplied",
+    "Actual host is shared editable Sabueso on Linux/Xvfb/PySide6 6.11.2 with software graphics; no installed Sabueso artifact, GPU or other native-platform qualification",
+    "Experimental private 0.0.0 tarball; no clean dependency solve, production API stability, admitted dependency, public Conda/npm or release qualification",
+    "Separate developer page/server with actual exported provider ESM; no product React Card integration, authenticated product-service or original source-Card selection/Back qualification",
+    "No native Interaction View, active 3D correspondence, chemical editing, broad workloads or human acceptance claimed",
+    "No Python/native scientific/schema/runtime/dependency changes; exact-final-source full/candidate/hosted recovery remains under #154/#153/#112"
+  ]
+}

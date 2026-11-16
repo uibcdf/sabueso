@@ -5,21 +5,29 @@ status: open
 opened: 2026-11-14
 verification: consumer_design_handoff
 area: [human-exploration, visualization, interoperability, architecture]
-blocked_by: [uibcdf/molsyssuite#199]
+blocked_by: [uibcdf/molsyssketcher#6, uibcdf/molsyssuite#199]
 ---
 
 # Reusable molecular 2D component: MolSysSketcher consumer handoff
 
-## Current decision and independent work (2026-11-15)
+## Current decision and consumer receiving (2026-11-16 UTC)
 
 The maintainer assigns MolSysSketcher to another development team. Its local
 repository at `../molsyssketcher` contains the reviewed staged design for an owned
 TypeScript scene, initially SVG, with molecular and interaction views as equal
 product pillars. Scientific preparation remains delegated to qualified providers;
 chemical editing is staged after exploration. The design supersedes the earlier
-renderer-selection experiment recorded below. It does not constitute an
-implemented, published or admitted dependency. Shared coordination remains in
+renderer-selection experiment recorded below. The provider now implements a
+finite experimental molecular surface; the receiving below does not qualify a
+complete, published or admitted dependency. Shared coordination remains in
 [MolSysSuite #199](https://github.com/uibcdf/molsyssuite/issues/199).
+
+The direct provider request is now
+[MolSysSketcher #6](https://github.com/uibcdf/molsyssketcher/issues/6). It records
+Sabueso's exact molecular/source journey, both primary views, Qt lifecycle and
+delivery receiving, scientific ownership and future correspondence-backed 2D/3D
+navigation. This complements the suite admission issue instead of leaving the
+provider's consumer requirements only in downstream documentation.
 
 Sabueso resumes independent workspace durability, measured performance and
 researcher navigation. Do not implement a second 2D engine here while waiting.
@@ -41,6 +49,40 @@ interactions or import project conclusions as knowledge. Coordinated 2D/3D
 selection also needs qualified mappings on the separate Viewer #368 surface.
 Dependency admission, artifacts and concrete API receiving follow the provider
 team's implemented contract; no speculative adapter is committed here.
+
+## First actual Qt molecular-surface receiving
+
+The [receipt](../evidence/interactive_sketcher_qt_checkpoint_20261116.json)
+receives provider source `bda182df54091ebf0138695f22aed5ffeb4d3a5f` through its
+public ESM entry in an isolated packed `0.0.0` diagnostic artifact. The unchanged
+provider source is copied from an exact Git archive and built outside its
+checkout with the existing pinned tools; no provider file or shared environment
+is modified. This is a private tooling version, not publication or dependency adoption.
+
+The existing Sabueso Qt window hosts two independent molecular views. **27 checks
+pass over twelve frozen synthetic controls prepared by real RDKit**: rendered
+label metrics, original context and declared atom/bond counts, exact selection
+through pointer/keyboard, hover, actual wheel and drag, public pan/zoom/fit,
+resize/reparenting, failed replacement, stale generation refusal, contextual
+export, disposal and fresh remount. Native QWidget and renderer captures record
+light/dark views with each drawing's own original reference. Summed owned RSS
+peaks at about **0.81 GiB** over **9.28 s**, with over 39 GiB host available;
+this finite software-rendered control is not a throughput or comparative-memory claim.
+
+The first launch omitted the established system Mesa driver path and aborted
+before any drawing check. The receiving environment matching Sabueso's existing
+graphics probes completes. That failed launch, an initial build from the wrong
+working directory and the preliminary 23-check execution remain distinct records.
+No provider rendering defect is inferred from the launch failure.
+
+This first probe loads actual packed provider modules and frozen preparations;
+it does not run the chemistry provider afresh, integrate the React Card workspace,
+establish a source-Card/atom correspondence, or qualify Interaction View or 3D.
+Its owned loopback developer server is not the product authenticated service.
+All 954 tracked Sabueso runtime package files remain byte-identical to `2e5d1ca`.
+The next step is a provider-supported, attributed preparation/module contract and
+actual source-Card selection/source/Back receiving under #6, with admission and
+delivery coordinated under suite #199. S4.3 and the main ledger remain partial.
 
 ## Historical source screening (superseded execution direction)
 

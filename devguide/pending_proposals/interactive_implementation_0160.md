@@ -11,11 +11,14 @@ area: [human-exploration, deck, architecture, standalone, visualization]
 
 ## Resume here
 
-Checkpoint date: **2026-11-16 (UTC)**. Current reading-position increment starts from
-`061bde3112ba499ea4bd998fb9b7fe9561f4755b`; its
-[receipt](../evidence/interactive_reading_position_checkpoint_20261115.json)
-binds final code/artifacts and actual receiving, preserving the preceding
-[navigation/inventory receipt](../evidence/interactive_reading_navigation_checkpoint_20261115.json).
+Checkpoint date: **2026-11-16 (UTC)**. Current Sketcher host receiving starts from
+`2e5d1ca76fd0d90b9381e1db924f31b2117da580`; its
+[receipt](../evidence/interactive_sketcher_qt_checkpoint_20261116.json)
+binds the exact experimental provider package and actual Qt controls. All Sabueso
+runtime bytes remain unchanged; the preceding
+[reading-position](../evidence/interactive_reading_position_checkpoint_20261115.json)
+and [navigation/inventory receipts](../evidence/interactive_reading_navigation_checkpoint_20261115.json)
+keep their actual source/artifact scopes.
 The initial planning parent
 `fb0d09659f8d00685f829d6781e5d256751dac66` and
 [first application receipt](../evidence/interactive_card_app_checkpoint_20261113.json)
@@ -93,7 +96,11 @@ source identity, scene and host ownership separate under
 [MolSysSuite #199](https://github.com/uibcdf/molsyssuite/issues/199).
 Sabueso continues independent workspace/navigation work while awaiting the
 supported provider surface. No 2D implementation or dependency adoption is
-claimed; S4.3 and main-plan states are unchanged.
+claimed in the product; S4.3 and main-plan states are unchanged. The subsequent
+[27-check Qt probe](interactive_2d_component_0160.md#first-actual-qt-molecular-surface-receiving)
+now receives the finite experimental molecular surface outside the Card workspace.
+[Sketcher #6](https://github.com/uibcdf/molsyssketcher/issues/6) owns the direct
+source-bound consumer request and supported preparation/module follow-up.
 
 **Next observable result:** exact source-bound annotation → model selection → original source → Back, including unknown/replaced contexts (S2.2/S2.5), plus qualified chemical depiction and provider lifetime/scene recovery. Viewer #368 still owns the supported embedding/current-model contract. Chemical depiction, workload agreements and human acceptance remain open; arbitrary source controls remain a future extension. Owned reading-service loss, explicit restart and pending-query shutdown now receive in actual Qt. The [presentation receipt](../evidence/interactive_layout_checkpoint_20261113.json) closes S5.2 at layout-only scope. The whole-workspace receipt does not close remaining scopes or authorize a release. Interrupted attempts never count as passes.
 
@@ -269,7 +276,7 @@ records the distinct input meanings and gaps.
 | --- | --- | --- |
 | S4.1 | `done` | Bounded UniProt/PDB/SMILES/disease-ID entry, one explicit background worker, progress/cancel/discard and late-result adoption receive with distinct positive/ambiguous/not-found/failed and partially successful source outcomes. UniProt/PubChem choices and MONDO obsolete replacements remain separate explicit queries, preserving originals. Current-page retained links can request fresh records without identity merging. [Criteria reconciliation and receiving](interactive_record_queries_0160.md#reconcile-the-bounded-s4-criteria). Arbitrary source controls are an extension; active provider HTTP interruption is not promised |
 | S4.2 | `done` | The pertinent native protein catalog exposes source-linked sequence/annotations, structures, ligands, changes and associations, with original overview/value/unit cells, source inspection and exact return. Uncertain/unsupported/original-not-saved scope stays discoverable; source-selected InterPro/AlphaFold records retain their native meaning. Public nature-specific and cross-Card receiving bind this presentation scope. [Original criteria reconciliation](interactive_record_queries_0160.md#reconcile-the-bounded-s4-criteria); mapped annotation visuals retain S2 ownership |
-| S4.3 | `partial` | Actual SMILES → PubChem-stated Card, original chemical/property values with units and a source-bound BTS → supplied target → native activity → assay/publication journey pass. Qualified 2D/available 3D remain open; no conformer or measured geometry is invented |
+| S4.3 | `partial` | Actual SMILES → PubChem-stated Card, original chemical/property values with units and a source-bound BTS → supplied target → native activity → assay/publication journey pass. A separate 27-check Qt probe receives the experimental Sketcher molecular surface over twelve frozen provider preparations. Supported source-Card 2D integration and available 3D remain open under Sketcher #6/suite #199 and Viewer #368; no conformer or measured geometry is invented |
 | S4.4 | `done` | Disease definition/hierarchy and current-page retained associations now expose native scope, all source/identity/support cells, exact graph direction and original Support. Public protein/indication and native target/drug Deck journeys, plus a separately labelled fictitious phenotype control, receive through saving/reopening and exact related-Card/repeated Deck return. [Original criterion reconciliation](interactive_disease_associations_0160.md#reconcile-the-bounded-s44-criterion). Unvisited originals remain `not_saved`; no global source coverage, clinical judgment, name-search contract or human acceptance is claimed |
 | S4.5 | `partial` | Protein → source-bound BTS identity → native activity quantity → original assay/full publication → exact repeated/filtered Deck return now passes in real Qt, including original workspace saving/reopening. PDB record → source-declared protein → source → exact query return also passes. The PDB/entity → mapped molecular reading remains dependent on S2/#368; graphs add no scientific conclusions |
 
@@ -327,7 +334,7 @@ checks alone.
 | Remaining front | Concrete next result | Owner / dependency | Can proceed locally? |
 | --- | --- | --- | --- |
 | Molecular correspondence and supported embedding (S2) | Versioned current-model/occurrence identity and supported selection/lifetime route, then actual annotation → selection → source → Back | Viewer #368; Sabueso #154; initial input hash cannot establish active identity | Consumer refusal/lifetime/resource work can continue; exact mapped product journey awaits the provider contract |
-| Chemical depiction and nature-specific presentation (S4) | Source-bound 2D representation through a provider-owned supported surface; broader visual polish and user receiving | Separate MolSysSketcher team; #154 and [MolSysSuite #199](https://github.com/uibcdf/molsyssuite/issues/199); Viewer #387 retains the original request | Workspace/navigation work continues independently; no duplicate renderer or unqualified provider dependency is introduced |
+| Chemical depiction and nature-specific presentation (S4) | Source-bound 2D representation through a provider-owned supported surface; broader visual polish and user receiving | Separate MolSysSketcher team; [Sketcher #6](https://github.com/uibcdf/molsyssketcher/issues/6), #154 and [MolSysSuite #199](https://github.com/uibcdf/molsyssuite/issues/199); Viewer #387 retains the original request | First isolated experimental molecular Qt receiving passes; supported source-Card integration and delivery remain open, with no duplicate renderer or dependency adoption |
 | Resource and recovery breadth (S5/S6.2) | Varied public model idle/active observations, repeated product/provider lifetime and native-platform receiving; agreed workload targets | #154/#153/#112 | Bounded local measurements can continue; measurements do not themselves establish budgets |
 | Human review (S6.1) | Maintainer and independent researcher complete the prepared tasks/worksheet | Maintainer/researcher, #154/#153 | Materials are prepared; human observations cannot be supplied by an agent |
 | Scientific/platform decisions (S6.3) | Decide #192 aggregation semantics and reconsider #194's macOS exception for this version | Maintainer, #192/#194 | Preserve the explicit current limitations while decisions are pending |

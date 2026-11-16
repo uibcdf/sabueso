@@ -9,6 +9,21 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Direct Sketcher consumer request and actual Qt probe (2026-11-16 UTC)
+
+From `2e5d1ca`, #154 adds an isolated developer receiver for the actual packed
+experimental MolSysSketcher molecular surface and reports consumer needs directly
+in [Sketcher #6](https://github.com/uibcdf/molsyssketcher/issues/6). The
+[receipt](../evidence/interactive_sketcher_qt_checkpoint_20261116.json) records
+27 actual Qt checks over twelve frozen provider preparations, exact source/pack
+identities, resource observations and failed build/launch scopes. All 954 tracked
+Sabueso package files are unchanged; the earlier product/scientific qualification
+keeps its own source/artifact/cohort scope. Local syntax/format/lint/governance/
+link and ledger checks qualify this developer-tool/documentation increment.
+No provider edit, product dependency, supported adoption or package publication
+is introduced. Git and #154 retain the final SHA; exact-final-source full/candidate/
+hosted recovery stays under #154/#153/#112. No workflow or release is dispatched.
+
 ### Transient reading position and focus (2026-11-15)
 
 From `061bde3`, #154 adds fresh reading top/heading, matching parent scroll/control,
