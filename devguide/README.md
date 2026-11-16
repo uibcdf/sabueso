@@ -103,9 +103,12 @@ add two public installed profiles, one-minute idle windows, per-cycle RSS/CPU an
 bounded/early-failure receiving logs. Retained RSS is recorded without a leak or
 general scaling verdict. The subsequent
 [longer-session and larger-input receiving](pending_proposals/interactive_model_scale_0160.md)
-passes twelve 1TCD cycles with process-memory observations; both larger public
-mmCIF inputs fail conversion under MolSysMT #763, while actual Qt retains useful
-Knowledge/source navigation. [Viewer #387](https://github.com/uibcdf/molsysviewer/issues/387)
+passes twelve 1TCD cycles with process-memory observations. The original larger
+mmCIF cohort fails under MolSysMT #763, retaining useful Knowledge/source access;
+the later [isolated correction receiving](pending_proposals/interactive_model_scale_0160.md#received-provider-correction-2026-11-16-utc)
+now draws unchanged 3WU2/5XNL with 38 installed Qt checks each, plus 106 focused
+and eight original provider cases. Shared-prefix adoption, mapped identity and
+broader scaling remain separate. [Viewer #387](https://github.com/uibcdf/molsysviewer/issues/387)
 records the source-bound chemical 2D need; the later [MolSysSketcher consumer handoff](pending_proposals/interactive_2d_component_0160.md)
 now records the separate development team and owned-scene design under
 [MolSysSuite #199](https://github.com/uibcdf/molsyssuite/issues/199),

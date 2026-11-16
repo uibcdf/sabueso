@@ -7,6 +7,16 @@ This page owns current state; dated receipt histories are linked below.
 
 ## Next product objective: interactive exploration in 0.16.0
 
+The [MolSysMT correction receiving](pending_proposals/interactive_model_scale_0160.md#received-provider-correction-2026-11-16-utc)
+now draws unchanged **3WU2 and 5XNL**, with **38 installed Qt checks each**, using
+isolated fixed source `b8c798474` for #763/#766. **106 focused and eight original
+provider cases** pass; 12 consumer admission/lifetime cases receive with one
+explicit loopback-permission rerun. Original identity/coordinates and alternate
+observations remain represented. [The receipt](evidence/interactive_mmcif_fix_checkpoint_20261116.json)
+records about 2.91/3.13 GiB peak summed RSS and exact source/artifact scope.
+Shared sources/environment stay unchanged; this does not establish a published
+provider minimum, mapped Card identity or broader scaling/platform acceptance.
+
 The [MolSysSketcher consumer handoff](pending_proposals/interactive_2d_component_0160.md)
 now has a direct provider issue, [MolSysSketcher #6](https://github.com/uibcdf/molsyssketcher/issues/6),
 and first actual Qt receiving: **27 checks over twelve frozen real-RDKit-prepared
@@ -54,8 +64,9 @@ checks, preserving Knowledge/source access. The receiver now detects terminal
 provider failure promptly. Five memory-observer, twelve molecular Python and
 four Node controls pass. [Its receipt](evidence/interactive_model_scale_checkpoint_20261115.json)
 records unchanged shipped runtime/wheel/provider identities, successful and failed
-scopes and remaining limits. Larger-model rendering and S5.5/S6.2 stay partial;
-the main ledger remains **20 done, 10 partial and 3 todo**.
+scopes and remaining limits at that original cohort. The correction receiving
+above adds positive larger-model journeys; S5.5/S6.2 remain partial. The historical
+ledger at the first scale checkpoint was **20 done, 10 partial and 3 todo**.
 
 The [extended model observations](pending_proposals/interactive_model_lifetime_0160.md#extended-bounded-observations-2026-11-15)
 now receive two sequential noneditable installed profiles, with **eight runtime

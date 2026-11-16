@@ -1,0 +1,973 @@
+{
+  "format": "sabueso.interactive_mmcif_fix_checkpoint@1",
+  "owner": "uibcdf/sabueso#154",
+  "provider_issues": [
+    "https://github.com/uibcdf/molsysmt/issues/763",
+    "https://github.com/uibcdf/molsysmt/issues/766"
+  ],
+  "embedding_owner": "https://github.com/uibcdf/molsysviewer/issues/368",
+  "base_commit": "a23e6aaef7cc88f4a2f749418717369bc80dda6b",
+  "completed_at": "2026-11-16T01:38:00.543771+00:00",
+  "scope": "Isolated receiving of owner-delivered correction and two larger original model journeys; product runtime and shared sources/environment unchanged",
+  "receiving_source_sha256": {
+    "devtools/molecular_explorer_journey.mjs": "926224209add704581637df5d6f1783a4ccddede96683a168edd4090e0063a06",
+    "devtools/standalone_probe/run_bounded.py": "f3cb4617bedbcfb555977d423419acc07efe63a525ba8a0be6f755622de7bf38",
+    "devtools/standalone_probe/receive_navigation.mjs": "0a0319bb26a4d8685f6d6a34fb78fca1b03147c51febe73fbb99e72be788bc1f",
+    "devtools/standalone_probe/receive_position.mjs": "9ef22761f78c43a3d997b9bfb1f5e0a113aac904fbfeb3d62b6a6af917ab42fe",
+    "devtools/standalone_probe/cdp_driver.mjs": "c7be8ee8287e0dde73931c2f01d28392b1424b34b640df7b8e6a690265e31995",
+    "devtools/standalone_probe/owned_process.mjs": "bdba473d91fb8776dba40a6fe3418f2bac8d99c77ddc9ff0b3636c749821a9d6"
+  },
+  "provider_source": {
+    "head": "b8c7984748f2ca87d19911f4cc3bf63b688d3641",
+    "archive_sha256": "d6ad62f6d735882a9228c642a56c4dc49b898b7752eeb6ef85d84dc346f3f975",
+    "verified_tracked_archive_files": 3589,
+    "source_manifest_sha256": "8680942ef7ddbc646022d064a449cf84cc2697a0f59316d142d7cccad3bcb92d",
+    "archive_route": "Selected tracked source closure verified against pinned Git-index blob IDs; tar streaming preserves source bytes. A Git archive attempt required an unavailable promisor blob/network and was replaced by this local verified route. No provider source changed.",
+    "unchanged_owner_guards_sha256": {
+      "tests/form/mmcif_PdbxContainers_DataContainer/test_entity_identity.py": "f0e1172424243c97ee4cd59c5b538c3878d97d14a47c23af6c9d7cea89852e02",
+      "tests/form/mmcif_PdbxContainers_DataContainer/test_declared_covalent_links.py": "e71bc7b20403fc4c1659542510a7e8b87813a29ba4118d5c0d822ff403e1bf9e",
+      "tests/form/mmcif_PdbxContainers_DataContainer/real_entry_receiving.py": "b3a4e35f9a25a42e6716493b6eecfb4b0490bdb511fb728ea18c34dfe8df697c",
+      "tests/form/mmcif_PdbxContainers_DataContainer/test_primary_occupancy.py": "dfcdd359470e9d3865fc4fb275087535aed571c1a71efa42430554d525881186"
+    },
+    "rust": {
+      "cached_registry_bytes": 224763277,
+      "source": "Existing shared Conda Cargo cache copied read-only into owned root; subsequent Cargo writes stay owned",
+      "jobs": 2,
+      "offline": true,
+      "rust_tree_sha": "298cdaead60a5710551d575cb0e30eb04317b319",
+      "same_rust_tree_as_previous_provider": true
+    },
+    "build_resources": {
+      "owner": "uibcdf/sabueso#154",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "taskset",
+        "-c",
+        "0,1,2,3",
+        "env",
+        "CARGO_HOME=/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/cargo-home",
+        "CARGO_TARGET_DIR=/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/rust-target",
+        "CARGO_BUILD_JOBS=2",
+        "CARGO_NET_OFFLINE=true",
+        "/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/env/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "--no-deps",
+        "--no-build-isolation",
+        "--editable",
+        "."
+      ],
+      "cwd": "/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/provider",
+      "returncode": 0,
+      "elapsed_s": 112.083,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 1327853568,
+      "minimum_host_available_bytes": 38691352576,
+      "survivors_after_command": [],
+      "limits": {
+        "owned_rss_bytes": 4294967296,
+        "host_available_bytes": 17179869184,
+        "cpu_affinity": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "native_threads": 1
+      },
+      "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+    },
+    "scope": "Own sparse detached checkout, bounded offline native build and isolated editable installation; not shared adoption or public installed-provider qualification"
+  },
+  "installed_imports": {
+    "python": "/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/env/bin/python",
+    "version": "3.14.10 | packaged by conda-forge | (main, Oct 26 2026, 11:35:38) [GCC 15.3.0]",
+    "participants": {
+      "sabueso": {
+        "module": "/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/env/lib/python3.14/site-packages/sabueso/__init__.py",
+        "version_metadata": "0.14.0+301.g061bde3.dirty",
+        "direct_url": {
+          "archive_info": {
+            "hash": "sha256=e93d4cdf4d5490ebe32ca20497b15f8b6fc7dcd5a4151de17b0b062f015d47ec",
+            "hashes": {
+              "sha256": "e93d4cdf4d5490ebe32ca20497b15f8b6fc7dcd5a4151de17b0b062f015d47ec"
+            }
+          },
+          "url": "file:///tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/artifacts/sabueso-0.14.0%2B301.g061bde3.dirty-py3-none-any.whl"
+        }
+      },
+      "molsysmt": {
+        "module": "/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/provider/molsysmt/__init__.py",
+        "version_metadata": "1.0.0",
+        "direct_url": {
+          "dir_info": {
+            "editable": true
+          },
+          "url": "file:///tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/provider"
+        }
+      },
+      "molsysviewer": {
+        "module": "/fast_data/home/liliana/repos@uibcdf/molsysviewer/molsysviewer/__init__.py",
+        "version_metadata": "0.24.0+409.g0dcdd6ce",
+        "direct_url": {
+          "dir_info": {
+            "editable": true
+          },
+          "url": "file:///fast_data/home/liliana/repos%40uibcdf/molsysviewer"
+        }
+      },
+      "pyunitwizard": {
+        "module": "/fast_data/home/liliana/repos@uibcdf/pyunitwizard/pyunitwizard/__init__.py",
+        "version_metadata": "0.29.5+2.gcc51c8e",
+        "direct_url": {
+          "dir_info": {
+            "editable": true
+          },
+          "url": "file:///fast_data/home/liliana/repos%40uibcdf/pyunitwizard"
+        }
+      },
+      "smonitor": {
+        "module": "/fast_data/home/liliana/repos@uibcdf/smonitor/smonitor/__init__.py",
+        "version_metadata": "0.23.0+3.g4a4cd1e",
+        "direct_url": {
+          "dir_info": {
+            "editable": true
+          },
+          "url": "file:///fast_data/home/liliana/repos%40uibcdf/smonitor"
+        }
+      },
+      "argdigest": {
+        "module": "/fast_data/home/liliana/repos@uibcdf/argdigest/argdigest/__init__.py",
+        "version_metadata": "0.17.1+6.g7be790b",
+        "direct_url": {
+          "dir_info": {
+            "editable": true
+          },
+          "url": "file:///fast_data/home/liliana/repos%40uibcdf/argdigest"
+        }
+      },
+      "depdigest": {
+        "module": "/fast_data/home/liliana/repos@uibcdf/depdigest/depdigest/__init__.py",
+        "version_metadata": "0.15.2+3.g5e93eaf",
+        "direct_url": {
+          "dir_info": {
+            "editable": true
+          },
+          "url": "file:///fast_data/home/liliana/repos%40uibcdf/depdigest"
+        }
+      }
+    },
+    "provider_head": "b8c7984748f2ca87d19911f4cc3bf63b688d3641",
+    "native_extension": {
+      "path": "/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/provider/molsysmt/_rust.abi3.so",
+      "sha256": "ad9d85fe2b20defb7d4814a085186e7db5e9aaecaecd31fa55100bdd1de0838b"
+    },
+    "PySide6": "6.11.2"
+  },
+  "cohort_before_qt": {
+    "molsysmt": {
+      "head": "b8c7984748f2ca87d19911f4cc3bf63b688d3641",
+      "status": "",
+      "path": "/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/provider"
+    },
+    "molsysviewer": {
+      "head": "0dcdd6ce574d3c99483480cb38c16c1e3cc4782f",
+      "status": "",
+      "path": "/fast_data/home/liliana/repos@uibcdf/molsysviewer"
+    },
+    "pyunitwizard": {
+      "head": "cc51c8e600f78f108bc563edd3221bd8788ead86",
+      "status": "",
+      "path": "/fast_data/home/liliana/repos@uibcdf/pyunitwizard"
+    },
+    "smonitor": {
+      "head": "4a4cd1e415ea57e50c22925c36c2e727772fb3ab",
+      "status": "",
+      "path": "/fast_data/home/liliana/repos@uibcdf/smonitor"
+    },
+    "argdigest": {
+      "head": "7be790b7334e16715fceebbfa8a2b400edf768bb",
+      "status": "",
+      "path": "/fast_data/home/liliana/repos@uibcdf/argdigest"
+    },
+    "depdigest": {
+      "head": "5e93eaff314fe7cddf4eee89842977023b3a8b00",
+      "status": "",
+      "path": "/fast_data/home/liliana/repos@uibcdf/depdigest"
+    }
+  },
+  "cohort_after_qt": {
+    "molsysmt": {
+      "head": "b8c7984748f2ca87d19911f4cc3bf63b688d3641",
+      "status": "",
+      "path": "/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/provider"
+    },
+    "molsysviewer": {
+      "head": "0dcdd6ce574d3c99483480cb38c16c1e3cc4782f",
+      "status": "",
+      "path": "/fast_data/home/liliana/repos@uibcdf/molsysviewer"
+    },
+    "pyunitwizard": {
+      "head": "cc51c8e600f78f108bc563edd3221bd8788ead86",
+      "status": "",
+      "path": "/fast_data/home/liliana/repos@uibcdf/pyunitwizard"
+    },
+    "smonitor": {
+      "head": "4a4cd1e415ea57e50c22925c36c2e727772fb3ab",
+      "status": "",
+      "path": "/fast_data/home/liliana/repos@uibcdf/smonitor"
+    },
+    "argdigest": {
+      "head": "7be790b7334e16715fceebbfa8a2b400edf768bb",
+      "status": "",
+      "path": "/fast_data/home/liliana/repos@uibcdf/argdigest"
+    },
+    "depdigest": {
+      "head": "5e93eaff314fe7cddf4eee89842977023b3a8b00",
+      "status": "",
+      "path": "/fast_data/home/liliana/repos@uibcdf/depdigest"
+    }
+  },
+  "shared_siblings_unchanged": {
+    "molsysmt": {
+      "head": "6deb0200cd7e384128eded46caaf751a57e65bc6",
+      "status": ""
+    },
+    "molsysviewer": {
+      "head": "0dcdd6ce574d3c99483480cb38c16c1e3cc4782f",
+      "status": ""
+    }
+  },
+  "pip_check": "No broken requirements found, exit 0, outside checkout",
+  "sabueso_byte_bridge": {
+    "wheel_sha256": "e93d4cdf4d5490ebe32ca20497b15f8b6fc7dcd5a4151de17b0b062f015d47ec",
+    "wheel_name": "sabueso-0.14.0+301.g061bde3.dirty-py3-none-any.whl",
+    "runtime_files_equal": 954,
+    "sabueso_head": "a23e6aaef7cc88f4a2f749418717369bc80dda6b",
+    "scope": "Reused exact unpublished noneditable artifact; every package runtime file matches current Sabueso checkout. Source metadata retains original diagnostic epoch."
+  },
+  "original_inputs": [
+    {
+      "pdb": "3WU2",
+      "url": "https://files.rcsb.org/download/3WU2.cif.gz",
+      "entry_url": "https://data.rcsb.org/rest/v1/core/entry/3WU2",
+      "retrieved_utc": "2026-11-15T17:59:09.484018+00:00",
+      "encoded_bytes": 1403413,
+      "decoded_bytes": 6185581,
+      "sha256": "308668f3ad989ce025b310e9693e47668df6504c8b0809151c383f23f29989b6",
+      "declared_deposited_atoms": 54036,
+      "meaning": "Unmodified deposited public coordinates; no biological-assembly expansion or Card correspondence; development input, not new frozen fixture",
+      "decoded_sha256": "8e35691e2a2d36091fda27311ea2bf8ff938af2f1971309cb660ad4840380cca"
+    },
+    {
+      "pdb": "5XNL",
+      "url": "https://files.rcsb.org/download/5XNL.cif.gz",
+      "entry_url": "https://data.rcsb.org/rest/v1/core/entry/5XNL",
+      "retrieved_utc": "2026-11-15T17:59:10.872712+00:00",
+      "encoded_bytes": 2529055,
+      "decoded_bytes": 11380481,
+      "sha256": "c8e32cae7b6b6950784560b49be64f6c0e343de88183ae235ddde602777c357e",
+      "declared_deposited_atoms": 98986,
+      "meaning": "Unmodified deposited public coordinates; no biological-assembly expansion or Card correspondence; development input, not new frozen fixture",
+      "decoded_sha256": "c63cb1d6a39eea135b7513d99c2fd66b8123316ebfa86ec0bad4514b8ab8f556"
+    }
+  ],
+  "python_gates": [
+    {
+      "name": "provider-original-pilot",
+      "complete": true,
+      "integrity_valid": true,
+      "counts": {
+        "collected": 1,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 1,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 1,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 1,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "receptor": "1.2.0",
+      "events_sha256": "7c4921d1df0f858b494f1b24673ec7ff77ffd837c8cc06b8902a359cbfdb822c",
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1",
+          "env",
+          "PYTHONPATH=/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/published-receptor",
+          "MOLSYS_MT_763_ORIGINALS=/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/inputs",
+          "/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/env/bin/python",
+          "-m",
+          "pytest",
+          "tests/form/mmcif_PdbxContainers_DataContainer/real_entry_receiving.py::test_original_entry_identity_and_coordinates[3WU2-default]",
+          "-n0",
+          "--receptor=llm",
+          "--receptor-events=/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/provider-original-pilot.jsonl"
+        ],
+        "cwd": "/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/provider",
+        "returncode": 0,
+        "elapsed_s": 8.816,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 385581056,
+        "minimum_host_available_bytes": 36679942144,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      }
+    },
+    {
+      "name": "provider-focused",
+      "complete": true,
+      "integrity_valid": true,
+      "counts": {
+        "collected": 106,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 106,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 106,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 31,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "receptor": "1.2.0",
+      "events_sha256": "5c55f81bc9818e8123f3c8d0d6c88c462ae66dcad8a717a7f0762bfe7d60de4c",
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1",
+          "env",
+          "PYTHONPATH=/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/published-receptor",
+          "/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/env/bin/python",
+          "-m",
+          "pytest",
+          "tests/form/mmcif_PdbxContainers_DataContainer/test_entity_identity.py",
+          "tests/form/mmcif_PdbxContainers_DataContainer/test_declared_covalent_links.py",
+          "-n0",
+          "--receptor=llm",
+          "--receptor-events=/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/provider-focused.jsonl"
+        ],
+        "cwd": "/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/provider",
+        "returncode": 0,
+        "elapsed_s": 20.89,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 222773248,
+        "minimum_host_available_bytes": 36078170112,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      }
+    },
+    {
+      "name": "provider-originals",
+      "complete": true,
+      "integrity_valid": true,
+      "counts": {
+        "collected": 8,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 8,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 8,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 4,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "receptor": "1.2.0",
+      "events_sha256": "08ac727950abfc2fb90349769d196af83f93872a5605ce556b420627e7c28105",
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1",
+          "env",
+          "PYTHONPATH=/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/published-receptor",
+          "MOLSYS_MT_763_ORIGINALS=/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/inputs",
+          "/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/env/bin/python",
+          "-m",
+          "pytest",
+          "tests/form/mmcif_PdbxContainers_DataContainer/real_entry_receiving.py",
+          "-n0",
+          "--receptor=llm",
+          "--receptor-events=/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/provider-originals.jsonl"
+        ],
+        "cwd": "/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/provider",
+        "returncode": 0,
+        "elapsed_s": 75.76,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 544088064,
+        "minimum_host_available_bytes": 36045586432,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      }
+    },
+    {
+      "name": "installed-consumer",
+      "complete": true,
+      "integrity_valid": true,
+      "counts": {
+        "collected": 12,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 12,
+        "failed": 1,
+        "not_executed": 0,
+        "passed": 11,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "receptor": "1.2.0",
+      "events_sha256": "c10ffbab1f4a2117ba11d18286cab444f89e7f95a09c5a0356dd23a3fe1da921",
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1",
+          "env",
+          "PYTHONPATH=/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/published-receptor",
+          "/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/env/bin/python",
+          "-m",
+          "pytest",
+          "tests/test_molecular_admission_offline.py",
+          "tests/test_molecular_lifetime_offline.py",
+          "--rootdir=/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/client",
+          "-m",
+          "not online",
+          "-n0",
+          "--receptor=llm",
+          "--receptor-events=/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/installed-consumer.jsonl"
+        ],
+        "cwd": "/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/client",
+        "returncode": 1,
+        "elapsed_s": 2.768,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 97234944,
+        "minimum_host_available_bytes": 37444210688,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      }
+    },
+    {
+      "name": "installed-consumer-loopback",
+      "complete": true,
+      "integrity_valid": true,
+      "counts": {
+        "collected": 1,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 1,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 1,
+        "reruns": 0,
+        "skipped": 0,
+        "subtests": {},
+        "warnings": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "receptor": "1.2.0",
+      "events_sha256": "1f76ce221e09e2edca17fdd7b9d81346c9508f814639a0cd887b5fef4744b998",
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1",
+          "env",
+          "PYTHONPATH=/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/published-receptor",
+          "/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/env/bin/python",
+          "-m",
+          "pytest",
+          "tests/test_molecular_lifetime_offline.py::test_loopback_commands_keep_knowledge_available_during_owned_close",
+          "--rootdir=/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/client",
+          "-m",
+          "not online",
+          "-n0",
+          "--receptor=llm",
+          "--receptor-events=/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/installed-consumer-loopback.jsonl"
+        ],
+        "cwd": "/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/client",
+        "returncode": 0,
+        "elapsed_s": 1.332,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 89260032,
+        "minimum_host_available_bytes": 37944430592,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 4294967296,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      }
+    }
+  ],
+  "consumer_receiving": {
+    "distinct_cases_received": 12,
+    "scope": "Eleven initial passes plus exact loopback-dependent case passing under authorized socket execution; first 11-pass/one-permission-failure invocation retained, not relabelled",
+    "original_failure": "PermissionError creating aiohttp test socket in sandbox; no product defect inferred"
+  },
+  "native_inventories": [
+    {
+      "pdb": "3WU2",
+      "deposited_atom_rows": 54036,
+      "retained_atoms": 53592,
+      "source_rows_only_in_alternate_observations": 444,
+      "alternate_groups": 446,
+      "all_source_ids_and_coordinates_represented": true,
+      "structures": 1,
+      "represented_entities": 41,
+      "represented_chains": 352,
+      "max_coordinate_error": {
+        "value": 1.4210854715202004e-14,
+        "unit": "angstrom"
+      },
+      "elapsed_s": 6.793203707085922,
+      "input_unchanged": true
+    },
+    {
+      "pdb": "5XNL",
+      "deposited_atom_rows": 98986,
+      "retained_atoms": 98986,
+      "source_rows_only_in_alternate_observations": 0,
+      "alternate_groups": 0,
+      "all_source_ids_and_coordinates_represented": true,
+      "structures": 1,
+      "represented_entities": 42,
+      "represented_chains": 590,
+      "max_coordinate_error": {
+        "value": 1.4210854715202004e-14,
+        "unit": "angstrom"
+      },
+      "elapsed_s": 8.270063609001227,
+      "input_unchanged": true
+    }
+  ],
+  "inventory_source_sha256": "2a25964b69a792f594bc1937723fc9f4b16fbe50749741d1c48fb6a169116564",
+  "inventory_resources": {
+    "owner": "uibcdf/sabueso#154",
+    "command": [
+      "nice",
+      "-n",
+      "10",
+      "taskset",
+      "-c",
+      "0,1",
+      "/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/env/bin/python",
+      "/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/inspect_native.py",
+      "/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz"
+    ],
+    "cwd": "/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/client",
+    "returncode": 0,
+    "elapsed_s": 16.108,
+    "stop_reason": null,
+    "peak_owned_rss_bytes": 519200768,
+    "minimum_host_available_bytes": 40203812864,
+    "survivors_after_command": [],
+    "limits": {
+      "owned_rss_bytes": 4294967296,
+      "host_available_bytes": 17179869184,
+      "cpu_affinity": [
+        0,
+        1
+      ],
+      "native_threads": 1
+    },
+    "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+  },
+  "native_qt": [
+    {
+      "name": "qt-3wu2-fixed",
+      "check_count": 38,
+      "checks": {
+        "real_canvas_and_renderer": true,
+        "actual_floating_group_observed": true,
+        "reset_returns_to_main_grid": true,
+        "same_live_viewport": true,
+        "camera_survives_layout": true,
+        "selection_survives_layout": true,
+        "no_inferred_correspondence": true,
+        "reading_survives_layout": true,
+        "molecular_presentation_saved_without_scene": true,
+        "saving_layout_keeps_live_model": true,
+        "original_source_remains_readable": true,
+        "heading_retains_exact_full_title": true,
+        "heading_is_compact": true,
+        "full_title_opens_with_keyboard": true,
+        "reading_needs_no_horizontal_scroll": true,
+        "all_exact_history_points_available": true,
+        "earlier_history_opens_with_keyboard": true,
+        "earlier_return_preserves_exact_occurrence": true,
+        "earlier_source_parent_back_is_exact": true,
+        "native_reading_is_unchanged": true,
+        "disclosure_resets_on_new_reading": true,
+        "navigation_keeps_live_model": true,
+        "position_control_is_scrolled_parent": true,
+        "new_reading_starts_at_top": true,
+        "new_reading_focuses_heading": true,
+        "back_restores_parent_scroll": true,
+        "back_restores_original_item_focus": true,
+        "position_return_keeps_native_reading": true,
+        "new_visit_is_not_a_stale_scroll_return": true,
+        "position_preserves_exact_child": true,
+        "page_change_starts_at_heading": true,
+        "page_bound_return_keeps_exact_offset": true,
+        "page_bound_return_keeps_position_and_control": true,
+        "pending_response_does_not_steal_search_focus": true,
+        "position_keeps_live_model": true,
+        "native_capture": true,
+        "original_inputs_unchanged": true,
+        "no_script_errors": true
+      },
+      "graphics": {
+        "webgl": true,
+        "width": 470,
+        "height": 553,
+        "renderer": "ANGLE (Mesa, llvmpipe (LLVM 21.1.8 256 bits), OpenGL 4.5)",
+        "error": 0
+      },
+      "input_sha256": {
+        "card": "8c35824c761d38be0c4c586336b04c0ce0670367cdb58fa0a9776dbd1d192eeb",
+        "model": "308668f3ad989ce025b310e9693e47668df6504c8b0809151c383f23f29989b6"
+      },
+      "receiving_parameters": {
+        "idle_seconds": 5,
+        "layout_cycles": 3,
+        "runtime_cycles": 3,
+        "runtime_settle_seconds": 0
+      },
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1,2,3",
+          "node",
+          "devtools/molecular_explorer_journey.mjs",
+          "--output",
+          "/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/qt-3wu2-fixed",
+          "--python",
+          "/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/env/bin/python",
+          "--application-root",
+          "/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/client",
+          "--card",
+          "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/protein-card.json",
+          "--model",
+          "/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/inputs/3WU2.cif.gz",
+          "--receive-layout",
+          "--receive-navigation",
+          "--receive-position",
+          "--observe-idle-seconds",
+          "5"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "returncode": 0,
+        "elapsed_s": 68.544,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 3119251456,
+        "minimum_host_available_bytes": 35309838336,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 10737418240,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      },
+      "receipt_sha256": "814f702225e5e799f00a135b9a06b143c94e31583411ded852e4b9e35517eda5",
+      "raw_receipt": "recovered_work/checkpoint_recovery_20261106/interactive-mmcif-fix-20261116-1/qt-3wu2-fixed/receipt.json"
+    },
+    {
+      "name": "qt-5xnl-fixed",
+      "check_count": 38,
+      "checks": {
+        "real_canvas_and_renderer": true,
+        "actual_floating_group_observed": true,
+        "reset_returns_to_main_grid": true,
+        "same_live_viewport": true,
+        "camera_survives_layout": true,
+        "selection_survives_layout": true,
+        "no_inferred_correspondence": true,
+        "reading_survives_layout": true,
+        "molecular_presentation_saved_without_scene": true,
+        "saving_layout_keeps_live_model": true,
+        "original_source_remains_readable": true,
+        "heading_retains_exact_full_title": true,
+        "heading_is_compact": true,
+        "full_title_opens_with_keyboard": true,
+        "reading_needs_no_horizontal_scroll": true,
+        "all_exact_history_points_available": true,
+        "earlier_history_opens_with_keyboard": true,
+        "earlier_return_preserves_exact_occurrence": true,
+        "earlier_source_parent_back_is_exact": true,
+        "native_reading_is_unchanged": true,
+        "disclosure_resets_on_new_reading": true,
+        "navigation_keeps_live_model": true,
+        "position_control_is_scrolled_parent": true,
+        "new_reading_starts_at_top": true,
+        "new_reading_focuses_heading": true,
+        "back_restores_parent_scroll": true,
+        "back_restores_original_item_focus": true,
+        "position_return_keeps_native_reading": true,
+        "new_visit_is_not_a_stale_scroll_return": true,
+        "position_preserves_exact_child": true,
+        "page_change_starts_at_heading": true,
+        "page_bound_return_keeps_exact_offset": true,
+        "page_bound_return_keeps_position_and_control": true,
+        "pending_response_does_not_steal_search_focus": true,
+        "position_keeps_live_model": true,
+        "native_capture": true,
+        "original_inputs_unchanged": true,
+        "no_script_errors": true
+      },
+      "graphics": {
+        "webgl": true,
+        "width": 470,
+        "height": 553,
+        "renderer": "ANGLE (Mesa, llvmpipe (LLVM 21.1.8 256 bits), OpenGL 4.5)",
+        "error": 0
+      },
+      "input_sha256": {
+        "card": "8c35824c761d38be0c4c586336b04c0ce0670367cdb58fa0a9776dbd1d192eeb",
+        "model": "c8e32cae7b6b6950784560b49be64f6c0e343de88183ae235ddde602777c357e"
+      },
+      "receiving_parameters": {
+        "idle_seconds": 5,
+        "layout_cycles": 3,
+        "runtime_cycles": 3,
+        "runtime_settle_seconds": 0
+      },
+      "resources": {
+        "owner": "uibcdf/sabueso#154",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "taskset",
+          "-c",
+          "0,1,2,3",
+          "node",
+          "devtools/molecular_explorer_journey.mjs",
+          "--output",
+          "/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/qt-5xnl-fixed",
+          "--python",
+          "/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/env/bin/python",
+          "--application-root",
+          "/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/client",
+          "--card",
+          "/fast_data/home/liliana/repos@uibcdf/sabueso/recovered_work/checkpoint_recovery_20261106/interactive-rich-workspace-20261113-1/protein-card.json",
+          "--model",
+          "/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz/inputs/5XNL.cif.gz",
+          "--receive-layout",
+          "--receive-navigation",
+          "--receive-position",
+          "--observe-idle-seconds",
+          "5"
+        ],
+        "cwd": "/fast_data/home/liliana/repos@uibcdf/sabueso",
+        "returncode": 0,
+        "elapsed_s": 72.851,
+        "stop_reason": null,
+        "peak_owned_rss_bytes": 3355566080,
+        "minimum_host_available_bytes": 35623649280,
+        "survivors_after_command": [],
+        "limits": {
+          "owned_rss_bytes": 10737418240,
+          "host_available_bytes": 17179869184,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "native_threads": 1
+        },
+        "scope": "Sampled observer, no reservation; exploratory software/native scopes remain distinct"
+      },
+      "receipt_sha256": "02df28bafef3dbbf73c9c639d94ce61559c27382e4cbab550264082ece9d2ac2",
+      "raw_receipt": "recovered_work/checkpoint_recovery_20261106/interactive-mmcif-fix-20261116-1/qt-5xnl-fixed/receipt.json"
+    }
+  ],
+  "warnings": "Focused provider 31 and original matrix four expected CrossChainCovalentBondsWarning observations; retained, not suppressed",
+  "resource_preflight": {
+    "physical_bytes": 64978440192,
+    "available_bytes": 40751853568,
+    "cpu_affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+    ],
+    "cpu_percent": 20.5,
+    "load": [
+      2.5908203125,
+      2.72021484375,
+      2.68798828125
+    ],
+    "memory_pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=6079443\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5934691\n",
+    "swap_in_out_delta_bytes": [
+      0,
+      0
+    ],
+    "swap_interval_s": 0.4,
+    "slurm_allocation": null,
+    "execution": "Direct local; no operational Slurm selected; sequential 2/4 CPU jobs, native threads one, <=10 GiB aggregate owned RSS, >=16 GiB host available; no resource reservation",
+    "tmp_free_bytes": 14529605632
+  },
+  "raw_evidence": {
+    "path": "recovered_work/checkpoint_recovery_20261106/interactive-mmcif-fix-20261116-1",
+    "owner": "uibcdf/sabueso#154; uibcdf/molsysmt#763/#766",
+    "review_trigger": "Next affected provider-cohort adoption or large-model/0.16 candidate receiving; retain source, binary, wheel, original manifests and negative records until superseded"
+  },
+  "cleanup": {
+    "status": "complete",
+    "removed_exact_owned_root": "/tmp/sabueso-mmcif-receiving-20261116-urzu2gaz",
+    "removed_pointer": "/tmp/sabueso-mmcif-receiving-current.txt",
+    "active_owned_processes_at_closeout": 0,
+    "verified_retained_files_before_final_closeout": 60,
+    "retained_manifest": "recovered_work/checkpoint_recovery_20261106/interactive-mmcif-fix-20261116-1/retained-sha256.json",
+    "shared_sources_prefix_and_protected_originals_unchanged": true,
+    "completed_at": "2026-11-16T01:39:51.695590+00:00"
+  },
+  "local_gates": {
+    "status": "passed",
+    "format": "ruff format --check .: 1790 already formatted",
+    "lint": "ruff check .: passed",
+    "governance": "python devtools/moli_governance.py: valid",
+    "diff": "git diff --check: passed",
+    "changed_markdown_links_checked": 719,
+    "main_rows": 33,
+    "main_states": {
+      "done": 20,
+      "partial": 11,
+      "todo": 2
+    },
+    "functional_inventory_rows": 20,
+    "receiving_sources_unchanged": true
+  },
+  "plan": {
+    "done": 20,
+    "partial": 11,
+    "todo": 2,
+    "advances": [
+      "S5.5",
+      "S6.2",
+      "F17"
+    ],
+    "remaining": "Controlled provider adoption, supported mapped 3D, Sketcher product integration, broader workloads/native platforms and human/#192/#194/version decisions"
+  },
+  "limits": [
+    "Shallow fixed-source MolSysMT metadata is 1.0.0; exact SHA identifies the cohort without establishing publication/availability",
+    "Reused noneditable unpublished Sabueso diagnostic wheel matches all 954 package files; artifact metadata retains its actual earlier epoch",
+    "Shared editable Viewer/support sources retain recorded heads; shared MolSysMT remains 6deb0200 and is not updated",
+    "76 actual Qt checks cover two initial-model journeys with short idle windows and three layout cycles; no larger-model repeated-runtime, GPU/thermal or general scaling claim",
+    "Renderer is Linux/Xvfb llvmpipe; no mapped Card correspondence, nonempty selection, supported embedding/background/shared-session or human/native-platform acceptance",
+    "Original bytes and all source IDs/coordinates remain represented across primary and alternate observations; universal chemical correctness is not asserted",
+    "Exact-final-source full/candidate/hosted recovery remains under #154/#153/#112; no workflow, dependency pin/adoption, public package or release change"
+  ]
+}

@@ -9,6 +9,21 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Received original mmCIF correction and larger-model drawing (2026-11-16 UTC)
+
+From `a23e6aa`, #154 receives exact isolated MolSysMT source `b8c798474` for
+#763/#766. The [receipt](../evidence/interactive_mmcif_fix_checkpoint_20261116.json)
+binds 106 focused/eight original provider cases, twelve distinct copied consumer
+cases with one explicit loopback rerun, primary/alternate inventory checks and
+two installed 38-check Qt journeys. The original files are unchanged; 3WU2/5XNL
+now draw with native identity/coordinate guards. All 954 Sabueso package files
+match the received diagnostic wheel. Shared source/prefix, dependency pins,
+scientific/native schemas and product code are unchanged; no public provider
+minimum or adoption is implied. Local format/lint/governance/link/ledger checks
+qualify this documentation/evidence checkpoint. Git and #154 retain its final SHA;
+exact-final-source full/candidate/hosted recovery stays under #154/#153/#112.
+No workflow, release or public package publication is selected.
+
 ### Direct Sketcher consumer request and actual Qt probe (2026-11-16 UTC)
 
 From `2e5d1ca`, #154 adds an isolated developer receiver for the actual packed

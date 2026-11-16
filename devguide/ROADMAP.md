@@ -75,8 +75,12 @@ acceptance, or establish a memory-leak verdict.
 The [longer-session/large-input increment](pending_proposals/interactive_model_scale_0160.md)
 adds twelve installed 1TCD cycles and OS process-memory observations. Larger
 public 3WU2/5XNL conversion exposes provider-owned entity-index collisions under
-MolSysMT #763; those cases remain failed, with native Knowledge/failure isolation
-received separately. Scaling and acceptance remain open.
+MolSysMT #763; those original-cohort cases remain failed, with native
+Knowledge/failure isolation received separately. The subsequent
+[isolated #763/#766 correction receiving](pending_proposals/interactive_model_scale_0160.md#received-provider-correction-2026-11-16-utc)
+now receives 106 focused/eight original cases and 38 installed Qt checks each for
+3WU2/5XNL on fixed source `b8c798474`. Shared sources stay unchanged; broader
+scaling, supported correspondence, adoption and acceptance remain open.
 The [navigation increment](pending_proposals/interactive_reading_navigation_0160.md)
 adds full-title disclosure and all older indexed return points through actual
 keyboard controls. The [functional inventory](pending_proposals/functional_inventory_review_0160.md)

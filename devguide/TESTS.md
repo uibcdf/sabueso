@@ -1192,6 +1192,25 @@ View, 3D correspondence and public/admitted delivery separately under Sketcher #
 If product runtime is untouched, record its byte bridge to existing application/
 scientific receipts rather than rerunning unrelated suites.
 
+For the reviewed MolSysMT #763/#766 correction, receive the exact source in an
+owned isolated environment; preserve the shared prefix/checkouts. Use bounded
+native builds with explicit Cargo concurrency/cache ownership and verify editable
+provider versus noneditable Sabueso imports outside this checkout. Record actual
+SHA/compiled-extension identity separately from shallow-clone version metadata.
+Run the provider's unchanged `test_entity_identity.py`,
+`test_declared_covalent_links.py` and explicitly selected `real_entry_receiving.py`
+under its `tests/form/mmcif_PdbxContainers_DataContainer/`, with
+`MOLSYS_MT_763_ORIGINALS` bound to unchanged 3WU2/5XNL originals and the published
+receptor. Keep pilot, full original matrix, synthetic guards and permission
+reruns distinct. Native inventories distinguish primary atoms from retained
+alternate observations; verify source IDs/coordinates across both before claiming
+input preservation. Run copied consumer admission/lifetime cases and actual
+installed Qt source/navigation/position receiving with the fixed provider cohort.
+Keep prior failed-source/lifetime cohorts, public-provider availability, supported
+mapped picking and broader workload/platform acceptance separate. The
+[correction receipt](evidence/interactive_mmcif_fix_checkpoint_20261116.json)
+owns exact inputs, selectors, resource observations and qualified limits.
+
 The native Deck contract (#153) adds `test_deck_exploration_offline.py`,
 `test_deck_envelope_admission_offline.py` and the application Deck session tests.
 Select native Deck/membership/schema/storage controls alongside `tests/explorer/`.

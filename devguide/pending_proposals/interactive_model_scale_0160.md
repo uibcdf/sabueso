@@ -14,7 +14,53 @@ under S5.5/S6.2 of the [living implementation plan](interactive_implementation_0
 It does not reopen the host comparison or establish a supported Viewer embedding
 contract, platform qualification, accepted workload budget or version acceptance.
 
-## Declared larger inputs and provider failure
+## Received provider correction (2026-11-16 UTC)
+
+[MolSysMT #763](https://github.com/uibcdf/molsysmt/issues/763) and the related
+declared-covalent endpoint defect [#766](https://github.com/uibcdf/molsysmt/issues/766)
+are corrected in source `b8c7984748f2ca87d19911f4cc3bf63b688d3641`. The
+[consumer receipt](../evidence/interactive_mmcif_fix_checkpoint_20261116.json)
+receives that exact source in an isolated editable checkout, with its own bounded
+offline Rust build and a noneditable Sabueso wheel whose 954 runtime files match
+the current checkout. Shared sibling checkouts and the legacy environment remain
+unchanged. This qualifies a development cohort, not a public provider minimum or
+an automatic shared-environment rollout.
+
+The unchanged owner guards pass **106 focused cases and eight original-file
+cases**, including default/declared-only bond paths and nm/ps/radians versus
+pm/fs/degrees. They check deposited entity/name/chain identity, coordinates and
+explicit covalent evidence. The 12 copied Sabueso admission/lifetime cases also
+receive; eleven pass initially and the socket-dependent case passes separately
+with actual loopback access after the sandbox denies it. That first failure is
+retained, not relabelled as a clean passing invocation.
+
+Both originals now draw in the actual installed Qt/Viewer product. Each passes
+**38 checks** for rendering, rotation, float/reset, exact Knowledge/source/history,
+scroll/focus and retained live-client/readiness/input binding. These runs include
+two five-second idle windows and are complete receiving journeys, not isolated
+load-time measurements:
+
+| Input | Deposited rows / native primary atoms | Observed journey | Peak summed owned RSS |
+| --- | --- | --- | --- |
+| 3WU2 | 54,036 / 53,592 | 68.54 s, 38 checks pass | 2.91 GiB |
+| 5XNL | 98,986 / 98,986 | 72.85 s, 38 checks pass | 3.13 GiB |
+
+The 444 3WU2 rows outside the primary atom axis remain in the native alternate
+observations. A separate inventory control checks every source atom ID and its
+coordinates across primary plus alternate observations; it finds no unrepresented
+source IDs. The largest primary-coordinate error is about 1.42e-14 angstrom.
+This receives represented identity/coordinate preservation, not universal chemistry.
+
+Viewer remains `0dcdd6ce`, rendering through llvmpipe software with no established
+Card correspondence. The larger models are deliberately unrelated to the retained
+protein Card. Nonempty mapped picking, supported embedding/lifetime, GPU/native
+platforms, larger-model repeated-runtime sessions, agreed budgets and human
+acceptance remain open. Source metadata in the shallow MolSysMT diagnostic build
+reads `1.0.0`; the exact SHA identifies this cohort and does not establish a
+published version. The older failures and longer-session memory observations
+below retain their original source/artifact epochs.
+
+## Historical larger inputs and provider failure
 
 Two unmodified deposited coordinate files were retrieved from RCSB on 2026-11-15
 UTC, with explicit 16 MiB encoded / 64 MiB decoded bounds. RCSB's
@@ -132,8 +178,10 @@ synthetic owned-child Node controls pass. Python gates use the isolated publishe
 receptor. The two short lightweight regression runs overlap the first idle
 window; these shared-host observations are not an isolated CPU benchmark.
 
-Larger-model rendering remains unqualified pending #763 and subsequent receiving
-of the reviewed provider fix. Supported model/index mapping, nonempty selection,
+At that original `6deb0200` checkpoint, larger-model rendering remained unqualified
+pending #763. The later isolated correction receiving above supplies two positive
+initial-model journeys without repeating or superseding the earlier lifetime
+cohort. Supported model/index mapping, nonempty selection,
 pending callbacks/background/shared-session contracts and human acceptance retain
 their existing owners under Viewer #368 and Sabueso #154. S5.5/S6.2 remain partial;
 the main ledger remains 20 done / 10 partial / 3 todo. Exact-final-source

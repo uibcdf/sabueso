@@ -11,11 +11,12 @@ area: [human-exploration, deck, architecture, standalone, visualization]
 
 ## Resume here
 
-Checkpoint date: **2026-11-16 (UTC)**. Current Sketcher host receiving starts from
-`2e5d1ca76fd0d90b9381e1db924f31b2117da580`; its
-[receipt](../evidence/interactive_sketcher_qt_checkpoint_20261116.json)
-binds the exact experimental provider package and actual Qt controls. All Sabueso
-runtime bytes remain unchanged; the preceding
+Checkpoint date: **2026-11-16 (UTC)**. Current larger-model correction receiving starts from
+`a23e6aaef7cc88f4a2f749418717369bc80dda6b`; its
+[receipt](../evidence/interactive_mmcif_fix_checkpoint_20261116.json)
+binds isolated MolSysMT source `b8c798474`, unchanged originals and two installed
+38-check Qt profiles. All Sabueso runtime bytes remain unchanged. The preceding
+[Sketcher host receipt](../evidence/interactive_sketcher_qt_checkpoint_20261116.json),
 [reading-position](../evidence/interactive_reading_position_checkpoint_20261115.json)
 and [navigation/inventory receipts](../evidence/interactive_reading_navigation_checkpoint_20261115.json)
 keep their actual source/artifact scopes.
@@ -296,7 +297,7 @@ optional GUI/process resources independently owned.
 | S5.2 | `done` | Versioned 64 KiB presentation-only persistence admits the three known panels and exact Dockview cohort. Real save/reload preserves reading/float arrangement; Reset uses defaults, live-model saving keeps the viewport, and missing-model/unknown-version controls explain fallback. Unknown originals and symlinks are never overwritten; no Knowledge, query history or scene is restored. [Receipt and limits](../evidence/interactive_layout_checkpoint_20261113.json) |
 | S5.3 | `partial` | Actual installed Qt now receives controlled owned-service loss, the surviving reading/window, visible error and explicit original-workspace restart with exact Back. A synthetic pending query closes with its owned service in about 2.24 s; no result is adopted and its bootstrap retires. Cancellation/stale-result handling and atomic/private caller-safe bootstrap pass. Owned model close/reopen and independent-window survival now receive; general model pending-operation/lifetime receiving remains under S2/#368 and native Windows shutdown is unqualified; unsaved crash recovery is not claimed |
 | S5.4 | `done` | Include the compiled frontend/resources in the optional product closure, qualify headless/GUI boundaries and verify a development launch outside the checkout. Keep Electron/Tauri comparison runtimes out of the shipped Qt closure |
-| S5.5 | `partial` | Earlier [eight-cycle public profiles](interactive_model_lifetime_0160.md#extended-bounded-observations-2026-11-15) now have a separate [twelve-cycle/611.49 s installed 1TCD control](interactive_model_scale_0160.md), with 32 checks, twenty layout cycles, two 120 s idle windows and process-memory observations. Peak summed RSS is 3.54 GiB; retained USS/PSS grows most in grouped WebEngine workers without a leak verdict. Two larger public mmCIF inputs fail before rendering under MolSysMT #763; actual Qt failure isolation passes six checks. All owned processes/input copies retire. Renderer is llvmpipe, no Card correspondence is inferred, and agreed workload/native-platform receiving and broader scaling stay open |
+| S5.5 | `partial` | Earlier [eight-cycle public profiles](interactive_model_lifetime_0160.md#extended-bounded-observations-2026-11-15) retain their separate [twelve-cycle/611.49 s installed 1TCD control](interactive_model_scale_0160.md), with 32 checks, twenty layout cycles, idle windows and OS-memory observations, without a leak verdict. Initial larger-file failures under #763 remain recorded. Later isolated fixed source `b8c798474` passes 106 focused/eight original cases and 38 installed Qt checks each for unchanged 3WU2/5XNL, peaking at 2.91/3.13 GiB. Shared adoption, larger repeated sessions, agreed workload/native-platform receiving and broader scaling stay open; rendering is llvmpipe and no Card correspondence is inferred |
 
 Use the existing shared-resource policy and infrastructure owners. This application
 does not implement a new scheduler, reserve the host or require operational Slurm
@@ -312,7 +313,7 @@ delivers. Start feedback when the first useful slice exists, not only at the end
 | ID | State | Deliverable and completion check |
 | --- | --- | --- |
 | S6.1 | `partial` | [Public input preparation, uncoached tasks and worksheet](interactive_researcher_review_0160.md) are prepared and preparation runs without network. Maintainer and independent researcher observations remain `not_reviewed`; record understanding/navigation/accessibility, including molecular limits. The 0.15.0 deferral does not waive 0.16.0 review |
-| S6.2 | `partial` | Guarded composition reduces the matched backend save from 94.28 to 57.93 s, with read/verify about 29.7 s and native original/refusal/Deck receiving. Separate installed model profiles now receive eight cycles on two public inputs and twelve cycles over 611.49 s on 1TCD, with longer idle windows and bounded OS-memory attribution. Larger mmCIF cases expose MolSysMT #763 rather than a resource ceiling. Agree workload/session targets, receive the provider fix and complete broader scaling/native/human observations; no workload budget or general scaling claim is established |
+| S6.2 | `partial` | Guarded composition reduces the matched backend save from 94.28 to 57.93 s, with read/verify about 29.7 s and native original/refusal/Deck receiving. Separate installed model profiles receive eight cycles on two public inputs and twelve cycles over 611.49 s on 1TCD, with bounded OS-memory attribution. The #763/#766 correction now receives both larger originals and actual installed Qt on isolated fixed source. Agree workload/session targets, arrange controlled provider adoption and complete broader scaling/native/human observations; no workload budget or general scaling claim is established |
 | S6.3 | `partial` | The [twenty-journey inventory](functional_inventory_review_0160.md) maps accepted behavior to implementation, regressions, original saved compatibility and explicit remainders. Complete mapped 3D/2D receiving and actual human observations, reconsider #192 aggregation and #194 macOS scope, then receive the version decision; no 0.15.0 deferral silently extends |
 | S6.4 | `todo` | Record functional-milestone acceptance separately from exact-source CI, installed artifacts, supported platforms and publication. Complete the applicable existing release route only for the authorized candidate and actual claimed GUI/core scope |
 
@@ -347,15 +348,16 @@ original stage rows and their evidence retain authority over each delivered scop
 
 ## Execution order and immediate handoff
 
-Current independent cursor (2026-11-15): guarded workspace composition now has
+Current independent cursor (2026-11-16 UTC): guarded workspace composition now has
 selected native/application/artifact/Qt receiving under #153/#154. S5.5 now also
 receives eight runtime cycles on each of two public installed profiles and longer
 idle windows, with retained RSS and current provider limits recorded explicitly.
 The next [longer-session increment](interactive_model_scale_0160.md) receives twelve
-1TCD cycles and reported-family OS-memory changes, while larger public mmCIF cases
-fail provider conversion under MolSysMT #763. Receive the reviewed provider fix
-before claiming their rendering or scale; workload targets, broader sessions and
-human acceptance remain open. The [navigation increment](interactive_reading_navigation_0160.md)
+1TCD cycles and reported-family OS-memory changes, retaining initial larger-file
+failures. The [isolated correction receiving](interactive_model_scale_0160.md#received-provider-correction-2026-11-16-utc)
+now draws both unchanged larger originals on fixed source `b8c798474`. Preserve
+the exact received cohort and arrange controlled provider adoption; workload
+targets, broader sessions and human acceptance remain open. The [navigation increment](interactive_reading_navigation_0160.md)
 now receives compact/full headings and older exact trail points through keyboard
 controls. The [functional inventory](functional_inventory_review_0160.md) starts
 S6.3; provider, scientific/platform and human decisions retain their own owners.
