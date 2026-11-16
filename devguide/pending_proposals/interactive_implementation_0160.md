@@ -351,6 +351,47 @@ original stage rows and their evidence retain authority over each delivered scop
 
 ## Execution order and immediate handoff
 
+### Provider-independent next block
+
+The maintainer asks for the next useful Sabueso work while MolSysSketcher's
+separate team advances its provider. Use the checked development workspace above
+and prioritize the researcher's working session. The following queue recommends
+the next increments; it does not mark them implemented, add release requirements
+or change the 33-row ledger.
+
+| Order | Current state | Bounded result and completion check |
+| --- | --- | --- |
+| 1 — Make unsaved work explicit | `proposed`; inspect and reproduce first | Distinguish the current original reading/query history from the last successful workspace save. Scope a normal-close guard offering save, discard or cancel, with no prompt for unchanged saved work. A failed save must leave the reading available. Exclude transient scroll/hover and independently saved layout/model state; preserve bounded forced shutdown. Receive actual Qt close/cancel/save-failure cases before claiming protection |
+| 2 — Keep a reference reading visible | `proposed` usability increment | Scope two read-only Knowledge views: retain a selected reading while exploring another, for example protein annotations beside a supplied ligand's activity/source. Each must retain its own original revision, source, trail and Deck occurrence. Receive source/Back, float/reset and independent closure without cross-view state changes. This is side-by-side reading, not a scientific comparison, identity merge or new acquisition; persistence and resource bounds need an explicit design before implementation |
+| 3 — Review the available scientific experience | Materials `prepared`; actual human observations `not_reviewed` | Exercise the existing public protein → ligand → activity → assay/publication → Deck route, disease/source/Back, and save/restart without molecular coordinates. Audit discoverability, original-source access, units, missing/failed/unqueried distinctions and keyboard navigation. Correct concrete observed obstacles; record maintainer/researcher understanding separately from developer/automated observations. Feedback can begin before final 2D/3D integration |
+| 4 — Receive a meaningful visual-provider milestone | `waiting` for the relevant implemented contract | Under Sketcher #6, first receive source-bound molecular selection → original source → Back; receive Interaction View separately with domain-owned inputs. Under Viewer #368, receive exact current-model correspondence and nonempty bidirectional selection. Reuse the existing acceptance controls when those capabilities arrive; neither provider's progress substitutes for the other |
+
+The first two entries are consumer-side proposals within durability/composable
+workspace goals, not previously delivered functionality. Code inspection at
+`be001b1` finds a plain Qt `QWebEngineView`, no normal-close unsaved-work guard in
+the inspected host/frontend, and one live Knowledge panel sharing the active
+reading context. This identifies a protection risk and a presentation limitation;
+it is not a reproduced data-loss incident or a human usability result. #154 owns
+their follow-up. Start with the small unsaved-state/close investigation, then
+scope the independent reference view rather than introducing a general window
+or comparison framework.
+
+Provider readiness is capability-based: a supported attributed preparation/module
+surface, exact mappings and owned lifecycle must be received in the actual Card
+workspace. The experimental Qt Sketcher probe does not supply these product
+guarantees. Keep the existing handoffs under
+[Sketcher #6](https://github.com/uibcdf/molsyssketcher/issues/6) and
+[Viewer #368](https://github.com/uibcdf/molsysviewer/issues/368); do not duplicate
+their renderer, chemistry or private protocol. Workload/platform decisions and
+#192/#194 remain explicit closeout owners. Broader semantic/source expansion stays
+in the long-term roadmap, rather than silently enlarging 0.16.0 while waiting.
+
+This planning-only checkpoint uses local documentation/link/governance checks.
+The exact-final-source full/candidate/hosted recovery remains under #154/#153/#112;
+no runtime, candidate, CI dispatch or release acceptance is changed here.
+
+### Existing implementation and receiving cursor
+
 Current independent cursor (2026-11-16 UTC): guarded workspace composition now has
 selected native/application/artifact/Qt receiving under #153/#154. S5.5 now also
 receives eight runtime cycles on each of two public installed profiles and longer

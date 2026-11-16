@@ -7,6 +7,16 @@ This page owns current state; dated receipt histories are linked below.
 
 ## Next product objective: interactive exploration in 0.16.0
 
+The [provider-independent next block](pending_proposals/interactive_implementation_0160.md#provider-independent-next-block)
+now prioritizes investigating unsaved-work status/normal-close protection,
+scoping an independent reference reading and reviewing the available public
+scientific journeys while the separate visual-provider teams advance. These are
+proposed increments and prepared review tasks, not new delivered features or
+added release requirements. Actual source-bound 2D and supported mapped 3D retain
+their provider dependencies; the main ledger remains **20 done / 11 partial /
+2 todo**. Code inspection identifies the close-protection risk; no data-loss
+incident or human acceptance is claimed.
+
 The [checked local explorer workspace](pending_proposals/interactive_development_workspace_0160.md)
 now retains the received fixed MolSysMT source in `build/explorer-development/`
 with editable Sabueso, exact source/native/dependency checks and a direct launcher.
