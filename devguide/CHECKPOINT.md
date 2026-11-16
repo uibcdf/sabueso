@@ -7,6 +7,17 @@ This page owns current state; dated receipt histories are linked below.
 
 ## Next product objective: interactive exploration in 0.16.0
 
+The [checked local explorer workspace](pending_proposals/interactive_development_workspace_0160.md)
+now retains the received fixed MolSysMT source in `build/explorer-development/`
+with editable Sabueso, exact source/native/dependency checks and a direct launcher.
+The shared-prefix pause remains in force; canonical migration is unchanged.
+[The receipt](evidence/interactive_development_workspace_checkpoint_20261116.json)
+records refusal controls, eight original provider cases, twelve consumer cases
+and actual Qt through the launcher. The owned workspace remains available for
+development; disposable Cargo/receiving scratch retires. Application/scientific
+bytes remain unchanged apart from generated version metadata. Main plan states
+remain 20 done / 11 partial / 2 todo.
+
 The [MolSysMT correction receiving](pending_proposals/interactive_model_scale_0160.md#received-provider-correction-2026-11-16-utc)
 now draws unchanged **3WU2 and 5XNL**, with **38 installed Qt checks each**, using
 isolated fixed source `b8c798474` for #763/#766. **106 focused and eight original

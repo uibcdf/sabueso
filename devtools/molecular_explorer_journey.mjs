@@ -23,7 +23,10 @@ result.receiving_parameters={idle_seconds:idleSeconds,layout_cycles:layoutCycles
 function assertChildren(label){for(const owned of ownedProcesses)owned.assertRunning(label);}
 async function until(fn,label){const end=Date.now()+60000;while(Date.now()<end){assertChildren(label);if(await fn())return;await delay(100);}throw new Error('Timed out: '+label);}
 async function rendererReady(state,label){await until(async()=>{const m=(await state()).molecular;if(m?.status==='unavailable')throw new Error('Molecular runtime unavailable during '+label+': '+m.error);return m?.initial_renderer_ready&&m.initial_structure_received;},label);}
-function launch(command,parameters,name,env){const owned=launchOwned(command,parameters,{name,logPath:path.join(output,name+'.log'),env,cwd:option('--application-root')?path.resolve(option('--application-root')):undefined});ownedProcesses.push(owned);children.push(owned.child);return owned.child;}
+function launch(command,parameters,name,env){
+  if(option('--development-launcher')&&parameters[0]==='-m'&&parameters[1]==='sabueso.explorer')parameters=[path.resolve(option('--development-launcher')),'run','--',...parameters.slice(2)];
+  const owned=launchOwned(command,parameters,{name,logPath:path.join(output,name+'.log'),env,cwd:option('--application-root')?path.resolve(option('--application-root')):undefined});ownedProcesses.push(owned);children.push(owned.child);return owned.child;
+}
 async function observe(name,seconds,scope){
   if(!seconds)return;
   const phase={name,start_wall_s:Date.now()/1000,end_wall_s:null,scope};result.resource_phases.push(phase);

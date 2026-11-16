@@ -1211,6 +1211,19 @@ mapped picking and broader workload/platform acceptance separate. The
 [correction receipt](evidence/interactive_mmcif_fix_checkpoint_20261116.json)
 owns exact inputs, selectors, resource observations and qualified limits.
 
+The [owned explorer workspace](pending_proposals/interactive_development_workspace_0160.md)
+adds two source-only `tests/test_explorer_workspace.py` refusals: an absent
+workspace must not fall back to the active interpreter, and a foreign executable
+must not run. Receive the real positive check outside the checkout, native/cohort
+binding and dependency-version refusals with exact restoration, `pip check` and
+the applicable original/consumer gates in the retained overlay. Add
+`--development-launcher <absolute devtools/explorer_workspace.py>` to the molecular
+Qt receiver so actual entry, argument forwarding and owned interpreter execution
+are tested. Keep launcher/profile epochs distinct when a guard is tightened;
+do not relabel the earlier larger-model pilot as final-code receiving. The owned
+workspace retains an owner/review trigger; only disposable build/receiving scratch
+retires. Default shared-environment and public-candidate qualification stay separate.
+
 The native Deck contract (#153) adds `test_deck_exploration_offline.py`,
 `test_deck_envelope_admission_offline.py` and the application Deck session tests.
 Select native Deck/membership/schema/storage controls alongside `tests/explorer/`.

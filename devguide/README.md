@@ -30,6 +30,11 @@ anything: the remote repository does not contain the whole local state.
 
 ## Current development boundary
 
+The [checked local explorer workspace](pending_proposals/interactive_development_workspace_0160.md)
+provides the received fixed-provider cohort under this checkout's owned build
+area, with a direct launch/check command. The shared-prefix pause and canonical
+workspace migration remain separate; this is a local development route.
+
 The [written functional closeout plan](pending_proposals/functional_closeout_0150.md)
 has reached its implementation decision. The
 [21-row reconciliation](pending_proposals/functional_inventory_review_0150.md)

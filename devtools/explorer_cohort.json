@@ -1,0 +1,29 @@
+{
+  "format": "sabueso.explorer_development_cohort@1",
+  "python": [
+    3,
+    14
+  ],
+  "platform": "linux",
+  "native_threads": 1,
+  "cpu_limit": 4,
+  "providers": {
+    "molsysmt": "b8c7984748f2ca87d19911f4cc3bf63b688d3641",
+    "molsysviewer": "0dcdd6ce574d3c99483480cb38c16c1e3cc4782f",
+    "pyunitwizard": "cc51c8e600f78f108bc563edd3221bd8788ead86",
+    "smonitor": "4a4cd1e415ea57e50c22925c36c2e727772fb3ab",
+    "argdigest": "7be790b7334e16715fceebbfa8a2b400edf768bb",
+    "depdigest": "5e93eaff314fe7cddf4eee89842977023b3a8b00"
+  },
+  "reference_receipt": "devguide/evidence/interactive_mmcif_fix_checkpoint_20261116.json",
+  "scope": "Component-owned exploratory workspace; no shared-prefix migration, public provider minimum or release qualification",
+  "distributions": {
+    "numpy": "2.5.4",
+    "pandas": "3.1.1",
+    "mmcif": "1.1.1",
+    "PySide6": "6.11.2",
+    "shiboken6": "6.11.2",
+    "aiohttp": "3.14.5",
+    "pint": "0.26.2"
+  }
+}

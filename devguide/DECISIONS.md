@@ -1,5 +1,17 @@
 # Sabueso — Decision Log
 
+## Keep fixed-provider explorer development in an owned overlay (2026-11-16)
+
+Under #154, proceed with the received MolSysMT correction through a
+component-owned editable overlay and a checked launcher. Preserve the shared
+prefix/clone pause and the canonical workspace owner's migration route. The
+launcher verifies actual source/import/native and selected dependency identities;
+it neither installs/upgrades providers nor falls back to the active interpreter.
+Retain the owned environment with an owner/review trigger and retire disposable
+build scratch after receiving. This is a local development route, without a
+public provider minimum or new platform/release claim. See the
+[workspace scope and receiving](pending_proposals/interactive_development_workspace_0160.md).
+
 ## Prepare native packets in memory and verify at publication (2026-11-15)
 
 Under #153/#154, separate private Card/Deck packet preparation from publication.

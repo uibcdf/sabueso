@@ -9,6 +9,22 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Checked component-owned explorer workspace (2026-11-16 UTC)
+
+From `78c0958`, #154 adopts the received fixed source for local explorer work
+through an owned editable overlay, versioned cohort and checked source launcher.
+The [receipt](../evidence/interactive_development_workspace_checkpoint_20261116.json)
+records two CLI refusals, real binding/version controls, eight original and twelve
+consumer cases, the larger-model pilot and final-code Qt receiving through the
+launcher. Shared prefix/sibling sources stay unchanged. Scientific/application/
+asset bytes match the earlier received wheel; editable installation refreshes
+only generated version metadata. Applicable source/syntax/format/lint/
+governance/link/ledger and actual integration gates qualify this intermediate
+`[skip ci]` checkpoint. Git and #154 retain its final SHA; exact-final-source
+full/candidate/hosted recovery stays under #154/#153/#112. Canonical workspace
+migration remains owner-controlled; no public provider minimum, workflow,
+release or package publication is selected.
+
 ### Received original mmCIF correction and larger-model drawing (2026-11-16 UTC)
 
 From `a23e6aa`, #154 receives exact isolated MolSysMT source `b8c798474` for

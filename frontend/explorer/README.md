@@ -5,6 +5,15 @@ The [living plan](../../devguide/pending_proposals/interactive_implementation_01
 owns implemented versus remaining product scope. This is not a released GUI or
 a verified public installation route.
 
+The [checked local explorer workspace](../../devguide/pending_proposals/interactive_development_workspace_0160.md)
+now supplies the received MolSysMT correction in a component-owned overlay while
+the shared-prefix pause remains in force. On the received machine, run
+`python devtools/explorer_workspace.py check` from the checkout root, then
+`python devtools/explorer_workspace.py run -- --output-directory build/explorer-development/readings`.
+It forwards the existing application arguments and refuses absent or changed
+cohorts instead of using the active shared interpreter. This source-development
+route retains its own local scope; it does not replace canonical workspace migration.
+
 Reuse the shared editable Python 3.14 environment. The frontend's exact lockfile
 contains React/TypeScript/Dockview and build tooling, with no Electron/Tauri
 runtime. In this directory, `npm ci`, `npm run typecheck`, and `npm run build`

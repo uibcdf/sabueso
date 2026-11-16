@@ -11,11 +11,14 @@ area: [human-exploration, deck, architecture, standalone, visualization]
 
 ## Resume here
 
-Checkpoint date: **2026-11-16 (UTC)**. Current larger-model correction receiving starts from
-`a23e6aaef7cc88f4a2f749418717369bc80dda6b`; its
-[receipt](../evidence/interactive_mmcif_fix_checkpoint_20261116.json)
-binds isolated MolSysMT source `b8c798474`, unchanged originals and two installed
-38-check Qt profiles. All Sabueso runtime bytes remain unchanged. The preceding
+Checkpoint date: **2026-11-16 (UTC)**. Current owned-workspace adoption starts from
+`78c0958edd7dddd057829e2160216da0559d715d`; its
+[receipt](../evidence/interactive_development_workspace_checkpoint_20261116.json)
+binds the retained development overlay, checked launcher and actual Qt/original
+receiving. Application/scientific bytes remain unchanged apart from generated
+version metadata. The earlier
+[larger-model correction receipt](../evidence/interactive_mmcif_fix_checkpoint_20261116.json)
+keeps its isolated source/artifact scope, as do the preceding
 [Sketcher host receipt](../evidence/interactive_sketcher_qt_checkpoint_20261116.json),
 [reading-position](../evidence/interactive_reading_position_checkpoint_20261115.json)
 and [navigation/inventory receipts](../evidence/interactive_reading_navigation_checkpoint_20261115.json)
@@ -356,7 +359,9 @@ The next [longer-session increment](interactive_model_scale_0160.md) receives tw
 1TCD cycles and reported-family OS-memory changes, retaining initial larger-file
 failures. The [isolated correction receiving](interactive_model_scale_0160.md#received-provider-correction-2026-11-16-utc)
 now draws both unchanged larger originals on fixed source `b8c798474`. Preserve
-the exact received cohort and arrange controlled provider adoption; workload
+the exact received cohort. The [owned explorer workspace](interactive_development_workspace_0160.md)
+now makes fixed-source local development directly usable while preserving the
+shared-prefix pause; canonical workspace migration remains separate. Workload
 targets, broader sessions and human acceptance remain open. The [navigation increment](interactive_reading_navigation_0160.md)
 now receives compact/full headings and older exact trail points through keyboard
 controls. The [functional inventory](functional_inventory_review_0160.md) starts
